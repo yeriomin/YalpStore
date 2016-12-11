@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name" translatable="false">Yalp Store</string>
+    <string name="list_line_2_updatable" formatted="false">Updated on %s</string>
+    <string name="list_empty_updates">No apps need to be updated</string>
+    <string name="list_empty_search">No apps found</string>
+    <string name="action_logout">Log out</string>
+    <string name="action_search">Search</string>
+    <string name="action_updates">Updates</string>
+    <string name="search_title">Search applications</string>
+    <string name="dialog_title_logout">Log out?</string>
+    <string name="dialog_message_logout">Are you sure you want to log out?</string>
+    <string name="dialog_title_purchasing_app">Downloading app</string>
+    <string name="dialog_message_purchasing_app">Please wait. Starting the download of the requested app.</string>
+    <string name="dialog_title_loading_app_details">Getting details</string>
+    <string name="dialog_message_loading_app_details">Please wait. Getting details about the requested app.</string>
+    <string name="dialog_title_loading_app_list_search">Searching</string>
+    <string name="dialog_message_loading_app_list_search">Please wait. Searching for apps.</string>
+    <string name="dialog_title_loading_app_list_update">Checking for updates</string>
+    <string name="dialog_message_loading_app_list_update">Please wait. Checking for new versions of your apps.</string>
+    <string name="error_incorrect_password">Incorrect email or password.</string>
+    <string name="error_credentials_empty">Provide google account credentials, please.</string>
+    <string name="error_no_network">No network connection.</string>
+    <string name="error_network_other" formatted="false">Network error: %s</string>
+    <string name="details_installs" formatted="false">%s ↓</string>
+    <string name="details_rating" formatted="false">%.1f★</string>
+    <string name="details_updated" formatted="false">Updated %s</string>
+    <string name="details_size" formatted="false">Apk size %s</string>
+    <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
+    <string name="details_changelog">What\'s new:</string>
+    <string name="details_permissions">Permissions:</string>
+    <string name="details_developer" formatted="false">Offered by %s</string>
+    <string name="details_download">Download</string>
+    <string name="suffix_million">mil</string>
+    <string name="suffix_billion">bil</string>
+    <string name="credentials_hint_email">e-mail here</string>
+    <string name="credentials_hint_password">password here</string>
+    <string name="credentials_title">Google account credentials</string>
+    <string name="credentials_message">Google account email and password are required for this app to function.\nKeep in mind that using this app violates Play Store ToS. It would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store ToS.</string>
+    <string name="credentials_title_logging_in">Logging in</string>
+    <string name="credentials_message_logging_in">Checking provided credentials</string>
+    <string name="activity_title_updates">Updates</string>
+    <string name="activity_title_search" formatted="false">Searching: "%s"</string>
+</resources>

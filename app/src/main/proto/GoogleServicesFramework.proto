@@ -1,0 +1,137 @@
+option java_package = "com.github.yeriomin.playstoreapi.gsf";
+option java_multiple_files = true;
+
+message LoginRequest {
+  optional string packetid = 1;
+  optional string domain = 2;
+  optional string user = 3;
+  optional string resource = 4;
+  optional string token = 5;
+  optional string deviceid = 6;
+  optional int64 lastrmqid = 7;
+  repeated Setting settings = 8;
+  optional int32 compress = 9;
+  repeated string persistentids = 10;
+  optional bool includestreamidinprotobuf = 11;
+  optional bool adaptiveheartbeat = 12;
+  optional HeartBeatStat heartbeatstat = 13;
+  optional bool usermq2 = 14;
+  optional int64 accountid = 15;
+  optional int64 unknown1 = 16;
+  optional int32 networktype = 17;
+}
+message HeartBeatStat {
+  optional string ip = 1;
+  optional bool timeout = 2;
+  optional int64 interval = 3;
+}
+message Setting {
+  optional string key = 1;
+  optional string value = 2;
+}
+
+message HeartBeatConfig {
+  optional int64 interval = 3;
+  optional string ip = 2;
+  optional bool uploadstat = 1;
+}
+
+message LoginResponse {
+  optional string packetid = 1;
+  optional string jid = 2;
+  optional int64 servertimestamp = 8;
+  optional HeartBeatConfig heartbeatconfig = 7;
+  repeated Setting settings = 4;
+  optional int32 laststreamid = 6;
+  optional int32 streamid = 5;
+  optional XMPPError error = 3;
+}
+
+message XMPPError {
+  optional int32 code = 1;
+  optional string message = 2;
+  optional string type = 3;
+  repeated Extension extension = 4;
+}
+
+message Extension {
+	optional int32 code = 1;
+	optional string message = 2;
+}
+
+message BindAccountRequest {
+  optional string packetid = 1;
+  optional string domain = 2;
+  optional string user = 3;
+  optional string resource = 4;
+  optional int64 accountid = 9;
+  optional string token = 5;
+}
+
+message BindAccountResponse {
+  optional string packetid = 1;
+  optional string jid = 2;
+  optional int32 laststreamid = 5;
+  optional int32 streamid = 4;
+  optional XMPPError error = 3;
+}
+
+message Close{
+}
+
+message HeartbeatAck{
+}
+
+message DataMessageStanza{
+  optional int64 rmqid = 1;
+  optional string packetid = 2;
+  optional string from = 3;
+  optional string to = 4;
+  optional string category = 5;
+  optional string token = 6;
+  repeated AppData appdata = 7;
+  optional bool fromtrustedserver = 8;
+  optional string rmq2id = 9;
+  optional int32 streamid =10;
+  optional int32 laststreamid = 11;
+  optional string permission = 12;
+  optional string regid = 13;
+  optional string pkgsignature = 14;
+  
+}
+
+message AppData {
+  optional string key = 1;
+  optional string value = 2;
+}
+
+message IQStanza {
+  optional int64 rmqid = 1;
+  optional int32 type = 2;
+  optional string packetid = 3;
+  optional string from = 4;
+  optional string to = 5;
+  optional XMPPError error = 6; 
+  optional Extension extension = 7;
+  optional string rmq2id = 8;
+  optional int32 streamid = 9;
+  optional int32 laststreamid =10;
+  optional int64 accountid=11;
+} 
+
+message State {
+  optional bool state1 = 1;
+  optional bool state2 = 2;
+}
+
+message PostAuthBatchQuery {
+  optional bool online = 1;
+  optional bool deviceidle = 2;
+  optional bool showmobileindicator = 3;
+  optional int32 sharedstatusversion = 4;
+  optional string rosteretag = 5;
+  optional string otretag = 6;
+  optional string avatarhash = 7;
+  optional string vcardquerystanzaid = 8;
+  optional int32 capabilities = 9;
+}
