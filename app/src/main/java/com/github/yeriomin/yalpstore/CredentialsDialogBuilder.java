@@ -4,11 +4,14 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -54,15 +57,8 @@ public class CredentialsDialogBuilder {
                 }
 
                 CheckCredentialsTask task = new CheckCredentialsTask();
-                task.setContext(c);
-                try {
-                    Throwable result = task.execute(email, password).get();
-                    if (null == result) {
-                        ad.dismiss();
-                    }
-                } catch (InterruptedException | ExecutionException e) {
-                    System.out.println(e.getClass().getName());
-                }
+                task.setDialog(ad);
+                task.execute(email, password);
             }
         });
 
@@ -72,11 +68,11 @@ public class CredentialsDialogBuilder {
 
     private class CheckCredentialsTask extends AsyncTask<String, Void, Throwable> {
 
-        private Context context;
-        private ProgressDialog progressDialog;
+        private Dialog dialog;
+        private RelativeLayout progressOverlay;
 
-        public void setContext(Context context) {
-            this.context = context;
+        public void setDialog(Dialog dialog) {
+            this.dialog = dialog;
         }
 
         @Override
@@ -90,7 +86,7 @@ public class CredentialsDialogBuilder {
                 System.out.println("Email - password pair expected");
             }
             try {
-                PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
+                PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.dialog.getContext());
                 wrapper.login(params[0], params[1]);
             } catch (Throwable e) {
                 return e;
@@ -100,35 +96,48 @@ public class CredentialsDialogBuilder {
 
         @Override
         protected void onPreExecute() {
+            this.progressOverlay = (RelativeLayout) this.dialog.findViewById(R.id.loading);
+            this.progressOverlay.setVisibility(View.VISIBLE);
+            this.progressOverlay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    return;
+                }
+            });
+            this.progressOverlay.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    return true;
+                }
+            });
             super.onPreExecute();
-            this.progressDialog = new ProgressDialog(this.context.getApplicationContext());
-            this.progressDialog.setTitle(this.context.getString(R.string.credentials_title_logging_in));
-            this.progressDialog.setMessage(this.context.getString(R.string.credentials_message_logging_in));
-            this.progressDialog.show();
         }
 
         @Override
         protected void onPostExecute(Throwable e) {
             super.onPostExecute(e);
-            this.progressDialog.dismiss();
+            this.progressOverlay.setVisibility(View.GONE);
+            Context c = this.dialog.getContext();
             if (null != e) {
                 if (e instanceof CredentialsRejectedException) {
                     Toast.makeText(
-                        this.context.getApplicationContext(),
-                        this.context.getString(R.string.error_incorrect_password),
+                        c.getApplicationContext(),
+                        c.getString(R.string.error_incorrect_password),
                         Toast.LENGTH_LONG
                     ).show();
                 } else if (e instanceof CredentialsEmptyException) {
                     System.out.println("Credentials empty");
                 } else if (e instanceof IOException) {
                     Toast.makeText(
-                        this.context.getApplicationContext(),
-                        this.context.getString(R.string.error_network_other, e.getMessage()),
+                        c.getApplicationContext(),
+                        c.getString(R.string.error_network_other, e.getMessage()),
                         Toast.LENGTH_LONG
                     ).show();
                 } else {
                     System.out.println("Unknown exception " + e.getClass().getName() + " " + e.getMessage());
                 }
+            } else {
+                this.dialog.dismiss();
             }
         }
     }
