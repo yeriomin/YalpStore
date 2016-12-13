@@ -17,6 +17,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setTitle(getString(R.string.activity_title_updates));
         ((TextView) getListView().getEmptyView()).setText(getString(R.string.list_empty_updates));
     }
 

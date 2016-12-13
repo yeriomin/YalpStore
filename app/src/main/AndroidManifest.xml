@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true">
         <activity android:name=".DetailsActivity" android:screenOrientation="portrait" />
-        <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance" android:screenOrientation="portrait" android:label="@string/activity_title_updates">
+        <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
