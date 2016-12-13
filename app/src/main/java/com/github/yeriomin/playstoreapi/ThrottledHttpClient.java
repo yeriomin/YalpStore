@@ -89,13 +89,7 @@ class ThrottledHttpClient extends DefaultHttpClient {
         HttpResponse response = this.execute(request);
         this.lastRequestTime = System.currentTimeMillis();
         int statusCode = response.getStatusLine().getStatusCode();
-        boolean isProtobuf = response.containsHeader("Content-Type")
-            && response.getHeaders("Content-Type")[0].getValue().contains("protobuf");
         byte[] content = readAll(response.getEntity().getContent());
-
-        if (!isProtobuf) {
-            throw new GooglePlayException(String.valueOf(statusCode) + " Thats not even protobuf: " + new String(content), statusCode);
-        }
 
         if (statusCode >= 400) {
             throw new GooglePlayException(String.valueOf(statusCode) + " Probably an auth error: " + new String(content), statusCode);

@@ -112,20 +112,18 @@ public class PlayStoreApiWrapper {
                     gsfId = api.getGsfId();
                     prefsEditor.putString(AppListActivity.PREFERENCE_GSF_ID, gsfId);
                     prefsEditor.commit();
-                } else {
-                    api.setGsfId(gsfId);
+                    System.out.println("new gsfId " + gsfId);
                 }
-                System.out.println("new gsfId " + gsfId);
+                api.setGsfId(gsfId);
                 if (token.isEmpty()) {
                     token = api.getToken();
                     prefsEditor.putString(AppListActivity.PREFERENCE_EMAIL, email);
                     prefsEditor.putString(AppListActivity.PREFERENCE_PASSWORD, password);
                     prefsEditor.putString(AppListActivity.PREFERENCE_AUTH_TOKEN, token);
                     prefsEditor.commit();
-                } else {
-                    api.setToken(token);
+                    System.out.println("new token " + token);
                 }
-                System.out.println("new token " + token);
+                api.setToken(token);
             } catch (GooglePlayException e) {
                 int code = e.getCode();
                 // auth/checkin requests answer with 401/403 when credentials are incorrect
