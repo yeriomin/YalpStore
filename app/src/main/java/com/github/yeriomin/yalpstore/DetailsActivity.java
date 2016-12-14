@@ -113,7 +113,12 @@ public class DetailsActivity extends Activity {
             @Override
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
-                drawDetails(this.app);
+                if (this.app != null) {
+                    drawDetails(this.app);
+                } else {
+                    System.out.println("App not retrieved");
+                    finishActivity(0);
+                }
             }
         };
         task.setContext(this);
