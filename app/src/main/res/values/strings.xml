@@ -34,7 +34,7 @@
     <string name="suffix_billion">bil</string>
     <string name="credentials_hint_email">e-mail here</string>
     <string name="credentials_hint_password">password here</string>
-    <string name="credentials_title">Google account credentials</string>
+    <string name="credentials_title">Google account access</string>
     <string name="credentials_message">Google account email and password are required for this app to function.\nKeep in mind that using this app violates Play Store ToS. It would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store ToS.</string>
     <string name="activity_title_updates">Updates</string>
     <string name="activity_title_search" formatted="false">Searching: "%s"</string>
