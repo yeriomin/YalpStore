@@ -18,6 +18,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
     protected String progressDialogMessage;
     protected ProgressDialog dialog;
     protected TextView errorView;
+    protected GoogleApiAsyncTask taskClone;
 
     public void setContext(Context context) {
         this.context = context;
@@ -30,6 +31,10 @@ abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
 
     public void setErrorView(TextView errorView) {
         this.errorView = errorView;
+    }
+
+    public void setTaskClone(GoogleApiAsyncTask taskClone) {
+        this.taskClone = taskClone;
     }
 
     @Override
@@ -52,8 +57,9 @@ abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
             } else if (e instanceof CredentialsEmptyException) {
                 System.out.println("Credentials empty");
             }
-            CredentialsDialogBuilder dialogBuilder = new CredentialsDialogBuilder(this.context);
-            dialogBuilder.show();
+            CredentialsDialogBuilder builder = new CredentialsDialogBuilder(this.context);
+            builder.setTaskClone(this.taskClone);
+            builder.show();
         } else if (e instanceof IOException) {
             System.out.println(e.getClass().getName() + " " + e.getMessage());
             String message;

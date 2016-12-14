@@ -39,7 +39,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     }
 
     protected void loadApps() {
-        GoogleApiAsyncTask task = new GoogleApiAsyncTask() {
+        class UpdatableAppsTask extends GoogleApiAsyncTask {
 
             private List<App> apps = new ArrayList<>();
 
@@ -82,9 +82,22 @@ public class UpdatableAppsActivity extends AppListActivity {
             @Override
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
-                addApps(apps);
+                if (null != this.apps) {
+                    addApps(apps);
+                }
             }
-        };
+        }
+
+        UpdatableAppsTask taskClone = new UpdatableAppsTask();
+        taskClone.setErrorView((TextView) getListView().getEmptyView());
+        taskClone.setContext(this);
+        taskClone.prepareDialog(
+            getString(R.string.dialog_message_loading_app_list_update),
+            getString(R.string.dialog_title_loading_app_list_update)
+        );
+
+        UpdatableAppsTask task = new UpdatableAppsTask();
+        task.setTaskClone(taskClone);
         task.setErrorView((TextView) getListView().getEmptyView());
         task.setContext(this);
         task.prepareDialog(

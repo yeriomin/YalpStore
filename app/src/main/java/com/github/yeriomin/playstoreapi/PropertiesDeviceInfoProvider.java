@@ -1,10 +1,5 @@
 package com.github.yeriomin.playstoreapi;
 
-import com.github.yeriomin.playstoreapi.AndroidBuildProto;
-import com.github.yeriomin.playstoreapi.AndroidCheckinProto;
-import com.github.yeriomin.playstoreapi.AndroidCheckinRequest;
-import com.github.yeriomin.playstoreapi.DeviceConfigurationProto;
-
 import java.util.Arrays;
 import java.util.Properties;
 

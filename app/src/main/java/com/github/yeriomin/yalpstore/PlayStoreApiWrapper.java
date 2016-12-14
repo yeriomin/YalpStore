@@ -92,10 +92,6 @@ public class PlayStoreApiWrapper {
             String password = this.password == null ? prefs.getString(AppListActivity.PREFERENCE_PASSWORD, "") : this.password;
             String gsfId = prefs.getString(AppListActivity.PREFERENCE_GSF_ID, "");
             String token = prefs.getString(AppListActivity.PREFERENCE_AUTH_TOKEN, "");
-            System.out.println("email " + email);
-            System.out.println("password " + password);
-            System.out.println("gsfId " + gsfId);
-            System.out.println("token " + token);
             if (email.isEmpty() || password.isEmpty()) {
                 throw new CredentialsEmptyException();
             }
@@ -112,7 +108,6 @@ public class PlayStoreApiWrapper {
                     gsfId = api.getGsfId();
                     prefsEditor.putString(AppListActivity.PREFERENCE_GSF_ID, gsfId);
                     prefsEditor.commit();
-                    System.out.println("new gsfId " + gsfId);
                 }
                 api.setGsfId(gsfId);
                 if (token.isEmpty()) {
@@ -121,7 +116,6 @@ public class PlayStoreApiWrapper {
                     prefsEditor.putString(AppListActivity.PREFERENCE_PASSWORD, password);
                     prefsEditor.putString(AppListActivity.PREFERENCE_AUTH_TOKEN, token);
                     prefsEditor.commit();
-                    System.out.println("new token " + token);
                 }
                 api.setToken(token);
             } catch (GooglePlayException e) {

@@ -1,10 +1,8 @@
 package com.github.yeriomin.yalpstore;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.view.MotionEvent;
@@ -15,14 +13,18 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 
 public class CredentialsDialogBuilder {
 
     private Context context;
+    protected GoogleApiAsyncTask taskClone;
 
     public CredentialsDialogBuilder(Context context) {
         this.context = context;
+    }
+
+    public void setTaskClone(GoogleApiAsyncTask taskClone) {
+        this.taskClone = taskClone;
     }
 
     public Dialog show() {
@@ -57,6 +59,7 @@ public class CredentialsDialogBuilder {
                 }
 
                 CheckCredentialsTask task = new CheckCredentialsTask();
+                task.setTaskClone(taskClone);
                 task.setDialog(ad);
                 task.execute(email, password);
             }
@@ -70,6 +73,11 @@ public class CredentialsDialogBuilder {
 
         private Dialog dialog;
         private RelativeLayout progressOverlay;
+        protected GoogleApiAsyncTask taskClone;
+
+        public void setTaskClone(GoogleApiAsyncTask taskClone) {
+            this.taskClone = taskClone;
+        }
 
         public void setDialog(Dialog dialog) {
             this.dialog = dialog;
@@ -138,6 +146,7 @@ public class CredentialsDialogBuilder {
                 }
             } else {
                 this.dialog.dismiss();
+                this.taskClone.execute();
             }
         }
     }

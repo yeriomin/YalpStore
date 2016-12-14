@@ -6,11 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.DisplayMetrics;
 
-import com.github.yeriomin.playstoreapi.AndroidBuildProto;
-import com.github.yeriomin.playstoreapi.AndroidCheckinProto;
-import com.github.yeriomin.playstoreapi.AndroidCheckinRequest;
-import com.github.yeriomin.playstoreapi.DeviceConfigurationProto;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
