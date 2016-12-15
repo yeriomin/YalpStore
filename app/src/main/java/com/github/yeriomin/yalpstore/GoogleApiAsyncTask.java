@@ -9,6 +9,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
@@ -65,7 +66,8 @@ abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
             String message;
             if (e instanceof UnknownHostException
                 || e instanceof ConnectException
-                || e instanceof SocketException) {
+                || e instanceof SocketException
+                || e instanceof SocketTimeoutException) {
                 message = this.context.getString(R.string.error_no_network);
             } else {
                 message = this.context.getString(R.string.error_network_other, e.getClass().getName() + " " + e.getMessage());

@@ -21,7 +21,6 @@ android {
     lintOptions {
         disable 'GoogleAppIndexingWarning','GoogleAppIndexingApiWarning'
     }
-    useLibrary  'org.apache.http.legacy'
     sourceSets {
         debug {
             java {
@@ -43,6 +42,7 @@ android {
 
 dependencies {
     compile group: 'com.google.protobuf', name: 'protobuf-lite', version: '3.0.0'
+    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.5.0'
 }
 
 protobuf {
