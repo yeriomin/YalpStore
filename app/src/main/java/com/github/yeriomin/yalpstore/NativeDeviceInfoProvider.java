@@ -1,10 +1,16 @@
-package com.github.yeriomin.playstoreapi;
+package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.DisplayMetrics;
+
+import com.github.yeriomin.playstoreapi.AndroidBuildProto;
+import com.github.yeriomin.playstoreapi.AndroidCheckinProto;
+import com.github.yeriomin.playstoreapi.AndroidCheckinRequest;
+import com.github.yeriomin.playstoreapi.DeviceConfigurationProto;
+import com.github.yeriomin.playstoreapi.DeviceInfoProvider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,6 +97,17 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         for (Locale locale : Locale.getAvailableLocales()) {
             localeStringList.add(locale.toString());
         }
+        List<String> platforms = new ArrayList<>();
+        if (Build.VERSION.SDK_INT >= 21) {
+            platforms = Arrays.asList(Build.SUPPORTED_ABIS);
+        } else {
+            if (null != Build.CPU_ABI && !Build.CPU_ABI.isEmpty()) {
+                platforms.add(Build.CPU_ABI);
+            }
+            if (null != Build.CPU_ABI2 && !Build.CPU_ABI2.isEmpty()) {
+                platforms.add(Build.CPU_ABI2);
+            }
+        }
 
         return DeviceConfigurationProto.newBuilder()
             .setTouchScreen(3)
@@ -102,7 +119,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
             .setScreenDensity((int) (metrics.density * 160f))
             .setScreenWidth(metrics.widthPixels)
             .setScreenHeight(metrics.heightPixels)
-            .addAllNativePlatform(Arrays.asList(Build.CPU_ABI, Build.CPU_ABI2))
+            .addAllNativePlatform(platforms)
             .addAllSystemSharedLibrary(Arrays.asList(
                 "ConnectivityExt",
                 "activation.jar",

@@ -17,7 +17,6 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.playstoreapi.HttpCookie;
 import com.github.yeriomin.playstoreapi.Image;
-import com.github.yeriomin.playstoreapi.NativeDeviceInfoProvider;
 import com.github.yeriomin.playstoreapi.SearchResponse;
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -104,7 +103,9 @@ public class PlayStoreApiWrapper {
             api.setLocale(Locale.getDefault());
             SharedPreferences.Editor prefsEditor = prefs.edit();
             try {
+                boolean needToUploadDeviceConfig = false;
                 if (gsfId.isEmpty()) {
+                    needToUploadDeviceConfig = true;
                     gsfId = api.getGsfId();
                     prefsEditor.putString(AppListActivity.PREFERENCE_GSF_ID, gsfId);
                     prefsEditor.commit();
@@ -118,6 +119,9 @@ public class PlayStoreApiWrapper {
                     prefsEditor.commit();
                 }
                 api.setToken(token);
+                if (needToUploadDeviceConfig) {
+                    api.uploadDeviceConfig();
+                }
             } catch (GooglePlayException e) {
                 int code = e.getCode();
                 // auth/checkin requests answer with 401/403 when credentials are incorrect
