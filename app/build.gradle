@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.protobuf'
 
 android {
     compileSdkVersion 25
@@ -21,50 +20,8 @@ android {
     lintOptions {
         disable 'GoogleAppIndexingWarning','GoogleAppIndexingApiWarning'
     }
-    sourceSets {
-        debug {
-            java {
-                srcDirs 'src/main/java', "${buildDir}/generated/source/proto/debug/javalite"
-            }
-        }
-        release {
-            java {
-                srcDirs 'src/main/java', "${buildDir}/generated/source/proto/release/javalite"
-            }
-        }
-        main {
-            proto {
-                srcDir 'src/main/proto'
-            }
-        }
-    }
 }
 
 dependencies {
-    compile group: 'com.google.protobuf', name: 'protobuf-lite', version: '3.0.0'
-    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.5.0'
-}
-
-protobuf {
-    protoc {
-        artifact = 'com.google.protobuf:protoc:3.0.0'
-    }
-    plugins {
-        grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.0.1'
-        }
-        javalite {
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
-        }
-    }
-    generateProtoTasks {
-        all()*.plugins {
-            javalite { }
-        }
-        ofNonTest()*.plugins {
-            grpc {
-                option 'lite'
-            }
-        }
-    }
+    compile 'com.github.yeriomin:play-store-api:2eee3e034b'
 }
