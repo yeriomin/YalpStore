@@ -151,6 +151,11 @@ public class DetailsActivity extends Activity {
             findViewById(R.id.changes).setVisibility(View.VISIBLE);
             findViewById(R.id.changes_title).setVisibility(View.VISIBLE);
         }
+        String versionName = app.getVersionName();
+        if (null != versionName && !versionName.isEmpty()) {
+            setText(R.id.versionString, R.string.details_versionName, versionName);
+            findViewById(R.id.versionString).setVisibility(View.VISIBLE);
+        }
 
         PackageManager pm = getPackageManager();
         List<String> localizedPermissions = new ArrayList<>();
