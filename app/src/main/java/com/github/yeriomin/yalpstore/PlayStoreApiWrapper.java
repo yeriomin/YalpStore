@@ -18,10 +18,12 @@ import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.playstoreapi.HttpCookie;
 import com.github.yeriomin.playstoreapi.Image;
 import com.github.yeriomin.playstoreapi.SearchResponse;
+import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -42,6 +44,7 @@ public class PlayStoreApiWrapper {
     private String password;
 
     private static GooglePlayAPI api;
+    private static AppSearchResultIterator searchResultIterator;
 
     private App buildApp(DocV2 details) {
         App app = new App();
@@ -162,34 +165,43 @@ public class PlayStoreApiWrapper {
 
     public List<App> getDetails(List<String> packageIds) throws IOException, CredentialsEmptyException, CredentialsRejectedException {
         List<App> apps = new ArrayList<>();
-        for (BulkDetailsEntry details: getApi().bulkDetails(packageIds).getEntryList()) {
-            App app = buildApp(details.getDoc());
-            if (app.getVersionCode() > 0) {
-                apps.add(app);
+        try {
+            for (BulkDetailsEntry details: getApi().bulkDetails(packageIds).getEntryList()) {
+                App app = buildApp(details.getDoc());
+                if (app.getVersionCode() > 0) {
+                    apps.add(app);
+                } else {
+                    System.out.println("Suspicious package " + app.getPackageName());
+                }
+            }
+        } catch (GooglePlayException e) {
+            int code = e.getCode();
+            if (code == 401 || code == 403) {
+                logout();
+                throw new CredentialsRejectedException();
             } else {
-                System.out.println("Suspicious package " + app.getPackageName());
+                throw e;
             }
         }
         return apps;
     }
 
-    public List<App> search(String query) throws IOException, CredentialsEmptyException, CredentialsRejectedException {
-        List<App> apps = new ArrayList<>();
-        GooglePlayAPI api = getApi();
-        if (api.hasNextSearchPage(query)) {
-            SearchResponse response = getApi().search(query);
-            if (response.getDocCount() > 0) {
-                for (DocV2 details: response.getDocList().get(0).getChildList()) {
-                    App app = buildApp(details);
-                    if (app.getVersionCode() > 0) {
-                        apps.add(app);
-                    } else {
-                        System.out.println("Suspicious package " + app.getPackageName());
-                    }
-                }
-            }
+    public AppSearchResultIterator getSearchIterator(String query) throws IOException, CredentialsEmptyException, CredentialsRejectedException {
+        if (null == query || query.isEmpty()) {
+            System.out.println("Query empty, so don't expect meaningful results");
         }
-        return apps;
+        if (null == searchResultIterator || query != searchResultIterator.getQuery()) {
+            searchResultIterator = new AppSearchResultIterator(getApi().getSearchIterator(query));
+        }
+        return searchResultIterator;
+    }
+
+    public List<String> getSearchSuggestions(String query) throws IOException, CredentialsEmptyException, CredentialsRejectedException {
+        List<String> suggestions = new ArrayList<>();
+        for (SearchSuggestEntry suggestion: api.searchSuggest(query).getEntryList()) {
+            suggestions.add(suggestion.getSuggestedQuery());
+        }
+        return suggestions;
     }
 
     public void download(App app) throws IOException, CredentialsEmptyException, CredentialsRejectedException {
@@ -211,6 +223,41 @@ public class PlayStoreApiWrapper {
         Intent intent = new Intent();
         intent.setAction(DownloadManager.ACTION_VIEW_DOWNLOADS);
         this.context.startActivity(intent);
+    }
+
+    class AppSearchResultIterator implements Iterator<List<App>> {
+
+        private GooglePlayAPI.SearchIterator iterator;
+
+        public AppSearchResultIterator(GooglePlayAPI.SearchIterator iterator) {
+            this.iterator = iterator;
+        }
+
+        public String getQuery() {
+            return this.iterator.getQuery();
+        }
+
+        @Override
+        public List<App> next() {
+            List<App> apps = new ArrayList<>();
+            SearchResponse response = iterator.next();
+            if (response.getDocCount() > 0) {
+                for (DocV2 details: response.getDocList().get(0).getChildList()) {
+                    App app = buildApp(details);
+                    if (app.getVersionCode() > 0) {
+                        apps.add(app);
+                    } else {
+                        System.out.println("Suspicious package " + app.getPackageName());
+                    }
+                }
+            }
+            return apps;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return iterator.hasNext();
+        }
     }
 
 }

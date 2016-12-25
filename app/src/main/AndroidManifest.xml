@@ -9,7 +9,13 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <activity android:name=".DetailsActivity" android:screenOrientation="portrait" />
+        <provider
+            android:name=".YalpSuggestionProvider"
+            android:authorities="com.github.yeriomin.yalpstore.YalpSuggestionProvider"
+            android:enabled="true" />
+        <activity android:name=".DetailsActivity" android:screenOrientation="portrait" >
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+        </activity>
         <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

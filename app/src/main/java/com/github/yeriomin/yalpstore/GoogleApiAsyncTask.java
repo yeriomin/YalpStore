@@ -48,6 +48,9 @@ abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
     protected void onPostExecute(Throwable e) {
         super.onPostExecute(null);
         this.dialog.dismiss();
+        if (e instanceof RuntimeException && null != e.getCause()) {
+            e = e.getCause();
+        }
         if (e instanceof CredentialsException) {
             if (e instanceof CredentialsRejectedException) {
                 Toast.makeText(

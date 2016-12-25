@@ -93,7 +93,10 @@ public class SearchResultActivity extends AppListActivity {
             protected Throwable doInBackground(Void... params) {
                 PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(getApplicationContext());
                 try {
-                    apps.addAll(wrapper.search(query));
+                    PlayStoreApiWrapper.AppSearchResultIterator iterator = wrapper.getSearchIterator(query);
+                    if (iterator.hasNext()) {
+                        apps.addAll(iterator.next());
+                    }
                     for (App app: apps) {
                         if (installedPackageNames.contains(app.getPackageName())) {
                             app.setInstalled(true);
@@ -121,8 +124,11 @@ public class SearchResultActivity extends AppListActivity {
     }
 
     private String getQuery(Intent intent) {
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            return intent.getStringExtra(SearchManager.QUERY);
+        switch (intent.getAction()) {
+            case Intent.ACTION_SEARCH:
+                return intent.getStringExtra(SearchManager.QUERY);
+            case Intent.ACTION_VIEW:
+                return intent.getDataString();
         }
         return null;
     }
