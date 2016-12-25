@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -155,6 +156,14 @@ public class DetailsActivity extends Activity {
         if (null != versionName && !versionName.isEmpty()) {
             setText(R.id.versionString, R.string.details_versionName, versionName);
             findViewById(R.id.versionString).setVisibility(View.VISIBLE);
+            if (app.isInstalled()) {
+                try {
+                    PackageInfo info = getPackageManager().getPackageInfo(app.getPackageName(), 0);
+                    setText(R.id.versionString, R.string.details_versionName_updatable, info.versionName, versionName);
+                } catch (PackageManager.NameNotFoundException e) {
+                    // We've checked for that already
+                }
+            }
         }
 
         PackageManager pm = getPackageManager();

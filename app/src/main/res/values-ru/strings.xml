@@ -30,6 +30,7 @@
     <string name="details_permissions">Разрешения:</string>
     <string name="details_developer" formatted="false">Разработчик: %s</string>
     <string name="details_versionName" formatted="false">Версия: %s</string>
+    <string name="details_versionName_updatable" formatted="false">Установлена версия %s, доступна %s</string>
     <string name="details_download">Скачать</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>
