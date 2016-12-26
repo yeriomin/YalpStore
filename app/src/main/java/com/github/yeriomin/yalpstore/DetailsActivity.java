@@ -159,7 +159,9 @@ public class DetailsActivity extends Activity {
             if (app.isInstalled()) {
                 try {
                     PackageInfo info = getPackageManager().getPackageInfo(app.getPackageName(), 0);
-                    setText(R.id.versionString, R.string.details_versionName_updatable, info.versionName, versionName);
+                    if (info.versionCode != app.getVersionCode()) {
+                        setText(R.id.versionString, R.string.details_versionName_updatable, info.versionName, versionName);
+                    }
                 } catch (PackageManager.NameNotFoundException e) {
                     // We've checked for that already
                 }
