@@ -29,8 +29,8 @@
     <string name="details_changelog">What\'s new:</string>
     <string name="details_permissions">Permissions:</string>
     <string name="details_developer" formatted="false">Offered by %s</string>
-    <string name="details_versionName" formatted="false">Version: %s</string>
-    <string name="details_versionName_updatable" formatted="false">Installed version %s, updatable to %s</string>
+    <string name="details_versionName" formatted="false">Version %s</string>
+    <string name="details_versionName_updatable" formatted="false">Version %s → %s</string>
     <string name="details_download">Download</string>
     <string name="suffix_million">mil</string>
     <string name="suffix_billion">bil</string>
