@@ -18,10 +18,11 @@ android {
         }
     }
     lintOptions {
+        warning 'InvalidPackage'
         disable 'GoogleAppIndexingWarning','GoogleAppIndexingApiWarning'
     }
 }
 
 dependencies {
-    compile 'com.github.yeriomin:play-store-api:77960b2f11'
+    compile 'com.github.yeriomin:play-store-api:0.1'
 }

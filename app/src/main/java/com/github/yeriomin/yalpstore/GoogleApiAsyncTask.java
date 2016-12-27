@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.yeriomin.playstoreapi.AuthException;
+
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.SocketException;
@@ -51,15 +53,16 @@ abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
         if (e instanceof RuntimeException && null != e.getCause()) {
             e = e.getCause();
         }
-        if (e instanceof CredentialsException) {
-            if (e instanceof CredentialsRejectedException) {
+        if (e instanceof AuthException) {
+            if (e instanceof CredentialsEmptyException) {
+                System.out.println("Credentials empty");
+            } else {
                 Toast.makeText(
                     this.context.getApplicationContext(),
                     this.context.getString(R.string.error_incorrect_password),
                     Toast.LENGTH_LONG
                 ).show();
-            } else if (e instanceof CredentialsEmptyException) {
-                System.out.println("Credentials empty");
+                new PlayStoreApiWrapper(this.context).forceTokenRefresh();
             }
             CredentialsDialogBuilder builder = new CredentialsDialogBuilder(this.context);
             builder.setTaskClone(this.taskClone);

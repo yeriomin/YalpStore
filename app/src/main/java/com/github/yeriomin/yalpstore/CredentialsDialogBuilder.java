@@ -5,12 +5,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.github.yeriomin.playstoreapi.AuthException;
 
 import java.io.IOException;
 
@@ -112,12 +113,6 @@ public class CredentialsDialogBuilder {
                     return;
                 }
             });
-            this.progressOverlay.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    return true;
-                }
-            });
             super.onPreExecute();
         }
 
@@ -127,14 +122,14 @@ public class CredentialsDialogBuilder {
             this.progressOverlay.setVisibility(View.GONE);
             Context c = this.dialog.getContext();
             if (null != e) {
-                if (e instanceof CredentialsRejectedException) {
+                if (e instanceof CredentialsEmptyException) {
+                    System.out.println("Credentials empty");
+                } else if (e instanceof AuthException) {
                     Toast.makeText(
                         c.getApplicationContext(),
                         c.getString(R.string.error_incorrect_password),
                         Toast.LENGTH_LONG
                     ).show();
-                } else if (e instanceof CredentialsEmptyException) {
-                    System.out.println("Credentials empty");
                 } else if (e instanceof IOException) {
                     Toast.makeText(
                         c.getApplicationContext(),

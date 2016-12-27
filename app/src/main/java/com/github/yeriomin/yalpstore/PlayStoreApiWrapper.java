@@ -14,7 +14,6 @@ import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
 import com.github.yeriomin.playstoreapi.BuyResponse;
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.playstoreapi.HttpCookie;
 import com.github.yeriomin.playstoreapi.Image;
 import com.github.yeriomin.playstoreapi.SearchResponse;
@@ -87,7 +86,7 @@ public class PlayStoreApiWrapper {
         return app;
     }
 
-    private GooglePlayAPI getApi() throws IOException, CredentialsEmptyException, CredentialsRejectedException {
+    private GooglePlayAPI getApi() throws IOException {
         if (api == null) {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             String email = this.email == null ? prefs.getString(AppListActivity.PREFERENCE_EMAIL, "") : this.email;
@@ -105,33 +104,25 @@ public class PlayStoreApiWrapper {
             api.setDeviceInfoProvider(checkinRequestBuilder);
             api.setLocale(Locale.getDefault());
             SharedPreferences.Editor prefsEditor = prefs.edit();
-            try {
-                boolean needToUploadDeviceConfig = false;
-                if (gsfId.isEmpty()) {
-                    needToUploadDeviceConfig = true;
-                    gsfId = api.getGsfId();
-                    prefsEditor.putString(AppListActivity.PREFERENCE_GSF_ID, gsfId);
-                    prefsEditor.commit();
-                }
-                api.setGsfId(gsfId);
-                if (token.isEmpty()) {
-                    token = api.getToken();
-                    prefsEditor.putString(AppListActivity.PREFERENCE_EMAIL, email);
-                    prefsEditor.putString(AppListActivity.PREFERENCE_PASSWORD, password);
-                    prefsEditor.putString(AppListActivity.PREFERENCE_AUTH_TOKEN, token);
-                    prefsEditor.commit();
-                }
-                api.setToken(token);
-                if (needToUploadDeviceConfig) {
-                    api.uploadDeviceConfig();
-                }
-            } catch (GooglePlayException e) {
-                int code = e.getCode();
-                // auth/checkin requests answer with 401/403 when credentials are incorrect
-                // but everything else answers with just 400
-                if (code == 400 || code == 401 || code == 403) {
-                    throw new CredentialsRejectedException(e.getMessage(), e);
-                }
+
+            boolean needToUploadDeviceConfig = false;
+            if (gsfId.isEmpty()) {
+                needToUploadDeviceConfig = true;
+                gsfId = api.getGsfId();
+                prefsEditor.putString(AppListActivity.PREFERENCE_GSF_ID, gsfId);
+                prefsEditor.apply();
+            }
+            api.setGsfId(gsfId);
+            if (token.isEmpty()) {
+                token = api.getToken();
+                prefsEditor.putString(AppListActivity.PREFERENCE_EMAIL, email);
+                prefsEditor.putString(AppListActivity.PREFERENCE_PASSWORD, password);
+                prefsEditor.putString(AppListActivity.PREFERENCE_AUTH_TOKEN, token);
+                prefsEditor.apply();
+            }
+            api.setToken(token);
+            if (needToUploadDeviceConfig) {
+                api.uploadDeviceConfig();
             }
         }
         return api;
@@ -141,7 +132,7 @@ public class PlayStoreApiWrapper {
         this.context = context;
     }
 
-    public GooglePlayAPI login(String email, String password) throws IOException, CredentialsEmptyException, CredentialsRejectedException {
+    public GooglePlayAPI login(String email, String password) throws IOException {
         this.email = email;
         this.password = password;
         PlayStoreApiWrapper.api = null;
@@ -155,38 +146,37 @@ public class PlayStoreApiWrapper {
         prefs.remove(AppListActivity.PREFERENCE_PASSWORD);
         prefs.remove(AppListActivity.PREFERENCE_GSF_ID);
         prefs.remove(AppListActivity.PREFERENCE_AUTH_TOKEN);
-        prefs.commit();
+        prefs.apply();
         PlayStoreApiWrapper.api = null;
     }
 
-    public App getDetails(String packageId) throws IOException, CredentialsEmptyException, CredentialsRejectedException {
+    public void forceTokenRefresh() {
+        this.password = null;
+        SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
+        prefs.remove(AppListActivity.PREFERENCE_PASSWORD);
+        prefs.remove(AppListActivity.PREFERENCE_AUTH_TOKEN);
+        prefs.apply();
+        PlayStoreApiWrapper.api = null;
+    }
+
+    public App getDetails(String packageId) throws IOException {
         return buildApp(getApi().details(packageId).getDocV2());
     }
 
-    public List<App> getDetails(List<String> packageIds) throws IOException, CredentialsEmptyException, CredentialsRejectedException {
+    public List<App> getDetails(List<String> packageIds) throws IOException {
         List<App> apps = new ArrayList<>();
-        try {
-            for (BulkDetailsEntry details: getApi().bulkDetails(packageIds).getEntryList()) {
-                App app = buildApp(details.getDoc());
-                if (app.getVersionCode() > 0) {
-                    apps.add(app);
-                } else {
-                    System.out.println("Suspicious package " + app.getPackageName());
-                }
-            }
-        } catch (GooglePlayException e) {
-            int code = e.getCode();
-            if (code == 401 || code == 403) {
-                logout();
-                throw new CredentialsRejectedException();
+        for (BulkDetailsEntry details: getApi().bulkDetails(packageIds).getEntryList()) {
+            App app = buildApp(details.getDoc());
+            if (app.getVersionCode() > 0) {
+                apps.add(app);
             } else {
-                throw e;
+                System.out.println("Suspicious package " + app.getPackageName());
             }
         }
         return apps;
     }
 
-    public AppSearchResultIterator getSearchIterator(String query) throws IOException, CredentialsEmptyException, CredentialsRejectedException {
+    public AppSearchResultIterator getSearchIterator(String query) throws IOException {
         if (null == query || query.isEmpty()) {
             System.out.println("Query empty, so don't expect meaningful results");
         }
@@ -196,7 +186,7 @@ public class PlayStoreApiWrapper {
         return searchResultIterator;
     }
 
-    public List<String> getSearchSuggestions(String query) throws IOException, CredentialsEmptyException, CredentialsRejectedException {
+    public List<String> getSearchSuggestions(String query) throws IOException {
         List<String> suggestions = new ArrayList<>();
         for (SearchSuggestEntry suggestion: api.searchSuggest(query).getEntryList()) {
             suggestions.add(suggestion.getSuggestedQuery());
@@ -204,7 +194,7 @@ public class PlayStoreApiWrapper {
         return suggestions;
     }
 
-    public void download(App app) throws IOException, CredentialsEmptyException, CredentialsRejectedException {
+    public void download(App app) throws IOException {
         BuyResponse response = getApi().purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
         AndroidAppDeliveryData appDeliveryData = response.getPurchaseStatusResponse().getAppDeliveryData();
 
