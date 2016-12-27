@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
 /* Copyright 2010, The Android Open Source Project
 **
@@ -15,7 +14,7 @@
 ** limitations under the License.
 */
 -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
@@ -51,4 +50,4 @@
                   android:textAppearance="?android:attr/textAppearanceLarge" />
     </FrameLayout>
 
-</FrameLayout>
+</merge>
