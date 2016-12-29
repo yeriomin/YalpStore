@@ -122,7 +122,12 @@ public class PlayStoreApiWrapper {
             }
             api.setToken(token);
             if (needToUploadDeviceConfig) {
-                api.uploadDeviceConfig();
+                try {
+                    api.uploadDeviceConfig();
+                } catch (IOException e) {
+                    // Its fine if this fails
+                    System.out.println(e.getClass().toString() + ": " + e.getMessage());
+                }
             }
         }
         return api;
@@ -165,13 +170,14 @@ public class PlayStoreApiWrapper {
 
     public List<App> getDetails(List<String> packageIds) throws IOException {
         List<App> apps = new ArrayList<>();
+        int i = 0;
         for (BulkDetailsEntry details: getApi().bulkDetails(packageIds).getEntryList()) {
-            App app = buildApp(details.getDoc());
-            if (app.getVersionCode() > 0) {
-                apps.add(app);
+            if (details.hasDoc()) {
+                apps.add(buildApp(details.getDoc()));
             } else {
-                System.out.println("Suspicious package " + app.getPackageName());
+                System.out.println("Empty response for " + packageIds.get(i));
             }
+            i++;
         }
         return apps;
     }
@@ -233,12 +239,7 @@ public class PlayStoreApiWrapper {
             SearchResponse response = iterator.next();
             if (response.getDocCount() > 0) {
                 for (DocV2 details: response.getDocList().get(0).getChildList()) {
-                    App app = buildApp(details);
-                    if (app.getVersionCode() > 0) {
-                        apps.add(app);
-                    } else {
-                        System.out.println("Suspicious package " + app.getPackageName());
-                    }
+                    apps.add(buildApp(details));
                 }
             }
             return apps;
