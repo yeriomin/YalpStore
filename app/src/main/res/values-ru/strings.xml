@@ -32,6 +32,7 @@
     <string name="details_versionName" formatted="false">Версия %s</string>
     <string name="details_versionName_updatable" formatted="false">Версия %s → %s</string>
     <string name="details_download">Скачать</string>
+    <string name="details_download_nonfree">Платное приложение - скачать не получится</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>
     <string name="credentials_hint_email">e-mail</string>

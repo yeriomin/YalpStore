@@ -52,6 +52,7 @@ public class PlayStoreApiWrapper {
         app.setRating(details.getAggregateRating().getStarRating());
         if (details.getOfferCount() > 0) {
             app.setOfferType(details.getOffer(0).getOfferType());
+            app.setFree(details.getOffer(0).getMicros() == 0);
         }
         AppDetails appDetails = details.getDetails().getAppDetails();
         app.getPackageInfo().packageName = appDetails.getPackageName();

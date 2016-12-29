@@ -32,6 +32,7 @@
     <string name="details_versionName" formatted="false">Version %s</string>
     <string name="details_versionName_updatable" formatted="false">Version %s → %s</string>
     <string name="details_download">Download</string>
+    <string name="details_download_nonfree">App is not free - download disabled</string>
     <string name="suffix_million">mil</string>
     <string name="suffix_billion">bil</string>
     <string name="credentials_hint_email">e-mail here</string>

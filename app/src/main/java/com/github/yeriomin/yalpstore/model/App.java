@@ -25,6 +25,7 @@ public class App {
     private String description;
     private List<String> permissions;
     private boolean isInstalled;
+    private boolean isFree;
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -174,5 +175,13 @@ public class App {
 
     public void setInstalled(boolean installed) {
         isInstalled = installed;
+    }
+
+    public boolean isFree() {
+        return isFree;
+    }
+
+    public void setFree(boolean free) {
+        isFree = free;
     }
 }

@@ -180,33 +180,38 @@ public class DetailsActivity extends Activity {
         setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
 
         Button downloadButton = (Button) findViewById(R.id.download);
-        downloadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                task = new GoogleApiAsyncTask() {
-                    @Override
-                    protected Throwable doInBackground(Void... params) {
-                        PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(DetailsActivity.this);
-                        try {
-                            wrapper.download(app);
-                        } catch (Throwable e) {
-                            return e;
+        if (app.isFree()) {
+            downloadButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    task = new GoogleApiAsyncTask() {
+                        @Override
+                        protected Throwable doInBackground(Void... params) {
+                            PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(DetailsActivity.this);
+                            try {
+                                wrapper.download(app);
+                            } catch (Throwable e) {
+                                return e;
+                            }
+                            return null;
                         }
-                        return null;
+                    };
+                    task.setContext(v.getContext());
+                    task.prepareDialog(
+                        getString(R.string.dialog_message_purchasing_app),
+                        getString(R.string.dialog_title_purchasing_app)
+                    );
+                    if (checkPermission()) {
+                        task.execute();
+                    } else {
+                        requestPermission();
                     }
-                };
-                task.setContext(v.getContext());
-                task.prepareDialog(
-                    getString(R.string.dialog_message_purchasing_app),
-                    getString(R.string.dialog_title_purchasing_app)
-                );
-                if (checkPermission()) {
-                    task.execute();
-                } else {
-                    requestPermission();
                 }
-            }
-        });
+            });
+        } else {
+            downloadButton.setText(getString(R.string.details_download_nonfree));
+            downloadButton.setEnabled(false);
+        }
     }
 
     private void setText(int viewId, String text) {
