@@ -14,17 +14,17 @@
             android:name=".YalpSuggestionProvider"
             android:authorities="com.github.yeriomin.yalpstore.YalpSuggestionProvider"
             android:enabled="true" />
-        <activity android:name=".DetailsActivity" android:screenOrientation="portrait" >
+        <activity android:name=".DetailsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize">
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
         </activity>
-        <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance" android:screenOrientation="portrait">
+        <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
         </activity>
-        <activity android:name=".SearchResultActivity" android:launchMode="singleInstance" android:screenOrientation="portrait" >
+        <activity android:name=".SearchResultActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
