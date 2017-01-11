@@ -1,12 +1,21 @@
 package com.github.yeriomin.yalpstore;
 
 import android.app.DownloadManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.AppDetails;
@@ -20,6 +29,7 @@ import com.github.yeriomin.playstoreapi.SearchResponse;
 import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -127,7 +137,7 @@ public class PlayStoreApiWrapper {
                     api.uploadDeviceConfig();
                 } catch (IOException e) {
                     // Its fine if this fails
-                    System.out.println(e.getClass().toString() + ": " + e.getMessage());
+                    Log.e(this.getClass().getName(), e.getClass().toString() + ": " + e.getMessage());
                 }
             }
         }
@@ -176,7 +186,7 @@ public class PlayStoreApiWrapper {
             if (details.hasDoc()) {
                 apps.add(buildApp(details.getDoc()));
             } else {
-                System.out.println("Empty response for " + packageIds.get(i));
+                Log.i(this.getClass().getName(), "Empty response for " + packageIds.get(i));
             }
             i++;
         }
@@ -185,7 +195,7 @@ public class PlayStoreApiWrapper {
 
     public AppSearchResultIterator getSearchIterator(String query) throws IOException {
         if (null == query || query.isEmpty()) {
-            System.out.println("Query empty, so don't expect meaningful results");
+            Log.w(this.getClass().getName(), "Query empty, so don't expect meaningful results");
         }
         if (null == searchResultIterator || query != searchResultIterator.getQuery()) {
             searchResultIterator = new AppSearchResultIterator(getApi().getSearchIterator(query));
@@ -202,24 +212,80 @@ public class PlayStoreApiWrapper {
     }
 
     public void download(App app) throws IOException {
-        BuyResponse response = getApi().purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
-        AndroidAppDeliveryData appDeliveryData = response.getPurchaseStatusResponse().getAppDeliveryData();
-
-        // Download manager cannot download https on old android versions
-        String downloadUrl = appDeliveryData.getDownloadUrl().replace("https", "http");
-        HttpCookie downloadAuthCookie = appDeliveryData.getDownloadAuthCookie(0);
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl));
-        request.addRequestHeader("Cookie", downloadAuthCookie.getName() + "=" + downloadAuthCookie.getValue());
+        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         String localFilename = app.getPackageName() + "." + String.valueOf(app.getVersionCode()) + ".apk";
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, localFilename);
-        request.setTitle(app.getDisplayName());
+        Uri uri = Uri.withAppendedPath(Uri.fromFile(downloadsDir), localFilename);
 
-        DownloadManager dm = (DownloadManager) this.context.getSystemService(DOWNLOAD_SERVICE);
-        dm.enqueue(request);
+        if (new File(uri.getPath()).exists()) {
+            Log.i(this.getClass().getName(), localFilename + " exists. No download needed.");
+            createNotification(getOpenApkIntent(uri), app.getDisplayName());
+        } else {
+            Log.i(this.getClass().getName(), "Downloading apk to " + localFilename);
+            BuyResponse response = getApi().purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
+            AndroidAppDeliveryData appDeliveryData = response.getPurchaseStatusResponse().getAppDeliveryData();
 
-        Intent intent = new Intent();
-        intent.setAction(DownloadManager.ACTION_VIEW_DOWNLOADS);
-        this.context.startActivity(intent);
+            // Download manager cannot download https on old android versions
+            String downloadUrl = appDeliveryData.getDownloadUrl().replace("https", "http");
+            HttpCookie downloadAuthCookie = appDeliveryData.getDownloadAuthCookie(0);
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl));
+            request.addRequestHeader("Cookie", downloadAuthCookie.getName() + "=" + downloadAuthCookie.getValue());
+            request.setDestinationUri(uri);
+            request.setTitle(app.getDisplayName());
+
+            ((DownloadManager) this.context.getSystemService(DOWNLOAD_SERVICE)).enqueue(request);
+
+            this.context.registerReceiver(
+                new DownloadBroadcastReceiver(),
+                new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
+            );
+        }
+    }
+
+    void createNotification(Intent intent, String packageName) {
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent, 0);
+        Notification notification = NotificationUtil.createNotification(
+            context,
+            pendingIntent,
+            packageName,
+            context.getString(R.string.notification_download_complete),
+            R.mipmap.ic_launcher
+        );
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(packageName.hashCode(), notification);
+    }
+
+    Intent getOpenApkIntent(Uri uri) {
+        Intent openIntent = new Intent();
+        openIntent.setAction(Intent.ACTION_VIEW);
+        openIntent.setDataAndType(uri, "application/vnd.android.package-archive");
+        return openIntent;
+    }
+
+    class DownloadBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Bundle extras = intent.getExtras();
+            DownloadManager.Query q = new DownloadManager.Query();
+            q.setFilterById(extras.getLong(DownloadManager.EXTRA_DOWNLOAD_ID));
+
+            DownloadManager dm = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
+            Cursor c = dm.query(q);
+            if (c.moveToFirst()) {
+                int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
+                int reason = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_REASON));
+                if (status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS) {
+                    Intent i = getOpenApkIntent(Uri.parse(c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI))));
+                    String title = c.getString(c.getColumnIndex(DownloadManager.COLUMN_TITLE));
+                    createNotification(i, title);
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.notification_download_complete_toast, title),
+                        Toast.LENGTH_LONG
+                    ).show();
+                }
+            }
+        }
     }
 
     class AppSearchResultIterator implements Iterator<List<App>> {

@@ -41,4 +41,6 @@
     <string name="credentials_message">Для работы приложения требуетются данные для доступа к аккаунту Google.\r\nИмейте в виду, что это приложение нарушает договор использования Play Store. Так что безопаснее использовать любой одноразовый Google аккаунт, под которым вы хотя бы раз залогинились в Play Store.</string>
     <string name="activity_title_updates">Обновления</string>
     <string name="activity_title_search" formatted="false">Поиск: "%s"</string>
+    <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>
+    <string name="notification_download_complete_toast" formatted="false">Загрузка %s завершена. Нажмите на уведомление чтобы установить.</string>
 </resources>

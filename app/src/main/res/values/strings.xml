@@ -41,4 +41,6 @@
     <string name="credentials_message">Google account email and password are required for this app to function.\nKeep in mind that using this app violates Play Store ToS. It would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store ToS.</string>
     <string name="activity_title_updates">Updates</string>
     <string name="activity_title_search" formatted="false">Searching: "%s"</string>
+    <string name="notification_download_complete">Download complete. Touch to install.</string>
+    <string name="notification_download_complete_toast" formatted="false">%s downloaded. Touch notification to install.</string>
 </resources>
