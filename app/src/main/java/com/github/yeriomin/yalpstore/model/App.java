@@ -63,7 +63,9 @@ public class App {
 
     public void setVersionName(String versionName) {
         this.versionName = versionName;
-        this.version = new Version(versionName);
+        if (null != versionName && !versionName.isEmpty()) {
+            this.version = new Version(versionName);
+        }
     }
 
     public int getVersionCode() {
