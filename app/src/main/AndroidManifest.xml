@@ -16,6 +16,12 @@
             android:enabled="true" />
         <activity android:name=".DetailsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize">
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="market" android:host="details" />
+            </intent-filter>
         </activity>
         <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>

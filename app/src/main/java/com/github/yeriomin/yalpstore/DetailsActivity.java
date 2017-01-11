@@ -79,7 +79,7 @@ public class DetailsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final String packageName = getIntent().getStringExtra(INTENT_PACKAGE_NAME);
+        final String packageName = getIntentPackageName(getIntent());
         if (packageName == null || packageName.isEmpty()) {
             Toast.makeText(this, "No package name provided", Toast.LENGTH_LONG).show();
             finishActivity(0);
@@ -128,6 +128,12 @@ public class DetailsActivity extends Activity {
             getString(R.string.dialog_title_loading_app_details)
         );
         task.execute();
+    }
+
+    private String getIntentPackageName(Intent intent) {
+        return intent.getScheme().equals("market")
+            ? intent.getData().getQueryParameter("id")
+            : intent.getStringExtra(INTENT_PACKAGE_NAME);
     }
 
     private void drawDetails(final App app) {
