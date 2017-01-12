@@ -1,0 +1,43 @@
+<resources>
+    <string name="list_line_2_updatable" formatted="false">Aktualisiert am %s</string>
+    <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
+    <string name="list_empty_updates">Keine Aktualisierungen vorhanden</string>
+    <string name="list_empty_search">Keine Apps gefunden</string>
+    <string name="action_logout">Abmelden</string>
+    <string name="action_search">Suchen</string>
+    <string name="action_updates">Aktualisierungen</string>
+    <string name="search_title">Suche nach Anwendungen</string>
+    <string name="dialog_title_logout">Abmelden?</string>
+    <string name="dialog_message_logout">Sind Sie sicher dass Sie sich abmelden möchten?</string>
+    <string name="dialog_title_purchasing_app">Lade die App herunter</string>
+    <string name="dialog_message_purchasing_app">Bitte warten. Der Download der gewählten App wird gestartet.</string>
+    <string name="dialog_title_loading_app_details">Hole Details</string>
+    <string name="dialog_message_loading_app_details">Bitte warten. Es werden Details zu der gewählten App geladen.</string>
+    <string name="dialog_title_loading_app_list_search">Suchen</string>
+    <string name="dialog_message_loading_app_list_search">Bitte warten. Es wird nach Apps gesucht.</string>
+    <string name="dialog_title_loading_app_list_update">Suche nach Aktualisierungen</string>
+    <string name="dialog_message_loading_app_list_update">Bitte warten. Es wird nach neueren Versionen ihrer App gesucht.</string>
+    <string name="error_incorrect_password">Email-Adresse oder Passwort sind falsch</string>
+    <string name="error_credentials_empty">Bitte bestätigen Sie zuerst Ihr Google Konto.</string>
+    <string name="error_no_network">Keine Netzwerkverbindung</string>
+    <string name="error_network_other" formatted="false">Netzwerk error: %s</string>
+    <string name="details_installs" formatted="false">%s ↓</string>
+    <string name="details_rating" formatted="false">%.1f★</string>
+    <string name="details_updated" formatted="false">Aktualisiert %s</string>
+    <string name="details_size" formatted="false">Apk größe %s</string>
+    <string name="details_changelog">Was gibt es neues?</string>
+    <string name="details_permissions">Berechtigungen:</string>
+    <string name="details_developer" formatted="false">Bereitgestellt von %s</string>
+    <string name="details_versionName" formatted="false">Version %s</string>
+    <string name="details_versionName_updatable" formatted="false">Version %s → %s</string>
+    <string name="details_download">Herunterladen</string>
+    <string name="details_download_nonfree">Diese App ist nicht kostenlos - herunterladen nicht möglich</string>
+    <string name="suffix_million">Million</string>
+    <string name="suffix_billion">Billion</string>
+    <string name="credentials_hint_email">E-mail</string>
+    <string name="credentials_hint_password">Passwort</string>
+    <string name="credentials_title">Google Konto Zugang</string>
+    <string name="credentials_message">Damit diese App funktioniert werden eine Google Mail Adresse und ein Passwort benötigt. \nSeinen Sie sich bewusst dass die Benutzung dieser App die ToS des Play Stores verletzt. Es ist wahrscheinlich sicherer ein wegwerf Google Konto zu benutzen, mit dem man sich schon einmal im Play Store angemeldet, und die ToS akzeptiert hat.</string>
+    <string name="activity_title_updates">Aktualisierungen</string>
+    <string name="activity_title_search" formatted="false">Suche: "%s"</string>
+</resources>
