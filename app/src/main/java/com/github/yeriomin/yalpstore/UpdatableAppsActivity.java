@@ -25,9 +25,8 @@ public class UpdatableAppsActivity extends AppListActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
-        if (this.data.isEmpty()) {
-            loadApps();
-        }
+        this.data.clear();
+        loadApps();
     }
 
     @Override

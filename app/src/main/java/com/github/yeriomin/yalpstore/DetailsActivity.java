@@ -79,10 +79,10 @@ public class DetailsActivity extends Activity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
 
-        final String packageName = getIntentPackageName(getIntent());
+        final String packageName = getIntentPackageName(intent);
         if (packageName == null || packageName.isEmpty()) {
             Toast.makeText(this, "No package name provided", Toast.LENGTH_LONG).show();
             finishActivity(0);
@@ -131,6 +131,13 @@ public class DetailsActivity extends Activity {
             getString(R.string.dialog_title_loading_app_details)
         );
         task.execute();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        onNewIntent(getIntent());
     }
 
     private String getIntentPackageName(Intent intent) {
