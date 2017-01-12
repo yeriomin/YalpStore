@@ -39,6 +39,7 @@ public class SearchResultActivity extends AppListActivity {
         this.query = getQuery(getIntent());
 
         super.onCreate(savedInstanceState);
+        loadApps();
 
         ((TextView) getListView().getEmptyView()).setText(getString(R.string.list_empty_search));
         getListView().setOnScrollListener(new ListView.OnScrollListener() {

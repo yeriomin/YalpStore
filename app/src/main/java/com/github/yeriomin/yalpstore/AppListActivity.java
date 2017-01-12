@@ -51,8 +51,6 @@ abstract public class AppListActivity extends ListActivity {
                 startActivity(intent);
             }
         });
-
-        loadApps();
     }
 
     @Override

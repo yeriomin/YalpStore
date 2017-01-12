@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -22,8 +21,8 @@ public class UpdatableAppsActivity extends AppListActivity {
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
+    protected void onResume() {
+        super.onResume();
 
         this.data.clear();
         loadApps();
