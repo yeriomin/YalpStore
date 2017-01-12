@@ -14,6 +14,7 @@
     <string name="dialog_message_loading_app_list_update">Подождите. Ищем обновления для ваших приложений.</string>
     <string name="dialog_title_loading_app_list_search">Поиск</string>
     <string name="dialog_message_loading_app_list_search">Подождите. Ищем приложения по вашему запросу.</string>
+    <string name="action_settings">Настройки</string>
     <string name="action_updates">Обновления</string>
     <string name="action_logout">Разлогиниться</string>
     <string name="action_search">Поиск</string>
@@ -33,6 +34,7 @@
     <string name="details_versionName_updatable" formatted="false">Версия %s → %s</string>
     <string name="details_download">Скачать</string>
     <string name="details_download_nonfree">Платное приложение - скачать не получится</string>
+    <string name="details_download_impossible">Ошибка. Не удалось получить версию приложения</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>
     <string name="credentials_hint_email">e-mail</string>
@@ -43,4 +45,10 @@
     <string name="activity_title_search" formatted="false">Поиск: "%s"</string>
     <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>
     <string name="notification_download_complete_toast" formatted="false">Загрузка %s завершена. Нажмите на уведомление чтобы установить.</string>
+    <string name="pref_hide_nonfree_apps_summary_off">Сейчас платные приложения отображаются</string>
+    <string name="pref_hide_nonfree_apps_summary_on">Сейчас платные приложения не отображаются</string>
+    <string name="pref_hide_nonfree_apps">Не показывать платные приложения</string>
+    <string name="pref_auto_install_summary_off">Приложения устанавливаются по щелчку на уведомление</string>
+    <string name="pref_auto_install_summary_on">Приложения устанавливаются сразу после завершения скачки</string>
+    <string name="pref_auto_install">Устанавливать приложения сразу</string>
 </resources>

@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +56,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
         }
         if (e instanceof AuthException) {
             if (e instanceof CredentialsEmptyException) {
-                System.out.println("Credentials empty");
+                Log.w(getClass().getName(), "Credentials empty");
             } else {
                 Toast.makeText(
                     this.context.getApplicationContext(),
@@ -68,7 +69,6 @@ abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
             builder.setTaskClone(this.taskClone);
             builder.show();
         } else if (e instanceof IOException) {
-            System.out.println(e.getClass().getName() + " " + e.getMessage());
             String message;
             if (e instanceof UnknownHostException
                 || e instanceof ConnectException
@@ -84,7 +84,8 @@ abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
                 Toast.makeText(this.context.getApplicationContext(), message, Toast.LENGTH_LONG).show();
             }
         } else if (e != null) {
-            System.out.println("Unknown exception " + e.getClass().getName() + " " + e.getMessage());
+            Log.e(getClass().getName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

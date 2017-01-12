@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -42,7 +43,6 @@ public class BitmapManager {
             URL url = new URL(urlString);
             fileName = new File(url.getPath()).getName();
         } catch (MalformedURLException e) {
-            System.out.println(e.getMessage());
             fileName = String.valueOf(urlString.hashCode()) + ".png";
         }
         return new File(context.getCacheDir(), fileName);
@@ -88,7 +88,7 @@ public class BitmapManager {
 
             return BitmapFactory.decodeStream(input, null, options);
         } catch (IOException e) {
-            System.out.println("Could not get icon from " + url);
+            Log.e(BitmapManager.class.getName(), "Could not get icon from " + url);
         }
         return null;
     }

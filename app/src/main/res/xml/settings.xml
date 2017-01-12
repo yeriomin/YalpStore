@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="PREFERENCE_HIDE_NONFREE_APPS"
+        android:summaryOff="@string/pref_hide_nonfree_apps_summary_off"
+        android:summaryOn="@string/pref_hide_nonfree_apps_summary_on"
+        android:title="@string/pref_hide_nonfree_apps" >
+    </CheckBoxPreference>
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="PREFERENCE_AUTO_INSTALL"
+        android:summaryOff="@string/pref_auto_install_summary_off"
+        android:summaryOn="@string/pref_auto_install_summary_on"
+        android:title="@string/pref_auto_install" >
+    </CheckBoxPreference>
+
+</PreferenceScreen>

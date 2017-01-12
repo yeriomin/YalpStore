@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +37,7 @@ public class CredentialsDialogBuilder {
 
         final EditText editEmail = (EditText) ad.findViewById(R.id.email);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        editEmail.setText(prefs.getString(AppListActivity.PREFERENCE_EMAIL, ""));
+        editEmail.setText(prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, ""));
         final EditText editPassword = (EditText) ad.findViewById(R.id.password);
 
         Button buttonExit = (Button) ad.findViewById(R.id.button_exit);
@@ -92,7 +93,7 @@ public class CredentialsDialogBuilder {
                 || params[0].isEmpty()
                 || params[1].isEmpty()
                 ) {
-                System.out.println("Email - password pair expected");
+                Log.w(getClass().getName(), "Email - password pair expected");
             }
             try {
                 PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.dialog.getContext());
@@ -123,7 +124,7 @@ public class CredentialsDialogBuilder {
             Context c = this.dialog.getContext();
             if (null != e) {
                 if (e instanceof CredentialsEmptyException) {
-                    System.out.println("Credentials empty");
+                    Log.w(getClass().getName(), "Credentials empty");
                 } else if (e instanceof AuthException) {
                     Toast.makeText(
                         c.getApplicationContext(),
@@ -137,7 +138,8 @@ public class CredentialsDialogBuilder {
                         Toast.LENGTH_LONG
                     ).show();
                 } else {
-                    System.out.println("Unknown exception " + e.getClass().getName() + " " + e.getMessage());
+                    Log.w(getClass().getName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
+                    e.printStackTrace();
                 }
             } else {
                 this.dialog.dismiss();

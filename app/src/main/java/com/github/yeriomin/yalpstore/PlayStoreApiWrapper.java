@@ -32,6 +32,8 @@ import com.github.yeriomin.yalpstore.model.App;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -100,10 +102,10 @@ public class PlayStoreApiWrapper {
     private GooglePlayAPI getApi() throws IOException {
         if (api == null) {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-            String email = this.email == null ? prefs.getString(AppListActivity.PREFERENCE_EMAIL, "") : this.email;
-            String password = this.password == null ? prefs.getString(AppListActivity.PREFERENCE_PASSWORD, "") : this.password;
-            String gsfId = prefs.getString(AppListActivity.PREFERENCE_GSF_ID, "");
-            String token = prefs.getString(AppListActivity.PREFERENCE_AUTH_TOKEN, "");
+            String email = this.email == null ? prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, "") : this.email;
+            String password = this.password == null ? prefs.getString(PreferenceActivity.PREFERENCE_PASSWORD, "") : this.password;
+            String gsfId = prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
+            String token = prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, "");
             if (email.isEmpty() || password.isEmpty()) {
                 throw new CredentialsEmptyException();
             }
@@ -120,15 +122,15 @@ public class PlayStoreApiWrapper {
             if (gsfId.isEmpty()) {
                 needToUploadDeviceConfig = true;
                 gsfId = api.getGsfId();
-                prefsEditor.putString(AppListActivity.PREFERENCE_GSF_ID, gsfId);
+                prefsEditor.putString(PreferenceActivity.PREFERENCE_GSF_ID, gsfId);
                 prefsEditor.apply();
             }
             api.setGsfId(gsfId);
             if (token.isEmpty()) {
                 token = api.getToken();
-                prefsEditor.putString(AppListActivity.PREFERENCE_EMAIL, email);
-                prefsEditor.putString(AppListActivity.PREFERENCE_PASSWORD, password);
-                prefsEditor.putString(AppListActivity.PREFERENCE_AUTH_TOKEN, token);
+                prefsEditor.putString(PreferenceActivity.PREFERENCE_EMAIL, email);
+                prefsEditor.putString(PreferenceActivity.PREFERENCE_PASSWORD, password);
+                prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, token);
                 prefsEditor.apply();
             }
             api.setToken(token);
@@ -159,9 +161,9 @@ public class PlayStoreApiWrapper {
         this.email = null;
         this.password = null;
         SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        prefs.remove(AppListActivity.PREFERENCE_PASSWORD);
-        prefs.remove(AppListActivity.PREFERENCE_GSF_ID);
-        prefs.remove(AppListActivity.PREFERENCE_AUTH_TOKEN);
+        prefs.remove(PreferenceActivity.PREFERENCE_PASSWORD);
+        prefs.remove(PreferenceActivity.PREFERENCE_GSF_ID);
+        prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
         prefs.apply();
         PlayStoreApiWrapper.api = null;
     }
@@ -169,8 +171,8 @@ public class PlayStoreApiWrapper {
     public void forceTokenRefresh() {
         this.password = null;
         SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        prefs.remove(AppListActivity.PREFERENCE_PASSWORD);
-        prefs.remove(AppListActivity.PREFERENCE_AUTH_TOKEN);
+        prefs.remove(PreferenceActivity.PREFERENCE_PASSWORD);
+        prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
         prefs.apply();
         PlayStoreApiWrapper.api = null;
     }
@@ -182,14 +184,27 @@ public class PlayStoreApiWrapper {
     public List<App> getDetails(List<String> packageIds) throws IOException {
         List<App> apps = new ArrayList<>();
         int i = 0;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean hideNonFree = sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
         for (BulkDetailsEntry details: getApi().bulkDetails(packageIds).getEntryList()) {
             if (details.hasDoc()) {
-                apps.add(buildApp(details.getDoc()));
+                App app = buildApp(details.getDoc());
+                if (hideNonFree && !app.isFree()) {
+                    Log.i(this.getClass().getName(), "Skipping non-free app " + packageIds.get(i));
+                } else {
+                    apps.add(app);
+                }
             } else {
                 Log.i(this.getClass().getName(), "Empty response for " + packageIds.get(i));
             }
             i++;
         }
+        Collections.sort(apps, new Comparator<App>() {
+            @Override
+            public int compare(App o1, App o2) {
+                return o1.getDisplayName().compareToIgnoreCase(o2.getDisplayName());
+            }
+        });
         return apps;
     }
 
@@ -276,13 +291,18 @@ public class PlayStoreApiWrapper {
                 int reason = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_REASON));
                 if (status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS) {
                     Intent i = getOpenApkIntent(Uri.parse(c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI))));
-                    String title = c.getString(c.getColumnIndex(DownloadManager.COLUMN_TITLE));
-                    createNotification(i, title);
-                    Toast.makeText(
-                        context,
-                        context.getString(R.string.notification_download_complete_toast, title),
-                        Toast.LENGTH_LONG
-                    ).show();
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                    if (sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_AUTO_INSTALL, false)) {
+                        context.startActivity(i);
+                    } else {
+                        String title = c.getString(c.getColumnIndex(DownloadManager.COLUMN_TITLE));
+                        createNotification(i, title);
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.notification_download_complete_toast, title),
+                            Toast.LENGTH_LONG
+                        ).show();
+                    }
                 }
             }
         }
@@ -302,11 +322,18 @@ public class PlayStoreApiWrapper {
 
         @Override
         public List<App> next() {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+            boolean hideNonFree = sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
             List<App> apps = new ArrayList<>();
             SearchResponse response = iterator.next();
             if (response.getDocCount() > 0) {
                 for (DocV2 details: response.getDocList().get(0).getChildList()) {
-                    apps.add(buildApp(details));
+                    App app = buildApp(details);
+                    if (hideNonFree && !app.isFree()) {
+                        Log.i(this.getClass().getName(), "Skipping non-free app " + app.getPackageName());
+                    } else {
+                        apps.add(app);
+                    }
                 }
             }
             return apps;

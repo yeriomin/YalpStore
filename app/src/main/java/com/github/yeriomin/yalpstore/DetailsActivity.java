@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,6 +46,8 @@ public class DetailsActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, PreferenceActivity.class));
             case R.id.action_logout:
                 new AlertDialog.Builder(this)
                     .setMessage(R.string.dialog_message_logout)
@@ -117,7 +120,7 @@ public class DetailsActivity extends Activity {
                 if (this.app != null) {
                     drawDetails(this.app);
                 } else {
-                    System.out.println("App not retrieved");
+                    Log.e(getClass().getName(), "Could not get requested app");
                     finishActivity(0);
                 }
             }
@@ -131,9 +134,12 @@ public class DetailsActivity extends Activity {
     }
 
     private String getIntentPackageName(Intent intent) {
-        return intent.getScheme().equals("market")
-            ? intent.getData().getQueryParameter("id")
-            : intent.getStringExtra(INTENT_PACKAGE_NAME);
+        if (intent.hasExtra(INTENT_PACKAGE_NAME)) {
+            return intent.getStringExtra(INTENT_PACKAGE_NAME);
+        } else if (intent.getScheme() != null && intent.getScheme().equals("market")) {
+            return intent.getData().getQueryParameter("id");
+        }
+        return null;
     }
 
     private void drawDetails(final App app) {
@@ -180,13 +186,19 @@ public class DetailsActivity extends Activity {
             try {
                 localizedPermissions.add(pm.getPermissionInfo(permissionName, 0).loadLabel(pm).toString());
             } catch (PackageManager.NameNotFoundException e) {
-                System.out.println("NameNotFoundException " + permissionName);
+                Log.w(getClass().getName(), "No human-readable name found for permission " + permissionName);
             }
         }
         setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
 
         Button downloadButton = (Button) findViewById(R.id.download);
-        if (app.isFree()) {
+        if (!app.isFree()) {
+            downloadButton.setText(getString(R.string.details_download_nonfree));
+            downloadButton.setEnabled(false);
+        } else if (app.getVersionCode() == 0) {
+            downloadButton.setText(getString(R.string.details_download_impossible));
+            downloadButton.setEnabled(false);
+        } else {
             downloadButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -214,9 +226,6 @@ public class DetailsActivity extends Activity {
                     }
                 }
             });
-        } else {
-            downloadButton.setText(getString(R.string.details_download_nonfree));
-            downloadButton.setEnabled(false);
         }
     }
 

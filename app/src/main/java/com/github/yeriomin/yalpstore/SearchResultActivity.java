@@ -124,6 +124,9 @@ public class SearchResultActivity extends AppListActivity {
     }
 
     private String getQuery(Intent intent) {
+        if (intent.getScheme() != null && intent.getScheme().equals("market")) {
+            return intent.getData().getQueryParameter("q");
+        }
         switch (intent.getAction()) {
             case Intent.ACTION_SEARCH:
                 return intent.getStringExtra(SearchManager.QUERY);

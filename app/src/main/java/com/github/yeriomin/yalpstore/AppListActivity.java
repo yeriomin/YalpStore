@@ -28,11 +28,6 @@ import java.util.Map;
 
 abstract public class AppListActivity extends ListActivity {
 
-    public static final String PREFERENCE_EMAIL = "PREFERENCE_EMAIL";
-    public static final String PREFERENCE_PASSWORD = "PREFERENCE_PASSWORD";
-    public static final String PREFERENCE_AUTH_TOKEN = "PREFERENCE_AUTH_TOKEN";
-    public static final String PREFERENCE_GSF_ID = "PREFERENCE_GSF_ID";
-
     protected static final String LINE1 = "LINE1";
     protected static final String LINE2 = "LINE2";
     protected static final String ICON = "ICON";
@@ -69,6 +64,8 @@ abstract public class AppListActivity extends ListActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, PreferenceActivity.class));
             case R.id.action_logout:
                 new AlertDialog.Builder(this)
                     .setMessage(R.string.dialog_message_logout)

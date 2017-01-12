@@ -11,6 +11,10 @@
         android:title="@string/action_updates"
         android:icon="@drawable/ic_refresh" />
     <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_settings" />
+    <item
         android:id="@+id/action_logout"
         android:title="@string/action_logout"
         android:icon="@drawable/ic_logout" />

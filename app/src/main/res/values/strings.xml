@@ -4,6 +4,7 @@
     <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
     <string name="list_empty_updates">No apps need to be updated</string>
     <string name="list_empty_search">No apps found</string>
+    <string name="action_settings">Settings</string>
     <string name="action_logout">Log out</string>
     <string name="action_search">Search</string>
     <string name="action_updates">Updates</string>
@@ -33,6 +34,7 @@
     <string name="details_versionName_updatable" formatted="false">Version %s → %s</string>
     <string name="details_download">Download</string>
     <string name="details_download_nonfree">App is not free - download disabled</string>
+    <string name="details_download_impossible">Error. Could not get app version.</string>
     <string name="suffix_million">mil</string>
     <string name="suffix_billion">bil</string>
     <string name="credentials_hint_email">e-mail here</string>
@@ -43,4 +45,10 @@
     <string name="activity_title_search" formatted="false">Searching: "%s"</string>
     <string name="notification_download_complete">Download complete. Touch to install.</string>
     <string name="notification_download_complete_toast" formatted="false">%s downloaded. Touch notification to install.</string>
+    <string name="pref_hide_nonfree_apps_summary_off">Paid apps are displayed now</string>
+    <string name="pref_hide_nonfree_apps_summary_on">Paid apps are not displayed now</string>
+    <string name="pref_hide_nonfree_apps">Hide paid apps</string>
+    <string name="pref_auto_install_summary_off">Apps are installed when the user touches the completion notification</string>
+    <string name="pref_auto_install_summary_on">Apps are installed as soon as the download completes</string>
+    <string name="pref_auto_install">Install apps immediately</string>
 </resources>
