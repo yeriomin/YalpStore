@@ -64,6 +64,7 @@ abstract public class AppListActivity extends ListActivity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 startActivity(new Intent(this, PreferenceActivity.class));
+                break;
             case R.id.action_logout:
                 new AlertDialog.Builder(this)
                     .setMessage(R.string.dialog_message_logout)
