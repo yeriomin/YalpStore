@@ -1,21 +1,13 @@
 package com.github.yeriomin.yalpstore;
 
 import android.app.DownloadManager;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.AppDetails;
@@ -103,17 +95,16 @@ public class PlayStoreApiWrapper {
         if (api == null) {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             String email = this.email == null ? prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, "") : this.email;
-            String password = this.password == null ? prefs.getString(PreferenceActivity.PREFERENCE_PASSWORD, "") : this.password;
             String gsfId = prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
             String token = prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, "");
-            if (email.isEmpty() || password.isEmpty()) {
+            if (email.isEmpty() || (token.isEmpty() && password == null)) {
                 throw new CredentialsEmptyException();
             }
 
             NativeDeviceInfoProvider checkinRequestBuilder = new NativeDeviceInfoProvider();
             checkinRequestBuilder.setContext(context);
             checkinRequestBuilder.setLocaleString(Locale.getDefault().toString());
-            api = new GooglePlayAPI(email, password);
+            api = new GooglePlayAPI(email);
             api.setDeviceInfoProvider(checkinRequestBuilder);
             api.setLocale(Locale.getDefault());
             SharedPreferences.Editor prefsEditor = prefs.edit();
@@ -121,15 +112,14 @@ public class PlayStoreApiWrapper {
             boolean needToUploadDeviceConfig = false;
             if (gsfId.isEmpty()) {
                 needToUploadDeviceConfig = true;
-                gsfId = api.getGsfId();
+                gsfId = api.getGsfId(password);
                 prefsEditor.putString(PreferenceActivity.PREFERENCE_GSF_ID, gsfId);
                 prefsEditor.apply();
             }
             api.setGsfId(gsfId);
             if (token.isEmpty()) {
-                token = api.getToken();
+                token = api.getToken(password);
                 prefsEditor.putString(PreferenceActivity.PREFERENCE_EMAIL, email);
-                prefsEditor.putString(PreferenceActivity.PREFERENCE_PASSWORD, password);
                 prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, token);
                 prefsEditor.apply();
             }
@@ -161,7 +151,6 @@ public class PlayStoreApiWrapper {
         this.email = null;
         this.password = null;
         SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        prefs.remove(PreferenceActivity.PREFERENCE_PASSWORD);
         prefs.remove(PreferenceActivity.PREFERENCE_GSF_ID);
         prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
         prefs.apply();
@@ -171,7 +160,6 @@ public class PlayStoreApiWrapper {
     public void forceTokenRefresh() {
         this.password = null;
         SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        prefs.remove(PreferenceActivity.PREFERENCE_PASSWORD);
         prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
         prefs.apply();
         PlayStoreApiWrapper.api = null;
@@ -233,7 +221,7 @@ public class PlayStoreApiWrapper {
 
         if (new File(uri.getPath()).exists()) {
             Log.i(this.getClass().getName(), localFilename + " exists. No download needed.");
-            createNotification(getOpenApkIntent(uri), app.getDisplayName());
+            context.startActivity(getOpenApkIntent(uri));
         } else {
             Log.i(this.getClass().getName(), "Downloading apk to " + localFilename);
             BuyResponse response = getApi().purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
@@ -248,64 +236,14 @@ public class PlayStoreApiWrapper {
             request.setTitle(app.getDisplayName());
 
             ((DownloadManager) this.context.getSystemService(DOWNLOAD_SERVICE)).enqueue(request);
-
-            this.context.registerReceiver(
-                new DownloadBroadcastReceiver(),
-                new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
-            );
         }
     }
 
-    void createNotification(Intent intent, String packageName) {
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent, 0);
-        Notification notification = NotificationUtil.createNotification(
-            context,
-            pendingIntent,
-            packageName,
-            context.getString(R.string.notification_download_complete),
-            R.mipmap.ic_launcher
-        );
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(packageName.hashCode(), notification);
-    }
-
-    Intent getOpenApkIntent(Uri uri) {
+    static public Intent getOpenApkIntent(Uri uri) {
         Intent openIntent = new Intent();
         openIntent.setAction(Intent.ACTION_VIEW);
         openIntent.setDataAndType(uri, "application/vnd.android.package-archive");
         return openIntent;
-    }
-
-    class DownloadBroadcastReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Bundle extras = intent.getExtras();
-            DownloadManager.Query q = new DownloadManager.Query();
-            q.setFilterById(extras.getLong(DownloadManager.EXTRA_DOWNLOAD_ID));
-
-            DownloadManager dm = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
-            Cursor c = dm.query(q);
-            if (c.moveToFirst()) {
-                int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
-                int reason = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_REASON));
-                if (status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS) {
-                    Intent i = getOpenApkIntent(Uri.parse(c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI))));
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-                    if (sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_AUTO_INSTALL, false)) {
-                        context.startActivity(i);
-                    } else {
-                        String title = c.getString(c.getColumnIndex(DownloadManager.COLUMN_TITLE));
-                        createNotification(i, title);
-                        Toast.makeText(
-                            context,
-                            context.getString(R.string.notification_download_complete_toast, title),
-                            Toast.LENGTH_LONG
-                        ).show();
-                    }
-                }
-            }
-        }
     }
 
     class AppSearchResultIterator implements Iterator<List<App>> {
