@@ -1,5 +1,9 @@
 # Yalp Store
 
+<a href="https://f-droid.org/repository/browse/?fdid=com.github.yeriomin.yalpstore" target="_blank">
+  <img src="https://f-droid.org/badge/get-it-on.png" height="80"/>
+</a>
+
 ## What does it do?
 Yalp Store lets you download apps from Google Play Store **as apk files**. It searches for **updates** of installed apps when it starts and lets you **search** for other apps. Thats it. Yalp saves downloaded apks to your default download folder so you can later open it in your favorite file manager app and tap each one to install the apps.
 
