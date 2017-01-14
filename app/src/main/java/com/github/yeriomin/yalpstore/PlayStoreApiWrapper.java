@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -216,14 +217,14 @@ public class PlayStoreApiWrapper {
 
     public void download(App app) throws IOException {
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        String localFilename = app.getPackageName() + "." + String.valueOf(app.getVersionCode()) + ".apk";
-        Uri uri = Uri.withAppendedPath(Uri.fromFile(downloadsDir), localFilename);
+        String filename = app.getPackageName() + "." + String.valueOf(app.getVersionCode()) + ".apk";
+        File fullPath = new File(downloadsDir, filename);
 
-        if (new File(uri.getPath()).exists()) {
-            Log.i(this.getClass().getName(), localFilename + " exists. No download needed.");
-            context.startActivity(getOpenApkIntent(uri));
+        if (fullPath.exists()) {
+            Log.i(this.getClass().getName(), filename + " exists. No download needed.");
+            context.startActivity(getOpenApkIntent(context, fullPath));
         } else {
-            Log.i(this.getClass().getName(), "Downloading apk to " + localFilename);
+            Log.i(this.getClass().getName(), "Downloading apk to " + filename);
             BuyResponse response = getApi().purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
             AndroidAppDeliveryData appDeliveryData = response.getPurchaseStatusResponse().getAppDeliveryData();
 
@@ -232,6 +233,7 @@ public class PlayStoreApiWrapper {
             HttpCookie downloadAuthCookie = appDeliveryData.getDownloadAuthCookie(0);
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl));
             request.addRequestHeader("Cookie", downloadAuthCookie.getName() + "=" + downloadAuthCookie.getValue());
+            Uri uri = Uri.withAppendedPath(Uri.fromFile(downloadsDir), filename);
             request.setDestinationUri(uri);
             request.setTitle(app.getDisplayName());
 
@@ -239,11 +241,18 @@ public class PlayStoreApiWrapper {
         }
     }
 
-    static public Intent getOpenApkIntent(Uri uri) {
-        Intent openIntent = new Intent();
-        openIntent.setAction(Intent.ACTION_VIEW);
-        openIntent.setDataAndType(uri, "application/vnd.android.package-archive");
-        return openIntent;
+    static public Intent getOpenApkIntent(Context context, File file) {
+        Intent intent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+            intent.setData(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file));
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        } else {
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+        return intent;
     }
 
     class AppSearchResultIterator implements Iterator<List<App>> {

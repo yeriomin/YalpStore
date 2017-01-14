@@ -9,6 +9,15 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true">
+        <provider
+            android:name="com.github.yeriomin.yalpstore.FileProvider"
+            android:authorities="com.github.yeriomin.yalpstore.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths" />
+        </provider>
         <receiver
             android:name="com.github.yeriomin.yalpstore.DownloadBroadcastReceiver"
             android:enabled="true"
