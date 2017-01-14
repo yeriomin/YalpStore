@@ -43,14 +43,16 @@ abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
 
     @Override
     protected void onPreExecute() {
-        super.onPreExecute();
-        this.dialog = ProgressDialog.show(this.context, this.progressDialogTitle, this.progressDialogMessage, true);
+        if (null != progressDialogMessage && null != progressDialogTitle) {
+            this.dialog = ProgressDialog.show(this.context, this.progressDialogTitle, this.progressDialogMessage, true);
+        }
     }
 
     @Override
     protected void onPostExecute(Throwable e) {
-        super.onPostExecute(null);
-        this.dialog.dismiss();
+        if (null != this.dialog) {
+            this.dialog.dismiss();
+        }
         if (e instanceof RuntimeException && null != e.getCause()) {
             e = e.getCause();
         }
