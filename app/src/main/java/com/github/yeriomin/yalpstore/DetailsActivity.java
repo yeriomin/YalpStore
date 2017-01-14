@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -89,6 +90,7 @@ public class DetailsActivity extends Activity {
             finishActivity(0);
             return;
         }
+        Log.i(this.getClass().getName(), "Getting info about " + packageName);
 
         GoogleApiAsyncTask task = new GoogleApiAsyncTask() {
 
@@ -110,8 +112,8 @@ public class DetailsActivity extends Activity {
                 } catch (PackageManager.NameNotFoundException e) {
                     BitmapManager manager = new BitmapManager(getApplicationContext());
                     icon = null == app.getIconUrl()
-                            ? this.context.getResources().getDrawable(android.R.drawable.sym_def_app_icon)
-                            : new BitmapDrawable(manager.getBitmap(app.getIconUrl()))
+                        ? this.context.getResources().getDrawable(android.R.drawable.sym_def_app_icon)
+                        : new BitmapDrawable(manager.getBitmap(app.getIconUrl()))
                     ;
                 }
                 this.app.setIcon(icon);
@@ -142,6 +144,14 @@ public class DetailsActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         onNewIntent(getIntent());
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (requestCode == PERMISSIONS_REQUEST_CODE
+            && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            task.execute();
+        }
     }
 
     private String getIntentPackageName(Intent intent) {
@@ -190,6 +200,8 @@ public class DetailsActivity extends Activity {
                 }
             }
         }
+        initExpandableGroup(R.id.description_header, R.id.description_container);
+        initExpandableGroup(R.id.permissions_header, R.id.permissions_container);
 
         PackageManager pm = getPackageManager();
         List<String> localizedPermissions = new ArrayList<>();
@@ -262,12 +274,21 @@ public class DetailsActivity extends Activity {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (requestCode == PERMISSIONS_REQUEST_CODE
-            && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            task.execute();
-        }
+    private void initExpandableGroup(int viewIdHeader, int viewIdContainer) {
+        final TextView viewHeader = (TextView) findViewById(viewIdHeader);
+        final LinearLayout viewContainer = (LinearLayout) findViewById(viewIdContainer);
+        viewHeader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isExpanded = viewContainer.getVisibility() == View.VISIBLE;
+                if (isExpanded) {
+                    viewContainer.setVisibility(View.GONE);
+                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_expand_more, 0, 0, 0);
+                } else {
+                    viewContainer.setVisibility(View.VISIBLE);
+                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_expand_less, 0, 0, 0);
+                }
+            }
+        });
     }
-
 }

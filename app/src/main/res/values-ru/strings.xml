@@ -27,6 +27,7 @@
     <string name="details_rating" formatted="false">%.1f★</string>
     <string name="details_updated" formatted="false">Обновлено %s</string>
     <string name="details_size" formatted="false">Размер apk %s</string>
+    <string name="details_description">Описание:</string>
     <string name="details_changelog">Изменения в последней версии:</string>
     <string name="details_permissions">Разрешения:</string>
     <string name="details_developer" formatted="false">Разработчик: %s</string>

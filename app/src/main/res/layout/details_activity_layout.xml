@@ -128,35 +128,69 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/description"
+                android:id="@+id/description_header"
+                android:drawableLeft="@drawable/ic_expand_less"
+                android:drawableStart="@drawable/ic_expand_less"
+                android:textSize="20sp"
+                android:text="@string/details_description"
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="6dip" />
 
-            <TextView
-                android:id="@+id/changes_title"
-                android:text="@string/details_changelog"
-                android:visibility="gone"
+            <LinearLayout
+                android:id="@+id/description_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="6dip"  />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6dip" />
+
+                <TextView
+                    android:id="@+id/changes_title"
+                    android:text="@string/details_changelog"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6dip"  />
+
+                <TextView
+                    android:id="@+id/changes"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/changes"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
+                android:id="@+id/permissions_header"
+                android:drawableLeft="@drawable/ic_expand_more"
+                android:drawableStart="@drawable/ic_expand_more"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
                 android:text="@string/details_permissions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="6dip"  />
 
-            <TextView
-                android:id="@+id/permissions"
+
+            <LinearLayout
+                android:id="@+id/permissions_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/permissions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
