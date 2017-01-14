@@ -147,7 +147,7 @@ public class DetailsActivity extends Activity {
     private String getIntentPackageName(Intent intent) {
         if (intent.hasExtra(INTENT_PACKAGE_NAME)) {
             return intent.getStringExtra(INTENT_PACKAGE_NAME);
-        } else if (intent.getScheme() != null && intent.getScheme().equals("market")) {
+        } else if (intent.getScheme() != null && (intent.getScheme().equals("market") || intent.getScheme().equals("http") || intent.getScheme().equals("https"))) {
             return intent.getData().getQueryParameter("id");
         }
         return null;
