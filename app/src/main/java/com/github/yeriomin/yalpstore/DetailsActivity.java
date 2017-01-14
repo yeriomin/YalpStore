@@ -109,7 +109,10 @@ public class DetailsActivity extends Activity {
                     this.app.setInstalled(true);
                 } catch (PackageManager.NameNotFoundException e) {
                     BitmapManager manager = new BitmapManager(getApplicationContext());
-                    icon = new BitmapDrawable(manager.getBitmap(app.getIconUrl()));
+                    icon = null == app.getIconUrl()
+                            ? this.context.getResources().getDrawable(android.R.drawable.sym_def_app_icon)
+                            : new BitmapDrawable(manager.getBitmap(app.getIconUrl()))
+                    ;
                 }
                 this.app.setIcon(icon);
                 return null;
