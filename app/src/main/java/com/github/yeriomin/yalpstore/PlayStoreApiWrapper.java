@@ -43,6 +43,9 @@ import static android.content.Context.DOWNLOAD_SERVICE;
  */
 public class PlayStoreApiWrapper {
 
+    private static final int IMAGE_ICON = 4;
+    private static final int IMAGE_SCREENSHOT = 1;
+
     private Context context;
     private String email;
     private String password;
@@ -76,9 +79,10 @@ public class PlayStoreApiWrapper {
         app.setUpdated(appDetails.getUploadDate());
         Image iconImage = null;
         for (Image image: details.getImageList()) {
-            if (image.getImageType() == 4) {
+            if (image.getImageType() == IMAGE_ICON) {
                 iconImage = image;
-                break;
+            } else if (image.getImageType() == IMAGE_SCREENSHOT) {
+                app.getScreenshotUrls().add(image.getImageUrl());
             }
         }
         if (iconImage != null) {

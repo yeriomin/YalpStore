@@ -2,15 +2,12 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -158,38 +155,6 @@ abstract public class AppListActivity extends ListActivity {
             }
         });
         return adapter;
-    }
-
-    class ImageDownloadTask extends AsyncTask<String, Void, Void> {
-
-        private ImageView view;
-        private Context context;
-        private Drawable drawable;
-
-        public void setView(ImageView view) {
-            this.view = view;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            this.context = this.view.getContext();
-            this.view.setImageDrawable(this.context.getResources().getDrawable(android.R.drawable.sym_def_app_icon));
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            this.view.setImageDrawable(this.drawable);
-        }
-
-        @Override
-        protected Void doInBackground(String[] params) {
-            BitmapManager manager = new BitmapManager(this.context);
-            this.drawable = new BitmapDrawable(manager.getBitmap(params[0]));
-            return null;
-        }
-
     }
 
 }

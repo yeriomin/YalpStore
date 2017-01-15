@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.github.yeriomin.yalpstore"
-        minSdkVersion 10
+        minSdkVersion 9
         targetSdkVersion 25
         versionCode 3
         versionName "0.3"

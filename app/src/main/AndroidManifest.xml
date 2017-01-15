@@ -60,6 +60,7 @@
             <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
         </activity>
         <activity android:name=".PreferenceActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".FullscreenImageActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
     </application>
 
 </manifest>

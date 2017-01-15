@@ -26,10 +26,14 @@ public class BitmapManager {
     }
 
     public Bitmap getBitmap(String url) {
+        return getBitmap(url, false);
+    }
+
+    public Bitmap getBitmap(String url, boolean fullSize) {
         File cached = getFileName(url);
         Bitmap bitmap;
         if (!cached.exists() || !isValid(cached)) {
-            bitmap = downloadBitmap(url);
+            bitmap = downloadBitmap(url, fullSize);
             cacheBitmap(bitmap, cached);
         } else {
             bitmap = getCachedBitmap(cached);
@@ -75,7 +79,7 @@ public class BitmapManager {
         }
     }
 
-    static private Bitmap downloadBitmap(final String url) {
+    static private Bitmap downloadBitmap(String url, boolean fullSize) {
         try {
             HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
             connection.connect();
@@ -83,7 +87,9 @@ public class BitmapManager {
             InputStream input = connection.getInputStream();
 
             BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inSampleSize = 4;
+            if (!fullSize) {
+                options.inSampleSize = 4;
+            }
             options.inJustDecodeBounds = false;
 
             return BitmapFactory.decodeStream(input, null, options);

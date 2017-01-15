@@ -3,11 +3,13 @@ package com.github.yeriomin.yalpstore;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -19,7 +21,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -200,6 +206,26 @@ public class DetailsActivity extends Activity {
                 }
             }
         }
+
+        if (app.getScreenshotUrls().size() > 0) {
+            findViewById(R.id.screenshots_header).setVisibility(View.VISIBLE);
+            Gallery gallery = ((Gallery) findViewById(R.id.screenshots_gallery));
+            int screenWidth = getWindowManager().getDefaultDisplay().getWidth();
+            gallery.setAdapter(new ImageAdapter(this, app.getScreenshotUrls(), screenWidth));
+            gallery.setSpacing(10);
+            gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(getApplicationContext(), FullscreenImageActivity.class);
+                    intent.putExtra(FullscreenImageActivity.INTENT_URL, app.getScreenshotUrls().get(position));
+                    startActivity(intent);
+                }
+            });
+            initExpandableGroup(R.id.screenshots_header, R.id.screenshots_container);
+        } else {
+            findViewById(R.id.screenshots_header).setVisibility(View.GONE);
+        }
+
         initExpandableGroup(R.id.description_header, R.id.description_container);
         initExpandableGroup(R.id.permissions_header, R.id.permissions_container);
 
@@ -275,7 +301,7 @@ public class DetailsActivity extends Activity {
     }
 
     private void initExpandableGroup(int viewIdHeader, int viewIdContainer) {
-        final TextView viewHeader = (TextView) findViewById(viewIdHeader);
+        TextView viewHeader = (TextView) findViewById(viewIdHeader);
         final LinearLayout viewContainer = (LinearLayout) findViewById(viewIdContainer);
         viewHeader.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -290,5 +316,58 @@ public class DetailsActivity extends Activity {
                 }
             }
         });
+    }
+
+
+    class ImageAdapter extends BaseAdapter {
+
+        private Context context;
+        private List<String> screenshotUrls;
+        private int screenWidth;
+
+        public ImageAdapter(Context context, List<String> screenshotUrls, int screenWidth) {
+            this.context = context;
+            this.screenshotUrls = screenshotUrls;
+            this.screenWidth = screenWidth;
+        }
+
+        @Override
+        public int getCount() {
+            return screenshotUrls.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return screenshotUrls.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ImageDownloadTask task = new ImageDownloadTask() {
+
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    super.onPostExecute(aVoid);
+                    Bitmap bitmap = ((BitmapDrawable) this.view.getDrawable()).getBitmap();
+                    int w = Math.min(screenWidth, bitmap.getWidth());
+                    int h = Math.min(screenWidth, bitmap.getHeight());
+                    this.view.setLayoutParams(new Gallery.LayoutParams(w, h));
+                    this.view.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                    if (this.view.getParent() instanceof Gallery) {
+                        Gallery gallery = (Gallery) this.view.getParent();
+                        gallery.setMinimumHeight(Math.max(gallery.getMeasuredHeight(), h));
+                    }
+                }
+            };
+            ImageView imageView = new ImageView(context);
+            task.setFullSize(true);
+            task.setView(imageView);
+            task.execute((String) getItem(position));
+            return imageView;
+        }
     }
 }

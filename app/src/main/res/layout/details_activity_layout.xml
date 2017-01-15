@@ -167,6 +167,33 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/screenshots_header"
+                android:drawableLeft="@drawable/ic_expand_more"
+                android:drawableStart="@drawable/ic_expand_more"
+                android:textSize="20sp"
+                android:gravity="center_vertical"
+                android:text="@string/details_screenshots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="6dip" />
+
+
+            <LinearLayout
+                android:id="@+id/screenshots_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <Gallery
+                    android:id="@+id/screenshots_gallery"
+                    android:spacing="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <TextView
                 android:id="@+id/permissions_header"
                 android:drawableLeft="@drawable/ic_expand_more"
                 android:drawableStart="@drawable/ic_expand_more"

@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore.model;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class App {
@@ -26,6 +27,7 @@ public class App {
     private List<String> permissions;
     private boolean isInstalled;
     private boolean isFree;
+    private List<String> screenshotUrls = new ArrayList<>();
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -185,5 +187,9 @@ public class App {
 
     public void setFree(boolean free) {
         isFree = free;
+    }
+
+    public List<String> getScreenshotUrls() {
+        return screenshotUrls;
     }
 }

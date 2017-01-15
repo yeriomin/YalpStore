@@ -29,6 +29,7 @@
     <string name="details_size" formatted="false">Apk size %s</string>
     <string name="details_description">Description:</string>
     <string name="details_changelog">What\'s new:</string>
+    <string name="details_screenshots">Screenshots:</string>
     <string name="details_permissions">Permissions:</string>
     <string name="details_developer" formatted="false">Offered by %s</string>
     <string name="details_versionName" formatted="false">Version %s</string>

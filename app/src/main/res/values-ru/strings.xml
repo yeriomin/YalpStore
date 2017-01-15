@@ -29,6 +29,7 @@
     <string name="details_size" formatted="false">Размер apk %s</string>
     <string name="details_description">Описание:</string>
     <string name="details_changelog">Изменения в последней версии:</string>
+    <string name="details_screenshots">Скриншоты:</string>
     <string name="details_permissions">Разрешения:</string>
     <string name="details_developer" formatted="false">Разработчик: %s</string>
     <string name="details_versionName" formatted="false">Версия %s</string>
