@@ -21,6 +21,7 @@ import com.github.yeriomin.playstoreapi.Image;
 import com.github.yeriomin.playstoreapi.SearchResponse;
 import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.Review;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,7 +58,12 @@ public class PlayStoreApiWrapper {
         App app = new App();
         app.setDisplayName(details.getTitle());
         app.setDescription(details.getDescriptionHtml());
-        app.setRating(details.getAggregateRating().getStarRating());
+        app.getRating().setAverage(details.getAggregateRating().getStarRating());
+        app.getRating().setOneStar((int) details.getAggregateRating().getOneStarRatings());
+        app.getRating().setTwoStars((int) details.getAggregateRating().getTwoStarRatings());
+        app.getRating().setThreeStars((int) details.getAggregateRating().getThreeStarRatings());
+        app.getRating().setFourStars((int) details.getAggregateRating().getFourStarRatings());
+        app.getRating().setFiveStars((int) details.getAggregateRating().getFiveStarRatings());
         if (details.getOfferCount() > 0) {
             app.setOfferType(details.getOffer(0).getOfferType());
             app.setFree(details.getOffer(0).getMicros() == 0);
@@ -94,6 +100,18 @@ public class PlayStoreApiWrapper {
         app.getDeveloper().setWebsite(appDetails.getDeveloperWebsite());
         app.setPermissions(appDetails.getPermissionList());
         return app;
+    }
+
+    private Review buildReview(com.github.yeriomin.playstoreapi.Review reviewProto) {
+        Review review = new Review();
+        review.setComment(reviewProto.getComment());
+        review.setTitle(reviewProto.getTitle());
+        review.setTime(reviewProto.getTimestampMsec());
+        review.setRating(reviewProto.getStarRating());
+        review.setUserName(reviewProto.getAuthor2().getName());
+        review.setUserPhotoUrl(reviewProto.getAuthor2().getUrls().getUrl());
+        review.setComment(reviewProto.getComment());
+        return review;
     }
 
     private GooglePlayAPI getApi() throws IOException {
@@ -168,6 +186,19 @@ public class PlayStoreApiWrapper {
         prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
         prefs.apply();
         PlayStoreApiWrapper.api = null;
+    }
+
+    public List<Review> getReviews(String packageId, int offset, int numberOfResults) throws IOException {
+        List<Review> reviews = new ArrayList<>();
+        for (com.github.yeriomin.playstoreapi.Review review: getApi().reviews(
+            packageId,
+            GooglePlayAPI.REVIEW_SORT.HELPFUL,
+            offset,
+            numberOfResults
+        ).getGetResponse().getReviewList()) {
+            reviews.add(buildReview(review));
+        }
+        return reviews;
     }
 
     public App getDetails(String packageId) throws IOException {

@@ -32,17 +32,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.Review;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DetailsActivity extends Activity {
 
-    private static final int PERMISSIONS_REQUEST_CODE = 828;
+    static private final int PERMISSIONS_REQUEST_CODE = 828;
+    static private final int REVIEW_SHOW_COUNT = 3;
+    static private final int REVIEW_LOAD_COUNT = 15;
 
     static final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
+    private int reviewShowPage = 0;
+    private int reviewLoadPage = 0;
+    private boolean allReviewsLoaded;
     private GoogleApiAsyncTask task;
+    private List<Review> reviews = new ArrayList<>();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -178,7 +185,7 @@ public class DetailsActivity extends Activity {
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, app.getPackageName());
         setText(R.id.installs, R.string.details_installs, app.getInstalls());
-        setText(R.id.rating, R.string.details_rating, app.getRating());
+        setText(R.id.rating, R.string.details_rating, app.getRating().getAverage());
         setText(R.id.updated, R.string.details_updated, app.getUpdated());
         setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(this, app.getSize()));
         setText(R.id.description, Html.fromHtml(app.getDescription()).toString());
@@ -207,6 +214,8 @@ public class DetailsActivity extends Activity {
             }
         }
 
+        initExpandableGroup(R.id.description_header, R.id.description_container);
+
         if (app.getScreenshotUrls().size() > 0) {
             findViewById(R.id.screenshots_header).setVisibility(View.VISIBLE);
             Gallery gallery = ((Gallery) findViewById(R.id.screenshots_gallery));
@@ -226,9 +235,33 @@ public class DetailsActivity extends Activity {
             findViewById(R.id.screenshots_header).setVisibility(View.GONE);
         }
 
-        initExpandableGroup(R.id.description_header, R.id.description_container);
-        initExpandableGroup(R.id.permissions_header, R.id.permissions_container);
+        final LinearLayout reviewList = (LinearLayout) findViewById(R.id.reviews_list);
+        findViewById(R.id.reviews_previous).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateReviews(v, app.getPackageName());
+            }
+        });
+        findViewById(R.id.reviews_next).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateReviews(v, app.getPackageName());
+            }
+        });
+        initExpandableGroup(R.id.reviews_header, R.id.reviews_container, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showReviews(reviewList, app.getPackageName());
+            }
+        });
+        setText(R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
+        setText(R.id.stars5, R.string.details_rating_specific, 5, app.getRating().getFiveStars());
+        setText(R.id.stars4, R.string.details_rating_specific, 4, app.getRating().getFourStars());
+        setText(R.id.stars3, R.string.details_rating_specific, 3, app.getRating().getThreeStars());
+        setText(R.id.stars2, R.string.details_rating_specific, 2, app.getRating().getTwoStars());
+        setText(R.id.stars1, R.string.details_rating_specific, 1, app.getRating().getOneStar());
 
+        initExpandableGroup(R.id.permissions_header, R.id.permissions_container);
         PackageManager pm = getPackageManager();
         List<String> localizedPermissions = new ArrayList<>();
         for (String permissionName: app.getPermissions()) {
@@ -300,7 +333,7 @@ public class DetailsActivity extends Activity {
         }
     }
 
-    private void initExpandableGroup(int viewIdHeader, int viewIdContainer) {
+    private void initExpandableGroup(int viewIdHeader, int viewIdContainer, final View.OnClickListener l) {
         TextView viewHeader = (TextView) findViewById(viewIdHeader);
         final LinearLayout viewContainer = (LinearLayout) findViewById(viewIdContainer);
         viewHeader.setOnClickListener(new View.OnClickListener() {
@@ -311,6 +344,9 @@ public class DetailsActivity extends Activity {
                     viewContainer.setVisibility(View.GONE);
                     ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_expand_more, 0, 0, 0);
                 } else {
+                    if (null != l) {
+                        l.onClick(v);
+                    }
                     viewContainer.setVisibility(View.VISIBLE);
                     ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_expand_less, 0, 0, 0);
                 }
@@ -318,6 +354,98 @@ public class DetailsActivity extends Activity {
         });
     }
 
+    private void initExpandableGroup(int viewIdHeader, int viewIdContainer) {
+        initExpandableGroup(viewIdHeader, viewIdContainer, null);
+    }
+
+    private void navigateReviews(View v, String packageName) {
+        boolean next = v.getId() == R.id.reviews_next;
+        if (next) {
+            reviewShowPage++;
+        } else {
+            reviewShowPage--;
+        }
+        findViewById(R.id.reviews_previous).setVisibility(
+            reviewShowPage > 0
+                ? View.VISIBLE
+                : View.INVISIBLE
+        );
+        findViewById(R.id.reviews_next).setVisibility(
+            reviews.size() > (reviewShowPage * REVIEW_SHOW_COUNT)
+                ? View.VISIBLE
+                : View.INVISIBLE
+        );
+        showReviews((LinearLayout) findViewById(R.id.reviews_list), packageName);
+    }
+
+    private void showReviews(LinearLayout list, String packageName) {
+        int offset = REVIEW_SHOW_COUNT * reviewShowPage;
+        if (reviews.size() > offset) {
+            list.removeAllViews();
+            for (int i = offset; i < Math.min(REVIEW_SHOW_COUNT + offset, reviews.size()); i++) {
+                addReview(reviews.get(i), list);
+            }
+        }
+        if (!allReviewsLoaded && reviews.size() < REVIEW_SHOW_COUNT + offset) {
+            loadMoreReviews(list, packageName);
+        }
+    }
+
+    private void addReview(Review review, ViewGroup parent) {
+        LinearLayout reviewLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.review_list_item, null, false);
+        String title = getString(R.string.details_rating, (double) review.getRating());
+        if (null != review.getTitle() && !review.getTitle().isEmpty()) {
+            title += " " + review.getTitle();
+        }
+        ((TextView) reviewLayout.findViewById(R.id.author)).setText(review.getUserName());
+        ((TextView) reviewLayout.findViewById(R.id.title)).setText(title);
+        ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
+        parent.addView(reviewLayout);
+        ImageDownloadTask task = new ImageDownloadTask();
+        task.setView((ImageView) reviewLayout.findViewById(R.id.avatar));
+        task.execute((String) review.getUserPhotoUrl());
+    }
+
+    private void loadMoreReviews(final LinearLayout list, final String packageName) {
+        GoogleApiAsyncTask task = new GoogleApiAsyncTask() {
+            @Override
+            protected Throwable doInBackground(Void... params) {
+                PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(DetailsActivity.this);
+                try {
+                    if (reviews.addAll(wrapper.getReviews(packageName, REVIEW_LOAD_COUNT * reviewLoadPage, REVIEW_LOAD_COUNT))) {
+                        reviewLoadPage++;
+                    } else {
+                        allReviewsLoaded = true;
+                    }
+                } catch (Throwable e) {
+                    return e;
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Throwable e) {
+                super.onPostExecute(e);
+                if (e == null) {
+                    showReviews(list, packageName);
+                    findViewById(R.id.reviews_next).setVisibility(
+                        reviews.size() > (reviewShowPage * REVIEW_SHOW_COUNT)
+                            ? View.VISIBLE
+                            : View.INVISIBLE
+                    );
+                } else {
+                    Log.e(DetailsActivity.class.getName(), "Could not get reviews: " + e.getMessage());
+                }
+            }
+        };
+
+        task.setContext(this);
+        task.prepareDialog(
+            getString(R.string.dialog_message_reviews),
+            getString(R.string.dialog_title_reviews)
+        );
+        task.execute();
+    }
 
     class ImageAdapter extends BaseAdapter {
 

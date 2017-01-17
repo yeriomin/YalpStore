@@ -23,6 +23,7 @@
     <string name="error_network_other" formatted="false">ネットワークエラー: %s</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
+    <string name="details_rating_specific" formatted="false">%d★ %d</string>
     <string name="details_updated" formatted="false">更新しました %s</string>
     <string name="details_size" formatted="false">Apk サイズ %s</string>
     <string name="details_changelog">新着情報:</string>

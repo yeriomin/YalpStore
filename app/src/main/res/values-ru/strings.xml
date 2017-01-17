@@ -6,6 +6,8 @@
     <string name="list_empty_search">Ничего не найдено</string>
     <string name="dialog_title_logout">Разлогиниться?</string>
     <string name="dialog_message_logout">Вы уверены что хотите разлогиниться?</string>
+    <string name="dialog_title_reviews">Получаем отзывы</string>
+    <string name="dialog_message_reviews">Подождите. Получаем отзывы.</string>
     <string name="dialog_title_purchasing_app">Скачиваем</string>
     <string name="dialog_message_purchasing_app">Подождите. Запускаем закачку приложения.</string>
     <string name="dialog_title_loading_app_details">Подробности</string>
@@ -25,11 +27,13 @@
     <string name="error_network_other" formatted="false">Сетевая ошибка: %s</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
+    <string name="details_rating_specific" formatted="false">%d★ %d</string>
     <string name="details_updated" formatted="false">Обновлено %s</string>
     <string name="details_size" formatted="false">Размер apk %s</string>
     <string name="details_description">Описание:</string>
     <string name="details_changelog">Изменения в последней версии:</string>
     <string name="details_screenshots">Скриншоты:</string>
+    <string name="details_reviews">Отзывы:</string>
     <string name="details_permissions">Разрешения:</string>
     <string name="details_developer" formatted="false">Разработчик: %s</string>
     <string name="details_versionName" formatted="false">Версия %s</string>

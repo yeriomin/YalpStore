@@ -12,7 +12,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class BitmapManager {
@@ -42,14 +41,7 @@ public class BitmapManager {
     }
 
     private File getFileName(String urlString) {
-        String fileName;
-        try {
-            URL url = new URL(urlString);
-            fileName = new File(url.getPath()).getName();
-        } catch (MalformedURLException e) {
-            fileName = String.valueOf(urlString.hashCode()) + ".png";
-        }
-        return new File(context.getCacheDir(), fileName);
+        return new File(context.getCacheDir(), String.valueOf(urlString.hashCode()) + ".png");
     }
 
     static private boolean isValid(File cached) {

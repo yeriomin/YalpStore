@@ -18,7 +18,7 @@ public class App {
     private String updated;
     private long size;
     private String installs;
-    private double rating;
+    private Rating rating = new Rating();
     private Drawable icon;
     private String iconUrl;
     private String changes;
@@ -114,12 +114,8 @@ public class App {
         this.installs = installs;
     }
 
-    public double getRating() {
+    public Rating getRating() {
         return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
     }
 
     public Drawable getIcon() {

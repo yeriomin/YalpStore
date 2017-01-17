@@ -70,7 +70,7 @@ public class SearchResultActivity extends AppListActivity {
     @Override
     protected Map<String, Object> formatApp(App app) {
         Map<String, Object> map = super.formatApp(app);
-        map.put(LINE2, getString(R.string.list_line_2_search, app.getInstalls(), app.getRating(), app.getUpdated()));
+        map.put(LINE2, getString(R.string.list_line_2_search, app.getInstalls(), app.getRating().getAverage(), app.getUpdated()));
         map.put(ICON, app.getIconUrl());
         return map;
     }

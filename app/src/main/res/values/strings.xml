@@ -11,6 +11,8 @@
     <string name="search_title">Search applications</string>
     <string name="dialog_title_logout">Log out?</string>
     <string name="dialog_message_logout">Are you sure you want to log out?</string>
+    <string name="dialog_title_reviews">Getting reviews</string>
+    <string name="dialog_message_reviews">Please wait. Getting reviews.</string>
     <string name="dialog_title_purchasing_app">Downloading app</string>
     <string name="dialog_message_purchasing_app">Please wait. Starting the download of the requested app.</string>
     <string name="dialog_title_loading_app_details">Getting details</string>
@@ -25,11 +27,13 @@
     <string name="error_network_other" formatted="false">Network error: %s</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
+    <string name="details_rating_specific" formatted="false">%d★ %d</string>
     <string name="details_updated" formatted="false">Updated %s</string>
     <string name="details_size" formatted="false">Apk size %s</string>
     <string name="details_description">Description:</string>
     <string name="details_changelog">What\'s new:</string>
     <string name="details_screenshots">Screenshots:</string>
+    <string name="details_reviews">Reviews:</string>
     <string name="details_permissions">Permissions:</string>
     <string name="details_developer" formatted="false">Offered by %s</string>
     <string name="details_versionName" formatted="false">Version %s</string>

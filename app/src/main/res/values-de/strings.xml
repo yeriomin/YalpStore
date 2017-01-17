@@ -23,6 +23,7 @@
     <string name="error_network_other" formatted="false">Netzwerk error: %s</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
+    <string name="details_rating_specific" formatted="false">%d★ %d</string>
     <string name="details_updated" formatted="false">Aktualisiert %s</string>
     <string name="details_size" formatted="false">Apk größe %s</string>
     <string name="details_changelog">Was gibt es neues?</string>
