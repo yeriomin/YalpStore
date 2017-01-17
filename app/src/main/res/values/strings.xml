@@ -8,6 +8,8 @@
     <string name="action_logout">Log out</string>
     <string name="action_search">Search</string>
     <string name="action_updates">Updates</string>
+    <string name="action_ignore">Ignore updates</string>
+    <string name="action_unignore">Unignore updates</string>
     <string name="search_title">Search applications</string>
     <string name="dialog_title_logout">Log out?</string>
     <string name="dialog_message_logout">Are you sure you want to log out?</string>
@@ -57,4 +59,6 @@
     <string name="pref_auto_install_summary_off">Apps are installed when the user touches the completion notification</string>
     <string name="pref_auto_install_summary_on">Apps are installed as soon as the download completes</string>
     <string name="pref_auto_install">Install apps immediately</string>
+    <string name="pref_clear_ignored_apps">Clear ignored apps list</string>
+    <string name="pref_done">Done</string>
 </resources>

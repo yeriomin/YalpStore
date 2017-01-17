@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -44,10 +45,15 @@ public class UpdatableAppsActivity extends AppListActivity {
             @Override
             protected Throwable doInBackground(Void... params) {
                 // Building local apps list
+                IgnoredAppsManager manager = new IgnoredAppsManager(getApplicationContext());
                 List<String> installedAppIds = new ArrayList<>();
                 List<App> installedApps = getInstalledApps();
                 Map<String, App> appMap = new HashMap<>();
                 for (App installedApp: installedApps) {
+                    if (manager.contains(installedApp.getPackageName())) {
+                        Log.i(getClass().getName(), "Ignoring updates for " + installedApp.getPackageName());
+                        continue;
+                    }
                     String packageName = installedApp.getPackageInfo().packageName;
                     installedAppIds.add(packageName);
                     appMap.put(packageName, installedApp);

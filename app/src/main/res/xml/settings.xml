@@ -6,14 +6,15 @@
         android:key="PREFERENCE_HIDE_NONFREE_APPS"
         android:summaryOff="@string/pref_hide_nonfree_apps_summary_off"
         android:summaryOn="@string/pref_hide_nonfree_apps_summary_on"
-        android:title="@string/pref_hide_nonfree_apps" >
-    </CheckBoxPreference>
+        android:title="@string/pref_hide_nonfree_apps" />
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="PREFERENCE_AUTO_INSTALL"
         android:summaryOff="@string/pref_auto_install_summary_off"
         android:summaryOn="@string/pref_auto_install_summary_on"
-        android:title="@string/pref_auto_install" >
-    </CheckBoxPreference>
+        android:title="@string/pref_auto_install" />
+    <Preference
+        android:key="PREFERENCE_IGNORED_APPS"
+        android:title="@string/pref_clear_ignored_apps" />
 
 </PreferenceScreen>

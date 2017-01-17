@@ -50,10 +50,13 @@ public class DetailsActivity extends Activity {
     private boolean allReviewsLoaded;
     private GoogleApiAsyncTask task;
     private List<Review> reviews = new ArrayList<>();
+    private Menu menu;
+    private App app;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        this.menu = menu;
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -62,6 +65,9 @@ public class DetailsActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 startActivity(new Intent(this, PreferenceActivity.class));
+                break;
+            case R.id.action_ignore:
+                ignoreUpdates();
                 break;
             case R.id.action_logout:
                 new AlertDialog.Builder(this)
@@ -177,8 +183,10 @@ public class DetailsActivity extends Activity {
     }
 
     private void drawDetails(final App app) {
+        this.app = app;
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
+        addIgnoreOption();
 
         ((ImageView) findViewById(R.id.icon)).setImageDrawable(app.getIcon());
 
@@ -445,6 +453,43 @@ public class DetailsActivity extends Activity {
             getString(R.string.dialog_title_reviews)
         );
         task.execute();
+    }
+
+    private MenuItem getIgnoreMenuItem() {
+        for (int i = 0; i < menu.size(); i++) {
+            MenuItem item = menu.getItem(i);
+            if (item.getItemId() == R.id.action_ignore) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    private void addIgnoreOption() {
+        MenuItem item = getIgnoreMenuItem();
+        if (null != item) {
+            item.setVisible(true);
+            IgnoredAppsManager manager = new IgnoredAppsManager(this);
+            if (null != app && app.isInstalled() && manager.contains(app.getPackageName())) {
+                item.setTitle(getString(R.string.action_unignore));
+            }
+        }
+    }
+
+    private void ignoreUpdates() {
+        if (null != app) {
+            MenuItem item = getIgnoreMenuItem();
+            if (null != item) {
+                IgnoredAppsManager manager = new IgnoredAppsManager(this);
+                if (manager.contains(app.getPackageName())) {
+                    manager.remove(app.getPackageName());
+                    item.setTitle(getString(R.string.action_ignore));
+                } else {
+                    manager.add(app.getPackageName());
+                    item.setTitle(getString(R.string.action_unignore));
+                }
+            }
+        }
     }
 
     class ImageAdapter extends BaseAdapter {
