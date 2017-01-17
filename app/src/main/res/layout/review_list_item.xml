@@ -3,7 +3,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="top"
-    android:padding="6dip">
+    android:padding="6dip" >
 
     <LinearLayout
         android:orientation="horizontal"
@@ -13,7 +13,6 @@
 
         <ImageView
             android:id="@+id/avatar"
-            android:src="@android:drawable/sym_def_app_icon"
             android:layout_width="48dip"
             android:layout_height="48dip"
             android:layout_marginRight="6dip"
@@ -27,7 +26,6 @@
 
             <TextView
                 android:id="@+id/author"
-                android:text="author"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_width="fill_parent"
@@ -35,7 +33,6 @@
 
             <TextView
                 android:id="@+id/title"
-                android:text="title"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:layout_width="fill_parent"
@@ -47,7 +44,6 @@
 
     <TextView
         android:id="@+id/comment"
-        android:text="comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment comment"
         android:textSize="12sp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
