@@ -11,6 +11,10 @@
     <string name="action_ignore">Ignore updates</string>
     <string name="action_unignore">Unignore updates</string>
     <string name="search_title">Search applications</string>
+    <string name="dialog_two_factor_cancel">Not now</string>
+    <string name="dialog_two_factor_create_password">Create password</string>
+    <string name="dialog_title_two_factor">2-Step Verification</string>
+    <string name="dialog_message_two_factor">It appears you have enabled 2-Step Verification for your account.\n\nPlease, create a dedicated app password for Yalp Store and use it to log in to the Yalp Store.\n\nTap \"Create password\" to be redirected to password creation page.</string>
     <string name="dialog_title_logout">Log out?</string>
     <string name="dialog_message_logout">Are you sure you want to log out?</string>
     <string name="dialog_title_reviews">Getting reviews</string>
@@ -50,7 +54,7 @@
     <string name="credentials_hint_email">e-mail here</string>
     <string name="credentials_hint_password">password here</string>
     <string name="credentials_title">Google account access</string>
-    <string name="credentials_message">Google account email and password are required for this app to function.\nKeep in mind that using this app violates Play Store ToS. It would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store ToS.</string>
+    <string name="credentials_message">Google account email and password are required for this app to function.\n\nKeep in mind that using this app violates Play Store ToS. It would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store ToS.</string>
     <string name="activity_title_updates">Updates</string>
     <string name="activity_title_search" formatted="false">Searching: "%s"</string>
     <string name="notification_download_complete">Download complete. Touch to install.</string>

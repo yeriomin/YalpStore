@@ -1,8 +1,12 @@
 package com.github.yeriomin.yalpstore;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -17,6 +21,8 @@ import com.github.yeriomin.playstoreapi.AuthException;
 import java.io.IOException;
 
 public class CredentialsDialogBuilder {
+
+    static private final String APP_PASSWORDS_URL = "https://security.google.com/settings/security/apppasswords";
 
     private Context context;
     protected GoogleApiAsyncTask taskClone;
@@ -56,7 +62,7 @@ public class CredentialsDialogBuilder {
                 final String email = editEmail.getText().toString();
                 final String password = editPassword.getText().toString();
                 if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(c, c.getString(R.string.error_credentials_empty), Toast.LENGTH_LONG).show();
+                    toast(c, R.string.error_credentials_empty);
                     return;
                 }
 
@@ -69,6 +75,14 @@ public class CredentialsDialogBuilder {
 
         ad.show();
         return ad;
+    }
+
+    static private void toast(Context c, int stringId, String... stringArgs) {
+        Toast.makeText(
+            c.getApplicationContext(),
+            c.getString(stringId, stringArgs),
+            Toast.LENGTH_LONG
+        ).show();
     }
 
     private class CheckCredentialsTask extends AsyncTask<String, Void, Throwable> {
@@ -126,17 +140,14 @@ public class CredentialsDialogBuilder {
                 if (e instanceof CredentialsEmptyException) {
                     Log.w(getClass().getName(), "Credentials empty");
                 } else if (e instanceof AuthException) {
-                    Toast.makeText(
-                        c.getApplicationContext(),
-                        c.getString(R.string.error_incorrect_password),
-                        Toast.LENGTH_LONG
-                    ).show();
+                    if (null != ((AuthException) e).getTwoFactorUrl()) {
+                        this.dialog.dismiss();
+                        getTwoFactorAuthDialog().show();
+                    } else {
+                        toast(c, R.string.error_incorrect_password);
+                    }
                 } else if (e instanceof IOException) {
-                    Toast.makeText(
-                        c.getApplicationContext(),
-                        c.getString(R.string.error_network_other, e.getMessage()),
-                        Toast.LENGTH_LONG
-                    ).show();
+                    toast(c, R.string.error_network_other, e.getMessage());
                 } else {
                     Log.w(getClass().getName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
                     e.printStackTrace();
@@ -145,6 +156,36 @@ public class CredentialsDialogBuilder {
                 this.dialog.dismiss();
                 this.taskClone.execute();
             }
+        }
+
+        private AlertDialog getTwoFactorAuthDialog() {
+            final Context context = this.dialog.getContext();
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            return builder
+                .setMessage(R.string.dialog_message_two_factor)
+                .setTitle(R.string.dialog_title_two_factor)
+                .setPositiveButton(
+                    R.string.dialog_two_factor_create_password,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent i = new Intent(Intent.ACTION_VIEW);
+                            i.setData(Uri.parse(APP_PASSWORDS_URL));
+                            context.startActivity(i);
+                            System.exit(0);
+                        }
+                    }
+                )
+                .setNegativeButton(
+                    R.string.dialog_two_factor_cancel,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            System.exit(0);
+                        }
+                    }
+                )
+                .create();
         }
     }
 }

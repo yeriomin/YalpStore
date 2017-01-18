@@ -4,6 +4,10 @@
     <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
     <string name="list_empty_updates">Обновлений нет</string>
     <string name="list_empty_search">Ничего не найдено</string>
+    <string name="dialog_two_factor_cancel">Позднее</string>
+    <string name="dialog_two_factor_create_password">Создать пароль</string>
+    <string name="dialog_title_two_factor">Двухэтапная аутентификация</string>
+    <string name="dialog_message_two_factor">Похоже, в вашем аккаунте включена двухэтапная аутентификация.\n\nПожалуйста, создайте пароль приложения для Yalp Store и используйте его для входа.\n\nНажмите \"Создать пароль\" для перехода на страницу создания паролей приложений.</string>
     <string name="dialog_title_logout">Разлогиниться?</string>
     <string name="dialog_message_logout">Вы уверены что хотите разлогиниться?</string>
     <string name="dialog_title_reviews">Получаем отзывы</string>
@@ -50,7 +54,7 @@
     <string name="credentials_hint_email">e-mail</string>
     <string name="credentials_hint_password">пароль</string>
     <string name="credentials_title">Вход в аккаунт Google</string>
-    <string name="credentials_message">Для работы приложения требуетются данные для доступа к аккаунту Google.\r\nИмейте в виду, что это приложение нарушает договор использования Play Store. Так что безопаснее использовать любой одноразовый Google аккаунт, под которым вы хотя бы раз залогинились в Play Store.</string>
+    <string name="credentials_message">Для работы приложения требуетются данные для доступа к аккаунту Google.\n\nИмейте в виду, что это приложение нарушает договор использования Play Store. Так что безопаснее использовать любой одноразовый Google аккаунт, под которым вы хотя бы раз залогинились в Play Store.</string>
     <string name="activity_title_updates">Обновления</string>
     <string name="activity_title_search" formatted="false">Поиск: "%s"</string>
     <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>
