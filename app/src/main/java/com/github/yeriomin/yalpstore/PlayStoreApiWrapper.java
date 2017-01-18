@@ -14,6 +14,7 @@ import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.AppDetails;
 import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
 import com.github.yeriomin.playstoreapi.BuyResponse;
+import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.HttpCookie;
@@ -250,30 +251,48 @@ public class PlayStoreApiWrapper {
         return suggestions;
     }
 
-    public void download(App app) throws IOException {
-        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        String filename = app.getPackageName() + "." + String.valueOf(app.getVersionCode()) + ".apk";
-        File fullPath = new File(downloadsDir, filename);
+    public long download(App app) throws IOException, NotPurchasedException {
+        File path = getApkPath(app);
 
-        if (fullPath.exists()) {
-            Log.i(this.getClass().getName(), filename + " exists. No download needed.");
-            context.startActivity(getOpenApkIntent(context, fullPath));
+        if (path.exists()) {
+            Log.i(this.getClass().getName(), path.getName() + " exists. No download needed.");
+            context.startActivity(getOpenApkIntent(context, path));
         } else {
-            Log.i(this.getClass().getName(), "Downloading apk to " + filename);
-            BuyResponse response = getApi().purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
-            AndroidAppDeliveryData appDeliveryData = response.getPurchaseStatusResponse().getAppDeliveryData();
+            Log.i(this.getClass().getName(), "Downloading apk to " + path.getName());
+            AndroidAppDeliveryData appDeliveryData;
+            if (app.isFree()) {
+                BuyResponse response = getApi().purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
+                appDeliveryData = response.getPurchaseStatusResponse().getAppDeliveryData();
+            } else {
+                DeliveryResponse response = getApi().delivery(app.getPackageName(), app.getVersionCode(), app.getOfferType());
+                if (response.hasAppDeliveryData()) {
+                    appDeliveryData = response.getAppDeliveryData();
+                } else {
+                    throw new NotPurchasedException();
+                }
+            }
 
             // Download manager cannot download https on old android versions
             String downloadUrl = appDeliveryData.getDownloadUrl().replace("https", "http");
             HttpCookie downloadAuthCookie = appDeliveryData.getDownloadAuthCookie(0);
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl));
             request.addRequestHeader("Cookie", downloadAuthCookie.getName() + "=" + downloadAuthCookie.getValue());
-            Uri uri = Uri.withAppendedPath(Uri.fromFile(downloadsDir), filename);
+            Uri uri = Uri.withAppendedPath(
+                Uri.fromFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)),
+                path.getName()
+            );
             request.setDestinationUri(uri);
             request.setTitle(app.getDisplayName());
 
-            ((DownloadManager) this.context.getSystemService(DOWNLOAD_SERVICE)).enqueue(request);
+            return ((DownloadManager) this.context.getSystemService(DOWNLOAD_SERVICE)).enqueue(request);
         }
+        return 0L;
+    }
+
+    static public File getApkPath(App app) {
+        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        String filename = app.getPackageName() + "." + String.valueOf(app.getVersionCode()) + ".apk";
+        return new File(downloadsDir, filename);
     }
 
     static public Intent getOpenApkIntent(Context context, File file) {

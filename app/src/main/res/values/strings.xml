@@ -27,6 +27,7 @@
     <string name="error_credentials_empty">Provide google account credentials, please.</string>
     <string name="error_no_network">No network connection.</string>
     <string name="error_network_other" formatted="false">Network error: %s</string>
+    <string name="error_not_purchased">The app does not seem to be purchased.</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
     <string name="details_rating_specific" formatted="false">%d★ %d</string>
@@ -41,7 +42,8 @@
     <string name="details_versionName" formatted="false">Version %s</string>
     <string name="details_versionName_updatable" formatted="false">Version %s → %s</string>
     <string name="details_download">Download</string>
-    <string name="details_download_nonfree">App is not free - download disabled</string>
+    <string name="details_install">Install</string>
+    <string name="details_downloading">Downloading…</string>
     <string name="details_download_impossible">Error. Could not get app version.</string>
     <string name="suffix_million">mil</string>
     <string name="suffix_billion">bil</string>

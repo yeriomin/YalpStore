@@ -24,5 +24,5 @@ android {
 }
 
 dependencies {
-    compile 'com.github.yeriomin:play-store-api:0.3'
+    compile 'com.github.yeriomin:play-store-api:cfd47603fa'
 }

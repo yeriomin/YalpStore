@@ -3,9 +3,12 @@ package com.github.yeriomin.yalpstore;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -52,6 +55,23 @@ public class DetailsActivity extends Activity {
     private List<Review> reviews = new ArrayList<>();
     private Menu menu;
     private App app;
+    private long downloadId;
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Bundle extras = intent.getExtras();
+            if (null != extras) {
+                long id = extras.getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
+                System.out.println("downloadId=" + downloadId + " id=" + id);
+                if (downloadId == id) {
+                    Button button = (Button) findViewById(R.id.download);
+                    button.setText(R.string.details_install);
+                    button.setEnabled(true);
+                }
+            }
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -156,6 +176,20 @@ public class DetailsActivity extends Activity {
             getString(R.string.dialog_title_loading_app_details)
         );
         task.execute();
+    }
+
+    @Override
+    protected void onPause() {
+        unregisterReceiver(receiver);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+        registerReceiver(receiver, filter);
+        super.onResume();
     }
 
     @Override
@@ -282,13 +316,14 @@ public class DetailsActivity extends Activity {
         setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
 
         Button downloadButton = (Button) findViewById(R.id.download);
-        if (!app.isFree()) {
-            downloadButton.setText(getString(R.string.details_download_nonfree));
-            downloadButton.setEnabled(false);
-        } else if (app.getVersionCode() == 0) {
+        if (app.getVersionCode() == 0) {
             downloadButton.setText(getString(R.string.details_download_impossible));
             downloadButton.setEnabled(false);
         } else {
+            final boolean exists = PlayStoreApiWrapper.getApkPath(app).exists();
+            if (exists) {
+                downloadButton.setText(R.string.details_install);
+            }
             downloadButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -297,11 +332,23 @@ public class DetailsActivity extends Activity {
                         protected Throwable doInBackground(Void... params) {
                             PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(DetailsActivity.this);
                             try {
-                                wrapper.download(app);
+                                downloadId = wrapper.download(app);
                             } catch (Throwable e) {
                                 return e;
                             }
                             return null;
+                        }
+
+                        @Override
+                        protected void onPostExecute(Throwable e) {
+                            super.onPostExecute(e);
+                            if (null == e && !exists) {
+                                Button button = (Button) findViewById(R.id.download);
+                                button.setText(R.string.details_downloading);
+                                button.setEnabled(false);
+                            } else if (e instanceof NotPurchasedException) {
+                                Toast.makeText(getApplicationContext(), getString(R.string.error_not_purchased), Toast.LENGTH_LONG).show();
+                            }
                         }
                     };
                     task.setContext(v.getContext());

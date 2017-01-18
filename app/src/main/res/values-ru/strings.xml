@@ -27,6 +27,7 @@
     <string name="error_credentials_empty">Введите данные для доступа к аккаунту google</string>
     <string name="error_no_network">Нет соединения с сетью.</string>
     <string name="error_network_other" formatted="false">Сетевая ошибка: %s</string>
+    <string name="error_not_purchased">Похоже, это приложение не было куплено.</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
     <string name="details_rating_specific" formatted="false">%d★ %d</string>
@@ -41,7 +42,8 @@
     <string name="details_versionName" formatted="false">Версия %s</string>
     <string name="details_versionName_updatable" formatted="false">Версия %s → %s</string>
     <string name="details_download">Скачать</string>
-    <string name="details_download_nonfree">Платное приложение - скачать не получится</string>
+    <string name="details_install">Установить</string>
+    <string name="details_downloading">Скачиваем…</string>
     <string name="details_download_impossible">Ошибка. Не удалось получить версию приложения</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>
