@@ -15,6 +15,8 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
+import javax.net.ssl.SSLHandshakeException;
+
 abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
 
     protected Context context;
@@ -73,6 +75,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<Void, Void, Throwable> {
         } else if (e instanceof IOException) {
             String message;
             if (e instanceof UnknownHostException
+                || e instanceof SSLHandshakeException
                 || e instanceof ConnectException
                 || e instanceof SocketException
                 || e instanceof SocketTimeoutException) {
