@@ -93,6 +93,7 @@ public class DetailsActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         this.menu = menu;
+        addIgnoreOption();
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -226,7 +227,11 @@ public class DetailsActivity extends Activity {
     private String getIntentPackageName(Intent intent) {
         if (intent.hasExtra(INTENT_PACKAGE_NAME)) {
             return intent.getStringExtra(INTENT_PACKAGE_NAME);
-        } else if (intent.getScheme() != null && (intent.getScheme().equals("market") || intent.getScheme().equals("http") || intent.getScheme().equals("https"))) {
+        } else if (intent.getScheme() != null
+            && (intent.getScheme().equals("market")
+                || intent.getScheme().equals("http")
+                || intent.getScheme().equals("https")
+        )) {
             return intent.getData().getQueryParameter("id");
         }
         return null;
@@ -531,10 +536,12 @@ public class DetailsActivity extends Activity {
     }
 
     private MenuItem getIgnoreMenuItem() {
-        for (int i = 0; i < menu.size(); i++) {
-            MenuItem item = menu.getItem(i);
-            if (item.getItemId() == R.id.action_ignore) {
-                return item;
+        if (null != menu) {
+            for (int i = 0; i < menu.size(); i++) {
+                MenuItem item = menu.getItem(i);
+                if (item.getItemId() == R.id.action_ignore) {
+                    return item;
+                }
             }
         }
         return null;
