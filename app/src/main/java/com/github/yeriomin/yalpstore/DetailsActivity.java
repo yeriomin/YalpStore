@@ -12,6 +12,7 @@ import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -37,6 +38,7 @@ import android.widget.Toast;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.Review;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,15 +63,29 @@ public class DetailsActivity extends Activity {
         @Override
         public void onReceive(Context context, Intent intent) {
             Bundle extras = intent.getExtras();
-            if (null != extras) {
-                long id = extras.getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
-                System.out.println("downloadId=" + downloadId + " id=" + id);
-                if (downloadId == id) {
-                    Button button = (Button) findViewById(R.id.download);
-                    button.setText(R.string.details_install);
-                    button.setEnabled(true);
-                }
+            if (null == extras) {
+                return;
             }
+            long id = extras.getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
+            if (downloadId != id) {
+                return;
+            }
+            DownloadManager.Query q = new DownloadManager.Query();
+            q.setFilterById(id);
+            DownloadManager dm = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
+            Cursor cursor = dm.query(q);
+            if (!cursor.moveToFirst()) {
+                return;
+            }
+            int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
+            int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
+            Button button = (Button) findViewById(R.id.download);
+            if (status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS) {
+                button.setText(R.string.details_install);
+            } else {
+                button.setText(R.string.details_download);
+            }
+            button.setEnabled(true);
         }
     };
 
@@ -356,10 +372,22 @@ public class DetailsActivity extends Activity {
                         getString(R.string.dialog_message_purchasing_app),
                         getString(R.string.dialog_title_purchasing_app)
                     );
-                    if (checkPermission()) {
-                        task.execute();
+                    File dir = PlayStoreApiWrapper.getApkPath(app).getParentFile();
+                    if (!dir.exists()) {
+                        dir.mkdirs();
+                    }
+                    if (dir.exists() && dir.isDirectory() && dir.canWrite()) {
+                        if (checkPermission()) {
+                            task.execute();
+                        } else {
+                            requestPermission();
+                        }
                     } else {
-                        requestPermission();
+                        Toast.makeText(
+                            getApplicationContext(),
+                            getString(R.string.error_downloads_directory_not_writable),
+                            Toast.LENGTH_LONG
+                        ).show();
                     }
                 }
             });

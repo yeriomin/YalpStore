@@ -32,6 +32,7 @@
     <string name="error_no_network">Нет соединения с сетью.</string>
     <string name="error_network_other" formatted="false">Сетевая ошибка: %s</string>
     <string name="error_not_purchased">Похоже, это приложение не было куплено.</string>
+    <string name="error_downloads_directory_not_writable">Каталог закачек недоступен для записи.</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
     <string name="details_rating_specific" formatted="false">%d★ %d</string>
@@ -67,4 +68,13 @@
     <string name="pref_auto_install">Устанавливать приложения сразу</string>
     <string name="pref_clear_ignored_apps">Очистить список игнорируемых приложений</string>
     <string name="pref_done">Готово</string>
+    <string name="download_manager_ERROR_UNKNOWN">Неизвестная ошибка.</string>
+    <string name="download_manager_ERROR_FILE_ERROR">Неизвестная ошибка сохранения файла.</string>
+    <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Сетевая ошибка. Попробуйте позднее.</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">Сетевая ошибка. Попробуйте позднее.</string>
+    <string name="download_manager_ERROR_TOO_MANY_REDIRECTS">Сетевая ошибка. Слишком много редиректов.</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">Недостаточно места на устройстве.</string>
+    <string name="download_manager_ERROR_DEVICE_NOT_FOUND">Устройство хранения недоступно. Вынули SD карту?</string>
+    <string name="download_manager_ERROR_CANNOT_RESUME">Сетевая ошибка. Попробуйте позднее.</string>
+    <string name="download_manager_ERROR_BLOCKED">Загрузка прервана из-за настроек безопасности NetworkPolicyManager.</string>
 </resources>
