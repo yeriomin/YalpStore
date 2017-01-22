@@ -42,6 +42,8 @@
     <string name="details_changelog">Изменения в последней версии:</string>
     <string name="details_screenshots">Скриншоты:</string>
     <string name="details_reviews">Отзывы:</string>
+    <string name="details_rate_this_app">Оцените это приложение:</string>
+    <string name="details_you_rated_this_app">Вы оценили это приложение:</string>
     <string name="details_permissions">Разрешения:</string>
     <string name="details_developer" formatted="false">Разработчик: %s</string>
     <string name="details_versionName" formatted="false">Версия %s</string>
@@ -50,6 +52,10 @@
     <string name="details_install">Установить</string>
     <string name="details_downloading">Скачиваем…</string>
     <string name="details_download_impossible">Ошибка. Не удалось получить версию приложения</string>
+    <string name="details_review_dialog_title">Есть что добавить?</string>
+    <string name="details_review_dialog_review_title_hint">вкратце</string>
+    <string name="details_review_dialog_review_comment_hint">подробнее</string>
+    <string name="details_review_dialog_fields_optional">Можно и не заполнять.</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>
     <string name="credentials_hint_email">e-mail</string>

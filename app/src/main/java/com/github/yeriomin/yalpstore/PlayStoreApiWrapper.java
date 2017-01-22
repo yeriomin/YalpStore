@@ -15,10 +15,12 @@ import com.github.yeriomin.playstoreapi.AppDetails;
 import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
 import com.github.yeriomin.playstoreapi.BuyResponse;
 import com.github.yeriomin.playstoreapi.DeliveryResponse;
+import com.github.yeriomin.playstoreapi.DetailsResponse;
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.HttpCookie;
 import com.github.yeriomin.playstoreapi.Image;
+import com.github.yeriomin.playstoreapi.ReviewResponse;
 import com.github.yeriomin.playstoreapi.SearchResponse;
 import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import com.github.yeriomin.yalpstore.model.App;
@@ -202,8 +204,27 @@ public class PlayStoreApiWrapper {
         return reviews;
     }
 
+    public Review addOrEditReview(String packageId, Review inputReview) throws IOException {
+        ReviewResponse response = getApi().addOrEditReview(
+            packageId,
+            inputReview.getComment(),
+            inputReview.getTitle(),
+            inputReview.getRating()
+        );
+        return buildReview(response.getUserReview());
+    }
+
+    public void deleteReview(String packageId) throws IOException {
+        getApi().deleteReview(packageId);
+    }
+
     public App getDetails(String packageId) throws IOException {
-        return buildApp(getApi().details(packageId).getDocV2());
+        DetailsResponse response = getApi().details(packageId);
+        App app = buildApp(response.getDocV2());
+        if (response.hasUserReview()) {
+            app.setUserReview(buildReview(response.getUserReview()));
+        }
+        return app;
     }
 
     public List<App> getDetails(List<String> packageIds) throws IOException {

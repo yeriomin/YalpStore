@@ -184,6 +184,130 @@
                 android:visibility="gone"
                 android:orientation="vertical" >
 
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="6dip" >
+
+                    <LinearLayout
+                        android:id="@+id/user_review_edit_delete"
+                        android:visibility="gone"
+                        android:orientation="vertical"
+                        android:layout_gravity="end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <ImageView
+                            android:id="@+id/user_review_edit"
+                            android:src="@drawable/ic_edit"
+                            android:layout_width="32dip"
+                            android:layout_height="32dip" />
+
+                        <ImageView
+                            android:id="@+id/user_review_delete"
+                            android:src="@drawable/ic_delete"
+                            android:layout_width="32dip"
+                            android:layout_height="32dip" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <TextView
+                                android:id="@+id/rate"
+                                android:text="@string/details_rate_this_app"
+                                android:layout_gravity="center"
+                                android:textSize="20sp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <TextView
+                                    android:id="@+id/user_star1"
+                                    android:text="@string/star_empty"
+                                    android:textSize="40sp"
+                                    android:textStyle="bold"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:id="@+id/user_star2"
+                                    android:text="@string/star_empty"
+                                    android:textSize="40sp"
+                                    android:textStyle="bold"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:id="@+id/user_star3"
+                                    android:text="@string/star_empty"
+                                    android:textSize="40sp"
+                                    android:textStyle="bold"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:id="@+id/user_star4"
+                                    android:text="@string/star_empty"
+                                    android:textSize="40sp"
+                                    android:textStyle="bold"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:id="@+id/user_star5"
+                                    android:text="@string/star_empty"
+                                    android:textSize="40sp"
+                                    android:textStyle="bold"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/user_review"
+                            android:visibility="gone"
+                            android:orientation="vertical"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <TextView
+                                android:id="@+id/user_title"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:id="@+id/user_comment"
+                                android:textSize="12sp"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -210,27 +334,27 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/stars5"
+                            android:id="@+id/average_stars5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
                         <TextView
-                            android:id="@+id/stars4"
+                            android:id="@+id/average_stars4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
                         <TextView
-                            android:id="@+id/stars3"
+                            android:id="@+id/average_stars3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
                         <TextView
-                            android:id="@+id/stars2"
+                            android:id="@+id/average_stars2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
                         <TextView
-                            android:id="@+id/stars1"
+                            android:id="@+id/average_stars1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 

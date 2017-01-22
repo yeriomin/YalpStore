@@ -28,6 +28,7 @@ public class App {
     private boolean isInstalled;
     private boolean isFree;
     private List<String> screenshotUrls = new ArrayList<>();
+    private Review userReview;
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -187,5 +188,13 @@ public class App {
 
     public List<String> getScreenshotUrls() {
         return screenshotUrls;
+    }
+
+    public Review getUserReview() {
+        return userReview;
+    }
+
+    public void setUserReview(Review userReview) {
+        this.userReview = userReview;
     }
 }

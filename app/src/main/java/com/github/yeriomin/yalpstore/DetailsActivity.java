@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -14,8 +15,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -29,6 +32,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -39,6 +43,7 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.Review;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +63,9 @@ public class DetailsActivity extends Activity {
     private Menu menu;
     private App app;
     private long downloadId;
+    private int[] starIds = new int[] { R.id.user_star1, R.id.user_star2, R.id.user_star3, R.id.user_star4, R.id.user_star5 };
+    private int colorDefault;
+
     private BroadcastReceiver receiver = new BroadcastReceiver() {
 
         @Override
@@ -242,7 +250,15 @@ public class DetailsActivity extends Activity {
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
         addIgnoreOption();
+        drawGeneralDetails();
+        drawDescription();
+        drawScreenshots();
+        drawReviews();
+        drawPermissions();
+        drawDownloadButton();
+    }
 
+    private void drawGeneralDetails() {
         ((ImageView) findViewById(R.id.icon)).setImageDrawable(app.getIcon());
 
         setText(R.id.displayName, app.getDisplayName());
@@ -251,7 +267,6 @@ public class DetailsActivity extends Activity {
         setText(R.id.rating, R.string.details_rating, app.getRating().getAverage());
         setText(R.id.updated, R.string.details_updated, app.getUpdated());
         setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(this, app.getSize()));
-        setText(R.id.description, Html.fromHtml(app.getDescription()).toString());
         setText(R.id.developerName, R.string.details_developer, app.getDeveloper().getName());
         setText(R.id.developerEmail, app.getDeveloper().getEmail());
         setText(R.id.developerWebsite, app.getDeveloper().getWebsite());
@@ -276,9 +291,14 @@ public class DetailsActivity extends Activity {
                 }
             }
         }
+    }
 
+    private void drawDescription() {
+        setText(R.id.description, Html.fromHtml(app.getDescription()).toString());
         initExpandableGroup(R.id.description_header, R.id.description_container);
+    }
 
+    private void drawScreenshots() {
         if (app.getScreenshotUrls().size() > 0) {
             findViewById(R.id.screenshots_header).setVisibility(View.VISIBLE);
             Gallery gallery = ((Gallery) findViewById(R.id.screenshots_gallery));
@@ -297,7 +317,9 @@ public class DetailsActivity extends Activity {
         } else {
             findViewById(R.id.screenshots_header).setVisibility(View.GONE);
         }
+    }
 
+    private void drawReviews() {
         final LinearLayout reviewList = (LinearLayout) findViewById(R.id.reviews_list);
         findViewById(R.id.reviews_previous).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -318,12 +340,35 @@ public class DetailsActivity extends Activity {
             }
         });
         setText(R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
-        setText(R.id.stars5, R.string.details_rating_specific, 5, app.getRating().getFiveStars());
-        setText(R.id.stars4, R.string.details_rating_specific, 4, app.getRating().getFourStars());
-        setText(R.id.stars3, R.string.details_rating_specific, 3, app.getRating().getThreeStars());
-        setText(R.id.stars2, R.string.details_rating_specific, 2, app.getRating().getTwoStars());
-        setText(R.id.stars1, R.string.details_rating_specific, 1, app.getRating().getOneStar());
+        setText(R.id.average_stars5, R.string.details_rating_specific, 5, app.getRating().getFiveStars());
+        setText(R.id.average_stars4, R.string.details_rating_specific, 4, app.getRating().getFourStars());
+        setText(R.id.average_stars3, R.string.details_rating_specific, 3, app.getRating().getThreeStars());
+        setText(R.id.average_stars2, R.string.details_rating_specific, 2, app.getRating().getTwoStars());
+        setText(R.id.average_stars1, R.string.details_rating_specific, 1, app.getRating().getOneStar());
 
+        for (int i = 0; i < starIds.length; i++) {
+            final int stars = i + 1;
+            int starId = starIds[i];
+            findViewById(starId).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Review review = new Review();
+                    review.setRating(stars);
+                    review.setComment(app.getUserReview().getComment());
+                    review.setTitle(app.getUserReview().getTitle());
+                    showUserReviewCommentDialog(review);
+                }
+            });
+        }
+        colorDefault = ((TextView) findViewById(starIds[0])).getCurrentTextColor();
+        Review review = app.getUserReview();
+        initUserReviewControls();
+        if (null != review) {
+            fillUserReview(review);
+        }
+    }
+
+    private void drawPermissions() {
         initExpandableGroup(R.id.permissions_header, R.id.permissions_container);
         PackageManager pm = getPackageManager();
         List<String> localizedPermissions = new ArrayList<>();
@@ -335,7 +380,9 @@ public class DetailsActivity extends Activity {
             }
         }
         setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
+    }
 
+    private void drawDownloadButton() {
         Button downloadButton = (Button) findViewById(R.id.download);
         if (app.getVersionCode() == 0) {
             downloadButton.setText(getString(R.string.details_download_impossible));
@@ -471,7 +518,7 @@ public class DetailsActivity extends Activity {
         if (reviews.size() > offset) {
             list.removeAllViews();
             for (int i = offset; i < Math.min(REVIEW_SHOW_COUNT + offset, reviews.size()); i++) {
-                addReview(reviews.get(i), list);
+                addReviewToList(reviews.get(i), list);
             }
         }
         if (!allReviewsLoaded && reviews.size() < REVIEW_SHOW_COUNT + offset) {
@@ -479,7 +526,7 @@ public class DetailsActivity extends Activity {
         }
     }
 
-    private void addReview(Review review, ViewGroup parent) {
+    private void addReviewToList(Review review, ViewGroup parent) {
         LinearLayout reviewLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.review_list_item, null, false);
         String title = getString(R.string.details_rating, (double) review.getRating());
         if (null != review.getTitle() && !review.getTitle().isEmpty()) {
@@ -535,6 +582,95 @@ public class DetailsActivity extends Activity {
         task.execute();
     }
 
+    private void showUserReviewCommentDialog(final Review review) {
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.review_dialog_layout);
+        final EditText editComment = (EditText) dialog.findViewById(R.id.review_dialog_review_comment);
+        if (null != review.getComment()) {
+            editComment.setText(review.getComment());
+        }
+        final EditText editTitle = (EditText) dialog.findViewById(R.id.review_dialog_review_title);
+        if (null != review.getTitle()) {
+            editTitle.setText(review.getTitle());
+        }
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setCancelable(true);
+        dialog.setTitle(R.string.details_review_dialog_title);
+        dialog.findViewById(R.id.review_dialog_done).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReviewAddTask task = new ReviewAddTask(v.getContext());
+                review.setComment(editComment.getText().toString());
+                review.setTitle(editTitle.getText().toString());
+                task.execute(review);
+                dialog.dismiss();
+            }
+        });
+        dialog.findViewById(R.id.review_dialog_cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    private void initUserReviewControls() {
+        findViewById(R.id.user_review_edit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showUserReviewCommentDialog(app.getUserReview());
+            }
+        });
+        findViewById(R.id.user_review_delete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReviewDeleteTask task = new ReviewDeleteTask(v.getContext());
+                task.execute();
+            }
+        });
+    }
+
+    private void fillUserReview(Review review) {
+        clearUserReview();
+        for (int starNum = 1; starNum <= 5; starNum++) {
+            int starId = starIds[starNum - 1];
+            TextView starView = (TextView) findViewById(starId);
+            starView.setText(starNum <= review.getRating() ? R.string.star_filled : R.string.star_empty);
+            starView.setTextColor(starNum <= review.getRating() ? Color.YELLOW : colorDefault);
+        }
+        TextView commentView = (TextView) findViewById(R.id.user_comment);
+        if (null != review.getComment() && !review.getComment().isEmpty()) {
+            commentView.setText(review.getComment());
+            commentView.setVisibility(View.VISIBLE);
+        } else {
+            commentView.setVisibility(View.GONE);
+        }
+        TextView titleView = (TextView) findViewById(R.id.user_title);
+        if (null != review.getTitle() && !review.getTitle().isEmpty()) {
+            titleView.setText(review.getTitle());
+            titleView.setVisibility(View.VISIBLE);
+        } else {
+            titleView.setVisibility(View.GONE);
+        }
+        setText(R.id.rate, R.string.details_you_rated_this_app);
+        findViewById(R.id.user_review_edit_delete).setVisibility(View.VISIBLE);
+        findViewById(R.id.user_review).setVisibility(View.VISIBLE);
+    }
+
+    private void clearUserReview() {
+        for (int starId : starIds) {
+            TextView starView = (TextView) findViewById(starId);
+            starView.setText(R.string.star_empty);
+            starView.setTextColor(colorDefault);
+        }
+        setText(R.id.user_title, "");
+        setText(R.id.user_comment, "");
+        setText(R.id.rate, R.string.details_rate_this_app);
+        findViewById(R.id.user_review_edit_delete).setVisibility(View.GONE);
+        findViewById(R.id.user_review).setVisibility(View.GONE);
+    }
+
     private MenuItem getIgnoreMenuItem() {
         if (null != menu) {
             for (int i = 0; i < menu.size(); i++) {
@@ -571,6 +707,66 @@ public class DetailsActivity extends Activity {
                     item.setTitle(getString(R.string.action_unignore));
                 }
             }
+        }
+    }
+
+    class ReviewAddTask extends AsyncTask<Review, Void, Throwable> {
+
+        private Context context;
+        private Review review;
+
+        public ReviewAddTask(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected void onPostExecute(Throwable e) {
+            if (null == e) {
+                app.setUserReview(review);
+                fillUserReview(review);
+            } else {
+                Log.e(DetailsActivity.class.getName(), "Error adding the review: " + e.getMessage());
+            }
+        }
+
+        @Override
+        protected Throwable doInBackground(Review... params) {
+            PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
+            try {
+                review = wrapper.addOrEditReview(app.getPackageName(), params[0]);
+            } catch (IOException e) {
+                return e;
+            }
+            return null;
+        }
+    }
+
+    class ReviewDeleteTask extends AsyncTask<Void, Void, Throwable> {
+
+        private Context context;
+
+        public ReviewDeleteTask(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected void onPostExecute(Throwable e) {
+            if (null == e) {
+                clearUserReview();
+            } else {
+                Log.e(DetailsActivity.class.getName(), "Error deleting the review: " + e.getMessage());
+            }
+        }
+
+        @Override
+        protected Throwable doInBackground(Void... params) {
+            PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
+            try {
+                wrapper.deleteReview(app.getPackageName());
+            } catch (IOException e) {
+                return e;
+            }
+            return null;
         }
     }
 
