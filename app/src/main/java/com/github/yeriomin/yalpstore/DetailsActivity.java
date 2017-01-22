@@ -228,7 +228,19 @@ public class DetailsActivity extends Activity {
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (requestCode == PERMISSIONS_REQUEST_CODE
             && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            task.execute();
+            File dir = PlayStoreApiWrapper.getApkPath(app).getParentFile();
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            if (dir.exists() && dir.isDirectory() && dir.canWrite()) {
+                task.execute();
+            } else {
+                Toast.makeText(
+                    getApplicationContext(),
+                    getString(R.string.error_downloads_directory_not_writable),
+                    Toast.LENGTH_LONG
+                ).show();
+            }
         }
     }
 
@@ -424,22 +436,10 @@ public class DetailsActivity extends Activity {
                         getString(R.string.dialog_message_purchasing_app),
                         getString(R.string.dialog_title_purchasing_app)
                     );
-                    File dir = PlayStoreApiWrapper.getApkPath(app).getParentFile();
-                    if (!dir.exists()) {
-                        dir.mkdirs();
-                    }
-                    if (dir.exists() && dir.isDirectory() && dir.canWrite()) {
-                        if (checkPermission()) {
-                            task.execute();
-                        } else {
-                            requestPermission();
-                        }
+                    if (checkPermission()) {
+                        task.execute();
                     } else {
-                        Toast.makeText(
-                            getApplicationContext(),
-                            getString(R.string.error_downloads_directory_not_writable),
-                            Toast.LENGTH_LONG
-                        ).show();
+                        requestPermission();
                     }
                 }
             });
