@@ -29,6 +29,8 @@ public class App {
     private boolean isFree;
     private List<String> screenshotUrls = new ArrayList<>();
     private Review userReview;
+    private List<App> similarApps = new ArrayList<>();
+    private List<App> usersAlsoInstalledApps = new ArrayList<>();
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -196,5 +198,13 @@ public class App {
 
     public void setUserReview(Review userReview) {
         this.userReview = userReview;
+    }
+
+    public List<App> getSimilarApps() {
+        return similarApps;
+    }
+
+    public List<App> getUsersAlsoInstalledApps() {
+        return usersAlsoInstalledApps;
     }
 }

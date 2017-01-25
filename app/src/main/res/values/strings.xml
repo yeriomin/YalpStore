@@ -60,6 +60,9 @@
     <string name="details_review_dialog_review_title_hint">title here</string>
     <string name="details_review_dialog_review_comment_hint">comment here</string>
     <string name="details_review_dialog_fields_optional">You can leave everything blank.</string>
+    <string name="details_apps_by_this_dev">Other apps by this developer</string>
+    <string name="details_similar_apps">Similar apps</string>
+    <string name="details_users_also_installed">Users also installed</string>
     <string name="suffix_million">mil</string>
     <string name="suffix_billion">bil</string>
     <string name="credentials_hint_email">e-mail here</string>

@@ -58,6 +58,9 @@
     <string name="details_review_dialog_review_title_hint">вкратце</string>
     <string name="details_review_dialog_review_comment_hint">подробнее</string>
     <string name="details_review_dialog_fields_optional">Можно и не заполнять.</string>
+    <string name="details_apps_by_this_dev">Приложения этого разработчика</string>
+    <string name="details_similar_apps">Похожие приложения</string>
+    <string name="details_users_also_installed">Пользователи также установили</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>
     <string name="credentials_hint_email">e-mail</string>

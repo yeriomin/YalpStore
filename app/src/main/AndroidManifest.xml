@@ -31,7 +31,7 @@
             android:name=".YalpSuggestionProvider"
             android:authorities="com.github.yeriomin.yalpstore.YalpSuggestionProvider"
             android:enabled="true" />
-        <activity android:name=".DetailsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize">
+        <activity android:name=".DetailsActivity" android:configChanges="keyboardHidden|orientation|screenSize">
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -56,7 +56,7 @@
             </intent-filter>
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
         </activity>
-        <activity android:name=".SearchResultActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
+        <activity android:name=".SearchResultActivity" android:configChanges="keyboardHidden|orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -77,8 +77,10 @@
             </intent-filter>
             <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
         </activity>
-        <activity android:name=".PreferenceActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name=".FullscreenImageActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".PreferenceActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".FullscreenImageActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".SimilarAppsActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".UsersAlsoInstalledActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
     </application>
 
 </manifest>

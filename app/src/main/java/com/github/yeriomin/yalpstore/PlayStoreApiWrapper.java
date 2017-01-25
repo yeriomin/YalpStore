@@ -50,6 +50,9 @@ public class PlayStoreApiWrapper {
     private static final int IMAGE_ICON = 4;
     private static final int IMAGE_SCREENSHOT = 1;
 
+    private static final String BACKEND_DOCID_SIMILAR_APPS = "similar_apps";
+    private static final String BACKEND_DOCID_USERS_ALSO_INSTALLED = "users_also_installed";
+
     private Context context;
     private String email;
     private String password;
@@ -223,6 +226,21 @@ public class PlayStoreApiWrapper {
         App app = buildApp(response.getDocV2());
         if (response.hasUserReview()) {
             app.setUserReview(buildReview(response.getUserReview()));
+        }
+        for (DocV2 doc: response.getDocV2().getChildList()) {
+            boolean isSimilarApps = doc.getBackendDocid().startsWith(BACKEND_DOCID_SIMILAR_APPS);
+            boolean isUsersAlsoInstalled = doc.getBackendDocid().startsWith(BACKEND_DOCID_USERS_ALSO_INSTALLED);
+            if (isUsersAlsoInstalled && app.getUsersAlsoInstalledApps().size() > 0) {
+                // Two users_also_installed lists are returned, consisting of mostly the same apps
+                continue;
+            }
+            for (DocV2 child: doc.getChildList()) {
+                if (isSimilarApps) {
+                    app.getSimilarApps().add(buildApp(child));
+                } else if (isUsersAlsoInstalled) {
+                    app.getUsersAlsoInstalledApps().add(buildApp(child));
+                }
+            }
         }
         return app;
     }

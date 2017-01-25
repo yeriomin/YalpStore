@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DownloadManager;
+import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -190,6 +191,7 @@ public class DetailsActivity extends Activity {
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
                 if (this.app != null) {
+                    DetailsDependentActivity.app = this.app;
                     drawDetails(this.app);
                 } else {
                     Log.e(getClass().getName(), "Could not get requested app");
@@ -269,6 +271,7 @@ public class DetailsActivity extends Activity {
         drawScreenshots();
         drawReviews();
         drawPermissions();
+        drawAppListsButtons();
         drawDownloadButton();
     }
 
@@ -394,6 +397,30 @@ public class DetailsActivity extends Activity {
             }
         }
         setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
+    }
+
+    private void drawAppListsButtons() {
+        findViewById(R.id.apps_by_this_dev).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DetailsActivity.this, SearchResultActivity.class);
+                i.setAction(Intent.ACTION_SEARCH);
+                i.putExtra(SearchManager.QUERY, "pub:" + app.getDeveloper().getName());
+                startActivity(i);
+            }
+        });
+        findViewById(R.id.similar_apps).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DetailsActivity.this, SimilarAppsActivity.class));
+            }
+        });
+        findViewById(R.id.users_also_installed).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DetailsActivity.this, UsersAlsoInstalledActivity.class));
+            }
+        });
     }
 
     private void drawDownloadButton() {
