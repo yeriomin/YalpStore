@@ -8,4 +8,16 @@
         <item>@string/pref_update_list_white_or_black_black</item>
         <item>@string/pref_update_list_white_or_black_white</item>
     </string-array>
+    <string-array name="uiThemeValues">
+        <item>none</item>
+        <item>light</item>
+        <item>dark</item>
+        <item>black</item>
+    </string-array>
+    <string-array name="uiThemeLabels">
+        <item>@string/pref_ui_theme_none</item>
+        <item>@string/pref_ui_theme_light</item>
+        <item>@string/pref_ui_theme_dark</item>
+        <item>@string/pref_ui_theme_black</item>
+    </string-array>
 </resources>

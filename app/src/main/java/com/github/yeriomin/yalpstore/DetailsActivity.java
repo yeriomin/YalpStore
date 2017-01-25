@@ -223,6 +223,7 @@ public class DetailsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
 
         onNewIntent(getIntent());

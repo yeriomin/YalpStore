@@ -34,23 +34,13 @@ public class MultiSelectListPreference extends DialogPreference {
             attrs, R.styleable.MultiSelectListPreference);
 
         final int n = a.getIndexCount();
-        System.out.println("a has " + n + " entries");
 
         for (int i = 0; i < n; i++) {
             final int index = a.getIndex(i);
-            System.out.println("a[" + i + "]=" + index);
             if (index == R.styleable.MultiSelectListPreference_android_entries) {
-                System.out.println("mEntries has " + mEntries.length + " entries");
                 mEntries = a.getTextArray(index);
-                for (int j = 0; j < mEntries.length; j++) {
-                    System.out.println("mEntries[" + j + "]=" + mEntries[j]);
-                }
             } else if (index == R.styleable.MultiSelectListPreference_android_entryValues) {
-                System.out.println("mEntryValues has " + mEntryValues.length + " entries");
                 mEntryValues = a.getTextArray(index);
-                for (int j = 0; j < mEntryValues.length; j++) {
-                    System.out.println("mEntryValues[" + j + "]=" + mEntryValues[j]);
-                }
             }
         }
         a.recycle();
@@ -196,16 +186,9 @@ public class MultiSelectListPreference extends DialogPreference {
     }
 
     private boolean[] getSelectedItems(final Set<String> values) {
-        for (String v: values) {
-            System.out.println("Value " + v);
-        }
         final CharSequence[] entries = mEntryValues;
         final int entryCount = entries.length;
         boolean[] result = new boolean[entryCount];
-        System.out.println("entryCount " + entryCount);
-        for (CharSequence v: mEntryValues) {
-            System.out.println("entries " + v);
-        }
 
         for (int i = 0; i < entryCount; i++) {
             result[i] = values.contains(entries[i].toString());

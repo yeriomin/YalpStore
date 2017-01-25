@@ -23,4 +23,10 @@
         android:persistent="true"
         android:key="PREFERENCE_UPDATE_LIST"
         android:title="@string/pref_update_list_black" />
+    <ListPreference
+        android:key="PREFERENCE_UI_THEME"
+        android:defaultValue="none"
+        android:title="@string/pref_ui_theme"
+        android:entries="@array/uiThemeLabels"
+        android:entryValues="@array/uiThemeValues"/>
 </PreferenceScreen>

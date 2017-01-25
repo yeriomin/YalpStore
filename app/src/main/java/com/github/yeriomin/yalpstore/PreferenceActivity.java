@@ -19,12 +19,19 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_HIDE_NONFREE_APPS = "PREFERENCE_HIDE_NONFREE_APPS";
     public static final String PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK = "PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK";
     public static final String PREFERENCE_UPDATE_LIST = "PREFERENCE_UPDATE_LIST";
+    public static final String PREFERENCE_UI_THEME = "PREFERENCE_UI_THEME";
 
     public static final String LIST_WHITE = "white";
     public static final String LIST_BLACK = "black";
 
+    public static final String THEME_NONE = "none";
+    public static final String THEME_LIGHT = "light";
+    public static final String THEME_DARK = "dark";
+    public static final String THEME_BLACK = "black";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
 
@@ -42,10 +49,14 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         }
 
         final MultiSelectListPreference m = (MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST);
-        ListPreference blackOrWhite = (ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK);
+        final ListPreference blackOrWhite = (ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK);
         m.setTitle(blackOrWhite.getValue() == LIST_BLACK
             ? getString(R.string.pref_update_list_black)
             : getString(R.string.pref_update_list_white)
+        );
+        blackOrWhite.setSummary(blackOrWhite.getValue() == LIST_BLACK
+            ? getString(R.string.pref_update_list_white_or_black_black)
+            : getString(R.string.pref_update_list_white_or_black_white)
         );
         m.setEntries(entries.toArray(new CharSequence[entries.size()]));
         m.setEntryValues(entryValues.toArray(new CharSequence[entryValues.size()]));
@@ -57,13 +68,45 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
                 switch (value) {
                     case LIST_BLACK:
                         m.setTitle(getString(R.string.pref_update_list_black));
+                        blackOrWhite.setSummary(getString(R.string.pref_update_list_white_or_black_black));
                         break;
                     case LIST_WHITE:
                         m.setTitle(getString(R.string.pref_update_list_white));
+                        blackOrWhite.setSummary(getString(R.string.pref_update_list_white_or_black_white));
                         break;
                 }
                 return true;
             }
         });
+
+        final ListPreference theme = (ListPreference) findPreference(PREFERENCE_UI_THEME);
+        theme.setSummary(getString(getThemeSummaryStringId(theme.getValue())));
+        theme.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, final Object newValue) {
+                theme.setSummary(getString(getThemeSummaryStringId((String) newValue)));
+                return true;
+            }
+        });
+    }
+
+    private int getThemeSummaryStringId(String theme) {
+        int summaryId;
+        switch (theme) {
+            case THEME_LIGHT:
+                summaryId = R.string.pref_ui_theme_light;
+                break;
+            case THEME_DARK:
+                summaryId = R.string.pref_ui_theme_dark;
+                break;
+            case THEME_BLACK:
+                summaryId = R.string.pref_ui_theme_black;
+                break;
+            case THEME_NONE:
+            default:
+                summaryId = R.string.pref_ui_theme_none;
+                break;
+        }
+        return summaryId;
     }
 }

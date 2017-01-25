@@ -36,6 +36,7 @@ abstract public class AppListActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.applist_activity_layout);
 
