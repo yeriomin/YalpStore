@@ -125,7 +125,11 @@ public class SearchResultActivity extends AppListActivity {
     }
 
     private String getQuery(Intent intent) {
-        if (intent.getScheme() != null && intent.getScheme().equals("market")) {
+        if (intent.getScheme() != null
+            && (intent.getScheme().equals("market")
+            || intent.getScheme().equals("http")
+            || intent.getScheme().equals("https"))
+        ) {
             return intent.getData().getQueryParameter("q");
         }
         switch (intent.getAction()) {
