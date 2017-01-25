@@ -12,6 +12,8 @@
     <string name="action_updates">Updates</string>
     <string name="action_ignore">Ignore updates</string>
     <string name="action_unignore">Unignore updates</string>
+    <string name="action_whitelist">Whitelist for updates</string>
+    <string name="action_unwhitelist">Ignore updates</string>
     <string name="search_title">Search applications</string>
     <string name="dialog_two_factor_cancel">Not now</string>
     <string name="dialog_two_factor_create_password">Create password</string>
@@ -74,8 +76,11 @@
     <string name="pref_auto_install_summary_off">Apps are installed when the user touches the completion notification</string>
     <string name="pref_auto_install_summary_on">Apps are installed as soon as the download completes</string>
     <string name="pref_auto_install">Install apps immediately</string>
-    <string name="pref_clear_ignored_apps">Clear ignored apps list</string>
-    <string name="pref_done">Done</string>
+    <string name="pref_update_list_white_or_black_black">Chosen apps are going to be ignored when checking for updates</string>
+    <string name="pref_update_list_white_or_black_white">Only the chosen apps will be checked for updates</string>
+    <string name="pref_update_list_white_or_black">Black or white list of apps for update</string>
+    <string name="pref_update_list_black">Change apps black list</string>
+    <string name="pref_update_list_white">Change apps white list</string>
     <string name="download_manager_ERROR_UNKNOWN">Unknown error.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unknown file storage error.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">HTTP code was received that download manager can not handle. This is a server error.</string>

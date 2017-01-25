@@ -13,8 +13,14 @@
         android:summaryOff="@string/pref_auto_install_summary_off"
         android:summaryOn="@string/pref_auto_install_summary_on"
         android:title="@string/pref_auto_install" />
-    <Preference
-        android:key="PREFERENCE_IGNORED_APPS"
-        android:title="@string/pref_clear_ignored_apps" />
-
+    <ListPreference
+        android:key="PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK"
+        android:defaultValue="black"
+        android:title="@string/pref_update_list_white_or_black"
+        android:entries="@array/blackOrWhiteLabels"
+        android:entryValues="@array/blackOrWhiteValues"/>
+    <com.github.yeriomin.yalpstore.MultiSelectListPreference
+        android:persistent="true"
+        android:key="PREFERENCE_UPDATE_LIST"
+        android:title="@string/pref_update_list_black" />
 </PreferenceScreen>

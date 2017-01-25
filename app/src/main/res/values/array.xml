@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="blackOrWhiteValues">
+        <item>black</item>
+        <item>white</item>
+    </string-array>
+    <string-array name="blackOrWhiteLabels">
+        <item>@string/pref_update_list_white_or_black_black</item>
+        <item>@string/pref_update_list_white_or_black_white</item>
+    </string-array>
+</resources>

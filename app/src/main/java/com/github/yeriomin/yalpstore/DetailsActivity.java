@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -21,6 +22,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
@@ -101,7 +103,7 @@ public class DetailsActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         this.menu = menu;
-        addIgnoreOption();
+        addBlackWhiteListOption();
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -112,7 +114,7 @@ public class DetailsActivity extends Activity {
                 startActivity(new Intent(this, PreferenceActivity.class));
                 break;
             case R.id.action_ignore:
-                ignoreUpdates();
+                toggleBlackWhiteList();
                 break;
             case R.id.action_logout:
                 new AlertDialog.Builder(this)
@@ -261,7 +263,7 @@ public class DetailsActivity extends Activity {
         this.app = app;
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
-        addIgnoreOption();
+        addBlackWhiteListOption();
         drawGeneralDetails();
         drawDescription();
         drawScreenshots();
@@ -683,30 +685,39 @@ public class DetailsActivity extends Activity {
         return null;
     }
 
-    private void addIgnoreOption() {
+    private void addBlackWhiteListOption() {
         MenuItem item = getIgnoreMenuItem();
-        if (null != item) {
+        if (null != item && null != app && app.isInstalled()) {
             item.setVisible(true);
-            IgnoredAppsManager manager = new IgnoredAppsManager(this);
-            if (null != app && app.isInstalled() && manager.contains(app.getPackageName())) {
-                item.setTitle(getString(R.string.action_unignore));
-            }
+            updateBlackWhiteListItemTitle(item);
         }
     }
 
-    private void ignoreUpdates() {
-        if (null != app) {
-            MenuItem item = getIgnoreMenuItem();
-            if (null != item) {
-                IgnoredAppsManager manager = new IgnoredAppsManager(this);
-                if (manager.contains(app.getPackageName())) {
-                    manager.remove(app.getPackageName());
-                    item.setTitle(getString(R.string.action_ignore));
-                } else {
-                    manager.add(app.getPackageName());
-                    item.setTitle(getString(R.string.action_unignore));
-                }
+    private void toggleBlackWhiteList() {
+        MenuItem item = getIgnoreMenuItem();
+        if (null != item && null != app && app.isInstalled()) {
+            BlackWhiteListManager manager = new BlackWhiteListManager(this);
+            if (manager.contains(app.getPackageName())) {
+                manager.remove(app.getPackageName());
+            } else {
+                manager.add(app.getPackageName());
             }
+            updateBlackWhiteListItemTitle(item);
+        }
+    }
+
+    private void updateBlackWhiteListItemTitle(MenuItem item) {
+        BlackWhiteListManager manager = new BlackWhiteListManager(this);
+        boolean inList = manager.contains(app.getPackageName());
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean isBlacklist = prefs.getString(
+            PreferenceActivity.PREFERENCE_EMAIL,
+            PreferenceActivity.LIST_BLACK
+        ) == PreferenceActivity.LIST_BLACK;
+        if (isBlacklist) {
+            item.setTitle(getString(inList ? R.string.action_unignore : R.string.action_ignore));
+        } else {
+            item.setTitle(getString(inList ? R.string.action_unwhitelist : R.string.action_whitelist));
         }
     }
 

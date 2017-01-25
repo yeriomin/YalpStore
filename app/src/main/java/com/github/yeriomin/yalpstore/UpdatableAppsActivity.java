@@ -1,6 +1,8 @@
 package com.github.yeriomin.yalpstore;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -38,6 +40,12 @@ public class UpdatableAppsActivity extends AppListActivity {
     }
 
     protected void loadApps() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        final boolean isBlacklist = prefs.getString(
+            PreferenceActivity.PREFERENCE_EMAIL,
+            PreferenceActivity.LIST_BLACK
+        ) == PreferenceActivity.LIST_BLACK;
+
         class UpdatableAppsTask extends GoogleApiAsyncTask {
 
             private List<App> apps = new ArrayList<>();
@@ -45,12 +53,14 @@ public class UpdatableAppsActivity extends AppListActivity {
             @Override
             protected Throwable doInBackground(Void... params) {
                 // Building local apps list
-                IgnoredAppsManager manager = new IgnoredAppsManager(getApplicationContext());
+                BlackWhiteListManager manager = new BlackWhiteListManager(getApplicationContext());
                 List<String> installedAppIds = new ArrayList<>();
                 List<App> installedApps = getInstalledApps();
                 Map<String, App> appMap = new HashMap<>();
                 for (App installedApp: installedApps) {
-                    if (manager.contains(installedApp.getPackageName())) {
+                    if ((isBlacklist && manager.contains(installedApp.getPackageName()))
+                        || (!isBlacklist && !manager.contains(installedApp.getPackageName()))
+                    ) {
                         Log.i(getClass().getName(), "Ignoring updates for " + installedApp.getPackageName());
                         continue;
                     }
