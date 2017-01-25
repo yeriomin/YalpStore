@@ -42,9 +42,9 @@ public class UpdatableAppsActivity extends AppListActivity {
     protected void loadApps() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         final boolean isBlacklist = prefs.getString(
-            PreferenceActivity.PREFERENCE_EMAIL,
+            PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
             PreferenceActivity.LIST_BLACK
-        ) == PreferenceActivity.LIST_BLACK;
+        ).equals(PreferenceActivity.LIST_BLACK);
 
         class UpdatableAppsTask extends GoogleApiAsyncTask {
 
@@ -58,10 +58,14 @@ public class UpdatableAppsActivity extends AppListActivity {
                 List<App> installedApps = getInstalledApps();
                 Map<String, App> appMap = new HashMap<>();
                 for (App installedApp: installedApps) {
-                    if ((isBlacklist && manager.contains(installedApp.getPackageName()))
-                        || (!isBlacklist && !manager.contains(installedApp.getPackageName()))
-                    ) {
-                        Log.i(getClass().getName(), "Ignoring updates for " + installedApp.getPackageName());
+                    boolean inList = manager.contains(installedApp.getPackageName());
+                    if ((isBlacklist && inList) || (!isBlacklist && !inList)) {
+                        Log.i(
+                            getClass().getName(),
+                            "Ignoring updates for " + installedApp.getPackageName()
+                                + " isBlacklist=" + isBlacklist
+                                + " inList=" + inList
+                        );
                         continue;
                     }
                     String packageName = installedApp.getPackageInfo().packageName;

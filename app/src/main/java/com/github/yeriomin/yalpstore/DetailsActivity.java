@@ -739,9 +739,9 @@ public class DetailsActivity extends Activity {
         boolean inList = manager.contains(app.getPackageName());
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         boolean isBlacklist = prefs.getString(
-            PreferenceActivity.PREFERENCE_EMAIL,
+            PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
             PreferenceActivity.LIST_BLACK
-        ) == PreferenceActivity.LIST_BLACK;
+        ).equals(PreferenceActivity.LIST_BLACK);
         if (isBlacklist) {
             item.setTitle(getString(inList ? R.string.action_unignore : R.string.action_ignore));
         } else {

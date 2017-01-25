@@ -50,11 +50,11 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 
         final MultiSelectListPreference m = (MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST);
         final ListPreference blackOrWhite = (ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK);
-        m.setTitle(blackOrWhite.getValue() == LIST_BLACK
+        m.setTitle(blackOrWhite.getValue().equals(LIST_BLACK)
             ? getString(R.string.pref_update_list_black)
             : getString(R.string.pref_update_list_white)
         );
-        blackOrWhite.setSummary(blackOrWhite.getValue() == LIST_BLACK
+        blackOrWhite.setSummary(blackOrWhite.getValue().equals(LIST_BLACK)
             ? getString(R.string.pref_update_list_white_or_black_black)
             : getString(R.string.pref_update_list_white_or_black_white)
         );
