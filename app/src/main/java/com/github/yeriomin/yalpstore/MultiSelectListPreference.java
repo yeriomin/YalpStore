@@ -10,6 +10,7 @@ import android.preference.DialogPreference;
 import android.preference.Preference;
 import android.util.AttributeSet;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,7 +24,7 @@ import java.util.Set;
 public class MultiSelectListPreference extends DialogPreference {
     private CharSequence[] mEntries;
     private CharSequence[] mEntryValues;
-    private Set<String> mValues = new HashSet<String>();
+    private Set<String> mValues = new HashSet<>();
     private Set<String> mNewValues;
     private boolean mPreferenceChanged;
 
@@ -124,7 +125,7 @@ public class MultiSelectListPreference extends DialogPreference {
         // we shouldn't re-use the hash set, because
         // persistStringSet() method does not copy the passed
         // arguments.
-        final HashSet<String> clonedValues = new HashSet<String>(values);
+        final HashSet<String> clonedValues = new HashSet<>(values);
         persistStringSetCompat(clonedValues);
     }
 
@@ -164,7 +165,7 @@ public class MultiSelectListPreference extends DialogPreference {
         }
 
         if (mNewValues == null) {
-            mNewValues = new HashSet<String>();
+            mNewValues = new HashSet<>();
             mNewValues.addAll(mValues);
             mPreferenceChanged = false;
         }
@@ -214,11 +215,10 @@ public class MultiSelectListPreference extends DialogPreference {
     @Override
     protected Object onGetDefaultValue(TypedArray a, int index) {
         final CharSequence[] defaultValues = a.getTextArray(index);
-        final int valueCount = defaultValues.length;
-        final Set<String> result = new HashSet<String>();
+        final Set<String> result = new HashSet<>();
 
-        for (int i = 0; i < valueCount; i++) {
-            result.add(defaultValues[i].toString());
+        for (CharSequence defaultValue : defaultValues) {
+            result.add(defaultValue.toString());
         }
 
         return result;
@@ -298,14 +298,11 @@ public class MultiSelectListPreference extends DialogPreference {
         private static Set<String> readStringSet(Parcel source) {
             final int n = source.readInt();
             final String[] strings = new String[n];
-            final Set<String> values = new HashSet<String>(n);
+            final Set<String> values = new HashSet<>(n);
 
             source.readStringArray(strings);
 
-            final int stringCount = strings.length;
-            for (int i = 0; i < stringCount; i++) {
-                values.add(strings[i]);
-            }
+            Collections.addAll(values, strings);
 
             return values;
         }

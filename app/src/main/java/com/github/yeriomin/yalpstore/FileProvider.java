@@ -14,8 +14,7 @@ package com.github.yeriomin.yalpstore;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
-import static org.xmlpull.v1.XmlPullParser.START_TAG;
+import android.content.ClipData;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
@@ -26,17 +25,23 @@ import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.provider.OpenableColumns;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
+
 import org.xmlpull.v1.XmlPullParserException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
+import static org.xmlpull.v1.XmlPullParser.START_TAG;
 /**
  * FileProvider is a special subclass of {@link ContentProvider} that facilitates secure sharing
  * of files associated with an app by creating a <code>content://</code> {@link Uri} for a file
@@ -306,7 +311,7 @@ public class FileProvider extends ContentProvider {
     private static final String ATTR_PATH = "path";
     private static final File DEVICE_ROOT = new File("/");
     // @GuardedBy("sCache")
-    private static HashMap<String, PathStrategy> sCache = new HashMap<String, PathStrategy>();
+    final private static HashMap<String, PathStrategy> sCache = new HashMap<>();
     private PathStrategy mStrategy;
     /**
      * The default FileProvider implementation does not need to be initialized. If you want to
@@ -571,11 +576,11 @@ public class FileProvider extends ContentProvider {
         /**
          * Return a {@link Uri} that represents the given {@link File}.
          */
-        public Uri getUriForFile(File file);
+        Uri getUriForFile(File file);
         /**
          * Return a {@link File} that represents the given {@link Uri}.
          */
-        public File getFileForUri(Uri uri);
+        File getFileForUri(Uri uri);
     }
     /**
      * Strategy that provides access to files living under a narrow whitelist of
@@ -589,7 +594,7 @@ public class FileProvider extends ContentProvider {
      */
     static class SimplePathStrategy implements PathStrategy {
         private final String mAuthority;
-        private final HashMap<String, File> mRoots = new HashMap<String, File>();
+        private final HashMap<String, File> mRoots = new HashMap<>();
         public SimplePathStrategy(String authority) {
             mAuthority = authority;
         }

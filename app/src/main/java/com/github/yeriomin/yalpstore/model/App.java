@@ -22,7 +22,7 @@ public class App {
     private Drawable icon;
     private String iconUrl;
     private String changes;
-    private Developer developer;
+    private Developer developer = new Developer();
     private String description;
     private List<String> permissions;
     private boolean isInstalled;
@@ -146,14 +146,7 @@ public class App {
     }
 
     public Developer getDeveloper() {
-        if (null == developer) {
-            developer = new Developer();
-        }
         return developer;
-    }
-
-    public void setDeveloper(Developer developer) {
-        this.developer = developer;
     }
 
     public String getDescription() {

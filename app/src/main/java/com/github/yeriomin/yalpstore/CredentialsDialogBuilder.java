@@ -80,7 +80,7 @@ public class CredentialsDialogBuilder {
     static private void toast(Context c, int stringId, String... stringArgs) {
         Toast.makeText(
             c.getApplicationContext(),
-            c.getString(stringId, stringArgs),
+            c.getString(stringId, (Object[]) stringArgs),
             Toast.LENGTH_LONG
         ).show();
     }
@@ -124,9 +124,7 @@ public class CredentialsDialogBuilder {
             this.progressOverlay.setVisibility(View.VISIBLE);
             this.progressOverlay.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    return;
-                }
+                public void onClick(View v) {}
             });
             super.onPreExecute();
         }

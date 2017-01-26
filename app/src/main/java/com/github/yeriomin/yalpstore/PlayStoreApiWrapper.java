@@ -277,7 +277,7 @@ public class PlayStoreApiWrapper {
         if (null == query || query.isEmpty()) {
             Log.w(this.getClass().getName(), "Query empty, so don't expect meaningful results");
         }
-        if (null == searchResultIterator || query != searchResultIterator.getQuery()) {
+        if (null == searchResultIterator || !searchResultIterator.getQuery().equals(query)) {
             searchResultIterator = new AppSearchResultIterator(getApi().getSearchIterator(query));
         }
         return searchResultIterator;

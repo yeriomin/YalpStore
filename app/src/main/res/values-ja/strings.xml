@@ -32,7 +32,6 @@
     <string name="details_versionName" formatted="false">バージョン %s</string>
     <string name="details_versionName_updatable" formatted="false">バージョン %s → %s</string>
     <string name="details_download">ダウンロード</string>
-    <string name="details_download_nonfree">アプリは無料ではありません - ダウンロードは無効です</string>
     <string name="suffix_million">百万</string>
     <string name="suffix_billion">十億</string>
     <string name="credentials_hint_email">ここにメールアドレス</string>

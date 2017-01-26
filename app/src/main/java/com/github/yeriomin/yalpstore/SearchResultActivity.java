@@ -25,7 +25,7 @@ public class SearchResultActivity extends AppListActivity {
         super.onNewIntent(intent);
 
         String newQuery = getQuery(intent);
-        if (newQuery != this.query) {
+        if (null != newQuery && !newQuery.equals(this.query)) {
             this.data.clear();
             this.query = newQuery;
             setTitle(getString(R.string.activity_title_search, this.query));
@@ -47,11 +47,7 @@ public class SearchResultActivity extends AppListActivity {
             private int lastLastitem;
 
             @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-                if (scrollState != AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
-                    return;
-                }
-            }
+            public void onScrollStateChanged(AbsListView view, int scrollState) {}
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {

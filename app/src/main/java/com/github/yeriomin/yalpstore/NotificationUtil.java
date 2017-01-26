@@ -8,9 +8,9 @@ import android.os.Build;
 
 import java.lang.reflect.Method;
 
-public class NotificationUtil {
+class NotificationUtil {
 
-    public static Notification createNotification(Context context, PendingIntent pendingIntent, String title, String text, int iconId) {
+    static Notification createNotification(Context context, PendingIntent pendingIntent, String title, String text, int iconId) {
         Notification notification;
         if (isNotificationBuilderSupported()) {
             notification = buildNotificationWithBuilder(context, pendingIntent, title, text, iconId);
@@ -20,7 +20,7 @@ public class NotificationUtil {
         return notification;
     }
 
-    public static boolean isNotificationBuilderSupported() {
+    private static boolean isNotificationBuilderSupported() {
         try {
             return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) && Class.forName("android.app.Notification.Builder") != null;
         } catch (ClassNotFoundException e) {

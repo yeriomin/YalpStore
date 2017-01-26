@@ -754,7 +754,7 @@ public class DetailsActivity extends Activity {
         private Context context;
         private Review review;
 
-        public ReviewAddTask(Context context) {
+        ReviewAddTask(Context context) {
             this.context = context;
         }
 
@@ -784,7 +784,7 @@ public class DetailsActivity extends Activity {
 
         private Context context;
 
-        public ReviewDeleteTask(Context context) {
+        ReviewDeleteTask(Context context) {
             this.context = context;
         }
 
@@ -815,7 +815,7 @@ public class DetailsActivity extends Activity {
         private List<String> screenshotUrls;
         private int screenWidth;
 
-        public ImageAdapter(Context context, List<String> screenshotUrls, int screenWidth) {
+        ImageAdapter(Context context, List<String> screenshotUrls, int screenWidth) {
             this.context = context;
             this.screenshotUrls = screenshotUrls;
             this.screenWidth = screenWidth;

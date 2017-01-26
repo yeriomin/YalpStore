@@ -47,7 +47,7 @@
     <string name="details_versionName_updatable" formatted="false">Version %s → %s</string>
     <string name="details_download">Herunterladen</string>
     <string name="details_install">Installieren</string>
-    <string name="details_downloading">Herunterladen...</string>
+    <string name="details_downloading">Herunterladen…</string>
     <string name="details_download_impossible">Fehler. App-Version konnte nicht ermittelt werden.</string>
     <string name="suffix_million">Million</string>
     <string name="suffix_billion">Billion</string>
@@ -65,8 +65,6 @@
     <string name="pref_auto_install_summary_off">Apps werden installiert sobald die Benachrichtigung des abgeschlossenen Downloads angetippt wird</string>
     <string name="pref_auto_install_summary_on">Apps werden installiert sobald der Download abgeschlossen ist.</string>
     <string name="pref_auto_install">Apps sofort installieren.</string>
-    <string name="pref_clear_ignored_apps">Leere die Liste ignorierter Apps</string>
-    <string name="pref_done">Abgeschlossen</string>
     <string name="download_manager_ERROR_UNKNOWN">Unbekannter Fehler.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unbekannter Datei Speicherfehler.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Es wurde ein HTTP-Code empfangen den die Download-Verwaltung nicht verarbeiten kann. Dies ist ein Serverfehler.</string>
