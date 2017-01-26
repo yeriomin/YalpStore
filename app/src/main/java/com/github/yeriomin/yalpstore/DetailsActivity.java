@@ -845,8 +845,12 @@ public class DetailsActivity extends Activity {
                 protected void onPostExecute(Void aVoid) {
                     super.onPostExecute(aVoid);
                     Bitmap bitmap = ((BitmapDrawable) this.view.getDrawable()).getBitmap();
-                    int w = Math.min(screenWidth, bitmap.getWidth());
-                    int h = Math.min(screenWidth, bitmap.getHeight());
+                    int w = screenWidth;
+                    int h = screenWidth;
+                    if (null != bitmap) {
+                        w = Math.min(w, bitmap.getWidth());
+                        h = Math.min(h, bitmap.getHeight());
+                    }
                     this.view.setLayoutParams(new Gallery.LayoutParams(w, h));
                     this.view.setScaleType(ImageView.ScaleType.FIT_CENTER);
                     if (this.view.getParent() instanceof Gallery) {
