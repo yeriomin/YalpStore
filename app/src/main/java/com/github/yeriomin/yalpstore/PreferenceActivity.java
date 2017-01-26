@@ -49,7 +49,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         }
 
         final MultiSelectListPreference m = (MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST);
-        final ListPreference blackOrWhite = (ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK);
+        ListPreference blackOrWhite = (ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK);
         m.setTitle(blackOrWhite.getValue().equals(LIST_BLACK)
             ? getString(R.string.pref_update_list_black)
             : getString(R.string.pref_update_list_white)
@@ -68,23 +68,23 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
                 switch (value) {
                     case LIST_BLACK:
                         m.setTitle(getString(R.string.pref_update_list_black));
-                        blackOrWhite.setSummary(getString(R.string.pref_update_list_white_or_black_black));
+                        preference.setSummary(getString(R.string.pref_update_list_white_or_black_black));
                         break;
                     case LIST_WHITE:
                         m.setTitle(getString(R.string.pref_update_list_white));
-                        blackOrWhite.setSummary(getString(R.string.pref_update_list_white_or_black_white));
+                        preference.setSummary(getString(R.string.pref_update_list_white_or_black_white));
                         break;
                 }
                 return true;
             }
         });
 
-        final ListPreference theme = (ListPreference) findPreference(PREFERENCE_UI_THEME);
+        ListPreference theme = (ListPreference) findPreference(PREFERENCE_UI_THEME);
         theme.setSummary(getString(getThemeSummaryStringId(theme.getValue())));
         theme.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, final Object newValue) {
-                theme.setSummary(getString(getThemeSummaryStringId((String) newValue)));
+                preference.setSummary(getString(getThemeSummaryStringId((String) newValue)));
                 return true;
             }
         });
