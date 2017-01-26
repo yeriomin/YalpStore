@@ -372,8 +372,10 @@ public class DetailsActivity extends Activity {
                 public void onClick(View v) {
                     Review review = new Review();
                     review.setRating(stars);
-                    review.setComment(app.getUserReview().getComment());
-                    review.setTitle(app.getUserReview().getTitle());
+                    if (null != app.getUserReview()) {
+                        review.setComment(app.getUserReview().getComment());
+                        review.setTitle(app.getUserReview().getTitle());
+                    }
                     showUserReviewCommentDialog(review);
                 }
             });
