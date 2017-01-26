@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.app.DownloadManager;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -295,6 +296,8 @@ public class PlayStoreApiWrapper {
 
         if (path.exists()) {
             Log.i(this.getClass().getName(), path.getName() + " exists. No download needed.");
+            NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            manager.cancel(app.getDisplayName().hashCode());
             context.startActivity(getOpenApkIntent(context, path));
         } else {
             Log.i(this.getClass().getName(), "Downloading apk to " + path.getName());
