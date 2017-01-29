@@ -1,16 +1,10 @@
 package com.github.yeriomin.yalpstore;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class UpdatableAppsActivity extends AppListActivity {
@@ -40,90 +34,29 @@ public class UpdatableAppsActivity extends AppListActivity {
     }
 
     protected void loadApps() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        final boolean isBlacklist = prefs.getString(
-            PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
-            PreferenceActivity.LIST_BLACK
-        ).equals(PreferenceActivity.LIST_BLACK);
+        UpdatableAppsTask taskClone = getTask();
+        UpdatableAppsTask task = getTask();
+        task.setTaskClone(taskClone);
+        task.execute();
+    }
 
-        class UpdatableAppsTask extends GoogleApiAsyncTask {
-
-            private List<App> apps = new ArrayList<>();
-
-            @Override
-            protected Throwable doInBackground(Void... params) {
-                // Building local apps list
-                BlackWhiteListManager manager = new BlackWhiteListManager(getApplicationContext());
-                List<String> installedAppIds = new ArrayList<>();
-                List<App> installedApps = getInstalledApps();
-                Map<String, App> appMap = new HashMap<>();
-                for (App installedApp: installedApps) {
-                    boolean inList = manager.contains(installedApp.getPackageName());
-                    if ((isBlacklist && inList) || (!isBlacklist && !inList)) {
-                        Log.i(
-                            getClass().getName(),
-                            "Ignoring updates for " + installedApp.getPackageName()
-                                + " isBlacklist=" + isBlacklist
-                                + " inList=" + inList
-                        );
-                        continue;
-                    }
-                    String packageName = installedApp.getPackageInfo().packageName;
-                    installedAppIds.add(packageName);
-                    appMap.put(packageName, installedApp);
-                }
-                // Requesting info from Google Play Market for installed apps
-                PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.context);
-                List<App> appsFromPlayMarket = new ArrayList<>();
-                try {
-                    appsFromPlayMarket.addAll(wrapper.getDetails(installedAppIds));
-                } catch (Throwable e) {
-                    return e;
-                }
-                // Comparing versions and building updatable apps list
-                for (App appFromMarket: appsFromPlayMarket) {
-                    String packageName = appFromMarket.getPackageName();
-                    if (null == packageName || packageName.isEmpty()) {
-                        continue;
-                    }
-                    App installedApp = appMap.get(packageName);
-                    if (installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
-                        installedApp.setUpdated(appFromMarket.getUpdated());
-                        installedApp.setVersionCode(appFromMarket.getVersionCode());
-                        installedApp.setOfferType(appFromMarket.getOfferType());
-                        apps.add(installedApp);
-                    }
-                }
-                return null;
-            }
-
+    private UpdatableAppsTask getTask() {
+        UpdatableAppsTask task = new UpdatableAppsTask() {
             @Override
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
-                if (null != this.apps) {
-                    addApps(apps);
+                if (null == e) {
+                    addApps(this.apps);
                 }
             }
-        }
-
-        UpdatableAppsTask taskClone = new UpdatableAppsTask();
-        taskClone.setErrorView((TextView) getListView().getEmptyView());
-        taskClone.setContext(this);
-        taskClone.prepareDialog(
-            getString(R.string.dialog_message_loading_app_list_update),
-            getString(R.string.dialog_title_loading_app_list_update)
-        );
-
-        UpdatableAppsTask task = new UpdatableAppsTask();
-        task.setTaskClone(taskClone);
+        };
         task.setErrorView((TextView) getListView().getEmptyView());
         task.setContext(this);
         task.prepareDialog(
             getString(R.string.dialog_message_loading_app_list_update),
             getString(R.string.dialog_title_loading_app_list_update)
         );
-        task.execute();
+        return task;
     }
-
 }
 

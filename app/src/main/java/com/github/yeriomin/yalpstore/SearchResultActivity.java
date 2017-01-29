@@ -80,7 +80,7 @@ public class SearchResultActivity extends AppListActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                List<App> installed = getInstalledApps();
+                List<App> installed = UpdatableAppsTask.getInstalledApps(context);
                 for (App installedApp: installed) {
                     installedPackageNames.add(installedApp.getPackageName());
                 }

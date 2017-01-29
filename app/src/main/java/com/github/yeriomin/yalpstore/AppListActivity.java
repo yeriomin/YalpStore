@@ -4,9 +4,6 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
@@ -105,25 +102,6 @@ abstract public class AppListActivity extends ListActivity {
             data.add(this.formatApp(app));
         }
         ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
-    }
-
-    protected List<App> getInstalledApps() {
-        List<App> apps = new ArrayList<>();
-
-        PackageManager pm = getPackageManager();
-        List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_META_DATA);
-        for (PackageInfo packageInfo : packages) {
-            if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                // This is a system app - skipping
-                continue;
-            }
-            App app = new App(packageInfo);
-            app.setDisplayName(pm.getApplicationLabel(packageInfo.applicationInfo).toString());
-            app.setIcon(pm.getApplicationIcon(packageInfo.applicationInfo));
-            app.setInstalled(true);
-            apps.add(app);
-        }
-        return apps;
     }
 
     private SimpleAdapter getSimpleListAdapter() {

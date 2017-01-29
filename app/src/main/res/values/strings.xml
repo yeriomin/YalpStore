@@ -73,6 +73,8 @@
     <string name="activity_title_search" formatted="false">Searching: "%s"</string>
     <string name="notification_download_complete">Download complete. Touch to install.</string>
     <string name="notification_download_complete_toast" formatted="false">%s downloaded. Touch notification to install.</string>
+    <string name="notification_updates_available_title">App updates available.</string>
+    <string name="notification_updates_available_message" formatted="false">Updates are available for %d of your apps.</string>
     <string name="pref_hide_nonfree_apps_summary_off">Paid apps are displayed now</string>
     <string name="pref_hide_nonfree_apps_summary_on">Paid apps are not displayed now</string>
     <string name="pref_hide_nonfree_apps">Hide paid apps</string>
@@ -89,6 +91,9 @@
     <string name="pref_ui_theme_light">Light</string>
     <string name="pref_ui_theme_dark">Dark</string>
     <string name="pref_ui_theme_black">Black</string>
+    <string name="pref_background_update_check_summary_off">Updates are checked only when you launch Yalp Store</string>
+    <string name="pref_background_update_check_summary_on">Updates are checked periodically (once an hour)</string>
+    <string name="pref_background_update_check">Check for updates periodically</string>
     <string name="download_manager_ERROR_UNKNOWN">Unknown error.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unknown file storage error.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">HTTP code was received that download manager can not handle. This is a server error.</string>

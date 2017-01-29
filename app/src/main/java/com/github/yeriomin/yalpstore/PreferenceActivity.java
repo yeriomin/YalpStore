@@ -1,9 +1,13 @@
 package com.github.yeriomin.yalpstore;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 
@@ -20,6 +24,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK = "PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK";
     public static final String PREFERENCE_UPDATE_LIST = "PREFERENCE_UPDATE_LIST";
     public static final String PREFERENCE_UI_THEME = "PREFERENCE_UI_THEME";
+    public static final String PREFERENCE_BACKGROUND_UPDATE_CHECK = "PREFERENCE_BACKGROUND_UPDATE_CHECK";
 
     public static final String LIST_WHITE = "white";
     public static final String LIST_BLACK = "black";
@@ -28,6 +33,8 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String THEME_LIGHT = "light";
     public static final String THEME_DARK = "dark";
     public static final String THEME_BLACK = "black";
+
+    public static final int UPDATE_INTERVAL = 1000 * 60 * 60;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,6 +92,27 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
             @Override
             public boolean onPreferenceChange(Preference preference, final Object newValue) {
                 preference.setSummary(getString(getThemeSummaryStringId((String) newValue)));
+                return true;
+            }
+        });
+
+        CheckBoxPreference checkForUpdates = (CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_CHECK);
+        checkForUpdates.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                boolean value = (Boolean) newValue;
+                Intent intent = new Intent(getApplicationContext(), UpdateChecker.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarmManager.cancel(pendingIntent);
+                if (value) {
+                    alarmManager.setRepeating(
+                        AlarmManager.RTC_WAKEUP,
+                        System.currentTimeMillis(),
+                        UPDATE_INTERVAL,
+                        pendingIntent
+                    );
+                }
                 return true;
             }
         });

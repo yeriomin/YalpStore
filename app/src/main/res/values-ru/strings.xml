@@ -71,6 +71,8 @@
     <string name="activity_title_search" formatted="false">Поиск: "%s"</string>
     <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>
     <string name="notification_download_complete_toast" formatted="false">Загрузка %s завершена. Нажмите на уведомление чтобы установить.</string>
+    <string name="notification_updates_available_title">Есть обновления приложений.</string>
+    <string name="notification_updates_available_message" formatted="false">Для %d приложений есть обновления.</string>
     <string name="pref_hide_nonfree_apps_summary_off">Сейчас платные приложения отображаются</string>
     <string name="pref_hide_nonfree_apps_summary_on">Сейчас платные приложения не отображаются</string>
     <string name="pref_hide_nonfree_apps">Не показывать платные приложения</string>
@@ -87,6 +89,9 @@
     <string name="pref_ui_theme_light">Светлая</string>
     <string name="pref_ui_theme_dark">Тёмная</string>
     <string name="pref_ui_theme_black">Чёрная</string>
+    <string name="pref_background_update_check_summary_off">Проверка обновлений происходит только при запуске Yalp Store</string>
+    <string name="pref_background_update_check_summary_on">Проверка обновлений происходит периодически (раз в час)</string>
+    <string name="pref_background_update_check">Периодически проверять обновления</string>
     <string name="download_manager_ERROR_UNKNOWN">Неизвестная ошибка.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Неизвестная ошибка сохранения файла.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Сетевая ошибка. Попробуйте позднее.</string>

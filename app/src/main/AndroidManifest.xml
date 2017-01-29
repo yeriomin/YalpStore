@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.github.yeriomin.yalpstore">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.github.yeriomin.yalpstore"
+          android:installLocation="internalOnly" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="false"
@@ -24,6 +27,18 @@
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.github.yeriomin.yalpstore.UpdateChecker"
+            android:exported="false">
+        </receiver>
+        <receiver
+            android:name="com.github.yeriomin.yalpstore.BootReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
         <provider

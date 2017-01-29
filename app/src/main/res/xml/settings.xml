@@ -3,6 +3,12 @@
 
     <CheckBoxPreference
         android:defaultValue="false"
+        android:key="PREFERENCE_BACKGROUND_UPDATE_CHECK"
+        android:summaryOff="@string/pref_background_update_check_summary_off"
+        android:summaryOn="@string/pref_background_update_check_summary_on"
+        android:title="@string/pref_background_update_check" />
+    <CheckBoxPreference
+        android:defaultValue="false"
         android:key="PREFERENCE_HIDE_NONFREE_APPS"
         android:summaryOff="@string/pref_hide_nonfree_apps_summary_off"
         android:summaryOn="@string/pref_hide_nonfree_apps_summary_on"
