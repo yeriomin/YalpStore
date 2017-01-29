@@ -364,6 +364,7 @@ public class DetailsActivity extends Activity {
         setText(R.id.average_stars2, R.string.details_rating_specific, 2, app.getRating().getTwoStars());
         setText(R.id.average_stars1, R.string.details_rating_specific, 1, app.getRating().getOneStar());
 
+        findViewById(R.id.user_review_container).setVisibility(app.isInstalled() ? View.VISIBLE : View.GONE);
         for (int i = 0; i < starIds.length; i++) {
             final int stars = i + 1;
             int starId = starIds[i];
