@@ -8,8 +8,8 @@ android {
         applicationId "com.github.yeriomin.yalpstore"
         minSdkVersion 9
         targetSdkVersion 25
-        versionCode 5
-        versionName "0.5"
+        versionCode 6
+        versionName "0.6"
     }
     buildTypes {
         release {
@@ -24,5 +24,5 @@ android {
 }
 
 dependencies {
-    compile 'com.github.yeriomin:play-store-api:0.5'
+    compile 'com.github.yeriomin:play-store-api:0.6'
 }
