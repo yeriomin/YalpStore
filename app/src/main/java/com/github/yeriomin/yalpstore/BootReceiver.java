@@ -13,6 +13,9 @@ public class BootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        if (!Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
+            return;
+        }
         Intent checkerIntent = new Intent(context, UpdateChecker.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, checkerIntent, 0);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
