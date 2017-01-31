@@ -217,8 +217,10 @@ public class MultiSelectListPreference extends DialogPreference {
         final CharSequence[] defaultValues = a.getTextArray(index);
         final Set<String> result = new HashSet<>();
 
-        for (CharSequence defaultValue : defaultValues) {
-            result.add(defaultValue.toString());
+        if (null != defaultValues) {
+            for (CharSequence defaultValue : defaultValues) {
+                result.add(defaultValue.toString());
+            }
         }
 
         return result;
