@@ -461,6 +461,8 @@ public class DetailsActivity extends Activity {
                                 button.setEnabled(false);
                             } else if (e instanceof NotPurchasedException) {
                                 Toast.makeText(getApplicationContext(), getString(R.string.error_not_purchased), Toast.LENGTH_LONG).show();
+                            } else if (e instanceof SignatureMismatchException) {
+                                getSignatureMismatchDialog(context).show();
                             }
                         }
                     };
@@ -477,6 +479,19 @@ public class DetailsActivity extends Activity {
                 }
             });
         }
+    }
+
+    private AlertDialog getSignatureMismatchDialog(Context c) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setMessage(R.string.details_signature_mismatch).setPositiveButton(
+            android.R.string.ok,
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+        return builder.create();
     }
 
     private void setText(int viewId, String text) {

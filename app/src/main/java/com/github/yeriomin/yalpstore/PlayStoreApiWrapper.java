@@ -291,14 +291,19 @@ public class PlayStoreApiWrapper {
         return suggestions;
     }
 
-    public long download(App app) throws IOException, NotPurchasedException {
+    public long download(App app) throws IOException, NotPurchasedException, SignatureMismatchException {
         File path = getApkPath(app);
 
         if (path.exists()) {
             Log.i(this.getClass().getName(), path.getName() + " exists. No download needed.");
             NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             manager.cancel(app.getDisplayName().hashCode());
-            context.startActivity(getOpenApkIntent(context, path));
+            ApkSignatureVerifier verifier = new ApkSignatureVerifier(context);
+            if (verifier.match(app.getPackageName(), path)) {
+                context.startActivity(getOpenApkIntent(context, path));
+            } else {
+                throw new SignatureMismatchException();
+            }
         } else {
             Log.i(this.getClass().getName(), "Downloading apk to " + path.getName());
             AndroidAppDeliveryData appDeliveryData;
@@ -324,6 +329,7 @@ public class PlayStoreApiWrapper {
                 path.getName()
             );
             request.setDestinationUri(uri);
+            request.setDescription(app.getPackageName()); // hacky
             request.setTitle(app.getDisplayName());
 
             return ((DownloadManager) this.context.getSystemService(DOWNLOAD_SERVICE)).enqueue(request);

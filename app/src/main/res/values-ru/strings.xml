@@ -61,6 +61,7 @@
     <string name="details_apps_by_this_dev">Приложения этого разработчика</string>
     <string name="details_similar_apps">Похожие приложения</string>
     <string name="details_users_also_installed">Пользователи также установили</string>
+    <string name="details_signature_mismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте ещё раз. (При удалении приложения все его данные будут потеряны)</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>
     <string name="credentials_hint_email">e-mail</string>
@@ -70,7 +71,9 @@
     <string name="activity_title_updates">Обновления</string>
     <string name="activity_title_search" formatted="false">Поиск: "%s"</string>
     <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>
-    <string name="notification_download_complete_toast" formatted="false">Загрузка %s завершена. Нажмите на уведомление чтобы установить.</string>
+    <string name="notification_download_complete_toast" formatted="false">Загрузка %s завершена. Нажмите на кнопку \"Установить\" уведомление чтобы установить.</string>
+    <string name="notification_download_complete_signature_mismatch" formatted="false">Загрузка завершена. Подпись apk не совпадает с подписью установленного приложения.</string>
+    <string name="notification_download_complete_signature_mismatch_toast" formatted="false">Загрузка %s завершена. Подпись apk не совпадает с подписью установленного приложения. Вы установили это приложение не из Google Play? Возможно, придётся сначала его удалить.</string>
     <string name="notification_updates_available_title">Есть обновления приложений.</string>
     <string name="notification_updates_available_message" formatted="false">Для %d приложений есть обновления.</string>
     <string name="pref_hide_nonfree_apps_summary_off">Сейчас платные приложения отображаются</string>
