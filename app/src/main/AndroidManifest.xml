@@ -71,7 +71,7 @@
             </intent-filter>
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
         </activity>
-        <activity android:name=".SearchResultActivity" android:configChanges="keyboardHidden|orientation|screenSize" >
+        <activity android:name=".SearchResultActivity" android:launchMode="singleTask" android:configChanges="keyboardHidden|orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -94,8 +94,8 @@
         </activity>
         <activity android:name=".PreferenceActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".FullscreenImageActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name=".SimilarAppsActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name=".UsersAlsoInstalledActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".SimilarAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".UsersAlsoInstalledActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
     </application>
 
 </manifest>
