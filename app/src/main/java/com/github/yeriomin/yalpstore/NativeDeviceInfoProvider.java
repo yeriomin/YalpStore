@@ -20,6 +20,9 @@ import java.util.TimeZone;
 
 public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
+    // Getting this requires a permission and google services to be installed
+    static private final int GOOGLE_SERVICES_VERSION_CODE = 80711500;
+
     private Context context;
     private String localeString;
 
@@ -38,7 +41,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     public String getUserAgentString() {
         return "Android-Finsky/7.1.15 ("
             + "api=3"
-            + ",versionCode=80711500"
+            + ",versionCode=" + GOOGLE_SERVICES_VERSION_CODE
             + ",sdk=" + Build.VERSION.SDK_INT
             + ",device=" + Build.DEVICE
             + ",hardware=" + Build.HARDWARE
@@ -67,7 +70,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
                             .setClient("android-google")
                             .setOtaInstalled(false)
                             .setTimestamp(System.currentTimeMillis() / 1000)
-                            .setGoogleServices(16)
+                            .setGoogleServices(GOOGLE_SERVICES_VERSION_CODE)
                     )
                     .setLastCheckinMsec(0)
                     .setCellOperator("310260") // Getting this and the next two requires permission
@@ -95,7 +98,10 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         }
         List<String> localeStringList = new ArrayList<>();
         for (Locale locale : Locale.getAvailableLocales()) {
-            localeStringList.add(locale.toString());
+            String localeString = locale.toString();
+            if (localeString.length() <= 5) {
+                localeStringList.add(localeString);
+            }
         }
         List<String> platforms = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= 21) {
