@@ -60,9 +60,10 @@
     <string name="details_apps_by_this_dev">Weitere Apps von diesem Entwickler</string>
     <string name="details_similar_apps">Ähnliche Apps</string>
     <string name="details_users_also_installed">Apps die Nutzer auch installierten</string>
+    <string name="details_signature_mismatch">Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren, muss zunächst die alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: Beim Entfernen werden alle intern gespeicherten Daten dieser Anwendung gelöscht.)</string>
     <string name="suffix_million">Mio</string>
     <string name="suffix_billion">Mrd</string>
-    <string name="credentials_hint_email">E-Mail</string>
+    <string name="credentials_hint_email">E-mail</string>
     <string name="credentials_hint_password">Passwort</string>
     <string name="credentials_title">Google Konto Zugang</string>
     <string name="credentials_message">Für die Verwendung dieser App wird eine Google E-Mail Adresse und ein Passwort benötigt.\nVergiss nicht das die Verwendung dieser App gegen die Play Store Nutzungsbedingungen verstößt. Wahrscheinlich ist es sicherer ein unwichtiges Google-Konto zu verwenden, welches mindestens einmal im Play Store eingeloggt war um den Nutzungsbedingungen zuzustimmen.</string>

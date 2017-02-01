@@ -35,7 +35,7 @@
     <string name="error_credentials_empty">Provide google account credentials, please.</string>
     <string name="error_no_network">No network connection.</string>
     <string name="error_network_other" formatted="false">Network error: %s</string>
-    <string name="error_not_purchased">The app does not seem to be purchased.</string>
+    <string name="error_not_purchased">The app does not seem to be purchased.\nRedirect to its Play Store web page?</string>
     <string name="error_downloads_directory_not_writable">Downloads directory could not be created or is not writable.</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
@@ -63,6 +63,7 @@
     <string name="details_apps_by_this_dev">Other apps by this developer</string>
     <string name="details_similar_apps">Similar apps</string>
     <string name="details_users_also_installed">Users also installed</string>
+    <string name="details_signature_mismatch">The new version is signed with a different key to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
     <string name="suffix_million">mil</string>
     <string name="suffix_billion">bil</string>
     <string name="credentials_hint_email">e-mail here</string>
@@ -72,7 +73,9 @@
     <string name="activity_title_updates">Updates</string>
     <string name="activity_title_search" formatted="false">Searching: "%s"</string>
     <string name="notification_download_complete">Download complete. Touch to install.</string>
-    <string name="notification_download_complete_toast" formatted="false">%s downloaded. Touch notification to install.</string>
+    <string name="notification_download_complete_toast" formatted="false">%s downloaded. Touch install button or notification to install.</string>
+    <string name="notification_download_complete_signature_mismatch" formatted="false">Download complete. apk signature mismatch, though.</string>
+    <string name="notification_download_complete_signature_mismatch_toast" formatted="false">%s downloaded. But apk signature does not match installed app. Did you get this app not from Google Play originally? You might have to uninstall it first.</string>
     <string name="notification_updates_available_title">App updates available.</string>
     <string name="notification_updates_available_message" formatted="false">Updates are available for %d of your apps.</string>
     <string name="pref_hide_nonfree_apps_summary_off">Paid apps are displayed now</string>

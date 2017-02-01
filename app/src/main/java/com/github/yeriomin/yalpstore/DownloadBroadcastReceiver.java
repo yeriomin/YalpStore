@@ -31,23 +31,34 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
         if (cursor.moveToFirst()) {
             int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
             int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
-            String packageName = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_TITLE));
+            String displayName = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_TITLE));
+            String packageName = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_DESCRIPTION));
             if (status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS) {
+                ApkSignatureVerifier verifier = new ApkSignatureVerifier(c);
                 File file = new File(Uri.parse(cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI))).getPath());
                 Intent openApkIntent = PlayStoreApiWrapper.getOpenApkIntent(c, file);
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(c);
-                if (sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_AUTO_INSTALL, false)) {
-                    c.startActivity(openApkIntent);
+                if (verifier.match(packageName, file)) {
+                    if (shouldAutoInstall(c)) {
+                        c.startActivity(openApkIntent);
+                    } else {
+                        createNotification(c, openApkIntent, displayName, c.getString(R.string.notification_download_complete));
+                        toast(c, c.getString(R.string.notification_download_complete_toast, displayName));
+                    }
                 } else {
-                    createNotification(c, openApkIntent, packageName, c.getString(R.string.notification_download_complete));
-                    toast(c, c.getString(R.string.notification_download_complete_toast, packageName));
+                    createNotification(c, openApkIntent, displayName, c.getString(R.string.notification_download_complete_signature_mismatch));
+                    toast(c, c.getString(R.string.notification_download_complete_signature_mismatch_toast, displayName));
                 }
             } else if (reason > 0) {
                 String error = getErrorString(c, reason);
                 toast(c, error);
-                createNotification(c, new Intent(), packageName, error);
+                createNotification(c, new Intent(), displayName, error);
             }
         }
+    }
+
+    private boolean shouldAutoInstall(Context c) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(c);
+        return sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_AUTO_INSTALL, false);
     }
 
     private void toast(Context c, String message) {

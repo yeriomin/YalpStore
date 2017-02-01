@@ -20,6 +20,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -57,6 +58,7 @@ public class DetailsActivity extends Activity {
     static private final int REVIEW_LOAD_COUNT = 15;
 
     static final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
+    static final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
 
     private int reviewShowPage = 0;
     private int reviewLoadPage = 0;
@@ -460,7 +462,9 @@ public class DetailsActivity extends Activity {
                                 button.setText(R.string.details_downloading);
                                 button.setEnabled(false);
                             } else if (e instanceof NotPurchasedException) {
-                                Toast.makeText(getApplicationContext(), getString(R.string.error_not_purchased), Toast.LENGTH_LONG).show();
+                                getNotPurchasedDialog(context).show();
+                            } else if (e instanceof SignatureMismatchException) {
+                                getSignatureMismatchDialog(context).show();
                             }
                         }
                     };
@@ -477,6 +481,51 @@ public class DetailsActivity extends Activity {
                 }
             });
         }
+    }
+
+    private AlertDialog getNotPurchasedDialog(Context c) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder
+            .setMessage(R.string.error_not_purchased)
+            .setPositiveButton(
+                android.R.string.ok,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(URL_PURCHASE + app.getPackageName()));
+                        startActivity(i);
+                    }
+                }
+            )
+            .setNegativeButton(
+                android.R.string.cancel,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }
+            )
+        ;
+        return builder.create();
+    }
+
+    private AlertDialog getSignatureMismatchDialog(Context c) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder
+            .setMessage(R.string.details_signature_mismatch)
+            .setPositiveButton(
+                android.R.string.ok,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }
+            )
+        ;
+        return builder.create();
     }
 
     private void setText(int viewId, String text) {
