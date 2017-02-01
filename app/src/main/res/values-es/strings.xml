@@ -1,0 +1,99 @@
+<resources>
+    <string name="list_line_2_updatable" formatted="false">Actualizada el %s</string>
+    <string name="list_empty_updates">No hay aplicaciones por actualizar</string>
+    <string name="list_empty_search">No se encontraron aplicaciones</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="action_search">Buscar</string>
+    <string name="action_updates">Actualizaciones</string>
+    <string name="action_ignore">Ignorar actualizaciones</string>
+    <string name="action_unignore">Dejar de ignorar actualizaciones</string>
+    <string name="action_whitelist">Permitir actualizaciones</string>
+    <string name="action_unwhitelist">Ignorar actualizaciones</string>
+    <string name="search_title">Buscar aplicaciones</string>
+    <string name="dialog_two_factor_cancel">Ahora no</string>
+    <string name="dialog_two_factor_create_password">Crear contraseña</string>
+    <string name="dialog_title_two_factor">Verificación en dos pasos</string>
+    <string name="dialog_message_two_factor">Parece que tienes la verificación en dos pasos activada para tu cuenta.\n\nPor favor, crea una contraseña dedicada para Yalp Store y usala para iniciar sesión en Yalp Store.\n\nToca \"Crear contraseña\" para ser redirigido a la página de creación de contraseñas.</string>
+    <string name="dialog_title_logout">¿Cerrar sesión?</string>
+    <string name="dialog_message_logout">¿Estás seguro que deseas cerrar sesión?</string>
+    <string name="dialog_title_reviews">Obteniendo comentarios</string>
+    <string name="dialog_message_reviews">Por favor espera. Obteniendo comentarios.</string>
+    <string name="dialog_title_purchasing_app">Descargando aplicación</string>
+    <string name="dialog_message_purchasing_app">Por favor espera. Iniciando la descarga de la aplicación solicitada.</string>
+    <string name="dialog_title_loading_app_details">Obteniendo detalles</string>
+    <string name="dialog_message_loading_app_details">Por favor espera. Obteniendo detalles de la aplicación solicitada.</string>
+    <string name="dialog_title_loading_app_list_search">Buscando</string>
+    <string name="dialog_message_loading_app_list_search">Por favor espera. Buscando aplicaciones.</string>
+    <string name="dialog_title_loading_app_list_update">Comprobando actualizaciones</string>
+    <string name="dialog_message_loading_app_list_update">Por favor espera. Buscando nuevas versiones de tus aplicaciones.</string>
+    <string name="error_incorrect_password">Correo o contraseña incorrecta.</string>
+    <string name="error_credentials_empty">Proporciona las credenciales de tu cuenta de Google, por favor.</string>
+    <string name="error_no_network">Sin conexión de red.</string>
+    <string name="error_network_other" formatted="false">Error de red: %s</string>
+    <string name="error_not_purchased">Esta aplicación no parece haber sido comprada.</string>
+    <string name="error_downloads_directory_not_writable">El directorio de descargas no pudo crearse o no tiene permisos de escritura.</string>
+    <string name="details_updated" formatted="false">Actualizado %s</string>
+    <string name="details_size" formatted="false">Tamaño del APK %s</string>
+    <string name="details_description">Descripción:</string>
+    <string name="details_changelog">Qué hay de nuevo:</string>
+    <string name="details_screenshots">Capturas de pantalla:</string>
+    <string name="details_reviews">Comentarios:</string>
+    <string name="details_rate_this_app">Calificar esta aplicación:</string>
+    <string name="details_you_rated_this_app">Tu calificaste esta aplicación:</string>
+    <string name="details_permissions">Permisos:</string>
+    <string name="details_developer" formatted="false">Ofrecido por %s</string>
+    <string name="details_versionName" formatted="false">Versión %s</string>
+    <string name="details_versionName_updatable" formatted="false">Versión %s → %s</string>
+    <string name="details_download">Descargar</string>
+    <string name="details_install">Instalar</string>
+    <string name="details_downloading">Descargando…</string>
+    <string name="details_download_impossible">Error. No se puedo obtener la versión de la aplicación.</string>
+    <string name="details_review_dialog_title">¿Algo más que añadir?</string>
+    <string name="details_review_dialog_review_title_hint">Título aquí</string>
+    <string name="details_review_dialog_review_comment_hint">Comentario aquí</string>
+    <string name="details_review_dialog_fields_optional">Puedes dejar todo vacío.</string>
+    <string name="details_apps_by_this_dev">Otras aplicaciones de este desarrollador</string>
+    <string name="details_similar_apps">Aplicaciones similares</string>
+    <string name="details_users_also_installed">Otros usuarios también instalaron</string>
+    <string name="suffix_million">mil</string>
+    <string name="suffix_billion">bil</string>
+    <string name="credentials_hint_email">Correo aquí</string>
+    <string name="credentials_hint_password">Contraseña aquí</string>
+    <string name="credentials_title">Acceso a la cuenta de Google</string>
+    <string name="credentials_message">Se necesita el correo y contraseña de la cuenta de Google para que esta aplicación funcione.\n\nToma en cuenta que usar esta aplicación viola los términos de servicio de Google Play. Sería más seguro usar una cuenta de Google desechable que haya iniciado sesión en Play Store al menos una vez y haya aceptado los términos de servicio de Play Store.</string>
+    <string name="activity_title_updates">Actualizaciones</string>
+    <string name="activity_title_search" formatted="false">Buscando: "%s"</string>
+    <string name="notification_download_complete">Descarga completada. Toca para instalar.</string>
+    <string name="notification_download_complete_toast" formatted="false">%s descargado. Toca la notificación para instalar.</string>
+    <string name="notification_updates_available_title">Actualizaciones disponibles.</string>
+    <string name="notification_updates_available_message" formatted="false">Actualizaciones disponibles para %d de tus aplicaciones.</string>
+    <string name="pref_hide_nonfree_apps_summary_off">Las aplicaciones pagas serán visibles</string>
+    <string name="pref_hide_nonfree_apps_summary_on">Las aplicaciones pagas no serán visibles</string>
+    <string name="pref_hide_nonfree_apps">Ocultar aplicaciones pagas</string>
+    <string name="pref_auto_install_summary_off">Las aplicaciones se instalarán cuando el usuario toque la notificación</string>
+    <string name="pref_auto_install_summary_on">Las aplicaciones se instalarán tan pronto la descarga termine</string>
+    <string name="pref_auto_install">Instalar aplicaciones inmediatamente</string>
+    <string name="pref_update_list_white_or_black_black">Las aplicaciones seleccionadas serán ignoradas al buscar actualizaciones</string>
+    <string name="pref_update_list_white_or_black_white">Sólo se buscaran actualizaciones para las aplicaciones seleccionadas</string>
+    <string name="pref_update_list_white_or_black">Lista negra o blanca de aplicaciones para actualizar</string>
+    <string name="pref_update_list_black">Cambiar lista negra de aplicaciones</string>
+    <string name="pref_update_list_white">Cambiar lista blanca de aplicaciones</string>
+    <string name="pref_ui_theme">Tema</string>
+    <string name="pref_ui_theme_none">Por defecto</string>
+    <string name="pref_ui_theme_light">Claro</string>
+    <string name="pref_ui_theme_dark">Oscuro</string>
+    <string name="pref_ui_theme_black">Negro</string>
+    <string name="pref_background_update_check_summary_off">Sólo se buscan actualizaciones dentro de Yalp Store</string>
+    <string name="pref_background_update_check_summary_on">Se buscan actualizaciones de forma periódica (cada hora)</string>
+    <string name="pref_background_update_check">Buscar actualizaciones de forma periódica</string>
+    <string name="download_manager_ERROR_UNKNOWN">Error desconocido.</string>
+    <string name="download_manager_ERROR_FILE_ERROR">Error dealmacenamiento desconocido.</string>
+    <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Se recibió un código HTTP que el gestor de descargas no puede comprender. Esto es un error de servidor.</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">Error recibiendo o procesando datos a nivel HTTP.</string>
+    <string name="download_manager_ERROR_TOO_MANY_REDIRECTS">Demasiadas redirecciones.</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">Espacio de almacenamiento insuficiente.</string>
+    <string name="download_manager_ERROR_DEVICE_NOT_FOUND">No se encontró un dispositivo de almacenamiento externo. Tal vez la tarjeta SD no está montada.</string>
+    <string name="download_manager_ERROR_CANNOT_RESUME">Un error temporal puedo haber ocurrido pero no podemos continuar la descargar. Intente más tarde.</string>
+    <string name="download_manager_ERROR_BLOCKED">La descarga falló debido a controles de NetworkPolicyManager en la aplicación que lo solicitó. Verifica tus ajustes.</string>
+</resources>
