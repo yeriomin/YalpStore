@@ -33,7 +33,7 @@
     <string name="error_credentials_empty">Введите данные для доступа к аккаунту google</string>
     <string name="error_no_network">Нет соединения с сетью.</string>
     <string name="error_network_other" formatted="false">Сетевая ошибка: %s</string>
-    <string name="error_not_purchased">Похоже, это приложение не было куплено.</string>
+    <string name="error_not_purchased">Похоже, это приложение не было куплено.\nПерейти на его страницу в Play Store?</string>
     <string name="error_downloads_directory_not_writable">Каталог закачек недоступен для записи.</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
