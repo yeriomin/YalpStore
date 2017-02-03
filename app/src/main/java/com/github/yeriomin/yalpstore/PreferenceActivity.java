@@ -7,7 +7,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 
@@ -28,7 +27,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK = "PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK";
     public static final String PREFERENCE_UPDATE_LIST = "PREFERENCE_UPDATE_LIST";
     public static final String PREFERENCE_UI_THEME = "PREFERENCE_UI_THEME";
-    public static final String PREFERENCE_BACKGROUND_UPDATE_CHECK = "PREFERENCE_BACKGROUND_UPDATE_CHECK";
+    public static final String PREFERENCE_BACKGROUND_UPDATE_INTERVAL = "PREFERENCE_BACKGROUND_UPDATE_INTERVAL";
 
     public static final String LIST_WHITE = "white";
     public static final String LIST_BLACK = "black";
@@ -37,8 +36,6 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String THEME_LIGHT = "light";
     public static final String THEME_DARK = "dark";
     public static final String THEME_BLACK = "black";
-
-    public static final int UPDATE_INTERVAL = 1000 * 60 * 60;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,7 +48,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
             (MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST)
         );
         prepareTheme((ListPreference) findPreference(PREFERENCE_UI_THEME));
-        prepareCheckUpdates((CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_CHECK));
+        prepareCheckUpdates((ListPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INTERVAL));
     }
 
     private void prepareBlacklist(ListPreference blackOrWhite, final MultiSelectListPreference appList) {
@@ -149,25 +146,56 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         return summaryId;
     }
 
-    private void prepareCheckUpdates(CheckBoxPreference checkForUpdates) {
+    private void prepareCheckUpdates(ListPreference checkForUpdates) {
+        checkForUpdates.setSummary(getString(getUpdateSummaryStringId(checkForUpdates.getValue())));
         checkForUpdates.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                boolean value = (Boolean) newValue;
+                int interval = Integer.parseInt((String) newValue);
                 Intent intent = new Intent(getApplicationContext(), UpdateChecker.class);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                 alarmManager.cancel(pendingIntent);
-                if (value) {
+                if (interval > 0) {
                     alarmManager.setRepeating(
                         AlarmManager.RTC_WAKEUP,
                         System.currentTimeMillis(),
-                        UPDATE_INTERVAL,
+                        interval,
                         pendingIntent
                     );
                 }
+                preference.setSummary(getString(getUpdateSummaryStringId((String) newValue)));
                 return true;
             }
         });
+    }
+
+    private int getUpdateSummaryStringId(String intervalString) {
+        int summaryId;
+        final int hour = 1000 * 60 * 60;
+        final int day = hour * 24;
+        final int week = day * 7;
+        int interval;
+        try {
+            interval = Integer.parseInt(intervalString);
+        } catch (NumberFormatException e) {
+            interval = 0;
+        }
+        switch (interval) {
+            case hour:
+                summaryId = R.string.pref_background_update_interval_hourly;
+                break;
+            case day:
+                summaryId = R.string.pref_background_update_interval_daily;
+                break;
+            case week:
+                summaryId = R.string.pref_background_update_interval_weekly;
+                break;
+            case 0:
+            default:
+                summaryId = R.string.pref_background_update_interval_never;
+                break;
+        }
+        return summaryId;
     }
 }

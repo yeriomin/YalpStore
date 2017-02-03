@@ -88,7 +88,7 @@
     <string name="pref_auto_install">Устанавливать приложения сразу</string>
     <string name="pref_update_list_white_or_black_black">Выбранные приложения не будут обновляться</string>
     <string name="pref_update_list_white_or_black_white">Только выбранные приложения будут обновляться</string>
-    <string name="pref_update_list_white_or_black">Чёрный или бклый список обновлений</string>
+    <string name="pref_update_list_white_or_black">Чёрный или белый список обновлений</string>
     <string name="pref_update_list_black">Изменить список игнорируемых приложений</string>
     <string name="pref_update_list_white">Изменить список обновляемых приложений</string>
     <string name="pref_ui_theme">Тема</string>
@@ -96,9 +96,11 @@
     <string name="pref_ui_theme_light">Светлая</string>
     <string name="pref_ui_theme_dark">Тёмная</string>
     <string name="pref_ui_theme_black">Чёрная</string>
-    <string name="pref_background_update_check_summary_off">Проверка обновлений происходит только при запуске Yalp Store</string>
-    <string name="pref_background_update_check_summary_on">Проверка обновлений происходит периодически (раз в час)</string>
-    <string name="pref_background_update_check">Периодически проверять обновления</string>
+    <string name="pref_background_update_interval_never">Только при запуске Yalp Store</string>
+    <string name="pref_background_update_interval_hourly">Раз в час</string>
+    <string name="pref_background_update_interval_daily">Раз в день</string>
+    <string name="pref_background_update_interval_weekly">Раз в неделю</string>
+    <string name="pref_background_update_interval">Периодически проверять обновления</string>
     <string name="download_manager_ERROR_UNKNOWN">Неизвестная ошибка.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Неизвестная ошибка сохранения файла.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Сетевая ошибка. Попробуйте позднее.</string>

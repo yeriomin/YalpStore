@@ -100,9 +100,11 @@
     <string name="pref_ui_theme_light">Light</string>
     <string name="pref_ui_theme_dark">Dark</string>
     <string name="pref_ui_theme_black">Black</string>
-    <string name="pref_background_update_check_summary_off">Updates are checked only when you launch Yalp Store</string>
-    <string name="pref_background_update_check_summary_on">Updates are checked periodically (once an hour)</string>
-    <string name="pref_background_update_check">Check for updates periodically</string>
+    <string name="pref_background_update_interval_never">Only when you launch Yalp Store</string>
+    <string name="pref_background_update_interval_hourly">Hourly</string>
+    <string name="pref_background_update_interval_daily">Daily</string>
+    <string name="pref_background_update_interval_weekly">Weekly</string>
+    <string name="pref_background_update_interval">Check for updates periodically</string>
     <string name="download_manager_ERROR_UNKNOWN">Unknown error.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unknown file storage error.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">HTTP code was received that download manager can not handle. This is a server error.</string>

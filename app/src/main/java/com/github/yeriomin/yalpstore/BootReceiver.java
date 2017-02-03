@@ -19,19 +19,20 @@ public class BootReceiver extends BroadcastReceiver {
         Intent checkerIntent = new Intent(context, UpdateChecker.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, checkerIntent, 0);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        if (isBackgroundCheckEnabled(context)) {
+        int interval = getUpdateInterval(context);
+        if (interval > 0) {
             Log.i(getClass().getName(), "Enabling periodic update checks");
             alarmManager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
                 System.currentTimeMillis(),
-                PreferenceActivity.UPDATE_INTERVAL,
+                interval,
                 pendingIntent
             );
         }
     }
 
-    private boolean isBackgroundCheckEnabled(Context context) {
+    private int getUpdateInterval(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return prefs.getBoolean(PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_CHECK, false);
+        return Integer.parseInt(prefs.getString(PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "0"));
     }
 }
