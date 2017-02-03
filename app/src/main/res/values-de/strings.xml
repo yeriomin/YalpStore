@@ -19,7 +19,7 @@
     <string name="dialog_title_logout">Abmelden?</string>
     <string name="dialog_message_logout">Bist du sicher dass du dich abmelden möchtest?</string>
     <string name="dialog_title_reviews">Lade Bewertungen</string>
-    <string name="dialog_message_reviews">Bitte warten. Empfange Vorschauen.</string>
+    <string name="dialog_message_reviews">Bitte warten. Empfange Bewertungen.</string>
     <string name="dialog_title_purchasing_app">Lade App herunter</string>
     <string name="dialog_message_purchasing_app">Bitte warten. Starte das Herunterladen der gewählten App.</string>
     <string name="dialog_title_loading_app_details">Lade Details</string>
