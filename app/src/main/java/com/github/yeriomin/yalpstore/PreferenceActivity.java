@@ -12,7 +12,11 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 
@@ -42,22 +46,42 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
 
+        prepareBlacklist(
+            (ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK),
+            (MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST)
+        );
+        prepareTheme((ListPreference) findPreference(PREFERENCE_UI_THEME));
+        prepareCheckUpdates((CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_CHECK));
+    }
+
+    private void prepareBlacklist(ListPreference blackOrWhite, final MultiSelectListPreference appList) {
         PackageManager pm = getPackageManager();
         List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_META_DATA);
-        List<CharSequence> entries = new ArrayList<>();
-        List<CharSequence> entryValues = new ArrayList<>();
-        for (PackageInfo packageInfo: packages) {
-            if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+        Map<String, String> appNames = new HashMap<>();
+        for (PackageInfo info: packages) {
+            if ((info.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
                 // This is a system app - skipping
                 continue;
             }
-            entries.add(pm.getApplicationLabel(packageInfo.applicationInfo).toString());
-            entryValues.add(packageInfo.packageName);
+            appNames.put(pm.getApplicationLabel(info.applicationInfo).toString(), info.packageName);
+        }
+        List<String> labels = new ArrayList<>(appNames.keySet());
+        Collections.sort(
+            labels,
+            new Comparator<Object>() {
+                public int compare(Object o1, Object o2) {
+                    String s1 = (String) o1;
+                    String s2 = (String) o2;
+                    return s1.toLowerCase().compareTo(s2.toLowerCase());
+                }
+            }
+        );
+        List<String> values = new ArrayList<>();
+        for (String label: labels) {
+            values.add(appNames.get(label));
         }
 
-        final MultiSelectListPreference m = (MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST);
-        ListPreference blackOrWhite = (ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK);
-        m.setTitle(blackOrWhite.getValue().equals(LIST_BLACK)
+        appList.setTitle(blackOrWhite.getValue().equals(LIST_BLACK)
             ? getString(R.string.pref_update_list_black)
             : getString(R.string.pref_update_list_white)
         );
@@ -65,54 +89,41 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
             ? getString(R.string.pref_update_list_white_or_black_black)
             : getString(R.string.pref_update_list_white_or_black_white)
         );
-        m.setEntries(entries.toArray(new CharSequence[entries.size()]));
-        m.setEntryValues(entryValues.toArray(new CharSequence[entryValues.size()]));
-
+        int appCount = values.size();
+        appList.setEntries(labels.toArray(new String[appCount]));
+        appList.setEntryValues(values.toArray(new String[appCount]));
+        appList.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                UpdatableAppsActivity.setNeedsUpdate(true);
+                return true;
+            }
+        });
         blackOrWhite.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 String value = (String) newValue;
                 switch (value) {
                     case LIST_BLACK:
-                        m.setTitle(getString(R.string.pref_update_list_black));
+                        appList.setTitle(getString(R.string.pref_update_list_black));
                         preference.setSummary(getString(R.string.pref_update_list_white_or_black_black));
                         break;
                     case LIST_WHITE:
-                        m.setTitle(getString(R.string.pref_update_list_white));
+                        appList.setTitle(getString(R.string.pref_update_list_white));
                         preference.setSummary(getString(R.string.pref_update_list_white_or_black_white));
                         break;
                 }
                 return true;
             }
         });
+    }
 
-        ListPreference theme = (ListPreference) findPreference(PREFERENCE_UI_THEME);
+    private void prepareTheme(ListPreference theme) {
         theme.setSummary(getString(getThemeSummaryStringId(theme.getValue())));
         theme.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, final Object newValue) {
                 preference.setSummary(getString(getThemeSummaryStringId((String) newValue)));
-                return true;
-            }
-        });
-
-        CheckBoxPreference checkForUpdates = (CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_CHECK);
-        checkForUpdates.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                boolean value = (Boolean) newValue;
-                Intent intent = new Intent(getApplicationContext(), UpdateChecker.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.cancel(pendingIntent);
-                if (value) {
-                    alarmManager.setRepeating(
-                        AlarmManager.RTC_WAKEUP,
-                        System.currentTimeMillis(),
-                        UPDATE_INTERVAL,
-                        pendingIntent
-                    );
-                }
                 return true;
             }
         });
@@ -136,5 +147,27 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
                 break;
         }
         return summaryId;
+    }
+
+    private void prepareCheckUpdates(CheckBoxPreference checkForUpdates) {
+        checkForUpdates.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                boolean value = (Boolean) newValue;
+                Intent intent = new Intent(getApplicationContext(), UpdateChecker.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarmManager.cancel(pendingIntent);
+                if (value) {
+                    alarmManager.setRepeating(
+                        AlarmManager.RTC_WAKEUP,
+                        System.currentTimeMillis(),
+                        UPDATE_INTERVAL,
+                        pendingIntent
+                    );
+                }
+                return true;
+            }
+        });
     }
 }
