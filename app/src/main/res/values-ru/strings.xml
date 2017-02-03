@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="about_developer_email_label">Почта разработчика:</string>
+    <string name="about_logged_in">Ваш текущий аккаунт:</string>
+    <string name="about_copied_to_clipboard">Скопировано в буфер обмена</string>
     <string name="list_line_2_updatable" formatted="false">Обновлено %s</string>
     <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
     <string name="list_empty_updates">Обновлений нет</string>
@@ -20,6 +23,7 @@
     <string name="dialog_message_loading_app_list_update">Подождите. Ищем обновления для ваших приложений.</string>
     <string name="dialog_title_loading_app_list_search">Поиск</string>
     <string name="dialog_message_loading_app_list_search">Подождите. Ищем приложения по вашему запросу.</string>
+    <string name="action_about">О приложении</string>
     <string name="action_settings">Настройки</string>
     <string name="action_updates">Обновления</string>
     <string name="action_ignore">Не обновлять</string>

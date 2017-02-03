@@ -107,7 +107,7 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
             pendingIntent,
             packageName,
             message,
-            R.mipmap.ic_launcher
+            R.drawable.ic_notification
         );
         NotificationManager manager = (NotificationManager) c.getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(packageName.hashCode(), notification);

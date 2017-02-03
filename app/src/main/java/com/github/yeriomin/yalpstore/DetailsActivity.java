@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DownloadManager;
@@ -51,7 +50,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetailsActivity extends Activity {
+public class DetailsActivity extends YalpStoreActivity {
 
     static private final int PERMISSIONS_REQUEST_CODE = 828;
     static private final int REVIEW_SHOW_COUNT = 3;
@@ -104,7 +103,6 @@ public class DetailsActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
         this.menu = menu;
         addBlackWhiteListOption();
         return super.onCreateOptionsMenu(menu);
@@ -113,37 +111,8 @@ public class DetailsActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                startActivity(new Intent(this, PreferenceActivity.class));
-                break;
             case R.id.action_ignore:
                 toggleBlackWhiteList();
-                break;
-            case R.id.action_logout:
-                new AlertDialog.Builder(this)
-                    .setMessage(R.string.dialog_message_logout)
-                    .setTitle(R.string.dialog_title_logout)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            new PlayStoreApiWrapper(getApplicationContext()).logout();
-                            dialogInterface.dismiss();
-                            finish();
-                        }
-                    })
-                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                        }
-                    })
-                    .show();
-                break;
-            case R.id.action_search:
-                onSearchRequested();
-                break;
-            case R.id.action_updates:
-                startActivity(new Intent(this, UpdatableAppsActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -225,7 +194,6 @@ public class DetailsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
 
         onNewIntent(getIntent());
