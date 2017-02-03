@@ -6,7 +6,7 @@
     <string name="action_settings">Einstellungen</string>
     <string name="action_logout">Abmelden</string>
     <string name="action_search">Suchen</string>
-    <string name="action_updates">Aktualisierungen</string>
+    <string name="action_updates">Updates</string>
     <string name="action_ignore">Ignoriere Updates</string>
     <string name="action_unignore">Ignoriere Updates nicht mehr</string>
     <string name="action_whitelist">Whitelist für Updates</string>
@@ -19,26 +19,26 @@
     <string name="dialog_title_logout">Abmelden?</string>
     <string name="dialog_message_logout">Bist du sicher dass du dich abmelden möchtest?</string>
     <string name="dialog_title_reviews">Lade Bewertungen</string>
-    <string name="dialog_message_reviews">Bitte warten! Empfange Vorschauen.</string>
+    <string name="dialog_message_reviews">Bitte warten. Empfange Vorschauen.</string>
     <string name="dialog_title_purchasing_app">Lade App herunter</string>
-    <string name="dialog_message_purchasing_app">Bitte warten! Starte das Herunterladen der gewählten App.</string>
+    <string name="dialog_message_purchasing_app">Bitte warten. Starte das Herunterladen der gewählten App.</string>
     <string name="dialog_title_loading_app_details">Lade Details</string>
-    <string name="dialog_message_loading_app_details">Bitte warten! Details der gewählten App werden ermittelt.</string>
+    <string name="dialog_message_loading_app_details">Bitte warten. Details der gewählten App werden ermittelt.</string>
     <string name="dialog_title_loading_app_list_search">Suche</string>
-    <string name="dialog_message_loading_app_list_search">Bitte warten! Suche nach Apps.</string>
+    <string name="dialog_message_loading_app_list_search">Bitte warten. Suche nach Apps.</string>
     <string name="dialog_title_loading_app_list_update">Suche nach Aktualisierungen</string>
-    <string name="dialog_message_loading_app_list_update">Bitte warten! Deine Apps werden auf Aktualisierungen geprüft.</string>
+    <string name="dialog_message_loading_app_list_update">Bitte warten. Deine Apps werden auf Aktualisierungen geprüft.</string>
     <string name="error_incorrect_password">Email-Adresse oder Passwort falsch.</string>
     <string name="error_credentials_empty">Bitte trage die Anmeldedaten des Google Kontos ein.</string>
     <string name="error_no_network">Keine Netzwerkverbindung.</string>
     <string name="error_network_other" formatted="false">Netzwerk-Fehler: %s</string>
-    <string name="error_not_purchased">Diese App wurde scheinbar nicht gekauft.</string>
+    <string name="error_not_purchased">Diese App wurde scheinbar nicht gekauft. Zum Play Store weiterleiten?</string>
     <string name="error_downloads_directory_not_writable">Download-Ordner konnte nicht erstellt werden oder ist nicht beschreibbar.</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
     <string name="details_rating_specific" formatted="false">%d★ %d</string>
-    <string name="details_updated" formatted="false">Aktualisiert %s</string>
-    <string name="details_size" formatted="false">Apk größe %s</string>
+    <string name="details_updated" formatted="false">Aktualisiert am %s</string>
+    <string name="details_size" formatted="false">Apk Größe %s</string>
     <string name="details_description">Beschreibung:</string>
     <string name="details_changelog">Neuigkeiten:</string>
     <string name="details_screenshots">Bildschirmfotos:</string>
@@ -67,7 +67,7 @@
     <string name="credentials_hint_password">Passwort</string>
     <string name="credentials_title">Google Konto Zugang</string>
     <string name="credentials_message">Für die Verwendung dieser App wird eine Google E-Mail Adresse und ein Passwort benötigt.\nVergiss nicht das die Verwendung dieser App gegen die Play Store Nutzungsbedingungen verstößt. Wahrscheinlich ist es sicherer ein unwichtiges Google-Konto zu verwenden, welches mindestens einmal im Play Store eingeloggt war um den Nutzungsbedingungen zuzustimmen.</string>
-    <string name="activity_title_updates">Aktualisierungen</string>
+    <string name="activity_title_updates">Updates</string>
     <string name="activity_title_search" formatted="false">Suche: \"%s"</string>
     <string name="notification_download_complete">Herunterladen abgeschlossen. Tippe zum Installieren.</string>
     <string name="notification_download_complete_toast" formatted="false">%s heruntergeladen. Tippe Benachrichtigung zum Installieren.</string>
@@ -77,8 +77,8 @@
     <string name="pref_auto_install_summary_off">Apps werden installiert wenn die Abschluss-Benachrichtigung angetippt wird</string>
     <string name="pref_auto_install_summary_on">Apps werden installiert sobald der Download abgeschlossen ist</string>
     <string name="pref_auto_install">Apps sofort installieren.</string>
-    <string name="pref_update_list_white_or_black_black">Nur für Ausgewählte Apps werden keine Aktualisierungen gesucht</string>
-    <string name="pref_update_list_white_or_black_white">Nur für Ausgewählte Apps werden Aktualisierungen gesucht</string>
+    <string name="pref_update_list_white_or_black_black">Nur für ausgewählte Apps werden keine Aktualisierungen gesucht</string>
+    <string name="pref_update_list_white_or_black_white">Nur für ausgewählte Apps werden Aktualisierungen gesucht</string>
     <string name="pref_update_list_white_or_black">Black- oder Whitelist für App-Aktualisierungen verwenden</string>
     <string name="pref_update_list_black">App-Blacklist verwalten</string>
     <string name="pref_update_list_white">App-Whitelist verwalten</string>
@@ -93,7 +93,14 @@
     <string name="download_manager_ERROR_HTTP_DATA_ERROR">Fehler beim Empfangen oder Verarbeiten von Daten auf HTTP-Ebene.</string>
     <string name="download_manager_ERROR_TOO_MANY_REDIRECTS">Zu viele Umleitungen.</string>
     <string name="download_manager_ERROR_INSUFFICIENT_SPACE">Ungenügend freier Speicher.</string>
-    <string name="download_manager_ERROR_DEVICE_NOT_FOUND">Es wurde kein externer Speicher gefunden. Möglicherweise ist die SD-Karte nicht eingehangen.</string>
+    <string name="download_manager_ERROR_DEVICE_NOT_FOUND">Es wurde kein externer Speicher gefunden. Möglicherweise ist die SD-Karte nicht eingebunden.</string>
     <string name="download_manager_ERROR_CANNOT_RESUME">Es trat ein möglicherweise vorübergehender Fehler auf, der Download kann nicht fortgesetzt werden. Versuche es später noch einmal!</string>
-    <string name="download_manager_ERROR_BLOCKED">Das Herunterladen ist fehlgeschlagen weil der Netzwerk-Richtlinien-Manager die Kontrolle über die anfordernte App hat.</string>
+    <string name="download_manager_ERROR_BLOCKED">Das Herunterladen ist fehlgeschlagen weil der Netzwerk-Richtlinien-Manager die Kontrolle über die anfordernde App hat.</string>
+    <string name="notification_download_complete_signature_mismatch">Herunterladen abgeschlossen. Die Signatur der APK-Datei stimmt jedoch nicht überein.</string>
+    <string name="notification_download_complete_signature_mismatch_toast">%s heruntergeladen. Aber die APK-Signatur stimmt nicht mit der installierten App überein. Hast du diese App ursprünglich vom Play Store geladen? Eventuell musst du diese zuerst deinstallieren.</string>
+    <string name="notification_updates_available_message">Es sind %d Updates für deine Apps verfügbar.</string>
+    <string name="notification_updates_available_title">App Update verfügbar.</string>
+    <string name="pref_background_update_check">Suche periodisch nach neuen Updates</string>
+    <string name="pref_background_update_check_summary_off">Updates werden nur dann gesucht, wenn du Yalp Store aufrufst</string>
+    <string name="pref_background_update_check_summary_on">Suche periodisch nach neuen Updates (einmal die Stunde)</string>
 </resources>
