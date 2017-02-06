@@ -64,7 +64,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
     }
 
     @Override
-    protected Throwable doInBackground(Void... params) {
+    protected Throwable doInBackground(String... params) {
         // Building local apps list
         List<String> installedAppIds = new ArrayList<>();
         Map<String, App> appMap = new HashMap<>();

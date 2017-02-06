@@ -127,40 +127,36 @@ public class PlayStoreApiWrapper {
             String email = this.email == null ? prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, "") : this.email;
             String gsfId = prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
             String token = prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, "");
-            if (email.isEmpty() || (token.isEmpty() && password == null)) {
+            if (email.isEmpty()) {
                 throw new CredentialsEmptyException();
             }
 
-            NativeDeviceInfoProvider checkinRequestBuilder = new NativeDeviceInfoProvider();
-            checkinRequestBuilder.setContext(context);
-            checkinRequestBuilder.setLocaleString(Locale.getDefault().toString());
+            NativeDeviceInfoProvider deviceInfoProvider = new NativeDeviceInfoProvider();
+            deviceInfoProvider.setContext(context);
+            deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
             api = new GooglePlayAPI(email);
-            api.setDeviceInfoProvider(checkinRequestBuilder);
+            api.setDeviceInfoProvider(deviceInfoProvider);
             api.setLocale(Locale.getDefault());
             SharedPreferences.Editor prefsEditor = prefs.edit();
 
             boolean needToUploadDeviceConfig = false;
             if (gsfId.isEmpty()) {
                 needToUploadDeviceConfig = true;
-                gsfId = api.getGsfId(password);
+                String ac2dmToken = null == password ? TokenDispenser.getTokenAc2dm(email) : api.getAC2DMToken(password);
+                gsfId = api.getGsfId(ac2dmToken);
                 prefsEditor.putString(PreferenceActivity.PREFERENCE_GSF_ID, gsfId);
                 prefsEditor.apply();
             }
             api.setGsfId(gsfId);
             if (token.isEmpty()) {
-                token = api.getToken(password);
+                token = null == password ? TokenDispenser.getToken(email) : api.getToken(password);
                 prefsEditor.putString(PreferenceActivity.PREFERENCE_EMAIL, email);
                 prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, token);
                 prefsEditor.apply();
             }
             api.setToken(token);
             if (needToUploadDeviceConfig) {
-                try {
-                    api.uploadDeviceConfig();
-                } catch (IOException e) {
-                    // Its fine if this fails
-                    Log.e(this.getClass().getName(), e.getClass().toString() + ": " + e.getMessage());
-                }
+                api.uploadDeviceConfig();
             }
         }
         return api;
@@ -170,17 +166,22 @@ public class PlayStoreApiWrapper {
         this.context = context;
     }
 
-    public GooglePlayAPI login(String email, String password) throws IOException {
+    public GooglePlayAPI login(String email) throws IOException {
         this.email = email;
-        this.password = password;
         PlayStoreApiWrapper.api = null;
         return getApi();
+    }
+
+    public GooglePlayAPI login(String email, String password) throws IOException {
+        this.password = password;
+        return login(email);
     }
 
     public void logout() {
         this.email = null;
         this.password = null;
         SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
+        prefs.remove(PreferenceActivity.PREFERENCE_EMAIL);
         prefs.remove(PreferenceActivity.PREFERENCE_GSF_ID);
         prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
         prefs.apply();

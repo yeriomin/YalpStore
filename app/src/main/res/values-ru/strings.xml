@@ -23,6 +23,12 @@
     <string name="dialog_message_loading_app_list_update">Подождите. Ищем обновления для ваших приложений.</string>
     <string name="dialog_title_loading_app_list_search">Поиск</string>
     <string name="dialog_message_loading_app_list_search">Подождите. Ищем приложения по вашему запросу.</string>
+    <string name="dialog_account_type_provided_by_user">Через мой аккаунт Google</string>
+    <string name="dialog_account_type_predefined">Без аккаунта (экспериментально)</string>
+    <string name="dialog_account_type_title">Как логиниться в Google Play Store?</string>
+    <string name="dialog_title_logging_in">Входим</string>
+    <string name="dialog_message_logging_in_provided_by_user">Пытаемся подключиться через ваш аккаунт</string>
+    <string name="dialog_message_logging_in_predefined">Пытаемся подключиться через аккаунт, предоставленный Yalp Store</string>
     <string name="action_about">О приложении</string>
     <string name="action_settings">Настройки</string>
     <string name="action_updates">Обновления</string>
@@ -39,6 +45,7 @@
     <string name="error_network_other" formatted="false">Сетевая ошибка: %s</string>
     <string name="error_not_purchased">Похоже, это приложение не было куплено.\nПерейти на его страницу в Play Store?</string>
     <string name="error_downloads_directory_not_writable">Каталог закачек недоступен для записи.</string>
+    <string name="error_token_dispenser_problem">Подключиться без аккаунта не удалось. Попробуйте подключиться через ваш Google аккаунт.</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
     <string name="details_rating_specific" formatted="false">%d★ %d</string>

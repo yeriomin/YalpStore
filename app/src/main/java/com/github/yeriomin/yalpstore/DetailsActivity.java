@@ -135,7 +135,7 @@ public class DetailsActivity extends YalpStoreActivity {
             private App app;
 
             @Override
-            protected Throwable doInBackground(Void... params) {
+            protected Throwable doInBackground(String... params) {
                 PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(getApplicationContext());
                 try {
                     this.app = wrapper.getDetails(packageName);
@@ -171,10 +171,7 @@ public class DetailsActivity extends YalpStoreActivity {
             }
         };
         task.setContext(this);
-        task.prepareDialog(
-            getString(R.string.dialog_message_loading_app_details),
-            getString(R.string.dialog_title_loading_app_details)
-        );
+        task.prepareDialog(R.string.dialog_message_loading_app_details, R.string.dialog_title_loading_app_details);
         task.execute();
     }
 
@@ -379,6 +376,7 @@ public class DetailsActivity extends YalpStoreActivity {
             public void onClick(View v) {
                 Intent i = new Intent(DetailsActivity.this, SearchResultActivity.class);
                 i.setAction(Intent.ACTION_SEARCH);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.putExtra(SearchManager.QUERY, "pub:" + app.getDeveloper().getName());
                 startActivity(i);
             }
@@ -412,7 +410,7 @@ public class DetailsActivity extends YalpStoreActivity {
                 public void onClick(View v) {
                     task = new GoogleApiAsyncTask() {
                         @Override
-                        protected Throwable doInBackground(Void... params) {
+                        protected Throwable doInBackground(String... params) {
                             PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(DetailsActivity.this);
                             try {
                                 downloadId = wrapper.download(app);
@@ -438,8 +436,8 @@ public class DetailsActivity extends YalpStoreActivity {
                     };
                     task.setContext(v.getContext());
                     task.prepareDialog(
-                        getString(R.string.dialog_message_purchasing_app),
-                        getString(R.string.dialog_title_purchasing_app)
+                        R.string.dialog_message_purchasing_app,
+                        R.string.dialog_title_purchasing_app
                     );
                     if (checkPermission()) {
                         task.execute();
@@ -594,7 +592,7 @@ public class DetailsActivity extends YalpStoreActivity {
     private void loadMoreReviews(final LinearLayout list, final String packageName) {
         GoogleApiAsyncTask task = new GoogleApiAsyncTask() {
             @Override
-            protected Throwable doInBackground(Void... params) {
+            protected Throwable doInBackground(String... params) {
                 PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(DetailsActivity.this);
                 try {
                     if (reviews.addAll(wrapper.getReviews(packageName, REVIEW_LOAD_COUNT * reviewLoadPage, REVIEW_LOAD_COUNT))) {
@@ -625,10 +623,7 @@ public class DetailsActivity extends YalpStoreActivity {
         };
 
         task.setContext(this);
-        task.prepareDialog(
-            getString(R.string.dialog_message_reviews),
-            getString(R.string.dialog_title_reviews)
-        );
+        task.prepareDialog(R.string.dialog_message_reviews, R.string.dialog_title_reviews);
         task.execute();
     }
 

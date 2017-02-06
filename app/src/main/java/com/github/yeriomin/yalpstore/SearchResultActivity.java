@@ -87,7 +87,7 @@ public class SearchResultActivity extends AppListActivity {
             }
 
             @Override
-            protected Throwable doInBackground(Void... params) {
+            protected Throwable doInBackground(String... params) {
                 PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(getApplicationContext());
                 try {
                     PlayStoreApiWrapper.AppSearchResultIterator iterator = wrapper.getSearchIterator(query);
@@ -113,10 +113,7 @@ public class SearchResultActivity extends AppListActivity {
         };
         task.setContext(this);
         task.setErrorView((TextView) getListView().getEmptyView());
-        task.prepareDialog(
-            getString(R.string.dialog_message_loading_app_list_search),
-            getString(R.string.dialog_title_loading_app_list_search)
-        );
+        task.prepareDialog(R.string.dialog_message_loading_app_list_search, R.string.dialog_title_loading_app_list_search);
         task.execute();
     }
 
