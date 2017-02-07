@@ -103,4 +103,23 @@
     <string name="pref_background_update_check">Suche periodisch nach neuen Updates</string>
     <string name="pref_background_update_check_summary_off">Updates werden nur dann gesucht, wenn du Yalp Store aufrufst</string>
     <string name="pref_background_update_check_summary_on">Suche periodisch nach neuen Updates (einmal die Stunde)</string>
+    <string name="about_copied_to_clipboard">In die Zwischenablage kopiert</string>
+    <string name="about_developer_email"></string>
+    <string name="about_developer_email_label">E-mail des Entwicklers:</string>
+    <string name="about_gsf_id">Google Services Framework ID:</string>
+    <string name="about_logged_in">Du bist eingeloggt als:</string>
+    <string name="action_about">Über</string>
+    <string name="dialog_account_type_predefined">Ohne Account (experimentell)</string>
+    <string name="dialog_account_type_provided_by_user">Benutze meinen Google Account</string>
+    <string name="dialog_account_type_title">Wie möchtest du dich beim Google Play Store anmelden?</string>
+    <string name="dialog_message_logging_in_predefined">Authentifiziere mit den Benutzerdaten bereitgestellt durch den Yalp Store</string>
+    <string name="dialog_title_logging_in">Authentifiziere</string>
+    <string name="dialog_message_logging_in_provided_by_user">Authentifiziere mit den Benutzerdaten bereitgestellt durch dich</string>
+    <string name="error_token_dispenser_problem">Authentifizierung ohne Account fehlgeschlagen. Versuche deinen eigenen Account zu benutzen.</string>
+    <string name="list_incompatible">Inkompatibel</string>
+    <string name="pref_background_update_interval">Suche periodisch nach neuen Updates</string>
+    <string name="pref_background_update_interval_daily">Täglich</string>
+    <string name="pref_background_update_interval_hourly">Stündlich</string>
+    <string name="pref_background_update_interval_never">Nur wenn Yalp Store aufgerufen wird</string>
+    <string name="pref_background_update_interval_weekly">Wöchentlich</string>
 </resources>
