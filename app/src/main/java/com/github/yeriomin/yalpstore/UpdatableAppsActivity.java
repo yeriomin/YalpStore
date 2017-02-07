@@ -12,7 +12,7 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     static private boolean needsUpdate;
 
-    static void setNeedsUpdate(boolean needsUpdate) {
+    static public void setNeedsUpdate(boolean needsUpdate) {
         UpdatableAppsActivity.needsUpdate = needsUpdate;
     }
 

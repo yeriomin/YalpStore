@@ -44,7 +44,7 @@ class ApkSignatureVerifier {
         pm = context.getPackageManager();
     }
 
-    boolean match(String packageName, File apkFile) {
+    public boolean match(String packageName, File apkFile) {
         byte[] apkSig = getApkSignature(apkFile);
         byte[] localSig = getLocalSignature(packageName);
         return localSig.length == 0 || Arrays.equals(apkSig, localSig);

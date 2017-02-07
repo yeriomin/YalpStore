@@ -56,12 +56,13 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
     }
 
     @Override
-    protected void onPostExecute(Throwable e) {
+    protected void onPostExecute(Throwable result) {
         if (null != this.progressDialog) {
             this.progressDialog.dismiss();
         }
-        if (e instanceof RuntimeException && null != e.getCause()) {
-            e = e.getCause();
+        Throwable e = result;
+        if (result instanceof RuntimeException && null != result.getCause()) {
+            e = result.getCause();
         }
         if (e instanceof AuthException) {
             if (e instanceof CredentialsEmptyException) {

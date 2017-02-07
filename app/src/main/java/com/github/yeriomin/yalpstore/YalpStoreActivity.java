@@ -40,12 +40,7 @@ public abstract class YalpStoreActivity extends Activity {
                             finish();
                         }
                     })
-                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                        }
-                    })
+                    .setNegativeButton(android.R.string.cancel, null)
                     .show();
                 break;
             case R.id.action_search:
