@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DownloadManager;
@@ -51,14 +50,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetailsActivity extends Activity {
+public class DetailsActivity extends YalpStoreActivity {
 
     static private final int PERMISSIONS_REQUEST_CODE = 828;
     static private final int REVIEW_SHOW_COUNT = 3;
     static private final int REVIEW_LOAD_COUNT = 15;
 
-    static final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
-    static final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
+    static private final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
+
+    static public final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
     private int reviewShowPage = 0;
     private int reviewLoadPage = 0;
@@ -104,7 +104,6 @@ public class DetailsActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
         this.menu = menu;
         addBlackWhiteListOption();
         return super.onCreateOptionsMenu(menu);
@@ -112,39 +111,8 @@ public class DetailsActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                startActivity(new Intent(this, PreferenceActivity.class));
-                break;
-            case R.id.action_ignore:
-                toggleBlackWhiteList();
-                break;
-            case R.id.action_logout:
-                new AlertDialog.Builder(this)
-                    .setMessage(R.string.dialog_message_logout)
-                    .setTitle(R.string.dialog_title_logout)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            new PlayStoreApiWrapper(getApplicationContext()).logout();
-                            dialogInterface.dismiss();
-                            finish();
-                        }
-                    })
-                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                        }
-                    })
-                    .show();
-                break;
-            case R.id.action_search:
-                onSearchRequested();
-                break;
-            case R.id.action_updates:
-                startActivity(new Intent(this, UpdatableAppsActivity.class));
-                break;
+        if (item.getItemId() == R.id.action_ignore) {
+            toggleBlackWhiteList();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -166,7 +134,7 @@ public class DetailsActivity extends Activity {
             private App app;
 
             @Override
-            protected Throwable doInBackground(Void... params) {
+            protected Throwable doInBackground(String... params) {
                 PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(getApplicationContext());
                 try {
                     this.app = wrapper.getDetails(packageName);
@@ -202,10 +170,7 @@ public class DetailsActivity extends Activity {
             }
         };
         task.setContext(this);
-        task.prepareDialog(
-            getString(R.string.dialog_message_loading_app_details),
-            getString(R.string.dialog_title_loading_app_details)
-        );
+        task.prepareDialog(R.string.dialog_message_loading_app_details, R.string.dialog_title_loading_app_details);
         task.execute();
     }
 
@@ -225,7 +190,6 @@ public class DetailsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
 
         onNewIntent(getIntent());
@@ -310,6 +274,10 @@ public class DetailsActivity extends Activity {
                     // We've checked for that already
                 }
             }
+        }
+        if (app.getVersionCode() == 0) {
+            findViewById(R.id.updated).setVisibility(View.GONE);
+            findViewById(R.id.size).setVisibility(View.GONE);
         }
     }
 
@@ -411,6 +379,7 @@ public class DetailsActivity extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent(DetailsActivity.this, SearchResultActivity.class);
                 i.setAction(Intent.ACTION_SEARCH);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.putExtra(SearchManager.QUERY, "pub:" + app.getDeveloper().getName());
                 startActivity(i);
             }
@@ -444,7 +413,7 @@ public class DetailsActivity extends Activity {
                 public void onClick(View v) {
                     task = new GoogleApiAsyncTask() {
                         @Override
-                        protected Throwable doInBackground(Void... params) {
+                        protected Throwable doInBackground(String... params) {
                             PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(DetailsActivity.this);
                             try {
                                 downloadId = wrapper.download(app);
@@ -470,8 +439,8 @@ public class DetailsActivity extends Activity {
                     };
                     task.setContext(v.getContext());
                     task.prepareDialog(
-                        getString(R.string.dialog_message_purchasing_app),
-                        getString(R.string.dialog_title_purchasing_app)
+                        R.string.dialog_message_purchasing_app,
+                        R.string.dialog_title_purchasing_app
                     );
                     if (checkPermission()) {
                         task.execute();
@@ -626,7 +595,7 @@ public class DetailsActivity extends Activity {
     private void loadMoreReviews(final LinearLayout list, final String packageName) {
         GoogleApiAsyncTask task = new GoogleApiAsyncTask() {
             @Override
-            protected Throwable doInBackground(Void... params) {
+            protected Throwable doInBackground(String... params) {
                 PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(DetailsActivity.this);
                 try {
                     if (reviews.addAll(wrapper.getReviews(packageName, REVIEW_LOAD_COUNT * reviewLoadPage, REVIEW_LOAD_COUNT))) {
@@ -657,10 +626,7 @@ public class DetailsActivity extends Activity {
         };
 
         task.setContext(this);
-        task.prepareDialog(
-            getString(R.string.dialog_message_reviews),
-            getString(R.string.dialog_title_reviews)
-        );
+        task.prepareDialog(R.string.dialog_message_reviews, R.string.dialog_title_reviews);
         task.execute();
     }
 
@@ -721,23 +687,21 @@ public class DetailsActivity extends Activity {
             starView.setText(starNum <= review.getRating() ? R.string.star_filled : R.string.star_empty);
             starView.setTextColor(starNum <= review.getRating() ? Color.YELLOW : colorDefault);
         }
-        TextView commentView = (TextView) findViewById(R.id.user_comment);
-        if (null != review.getComment() && !review.getComment().isEmpty()) {
-            commentView.setText(review.getComment());
-            commentView.setVisibility(View.VISIBLE);
-        } else {
-            commentView.setVisibility(View.GONE);
-        }
-        TextView titleView = (TextView) findViewById(R.id.user_title);
-        if (null != review.getTitle() && !review.getTitle().isEmpty()) {
-            titleView.setText(review.getTitle());
-            titleView.setVisibility(View.VISIBLE);
-        } else {
-            titleView.setVisibility(View.GONE);
-        }
+        setTextOrHide(R.id.user_comment, review.getComment());
+        setTextOrHide(R.id.user_title, review.getTitle());
         setText(R.id.rate, R.string.details_you_rated_this_app);
         findViewById(R.id.user_review_edit_delete).setVisibility(View.VISIBLE);
         findViewById(R.id.user_review).setVisibility(View.VISIBLE);
+    }
+
+    private void setTextOrHide(int viewId, String text) {
+        TextView textView = (TextView) findViewById(viewId);
+        if (null != text && !text.isEmpty()) {
+            textView.setText(text);
+            textView.setVisibility(View.VISIBLE);
+        } else {
+            textView.setVisibility(View.GONE);
+        }
     }
 
     private void clearUserReview() {

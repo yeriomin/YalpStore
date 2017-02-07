@@ -53,11 +53,9 @@ public class SearchResultActivity extends AppListActivity {
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 int lastItem = firstVisibleItem + visibleItemCount;
                 boolean loadMore = lastItem >= totalItemCount;
-                if (totalItemCount > 0 && loadMore) {
-                    if (lastLastitem != lastItem) {
-                        lastLastitem = lastItem;
-                        loadApps();
-                    }
+                if (totalItemCount > 0 && loadMore && lastLastitem != lastItem) {
+                    lastLastitem = lastItem;
+                    loadApps();
                 }
             }
         });
@@ -66,7 +64,8 @@ public class SearchResultActivity extends AppListActivity {
     @Override
     protected Map<String, Object> formatApp(App app) {
         Map<String, Object> map = super.formatApp(app);
-        map.put(LINE2, getString(R.string.list_line_2_search, app.getInstalls(), app.getRating().getAverage(), app.getUpdated()));
+        String updated = app.getUpdated().isEmpty() ? getString(R.string.list_incompatible) : app.getUpdated();
+        map.put(LINE2, getString(R.string.list_line_2_search, app.getInstalls(), app.getRating().getAverage(), updated));
         map.put(ICON, app.getIconUrl());
         return map;
     }
@@ -87,7 +86,7 @@ public class SearchResultActivity extends AppListActivity {
             }
 
             @Override
-            protected Throwable doInBackground(Void... params) {
+            protected Throwable doInBackground(String... params) {
                 PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(getApplicationContext());
                 try {
                     PlayStoreApiWrapper.AppSearchResultIterator iterator = wrapper.getSearchIterator(query);
@@ -113,10 +112,7 @@ public class SearchResultActivity extends AppListActivity {
         };
         task.setContext(this);
         task.setErrorView((TextView) getListView().getEmptyView());
-        task.prepareDialog(
-            getString(R.string.dialog_message_loading_app_list_search),
-            getString(R.string.dialog_title_loading_app_list_search)
-        );
+        task.prepareDialog(R.string.dialog_message_loading_app_list_search, R.string.dialog_title_loading_app_list_search);
         task.execute();
     }
 
@@ -128,11 +124,10 @@ public class SearchResultActivity extends AppListActivity {
         ) {
             return intent.getData().getQueryParameter("q");
         }
-        switch (intent.getAction()) {
-            case Intent.ACTION_SEARCH:
-                return intent.getStringExtra(SearchManager.QUERY);
-            case Intent.ACTION_VIEW:
-                return intent.getDataString();
+        if (intent.getAction().equals(Intent.ACTION_SEARCH)) {
+            return intent.getStringExtra(SearchManager.QUERY);
+        } else if (intent.getAction().equals(Intent.ACTION_VIEW)) {
+            return intent.getDataString();
         }
         return null;
     }

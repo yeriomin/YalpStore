@@ -13,7 +13,6 @@ public class App {
     private String displayName;
     private String versionName;
     private int versionCode;
-    private Version version;
     private int offerType;
     private String updated;
     private long size;
@@ -68,9 +67,6 @@ public class App {
 
     public void setVersionName(String versionName) {
         this.versionName = versionName;
-        if (null != versionName && !versionName.isEmpty()) {
-            this.version = new Version(versionName);
-        }
     }
 
     public int getVersionCode() {
@@ -79,10 +75,6 @@ public class App {
 
     public void setVersionCode(int versionCode) {
         this.versionCode = versionCode;
-    }
-
-    public Version getVersion() {
-        return version;
     }
 
     public int getOfferType() {

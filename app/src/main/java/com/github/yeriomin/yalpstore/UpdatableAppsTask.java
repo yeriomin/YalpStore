@@ -19,7 +19,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
 
     protected List<App> apps = new ArrayList<>();
 
-    static List<App> getInstalledApps(Context context) {
+    static public List<App> getInstalledApps(Context context) {
         List<App> apps = new ArrayList<>();
 
         PackageManager pm = context.getPackageManager();
@@ -64,7 +64,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
     }
 
     @Override
-    protected Throwable doInBackground(Void... params) {
+    protected Throwable doInBackground(String... params) {
         // Building local apps list
         List<String> installedAppIds = new ArrayList<>();
         Map<String, App> appMap = new HashMap<>();

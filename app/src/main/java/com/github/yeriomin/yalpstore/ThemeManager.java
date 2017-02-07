@@ -11,6 +11,7 @@ public class ThemeManager {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         String theme = prefs.getString(PreferenceActivity.PREFERENCE_UI_THEME, PreferenceActivity.THEME_NONE);
         switch (theme) {
+            default:
             case PreferenceActivity.THEME_NONE:
                 break;
             case PreferenceActivity.THEME_LIGHT:

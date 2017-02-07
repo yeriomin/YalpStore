@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="about_developer_email_label">Почта разработчика:</string>
+    <string name="about_logged_in">Ваш текущий аккаунт:</string>
+    <string name="about_copied_to_clipboard">Скопировано в буфер обмена</string>
     <string name="list_line_2_updatable" formatted="false">Обновлено %s</string>
     <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
     <string name="list_empty_updates">Обновлений нет</string>
     <string name="list_empty_search">Ничего не найдено</string>
+    <string name="list_incompatible">несовместимо</string>
     <string name="dialog_two_factor_cancel">Позднее</string>
     <string name="dialog_two_factor_create_password">Создать пароль</string>
     <string name="dialog_title_two_factor">Двухэтапная аутентификация</string>
@@ -20,6 +24,13 @@
     <string name="dialog_message_loading_app_list_update">Подождите. Ищем обновления для ваших приложений.</string>
     <string name="dialog_title_loading_app_list_search">Поиск</string>
     <string name="dialog_message_loading_app_list_search">Подождите. Ищем приложения по вашему запросу.</string>
+    <string name="dialog_account_type_provided_by_user">Через мой аккаунт Google</string>
+    <string name="dialog_account_type_predefined">Без аккаунта (экспериментально)</string>
+    <string name="dialog_account_type_title">Как логиниться в Google Play Store?</string>
+    <string name="dialog_title_logging_in">Входим</string>
+    <string name="dialog_message_logging_in_provided_by_user">Пытаемся подключиться через ваш аккаунт</string>
+    <string name="dialog_message_logging_in_predefined">Пытаемся подключиться через аккаунт, предоставленный Yalp Store</string>
+    <string name="action_about">О приложении</string>
     <string name="action_settings">Настройки</string>
     <string name="action_updates">Обновления</string>
     <string name="action_ignore">Не обновлять</string>
@@ -35,6 +46,7 @@
     <string name="error_network_other" formatted="false">Сетевая ошибка: %s</string>
     <string name="error_not_purchased">Похоже, это приложение не было куплено.\nПерейти на его страницу в Play Store?</string>
     <string name="error_downloads_directory_not_writable">Каталог закачек недоступен для записи.</string>
+    <string name="error_token_dispenser_problem">Подключиться без аккаунта не удалось. Попробуйте подключиться через ваш Google аккаунт.</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
     <string name="details_rating_specific" formatted="false">%d★ %d</string>
@@ -53,7 +65,7 @@
     <string name="details_download">Скачать</string>
     <string name="details_install">Установить</string>
     <string name="details_downloading">Скачиваем…</string>
-    <string name="details_download_impossible">Ошибка. Не удалось получить версию приложения</string>
+    <string name="details_download_impossible">Несовместимо с этим устройством</string>
     <string name="details_review_dialog_title">Есть что добавить?</string>
     <string name="details_review_dialog_review_title_hint">вкратце</string>
     <string name="details_review_dialog_review_comment_hint">подробнее</string>
@@ -84,7 +96,7 @@
     <string name="pref_auto_install">Устанавливать приложения сразу</string>
     <string name="pref_update_list_white_or_black_black">Выбранные приложения не будут обновляться</string>
     <string name="pref_update_list_white_or_black_white">Только выбранные приложения будут обновляться</string>
-    <string name="pref_update_list_white_or_black">Чёрный или бклый список обновлений</string>
+    <string name="pref_update_list_white_or_black">Чёрный или белый список обновлений</string>
     <string name="pref_update_list_black">Изменить список игнорируемых приложений</string>
     <string name="pref_update_list_white">Изменить список обновляемых приложений</string>
     <string name="pref_ui_theme">Тема</string>
@@ -92,9 +104,11 @@
     <string name="pref_ui_theme_light">Светлая</string>
     <string name="pref_ui_theme_dark">Тёмная</string>
     <string name="pref_ui_theme_black">Чёрная</string>
-    <string name="pref_background_update_check_summary_off">Проверка обновлений происходит только при запуске Yalp Store</string>
-    <string name="pref_background_update_check_summary_on">Проверка обновлений происходит периодически (раз в час)</string>
-    <string name="pref_background_update_check">Периодически проверять обновления</string>
+    <string name="pref_background_update_interval_never">Только при запуске Yalp Store</string>
+    <string name="pref_background_update_interval_hourly">Раз в час</string>
+    <string name="pref_background_update_interval_daily">Раз в день</string>
+    <string name="pref_background_update_interval_weekly">Раз в неделю</string>
+    <string name="pref_background_update_interval">Периодически проверять обновления</string>
     <string name="download_manager_ERROR_UNKNOWN">Неизвестная ошибка.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Неизвестная ошибка сохранения файла.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Сетевая ошибка. Попробуйте позднее.</string>

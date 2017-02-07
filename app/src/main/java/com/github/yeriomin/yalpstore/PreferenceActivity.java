@@ -7,12 +7,15 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 
@@ -24,7 +27,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK = "PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK";
     public static final String PREFERENCE_UPDATE_LIST = "PREFERENCE_UPDATE_LIST";
     public static final String PREFERENCE_UI_THEME = "PREFERENCE_UI_THEME";
-    public static final String PREFERENCE_BACKGROUND_UPDATE_CHECK = "PREFERENCE_BACKGROUND_UPDATE_CHECK";
+    public static final String PREFERENCE_BACKGROUND_UPDATE_INTERVAL = "PREFERENCE_BACKGROUND_UPDATE_INTERVAL";
 
     public static final String LIST_WHITE = "white";
     public static final String LIST_BLACK = "black";
@@ -34,85 +37,82 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String THEME_DARK = "dark";
     public static final String THEME_BLACK = "black";
 
-    public static final int UPDATE_INTERVAL = 1000 * 60 * 60;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
 
-        PackageManager pm = getPackageManager();
-        List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_META_DATA);
-        List<CharSequence> entries = new ArrayList<>();
-        List<CharSequence> entryValues = new ArrayList<>();
-        for (PackageInfo packageInfo: packages) {
-            if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                // This is a system app - skipping
-                continue;
+        prepareBlacklist(
+            (ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK),
+            (MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST)
+        );
+        prepareTheme((ListPreference) findPreference(PREFERENCE_UI_THEME));
+        prepareCheckUpdates((ListPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INTERVAL));
+    }
+
+    private void prepareBlacklist(ListPreference blackOrWhite, final MultiSelectListPreference appList) {
+        Map<String, String> appNames = getInstalledAppNames();
+        List<String> labels = new ArrayList<>(appNames.keySet());
+        Collections.sort(
+            labels,
+            new Comparator<Object>() {
+                public int compare(Object o1, Object o2) {
+                    String s1 = (String) o1;
+                    String s2 = (String) o2;
+                    return s1.toLowerCase().compareTo(s2.toLowerCase());
+                }
             }
-            entries.add(pm.getApplicationLabel(packageInfo.applicationInfo).toString());
-            entryValues.add(packageInfo.packageName);
+        );
+        List<String> values = new ArrayList<>();
+        for (String label: labels) {
+            values.add(appNames.get(label));
         }
-
-        final MultiSelectListPreference m = (MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST);
-        ListPreference blackOrWhite = (ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK);
-        m.setTitle(blackOrWhite.getValue().equals(LIST_BLACK)
-            ? getString(R.string.pref_update_list_black)
-            : getString(R.string.pref_update_list_white)
-        );
-        blackOrWhite.setSummary(blackOrWhite.getValue().equals(LIST_BLACK)
-            ? getString(R.string.pref_update_list_white_or_black_black)
-            : getString(R.string.pref_update_list_white_or_black_white)
-        );
-        m.setEntries(entries.toArray(new CharSequence[entries.size()]));
-        m.setEntryValues(entryValues.toArray(new CharSequence[entryValues.size()]));
-
-        blackOrWhite.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+        int appCount = values.size();
+        appList.setEntries(labels.toArray(new String[appCount]));
+        appList.setEntryValues(values.toArray(new String[appCount]));
+        appList.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                String value = (String) newValue;
-                switch (value) {
-                    case LIST_BLACK:
-                        m.setTitle(getString(R.string.pref_update_list_black));
-                        preference.setSummary(getString(R.string.pref_update_list_white_or_black_black));
-                        break;
-                    case LIST_WHITE:
-                        m.setTitle(getString(R.string.pref_update_list_white));
-                        preference.setSummary(getString(R.string.pref_update_list_white_or_black_white));
-                        break;
-                }
+                UpdatableAppsActivity.setNeedsUpdate(true);
                 return true;
             }
         });
 
-        ListPreference theme = (ListPreference) findPreference(PREFERENCE_UI_THEME);
+        Preference.OnPreferenceChangeListener listener = new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                String value = (String) newValue;
+                boolean isBlackList = value.equals(LIST_BLACK);
+                appList.setTitle(getString(isBlackList ? R.string.pref_update_list_black : R.string.pref_update_list_white));
+                preference.setSummary(getString(isBlackList ? R.string.pref_update_list_white_or_black_black : R.string.pref_update_list_white_or_black_white));
+                return true;
+            }
+        };
+        blackOrWhite.setOnPreferenceChangeListener(listener);
+        listener.onPreferenceChange(blackOrWhite, blackOrWhite.getValue());
+    }
+
+    private Map<String, String> getInstalledAppNames() {
+        PackageManager pm = getPackageManager();
+        List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_META_DATA);
+        Map<String, String> appNames = new HashMap<>();
+        for (PackageInfo info: packages) {
+            if ((info.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+                // This is a system app - skipping
+                continue;
+            }
+            appNames.put(pm.getApplicationLabel(info.applicationInfo).toString(), info.packageName);
+        }
+        return appNames;
+    }
+
+    private void prepareTheme(ListPreference theme) {
         theme.setSummary(getString(getThemeSummaryStringId(theme.getValue())));
         theme.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, final Object newValue) {
                 preference.setSummary(getString(getThemeSummaryStringId((String) newValue)));
-                return true;
-            }
-        });
-
-        CheckBoxPreference checkForUpdates = (CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_CHECK);
-        checkForUpdates.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                boolean value = (Boolean) newValue;
-                Intent intent = new Intent(getApplicationContext(), UpdateChecker.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.cancel(pendingIntent);
-                if (value) {
-                    alarmManager.setRepeating(
-                        AlarmManager.RTC_WAKEUP,
-                        System.currentTimeMillis(),
-                        UPDATE_INTERVAL,
-                        pendingIntent
-                    );
-                }
                 return true;
             }
         });
@@ -133,6 +133,59 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
             case THEME_NONE:
             default:
                 summaryId = R.string.pref_ui_theme_none;
+                break;
+        }
+        return summaryId;
+    }
+
+    private void prepareCheckUpdates(ListPreference checkForUpdates) {
+        checkForUpdates.setSummary(getString(getUpdateSummaryStringId(checkForUpdates.getValue())));
+        checkForUpdates.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                int interval = Integer.parseInt((String) newValue);
+                Intent intent = new Intent(getApplicationContext(), UpdateChecker.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarmManager.cancel(pendingIntent);
+                if (interval > 0) {
+                    alarmManager.setRepeating(
+                        AlarmManager.RTC_WAKEUP,
+                        System.currentTimeMillis(),
+                        interval,
+                        pendingIntent
+                    );
+                }
+                preference.setSummary(getString(getUpdateSummaryStringId((String) newValue)));
+                return true;
+            }
+        });
+    }
+
+    private int getUpdateSummaryStringId(String intervalString) {
+        int summaryId;
+        final int hour = 1000 * 60 * 60;
+        final int day = hour * 24;
+        final int week = day * 7;
+        int interval;
+        try {
+            interval = Integer.parseInt(intervalString);
+        } catch (NumberFormatException e) {
+            interval = 0;
+        }
+        switch (interval) {
+            case hour:
+                summaryId = R.string.pref_background_update_interval_hourly;
+                break;
+            case day:
+                summaryId = R.string.pref_background_update_interval_daily;
+                break;
+            case week:
+                summaryId = R.string.pref_background_update_interval_weekly;
+                break;
+            case 0:
+            default:
+                summaryId = R.string.pref_background_update_interval_never;
                 break;
         }
         return summaryId;

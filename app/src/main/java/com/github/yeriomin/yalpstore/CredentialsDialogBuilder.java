@@ -5,26 +5,23 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AuthException;
 
 import java.io.IOException;
+import java.net.ConnectException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 
-public class CredentialsDialogBuilder {
+import javax.net.ssl.SSLHandshakeException;
 
-    static private final String APP_PASSWORDS_URL = "https://security.google.com/settings/security/apppasswords";
+abstract public class CredentialsDialogBuilder {
 
-    private Context context;
+    protected Context context;
     protected GoogleApiAsyncTask taskClone;
 
     public CredentialsDialogBuilder(Context context) {
@@ -35,49 +32,9 @@ public class CredentialsDialogBuilder {
         this.taskClone = taskClone;
     }
 
-    public Dialog show() {
-        final Dialog ad = new Dialog(context);
-        ad.setContentView(R.layout.credentials_dialog_layout);
-        ad.setTitle(context.getString(R.string.credentials_title));
-        ad.setCancelable(false);
+    abstract public Dialog show();
 
-        final EditText editEmail = (EditText) ad.findViewById(R.id.email);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        editEmail.setText(prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, ""));
-        final EditText editPassword = (EditText) ad.findViewById(R.id.password);
-
-        Button buttonExit = (Button) ad.findViewById(R.id.button_exit);
-        buttonExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.exit(0);
-            }
-        });
-
-        Button buttonOk = (Button) ad.findViewById(R.id.button_ok);
-        buttonOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context c = view.getContext();
-                final String email = editEmail.getText().toString();
-                final String password = editPassword.getText().toString();
-                if (email.isEmpty() || password.isEmpty()) {
-                    toast(c, R.string.error_credentials_empty);
-                    return;
-                }
-
-                CheckCredentialsTask task = new CheckCredentialsTask();
-                task.setTaskClone(taskClone);
-                task.setDialog(ad);
-                task.execute(email, password);
-            }
-        });
-
-        ad.show();
-        return ad;
-    }
-
-    static private void toast(Context c, int stringId, String... stringArgs) {
+    static protected void toast(Context c, int stringId, String... stringArgs) {
         Toast.makeText(
             c.getApplicationContext(),
             c.getString(stringId, (Object[]) stringArgs),
@@ -85,79 +42,49 @@ public class CredentialsDialogBuilder {
         ).show();
     }
 
-    private class CheckCredentialsTask extends AsyncTask<String, Void, Throwable> {
+    abstract protected class CheckCredentialsTask extends GoogleApiAsyncTask {
 
-        private Dialog dialog;
-        private RelativeLayout progressOverlay;
-        protected GoogleApiAsyncTask taskClone;
-
-        public void setTaskClone(GoogleApiAsyncTask taskClone) {
-            this.taskClone = taskClone;
-        }
-
-        public void setDialog(Dialog dialog) {
-            this.dialog = dialog;
-        }
-
-        @Override
-        protected Throwable doInBackground(String[] params) {
-            if (params.length < 2
-                || params[0] == null
-                || params[1] == null
-                || params[0].isEmpty()
-                || params[1].isEmpty()
-                ) {
-                Log.w(getClass().getName(), "Email - password pair expected");
-            }
-            try {
-                PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.dialog.getContext());
-                wrapper.login(params[0], params[1]);
-            } catch (Throwable e) {
-                return e;
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            this.progressOverlay = (RelativeLayout) this.dialog.findViewById(R.id.loading);
-            this.progressOverlay.setVisibility(View.VISIBLE);
-            this.progressOverlay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {}
-            });
-            super.onPreExecute();
-        }
+        static private final String APP_PASSWORDS_URL = "https://security.google.com/settings/security/apppasswords";
 
         @Override
         protected void onPostExecute(Throwable e) {
-            super.onPostExecute(e);
-            this.progressOverlay.setVisibility(View.GONE);
-            Context c = this.dialog.getContext();
+            if (null != this.progressDialog) {
+                this.progressDialog.dismiss();
+            }
             if (null != e) {
                 if (e instanceof CredentialsEmptyException) {
                     Log.w(getClass().getName(), "Credentials empty");
+                } else if (e instanceof TokenDispenserException) {
+                    e.getCause().printStackTrace();
+                    toast(context, R.string.error_token_dispenser_problem);
                 } else if (e instanceof AuthException) {
                     if (null != ((AuthException) e).getTwoFactorUrl()) {
-                        this.dialog.dismiss();
                         getTwoFactorAuthDialog().show();
                     } else {
-                        toast(c, R.string.error_incorrect_password);
+                        toast(context, R.string.error_incorrect_password);
                     }
                 } else if (e instanceof IOException) {
-                    toast(c, R.string.error_network_other, e.getMessage());
+                    String message;
+                    if (e instanceof UnknownHostException
+                        || e instanceof SSLHandshakeException
+                        || e instanceof ConnectException
+                        || e instanceof SocketException
+                        || e instanceof SocketTimeoutException) {
+                        message = this.context.getString(R.string.error_no_network);
+                    } else {
+                        message = this.context.getString(R.string.error_network_other, e.getClass().getName() + " " + e.getMessage());
+                    }
+                    toast(context, message);
                 } else {
                     Log.w(getClass().getName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
                     e.printStackTrace();
                 }
             } else {
-                this.dialog.dismiss();
                 this.taskClone.execute();
             }
         }
 
         private AlertDialog getTwoFactorAuthDialog() {
-            final Context context = this.dialog.getContext();
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             return builder
                 .setMessage(R.string.dialog_message_two_factor)
@@ -170,7 +97,7 @@ public class CredentialsDialogBuilder {
                             Intent i = new Intent(Intent.ACTION_VIEW);
                             i.setData(Uri.parse(APP_PASSWORDS_URL));
                             context.startActivity(i);
-                            System.exit(0);
+                            android.os.Process.killProcess(android.os.Process.myPid());
                         }
                     }
                 )
@@ -179,7 +106,7 @@ public class CredentialsDialogBuilder {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            System.exit(0);
+                            android.os.Process.killProcess(android.os.Process.myPid());
                         }
                     }
                 )

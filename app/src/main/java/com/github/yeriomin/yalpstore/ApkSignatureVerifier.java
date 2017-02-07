@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -43,7 +44,7 @@ class ApkSignatureVerifier {
         pm = context.getPackageManager();
     }
 
-    boolean match(String packageName, File apkFile) {
+    public boolean match(String packageName, File apkFile) {
         byte[] apkSig = getApkSignature(apkFile);
         byte[] localSig = getLocalSignature(packageName);
         return localSig.length == 0 || Arrays.equals(apkSig, localSig);
@@ -72,7 +73,7 @@ class ApkSignatureVerifier {
             try {
                 outputStream.write(sig.toByteArray());
             } catch (IOException e) {
-                throw new RuntimeException("Should not happen! Concatenating signatures failed");
+                Log.e(getClass().getName(), "Should not happen! Concatenating signatures failed");
             }
         }
 

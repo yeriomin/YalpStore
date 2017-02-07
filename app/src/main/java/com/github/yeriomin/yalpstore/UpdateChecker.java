@@ -43,7 +43,7 @@ public class UpdateChecker extends BroadcastReceiver {
             pendingIntent,
             title,
             message,
-            R.mipmap.ic_launcher
+            R.drawable.ic_notification
         );
         NotificationManager manager = (NotificationManager) c.getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(title.hashCode(), notification);

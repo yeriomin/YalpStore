@@ -25,7 +25,6 @@ import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.provider.OpenableColumns;
@@ -269,7 +268,7 @@ import static org.xmlpull.v1.XmlPullParser.START_TAG;
  * <p>
  * There are a variety of ways to serve the content URI for a file to a client app. One common way
  * is for the client app to start your app by calling
- * {@link android.app.Activity#startActivityForResult(Intent, int, Bundle) startActivityResult()},
+ * android.app.Activity#startActivityForResult(Intent, int, Bundle) startActivityResult(),
  * which sends an {@link Intent} to your app to start an {@link android.app.Activity} in your app.
  * In response, your app can immediately return a content URI to the client app or present a user
  * interface that allows the user to pick a file. In the latter case, once the user picks the file

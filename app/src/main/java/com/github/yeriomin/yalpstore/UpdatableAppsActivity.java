@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -9,10 +10,17 @@ import java.util.Map;
 
 public class UpdatableAppsActivity extends AppListActivity {
 
+    static private boolean needsUpdate;
+
+    static public void setNeedsUpdate(boolean needsUpdate) {
+        UpdatableAppsActivity.needsUpdate = needsUpdate;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setNeedsUpdate(true);
         setTitle(getString(R.string.activity_title_updates));
         ((TextView) getListView().getEmptyView()).setText(getString(R.string.list_empty_updates));
     }
@@ -21,8 +29,19 @@ public class UpdatableAppsActivity extends AppListActivity {
     protected void onResume() {
         super.onResume();
 
-        this.data.clear();
-        loadApps();
+        if (UpdatableAppsActivity.needsUpdate) {
+            this.data.clear();
+            loadApps();
+            setNeedsUpdate(false);
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        setIntent(intent);
+        setNeedsUpdate(true);
     }
 
     @Override
@@ -52,10 +71,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         };
         task.setErrorView((TextView) getListView().getEmptyView());
         task.setContext(this);
-        task.prepareDialog(
-            getString(R.string.dialog_message_loading_app_list_update),
-            getString(R.string.dialog_title_loading_app_list_update)
-        );
+        task.prepareDialog(R.string.dialog_message_loading_app_list_update, R.string.dialog_title_loading_app_list_update);
         return task;
     }
 }

@@ -2,10 +2,17 @@
     <string name="app_name" translatable="false">Yalp Store</string>
     <string name="star_filled" translatable="false">★</string>
     <string name="star_empty" translatable="false">☆</string>
+    <string name="about_developer_email" translatable="false">yalp.store.dev@gmail.com</string>
+    <string name="about_gsf_id" translatable="false">Google Services Framework id:</string>
+    <string name="about_developer_email_label">Developer\'s email:</string>
+    <string name="about_logged_in">You are logged in as:</string>
+    <string name="about_copied_to_clipboard">Copied to clipboard</string>
     <string name="list_line_2_updatable" formatted="false">Updated on %s</string>
     <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
     <string name="list_empty_updates">No apps need to be updated</string>
     <string name="list_empty_search">No apps found</string>
+    <string name="list_incompatible">incompatible</string>
+    <string name="action_about">About</string>
     <string name="action_settings">Settings</string>
     <string name="action_logout">Log out</string>
     <string name="action_search">Search</string>
@@ -31,12 +38,19 @@
     <string name="dialog_message_loading_app_list_search">Please wait. Searching for apps.</string>
     <string name="dialog_title_loading_app_list_update">Checking for updates</string>
     <string name="dialog_message_loading_app_list_update">Please wait. Checking for new versions of your apps.</string>
+    <string name="dialog_account_type_provided_by_user">With my own Google account</string>
+    <string name="dialog_account_type_predefined">Without an account (experimental)</string>
+    <string name="dialog_account_type_title">How would you like to log in to Google Play Store?</string>
+    <string name="dialog_title_logging_in">Logging in</string>
+    <string name="dialog_message_logging_in_provided_by_user">Trying to log in with the credentials you provided</string>
+    <string name="dialog_message_logging_in_predefined">Trying to log in with credentials provided by Yalp Store</string>
     <string name="error_incorrect_password">Incorrect email or password.</string>
     <string name="error_credentials_empty">Provide google account credentials, please.</string>
     <string name="error_no_network">No network connection.</string>
     <string name="error_network_other" formatted="false">Network error: %s</string>
     <string name="error_not_purchased">The app does not seem to be purchased.\nRedirect to its Play Store web page?</string>
     <string name="error_downloads_directory_not_writable">Downloads directory could not be created or is not writable.</string>
+    <string name="error_token_dispenser_problem">Could not log in without an account. Try using your own account.</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
     <string name="details_rating_specific" formatted="false">%d★ %d</string>
@@ -55,7 +69,7 @@
     <string name="details_download">Download</string>
     <string name="details_install">Install</string>
     <string name="details_downloading">Downloading…</string>
-    <string name="details_download_impossible">Error. Could not get app version.</string>
+    <string name="details_download_impossible">Incompatible with your device</string>
     <string name="details_review_dialog_title">Anything else to add?</string>
     <string name="details_review_dialog_review_title_hint">title here</string>
     <string name="details_review_dialog_review_comment_hint">comment here</string>
@@ -94,9 +108,11 @@
     <string name="pref_ui_theme_light">Light</string>
     <string name="pref_ui_theme_dark">Dark</string>
     <string name="pref_ui_theme_black">Black</string>
-    <string name="pref_background_update_check_summary_off">Updates are checked only when you launch Yalp Store</string>
-    <string name="pref_background_update_check_summary_on">Updates are checked periodically (once an hour)</string>
-    <string name="pref_background_update_check">Check for updates periodically</string>
+    <string name="pref_background_update_interval_never">Only when you launch Yalp Store</string>
+    <string name="pref_background_update_interval_hourly">Hourly</string>
+    <string name="pref_background_update_interval_daily">Daily</string>
+    <string name="pref_background_update_interval_weekly">Weekly</string>
+    <string name="pref_background_update_interval">Check for updates periodically</string>
     <string name="download_manager_ERROR_UNKNOWN">Unknown error.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unknown file storage error.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">HTTP code was received that download manager can not handle. This is a server error.</string>

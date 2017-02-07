@@ -41,6 +41,16 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        <receiver android:name="com.github.yeriomin.yalpstore.InstalledReceiver">
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.PACKAGE_INSTALL"/>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
         <provider
             android:exported="false"
             android:name=".YalpSuggestionProvider"
@@ -94,8 +104,15 @@
         </activity>
         <activity android:name=".PreferenceActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".FullscreenImageActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name=".SimilarAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name=".UsersAlsoInstalledActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".SimilarAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+        </activity>
+        <activity android:name=".UsersAlsoInstalledActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+        </activity>
+        <activity android:name=".AboutActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+        </activity>
     </application>
 
 </manifest>

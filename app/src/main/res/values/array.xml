@@ -20,4 +20,20 @@
         <item>@string/pref_ui_theme_dark</item>
         <item>@string/pref_ui_theme_black</item>
     </string-array>
+    <string-array name="updateIntervalValues">
+        <item>0</item>
+        <item>3600000</item>
+        <item>86400000</item>
+        <item>604800000</item>
+    </string-array>
+    <string-array name="updateIntervalLabels">
+        <item>@string/pref_background_update_interval_never</item>
+        <item>@string/pref_background_update_interval_hourly</item>
+        <item>@string/pref_background_update_interval_daily</item>
+        <item>@string/pref_background_update_interval_weekly</item>
+    </string-array>
+    <string-array name="accountType">
+        <item>@string/dialog_account_type_provided_by_user</item>
+        <item>@string/dialog_account_type_predefined</item>
+    </string-array>
 </resources>

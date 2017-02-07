@@ -1,16 +1,14 @@
 package com.github.yeriomin.yalpstore;
 
-import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -20,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-abstract public class AppListActivity extends ListActivity {
+abstract public class AppListActivity extends YalpStoreActivity {
 
     protected static final String LINE1 = "LINE1";
     protected static final String LINE2 = "LINE2";
@@ -29,11 +27,22 @@ abstract public class AppListActivity extends ListActivity {
 
     protected List<Map<String, Object>> data = new ArrayList<>();
 
+    protected ListAdapter listAdapter;
+    protected ListView listView;
+
+    private Handler handler = new Handler();
+    private boolean finishedStart = false;
+
+    private Runnable mRequestFocus = new Runnable() {
+        public void run() {
+            listView.focusableViewAvailable(listView);
+        }
+    };
+
     abstract protected void loadApps();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.applist_activity_layout);
 
@@ -50,45 +59,24 @@ abstract public class AppListActivity extends ListActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
+    protected void onDestroy() {
+        handler.removeCallbacks(mRequestFocus);
+        super.onDestroy();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                startActivity(new Intent(this, PreferenceActivity.class));
-                break;
-            case R.id.action_logout:
-                new AlertDialog.Builder(this)
-                    .setMessage(R.string.dialog_message_logout)
-                    .setTitle(R.string.dialog_title_logout)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            new PlayStoreApiWrapper(getApplicationContext()).logout();
-                            dialogInterface.dismiss();
-                            finish();
-                        }
-                    })
-                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                        }
-                    })
-                    .show();
-                break;
-            case R.id.action_search:
-                onSearchRequested();
-                break;
-            case R.id.action_updates:
-                startActivity(new Intent(this, UpdatableAppsActivity.class));
-                break;
+    public void onContentChanged() {
+        super.onContentChanged();
+        View emptyView = findViewById(android.R.id.empty);
+        listView = (ListView) findViewById(android.R.id.list);
+        if (emptyView != null) {
+            listView.setEmptyView(emptyView);
         }
-        return super.onOptionsItemSelected(item);
+        if (finishedStart) {
+            setListAdapter(listAdapter);
+        }
+        handler.post(mRequestFocus);
+        finishedStart = true;
     }
 
     protected Map<String, Object> formatApp(App app) {
@@ -137,4 +125,18 @@ abstract public class AppListActivity extends ListActivity {
         return adapter;
     }
 
+    public void setListAdapter(ListAdapter adapter) {
+        synchronized (this) {
+            listAdapter = adapter;
+            listView.setAdapter(adapter);
+        }
+    }
+
+    public ListView getListView() {
+        return listView;
+    }
+
+    public ListAdapter getListAdapter() {
+        return listAdapter;
+    }
 }
