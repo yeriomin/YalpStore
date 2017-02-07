@@ -276,6 +276,10 @@ public class DetailsActivity extends YalpStoreActivity {
                 }
             }
         }
+        if (app.getVersionCode() == 0) {
+            findViewById(R.id.updated).setVisibility(View.GONE);
+            findViewById(R.id.size).setVisibility(View.GONE);
+        }
     }
 
     private void drawDescription() {
