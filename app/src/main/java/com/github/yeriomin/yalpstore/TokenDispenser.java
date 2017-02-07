@@ -5,6 +5,7 @@ import android.util.Log;
 import com.github.yeriomin.playstoreapi.AuthException;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
@@ -41,7 +42,11 @@ public class TokenDispenser {
         Request.Builder requestBuilder = new Request.Builder();
         Request request = requestBuilder.url(url).build();
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        OkHttpClient client = builder.build();
+        OkHttpClient client = builder
+            .connectTimeout(1, TimeUnit.MINUTES)
+            .readTimeout(1, TimeUnit.MINUTES)
+            .writeTimeout(1, TimeUnit.MINUTES)
+            .build();
         Response response;
         try {
             response = client.newCall(request).execute();

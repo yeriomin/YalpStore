@@ -30,15 +30,14 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         buttonExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.exit(0);
+                android.os.Process.killProcess(android.os.Process.myPid());
             }
         });
 
         Button buttonOk = (Button) ad.findViewById(R.id.button_ok);
-        buttonOk.setOnClickListener(new View.OnClickListener() {
+        buttonOk.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ad.dismiss();
                 Context c = view.getContext();
                 final String email = editEmail.getText().toString();
                 final String password = editPassword.getText().toString();
@@ -47,7 +46,8 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
                     return;
                 }
 
-                CheckCredentialsTask task = new UserProvidedCredentialsTask();
+                ad.dismiss();
+                UserProvidedCredentialsTask task = new UserProvidedCredentialsTask();
                 task.setTaskClone(taskClone);
                 task.setContext(context);
                 task.prepareDialog(R.string.dialog_message_logging_in_provided_by_user, R.string.dialog_title_logging_in);
