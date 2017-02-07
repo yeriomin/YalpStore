@@ -56,8 +56,9 @@ public class DetailsActivity extends YalpStoreActivity {
     static private final int REVIEW_SHOW_COUNT = 3;
     static private final int REVIEW_LOAD_COUNT = 15;
 
-    static final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
-    static final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
+    static private final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
+
+    static public final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
     private int reviewShowPage = 0;
     private int reviewLoadPage = 0;
@@ -110,10 +111,8 @@ public class DetailsActivity extends YalpStoreActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_ignore:
-                toggleBlackWhiteList();
-                break;
+        if (item.getItemId() == R.id.action_ignore) {
+            toggleBlackWhiteList();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -688,23 +687,21 @@ public class DetailsActivity extends YalpStoreActivity {
             starView.setText(starNum <= review.getRating() ? R.string.star_filled : R.string.star_empty);
             starView.setTextColor(starNum <= review.getRating() ? Color.YELLOW : colorDefault);
         }
-        TextView commentView = (TextView) findViewById(R.id.user_comment);
-        if (null != review.getComment() && !review.getComment().isEmpty()) {
-            commentView.setText(review.getComment());
-            commentView.setVisibility(View.VISIBLE);
-        } else {
-            commentView.setVisibility(View.GONE);
-        }
-        TextView titleView = (TextView) findViewById(R.id.user_title);
-        if (null != review.getTitle() && !review.getTitle().isEmpty()) {
-            titleView.setText(review.getTitle());
-            titleView.setVisibility(View.VISIBLE);
-        } else {
-            titleView.setVisibility(View.GONE);
-        }
+        setTextOrHide(R.id.user_comment, review.getComment());
+        setTextOrHide(R.id.user_title, review.getTitle());
         setText(R.id.rate, R.string.details_you_rated_this_app);
         findViewById(R.id.user_review_edit_delete).setVisibility(View.VISIBLE);
         findViewById(R.id.user_review).setVisibility(View.VISIBLE);
+    }
+
+    private void setTextOrHide(int viewId, String text) {
+        TextView textView = (TextView) findViewById(viewId);
+        if (null != text && !text.isEmpty()) {
+            textView.setText(text);
+            textView.setVisibility(View.VISIBLE);
+        } else {
+            textView.setVisibility(View.GONE);
+        }
     }
 
     private void clearUserReview() {

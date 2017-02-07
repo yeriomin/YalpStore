@@ -52,16 +52,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     }
 
     private void prepareBlacklist(ListPreference blackOrWhite, final MultiSelectListPreference appList) {
-        PackageManager pm = getPackageManager();
-        List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_META_DATA);
-        Map<String, String> appNames = new HashMap<>();
-        for (PackageInfo info: packages) {
-            if ((info.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                // This is a system app - skipping
-                continue;
-            }
-            appNames.put(pm.getApplicationLabel(info.applicationInfo).toString(), info.packageName);
-        }
+        Map<String, String> appNames = getInstalledAppNames();
         List<String> labels = new ArrayList<>(appNames.keySet());
         Collections.sort(
             labels,
@@ -77,15 +68,6 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         for (String label: labels) {
             values.add(appNames.get(label));
         }
-
-        appList.setTitle(blackOrWhite.getValue().equals(LIST_BLACK)
-            ? getString(R.string.pref_update_list_black)
-            : getString(R.string.pref_update_list_white)
-        );
-        blackOrWhite.setSummary(blackOrWhite.getValue().equals(LIST_BLACK)
-            ? getString(R.string.pref_update_list_white_or_black_black)
-            : getString(R.string.pref_update_list_white_or_black_white)
-        );
         int appCount = values.size();
         appList.setEntries(labels.toArray(new String[appCount]));
         appList.setEntryValues(values.toArray(new String[appCount]));
@@ -96,23 +78,33 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
                 return true;
             }
         });
-        blackOrWhite.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+
+        Preference.OnPreferenceChangeListener listener = new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 String value = (String) newValue;
-                switch (value) {
-                    case LIST_BLACK:
-                        appList.setTitle(getString(R.string.pref_update_list_black));
-                        preference.setSummary(getString(R.string.pref_update_list_white_or_black_black));
-                        break;
-                    case LIST_WHITE:
-                        appList.setTitle(getString(R.string.pref_update_list_white));
-                        preference.setSummary(getString(R.string.pref_update_list_white_or_black_white));
-                        break;
-                }
+                boolean isBlackList = value.equals(LIST_BLACK);
+                appList.setTitle(getString(isBlackList ? R.string.pref_update_list_black : R.string.pref_update_list_white));
+                preference.setSummary(getString(isBlackList ? R.string.pref_update_list_white_or_black_black : R.string.pref_update_list_white_or_black_white));
                 return true;
             }
-        });
+        };
+        blackOrWhite.setOnPreferenceChangeListener(listener);
+        listener.onPreferenceChange(blackOrWhite, blackOrWhite.getValue());
+    }
+
+    private Map<String, String> getInstalledAppNames() {
+        PackageManager pm = getPackageManager();
+        List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_META_DATA);
+        Map<String, String> appNames = new HashMap<>();
+        for (PackageInfo info: packages) {
+            if ((info.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+                // This is a system app - skipping
+                continue;
+            }
+            appNames.put(pm.getApplicationLabel(info.applicationInfo).toString(), info.packageName);
+        }
+        return appNames;
     }
 
     private void prepareTheme(ListPreference theme) {

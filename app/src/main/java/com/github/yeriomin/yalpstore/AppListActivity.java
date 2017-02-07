@@ -27,6 +27,18 @@ abstract public class AppListActivity extends YalpStoreActivity {
 
     protected List<Map<String, Object>> data = new ArrayList<>();
 
+    protected ListAdapter listAdapter;
+    protected ListView listView;
+
+    private Handler handler = new Handler();
+    private boolean finishedStart = false;
+
+    private Runnable mRequestFocus = new Runnable() {
+        public void run() {
+            listView.focusableViewAvailable(listView);
+        }
+    };
+
     abstract protected void loadApps();
 
     @Override
@@ -44,6 +56,27 @@ abstract public class AppListActivity extends YalpStoreActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        handler.removeCallbacks(mRequestFocus);
+        super.onDestroy();
+    }
+
+    @Override
+    public void onContentChanged() {
+        super.onContentChanged();
+        View emptyView = findViewById(android.R.id.empty);
+        listView = (ListView) findViewById(android.R.id.list);
+        if (emptyView != null) {
+            listView.setEmptyView(emptyView);
+        }
+        if (finishedStart) {
+            setListAdapter(listAdapter);
+        }
+        handler.post(mRequestFocus);
+        finishedStart = true;
     }
 
     protected Map<String, Object> formatApp(App app) {
@@ -92,56 +125,18 @@ abstract public class AppListActivity extends YalpStoreActivity {
         return adapter;
     }
 
-    protected ListAdapter mAdapter;
-    protected ListView mList;
-
-    private Handler mHandler = new Handler();
-    private boolean mFinishedStart = false;
-
-    private Runnable mRequestFocus = new Runnable() {
-        public void run() {
-            mList.focusableViewAvailable(mList);
-        }
-    };
-
-    @Override
-    protected void onDestroy() {
-        mHandler.removeCallbacks(mRequestFocus);
-        super.onDestroy();
-    }
-
-    @Override
-    public void onContentChanged() {
-        super.onContentChanged();
-        View emptyView = findViewById(android.R.id.empty);
-        mList = (ListView) findViewById(android.R.id.list);
-        if (mList == null) {
-            throw new RuntimeException(
-                "Your content must have a ListView whose id attribute is " +
-                    "'android.R.id.list'");
-        }
-        if (emptyView != null) {
-            mList.setEmptyView(emptyView);
-        }
-        if (mFinishedStart) {
-            setListAdapter(mAdapter);
-        }
-        mHandler.post(mRequestFocus);
-        mFinishedStart = true;
-    }
-
     public void setListAdapter(ListAdapter adapter) {
         synchronized (this) {
-            mAdapter = adapter;
-            mList.setAdapter(adapter);
+            listAdapter = adapter;
+            listView.setAdapter(adapter);
         }
     }
 
     public ListView getListView() {
-        return mList;
+        return listView;
     }
 
     public ListAdapter getListAdapter() {
-        return mAdapter;
+        return listAdapter;
     }
 }

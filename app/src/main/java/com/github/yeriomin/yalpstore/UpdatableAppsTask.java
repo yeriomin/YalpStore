@@ -19,7 +19,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
 
     protected List<App> apps = new ArrayList<>();
 
-    static List<App> getInstalledApps(Context context) {
+    static public List<App> getInstalledApps(Context context) {
         List<App> apps = new ArrayList<>();
 
         PackageManager pm = context.getPackageManager();

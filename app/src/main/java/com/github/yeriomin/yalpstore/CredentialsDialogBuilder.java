@@ -97,7 +97,7 @@ abstract public class CredentialsDialogBuilder {
                             Intent i = new Intent(Intent.ACTION_VIEW);
                             i.setData(Uri.parse(APP_PASSWORDS_URL));
                             context.startActivity(i);
-                            System.exit(0);
+                            android.os.Process.killProcess(android.os.Process.myPid());
                         }
                     }
                 )
@@ -106,7 +106,7 @@ abstract public class CredentialsDialogBuilder {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            System.exit(0);
+                            android.os.Process.killProcess(android.os.Process.myPid());
                         }
                     }
                 )

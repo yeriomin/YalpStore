@@ -29,7 +29,7 @@ public class TokenDispenser {
     }
 
     static private HttpUrl getUrl(String email, String path) {
-        okhttp3.HttpUrl.Builder urlBuilder = HttpUrl.parse(DISPENSER_URL).newBuilder();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(DISPENSER_URL).newBuilder();
         urlBuilder.addPathSegment(path);
         urlBuilder.addPathSegment(PARAMETER_EMAIL);
         urlBuilder.addPathSegment(email);

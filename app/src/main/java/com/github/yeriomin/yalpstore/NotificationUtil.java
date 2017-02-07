@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 
 class NotificationUtil {
 
-    static Notification createNotification(Context context, PendingIntent pendingIntent, String title, String text, int iconId) {
+    public static Notification createNotification(Context context, PendingIntent pendingIntent, String title, String text, int iconId) {
         Notification notification;
         if (isNotificationBuilderSupported()) {
             notification = buildNotificationWithBuilder(context, pendingIntent, title, text, iconId);
@@ -45,7 +45,7 @@ class NotificationUtil {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @SuppressWarnings("deprecation")
     private static Notification buildNotificationWithBuilder(Context context, PendingIntent pendingIntent, String title, String text, int iconId) {
-        android.app.Notification.Builder builder = new android.app.Notification.Builder(context)
+        Notification.Builder builder = new Notification.Builder(context)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setContentIntent(pendingIntent)

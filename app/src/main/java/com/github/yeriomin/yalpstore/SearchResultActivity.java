@@ -53,11 +53,9 @@ public class SearchResultActivity extends AppListActivity {
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 int lastItem = firstVisibleItem + visibleItemCount;
                 boolean loadMore = lastItem >= totalItemCount;
-                if (totalItemCount > 0 && loadMore) {
-                    if (lastLastitem != lastItem) {
-                        lastLastitem = lastItem;
-                        loadApps();
-                    }
+                if (totalItemCount > 0 && loadMore && lastLastitem != lastItem) {
+                    lastLastitem = lastItem;
+                    loadApps();
                 }
             }
         });
@@ -126,11 +124,10 @@ public class SearchResultActivity extends AppListActivity {
         ) {
             return intent.getData().getQueryParameter("q");
         }
-        switch (intent.getAction()) {
-            case Intent.ACTION_SEARCH:
-                return intent.getStringExtra(SearchManager.QUERY);
-            case Intent.ACTION_VIEW:
-                return intent.getDataString();
+        if (intent.getAction().equals(Intent.ACTION_SEARCH)) {
+            return intent.getStringExtra(SearchManager.QUERY);
+        } else if (intent.getAction().equals(Intent.ACTION_VIEW)) {
+            return intent.getDataString();
         }
         return null;
     }
