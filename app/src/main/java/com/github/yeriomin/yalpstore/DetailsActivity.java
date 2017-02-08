@@ -177,25 +177,31 @@ public class DetailsActivity extends YalpStoreActivity {
             findViewById(R.id.changes).setVisibility(View.VISIBLE);
             findViewById(R.id.changes_title).setVisibility(View.VISIBLE);
         }
-        String versionName = app.getVersionName();
-        if (null != versionName && !versionName.isEmpty()) {
-            setText(R.id.versionString, R.string.details_versionName, versionName);
-            findViewById(R.id.versionString).setVisibility(View.VISIBLE);
-            if (app.isInstalled()) {
-                try {
-                    PackageInfo info = getPackageManager().getPackageInfo(app.getPackageName(), 0);
-                    if (info.versionCode != app.getVersionCode()) {
-                        setText(R.id.versionString, R.string.details_versionName_updatable, info.versionName, versionName);
-                    }
-                } catch (PackageManager.NameNotFoundException e) {
-                    // We've checked for that already
-                }
-            }
-        }
+        drawVersion((TextView) findViewById(R.id.versionString), app);
         if (app.getVersionCode() == 0) {
             findViewById(R.id.updated).setVisibility(View.GONE);
             findViewById(R.id.size).setVisibility(View.GONE);
         }
+    }
+
+    private void drawVersion(TextView textView, App app) {
+        String versionName = app.getVersionName();
+        if (null == versionName || versionName.isEmpty()) {
+            return;
+        }
+        String label = getString(R.string.details_versionName, versionName);
+        if (app.isInstalled()) {
+            try {
+                PackageInfo info = getPackageManager().getPackageInfo(app.getPackageName(), 0);
+                if (info.versionCode != app.getVersionCode()) {
+                    label = getString(R.string.details_versionName_updatable, info.versionName, versionName);
+                }
+            } catch (PackageManager.NameNotFoundException e) {
+                // We've checked for that already
+            }
+        }
+        textView.setText(label);
+        textView.setVisibility(View.VISIBLE);
     }
 
     private void drawDescription(App app) {
@@ -281,27 +287,7 @@ public class DetailsActivity extends YalpStoreActivity {
             downloadButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    purchaseTask = new PurchaseTask() {
-
-                        @Override
-                        protected void onPostExecute(Throwable e) {
-                            super.onPostExecute(e);
-                            if (null == e) {
-                                receiver.setDownloadId(downloadId);
-                                if (!exists) {
-                                    Button button = (Button) findViewById(R.id.download);
-                                    button.setText(R.string.details_downloading);
-                                    button.setEnabled(false);
-                                }
-                            }
-                        }
-                    };
-                    purchaseTask.setApp(app);
-                    purchaseTask.setContext(v.getContext());
-                    purchaseTask.prepareDialog(
-                        R.string.dialog_message_purchasing_app,
-                        R.string.dialog_title_purchasing_app
-                    );
+                    purchaseTask = getPurchaseTask(exists);
                     if (checkPermission()) {
                         purchaseTask.execute();
                     } else {
@@ -310,6 +296,30 @@ public class DetailsActivity extends YalpStoreActivity {
                 }
             });
         }
+    }
+
+    private PurchaseTask getPurchaseTask(final boolean apkExists) {
+        PurchaseTask purchaseTask = new PurchaseTask() {
+            @Override
+            protected void onPostExecute(Throwable e) {
+                super.onPostExecute(e);
+                if (null == e) {
+                    receiver.setDownloadId(downloadId);
+                    if (!apkExists) {
+                        Button button = (Button) findViewById(R.id.download);
+                        button.setText(R.string.details_downloading);
+                        button.setEnabled(false);
+                    }
+                }
+            }
+        };
+        purchaseTask.setApp(app);
+        purchaseTask.setContext(this);
+        purchaseTask.prepareDialog(
+            R.string.dialog_message_purchasing_app,
+            R.string.dialog_title_purchasing_app
+        );
+        return purchaseTask;
     }
 
     private void setText(int viewId, String text) {

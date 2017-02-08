@@ -80,26 +80,14 @@ public class PlayStoreApiWrapper {
         app.setVersionName(appDetails.getVersionString());
         app.setVersionCode(appDetails.getVersionCode());
         app.setSize(appDetails.getInstallationSize());
-        Pattern pattern = Pattern.compile("[ ,>\\.\\+\\d\\s]+");
-        Matcher matcher = pattern.matcher(appDetails.getNumDownloads());
-        if (matcher.find()) {
-            String installs = matcher.group(0)
-                .replaceAll("[\\s\\.,]000[\\s\\.,]000[\\s\\.,]000", context.getString(R.string.suffix_billion))
-                .replaceAll("[\\s\\.,]000[\\s\\.,]000", context.getString(R.string.suffix_million))
-                ;
-            app.setInstalls(installs);
-        }
+        app.setInstalls(getInstallsNum(appDetails.getNumDownloads()));
         app.setUpdated(appDetails.getUploadDate());
-        Image iconImage = null;
         for (Image image: details.getImageList()) {
             if (image.getImageType() == IMAGE_ICON) {
-                iconImage = image;
+                app.setIconUrl(image.getImageUrl());
             } else if (image.getImageType() == IMAGE_SCREENSHOT) {
                 app.getScreenshotUrls().add(image.getImageUrl());
             }
-        }
-        if (iconImage != null) {
-            app.setIconUrl(iconImage.getImageUrl());
         }
         app.setChanges(appDetails.getRecentChangesHtml());
         app.getDeveloper().setName(appDetails.getDeveloperName());
@@ -107,6 +95,18 @@ public class PlayStoreApiWrapper {
         app.getDeveloper().setWebsite(appDetails.getDeveloperWebsite());
         app.setPermissions(appDetails.getPermissionList());
         return app;
+    }
+
+    private String getInstallsNum(String installsRaw) {
+        Pattern pattern = Pattern.compile("[ ,>\\.\\+\\d\\s]+");
+        Matcher matcher = pattern.matcher(installsRaw);
+        if (matcher.find()) {
+            return matcher.group(0)
+                .replaceAll("[\\s\\.,]000[\\s\\.,]000[\\s\\.,]000", context.getString(R.string.suffix_billion))
+                .replaceAll("[\\s\\.,]000[\\s\\.,]000", context.getString(R.string.suffix_million))
+            ;
+        }
+        return null;
     }
 
     private Review buildReview(com.github.yeriomin.playstoreapi.Review reviewProto) {
