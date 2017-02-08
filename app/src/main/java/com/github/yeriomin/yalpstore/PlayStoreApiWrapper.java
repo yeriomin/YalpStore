@@ -22,7 +22,6 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.HttpCookie;
 import com.github.yeriomin.playstoreapi.Image;
 import com.github.yeriomin.playstoreapi.ReviewResponse;
-import com.github.yeriomin.playstoreapi.SearchResponse;
 import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.Review;
@@ -32,7 +31,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -54,6 +52,9 @@ public class PlayStoreApiWrapper {
     private static final String BACKEND_DOCID_SIMILAR_APPS = "similar_apps";
     private static final String BACKEND_DOCID_USERS_ALSO_INSTALLED = "users_also_installed";
 
+    private static String suffixMil;
+    private static String suffixBil;
+
     private Context context;
     private String email;
     private String password;
@@ -61,16 +62,16 @@ public class PlayStoreApiWrapper {
     private static GooglePlayAPI api;
     private static AppSearchResultIterator searchResultIterator;
 
-    private App buildApp(DocV2 details) {
+    static public App buildApp(DocV2 details) {
         App app = new App();
         app.setDisplayName(details.getTitle());
         app.setDescription(details.getDescriptionHtml());
         app.getRating().setAverage(details.getAggregateRating().getStarRating());
-        app.getRating().setOneStar((int) details.getAggregateRating().getOneStarRatings());
-        app.getRating().setTwoStars((int) details.getAggregateRating().getTwoStarRatings());
-        app.getRating().setThreeStars((int) details.getAggregateRating().getThreeStarRatings());
-        app.getRating().setFourStars((int) details.getAggregateRating().getFourStarRatings());
-        app.getRating().setFiveStars((int) details.getAggregateRating().getFiveStarRatings());
+        app.getRating().setStars(1, (int) details.getAggregateRating().getOneStarRatings());
+        app.getRating().setStars(2, (int) details.getAggregateRating().getTwoStarRatings());
+        app.getRating().setStars(3, (int) details.getAggregateRating().getThreeStarRatings());
+        app.getRating().setStars(4, (int) details.getAggregateRating().getFourStarRatings());
+        app.getRating().setStars(5, (int) details.getAggregateRating().getFiveStarRatings());
         if (details.getOfferCount() > 0) {
             app.setOfferType(details.getOffer(0).getOfferType());
             app.setFree(details.getOffer(0).getMicros() == 0);
@@ -97,13 +98,33 @@ public class PlayStoreApiWrapper {
         return app;
     }
 
-    private String getInstallsNum(String installsRaw) {
+    static public File getApkPath(App app) {
+        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        String filename = app.getPackageName() + "." + String.valueOf(app.getVersionCode()) + ".apk";
+        return new File(downloadsDir, filename);
+    }
+
+    static public Intent getOpenApkIntent(Context context, File file) {
+        Intent intent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+            intent.setData(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file));
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        } else {
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+        return intent;
+    }
+
+    static private String getInstallsNum(String installsRaw) {
         Pattern pattern = Pattern.compile("[ ,>\\.\\+\\d\\s]+");
         Matcher matcher = pattern.matcher(installsRaw);
         if (matcher.find()) {
             return matcher.group(0)
-                .replaceAll("[\\s\\.,]000[\\s\\.,]000[\\s\\.,]000", context.getString(R.string.suffix_billion))
-                .replaceAll("[\\s\\.,]000[\\s\\.,]000", context.getString(R.string.suffix_million))
+                .replaceAll("[\\s\\.,]000[\\s\\.,]000[\\s\\.,]000", suffixBil)
+                .replaceAll("[\\s\\.,]000[\\s\\.,]000", suffixMil)
             ;
         }
         return null;
@@ -113,7 +134,6 @@ public class PlayStoreApiWrapper {
         Review review = new Review();
         review.setComment(reviewProto.getComment());
         review.setTitle(reviewProto.getTitle());
-        review.setTime(reviewProto.getTimestampMsec());
         review.setRating(reviewProto.getStarRating());
         review.setUserName(reviewProto.getAuthor2().getName());
         review.setUserPhotoUrl(reviewProto.getAuthor2().getUrls().getUrl());
@@ -123,47 +143,54 @@ public class PlayStoreApiWrapper {
 
     private GooglePlayAPI getApi() throws IOException {
         if (api == null) {
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-            String email = this.email == null ? prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, "") : this.email;
-            String gsfId = prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
-            String token = prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, "");
-            if (email.isEmpty()) {
-                throw new CredentialsEmptyException();
-            }
+            api = buildApi();
+        }
+        return api;
+    }
 
-            NativeDeviceInfoProvider deviceInfoProvider = new NativeDeviceInfoProvider();
-            deviceInfoProvider.setContext(context);
-            deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
-            api = new GooglePlayAPI(email);
-            api.setDeviceInfoProvider(deviceInfoProvider);
-            api.setLocale(Locale.getDefault());
-            SharedPreferences.Editor prefsEditor = prefs.edit();
+    private GooglePlayAPI buildApi() throws IOException {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String email = this.email == null ? prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, "") : this.email;
+        String gsfId = prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
+        String token = prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, "");
+        if (email.isEmpty()) {
+            throw new CredentialsEmptyException();
+        }
 
-            boolean needToUploadDeviceConfig = false;
-            if (gsfId.isEmpty()) {
-                needToUploadDeviceConfig = true;
-                String ac2dmToken = null == password ? TokenDispenser.getTokenAc2dm(email) : api.getAC2DMToken(password);
-                gsfId = api.getGsfId(ac2dmToken);
-                prefsEditor.putString(PreferenceActivity.PREFERENCE_GSF_ID, gsfId);
-                prefsEditor.apply();
-            }
-            api.setGsfId(gsfId);
-            if (token.isEmpty()) {
-                token = null == password ? TokenDispenser.getToken(email) : api.getToken(password);
-                prefsEditor.putString(PreferenceActivity.PREFERENCE_EMAIL, email);
-                prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, token);
-                prefsEditor.apply();
-            }
-            api.setToken(token);
-            if (needToUploadDeviceConfig) {
-                api.uploadDeviceConfig();
-            }
+        NativeDeviceInfoProvider deviceInfoProvider = new NativeDeviceInfoProvider();
+        deviceInfoProvider.setContext(context);
+        deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
+        GooglePlayAPI api = new GooglePlayAPI(email);
+        api.setDeviceInfoProvider(deviceInfoProvider);
+        api.setLocale(Locale.getDefault());
+        SharedPreferences.Editor prefsEditor = prefs.edit();
+
+        boolean needToUploadDeviceConfig = false;
+        if (gsfId.isEmpty()) {
+            needToUploadDeviceConfig = true;
+            String ac2dmToken = null == password ? TokenDispenser.getTokenAc2dm(email) : api.getAC2DMToken(password);
+            gsfId = api.getGsfId(ac2dmToken);
+            prefsEditor.putString(PreferenceActivity.PREFERENCE_GSF_ID, gsfId);
+            prefsEditor.apply();
+        }
+        api.setGsfId(gsfId);
+        if (token.isEmpty()) {
+            token = null == password ? TokenDispenser.getToken(email) : api.getToken(password);
+            prefsEditor.putString(PreferenceActivity.PREFERENCE_EMAIL, email);
+            prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, token);
+            prefsEditor.apply();
+        }
+        api.setToken(token);
+        if (needToUploadDeviceConfig) {
+            api.uploadDeviceConfig();
         }
         return api;
     }
 
     public PlayStoreApiWrapper(Context context) {
         this.context = context;
+        suffixMil = context.getString(R.string.suffix_million);
+        suffixBil = context.getString(R.string.suffix_billion);
     }
 
     public GooglePlayAPI login(String email) throws IOException {
@@ -280,6 +307,9 @@ public class PlayStoreApiWrapper {
         }
         if (null == searchResultIterator || !searchResultIterator.getQuery().equals(query)) {
             searchResultIterator = new AppSearchResultIterator(getApi().getSearchIterator(query));
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+            boolean hideNonFree = sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
+            searchResultIterator.setHideNonfreeApps(hideNonFree);
         }
         return searchResultIterator;
     }
@@ -336,63 +366,6 @@ public class PlayStoreApiWrapper {
             return ((DownloadManager) this.context.getSystemService(DOWNLOAD_SERVICE)).enqueue(request);
         }
         return 0L;
-    }
-
-    static public File getApkPath(App app) {
-        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        String filename = app.getPackageName() + "." + String.valueOf(app.getVersionCode()) + ".apk";
-        return new File(downloadsDir, filename);
-    }
-
-    static public Intent getOpenApkIntent(Context context, File file) {
-        Intent intent;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
-            intent.setData(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file));
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        } else {
-            intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        }
-        return intent;
-    }
-
-    class AppSearchResultIterator implements Iterator<List<App>> {
-
-        private GooglePlayAPI.SearchIterator iterator;
-
-        public AppSearchResultIterator(GooglePlayAPI.SearchIterator iterator) {
-            this.iterator = iterator;
-        }
-
-        public String getQuery() {
-            return this.iterator.getQuery();
-        }
-
-        @Override
-        public List<App> next() {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-            boolean hideNonFree = sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
-            List<App> apps = new ArrayList<>();
-            SearchResponse response = iterator.next();
-            if (response.getDocCount() > 0) {
-                for (DocV2 details: response.getDocList().get(0).getChildList()) {
-                    App app = buildApp(details);
-                    if (hideNonFree && !app.isFree()) {
-                        Log.i(this.getClass().getName(), "Skipping non-free app " + app.getPackageName());
-                    } else {
-                        apps.add(app);
-                    }
-                }
-            }
-            return apps;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return iterator.hasNext();
-        }
     }
 
 }

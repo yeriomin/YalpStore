@@ -20,6 +20,8 @@ public class ReviewManager {
 
     static private final int REVIEW_SHOW_COUNT = 3;
     static private final int REVIEW_LOAD_COUNT = 15;
+    static private int[] starIds = new int[] { R.id.user_star1, R.id.user_star2, R.id.user_star3, R.id.user_star4, R.id.user_star5 };
+    static private int[] averageStarIds = new int[] { R.id.average_stars1, R.id.average_stars2, R.id.average_stars3, R.id.average_stars4, R.id.average_stars5 };
 
     private DetailsActivity activity;
     private App app;
@@ -28,12 +30,12 @@ public class ReviewManager {
     private int reviewLoadPage = 0;
     private boolean allReviewsLoaded;
     private List<Review> reviews = new ArrayList<>();
-    private int[] starIds = new int[] { R.id.user_star1, R.id.user_star2, R.id.user_star3, R.id.user_star4, R.id.user_star5 };
     private int colorDefault;
 
     public ReviewManager(DetailsActivity activity, App app) {
         this.activity = activity;
         this.app = app;
+        colorDefault = ((TextView) activity.findViewById(starIds[0])).getCurrentTextColor();
     }
 
     public App getApp() {
@@ -41,41 +43,22 @@ public class ReviewManager {
     }
 
     public void drawReviews() {
-        final LinearLayout reviewList = (LinearLayout) activity.findViewById(R.id.reviews_list);
-        activity.findViewById(R.id.reviews_previous).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigateReviews(v, app.getPackageName());
-            }
-        });
-        activity.findViewById(R.id.reviews_next).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigateReviews(v, app.getPackageName());
-            }
-        });
         activity.initExpandableGroup(R.id.reviews_header, R.id.reviews_container, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showReviews(reviewList, app.getPackageName());
+                showReviews((LinearLayout) activity.findViewById(R.id.reviews_list), app.getPackageName());
             }
         });
+        initReviewListControls();
         setText(R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
-        setText(R.id.average_stars5, R.string.details_rating_specific, 5, app.getRating().getFiveStars());
-        setText(R.id.average_stars4, R.string.details_rating_specific, 4, app.getRating().getFourStars());
-        setText(R.id.average_stars3, R.string.details_rating_specific, 3, app.getRating().getThreeStars());
-        setText(R.id.average_stars2, R.string.details_rating_specific, 2, app.getRating().getTwoStars());
-        setText(R.id.average_stars1, R.string.details_rating_specific, 1, app.getRating().getOneStar());
-
-        activity.findViewById(R.id.user_review_container).setVisibility(app.isInstalled() ? View.VISIBLE : View.GONE);
-        for (int i = 0; i < starIds.length; i++) {
-            final int stars = i + 1;
-            int starId = starIds[i];
-            activity.findViewById(starId).setOnClickListener(new View.OnClickListener() {
+        for (int starNum = 1; starNum <= 5; starNum++) {
+            setText(averageStarIds[starNum - 1], R.string.details_rating_specific, starNum, app.getRating().getStars(starNum));
+            final int currentStars = starNum;
+            activity.findViewById(starIds[starNum - 1]).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Review review = new Review();
-                    review.setRating(stars);
+                    review.setRating(currentStars);
                     if (null != app.getUserReview()) {
                         review.setComment(app.getUserReview().getComment());
                         review.setTitle(app.getUserReview().getTitle());
@@ -84,7 +67,8 @@ public class ReviewManager {
                 }
             });
         }
-        colorDefault = ((TextView) activity.findViewById(starIds[0])).getCurrentTextColor();
+
+        activity.findViewById(R.id.user_review_container).setVisibility(app.isInstalled() ? View.VISIBLE : View.GONE);
         Review review = app.getUserReview();
         initUserReviewControls(app);
         if (null != review) {
@@ -155,12 +139,11 @@ public class ReviewManager {
 
     private void addReviewToList(Review review, ViewGroup parent) {
         LinearLayout reviewLayout = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.review_list_item, null, false);
-        String title = activity.getString(R.string.details_rating, (double) review.getRating());
-        if (null != review.getTitle() && !review.getTitle().isEmpty()) {
-            title += " " + review.getTitle();
-        }
         ((TextView) reviewLayout.findViewById(R.id.author)).setText(review.getUserName());
-        ((TextView) reviewLayout.findViewById(R.id.title)).setText(title);
+        ((TextView) reviewLayout.findViewById(R.id.title)).setText(
+            activity.getString(R.string.details_rating, (double) review.getRating())
+                + " " + review.getTitle()
+        );
         ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
         parent.addView(reviewLayout);
         ImageDownloadTask task = new ImageDownloadTask();
@@ -180,14 +163,12 @@ public class ReviewManager {
     private void showUserReviewCommentDialog(final Review review) {
         final Dialog dialog = new Dialog(activity);
         dialog.setContentView(R.layout.review_dialog_layout);
+
         final EditText editComment = (EditText) dialog.findViewById(R.id.review_dialog_review_comment);
-        if (null != review.getComment()) {
-            editComment.setText(review.getComment());
-        }
+        editComment.setText(review.getComment());
         final EditText editTitle = (EditText) dialog.findViewById(R.id.review_dialog_review_title);
-        if (null != review.getTitle()) {
-            editTitle.setText(review.getTitle());
-        }
+        editTitle.setText(review.getTitle());
+
         dialog.setCanceledOnTouchOutside(true);
         dialog.setCancelable(true);
         dialog.setTitle(R.string.details_review_dialog_title);
@@ -208,6 +189,17 @@ public class ReviewManager {
             }
         });
         dialog.show();
+    }
+
+    private void initReviewListControls() {
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateReviews(v, app.getPackageName());
+            }
+        };
+        activity.findViewById(R.id.reviews_previous).setOnClickListener(listener);
+        activity.findViewById(R.id.reviews_next).setOnClickListener(listener);
     }
 
     private void initUserReviewControls(final App app) {

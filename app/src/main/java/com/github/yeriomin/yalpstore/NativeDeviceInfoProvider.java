@@ -185,23 +185,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
             .setId(0)
             .setCheckin(
                 AndroidCheckinProto.newBuilder()
-                    .setBuild(
-                        AndroidBuildProto.newBuilder()
-                            .setId(Build.FINGERPRINT)
-                            .setProduct(Build.HARDWARE)
-                            .setCarrier(Build.BRAND)
-                            .setRadio(Build.RADIO)
-                            .setBootloader(Build.BOOTLOADER)
-                            .setDevice(Build.DEVICE)
-                            .setSdkVersion(Build.VERSION.SDK_INT)
-                            .setModel(Build.MODEL)
-                            .setManufacturer(Build.MANUFACTURER)
-                            .setBuildProduct(Build.PRODUCT)
-                            .setClient("android-google")
-                            .setOtaInstalled(false)
-                            .setTimestamp(System.currentTimeMillis() / 1000)
-                            .setGoogleServices(GOOGLE_SERVICES_VERSION_CODE)
-                    )
+                    .setBuild(getBuildProto())
                     .setLastCheckinMsec(0)
                     .setCellOperator("310260") // Getting this and the next two requires permission
                     .setSimOperator("310260")
@@ -213,6 +197,25 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
             .setVersion(3)
             .setDeviceConfiguration(getDeviceConfigurationProto())
             .setFragment(0)
+            .build();
+    }
+
+    private AndroidBuildProto getBuildProto() {
+        return AndroidBuildProto.newBuilder()
+            .setId(Build.FINGERPRINT)
+            .setProduct(Build.HARDWARE)
+            .setCarrier(Build.BRAND)
+            .setRadio(Build.RADIO)
+            .setBootloader(Build.BOOTLOADER)
+            .setDevice(Build.DEVICE)
+            .setSdkVersion(Build.VERSION.SDK_INT)
+            .setModel(Build.MODEL)
+            .setManufacturer(Build.MANUFACTURER)
+            .setBuildProduct(Build.PRODUCT)
+            .setClient("android-google")
+            .setOtaInstalled(false)
+            .setTimestamp(System.currentTimeMillis() / 1000)
+            .setGoogleServices(GOOGLE_SERVICES_VERSION_CODE)
             .build();
     }
 

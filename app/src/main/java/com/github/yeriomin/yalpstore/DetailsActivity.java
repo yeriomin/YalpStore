@@ -171,16 +171,20 @@ public class DetailsActivity extends YalpStoreActivity {
         setText(R.id.developerName, R.string.details_developer, app.getDeveloper().getName());
         setText(R.id.developerEmail, app.getDeveloper().getEmail());
         setText(R.id.developerWebsite, app.getDeveloper().getWebsite());
+        drawChanges(app);
+        drawVersion((TextView) findViewById(R.id.versionString), app);
+        if (app.getVersionCode() == 0) {
+            findViewById(R.id.updated).setVisibility(View.GONE);
+            findViewById(R.id.size).setVisibility(View.GONE);
+        }
+    }
+
+    private void drawChanges(App app) {
         String changes = app.getChanges();
         if (null != changes && !changes.isEmpty()) {
             setText(R.id.changes, Html.fromHtml(changes).toString());
             findViewById(R.id.changes).setVisibility(View.VISIBLE);
             findViewById(R.id.changes_title).setVisibility(View.VISIBLE);
-        }
-        drawVersion((TextView) findViewById(R.id.versionString), app);
-        if (app.getVersionCode() == 0) {
-            findViewById(R.id.updated).setVisibility(View.GONE);
-            findViewById(R.id.size).setVisibility(View.GONE);
         }
     }
 

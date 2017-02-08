@@ -3,11 +3,7 @@ package com.github.yeriomin.yalpstore.model;
 public class Rating {
 
     private float average;
-    private int oneStar;
-    private int twoStars;
-    private int threeStars;
-    private int fourStars;
-    private int fiveStars;
+    private int[] stars = new int[5];
 
     public float getAverage() {
         return average;
@@ -17,43 +13,11 @@ public class Rating {
         this.average = average;
     }
 
-    public int getFiveStars() {
-        return fiveStars;
+    public int getStars(int starNum) {
+        return stars[starNum - 1];
     }
 
-    public void setFiveStars(int fiveStars) {
-        this.fiveStars = fiveStars;
-    }
-
-    public int getFourStars() {
-        return fourStars;
-    }
-
-    public void setFourStars(int fourStars) {
-        this.fourStars = fourStars;
-    }
-
-    public int getOneStar() {
-        return oneStar;
-    }
-
-    public void setOneStar(int oneStar) {
-        this.oneStar = oneStar;
-    }
-
-    public int getThreeStars() {
-        return threeStars;
-    }
-
-    public void setThreeStars(int threeStars) {
-        this.threeStars = threeStars;
-    }
-
-    public int getTwoStars() {
-        return twoStars;
-    }
-
-    public void setTwoStars(int twoStars) {
-        this.twoStars = twoStars;
+    public void setStars(int starNum, int ratings) {
+        stars[starNum - 1] = ratings;
     }
 }
