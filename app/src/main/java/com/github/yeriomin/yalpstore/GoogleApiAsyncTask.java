@@ -20,8 +20,6 @@ import javax.net.ssl.SSLHandshakeException;
 abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
 
     protected Context context;
-    protected int progressDialogTitleId;
-    protected int progressDialogMessageId;
     protected ProgressDialog progressDialog;
     protected TextView errorView;
     protected GoogleApiAsyncTask taskClone;
@@ -31,8 +29,12 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
     }
 
     public void prepareDialog(int messageId, int titleId) {
-        this.progressDialogTitleId = titleId;
-        this.progressDialogMessageId = messageId;
+        ProgressDialog dialog = new ProgressDialog(context);
+        dialog.setTitle(this.context.getString(titleId));
+        dialog.setMessage(this.context.getString(messageId));
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(false);
+        this.progressDialog = dialog;
     }
 
     public void setErrorView(TextView errorView) {
@@ -45,13 +47,8 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
 
     @Override
     protected void onPreExecute() {
-        if (progressDialogMessageId > 0 && progressDialogTitleId > 0) {
-            this.progressDialog = ProgressDialog.show(
-                this.context,
-                this.context.getString(this.progressDialogTitleId),
-                this.context.getString(this.progressDialogMessageId),
-                true
-            );
+        if (null != this.progressDialog) {
+            this.progressDialog.show();
         }
     }
 
@@ -76,11 +73,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
             builder.show();
         } else if (e instanceof IOException) {
             String message;
-            if (e instanceof UnknownHostException
-                || e instanceof SSLHandshakeException
-                || e instanceof ConnectException
-                || e instanceof SocketException
-                || e instanceof SocketTimeoutException) {
+            if (noNetwork(e)) {
                 message = this.context.getString(R.string.error_no_network);
             } else {
                 message = this.context.getString(R.string.error_network_other, e.getClass().getName() + " " + e.getMessage());
@@ -94,6 +87,14 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
             Log.e(getClass().getName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    static public boolean noNetwork(Throwable e) {
+        return e instanceof UnknownHostException
+            || e instanceof SSLHandshakeException
+            || e instanceof ConnectException
+            || e instanceof SocketException
+            || e instanceof SocketTimeoutException;
     }
 
     static protected void toast(Context c, String message) {

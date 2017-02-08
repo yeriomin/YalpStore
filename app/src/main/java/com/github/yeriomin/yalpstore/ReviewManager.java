@@ -16,25 +16,21 @@ import com.github.yeriomin.yalpstore.model.Review;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReviewManager {
+public class ReviewManager extends DetailsManager {
 
     static private final int REVIEW_SHOW_COUNT = 3;
     static private final int REVIEW_LOAD_COUNT = 15;
     static private int[] starIds = new int[] { R.id.user_star1, R.id.user_star2, R.id.user_star3, R.id.user_star4, R.id.user_star5 };
     static private int[] averageStarIds = new int[] { R.id.average_stars1, R.id.average_stars2, R.id.average_stars3, R.id.average_stars4, R.id.average_stars5 };
-
-    private DetailsActivity activity;
-    private App app;
+    static private int colorDefault;
 
     private int reviewShowPage = 0;
     private int reviewLoadPage = 0;
     private boolean allReviewsLoaded;
     private List<Review> reviews = new ArrayList<>();
-    private int colorDefault;
 
     public ReviewManager(DetailsActivity activity, App app) {
-        this.activity = activity;
-        this.app = app;
+        super(activity, app);
         colorDefault = ((TextView) activity.findViewById(starIds[0])).getCurrentTextColor();
     }
 
@@ -42,7 +38,8 @@ public class ReviewManager {
         return app;
     }
 
-    public void drawReviews() {
+    @Override
+    public void draw() {
         activity.initExpandableGroup(R.id.reviews_header, R.id.reviews_container, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,13 +54,7 @@ public class ReviewManager {
             activity.findViewById(starIds[starNum - 1]).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Review review = new Review();
-                    review.setRating(currentStars);
-                    if (null != app.getUserReview()) {
-                        review.setComment(app.getUserReview().getComment());
-                        review.setTitle(app.getUserReview().getTitle());
-                    }
-                    showUserReviewCommentDialog(review);
+                    showUserReviewCommentDialog(getUpdatedUserReview(app.getUserReview(), currentStars));
                 }
             });
         }
@@ -102,6 +93,16 @@ public class ReviewManager {
         setText(R.id.rate, R.string.details_rate_this_app);
         activity.findViewById(R.id.user_review_edit_delete).setVisibility(View.GONE);
         activity.findViewById(R.id.user_review).setVisibility(View.GONE);
+    }
+
+    private Review getUpdatedUserReview(Review oldReview, int stars) {
+        Review review = new Review();
+        review.setRating(stars);
+        if (null != oldReview) {
+            review.setComment(oldReview.getComment());
+            review.setTitle(oldReview.getTitle());
+        }
+        return review;
     }
 
     private void navigateReviews(View v, String packageName) {

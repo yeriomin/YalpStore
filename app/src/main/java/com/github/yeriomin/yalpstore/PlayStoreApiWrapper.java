@@ -12,7 +12,6 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
-import com.github.yeriomin.playstoreapi.AppDetails;
 import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
 import com.github.yeriomin.playstoreapi.BuyResponse;
 import com.github.yeriomin.playstoreapi.DeliveryResponse;
@@ -20,11 +19,12 @@ import com.github.yeriomin.playstoreapi.DetailsResponse;
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.HttpCookie;
-import com.github.yeriomin.playstoreapi.Image;
 import com.github.yeriomin.playstoreapi.ReviewResponse;
 import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.AppBuilder;
 import com.github.yeriomin.yalpstore.model.Review;
+import com.github.yeriomin.yalpstore.model.ReviewBuilder;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,8 +33,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 
@@ -46,14 +44,8 @@ import static android.content.Context.DOWNLOAD_SERVICE;
  */
 public class PlayStoreApiWrapper {
 
-    private static final int IMAGE_ICON = 4;
-    private static final int IMAGE_SCREENSHOT = 1;
-
     private static final String BACKEND_DOCID_SIMILAR_APPS = "similar_apps";
     private static final String BACKEND_DOCID_USERS_ALSO_INSTALLED = "users_also_installed";
-
-    private static String suffixMil;
-    private static String suffixBil;
 
     private Context context;
     private String email;
@@ -61,42 +53,6 @@ public class PlayStoreApiWrapper {
 
     private static GooglePlayAPI api;
     private static AppSearchResultIterator searchResultIterator;
-
-    static public App buildApp(DocV2 details) {
-        App app = new App();
-        app.setDisplayName(details.getTitle());
-        app.setDescription(details.getDescriptionHtml());
-        app.getRating().setAverage(details.getAggregateRating().getStarRating());
-        app.getRating().setStars(1, (int) details.getAggregateRating().getOneStarRatings());
-        app.getRating().setStars(2, (int) details.getAggregateRating().getTwoStarRatings());
-        app.getRating().setStars(3, (int) details.getAggregateRating().getThreeStarRatings());
-        app.getRating().setStars(4, (int) details.getAggregateRating().getFourStarRatings());
-        app.getRating().setStars(5, (int) details.getAggregateRating().getFiveStarRatings());
-        if (details.getOfferCount() > 0) {
-            app.setOfferType(details.getOffer(0).getOfferType());
-            app.setFree(details.getOffer(0).getMicros() == 0);
-        }
-        AppDetails appDetails = details.getDetails().getAppDetails();
-        app.getPackageInfo().packageName = appDetails.getPackageName();
-        app.setVersionName(appDetails.getVersionString());
-        app.setVersionCode(appDetails.getVersionCode());
-        app.setSize(appDetails.getInstallationSize());
-        app.setInstalls(getInstallsNum(appDetails.getNumDownloads()));
-        app.setUpdated(appDetails.getUploadDate());
-        for (Image image: details.getImageList()) {
-            if (image.getImageType() == IMAGE_ICON) {
-                app.setIconUrl(image.getImageUrl());
-            } else if (image.getImageType() == IMAGE_SCREENSHOT) {
-                app.getScreenshotUrls().add(image.getImageUrl());
-            }
-        }
-        app.setChanges(appDetails.getRecentChangesHtml());
-        app.getDeveloper().setName(appDetails.getDeveloperName());
-        app.getDeveloper().setEmail(appDetails.getDeveloperEmail());
-        app.getDeveloper().setWebsite(appDetails.getDeveloperWebsite());
-        app.setPermissions(appDetails.getPermissionList());
-        return app;
-    }
 
     static public File getApkPath(App app) {
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
@@ -118,33 +74,20 @@ public class PlayStoreApiWrapper {
         return intent;
     }
 
-    static private String getInstallsNum(String installsRaw) {
-        Pattern pattern = Pattern.compile("[ ,>\\.\\+\\d\\s]+");
-        Matcher matcher = pattern.matcher(installsRaw);
-        if (matcher.find()) {
-            return matcher.group(0)
-                .replaceAll("[\\s\\.,]000[\\s\\.,]000[\\s\\.,]000", suffixBil)
-                .replaceAll("[\\s\\.,]000[\\s\\.,]000", suffixMil)
-            ;
-        }
-        return null;
-    }
-
-    private Review buildReview(com.github.yeriomin.playstoreapi.Review reviewProto) {
-        Review review = new Review();
-        review.setComment(reviewProto.getComment());
-        review.setTitle(reviewProto.getTitle());
-        review.setRating(reviewProto.getStarRating());
-        review.setUserName(reviewProto.getAuthor2().getName());
-        review.setUserPhotoUrl(reviewProto.getAuthor2().getUrls().getUrl());
-        review.setComment(reviewProto.getComment());
-        return review;
-    }
-
     private GooglePlayAPI getApi() throws IOException {
         if (api == null) {
             api = buildApi();
         }
+        return api;
+    }
+
+    private GooglePlayAPI constructApi() throws IOException {
+        NativeDeviceInfoProvider deviceInfoProvider = new NativeDeviceInfoProvider();
+        deviceInfoProvider.setContext(context);
+        deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
+        GooglePlayAPI api = new GooglePlayAPI(email);
+        api.setDeviceInfoProvider(deviceInfoProvider);
+        api.setLocale(Locale.getDefault());
         return api;
     }
 
@@ -157,14 +100,9 @@ public class PlayStoreApiWrapper {
             throw new CredentialsEmptyException();
         }
 
-        NativeDeviceInfoProvider deviceInfoProvider = new NativeDeviceInfoProvider();
-        deviceInfoProvider.setContext(context);
-        deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
-        GooglePlayAPI api = new GooglePlayAPI(email);
-        api.setDeviceInfoProvider(deviceInfoProvider);
-        api.setLocale(Locale.getDefault());
-        SharedPreferences.Editor prefsEditor = prefs.edit();
+        GooglePlayAPI api = constructApi();
 
+        SharedPreferences.Editor prefsEditor = prefs.edit();
         boolean needToUploadDeviceConfig = false;
         if (gsfId.isEmpty()) {
             needToUploadDeviceConfig = true;
@@ -189,8 +127,8 @@ public class PlayStoreApiWrapper {
 
     public PlayStoreApiWrapper(Context context) {
         this.context = context;
-        suffixMil = context.getString(R.string.suffix_million);
-        suffixBil = context.getString(R.string.suffix_billion);
+        AppBuilder.suffixMil = context.getString(R.string.suffix_million);
+        AppBuilder.suffixBil = context.getString(R.string.suffix_billion);
     }
 
     public GooglePlayAPI login(String email) throws IOException {
@@ -231,7 +169,7 @@ public class PlayStoreApiWrapper {
             offset,
             numberOfResults
         ).getGetResponse().getReviewList()) {
-            reviews.add(buildReview(review));
+            reviews.add(ReviewBuilder.build(review));
         }
         return reviews;
     }
@@ -243,7 +181,7 @@ public class PlayStoreApiWrapper {
             inputReview.getTitle(),
             inputReview.getRating()
         );
-        return buildReview(response.getUserReview());
+        return ReviewBuilder.build(response.getUserReview());
     }
 
     public void deleteReview(String packageId) throws IOException {
@@ -252,22 +190,22 @@ public class PlayStoreApiWrapper {
 
     public App getDetails(String packageId) throws IOException {
         DetailsResponse response = getApi().details(packageId);
-        App app = buildApp(response.getDocV2());
+        App app = AppBuilder.build(response.getDocV2());
         if (response.hasUserReview()) {
-            app.setUserReview(buildReview(response.getUserReview()));
+            app.setUserReview(ReviewBuilder.build(response.getUserReview()));
         }
         for (DocV2 doc: response.getDocV2().getChildList()) {
-            boolean isSimilarApps = doc.getBackendDocid().startsWith(BACKEND_DOCID_SIMILAR_APPS);
-            boolean isUsersAlsoInstalled = doc.getBackendDocid().startsWith(BACKEND_DOCID_USERS_ALSO_INSTALLED);
+            boolean isSimilarApps = doc.getBackendDocid().contains(BACKEND_DOCID_SIMILAR_APPS);
+            boolean isUsersAlsoInstalled = doc.getBackendDocid().contains(BACKEND_DOCID_USERS_ALSO_INSTALLED);
             if (isUsersAlsoInstalled && app.getUsersAlsoInstalledApps().size() > 0) {
                 // Two users_also_installed lists are returned, consisting of mostly the same apps
                 continue;
             }
             for (DocV2 child: doc.getChildList()) {
                 if (isSimilarApps) {
-                    app.getSimilarApps().add(buildApp(child));
+                    app.getSimilarApps().add(AppBuilder.build(child));
                 } else if (isUsersAlsoInstalled) {
-                    app.getUsersAlsoInstalledApps().add(buildApp(child));
+                    app.getUsersAlsoInstalledApps().add(AppBuilder.build(child));
                 }
             }
         }
@@ -281,7 +219,7 @@ public class PlayStoreApiWrapper {
         boolean hideNonFree = sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
         for (BulkDetailsEntry details: getApi().bulkDetails(packageIds).getEntryList()) {
             if (details.hasDoc()) {
-                App app = buildApp(details.getDoc());
+                App app = AppBuilder.build(details.getDoc());
                 if (hideNonFree && !app.isFree()) {
                     Log.i(this.getClass().getName(), "Skipping non-free app " + packageIds.get(i));
                 } else {

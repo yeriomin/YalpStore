@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
 import android.app.DownloadManager;
-import android.app.SearchManager;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -18,9 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -152,10 +149,10 @@ public class DetailsActivity extends YalpStoreActivity {
         addBlackWhiteListOption();
         drawGeneralDetails(app);
         drawDescription(app);
-        drawScreenshots(app);
-        drawReviews(app);
+        new ScreenshotManager(this, app).draw();
+        new ReviewManager(this, app).draw();
         drawPermissions(app);
-        drawAppListsButtons(app);
+        new AppListsManager(this, app).draw();
         drawDownloadButton(app);
     }
 
@@ -213,32 +210,6 @@ public class DetailsActivity extends YalpStoreActivity {
         initExpandableGroup(R.id.description_header, R.id.description_container);
     }
 
-    private void drawScreenshots(final App app) {
-        if (app.getScreenshotUrls().size() > 0) {
-            findViewById(R.id.screenshots_header).setVisibility(View.VISIBLE);
-            Gallery gallery = ((Gallery) findViewById(R.id.screenshots_gallery));
-            int screenWidth = getWindowManager().getDefaultDisplay().getWidth();
-            gallery.setAdapter(new ImageAdapter(this, app.getScreenshotUrls(), screenWidth));
-            gallery.setSpacing(10);
-            gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(getApplicationContext(), FullscreenImageActivity.class);
-                    intent.putExtra(FullscreenImageActivity.INTENT_URL, app.getScreenshotUrls().get(position));
-                    startActivity(intent);
-                }
-            });
-            initExpandableGroup(R.id.screenshots_header, R.id.screenshots_container);
-        } else {
-            findViewById(R.id.screenshots_header).setVisibility(View.GONE);
-        }
-    }
-
-    private void drawReviews(App app) {
-        ReviewManager manager = new ReviewManager(this, app);
-        manager.drawReviews();
-    }
-
     private void drawPermissions(App app) {
         initExpandableGroup(R.id.permissions_header, R.id.permissions_container);
         PackageManager pm = getPackageManager();
@@ -251,31 +222,6 @@ public class DetailsActivity extends YalpStoreActivity {
             }
         }
         setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
-    }
-
-    private void drawAppListsButtons(final App app) {
-        findViewById(R.id.apps_by_this_dev).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(DetailsActivity.this, SearchResultActivity.class);
-                i.setAction(Intent.ACTION_SEARCH);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                i.putExtra(SearchManager.QUERY, "pub:" + app.getDeveloper().getName());
-                startActivity(i);
-            }
-        });
-        findViewById(R.id.similar_apps).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(DetailsActivity.this, SimilarAppsActivity.class));
-            }
-        });
-        findViewById(R.id.users_also_installed).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(DetailsActivity.this, UsersAlsoInstalledActivity.class));
-            }
-        });
     }
 
     private void drawDownloadButton(final App app) {
@@ -369,7 +315,7 @@ public class DetailsActivity extends YalpStoreActivity {
         });
     }
 
-    private void initExpandableGroup(int viewIdHeader, int viewIdContainer) {
+    public void initExpandableGroup(int viewIdHeader, int viewIdContainer) {
         initExpandableGroup(viewIdHeader, viewIdContainer, null);
     }
 
@@ -420,5 +366,4 @@ public class DetailsActivity extends YalpStoreActivity {
             item.setTitle(getString(inList ? R.string.action_unwhitelist : R.string.action_whitelist));
         }
     }
-
 }
