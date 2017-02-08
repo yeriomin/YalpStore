@@ -89,7 +89,7 @@ public class SearchResultActivity extends AppListActivity {
             protected Throwable doInBackground(String... params) {
                 PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(getApplicationContext());
                 try {
-                    PlayStoreApiWrapper.AppSearchResultIterator iterator = wrapper.getSearchIterator(query);
+                    AppSearchResultIterator iterator = wrapper.getSearchIterator(query);
                     if (iterator.hasNext()) {
                         apps.addAll(iterator.next());
                     }

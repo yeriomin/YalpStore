@@ -3,7 +3,6 @@ package com.github.yeriomin.yalpstore;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -30,14 +29,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
     protected ListAdapter listAdapter;
     protected ListView listView;
 
-    private Handler handler = new Handler();
     private boolean finishedStart = false;
-
-    private Runnable mRequestFocus = new Runnable() {
-        public void run() {
-            listView.focusableViewAvailable(listView);
-        }
-    };
 
     abstract protected void loadApps();
 
@@ -49,19 +41,13 @@ abstract public class AppListActivity extends YalpStoreActivity {
         setListAdapter(getSimpleListAdapter());
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intent.putExtra(DetailsActivity.INTENT_PACKAGE_NAME, (String) data.get(position).get(PACKAGE_NAME));
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    protected void onDestroy() {
-        handler.removeCallbacks(mRequestFocus);
-        super.onDestroy();
     }
 
     @Override
@@ -75,7 +61,6 @@ abstract public class AppListActivity extends YalpStoreActivity {
         if (finishedStart) {
             setListAdapter(listAdapter);
         }
-        handler.post(mRequestFocus);
         finishedStart = true;
     }
 
@@ -108,18 +93,18 @@ abstract public class AppListActivity extends YalpStoreActivity {
         adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
 
             @Override
-            public boolean setViewValue(final View view, Object drawableOrUrl, String textRepresentation) {
-                if (view instanceof ImageView) {
-                    if (drawableOrUrl instanceof String) {
-                        ImageDownloadTask task = new ImageDownloadTask();
-                        task.setView((ImageView) view);
-                        task.execute((String) drawableOrUrl);
-                    } else {
-                        ((ImageView) view).setImageDrawable((Drawable) drawableOrUrl);
-                    }
-                    return true;
+            public boolean setViewValue(View view, Object drawableOrUrl, String textRepresentation) {
+                if (!(view instanceof ImageView)) {
+                    return false;
                 }
-                return false;
+                if (drawableOrUrl instanceof String) {
+                    ImageDownloadTask task = new ImageDownloadTask();
+                    task.setView((ImageView) view);
+                    task.execute((String) drawableOrUrl);
+                } else {
+                    ((ImageView) view).setImageDrawable((Drawable) drawableOrUrl);
+                }
+                return true;
             }
         });
         return adapter;

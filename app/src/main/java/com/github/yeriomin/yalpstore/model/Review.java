@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore.model;
 
 public class Review {
 
-    private long time;
     private int rating;
     private String title;
     private String comment;
@@ -24,14 +23,6 @@ public class Review {
 
     public void setRating(int rating) {
         this.rating = rating;
-    }
-
-    public long getTime() {
-        return time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
     }
 
     public String getTitle() {

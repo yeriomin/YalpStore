@@ -12,12 +12,6 @@ import android.widget.Toast;
 import com.github.yeriomin.playstoreapi.AuthException;
 
 import java.io.IOException;
-import java.net.ConnectException;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-
-import javax.net.ssl.SSLHandshakeException;
 
 abstract public class CredentialsDialogBuilder {
 
@@ -65,11 +59,7 @@ abstract public class CredentialsDialogBuilder {
                     }
                 } else if (e instanceof IOException) {
                     String message;
-                    if (e instanceof UnknownHostException
-                        || e instanceof SSLHandshakeException
-                        || e instanceof ConnectException
-                        || e instanceof SocketException
-                        || e instanceof SocketTimeoutException) {
+                    if (GoogleApiAsyncTask.noNetwork(e)) {
                         message = this.context.getString(R.string.error_no_network);
                     } else {
                         message = this.context.getString(R.string.error_network_other, e.getClass().getName() + " " + e.getMessage());
