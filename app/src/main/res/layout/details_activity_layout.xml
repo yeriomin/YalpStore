@@ -39,7 +39,7 @@
                         android:textSize="18sp"
                         android:layout_width="fill_parent"
                         android:layout_height="0dip"
-                        android:layout_weight="1"
+                        android:layout_weight="1.2"
                         android:textStyle="bold"
                         android:maxLines="1"
                         android:ellipsize="marquee" />
@@ -60,8 +60,7 @@
                         android:layout_height="0dip"
                         android:layout_weight="1"
                         android:maxLines="1"
-                        android:ellipsize="marquee"
-                        android:visibility="gone" />
+                        android:ellipsize="marquee" />
 
                 </LinearLayout>
 
