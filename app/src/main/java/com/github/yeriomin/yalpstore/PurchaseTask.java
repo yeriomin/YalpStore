@@ -35,8 +35,6 @@ public class PurchaseTask extends GoogleApiAsyncTask {
         super.onPostExecute(e);
         if (e instanceof NotPurchasedException) {
             getNotPurchasedDialog(context).show();
-        } else if (e instanceof SignatureMismatchException) {
-            getSignatureMismatchDialog(context).show();
         }
     }
 
@@ -57,23 +55,6 @@ public class PurchaseTask extends GoogleApiAsyncTask {
             )
             .setNegativeButton(
                 android.R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                }
-            )
-        ;
-        return builder.create();
-    }
-
-    private AlertDialog getSignatureMismatchDialog(Context c) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(c);
-        builder
-            .setMessage(R.string.details_signature_mismatch)
-            .setPositiveButton(
-                android.R.string.ok,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {

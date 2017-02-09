@@ -1,9 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
-import android.app.DownloadManager;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -17,7 +15,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,20 +22,18 @@ import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DetailsActivity extends YalpStoreActivity {
 
-    static private final int PERMISSIONS_REQUEST_CODE = 828;
+    static public final int PERMISSIONS_REQUEST_CODE = 828;
 
     static public final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
     private Menu menu;
     private App app;
-    private PurchaseTask purchaseTask;
-    private DetailsDownloadReceiver receiver;
+    private DownloadOrInstallManager downloadOrInstallManager;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,17 +83,15 @@ public class DetailsActivity extends YalpStoreActivity {
 
     @Override
     protected void onPause() {
-        unregisterReceiver(receiver);
+        downloadOrInstallManager.unregisterReceiver();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
-        receiver = new DetailsDownloadReceiver();
-        receiver.setButton((Button) findViewById(R.id.download));
-        registerReceiver(receiver, filter);
+        if (null != downloadOrInstallManager) {
+            downloadOrInstallManager.registerReceiver();
+        }
         super.onResume();
     }
 
@@ -113,19 +106,7 @@ public class DetailsActivity extends YalpStoreActivity {
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (requestCode == PERMISSIONS_REQUEST_CODE
             && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            File dir = PlayStoreApiWrapper.getApkPath(app).getParentFile();
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-            if (dir.exists() && dir.isDirectory() && dir.canWrite()) {
-                purchaseTask.execute();
-            } else {
-                Toast.makeText(
-                    getApplicationContext(),
-                    getString(R.string.error_downloads_directory_not_writable),
-                    Toast.LENGTH_LONG
-                ).show();
-            }
+            downloadOrInstallManager.downloadOrInstall();
         }
     }
 
@@ -142,7 +123,7 @@ public class DetailsActivity extends YalpStoreActivity {
         return null;
     }
 
-    private void drawDetails(final App app) {
+    private void drawDetails(App app) {
         this.app = app;
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
@@ -153,7 +134,9 @@ public class DetailsActivity extends YalpStoreActivity {
         new ReviewManager(this, app).draw();
         drawPermissions(app);
         new AppListsManager(this, app).draw();
-        drawDownloadButton(app);
+        downloadOrInstallManager = new DownloadOrInstallManager(this, app);
+        downloadOrInstallManager.registerReceiver();
+        downloadOrInstallManager.draw();
     }
 
     private void drawGeneralDetails(App app) {
@@ -222,54 +205,6 @@ public class DetailsActivity extends YalpStoreActivity {
             }
         }
         setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
-    }
-
-    private void drawDownloadButton(final App app) {
-        Button downloadButton = (Button) findViewById(R.id.download);
-        if (app.getVersionCode() == 0) {
-            downloadButton.setText(getString(R.string.details_download_impossible));
-            downloadButton.setEnabled(false);
-        } else {
-            final boolean exists = PlayStoreApiWrapper.getApkPath(app).exists();
-            if (exists) {
-                downloadButton.setText(R.string.details_install);
-            }
-            downloadButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    purchaseTask = getPurchaseTask(exists);
-                    if (checkPermission()) {
-                        purchaseTask.execute();
-                    } else {
-                        requestPermission();
-                    }
-                }
-            });
-        }
-    }
-
-    private PurchaseTask getPurchaseTask(final boolean apkExists) {
-        PurchaseTask purchaseTask = new PurchaseTask() {
-            @Override
-            protected void onPostExecute(Throwable e) {
-                super.onPostExecute(e);
-                if (null == e) {
-                    receiver.setDownloadId(downloadId);
-                    if (!apkExists) {
-                        Button button = (Button) findViewById(R.id.download);
-                        button.setText(R.string.details_downloading);
-                        button.setEnabled(false);
-                    }
-                }
-            }
-        };
-        purchaseTask.setApp(app);
-        purchaseTask.setContext(this);
-        purchaseTask.prepareDialog(
-            R.string.dialog_message_purchasing_app,
-            R.string.dialog_title_purchasing_app
-        );
-        return purchaseTask;
     }
 
     private void setText(int viewId, String text) {

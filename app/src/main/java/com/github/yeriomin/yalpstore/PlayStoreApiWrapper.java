@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.app.DownloadManager;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -260,50 +259,39 @@ public class PlayStoreApiWrapper {
         return suggestions;
     }
 
+    private AndroidAppDeliveryData purchaseOrDeliver(App app) throws IOException, NotPurchasedException {
+        if (app.isFree()) {
+            BuyResponse response = getApi().purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
+            return response.getPurchaseStatusResponse().getAppDeliveryData();
+        } else {
+            DeliveryResponse response = getApi().delivery(app.getPackageName(), app.getVersionCode(), app.getOfferType());
+            if (response.hasAppDeliveryData()) {
+                return response.getAppDeliveryData();
+            } else {
+                throw new NotPurchasedException();
+            }
+        }
+    }
+
     public long download(App app) throws IOException, NotPurchasedException, SignatureMismatchException {
         File path = getApkPath(app);
+        Log.i(this.getClass().getName(), "Downloading apk to " + path.getName());
+        AndroidAppDeliveryData appDeliveryData = purchaseOrDeliver(app);
 
-        if (path.exists()) {
-            Log.i(this.getClass().getName(), path.getName() + " exists. No download needed.");
-            NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            manager.cancel(app.getDisplayName().hashCode());
-            ApkSignatureVerifier verifier = new ApkSignatureVerifier(context);
-            if (verifier.match(app.getPackageName(), path)) {
-                context.startActivity(getOpenApkIntent(context, path));
-            } else {
-                throw new SignatureMismatchException();
-            }
-        } else {
-            Log.i(this.getClass().getName(), "Downloading apk to " + path.getName());
-            AndroidAppDeliveryData appDeliveryData;
-            if (app.isFree()) {
-                BuyResponse response = getApi().purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
-                appDeliveryData = response.getPurchaseStatusResponse().getAppDeliveryData();
-            } else {
-                DeliveryResponse response = getApi().delivery(app.getPackageName(), app.getVersionCode(), app.getOfferType());
-                if (response.hasAppDeliveryData()) {
-                    appDeliveryData = response.getAppDeliveryData();
-                } else {
-                    throw new NotPurchasedException();
-                }
-            }
+        // Download manager cannot download https on old android versions
+        String downloadUrl = appDeliveryData.getDownloadUrl().replace("https", "http");
+        HttpCookie downloadAuthCookie = appDeliveryData.getDownloadAuthCookie(0);
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl));
+        request.addRequestHeader("Cookie", downloadAuthCookie.getName() + "=" + downloadAuthCookie.getValue());
+        Uri uri = Uri.withAppendedPath(
+            Uri.fromFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)),
+            path.getName()
+        );
+        request.setDestinationUri(uri);
+        request.setDescription(app.getPackageName()); // hacky
+        request.setTitle(app.getDisplayName());
 
-            // Download manager cannot download https on old android versions
-            String downloadUrl = appDeliveryData.getDownloadUrl().replace("https", "http");
-            HttpCookie downloadAuthCookie = appDeliveryData.getDownloadAuthCookie(0);
-            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl));
-            request.addRequestHeader("Cookie", downloadAuthCookie.getName() + "=" + downloadAuthCookie.getValue());
-            Uri uri = Uri.withAppendedPath(
-                Uri.fromFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)),
-                path.getName()
-            );
-            request.setDestinationUri(uri);
-            request.setDescription(app.getPackageName()); // hacky
-            request.setTitle(app.getDisplayName());
-
-            return ((DownloadManager) this.context.getSystemService(DOWNLOAD_SERVICE)).enqueue(request);
-        }
-        return 0L;
+        return ((DownloadManager) this.context.getSystemService(DOWNLOAD_SERVICE)).enqueue(request);
     }
 
 }
