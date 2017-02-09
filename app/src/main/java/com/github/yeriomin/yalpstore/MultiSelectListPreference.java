@@ -47,10 +47,6 @@ public class MultiSelectListPreference extends DialogPreference {
         a.recycle();
     }
 
-    public MultiSelectListPreference(Context context) {
-        this(context, null);
-    }
-
     /**
      * Sets the human-readable entries to be shown in the list. This will be
      * shown in subsequent dialogs.
@@ -66,23 +62,6 @@ public class MultiSelectListPreference extends DialogPreference {
     }
 
     /**
-     * @see #setEntries(CharSequence[])
-     * @param entriesResId The entries array as a resource.
-     */
-    public void setEntries(int entriesResId) {
-        setEntries(getContext().getResources().getTextArray(entriesResId));
-    }
-
-    /**
-     * The list of entries to be shown in the list in subsequent dialogs.
-     *
-     * @return The list as an array.
-     */
-    public CharSequence[] getEntries() {
-        return mEntries;
-    }
-
-    /**
      * The array to find the value to save for a preference when an entry from
      * entries is selected. If a user clicks on the second item in entries, the
      * second item in this array will be saved to the preference.
@@ -92,24 +71,6 @@ public class MultiSelectListPreference extends DialogPreference {
      */
     public void setEntryValues(CharSequence[] entryValues) {
         mEntryValues = entryValues;
-    }
-
-    /**
-     * @see #setEntryValues(CharSequence[])
-     * @param entryValuesResId The entry values array as a resource.
-     */
-    public void setEntryValues(int entryValuesResId) {
-        setEntryValues(getContext().getResources().getTextArray(
-            entryValuesResId));
-    }
-
-    /**
-     * Returns the array of values to be saved for the preference.
-     *
-     * @return The array of values.
-     */
-    public CharSequence[] getEntryValues() {
-        return mEntryValues;
     }
 
     /**
@@ -127,31 +88,6 @@ public class MultiSelectListPreference extends DialogPreference {
         // arguments.
         final HashSet<String> clonedValues = new HashSet<>(values);
         persistStringSetCompat(clonedValues);
-    }
-
-    /**
-     * Retrieves the current value of the key.
-     * @return The collection of values.
-     */
-    public Set<String> getValues() {
-        return mValues;
-    }
-
-    /**
-     * Returns the index of the given value (in the entry values array).
-     *
-     * @param value The value whose index should be returned.
-     * @return The index of the value, or -1 if not found.
-     */
-    public int findIndexOfValue(String value) {
-        if (value != null && mEntryValues != null) {
-            for (int i = mEntryValues.length - 1; i >= 0; i--) {
-                if (mEntryValues[i].equals(value)) {
-                    return i;
-                }
-            }
-        }
-        return -1;
     }
 
     @Override

@@ -1,11 +1,9 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
@@ -29,21 +27,21 @@ public class DetailsActivity extends YalpStoreActivity {
 
     static public final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
-    private Menu menu;
-    private App app;
     private DownloadOrInstallManager downloadOrInstallManager;
+    private IgnoreOptionManager ignoreOptionManager;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        this.menu = menu;
-        addBlackWhiteListOption();
-        return super.onCreateOptionsMenu(menu);
+        boolean result = super.onCreateOptionsMenu(menu);
+        ignoreOptionManager.setMenu(menu);
+        ignoreOptionManager.draw();
+        return result;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_ignore) {
-            toggleBlackWhiteList();
+            ignoreOptionManager.toggleBlackWhiteList();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -77,6 +75,7 @@ public class DetailsActivity extends YalpStoreActivity {
         task.setContext(this);
         task.prepareDialog(R.string.dialog_message_loading_app_details, R.string.dialog_title_loading_app_details);
         task.execute(packageName);
+        ignoreOptionManager = new IgnoreOptionManager(this, new App());
     }
 
     @Override
@@ -122,16 +121,16 @@ public class DetailsActivity extends YalpStoreActivity {
     }
 
     private void drawDetails(App app) {
-        this.app = app;
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
-        addBlackWhiteListOption();
         drawGeneralDetails(app);
         drawDescription(app);
         new ScreenshotManager(this, app).draw();
         new ReviewManager(this, app).draw();
         drawPermissions(app);
         new AppListsManager(this, app).draw();
+        ignoreOptionManager.setApp(app);
+        ignoreOptionManager.draw();
         downloadOrInstallManager = new DownloadOrInstallManager(this, app);
         downloadOrInstallManager.registerReceiver();
         downloadOrInstallManager.draw();
@@ -236,53 +235,5 @@ public class DetailsActivity extends YalpStoreActivity {
 
     public void initExpandableGroup(int viewIdHeader, int viewIdContainer) {
         initExpandableGroup(viewIdHeader, viewIdContainer, null);
-    }
-
-    private MenuItem getIgnoreMenuItem() {
-        if (null != menu) {
-            for (int i = 0; i < menu.size(); i++) {
-                MenuItem item = menu.getItem(i);
-                if (item.getItemId() == R.id.action_ignore) {
-                    return item;
-                }
-            }
-        }
-        return null;
-    }
-
-    private void addBlackWhiteListOption() {
-        MenuItem item = getIgnoreMenuItem();
-        if (null != item && null != app && app.isInstalled()) {
-            item.setVisible(true);
-            updateBlackWhiteListItemTitle(item);
-        }
-    }
-
-    private void toggleBlackWhiteList() {
-        MenuItem item = getIgnoreMenuItem();
-        if (null != item && null != app && app.isInstalled()) {
-            BlackWhiteListManager manager = new BlackWhiteListManager(this);
-            if (manager.contains(app.getPackageName())) {
-                manager.remove(app.getPackageName());
-            } else {
-                manager.add(app.getPackageName());
-            }
-            updateBlackWhiteListItemTitle(item);
-        }
-    }
-
-    private void updateBlackWhiteListItemTitle(MenuItem item) {
-        BlackWhiteListManager manager = new BlackWhiteListManager(this);
-        boolean inList = manager.contains(app.getPackageName());
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isBlacklist = prefs.getString(
-            PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
-            PreferenceActivity.LIST_BLACK
-        ).equals(PreferenceActivity.LIST_BLACK);
-        if (isBlacklist) {
-            item.setTitle(getString(inList ? R.string.action_unignore : R.string.action_ignore));
-        } else {
-            item.setTitle(getString(inList ? R.string.action_unwhitelist : R.string.action_whitelist));
-        }
     }
 }

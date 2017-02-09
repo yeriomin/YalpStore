@@ -5,6 +5,7 @@ import com.github.yeriomin.playstoreapi.AppDetails;
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.Image;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,11 +21,11 @@ public class AppBuilder {
         App app = new App();
         app.setDisplayName(details.getTitle());
         app.setDescription(details.getDescriptionHtml());
-        fillAggregateRating(app, details.getAggregateRating());
         if (details.getOfferCount() > 0) {
             app.setOfferType(details.getOffer(0).getOfferType());
             app.setFree(details.getOffer(0).getMicros() == 0);
         }
+        fillAggregateRating(app, details.getAggregateRating());
         AppDetails appDetails = details.getDetails().getAppDetails();
         app.getPackageInfo().packageName = appDetails.getPackageName();
         app.setVersionName(appDetails.getVersionString());
@@ -32,18 +33,10 @@ public class AppBuilder {
         app.setSize(appDetails.getInstallationSize());
         app.setInstalls(getInstallsNum(appDetails.getNumDownloads()));
         app.setUpdated(appDetails.getUploadDate());
-        for (Image image: details.getImageList()) {
-            if (image.getImageType() == IMAGE_ICON) {
-                app.setIconUrl(image.getImageUrl());
-            } else if (image.getImageType() == IMAGE_SCREENSHOT) {
-                app.getScreenshotUrls().add(image.getImageUrl());
-            }
-        }
         app.setChanges(appDetails.getRecentChangesHtml());
-        app.getDeveloper().setName(appDetails.getDeveloperName());
-        app.getDeveloper().setEmail(appDetails.getDeveloperEmail());
-        app.getDeveloper().setWebsite(appDetails.getDeveloperWebsite());
         app.setPermissions(appDetails.getPermissionList());
+        fillImages(app, details.getImageList());
+        fillDeveloper(app, appDetails);
         return app;
     }
 
@@ -67,5 +60,22 @@ public class AppBuilder {
         rating.setStars(3, (int) aggregateRating.getThreeStarRatings());
         rating.setStars(4, (int) aggregateRating.getFourStarRatings());
         rating.setStars(5, (int) aggregateRating.getFiveStarRatings());
+    }
+
+    static private void fillDeveloper(App app, AppDetails appDetails) {
+        Developer developer = app.getDeveloper();
+        developer.setName(appDetails.getDeveloperName());
+        developer.setEmail(appDetails.getDeveloperEmail());
+        developer.setWebsite(appDetails.getDeveloperWebsite());
+    }
+
+    static private void fillImages(App app, List<Image> images) {
+        for (Image image: images) {
+            if (image.getImageType() == IMAGE_ICON) {
+                app.setIconUrl(image.getImageUrl());
+            } else if (image.getImageType() == IMAGE_SCREENSHOT) {
+                app.getScreenshotUrls().add(image.getImageUrl());
+            }
+        }
     }
 }
