@@ -1,11 +1,9 @@
 package com.github.yeriomin.yalpstore;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Html;
@@ -213,20 +211,6 @@ public class DetailsActivity extends YalpStoreActivity {
 
     private void setText(int viewId, int stringId, Object... text) {
         setText(viewId, getString(stringId, text));
-    }
-
-    private boolean checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-             return this.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                 == PackageManager.PERMISSION_GRANTED;
-        }
-        return true;
-    }
-
-    private void requestPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSIONS_REQUEST_CODE);
-        }
     }
 
     public void initExpandableGroup(int viewIdHeader, int viewIdContainer, final View.OnClickListener l) {
