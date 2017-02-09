@@ -1,4 +1,4 @@
-# Yalp Store [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5e2be9f71606470fb9da49f91ed6f4a9)](https://www.codacy.com/app/yeriomin/YalpStore)
+# Yalp Store [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5e2be9f71606470fb9da49f91ed6f4a9)](https://www.codacy.com/app/yeriomin/YalpStore) [![codebeat badge](https://codebeat.co/badges/c18f32ef-bf28-4948-8156-9a52e50e121c)](https://codebeat.co/projects/github-com-yeriomin-yalpstore)
 
 <a href="https://f-droid.org/repository/browse/?fdid=com.github.yeriomin.yalpstore" target="_blank">
   <img src="https://f-droid.org/badge/get-it-on.png" height="80"/>
