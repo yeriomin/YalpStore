@@ -12,7 +12,6 @@ import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
-import com.github.yeriomin.playstoreapi.BuyResponse;
 import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.DetailsResponse;
 import com.github.yeriomin.playstoreapi.DocV2;
@@ -213,21 +212,21 @@ public class PlayStoreApiWrapper {
 
     public List<App> getDetails(List<String> packageIds) throws IOException {
         List<App> apps = new ArrayList<>();
-        int i = 0;
+        int i = -1;
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         boolean hideNonFree = sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
         for (BulkDetailsEntry details: getApi().bulkDetails(packageIds).getEntryList()) {
-            if (details.hasDoc()) {
-                App app = AppBuilder.build(details.getDoc());
-                if (hideNonFree && !app.isFree()) {
-                    Log.i(this.getClass().getName(), "Skipping non-free app " + packageIds.get(i));
-                } else {
-                    apps.add(app);
-                }
-            } else {
-                Log.i(this.getClass().getName(), "Empty response for " + packageIds.get(i));
-            }
             i++;
+            if (!details.hasDoc()) {
+                Log.i(this.getClass().getName(), "Empty response for " + packageIds.get(i));
+                continue;
+            }
+            App app = AppBuilder.build(details.getDoc());
+            if (hideNonFree && !app.isFree()) {
+                Log.i(this.getClass().getName(), "Skipping non-free app " + packageIds.get(i));
+                continue;
+            }
+            apps.add(app);
         }
         Collections.sort(apps, new Comparator<App>() {
             @Override
@@ -261,15 +260,16 @@ public class PlayStoreApiWrapper {
 
     private AndroidAppDeliveryData purchaseOrDeliver(App app) throws IOException, NotPurchasedException {
         if (app.isFree()) {
-            BuyResponse response = getApi().purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
-            return response.getPurchaseStatusResponse().getAppDeliveryData();
+            return getApi()
+                .purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType())
+                .getPurchaseStatusResponse()
+                .getAppDeliveryData();
+        }
+        DeliveryResponse response = getApi().delivery(app.getPackageName(), app.getVersionCode(), app.getOfferType());
+        if (response.hasAppDeliveryData()) {
+            return response.getAppDeliveryData();
         } else {
-            DeliveryResponse response = getApi().delivery(app.getPackageName(), app.getVersionCode(), app.getOfferType());
-            if (response.hasAppDeliveryData()) {
-                return response.getAppDeliveryData();
-            } else {
-                throw new NotPurchasedException();
-            }
+            throw new NotPurchasedException();
         }
     }
 
