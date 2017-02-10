@@ -60,7 +60,8 @@
                         android:layout_height="0dip"
                         android:layout_weight="1"
                         android:maxLines="1"
-                        android:ellipsize="marquee" />
+                        android:ellipsize="marquee"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
