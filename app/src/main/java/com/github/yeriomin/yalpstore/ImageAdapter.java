@@ -13,9 +13,9 @@ import java.util.List;
 
 class ImageAdapter extends BaseAdapter {
 
-    private Context context;
-    private List<String> screenshotUrls;
-    private int screenWidth;
+    protected Context context;
+    protected List<String> screenshotUrls;
+    protected int screenWidth;
 
     ImageAdapter(Context context, List<String> screenshotUrls, int screenWidth) {
         this.context = context;
@@ -39,6 +39,14 @@ class ImageAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
+        ImageDownloadTask task = getTask();
+        ImageView imageView = new ImageView(context);
+        task.setView(imageView);
+        task.execute((String) getItem(position));
+        return imageView;
+    }
+
+    protected ImageDownloadTask getTask() {
         ImageDownloadTask task = new ImageDownloadTask() {
 
             @Override
@@ -59,10 +67,7 @@ class ImageAdapter extends BaseAdapter {
                 }
             }
         };
-        ImageView imageView = new ImageView(context);
         task.setFullSize(true);
-        task.setView(imageView);
-        task.execute((String) getItem(position));
-        return imageView;
+        return task;
     }
 }

@@ -33,7 +33,7 @@ public class ScreenshotManager extends DetailsManager {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(activity, FullscreenImageActivity.class);
-                intent.putExtra(FullscreenImageActivity.INTENT_URL, app.getScreenshotUrls().get(position));
+                intent.putExtra(FullscreenImageActivity.INTENT_SCREENSHOT_NUMBER, position);
                 activity.startActivity(intent);
             }
         });

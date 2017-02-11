@@ -2,18 +2,18 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
+import android.widget.Gallery;
 
 public class FullscreenImageActivity extends Activity {
 
-    static public final String INTENT_URL = "INTENT_URL";
+    static public final String INTENT_SCREENSHOT_NUMBER = "INTENT_SCREENSHOT_NUMBER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -30,9 +30,14 @@ public class FullscreenImageActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
-        String url = intent.getStringExtra(INTENT_URL);
-        BitmapManager manager = new BitmapManager(this);
-        Bitmap bitmap = manager.getBitmap(url, true);
-        ((ImageView) findViewById(R.id.image)).setImageBitmap(bitmap);
+        Gallery gallery = ((Gallery) findViewById(R.id.gallery));
+        gallery.setAdapter(new FullscreenImageAdapter(
+            this,
+            DetailsDependentActivity.app.getScreenshotUrls(),
+            getWindowManager().getDefaultDisplay().getWidth(),
+            getWindowManager().getDefaultDisplay().getHeight()
+        ));
+        gallery.setSelection(intent.getIntExtra(INTENT_SCREENSHOT_NUMBER, 0));
     }
+
 }

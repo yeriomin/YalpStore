@@ -6,7 +6,7 @@ import java.util.Map;
 
 abstract public class DetailsDependentActivity extends AppListActivity {
 
-    static protected App app;
+    static public App app;
 
     protected App getApp() {
         return DetailsDependentActivity.app;
