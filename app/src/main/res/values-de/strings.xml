@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">"Yalp Store"</string>
-<string name="star_filled">"★"</string>
-<string name="star_empty">"☆"</string>
-<string name="about_developer_email">"yalp.store.dev@gmail.com"</string>
-<string name="about_gsf_id">"Google Services Framework ID:"</string>
-<string name="about_developer_email_label">"E-mail des Entwicklers:"</string>
+    <string name="about_developer_email_label">"E-mail des Entwicklers:"</string>
 <string name="about_logged_in">"Du bist eingeloggt als:"</string>
 <string name="about_copied_to_clipboard">"In die Zwischenablage kopiert"</string>
-<string name="list_line_2_updatable">"Aktualisiert am %s"</string>
-<string name="list_line_2_search">"%s ↓, %.1f★, %s"</string>
+<string name="list_line_2_updatable" formatted="false">"Aktualisiert am %s"</string>
+<string name="list_line_2_search" formatted="false">"%s ↓, %.1f★, %s"</string>
 <string name="list_empty_updates">"Es müssen keine Apps aktualisiert werden"</string>
 <string name="list_empty_search">"Keine Apps gefunden"</string>
 <string name="list_incompatible">"Inkompatibel"</string>
@@ -56,11 +51,11 @@ Tippe auf \"Passwort erstellen\" um auf die Seite zum Erstellen eines Passwortes
 <string name="error_not_purchased">"Diese App wurde scheinbar nicht gekauft. Zum Play Store weiterleiten?"</string>
 <string name="error_downloads_directory_not_writable">"Download-Ordner konnte nicht erstellt werden oder ist nicht beschreibbar."</string>
 <string name="error_token_dispenser_problem">"Authentifizierung ohne Account fehlgeschlagen. Versuche deinen eigenen Account zu benutzen."</string>
-<string name="details_installs">"%s ↓"</string>
-<string name="details_rating">"%.1f★"</string>
-<string name="details_rating_specific">"%d★ %d"</string>
-<string name="details_updated">"Aktualisiert am %s"</string>
-<string name="details_size">"Apk Größe %s"</string>
+<string name="details_installs" formatted="false">"%s ↓"</string>
+<string name="details_rating" formatted="false">"%.1f★"</string>
+<string name="details_rating_specific" formatted="false">"%d★ %d"</string>
+<string name="details_updated" formatted="false">"Aktualisiert am %s"</string>
+<string name="details_size" formatted="false">"Apk Größe %s"</string>
 <string name="details_description">"Beschreibung:"</string>
 <string name="details_changelog">"Neuigkeiten:"</string>
 <string name="details_screenshots">"Bildschirmfotos:"</string>
@@ -68,9 +63,9 @@ Tippe auf \"Passwort erstellen\" um auf die Seite zum Erstellen eines Passwortes
 <string name="details_rate_this_app">"Bewerte diese App:"</string>
 <string name="details_you_rated_this_app">"Du bewertest diese App:"</string>
 <string name="details_permissions">"Berechtigungen:"</string>
-<string name="details_developer">"Angeboten von %s"</string>
-<string name="details_versionName">"Version %s"</string>
-<string name="details_versionName_updatable">"Version %s → %s"</string>
+<string name="details_developer" formatted="false">"Angeboten von %s"</string>
+<string name="details_versionName" formatted="false">"Version %s"</string>
+<string name="details_versionName_updatable" formatted="false">"Version %s → %s"</string>
 <string name="details_download">"Herunterladen"</string>
 <string name="details_install">"Installieren"</string>
 <string name="details_downloading">"Herunterladen…"</string>
@@ -91,13 +86,13 @@ Tippe auf \"Passwort erstellen\" um auf die Seite zum Erstellen eines Passwortes
 <string name="credentials_message">"Für die Verwendung dieser App wird eine Google E-Mail Adresse und ein Passwort benötigt.
 Vergiss nicht das die Verwendung dieser App gegen die Play Store Nutzungsbedingungen verstößt. Wahrscheinlich ist es sicherer ein unwichtiges Google-Konto zu verwenden, welches mindestens einmal im Play Store eingeloggt war um den Nutzungsbedingungen zuzustimmen."</string>
 <string name="activity_title_updates">"Aktualisierungen"</string>
-<string name="activity_title_search">"Suche: \"%s"</string>
+<string name="activity_title_search" formatted="false">"Suche: \"%s"</string>
 <string name="notification_download_complete">"Herunterladen abgeschlossen. Tippe zum Installieren."</string>
-<string name="notification_download_complete_toast">"%s heruntergeladen. Tippe Benachrichtigung zum Installieren."</string>
+<string name="notification_download_complete_toast" formatted="false">"%s heruntergeladen. Tippe Benachrichtigung zum Installieren."</string>
 <string name="notification_download_complete_signature_mismatch">"Herunterladen abgeschlossen. Die Signatur der APK-Datei stimmt jedoch nicht überein."</string>
-<string name="notification_download_complete_signature_mismatch_toast">"%s heruntergeladen. Aber die APK-Signatur stimmt nicht mit der installierten App überein. Hast du diese App ursprünglich vom Play Store geladen? Eventuell musst du diese zuerst deinstallieren."</string>
+<string name="notification_download_complete_signature_mismatch_toast" formatted="false">"%s heruntergeladen. Aber die APK-Signatur stimmt nicht mit der installierten App überein. Hast du diese App ursprünglich vom Play Store geladen? Eventuell musst du diese zuerst deinstallieren."</string>
 <string name="notification_updates_available_title">"App Aktualisierungen verfügbar."</string>
-<string name="notification_updates_available_message">"Es sind %d Aktualisierungen für deine Apps verfügbar."</string>
+<string name="notification_updates_available_message" formatted="false">"Es sind %d Aktualisierungen für deine Apps verfügbar."</string>
 <string name="pref_hide_nonfree_apps_summary_off">"Kostenpflichtige Apps werden angezeigt"</string>
 <string name="pref_hide_nonfree_apps_summary_on">"Kostenpflichtige Apps werden nicht angezeigt"</string>
 <string name="pref_hide_nonfree_apps">"Verstecke kostenpflichtige Apps"</string>
