@@ -10,11 +10,7 @@ import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class SearchResultActivity extends AppListActivity {
 
@@ -71,38 +67,7 @@ public class SearchResultActivity extends AppListActivity {
     }
 
     protected void loadApps() {
-        GoogleApiAsyncTask task = new GoogleApiAsyncTask() {
-
-            private List<App> apps = new ArrayList<>();
-            private Set<String> installedPackageNames = new HashSet<>();
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                List<App> installed = UpdatableAppsTask.getInstalledApps(context);
-                for (App installedApp: installed) {
-                    installedPackageNames.add(installedApp.getPackageName());
-                }
-            }
-
-            @Override
-            protected Throwable doInBackground(String... params) {
-                PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(getApplicationContext());
-                try {
-                    AppSearchResultIterator iterator = wrapper.getSearchIterator(query);
-                    if (iterator.hasNext()) {
-                        apps.addAll(iterator.next());
-                    }
-                    for (App app: apps) {
-                        if (installedPackageNames.contains(app.getPackageName())) {
-                            app.setInstalled(true);
-                        }
-                    }
-                } catch (Throwable e) {
-                    return e;
-                }
-                return null;
-            }
+        GoogleApiAsyncTask task = new SearchTask() {
 
             @Override
             protected void onPostExecute(Throwable e) {
@@ -113,7 +78,7 @@ public class SearchResultActivity extends AppListActivity {
         task.setContext(this);
         task.setErrorView((TextView) getListView().getEmptyView());
         task.prepareDialog(R.string.dialog_message_loading_app_list_search, R.string.dialog_title_loading_app_list_search);
-        task.execute();
+        task.execute(query);
     }
 
     private String getQuery(Intent intent) {
