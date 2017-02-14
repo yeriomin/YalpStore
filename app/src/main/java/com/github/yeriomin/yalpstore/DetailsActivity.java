@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -52,7 +51,7 @@ public class DetailsActivity extends YalpStoreActivity {
 
         final String packageName = getIntentPackageName(intent);
         if (packageName == null || packageName.isEmpty()) {
-            Toast.makeText(this, "No package name provided", Toast.LENGTH_LONG).show();
+            Log.e(this.getClass().getName(), "No package name provided");
             finishActivity(0);
             return;
         }
@@ -66,9 +65,6 @@ public class DetailsActivity extends YalpStoreActivity {
                 if (this.app != null) {
                     DetailsDependentActivity.app = this.app;
                     drawDetails(this.app);
-                } else {
-                    Log.e(getClass().getName(), "Could not get requested app");
-                    finishActivity(0);
                 }
             }
         };
