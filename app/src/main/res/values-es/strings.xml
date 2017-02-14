@@ -1,5 +1,6 @@
 <resources>
     <string name="list_line_2_updatable" formatted="false">Actualizada el %s</string>
+    <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
     <string name="list_empty_updates">No hay aplicaciones por actualizar</string>
     <string name="list_empty_search">No se encontraron aplicaciones</string>
     <string name="action_settings">Ajustes</string>
@@ -33,6 +34,9 @@
     <string name="error_network_other" formatted="false">Error de red: %s</string>
     <string name="error_not_purchased">Esta aplicación no parece haber sido comprada.</string>
     <string name="error_downloads_directory_not_writable">El directorio de descargas no pudo crearse o no tiene permisos de escritura.</string>
+    <string name="details_installs" formatted="false">%s ↓</string>
+    <string name="details_rating" formatted="false">%.1f★</string>
+    <string name="details_rating_specific" formatted="false">%d★ %d</string>
     <string name="details_updated" formatted="false">Actualizado %s</string>
     <string name="details_size" formatted="false">Tamaño del APK %s</string>
     <string name="details_description">Descripción:</string>
