@@ -56,6 +56,7 @@
     <string name="details_apps_by_this_dev">Otras aplicaciones de este desarrollador</string>
     <string name="details_similar_apps">Aplicaciones similares</string>
     <string name="details_users_also_installed">Otros usuarios también instalaron</string>
+    <string name="details_signature_mismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar la nueva versión, la antigua debe de ser desinstalada primero. Por favor, hazlo y prueba de nuevo. (Ten en cuenta que la desinstalación borrará cualquier dato interno guardado por la aplicación)</string>
     <string name="suffix_million">mil</string>
     <string name="suffix_billion">bil</string>
     <string name="credentials_hint_email">Correo aquí</string>
@@ -84,9 +85,6 @@
     <string name="pref_ui_theme_light">Claro</string>
     <string name="pref_ui_theme_dark">Oscuro</string>
     <string name="pref_ui_theme_black">Negro</string>
-    <string name="pref_background_update_check_summary_off">Sólo se buscan actualizaciones dentro de Yalp Store</string>
-    <string name="pref_background_update_check_summary_on">Se buscan actualizaciones de forma periódica (cada hora)</string>
-    <string name="pref_background_update_check">Buscar actualizaciones de forma periódica</string>
     <string name="download_manager_ERROR_UNKNOWN">Error desconocido.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Error dealmacenamiento desconocido.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Se recibió un código HTTP que el gestor de descargas no puede comprender. Esto es un error de servidor.</string>
