@@ -14,7 +14,6 @@ public class IgnoreOptionManager extends DetailsManager {
     @Override
     public void draw() {
         MenuItem item = getIgnoreMenuItem();
-        System.out.println("item is null " + (null == item) + " menu is null " + (null == menu) + " app.getPackageName() " + app.getPackageName() + " app.isInstalled() " + app.isInstalled());
         if (null != item && app.isInstalled()) {
             item.setVisible(true);
             updateBlackWhiteListItemTitle(item);
@@ -51,7 +50,6 @@ public class IgnoreOptionManager extends DetailsManager {
         if (null == menu) {
             return null;
         }
-        System.out.println("getIgnoreMenuItem size " + menu.size());
         for (int i = 0; i < menu.size(); i++) {
             MenuItem item = menu.getItem(i);
             if (item.getItemId() == R.id.action_ignore) {
