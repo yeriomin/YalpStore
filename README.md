@@ -23,4 +23,4 @@ In practice, though, software like Yalp, Google Play Crawler and Raccoon has bee
 
 Yalp Store is derived from the following projects:
 * https://github.com/Akdeniz/google-play-crawler
-* https://github.com/onyxbits/Raccoon
+* [Raccoon](http://raccoon.onyxbits.de) ([source](https://github.com/onyxbits/raccoon4/))
