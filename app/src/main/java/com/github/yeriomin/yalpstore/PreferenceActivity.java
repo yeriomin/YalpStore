@@ -28,6 +28,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_UPDATE_LIST = "PREFERENCE_UPDATE_LIST";
     public static final String PREFERENCE_UI_THEME = "PREFERENCE_UI_THEME";
     public static final String PREFERENCE_BACKGROUND_UPDATE_INTERVAL = "PREFERENCE_BACKGROUND_UPDATE_INTERVAL";
+    public static final String PREFERENCE_DELETE_APK_AFTER_INSTALL = "PREFERENCE_DELETE_APK_AFTER_INSTALL";
 
     public static final String LIST_WHITE = "white";
     public static final String LIST_BLACK = "black";

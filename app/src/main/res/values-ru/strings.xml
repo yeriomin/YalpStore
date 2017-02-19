@@ -96,6 +96,9 @@
     <string name="pref_auto_install_summary_off">Приложения устанавливаются по щелчку на уведомление</string>
     <string name="pref_auto_install_summary_on">Приложения устанавливаются сразу после завершения скачки</string>
     <string name="pref_auto_install">Устанавливать приложения сразу</string>
+    <string name="pref_delete_apk_after_install_summary_off">Сейчас .apk после остановки остаются на месте</string>
+    <string name="pref_delete_apk_after_install_summary_on">Сейчас .apk после установки удаляются</string>
+    <string name="pref_delete_apk_after_install">Удалять .apk после установки</string>
     <string name="pref_update_list_white_or_black_black">Выбранные приложения не будут обновляться</string>
     <string name="pref_update_list_white_or_black_white">Только выбранные приложения будут обновляться</string>
     <string name="pref_update_list_white_or_black">Чёрный или белый список обновлений</string>

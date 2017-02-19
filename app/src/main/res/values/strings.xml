@@ -100,6 +100,9 @@
     <string name="pref_auto_install_summary_off">Apps are installed when the user touches the completion notification</string>
     <string name="pref_auto_install_summary_on">Apps are installed as soon as the download completes</string>
     <string name="pref_auto_install">Install apps immediately</string>
+    <string name="pref_delete_apk_after_install_summary_off">Now .apks are not deleted after installation</string>
+    <string name="pref_delete_apk_after_install_summary_on">Now .apks are deleted after installation</string>
+    <string name="pref_delete_apk_after_install">Delete .apk after installation</string>
     <string name="pref_update_list_white_or_black_black">Chosen apps are going to be ignored when checking for updates</string>
     <string name="pref_update_list_white_or_black_white">Only the chosen apps will be checked for updates</string>
     <string name="pref_update_list_white_or_black">Black or white list of apps for update</string>
