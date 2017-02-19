@@ -7,7 +7,7 @@ import android.content.DialogInterface;
 
 public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
 
-    static private final String APP_PROVIDED_EMAIL = "yalp.store.user.one@gmail.com";
+    static public final String APP_PROVIDED_EMAIL = "yalp.store.user.one@gmail.com";
 
     public AccountTypeDialogBuilder(Context context) {
         super(context);

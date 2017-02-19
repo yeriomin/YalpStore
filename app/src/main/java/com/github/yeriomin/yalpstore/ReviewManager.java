@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.Dialog;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,12 +60,19 @@ public class ReviewManager extends DetailsManager {
             });
         }
 
-        activity.findViewById(R.id.user_review_container).setVisibility(app.isInstalled() ? View.VISIBLE : View.GONE);
+        activity.findViewById(R.id.user_review_container).setVisibility(isReviewable(app) ? View.VISIBLE : View.GONE);
         Review review = app.getUserReview();
         initUserReviewControls(app);
         if (null != review) {
             fillUserReview(review);
         }
+    }
+
+    private boolean isReviewable(App app) {
+        return app.isInstalled() && !PreferenceManager.getDefaultSharedPreferences(activity)
+            .getString(PreferenceActivity.PREFERENCE_EMAIL, "")
+            .equals(AccountTypeDialogBuilder.APP_PROVIDED_EMAIL)
+            ;
     }
 
     public void fillUserReview(Review review) {
