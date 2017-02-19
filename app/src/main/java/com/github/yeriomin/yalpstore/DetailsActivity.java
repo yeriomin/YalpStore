@@ -76,7 +76,9 @@ public class DetailsActivity extends YalpStoreActivity {
 
     @Override
     protected void onPause() {
-        downloadOrInstallManager.unregisterReceiver();
+        if (null != downloadOrInstallManager) {
+            downloadOrInstallManager.unregisterReceiver();
+        }
         super.onPause();
     }
 
@@ -141,6 +143,7 @@ public class DetailsActivity extends YalpStoreActivity {
         setText(R.id.rating, R.string.details_rating, app.getRating().getAverage());
         setText(R.id.updated, R.string.details_updated, app.getUpdated());
         setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(this, app.getSize()));
+        setText(R.id.category, R.string.details_category, new CategoryManager(this).getCategoryName(app.getCategoryId()));
         setText(R.id.developerName, R.string.details_developer, app.getDeveloper().getName());
         setText(R.id.developerEmail, app.getDeveloper().getEmail());
         setText(R.id.developerWebsite, app.getDeveloper().getWebsite());

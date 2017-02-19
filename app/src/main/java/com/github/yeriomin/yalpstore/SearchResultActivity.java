@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -15,6 +16,7 @@ import java.util.Map;
 public class SearchResultActivity extends AppListActivity {
 
     private String query;
+    private String categoryId = CategoryManager.TOP;
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -22,8 +24,9 @@ public class SearchResultActivity extends AppListActivity {
 
         String newQuery = getQuery(intent);
         if (null != newQuery && !newQuery.equals(this.query)) {
-            this.data.clear();
+            this.categoryId = CategoryManager.TOP;
             this.query = newQuery;
+            this.data.clear();
             setTitle(getString(R.string.activity_title_search, this.query));
             loadApps();
             ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
@@ -33,8 +36,10 @@ public class SearchResultActivity extends AppListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.query = getQuery(getIntent());
+        setTitle(getString(R.string.activity_title_search, this.query));
 
         super.onCreate(savedInstanceState);
+        new CategoryManager(this).fill((Spinner) findViewById(R.id.filter));
         loadApps();
 
         ((TextView) getListView().getEmptyView()).setText(getString(R.string.list_empty_search));
@@ -66,8 +71,16 @@ public class SearchResultActivity extends AppListActivity {
         return map;
     }
 
-    protected void loadApps() {
-        GoogleApiAsyncTask task = new SearchTask() {
+    public void setCategoryId(String categoryId) {
+        if (!categoryId.equals(this.categoryId)) {
+            this.categoryId = categoryId;
+            data.clear();
+            loadApps();
+        }
+    }
+
+    public void loadApps() {
+        SearchTask task = new SearchTask() {
 
             @Override
             protected void onPostExecute(Throwable e) {
@@ -78,7 +91,8 @@ public class SearchResultActivity extends AppListActivity {
         task.setContext(this);
         task.setErrorView((TextView) getListView().getEmptyView());
         task.prepareDialog(R.string.dialog_message_loading_app_list_search, R.string.dialog_title_loading_app_list_search);
-        task.execute(query);
+        task.setCategoryManager(new CategoryManager(this));
+        task.execute(query, categoryId);
     }
 
     private String getQuery(Intent intent) {
@@ -96,5 +110,4 @@ public class SearchResultActivity extends AppListActivity {
         }
         return null;
     }
-
 }

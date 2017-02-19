@@ -16,6 +16,7 @@ class AppSearchResultIterator implements Iterator<List<App>> {
 
     private GooglePlayAPI.SearchIterator iterator;
     private boolean hideNonfreeApps;
+    private String categoryId = CategoryManager.TOP;
 
     public AppSearchResultIterator(GooglePlayAPI.SearchIterator iterator) {
         this.iterator = iterator;
@@ -23,6 +24,14 @@ class AppSearchResultIterator implements Iterator<List<App>> {
 
     public String getQuery() {
         return this.iterator.getQuery();
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public void setHideNonfreeApps(boolean hideNonfreeApps) {

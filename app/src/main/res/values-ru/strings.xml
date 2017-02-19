@@ -39,6 +39,7 @@
     <string name="action_unwhitelist">Не обновлять</string>
     <string name="action_logout">Разлогиниться</string>
     <string name="action_search">Поиск</string>
+    <string name="search_filter">Все приложения</string>
     <string name="search_title">Поиск приложений</string>
     <string name="error_incorrect_password">Неверный email или пароль.</string>
     <string name="error_credentials_empty">Введите данные для доступа к аккаунту google</string>
@@ -47,6 +48,7 @@
     <string name="error_not_purchased">Похоже, это приложение не было куплено.\nПерейти на его страницу в Play Store?</string>
     <string name="error_downloads_directory_not_writable">Каталог закачек недоступен для записи.</string>
     <string name="error_token_dispenser_problem">Подключиться без аккаунта не удалось. Попробуйте подключиться через ваш Google аккаунт.</string>
+    <string name="details_category" formatted="false">Категория: %s</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
     <string name="details_rating_specific" formatted="false">%d★ %d</string>

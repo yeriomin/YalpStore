@@ -11,6 +11,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.github.yeriomin.playstoreapi.BrowseLink;
+import com.github.yeriomin.playstoreapi.BrowseResponse;
 import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
 import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.DetailsResponse;
@@ -29,8 +31,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 
@@ -237,15 +241,19 @@ public class PlayStoreApiWrapper {
         return apps;
     }
 
-    public AppSearchResultIterator getSearchIterator(String query) throws IOException {
+    public AppSearchResultIterator getSearchIterator(String query, String categoryId) throws IOException {
         if (null == query || query.isEmpty()) {
             Log.w(this.getClass().getName(), "Query empty, so don't expect meaningful results");
         }
-        if (null == searchResultIterator || !searchResultIterator.getQuery().equals(query)) {
+        if (null == searchResultIterator
+            || !searchResultIterator.getQuery().equals(query)
+            || !searchResultIterator.getCategoryId().equals(categoryId)
+        ) {
             searchResultIterator = new AppSearchResultIterator(getApi().getSearchIterator(query));
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
             boolean hideNonFree = sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
             searchResultIterator.setHideNonfreeApps(hideNonFree);
+            searchResultIterator.setCategoryId(categoryId);
         }
         return searchResultIterator;
     }
@@ -256,6 +264,26 @@ public class PlayStoreApiWrapper {
             suggestions.add(suggestion.getSuggestedQuery());
         }
         return suggestions;
+    }
+
+    public Map<String, String> getCategories() throws IOException {
+        return buildCategoryMap(getApi().categories());
+    }
+
+    public Map<String, String> getCategories(String category) throws IOException {
+        return buildCategoryMap(getApi().categories(category));
+    }
+
+    private Map<String, String> buildCategoryMap(BrowseResponse response) {
+        Map<String, String> categories = new HashMap<>();
+        for (BrowseLink category: response.getCategoryContainer().getCategoryList()) {
+            String categoryId = Uri.parse(category.getDataUrl()).getQueryParameter("cat");
+            if (null == categoryId || categoryId.isEmpty()) {
+                continue;
+            }
+            categories.put(categoryId, category.getName());
+        }
+        return categories;
     }
 
     private AndroidAppDeliveryData purchaseOrDeliver(App app) throws IOException, NotPurchasedException {

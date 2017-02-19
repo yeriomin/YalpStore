@@ -30,6 +30,7 @@ public class App {
     private Review userReview;
     private List<App> similarApps = new ArrayList<>();
     private List<App> usersAlsoInstalledApps = new ArrayList<>();
+    private String categoryId;
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -191,5 +192,13 @@ public class App {
 
     public List<App> getUsersAlsoInstalledApps() {
         return usersAlsoInstalledApps;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 }

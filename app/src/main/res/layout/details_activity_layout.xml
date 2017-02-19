@@ -67,6 +67,12 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/category"
+                android:paddingTop="6dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <TableLayout
                 android:paddingTop="6dip"
                 android:layout_width="match_parent"

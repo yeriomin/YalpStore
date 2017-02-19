@@ -21,6 +21,7 @@
     <string name="action_unignore">Unignore updates</string>
     <string name="action_whitelist">Whitelist for updates</string>
     <string name="action_unwhitelist">Ignore updates</string>
+    <string name="search_filter">All apps</string>
     <string name="search_title">Search applications</string>
     <string name="dialog_two_factor_cancel">Not now</string>
     <string name="dialog_two_factor_create_password">Create password</string>
@@ -51,6 +52,7 @@
     <string name="error_not_purchased">The app does not seem to be purchased.\nRedirect to its Play Store web page?</string>
     <string name="error_downloads_directory_not_writable">Downloads directory could not be created or is not writable.</string>
     <string name="error_token_dispenser_problem">Could not log in without an account. Try using your own account.</string>
+    <string name="details_category" formatted="false">Category: %s</string>
     <string name="details_installs" formatted="false">%s ↓</string>
     <string name="details_rating" formatted="false">%.1f★</string>
     <string name="details_rating_specific" formatted="false">%d★ %d</string>
