@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -31,13 +32,18 @@ class ImageDownloadTask extends AsyncTask<String, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        this.view.setImageDrawable(this.drawable);
+        if (null != this.drawable) {
+            this.view.setImageDrawable(this.drawable);
+        }
     }
 
     @Override
     protected Void doInBackground(String[] params) {
         BitmapManager manager = new BitmapManager(this.context);
-        this.drawable = new BitmapDrawable(manager.getBitmap(params[0], fullSize));
+        Bitmap bitmap = manager.getBitmap(params[0], fullSize);
+        if (null != bitmap) {
+            this.drawable = new BitmapDrawable(bitmap);
+        }
         return null;
     }
 

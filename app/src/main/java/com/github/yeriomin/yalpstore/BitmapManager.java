@@ -33,7 +33,9 @@ public class BitmapManager {
         Bitmap bitmap;
         if (!cached.exists() || !isValid(cached)) {
             bitmap = downloadBitmap(url, fullSize);
-            cacheBitmap(bitmap, cached);
+            if (null != bitmap) {
+                cacheBitmap(bitmap, cached);
+            }
         } else {
             bitmap = getCachedBitmap(cached);
         }
