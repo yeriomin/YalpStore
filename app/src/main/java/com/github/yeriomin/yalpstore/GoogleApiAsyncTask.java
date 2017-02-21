@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,11 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
     protected ProgressDialog progressDialog;
     protected TextView errorView;
     protected GoogleApiAsyncTask taskClone;
+    private View progressIndicator;
+
+    public void setProgressIndicator(View progressIndicator) {
+        this.progressIndicator = progressIndicator;
+    }
 
     public void setContext(Context context) {
         this.context = context;
@@ -50,12 +56,18 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
         if (null != this.progressDialog) {
             this.progressDialog.show();
         }
+        if (null != progressIndicator) {
+            progressIndicator.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     protected void onPostExecute(Throwable result) {
         if (null != this.progressDialog) {
             this.progressDialog.dismiss();
+        }
+        if (null != progressIndicator) {
+            progressIndicator.setVisibility(View.GONE);
         }
         Throwable e = result;
         if (result instanceof RuntimeException && null != result.getCause()) {

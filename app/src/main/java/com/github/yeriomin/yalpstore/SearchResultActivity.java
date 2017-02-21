@@ -90,7 +90,11 @@ public class SearchResultActivity extends AppListActivity {
         };
         task.setContext(this);
         task.setErrorView((TextView) getListView().getEmptyView());
-        task.prepareDialog(R.string.dialog_message_loading_app_list_search, R.string.dialog_title_loading_app_list_search);
+        if (data.isEmpty()) {
+            task.prepareDialog(R.string.dialog_message_loading_app_list_search, R.string.dialog_title_loading_app_list_search);
+        } else {
+            task.setProgressIndicator(findViewById(R.id.progress));
+        }
         task.setCategoryManager(new CategoryManager(this));
         task.execute(query, categoryId);
     }
