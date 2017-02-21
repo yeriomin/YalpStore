@@ -12,7 +12,6 @@ public class PurchaseTask extends GoogleApiAsyncTask {
 
     static private final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
 
-    protected long downloadId;
     protected App app;
 
     public void setApp(App app) {
@@ -23,7 +22,7 @@ public class PurchaseTask extends GoogleApiAsyncTask {
     protected Throwable doInBackground(String... params) {
         PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
         try {
-            downloadId = wrapper.download(app);
+            wrapper.download(app);
         } catch (Throwable e) {
             return e;
         }

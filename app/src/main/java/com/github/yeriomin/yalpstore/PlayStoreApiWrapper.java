@@ -1,12 +1,10 @@
 package com.github.yeriomin.yalpstore;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -18,7 +16,6 @@ import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.DetailsResponse;
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.HttpCookie;
 import com.github.yeriomin.playstoreapi.ReviewResponse;
 import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import com.github.yeriomin.yalpstore.model.App;
@@ -35,8 +32,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
-import static android.content.Context.DOWNLOAD_SERVICE;
 
 /**
  * Akdeniz Google Play Crawler classes are supposed to be independent from android,
@@ -55,12 +50,6 @@ public class PlayStoreApiWrapper {
 
     private static GooglePlayAPI api;
     private static AppSearchResultIterator searchResultIterator;
-
-    static public File getApkPath(App app) {
-        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        String filename = app.getPackageName() + "." + String.valueOf(app.getVersionCode()) + ".apk";
-        return new File(downloadsDir, filename);
-    }
 
     static public Intent getOpenApkIntent(Context context, File file) {
         Intent intent;
@@ -301,25 +290,7 @@ public class PlayStoreApiWrapper {
         }
     }
 
-    public long download(App app) throws IOException, NotPurchasedException, SignatureMismatchException {
-        File path = getApkPath(app);
-        Log.i(this.getClass().getName(), "Downloading apk to " + path.getName());
-        AndroidAppDeliveryData appDeliveryData = purchaseOrDeliver(app);
-
-        // Download manager cannot download https on old android versions
-        String downloadUrl = appDeliveryData.getDownloadUrl().replace("https", "http");
-        HttpCookie downloadAuthCookie = appDeliveryData.getDownloadAuthCookie(0);
-        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(downloadUrl));
-        request.addRequestHeader("Cookie", downloadAuthCookie.getName() + "=" + downloadAuthCookie.getValue());
-        Uri uri = Uri.withAppendedPath(
-            Uri.fromFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)),
-            path.getName()
-        );
-        request.setDestinationUri(uri);
-        request.setDescription(app.getPackageName()); // hacky
-        request.setTitle(app.getDisplayName());
-
-        return ((DownloadManager) this.context.getSystemService(DOWNLOAD_SERVICE)).enqueue(request);
+    public void download(App app) throws IOException, NotPurchasedException {
+        new Downloader(context).download(app, purchaseOrDeliver(app));
     }
-
 }

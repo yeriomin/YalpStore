@@ -27,7 +27,7 @@ public class InstalledReceiver extends BroadcastReceiver {
         UpdatableAppsActivity.setNeedsUpdate(true);
         if (needToRemoveApk(context) && action.equals(Intent.ACTION_PACKAGE_ADDED)) {
             App app = getApp(context, intent.getData().getSchemeSpecificPart());
-            File apkPath = PlayStoreApiWrapper.getApkPath(app);
+            File apkPath = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
             boolean deleted = apkPath.delete();
             Log.i(getClass().getName(), "Removed " + apkPath + " successfully: " + deleted);
         }

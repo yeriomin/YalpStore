@@ -34,7 +34,7 @@ public class DownloadOrInstallManager extends DetailsManager {
             downloadButton.setText(activity.getString(R.string.details_download_impossible));
             downloadButton.setEnabled(false);
         } else {
-            apkPath = PlayStoreApiWrapper.getApkPath(app);
+            apkPath = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
             if (apkPath.exists()) {
                 downloadButton.setText(R.string.details_install);
             }
@@ -118,7 +118,6 @@ public class DownloadOrInstallManager extends DetailsManager {
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
                 if (null == e) {
-                    receiver.setDownloadId(downloadId);
                     Button button = (Button) activity.findViewById(R.id.download);
                     button.setText(R.string.details_downloading);
                     button.setEnabled(false);

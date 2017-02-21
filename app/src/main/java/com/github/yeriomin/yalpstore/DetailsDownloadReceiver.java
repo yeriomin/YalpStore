@@ -10,12 +10,7 @@ import android.widget.Button;
 
 public class DetailsDownloadReceiver extends BroadcastReceiver {
 
-    private long downloadId;
     private Button button;
-
-    public void setDownloadId(long downloadId) {
-        this.downloadId = downloadId;
-    }
 
     public void setButton(Button button) {
         this.button = button;
@@ -23,17 +18,16 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (downloadId == 0) {
-            return;
-        }
         Bundle extras = intent.getExtras();
         if (null == extras) {
             return;
         }
         long id = extras.getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
-        if (downloadId != id) {
+        DownloadState state = DownloadState.get(id);
+        if (null == state) {
             return;
         }
+        state.setFinished(id);
         DownloadManager.Query q = new DownloadManager.Query();
         q.setFilterById(id);
         DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
@@ -44,6 +38,12 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
         int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
         int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
         if (status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS) {
+            state.setSuccessful(id);
+        }
+        if (!state.isEverythingFinished()) {
+            return;
+        }
+        if (state.isEverythingSuccessful()) {
             button.setText(R.string.details_install);
         } else {
             button.setText(R.string.details_download);
