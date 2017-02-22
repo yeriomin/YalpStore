@@ -40,37 +40,46 @@ abstract public class CredentialsDialogBuilder {
 
         static private final String APP_PASSWORDS_URL = "https://security.google.com/settings/security/apppasswords";
 
+        abstract protected CredentialsDialogBuilder getDialogBuilder();
+
         @Override
         protected void onPostExecute(Throwable e) {
             if (null != this.progressDialog) {
                 this.progressDialog.dismiss();
             }
             if (null != e) {
-                if (e instanceof CredentialsEmptyException) {
-                    Log.w(getClass().getName(), "Credentials empty");
-                } else if (e instanceof TokenDispenserException) {
-                    e.getCause().printStackTrace();
-                    toast(context, R.string.error_token_dispenser_problem);
-                } else if (e instanceof AuthException) {
-                    if (null != ((AuthException) e).getTwoFactorUrl()) {
-                        getTwoFactorAuthDialog().show();
-                    } else {
-                        toast(context, R.string.error_incorrect_password);
-                    }
-                } else if (e instanceof IOException) {
-                    String message;
-                    if (GoogleApiAsyncTask.noNetwork(e)) {
-                        message = this.context.getString(R.string.error_no_network);
-                    } else {
-                        message = this.context.getString(R.string.error_network_other, e.getClass().getName() + " " + e.getMessage());
-                    }
-                    toast(context, message);
-                } else {
-                    Log.w(getClass().getName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
-                    e.printStackTrace();
-                }
+                handleException(e);
+                CredentialsDialogBuilder builder = getDialogBuilder();
+                builder.setTaskClone(this.taskClone);
+                builder.show();
             } else {
                 this.taskClone.execute();
+            }
+        }
+
+        private void handleException(Throwable e) {
+            if (e instanceof CredentialsEmptyException) {
+                Log.w(getClass().getName(), "Credentials empty");
+            } else if (e instanceof TokenDispenserException) {
+                e.getCause().printStackTrace();
+                toast(context, R.string.error_token_dispenser_problem);
+            } else if (e instanceof AuthException) {
+                if (null != ((AuthException) e).getTwoFactorUrl()) {
+                    getTwoFactorAuthDialog().show();
+                } else {
+                    toast(context, R.string.error_incorrect_password);
+                }
+            } else if (e instanceof IOException) {
+                String message;
+                if (GoogleApiAsyncTask.noNetwork(e)) {
+                    message = this.context.getString(R.string.error_no_network);
+                } else {
+                    message = this.context.getString(R.string.error_network_other, e.getClass().getName() + " " + e.getMessage());
+                }
+                toast(context, message);
+            } else {
+                Log.w(getClass().getName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
+                e.printStackTrace();
             }
         }
 

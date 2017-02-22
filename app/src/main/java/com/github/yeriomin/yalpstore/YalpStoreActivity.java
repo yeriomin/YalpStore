@@ -40,19 +40,7 @@ public abstract class YalpStoreActivity extends Activity {
                 startActivity(new Intent(this, PreferenceActivity.class));
                 break;
             case R.id.action_logout:
-                new AlertDialog.Builder(this)
-                    .setMessage(R.string.dialog_message_logout)
-                    .setTitle(R.string.dialog_title_logout)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            new PlayStoreApiWrapper(getApplicationContext()).logout();
-                            dialogInterface.dismiss();
-                            finishAll();
-                        }
-                    })
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .show();
+                showLogOutDialog();
                 break;
             case R.id.action_search:
                 onSearchRequested();
@@ -65,6 +53,22 @@ public abstract class YalpStoreActivity extends Activity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private AlertDialog showLogOutDialog() {
+        return new AlertDialog.Builder(this)
+            .setMessage(R.string.dialog_message_logout)
+            .setTitle(R.string.dialog_title_logout)
+            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    new PlayStoreApiWrapper(getApplicationContext()).logout();
+                    dialogInterface.dismiss();
+                    finishAll();
+                }
+            })
+            .setNegativeButton(android.R.string.cancel, null)
+            .show();
     }
 
     protected void finishAll() {

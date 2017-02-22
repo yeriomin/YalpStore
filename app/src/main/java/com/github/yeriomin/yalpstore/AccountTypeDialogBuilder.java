@@ -54,13 +54,8 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
     private class AppProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
 
         @Override
-        protected void onPostExecute(Throwable e) {
-            super.onPostExecute(e);
-            if (null != e) {
-                AccountTypeDialogBuilder builder = new AccountTypeDialogBuilder(context);
-                builder.setTaskClone(this.taskClone);
-                builder.show();
-            }
+        protected CredentialsDialogBuilder getDialogBuilder() {
+            return new AccountTypeDialogBuilder(context);
         }
 
         @Override

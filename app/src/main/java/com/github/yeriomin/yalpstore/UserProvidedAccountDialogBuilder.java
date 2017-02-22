@@ -10,6 +10,13 @@ import android.widget.EditText;
 
 public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
 
+    private String previousEmail = "";
+
+    public UserProvidedAccountDialogBuilder setPreviousEmail(String previousEmail) {
+        this.previousEmail = previousEmail;
+        return this;
+    }
+
     public UserProvidedAccountDialogBuilder(Context context) {
         super(context);
     }
@@ -23,7 +30,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
 
         final EditText editEmail = (EditText) ad.findViewById(R.id.email);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        editEmail.setText(prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, ""));
+        editEmail.setText(prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, this.previousEmail));
         final EditText editPassword = (EditText) ad.findViewById(R.id.password);
 
         Button buttonExit = (Button) ad.findViewById(R.id.button_exit);
@@ -61,14 +68,11 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
 
     private class UserProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
 
+        private String previousEmail;
+
         @Override
-        protected void onPostExecute(Throwable e) {
-            super.onPostExecute(e);
-            if (null != e) {
-                UserProvidedAccountDialogBuilder builder = new UserProvidedAccountDialogBuilder(context);
-                builder.setTaskClone(this.taskClone);
-                builder.show();
-            }
+        protected CredentialsDialogBuilder getDialogBuilder() {
+            return new UserProvidedAccountDialogBuilder(context).setPreviousEmail(previousEmail);
         }
 
         @Override
@@ -81,6 +85,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
                 ) {
                 return new CredentialsEmptyException();
             }
+            previousEmail = params[0];
             try {
                 PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.context);
                 wrapper.login(params[0], params[1]);
