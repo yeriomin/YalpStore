@@ -32,13 +32,8 @@ class SearchTask extends GoogleApiAsyncTask {
         PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
         try {
             AppSearchResultIterator iterator = wrapper.getSearchIterator(params[0], params[1]);
-            if (!iterator.hasNext()) {
-                return null;
-            }
-            for (App app: iterator.next()) {
-                if (categoryManager.fits(app.getCategoryId(), params[1])) {
-                    apps.add(app);
-                }
+            while (iterator.hasNext() && apps.isEmpty()) {
+                getNextBatch(iterator, params[1]);
             }
             for (App app: apps) {
                 app.setInstalled(installedPackageNames.contains(app.getPackageName()));
@@ -47,6 +42,14 @@ class SearchTask extends GoogleApiAsyncTask {
             return e;
         }
         return null;
+    }
+
+    private void getNextBatch(AppSearchResultIterator iterator, String chosenCategoryId) {
+        for (App app: iterator.next()) {
+            if (categoryManager.fits(app.getCategoryId(), chosenCategoryId)) {
+                apps.add(app);
+            }
+        }
     }
 
     public void setCategoryManager(CategoryManager categoryManager) {
