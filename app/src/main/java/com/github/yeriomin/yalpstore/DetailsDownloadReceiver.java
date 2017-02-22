@@ -43,10 +43,9 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
     }
 
     private boolean success(Context context, long id) {
-        DownloadManager.Query q = new DownloadManager.Query();
-        q.setFilterById(id);
-        DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-        Cursor cursor = dm.query(q);
+        Cursor cursor = ((DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE))
+            .query(new DownloadManager.Query().setFilterById(id))
+        ;
         if (!cursor.moveToFirst()) {
             return false;
         }

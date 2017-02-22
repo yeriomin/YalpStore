@@ -11,7 +11,6 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -100,7 +99,6 @@ public class DownloadOrInstallManager extends DetailsManager {
     }
 
     public void install() {
-        Log.i(this.getClass().getName(), apkPath.getName() + " exists. No download needed.");
         NotificationManager manager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
         manager.cancel(app.getDisplayName().hashCode());
         ApkSignatureVerifier verifier = new ApkSignatureVerifier(activity);
