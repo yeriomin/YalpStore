@@ -18,8 +18,12 @@ import static android.content.Context.DOWNLOAD_SERVICE;
 
 public class DownloadBroadcastReceiver extends BroadcastReceiver {
 
+    private NotificationUtil notificationUtil;
+
     @Override
     public void onReceive(Context c, Intent i) {
+        notificationUtil = new NotificationUtil(c);
+
         Bundle extras = i.getExtras();
         long downloadId = extras.getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
 
@@ -37,7 +41,7 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
             } else {
                 String error = getErrorString(c, errorCode);
                 toast(c, error);
-                new NotificationUtil(c).show(new Intent(), app.getDisplayName(), error);
+                notificationUtil.show(new Intent(), app.getDisplayName(), error);
             }
         } catch (Exception e) {
             // Download not finished
@@ -74,17 +78,19 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
     private void verifyAndInstall(Context c, App app) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = DownloadOrInstallManager.getOpenApkIntent(c, file);
+        String notificationMessage = c.getString(R.string.notification_download_complete_signature_mismatch);
+        String toastMessage = c.getString(R.string.notification_download_complete_signature_mismatch_toast, app.getDisplayName());
         if (new ApkSignatureVerifier(c).match(app.getPackageName(), file)) {
             if (shouldAutoInstall(c)) {
                 c.startActivity(openApkIntent);
+                return;
             } else {
-                new NotificationUtil(c).show(openApkIntent, app.getDisplayName(), c.getString(R.string.notification_download_complete));
-                toast(c, c.getString(R.string.notification_download_complete_toast, app.getDisplayName()));
+                notificationMessage = c.getString(R.string.notification_download_complete);
+                toastMessage = c.getString(R.string.notification_download_complete_toast, app.getDisplayName());
             }
-        } else {
-            new NotificationUtil(c).show(openApkIntent, app.getDisplayName(), c.getString(R.string.notification_download_complete_signature_mismatch));
-            toast(c, c.getString(R.string.notification_download_complete_signature_mismatch_toast, app.getDisplayName()));
         }
+        notificationUtil.show(openApkIntent, app.getDisplayName(), notificationMessage);
+        toast(c, toastMessage);
     }
 
     private boolean shouldAutoInstall(Context c) {
