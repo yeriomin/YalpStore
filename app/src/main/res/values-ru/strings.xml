@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="application_crashed">В Yalp Store произошёл сбой.\n\nВы можете помочь разработчику исправить это, отправив email с подробностями об ошибке. Нажмите OK чтобы открыть ваше email-приложение с письмом для разработчика, готовым к отправке.\n\nНикакой чувствительной и личной информации отправлено не будет, проверьте текст письма, если сомеваетесь.</string>
     <string name="about_developer_email_label">Почта разработчика:</string>
     <string name="about_logged_in">Ваш текущий аккаунт:</string>
     <string name="about_copied_to_clipboard">Скопировано в буфер обмена</string>

@@ -4,6 +4,7 @@
     <string name="star_empty" translatable="false">☆</string>
     <string name="about_developer_email" translatable="false">yalp.store.dev@gmail.com</string>
     <string name="about_gsf_id" translatable="false">Google Services Framework id:</string>
+    <string name="application_crashed">Sorry, Yalp Store crashed.\n\nYou can help fix this by sending error data to the developer. Clicking OK will take you to your default email app with a complete email ready to be sent to the developer.\n\nNo private or sensitive information is collected, please review the letter content if you doubt it.</string>
     <string name="about_developer_email_label">Developer\'s email:</string>
     <string name="about_logged_in">You are logged in as:</string>
     <string name="about_copied_to_clipboard">Copied to clipboard</string>
