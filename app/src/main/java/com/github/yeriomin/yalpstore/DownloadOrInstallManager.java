@@ -6,8 +6,10 @@ import android.app.DownloadManager;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +24,20 @@ public class DownloadOrInstallManager extends DetailsManager {
 
     private File apkPath;
     private DetailsDownloadReceiver receiver;
+
+    static public Intent getOpenApkIntent(Context context, File file) {
+        Intent intent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+            intent.setData(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file));
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        } else {
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+        return intent;
+    }
 
     public DownloadOrInstallManager(DetailsActivity activity, App app) {
         super(activity, app);
@@ -89,7 +105,7 @@ public class DownloadOrInstallManager extends DetailsManager {
         manager.cancel(app.getDisplayName().hashCode());
         ApkSignatureVerifier verifier = new ApkSignatureVerifier(activity);
         if (verifier.match(app.getPackageName(), apkPath)) {
-            activity.startActivity(PlayStoreApiWrapper.getOpenApkIntent(activity, apkPath));
+            activity.startActivity(getOpenApkIntent(activity, apkPath));
         } else {
             getSignatureMismatchDialog().show();
         }

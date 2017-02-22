@@ -22,7 +22,7 @@ public class PurchaseTask extends GoogleApiAsyncTask {
     protected Throwable doInBackground(String... params) {
         PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
         try {
-            wrapper.download(app);
+            new Downloader(context).download(app, wrapper.purchaseOrDeliver(app));
         } catch (Throwable e) {
             return e;
         }

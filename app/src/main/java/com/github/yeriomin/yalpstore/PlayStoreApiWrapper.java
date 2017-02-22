@@ -51,20 +51,6 @@ public class PlayStoreApiWrapper {
     private static GooglePlayAPI api;
     private static AppSearchResultIterator searchResultIterator;
 
-    static public Intent getOpenApkIntent(Context context, File file) {
-        Intent intent;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
-            intent.setData(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file));
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        } else {
-            intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        }
-        return intent;
-    }
-
     private GooglePlayAPI getApi() throws IOException {
         if (api == null) {
             api = buildApi();
@@ -275,7 +261,7 @@ public class PlayStoreApiWrapper {
         return categories;
     }
 
-    private AndroidAppDeliveryData purchaseOrDeliver(App app) throws IOException, NotPurchasedException {
+    public AndroidAppDeliveryData purchaseOrDeliver(App app) throws IOException, NotPurchasedException {
         if (app.isFree()) {
             return getApi()
                 .purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType())
@@ -288,9 +274,5 @@ public class PlayStoreApiWrapper {
         } else {
             throw new NotPurchasedException();
         }
-    }
-
-    public void download(App app) throws IOException, NotPurchasedException {
-        new Downloader(context).download(app, purchaseOrDeliver(app));
     }
 }

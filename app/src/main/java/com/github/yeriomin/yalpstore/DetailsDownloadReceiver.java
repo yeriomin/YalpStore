@@ -28,16 +28,7 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
             return;
         }
         state.setFinished(id);
-        DownloadManager.Query q = new DownloadManager.Query();
-        q.setFilterById(id);
-        DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-        Cursor cursor = dm.query(q);
-        if (!cursor.moveToFirst()) {
-            return;
-        }
-        int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
-        int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
-        if (status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS) {
+        if (success(context, id)) {
             state.setSuccessful(id);
         }
         if (!state.isEverythingFinished()) {
@@ -49,5 +40,18 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
             button.setText(R.string.details_download);
         }
         button.setEnabled(true);
+    }
+
+    private boolean success(Context context, long id) {
+        DownloadManager.Query q = new DownloadManager.Query();
+        q.setFilterById(id);
+        DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        Cursor cursor = dm.query(q);
+        if (!cursor.moveToFirst()) {
+            return false;
+        }
+        int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
+        int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
+        return status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS;
     }
 }

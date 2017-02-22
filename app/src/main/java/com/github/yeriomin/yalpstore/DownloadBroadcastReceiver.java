@@ -1,9 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.app.DownloadManager;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -24,51 +21,69 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context c, Intent i) {
         Bundle extras = i.getExtras();
-        DownloadManager.Query q = new DownloadManager.Query();
         long downloadId = extras.getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
-        q.setFilterById(downloadId);
-
-        DownloadManager dm = (DownloadManager) c.getSystemService(DOWNLOAD_SERVICE);
-        Cursor cursor = dm.query(q);
-        if (!cursor.moveToFirst()) {
-            return;
-        }
 
         DownloadState state = DownloadState.get(downloadId);
         if (null == state) {
             return;
         }
-        state.setFinished(downloadId);
+        App app = state.getApp();
+
+        try {
+            int errorCode = getDownloadResult(c, downloadId);
+            state.setFinished(downloadId);
+            if (errorCode == 0) {
+                state.setSuccessful(downloadId);
+            } else {
+                String error = getErrorString(c, errorCode);
+                toast(c, error);
+                new NotificationUtil(c).show(new Intent(), app.getDisplayName(), error);
+            }
+        } catch (Exception e) {
+            // Download not finished
+        }
+
+        if (state.isEverythingFinished() && state.isEverythingSuccessful()) {
+            verifyAndInstall(c, app);
+        }
+    }
+
+    private int getDownloadResult(Context c, long downloadId) throws Exception {
+        DownloadManager.Query q = new DownloadManager.Query();
+        q.setFilterById(downloadId);
+
+        DownloadManager dm = (DownloadManager) c.getSystemService(DOWNLOAD_SERVICE);
+        Cursor cursor = dm.query(q);
+        if (!cursor.moveToFirst()) {
+            throw new Exception("Not finished");
+        }
 
         int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
         int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
-        String displayName = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_TITLE));
-        String packageName = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_DESCRIPTION));
-        if (status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS) {
-            state.setSuccessful(downloadId);
-        } else if (reason > 0) {
-            String error = getErrorString(c, reason);
-            toast(c, error);
-            createNotification(c, new Intent(), displayName, error);
+        if (status == DownloadManager.STATUS_SUCCESSFUL
+            || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS
+        ) {
+            return 0;
+        } else if (reason == 0) {
+            return -1;
+        } else {
+            return reason;
         }
+    }
 
-        if (!state.isEverythingFinished() || !state.isEverythingSuccessful()) {
-            return;
-        }
-
-        App app = state.getApp();
+    private void verifyAndInstall(Context c, App app) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-        Intent openApkIntent = PlayStoreApiWrapper.getOpenApkIntent(c, file);
-        if (new ApkSignatureVerifier(c).match(packageName, file)) {
+        Intent openApkIntent = DownloadOrInstallManager.getOpenApkIntent(c, file);
+        if (new ApkSignatureVerifier(c).match(app.getPackageName(), file)) {
             if (shouldAutoInstall(c)) {
                 c.startActivity(openApkIntent);
             } else {
-                createNotification(c, openApkIntent, displayName, c.getString(R.string.notification_download_complete));
-                toast(c, c.getString(R.string.notification_download_complete_toast, displayName));
+                new NotificationUtil(c).show(openApkIntent, app.getDisplayName(), c.getString(R.string.notification_download_complete));
+                toast(c, c.getString(R.string.notification_download_complete_toast, app.getDisplayName()));
             }
         } else {
-            createNotification(c, openApkIntent, displayName, c.getString(R.string.notification_download_complete_signature_mismatch));
-            toast(c, c.getString(R.string.notification_download_complete_signature_mismatch_toast, displayName));
+            new NotificationUtil(c).show(openApkIntent, app.getDisplayName(), c.getString(R.string.notification_download_complete_signature_mismatch));
+            toast(c, c.getString(R.string.notification_download_complete_signature_mismatch_toast, app.getDisplayName()));
         }
     }
 
@@ -114,18 +129,5 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
                 break;
         }
         return context.getString(stringId);
-    }
-
-    private void createNotification(Context c, Intent intent, String packageName, String message) {
-        PendingIntent pendingIntent = PendingIntent.getActivity(c, 1, intent, 0);
-        Notification notification = NotificationUtil.createNotification(
-            c,
-            pendingIntent,
-            packageName,
-            message,
-            R.drawable.ic_notification
-        );
-        NotificationManager manager = (NotificationManager) c.getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(packageName.hashCode(), notification);
     }
 }

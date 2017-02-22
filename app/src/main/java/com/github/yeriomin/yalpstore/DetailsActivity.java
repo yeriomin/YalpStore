@@ -32,8 +32,10 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         boolean result = super.onCreateOptionsMenu(menu);
-        ignoreOptionManager.setMenu(menu);
-        ignoreOptionManager.draw();
+        if (null != ignoreOptionManager) {
+            ignoreOptionManager.setMenu(menu);
+            ignoreOptionManager.draw();
+        }
         return result;
     }
 
