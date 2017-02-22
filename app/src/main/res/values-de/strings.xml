@@ -17,6 +17,7 @@
 <string name="action_unignore">"Ignoriere Aktualisierungen nicht mehr"</string>
 <string name="action_whitelist">"Whitelist für Aktualisierungen"</string>
 <string name="action_unwhitelist">"Ignoriere Aktualisierungen"</string>
+<string name="search_filter">Alle Apps</string>
 <string name="search_title">"Suche nach Apps"</string>
 <string name="dialog_two_factor_cancel">"Jetzt nicht"</string>
 <string name="dialog_two_factor_create_password">"Passwort erstellen"</string>
@@ -51,6 +52,7 @@ Tippe auf \"Passwort erstellen\" um auf die Seite zum Erstellen eines Passwortes
 <string name="error_not_purchased">"Diese App wurde scheinbar nicht gekauft. Zum Play Store weiterleiten?"</string>
 <string name="error_downloads_directory_not_writable">"Download-Ordner konnte nicht erstellt werden oder ist nicht beschreibbar."</string>
 <string name="error_token_dispenser_problem">"Authentifizierung ohne Account fehlgeschlagen. Versuche deinen eigenen Account zu benutzen."</string>
+<string name="details_category" formatted="false">Kategorie: %s</string>
 <string name="details_installs" formatted="false">%s ↓</string>
 <string name="details_rating" formatted="false">%.1f★</string>
 <string name="details_rating_specific" formatted="false">%d★ %d</string>
@@ -99,6 +101,9 @@ Vergiss nicht das die Verwendung dieser App gegen die Play Store Nutzungsbedingu
 <string name="pref_auto_install_summary_off">"Apps werden installiert wenn die Abschluss-Benachrichtigung angetippt wird"</string>
 <string name="pref_auto_install_summary_on">"Apps werden installiert sobald der Download abgeschlossen ist"</string>
 <string name="pref_auto_install">"Apps sofort installieren."</string>
+<string name="pref_delete_apk_after_install_summary_off">Die .apks werden nun nach der Installation nicht gelöscht</string>
+<string name="pref_delete_apk_after_install_summary_on">Die .apks werden nun nach der Installation gelöscht</string>
+<string name="pref_delete_apk_after_install">Die .apk nach der Installation löschen</string>
 <string name="pref_update_list_white_or_black_black">"Nur für ausgewählte Apps werden keine Aktualisierungen gesucht"</string>
 <string name="pref_update_list_white_or_black_white">"Nur für ausgewählte Apps werden Aktualisierungen gesucht"</string>
 <string name="pref_update_list_white_or_black">"Black- oder Whitelist für App-Aktualisierungen verwenden"</string>
