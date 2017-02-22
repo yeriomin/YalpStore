@@ -10,10 +10,21 @@ import android.view.MenuItem;
 
 public abstract class YalpStoreActivity extends Activity {
 
+    static protected boolean logout = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        logout = false;
         ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (logout) {
+            finish();
+        }
     }
 
     @Override
@@ -37,7 +48,7 @@ public abstract class YalpStoreActivity extends Activity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             new PlayStoreApiWrapper(getApplicationContext()).logout();
                             dialogInterface.dismiss();
-                            finish();
+                            finishAll();
                         }
                     })
                     .setNegativeButton(android.R.string.cancel, null)
@@ -54,5 +65,10 @@ public abstract class YalpStoreActivity extends Activity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void finishAll() {
+        logout = true;
+        finish();
     }
 }
