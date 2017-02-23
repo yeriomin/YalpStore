@@ -87,15 +87,20 @@ class YalpStoreUncaughtExceptionHandler implements Thread.UncaughtExceptionHandl
         if (null != e) {
             body.append("\n\n").append(Log.getStackTraceString(e)).append("\n\n");
         }
+        Map<String, String> deviceInfo = getDeviceInfo();
+        for (String key : deviceInfo.keySet()) {
+            body.append(key).append(" = ").append(deviceInfo.get(key)).append("\n");
+        }
+        return body.toString();
+    }
+
+    private Map<String, String> getDeviceInfo() {
         Map<String, String> values = new LinkedHashMap<>();
         values.putAll(getBuildValues());
         values.putAll(getConfigurationValues());
         values.putAll(getDisplayMetricsValues());
         values.putAll(getPackageManagerValues());
-        for (String key : values.keySet()) {
-            body.append(key).append(" = ").append(values.get(key)).append("\n");
-        }
-        return body.toString();
+        return values;
     }
 
     private Map<String, String> getBuildValues() {
