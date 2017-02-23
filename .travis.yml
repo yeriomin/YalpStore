@@ -4,6 +4,8 @@ android:
   components:
     - build-tools-25.0.0
     - android-25
+  licenses:
+    - 'android-sdk-license-.+'
 deploy:
   provider: releases
   api_key:
