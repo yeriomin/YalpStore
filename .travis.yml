@@ -5,7 +5,9 @@ android:
     - build-tools-25.0.0
     - android-25
   licenses:
+    - 'android-sdk-preview-license-52d11cd2'
     - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
 deploy:
   provider: releases
   api_key:
