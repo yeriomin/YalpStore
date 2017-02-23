@@ -16,6 +16,7 @@ public abstract class YalpStoreActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         logout = false;
         ThemeManager.setTheme(this);
+        Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(this));
         super.onCreate(savedInstanceState);
     }
 

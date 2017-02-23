@@ -39,7 +39,7 @@
         android:id="@+id/developer_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autoLink="email"
+        android:textColor="#5555ff"
         android:textSize="18sp"
         android:text="@string/about_developer_email" />
 

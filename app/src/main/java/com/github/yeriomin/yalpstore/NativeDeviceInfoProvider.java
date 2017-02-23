@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.util.DisplayMetrics;
 
@@ -22,24 +23,6 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
     // Getting this requires a permission and google services to be installed
     static private final int GOOGLE_SERVICES_VERSION_CODE = 80711500;
-    static private final String[] sharedLibraries = new String[] {
-        "ConnectivityExt",
-        "activation.jar",
-        "android-support-v13.jar",
-        "android-support-v4.jar",
-        "android-support-v7-recyclerview.jar",
-        "cloud-common.jar",
-        "com.android.media.remotedisplay",
-        "com.android.mediadrm.signer",
-        "android.test.runner",
-        "com.android.future.usb.accessory",
-        "com.android.location.provider",
-        "com.android.nfc_extras",
-        "com.google.android.maps",
-        "com.google.android.media.effects",
-        "com.google.widevine.software.drm",
-        "javax.obex"
-    };
     static private final String[] glExtensions = new String[] {
         "GL_AMD_compressed_ATC_texture",
         "GL_AMD_performance_monitor",
@@ -220,27 +203,43 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     public DeviceConfigurationProto getDeviceConfigurationProto() {
-        DisplayMetrics metrics = this.context.getResources().getDisplayMetrics();
-        return DeviceConfigurationProto.newBuilder()
-            .setTouchScreen(3)
-            .setKeyboard(1)
-            .setNavigation(1)
-            .setScreenLayout(2)
-            .setHasHardKeyboard(false)
-            .setHasFiveWayNavigation(false)
-            .setScreenDensity((int) (metrics.density * 160f))
-            .setScreenWidth(metrics.widthPixels)
-            .setScreenHeight(metrics.heightPixels)
+        DeviceConfigurationProto.Builder builder = DeviceConfigurationProto.newBuilder();
+        addDisplayMetrics(builder);
+        addConfiguration(builder);
+        return builder
             .addAllNativePlatform(getPlatforms())
-            .addAllSystemSharedLibrary(Arrays.asList(sharedLibraries))
-            .addAllSystemAvailableFeature(getFeatures())
+            .addAllSystemSharedLibrary(getSharedLibraries(context))
+            .addAllSystemAvailableFeature(getFeatures(context))
             .addAllSystemSupportedLocale(getLocales())
             .setGlEsVersion(196609) // Getting this and next list requires messing with ndk
             .addAllGlExtension(Arrays.asList(glExtensions))
             .build();
     }
 
-    private List<String> getPlatforms() {
+    private DeviceConfigurationProto.Builder addDisplayMetrics(DeviceConfigurationProto.Builder builder) {
+        DisplayMetrics metrics = this.context.getResources().getDisplayMetrics();
+        builder
+            .setScreenDensity((int) (metrics.density * 160f))
+            .setScreenWidth(metrics.widthPixels)
+            .setScreenHeight(metrics.heightPixels)
+        ;
+        return builder;
+    }
+
+    private DeviceConfigurationProto.Builder addConfiguration(DeviceConfigurationProto.Builder builder) {
+        Configuration config = this.context.getResources().getConfiguration();
+        builder
+            .setTouchScreen(config.touchscreen)
+            .setKeyboard(config.keyboard)
+            .setNavigation(config.navigation)
+            .setScreenLayout(config.screenLayout & 15)
+            .setHasHardKeyboard(config.keyboard == Configuration.KEYBOARD_QWERTY)
+            .setHasFiveWayNavigation(config.navigation == Configuration.NAVIGATIONHIDDEN_YES)
+        ;
+        return builder;
+    }
+
+    static public List<String> getPlatforms() {
         List<String> platforms = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= 21) {
             platforms = Arrays.asList(Build.SUPPORTED_ABIS);
@@ -255,8 +254,8 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         return platforms;
     }
 
-    private List<String> getFeatures() {
-        PackageManager packageManager = this.context.getPackageManager();
+    static public List<String> getFeatures(Context context) {
+        PackageManager packageManager = context.getPackageManager();
         FeatureInfo[] featuresList = packageManager.getSystemAvailableFeatures();
         List<String> featureStringList = new ArrayList<>();
         for (FeatureInfo feature : featuresList) {
@@ -267,7 +266,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         return featureStringList;
     }
 
-    private List<String> getLocales() {
+    static public List<String> getLocales() {
         List<String> localeStringList = new ArrayList<>();
         for (Locale locale : Locale.getAvailableLocales()) {
             String localeString = locale.toString();
@@ -276,5 +275,9 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
             }
         }
         return localeStringList;
+    }
+
+    static public List<String> getSharedLibraries(Context context) {
+        return Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames());
     }
 }

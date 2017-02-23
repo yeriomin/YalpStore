@@ -171,19 +171,19 @@ public class DetailsActivity extends YalpStoreActivity {
         if (null == versionName || versionName.isEmpty()) {
             return;
         }
-        String label = getString(R.string.details_versionName, versionName);
-        if (app.isInstalled()) {
-            try {
-                PackageInfo info = getPackageManager().getPackageInfo(app.getPackageName(), 0);
-                if (info.versionCode != app.getVersionCode()) {
-                    label = getString(R.string.details_versionName_updatable, info.versionName, versionName);
-                }
-            } catch (PackageManager.NameNotFoundException e) {
-                // We've checked for that already
-            }
-        }
-        textView.setText(label);
+        textView.setText(getString(R.string.details_versionName, versionName));
         textView.setVisibility(View.VISIBLE);
+        if (!app.isInstalled()) {
+            return;
+        }
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(app.getPackageName(), 0);
+            if (info.versionCode != app.getVersionCode()) {
+                textView.setText(getString(R.string.details_versionName_updatable, info.versionName, versionName));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            // We've checked for that already
+        }
     }
 
     private void drawDescription(App app) {

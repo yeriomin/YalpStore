@@ -23,6 +23,12 @@ public class AboutActivity extends YalpStoreActivity {
         TextView gsfIdView = (TextView) findViewById(R.id.gsf_id);
         gsfIdView.setText(gsfId);
         gsfIdView.setOnClickListener(new CopyToClipboardListener());
+        findViewById(R.id.developer_email).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new YalpStoreUncaughtExceptionHandler(AboutActivity.this).send(null);
+            }
+        });
     }
 
     private class CopyToClipboardListener implements View.OnClickListener {

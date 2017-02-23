@@ -24,6 +24,5 @@ android {
 }
 
 dependencies {
-    compile 'ch.acra:acra:4.9.0'
     compile 'com.github.yeriomin:play-store-api:556e2bf'
 }
