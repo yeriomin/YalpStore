@@ -42,14 +42,12 @@ class AppSearchResultIterator implements Iterator<List<App>> {
     public List<App> next() {
         List<App> apps = new ArrayList<>();
         SearchResponse response = iterator.next();
-        if (response.getDocCount() > 0) {
-            for (DocV2 details : response.getDocList().get(0).getChildList()) {
-                App app = AppBuilder.build(details);
-                if (hideNonfreeApps && !app.isFree()) {
-                    Log.i(this.getClass().getName(), "Skipping non-free app " + app.getPackageName());
-                } else {
-                    apps.add(app);
-                }
+        for (DocV2 details : response.getDocList().get(0).getChildList()) {
+            App app = AppBuilder.build(details);
+            if (hideNonfreeApps && !app.isFree()) {
+                Log.i(this.getClass().getName(), "Skipping non-free app " + app.getPackageName());
+            } else {
+                apps.add(app);
             }
         }
         return apps;
