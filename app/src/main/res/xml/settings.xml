@@ -2,7 +2,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ListPreference
-        android:defaultValue="false"
         android:key="PREFERENCE_BACKGROUND_UPDATE_INTERVAL"
         android:title="@string/pref_background_update_interval"
         android:entries="@array/updateIntervalLabels"
