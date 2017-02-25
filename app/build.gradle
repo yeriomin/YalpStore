@@ -8,8 +8,8 @@ android {
         applicationId "com.github.yeriomin.yalpstore"
         minSdkVersion 9
         targetSdkVersion 25
-        versionCode 8
-        versionName "0.8"
+        versionCode 9
+        versionName "0.9"
     }
     buildTypes {
         release {
