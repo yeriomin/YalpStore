@@ -1,12 +1,20 @@
 package com.github.yeriomin.yalpstore;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.SearchManager;
+import android.app.UiModeManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.widget.EditText;
 
 public abstract class YalpStoreActivity extends Activity {
 
@@ -15,6 +23,9 @@ public abstract class YalpStoreActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         logout = false;
+        if (isTv()) {
+            requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
+        }
         ThemeManager.setTheme(this);
         Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(this));
         super.onCreate(savedInstanceState);
@@ -44,7 +55,9 @@ public abstract class YalpStoreActivity extends Activity {
                 showLogOutDialog();
                 break;
             case R.id.action_search:
-                onSearchRequested();
+                if (!onSearchRequested()) {
+                    showFallbackSearchDialog();
+                }
                 break;
             case R.id.action_updates:
                 startActivity(new Intent(this, UpdatableAppsActivity.class));
@@ -70,6 +83,29 @@ public abstract class YalpStoreActivity extends Activity {
             })
             .setNegativeButton(android.R.string.cancel, null)
             .show();
+    }
+
+    private AlertDialog showFallbackSearchDialog() {
+        final EditText textView = new EditText(this);
+        return new AlertDialog.Builder(this)
+            .setView(textView)
+            .setPositiveButton(android.R.string.search_go, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent i = new Intent(getApplicationContext(), SearchResultActivity.class);
+                    i.setAction(Intent.ACTION_SEARCH);
+                    i.putExtra(SearchManager.QUERY, textView.getText().toString());
+                    startActivity(i);
+                }
+            })
+            .setNegativeButton(android.R.string.cancel, null)
+            .show();
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
+    private boolean isTv() {
+        int uiMode = getResources().getConfiguration().uiMode;
+        return (uiMode & Configuration.UI_MODE_TYPE_MASK) == Configuration.UI_MODE_TYPE_TELEVISION;
     }
 
     protected void finishAll() {
