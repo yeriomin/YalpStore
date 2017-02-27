@@ -23,9 +23,6 @@ public class UpdatableAppsActivity extends AppListActivity {
         setNeedsUpdate(true);
         setTitle(getString(R.string.activity_title_updates));
         ((TextView) getListView().getEmptyView()).setText(getString(R.string.list_empty_updates));
-
-        // This is app's entry point, so lets download app names here
-        new CategoryManager(this).downloadCategoryNames();
     }
 
     @Override
@@ -69,6 +66,7 @@ public class UpdatableAppsActivity extends AppListActivity {
                 super.onPostExecute(e);
                 if (null == e) {
                     addApps(this.apps);
+                    new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
                 }
             }
         };
