@@ -10,10 +10,15 @@ import com.github.yeriomin.yalpstore.model.App;
 public class DetailsTask extends GoogleApiAsyncTask {
 
     protected App app;
+    protected String packageName;
+
+    public DetailsTask setPackageName(String packageName) {
+        this.packageName = packageName;
+        return this;
+    }
 
     @Override
     protected Throwable doInBackground(String... params) {
-        String packageName = params[0];
         PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.context);
         try {
             this.app = wrapper.getDetails(packageName);

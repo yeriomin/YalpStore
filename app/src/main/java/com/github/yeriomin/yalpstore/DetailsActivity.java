@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -24,10 +25,17 @@ public class DetailsActivity extends YalpStoreActivity {
 
     static public final int PERMISSIONS_REQUEST_CODE = 828;
 
-    static public final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
+    static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
     private DownloadOrInstallManager downloadOrInstallManager;
     private IgnoreOptionManager ignoreOptionManager;
+
+    static public void start(Context context, String packageName) {
+        Intent intent = new Intent(context, DetailsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.putExtra(DetailsActivity.INTENT_PACKAGE_NAME, packageName);
+        context.startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,6 +67,13 @@ public class DetailsActivity extends YalpStoreActivity {
         }
         Log.i(this.getClass().getName(), "Getting info about " + packageName);
 
+        DetailsTask task = getDetailsTask(packageName);
+        task.setTaskClone(getDetailsTask(packageName));
+        task.execute();
+        ignoreOptionManager = new IgnoreOptionManager(this, new App());
+    }
+
+    private DetailsTask getDetailsTask(String packageName) {
         DetailsTask task = new DetailsTask() {
 
             @Override
@@ -70,10 +85,10 @@ public class DetailsActivity extends YalpStoreActivity {
                 }
             }
         };
+        task.setPackageName(packageName);
         task.setContext(this);
         task.prepareDialog(R.string.dialog_message_loading_app_details, R.string.dialog_title_loading_app_details);
-        task.execute(packageName);
-        ignoreOptionManager = new IgnoreOptionManager(this, new App());
+        return task;
     }
 
     @Override

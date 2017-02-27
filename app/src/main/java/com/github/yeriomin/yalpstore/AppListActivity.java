@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -42,10 +41,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                intent.putExtra(DetailsActivity.INTENT_PACKAGE_NAME, (String) data.get(position).get(PACKAGE_NAME));
-                startActivity(intent);
+                DetailsActivity.start(getApplicationContext(), (String) data.get(position).get(PACKAGE_NAME));
             }
         });
     }
