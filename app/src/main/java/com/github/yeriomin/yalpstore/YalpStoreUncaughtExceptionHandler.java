@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -74,10 +73,9 @@ class YalpStoreUncaughtExceptionHandler implements Thread.UncaughtExceptionHandl
         emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, activity.getPackageName() + " Crash Report");
         emailIntent.putExtra(Intent.EXTRA_TEXT, buildBody(e));
-        try {
+        if (emailIntent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivity(emailIntent);
-        } catch (ActivityNotFoundException ee) {
-            Log.e(getClass().getName(), ee.getClass().toString() + " " + ee.getMessage());
+        } else {
             ((ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE)).setText(buildBody(e));
         }
     }
