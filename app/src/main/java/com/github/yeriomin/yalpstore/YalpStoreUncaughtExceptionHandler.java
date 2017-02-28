@@ -94,6 +94,10 @@ class YalpStoreUncaughtExceptionHandler implements Thread.UncaughtExceptionHandl
 
     private Map<String, String> getDeviceInfo() {
         Map<String, String> values = new LinkedHashMap<>();
+        values.put("YALP.VERSION", BuildConfig.VERSION_NAME);
+        if (null != DetailsDependentActivity.app) {
+            values.put("APP.BEING.INSTALLED", DetailsDependentActivity.app.getPackageName());
+        }
         values.putAll(getBuildValues());
         values.putAll(getConfigurationValues());
         values.putAll(getDisplayMetricsValues());
