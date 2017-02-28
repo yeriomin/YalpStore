@@ -53,6 +53,9 @@ class ApkSignatureVerifier {
     private byte[] getApkSignature(File apkFile) {
         final String pkgPath = apkFile.getAbsolutePath();
         PackageInfo pkgInfo = pm.getPackageArchiveInfo(pkgPath, PackageManager.GET_SIGNATURES);
+        if (null == pkgInfo || null == pkgInfo.signatures) {
+            return new byte[] {};
+        }
         return signatureToBytes(pkgInfo.signatures);
     }
 
