@@ -72,7 +72,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         };
         task.setErrorView((TextView) getListView().getEmptyView());
         task.setContext(this);
-        task.prepareDialog(R.string.dialog_message_loading_app_list_update, R.string.dialog_title_loading_app_list_update);
+        task.setProgressIndicator(findViewById(R.id.progress));
         return task;
     }
 }
