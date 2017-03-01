@@ -491,6 +491,18 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="6dip" />
 
+            <TextView
+                android:id="@+id/to_play_store"
+                android:drawableLeft="@drawable/ic_chevron_right"
+                android:drawableStart="@drawable/ic_chevron_right"
+                android:textSize="20sp"
+                android:text="@string/details_to_play_store"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="6dip"
+                android:visibility="gone" />
+
         </LinearLayout>
 
     </ScrollView>

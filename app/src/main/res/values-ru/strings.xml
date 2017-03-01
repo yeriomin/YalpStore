@@ -77,6 +77,7 @@
     <string name="details_apps_by_this_dev">Приложения этого разработчика</string>
     <string name="details_similar_apps">Похожие приложения</string>
     <string name="details_users_also_installed">Пользователи также установили</string>
+    <string name="details_to_play_store">Перейти в Play Store</string>
     <string name="details_signature_mismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте ещё раз. (При удалении приложения все его данные будут потеряны)</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>

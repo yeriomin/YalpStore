@@ -144,6 +144,7 @@ public class DetailsActivity extends YalpStoreActivity {
         new ReviewManager(this, app).draw();
         drawPermissions(app);
         new AppListsManager(this, app).draw();
+        new BackToPlayStoreManager(this, app).draw();
         ignoreOptionManager.setApp(app);
         ignoreOptionManager.draw();
         downloadOrInstallManager = new DownloadOrInstallManager(this, app);

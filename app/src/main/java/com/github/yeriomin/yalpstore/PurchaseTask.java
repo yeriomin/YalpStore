@@ -10,7 +10,7 @@ import com.github.yeriomin.yalpstore.model.App;
 
 public class PurchaseTask extends GoogleApiAsyncTask {
 
-    static private final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
+    static public final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
 
     protected App app;
 
