@@ -26,6 +26,16 @@
             android:paddingEnd="6dip"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="6dip"
+            android:paddingStart="6dip"
+            android:paddingRight="6dip"
+            android:paddingEnd="6dip"
+            android:textSize="18sp" />
+
     </LinearLayout>
 
     <TextView

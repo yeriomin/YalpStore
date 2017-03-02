@@ -1,7 +1,10 @@
 package com.github.yeriomin.yalpstore;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.ClipboardManager;
@@ -29,6 +32,23 @@ public class AboutActivity extends YalpStoreActivity {
                 new YalpStoreUncaughtExceptionHandler(AboutActivity.this).send(null);
             }
         });
+        if (hasPermission()) {
+            checkForUpdate();
+        }
+    }
+
+    private void checkForUpdate() {
+        SelfUpdateChecker checker = new SelfUpdateChecker(this);
+        checker.setButton((TextView) findViewById(R.id.update));
+        checker.execute();
+    }
+
+    private boolean hasPermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            return checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED;
+        }
+        return true;
     }
 
     private class CopyToClipboardListener implements View.OnClickListener {

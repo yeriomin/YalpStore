@@ -24,9 +24,11 @@ public abstract class DownloadRequestBuilder {
     abstract protected String getDownloadUrl();
 
     public DownloadManager.Request build() {
-        HttpCookie cookie = deliveryData.getDownloadAuthCookie(0);
         DownloadManager.Request request = new DownloadManager.Request(getDownloadUri());
-        request.addRequestHeader("Cookie", cookie.getName() + "=" + cookie.getValue());
+        if (deliveryData.getDownloadAuthCookieCount() > 0) {
+            HttpCookie cookie = deliveryData.getDownloadAuthCookie(0);
+            request.addRequestHeader("Cookie", cookie.getName() + "=" + cookie.getValue());
+        }
         request.setDestinationUri(getDestinationUri());
         request.setDescription(app.getPackageName());
         request.setTitle(app.getDisplayName());

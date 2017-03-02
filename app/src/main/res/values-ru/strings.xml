@@ -3,6 +3,9 @@
     <string name="about_developer_email_label">Почта разработчика:</string>
     <string name="about_logged_in">Ваш текущий аккаунт:</string>
     <string name="about_copied_to_clipboard">Скопировано в буфер обмена</string>
+    <string name="about_self_update_checking">…проверяем</string>
+    <string name="about_self_update_available" formatted="false">…доступна 0.%d</string>
+    <string name="about_self_update_unavailable">…обновления нет</string>
     <string name="list_line_2_updatable" formatted="false">Обновлено %s</string>
     <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
     <string name="list_empty_updates">Обновлений нет</string>

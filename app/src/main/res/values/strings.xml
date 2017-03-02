@@ -7,6 +7,9 @@
     <string name="about_developer_email_label">Developer\'s email:</string>
     <string name="about_logged_in">You are logged in as:</string>
     <string name="about_copied_to_clipboard">Copied to clipboard</string>
+    <string name="about_self_update_checking">…checking</string>
+    <string name="about_self_update_available" formatted="false">…0.%d available</string>
+    <string name="about_self_update_unavailable">…no update found</string>
     <string name="list_line_2_updatable" formatted="false">Updated on %s</string>
     <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
     <string name="list_empty_updates">No apps need to be updated</string>
