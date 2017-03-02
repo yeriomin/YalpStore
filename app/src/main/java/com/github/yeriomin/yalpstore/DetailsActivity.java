@@ -32,7 +32,7 @@ public class DetailsActivity extends YalpStoreActivity {
 
     static public void start(Context context, String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(DetailsActivity.INTENT_PACKAGE_NAME, packageName);
         context.startActivity(intent);
     }
