@@ -15,15 +15,8 @@ public class DirectDownloadActivity extends YalpStoreActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        if (!intent.hasExtra(Intent.EXTRA_TEXT)) {
-            Log.w(getClass().getName(), "Intent does not have " + Intent.EXTRA_TEXT);
-            finish();
-            return;
-        }
-        String packageName = Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT)).getQueryParameter("id");
+        String packageName = getIntentPackageName();
         if (null == packageName) {
-            Log.w(getClass().getName(), Intent.EXTRA_TEXT + " provided in the intent does not have a valid uri - id query parameter is missing");
             finish();
             return;
         }
@@ -34,6 +27,15 @@ public class DirectDownloadActivity extends YalpStoreActivity {
         }
         getDetailsTask(packageName).execute();
         finish();
+    }
+
+    private String getIntentPackageName() {
+        Intent intent = getIntent();
+        if (!intent.hasExtra(Intent.EXTRA_TEXT)) {
+            Log.w(getClass().getName(), "Intent does not have " + Intent.EXTRA_TEXT);
+            return null;
+        }
+        return Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT)).getQueryParameter("id");
     }
 
     private DetailsTask getDetailsTask(final String packageName) {
