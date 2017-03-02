@@ -54,17 +54,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 
     private void prepareBlacklist(ListPreference blackOrWhite, final MultiSelectListPreference appList) {
         Map<String, String> appNames = getInstalledAppNames();
-        List<String> labels = new ArrayList<>(appNames.keySet());
-        Collections.sort(
-            labels,
-            new Comparator<Object>() {
-                public int compare(Object o1, Object o2) {
-                    String s1 = (String) o1;
-                    String s2 = (String) o2;
-                    return s1.toLowerCase().compareTo(s2.toLowerCase());
-                }
-            }
-        );
+        List<String> labels = getSortedLabels(new ArrayList<>(appNames.keySet()));
         List<String> values = new ArrayList<>();
         for (String label: labels) {
             values.add(appNames.get(label));
@@ -106,6 +96,20 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
             appNames.put(pm.getApplicationLabel(info.applicationInfo).toString(), info.packageName);
         }
         return appNames;
+    }
+
+    private List<String> getSortedLabels(List<String> labels) {
+        Collections.sort(
+            labels,
+            new Comparator<Object>() {
+                public int compare(Object o1, Object o2) {
+                    String s1 = (String) o1;
+                    String s2 = (String) o2;
+                    return s1.toLowerCase().compareTo(s2.toLowerCase());
+                }
+            }
+        );
+        return labels;
     }
 
     private void prepareTheme(ListPreference theme) {
