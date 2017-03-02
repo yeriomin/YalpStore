@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Gallery;
@@ -29,6 +30,12 @@ public class FullscreenImageActivity extends Activity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+
+        if (null == DetailsDependentActivity.app) {
+            Log.w(getClass().getName(), "No app stored");
+            finish();
+            return;
+        }
 
         Gallery gallery = ((Gallery) findViewById(R.id.gallery));
         gallery.setAdapter(new FullscreenImageAdapter(

@@ -1,5 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
+import android.util.Log;
+
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.Map;
@@ -8,15 +10,16 @@ abstract public class DetailsDependentActivity extends AppListActivity {
 
     static public App app;
 
-    protected App getApp() {
-        return DetailsDependentActivity.app;
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
 
         this.data.clear();
+        if (null == app) {
+            Log.w(getClass().getName(), "No app stored");
+            finish();
+            return;
+        }
         loadApps();
     }
 

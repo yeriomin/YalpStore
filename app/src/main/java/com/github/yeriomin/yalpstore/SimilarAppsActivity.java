@@ -4,6 +4,6 @@ public class SimilarAppsActivity extends DetailsDependentActivity {
 
     @Override
     protected void loadApps() {
-        addApps(getApp().getSimilarApps());
+        addApps(app.getSimilarApps());
     }
 }
