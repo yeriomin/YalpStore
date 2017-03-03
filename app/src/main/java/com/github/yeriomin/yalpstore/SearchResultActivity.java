@@ -11,7 +11,7 @@ import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.Map;
 
-public class SearchResultActivity extends AppListActivity {
+public class SearchResultActivity extends EndlessScrollActivity {
 
     private String query;
     private String categoryId = CategoryManager.TOP;
@@ -33,28 +33,9 @@ public class SearchResultActivity extends AppListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        this.query = getQuery(getIntent());
-        setTitle(getString(R.string.activity_title_search, this.query));
-
         super.onCreate(savedInstanceState);
+
         new CategoryManager(this).fill((Spinner) findViewById(R.id.filter));
-        loadApps();
-
-        ((TextView) getListView().getEmptyView()).setText(getString(R.string.list_empty_search));
-        getListView().setOnScrollListener(new ScrollEdgeListener() {
-            protected void loadMore() {
-                loadApps();
-            }
-        });
-    }
-
-    @Override
-    protected Map<String, Object> formatApp(App app) {
-        Map<String, Object> map = super.formatApp(app);
-        String updated = app.getUpdated().isEmpty() ? getString(R.string.list_incompatible) : app.getUpdated();
-        map.put(LINE2, getString(R.string.list_line_2_search, app.getInstalls(), app.getRating().getAverage(), updated));
-        map.put(ICON, app.getIconUrl());
-        return map;
     }
 
     public void setCategoryId(String categoryId) {
@@ -74,15 +55,8 @@ public class SearchResultActivity extends AppListActivity {
                 addApps(apps);
             }
         };
-        task.setContext(this);
-        task.setErrorView((TextView) getListView().getEmptyView());
-        if (data.isEmpty()) {
-            task.prepareDialog(R.string.dialog_message_loading_app_list_search, R.string.dialog_title_loading_app_list_search);
-        } else {
-            task.setProgressIndicator(findViewById(R.id.progress));
-        }
         task.setCategoryManager(new CategoryManager(this));
-        task.execute(query, categoryId);
+        prepareTask(task).execute(query, categoryId);
     }
 
     private String getQuery(Intent intent) {

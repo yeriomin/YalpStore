@@ -9,6 +9,7 @@ public class CategoryListActivity extends YalpStoreActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.categories_activity_layout);
+        setTitle(getString(R.string.action_categories));
         new CategoryManager(this).fill((ListView) findViewById(android.R.id.list));
     }
 }

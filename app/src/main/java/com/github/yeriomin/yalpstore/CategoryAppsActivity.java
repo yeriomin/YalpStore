@@ -11,7 +11,7 @@ import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.Map;
 
-public class CategoryAppsActivity extends AppListActivity {
+public class CategoryAppsActivity extends EndlessScrollActivity {
 
     static private final String INTENT_CATEGORY_ID = "INTENT_CATEGORY_ID";
 
@@ -23,18 +23,6 @@ public class CategoryAppsActivity extends AppListActivity {
     }
 
     private String categoryId;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        onNewIntent(getIntent());
-        getListView().setOnScrollListener(new ScrollEdgeListener() {
-            protected void loadMore() {
-                loadApps();
-            }
-        });
-    }
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -55,15 +43,6 @@ public class CategoryAppsActivity extends AppListActivity {
     }
 
     @Override
-    protected Map<String, Object> formatApp(App app) {
-        Map<String, Object> map = super.formatApp(app);
-        String updated = app.getUpdated().isEmpty() ? getString(R.string.list_incompatible) : app.getUpdated();
-        map.put(LINE2, getString(R.string.list_line_2_search, app.getInstalls(), app.getRating().getAverage(), updated));
-        map.put(ICON, app.getIconUrl());
-        return map;
-    }
-
-    @Override
     public void loadApps() {
         CategoryAppsTask task = new CategoryAppsTask() {
 
@@ -73,13 +52,6 @@ public class CategoryAppsActivity extends AppListActivity {
                 addApps(apps);
             }
         };
-        task.setContext(this);
-        task.setErrorView((TextView) getListView().getEmptyView());
-        if (data.isEmpty()) {
-            task.prepareDialog(R.string.dialog_message_loading_app_list_search, R.string.dialog_title_loading_app_list_search);
-        } else {
-            task.setProgressIndicator(findViewById(R.id.progress));
-        }
-        task.execute(categoryId);
+        prepareTask(task).execute(categoryId);
     }
 }

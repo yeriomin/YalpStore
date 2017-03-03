@@ -51,7 +51,8 @@ public class CategoryManager {
 
     public void fill(ListView list) {
         final Map<String, String> categories = getCategoriesFromSharedPreferences();
-        list.setAdapter(getAdapter(getCategoriesFromSharedPreferences(), android.R.layout.simple_list_item_1));
+        categories.remove(TOP);
+        list.setAdapter(getAdapter(categories, android.R.layout.simple_list_item_1));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -63,7 +64,7 @@ public class CategoryManager {
     public void fill(Spinner filter) {
         final Map<String, String> categories = getCategoriesFromSharedPreferences();
         filter.setVisibility(View.VISIBLE);
-        filter.setAdapter(getAdapter(getCategoriesFromSharedPreferences(), R.layout.spinner_item));
+        filter.setAdapter(getAdapter(categories, R.layout.spinner_item));
         filter.setSelection(0);
         filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
