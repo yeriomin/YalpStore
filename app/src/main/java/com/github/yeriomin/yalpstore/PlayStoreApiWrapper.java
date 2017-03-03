@@ -1,10 +1,8 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -17,13 +15,13 @@ import com.github.yeriomin.playstoreapi.DetailsResponse;
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.ReviewResponse;
+import com.github.yeriomin.playstoreapi.SearchIterator;
 import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
 import com.github.yeriomin.yalpstore.model.Review;
 import com.github.yeriomin.yalpstore.model.ReviewBuilder;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,6 +48,7 @@ public class PlayStoreApiWrapper {
 
     private static GooglePlayAPI api;
     private static AppSearchResultIterator searchResultIterator;
+    private static CategoryAppsIterator categoryAppsIterator;
 
     private GooglePlayAPI getApi() throws IOException {
         if (api == null) {
@@ -192,8 +191,7 @@ public class PlayStoreApiWrapper {
     public List<App> getDetails(List<String> packageIds) throws IOException {
         List<App> apps = new ArrayList<>();
         int i = -1;
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean hideNonFree = sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
+        boolean hideNonFree = hideNonFree();
         for (BulkDetailsEntry details: getApi().bulkDetails(packageIds).getEntryList()) {
             i++;
             if (!details.hasDoc()) {
@@ -224,13 +222,26 @@ public class PlayStoreApiWrapper {
             || !searchResultIterator.getQuery().equals(query)
             || !searchResultIterator.getCategoryId().equals(categoryId)
         ) {
-            searchResultIterator = new AppSearchResultIterator(getApi().getSearchIterator(query));
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-            boolean hideNonFree = sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
-            searchResultIterator.setHideNonfreeApps(hideNonFree);
+            searchResultIterator = new AppSearchResultIterator(new SearchIterator(getApi(), query));
+            searchResultIterator.setHideNonfreeApps(hideNonFree());
             searchResultIterator.setCategoryId(categoryId);
         }
         return searchResultIterator;
+    }
+
+    public CategoryAppsIterator getCategoryAppsIterator(String categoryId) throws IOException {
+        if (null == categoryAppsIterator
+            || !categoryAppsIterator.getCategoryId().equals(categoryId)
+        ) {
+            categoryAppsIterator = new CategoryAppsIterator(
+                new com.github.yeriomin.playstoreapi.CategoryAppsIterator(
+                    getApi(),
+                    categoryId,
+                    GooglePlayAPI.SUBCATEGORY.TOP_FREE
+                )
+            );
+        }
+        return categoryAppsIterator;
     }
 
     public List<String> getSearchSuggestions(String query) throws IOException {
@@ -274,5 +285,10 @@ public class PlayStoreApiWrapper {
         } else {
             throw new NotPurchasedException();
         }
+    }
+
+    private boolean hideNonFree() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
     }
 }

@@ -44,6 +44,7 @@
     <string name="action_unwhitelist">Не обновлять</string>
     <string name="action_logout">Разлогиниться</string>
     <string name="action_search">Поиск</string>
+    <string name="action_categories">Категории</string>
     <string name="search_filter">Все приложения</string>
     <string name="search_title">Поиск приложений</string>
     <string name="error_incorrect_password">Неверный email или пароль.</string>

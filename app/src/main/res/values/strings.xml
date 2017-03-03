@@ -24,6 +24,7 @@
     <string name="action_unignore">Unignore updates</string>
     <string name="action_whitelist">Whitelist for updates</string>
     <string name="action_unwhitelist">Ignore updates</string>
+    <string name="action_categories">Categories</string>
     <string name="search_filter">All apps</string>
     <string name="search_title">Search applications</string>
     <string name="dialog_title_application_crashed">Sorry, Yalp Store crashed</string>

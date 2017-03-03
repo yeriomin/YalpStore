@@ -16,6 +16,10 @@
         android:title="@string/action_updates"
         android:icon="@drawable/ic_refresh" />
     <item
+        android:id="@+id/action_categories"
+        android:title="@string/action_categories"
+        android:icon="@drawable/ic_categories" />
+    <item
         android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:icon="@drawable/ic_settings" />

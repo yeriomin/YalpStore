@@ -4,44 +4,28 @@ import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.github.yeriomin.playstoreapi.SearchIterator;
 import com.github.yeriomin.playstoreapi.SearchResponse;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-class AppSearchResultIterator implements Iterator<List<App>> {
+class AppSearchResultIterator extends AppListIterator {
 
-    private GooglePlayAPI.SearchIterator iterator;
-    private boolean hideNonfreeApps;
-    private String categoryId = CategoryManager.TOP;
-
-    public AppSearchResultIterator(GooglePlayAPI.SearchIterator iterator) {
-        this.iterator = iterator;
+    public AppSearchResultIterator(SearchIterator iterator) {
+        super(iterator);
     }
 
     public String getQuery() {
-        return this.iterator.getQuery();
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public void setHideNonfreeApps(boolean hideNonfreeApps) {
-        this.hideNonfreeApps = hideNonfreeApps;
+        return ((SearchIterator) iterator).getQuery();
     }
 
     @Override
     public List<App> next() {
         List<App> apps = new ArrayList<>();
-        SearchResponse response = iterator.next();
+        SearchResponse response = ((SearchIterator) iterator).next();
         for (DocV2 details : response.getDocList().get(0).getChildList()) {
             App app = AppBuilder.build(details);
             if (hideNonfreeApps && !app.isFree()) {
@@ -51,10 +35,5 @@ class AppSearchResultIterator implements Iterator<List<App>> {
             }
         }
         return apps;
-    }
-
-    @Override
-    public boolean hasNext() {
-        return iterator.hasNext();
     }
 }

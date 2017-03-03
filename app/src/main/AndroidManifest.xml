@@ -118,6 +118,12 @@
             <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
         </activity>
         <activity android:name=".PreferenceActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".CategoryListActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+        </activity>
+        <activity android:name=".CategoryAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+        </activity>
         <activity android:name=".FullscreenImageActivity" />
         <activity android:name=".SimilarAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />

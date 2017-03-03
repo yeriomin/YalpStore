@@ -3,8 +3,6 @@ package com.github.yeriomin.yalpstore;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.AbsListView;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -43,21 +41,9 @@ public class SearchResultActivity extends AppListActivity {
         loadApps();
 
         ((TextView) getListView().getEmptyView()).setText(getString(R.string.list_empty_search));
-        getListView().setOnScrollListener(new ListView.OnScrollListener() {
-
-            private int lastLastitem;
-
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {}
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                int lastItem = firstVisibleItem + visibleItemCount;
-                boolean loadMore = lastItem >= totalItemCount;
-                if (totalItemCount > 0 && loadMore && lastLastitem != lastItem) {
-                    lastLastitem = lastItem;
-                    loadApps();
-                }
+        getListView().setOnScrollListener(new ScrollEdgeListener() {
+            protected void loadMore() {
+                loadApps();
             }
         });
     }

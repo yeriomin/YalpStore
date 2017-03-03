@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -48,10 +49,21 @@ public class CategoryManager {
         }
     }
 
+    public void fill(ListView list) {
+        final Map<String, String> categories = getCategoriesFromSharedPreferences();
+        list.setAdapter(getAdapter(getCategoriesFromSharedPreferences(), android.R.layout.simple_list_item_1));
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CategoryAppsActivity.start(activity, new ArrayList<>(categories.keySet()).get(position));
+            }
+        });
+    }
+
     public void fill(Spinner filter) {
         final Map<String, String> categories = getCategoriesFromSharedPreferences();
         filter.setVisibility(View.VISIBLE);
-        filter.setAdapter(getAdapter(getCategoriesFromSharedPreferences()));
+        filter.setAdapter(getAdapter(getCategoriesFromSharedPreferences(), R.layout.spinner_item));
         filter.setSelection(0);
         filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -74,10 +86,10 @@ public class CategoryManager {
             ;
     }
 
-    private ArrayAdapter getAdapter(Map<String, String> categories) {
+    private ArrayAdapter getAdapter(Map<String, String> categories, int itemLayoutId) {
         return new ArrayAdapter<>(
             activity,
-            R.layout.spinner_item,
+            itemLayoutId,
             new ArrayList<>(categories.values())
         );
     }

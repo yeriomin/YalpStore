@@ -60,6 +60,9 @@ public abstract class YalpStoreActivity extends Activity {
             case R.id.action_updates:
                 startActivity(new Intent(this, UpdatableAppsActivity.class));
                 break;
+            case R.id.action_categories:
+                startActivity(new Intent(this, CategoryListActivity.class));
+                break;
             case R.id.action_about:
                 startActivity(new Intent(this, AboutActivity.class));
                 break;
