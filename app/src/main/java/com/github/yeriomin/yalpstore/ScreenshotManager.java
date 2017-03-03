@@ -18,7 +18,7 @@ public class ScreenshotManager extends DetailsManager {
         if (app.getScreenshotUrls().size() > 0) {
             activity.findViewById(R.id.screenshots_header).setVisibility(View.VISIBLE);
             drawGallery();
-            activity.initExpandableGroup(R.id.screenshots_header, R.id.screenshots_container);
+            initExpandableGroup(R.id.screenshots_header, R.id.screenshots_container);
         } else {
             activity.findViewById(R.id.screenshots_header).setVisibility(View.GONE);
         }

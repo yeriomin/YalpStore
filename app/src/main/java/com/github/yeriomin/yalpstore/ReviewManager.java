@@ -41,7 +41,7 @@ public class ReviewManager extends DetailsManager {
 
     @Override
     public void draw() {
-        activity.initExpandableGroup(R.id.reviews_header, R.id.reviews_container, new View.OnClickListener() {
+        initExpandableGroup(R.id.reviews_header, R.id.reviews_container, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showReviews((LinearLayout) activity.findViewById(R.id.reviews_list), app.getPackageName());
@@ -235,14 +235,6 @@ public class ReviewManager extends DetailsManager {
         } else {
             textView.setVisibility(View.GONE);
         }
-    }
-
-    private void setText(int viewId, String text) {
-        ((TextView) activity.findViewById(viewId)).setText(text);
-    }
-
-    private void setText(int viewId, int stringId, Object... text) {
-        setText(viewId, activity.getString(stringId, text));
     }
 
     private class ReviewLoadTask extends GoogleApiAsyncTask {
