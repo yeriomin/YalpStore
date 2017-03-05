@@ -54,14 +54,14 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             }
         };
         task.setPackageName(packageName);
-        task.setContext(getApplicationContext());
+        task.setContext(this);
         return task;
     }
 
     private PurchaseTask getPurchaseTask(App app) {
         PurchaseTask task = new PurchaseTask();
         task.setApp(app);
-        task.setContext(getApplicationContext());
+        task.setContext(this);
         return task;
     }
 
