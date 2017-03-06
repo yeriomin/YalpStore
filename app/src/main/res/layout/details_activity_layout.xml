@@ -153,7 +153,7 @@
                 <TextView
                     android:id="@+id/description"
                     android:textIsSelectable="true"
-                    android:autoLink="web"
+                    android:autoLink="web|email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="6dip" />
@@ -168,6 +168,8 @@
 
                 <TextView
                     android:id="@+id/changes"
+                    android:textIsSelectable="true"
+                    android:autoLink="web|email"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
