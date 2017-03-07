@@ -13,6 +13,11 @@ class ReviewAddTask extends AsyncTask<Review, Void, Throwable> {
     private Context context;
     private ReviewManager manager;
     private Review review;
+    private String packageName;
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
 
     ReviewAddTask(Context context, ReviewManager manager) {
         this.context = context;
@@ -23,7 +28,7 @@ class ReviewAddTask extends AsyncTask<Review, Void, Throwable> {
     protected Throwable doInBackground(Review... params) {
         PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
         try {
-            review = wrapper.addOrEditReview(manager.getApp().getPackageName(), params[0]);
+            review = wrapper.addOrEditReview(packageName, params[0]);
         } catch (IOException e) {
             return e;
         }
@@ -33,7 +38,6 @@ class ReviewAddTask extends AsyncTask<Review, Void, Throwable> {
     @Override
     protected void onPostExecute(Throwable e) {
         if (null == e) {
-            manager.getApp().setUserReview(review);
             manager.fillUserReview(review);
         } else {
             Log.e(DetailsActivity.class.getName(), "Error adding the review: " + e.getMessage());
