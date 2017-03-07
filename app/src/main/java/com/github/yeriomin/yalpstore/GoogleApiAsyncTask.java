@@ -73,6 +73,9 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
         if (result instanceof RuntimeException && null != result.getCause()) {
             e = result.getCause();
         }
+        if (e != null) {
+            Log.d(getClass().getName(), e.getClass().getName() + " caught during a google api request: " + e.getMessage());
+        }
         if (e instanceof AuthException) {
             if (e instanceof CredentialsEmptyException) {
                 Log.w(getClass().getName(), "Credentials empty");
