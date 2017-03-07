@@ -33,20 +33,12 @@ class NotificationUtil {
 
     public static Notification createNotification(Context context, PendingIntent pendingIntent, String title, String text, int iconId) {
         Notification notification;
-        if (isNotificationBuilderSupported()) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             notification = buildNotificationWithBuilder(context, pendingIntent, title, text, iconId);
         } else {
             notification = buildNotificationPreHoneycomb(context, pendingIntent, title, text, iconId);
         }
         return notification;
-    }
-
-    private static boolean isNotificationBuilderSupported() {
-        try {
-            return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) && Class.forName("android.app.Notification.Builder") != null;
-        } catch (ClassNotFoundException e) {
-            return false;
-        }
     }
 
     @SuppressWarnings("deprecation")
@@ -67,11 +59,11 @@ class NotificationUtil {
     @SuppressWarnings("deprecation")
     private static Notification buildNotificationWithBuilder(Context context, PendingIntent pendingIntent, String title, String text, int iconId) {
         Notification.Builder builder = new Notification.Builder(context)
-                .setContentTitle(title)
-                .setContentText(text)
-                .setContentIntent(pendingIntent)
-                .setSmallIcon(iconId)
-                .setAutoCancel(true);
+            .setContentTitle(title)
+            .setContentText(text)
+            .setContentIntent(pendingIntent)
+            .setSmallIcon(iconId)
+            .setAutoCancel(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             return builder.build();
         } else {

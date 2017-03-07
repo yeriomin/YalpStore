@@ -18,10 +18,12 @@ import static android.content.Context.DOWNLOAD_SERVICE;
 
 public class DownloadBroadcastReceiver extends BroadcastReceiver {
 
+    private Context context;
     private NotificationUtil notificationUtil;
 
     @Override
     public void onReceive(Context c, Intent i) {
+        context = c;
         notificationUtil = new NotificationUtil(c);
 
         Bundle extras = i.getExtras();
@@ -34,13 +36,13 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
         App app = state.getApp();
 
         try {
-            int errorCode = getDownloadResult(c, downloadId);
+            int errorCode = getDownloadResult(downloadId);
             state.setFinished(downloadId);
             if (errorCode == 0) {
                 state.setSuccessful(downloadId);
             } else {
                 String error = getErrorString(c, errorCode);
-                toast(c, error);
+                Toast.makeText(context, error, Toast.LENGTH_LONG).show();
                 notificationUtil.show(new Intent(), app.getDisplayName(), error);
             }
         } catch (Exception e) {
@@ -48,15 +50,15 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
         }
 
         if (state.isEverythingFinished() && state.isEverythingSuccessful()) {
-            verifyAndInstall(c, app);
+            verifyAndInstall(app, state.isBackground());
         }
     }
 
-    private int getDownloadResult(Context c, long downloadId) throws Exception {
+    private int getDownloadResult(long downloadId) throws Exception {
         DownloadManager.Query q = new DownloadManager.Query();
         q.setFilterById(downloadId);
 
-        DownloadManager dm = (DownloadManager) c.getSystemService(DOWNLOAD_SERVICE);
+        DownloadManager dm = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
         Cursor cursor = dm.query(q);
         if (!cursor.moveToFirst()) {
             throw new Exception("Not finished");
@@ -75,31 +77,60 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
         }
     }
 
-    private void verifyAndInstall(Context c, App app) {
+    private void verifyAndInstall(App app, boolean isBackground) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-        Intent openApkIntent = DownloadOrInstallManager.getOpenApkIntent(c, file);
-        String notificationMessage = c.getString(R.string.notification_download_complete_signature_mismatch);
-        String toastMessage = c.getString(R.string.notification_download_complete_signature_mismatch_toast, app.getDisplayName());
-        if (new ApkSignatureVerifier(c).match(app.getPackageName(), file)) {
-            if (shouldAutoInstall(c)) {
-                c.startActivity(openApkIntent);
-                return;
-            } else {
-                notificationMessage = c.getString(R.string.notification_download_complete);
-                toastMessage = c.getString(R.string.notification_download_complete_toast, app.getDisplayName());
-            }
+        Intent openApkIntent = DownloadOrInstallManager.getOpenApkIntent(context, file);
+        if (!new ApkSignatureVerifier(context).match(app.getPackageName(), file)) {
+            notifySignatureMismatch(app);
+        } else if (shouldAutoInstall()) {
+            context.startActivity(openApkIntent);
+        } else if (isBackground && needToInstallUpdates() && new PermissionsComparator(context).isSame(app)) {
+            install(app);
+        } else {
+            notifyDownloadComplete(app);
         }
-        notificationUtil.show(openApkIntent, app.getDisplayName(), notificationMessage);
-        toast(c, toastMessage);
     }
 
-    private boolean shouldAutoInstall(Context c) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(c);
+    private void notifySignatureMismatch(App app) {
+        notifyAndToast(
+            R.string.notification_download_complete_signature_mismatch,
+            R.string.notification_download_complete_signature_mismatch_toast,
+            app
+        );
+    }
+
+    private void install(App app) {
+        new InstallTask(context, app.getDisplayName())
+                .execute(Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).toString());
+    }
+
+    private void notifyDownloadComplete(App app) {
+        notifyAndToast(
+            R.string.notification_download_complete,
+            R.string.notification_download_complete_toast,
+            app
+        );
+    }
+
+    private void notifyAndToast(int notificationStringId, int toastStringId, App app) {
+        File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
+        Intent openApkIntent = DownloadOrInstallManager.getOpenApkIntent(context, file);
+        notificationUtil.show(
+            openApkIntent,
+            app.getDisplayName(),
+            context.getString(notificationStringId)
+        );
+        Toast.makeText(context, context.getString(toastStringId, app.getDisplayName()), Toast.LENGTH_LONG).show();
+    }
+
+    private boolean needToInstallUpdates() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL, false);
+    }
+
+    private boolean shouldAutoInstall() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         return sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_AUTO_INSTALL, false);
-    }
-
-    private void toast(Context c, String message) {
-        Toast.makeText(c, message, Toast.LENGTH_LONG).show();
     }
 
     private String getErrorString(Context context, int reason) {

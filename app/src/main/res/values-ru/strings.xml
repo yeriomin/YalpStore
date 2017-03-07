@@ -91,6 +91,8 @@
     <string name="credentials_message">Для работы приложения требуетются данные для доступа к аккаунту Google.\n\nИмейте в виду, что это приложение нарушает договор использования Play Store. Так что безопаснее использовать любой одноразовый Google аккаунт, под которым вы хотя бы раз залогинились в Play Store.</string>
     <string name="activity_title_updates">Обновления</string>
     <string name="activity_title_search" formatted="false">Поиск: "%s"</string>
+    <string name="notification_installation_complete">Установлено обновление.</string>
+    <string name="notification_installation_complete_toast" formatted="false">Приложение %s обновлено.</string>
     <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>
     <string name="notification_download_complete_toast" formatted="false">Загрузка %s завершена. Нажмите на кнопку \"Установить\" уведомление чтобы установить.</string>
     <string name="notification_download_complete_signature_mismatch" formatted="false">Загрузка завершена. Подпись apk не совпадает с подписью установленного приложения.</string>
@@ -121,6 +123,10 @@
     <string name="pref_background_update_interval_daily">Раз в день</string>
     <string name="pref_background_update_interval_weekly">Раз в неделю</string>
     <string name="pref_background_update_interval">Периодически проверять обновления</string>
+    <string name="pref_background_update_install_summary_off">Только уведомление</string>
+    <string name="pref_background_update_install_summary_on">Обновления устанавливаются (root)</string>
+    <string name="pref_background_update_install">Установить найденные обновления (root)</string>
+    <string name="pref_no_root">Это возможно только на рутованных устройствах</string>
     <string name="download_manager_ERROR_UNKNOWN">Неизвестная ошибка.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Неизвестная ошибка сохранения файла.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Сетевая ошибка. Попробуйте позднее.</string>

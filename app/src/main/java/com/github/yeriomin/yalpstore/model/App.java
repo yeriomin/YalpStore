@@ -4,7 +4,10 @@ import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class App {
 
@@ -23,7 +26,7 @@ public class App {
     private String changes;
     private Developer developer = new Developer();
     private String description;
-    private List<String> permissions;
+    private Set<String> permissions;
     private boolean isInstalled;
     private boolean isFree;
     private List<String> screenshotUrls = new ArrayList<>();
@@ -150,12 +153,12 @@ public class App {
         this.description = description;
     }
 
-    public List<String> getPermissions() {
+    public Set<String> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(List<String> permissions) {
-        this.permissions = permissions;
+    public void setPermissions(Collection<String> permissions) {
+        this.permissions = new HashSet<>(permissions);
     }
 
     public boolean isInstalled() {

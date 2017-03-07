@@ -32,7 +32,7 @@ public class PurchaseTask extends GoogleApiAsyncTask {
     @Override
     protected void onPostExecute(Throwable e) {
         super.onPostExecute(e);
-        if (e instanceof NotPurchasedException) {
+        if (e instanceof NotPurchasedException && !DownloadState.get(app.getPackageName()).isBackground()) {
             getNotPurchasedDialog(context).show();
         }
     }

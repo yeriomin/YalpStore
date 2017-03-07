@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,6 +19,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import eu.chainfire.libsuperuser.Shell;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 
@@ -29,6 +34,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_UI_THEME = "PREFERENCE_UI_THEME";
     public static final String PREFERENCE_BACKGROUND_UPDATE_INTERVAL = "PREFERENCE_BACKGROUND_UPDATE_INTERVAL";
     public static final String PREFERENCE_DELETE_APK_AFTER_INSTALL = "PREFERENCE_DELETE_APK_AFTER_INSTALL";
+    public static final String PREFERENCE_BACKGROUND_UPDATE_INSTALL = "PREFERENCE_BACKGROUND_UPDATE_INSTALL";
 
     public static final String LIST_WHITE = "white";
     public static final String LIST_BLACK = "black";
@@ -49,7 +55,10 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
             (MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST)
         );
         prepareTheme((ListPreference) findPreference(PREFERENCE_UI_THEME));
-        prepareCheckUpdates((ListPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INTERVAL));
+        prepareCheckUpdates(
+            (ListPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INTERVAL),
+            (CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INSTALL)
+        );
     }
 
     private void prepareBlacklist(ListPreference blackOrWhite, final MultiSelectListPreference appList) {
@@ -143,12 +152,12 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         return summaryId;
     }
 
-    private void prepareCheckUpdates(ListPreference checkForUpdates) {
+    private void prepareCheckUpdates(ListPreference checkForUpdates, final CheckBoxPreference alsoInstall) {
         checkForUpdates.setSummary(getString(getUpdateSummaryStringId(checkForUpdates.getValue())));
         checkForUpdates.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                int interval = Integer.parseInt((String) newValue);
+                int interval = parseInt((String) newValue);
                 Intent intent = new Intent(getApplicationContext(), UpdateChecker.class);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -162,6 +171,17 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
                     );
                 }
                 preference.setSummary(getString(getUpdateSummaryStringId((String) newValue)));
+                alsoInstall.setEnabled(interval != 0);
+                return true;
+            }
+        });
+        checkForUpdates.getOnPreferenceChangeListener().onPreferenceChange(checkForUpdates, checkForUpdates.getValue());
+        alsoInstall.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if ((Boolean) newValue) {
+                    new CheckSuTask(PreferenceActivity.this).execute();
+                }
                 return true;
             }
         });
@@ -172,12 +192,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         final int hour = 1000 * 60 * 60;
         final int day = hour * 24;
         final int week = day * 7;
-        int interval;
-        try {
-            interval = Integer.parseInt(intervalString);
-        } catch (NumberFormatException e) {
-            interval = 0;
-        }
+        int interval = parseInt(intervalString);
         switch (interval) {
             case hour:
                 summaryId = R.string.pref_background_update_interval_hourly;
@@ -194,5 +209,13 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
                 break;
         }
         return summaryId;
+    }
+
+    private int parseInt(String string) {
+        try {
+            return Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 }

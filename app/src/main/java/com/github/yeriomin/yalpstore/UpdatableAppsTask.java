@@ -92,6 +92,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
                 installedApp.setUpdated(appFromMarket.getUpdated());
                 installedApp.setVersionCode(appFromMarket.getVersionCode());
                 installedApp.setOfferType(appFromMarket.getOfferType());
+                installedApp.setPermissions(appFromMarket.getPermissions());
                 apps.add(installedApp);
             }
         }

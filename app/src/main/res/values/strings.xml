@@ -95,6 +95,8 @@
     <string name="credentials_message">Google account email and password are required for this app to function.\n\nKeep in mind that using this app violates Play Store ToS. It would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store ToS.</string>
     <string name="activity_title_updates">Updates</string>
     <string name="activity_title_search" formatted="false">Searching: "%s"</string>
+    <string name="notification_installation_complete">Update installed.</string>
+    <string name="notification_installation_complete_toast" formatted="false">App %s updated.</string>
     <string name="notification_download_complete">Download complete. Touch to install.</string>
     <string name="notification_download_complete_toast" formatted="false">%s downloaded. Touch install button or notification to install.</string>
     <string name="notification_download_complete_signature_mismatch" formatted="false">Download complete. apk signature mismatch, though.</string>
@@ -125,6 +127,10 @@
     <string name="pref_background_update_interval_daily">Daily</string>
     <string name="pref_background_update_interval_weekly">Weekly</string>
     <string name="pref_background_update_interval">Check for updates periodically</string>
+    <string name="pref_background_update_install_summary_off">You only get a notification</string>
+    <string name="pref_background_update_install_summary_on">Updates are installed if found (root)</string>
+    <string name="pref_background_update_install">Also install the updates (root)</string>
+    <string name="pref_no_root">This option is only available on rooted devices</string>
     <string name="download_manager_ERROR_UNKNOWN">Unknown error.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unknown file storage error.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">HTTP code was received that download manager can not handle. This is a server error.</string>
