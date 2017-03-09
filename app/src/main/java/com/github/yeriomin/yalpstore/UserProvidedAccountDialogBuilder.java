@@ -82,13 +82,12 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
                 || params[1] == null
                 || params[0].isEmpty()
                 || params[1].isEmpty()
-                ) {
+            ) {
                 return new CredentialsEmptyException();
             }
             previousEmail = params[0];
             try {
-                PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.context);
-                wrapper.login(params[0], params[1]);
+                new PlayStoreApiAuthenticator(context).login(params[0], params[1]);
             } catch (Throwable e) {
                 return e;
             }

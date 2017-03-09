@@ -28,7 +28,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -42,64 +41,10 @@ public class PlayStoreApiWrapper {
     private static final String BACKEND_DOCID_SIMILAR_APPS = "similar_apps";
     private static final String BACKEND_DOCID_USERS_ALSO_INSTALLED = "users_also_installed";
 
-    private Context context;
-    private String email;
-    private String password;
-
-    private static GooglePlayAPI api;
     private static AppSearchResultIterator searchResultIterator;
     private static CategoryAppsIterator categoryAppsIterator;
 
-    private GooglePlayAPI getApi() throws IOException {
-        if (api == null) {
-            api = buildApi();
-        }
-        return api;
-    }
-
-    private GooglePlayAPI constructApi() throws IOException {
-        NativeDeviceInfoProvider deviceInfoProvider = new NativeDeviceInfoProvider();
-        deviceInfoProvider.setContext(context);
-        deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
-        GooglePlayAPI api = new GooglePlayAPI(email);
-        api.setDeviceInfoProvider(deviceInfoProvider);
-        api.setLocale(Locale.getDefault());
-        return api;
-    }
-
-    private GooglePlayAPI buildApi() throws IOException {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String email = this.email == null ? prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, "") : this.email;
-        String gsfId = prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
-        String token = prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, "");
-        if (email.isEmpty()) {
-            throw new CredentialsEmptyException();
-        }
-
-        GooglePlayAPI api = constructApi();
-
-        SharedPreferences.Editor prefsEditor = prefs.edit();
-        boolean needToUploadDeviceConfig = false;
-        if (gsfId.isEmpty()) {
-            needToUploadDeviceConfig = true;
-            String ac2dmToken = null == password ? TokenDispenser.getTokenAc2dm(email) : api.getAC2DMToken(password);
-            gsfId = api.getGsfId(ac2dmToken);
-            prefsEditor.putString(PreferenceActivity.PREFERENCE_GSF_ID, gsfId);
-            prefsEditor.apply();
-        }
-        api.setGsfId(gsfId);
-        if (token.isEmpty()) {
-            token = null == password ? TokenDispenser.getToken(email) : api.getToken(password);
-            prefsEditor.putString(PreferenceActivity.PREFERENCE_EMAIL, email);
-            prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, token);
-            prefsEditor.apply();
-        }
-        api.setToken(token);
-        if (needToUploadDeviceConfig) {
-            api.uploadDeviceConfig();
-        }
-        return api;
-    }
+    private Context context;
 
     public PlayStoreApiWrapper(Context context) {
         this.context = context;
@@ -107,39 +52,9 @@ public class PlayStoreApiWrapper {
         AppBuilder.suffixBil = context.getString(R.string.suffix_billion);
     }
 
-    public GooglePlayAPI login(String email) throws IOException {
-        this.email = email;
-        PlayStoreApiWrapper.api = null;
-        return getApi();
-    }
-
-    public GooglePlayAPI login(String email, String password) throws IOException {
-        this.password = password;
-        return login(email);
-    }
-
-    public void logout() {
-        this.email = null;
-        this.password = null;
-        SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        prefs.remove(PreferenceActivity.PREFERENCE_EMAIL);
-        prefs.remove(PreferenceActivity.PREFERENCE_GSF_ID);
-        prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
-        prefs.apply();
-        PlayStoreApiWrapper.api = null;
-    }
-
-    public void forceTokenRefresh() {
-        this.password = null;
-        SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
-        prefs.apply();
-        PlayStoreApiWrapper.api = null;
-    }
-
     public List<Review> getReviews(String packageId, int offset, int numberOfResults) throws IOException {
         List<Review> reviews = new ArrayList<>();
-        for (com.github.yeriomin.playstoreapi.Review review: getApi().reviews(
+        for (com.github.yeriomin.playstoreapi.Review review: new PlayStoreApiAuthenticator(context).getApi().reviews(
             packageId,
             GooglePlayAPI.REVIEW_SORT.HELPFUL,
             offset,
@@ -151,7 +66,7 @@ public class PlayStoreApiWrapper {
     }
 
     public Review addOrEditReview(String packageId, Review inputReview) throws IOException {
-        ReviewResponse response = getApi().addOrEditReview(
+        ReviewResponse response = new PlayStoreApiAuthenticator(context).getApi().addOrEditReview(
             packageId,
             inputReview.getComment(),
             inputReview.getTitle(),
@@ -161,11 +76,11 @@ public class PlayStoreApiWrapper {
     }
 
     public void deleteReview(String packageId) throws IOException {
-        getApi().deleteReview(packageId);
+        new PlayStoreApiAuthenticator(context).getApi().deleteReview(packageId);
     }
 
     public App getDetails(String packageId) throws IOException {
-        DetailsResponse response = getApi().details(packageId);
+        DetailsResponse response = new PlayStoreApiAuthenticator(context).getApi().details(packageId);
         App app = AppBuilder.build(response.getDocV2());
         if (response.hasUserReview()) {
             app.setUserReview(ReviewBuilder.build(response.getUserReview()));
@@ -192,7 +107,7 @@ public class PlayStoreApiWrapper {
         List<App> apps = new ArrayList<>();
         int i = -1;
         boolean hideNonFree = hideNonFree();
-        for (BulkDetailsEntry details: getApi().bulkDetails(packageIds).getEntryList()) {
+        for (BulkDetailsEntry details: new PlayStoreApiAuthenticator(context).getApi().bulkDetails(packageIds).getEntryList()) {
             i++;
             if (!details.hasDoc()) {
                 Log.i(this.getClass().getName(), "Empty response for " + packageIds.get(i));
@@ -222,7 +137,7 @@ public class PlayStoreApiWrapper {
             || !searchResultIterator.getQuery().equals(query)
             || !searchResultIterator.getCategoryId().equals(categoryId)
         ) {
-            searchResultIterator = new AppSearchResultIterator(new SearchIterator(getApi(), query));
+            searchResultIterator = new AppSearchResultIterator(new SearchIterator(new PlayStoreApiAuthenticator(context).getApi(), query));
             searchResultIterator.setHideNonfreeApps(hideNonFree());
             searchResultIterator.setCategoryId(categoryId);
         }
@@ -235,7 +150,7 @@ public class PlayStoreApiWrapper {
         ) {
             categoryAppsIterator = new CategoryAppsIterator(
                 new com.github.yeriomin.playstoreapi.CategoryAppsIterator(
-                    getApi(),
+                    new PlayStoreApiAuthenticator(context).getApi(),
                     categoryId,
                     GooglePlayAPI.SUBCATEGORY.TOP_FREE
                 )
@@ -246,18 +161,18 @@ public class PlayStoreApiWrapper {
 
     public List<String> getSearchSuggestions(String query) throws IOException {
         List<String> suggestions = new ArrayList<>();
-        for (SearchSuggestEntry suggestion: api.searchSuggest(query).getEntryList()) {
+        for (SearchSuggestEntry suggestion: new PlayStoreApiAuthenticator(context).getApi().searchSuggest(query).getEntryList()) {
             suggestions.add(suggestion.getSuggestedQuery());
         }
         return suggestions;
     }
 
     public Map<String, String> getCategories() throws IOException {
-        return buildCategoryMap(getApi().categories());
+        return buildCategoryMap(new PlayStoreApiAuthenticator(context).getApi().categories());
     }
 
     public Map<String, String> getCategories(String category) throws IOException {
-        return buildCategoryMap(getApi().categories(category));
+        return buildCategoryMap(new PlayStoreApiAuthenticator(context).getApi().categories(category));
     }
 
     private Map<String, String> buildCategoryMap(BrowseResponse response) {
@@ -274,12 +189,13 @@ public class PlayStoreApiWrapper {
 
     public AndroidAppDeliveryData purchaseOrDeliver(App app) throws IOException, NotPurchasedException {
         if (app.isFree()) {
-            return getApi()
+            return new PlayStoreApiAuthenticator(context).getApi()
                 .purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType())
                 .getPurchaseStatusResponse()
                 .getAppDeliveryData();
         }
-        DeliveryResponse response = getApi().delivery(app.getPackageName(), app.getVersionCode(), app.getOfferType());
+        DeliveryResponse response = new PlayStoreApiAuthenticator(context).getApi().delivery(
+            app.getPackageName(), app.getVersionCode(), app.getOfferType());
         if (response.hasAppDeliveryData()) {
             return response.getAppDeliveryData();
         } else {

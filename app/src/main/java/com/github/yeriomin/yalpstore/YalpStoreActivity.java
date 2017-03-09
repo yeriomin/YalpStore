@@ -77,7 +77,7 @@ public abstract class YalpStoreActivity extends Activity {
             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    new PlayStoreApiWrapper(getApplicationContext()).logout();
+                    new PlayStoreApiAuthenticator(getApplicationContext()).logout();
                     dialogInterface.dismiss();
                     finishAll();
                 }

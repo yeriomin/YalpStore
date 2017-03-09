@@ -61,8 +61,7 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
         @Override
         protected Throwable doInBackground(String[] params) {
             try {
-                PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
-                wrapper.login(params[0]);
+                new PlayStoreApiAuthenticator(context).login(params[0]);
             } catch (Throwable e) {
                 return e;
             }

@@ -81,7 +81,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
                 Log.w(getClass().getName(), "Credentials empty");
             } else {
                 toast(this.context, R.string.error_incorrect_password);
-                new PlayStoreApiWrapper(this.context).forceTokenRefresh();
+                new PlayStoreApiAuthenticator(context).logout();
             }
             AccountTypeDialogBuilder builder = new AccountTypeDialogBuilder(this.context);
             builder.setTaskClone(this.taskClone);
