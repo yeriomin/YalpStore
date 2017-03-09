@@ -50,7 +50,7 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
         }
 
         if (state.isEverythingFinished() && state.isEverythingSuccessful()) {
-            verifyAndInstall(app, state.isBackground());
+            verifyAndInstall(app);
         }
     }
 
@@ -77,14 +77,14 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
         }
     }
 
-    private void verifyAndInstall(App app, boolean isBackground) {
+    private void verifyAndInstall(App app) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = DownloadOrInstallManager.getOpenApkIntent(context, file);
         if (!new ApkSignatureVerifier(context).match(app.getPackageName(), file)) {
             notifySignatureMismatch(app);
         } else if (shouldAutoInstall()) {
             context.startActivity(openApkIntent);
-        } else if (isBackground && needToInstallUpdates() && new PermissionsComparator(context).isSame(app)) {
+        } else if (needToInstallUpdates() && new PermissionsComparator(context).isSame(app)) {
             install(app);
         } else {
             notifyDownloadComplete(app);

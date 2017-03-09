@@ -15,7 +15,6 @@ public class DownloadState {
     private Set<Long> started = new HashSet<>();
     private Set<Long> finished = new HashSet<>();
     private Set<Long> successful = new HashSet<>();
-    private boolean isBackground;
     private App app;
 
     static public DownloadState get(String packageName) {
@@ -38,14 +37,6 @@ public class DownloadState {
 
     public App getApp() {
         return app;
-    }
-
-    public boolean isBackground() {
-        return isBackground;
-    }
-
-    public void setBackground(boolean background) {
-        isBackground = background;
     }
 
     public boolean isEverythingFinished() {

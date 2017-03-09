@@ -67,7 +67,6 @@ public class UpdateChecker extends BroadcastReceiver {
             Log.i(getClass().getName(), "Starting download of update for " + app.getPackageName());
             DownloadState state = DownloadState.get(app.getPackageName());
             state.setApp(app);
-            state.setBackground(true);
             getPurchaseTask(context, app).execute();
         }
     }
