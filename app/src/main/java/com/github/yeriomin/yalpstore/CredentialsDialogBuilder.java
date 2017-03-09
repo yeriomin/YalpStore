@@ -51,10 +51,16 @@ abstract public class CredentialsDialogBuilder {
             if (null != e) {
                 handleException(e);
                 CredentialsDialogBuilder builder = getDialogBuilder();
-                builder.setTaskClone(this.taskClone);
+                if (null != this.taskClone) {
+                    builder.setTaskClone(this.taskClone);
+                }
                 builder.show();
             } else {
-                this.taskClone.execute();
+                if (null != this.taskClone) {
+                    this.taskClone.execute();
+                } else {
+                    Log.i(getClass().getName(), "No task clone provided");
+                }
             }
         }
 
