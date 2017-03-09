@@ -158,18 +158,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 int interval = parseInt((String) newValue);
-                Intent intent = new Intent(getApplicationContext(), UpdateChecker.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.cancel(pendingIntent);
-                if (interval > 0) {
-                    alarmManager.setRepeating(
-                        AlarmManager.RTC_WAKEUP,
-                        System.currentTimeMillis(),
-                        interval,
-                        pendingIntent
-                    );
-                }
+                UpdateChecker.enable(getApplicationContext(), interval);
                 preference.setSummary(getString(getUpdateSummaryStringId((String) newValue)));
                 alsoInstall.setEnabled(interval != 0);
                 return true;
