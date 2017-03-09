@@ -2,6 +2,8 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -66,6 +68,7 @@ public class UpdatableAppsActivity extends AppListActivity {
                 super.onPostExecute(e);
                 if (null == e) {
                     addApps(this.apps);
+                    toggleUpdateAll(this.apps.size() > 0);
                     new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
                 }
             }
@@ -74,6 +77,17 @@ public class UpdatableAppsActivity extends AppListActivity {
         task.setContext(this);
         task.setProgressIndicator(findViewById(R.id.progress));
         return task;
+    }
+
+    private void toggleUpdateAll(boolean enable) {
+        Button button = (Button) findViewById(R.id.update_all);
+        button.setVisibility(enable ? View.VISIBLE : View.GONE);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new UpdateChecker().onReceive(v.getContext(), getIntent());
+            }
+        });
     }
 }
 

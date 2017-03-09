@@ -12,7 +12,9 @@
     <RelativeLayout
         android:id="@+id/listContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="6dip" >
 
         <ProgressBar
             android:id="@+id/progress"
@@ -37,5 +39,12 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/update_all"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/list_update_all" />
 
 </LinearLayout>
