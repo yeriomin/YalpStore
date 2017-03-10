@@ -1,7 +1,9 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -81,13 +83,18 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     private void toggleUpdateAll(boolean enable) {
         Button button = (Button) findViewById(R.id.update_all);
-        button.setVisibility(enable ? View.VISIBLE : View.GONE);
+        button.setVisibility((enable && backgroundUpdatesEnabled()) ? View.VISIBLE : View.GONE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new UpdateChecker().onReceive(v.getContext(), getIntent());
             }
         });
+    }
+
+    private boolean backgroundUpdatesEnabled() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        return sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL, false);
     }
 }
 
