@@ -6,9 +6,11 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.List;
+
 import eu.chainfire.libsuperuser.Shell;
 
-public class InstallTask extends AsyncTask<String, Void, Void> {
+public class InstallTask extends AsyncTask<String, Void, Boolean> {
 
     private Context context;
     private String appDisplayName;
@@ -19,26 +21,38 @@ public class InstallTask extends AsyncTask<String, Void, Void> {
     }
 
     @Override
-    protected void onPostExecute(Void aVoid) {
+    protected void onPostExecute(Boolean result) {
         new NotificationUtil(context).show(
             new Intent(),
             appDisplayName,
-            context.getString(R.string.notification_installation_complete)
+            context.getString(
+                result
+                ? R.string.notification_installation_complete
+                : R.string.notification_installation_failed
+            )
         );
         Toast.makeText(
             context,
-            context.getString(R.string.notification_installation_complete_toast, appDisplayName),
+            context.getString(
+                result
+                ? R.string.notification_installation_complete_toast
+                : R.string.notification_installation_failed_toast,
+                appDisplayName
+            ),
             Toast.LENGTH_LONG
         ).show();
     }
 
     @Override
-    protected Void doInBackground(String... params) {
+    protected Boolean doInBackground(String... params) {
         String file = params[0];
         Log.i(getClass().getName(), "Installing update " + file);
-        for (String line: Shell.SU.run("pm install -r " + file)) {
-            Log.i(getClass().getName(), line);
+        List<String> lines = Shell.SU.run("pm install -r " + file);
+        if (null != lines) {
+            for (String line: lines) {
+                Log.i(getClass().getName(), line);
+            }
         }
-        return null;
+        return null != lines && lines.size() == 1 && lines.get(0).equals("Success");
     }
 }

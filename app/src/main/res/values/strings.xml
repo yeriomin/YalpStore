@@ -98,6 +98,8 @@
     <string name="activity_title_search" formatted="false">Searching: "%s"</string>
     <string name="notification_installation_complete">Update installed.</string>
     <string name="notification_installation_complete_toast" formatted="false">App %s updated.</string>
+    <string name="notification_installation_failed">Update installation failed.</string>
+    <string name="notification_installation_failed_toast" formatted="false">Could not update %s. Root not granted?</string>
     <string name="notification_download_complete">Download complete. Touch to install.</string>
     <string name="notification_download_complete_toast" formatted="false">%s downloaded. Touch install button or notification to install.</string>
     <string name="notification_download_complete_signature_mismatch" formatted="false">Download complete. apk signature mismatch, though.</string>

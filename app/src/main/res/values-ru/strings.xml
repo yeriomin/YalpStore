@@ -94,6 +94,8 @@
     <string name="activity_title_search" formatted="false">Поиск: "%s"</string>
     <string name="notification_installation_complete">Установлено обновление.</string>
     <string name="notification_installation_complete_toast" formatted="false">Приложение %s обновлено.</string>
+    <string name="notification_installation_failed">Не удалось установить обновление.</string>
+    <string name="notification_installation_failed_toast" formatted="false">Ошибка при обновлении %s. Нет root-доступа?</string>
     <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>
     <string name="notification_download_complete_toast" formatted="false">Загрузка %s завершена. Нажмите на кнопку \"Установить\" уведомление чтобы установить.</string>
     <string name="notification_download_complete_signature_mismatch" formatted="false">Загрузка завершена. Подпись apk не совпадает с подписью установленного приложения.</string>
