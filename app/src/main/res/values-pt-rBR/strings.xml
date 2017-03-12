@@ -63,8 +63,7 @@ Redirecionar para a sua página da Play Store?"</string>
 <string name="details_rate_this_app">"Avalie este aplicativo:"</string>
 <string name="details_you_rated_this_app">"Você avaliou este aplicativo:"</string>
 <string name="details_permissions">"Permissões:"</string>
-<string name="details_versionName">"
-"</string>
+<string name="details_versionName">"Versão %1$s"</string>
 <string name="details_versionName_updatable">"Versão %1$s → %2$s"</string>
 <string name="details_download">"baixar"</string>
 <string name="details_install">"Instalar"</string>
@@ -142,20 +141,18 @@ Nenhuma informação confidencial ou confidencial é coletada, por favor revise 
 <string name="action_categories">"Categorias"</string>
 <string name="list_update_all">"Atualizar tudo"</string>
 <string name="notification_installation_complete">"Atualização instalada"</string>
-<string name="notification_installation_complete_toast">"Aplicativo %s atualizado"</string>
+<string name="notification_installation_complete_toast">"Aplicativo %1$s atualizado"</string>
 <string name="notification_installation_failed">"Instalação da atualização falhou."</string>
-<string name="notification_installation_failed_toast">"Não foi possível atualizar %s Sem acesso ao Root?"</string>
+<string name="notification_installation_failed_toast">"Não foi possível atualizar %1$s Sem acesso ao Root?"</string>
 <string name="pref_background_update_install_summary_off">"Você rececebeu uma notificação"</string>
 <string name="pref_background_update_install_summary_on">"Atualizações são instaladas se encontradas (root)"</string>
 <string name="pref_background_update_install">"Instalar também as atualizações (root)"</string>
 <string name="pref_no_root">"Opção acessível somente em dispositivos com \"root\""</string>
 <string name="list_app_has_ads">"Tem anúncios"</string>
 <string name="list_app_no_ads">"Sem anúncios"</string>
-<string name="list_app_depends_on_gsf">"
-Depende do GSF"</string>
-<string name="list_app_independent_from_gsf">"
-Não dependente do GSF"</string>
-<string name="details_depends_on">"Depende de: %s"</string>
+<string name="list_app_depends_on_gsf">"Depende do GSF"</string>
+<string name="list_app_independent_from_gsf">"Não dependente do GSF"</string>
+<string name="details_depends_on">"Depende de: %1$s"</string>
 <string name="details_no_dependencies">"nada"</string>
 <string name="details_contains_ads">"Contém anúncios"</string>
 <string name="details_no_ads">"Sem anúncios"</string>
