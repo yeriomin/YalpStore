@@ -1,18 +1,12 @@
 <resources>
-    <string name="app_name" translatable="false">Yalp Store</string>
-    <string name="star_filled" translatable="false">★</string>
-    <string name="star_empty" translatable="false">☆</string>
-    <string name="about_developer_email" translatable="false">yalp.store.dev@gmail.com</string>
-    <string name="about_gsf_id" translatable="false">Google Services Framework id:</string>
-    <string name="list_line_3_search" translatable="false" formatted="false">%s, %s, %s</string>
     <string name="about_developer_email_label">Developer\'s email:</string>
     <string name="about_logged_in">You are logged in as:</string>
     <string name="about_copied_to_clipboard">Copied to clipboard</string>
     <string name="about_self_update_checking">…checking</string>
-    <string name="about_self_update_available" formatted="false">…0.%d available</string>
+    <string name="about_self_update_available">"…0.%1$d available"</string>
     <string name="about_self_update_unavailable">…no update found</string>
-    <string name="list_line_2_updatable" formatted="false">Updated on %s</string>
-    <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
+    <string name="list_line_2_updatable">"Updated on %1$s"</string>
+    <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
     <string name="list_empty_updates">No apps need to be updated</string>
     <string name="list_empty_search">No apps found</string>
     <string name="list_incompatible">incompatible</string>
@@ -60,16 +54,16 @@
     <string name="error_incorrect_password">Incorrect email or password.</string>
     <string name="error_credentials_empty">Provide google account credentials, please.</string>
     <string name="error_no_network">No network connection.</string>
-    <string name="error_network_other" formatted="false">Network error: %s</string>
+    <string name="error_network_other">"Network error: %1$s"</string>
     <string name="error_not_purchased">The app does not seem to be purchased.\nRedirect to its Play Store web page?</string>
     <string name="error_downloads_directory_not_writable">Downloads directory could not be created or is not writable.</string>
     <string name="error_token_dispenser_problem">Could not log in without an account. Try using your own account.</string>
-    <string name="details_category" formatted="false">Category: %s</string>
-    <string name="details_installs" formatted="false">%s ↓</string>
-    <string name="details_rating" formatted="false">%.1f★</string>
-    <string name="details_rating_specific" formatted="false">%d★ %d</string>
-    <string name="details_updated" formatted="false">Updated %s</string>
-    <string name="details_size" formatted="false">Apk size %s</string>
+    <string name="details_category">"Category: %1$s"</string>
+    <string name="details_installs">"%1$s ↓"</string>
+    <string name="details_rating">"%1$.1f★"</string>
+    <string name="details_rating_specific">"%1$d★ %2$d"</string>
+    <string name="details_updated">"Updated %1$s"</string>
+    <string name="details_size">"Apk size %1$s"</string>
     <string name="details_description">Description:</string>
     <string name="details_changelog">What\'s new:</string>
     <string name="details_screenshots">Screenshots:</string>
@@ -77,8 +71,8 @@
     <string name="details_rate_this_app">Rate this app:</string>
     <string name="details_you_rated_this_app">You rated this app:</string>
     <string name="details_permissions">Permissions:</string>
-    <string name="details_versionName" formatted="false">Version %s</string>
-    <string name="details_versionName_updatable" formatted="false">Version %s → %s</string>
+    <string name="details_versionName">"Version %1$s"</string>
+    <string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
     <string name="details_download">Download</string>
     <string name="details_install">Install</string>
     <string name="details_downloading">Downloading…</string>
@@ -92,7 +86,7 @@
     <string name="details_users_also_installed">Users also installed</string>
     <string name="details_to_play_store">View in Play Store</string>
     <string name="details_signature_mismatch">The new version is signed with a different key to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
-    <string name="details_depends_on" formatted="false">Depends on: %s</string>
+    <string name="details_depends_on">"Depends on: %1$s"</string>
     <string name="details_no_dependencies">nothing</string>
     <string name="details_contains_ads">Contains ads</string>
     <string name="details_no_ads">No ads</string>
@@ -103,17 +97,17 @@
     <string name="credentials_title">Google account access</string>
     <string name="credentials_message">Google account email and password are required for this app to function.\n\nKeep in mind that using this app violates Play Store ToS. It would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store ToS.</string>
     <string name="activity_title_updates">Updates</string>
-    <string name="activity_title_search" formatted="false">Searching: "%s"</string>
+    <string name="activity_title_search">"Searching: \"%1$s\""</string>
     <string name="notification_installation_complete">Update installed.</string>
-    <string name="notification_installation_complete_toast" formatted="false">App %s updated.</string>
+    <string name="notification_installation_complete_toast">"App %1$s updated."</string>
     <string name="notification_installation_failed">Update installation failed.</string>
-    <string name="notification_installation_failed_toast" formatted="false">Could not update %s. Root not granted?</string>
+    <string name="notification_installation_failed_toast">"Could not update %1$s. Root not granted?"</string>
     <string name="notification_download_complete">Download complete. Touch to install.</string>
-    <string name="notification_download_complete_toast" formatted="false">%s downloaded. Touch install button or notification to install.</string>
-    <string name="notification_download_complete_signature_mismatch" formatted="false">Download complete. apk signature mismatch, though.</string>
-    <string name="notification_download_complete_signature_mismatch_toast" formatted="false">%s downloaded. But apk signature does not match installed app. Did you get this app not from Google Play originally? You might have to uninstall it first.</string>
+    <string name="notification_download_complete_toast">"%1$s downloaded. Touch install button or notification to install."</string>
+    <string name="notification_download_complete_signature_mismatch">Download complete. apk signature mismatch, though.</string>
+    <string name="notification_download_complete_signature_mismatch_toast">"%1$s downloaded. But apk signature does not match installed app. Did you get this app not from Google Play originally? You might have to uninstall it first."</string>
     <string name="notification_updates_available_title">App updates available.</string>
-    <string name="notification_updates_available_message" formatted="false">Updates are available for %d of your apps.</string>
+    <string name="notification_updates_available_message">"Updates are available for %1$d of your apps."</string>
     <string name="pref_hide_nonfree_apps_summary_off">Paid apps are displayed now</string>
     <string name="pref_hide_nonfree_apps_summary_on">Paid apps are not displayed now</string>
     <string name="pref_hide_nonfree_apps">Hide paid apps</string>
