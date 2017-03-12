@@ -85,8 +85,8 @@ public class PlayStoreApiAuthenticator {
 
         SharedPreferences.Editor prefsEditor = prefs.edit();
         prefsEditor.putString(PreferenceActivity.PREFERENCE_EMAIL, email);
-        prefsEditor.putString(PreferenceActivity.PREFERENCE_GSF_ID, gsfId);
-        prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, token);
+        prefsEditor.putString(PreferenceActivity.PREFERENCE_GSF_ID, api.getGsfId());
+        prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, api.getToken());
         prefsEditor.apply();
         return api;
     }
