@@ -1,6 +1,6 @@
 <resources>
-    <string name="list_line_2_updatable" formatted="false">Actualizada el %s</string>
-    <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
+    <string name="list_line_2_updatable">"Actualizada el %1$s"</string>
+    <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
     <string name="list_empty_updates">No hay aplicaciones por actualizar</string>
     <string name="list_empty_search">No se encontraron aplicaciones</string>
     <string name="action_settings">Ajustes</string>
@@ -26,19 +26,17 @@
     <string name="dialog_message_loading_app_details">Por favor espera. Obteniendo detalles de la aplicación solicitada.</string>
     <string name="dialog_title_loading_app_list_search">Buscando</string>
     <string name="dialog_message_loading_app_list_search">Por favor espera. Buscando aplicaciones.</string>
-    <string name="dialog_title_loading_app_list_update">Comprobando actualizaciones</string>
-    <string name="dialog_message_loading_app_list_update">Por favor espera. Buscando nuevas versiones de tus aplicaciones.</string>
     <string name="error_incorrect_password">Correo o contraseña incorrecta.</string>
     <string name="error_credentials_empty">Proporciona las credenciales de tu cuenta de Google, por favor.</string>
     <string name="error_no_network">Sin conexión de red.</string>
-    <string name="error_network_other" formatted="false">Error de red: %s</string>
+    <string name="error_network_other">"Error de red: %1$s"</string>
     <string name="error_not_purchased">Esta aplicación no parece haber sido comprada.</string>
     <string name="error_downloads_directory_not_writable">El directorio de descargas no pudo crearse o no tiene permisos de escritura.</string>
-    <string name="details_installs" formatted="false">%s ↓</string>
-    <string name="details_rating" formatted="false">%.1f★</string>
-    <string name="details_rating_specific" formatted="false">%d★ %d</string>
-    <string name="details_updated" formatted="false">Actualizado %s</string>
-    <string name="details_size" formatted="false">Tamaño del APK %s</string>
+    <string name="details_installs">"%1$s ↓"</string>
+    <string name="details_rating">"%1$.1f★"</string>
+    <string name="details_rating_specific">"%1$d★ %2$d"</string>
+    <string name="details_updated">"Actualizado %1$s"</string>
+    <string name="details_size">"Tamaño del APK %1$s"</string>
     <string name="details_description">Descripción:</string>
     <string name="details_changelog">Qué hay de nuevo:</string>
     <string name="details_screenshots">Capturas de pantalla:</string>
@@ -46,8 +44,8 @@
     <string name="details_rate_this_app">Calificar esta aplicación:</string>
     <string name="details_you_rated_this_app">Tu calificaste esta aplicación:</string>
     <string name="details_permissions">Permisos:</string>
-    <string name="details_versionName" formatted="false">Versión %s</string>
-    <string name="details_versionName_updatable" formatted="false">Versión %s → %s</string>
+    <string name="details_versionName">"Versión %1$s"</string>
+    <string name="details_versionName_updatable">"Versión %1$s → %2$s"</string>
     <string name="details_download">Descargar</string>
     <string name="details_install">Instalar</string>
     <string name="details_downloading">Descargando…</string>
@@ -67,11 +65,11 @@
     <string name="credentials_title">Acceso a la cuenta de Google</string>
     <string name="credentials_message">Se necesita el correo y contraseña de la cuenta de Google para que esta aplicación funcione.\n\nToma en cuenta que usar esta aplicación viola los términos de servicio de Google Play. Sería más seguro usar una cuenta de Google desechable que haya iniciado sesión en Play Store al menos una vez y haya aceptado los términos de servicio de Play Store.</string>
     <string name="activity_title_updates">Actualizaciones</string>
-    <string name="activity_title_search" formatted="false">Buscando: "%s"</string>
+    <string name="activity_title_search">"Buscando: \"%1$s\""</string>
     <string name="notification_download_complete">Descarga completada. Toca para instalar.</string>
-    <string name="notification_download_complete_toast" formatted="false">%s descargado. Toca la notificación para instalar.</string>
+    <string name="notification_download_complete_toast">"%1$s descargado. Toca la notificación para instalar."</string>
     <string name="notification_updates_available_title">Actualizaciones disponibles.</string>
-    <string name="notification_updates_available_message" formatted="false">Actualizaciones disponibles para %d de tus aplicaciones.</string>
+    <string name="notification_updates_available_message">"Actualizaciones disponibles para %1$d de tus aplicaciones."</string>
     <string name="pref_hide_nonfree_apps_summary_off">Las aplicaciones pagas serán visibles</string>
     <string name="pref_hide_nonfree_apps_summary_on">Las aplicaciones pagas no serán visibles</string>
     <string name="pref_hide_nonfree_apps">Ocultar aplicaciones pagas</string>

@@ -15,7 +15,7 @@
 ** limitations under the License.
 */
 -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:paddingTop="4dip"
-                android:singleLine="true" />
+                android:maxLines="1" />
             
     </LinearLayout>
         
@@ -51,4 +51,4 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
     </FrameLayout>
         
-</FrameLayout>
+</merge>

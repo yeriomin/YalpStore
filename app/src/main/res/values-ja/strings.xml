@@ -1,6 +1,6 @@
 <resources>
-    <string name="list_line_2_updatable" formatted="false">更新 %s</string>
-    <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
+    <string name="list_line_2_updatable">"更新 %1$s"</string>
+    <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
     <string name="list_empty_updates">更新が必要なアプリはありません</string>
     <string name="list_empty_search">アプリが見つかりません</string>
     <string name="action_logout">ログアウト</string>
@@ -15,21 +15,19 @@
     <string name="dialog_message_loading_app_details">しばらくお待ちください。 リクエストしたアプリの詳細を取得しています。</string>
     <string name="dialog_title_loading_app_list_search">検索中</string>
     <string name="dialog_message_loading_app_list_search">しばらくお待ちください。 アプリの検索中。</string>
-    <string name="dialog_title_loading_app_list_update">更新の確認中</string>
-    <string name="dialog_message_loading_app_list_update">しばらくお待ちください。 お使いのアプリの新しいバージョンを確認しています。</string>
     <string name="error_incorrect_password">メールアドレスまたはパスワードが間違っています。</string>
     <string name="error_credentials_empty">Google アカウント資格情報を入力してください。</string>
     <string name="error_no_network">ネットワーク接続がありません。</string>
-    <string name="error_network_other" formatted="false">ネットワークエラー: %s</string>
-    <string name="details_installs" formatted="false">%s ↓</string>
-    <string name="details_rating" formatted="false">%.1f★</string>
-    <string name="details_rating_specific" formatted="false">%d★ %d</string>
-    <string name="details_updated" formatted="false">更新しました %s</string>
-    <string name="details_size" formatted="false">Apk サイズ %s</string>
+    <string name="error_network_other">"ネットワークエラー: %1$s"</string>
+    <string name="details_installs">"%1$s ↓"</string>
+    <string name="details_rating">"%1$.1f★"</string>
+    <string name="details_rating_specific">"%1$d★ %2$d"</string>
+    <string name="details_updated">"更新しました %1$s"</string>
+    <string name="details_size">"Apk サイズ %1$s"</string>
     <string name="details_changelog">新着情報:</string>
     <string name="details_permissions">アクセス許可:</string>
-    <string name="details_versionName" formatted="false">バージョン %s</string>
-    <string name="details_versionName_updatable" formatted="false">バージョン %s → %s</string>
+    <string name="details_versionName">"バージョン %1$s"</string>
+    <string name="details_versionName_updatable">"バージョン %1$s → %2$s"</string>
     <string name="details_download">ダウンロード</string>
     <string name="details_signature_mismatch">新しいﾊﾞｰｼﾞｮﾝは､以前のものと異なる暗号鍵で署名されています｡新しいﾊﾞｰｼﾞｮﾝをｲﾝｽﾄｰﾙするには､まず以前のﾊﾞｰｼﾞｮﾝをｱﾝｲﾝｽﾄｰﾙする必要があります｡その後で再度実行してください｡(ｱﾌﾟﾘｹｰｼｮﾝをｱﾝｲﾝｽﾄｰﾙすると保存したﾃﾞｰﾀｰが消えることに注意してください)</string>
     <string name="suffix_million">百万</string>
@@ -39,5 +37,5 @@
     <string name="credentials_title">Google アカウントアクセス</string>
     <string name="credentials_message">このアプリの動作に Google アカウントのメールアドレスとパスワードが必要です。\nこのアプリを使用すると Play ストアの利用規約に違反することにご注意ください。 少なくとも一回 Play ストアにログインして、Play ストアの利用規約を受け入れた、使い捨ての Google アカウントを使用する方が安全でしょう。</string>
     <string name="activity_title_updates">更新</string>
-    <string name="activity_title_search" formatted="false">検索中: "%s"</string>
+    <string name="activity_title_search">"検索中: \"%1$s\""</string>
 </resources>

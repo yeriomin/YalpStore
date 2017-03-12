@@ -3,8 +3,8 @@
 <string name="about_developer_email_label">"Email dello sviluppatore:"</string>
 <string name="about_logged_in">"Accesso effettuato come:"</string>
 <string name="about_copied_to_clipboard">"Copiato negli appunti"</string>
-<string name="list_line_2_updatable" formatted="false">Aggiornata il %s</string>
-<string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
+<string name="list_line_2_updatable">"Aggiornata il %1$s"</string>
+<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"Nessuna app da aggiornare"</string>
 <string name="list_empty_search">"Nessuna app trovata"</string>
 <string name="list_incompatible">"incompatibile"</string>
@@ -36,8 +36,6 @@ Tocca \"Crea password\" per esser reindirizzato alla creazione della password."<
 <string name="dialog_message_loading_app_details">"Caricamento dettagli dell'app richiesta. Attendi."</string>
 <string name="dialog_title_loading_app_list_search">"Ricerca"</string>
 <string name="dialog_message_loading_app_list_search">"Ricerca in corso. Attendi."</string>
-<string name="dialog_title_loading_app_list_update">"Ricerca aggiornamenti"</string>
-<string name="dialog_message_loading_app_list_update">"Ricerca di nuove versioni delle app. Attendi."</string>
 <string name="dialog_account_type_provided_by_user">"Con il mio account Google"</string>
 <string name="dialog_account_type_predefined">"Senza un account (sperimentale)"</string>
 <string name="dialog_account_type_title">"Come vuoi accedere al Google Play Store?"</string>
@@ -47,16 +45,16 @@ Tocca \"Crea password\" per esser reindirizzato alla creazione della password."<
 <string name="error_incorrect_password">"Email o password errate."</string>
 <string name="error_credentials_empty">"Inserisci le credenziali dell'account Google."</string>
 <string name="error_no_network">"Non connesso alla rete."</string>
-<string name="error_network_other" formatted="false">Errore di rete: %s</string>
+<string name="error_network_other">"Errore di rete: %1$s"</string>
 <string name="error_not_purchased">"La app non risulta acquistata.
 Vado alla relativa pagina sul Play Store?"</string>
 <string name="error_downloads_directory_not_writable">"La cartella di download non può esser creata o scritta."</string>
 <string name="error_token_dispenser_problem">"Impossibile accedere. Prova ad usare il tuo account."</string>
-<string name="details_installs" formatted="false">%s ↓</string>
-<string name="details_rating" formatted="false">%.1f★</string>
-<string name="details_rating_specific" formatted="false">%d★ %d</string>
-<string name="details_updated" formatted="false">Aggiornata %s</string>
-<string name="details_size" formatted="false">Dimensione apk %s</string>
+<string name="details_installs">"%1$s ↓"</string>
+<string name="details_rating">"%1$.1f★"</string>
+<string name="details_rating_specific">"%1$d★ %2$d"</string>
+<string name="details_updated">"Aggiornata %1$s"</string>
+<string name="details_size">"Dimensione apk %1$s"</string>
 <string name="details_description">"Descrizione:"</string>
 <string name="details_changelog">"Novità:"</string>
 <string name="details_screenshots">"Schermate:"</string>
@@ -64,8 +62,8 @@ Vado alla relativa pagina sul Play Store?"</string>
 <string name="details_rate_this_app">"Vota la app:"</string>
 <string name="details_you_rated_this_app">"Hai votato la app:"</string>
 <string name="details_permissions">"Autorizzazioni:"</string>
-<string name="details_versionName" formatted="false">Versione %s</string>
-<string name="details_versionName_updatable" formatted="false">Versione %s → %s</string>
+<string name="details_versionName">"Versione %1$s"</string>
+<string name="details_versionName_updatable">"Versione %1$s → %2$s"</string>
 <string name="details_download">"Scarica"</string>
 <string name="details_install">"Installa"</string>
 <string name="details_downloading">"Scaricamento…"</string>
@@ -87,13 +85,13 @@ Vado alla relativa pagina sul Play Store?"</string>
 
 Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più sicuro usare un account usa e getta che abbia avuto accesso al Play Store e accettato i termini d'utilizzo."</string>
 <string name="activity_title_updates">"Aggiornamenti"</string>
-<string name="activity_title_search" formatted="false">Ricerca: %s</string>
+<string name="activity_title_search">"Ricerca: %1$s"</string>
 <string name="notification_download_complete">"Download completo. Tocca per installare."</string>
-<string name="notification_download_complete_toast" formatted="false">%s scaricata. Tocca il tasto o la notifica per installarla.</string>
+<string name="notification_download_complete_toast">"%1$s scaricata. Tocca il tasto o la notifica per installarla."</string>
 <string name="notification_download_complete_signature_mismatch">"Download completato con firma non corrispondente."</string>
-<string name="notification_download_complete_signature_mismatch_toast" formatted="false">%s scaricata. La firma dell\'apk non corrisponde a quella dell\'app installata. E\' stata originariamente scaricata dal Play Store? E\' necessario rimuoverla.</string>
+<string name="notification_download_complete_signature_mismatch_toast">"%1$s scaricata. La firma dell\'apk non corrisponde a quella dell\'app installata. E\' stata originariamente scaricata dal Play Store? E\' necessario rimuoverla."</string>
 <string name="notification_updates_available_title">"Aggiornamenti disponibili."</string>
-<string name="notification_updates_available_message" formatted="false">Aggiornamenti disponibili per %d delle tue app.</string>
+<string name="notification_updates_available_message">"Aggiornamenti disponibili per %1$d delle tue app."</string>
 <string name="pref_hide_nonfree_apps_summary_off">"Le app pagate sono visualizzate."</string>
 <string name="pref_hide_nonfree_apps_summary_on">"Le app a pagamento sono nascoste."</string>
 <string name="pref_hide_nonfree_apps">"Nascondi app pagate."</string>
@@ -125,7 +123,7 @@ Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più s
 <string name="download_manager_ERROR_CANNOT_RESUME">"Impossibile riprendere il download a causa di un errore temporaneo. Prova più tardi."</string>
 <string name="download_manager_ERROR_BLOCKED">"Download fallito perchè NetworkPolicyManager controlla le richieste delle applicazioni. Verifica le impostazioni"</string>
 <string name="search_filter">"Tutte le app"</string>
-<string name="details_category" formatted="false">Categoria: %s</string>
+<string name="details_category">"Categoria: %1$s"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Gli apk non vengono eliminati dopo l'installazione"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Gli apk vengono eliminati dopo l'installazione"</string>
 <string name="pref_delete_apk_after_install">"Elimina .apk dopo l'installazione"</string>

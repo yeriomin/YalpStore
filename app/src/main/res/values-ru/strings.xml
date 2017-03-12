@@ -4,10 +4,10 @@
     <string name="about_logged_in">Ваш текущий аккаунт:</string>
     <string name="about_copied_to_clipboard">Скопировано в буфер обмена</string>
     <string name="about_self_update_checking">…проверяем</string>
-    <string name="about_self_update_available" formatted="false">…доступна 0.%d</string>
+    <string name="about_self_update_available">"…доступна 0.%1$d"</string>
     <string name="about_self_update_unavailable">…обновления нет</string>
-    <string name="list_line_2_updatable" formatted="false">Обновлено %s</string>
-    <string name="list_line_2_search" formatted="false">%s ↓, %.1f★, %s</string>
+    <string name="list_line_2_updatable">"Обновлено %1$s"</string>
+    <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
     <string name="list_empty_updates">Обновлений нет</string>
     <string name="list_empty_search">Ничего не найдено</string>
     <string name="list_incompatible">несовместимо</string>
@@ -30,8 +30,6 @@
     <string name="dialog_message_purchasing_app">Подождите. Запускаем закачку приложения.</string>
     <string name="dialog_title_loading_app_details">Подробности</string>
     <string name="dialog_message_loading_app_details">Подождите. Получаем подробности о приложении.</string>
-    <string name="dialog_title_loading_app_list_update">Проверка обновлений</string>
-    <string name="dialog_message_loading_app_list_update">Подождите. Ищем обновления для ваших приложений.</string>
     <string name="dialog_title_loading_app_list_search">Поиск</string>
     <string name="dialog_message_loading_app_list_search">Подождите. Ищем приложения по вашему запросу.</string>
     <string name="dialog_account_type_provided_by_user">Через мой аккаунт Google</string>
@@ -55,16 +53,16 @@
     <string name="error_incorrect_password">Неверный email или пароль.</string>
     <string name="error_credentials_empty">Введите данные для доступа к аккаунту google</string>
     <string name="error_no_network">Нет соединения с сетью.</string>
-    <string name="error_network_other" formatted="false">Сетевая ошибка: %s</string>
+    <string name="error_network_other">"Сетевая ошибка: %1$s"</string>
     <string name="error_not_purchased">Похоже, это приложение не было куплено.\nПерейти на его страницу в Play Store?</string>
     <string name="error_downloads_directory_not_writable">Каталог закачек недоступен для записи.</string>
     <string name="error_token_dispenser_problem">Подключиться без аккаунта не удалось. Попробуйте подключиться через ваш Google аккаунт.</string>
-    <string name="details_category" formatted="false">Категория: %s</string>
-    <string name="details_installs" formatted="false">%s ↓</string>
-    <string name="details_rating" formatted="false">%.1f★</string>
-    <string name="details_rating_specific" formatted="false">%d★ %d</string>
-    <string name="details_updated" formatted="false">Обновлено %s</string>
-    <string name="details_size" formatted="false">Размер apk %s</string>
+    <string name="details_category">"Категория: %1$s"</string>
+    <string name="details_installs">"%1$s ↓"</string>
+    <string name="details_rating">"%1$.1f★"</string>
+    <string name="details_rating_specific">"%1$d★ %2$d"</string>
+    <string name="details_updated">"Обновлено %1$s"</string>
+    <string name="details_size">"Размер apk %1$s"</string>
     <string name="details_description">Описание:</string>
     <string name="details_changelog">Изменения в последней версии:</string>
     <string name="details_screenshots">Скриншоты:</string>
@@ -72,8 +70,8 @@
     <string name="details_rate_this_app">Оцените это приложение:</string>
     <string name="details_you_rated_this_app">Вы оценили это приложение:</string>
     <string name="details_permissions">Разрешения:</string>
-    <string name="details_versionName" formatted="false">Версия %s</string>
-    <string name="details_versionName_updatable" formatted="false">Версия %s → %s</string>
+    <string name="details_versionName">"Версия %1$s"</string>
+    <string name="details_versionName_updatable">"Версия %1$s → %2$s"</string>
     <string name="details_download">Скачать</string>
     <string name="details_install">Установить</string>
     <string name="details_downloading">Скачиваем…</string>
@@ -87,7 +85,7 @@
     <string name="details_users_also_installed">Пользователи также установили</string>
     <string name="details_to_play_store">Перейти в Play Store</string>
     <string name="details_signature_mismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте ещё раз. (При удалении приложения все его данные будут потеряны)</string>
-    <string name="details_depends_on" formatted="false">Зависит от: %s</string>
+    <string name="details_depends_on">"Зависит от: %1$s"</string>
     <string name="details_no_dependencies">нет зависимостей</string>
     <string name="details_contains_ads">Содержит рекламу</string>
     <string name="details_no_ads">Без рекламы</string>
@@ -98,17 +96,17 @@
     <string name="credentials_title">Вход в аккаунт Google</string>
     <string name="credentials_message">Для работы приложения требуются данные для доступа к аккаунту Google.\n\nИмейте в виду, что это приложение нарушает договор использования Play Store. Так что безопаснее использовать любой одноразовый Google аккаунт, под которым вы хотя бы раз залогинились в Play Store.</string>
     <string name="activity_title_updates">Обновления</string>
-    <string name="activity_title_search" formatted="false">Поиск: "%s"</string>
+    <string name="activity_title_search">"Поиск: \"%1$s\""</string>
     <string name="notification_installation_complete">Установлено обновление.</string>
-    <string name="notification_installation_complete_toast" formatted="false">Приложение %s обновлено.</string>
+    <string name="notification_installation_complete_toast">"Приложение %1$s обновлено."</string>
     <string name="notification_installation_failed">Не удалось установить обновление.</string>
-    <string name="notification_installation_failed_toast" formatted="false">Ошибка при обновлении %s. Нет root-доступа?</string>
+    <string name="notification_installation_failed_toast">"Ошибка при обновлении %1$s. Нет root-доступа?"</string>
     <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>
-    <string name="notification_download_complete_toast" formatted="false">Загрузка %s завершена. Нажмите на кнопку \"Установить\" или на уведомление чтобы установить.</string>
-    <string name="notification_download_complete_signature_mismatch" formatted="false">Загрузка завершена. Подпись apk не совпадает с подписью установленного приложения.</string>
-    <string name="notification_download_complete_signature_mismatch_toast" formatted="false">Загрузка %s завершена. Подпись apk не совпадает с подписью установленного приложения. Вы установили это приложение не из Google Play? Возможно, придётся сначала его удалить.</string>
+    <string name="notification_download_complete_toast">"Загрузка %1$s завершена. Нажмите на кнопку \"Установить\" или на уведомление чтобы установить."</string>
+    <string name="notification_download_complete_signature_mismatch">Загрузка завершена. Подпись apk не совпадает с подписью установленного приложения.</string>
+    <string name="notification_download_complete_signature_mismatch_toast">"Загрузка %1$s завершена. Подпись apk не совпадает с подписью установленного приложения. Вы установили это приложение не из Google Play? Возможно, придётся сначала его удалить."</string>
     <string name="notification_updates_available_title">Есть обновления приложений.</string>
-    <string name="notification_updates_available_message" formatted="false">Для %d приложений есть обновления.</string>
+    <string name="notification_updates_available_message">"Для %1$d приложений есть обновления."</string>
     <string name="pref_hide_nonfree_apps_summary_off">Сейчас платные приложения отображаются</string>
     <string name="pref_hide_nonfree_apps_summary_on">Сейчас платные приложения не отображаются</string>
     <string name="pref_hide_nonfree_apps">Не показывать платные приложения</string>
