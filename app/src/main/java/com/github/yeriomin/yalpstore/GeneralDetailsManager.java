@@ -5,9 +5,11 @@ import android.content.pm.PackageManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -26,6 +28,7 @@ public class GeneralDetailsManager extends DetailsManager {
         drawGeneralDetails(app);
         drawDescription(app);
         drawPermissions(app);
+        new GoogleDependencyManager(activity, app).draw();
     }
 
     private void drawGeneralDetails(App app) {
@@ -38,9 +41,9 @@ public class GeneralDetailsManager extends DetailsManager {
         setText(R.id.updated, R.string.details_updated, app.getUpdated());
         setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(activity, app.getSize()));
         setText(R.id.category, R.string.details_category, new CategoryManager(activity).getCategoryName(app.getCategoryId()));
-        setText(R.id.developerName, R.string.details_developer, app.getDeveloper().getName());
-        setText(R.id.developerEmail, app.getDeveloper().getEmail());
-        setText(R.id.developerWebsite, app.getDeveloper().getWebsite());
+        setText(R.id.price, app.getPrice());
+        setText(R.id.contains_ads, app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
+        drawOfferDetails(app);
         drawChanges(app);
         drawVersion((TextView) activity.findViewById(R.id.versionString), app);
         if (app.getVersionCode() == 0) {
@@ -56,6 +59,19 @@ public class GeneralDetailsManager extends DetailsManager {
             activity.findViewById(R.id.changes).setVisibility(View.VISIBLE);
             activity.findViewById(R.id.changes_title).setVisibility(View.VISIBLE);
         }
+    }
+
+    private void drawOfferDetails(App app) {
+        for (String key: app.getOfferDetails().keySet()) {
+            addOfferItem(key, app.getOfferDetails().get(key));
+        }
+    }
+
+    private void addOfferItem(String key, String value) {
+        TextView itemView = new TextView(activity);
+        itemView.setAutoLinkMask(Linkify.ALL);
+        itemView.setText(key + " " + Html.fromHtml(value));
+        ((LinearLayout) activity.findViewById(R.id.offer_details)).addView(itemView);
     }
 
     private void drawVersion(TextView textView, App app) {

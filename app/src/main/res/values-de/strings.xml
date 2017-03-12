@@ -65,7 +65,6 @@ Tippe auf \"Passwort erstellen\" um auf die Seite zum Erstellen eines Passwortes
 <string name="details_rate_this_app">"Bewerte diese App:"</string>
 <string name="details_you_rated_this_app">"Du bewertest diese App:"</string>
 <string name="details_permissions">"Berechtigungen:"</string>
-<string name="details_developer" formatted="false">Angeboten von %s</string>
 <string name="details_versionName" formatted="false">Version %s</string>
 <string name="details_versionName_updatable" formatted="false">Version %s → %s</string>
 <string name="details_download">"Herunterladen"</string>

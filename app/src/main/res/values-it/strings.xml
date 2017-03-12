@@ -64,7 +64,6 @@ Vado alla relativa pagina sul Play Store?"</string>
 <string name="details_rate_this_app">"Vota la app:"</string>
 <string name="details_you_rated_this_app">"Hai votato la app:"</string>
 <string name="details_permissions">"Autorizzazioni:"</string>
-<string name="details_developer" formatted="false">Creata da %s</string>
 <string name="details_versionName" formatted="false">Versione %s</string>
 <string name="details_versionName_updatable" formatted="false">Versione %s → %s</string>
 <string name="details_download">"Scarica"</string>

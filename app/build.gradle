@@ -24,6 +24,6 @@ android {
 }
 
 dependencies {
-    compile 'com.github.yeriomin:play-store-api:be0b9c5'
+    compile 'com.github.yeriomin:play-store-api:bcf62ef'
     compile 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }

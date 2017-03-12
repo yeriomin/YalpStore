@@ -12,6 +12,10 @@
     <string name="list_empty_search">Ничего не найдено</string>
     <string name="list_incompatible">несовместимо</string>
     <string name="list_update_all">Обновить всё</string>
+    <string name="list_app_has_ads">есть реклама</string>
+    <string name="list_app_no_ads">нет рекламы</string>
+    <string name="list_app_depends_on_gsf">зависит от GSF</string>
+    <string name="list_app_independent_from_gsf">не зависит от GSF</string>
     <string name="dialog_title_application_crashed">В Yalp Store произошёл сбой</string>
     <string name="dialog_message_application_crashed">Вы можете помочь разработчику исправить это, отправив email с подробностями об ошибке. Нажмите OK чтобы открыть ваше email-приложение с письмом для разработчика, готовым к отправке.\n\nПожалуйста, опишите что вы собирались сделать когда произошла ошибка.\n\nНикакой чувствительной и личной информации отправлено не будет, проверьте текст письма, если сомеваетесь.</string>
     <string name="dialog_two_factor_cancel">Позднее</string>
@@ -68,7 +72,6 @@
     <string name="details_rate_this_app">Оцените это приложение:</string>
     <string name="details_you_rated_this_app">Вы оценили это приложение:</string>
     <string name="details_permissions">Разрешения:</string>
-    <string name="details_developer" formatted="false">Разработчик: %s</string>
     <string name="details_versionName" formatted="false">Версия %s</string>
     <string name="details_versionName_updatable" formatted="false">Версия %s → %s</string>
     <string name="details_download">Скачать</string>
@@ -84,6 +87,10 @@
     <string name="details_users_also_installed">Пользователи также установили</string>
     <string name="details_to_play_store">Перейти в Play Store</string>
     <string name="details_signature_mismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте ещё раз. (При удалении приложения все его данные будут потеряны)</string>
+    <string name="details_depends_on" formatted="false">Зависит от: %s</string>
+    <string name="details_no_dependencies">нет зависимостей</string>
+    <string name="details_contains_ads">Содержит рекламу</string>
+    <string name="details_no_ads">Без рекламы</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>
     <string name="credentials_hint_email">e-mail</string>

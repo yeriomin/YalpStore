@@ -65,7 +65,6 @@ Redirecionar para a sua página da Play Store?"</string>
 <string name="details_rate_this_app">"Avalie este aplicativo:"</string>
 <string name="details_you_rated_this_app">"Você avaliou este aplicativo:"</string>
 <string name="details_permissions">"Permissões:"</string>
-<string name="details_developer" formatted="false">Oferecido por %s</string>
 <string name="details_versionName_updatable" formatted="false">Versão %s → %s</string>
 <string name="details_download">"baixar"</string>
 <string name="details_install">"Instalar"</string>

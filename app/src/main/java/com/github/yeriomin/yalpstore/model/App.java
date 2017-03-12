@@ -5,8 +5,10 @@ import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class App {
@@ -34,6 +36,10 @@ public class App {
     private List<App> similarApps = new ArrayList<>();
     private List<App> usersAlsoInstalledApps = new ArrayList<>();
     private String categoryId;
+    private String price;
+    private boolean containsAds;
+    private Set<String> dependencies = new HashSet<>();
+    private Map<String, String> offerDetails = new HashMap<>();
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -203,5 +209,29 @@ public class App {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public boolean containsAds() {
+        return containsAds;
+    }
+
+    public void setContainsAds(boolean containsAds) {
+        this.containsAds = containsAds;
+    }
+
+    public Set<String> getDependencies() {
+        return dependencies;
+    }
+
+    public Map<String, String> getOfferDetails() {
+        return offerDetails;
     }
 }

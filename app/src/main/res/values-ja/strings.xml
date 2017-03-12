@@ -28,7 +28,6 @@
     <string name="details_size" formatted="false">Apk サイズ %s</string>
     <string name="details_changelog">新着情報:</string>
     <string name="details_permissions">アクセス許可:</string>
-    <string name="details_developer" formatted="false">提供者 %s</string>
     <string name="details_versionName" formatted="false">バージョン %s</string>
     <string name="details_versionName_updatable" formatted="false">バージョン %s → %s</string>
     <string name="details_download">ダウンロード</string>

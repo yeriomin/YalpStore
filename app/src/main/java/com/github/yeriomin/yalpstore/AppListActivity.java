@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -20,6 +21,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
 
     protected static final String LINE1 = "LINE1";
     protected static final String LINE2 = "LINE2";
+    protected static final String LINE3 = "LINE3";
     protected static final String ICON = "ICON";
     protected static final String PACKAGE_NAME = "PACKAGE_NAME";
 
@@ -76,8 +78,8 @@ abstract public class AppListActivity extends YalpStoreActivity {
 
     private SimpleAdapter getSimpleListAdapter() {
 
-        String[] from = { LINE1, LINE2, ICON };
-        int[] to = { R.id.text1, R.id.text2, R.id.icon  };
+        String[] from = { LINE1, LINE2, LINE3, ICON };
+        int[] to = { R.id.text1, R.id.text2, R.id.text3, R.id.icon  };
 
         SimpleAdapter adapter = new SimpleAdapter(
             this,
@@ -89,16 +91,29 @@ abstract public class AppListActivity extends YalpStoreActivity {
         adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
 
             @Override
-            public boolean setViewValue(View view, Object drawableOrUrl, String textRepresentation) {
-                if (!(view instanceof ImageView)) {
-                    return false;
+            public boolean setViewValue(View view, Object value, String textRepresentation) {
+                if (view instanceof TextView) {
+                    return setViewValue((TextView) view, value);
+                } else if (view instanceof ImageView) {
+                    return setViewValue((ImageView) view, value);
                 }
+                return false;
+            }
+
+            private boolean setViewValue(TextView view, Object value) {
+                if (!(value instanceof String) || ((String) value).isEmpty()) {
+                    view.setVisibility(View.GONE);
+                }
+                return false;
+            }
+
+            private boolean setViewValue(ImageView view, Object drawableOrUrl) {
                 if (drawableOrUrl instanceof String) {
                     ImageDownloadTask task = new ImageDownloadTask();
-                    task.setView((ImageView) view);
+                    task.setView(view);
                     task.execute((String) drawableOrUrl);
                 } else {
-                    ((ImageView) view).setImageDrawable((Drawable) drawableOrUrl);
+                    view.setImageDrawable((Drawable) drawableOrUrl);
                 }
                 return true;
             }

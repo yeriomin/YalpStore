@@ -46,7 +46,6 @@
     <string name="details_rate_this_app">Calificar esta aplicación:</string>
     <string name="details_you_rated_this_app">Tu calificaste esta aplicación:</string>
     <string name="details_permissions">Permisos:</string>
-    <string name="details_developer" formatted="false">Ofrecido por %s</string>
     <string name="details_versionName" formatted="false">Versión %s</string>
     <string name="details_versionName_updatable" formatted="false">Versión %s → %s</string>
     <string name="details_download">Descargar</string>
