@@ -120,12 +120,7 @@ public class PlayStoreApiWrapper {
             }
             apps.add(app);
         }
-        Collections.sort(apps, new Comparator<App>() {
-            @Override
-            public int compare(App o1, App o2) {
-                return o1.getDisplayName().compareToIgnoreCase(o2.getDisplayName());
-            }
-        });
+        Collections.sort(apps);
         return apps;
     }
 

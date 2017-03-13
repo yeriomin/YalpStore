@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class App {
+public class App implements Comparable<App> {
 
     private PackageInfo packageInfo;
 
@@ -233,5 +233,10 @@ public class App {
 
     public Map<String, String> getOfferDetails() {
         return offerDetails;
+    }
+
+    @Override
+    public int compareTo(App o) {
+        return getDisplayName().compareToIgnoreCase(o.getDisplayName());
     }
 }
