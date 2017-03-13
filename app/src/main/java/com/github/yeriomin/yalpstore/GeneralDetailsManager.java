@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GeneralDetailsManager extends DetailsManager {
@@ -62,7 +63,9 @@ public class GeneralDetailsManager extends DetailsManager {
     }
 
     private void drawOfferDetails(App app) {
-        for (String key: app.getOfferDetails().keySet()) {
+        List<String> keyList = new ArrayList<>(app.getOfferDetails().keySet());
+        Collections.reverse(keyList);
+        for (String key: keyList) {
             addOfferItem(key, app.getOfferDetails().get(key));
         }
     }
