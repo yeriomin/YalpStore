@@ -138,7 +138,7 @@ Aucune donnée personnelle ou sensible n'est enregistrée, vous pouvez relire le
 <string name="action_categories">"Catégories"</string>
 <string name="list_update_all">"Tout mettre à jour"</string>
 <string name="notification_installation_complete">"Mise à jour installée."</string>
-<string name="notification_installation_complete_toast">"L'app %1$d a été mise à jour"</string>
+<string name="notification_installation_complete_toast">"L'app %1$s a été mise à jour"</string>
 <string name="notification_installation_failed">"La mise à jour a échoué"</string>
 <string name="notification_installation_failed_toast">"Impossible de mettre %1$s à jour. Vérifiez les droits root ?"</string>
 <string name="pref_background_update_install_summary_off">"Uniquement une notification"</string>
