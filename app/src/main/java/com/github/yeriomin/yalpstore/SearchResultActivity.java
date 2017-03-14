@@ -1,15 +1,19 @@
 package com.github.yeriomin.yalpstore;
 
+import android.app.AlertDialog;
 import android.app.SearchManager;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.model.App;
-
-import java.util.Map;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SearchResultActivity extends EndlessScrollActivity {
 
@@ -26,8 +30,12 @@ public class SearchResultActivity extends EndlessScrollActivity {
             this.query = newQuery;
             this.data.clear();
             setTitle(getString(R.string.activity_title_search, this.query));
-            loadApps();
-            ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
+            if (looksLikeAPackageId(query)) {
+                Log.i(getClass().getName(), query + " looks like a package id");
+                checkPackageId(query);
+            } else {
+                loadApps();
+            }
         }
     }
 
@@ -57,6 +65,7 @@ public class SearchResultActivity extends EndlessScrollActivity {
         };
         task.setCategoryManager(new CategoryManager(this));
         prepareTask(task).execute(query, categoryId);
+        ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
     }
 
     private String getQuery(Intent intent) {
@@ -73,5 +82,47 @@ public class SearchResultActivity extends EndlessScrollActivity {
             return intent.getDataString();
         }
         return null;
+    }
+
+    private boolean looksLikeAPackageId(String query) {
+        String pattern = "([\\p{L}_$][\\p{L}\\p{N}_$]*\\.)+[\\p{L}_$][\\p{L}\\p{N}_$]*";
+        Pattern r = Pattern.compile(pattern);
+        return r.matcher(query).matches();
+    }
+
+    private void checkPackageId(String packageId) {
+        DetailsTask task = new DetailsTask() {
+            @Override
+            protected void onPostExecute(Throwable result) {
+                super.onPostExecute(result);
+                if (null != app) {
+                    showPackageIdDialog(app.getPackageName());
+                }
+            }
+        };
+        task.setContext(this);
+        task.setPackageName(packageId);
+        task.execute();
+    }
+
+    private AlertDialog showPackageIdDialog(final String packageId) {
+        return new AlertDialog.Builder(this)
+            .setMessage(R.string.dialog_message_package_id)
+            .setTitle(R.string.dialog_title_package_id)
+            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    DetailsActivity.start(SearchResultActivity.this, packageId);
+                    dialogInterface.dismiss();
+                    finish();
+                }
+            })
+            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    loadApps();
+                }
+            })
+            .show();
     }
 }

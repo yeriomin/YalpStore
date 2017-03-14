@@ -16,6 +16,8 @@
     <string name="list_app_no_ads">нет рекламы</string>
     <string name="list_app_depends_on_gsf">зависит от GSF</string>
     <string name="list_app_independent_from_gsf">не зависит от GSF</string>
+    <string name="dialog_title_package_id">Найдено точное соответствие</string>
+    <string name="dialog_message_package_id">Найдено приложение с таким идентификатором. Перейти сразу на страницу этого приложения?</string>
     <string name="dialog_title_application_crashed">В Yalp Store произошёл сбой</string>
     <string name="dialog_message_application_crashed">Вы можете помочь разработчику исправить это, отправив email с подробностями об ошибке. Нажмите OK чтобы открыть ваше email-приложение с письмом для разработчика, готовым к отправке.\n\nПожалуйста, опишите что вы собирались сделать когда произошла ошибка.\n\nНикакой чувствительной и личной информации отправлено не будет, проверьте текст письма, если сомеваетесь.</string>
     <string name="dialog_two_factor_cancel">Позднее</string>

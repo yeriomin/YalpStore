@@ -27,6 +27,8 @@
     <string name="action_categories">Categories</string>
     <string name="search_filter">All apps</string>
     <string name="search_title">Search applications</string>
+    <string name="dialog_title_package_id">Package with this name exists</string>
+    <string name="dialog_message_package_id">There is a package with this exact name. Would you like to go directly to its details page?</string>
     <string name="dialog_title_application_crashed">Sorry, Yalp Store crashed</string>
     <string name="dialog_message_application_crashed">You can help fix this by sending error data to the developer. Clicking OK will take you to your default email app with a complete email ready to be sent to the developer.\n\nPlease describe what you were trying to do when the error occurred.\n\nNo private or sensitive information is collected, please review the letter content if you doubt it.</string>
     <string name="dialog_two_factor_cancel">Not now</string>
