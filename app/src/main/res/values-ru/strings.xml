@@ -33,7 +33,7 @@
     <string name="dialog_title_loading_app_list_search">Поиск</string>
     <string name="dialog_message_loading_app_list_search">Подождите. Ищем приложения по вашему запросу.</string>
     <string name="dialog_account_type_provided_by_user">Через мой аккаунт Google</string>
-    <string name="dialog_account_type_predefined">Без аккаунта (экспериментально)</string>
+    <string name="dialog_account_type_predefined">Через общий аккаунт Yalp Store</string>
     <string name="dialog_account_type_title">Как логиниться в Google Play Store?</string>
     <string name="dialog_title_logging_in">Входим</string>
     <string name="dialog_message_logging_in_provided_by_user">Пытаемся подключиться через ваш аккаунт</string>
