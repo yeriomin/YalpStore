@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -45,14 +46,16 @@ public class DownloadOrInstallManager extends DetailsManager {
     @Override
     public void draw() {
         Button downloadButton = (Button) activity.findViewById(R.id.download);
-        if (app.getVersionCode() == 0) {
-            downloadButton.setText(activity.getString(R.string.details_download_impossible));
-            downloadButton.setEnabled(false);
+        if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
+            downloadButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
+                }
+            });
         } else {
             apkPath = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-            if (apkPath.exists()) {
-                downloadButton.setText(R.string.details_install);
-            }
+            downloadButton.setText(apkPath.exists() ? R.string.details_install : R.string.details_download);
             downloadButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -64,13 +67,26 @@ public class DownloadOrInstallManager extends DetailsManager {
                 }
             });
         }
+        ImageButton more = (ImageButton) activity.findViewById(R.id.more);
+        if (null != more) {
+            more.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
+                }
+            });
+        }
     }
 
     public void unregisterReceiver() {
         activity.unregisterReceiver(receiver);
+        receiver = null;
     }
 
     public void registerReceiver() {
+        if (null != receiver) {
+            return;
+        }
         IntentFilter filter = new IntentFilter();
         filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
         receiver = new DetailsDownloadReceiver();

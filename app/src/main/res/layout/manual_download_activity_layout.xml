@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="10dip"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/manual_download_warning"/>
+
+            <TextView
+                android:id="@+id/compatibility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:text="@string/manual_download_incompatible"/>
+
+            <LinearLayout
+                android:id="@+id/scan_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <EditText
+        android:id="@+id/version_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/manual_download_hint_version_code"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/details_download" />
+
+</LinearLayout>

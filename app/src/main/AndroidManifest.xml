@@ -131,6 +131,9 @@
         <activity android:name=".UsersAlsoInstalledActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
         </activity>
+        <activity android:name=".ManualDownloadActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+        </activity>
         <activity android:name=".AboutActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
         </activity>

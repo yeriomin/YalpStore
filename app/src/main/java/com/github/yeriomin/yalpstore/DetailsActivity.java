@@ -27,7 +27,7 @@ public class DetailsActivity extends YalpStoreActivity {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
-    private DownloadOrInstallManager downloadOrInstallManager;
+    protected DownloadOrInstallManager downloadOrInstallManager;
     private IgnoreOptionManager ignoreOptionManager;
 
     static public void start(Context context, String packageName) {

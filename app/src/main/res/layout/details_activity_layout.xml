@@ -522,10 +522,25 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/download"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/details_download" />
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/download"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="@string/details_download" />
+
+        <ImageButton
+            android:id="@+id/more"
+            android:src="@drawable/ic_more"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="0" />
+
+    </LinearLayout>
 
 </LinearLayout>
