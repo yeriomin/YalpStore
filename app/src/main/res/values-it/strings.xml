@@ -55,13 +55,13 @@ Vado alla relativa pagina sul Play Store?"</string>
 <string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"Aggiornata %1$s"</string>
 <string name="details_size">"Dimensione apk %1$s"</string>
-<string name="details_description">"Descrizione:"</string>
+<string name="details_description">"Descrizione"</string>
 <string name="details_changelog">"Novità:"</string>
-<string name="details_screenshots">"Schermate:"</string>
-<string name="details_reviews">"Recensioni:"</string>
+<string name="details_screenshots">"Schermate"</string>
+<string name="details_reviews">"Recensioni"</string>
 <string name="details_rate_this_app">"Vota la app:"</string>
 <string name="details_you_rated_this_app">"Hai votato la app:"</string>
-<string name="details_permissions">"Autorizzazioni:"</string>
+<string name="details_permissions">"Autorizzazioni"</string>
 <string name="details_versionName">"Versione %1$s"</string>
 <string name="details_versionName_updatable">"Versione %1$s → %2$s"</string>
 <string name="details_download">"Scarica"</string>
@@ -133,4 +133,39 @@ Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più s
 Se vuoi, aggiungi una descrizione del problema o qualsiasi altro messaggio.
 
 Non vengono raccolti dati sensibili, ma se non ti fidi controlla pure il testo dell'email."</string>
+<string name="details_to_play_store">"Vedi nel Play Store"</string>
+<string name="about_self_update_checking">"...controllo"</string>
+<string name="about_self_update_available">"0.%1$d disponibile"</string>
+<string name="about_self_update_unavailable">"...nessun aggiornamento"</string>
+<string name="action_categories">"Categorie"</string>
+<string name="list_update_all">"Aggiorna tutto"</string>
+<string name="notification_installation_complete">"Aggiornamento installato"</string>
+<string name="notification_installation_complete_toast">"App %1$s aggiornata."</string>
+<string name="notification_installation_failed">"Installazione aggiornamento fallita."</string>
+<string name="notification_installation_failed_toast">"Non posso aggiornare %1$s. Root non permesso?"</string>
+<string name="pref_background_update_install_summary_off">"Riceverai solo una notifica"</string>
+<string name="pref_background_update_install_summary_on">"Installa aggiornamenti quando disponibili (root)"</string>
+<string name="pref_background_update_install">"Installa anche gli aggiornamenti (root)"</string>
+<string name="pref_no_root">"Opzione disponibile solo su dispositivi con root"</string>
+<string name="list_app_has_ads">"Con ads"</string>
+<string name="list_app_no_ads">"Senza ads"</string>
+<string name="list_app_depends_on_gsf">"Dipende da GSF"</string>
+<string name="list_app_independent_from_gsf">"Indipendente da GSF"</string>
+<string name="details_depends_on">"Dipende da: %1$s"</string>
+<string name="details_no_dependencies">"nessuna"</string>
+<string name="details_contains_ads">"Contiene ads"</string>
+<string name="details_no_ads">"No ads"</string>
+<string name="dialog_title_package_id">"Pacchetto con nome corrispondente"</string>
+<string name="dialog_message_package_id">"Esiste un pacchetto con il nome esatto. Vuoi andare direttamente ai dettagli dell'app?"</string>
+<string name="details_download_checking">"Controllo..."</string>
+<string name="details_download_not_available">"Non disponibile"</string>
+<string name="manual_download_incompatible">"Google Play Store ritiene l'app incompatibile con il tuo dispositivo. Ciò significa che il numero di versione non è stato riconosciuto dal server."</string>
+<string name="manual_download_compatible">"Il numero di versione è stato compilato con l'ultimo compatibile. Se vuoi una versione precedente, inserisci un numero inferiore all'attuale. Se lo sviluppatore non ha eliminato il vecchio apk, il download dovrebbe avviarsi."</string>
+<string name="manual_download_warning">"Questa pagina permette di scegliere manualmente la versione da scaricare. Il numero di versione identifica la versione di una app. Parte da 1 e viene incrementato dallo sviluppatore ogni volta che c'è una nuova versione. Il Play Store di solito permette il download solo dell'ultima versione compatibile con il dispositivo, ma modificando questo valore si possono scaricare anche altre versioni.
+
+Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store e il successo dipende dalla fortuna nell'indovinare il numero di versione. Anche indovinando, l'apk potrebbe comunque non essere compatibile. È facile che tu stai sprecando il tuo tempo!"</string>
+<string name="manual_download_hint_version_code">"Numero di versione"</string>
+<string name="list_has_update">"Aggiornabile"</string>
+<string name="list_no_update">"Già aggiornata"</string>
+<string name="details_uninstall">"Disinstalla"</string>
 </resources>
