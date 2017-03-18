@@ -132,9 +132,9 @@ Bitte beschreibe, was du gemacht hast, als der Fehler aufgetreten ist.
 
 Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den Mailinhalt, falls du Zweifel hast."</string>
 <string name="details_to_play_store">"Im Play Store ansehen"</string>
-<string name="about_self_update_checking">"...kontrolliere"</string>
-<string name="about_self_update_available">"...0.%1$d verfügbar"</string>
-<string name="about_self_update_unavailable">"...kein Update gefunden"</string>
+<string name="about_self_update_checking">"…kontrolliere"</string>
+<string name="about_self_update_available">"…0.%1$d verfügbar"</string>
+<string name="about_self_update_unavailable">"…kein Update gefunden"</string>
 <string name="action_categories">"Kategorien"</string>
 <string name="list_update_all">"Alle aktualisieren"</string>
 <string name="notification_installation_complete">"Update installiert"</string>
@@ -155,7 +155,7 @@ Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den M
 <string name="details_no_ads">"Keine Werbung"</string>
 <string name="dialog_title_package_id">"Es existiert ein Paket mit diesem Namen"</string>
 <string name="dialog_message_package_id">"Es gibt ein Paket mit genau diesem Namen. Möchtest du direkt zu der Detail-Seite gelangen?"</string>
-<string name="details_download_checking">"Prüfe..."</string>
+<string name="details_download_checking">"Prüfe…"</string>
 <string name="details_download_not_available">"Nicht verfügbar"</string>
 <string name="manual_download_incompatible">"Google Play Store sieht diese App als inkompatibel mit deinem Gerät an. Dies bedeutet, dass die Versionsnummer nicht vom Google Play Store Server zurückgegeben wurde."</string>
 <string name="manual_download_compatible">"Versionsnummerfeld wurde automatisch mit der letzten kompatiblen Versionsnummer ausgefüllt. Wenn du eine vorherige Version haben möchtest, gib einfach eine kleinere Nummer ein. Wenn diese Version im Play Store existiert, wird diese heruntergeladen."</string>
