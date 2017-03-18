@@ -134,9 +134,9 @@ Se vuoi, aggiungi una descrizione del problema o qualsiasi altro messaggio.
 
 Non vengono raccolti dati sensibili, ma se non ti fidi controlla pure il testo dell'email."</string>
 <string name="details_to_play_store">"Vedi nel Play Store"</string>
-<string name="about_self_update_checking">"...controllo"</string>
+<string name="about_self_update_checking">"…controllo"</string>
 <string name="about_self_update_available">"0.%1$d disponibile"</string>
-<string name="about_self_update_unavailable">"...nessun aggiornamento"</string>
+<string name="about_self_update_unavailable">"…nessun aggiornamento"</string>
 <string name="action_categories">"Categorie"</string>
 <string name="list_update_all">"Aggiorna tutto"</string>
 <string name="notification_installation_complete">"Aggiornamento installato"</string>
@@ -157,7 +157,7 @@ Non vengono raccolti dati sensibili, ma se non ti fidi controlla pure il testo d
 <string name="details_no_ads">"No ads"</string>
 <string name="dialog_title_package_id">"Pacchetto con nome corrispondente"</string>
 <string name="dialog_message_package_id">"Esiste un pacchetto con il nome esatto. Vuoi andare direttamente ai dettagli dell'app?"</string>
-<string name="details_download_checking">"Controllo..."</string>
+<string name="details_download_checking">"Controllo…"</string>
 <string name="details_download_not_available">"Non disponibile"</string>
 <string name="manual_download_incompatible">"Google Play Store ritiene l'app incompatibile con il tuo dispositivo. Ciò significa che il numero di versione non è stato riconosciuto dal server."</string>
 <string name="manual_download_compatible">"Il numero di versione è stato compilato con l'ultimo compatibile. Se vuoi una versione precedente, inserisci un numero inferiore all'attuale. Se lo sviluppatore non ha eliminato il vecchio apk, il download dovrebbe avviarsi."</string>
