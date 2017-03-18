@@ -11,7 +11,6 @@ import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 
-import java.io.IOException;
 import java.util.List;
 
 public class UpdateChecker extends BroadcastReceiver {
@@ -46,13 +45,13 @@ public class UpdateChecker extends BroadcastReceiver {
                 if (null != e) {
                     return;
                 }
-                int updatesCount = this.apps.size();
+                int updatesCount = this.updatableApps.size();
                 Log.i(this.getClass().getName(), "Found updates for " + updatesCount + " apps");
                 if (updatesCount == 0) {
                     return;
                 }
                 if (needToInstallUpdates(context)) {
-                    download(context, apps);
+                    download(context, updatableApps);
                 } else {
                     createNotification(context, updatesCount);
                 }

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -106,6 +107,10 @@ public class DetailsActivity extends YalpStoreActivity {
             downloadOrInstallManager.registerReceiver();
         }
         super.onResume();
+        Button uninstallButton = (Button) findViewById(R.id.uninstall);
+        if (null != uninstallButton) {
+            uninstallButton.setVisibility(isPackageInstalled(getIntentPackageName(getIntent())) ? View.VISIBLE : View.GONE);
+        }
     }
 
     @Override
@@ -120,6 +125,15 @@ public class DetailsActivity extends YalpStoreActivity {
         if (requestCode == PERMISSIONS_REQUEST_CODE
             && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             downloadOrInstallManager.downloadOrInstall();
+        }
+    }
+
+    private boolean isPackageInstalled(String packageName) {
+        try {
+            getPackageManager().getPackageInfo(packageName, 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
         }
     }
 

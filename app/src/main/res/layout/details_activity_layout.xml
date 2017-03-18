@@ -528,6 +528,14 @@
         android:orientation="horizontal" >
 
         <Button
+            android:id="@+id/uninstall"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:text="@string/details_uninstall" />
+
+        <Button
             android:id="@+id/download"
             android:layout_width="match_parent"
             android:layout_height="48dp"

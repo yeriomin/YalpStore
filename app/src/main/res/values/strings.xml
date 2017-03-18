@@ -7,6 +7,8 @@
     <string name="about_self_update_unavailable">…no update found</string>
     <string name="list_line_2_updatable">"Updated on %1$s"</string>
     <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
+    <string name="list_has_update">Updatable</string>
+    <string name="list_no_update">Already up to date</string>
     <string name="list_empty_updates">No apps need to be updated</string>
     <string name="list_empty_search">No apps found</string>
     <string name="list_incompatible">incompatible</string>
@@ -75,6 +77,7 @@
     <string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
     <string name="details_download">Download</string>
     <string name="details_install">Install</string>
+    <string name="details_uninstall">Uninstall</string>
     <string name="details_downloading">Downloading…</string>
     <string name="details_download_impossible">Incompatible with your device</string>
     <string name="details_download_checking">Checking…</string>

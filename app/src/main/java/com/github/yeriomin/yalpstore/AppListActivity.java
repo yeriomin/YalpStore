@@ -40,7 +40,11 @@ abstract public class AppListActivity extends YalpStoreActivity {
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DetailsActivity.start(getApplicationContext(), (String) data.get(position).get(PACKAGE_NAME));
+                String packageName = (String) data.get(position).get(PACKAGE_NAME);
+                if (null == packageName) {
+                    return;
+                }
+                DetailsActivity.start(getApplicationContext(), packageName);
             }
         });
     }

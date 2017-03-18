@@ -11,13 +11,15 @@ import android.util.Log;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 class UpdatableAppsTask extends GoogleApiAsyncTask {
 
-    protected List<App> apps = new ArrayList<>();
+    protected List<App> updatableApps = new ArrayList<>();
+    protected List<App> otherInstalledApps = new ArrayList<>();
 
     static public List<App> getInstalledApps(Context context) {
         List<App> apps = new ArrayList<>();
@@ -88,12 +90,14 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
                 continue;
             }
             App installedApp = appMap.get(packageName);
+            installedApp.setOfferType(appFromMarket.getOfferType());
+            installedApp.setPermissions(appFromMarket.getPermissions());
             if (installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
                 installedApp.setUpdated(appFromMarket.getUpdated());
                 installedApp.setVersionCode(appFromMarket.getVersionCode());
-                installedApp.setOfferType(appFromMarket.getOfferType());
-                installedApp.setPermissions(appFromMarket.getPermissions());
-                apps.add(installedApp);
+                updatableApps.add(installedApp);
+            } else {
+                otherInstalledApps.add(installedApp);
             }
         }
         return null;

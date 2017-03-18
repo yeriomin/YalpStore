@@ -19,9 +19,11 @@ class AppListViewBinder implements SimpleAdapter.ViewBinder {
     }
 
     private boolean setViewValue(TextView view, Object value) {
-        if (!(value instanceof String) || ((String) value).isEmpty()) {
-            view.setVisibility(View.GONE);
-        }
+        view.setVisibility(
+            (!(value instanceof String) || ((String) value).isEmpty())
+                ? View.GONE
+                : View.VISIBLE
+        );
         return false;
     }
 

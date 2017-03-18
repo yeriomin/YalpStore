@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class UpdatableAppsActivity extends AppListActivity {
@@ -51,7 +53,10 @@ public class UpdatableAppsActivity extends AppListActivity {
     @Override
     protected Map<String, Object> formatApp(App app) {
         Map<String, Object> map = super.formatApp(app);
-        map.put(LINE2, getString(R.string.list_line_2_updatable, app.getUpdated()));
+        String updated = app.getUpdated();
+        if (null != updated && !updated.isEmpty()) {
+            map.put(LINE2, getString(R.string.list_line_2_updatable, updated));
+        }
         map.put(ICON, app.getIcon());
         return map;
     }
@@ -69,8 +74,11 @@ public class UpdatableAppsActivity extends AppListActivity {
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
                 if (null == e) {
-                    addApps(this.apps);
-                    toggleUpdateAll(this.apps.size() > 0);
+                    data.add(getHeader(R.string.list_has_update));
+                    addApps(this.updatableApps);
+                    data.add(getHeader(R.string.list_no_update));
+                    addApps(this.otherInstalledApps);
+                    toggleUpdateAll(this.updatableApps.size() > 0);
                     new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
                 }
             }
@@ -79,6 +87,12 @@ public class UpdatableAppsActivity extends AppListActivity {
         task.setContext(this);
         task.setProgressIndicator(findViewById(R.id.progress));
         return task;
+    }
+
+    private Map<String, Object> getHeader(int headerTextResId) {
+        Map<String, Object> map = new HashMap<>();
+        map.put(LINE1, getString(headerTextResId));
+        return map;
     }
 
     private void toggleUpdateAll(boolean enable) {

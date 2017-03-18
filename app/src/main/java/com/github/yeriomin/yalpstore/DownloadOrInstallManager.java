@@ -45,6 +45,26 @@ public class DownloadOrInstallManager extends DetailsManager {
 
     @Override
     public void draw() {
+        drawUninstallButton();
+        drawDownloadButton();
+        drawMoreButton();
+    }
+
+    private void drawUninstallButton() {
+        Button uninstallButton = (Button) activity.findViewById(R.id.uninstall);
+        if (null == uninstallButton) {
+            return;
+        }
+        uninstallButton.setVisibility(app.isInstalled() ? View.VISIBLE : View.GONE);
+        uninstallButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.startActivity(new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + app.getPackageName())));
+            }
+        });
+    }
+
+    private void drawDownloadButton() {
         Button downloadButton = (Button) activity.findViewById(R.id.download);
         if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
             downloadButton.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +87,9 @@ public class DownloadOrInstallManager extends DetailsManager {
                 }
             });
         }
+    }
+
+    private void drawMoreButton() {
         ImageButton more = (ImageButton) activity.findViewById(R.id.more);
         if (null != more) {
             more.setOnClickListener(new View.OnClickListener() {

@@ -8,6 +8,8 @@
     <string name="about_self_update_unavailable">…обновления нет</string>
     <string name="list_line_2_updatable">"Обновлено %1$s"</string>
     <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
+    <string name="list_has_update">Есть обновления</string>
+    <string name="list_no_update">Нет обновлений</string>
     <string name="list_empty_updates">Обновлений нет</string>
     <string name="list_empty_search">Ничего не найдено</string>
     <string name="list_incompatible">несовместимо</string>
@@ -76,6 +78,7 @@
     <string name="details_versionName_updatable">"Версия %1$s → %2$s"</string>
     <string name="details_download">Скачать</string>
     <string name="details_install">Установить</string>
+    <string name="details_uninstall">Удалить</string>
     <string name="details_downloading">Скачиваем…</string>
     <string name="details_download_impossible">Несовместимо с этим устройством</string>
     <string name="details_download_checking">Проверяем…</string>
