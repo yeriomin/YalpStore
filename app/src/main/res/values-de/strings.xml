@@ -17,7 +17,6 @@
 <string name="action_unignore">"Ignoriere Aktualisierungen nicht mehr"</string>
 <string name="action_whitelist">"Whitelist für Aktualisierungen"</string>
 <string name="action_unwhitelist">"Ignoriere Aktualisierungen"</string>
-<string name="search_filter">Alle Apps</string>
 <string name="search_title">"Suche nach Apps"</string>
 <string name="dialog_two_factor_cancel">"Jetzt nicht"</string>
 <string name="dialog_two_factor_create_password">"Passwort erstellen"</string>
@@ -50,7 +49,6 @@ Tippe auf \"Passwort erstellen\" um auf die Seite zum Erstellen eines Passwortes
 <string name="error_not_purchased">"Diese App wurde scheinbar nicht gekauft. Zum Play Store weiterleiten?"</string>
 <string name="error_downloads_directory_not_writable">"Download-Ordner konnte nicht erstellt werden oder ist nicht beschreibbar."</string>
 <string name="error_token_dispenser_problem">"Authentifizierung ohne Account fehlgeschlagen. Versuche deinen eigenen Account zu benutzen."</string>
-<string name="details_category">"Kategorie: %1$s"</string>
 <string name="details_installs">"%1$s ↓"</string>
 <string name="details_rating">"%1$.1f★"</string>
 <string name="details_rating_specific">"%1$d★ %2$d"</string>
@@ -98,9 +96,6 @@ Vergiss nicht das die Verwendung dieser App gegen die Play Store Nutzungsbedingu
 <string name="pref_auto_install_summary_off">"Apps werden installiert wenn die Abschluss-Benachrichtigung angetippt wird"</string>
 <string name="pref_auto_install_summary_on">"Apps werden installiert sobald der Download abgeschlossen ist"</string>
 <string name="pref_auto_install">"Apps sofort installieren."</string>
-<string name="pref_delete_apk_after_install_summary_off">Die .apks werden nun nach der Installation nicht gelöscht</string>
-<string name="pref_delete_apk_after_install_summary_on">Die .apks werden nun nach der Installation gelöscht</string>
-<string name="pref_delete_apk_after_install">Die .apk nach der Installation löschen</string>
 <string name="pref_update_list_white_or_black_black">"Nur für ausgewählte Apps werden keine Aktualisierungen gesucht"</string>
 <string name="pref_update_list_white_or_black_white">"Nur für ausgewählte Apps werden Aktualisierungen gesucht"</string>
 <string name="pref_update_list_white_or_black">"Black- oder Whitelist für App-Aktualisierungen verwenden"</string>
@@ -125,4 +120,50 @@ Vergiss nicht das die Verwendung dieser App gegen die Play Store Nutzungsbedingu
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Es wurde kein externer Speicher gefunden. Möglicherweise ist die SD-Karte nicht eingebunden."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Es trat ein möglicherweise vorübergehender Fehler auf, der Download kann nicht fortgesetzt werden. Versuche es später noch einmal!"</string>
 <string name="download_manager_ERROR_BLOCKED">"Das Herunterladen ist fehlgeschlagen weil der Netzwerk-Richtlinien-Manager die Kontrolle über die anfordernde App hat."</string>
+<string name="search_filter">"Alle Apps"</string>
+<string name="details_category">"Kategorie: %1$s"</string>
+<string name="pref_delete_apk_after_install_summary_off">"Die .apks werden nun nach der Installation nicht gelöscht"</string>
+<string name="pref_delete_apk_after_install_summary_on">"Die .apks werden nun nach der Installation gelöscht"</string>
+<string name="pref_delete_apk_after_install">"Die .apk nach der Installation löschen"</string>
+<string name="dialog_title_application_crashed">"Entschuldigung, Yalp Store ist abgestürtzt"</string>
+<string name="dialog_message_application_crashed">"Du kannst dabei helfen, dies zu beheben, indem du Fehlerdaten an den Entwickler schickst. Wenn du auf OK klickst, wirst du mit einer fertigen E-Mail zu deiner Standard-E-Mail-App weitergeleitet, die du an den Entwickler senden kannst.
+
+Bitte beschreibe, was du gemacht hast, als der Fehler aufgetreten ist.
+
+Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den Mailinhalt, falls du Zweifel hast."</string>
+<string name="details_to_play_store">"Im Play Store ansehen"</string>
+<string name="about_self_update_checking">"...kontrolliere"</string>
+<string name="about_self_update_available">"...0.%1$d verfügbar"</string>
+<string name="about_self_update_unavailable">"...kein Update gefunden"</string>
+<string name="action_categories">"Kategorien"</string>
+<string name="list_update_all">"Alle aktualisieren"</string>
+<string name="notification_installation_complete">"Update installiert"</string>
+<string name="notification_installation_complete_toast">"App %1$s aktualisiert"</string>
+<string name="notification_installation_failed">"Update fehlgeschlagen"</string>
+<string name="notification_installation_failed_toast">"Konnte Update %1$s nicht ausführen. Root-Rechte nicht zugelassen?"</string>
+<string name="pref_background_update_install_summary_off">"Du erhälst nur eine Benachrichtigung"</string>
+<string name="pref_background_update_install_summary_on">"Updates werden installiert, sobald sie verfügbar sind (root)"</string>
+<string name="pref_background_update_install">"Installiere die Updates gleich (root)"</string>
+<string name="pref_no_root">"Diese Funktion ist nur auf gerooteten Geräten verfügbar"</string>
+<string name="list_app_has_ads">"Enthält Werbung"</string>
+<string name="list_app_no_ads">"Keine Werbung"</string>
+<string name="list_app_depends_on_gsf">"Hängt von GSF ab"</string>
+<string name="list_app_independent_from_gsf">"Keine Abhängigkeit zu GSF"</string>
+<string name="details_depends_on">"Hängt ab von: %1$s"</string>
+<string name="details_no_dependencies">"Nichts"</string>
+<string name="details_contains_ads">"Enthält Werbung"</string>
+<string name="details_no_ads">"Keine Werbung"</string>
+<string name="dialog_title_package_id">"Es existiert ein Paket mit diesem Namen"</string>
+<string name="dialog_message_package_id">"Es gibt ein Paket mit genau diesem Namen. Möchtest du direkt zu der Detail-Seite gelangen?"</string>
+<string name="details_download_checking">"Prüfe..."</string>
+<string name="details_download_not_available">"Nicht verfügbar"</string>
+<string name="manual_download_incompatible">"Google Play Store sieht diese App als inkompatibel mit deinem Gerät an. Dies bedeutet, dass die Versionsnummer nicht vom Google Play Store Server zurückgegeben wurde."</string>
+<string name="manual_download_compatible">"Versionsnummerfeld wurde automatisch mit der letzten kompatiblen Versionsnummer ausgefüllt. Wenn du eine vorherige Version haben möchtest, gib einfach eine kleinere Nummer ein. Wenn diese Version im Play Store existiert, wird diese heruntergeladen."</string>
+<string name="manual_download_warning">"Auf dieser Seite kannst du manuell die Version der App aussuchen, die du herunterladen möchtest. Die Versionsnummer ist eine Nummer, die die Version einer App kennzeichnet. Sie startet bei eins und wird für jede neue Version um eins hochgezählt, die der Entwickler hochlädt. Normalerweise wird immer nur die letze kompatible Version vom Play Store heruntergeladen. Durch manuelles Auswählen der Version kannst du eventuell die anderen Version erhalten.
+
+Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Store offiziell nicht unterstützt. Der Erfolg dieses Vorhabens hängt von dem richtigen Raten des Versionsnummer ab. Selbst wenn das Raten erfolgreich war und die Version runtergeladen werden konnte, kann es immer noch sein, dass die Version inkompatibel ist. Höchstwahrscheinlich ist dies hier Zeitverschwendung."</string>
+<string name="manual_download_hint_version_code">"Versionsnummer hier"</string>
+<string name="list_has_update">"Aktualisierbar"</string>
+<string name="list_no_update">"Keine Aktualisierung verfügbar"</string>
+<string name="details_uninstall">"Deinstallieren"</string>
 </resources>
