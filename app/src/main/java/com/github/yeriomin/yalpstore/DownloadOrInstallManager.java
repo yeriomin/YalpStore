@@ -126,7 +126,7 @@ public class DownloadOrInstallManager extends DetailsManager {
             if (apkPath.exists()) {
                 install();
             } else {
-                getPurchaseTask().execute();
+                download();
             }
         } else {
             Toast.makeText(
@@ -135,6 +135,19 @@ public class DownloadOrInstallManager extends DetailsManager {
                 Toast.LENGTH_LONG
             ).show();
         }
+    }
+
+    private void download() {
+        if (!DownloadManagerChecker.isEnabled(activity)) {
+            Toast.makeText(
+                this.activity.getApplicationContext(),
+                this.activity.getString(R.string.error_download_manager_disabled),
+                Toast.LENGTH_LONG
+            ).show();
+            DownloadManagerChecker.showDownloadManagerAppPage(activity);
+            return;
+        }
+        getPurchaseTask().execute();
     }
 
     public void install() {

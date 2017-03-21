@@ -1,11 +1,9 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.model.App;
