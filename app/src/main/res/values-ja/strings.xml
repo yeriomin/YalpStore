@@ -67,7 +67,6 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="details_download">"ダウンロード"</string>
 <string name="details_install">"インストール"</string>
 <string name="details_downloading">"ダウンロード中…"</string>
-<string name="details_download_impossible">"お使いのデバイスと互換性がありません"</string>
 <string name="details_review_dialog_title">"何を追加しますか?"</string>
 <string name="details_review_dialog_review_title_hint">"ここにタイトル"</string>
 <string name="details_review_dialog_review_comment_hint">"ここにコメント"</string>
@@ -167,4 +166,5 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="list_has_update">"更新可能"</string>
 <string name="list_no_update">"すでに最新です"</string>
 <string name="details_uninstall">"アンインストール"</string>
+<string name="error_download_manager_disabled">"Please enable DownloadManager and try again."</string>
 </resources>
