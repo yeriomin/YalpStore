@@ -66,7 +66,6 @@ Tippe auf \"Passwort erstellen\" um auf die Seite zum Erstellen eines Passwortes
 <string name="details_download">"Herunterladen"</string>
 <string name="details_install">"Installieren"</string>
 <string name="details_downloading">"Herunterladen…"</string>
-<string name="details_download_impossible">"Fehler. App-Version konnte nicht ermittelt werden."</string>
 <string name="details_review_dialog_title">"Noch etwas hinzuzufügen?"</string>
 <string name="details_review_dialog_review_title_hint">"Titel"</string>
 <string name="details_review_dialog_review_comment_hint">"Kommentar"</string>
@@ -161,9 +160,10 @@ Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den M
 <string name="manual_download_compatible">"Versionsnummerfeld wurde automatisch mit der letzten kompatiblen Versionsnummer ausgefüllt. Wenn du eine vorherige Version haben möchtest, gib einfach eine kleinere Nummer ein. Wenn diese Version im Play Store existiert, wird diese heruntergeladen."</string>
 <string name="manual_download_warning">"Auf dieser Seite kannst du manuell die Version der App aussuchen, die du herunterladen möchtest. Die Versionsnummer ist eine Nummer, die die Version einer App kennzeichnet. Sie startet bei eins und wird für jede neue Version um eins hochgezählt, die der Entwickler hochlädt. Normalerweise wird immer nur die letze kompatible Version vom Play Store heruntergeladen. Durch manuelles Auswählen der Version kannst du eventuell die anderen Version erhalten.
 
-Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Store offiziell nicht unterstützt. Der Erfolg dieses Vorhabens hängt von dem richtigen Raten des Versionsnummer ab. Selbst wenn das Raten erfolgreich war und die Version runtergeladen werden konnte, kann es immer noch sein, dass die Version inkompatibel ist. Höchstwahrscheinlich ist dies hier Zeitverschwendung."</string>
+Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Store offiziell nicht unterstützt. Der Erfolg dieses Vorhabens hängt von dem richtigen Raten der Versionsnummer ab. Selbst wenn das Raten erfolgreich war und die Version runtergeladen werden konnte, kann es immer noch sein, dass die Version inkompatibel ist. Höchstwahrscheinlich ist dies hier Zeitverschwendung."</string>
 <string name="manual_download_hint_version_code">"Versionsnummer hier"</string>
 <string name="list_has_update">"Aktualisierbar"</string>
 <string name="list_no_update">"Keine Aktualisierung verfügbar"</string>
 <string name="details_uninstall">"Deinstallieren"</string>
+<string name="error_download_manager_disabled">"Please enable DownloadManager and try again."</string>
 </resources>
