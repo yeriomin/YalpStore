@@ -67,7 +67,6 @@ Vado alla relativa pagina sul Play Store?"</string>
 <string name="details_download">"Scarica"</string>
 <string name="details_install">"Installa"</string>
 <string name="details_downloading">"Scaricamento…"</string>
-<string name="details_download_impossible">"Incompatibile con il tuo dispositivo"</string>
 <string name="details_review_dialog_title">"Qualcos'altro da aggiungere?"</string>
 <string name="details_review_dialog_review_title_hint">"Titolo"</string>
 <string name="details_review_dialog_review_comment_hint">"Commento"</string>
@@ -168,4 +167,5 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="list_has_update">"Aggiornabile"</string>
 <string name="list_no_update">"Già aggiornata"</string>
 <string name="details_uninstall">"Disinstalla"</string>
+<string name="error_download_manager_disabled">"Please enable DownloadManager and try again."</string>
 </resources>
