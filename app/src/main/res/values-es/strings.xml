@@ -49,7 +49,6 @@
     <string name="details_download">Descargar</string>
     <string name="details_install">Instalar</string>
     <string name="details_downloading">Descargando…</string>
-    <string name="details_download_impossible">Error. No se puedo obtener la versión de la aplicación.</string>
     <string name="details_review_dialog_title">¿Algo más que añadir?</string>
     <string name="details_review_dialog_review_title_hint">Título aquí</string>
     <string name="details_review_dialog_review_comment_hint">Comentario aquí</string>
