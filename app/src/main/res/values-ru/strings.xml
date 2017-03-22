@@ -81,7 +81,6 @@
     <string name="details_install">Установить</string>
     <string name="details_uninstall">Удалить</string>
     <string name="details_downloading">Скачиваем…</string>
-    <string name="details_download_impossible">Несовместимо с этим устройством</string>
     <string name="details_download_checking">Проверяем…</string>
     <string name="details_download_not_available">Не доступно</string>
     <string name="details_review_dialog_title">Есть что добавить?</string>

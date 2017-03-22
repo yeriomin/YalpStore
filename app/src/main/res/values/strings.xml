@@ -80,7 +80,6 @@
     <string name="details_install">Install</string>
     <string name="details_uninstall">Uninstall</string>
     <string name="details_downloading">Downloading…</string>
-    <string name="details_download_impossible">Incompatible with your device</string>
     <string name="details_download_checking">Checking…</string>
     <string name="details_download_not_available">Not available</string>
     <string name="details_review_dialog_title">Anything else to add?</string>
