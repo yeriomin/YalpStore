@@ -157,8 +157,7 @@ Nenhuma informação confidencial ou confidencial é coletada, por favor revise 
 <string name="details_no_ads">"Sem anúncios"</string>
 <string name="dialog_title_package_id">"O pacote com esse nome existe"</string>
 <string name="dialog_message_package_id">"Há um pacote com este nome exato. Gostaria de ir diretamente para a sua página de detalhes?"</string>
-<string name="details_download_checking">"
-Verificando ..."</string>
+<string name="details_download_checking">"verificando…"</string>
 <string name="details_download_not_available">"não disponível"</string>
 <string name="manual_download_incompatible">"A Google Play Store considera este aplicativo incompatível com seu dispositivo. 
 
