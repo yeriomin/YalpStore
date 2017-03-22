@@ -68,7 +68,6 @@ Redirecionar para a sua página da Play Store?"</string>
 <string name="details_download">"baixar"</string>
 <string name="details_install">"Instalar"</string>
 <string name="details_downloading">"baixando"</string>
-<string name="details_download_impossible">"Incompatível com o dispositivo"</string>
 <string name="details_review_dialog_title">"Algo mais a acrescentar?"</string>
 <string name="details_review_dialog_review_title_hint">"Título aqui"</string>
 <string name="details_review_dialog_review_comment_hint">"Comente aqui"</string>
@@ -156,4 +155,22 @@ Nenhuma informação confidencial ou confidencial é coletada, por favor revise 
 <string name="details_no_dependencies">"nada"</string>
 <string name="details_contains_ads">"Contém anúncios"</string>
 <string name="details_no_ads">"Sem anúncios"</string>
+<string name="dialog_title_package_id">"O pacote com esse nome existe"</string>
+<string name="dialog_message_package_id">"Há um pacote com este nome exato. Gostaria de ir diretamente para a sua página de detalhes?"</string>
+<string name="details_download_checking">"
+Verificando ..."</string>
+<string name="details_download_not_available">"não disponível"</string>
+<string name="manual_download_incompatible">"A Google Play Store considera este aplicativo incompatível com seu dispositivo. 
+
+Isso significa que o código da versão não foi retornado pelo servidor da Google Play Store."</string>
+<string name="manual_download_compatible">"O campo de código de versão foi pré-preenchido com o código de versão compatível mais recente deste aplicativo. Se você quiser a versão anterior, basta inserir um número menor que a corrente. Se o desenvolvedor não tiver excluído o apk do anterior da Play Store, talvez seja possível iniciar o download."</string>
+<string name="manual_download_warning">"Esta página permite que você escolha manualmente a versão do aplicativo para fazer o download. O código de versão é um número que identifica a versão de um aplicativo. Ele começa a partir de 1 e é incrementado pelo desenvolvedor do aplicativo sempre que há uma nova versão. Normalmente, a Play Store permite que você baixe apenas o último apk compatível com seu dispositivo. Ao fornecer manualmente esse número, você poderá obter outras versões também.
+
+
+Lembre-se de que o download de versões arbitrárias de aplicativos não é compatível com o Google Play Store. Seu sucesso depende de uma suposição afortunada do código da versão. Mesmo se você adivinhar direito e você começa o download para começar, você pode obter um apk incompatível. Muito provavelmente, você está desperdiçando seu tempo!"</string>
+<string name="manual_download_hint_version_code">"Código da versão aqui"</string>
+<string name="list_has_update">"Atualizável"</string>
+<string name="list_no_update">"Já atualizado"</string>
+<string name="details_uninstall">"Desinstalar"</string>
+<string name="error_download_manager_disabled">"Ative o Gerenciador de downloads e tente novamente."</string>
 </resources>
