@@ -1,10 +1,8 @@
 package com.github.yeriomin.yalpstore;
 
-import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -22,13 +20,13 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
         if (null == extras) {
             return;
         }
-        long id = extras.getLong(DownloadManager.EXTRA_DOWNLOAD_ID);
+        long id = extras.getLong(DownloadManagerInterface.EXTRA_DOWNLOAD_ID);
         DownloadState state = DownloadState.get(id);
         if (null == state) {
             return;
         }
         state.setFinished(id);
-        if (success(context, id)) {
+        if (DownloadManagerFactory.get(context).success(id)) {
             state.setSuccessful(id);
         }
         if (!state.isEverythingFinished()) {
@@ -40,17 +38,5 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
             button.setText(R.string.details_download);
         }
         button.setEnabled(true);
-    }
-
-    private boolean success(Context context, long id) {
-        Cursor cursor = ((DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE))
-            .query(new DownloadManager.Query().setFilterById(id))
-        ;
-        if (!cursor.moveToFirst()) {
-            return false;
-        }
-        int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
-        int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
-        return status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS;
     }
 }

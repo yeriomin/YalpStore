@@ -3,7 +3,6 @@ package com.github.yeriomin.yalpstore;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.DocV2;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.SearchIterator;
 import com.github.yeriomin.playstoreapi.SearchResponse;
 import com.github.yeriomin.yalpstore.model.App;

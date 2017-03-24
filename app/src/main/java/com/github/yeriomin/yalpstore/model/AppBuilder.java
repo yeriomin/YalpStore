@@ -1,5 +1,7 @@
 package com.github.yeriomin.yalpstore.model;
 
+import android.text.TextUtils;
+
 import com.github.yeriomin.playstoreapi.AggregateRating;
 import com.github.yeriomin.playstoreapi.AppDetails;
 import com.github.yeriomin.playstoreapi.Dependency;
@@ -40,7 +42,7 @@ public class AppBuilder {
         app.setUpdated(appDetails.getUploadDate());
         app.setChanges(appDetails.getRecentChangesHtml());
         app.setPermissions(appDetails.getPermissionList());
-        app.setContainsAds(appDetails.hasContainsAds() && !appDetails.getContainsAds().isEmpty());
+        app.setContainsAds(appDetails.hasContainsAds() && !TextUtils.isEmpty(appDetails.getContainsAds()));
         fillImages(app, details.getImageList());
         fillDeveloper(app, appDetails);
         fillDependencies(app, appDetails);

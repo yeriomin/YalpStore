@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,7 +49,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
                 Context c = view.getContext();
                 final String email = editEmail.getText().toString();
                 final String password = editPassword.getText().toString();
-                if (email.isEmpty() || password.isEmpty()) {
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                     toast(c, R.string.error_credentials_empty);
                     return;
                 }
@@ -80,8 +81,8 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
             if (params.length < 2
                 || params[0] == null
                 || params[1] == null
-                || params[0].isEmpty()
-                || params[1].isEmpty()
+                || TextUtils.isEmpty(params[0])
+                || TextUtils.isEmpty(params[1])
             ) {
                 return new CredentialsEmptyException();
             }

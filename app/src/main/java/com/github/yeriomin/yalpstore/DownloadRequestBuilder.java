@@ -1,7 +1,9 @@
 package com.github.yeriomin.yalpstore;
 
+import android.annotation.TargetApi;
 import android.app.DownloadManager;
 import android.net.Uri;
+import android.os.Build;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.HttpCookie;
@@ -9,6 +11,7 @@ import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.File;
 
+@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public abstract class DownloadRequestBuilder {
 
     App app;

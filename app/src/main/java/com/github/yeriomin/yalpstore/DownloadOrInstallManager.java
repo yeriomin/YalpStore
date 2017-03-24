@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.DownloadManager;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -111,7 +110,7 @@ public class DownloadOrInstallManager extends DetailsManager {
             return;
         }
         IntentFilter filter = new IntentFilter();
-        filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+        filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
         receiver = new DetailsDownloadReceiver();
         receiver.setButton((Button) activity.findViewById(R.id.download));
         activity.registerReceiver(receiver, filter);
@@ -126,7 +125,7 @@ public class DownloadOrInstallManager extends DetailsManager {
             if (apkPath.exists()) {
                 install();
             } else {
-                download();
+                getPurchaseTask().execute();
             }
         } else {
             Toast.makeText(
@@ -135,19 +134,6 @@ public class DownloadOrInstallManager extends DetailsManager {
                 Toast.LENGTH_LONG
             ).show();
         }
-    }
-
-    private void download() {
-        if (!DownloadManagerChecker.isEnabled(activity)) {
-            Toast.makeText(
-                this.activity.getApplicationContext(),
-                this.activity.getString(R.string.error_download_manager_disabled),
-                Toast.LENGTH_LONG
-            ).show();
-            DownloadManagerChecker.showDownloadManagerAppPage(activity);
-            return;
-        }
-        getPurchaseTask().execute();
     }
 
     public void install() {

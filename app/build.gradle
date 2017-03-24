@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.github.yeriomin.yalpstore"
-        minSdkVersion 9
+        minSdkVersion 5
         targetSdkVersion 25
         versionCode 12
         versionName "0.12"
@@ -24,6 +24,6 @@ android {
 }
 
 dependencies {
-    compile 'com.github.yeriomin:play-store-api:0.12'
+    compile 'com.github.yeriomin:play-store-api:4ec5513'
     compile 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }

@@ -67,6 +67,6 @@ public class BlackWhiteListManager {
             PreferenceActivity.PREFERENCE_UPDATE_LIST,
             TextUtils.join(DELIMITER, blackWhiteSet)
         );
-        editor.apply();
+        editor.commit();
     }
 }

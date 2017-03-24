@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.SearchManager;
@@ -103,8 +102,10 @@ public abstract class YalpStoreActivity extends Activity {
             .show();
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private boolean isTv() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO) {
+            return false;
+        }
         int uiMode = getResources().getConfiguration().uiMode;
         return (uiMode & Configuration.UI_MODE_TYPE_MASK) == Configuration.UI_MODE_TYPE_TELEVISION;
     }

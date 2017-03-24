@@ -6,12 +6,12 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,7 +86,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
         // Comparing versions and building updatable apps list
         for (App appFromMarket : appsFromPlayMarket) {
             String packageName = appFromMarket.getPackageName();
-            if (null == packageName || packageName.isEmpty()) {
+            if (TextUtils.isEmpty(packageName)) {
                 continue;
             }
             App installedApp = appMap.get(packageName);

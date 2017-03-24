@@ -108,6 +108,8 @@
     <string name="notification_installation_complete_toast">"Приложение %1$s обновлено."</string>
     <string name="notification_installation_failed">Не удалось установить обновление.</string>
     <string name="notification_installation_failed_toast">"Ошибка при обновлении %1$s. Нет root-доступа?"</string>
+    <string name="notification_download_starting">Скачивание начинается</string>
+    <string name="notification_download_progress">"%1$s из %2$s скачано"</string>
     <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>
     <string name="notification_download_complete_toast">"Загрузка %1$s завершена. Нажмите на кнопку \"Установить\" или на уведомление чтобы установить."</string>
     <string name="notification_download_complete_signature_mismatch">Загрузка завершена. Подпись apk не совпадает с подписью установленного приложения.</string>

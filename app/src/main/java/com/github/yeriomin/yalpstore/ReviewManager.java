@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.graphics.Color;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -167,7 +168,7 @@ public class ReviewManager extends DetailsManager {
 
     private void setTextOrHide(int viewId, String text) {
         TextView textView = (TextView) activity.findViewById(viewId);
-        if (null != text && !text.isEmpty()) {
+        if (!TextUtils.isEmpty(text)) {
             textView.setText(text);
             textView.setVisibility(View.VISIBLE);
         } else {

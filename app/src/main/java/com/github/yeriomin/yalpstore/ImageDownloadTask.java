@@ -26,7 +26,7 @@ class ImageDownloadTask extends AsyncTask<String, Void, Void> {
     protected void onPreExecute() {
         super.onPreExecute();
         this.context = this.view.getContext();
-        this.view.setImageDrawable(this.context.getResources().getDrawable(android.R.drawable.sym_def_app_icon));
+        this.view.setImageDrawable(this.context.getResources().getDrawable(R.drawable.ic_placeholder));
     }
 
     @Override

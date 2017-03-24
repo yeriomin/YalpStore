@@ -31,6 +31,11 @@ class NotificationUtil {
         manager.notify(title.hashCode(), notification);
     }
 
+    public void cancel(String title) {
+        NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.cancel(title.hashCode());
+    }
+
     public static Notification createNotification(Context context, PendingIntent pendingIntent, String title, String text, int iconId) {
         Notification notification;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {

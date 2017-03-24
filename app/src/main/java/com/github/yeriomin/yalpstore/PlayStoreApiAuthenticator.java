@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 
 import com.github.yeriomin.playstoreapi.ApiBuilderException;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
@@ -39,7 +40,7 @@ public class PlayStoreApiAuthenticator {
         SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
         prefs.remove(PreferenceActivity.PREFERENCE_EMAIL);
         prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
-        prefs.apply();
+        prefs.commit();
         api = null;
     }
 
@@ -57,7 +58,7 @@ public class PlayStoreApiAuthenticator {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String gsfId = prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
         String token = prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, "");
-        if (email.isEmpty()) {
+        if (TextUtils.isEmpty(email)) {
             throw new CredentialsEmptyException();
         }
 
@@ -67,14 +68,15 @@ public class PlayStoreApiAuthenticator {
         com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
             .setDeviceInfoProvider(deviceInfoProvider)
             .setEmail(email)
-            ;
+        ;
+        builder.setHttpClient(new NativeHttpClientAdapter());
         if (null != password) {
             builder.setPassword(password);
         }
-        if (!gsfId.isEmpty()) {
+        if (!TextUtils.isEmpty(gsfId)) {
             builder.setGsfId(gsfId);
         }
-        if (!token.isEmpty()) {
+        if (!TextUtils.isEmpty(token)) {
             builder.setToken(token);
         }
         try {
@@ -87,7 +89,7 @@ public class PlayStoreApiAuthenticator {
         prefsEditor.putString(PreferenceActivity.PREFERENCE_EMAIL, email);
         prefsEditor.putString(PreferenceActivity.PREFERENCE_GSF_ID, api.getGsfId());
         prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, api.getToken());
-        prefsEditor.apply();
+        prefsEditor.commit();
         return api;
     }
 }

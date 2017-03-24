@@ -107,11 +107,13 @@ class YalpStoreUncaughtExceptionHandler implements Thread.UncaughtExceptionHandl
 
     private Map<String, String> getBuildValues() {
         Map<String, String> values = new LinkedHashMap<>();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+            values.put("Build.HARDWARE", Build.HARDWARE);
+            values.put("Build.RADIO", Build.RADIO);
+            values.put("Build.BOOTLOADER", Build.BOOTLOADER);
+        }
         values.put("Build.FINGERPRINT", Build.FINGERPRINT);
-        values.put("Build.HARDWARE", Build.HARDWARE);
         values.put("Build.BRAND", Build.BRAND);
-        values.put("Build.RADIO", Build.RADIO);
-        values.put("Build.BOOTLOADER", Build.BOOTLOADER);
         values.put("Build.DEVICE", Build.DEVICE);
         values.put("Build.VERSION.SDK_INT", Integer.toString(Build.VERSION.SDK_INT));
         values.put("Build.MODEL", Build.MODEL);

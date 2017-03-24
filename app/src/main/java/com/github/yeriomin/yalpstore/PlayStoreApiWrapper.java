@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
@@ -25,7 +26,6 @@ import com.github.yeriomin.yalpstore.model.ReviewBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -125,7 +125,7 @@ public class PlayStoreApiWrapper {
     }
 
     public AppSearchResultIterator getSearchIterator(String query, String categoryId) throws IOException {
-        if (null == query || query.isEmpty()) {
+        if (TextUtils.isEmpty(query)) {
             Log.w(this.getClass().getName(), "Query empty, so don't expect meaningful results");
         }
         if (null == searchResultIterator
@@ -174,7 +174,7 @@ public class PlayStoreApiWrapper {
         Map<String, String> categories = new HashMap<>();
         for (BrowseLink category: response.getCategoryContainer().getCategoryList()) {
             String categoryId = Uri.parse(category.getDataUrl()).getQueryParameter("cat");
-            if (null == categoryId || categoryId.isEmpty()) {
+            if (TextUtils.isEmpty(categoryId)) {
                 continue;
             }
             categories.put(categoryId, category.getName());

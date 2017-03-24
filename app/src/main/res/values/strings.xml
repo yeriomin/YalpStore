@@ -107,6 +107,8 @@
     <string name="notification_installation_complete_toast">"App %1$s updated."</string>
     <string name="notification_installation_failed">Update installation failed.</string>
     <string name="notification_installation_failed_toast">"Could not update %1$s. Root not granted?"</string>
+    <string name="notification_download_starting">Starting download</string>
+    <string name="notification_download_progress">"%1$s of %2$s downloaded"</string>
     <string name="notification_download_complete">Download complete. Touch to install.</string>
     <string name="notification_download_complete_toast">"%1$s downloaded. Touch install button or notification to install."</string>
     <string name="notification_download_complete_signature_mismatch">Download complete. apk signature mismatch, though.</string>

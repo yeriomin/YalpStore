@@ -2,25 +2,16 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.TextUtils;
-import android.text.format.Formatter;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DetailsActivity extends YalpStoreActivity {
 
@@ -62,7 +53,7 @@ public class DetailsActivity extends YalpStoreActivity {
         super.onNewIntent(intent);
 
         final String packageName = getIntentPackageName(intent);
-        if (packageName == null || packageName.isEmpty()) {
+        if (TextUtils.isEmpty(packageName)) {
             Log.e(this.getClass().getName(), "No package name provided");
             finishActivity(0);
             return;

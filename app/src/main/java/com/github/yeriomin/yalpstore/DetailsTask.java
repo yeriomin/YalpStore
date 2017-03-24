@@ -34,7 +34,7 @@ public class DetailsTask extends GoogleApiAsyncTask {
         } catch (PackageManager.NameNotFoundException e) {
             BitmapManager manager = new BitmapManager(this.context);
             icon = null == app.getIconUrl()
-                ? this.context.getResources().getDrawable(android.R.drawable.sym_def_app_icon)
+                ? this.context.getResources().getDrawable(R.drawable.ic_placeholder)
                 : new BitmapDrawable(manager.getBitmap(app.getIconUrl()))
             ;
         }

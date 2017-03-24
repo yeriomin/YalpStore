@@ -55,7 +55,7 @@ public class GeneralDetailsManager extends DetailsManager {
 
     private void drawChanges(App app) {
         String changes = app.getChanges();
-        if (null != changes && !changes.isEmpty()) {
+        if (!TextUtils.isEmpty(changes)) {
             setText(R.id.changes, Html.fromHtml(changes).toString());
             activity.findViewById(R.id.changes).setVisibility(View.VISIBLE);
             activity.findViewById(R.id.changes_title).setVisibility(View.VISIBLE);
@@ -79,7 +79,7 @@ public class GeneralDetailsManager extends DetailsManager {
 
     private void drawVersion(TextView textView, App app) {
         String versionName = app.getVersionName();
-        if (null == versionName || versionName.isEmpty()) {
+        if (TextUtils.isEmpty(versionName)) {
             return;
         }
         textView.setText(activity.getString(R.string.details_versionName, versionName));

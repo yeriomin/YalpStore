@@ -131,6 +131,6 @@ public class CategoryManager {
     }
 
     private void putCategorySet(String parent, Set<String> categories) {
-        prefs.edit().putString(parent, TextUtils.join(DELIMITER, categories)).apply();
+        prefs.edit().putString(parent, TextUtils.join(DELIMITER, categories)).commit();
     }
 }

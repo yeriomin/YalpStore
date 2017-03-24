@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.LayoutInflater;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -54,7 +54,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     protected Map<String, Object> formatApp(App app) {
         Map<String, Object> map = super.formatApp(app);
         String updated = app.getUpdated();
-        if (null != updated && !updated.isEmpty()) {
+        if (!TextUtils.isEmpty(updated)) {
             map.put(LINE2, getString(R.string.list_line_2_updatable, updated));
         }
         map.put(ICON, app.getIcon());

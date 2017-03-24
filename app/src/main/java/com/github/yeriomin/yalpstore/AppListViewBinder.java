@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
@@ -20,7 +21,7 @@ class AppListViewBinder implements SimpleAdapter.ViewBinder {
 
     private boolean setViewValue(TextView view, Object value) {
         view.setVisibility(
-            (!(value instanceof String) || ((String) value).isEmpty())
+            (!(value instanceof String) || TextUtils.isEmpty((String) value))
                 ? View.GONE
                 : View.VISIBLE
         );

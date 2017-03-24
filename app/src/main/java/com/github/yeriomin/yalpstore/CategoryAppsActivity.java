@@ -2,14 +2,8 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
-
-import com.github.yeriomin.yalpstore.model.App;
-
-import java.util.Map;
 
 public class CategoryAppsActivity extends EndlessScrollActivity {
 

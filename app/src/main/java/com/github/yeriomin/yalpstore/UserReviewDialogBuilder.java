@@ -18,6 +18,7 @@ public class UserReviewDialogBuilder {
     public UserReviewDialogBuilder(Context context, ReviewManager manager, String packageName) {
         this.context = context;
         this.manager = manager;
+        this.packageName = packageName;
     }
 
     public Dialog show(final Review review) {

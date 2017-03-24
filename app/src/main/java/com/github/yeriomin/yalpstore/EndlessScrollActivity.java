@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -25,7 +26,7 @@ abstract public class EndlessScrollActivity extends AppListActivity {
     @Override
     protected Map<String, Object> formatApp(App app) {
         Map<String, Object> map = super.formatApp(app);
-        String updated = app.getUpdated().isEmpty() ? getString(R.string.list_incompatible) : app.getUpdated();
+        String updated = TextUtils.isEmpty(app.getUpdated()) ? getString(R.string.list_incompatible) : app.getUpdated();
         map.put(LINE2, getString(R.string.list_line_2_search, app.getInstalls(), app.getRating().getAverage(), updated));
         String ads = getString(app.containsAds() ? R.string.list_app_has_ads : R.string.list_app_no_ads);
         String gsf = getString(app.getDependencies().isEmpty() ? R.string.list_app_independent_from_gsf : R.string.list_app_depends_on_gsf);

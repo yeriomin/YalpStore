@@ -11,11 +11,11 @@ import com.github.yeriomin.yalpstore.model.App;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class SelfUpdateChecker extends AsyncTask<Void, Void, Void> {
 
@@ -92,14 +92,19 @@ public class SelfUpdateChecker extends AsyncTask<Void, Void, Void> {
         downloader.download(app, deliveryData);
     }
 
-    private String getHtml() throws IOException{
-        Response response = new OkHttpClient()
-            .newCall(new Request.Builder().url(FDROID_APP_PAGE).build())
-            .execute();
-        if (!response.isSuccessful()) {
-            throw new IOException("Unexpected code " + response.code());
-        }
-        return response.body().string();
+    private String getHtml() throws IOException {
+        HttpURLConnection connection = (HttpURLConnection) new URL(FDROID_APP_PAGE).openConnection();
+        InputStream in = connection.getInputStream();
+        return new String(toByteArray(in));
     }
 
+    private byte[] toByteArray(InputStream in) throws IOException {
+        byte[] buffer = new byte[2048];
+        int bytesRead;
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        while ((bytesRead = in.read(buffer)) != -1) {
+            byteArrayOutputStream.write(buffer, 0, bytesRead);
+        }
+        return byteArrayOutputStream.toByteArray();
+    }
 }

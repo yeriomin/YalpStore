@@ -5,6 +5,7 @@ import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 
 import com.github.yeriomin.playstoreapi.AndroidBuildProto;
@@ -157,7 +158,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
             + ",versionCode=" + GOOGLE_SERVICES_VERSION_CODE
             + ",sdk=" + Build.VERSION.SDK_INT
             + ",device=" + Build.DEVICE
-            + ",hardware=" + Build.HARDWARE
+            + ",hardware=" + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
             + ",product=" + Build.PRODUCT
             + ")";
     }
@@ -184,12 +185,13 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     private AndroidBuildProto getBuildProto() {
+        boolean froyo = Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO;
         return AndroidBuildProto.newBuilder()
             .setId(Build.FINGERPRINT)
-            .setProduct(Build.HARDWARE)
+            .setProduct(froyo ? Build.HARDWARE : Build.PRODUCT)
             .setCarrier(Build.BRAND)
-            .setRadio(Build.RADIO)
-            .setBootloader(Build.BOOTLOADER)
+            .setRadio(froyo ? Build.RADIO : Build.MODEL)
+            .setBootloader(froyo ? Build.BOOTLOADER : Build.MODEL)
             .setDevice(Build.DEVICE)
             .setSdkVersion(Build.VERSION.SDK_INT)
             .setModel(Build.MODEL)
@@ -244,10 +246,10 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         if (Build.VERSION.SDK_INT >= 21) {
             platforms = Arrays.asList(Build.SUPPORTED_ABIS);
         } else {
-            if (null != Build.CPU_ABI && !Build.CPU_ABI.isEmpty()) {
+            if (!TextUtils.isEmpty(Build.CPU_ABI)) {
                 platforms.add(Build.CPU_ABI);
             }
-            if (null != Build.CPU_ABI2 && !Build.CPU_ABI2.isEmpty()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO && !TextUtils.isEmpty(Build.CPU_ABI2)) {
                 platforms.add(Build.CPU_ABI2);
             }
         }

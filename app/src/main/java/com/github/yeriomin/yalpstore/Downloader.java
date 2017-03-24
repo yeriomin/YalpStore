@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.os.Environment;
 
@@ -10,14 +9,12 @@ import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.File;
 
-import static android.content.Context.DOWNLOAD_SERVICE;
-
 public class Downloader {
 
-    private DownloadManager dm;
+    private DownloadManagerInterface dm;
 
     static public File getApkPath(String packageName, int version) {
-        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        File downloadsDir = new File(Environment.getExternalStorageDirectory(), "Download");
         String filename = packageName + "." + String.valueOf(version) + ".apk";
         return new File(downloadsDir, filename);
     }
@@ -29,13 +26,13 @@ public class Downloader {
     }
 
     public Downloader(Context context) {
-        this.dm = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
+        this.dm = DownloadManagerFactory.get(context);
     }
 
     public void download(App app, AndroidAppDeliveryData deliveryData) {
         DownloadState state = DownloadState.get(app.getPackageName());
         state.setApp(app);
-        state.setStarted(dm.enqueue(new DownloadRequestBuilderApk(app, deliveryData).build()));
+        state.setStarted(dm.enqueue(app, deliveryData, DownloadManagerInterface.Type.APK));
         if (deliveryData.getAdditionalFileCount() > 0) {
             checkAndStartObbDownload(state, deliveryData, true);
         }
@@ -53,7 +50,11 @@ public class Downloader {
         }
         file.getParentFile().mkdirs();
         if (!file.exists()) {
-            state.setStarted(dm.enqueue(new DownloadRequestBuilderObb(app, deliveryData).setMain(main).build()));
+            state.setStarted(dm.enqueue(
+                app,
+                deliveryData,
+                main ? DownloadManagerInterface.Type.OBB_MAIN : DownloadManagerInterface.Type.OBB_PATCH
+            ));
         }
     }
 }
