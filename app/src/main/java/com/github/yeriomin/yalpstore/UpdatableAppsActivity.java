@@ -73,14 +73,19 @@ public class UpdatableAppsActivity extends AppListActivity {
             @Override
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
-                if (null == e) {
+                if (null != e) {
+                    return;
+                }
+                if (!updatableApps.isEmpty()) {
                     data.add(getHeader(R.string.list_has_update));
                     addApps(this.updatableApps);
+                }
+                if (!otherInstalledApps.isEmpty()) {
                     data.add(getHeader(R.string.list_no_update));
                     addApps(this.otherInstalledApps);
-                    toggleUpdateAll(this.updatableApps.size() > 0);
-                    new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
                 }
+                toggleUpdateAll(this.updatableApps.size() > 0);
+                new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
             }
         };
         task.setErrorView((TextView) getListView().getEmptyView());
