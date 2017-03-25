@@ -165,5 +165,4 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="list_has_update">"Aktualisierbar"</string>
 <string name="list_no_update">"Keine Aktualisierung verfügbar"</string>
 <string name="details_uninstall">"Deinstallieren"</string>
-<string name="error_download_manager_disabled">"Please enable DownloadManager and try again."</string>
 </resources>

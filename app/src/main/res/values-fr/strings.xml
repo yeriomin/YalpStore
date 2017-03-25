@@ -166,5 +166,4 @@ Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, 
 <string name="list_has_update">"Mise à jour disponible"</string>
 <string name="list_no_update">"Déjà à jour"</string>
 <string name="details_uninstall">"Déssinstaller"</string>
-<string name="error_download_manager_disabled">"Please enable DownloadManager and try again."</string>
 </resources>

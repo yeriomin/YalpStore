@@ -167,5 +167,4 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="list_has_update">"Aggiornabile"</string>
 <string name="list_no_update">"Già aggiornata"</string>
 <string name="details_uninstall">"Disinstalla"</string>
-<string name="error_download_manager_disabled">"Please enable DownloadManager and try again."</string>
 </resources>

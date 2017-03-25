@@ -171,5 +171,4 @@ Lembre-se de que o download de versões arbitrárias de aplicativos não é comp
 <string name="list_has_update">"Atualizável"</string>
 <string name="list_no_update">"Já atualizado"</string>
 <string name="details_uninstall">"Desinstalar"</string>
-<string name="error_download_manager_disabled">"Ative o Gerenciador de downloads e tente novamente."</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="blackOrWhiteValues">
+    <string-array translatable="false" name="blackOrWhiteValues">
         <item>black</item>
         <item>white</item>
     </string-array>
@@ -8,7 +8,7 @@
         <item>@string/pref_update_list_white_or_black_black</item>
         <item>@string/pref_update_list_white_or_black_white</item>
     </string-array>
-    <string-array name="uiThemeValues">
+    <string-array translatable="false" name="uiThemeValues">
         <item>none</item>
         <item>light</item>
         <item>dark</item>
@@ -20,7 +20,7 @@
         <item>@string/pref_ui_theme_dark</item>
         <item>@string/pref_ui_theme_black</item>
     </string-array>
-    <string-array name="updateIntervalValues">
+    <string-array translatable="false" name="updateIntervalValues">
         <item>0</item>
         <item>3600000</item>
         <item>86400000</item>

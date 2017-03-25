@@ -168,5 +168,4 @@ Keep in mind that downloading arbitrary versions of apps is not supported by Goo
 <string name="list_has_update">"Atualizável"</string>
 <string name="list_no_update">"Aplicação já atualizada"</string>
 <string name="details_uninstall">"Desinstalar"</string>
-<string name="error_download_manager_disabled">"Por favor ativa a aplicação \"DownloadManager\" e tenta de novo."</string>
 </resources>

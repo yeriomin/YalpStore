@@ -60,7 +60,6 @@
     <string name="error_network_other">"Сетевая ошибка: %1$s"</string>
     <string name="error_not_purchased">Похоже, это приложение не было куплено.\nПерейти на его страницу в Play Store?</string>
     <string name="error_downloads_directory_not_writable">Каталог закачек недоступен для записи.</string>
-    <string name="error_download_manager_disabled">Пожалуйста, включите DownloadManager и запустите скачивание снова.</string>
     <string name="error_token_dispenser_problem">Подключиться без аккаунта не удалось. Попробуйте подключиться через ваш Google аккаунт.</string>
     <string name="details_category">"Категория: %1$s"</string>
     <string name="details_installs">"%1$s ↓"</string>

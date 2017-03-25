@@ -166,5 +166,4 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="list_has_update">"更新可能"</string>
 <string name="list_no_update">"すでに最新です"</string>
 <string name="details_uninstall">"アンインストール"</string>
-<string name="error_download_manager_disabled">"Please enable DownloadManager and try again."</string>
 </resources>
