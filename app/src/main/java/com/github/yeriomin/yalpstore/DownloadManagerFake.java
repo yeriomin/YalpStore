@@ -54,11 +54,12 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
             task.setApp(app);
             task.setDownloadId(downloadId);
             task.setTargetFile(destinationFile);
+            String cookieString = null;
             if (deliveryData.getDownloadAuthCookieCount() > 0) {
                 HttpCookie cookie = deliveryData.getDownloadAuthCookie(0);
-                task.setCookie(cookie.getName() + "=" + cookie.getValue());
+                cookieString = cookie.getName() + "=" + cookie.getValue();
             }
-            task.execute(url);
+            task.execute(url, cookieString);
         }
         return downloadId;
     }

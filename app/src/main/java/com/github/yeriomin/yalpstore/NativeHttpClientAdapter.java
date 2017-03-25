@@ -84,10 +84,24 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
             inputStream.close();
         } catch (IOException e) {
             Log.e(getClass().getName(), "Exception " + e.getClass().getName() + " " + e.getMessage());
+            throw e;
         } finally {
             connection.disconnect();
         }
+        processHttpErrorCode(code, content);
+        return content;
+    }
 
+    static public String urlEncode(String input) {
+        try {
+            return URLEncoder.encode(input, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            // Unlikely
+        }
+        return null;
+    }
+
+    static private void processHttpErrorCode(int code, byte[] content) throws GooglePlayException {
         if (code == 401 || code == 403) {
             AuthException e = new AuthException("Auth error", code);
             Map<String, String> authResponse = GooglePlayAPI.parseResponse(new String(content));
@@ -100,16 +114,6 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         } else if (code >= 400) {
             throw new GooglePlayException("Malformed request", code);
         }
-        return content;
-    }
-
-    static public String urlEncode(String input) {
-        try {
-            return URLEncoder.encode(input, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            // Unlikely
-        }
-        return null;
     }
 
     static private byte[] readFully(InputStream inputStream) throws IOException {

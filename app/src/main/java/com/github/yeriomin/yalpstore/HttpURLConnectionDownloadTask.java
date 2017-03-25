@@ -26,7 +26,6 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     private App app;
     private File targetFile;
     private long downloadId;
-    private String cookie;
 
     public void setContext(Context context) {
         this.context = context;
@@ -42,10 +41,6 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
 
     public void setDownloadId(long downloadId) {
         this.downloadId = downloadId;
-    }
-
-    public void setCookie(String cookie) {
-        this.cookie = cookie;
     }
 
     @Override
@@ -89,15 +84,25 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         long fileSize;
         try {
             connection = (HttpURLConnection) new URL(params[0]).openConnection();
-            if (!TextUtils.isEmpty(cookie)) {
-                connection.addRequestProperty("Cookie", cookie);
+            if (params.length == 2 && !TextUtils.isEmpty(params[1])) {
+                connection.addRequestProperty("Cookie", params[1]);
             }
             in = connection.getInputStream();
             fileSize = connection.getContentLength();
         } catch (IOException e) {
+            DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_HTTP_DATA_ERROR);
             return false;
         }
 
+        if (!writeToFile(in, fileSize)) {
+            return false;
+        }
+        connection.disconnect();
+        DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.SUCCESS);
+        return true;
+    }
+
+    private boolean writeToFile(InputStream in, long fileSize) {
         OutputStream out;
         try {
             out = new FileOutputStream(targetFile);
@@ -109,7 +114,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         try {
             copyStream(in, out, fileSize);
         } catch (IOException e) {
-            System.out.println("Could not read: " + e.getMessage());
+            Log.e(getClass().getName(), "Could not read: " + e.getMessage());
             DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_HTTP_DATA_ERROR);
             return false;
         }
@@ -119,8 +124,6 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         } catch (IOException e) {
             // Could not close
         }
-        connection.disconnect();
-        DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.SUCCESS);
         return true;
     }
 

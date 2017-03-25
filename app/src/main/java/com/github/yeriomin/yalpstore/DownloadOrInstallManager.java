@@ -44,6 +44,7 @@ public class DownloadOrInstallManager extends DetailsManager {
 
     @Override
     public void draw() {
+        apkPath = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         drawUninstallButton();
         drawDownloadButton();
         drawMoreButton();
@@ -65,27 +66,19 @@ public class DownloadOrInstallManager extends DetailsManager {
 
     private void drawDownloadButton() {
         Button downloadButton = (Button) activity.findViewById(R.id.download);
-        if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
-            downloadButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        downloadButton.setText(apkPath.exists() ? R.string.details_install : R.string.details_download);
+        downloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
                     activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
+                } else if (checkPermission()) {
+                    downloadOrInstall();
+                } else {
+                    requestPermission();
                 }
-            });
-        } else {
-            apkPath = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-            downloadButton.setText(apkPath.exists() ? R.string.details_install : R.string.details_download);
-            downloadButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (checkPermission()) {
-                        downloadOrInstall();
-                    } else {
-                        requestPermission();
-                    }
-                }
-            });
-        }
+            }
+        });
     }
 
     private void drawMoreButton() {

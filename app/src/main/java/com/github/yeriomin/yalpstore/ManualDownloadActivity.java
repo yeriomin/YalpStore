@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.Timer;
@@ -30,11 +31,14 @@ public class ManualDownloadActivity extends DetailsActivity {
             ((EditText) findViewById(R.id.version_code)).setHint(String.valueOf(app.getVersionCode()));
         }
         downloadOrInstallManager = new DownloadOrInstallManager(this, app);
-        ((EditText) findViewById(R.id.version_code)).addTextChangedListener(new MyTextWatcher(
+        ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(
             app,
             (Button) findViewById(R.id.download),
             downloadOrInstallManager
-        ));
+        );
+        String versionCode = Integer.toString(app.getVersionCode());
+        textWatcher.onTextChanged(versionCode, 0, 0, versionCode.length());
+        ((EditText) findViewById(R.id.version_code)).addTextChangedListener(textWatcher);
         downloadOrInstallManager.registerReceiver();
         downloadOrInstallManager.draw();
     }
@@ -45,7 +49,7 @@ public class ManualDownloadActivity extends DetailsActivity {
         super.onCreate(savedInstanceState);
     }
 
-    private class MyTextWatcher implements TextWatcher {
+    private class ManualDownloadTextWatcher implements TextWatcher {
 
         static private final int TIMEOUT = 1000;
 
@@ -54,7 +58,7 @@ public class ManualDownloadActivity extends DetailsActivity {
         private DownloadOrInstallManager downloadOrInstallManager;
         private Timer timer;
 
-        public MyTextWatcher(App app, Button downloadButton, DownloadOrInstallManager downloadOrInstallManager) {
+        public ManualDownloadTextWatcher(App app, Button downloadButton, DownloadOrInstallManager downloadOrInstallManager) {
             this.app = app;
             this.downloadButton = downloadButton;
             this.downloadOrInstallManager = downloadOrInstallManager;
@@ -95,10 +99,15 @@ public class ManualDownloadActivity extends DetailsActivity {
             }, TIMEOUT);
         }
 
-        private PurchaseCheckTask getTask(Timer timer) {
-            PurchaseCheckTask task = new PurchaseCheckTask(ManualDownloadActivity.this, app, downloadOrInstallManager);
+        private PurchaseCheckTask getTask(final Timer timer) {
+            PurchaseCheckTask task = new PurchaseCheckTask(ManualDownloadActivity.this, app, downloadOrInstallManager) {
+                @Override
+                protected void onPostExecute(AndroidAppDeliveryData androidAppDeliveryData) {
+                    super.onPostExecute(androidAppDeliveryData);
+                    timer.cancel();
+                }
+            };
             task.setDownloadButton(downloadButton);
-            task.setTimer(timer);
             return task;
         }
     }

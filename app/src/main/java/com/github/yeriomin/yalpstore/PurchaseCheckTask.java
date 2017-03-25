@@ -17,7 +17,6 @@ public class PurchaseCheckTask extends AsyncTask<Void, Void, AndroidAppDeliveryD
     private App app;
     private DownloadOrInstallManager downloadOrInstallManager;
     private Button downloadButton;
-    private Timer timer;
 
     public PurchaseCheckTask(Context context, App app, DownloadOrInstallManager downloadOrInstallManager) {
         this.context = context;
@@ -27,10 +26,6 @@ public class PurchaseCheckTask extends AsyncTask<Void, Void, AndroidAppDeliveryD
 
     public void setDownloadButton(Button downloadButton) {
         this.downloadButton = downloadButton;
-    }
-
-    public void setTimer(Timer timer) {
-        this.timer = timer;
     }
 
     @Override
@@ -53,11 +48,10 @@ public class PurchaseCheckTask extends AsyncTask<Void, Void, AndroidAppDeliveryD
         boolean success = null != androidAppDeliveryData;
         downloadOrInstallManager.draw();
         if (null != downloadButton) {
-            downloadButton.setText(success ? R.string.details_download : R.string.details_download_not_available);
+            if (!success) {
+                downloadButton.setText(R.string.details_download_not_available);
+            }
             downloadButton.setEnabled(success);
-        }
-        if (null != timer) {
-            timer.cancel();
         }
     }
 }
