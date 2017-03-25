@@ -63,13 +63,15 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         for (String headerName: headers.keySet()) {
             connection.addRequestProperty(headerName, headers.get(headerName));
         }
-        if (null != body && body.length > 0) {
+        if (null == body) {
+            body = new byte[0];
+        }
+        connection.addRequestProperty("Content-Length", Integer.toString(body.length));
+        if (body.length > 0) {
             connection.setDoOutput(true);
             OutputStream outputStream = connection.getOutputStream();
             outputStream.write(body);
             outputStream.close();
-        } else {
-            connection.addRequestProperty("Content-Length", "0");
         }
 
         byte[] content = new byte[0];
@@ -77,7 +79,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         connection.connect();
 
         int code = connection.getResponseCode();
-        Log.i(getClass().getName(), "Result " + code);
+        Log.i(getClass().getName(), "HTTP result code " + code);
         try {
             InputStream inputStream = new BufferedInputStream(connection.getInputStream());
             content = readFully(inputStream);

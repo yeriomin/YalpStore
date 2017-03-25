@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -16,9 +17,7 @@ import java.util.List;
 
 public class ReviewManager extends DetailsManager {
 
-    static private int[] starIds = new int[] { R.id.user_star1, R.id.user_star2, R.id.user_star3, R.id.user_star4, R.id.user_star5 };
     static private int[] averageStarIds = new int[] { R.id.average_stars1, R.id.average_stars2, R.id.average_stars3, R.id.average_stars4, R.id.average_stars5 };
-    static private int colorDefault;
 
     private ReviewStorageIterator iterator;
 
@@ -27,7 +26,6 @@ public class ReviewManager extends DetailsManager {
         iterator = new ReviewStorageIterator();
         iterator.setPackageName(app.getPackageName());
         iterator.setContext(activity);
-        colorDefault = ((TextView) activity.findViewById(starIds[0])).getCurrentTextColor();
     }
 
     @Override
@@ -43,14 +41,6 @@ public class ReviewManager extends DetailsManager {
         setText(R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
         for (int starNum = 1; starNum <= 5; starNum++) {
             setText(averageStarIds[starNum - 1], R.string.details_rating_specific, starNum, app.getRating().getStars(starNum));
-            final int currentStars = starNum;
-            activity.findViewById(starIds[starNum - 1]).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new UserReviewDialogBuilder(activity, ReviewManager.this, app.getPackageName())
-                        .show(getUpdatedUserReview(app.getUserReview(), currentStars));
-                }
-            });
         }
 
         activity.findViewById(R.id.user_review_container).setVisibility(isReviewable(app) ? View.VISIBLE : View.GONE);
@@ -71,12 +61,7 @@ public class ReviewManager extends DetailsManager {
     public void fillUserReview(Review review) {
         clearUserReview();
         app.setUserReview(review);
-        for (int starNum = 1; starNum <= 5; starNum++) {
-            int starId = starIds[starNum - 1];
-            TextView starView = (TextView) activity.findViewById(starId);
-            starView.setText(starNum <= review.getRating() ? R.string.star_filled : R.string.star_empty);
-            starView.setTextColor(starNum <= review.getRating() ? Color.YELLOW : colorDefault);
-        }
+        ((RatingBar) activity.findViewById(R.id.user_stars)).setRating(review.getRating());
         setTextOrHide(R.id.user_comment, review.getComment());
         setTextOrHide(R.id.user_title, review.getTitle());
         setText(R.id.rate, R.string.details_you_rated_this_app);
@@ -85,11 +70,7 @@ public class ReviewManager extends DetailsManager {
     }
 
     public void clearUserReview() {
-        for (int starId : starIds) {
-            TextView starView = (TextView) activity.findViewById(starId);
-            starView.setText(R.string.star_empty);
-            starView.setTextColor(colorDefault);
-        }
+        ((RatingBar) activity.findViewById(R.id.user_stars)).setRating(0);
         setText(R.id.user_title, "");
         setText(R.id.user_comment, "");
         setText(R.id.rate, R.string.details_rate_this_app);
@@ -150,6 +131,16 @@ public class ReviewManager extends DetailsManager {
     }
 
     private void initUserReviewControls(final App app) {
+        ((RatingBar) activity.findViewById(R.id.user_stars)).setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                if (!fromUser) {
+                    return;
+                }
+                new UserReviewDialogBuilder(activity, ReviewManager.this, app.getPackageName())
+                    .show(getUpdatedUserReview(app.getUserReview(), (int) rating));
+            }
+        });
         activity.findViewById(R.id.user_review_edit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
