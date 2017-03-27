@@ -45,6 +45,7 @@ public class ManualDownloadActivity extends DetailsActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeManager.setTheme(this);
         setContentView(R.layout.manual_download_activity_layout);
         super.onCreate(savedInstanceState);
     }
