@@ -11,7 +11,7 @@ import java.io.IOException;
 class ReviewAddTask extends AsyncTask<Review, Void, Throwable> {
 
     private Context context;
-    private ReviewManager manager;
+    private ReviewFragment manager;
     private Review review;
     private String packageName;
 
@@ -19,7 +19,7 @@ class ReviewAddTask extends AsyncTask<Review, Void, Throwable> {
         this.packageName = packageName;
     }
 
-    ReviewAddTask(Context context, ReviewManager manager) {
+    ReviewAddTask(Context context, ReviewFragment manager) {
         this.context = context;
         this.manager = manager;
     }

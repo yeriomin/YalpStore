@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
 
-public class BackToPlayStoreManager extends DetailsManager {
+public class BackToPlayStoreFragment extends DetailsFragment {
 
     static private final String PLAY_STORE_PACKAGE_NAME = "com.android.vending";
 
-    public BackToPlayStoreManager(DetailsActivity activity, App app) {
+    public BackToPlayStoreFragment(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

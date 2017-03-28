@@ -7,9 +7,9 @@ import android.view.View;
 import com.github.yeriomin.yalpstore.model.App;
 
 
-public class AppListsManager extends DetailsManager {
+public class AppListsFragment extends DetailsFragment {
 
-    public AppListsManager(DetailsActivity activity, App app) {
+    public AppListsFragment(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

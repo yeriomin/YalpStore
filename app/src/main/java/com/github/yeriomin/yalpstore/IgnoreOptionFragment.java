@@ -7,7 +7,7 @@ import android.view.MenuItem;
 
 import com.github.yeriomin.yalpstore.model.App;
 
-public class IgnoreOptionManager extends DetailsManager {
+public class IgnoreOptionFragment extends DetailsFragment {
 
     private Menu menu;
 
@@ -28,7 +28,7 @@ public class IgnoreOptionManager extends DetailsManager {
         this.menu = menu;
     }
 
-    public IgnoreOptionManager(DetailsActivity activity, App app) {
+    public IgnoreOptionFragment(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

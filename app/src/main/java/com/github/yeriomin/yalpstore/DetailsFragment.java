@@ -6,14 +6,14 @@ import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
 
-public abstract class DetailsManager {
+public abstract class DetailsFragment {
 
     protected DetailsActivity activity;
     protected App app;
 
     abstract public void draw();
 
-    public DetailsManager(DetailsActivity activity, App app) {
+    public DetailsFragment(DetailsActivity activity, App app) {
         this.activity = activity;
         this.app = app;
     }

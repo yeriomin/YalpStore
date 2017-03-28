@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,13 +14,13 @@ import com.github.yeriomin.yalpstore.model.Review;
 
 import java.util.List;
 
-public class ReviewManager extends DetailsManager {
+public class ReviewFragment extends DetailsFragment {
 
     static private int[] averageStarIds = new int[] { R.id.average_stars1, R.id.average_stars2, R.id.average_stars3, R.id.average_stars4, R.id.average_stars5 };
 
     private ReviewStorageIterator iterator;
 
-    public ReviewManager(DetailsActivity activity, App app) {
+    public ReviewFragment(DetailsActivity activity, App app) {
         super(activity, app);
         iterator = new ReviewStorageIterator();
         iterator.setPackageName(app.getPackageName());
@@ -137,21 +136,21 @@ public class ReviewManager extends DetailsManager {
                 if (!fromUser) {
                     return;
                 }
-                new UserReviewDialogBuilder(activity, ReviewManager.this, app.getPackageName())
+                new UserReviewDialogBuilder(activity, ReviewFragment.this, app.getPackageName())
                     .show(getUpdatedUserReview(app.getUserReview(), (int) rating));
             }
         });
         activity.findViewById(R.id.user_review_edit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new UserReviewDialogBuilder(activity, ReviewManager.this, app.getPackageName())
+                new UserReviewDialogBuilder(activity, ReviewFragment.this, app.getPackageName())
                     .show(app.getUserReview());
             }
         });
         activity.findViewById(R.id.user_review_delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReviewDeleteTask task = new ReviewDeleteTask(v.getContext(), ReviewManager.this);
+                ReviewDeleteTask task = new ReviewDeleteTask(v.getContext(), ReviewFragment.this);
                 task.execute(app.getPackageName());
             }
         });

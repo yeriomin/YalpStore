@@ -19,7 +19,7 @@ import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.File;
 
-public class DownloadOrInstallManager extends DetailsManager {
+public class DownloadOrInstallFragment extends DetailsFragment {
 
     private File apkPath;
     private DetailsDownloadReceiver receiver;
@@ -38,7 +38,7 @@ public class DownloadOrInstallManager extends DetailsManager {
         return intent;
     }
 
-    public DownloadOrInstallManager(DetailsActivity activity, App app) {
+    public DownloadOrInstallFragment(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

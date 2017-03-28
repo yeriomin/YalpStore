@@ -19,8 +19,8 @@ public class DetailsActivity extends YalpStoreActivity {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
-    protected DownloadOrInstallManager downloadOrInstallManager;
-    private IgnoreOptionManager ignoreOptionManager;
+    protected DownloadOrInstallFragment downloadOrInstallManager;
+    private IgnoreOptionFragment ignoreOptionManager;
 
     static public void start(Context context, String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
@@ -63,7 +63,7 @@ public class DetailsActivity extends YalpStoreActivity {
         DetailsTask task = getDetailsTask(packageName);
         task.setTaskClone(getDetailsTask(packageName));
         task.execute();
-        ignoreOptionManager = new IgnoreOptionManager(this, new App());
+        ignoreOptionManager = new IgnoreOptionFragment(this, new App());
     }
 
     private DetailsTask getDetailsTask(String packageName) {
@@ -144,14 +144,14 @@ public class DetailsActivity extends YalpStoreActivity {
     private void drawDetails(App app) {
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
-        new GeneralDetailsManager(this, app).draw();
-        new ScreenshotManager(this, app).draw();
-        new ReviewManager(this, app).draw();
-        new AppListsManager(this, app).draw();
-        new BackToPlayStoreManager(this, app).draw();
+        new GeneralDetailsFragment(this, app).draw();
+        new ScreenshotFragment(this, app).draw();
+        new ReviewFragment(this, app).draw();
+        new AppListsFragment(this, app).draw();
+        new BackToPlayStoreFragment(this, app).draw();
         ignoreOptionManager.setApp(app);
         ignoreOptionManager.draw();
-        downloadOrInstallManager = new DownloadOrInstallManager(this, app);
+        downloadOrInstallManager = new DownloadOrInstallFragment(this, app);
         downloadOrInstallManager.registerReceiver();
         downloadOrInstallManager.draw();
     }

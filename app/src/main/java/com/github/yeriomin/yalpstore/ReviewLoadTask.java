@@ -10,10 +10,10 @@ public class ReviewLoadTask extends GoogleApiAsyncTask {
 
     private List<Review> list;
     private ReviewStorageIterator iterator;
-    private ReviewManager manager;
+    private ReviewFragment manager;
     private boolean next;
 
-    public ReviewLoadTask(ReviewStorageIterator iterator, ReviewManager manager, boolean next) {
+    public ReviewLoadTask(ReviewStorageIterator iterator, ReviewFragment manager, boolean next) {
         this.iterator = iterator;
         this.manager = manager;
         this.next = next;

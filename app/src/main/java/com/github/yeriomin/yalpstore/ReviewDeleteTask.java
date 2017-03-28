@@ -9,9 +9,9 @@ import java.io.IOException;
 class ReviewDeleteTask extends AsyncTask<String, Void, Throwable> {
 
     private Context context;
-    private ReviewManager manager;
+    private ReviewFragment manager;
 
-    ReviewDeleteTask(Context context, ReviewManager manager) {
+    ReviewDeleteTask(Context context, ReviewFragment manager) {
         this.context = context;
         this.manager = manager;
     }

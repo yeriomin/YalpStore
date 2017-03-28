@@ -9,11 +9,11 @@ import com.github.yeriomin.yalpstore.model.App;
 import java.util.HashSet;
 import java.util.Set;
 
-public class GoogleDependencyManager extends DetailsManager {
+public class GoogleDependencyFragment extends DetailsFragment {
 
     private SharedPreferencesTranslator translator;
 
-    public GoogleDependencyManager(DetailsActivity activity, App app) {
+    public GoogleDependencyFragment(DetailsActivity activity, App app) {
         super(activity, app);
         translator = new SharedPreferencesTranslator(PreferenceManager.getDefaultSharedPreferences(activity));
     }

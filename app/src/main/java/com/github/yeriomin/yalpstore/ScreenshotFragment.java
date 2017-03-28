@@ -7,9 +7,9 @@ import android.widget.Gallery;
 
 import com.github.yeriomin.yalpstore.model.App;
 
-public class ScreenshotManager extends DetailsManager {
+public class ScreenshotFragment extends DetailsFragment {
 
-    public ScreenshotManager(DetailsActivity activity, App app) {
+    public ScreenshotFragment(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

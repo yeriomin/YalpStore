@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GeneralDetailsManager extends DetailsManager {
+public class GeneralDetailsFragment extends DetailsFragment {
 
-    public GeneralDetailsManager(DetailsActivity activity, App app) {
+    public GeneralDetailsFragment(DetailsActivity activity, App app) {
         super(activity, app);
     }
 
@@ -29,7 +29,7 @@ public class GeneralDetailsManager extends DetailsManager {
         drawGeneralDetails(app);
         drawDescription(app);
         drawPermissions(app);
-        new GoogleDependencyManager(activity, app).draw();
+        new GoogleDependencyFragment(activity, app).draw();
     }
 
     private void drawGeneralDetails(App app) {

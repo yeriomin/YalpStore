@@ -30,7 +30,7 @@ public class ManualDownloadActivity extends DetailsActivity {
         if (app.getVersionCode() > 0) {
             ((EditText) findViewById(R.id.version_code)).setHint(String.valueOf(app.getVersionCode()));
         }
-        downloadOrInstallManager = new DownloadOrInstallManager(this, app);
+        downloadOrInstallManager = new DownloadOrInstallFragment(this, app);
         ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(
             app,
             (Button) findViewById(R.id.download),
@@ -56,10 +56,10 @@ public class ManualDownloadActivity extends DetailsActivity {
 
         private final App app;
         private final Button downloadButton;
-        private DownloadOrInstallManager downloadOrInstallManager;
+        private DownloadOrInstallFragment downloadOrInstallManager;
         private Timer timer;
 
-        public ManualDownloadTextWatcher(App app, Button downloadButton, DownloadOrInstallManager downloadOrInstallManager) {
+        public ManualDownloadTextWatcher(App app, Button downloadButton, DownloadOrInstallFragment downloadOrInstallManager) {
             this.app = app;
             this.downloadButton = downloadButton;
             this.downloadOrInstallManager = downloadOrInstallManager;

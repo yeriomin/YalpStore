@@ -10,12 +10,12 @@ import com.github.yeriomin.yalpstore.model.Review;
 public class UserReviewDialogBuilder {
 
     private Context context;
-    private ReviewManager manager;
+    private ReviewFragment manager;
     private String packageName;
 
     private Dialog dialog;
 
-    public UserReviewDialogBuilder(Context context, ReviewManager manager, String packageName) {
+    public UserReviewDialogBuilder(Context context, ReviewFragment manager, String packageName) {
         this.context = context;
         this.manager = manager;
         this.packageName = packageName;
