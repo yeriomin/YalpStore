@@ -77,6 +77,11 @@ abstract public class AppListActivity extends YalpStoreActivity {
         ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
     }
 
+    protected void clearApps() {
+        data.clear();
+        ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
+    }
+
     private SimpleAdapter getSimpleListAdapter() {
 
         String[] from = { LINE1, LINE2, LINE3, ICON };

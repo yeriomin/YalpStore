@@ -56,7 +56,11 @@ public class SearchResultActivity extends EndlessScrollActivity {
             @Override
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
-                addApps(apps);
+                if (e == null) {
+                    addApps(apps);
+                } else {
+                    clearApps();
+                }
             }
         };
         task.setCategoryManager(new CategoryManager(this));

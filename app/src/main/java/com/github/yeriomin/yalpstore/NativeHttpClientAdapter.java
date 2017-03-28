@@ -26,6 +26,8 @@ import java.util.Map;
 
 public class NativeHttpClientAdapter extends HttpClientAdapter {
 
+    static private final int TIMEOUT = 15000;
+
     static {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO) {
             System.setProperty("http.keepAlive", "false");
@@ -66,6 +68,8 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         if (null == body) {
             body = new byte[0];
         }
+        connection.setConnectTimeout(TIMEOUT);
+        connection.setReadTimeout(TIMEOUT);
         connection.addRequestProperty("Content-Length", Integer.toString(body.length));
         if (body.length > 0) {
             connection.setDoOutput(true);

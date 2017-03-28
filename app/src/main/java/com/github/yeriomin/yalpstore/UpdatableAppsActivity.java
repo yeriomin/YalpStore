@@ -72,6 +72,7 @@ public class UpdatableAppsActivity extends AppListActivity {
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
                 if (null != e) {
+                    clearApps();
                     return;
                 }
                 if (!updatableApps.isEmpty()) {
