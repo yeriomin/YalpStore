@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -51,7 +52,6 @@ public class CategoryManager {
 
     public void fill(ListView list) {
         final Map<String, String> categories = getCategoriesFromSharedPreferences();
-        categories.remove(TOP);
         list.setAdapter(getAdapter(categories, android.R.layout.simple_list_item_1));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -63,6 +63,7 @@ public class CategoryManager {
 
     public void fill(Spinner filter) {
         final Map<String, String> categories = getCategoriesFromSharedPreferences();
+        Util.addToStart((LinkedHashMap<String, String>) categories, TOP, activity.getString(R.string.search_filter));
         filter.setVisibility(View.VISIBLE);
         filter.setAdapter(getAdapter(categories, R.layout.spinner_item));
         filter.setSelection(0);
@@ -84,7 +85,7 @@ public class CategoryManager {
             || chosenCategoryId.equals(TOP)
             || appCategoryId.equals(chosenCategoryId)
             || getCategorySet(chosenCategoryId).contains(appCategoryId)
-            ;
+        ;
     }
 
     private ArrayAdapter getAdapter(Map<String, String> categories, int itemLayoutId) {
@@ -114,7 +115,6 @@ public class CategoryManager {
 
     private Map<String, String> getCategoriesFromSharedPreferences() {
         Map<String, String> categories = new TreeMap<>();
-        categories.put(TOP, activity.getString(R.string.search_filter));
         Set<String> topSet = getCategorySet(TOP);
         for (String topCategoryId: topSet) {
             categories.put(topCategoryId, translator.getString(topCategoryId));
@@ -123,7 +123,7 @@ public class CategoryManager {
                 categories.put(subCategoryId, categories.get(topCategoryId) + " - " + translator.getString(subCategoryId));
             }
         }
-        return categories;
+        return Util.sort(categories);
     }
 
     private Set<String> getCategorySet(String parent) {
