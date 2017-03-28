@@ -145,6 +145,9 @@
     <string name="pref_no_root">Это возможно только на рутованных устройствах</string>
     <string name="pref_requested_language">Язык запросов к Play Store</string>
     <string name="pref_requested_language_default">По-умолчанию</string>
+    <string name="pref_hide_apps_with_ads">Не показывать приложения с рекламой</string>
+    <string name="pref_hide_apps_with_ads_summary_off">Сейчас приложения с рекламой отображаются</string>
+    <string name="pref_hide_apps_with_ads_summary_on">Сейчас приложения с рекламой не отображаются</string>
     <string name="download_manager_ERROR_UNKNOWN">Неизвестная ошибка.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Неизвестная ошибка сохранения файла.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Сетевая ошибка. Попробуйте позднее.</string>

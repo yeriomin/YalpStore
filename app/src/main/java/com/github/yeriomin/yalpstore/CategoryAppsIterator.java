@@ -1,5 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
+import android.util.Log;
+
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.ListResponse;
 import com.github.yeriomin.yalpstore.model.App;
@@ -20,7 +22,12 @@ public class CategoryAppsIterator extends AppListIterator {
         List<App> apps = new ArrayList<>();
         ListResponse response = ((com.github.yeriomin.playstoreapi.CategoryAppsIterator) iterator).next();
         for (DocV2 details : response.getDocList().get(0).getChildList()) {
-            apps.add(AppBuilder.build(details));
+            App app = AppBuilder.build(details);
+            if (shouldSkip(app)) {
+                Log.i(this.getClass().getName(), "Skipping non-free/ad-containing app " + app.getPackageName());
+            } else {
+                apps.add(app);
+            }
         }
         return apps;
     }

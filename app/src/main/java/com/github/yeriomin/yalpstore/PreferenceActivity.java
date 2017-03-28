@@ -1,8 +1,11 @@
 package com.github.yeriomin.yalpstore;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
+import android.preference.PreferenceManager;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 
@@ -11,6 +14,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_GSF_ID = "PREFERENCE_GSF_ID";
     public static final String PREFERENCE_AUTO_INSTALL = "PREFERENCE_AUTO_INSTALL";
     public static final String PREFERENCE_HIDE_NONFREE_APPS = "PREFERENCE_HIDE_NONFREE_APPS";
+    public static final String PREFERENCE_HIDE_APPS_WITH_ADS = "PREFERENCE_HIDE_APPS_WITH_ADS";
     public static final String PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK = "PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK";
     public static final String PREFERENCE_UPDATE_LIST = "PREFERENCE_UPDATE_LIST";
     public static final String PREFERENCE_UI_THEME = "PREFERENCE_UI_THEME";

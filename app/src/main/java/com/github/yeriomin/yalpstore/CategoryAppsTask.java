@@ -1,5 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
+import android.preference.PreferenceManager;
+
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ class CategoryAppsTask extends GoogleApiAsyncTask {
         PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
         try {
             CategoryAppsIterator iterator = wrapper.getCategoryAppsIterator(params[0]);
+            iterator.setHideAppsWithAds(PreferenceManager.getDefaultSharedPreferences(context).getBoolean(PreferenceActivity.PREFERENCE_HIDE_APPS_WITH_ADS, false));
+            iterator.setHideNonfreeApps(PreferenceManager.getDefaultSharedPreferences(context).getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false));
             if (!iterator.hasNext()) {
                 return null;
             }

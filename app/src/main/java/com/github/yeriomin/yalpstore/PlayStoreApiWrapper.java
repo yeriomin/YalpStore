@@ -134,6 +134,7 @@ public class PlayStoreApiWrapper {
         ) {
             searchResultIterator = new AppSearchResultIterator(new SearchIterator(new PlayStoreApiAuthenticator(context).getApi(), query));
             searchResultIterator.setHideNonfreeApps(hideNonFree());
+            searchResultIterator.setHideAppsWithAds(hideAppsWithAds());
             searchResultIterator.setCategoryId(categoryId);
         }
         return searchResultIterator;
@@ -201,5 +202,10 @@ public class PlayStoreApiWrapper {
     private boolean hideNonFree() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         return sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
+    }
+
+    private boolean hideAppsWithAds() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_APPS_WITH_ADS, false);
     }
 }

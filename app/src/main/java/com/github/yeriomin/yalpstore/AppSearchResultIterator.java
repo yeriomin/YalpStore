@@ -27,8 +27,8 @@ class AppSearchResultIterator extends AppListIterator {
         SearchResponse response = ((SearchIterator) iterator).next();
         for (DocV2 details : response.getDocList().get(0).getChildList()) {
             App app = AppBuilder.build(details);
-            if (hideNonfreeApps && !app.isFree()) {
-                Log.i(this.getClass().getName(), "Skipping non-free app " + app.getPackageName());
+            if (shouldSkip(app)) {
+                Log.i(this.getClass().getName(), "Skipping non-free/ad-containing app " + app.getPackageName());
             } else {
                 apps.add(app);
             }

@@ -20,6 +20,12 @@
         android:title="@string/pref_hide_nonfree_apps" />
     <CheckBoxPreference
         android:defaultValue="false"
+        android:key="PREFERENCE_HIDE_APPS_WITH_ADS"
+        android:summaryOff="@string/pref_hide_apps_with_ads_summary_off"
+        android:summaryOn="@string/pref_hide_apps_with_ads_summary_on"
+        android:title="@string/pref_hide_apps_with_ads" />
+    <CheckBoxPreference
+        android:defaultValue="false"
         android:key="PREFERENCE_AUTO_INSTALL"
         android:summaryOff="@string/pref_auto_install_summary_off"
         android:summaryOn="@string/pref_auto_install_summary_on"
