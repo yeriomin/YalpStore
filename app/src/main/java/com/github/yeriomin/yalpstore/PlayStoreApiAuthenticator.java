@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.github.yeriomin.playstoreapi.ApiBuilderException;
+import com.github.yeriomin.playstoreapi.DeviceInfoProvider;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 
 import java.io.IOException;
@@ -62,14 +63,15 @@ public class PlayStoreApiAuthenticator {
             throw new CredentialsEmptyException();
         }
 
-        NativeDeviceInfoProvider deviceInfoProvider = new NativeDeviceInfoProvider();
-        deviceInfoProvider.setContext(context);
-        deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
         com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
-            .setDeviceInfoProvider(deviceInfoProvider)
+            .setDeviceInfoProvider(getDeviceInfoProvider())
             .setEmail(email)
         ;
         builder.setHttpClient(new NativeHttpClientAdapter());
+        String locale = prefs.getString(PreferenceActivity.PREFERENCE_REQUESTED_LANGUAGE, "");
+        if (!TextUtils.isEmpty(locale)) {
+            builder.setLocale(new Locale(locale));
+        }
         if (null != password) {
             builder.setPassword(password);
         }
@@ -91,5 +93,12 @@ public class PlayStoreApiAuthenticator {
         prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, api.getToken());
         prefsEditor.commit();
         return api;
+    }
+
+    private DeviceInfoProvider getDeviceInfoProvider() {
+        NativeDeviceInfoProvider deviceInfoProvider = new NativeDeviceInfoProvider();
+        deviceInfoProvider.setContext(context);
+        deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
+        return deviceInfoProvider;
     }
 }

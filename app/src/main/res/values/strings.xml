@@ -142,6 +142,8 @@
     <string name="pref_background_update_install_summary_on">Updates are installed if found (root)</string>
     <string name="pref_background_update_install">Also install the updates (root)</string>
     <string name="pref_no_root">This option is only available on rooted devices</string>
+    <string name="pref_requested_language">Play Store requests language </string>
+    <string name="pref_requested_language_default">Your default language</string>
     <string name="download_manager_ERROR_UNKNOWN">Unknown error.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unknown file storage error.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">HTTP code was received that download manager can not handle. This is a server error.</string>

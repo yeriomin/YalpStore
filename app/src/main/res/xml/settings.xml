@@ -32,7 +32,6 @@
         android:title="@string/pref_delete_apk_after_install" />
     <ListPreference
         android:key="PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK"
-        android:defaultValue="black"
         android:title="@string/pref_update_list_white_or_black"
         android:entries="@array/blackOrWhiteLabels"
         android:entryValues="@array/blackOrWhiteValues"/>
@@ -42,8 +41,10 @@
         android:title="@string/pref_update_list_black" />
     <ListPreference
         android:key="PREFERENCE_UI_THEME"
-        android:defaultValue="none"
         android:title="@string/pref_ui_theme"
         android:entries="@array/uiThemeLabels"
         android:entryValues="@array/uiThemeValues"/>
+    <ListPreference
+        android:key="PREFERENCE_REQUESTED_LANGUAGE"
+        android:title="@string/pref_requested_language"/>
 </PreferenceScreen>

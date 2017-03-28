@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.text.TextUtils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
@@ -28,6 +29,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_BACKGROUND_UPDATE_INTERVAL = "PREFERENCE_BACKGROUND_UPDATE_INTERVAL";
     public static final String PREFERENCE_DELETE_APK_AFTER_INSTALL = "PREFERENCE_DELETE_APK_AFTER_INSTALL";
     public static final String PREFERENCE_BACKGROUND_UPDATE_INSTALL = "PREFERENCE_BACKGROUND_UPDATE_INSTALL";
+    public static final String PREFERENCE_REQUESTED_LANGUAGE = "PREFERENCE_REQUESTED_LANGUAGE";
 
     public static final String LIST_WHITE = "white";
     public static final String LIST_BLACK = "black";
@@ -52,18 +54,14 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
             (ListPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INTERVAL),
             (CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INSTALL)
         );
+        prepareLanguageList((ListPreference) findPreference(PREFERENCE_REQUESTED_LANGUAGE));
     }
 
     private void prepareBlacklist(ListPreference blackOrWhite, final MultiSelectListPreference appList) {
         Map<String, String> appNames = getInstalledAppNames();
-        List<String> labels = getSortedLabels(new ArrayList<>(appNames.keySet()));
-        List<String> values = new ArrayList<>();
-        for (String label: labels) {
-            values.add(appNames.get(label));
-        }
-        int appCount = values.size();
-        appList.setEntries(labels.toArray(new String[appCount]));
-        appList.setEntryValues(values.toArray(new String[appCount]));
+        int count = appNames.size();
+        appList.setEntries(appNames.values().toArray(new String[count]));
+        appList.setEntryValues(appNames.keySet().toArray(new String[count]));
         appList.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -95,37 +93,27 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
                 // This is a system app - skipping
                 continue;
             }
-            appNames.put(pm.getApplicationLabel(info.applicationInfo).toString(), info.packageName);
+            appNames.put(info.packageName, pm.getApplicationLabel(info.applicationInfo).toString());
         }
-        return appNames;
-    }
-
-    private List<String> getSortedLabels(List<String> labels) {
-        Collections.sort(
-            labels,
-            new Comparator<Object>() {
-                public int compare(Object o1, Object o2) {
-                    String s1 = (String) o1;
-                    String s2 = (String) o2;
-                    return s1.toLowerCase().compareTo(s2.toLowerCase());
-                }
-            }
-        );
-        return labels;
+        return Util.sort(appNames);
     }
 
     private void prepareTheme(ListPreference theme) {
-        theme.setSummary(getString(getThemeSummaryStringId(theme.getValue())));
-        theme.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+        Preference.OnPreferenceChangeListener listener = new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, final Object newValue) {
                 preference.setSummary(getString(getThemeSummaryStringId((String) newValue)));
                 return true;
             }
-        });
+        };
+        listener.onPreferenceChange(theme, theme.getValue());
+        theme.setOnPreferenceChangeListener(listener);
     }
 
     private int getThemeSummaryStringId(String theme) {
+        if (null == theme) {
+            return R.string.pref_ui_theme_none;
+        }
         int summaryId;
         switch (theme) {
             case THEME_LIGHT:
@@ -199,5 +187,42 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         } catch (NumberFormatException e) {
             return 0;
         }
+    }
+
+    private void prepareLanguageList(ListPreference languagesPreference) {
+        final Map<String, String> localeList = getLanguages();
+        int count = localeList.size();
+        languagesPreference.setEntries(localeList.values().toArray(new CharSequence[count]));
+        languagesPreference.setEntryValues(localeList.keySet().toArray(new CharSequence[count]));
+        Preference.OnPreferenceChangeListener listener = new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (TextUtils.isEmpty((CharSequence) newValue)) {
+                    preference.setSummary(getString(R.string.pref_requested_language_default));
+                    return true;
+                }
+                preference.setSummary(localeList.get(newValue));
+                try {
+                    new PlayStoreApiAuthenticator(PreferenceActivity.this).getApi().setLocale(new Locale((String) newValue));
+                } catch (IOException e) {
+                    // Should be impossible to get to preferences with incorrect credentials
+                }
+                return true;
+            }
+        };
+        languagesPreference.setOnPreferenceChangeListener(listener);
+        listener.onPreferenceChange(languagesPreference, languagesPreference.getValue());
+    }
+
+    private Map<String, String> getLanguages() {
+        Map<String, String> languages = new HashMap<>();
+        for (Locale locale: Locale.getAvailableLocales()) {
+            String displayName = locale.getDisplayName();
+            displayName = displayName.substring(0, 1).toUpperCase() + displayName.substring(1);
+            languages.put(locale.toString(), displayName);
+        }
+        languages = Util.sort(languages);
+        Util.addToStart((LinkedHashMap<String, String>) languages, "", getString(R.string.pref_requested_language_default));
+        return languages;
     }
 }
