@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -30,6 +29,10 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String THEME_LIGHT = "light";
     public static final String THEME_DARK = "dark";
     public static final String THEME_BLACK = "black";
+
+    static public boolean getBoolean(Context context, String key) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, false);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

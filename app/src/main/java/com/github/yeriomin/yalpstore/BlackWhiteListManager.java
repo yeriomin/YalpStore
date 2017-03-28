@@ -46,11 +46,6 @@ public class BlackWhiteListManager {
         return blackWhiteSet;
     }
 
-    public void clear() {
-        blackWhiteSet.clear();
-        save();
-    }
-
     public boolean contains(String s) {
         return blackWhiteSet.contains(s);
     }

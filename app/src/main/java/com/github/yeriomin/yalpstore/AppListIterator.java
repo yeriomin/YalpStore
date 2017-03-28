@@ -1,8 +1,11 @@
 package com.github.yeriomin.yalpstore;
 
+import android.util.Log;
+
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.Iterator;
+import java.util.List;
 
 public abstract class AppListIterator implements Iterator {
 
@@ -38,5 +41,13 @@ public abstract class AppListIterator implements Iterator {
 
     protected boolean shouldSkip(App app) {
         return (hideNonfreeApps && !app.isFree()) || (hideAppsWithAds && app.containsAds());
+    }
+
+    protected void addApp(List<App> apps, App app) {
+        if (shouldSkip(app)) {
+            Log.i(getClass().getName(), "Skipping non-free/ad-containing app " + app.getPackageName());
+        } else {
+            apps.add(app);
+        }
     }
 }

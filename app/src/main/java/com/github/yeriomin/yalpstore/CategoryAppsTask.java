@@ -1,9 +1,8 @@
 package com.github.yeriomin.yalpstore;
 
-import android.preference.PreferenceManager;
-
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +16,8 @@ class CategoryAppsTask extends GoogleApiAsyncTask {
      */
     @Override
     protected Throwable doInBackground(String... params) {
-        PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
         try {
-            CategoryAppsIterator iterator = wrapper.getCategoryAppsIterator(params[0]);
-            iterator.setHideAppsWithAds(PreferenceManager.getDefaultSharedPreferences(context).getBoolean(PreferenceActivity.PREFERENCE_HIDE_APPS_WITH_ADS, false));
-            iterator.setHideNonfreeApps(PreferenceManager.getDefaultSharedPreferences(context).getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false));
+            CategoryAppsIterator iterator = getIterator(params[0]);
             if (!iterator.hasNext()) {
                 return null;
             }
@@ -32,5 +28,13 @@ class CategoryAppsTask extends GoogleApiAsyncTask {
             return e;
         }
         return null;
+    }
+
+    private CategoryAppsIterator getIterator(String categoryId) throws IOException {
+        PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
+        CategoryAppsIterator iterator = wrapper.getCategoryAppsIterator(categoryId);
+        iterator.setHideAppsWithAds(PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_APPS_WITH_ADS));
+        iterator.setHideNonfreeApps(PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS));
+        return iterator;
     }
 }

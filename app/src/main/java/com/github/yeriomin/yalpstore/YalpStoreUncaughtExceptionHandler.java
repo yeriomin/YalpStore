@@ -5,17 +5,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Looper;
 import android.text.ClipboardManager;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.util.Log;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 class YalpStoreUncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
 

@@ -1,9 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -106,7 +104,7 @@ public class PlayStoreApiWrapper {
     public List<App> getDetails(List<String> packageIds) throws IOException {
         List<App> apps = new ArrayList<>();
         int i = -1;
-        boolean hideNonFree = hideNonFree();
+        boolean hideNonFree = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS);
         for (BulkDetailsEntry details: new PlayStoreApiAuthenticator(context).getApi().bulkDetails(packageIds).getEntryList()) {
             i++;
             if (!details.hasDoc()) {
@@ -133,8 +131,8 @@ public class PlayStoreApiWrapper {
             || !searchResultIterator.getCategoryId().equals(categoryId)
         ) {
             searchResultIterator = new AppSearchResultIterator(new SearchIterator(new PlayStoreApiAuthenticator(context).getApi(), query));
-            searchResultIterator.setHideNonfreeApps(hideNonFree());
-            searchResultIterator.setHideAppsWithAds(hideAppsWithAds());
+            searchResultIterator.setHideNonfreeApps(PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS));
+            searchResultIterator.setHideAppsWithAds(PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_APPS_WITH_ADS));
             searchResultIterator.setCategoryId(categoryId);
         }
         return searchResultIterator;
@@ -197,15 +195,5 @@ public class PlayStoreApiWrapper {
         } else {
             throw new NotPurchasedException();
         }
-    }
-
-    private boolean hideNonFree() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS, false);
-    }
-
-    private boolean hideAppsWithAds() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return sharedPreferences.getBoolean(PreferenceActivity.PREFERENCE_HIDE_APPS_WITH_ADS, false);
     }
 }

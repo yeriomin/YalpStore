@@ -1,7 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.util.Log;
-
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.SearchIterator;
 import com.github.yeriomin.playstoreapi.SearchResponse;
@@ -26,12 +24,7 @@ class AppSearchResultIterator extends AppListIterator {
         List<App> apps = new ArrayList<>();
         SearchResponse response = ((SearchIterator) iterator).next();
         for (DocV2 details : response.getDocList().get(0).getChildList()) {
-            App app = AppBuilder.build(details);
-            if (shouldSkip(app)) {
-                Log.i(this.getClass().getName(), "Skipping non-free/ad-containing app " + app.getPackageName());
-            } else {
-                apps.add(app);
-            }
+            addApp(apps, AppBuilder.build(details));
         }
         return apps;
     }

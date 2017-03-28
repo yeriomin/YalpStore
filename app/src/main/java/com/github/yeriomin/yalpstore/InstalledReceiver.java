@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -34,10 +33,7 @@ public class InstalledReceiver extends BroadcastReceiver {
     }
 
     static private boolean needToRemoveApk(Context context) {
-        return PreferenceManager
-            .getDefaultSharedPreferences(context)
-            .getBoolean(PreferenceActivity.PREFERENCE_DELETE_APK_AFTER_INSTALL, false)
-            ;
+        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DELETE_APK_AFTER_INSTALL);
     }
 
     static private App getApp(Context context, String packageName) {
