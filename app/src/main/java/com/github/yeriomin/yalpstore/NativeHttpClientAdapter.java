@@ -76,6 +76,8 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
             OutputStream outputStream = connection.getOutputStream();
             outputStream.write(body);
             outputStream.close();
+        } else {
+            connection.setDoOutput(false);
         }
 
         byte[] content = new byte[0];
@@ -89,8 +91,13 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
             content = readFully(inputStream);
             inputStream.close();
         } catch (IOException e) {
+            InputStream errorStream = new BufferedInputStream(connection.getErrorStream());
+            content = readFully(errorStream);
+            errorStream.close();
             Log.e(getClass().getName(), "Exception " + e.getClass().getName() + " " + e.getMessage());
-            throw e;
+            if (code < 400) {
+                throw e;
+            }
         } finally {
             connection.disconnect();
         }
