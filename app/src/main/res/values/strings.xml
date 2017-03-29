@@ -100,7 +100,7 @@
     <string name="credentials_hint_password">password here</string>
     <string name="credentials_title">Google account access</string>
     <string name="credentials_message">Google account email and password are required for this app to function.\n\nKeep in mind that using this app violates Play Store ToS. It would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store ToS.</string>
-    <string name="activity_title_updates">Updates</string>
+    <string name="activity_title_updates">Your apps</string>
     <string name="activity_title_search">"Searching: \"%1$s\""</string>
     <string name="notification_installation_complete">Update installed.</string>
     <string name="notification_installation_complete_toast">"App %1$s updated."</string>

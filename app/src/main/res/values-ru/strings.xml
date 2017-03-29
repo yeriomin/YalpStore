@@ -101,7 +101,7 @@
     <string name="credentials_hint_password">пароль</string>
     <string name="credentials_title">Вход в аккаунт Google</string>
     <string name="credentials_message">Для работы приложения требуются данные для доступа к аккаунту Google.\n\nИмейте в виду, что это приложение нарушает договор использования Play Store. Так что безопаснее использовать любой одноразовый Google аккаунт, под которым вы хотя бы раз залогинились в Play Store.</string>
-    <string name="activity_title_updates">Обновления</string>
+    <string name="activity_title_updates">Ваши приложения</string>
     <string name="activity_title_search">"Поиск: \"%1$s\""</string>
     <string name="notification_installation_complete">Установлено обновление.</string>
     <string name="notification_installation_complete_toast">"Приложение %1$s обновлено."</string>
