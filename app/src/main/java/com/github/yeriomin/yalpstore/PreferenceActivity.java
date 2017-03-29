@@ -21,6 +21,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_DELETE_APK_AFTER_INSTALL = "PREFERENCE_DELETE_APK_AFTER_INSTALL";
     public static final String PREFERENCE_BACKGROUND_UPDATE_INSTALL = "PREFERENCE_BACKGROUND_UPDATE_INSTALL";
     public static final String PREFERENCE_REQUESTED_LANGUAGE = "PREFERENCE_REQUESTED_LANGUAGE";
+    public static final String PREFERENCE_DEVICE_TO_PRETEND_TO_BE = "PREFERENCE_DEVICE_TO_PRETEND_TO_BE";
 
     public static final String LIST_WHITE = "white";
     public static final String LIST_BLACK = "black";
@@ -39,23 +40,42 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
+        drawBlackList();
+        drawLanguages();
+        drawTheme();
+        drawUpdatesCheck();
+        drawDevices();
+    }
 
+    private void drawBlackList() {
         PreferenceBlacklistFragment blacklistFragment = new PreferenceBlacklistFragment(this);
         blacklistFragment.setBlackOrWhite((ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK));
         blacklistFragment.setAppList((MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST));
         blacklistFragment.draw();
+    }
 
+    private void drawTheme() {
         PreferenceThemeFragment themeFragment = new PreferenceThemeFragment(this);
         themeFragment.setThemePreference((ListPreference) findPreference(PREFERENCE_UI_THEME));
         themeFragment.draw();
+    }
 
+    private void drawUpdatesCheck() {
         PreferenceCheckUpdatesFragment checkUpdatesFragment = new PreferenceCheckUpdatesFragment(this);
         checkUpdatesFragment.setCheckForUpdates((ListPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INTERVAL));
         checkUpdatesFragment.setAlsoInstall((CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INSTALL));
         checkUpdatesFragment.draw();
+    }
 
+    private void drawLanguages() {
         PreferenceLanguageFragment languageFragment = new PreferenceLanguageFragment(this);
-        languageFragment.setLanguagesPreference((ListPreference) findPreference(PREFERENCE_REQUESTED_LANGUAGE));
+        languageFragment.setListPreference((ListPreference) findPreference(PREFERENCE_REQUESTED_LANGUAGE));
+        languageFragment.draw();
+    }
+
+    private void drawDevices() {
+        PreferenceDeviceFragment languageFragment = new PreferenceDeviceFragment(this);
+        languageFragment.setListPreference((ListPreference) findPreference(PREFERENCE_DEVICE_TO_PRETEND_TO_BE));
         languageFragment.draw();
     }
 }

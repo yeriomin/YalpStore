@@ -145,6 +145,9 @@
     <string name="pref_no_root">Это возможно только на рутованных устройствах</string>
     <string name="pref_requested_language">Язык запросов к Play Store</string>
     <string name="pref_requested_language_default">По-умолчанию</string>
+    <string name="pref_device_to_pretend_to_be">Притворяться другим устройством</string>
+    <string name="pref_device_to_pretend_to_be_default">Информация от вашего устройства</string>
+    <string name="pref_device_to_pretend_to_be_toast">Это изменение вступит в силу только после того как вы разлогигитесь</string>
     <string name="pref_hide_apps_with_ads">Не показывать приложения с рекламой</string>
     <string name="pref_hide_apps_with_ads_summary_off">Сейчас приложения с рекламой отображаются</string>
     <string name="pref_hide_apps_with_ads_summary_on">Сейчас приложения с рекламой не отображаются</string>

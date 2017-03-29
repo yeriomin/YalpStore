@@ -21,7 +21,6 @@ import java.util.TreeMap;
 public class CategoryManager {
 
     public static final String TOP = "0_CATEGORY_TOP";
-    private static final String DELIMITER = ",";
 
     private Activity activity;
     private SharedPreferencesTranslator translator;
@@ -44,7 +43,7 @@ public class CategoryManager {
     }
 
     public void save(String parent, Map<String, String> categories) {
-        putCategorySet(parent, categories.keySet());
+        Util.putStringSet(activity, parent, categories.keySet());
         for (String categoryId: categories.keySet()) {
             translator.putString(categoryId, categories.get(categoryId));
         }
@@ -84,7 +83,7 @@ public class CategoryManager {
         return null == chosenCategoryId
             || chosenCategoryId.equals(TOP)
             || appCategoryId.equals(chosenCategoryId)
-            || getCategorySet(chosenCategoryId).contains(appCategoryId)
+            || Util.getStringSet(activity, chosenCategoryId).contains(appCategoryId)
         ;
     }
 
@@ -97,7 +96,7 @@ public class CategoryManager {
     }
 
     private boolean needToDownload() {
-        Set<String> topSet = getCategorySet(TOP);
+        Set<String> topSet = Util.getStringSet(activity, TOP);
         if (topSet.isEmpty()) {
             return true;
         }
@@ -115,22 +114,14 @@ public class CategoryManager {
 
     private Map<String, String> getCategoriesFromSharedPreferences() {
         Map<String, String> categories = new TreeMap<>();
-        Set<String> topSet = getCategorySet(TOP);
+        Set<String> topSet = Util.getStringSet(activity, TOP);
         for (String topCategoryId: topSet) {
             categories.put(topCategoryId, translator.getString(topCategoryId));
-            Set<String> subSet = getCategorySet(topCategoryId);
+            Set<String> subSet = Util.getStringSet(activity, topCategoryId);
             for (String subCategoryId: subSet) {
                 categories.put(subCategoryId, categories.get(topCategoryId) + " - " + translator.getString(subCategoryId));
             }
         }
         return Util.sort(categories);
-    }
-
-    private Set<String> getCategorySet(String parent) {
-        return new HashSet<>(Arrays.asList(TextUtils.split(prefs.getString(parent, ""), DELIMITER)));
-    }
-
-    private void putCategorySet(String parent, Set<String> categories) {
-        prefs.edit().putString(parent, TextUtils.join(DELIMITER, categories)).commit();
     }
 }

@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import com.github.yeriomin.playstoreapi.ApiBuilderException;
 import com.github.yeriomin.playstoreapi.DeviceInfoProvider;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -56,31 +57,24 @@ public class PlayStoreApiAuthenticator {
     }
 
     private GooglePlayAPI build(String email, String password) throws IOException {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String gsfId = prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
-        String token = prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, "");
         if (TextUtils.isEmpty(email)) {
             throw new CredentialsEmptyException();
         }
 
-        com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
-            .setDeviceInfoProvider(getDeviceInfoProvider())
-            .setEmail(email)
-        ;
-        builder.setHttpClient(new NativeHttpClientAdapter());
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String locale = prefs.getString(PreferenceActivity.PREFERENCE_REQUESTED_LANGUAGE, "");
-        if (!TextUtils.isEmpty(locale)) {
-            builder.setLocale(new Locale(locale));
-        }
-        if (null != password) {
-            builder.setPassword(password);
-        }
-        if (!TextUtils.isEmpty(gsfId)) {
-            builder.setGsfId(gsfId);
-        }
-        if (!TextUtils.isEmpty(token)) {
-            builder.setToken(token);
-        }
+        String gsfId = prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
+        String token = prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, "");
+
+        com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
+            .setHttpClient(new NativeHttpClientAdapter())
+            .setDeviceInfoProvider(getDeviceInfoProvider())
+            .setLocale(new Locale(locale))
+            .setEmail(email)
+            .setPassword(password)
+            .setGsfId(gsfId)
+            .setToken(token)
+        ;
         try {
             api = builder.build();
         } catch (ApiBuilderException e) {
@@ -96,9 +90,18 @@ public class PlayStoreApiAuthenticator {
     }
 
     private DeviceInfoProvider getDeviceInfoProvider() {
-        NativeDeviceInfoProvider deviceInfoProvider = new NativeDeviceInfoProvider();
-        deviceInfoProvider.setContext(context);
-        deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
+        DeviceInfoProvider deviceInfoProvider;
+        String spoofDevice = PreferenceManager.getDefaultSharedPreferences(context)
+            .getString(PreferenceActivity.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "")
+        ;
+        if (TextUtils.isEmpty(spoofDevice)) {
+            deviceInfoProvider = new NativeDeviceInfoProvider();
+            ((NativeDeviceInfoProvider) deviceInfoProvider).setContext(context);
+            ((NativeDeviceInfoProvider) deviceInfoProvider).setLocaleString(Locale.getDefault().toString());
+        } else {
+            deviceInfoProvider = new PropertiesDeviceInfoProvider();
+            ((PropertiesDeviceInfoProvider) deviceInfoProvider).setProperties(new SpoofDeviceManager(context).getProperties(spoofDevice));
+        }
         return deviceInfoProvider;
     }
 }

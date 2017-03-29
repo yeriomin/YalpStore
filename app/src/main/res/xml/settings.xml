@@ -53,4 +53,7 @@
     <ListPreference
         android:key="PREFERENCE_REQUESTED_LANGUAGE"
         android:title="@string/pref_requested_language"/>
+    <ListPreference
+        android:key="PREFERENCE_DEVICE_TO_PRETEND_TO_BE"
+        android:title="@string/pref_device_to_pretend_to_be"/>
 </PreferenceScreen>
