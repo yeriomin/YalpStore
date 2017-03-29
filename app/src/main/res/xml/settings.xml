@@ -1,59 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ListPreference
-        android:key="PREFERENCE_BACKGROUND_UPDATE_INTERVAL"
-        android:title="@string/pref_background_update_interval"
-        android:entries="@array/updateIntervalLabels"
-        android:entryValues="@array/updateIntervalValues" />
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="PREFERENCE_BACKGROUND_UPDATE_INSTALL"
-        android:summaryOff="@string/pref_background_update_install_summary_off"
-        android:summaryOn="@string/pref_background_update_install_summary_on"
-        android:title="@string/pref_background_update_install" />
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="PREFERENCE_HIDE_NONFREE_APPS"
-        android:summaryOff="@string/pref_hide_nonfree_apps_summary_off"
-        android:summaryOn="@string/pref_hide_nonfree_apps_summary_on"
-        android:title="@string/pref_hide_nonfree_apps" />
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="PREFERENCE_HIDE_APPS_WITH_ADS"
-        android:summaryOff="@string/pref_hide_apps_with_ads_summary_off"
-        android:summaryOn="@string/pref_hide_apps_with_ads_summary_on"
-        android:title="@string/pref_hide_apps_with_ads" />
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="PREFERENCE_AUTO_INSTALL"
-        android:summaryOff="@string/pref_auto_install_summary_off"
-        android:summaryOn="@string/pref_auto_install_summary_on"
-        android:title="@string/pref_auto_install" />
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="PREFERENCE_DELETE_APK_AFTER_INSTALL"
-        android:summaryOff="@string/pref_delete_apk_after_install_summary_off"
-        android:summaryOn="@string/pref_delete_apk_after_install_summary_on"
-        android:title="@string/pref_delete_apk_after_install" />
-    <ListPreference
-        android:key="PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK"
-        android:title="@string/pref_update_list_white_or_black"
-        android:entries="@array/blackOrWhiteLabels"
-        android:entryValues="@array/blackOrWhiteValues"/>
-    <com.github.yeriomin.yalpstore.MultiSelectListPreference
-        android:persistent="true"
-        android:key="PREFERENCE_UPDATE_LIST"
-        android:title="@string/pref_update_list_black" />
-    <ListPreference
-        android:key="PREFERENCE_UI_THEME"
-        android:title="@string/pref_ui_theme"
-        android:entries="@array/uiThemeLabels"
-        android:entryValues="@array/uiThemeValues"/>
-    <ListPreference
-        android:key="PREFERENCE_REQUESTED_LANGUAGE"
-        android:title="@string/pref_requested_language"/>
-    <ListPreference
-        android:key="PREFERENCE_DEVICE_TO_PRETEND_TO_BE"
-        android:title="@string/pref_device_to_pretend_to_be"/>
+    <PreferenceCategory android:title="@string/pref_category_updates">
+        <ListPreference
+            android:key="PREFERENCE_BACKGROUND_UPDATE_INTERVAL"
+            android:title="@string/pref_background_update_interval"
+            android:entries="@array/updateIntervalLabels"
+            android:entryValues="@array/updateIntervalValues" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="PREFERENCE_BACKGROUND_UPDATE_INSTALL"
+            android:summaryOff="@string/pref_background_update_install_summary_off"
+            android:summaryOn="@string/pref_background_update_install_summary_on"
+            android:title="@string/pref_background_update_install" />
+        <ListPreference
+            android:key="PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK"
+            android:title="@string/pref_update_list_white_or_black"
+            android:entries="@array/blackOrWhiteLabels"
+            android:entryValues="@array/blackOrWhiteValues"/>
+        <com.github.yeriomin.yalpstore.MultiSelectListPreference
+            android:persistent="true"
+            android:key="PREFERENCE_UPDATE_LIST"
+            android:title="@string/pref_update_list_black" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_category_search">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="PREFERENCE_HIDE_NONFREE_APPS"
+            android:summaryOff="@string/pref_hide_nonfree_apps_summary_off"
+            android:summaryOn="@string/pref_hide_nonfree_apps_summary_on"
+            android:title="@string/pref_hide_nonfree_apps" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="PREFERENCE_HIDE_APPS_WITH_ADS"
+            android:summaryOff="@string/pref_hide_apps_with_ads_summary_off"
+            android:summaryOn="@string/pref_hide_apps_with_ads_summary_on"
+            android:title="@string/pref_hide_apps_with_ads" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_category_installation">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="PREFERENCE_AUTO_INSTALL"
+            android:summaryOff="@string/pref_auto_install_summary_off"
+            android:summaryOn="@string/pref_auto_install_summary_on"
+            android:title="@string/pref_auto_install" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="PREFERENCE_DELETE_APK_AFTER_INSTALL"
+            android:summaryOff="@string/pref_delete_apk_after_install_summary_off"
+            android:summaryOn="@string/pref_delete_apk_after_install_summary_on"
+            android:title="@string/pref_delete_apk_after_install" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_category_spoofing">
+        <ListPreference
+            android:key="PREFERENCE_REQUESTED_LANGUAGE"
+            android:title="@string/pref_requested_language"/>
+        <ListPreference
+            android:key="PREFERENCE_DEVICE_TO_PRETEND_TO_BE"
+            android:title="@string/pref_device_to_pretend_to_be"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_category_ui">
+        <ListPreference
+            android:key="PREFERENCE_UI_THEME"
+            android:title="@string/pref_ui_theme"
+            android:entries="@array/uiThemeLabels"
+            android:entryValues="@array/uiThemeValues"/>
+    </PreferenceCategory>
 </PreferenceScreen>

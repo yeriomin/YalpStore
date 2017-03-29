@@ -151,6 +151,11 @@
     <string name="pref_hide_apps_with_ads">Не показывать приложения с рекламой</string>
     <string name="pref_hide_apps_with_ads_summary_off">Сейчас приложения с рекламой отображаются</string>
     <string name="pref_hide_apps_with_ads_summary_on">Сейчас приложения с рекламой не отображаются</string>
+    <string name="pref_category_updates">Обновления</string>
+    <string name="pref_category_search">Фильтрация при поиске</string>
+    <string name="pref_category_installation">Установка приложений</string>
+    <string name="pref_category_spoofing">Взаимодействие с Play Store</string>
+    <string name="pref_category_ui">Интерфейс</string>
     <string name="download_manager_ERROR_UNKNOWN">Неизвестная ошибка.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Неизвестная ошибка сохранения файла.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Сетевая ошибка. Попробуйте позднее.</string>
