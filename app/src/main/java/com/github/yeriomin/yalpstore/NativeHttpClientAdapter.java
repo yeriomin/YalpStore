@@ -62,23 +62,12 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     }
 
     private byte[] request(HttpURLConnection connection, byte[] body, Map<String, String> headers) throws IOException {
+        connection.setConnectTimeout(TIMEOUT);
+        connection.setReadTimeout(TIMEOUT);
         for (String headerName: headers.keySet()) {
             connection.addRequestProperty(headerName, headers.get(headerName));
         }
-        if (null == body) {
-            body = new byte[0];
-        }
-        connection.setConnectTimeout(TIMEOUT);
-        connection.setReadTimeout(TIMEOUT);
-        connection.addRequestProperty("Content-Length", Integer.toString(body.length));
-        if (body.length > 0) {
-            connection.setDoOutput(true);
-            OutputStream outputStream = connection.getOutputStream();
-            outputStream.write(body);
-            outputStream.close();
-        } else {
-            connection.setDoOutput(false);
-        }
+        addBody(connection, body);
 
         byte[] content = new byte[0];
         Log.i(getClass().getName(), "Requesting " + connection.getURL().toString());
@@ -87,13 +76,9 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         int code = connection.getResponseCode();
         Log.i(getClass().getName(), "HTTP result code " + code);
         try {
-            InputStream inputStream = new BufferedInputStream(connection.getInputStream());
-            content = readFully(inputStream);
-            inputStream.close();
+            content = readFully(connection.getInputStream());
         } catch (IOException e) {
-            InputStream errorStream = new BufferedInputStream(connection.getErrorStream());
-            content = readFully(errorStream);
-            errorStream.close();
+            content = readFully(connection.getErrorStream());
             Log.e(getClass().getName(), "Exception " + e.getClass().getName() + " " + e.getMessage());
             if (code < 400) {
                 throw e;
@@ -114,6 +99,21 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         return null;
     }
 
+    static private void addBody(HttpURLConnection connection, byte[] body) throws IOException {
+        if (null == body) {
+            body = new byte[0];
+        }
+        connection.addRequestProperty("Content-Length", Integer.toString(body.length));
+        if (body.length > 0) {
+            connection.setDoOutput(true);
+            OutputStream outputStream = connection.getOutputStream();
+            outputStream.write(body);
+            outputStream.close();
+        } else {
+            connection.setDoOutput(false);
+        }
+    }
+
     static private void processHttpErrorCode(int code, byte[] content) throws GooglePlayException {
         if (code == 401 || code == 403) {
             AuthException e = new AuthException("Auth error", code);
@@ -130,13 +130,16 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     }
 
     static private byte[] readFully(InputStream inputStream) throws IOException {
+        InputStream bufferedInputStream = new BufferedInputStream(inputStream);
         byte[] buffer = new byte[8192];
         int bytesRead;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        while ((bytesRead = inputStream.read(buffer)) != -1) {
+        while ((bytesRead = bufferedInputStream.read(buffer)) != -1) {
             outputStream.write(buffer, 0, bytesRead);
         }
-        return outputStream.toByteArray();
+        byte[] result = outputStream.toByteArray();
+        bufferedInputStream.close();
+        return result;
     }
 
     static private String addQueryParams(String url, Map<String, String> params) {
