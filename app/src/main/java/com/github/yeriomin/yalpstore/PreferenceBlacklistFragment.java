@@ -45,7 +45,7 @@ public class PreferenceBlacklistFragment extends PreferenceFragment {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 String value = (String) newValue;
-                boolean isBlackList = value.equals(PreferenceActivity.LIST_BLACK);
+                boolean isBlackList = null != value && value.equals(PreferenceActivity.LIST_BLACK);
                 appList.setTitle(activity.getString(
                     isBlackList
                         ? R.string.pref_update_list_black
