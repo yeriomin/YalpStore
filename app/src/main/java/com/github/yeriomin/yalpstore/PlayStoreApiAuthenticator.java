@@ -41,6 +41,7 @@ public class PlayStoreApiAuthenticator {
     public void logout() {
         SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
         prefs.remove(PreferenceActivity.PREFERENCE_EMAIL);
+        prefs.remove(PreferenceActivity.PREFERENCE_GSF_ID);
         prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
         prefs.commit();
         api = null;
