@@ -30,7 +30,6 @@ public class SpoofDeviceManager {
     public Map<String, String> getDevices() {
         Map<String, String> devices = getDevicesFromSharedPreferences();
         if (devices.isEmpty()) {
-            System.out.println("getDevicesFromSharedPreferences().isEmpty()");
             devices = getDevicesFromApk();
             putDevicesToSharedPreferences(devices);
         }
