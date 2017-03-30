@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.util.Log;
 
 public class DownloadManagerFactory {
 
@@ -17,7 +18,12 @@ public class DownloadManagerFactory {
     }
 
     static private boolean nativeDownloadManagerEnabled(Context context) {
-        int state = context.getPackageManager().getApplicationEnabledSetting(DOWNLOAD_MANAGER_PACKAGE_NAME);
+        int state = PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+        try {
+            state = context.getPackageManager().getApplicationEnabledSetting(DOWNLOAD_MANAGER_PACKAGE_NAME);
+        } catch (Throwable e) {
+            Log.w(DownloadManagerFactory.class.getName(), "Could not check DownloadManager status: " + e.getMessage());
+        }
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
             return !(state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED
                 || state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER
