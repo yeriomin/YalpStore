@@ -65,7 +65,7 @@ Tocar \"Crear contraseña\" para ser redirigido"</string>
 <string name="details_versionName_updatable">"Versión %1$s → %2$s"</string>
 <string name="details_download">"Descarga"</string>
 <string name="details_install">"Instalar"</string>
-<string name="details_downloading">"Descargando..."</string>
+<string name="details_downloading">"Descargando…"</string>
 <string name="details_review_dialog_title">"Algo más que añadir?"</string>
 <string name="details_review_dialog_review_title_hint">"título aquí"</string>
 <string name="details_review_dialog_review_comment_hint">"comentario aquí"</string>
@@ -132,9 +132,9 @@ Por favor describe lo que estabas intentando hacer cuando ocurrió el error.
 
 No se enviará información privada de ningún tipo, por favor revisa el contenido del email en caso de dudas."</string>
 <string name="details_to_play_store">"Ver en el Play Store"</string>
-<string name="about_self_update_checking">"...comprobando"</string>
-<string name="about_self_update_available">"...0.%1$d disponible"</string>
-<string name="about_self_update_unavailable">"...no se encontró actualización"</string>
+<string name="about_self_update_checking">"…comprobando"</string>
+<string name="about_self_update_available">"…0.%1$d disponible"</string>
+<string name="about_self_update_unavailable">"…no se encontró actualización"</string>
 <string name="action_categories">"Categorías"</string>
 <string name="list_update_all">"Actualizar todo"</string>
 <string name="notification_installation_complete">"Actualizar instalados."</string>
@@ -155,7 +155,7 @@ No se enviará información privada de ningún tipo, por favor revisa el conteni
 <string name="details_no_ads">"Sin anuncios"</string>
 <string name="dialog_title_package_id">"Existe un paquete con este nombre"</string>
 <string name="dialog_message_package_id">"Existe un paquete con este nombre exacto. Quieres ir a su página de detalles?"</string>
-<string name="details_download_checking">"Comprobando..."</string>
+<string name="details_download_checking">"Comprobando…"</string>
 <string name="details_download_not_available">"No disponible"</string>
 <string name="manual_download_incompatible">"El Play Store considera esta app incompatible con tu dispositivo. Esto significa que el código de versión no ha sido devuelto por el servidor de Google."</string>
 <string name="manual_download_compatible">"El código de versión ha sido establecido a la última versión compatible. Si deseas la versión anterior, introduce un número inferior al actual. Si el desarrollador no ha borrado el apk anterior del Play Store, es posible que se efectúe la descarga."</string>
@@ -168,17 +168,6 @@ Ten en cuenta que descargar versiones arbitrarias del Play Store no está soport
 <string name="details_uninstall">"Desinstalar"</string>
 <string name="notification_download_starting">"Iniciando descarga"</string>
 <string name="notification_download_progress">"%1$s de %2$s descargado"</string>
-<string name="pref_requested_language">"Play Store requests language"</string>
-<string name="pref_requested_language_default">"Your default language"</string>
-<string name="pref_hide_apps_with_ads">"Hide apps with ads"</string>
-<string name="pref_hide_apps_with_ads_summary_off">"Apps with ads are displayed now"</string>
-<string name="pref_hide_apps_with_ads_summary_on">"Apps with ads are not displayed now"</string>
-<string name="pref_device_to_pretend_to_be">"Pretend to be a different device"</string>
-<string name="pref_device_to_pretend_to_be_default">"Your original device info"</string>
-<string name="pref_device_to_pretend_to_be_toast">"This change will be applied after you re-login"</string>
-<string name="pref_category_updates">"Updates"</string>
-<string name="pref_category_search">"Search filtering"</string>
-<string name="pref_category_installation">"Installation"</string>
-<string name="pref_category_spoofing">"Spoofing"</string>
-<string name="pref_category_ui">"User Interface"</string>
+<string name="pref_category_updates">"Actualizaciones"</string>
+<string name="pref_category_ui">"Mostrar"</string>
 </resources>

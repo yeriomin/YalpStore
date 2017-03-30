@@ -176,12 +176,6 @@ Mantém em mente que ao efetuar o download de versões arbitrárias de aplicaç�
 <string name="pref_hide_apps_with_ads">"Esconder aplicações com publicidade"</string>
 <string name="pref_hide_apps_with_ads_summary_off">"Aplicações com publicidade serão mostradas"</string>
 <string name="pref_hide_apps_with_ads_summary_on">"Aplicações com publicidade serão ocultadas"</string>
-<string name="pref_device_to_pretend_to_be">"Pretend to be a different device"</string>
-<string name="pref_device_to_pretend_to_be_default">"Your original device info"</string>
-<string name="pref_device_to_pretend_to_be_toast">"This change will be applied after you re-login"</string>
-<string name="pref_category_updates">"Updates"</string>
-<string name="pref_category_search">"Search filtering"</string>
-<string name="pref_category_installation">"Installation"</string>
-<string name="pref_category_spoofing">"Spoofing"</string>
-<string name="pref_category_ui">"User Interface"</string>
+<string name="pref_category_updates">"Atualizações"</string>
+<string name="pref_category_ui">"Exibição"</string>
 </resources>
