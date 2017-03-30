@@ -16,7 +16,7 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
 
     public DownloadManagerAdapter(Context context) {
         super(context);
-        dm = (DownloadManager) context.getSystemService(android.content.Context.DOWNLOAD_SERVICE);
+        dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
     }
 
     @Override
