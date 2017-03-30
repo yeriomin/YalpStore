@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Email do programador:"</string>
+<string name="about_developer_email_label">"Email do desenvolvedor:"</string>
 <string name="about_logged_in">"Sessão iniciada como:"</string>
 <string name="about_copied_to_clipboard">"Copiado para a área de transferência"</string>
 <string name="list_line_2_updatable">"Atualizado em %1$s "</string>
 <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
-<string name="list_empty_updates">"Nenhuma aplicação necessita de ser atualizada"</string>
-<string name="list_empty_search">"Não foram encontradas aplicações"</string>
+<string name="list_empty_updates">"Nenhuma aplicação necessita de atualizações"</string>
+<string name="list_empty_search">"Nenhuma aplicação encontrada"</string>
 <string name="list_incompatible">"incompatível"</string>
 <string name="action_about">"Sobre"</string>
 <string name="action_settings">"Definições"</string>
@@ -20,8 +20,8 @@
 <string name="search_title">"Procurar aplicações"</string>
 <string name="dialog_two_factor_cancel">"Mais tarde"</string>
 <string name="dialog_two_factor_create_password">"Criar palavra-passe"</string>
-<string name="dialog_title_two_factor">"Verificação de 2-passos "</string>
-<string name="dialog_message_two_factor">"Ativaste a verificação de 2 passos na tua conta.
+<string name="dialog_title_two_factor">"Verificação de 2-passos"</string>
+<string name="dialog_message_two_factor">"Ativaste a verificação de 2-passos na tua conta.
 
 Por favor, cria uma app password dedicada à Yalp Store e usa-a para fazer login.
 
@@ -80,9 +80,9 @@ Redirecionar para a pagina web dela ?"</string>
 <string name="credentials_hint_email">"Inserir email"</string>
 <string name="credentials_hint_password">"Inserir password"</string>
 <string name="credentials_title">"Conta Google"</string>
-<string name="credentials_message">"Google account email and password are required for this app to function.
+<string name="credentials_message">"Uma conta Google totalmente funcional é necessária para o correto funcionamento desta app.
 
-Keep in mind that using this app violates Play Store ToS. It would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store ToS."</string>
+Mantém em mente que ao usares esta aplicação, estás a violar os termos e condições da Google Play Store. É suregido utilizar uma conta secundária para evitar futura perda da sua conta principal."</string>
 <string name="activity_title_updates">"Atualizações"</string>
 <string name="activity_title_search">"Procurar: \"%1$s\""</string>
 <string name="notification_download_complete">"Download completo. Tocar para instalar."</string>
@@ -128,11 +128,12 @@ Keep in mind that using this app violates Play Store ToS. It would probably be s
 <string name="pref_delete_apk_after_install_summary_on">"Agora os ficheiros das aplicações serão apagadas após instalação"</string>
 <string name="pref_delete_apk_after_install">"Apagar ficheiros das aplicações após instalação"</string>
 <string name="dialog_title_application_crashed">"Desculpa, a Yalp Store crashou"</string>
-<string name="dialog_message_application_crashed">"You can help fix this by sending error data to the developer. Clicking OK will take you to your default email app with a complete email ready to be sent to the developer.
+<string name="dialog_message_application_crashed">"Podes ajudar a resolver este erro enviando os dados referentes ao desenvolvedor.
+Ao clicar em OK redirecionaremos-te à tua aplicação de e-mail com um email completo proto a ser enviado ao desenvolvedor.
 
-Please describe what you were trying to do when the error occurred.
+Por favor descreve o que estavas a tentar fazer quando o erro ocorreu.
 
-No private or sensitive information is collected, please review the letter content if you doubt it."</string>
+Nenhuma informação sensível ou privada será enviada nesta mensagem, por favor re-vê o seu conteúdo se duvidares do mesmo."</string>
 <string name="details_to_play_store">"Ver na Play Store"</string>
 <string name="about_self_update_checking">"…a verificar"</string>
 <string name="about_self_update_available">"…0.%1$d disponível"</string>
@@ -160,12 +161,27 @@ No private or sensitive information is collected, please review the letter conte
 <string name="details_download_checking">"A verificar…"</string>
 <string name="details_download_not_available">"Indisponível"</string>
 <string name="manual_download_incompatible">"A Google Play Store considera o teu dispositivo incompatível com esta aplicação. Isto significa que a versao de codigo nao foi retornada pelo servidor da Google Play Store."</string>
-<string name="manual_download_compatible">"Version code field has been pre-filled with this app's latest compatible version code. If you want the previous version, simply input a number smaller than the current. If the developer hasn't deleted the apk of the previous from Play Store, you might be able to start the download."</string>
-<string name="manual_download_warning">"This page lets you manually choose the version of the app to download. Version code is a number identifying the version of an app. It starts from 1 and is incremented by the app developer every time there is a new version. Normally Play Store lets you download only the latest apk compatible with your device. By manually supplying this number you might be able to get other versions as well.
+<string name="manual_download_compatible">"O campo do código da versão foi pré-preenchido com o correspondente ao da última versão compativel. Se quiseres o de uma outra versão, terás que o introduzir manualmente.(Note que terá sempre que ser um numero inferior ao da corrente versão) Se o desenvolvedor da aplicação ainda não tiver apagado a aplicação anterior, poderás ainda efetuar o download da mesma."</string>
+<string name="manual_download_warning">"Esta página deixa-te escolher manualmente a versão da aplicação a transferir. O código da versão é um número a identificar a versão da aplicação. Começa desde 1 e é incrementado pelo desenvolvedor sempre que existe uma nova versão. Normalmente a Play Store deixa-te transferir apenas a última aplicação compatível com o teu dispositivo. Ao introduzir manualmente o código, poderás ter acesso a versões mais antigas.
 
-Keep in mind that downloading arbitrary versions of apps is not supported by Google Play Store. Your success depends on a lucky guess of the version code. Even if you guess right and you get the download to start, you might get an incompatible apk. Most likely, you are wasting your time!"</string>
+Mantém em mente que ao efetuar o download de versões arbitrárias de aplicações não é suportada pela Google Play Store. O teu sucesso depende num mero palpite de um código. Mesmo que acertes, poderás transferir uma palicação incompatível com o teu dispositivo."</string>
 <string name="manual_download_hint_version_code">"Código da versão"</string>
 <string name="list_has_update">"Atualizável"</string>
 <string name="list_no_update">"Aplicação já atualizada"</string>
 <string name="details_uninstall">"Desinstalar"</string>
+<string name="notification_download_starting">"A iniciar transferência"</string>
+<string name="notification_download_progress">"%1$s of %2$s transferido"</string>
+<string name="pref_requested_language">"Linguagem de pedidos da Play Store␣"</string>
+<string name="pref_requested_language_default">"Liguagem predefinida"</string>
+<string name="pref_hide_apps_with_ads">"Esconder aplicações com publicidade"</string>
+<string name="pref_hide_apps_with_ads_summary_off">"Aplicações com publicidade serão mostradas"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"Aplicações com publicidade serão ocultadas"</string>
+<string name="pref_device_to_pretend_to_be">"Pretend to be a different device"</string>
+<string name="pref_device_to_pretend_to_be_default">"Your original device info"</string>
+<string name="pref_device_to_pretend_to_be_toast">"This change will be applied after you re-login"</string>
+<string name="pref_category_updates">"Updates"</string>
+<string name="pref_category_search">"Search filtering"</string>
+<string name="pref_category_installation">"Installation"</string>
+<string name="pref_category_spoofing">"Spoofing"</string>
+<string name="pref_category_ui">"User Interface"</string>
 </resources>
