@@ -11,8 +11,10 @@ public class DownloadManagerFactory {
 
     static public DownloadManagerInterface get(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD || !nativeDownloadManagerEnabled(context)) {
+            Log.i(DownloadManagerFactory.class.getName(), "DownloadManager unavailable - using a fallback");
             return new DownloadManagerFake(context);
         } else {
+            Log.i(DownloadManagerFactory.class.getName(), "DownloadManager is found and is going to be used");
             return new DownloadManagerAdapter(context);
         }
     }
