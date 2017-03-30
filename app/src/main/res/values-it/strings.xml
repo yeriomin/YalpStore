@@ -167,4 +167,19 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="list_has_update">"Aggiornabile"</string>
 <string name="list_no_update">"Già aggiornata"</string>
 <string name="details_uninstall">"Disinstalla"</string>
+<string name="notification_download_starting">"Starting download"</string>
+<string name="notification_download_progress">"%1$s of %2$s downloaded"</string>
+<string name="pref_requested_language">"Play Store requests language"</string>
+<string name="pref_requested_language_default">"Your default language"</string>
+<string name="pref_hide_apps_with_ads">"Hide apps with ads"</string>
+<string name="pref_hide_apps_with_ads_summary_off">"Apps with ads are displayed now"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"Apps with ads are not displayed now"</string>
+<string name="pref_device_to_pretend_to_be">"Pretend to be a different device"</string>
+<string name="pref_device_to_pretend_to_be_default">"Your original device info"</string>
+<string name="pref_device_to_pretend_to_be_toast">"This change will be applied after you re-login"</string>
+<string name="pref_category_updates">"Updates"</string>
+<string name="pref_category_search">"Search filtering"</string>
+<string name="pref_category_installation">"Installation"</string>
+<string name="pref_category_spoofing">"Spoofing"</string>
+<string name="pref_category_ui">"User Interface"</string>
 </resources>
