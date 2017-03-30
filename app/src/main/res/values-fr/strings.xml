@@ -49,10 +49,10 @@ Touchez \"créer un mot de passe\" pour être redirigé vers la page de créatio
 <string name="error_not_purchased">"L'app ne semble pas avoir été achetée. Voir la page sur le Play Store ?"</string>
 <string name="error_downloads_directory_not_writable">"Le dossier des téléchargement n'a pas pu être créé ou n'a pas d'accès en écriture"</string>
 <string name="error_token_dispenser_problem">"Impossible de se connecter sans compte. Essayez avec le vôtre"</string>
-<string name="details_installs">"%1$s ↓ "</string>
-<string name="details_rating">"%1$.1f★ "</string>
-<string name="details_rating_specific">"%1$d★ %2$d "</string>
-<string name="details_updated">"%1$s mis à jour "</string>
+<string name="details_installs">"%1$s ↓"</string>
+<string name="details_rating">"%1$.1f★"</string>
+<string name="details_rating_specific">"%1$d★ %2$d"</string>
+<string name="details_updated">"%1$s mis à jour"</string>
 <string name="details_size">"Taille de %1$s "</string>
 <string name="details_description">"Description :"</string>
 <string name="details_changelog">"Nouveautés :"</string>
@@ -133,7 +133,7 @@ Veuillez renseigner ce que vous étiez en train de faire quand l'erreur a eu lie
 Aucune donnée personnelle ou sensible n'est enregistrée, vous pouvez relire le message en cas de doute."</string>
 <string name="details_to_play_store">"Voir dans le Play Store"</string>
 <string name="about_self_update_checking">"Vérification en cours"</string>
-<string name="about_self_update_available">"0 %1$d disponible"</string>
+<string name="about_self_update_available">"…0.%1$d disponible"</string>
 <string name="about_self_update_unavailable">"Pas de mise à jour trouvée"</string>
 <string name="action_categories">"Catégories"</string>
 <string name="list_update_all">"Tout mettre à jour"</string>
@@ -159,11 +159,26 @@ Aucune donnée personnelle ou sensible n'est enregistrée, vous pouvez relire le
 <string name="details_download_not_available">"Non disponible"</string>
 <string name="manual_download_incompatible">"Le Play Store considère cette appli incompatible avec votre appareil. Cela signifie que le code de la version n'a pas été renvoyé par le serveur Google Play."</string>
 <string name="manual_download_compatible">"Le champ code de version a été pré-rempli avec la dernière version de l'application compatible avec votre appareil. Si vous voulez une version précédente, choisissez un nombre inférieur : si le développeur n'a pas supprimé l'apk du Play Store, le téléchargement devrait commencer."</string>
-<string name="manual_download_warning">"Cette page vous laisse choisir manuellement la version à télécharger. Le code de version identifie une app. Il commence à 1, et est incrémenté à chaque fois que le développeur publie une nouvelle version. Normalement, le Play Store de propose que l'apk le plus récent compatible avec votre appareil, mais il devrait être possible d'obtenir les versions précédentes
+<string name="manual_download_warning">"Cette page vous laisse choisir manuellement la version à télécharger. Le code de version identifie une app. Il commence à 1, et est incrémenté à chaque fois que le développeur publie une nouvelle version. Normalement, le Play Store ne propose que l'apk le plus récent compatible avec votre appareil, mais il devrait être possible d'obtenir les versions précédentes
 
 Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, il faut donc trouver au hasard la bonne version du code de version, et l'apk obtenu peut ne pas être compatible avec votre appareil. Cette fonctionnalité est recommandée pour les utilisateurs les plus avancés !"</string>
 <string name="manual_download_hint_version_code">"Code de version ici"</string>
-<string name="list_has_update">"Mise à jour disponible"</string>
+<string name="list_has_update">"À mettre à jour"</string>
 <string name="list_no_update">"Déjà à jour"</string>
 <string name="details_uninstall">"Déssinstaller"</string>
+<string name="notification_download_starting">"Téléchargement démarré"</string>
+<string name="notification_download_progress">"%1$ sur %2$s téléchargé"</string>
+<string name="pref_requested_language">"Play Store requests language"</string>
+<string name="pref_requested_language_default">"Your default language"</string>
+<string name="pref_hide_apps_with_ads">"Hide apps with ads"</string>
+<string name="pref_hide_apps_with_ads_summary_off">"Apps with ads are displayed now"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"Apps with ads are not displayed now"</string>
+<string name="pref_device_to_pretend_to_be">"Pretend to be a different device"</string>
+<string name="pref_device_to_pretend_to_be_default">"Your original device info"</string>
+<string name="pref_device_to_pretend_to_be_toast">"This change will be applied after you re-login"</string>
+<string name="pref_category_updates">"Updates"</string>
+<string name="pref_category_search">"Search filtering"</string>
+<string name="pref_category_installation">"Installation"</string>
+<string name="pref_category_spoofing">"Spoofing"</string>
+<string name="pref_category_ui">"User Interface"</string>
 </resources>
