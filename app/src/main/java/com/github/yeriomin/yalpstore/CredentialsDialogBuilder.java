@@ -50,6 +50,9 @@ abstract public class CredentialsDialogBuilder {
             }
             if (null != e) {
                 handleException(e);
+                if (e instanceof AuthException && null != ((AuthException) e).getTwoFactorUrl()) {
+                    return;
+                }
                 CredentialsDialogBuilder builder = getDialogBuilder();
                 if (null != this.taskClone) {
                     builder.setTaskClone(this.taskClone);
