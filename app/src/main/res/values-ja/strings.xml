@@ -168,6 +168,17 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="details_uninstall">"アンインストール"</string>
 <string name="notification_download_starting">"ダウンロードの開始中"</string>
 <string name="notification_download_progress">"%1$s / %2$s ダウンロード済"</string>
+<string name="pref_requested_language">"Play ストアをリクエストする言語"</string>
+<string name="pref_requested_language_default">"デフォルトの言語"</string>
+<string name="pref_hide_apps_with_ads">"広告のあるアプリを非表示"</string>
+<string name="pref_hide_apps_with_ads_summary_off">"広告のあるアプリを表示します"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"広告のあるアプリは表示しません"</string>
+<string name="pref_device_to_pretend_to_be">"別のデバイスのふりをする"</string>
+<string name="pref_device_to_pretend_to_be_default">"オリジナルのデバイス情報"</string>
+<string name="pref_device_to_pretend_to_be_toast">"この変更は、再ログイン後に適用されます"</string>
 <string name="pref_category_updates">"更新"</string>
+<string name="pref_category_search">"検索フィルター"</string>
+<string name="pref_category_installation">"インストール"</string>
+<string name="pref_category_spoofing">"なりすまし"</string>
 <string name="pref_category_ui">"表示"</string>
 </resources>
