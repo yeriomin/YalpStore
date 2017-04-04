@@ -27,10 +27,10 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
                 request = new DownloadRequestBuilderApk(app, deliveryData).build();
                 break;
             case OBB_MAIN:
-                request = new DownloadRequestBuilderObb(app, deliveryData).setMain(true).build();
+                request = new DownloadRequestBuilderObb(app, deliveryData).setContext(context).setMain(true).build();
                 break;
             case OBB_PATCH:
-                request = new DownloadRequestBuilderObb(app, deliveryData).setMain(false).build();
+                request = new DownloadRequestBuilderObb(app, deliveryData).setContext(context).setMain(false).build();
                 break;
             default:
                 throw new RuntimeException("Unknown request type");

@@ -23,7 +23,7 @@ public abstract class DownloadRequestBuilder {
     }
 
     abstract protected File getDestinationFile();
-
+    abstract protected String getNotificationTitle();
     abstract protected String getDownloadUrl();
 
     public DownloadManager.Request build() {
@@ -34,7 +34,7 @@ public abstract class DownloadRequestBuilder {
         }
         request.setDestinationUri(getDestinationUri());
         request.setDescription(app.getPackageName());
-        request.setTitle(app.getDisplayName());
+        request.setTitle(getNotificationTitle());
         return request;
     }
 

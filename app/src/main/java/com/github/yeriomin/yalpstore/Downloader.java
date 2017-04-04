@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.os.Environment;
+import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.AppFileMetadata;
@@ -45,8 +46,9 @@ public class Downloader {
         App app = state.getApp();
         AppFileMetadata metadata = deliveryData.getAdditionalFile(main ? 0 : 1);
         File file = getObbPath(app.getPackageName(), metadata.getVersionCode(), main);
+        Log.i(getClass().getName(), "file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + metadata.getSize());
         if (file.exists() && file.length() != metadata.getSize()) {
-            file.delete();
+            Log.i(getClass().getName(), "Deleted old obb file: " + file.delete());
         }
         file.getParentFile().mkdirs();
         if (!file.exists()) {

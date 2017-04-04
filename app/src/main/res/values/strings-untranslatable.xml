@@ -3,4 +3,5 @@
     <string name="about_developer_email" translatable="false">yalp.store.dev@gmail.com</string>
     <string name="about_gsf_id" translatable="false">Google Services Framework id:</string>
     <string name="list_line_3_search" translatable="false">"%1$s, %2$s, %3$s"</string>
+    <string name="expansion_file" translatable="false">"%1$s - Expansion File"</string>
 </resources>

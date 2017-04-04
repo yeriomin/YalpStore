@@ -20,12 +20,20 @@ import java.net.URL;
 
 public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boolean> {
 
+    static private final String EXTENSION_OBB = ".obb";
     static private final int PROGRESS_INTERVAL = 300;
 
     private Context context;
     private App app;
     private File targetFile;
     private long downloadId;
+
+    private String getNotificationTitle() {
+        if (targetFile.toString().endsWith(EXTENSION_OBB)) {
+            return context.getString(R.string.expansion_file, app.getDisplayName());
+        }
+        return app.getDisplayName();
+    }
 
     public void setContext(Context context) {
         this.context = context;
@@ -48,7 +56,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         super.onPreExecute();
         new NotificationUtil(context).show(
             new Intent(),
-            app.getDisplayName(),
+            getNotificationTitle(),
             context.getString(R.string.notification_download_starting)
         );
     }
@@ -56,7 +64,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     @Override
     protected void onPostExecute(Boolean result) {
         super.onPostExecute(result);
-        new NotificationUtil(context).cancel(app.getDisplayName());
+        new NotificationUtil(context).cancel(getNotificationTitle());
         Intent intent = new Intent();
         intent.setAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
         intent.putExtra(DownloadManagerInterface.EXTRA_DOWNLOAD_ID, downloadId);
@@ -68,7 +76,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         super.onProgressUpdate(values);
         new NotificationUtil(context).show(
             new Intent(),
-            app.getDisplayName(),
+            getNotificationTitle(),
             context.getString(
                 R.string.notification_download_progress,
                 Formatter.formatFileSize(context, values[0]),

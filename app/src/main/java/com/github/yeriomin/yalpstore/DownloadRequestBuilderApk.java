@@ -20,4 +20,9 @@ public class DownloadRequestBuilderApk extends DownloadRequestBuilder {
     protected File getDestinationFile() {
         return Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
     }
+
+    @Override
+    protected String getNotificationTitle() {
+        return app.getDisplayName();
+    }
 }
