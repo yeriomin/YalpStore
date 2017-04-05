@@ -25,11 +25,11 @@
 
 Por favor, cria uma app password dedicada à Yalp Store e usa-a para fazer login.
 
-Carrega em \"criar password\" para seres redirecionado à pagina para a criares."</string>
+Carrega em \"criar password\" para seres redirecionado à página para a criares."</string>
 <string name="dialog_title_logout">"Terminar sessão ?"</string>
 <string name="dialog_message_logout">"Tem a certeza que pertende terminar sessão?"</string>
-<string name="dialog_title_reviews">"A carregar criticas"</string>
-<string name="dialog_message_reviews">"Por favor aguarde. A carregar criticas."</string>
+<string name="dialog_title_reviews">"A carregar críticas"</string>
+<string name="dialog_message_reviews">"Por favor aguarde. A carregar críticas."</string>
 <string name="dialog_title_purchasing_app">"A transferir aplicação"</string>
 <string name="dialog_message_purchasing_app">"Por Favor aguarde. A iniciar transferência da aplicação selecionada."</string>
 <string name="dialog_title_loading_app_details">"A carregar detalhes"</string>
@@ -47,8 +47,8 @@ Carrega em \"criar password\" para seres redirecionado à pagina para a criares.
 <string name="error_no_network">"Não existe nenhuma conexão à rede."</string>
 <string name="error_network_other">"Erro de rede: %1$s"</string>
 <string name="error_not_purchased">"A aplicação não parece ter sido comprada.
-Redirecionar para a pagina web dela ?"</string>
-<string name="error_downloads_directory_not_writable">"Pasta Downloads não foi encontrada ou não temos permissões para escrever. "</string>
+Redirecionar para a página web dela ?"</string>
+<string name="error_downloads_directory_not_writable">"Pasta Downloads não foi encontrada ou não temos permissões para escrever."</string>
 <string name="error_token_dispenser_problem">"Não foi possível iniciar sessão sem conta. Tenta usar a tua própria conta."</string>
 <string name="details_installs">"%1$s ↓"</string>
 <string name="details_rating">"%1$.1f★"</string>
@@ -58,7 +58,7 @@ Redirecionar para a pagina web dela ?"</string>
 <string name="details_description">"Descriçao:"</string>
 <string name="details_changelog">"O que há de novo?"</string>
 <string name="details_screenshots">"Screenshots:"</string>
-<string name="details_reviews">"Criticas:"</string>
+<string name="details_reviews">"Críticas:"</string>
 <string name="details_rate_this_app">"Votar esta app:"</string>
 <string name="details_you_rated_this_app">"Votaste esta app:"</string>
 <string name="details_permissions">"Permissões:"</string>
@@ -87,7 +87,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="activity_title_search">"Procurar: \"%1$s\""</string>
 <string name="notification_download_complete">"Download completo. Tocar para instalar."</string>
 <string name="notification_download_complete_toast">"%1$s download completo. Tocar no botão ou na notificação, para instalar."</string>
-<string name="notification_download_complete_signature_mismatch">"Download completo. Assinatura da aplicacao nao correspondente"</string>
+<string name="notification_download_complete_signature_mismatch">"Download completo. Assinatura da aplicacao não correspondente"</string>
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s transferido. A assinatura digital da aplicação não corresponde à anterior. Como obteste esta aplicação originalmente, pela Google Play ? Para instalares a atualização necessitas de desinstalar a versão anterior."</string>
 <string name="notification_updates_available_title">"Atualizações disponíveis."</string>
 <string name="notification_updates_available_message">"Atualizações disponíveis para %1$d aplicações."</string>
@@ -143,9 +143,9 @@ Nenhuma informação sensível ou privada será enviada nesta mensagem, por favo
 <string name="notification_installation_complete">"Atualização instalada."</string>
 <string name="notification_installation_complete_toast">"Aplicação %1$s atualizada."</string>
 <string name="notification_installation_failed">"Instalação da atualização falhou."</string>
-<string name="notification_installation_failed_toast">"Não foi possivel atualizar %1$s. Verifique as permissões root."</string>
+<string name="notification_installation_failed_toast">"Não foi possível atualizar %1$s. Verifique as permissões root."</string>
 <string name="pref_background_update_install_summary_off">"Apenas receber uma notificação"</string>
-<string name="pref_background_update_install_summary_on">"Atualizações serão actualizadas se disponivel (necessita root)"</string>
+<string name="pref_background_update_install_summary_on">"Atualizações serão actualizadas se disponível (necessita root)"</string>
 <string name="pref_background_update_install">"Também instalar as atualizações (necessita root)"</string>
 <string name="pref_no_root">"Esta opção apenas está disponível para dispositivos com root"</string>
 <string name="list_app_has_ads">"Contém publicidade"</string>
@@ -160,8 +160,8 @@ Nenhuma informação sensível ou privada será enviada nesta mensagem, por favo
 <string name="dialog_message_package_id">"Existe uma aplicação com o mesmo exato nome que este. Gostarias de ir diretamente para a página da aplicação?"</string>
 <string name="details_download_checking">"A verificar…"</string>
 <string name="details_download_not_available">"Indisponível"</string>
-<string name="manual_download_incompatible">"A Google Play Store considera o teu dispositivo incompatível com esta aplicação. Isto significa que a versao de codigo nao foi retornada pelo servidor da Google Play Store."</string>
-<string name="manual_download_compatible">"O campo do código da versão foi pré-preenchido com o correspondente ao da última versão compativel. Se quiseres o de uma outra versão, terás que o introduzir manualmente.(Note que terá sempre que ser um numero inferior ao da corrente versão) Se o desenvolvedor da aplicação ainda não tiver apagado a aplicação anterior, poderás ainda efetuar o download da mesma."</string>
+<string name="manual_download_incompatible">"A Google Play Store considera o teu dispositivo incompatível com esta aplicação. Isto significa que a versao de codigo não foi retornada pelo servidor da Google Play Store."</string>
+<string name="manual_download_compatible">"O campo do código da versão foi pré-preenchido com o correspondente ao da última versão compativel. Se quiseres o de uma outra versão, terás que o introduzir manualmente.(Note que terá sempre que ser um número inferior ao da corrente versão) Se o desenvolvedor da aplicação ainda não tiver apagado a aplicação anterior, poderás ainda efetuar o download da mesma."</string>
 <string name="manual_download_warning">"Esta página deixa-te escolher manualmente a versão da aplicação a transferir. O código da versão é um número a identificar a versão da aplicação. Começa desde 1 e é incrementado pelo desenvolvedor sempre que existe uma nova versão. Normalmente a Play Store deixa-te transferir apenas a última aplicação compatível com o teu dispositivo. Ao introduzir manualmente o código, poderás ter acesso a versões mais antigas.
 
 Mantém em mente que ao efetuar o download de versões arbitrárias de aplicações não é suportada pela Google Play Store. O teu sucesso depende num mero palpite de um código. Mesmo que acertes, poderás transferir uma palicação incompatível com o teu dispositivo."</string>
