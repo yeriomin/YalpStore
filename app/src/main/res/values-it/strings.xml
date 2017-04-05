@@ -120,7 +120,7 @@ Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più s
 <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Spazio insufficiente"</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Nessuna memoria esterna rilevata. Forse la scheda SD non è montata."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Impossibile riprendere il download a causa di un errore temporaneo. Prova più tardi."</string>
-<string name="download_manager_ERROR_BLOCKED">"Download fallito perchè NetworkPolicyManager controlla le richieste delle applicazioni. Verifica le impostazioni"</string>
+<string name="download_manager_ERROR_BLOCKED">"Download fallito perché NetworkPolicyManager controlla le richieste delle applicazioni. Verifica le impostazioni"</string>
 <string name="search_filter">"Tutte le app"</string>
 <string name="details_category">"Categoria: %1$s"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Gli apk non vengono eliminati dopo l'installazione"</string>
@@ -167,6 +167,19 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="list_has_update">"Aggiornabile"</string>
 <string name="list_no_update">"Già aggiornata"</string>
 <string name="details_uninstall">"Disinstalla"</string>
+<string name="notification_download_starting">"Starting download"</string>
+<string name="notification_download_progress">"%1$s of %2$s downloaded"</string>
+<string name="pref_requested_language">"Play Store requests language"</string>
+<string name="pref_requested_language_default">"Your default language"</string>
+<string name="pref_hide_apps_with_ads">"Hide apps with ads"</string>
+<string name="pref_hide_apps_with_ads_summary_off">"Apps with ads are displayed now"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"Apps with ads are not displayed now"</string>
+<string name="pref_device_to_pretend_to_be">"Pretend to be a different device"</string>
+<string name="pref_device_to_pretend_to_be_default">"Your original device info"</string>
+<string name="pref_device_to_pretend_to_be_toast">"This change will be applied after you re-login"</string>
 <string name="pref_category_updates">"Aggiornamenti"</string>
+<string name="pref_category_search">"Search filtering"</string>
+<string name="pref_category_installation">"Installation"</string>
+<string name="pref_category_spoofing">"Spoofing"</string>
 <string name="pref_category_ui">"Mostra"</string>
 </resources>
