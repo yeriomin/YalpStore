@@ -158,13 +158,26 @@ Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den M
 <string name="details_download_not_available">"Nicht verfügbar"</string>
 <string name="manual_download_incompatible">"Google Play Store sieht diese App als inkompatibel mit deinem Gerät an. Dies bedeutet, dass die Versionsnummer nicht vom Google Play Store Server zurückgegeben wurde."</string>
 <string name="manual_download_compatible">"Versionsnummerfeld wurde automatisch mit der letzten kompatiblen Versionsnummer ausgefüllt. Wenn du eine vorherige Version haben möchtest, gib einfach eine kleinere Nummer ein. Wenn diese Version im Play Store existiert, wird diese heruntergeladen."</string>
-<string name="manual_download_warning">"Auf dieser Seite kannst du manuell die Version der App aussuchen, die du herunterladen möchtest. Die Versionsnummer ist eine Nummer, die die Version einer App kennzeichnet. Sie startet bei eins und wird für jede neue Version um eins hochgezählt, die der Entwickler hochlädt. Normalerweise wird immer nur die letze kompatible Version vom Play Store heruntergeladen. Durch manuelles Auswählen der Version kannst du eventuell die anderen Version erhalten.
+<string name="manual_download_warning">"Auf dieser Seite kannst du manuell die Version der App aussuchen, die du herunterladen möchtest. Die Versionsnummer ist eine Nummer, die Version einer App kennzeichnet. Sie startet bei eins und wird für jede neue Version um eins hochgezählt, die der Entwickler hochlädt. Normalerweise wird immer nur die letzte kompatible Version vom Play Store heruntergeladen. Durch manuelles Auswählen der Version kannst du eventuell die anderen Version erhalten.
 
 Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Store offiziell nicht unterstützt. Der Erfolg dieses Vorhabens hängt von dem richtigen Raten der Versionsnummer ab. Selbst wenn das Raten erfolgreich war und die Version runtergeladen werden konnte, kann es immer noch sein, dass die Version inkompatibel ist. Höchstwahrscheinlich ist dies hier Zeitverschwendung."</string>
 <string name="manual_download_hint_version_code">"Versionsnummer hier"</string>
 <string name="list_has_update">"Aktualisierbar"</string>
 <string name="list_no_update">"Keine Aktualisierung verfügbar"</string>
 <string name="details_uninstall">"Deinstallieren"</string>
+<string name="notification_download_starting">"Starting download"</string>
+<string name="notification_download_progress">"%1$s of %2$s downloaded"</string>
+<string name="pref_requested_language">"Play Store requests language"</string>
+<string name="pref_requested_language_default">"Your default language"</string>
+<string name="pref_hide_apps_with_ads">"Hide apps with ads"</string>
+<string name="pref_hide_apps_with_ads_summary_off">"Apps with ads are displayed now"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"Apps with ads are not displayed now"</string>
+<string name="pref_device_to_pretend_to_be">"Pretend to be a different device"</string>
+<string name="pref_device_to_pretend_to_be_default">"Your original device info"</string>
+<string name="pref_device_to_pretend_to_be_toast">"This change will be applied after you re-login"</string>
 <string name="pref_category_updates">"Aktualisierungen"</string>
+<string name="pref_category_search">"Search filtering"</string>
+<string name="pref_category_installation">"Installation"</string>
+<string name="pref_category_spoofing">"Spoofing"</string>
 <string name="pref_category_ui">"Anzeige"</string>
 </resources>
