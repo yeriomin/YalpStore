@@ -47,7 +47,7 @@ public class InstallTask extends AsyncTask<String, Void, Boolean> {
     protected Boolean doInBackground(String... params) {
         String file = params[0];
         Log.i(getClass().getName(), "Installing update " + file);
-        List<String> lines = Shell.SU.run("pm install -r " + file);
+        List<String> lines = Shell.SU.run("pm install -i \"" + BuildConfig.APPLICATION_ID + "\" -r " + file);
         if (null != lines) {
             for (String line: lines) {
                 Log.i(getClass().getName(), line);
