@@ -87,7 +87,7 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     protected void onPause() {
         if (null != downloadOrInstallManager) {
-            downloadOrInstallManager.unregisterReceiver();
+            downloadOrInstallManager.unregisterReceivers();
         }
         super.onPause();
     }
@@ -95,7 +95,7 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     protected void onResume() {
         if (null != downloadOrInstallManager) {
-            downloadOrInstallManager.registerReceiver();
+            downloadOrInstallManager.registerReceivers();
         }
         super.onResume();
         Button uninstallButton = (Button) findViewById(R.id.uninstall);
@@ -152,7 +152,7 @@ public class DetailsActivity extends YalpStoreActivity {
         ignoreOptionManager.setApp(app);
         ignoreOptionManager.draw();
         downloadOrInstallManager = new DownloadOrInstallFragment(this, app);
-        downloadOrInstallManager.registerReceiver();
+        downloadOrInstallManager.registerReceivers();
         downloadOrInstallManager.draw();
     }
 }

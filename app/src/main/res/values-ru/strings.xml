@@ -80,7 +80,9 @@
     <string name="details_install">Установить</string>
     <string name="details_uninstall">Удалить</string>
     <string name="details_downloading">Скачиваем…</string>
+    <string name="details_installing">Устанавливаем…</string>
     <string name="details_download_checking">Проверяем…</string>
+    <string name="details_installed">"Установлено"</string>
     <string name="details_download_not_available">Не доступно</string>
     <string name="details_review_dialog_title">Есть что добавить?</string>
     <string name="details_review_dialog_review_title_hint">вкратце</string>
@@ -113,6 +115,8 @@
     <string name="notification_download_complete_toast">"Загрузка %1$s завершена. Нажмите на кнопку \"Установить\" или на уведомление чтобы установить."</string>
     <string name="notification_download_complete_signature_mismatch">Загрузка завершена. Подпись apk не совпадает с подписью установленного приложения.</string>
     <string name="notification_download_complete_signature_mismatch_toast">"Загрузка %1$s завершена. Подпись apk не совпадает с подписью установленного приложения. Вы установили это приложение не из Google Play? Возможно, придётся сначала его удалить."</string>
+    <string name="notification_download_complete_new_permissions">Загрузка завершена. Требуются новые разрешения.</string>
+    <string name="notification_download_complete_new_permissions_toast">"Загрузка %1$s завершена. Новая версия приложения требует больше разрешений. Проверьте список разрешений."</string>
     <string name="notification_updates_available_title">Есть обновления приложений.</string>
     <string name="notification_updates_available_message">"Для %1$d приложений есть обновления."</string>
     <string name="pref_hide_nonfree_apps_summary_off">Сейчас платные приложения отображаются</string>
@@ -156,6 +160,11 @@
     <string name="pref_category_installation">Установка приложений</string>
     <string name="pref_category_spoofing">Взаимодействие с Play Store</string>
     <string name="pref_category_ui">Интерфейс</string>
+    <string name="pref_not_privileged">Доступно только при установке системным приложением</string>
+    <string name="pref_installation_method">Способ установки</string>
+    <string name="pref_installation_method_default">Обычный установочный диалог, без фоновой установки</string>
+    <string name="pref_installation_method_root">С использованием root</string>
+    <string name="pref_installation_method_privileged">С системными правами</string>
     <string name="download_manager_ERROR_UNKNOWN">Неизвестная ошибка.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Неизвестная ошибка сохранения файла.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Сетевая ошибка. Попробуйте позднее.</string>

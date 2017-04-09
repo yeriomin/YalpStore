@@ -20,6 +20,7 @@ public class InstalledReceiver extends BroadcastReceiver {
             && !action.equals(Intent.ACTION_PACKAGE_REPLACED)
             && !action.equals(Intent.ACTION_PACKAGE_REMOVED)
             && !action.equals(Intent.ACTION_PACKAGE_FULLY_REMOVED)
+            && !action.equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
         ) {
             return;
         }

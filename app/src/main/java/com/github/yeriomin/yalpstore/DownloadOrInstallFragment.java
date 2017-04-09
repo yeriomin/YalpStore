@@ -1,10 +1,8 @@
 package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -22,7 +20,8 @@ import java.io.File;
 public class DownloadOrInstallFragment extends DetailsFragment {
 
     private File apkPath;
-    private DetailsDownloadReceiver receiver;
+    private DetailsDownloadReceiver downloadReceiver;
+    private DetailsInstallReceiver installReceiver;
 
     static public Intent getOpenApkIntent(Context context, File file) {
         Intent intent;
@@ -93,20 +92,40 @@ public class DownloadOrInstallFragment extends DetailsFragment {
         }
     }
 
-    public void unregisterReceiver() {
-        activity.unregisterReceiver(receiver);
-        receiver = null;
+    public void unregisterReceivers() {
+        activity.unregisterReceiver(downloadReceiver);
+        downloadReceiver = null;
+        activity.unregisterReceiver(installReceiver);
+        installReceiver = null;
     }
 
-    public void registerReceiver() {
-        if (null != receiver) {
-            return;
+    public void registerReceivers() {
+        if (null == downloadReceiver) {
+            registerDownloadReceiver();
         }
+        if (null == installReceiver) {
+            registerInstallReceiver();
+        }
+    }
+
+    private void registerDownloadReceiver() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
-        receiver = new DetailsDownloadReceiver();
-        receiver.setButton((Button) activity.findViewById(R.id.download));
-        activity.registerReceiver(receiver, filter);
+        downloadReceiver = new DetailsDownloadReceiver();
+        downloadReceiver.setButton((Button) activity.findViewById(R.id.download));
+        activity.registerReceiver(downloadReceiver, filter);
+    }
+
+    private void registerInstallReceiver() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_PACKAGE_INSTALL);
+        filter.addAction(Intent.ACTION_PACKAGE_ADDED);
+        filter.addAction(Intent.ACTION_PACKAGE_REPLACED);
+        filter.addAction(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM);
+        installReceiver = new DetailsInstallReceiver();
+        installReceiver.setButtonInstall((Button) activity.findViewById(R.id.download));
+        installReceiver.setButtonUninstall((Button) activity.findViewById(R.id.uninstall));
+        activity.registerReceiver(installReceiver, filter);
     }
 
     public void downloadOrInstall() {
@@ -130,31 +149,10 @@ public class DownloadOrInstallFragment extends DetailsFragment {
     }
 
     public void install() {
+        disableButton(R.id.download, R.string.details_installing);
         NotificationManager manager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
         manager.cancel(app.getDisplayName().hashCode());
-        ApkSignatureVerifier verifier = new ApkSignatureVerifier(activity);
-        if (verifier.match(app.getPackageName(), apkPath)) {
-            activity.startActivity(getOpenApkIntent(activity, apkPath));
-        } else {
-            getSignatureMismatchDialog().show();
-        }
-    }
-
-    private AlertDialog getSignatureMismatchDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder
-            .setMessage(R.string.details_signature_mismatch)
-            .setPositiveButton(
-                android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                }
-            )
-        ;
-        return builder.create();
+        InstallerFactory.get(activity).install(app);
     }
 
     private PurchaseTask getPurchaseTask() {
@@ -163,9 +161,7 @@ public class DownloadOrInstallFragment extends DetailsFragment {
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
                 if (null == e) {
-                    Button button = (Button) activity.findViewById(R.id.download);
-                    button.setText(R.string.details_downloading);
-                    button.setEnabled(false);
+                    disableButton(R.id.download, R.string.details_downloading);
                 }
             }
         };
@@ -176,6 +172,12 @@ public class DownloadOrInstallFragment extends DetailsFragment {
             R.string.dialog_title_purchasing_app
         );
         return purchaseTask;
+    }
+
+    private void disableButton(int buttonId, int stringId) {
+        Button button = (Button) activity.findViewById(buttonId);
+        button.setText(stringId);
+        button.setEnabled(false);
     }
 
     private boolean checkPermission() {

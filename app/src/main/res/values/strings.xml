@@ -79,7 +79,10 @@
     <string name="details_install">Install</string>
     <string name="details_uninstall">Uninstall</string>
     <string name="details_downloading">Downloading…</string>
+    <string name="details_installing">Installing…</string>
     <string name="details_download_checking">Checking…</string>
+    <string name="details_installed">"Installed successfully"</string>
+    <string name="details_install_failure">"Could not install"</string>
     <string name="details_download_not_available">Not available</string>
     <string name="details_review_dialog_title">Anything else to add?</string>
     <string name="details_review_dialog_review_title_hint">title here</string>
@@ -111,7 +114,9 @@
     <string name="notification_download_complete">Download complete. Touch to install.</string>
     <string name="notification_download_complete_toast">"%1$s downloaded. Touch install button or notification to install."</string>
     <string name="notification_download_complete_signature_mismatch">Download complete. apk signature mismatch, though.</string>
-    <string name="notification_download_complete_signature_mismatch_toast">"%1$s downloaded. But apk signature does not match installed app. Did you get this app not from Google Play originally? You might have to uninstall it first."</string>
+    <string name="notification_download_complete_signature_mismatch_toast">"%1$s downloaded. But apk signature does not match installed app. You might have to uninstall it first."</string>
+    <string name="notification_download_complete_new_permissions">Download complete. New permissions requested.</string>
+    <string name="notification_download_complete_new_permissions_toast">"%1$s downloaded. New version of the app requests more permissions. Check the new permissions list."</string>
     <string name="notification_updates_available_title">App updates available.</string>
     <string name="notification_updates_available_message">"Updates are available for %1$d of your apps."</string>
     <string name="pref_hide_nonfree_apps_summary_off">Paid apps are displayed now</string>
@@ -155,6 +160,11 @@
     <string name="pref_category_installation">Installation</string>
     <string name="pref_category_spoofing">Spoofing</string>
     <string name="pref_category_ui">User Interface</string>
+    <string name="pref_not_privileged">Only available if Yalp is a system app</string>
+    <string name="pref_installation_method">Installation method</string>
+    <string name="pref_installation_method_default">Default installation dialog, no background installs</string>
+    <string name="pref_installation_method_root">Using root</string>
+    <string name="pref_installation_method_privileged">Using system permissions</string>
     <string name="download_manager_ERROR_UNKNOWN">Unknown error.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unknown file storage error.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">HTTP code was received that download manager can not handle. This is a server error.</string>

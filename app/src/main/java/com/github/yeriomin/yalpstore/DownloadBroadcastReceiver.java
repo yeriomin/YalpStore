@@ -48,30 +48,12 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
     }
 
     private void verifyAndInstall(App app) {
-        File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-        Intent openApkIntent = DownloadOrInstallFragment.getOpenApkIntent(context, file);
-        if (!new ApkSignatureVerifier(context).match(app.getPackageName(), file)) {
-            notifySignatureMismatch(app);
-        } else if (shouldAutoInstall()) {
-            context.startActivity(openApkIntent);
-        } else if (needToInstallUpdates() && new PermissionsComparator(context).isSame(app)) {
-            install(app);
+        if (shouldAutoInstall() || needToInstallUpdates()) {
+            InstallerAbstract installer = InstallerFactory.get(context);
+            installer.verifyAndInstall(app);
         } else {
             notifyDownloadComplete(app);
         }
-    }
-
-    private void notifySignatureMismatch(App app) {
-        notifyAndToast(
-            R.string.notification_download_complete_signature_mismatch,
-            R.string.notification_download_complete_signature_mismatch_toast,
-            app
-        );
-    }
-
-    private void install(App app) {
-        new InstallTask(context, app.getDisplayName())
-                .execute(Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).toString());
     }
 
     private void notifyDownloadComplete(App app) {

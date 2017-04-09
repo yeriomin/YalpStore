@@ -22,6 +22,11 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_BACKGROUND_UPDATE_INSTALL = "PREFERENCE_BACKGROUND_UPDATE_INSTALL";
     public static final String PREFERENCE_REQUESTED_LANGUAGE = "PREFERENCE_REQUESTED_LANGUAGE";
     public static final String PREFERENCE_DEVICE_TO_PRETEND_TO_BE = "PREFERENCE_DEVICE_TO_PRETEND_TO_BE";
+    public static final String PREFERENCE_INSTALLATION_METHOD = "PREFERENCE_INSTALLATION_METHOD";
+
+    public static final String INSTALLATION_METHOD_DEFAULT = "default";
+    public static final String INSTALLATION_METHOD_ROOT = "root";
+    public static final String INSTALLATION_METHOD_PRIVILEGED = "privileged";
 
     public static final String LIST_WHITE = "white";
     public static final String LIST_BLACK = "black";
@@ -35,6 +40,10 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, false);
     }
 
+    static public String getString(Context context, String key) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getString(key, "");
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         ThemeManager.setTheme(this);
@@ -45,6 +54,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         drawTheme();
         drawUpdatesCheck();
         drawDevices();
+        drawInstallationMethod();
     }
 
     private void drawBlackList() {
@@ -77,5 +87,11 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         PreferenceDeviceFragment languageFragment = new PreferenceDeviceFragment(this);
         languageFragment.setListPreference((ListPreference) findPreference(PREFERENCE_DEVICE_TO_PRETEND_TO_BE));
         languageFragment.draw();
+    }
+
+    private void drawInstallationMethod() {
+        PreferenceInstallationMethodFragment installationMethodFragment = new PreferenceInstallationMethodFragment(this);
+        installationMethodFragment.setInstallationMethodPreference((ListPreference) findPreference(PREFERENCE_INSTALLATION_METHOD));
+        installationMethodFragment.draw();
     }
 }

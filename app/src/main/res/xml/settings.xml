@@ -50,6 +50,11 @@
             android:summaryOff="@string/pref_delete_apk_after_install_summary_off"
             android:summaryOn="@string/pref_delete_apk_after_install_summary_on"
             android:title="@string/pref_delete_apk_after_install" />
+        <ListPreference
+            android:key="PREFERENCE_INSTALLATION_METHOD"
+            android:title="@string/pref_installation_method"
+            android:entries="@array/installationMethodLabels"
+            android:entryValues="@array/installationMethodValues"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_spoofing">
         <ListPreference
