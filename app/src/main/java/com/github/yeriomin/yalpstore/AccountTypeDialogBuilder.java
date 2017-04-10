@@ -43,7 +43,7 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
         return builder.show();
     }
 
-    private void logInWithPredefinedAccount() {
+    public void logInWithPredefinedAccount() {
         AppProvidedCredentialsTask task = new AppProvidedCredentialsTask();
         task.setTaskClone(taskClone);
         task.setContext(context);

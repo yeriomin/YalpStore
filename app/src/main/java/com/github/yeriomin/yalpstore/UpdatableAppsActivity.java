@@ -85,6 +85,7 @@ public class UpdatableAppsActivity extends AppListActivity {
                 }
                 toggleUpdateAll(this.updatableApps.size() > 0);
                 new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
+                new FirstLaunchChecker(context).setLaunched();
             }
         };
         task.setErrorView((TextView) getListView().getEmptyView());

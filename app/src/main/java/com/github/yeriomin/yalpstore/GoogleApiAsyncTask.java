@@ -74,34 +74,51 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
             e = result.getCause();
         }
         if (e != null) {
-            Log.d(getClass().getName(), e.getClass().getName() + " caught during a google api request: " + e.getMessage());
+            processException(e);
         }
+    }
+
+    private void processException(Throwable e) {
+        Log.d(getClass().getName(), e.getClass().getName() + " caught during a google api request: " + e.getMessage());
         if (e instanceof AuthException) {
-            if (e instanceof CredentialsEmptyException) {
-                Log.w(getClass().getName(), "Credentials empty");
-            } else {
-                toast(this.context, R.string.error_incorrect_password);
-                new PlayStoreApiAuthenticator(context).logout();
-            }
-            AccountTypeDialogBuilder builder = new AccountTypeDialogBuilder(this.context);
-            builder.setTaskClone(this.taskClone);
-            builder.show();
+            processAuthException((AuthException) e);
         } else if (e instanceof IOException) {
-            String message;
-            if (noNetwork(e)) {
-                message = this.context.getString(R.string.error_no_network);
-            } else {
-                message = this.context.getString(R.string.error_network_other, e.getClass().getName() + " " + e.getMessage());
-            }
-            if (null != this.errorView) {
-                this.errorView.setText(message);
-            } else {
-                toast(this.context, message);
-            }
-        } else if (e != null) {
+            processIOException((IOException) e);
+        } else {
             Log.e(getClass().getName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    private void processIOException(IOException e) {
+        String message;
+        if (noNetwork(e)) {
+            message = this.context.getString(R.string.error_no_network);
+        } else {
+            message = this.context.getString(R.string.error_network_other, e.getClass().getName() + " " + e.getMessage());
+        }
+        if (null != this.errorView) {
+            this.errorView.setText(message);
+        } else {
+            toast(this.context, message);
+        }
+    }
+
+    private void processAuthException(AuthException e) {
+        AccountTypeDialogBuilder builder = new AccountTypeDialogBuilder(this.context);
+        builder.setTaskClone(this.taskClone);
+        if (e instanceof CredentialsEmptyException) {
+            Log.i(getClass().getName(), "Credentials empty");
+            if (new FirstLaunchChecker(context).isFirstLaunch()) {
+                Log.i(getClass().getName(), "First launch, so using built-in account");
+                builder.logInWithPredefinedAccount();
+                return;
+            }
+        } else {
+            toast(this.context, R.string.error_incorrect_password);
+            new PlayStoreApiAuthenticator(context).logout();
+        }
+        builder.show();
     }
 
     static public boolean noNetwork(Throwable e) {
