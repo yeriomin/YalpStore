@@ -83,6 +83,7 @@
     <string name="details_installing">Устанавливаем…</string>
     <string name="details_download_checking">Проверяем…</string>
     <string name="details_installed">"Установлено"</string>
+    <string name="details_install_failure">"Не удалось установить"</string>
     <string name="details_download_not_available">Не доступно</string>
     <string name="details_review_dialog_title">Есть что добавить?</string>
     <string name="details_review_dialog_review_title_hint">вкратце</string>
