@@ -147,6 +147,9 @@
     <string name="pref_background_update_install_summary_off">Только уведомление</string>
     <string name="pref_background_update_install_summary_on">Обновления устанавливаются (root)</string>
     <string name="pref_background_update_install">Установить найденные обновления (root)</string>
+    <string name="pref_background_update_download_summary_off">Только уведомление</string>
+    <string name="pref_background_update_download_summary_on">Обновления будут скачаны</string>
+    <string name="pref_background_update_download">Скачать найденные обновления</string>
     <string name="pref_no_root">Это возможно только на рутованных устройствах</string>
     <string name="pref_requested_language">Язык запросов к Play Store</string>
     <string name="pref_requested_language_default">По-умолчанию</string>

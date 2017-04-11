@@ -48,7 +48,7 @@ public class UpdateChecker extends BroadcastReceiver {
                 if (updatesCount == 0) {
                     return;
                 }
-                if (needToInstallUpdates(context)) {
+                if (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)) {
                     download(context, updatableApps);
                 } else {
                     createNotification(context, updatesCount);
@@ -73,10 +73,6 @@ public class UpdateChecker extends BroadcastReceiver {
         task.setApp(app);
         task.setContext(context);
         return task;
-    }
-
-    private boolean needToInstallUpdates(Context context) {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
     }
 
     private void createNotification(Context context, int updatesCount) {

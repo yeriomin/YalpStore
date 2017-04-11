@@ -1,5 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -8,6 +10,7 @@ public class PreferenceCheckUpdatesFragment extends PreferenceFragment {
 
     private ListPreference checkForUpdates;
     private CheckBoxPreference alsoInstall;
+    private CheckBoxPreference alsoDownload;
 
     public PreferenceCheckUpdatesFragment(PreferenceActivity activity) {
         super(activity);
@@ -21,6 +24,10 @@ public class PreferenceCheckUpdatesFragment extends PreferenceFragment {
         this.alsoInstall = alsoInstall;
     }
 
+    public void setAlsoDownload(CheckBoxPreference alsoDownload) {
+        this.alsoDownload = alsoDownload;
+    }
+
     @Override
     public void draw() {
         checkForUpdates.setSummary(activity.getString(getUpdateSummaryStringId(checkForUpdates.getValue())));
@@ -30,20 +37,13 @@ public class PreferenceCheckUpdatesFragment extends PreferenceFragment {
                 int interval = parseInt((String) newValue);
                 UpdateChecker.enable(activity, interval);
                 preference.setSummary(activity.getString(getUpdateSummaryStringId((String) newValue)));
+                alsoDownload.setEnabled(interval != 0);
                 alsoInstall.setEnabled(interval != 0);
                 return true;
             }
         });
         checkForUpdates.getOnPreferenceChangeListener().onPreferenceChange(checkForUpdates, checkForUpdates.getValue());
-        alsoInstall.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                if ((Boolean) newValue) {
-                    new CheckSuTask(activity).execute();
-                }
-                return true;
-            }
-        });
+        alsoInstall.setOnPreferenceChangeListener(new AlsoInstallOnPreferenceChangeListener());
     }
 
     private int getUpdateSummaryStringId(String intervalString) {
@@ -75,6 +75,28 @@ public class PreferenceCheckUpdatesFragment extends PreferenceFragment {
             return Integer.parseInt(string);
         } catch (NumberFormatException e) {
             return 0;
+        }
+    }
+
+    private class AlsoInstallOnPreferenceChangeListener implements Preference.OnPreferenceChangeListener {
+
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            if ((Boolean) newValue) {
+                if (isPrivileged()) {
+                    return true;
+                } else {
+                    new CheckSuTask(activity).execute();
+                }
+            }
+            return true;
+        }
+
+        private boolean isPrivileged() {
+            PackageManager pm = activity.getPackageManager();
+            return  pm.checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED
+                && pm.checkPermission(Manifest.permission.DELETE_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED
+            ;
         }
     }
 }
