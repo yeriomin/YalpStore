@@ -29,26 +29,52 @@ android {
     }
 
     def otaDir = "${project.rootDir}/yalp-store-ota-zip"
+    def apkDir = "${project.buildDir}/outputs/apk"
+    def otaZip = "yalp-store-ota.zip"
     def apkFilename = "YalpStore.apk"
-    task downloadYalpStoreApk() {
-        def f = new File("${project.buildDir}/${apkFilename}")
-        def url = "https://f-droid.org/repo/" + android.defaultConfig.applicationId + "_" + android.defaultConfig.versionCode + ".apk"
-        if (!f.exists()) {
-            println "Downloading ${url}"
-            new URL(url).withInputStream { i -> f.withOutputStream { it << i } }
+    task deleteOldOtaZip(type: Delete) {
+        delete "${project.buildDir}/${otaZip}"
+        followSymlinks = true
+    }
+    task downloadYalpStoreApk(dependsOn: build) {
+        doLast {
+            def f = new File("${project.buildDir}/${apkFilename}")
+            def url = "https://f-droid.org/repo/" + android.defaultConfig.applicationId + "_" + android.defaultConfig.versionCode + ".apk"
+            if (!f.exists()) {
+                println "Downloading ${url}"
+                new URL(url).withInputStream { i -> f.withOutputStream { it << i } }
+            }
         }
     }
-    task createOtaZip (dependsOn: downloadYalpStoreApk, type: Zip) {
-        from ("${otaDir}") {
-            include ('**')
+    task generateOtaZipStable (dependsOn: [downloadYalpStoreApk, deleteOldOtaZip], type: Zip) {
+        from(otaDir) {
+            include('**')
         }
-        from (project.buildDir) {
-            include (apkFilename)
+        from(project.buildDir) {
+            include(apkFilename)
         }
-        destinationDir project.rootDir
-        archiveName 'yalp-store-ota.zip'
+        destinationDir project.buildDir
+        archiveName otaZip
     }
-    project.tasks.build.dependsOn createOtaZip
+    task copyYalpStoreApk(dependsOn: build, type: Copy) {
+        def fileToCopy = file("${apkDir}/app-debug.apk")
+        from fileToCopy
+        into apkDir
+        rename { String fileName ->
+            fileName.replace(fileToCopy.getName(), apkFilename)
+        }
+    }
+    task generateOtaZip (dependsOn: [build, deleteOldOtaZip, copyYalpStoreApk], type: Zip) {
+        from(otaDir) {
+            include('**')
+        }
+        from(apkDir) {
+            include(apkFilename)
+        }
+        destinationDir project.buildDir
+        archiveName otaZip
+    }
+    project.tasks.build.finalizedBy(generateOtaZip)
 }
 
 dependencies {
