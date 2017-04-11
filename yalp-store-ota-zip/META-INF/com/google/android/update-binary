@@ -1,0 +1,61 @@
+#!/sbin/sh
+
+# Copyright 2013 Koushik Dutta, 2014 Ron Rieve, 2017 Sergey Yeriomin
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# arg 1 is recovery api version, generally 3.
+# arg 2 is the pipe fd, to the recovery binary.
+# communicate with it using the recovery api.
+# arg 3 is the zip file
+
+echo -n -e 'ui_print Installing YalpStore...\n' > /proc/self/fd/$2
+
+YALP_NAME=YalpStore
+YALP=${YALP_NAME}.apk
+
+cd /tmp
+mkdir yalp
+cd yalp
+unzip -o "$3"
+if [ "$?" -ne "0" ]
+then
+  cp /cache/${YALP} .
+fi
+
+mount /system
+rm -f /system/app/YalpStore*
+rm -f /system/app/YalpStore*/*
+rm -f /system/priv-app/YalpStore*
+rm -f /system/priv-app/YalpStore*/*
+
+BUILD_VERSION_SDK="$(grep -F ro.build.version.sdk /system/build.prop)"
+BUILD_VERSION_SDK_INT="${BUILD_VERSION_SDK#*=}"
+if [ "${BUILD_VERSION_SDK_INT}" -ge 21 ]
+then
+  YALP_DIR="/system/priv-app/${YALP_NAME}"
+  mkdir ${YALP_DIR}
+  chmod 755 ${YALP_DIR}
+elif [ "${BUILD_VERSION_SDK_INT}" -ge 19 ]
+then
+  YALP_DIR="/system/priv-app"
+else
+  YALP_DIR="/system/app"
+fi
+
+cp ${YALP} ${YALP_DIR}
+chmod 644 ${YALP_DIR}/${YALP}
+echo -n -e 'ui_print done\n' > /proc/self/fd/$2
+echo -n -e 'ui_print\n' > /proc/self/fd/$2
+
+umount /system

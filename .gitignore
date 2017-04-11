@@ -33,3 +33,4 @@ proguard/
 /.idea
 /.gradle*
 gradle-app.setting
+*.zip
