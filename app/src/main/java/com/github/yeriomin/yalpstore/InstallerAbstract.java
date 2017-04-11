@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -15,6 +17,20 @@ public abstract class InstallerAbstract {
 
     protected Context context;
     protected boolean background;
+
+    static public Intent getOpenApkIntent(Context context, File file) {
+        Intent intent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+            intent.setData(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file));
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        } else {
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+        return intent;
+    }
 
     abstract protected void install(App app);
 
@@ -78,7 +94,7 @@ public abstract class InstallerAbstract {
 
     protected void showNotification(int notificationStringId, App app) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-        Intent openApkIntent = DownloadOrInstallFragment.getOpenApkIntent(context, file);
+        Intent openApkIntent = getOpenApkIntent(context, file);
         new NotificationUtil(context).show(
             openApkIntent,
             app.getDisplayName(),

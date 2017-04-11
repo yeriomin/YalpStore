@@ -5,8 +5,6 @@ import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 
-import java.util.Locale;
-
 public class InstallerDefault extends InstallerAbstract {
 
     public InstallerDefault(Context context) {
@@ -20,7 +18,7 @@ public class InstallerDefault extends InstallerAbstract {
             return;
         }
         context.startActivity(
-            DownloadOrInstallFragment.getOpenApkIntent(
+            InstallerAbstract.getOpenApkIntent(
                 context,
                 Downloader.getApkPath(app.getPackageName(), app.getVersionCode())
             )

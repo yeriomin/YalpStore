@@ -66,7 +66,7 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
 
     private void notifyAndToast(int notificationStringId, int toastStringId, App app) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-        Intent openApkIntent = DownloadOrInstallFragment.getOpenApkIntent(context, file);
+        Intent openApkIntent = InstallerAbstract.getOpenApkIntent(context, file);
         notificationUtil.show(
             openApkIntent,
             app.getDisplayName(),

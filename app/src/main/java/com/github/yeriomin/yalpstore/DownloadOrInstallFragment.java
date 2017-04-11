@@ -23,20 +23,6 @@ public class DownloadOrInstallFragment extends DetailsFragment {
     private DetailsDownloadReceiver downloadReceiver;
     private DetailsInstallReceiver installReceiver;
 
-    static public Intent getOpenApkIntent(Context context, File file) {
-        Intent intent;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
-            intent.setData(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file));
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        } else {
-            intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        }
-        return intent;
-    }
-
     public DownloadOrInstallFragment(DetailsActivity activity, App app) {
         super(activity, app);
     }
