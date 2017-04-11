@@ -98,6 +98,7 @@
     <string name="details_no_dependencies">нет зависимостей</string>
     <string name="details_contains_ads">Содержит рекламу</string>
     <string name="details_no_ads">Без рекламы</string>
+    <string name="details_not_available_on_play_store">Этого приложения нет в Play Store</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>
     <string name="credentials_hint_email">e-mail</string>

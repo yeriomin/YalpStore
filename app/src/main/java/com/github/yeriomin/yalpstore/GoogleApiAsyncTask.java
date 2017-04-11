@@ -90,7 +90,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
         }
     }
 
-    private void processIOException(IOException e) {
+    protected void processIOException(IOException e) {
         String message;
         if (noNetwork(e)) {
             message = this.context.getString(R.string.error_no_network);

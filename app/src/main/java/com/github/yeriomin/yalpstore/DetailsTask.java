@@ -7,6 +7,8 @@ import android.graphics.drawable.Drawable;
 
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.io.IOException;
+
 public class DetailsTask extends GoogleApiAsyncTask {
 
     protected App app;
@@ -15,6 +17,13 @@ public class DetailsTask extends GoogleApiAsyncTask {
     public DetailsTask setPackageName(String packageName) {
         this.packageName = packageName;
         return this;
+    }
+
+    @Override
+    protected void processIOException(IOException e) {
+        if (null != e) {
+            toast(this.context, R.string.details_not_available_on_play_store);
+        }
     }
 
     @Override

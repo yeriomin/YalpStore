@@ -75,6 +75,8 @@ public class DetailsActivity extends YalpStoreActivity {
                 if (this.app != null) {
                     DetailsDependentActivity.app = this.app;
                     drawDetails(this.app);
+                } else {
+                    finish();
                 }
             }
         };

@@ -97,6 +97,7 @@
     <string name="details_no_dependencies">nothing</string>
     <string name="details_contains_ads">Contains ads</string>
     <string name="details_no_ads">No ads</string>
+    <string name="details_not_available_on_play_store">Not available on Play Store</string>
     <string name="suffix_million">mil</string>
     <string name="suffix_billion">bil</string>
     <string name="credentials_hint_email">e-mail here</string>
