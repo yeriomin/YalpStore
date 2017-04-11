@@ -19,10 +19,11 @@
 # communicate with it using the recovery api.
 # arg 3 is the zip file
 
-echo -n -e 'ui_print Installing YalpStore...\n' > /proc/self/fd/$2
+echo -n -e 'ui_print Installing Yalp Store...\n' > /proc/self/fd/$2
 
 YALP_NAME=YalpStore
 YALP=${YALP_NAME}.apk
+ADDOND=81-yalp.sh
 
 cd /tmp
 mkdir yalp
@@ -31,6 +32,7 @@ unzip -o "$3"
 if [ "$?" -ne "0" ]
 then
   cp /cache/${YALP} .
+  cp /cache/${ADDOND} .
 fi
 
 mount /system
@@ -55,7 +57,10 @@ fi
 
 cp ${YALP} ${YALP_DIR}
 chmod 644 ${YALP_DIR}/${YALP}
-echo -n -e 'ui_print done\n' > /proc/self/fd/$2
-echo -n -e 'ui_print\n' > /proc/self/fd/$2
+
+cp ${ADDOND} /system/addon.d/
 
 umount /system
+
+echo -n -e 'ui_print done\n' > /proc/self/fd/$2
+echo -n -e 'ui_print\n' > /proc/self/fd/$2
