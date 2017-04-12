@@ -32,7 +32,7 @@ public class CategoryAppsActivity extends EndlessScrollActivity {
             categoryId = newCategoryId;
             setTitle(new CategoryManager(this).getCategoryName(categoryId));
             loadApps();
-            ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
+            ((SimpleAdapter) getListView().getAdapter()).notifyDataSetChanged();
         }
     }
 

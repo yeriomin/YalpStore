@@ -65,7 +65,7 @@ public class SearchResultActivity extends EndlessScrollActivity {
         };
         task.setCategoryManager(new CategoryManager(this));
         prepareTask(task).execute(query, categoryId);
-        ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
+        ((SimpleAdapter) getListView().getAdapter()).notifyDataSetChanged();
     }
 
     private String getQuery(Intent intent) {

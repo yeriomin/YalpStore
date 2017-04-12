@@ -80,10 +80,14 @@ public class DownloadOrInstallFragment extends DetailsFragment {
     }
 
     public void unregisterReceivers() {
-        activity.unregisterReceiver(downloadReceiver);
-        downloadReceiver = null;
-        activity.unregisterReceiver(installReceiver);
-        installReceiver = null;
+        if (null != downloadReceiver) {
+            activity.unregisterReceiver(downloadReceiver);
+            downloadReceiver = null;
+        }
+        if (null != installReceiver) {
+            activity.unregisterReceiver(installReceiver);
+            installReceiver = null;
+        }
     }
 
     public void registerReceivers() {

@@ -25,10 +25,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
     protected List<Map<String, Object>> data = new ArrayList<>();
     protected Map<String, App> apps = new HashMap<>();
 
-    protected ListAdapter listAdapter;
     protected ListView listView;
-
-    private boolean finishedStart = false;
 
     abstract protected void loadApps();
 
@@ -37,7 +34,6 @@ abstract public class AppListActivity extends YalpStoreActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.applist_activity_layout);
 
-        setListAdapter(getSimpleListAdapter());
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -59,10 +55,9 @@ abstract public class AppListActivity extends YalpStoreActivity {
         if (emptyView != null) {
             listView.setEmptyView(emptyView);
         }
-        if (finishedStart) {
-            setListAdapter(listAdapter);
+        if (null == listView.getAdapter()) {
+            listView.setAdapter(getSimpleListAdapter());
         }
-        finishedStart = true;
     }
 
     protected Map<String, Object> formatApp(App app) {
@@ -77,13 +72,13 @@ abstract public class AppListActivity extends YalpStoreActivity {
             data.add(this.formatApp(app));
             apps.put(app.getPackageName(), app);
         }
-        ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
+        ((SimpleAdapter) getListView().getAdapter()).notifyDataSetChanged();
     }
 
     protected void clearApps() {
         apps.clear();
         data.clear();
-        ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
+        ((SimpleAdapter) getListView().getAdapter()).notifyDataSetChanged();
     }
 
     private SimpleAdapter getSimpleListAdapter() {
@@ -102,18 +97,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
         return adapter;
     }
 
-    public void setListAdapter(ListAdapter adapter) {
-        synchronized (this) {
-            listAdapter = adapter;
-            listView.setAdapter(adapter);
-        }
-    }
-
     public ListView getListView() {
         return listView;
-    }
-
-    public ListAdapter getListAdapter() {
-        return listAdapter;
     }
 }
