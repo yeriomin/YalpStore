@@ -70,7 +70,7 @@ public class PlayStoreApiAuthenticator {
         com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
             .setHttpClient(new NativeHttpClientAdapter())
             .setDeviceInfoProvider(getDeviceInfoProvider())
-            .setLocale(new Locale(locale))
+            .setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale))
             .setEmail(email)
             .setPassword(password)
             .setGsfId(gsfId)
@@ -102,6 +102,7 @@ public class PlayStoreApiAuthenticator {
         } else {
             deviceInfoProvider = new PropertiesDeviceInfoProvider();
             ((PropertiesDeviceInfoProvider) deviceInfoProvider).setProperties(new SpoofDeviceManager(context).getProperties(spoofDevice));
+            ((PropertiesDeviceInfoProvider) deviceInfoProvider).setLocaleString(Locale.getDefault().toString());
         }
         return deviceInfoProvider;
     }
