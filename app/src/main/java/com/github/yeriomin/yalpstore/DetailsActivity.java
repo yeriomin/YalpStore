@@ -100,6 +100,7 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     protected void onResume() {
         if (null != downloadOrInstallManager) {
+            downloadOrInstallManager.unregisterReceivers();
             downloadOrInstallManager.registerReceivers();
             downloadOrInstallManager.draw();
         }
@@ -144,6 +145,9 @@ public class DetailsActivity extends YalpStoreActivity {
         new BackToPlayStoreFragment(this, app).draw();
         ignoreOptionManager.setApp(app);
         ignoreOptionManager.draw();
+        if (null != downloadOrInstallManager) {
+            downloadOrInstallManager.unregisterReceivers();
+        }
         downloadOrInstallManager = new DownloadOrInstallFragment(this, app);
         downloadOrInstallManager.registerReceivers();
         downloadOrInstallManager.draw();
