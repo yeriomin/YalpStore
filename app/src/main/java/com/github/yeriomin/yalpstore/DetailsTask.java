@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
+import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class DetailsTask extends GoogleApiAsyncTask {
 
     @Override
     protected void processIOException(IOException e) {
-        if (null != e) {
+        if (null != e && e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 404) {
             toast(this.context, R.string.details_not_available_on_play_store);
         }
     }
