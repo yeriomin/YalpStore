@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -71,6 +73,9 @@ public class GeneralDetailsFragment extends DetailsFragment {
     }
 
     private void addOfferItem(String key, String value) {
+        if (null == value) {
+            return;
+        }
         TextView itemView = new TextView(activity);
         itemView.setAutoLinkMask(Linkify.ALL);
         itemView.setText(key + " " + Html.fromHtml(value));
@@ -98,8 +103,12 @@ public class GeneralDetailsFragment extends DetailsFragment {
     }
 
     private void drawDescription(App app) {
-        setText(R.id.description, Html.fromHtml(app.getDescription()).toString());
-        initExpandableGroup(R.id.description_header, R.id.description_container);
+        if (TextUtils.isEmpty(app.getDescription())) {
+            activity.findViewById(R.id.description_header).setVisibility(View.GONE);
+        } else {
+            setText(R.id.description, Html.fromHtml(app.getDescription()).toString());
+            initExpandableGroup(R.id.description_header, R.id.description_container);
+        }
     }
 
     private void drawPermissions(App app) {

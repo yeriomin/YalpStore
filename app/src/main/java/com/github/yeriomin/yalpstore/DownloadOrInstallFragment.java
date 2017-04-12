@@ -52,6 +52,7 @@ public class DownloadOrInstallFragment extends DetailsFragment {
     private void drawDownloadButton() {
         Button downloadButton = (Button) activity.findViewById(R.id.download);
         downloadButton.setText(apkPath.exists() ? R.string.details_install : R.string.details_download);
+        downloadButton.setEnabled(true);
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,31 +88,18 @@ public class DownloadOrInstallFragment extends DetailsFragment {
 
     public void registerReceivers() {
         if (null == downloadReceiver) {
-            registerDownloadReceiver();
+            downloadReceiver = new DetailsDownloadReceiver(
+                activity,
+                (Button) activity.findViewById(R.id.download)
+            );
         }
         if (null == installReceiver) {
-            registerInstallReceiver();
+            installReceiver = new DetailsInstallReceiver(
+                activity,
+                (Button) activity.findViewById(R.id.download),
+                (Button) activity.findViewById(R.id.uninstall)
+            );
         }
-    }
-
-    private void registerDownloadReceiver() {
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
-        downloadReceiver = new DetailsDownloadReceiver();
-        downloadReceiver.setButton((Button) activity.findViewById(R.id.download));
-        activity.registerReceiver(downloadReceiver, filter);
-    }
-
-    private void registerInstallReceiver() {
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_PACKAGE_INSTALL);
-        filter.addAction(Intent.ACTION_PACKAGE_ADDED);
-        filter.addAction(Intent.ACTION_PACKAGE_REPLACED);
-        filter.addAction(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM);
-        installReceiver = new DetailsInstallReceiver();
-        installReceiver.setButtonInstall((Button) activity.findViewById(R.id.download));
-        installReceiver.setButtonUninstall((Button) activity.findViewById(R.id.uninstall));
-        activity.registerReceiver(installReceiver, filter);
     }
 
     public void downloadOrInstall() {

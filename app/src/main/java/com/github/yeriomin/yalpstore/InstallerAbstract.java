@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -35,6 +36,7 @@ public abstract class InstallerAbstract {
     abstract protected void install(App app);
 
     public InstallerAbstract(Context context) {
+        Log.i(getClass().getName(), "Installer chosen");
         this.context = context;
         this.background = !(context instanceof Activity);
     }

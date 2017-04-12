@@ -23,6 +23,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
     protected static final String PACKAGE_NAME = "PACKAGE_NAME";
 
     protected List<Map<String, Object>> data = new ArrayList<>();
+    protected Map<String, App> apps = new HashMap<>();
 
     protected ListAdapter listAdapter;
     protected ListView listView;
@@ -44,6 +45,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
                 if (null == packageName) {
                     return;
                 }
+                DetailsDependentActivity.app = apps.get(packageName);
                 DetailsActivity.start(getApplicationContext(), packageName);
             }
         });
@@ -70,14 +72,16 @@ abstract public class AppListActivity extends YalpStoreActivity {
         return map;
     }
 
-    protected void addApps(List<App> apps) {
-        for (App app: apps) {
+    protected void addApps(List<App> appsToAdd) {
+        for (App app: appsToAdd) {
             data.add(this.formatApp(app));
+            apps.put(app.getPackageName(), app);
         }
         ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
     }
 
     protected void clearApps() {
+        apps.clear();
         data.clear();
         ((SimpleAdapter) getListAdapter()).notifyDataSetChanged();
     }

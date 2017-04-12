@@ -28,6 +28,7 @@ public abstract class DetailsFragment {
 
     protected void initExpandableGroup(int viewIdHeader, int viewIdContainer, final View.OnClickListener l) {
         TextView viewHeader = (TextView) activity.findViewById(viewIdHeader);
+        viewHeader.setVisibility(View.VISIBLE);
         final LinearLayout viewContainer = (LinearLayout) activity.findViewById(viewIdContainer);
         viewHeader.setOnClickListener(new View.OnClickListener() {
             @Override

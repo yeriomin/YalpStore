@@ -6,7 +6,6 @@ public class InstallerFactory {
 
     static public InstallerAbstract get(Context context) {
         String userChoice = PreferenceActivity.getString(context, PreferenceActivity.PREFERENCE_INSTALLATION_METHOD);
-        System.out.println("InstallerFactory " + userChoice);
         switch (userChoice) {
             case PreferenceActivity.INSTALLATION_METHOD_PRIVILEGED:
                 return new InstallerPrivileged(context);

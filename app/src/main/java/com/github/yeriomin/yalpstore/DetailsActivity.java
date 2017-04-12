@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -58,12 +59,16 @@ public class DetailsActivity extends YalpStoreActivity {
             finishActivity(0);
             return;
         }
+        ignoreOptionManager = new IgnoreOptionFragment(this, new App());
+
+        if (null != DetailsDependentActivity.app) {
+            drawDetails(DetailsDependentActivity.app);
+        }
         Log.i(this.getClass().getName(), "Getting info about " + packageName);
 
         DetailsTask task = getDetailsTask(packageName);
         task.setTaskClone(getDetailsTask(packageName));
         task.execute();
-        ignoreOptionManager = new IgnoreOptionFragment(this, new App());
     }
 
     private DetailsTask getDetailsTask(String packageName) {
@@ -75,14 +80,12 @@ public class DetailsActivity extends YalpStoreActivity {
                 if (this.app != null) {
                     DetailsDependentActivity.app = this.app;
                     drawDetails(this.app);
-                } else {
-                    finish();
                 }
             }
         };
         task.setPackageName(packageName);
         task.setContext(this);
-        task.prepareDialog(R.string.dialog_message_loading_app_details, R.string.dialog_title_loading_app_details);
+        task.setProgressIndicator(findViewById(R.id.progress));
         return task;
     }
 
@@ -98,12 +101,9 @@ public class DetailsActivity extends YalpStoreActivity {
     protected void onResume() {
         if (null != downloadOrInstallManager) {
             downloadOrInstallManager.registerReceivers();
+            downloadOrInstallManager.draw();
         }
         super.onResume();
-        Button uninstallButton = (Button) findViewById(R.id.uninstall);
-        if (null != uninstallButton) {
-            uninstallButton.setVisibility(isPackageInstalled(getIntentPackageName(getIntent())) ? View.VISIBLE : View.GONE);
-        }
     }
 
     @Override
@@ -118,15 +118,6 @@ public class DetailsActivity extends YalpStoreActivity {
         if (requestCode == PERMISSIONS_REQUEST_CODE
             && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             downloadOrInstallManager.downloadOrInstall();
-        }
-    }
-
-    private boolean isPackageInstalled(String packageName) {
-        try {
-            getPackageManager().getPackageInfo(packageName, 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
         }
     }
 

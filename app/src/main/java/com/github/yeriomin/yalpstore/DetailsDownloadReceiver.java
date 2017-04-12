@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -10,8 +11,11 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
 
     private Button button;
 
-    public void setButton(Button button) {
+    public DetailsDownloadReceiver(DetailsActivity activity, Button button) {
         this.button = button;
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
+        activity.registerReceiver(this, filter);
     }
 
     @Override

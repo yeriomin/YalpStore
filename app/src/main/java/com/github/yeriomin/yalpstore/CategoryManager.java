@@ -30,6 +30,9 @@ public class CategoryManager {
     }
 
     public String getCategoryName(String categoryId) {
+        if (null == categoryId) {
+            return "";
+        }
         return translator.getString(categoryId);
     }
 
