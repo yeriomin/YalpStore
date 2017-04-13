@@ -25,28 +25,28 @@
 
 Bitte erstelle ein separates App-Passwort für Yalp Store und melde dich damit hier an.
 
-Tippe auf \"Passwort erstellen\" um auf die Seite zum Erstellen eines Passwortes zu gelangen."</string>
+Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passwortes zu gelangen."</string>
 <string name="dialog_title_logout">"Abmelden?"</string>
 <string name="dialog_message_logout">"Bist du sicher dass du dich abmelden möchtest?"</string>
-<string name="dialog_title_reviews">"Lade Bewertungen"</string>
-<string name="dialog_message_reviews">"Bitte warten. Empfange Bewertungen."</string>
-<string name="dialog_title_purchasing_app">"Lade App herunter"</string>
+<string name="dialog_title_reviews">"Bewertungen werden geladen"</string>
+<string name="dialog_message_reviews">"Bitte warten. Bewertungen werden geladen."</string>
+<string name="dialog_title_purchasing_app">"App wird heruntergeladen"</string>
 <string name="dialog_message_purchasing_app">"Bitte warten. Starte das Herunterladen der gewählten App."</string>
-<string name="dialog_title_loading_app_details">"Lade Details"</string>
+<string name="dialog_title_loading_app_details">"Details werden geladen"</string>
 <string name="dialog_message_loading_app_details">"Bitte warten. Details der gewählten App werden ermittelt."</string>
 <string name="dialog_title_loading_app_list_search">"Suche"</string>
-<string name="dialog_message_loading_app_list_search">"Bitte warten. Suche nach Apps."</string>
-<string name="dialog_account_type_provided_by_user">"Benutze meinen Google Account"</string>
-<string name="dialog_account_type_predefined">"Ohne Account (experimentell)"</string>
-<string name="dialog_account_type_title">"Wie möchtest du dich beim Google Play Store anmelden?"</string>
-<string name="dialog_title_logging_in">"Authentifiziere"</string>
-<string name="dialog_message_logging_in_provided_by_user">"Authentifiziere mit den Benutzerdaten bereitgestellt durch dich"</string>
-<string name="dialog_message_logging_in_predefined">"Authentifiziere mit den Benutzerdaten bereitgestellt durch den Yalp Store"</string>
-<string name="error_incorrect_password">"Email-Adresse oder Passwort falsch."</string>
+<string name="dialog_message_loading_app_list_search">"Bitte warten. Apps werden gesucht."</string>
+<string name="dialog_account_type_provided_by_user">"Mit meinem eigenen Google Account"</string>
+<string name="dialog_account_type_predefined">"Mit einem gefälschten Yalp Store account"</string>
+<string name="dialog_account_type_title">"Wie möchtest du dich im Google Play Store anmelden?"</string>
+<string name="dialog_title_logging_in">"Anmeldung erfolgt"</string>
+<string name="dialog_message_logging_in_provided_by_user">"Authentifiziere mit Benutzerdaten, die du bereitstellst"</string>
+<string name="dialog_message_logging_in_predefined">"Authentifiziere mit den Benutzerdaten von Yalp Store"</string>
+<string name="error_incorrect_password">"E-Mail-Adresse oder Passwort falsch."</string>
 <string name="error_credentials_empty">"Bitte trage die Anmeldedaten des Google Kontos ein."</string>
 <string name="error_no_network">"Keine Netzwerkverbindung."</string>
 <string name="error_network_other">"Netzwerk-Fehler: %1$s"</string>
-<string name="error_not_purchased">"Diese App wurde scheinbar nicht gekauft. Zum Play Store weiterleiten?"</string>
+<string name="error_not_purchased">"Anscheinen ist diese App nicht gekauft. Zur Play Store Website weiterleiten?"</string>
 <string name="error_downloads_directory_not_writable">"Download-Ordner konnte nicht erstellt werden oder ist nicht beschreibbar."</string>
 <string name="error_token_dispenser_problem">"Authentifizierung ohne Account fehlgeschlagen. Versuche deinen eigenen Account zu benutzen."</string>
 <string name="details_installs">"%1$s ↓"</string>
@@ -72,29 +72,29 @@ Tippe auf \"Passwort erstellen\" um auf die Seite zum Erstellen eines Passwortes
 <string name="details_review_dialog_fields_optional">"Du kannst alles leer lassen."</string>
 <string name="details_apps_by_this_dev">"Weitere Apps von diesem Entwickler"</string>
 <string name="details_similar_apps">"Ähnliche Apps"</string>
-<string name="details_users_also_installed">"Apps die Nutzer auch installierten"</string>
-<string name="details_signature_mismatch">"Die neue Version wurde mit einem anderen Schlüssel signiert als die alte. Um die neue Version zu installieren, muss zunächst die alte entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: Beim Entfernen werden alle intern gespeicherten Daten dieser Anwendung gelöscht.)"</string>
+<string name="details_users_also_installed">"Nutzer installierten auch"</string>
+<string name="details_signature_mismatch">"Die neue Version wurde mit einem anderen Schlüssel signiert als die Alte. Um die neue Version zu installieren, muss die alte zunächst entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: Beim Entfernen werden alle intern gespeicherten Daten dieser Anwendung gelöscht.)"</string>
 <string name="suffix_million">"Mio"</string>
 <string name="suffix_billion">"Mrd"</string>
 <string name="credentials_hint_email">"E-mail"</string>
 <string name="credentials_hint_password">"Passwort"</string>
 <string name="credentials_title">"Google Konto Zugang"</string>
 <string name="credentials_message">"Für die Verwendung dieser App wird eine Google E-Mail Adresse und ein Passwort benötigt.
-Vergiss nicht das die Verwendung dieser App gegen die Play Store Nutzungsbedingungen verstößt. Wahrscheinlich ist es sicherer ein unwichtiges Google-Konto zu verwenden, welches mindestens einmal im Play Store eingeloggt war um den Nutzungsbedingungen zuzustimmen."</string>
-<string name="activity_title_updates">"Aktualisierungen"</string>
+Vergiss nicht, dass die Verwendung dieser App gegen die Play Store Nutzungsbedingungen verstößt. Wahrscheinlich ist es sicherer ein unwichtiges Google-Konto zu verwenden, welches mindestens einmal im Play Store eingeloggt war, um den Nutzungsbedingungen zuzustimmen."</string>
+<string name="activity_title_updates">"Deine Apps"</string>
 <string name="activity_title_search">"Suche: \"%1$s\""</string>
 <string name="notification_download_complete">"Herunterladen abgeschlossen. Tippe zum Installieren."</string>
 <string name="notification_download_complete_toast">"%1$s heruntergeladen. Tippe Benachrichtigung zum Installieren."</string>
 <string name="notification_download_complete_signature_mismatch">"Herunterladen abgeschlossen. Die Signatur der APK-Datei stimmt jedoch nicht überein."</string>
-<string name="notification_download_complete_signature_mismatch_toast">"%1$s heruntergeladen. Aber die APK-Signatur stimmt nicht mit der installierten App überein. Hast du diese App ursprünglich vom Play Store geladen? Eventuell musst du diese zuerst deinstallieren."</string>
+<string name="notification_download_complete_signature_mismatch_toast">"%1$s heruntergeladen. Aber die APK-Signatur stimmt nicht mit der installierten App überein. Eventuell musst du diese zuerst deinstallieren."</string>
 <string name="notification_updates_available_title">"App Aktualisierungen verfügbar."</string>
 <string name="notification_updates_available_message">"Es sind %1$d Aktualisierungen für deine Apps verfügbar."</string>
 <string name="pref_hide_nonfree_apps_summary_off">"Kostenpflichtige Apps werden angezeigt"</string>
 <string name="pref_hide_nonfree_apps_summary_on">"Kostenpflichtige Apps werden nicht angezeigt"</string>
-<string name="pref_hide_nonfree_apps">"Verstecke kostenpflichtige Apps"</string>
-<string name="pref_auto_install_summary_off">"Apps werden installiert wenn die Abschluss-Benachrichtigung angetippt wird"</string>
-<string name="pref_auto_install_summary_on">"Apps werden installiert sobald der Download abgeschlossen ist"</string>
-<string name="pref_auto_install">"Apps sofort installieren."</string>
+<string name="pref_hide_nonfree_apps">"Blende kostenpflichtige Apps aus"</string>
+<string name="pref_auto_install_summary_off">"Apps werden installiert, wenn die Abschluss-Benachrichtigung angetippt wird"</string>
+<string name="pref_auto_install_summary_on">"Apps werden installiert, sobald der Download abgeschlossen ist"</string>
+<string name="pref_auto_install">"Apps sofort installieren"</string>
 <string name="pref_update_list_white_or_black_black">"Nur für ausgewählte Apps werden keine Aktualisierungen gesucht"</string>
 <string name="pref_update_list_white_or_black_white">"Nur für ausgewählte Apps werden Aktualisierungen gesucht"</string>
 <string name="pref_update_list_white_or_black">"Black- oder Whitelist für App-Aktualisierungen verwenden"</string>
@@ -109,21 +109,21 @@ Vergiss nicht das die Verwendung dieser App gegen die Play Store Nutzungsbedingu
 <string name="pref_background_update_interval_hourly">"Stündlich"</string>
 <string name="pref_background_update_interval_daily">"Täglich"</string>
 <string name="pref_background_update_interval_weekly">"Wöchentlich"</string>
-<string name="pref_background_update_interval">"Suche periodisch nach neuen Aktualisierungen"</string>
+<string name="pref_background_update_interval">"Suche automatisch nach neuen Aktualisierungen"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Unbekannter Fehler."</string>
-<string name="download_manager_ERROR_FILE_ERROR">"Unbekannter Datei Speicherfehler."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Es wurde ein HTTP-Code empfangen den die Download-Verwaltung nicht verarbeiten kann. Dies ist ein Serverfehler."</string>
+<string name="download_manager_ERROR_FILE_ERROR">"Unbekannter Speicherfehler."</string>
+<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Es wurde ein HTTP-Code empfangen, den die Download-Verwaltung nicht verarbeiten kann. Dies ist ein Serverfehler."</string>
 <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Fehler beim Empfangen oder Verarbeiten von Daten auf HTTP-Ebene."</string>
 <string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Zu viele Umleitungen."</string>
 <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Ungenügend freier Speicher."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Es wurde kein externer Speicher gefunden. Möglicherweise ist die SD-Karte nicht eingebunden."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Es trat ein möglicherweise vorübergehender Fehler auf, der Download kann nicht fortgesetzt werden. Versuche es später noch einmal!"</string>
-<string name="download_manager_ERROR_BLOCKED">"Das Herunterladen ist fehlgeschlagen weil der Netzwerk-Richtlinien-Manager die Kontrolle über die anfordernde App hat."</string>
+<string name="download_manager_ERROR_BLOCKED">"Das Herunterladen ist fehlgeschlagen weil der Netzwerk-Richtlinien-Manager die Kontrolle über die anfordernde App hat. Überprüfe deine Einstellungen."</string>
 <string name="search_filter">"Alle Apps"</string>
 <string name="details_category">"Kategorie: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Die .apks werden nun nach der Installation nicht gelöscht"</string>
-<string name="pref_delete_apk_after_install_summary_on">"Die .apks werden nun nach der Installation gelöscht"</string>
-<string name="pref_delete_apk_after_install">"Die .apk nach der Installation löschen"</string>
+<string name="pref_delete_apk_after_install_summary_off">"Installationsdateien werden nun nach der Installation nicht gelöscht"</string>
+<string name="pref_delete_apk_after_install_summary_on">"Installationsdateien werden nun nach der Installation gelöscht"</string>
+<string name="pref_delete_apk_after_install">"Installaltionsdatei nach der Installation löschen"</string>
 <string name="dialog_title_application_crashed">"Entschuldigung, Yalp Store ist abgestürtzt"</string>
 <string name="dialog_message_application_crashed">"Du kannst dabei helfen, dies zu beheben, indem du Fehlerdaten an den Entwickler schickst. Wenn du auf OK klickst, wirst du mit einer fertigen E-Mail zu deiner Standard-E-Mail-App weitergeleitet, die du an den Entwickler senden kannst.
 
@@ -137,8 +137,8 @@ Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den M
 <string name="action_categories">"Kategorien"</string>
 <string name="list_update_all">"Alle aktualisieren"</string>
 <string name="notification_installation_complete">"Update installiert"</string>
-<string name="notification_installation_complete_toast">"App %1$s aktualisiert"</string>
-<string name="notification_installation_failed">"Update fehlgeschlagen"</string>
+<string name="notification_installation_complete_toast">"App %1$s aktualisiert."</string>
+<string name="notification_installation_failed">"Update fehlgeschlagen."</string>
 <string name="notification_installation_failed_toast">"Konnte Update %1$s nicht ausführen. Root-Rechte nicht zugelassen?"</string>
 <string name="pref_background_update_install_summary_off">"Du erhälst nur eine Benachrichtigung"</string>
 <string name="pref_background_update_install_summary_on">"Updates werden installiert, sobald sie verfügbar sind (root)"</string>
@@ -160,10 +160,10 @@ Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den M
 <string name="manual_download_compatible">"Versionsnummerfeld wurde automatisch mit der letzten kompatiblen Versionsnummer ausgefüllt. Wenn du eine vorherige Version haben möchtest, gib einfach eine kleinere Nummer ein. Wenn diese Version im Play Store existiert, wird diese heruntergeladen."</string>
 <string name="manual_download_warning">"Auf dieser Seite kannst du manuell die Version der App aussuchen, die du herunterladen möchtest. Die Versionsnummer ist eine Nummer, die Version einer App kennzeichnet. Sie startet bei eins und wird für jede neue Version um eins hochgezählt, die der Entwickler hochlädt. Normalerweise wird immer nur die letzte kompatible Version vom Play Store heruntergeladen. Durch manuelles Auswählen der Version kannst du eventuell die anderen Version erhalten.
 
-Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Store offiziell nicht unterstützt. Der Erfolg dieses Vorhabens hängt von dem richtigen Raten der Versionsnummer ab. Selbst wenn das Raten erfolgreich war und die Version runtergeladen werden konnte, kann es immer noch sein, dass die Version inkompatibel ist. Höchstwahrscheinlich ist dies hier Zeitverschwendung."</string>
+Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Store offiziell nicht unterstützt. Der Erfolg dieses Vorhabens hängt von dem richtigen Raten der Versionsnummer ab. Selbst wenn das Raten erfolgreich war und die Version runtergeladen werden konnte, kann es immer noch sein, dass die Version inkompatibel ist. Höchstwahrscheinlich ist dies hier Zeitverschwendung!"</string>
 <string name="manual_download_hint_version_code">"Versionsnummer hier"</string>
 <string name="list_has_update">"Aktualisierbar"</string>
-<string name="list_no_update">"Keine Aktualisierung verfügbar"</string>
+<string name="list_no_update">"Bereits aktuell"</string>
 <string name="details_uninstall">"Deinstallieren"</string>
 <string name="notification_download_starting">"Beginne Download"</string>
 <string name="notification_download_progress">"%1$s von %2$s heruntergeladen"</string>
@@ -180,4 +180,18 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="pref_category_installation">"Installation"</string>
 <string name="pref_category_spoofing">"Verschleierung"</string>
 <string name="pref_category_ui">"Anzeige"</string>
+<string name="details_installing">"Wird installiert..."</string>
+<string name="details_installed">"Erfolgreich installiert"</string>
+<string name="details_install_failure">"Konnte nicht installiert werden"</string>
+<string name="notification_download_complete_new_permissions">"Herunterladen abgeschlossen. Neue Berechtigungen eingefordert."</string>
+<string name="notification_download_complete_new_permissions_toast">"%1$s wurde heruntergeladen. Die neue Version der App fordert mehr Berechtigungen ein. Bitte überprüfe die neue Berechtigungsliste."</string>
+<string name="pref_not_privileged">"Nur verfügbar, wenn Yalp als System-App installiert ist"</string>
+<string name="pref_installation_method">"Installationsmethode"</string>
+<string name="pref_installation_method_default">"Standartmäßiger Installationsdialog, keine Installationen im Hintergrund"</string>
+<string name="pref_installation_method_root">"Mit Root-Rechten"</string>
+<string name="pref_installation_method_privileged">"Mit Systemberechtigungen"</string>
+<string name="pref_background_update_download_summary_off">"Du erhälst nur eine Nachricht."</string>
+<string name="pref_background_update_download_summary_on">"Gefundene Updates werden heruntergeladen"</string>
+<string name="pref_background_update_download">"Updates auch installieren"</string>
+<string name="details_not_available_on_play_store">"Nicht im Google Play Store verfügbar"</string>
 </resources>
