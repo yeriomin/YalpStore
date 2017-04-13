@@ -54,6 +54,8 @@
     <string name="action_categories">Категории</string>
     <string name="action_manual">Ручное скачивание</string>
     <string name="action_get_local_apk">Получить установленный apk</string>
+    <string name="action_make_system">Сделать системным</string>
+    <string name="action_make_normal">Сделать обычным</string>
     <string name="search_filter">Все приложения</string>
     <string name="search_title">Поиск приложений</string>
     <string name="error_incorrect_password">Неверный email или пароль.</string>
