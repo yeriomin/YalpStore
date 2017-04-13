@@ -4,13 +4,11 @@ import android.Manifest;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -32,7 +30,6 @@ public class DownloadOrInstallFragment extends DetailsFragment {
         apkPath = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         drawUninstallButton();
         drawDownloadButton();
-        drawMoreButton();
     }
 
     private void drawUninstallButton() {
@@ -65,18 +62,6 @@ public class DownloadOrInstallFragment extends DetailsFragment {
                 }
             }
         });
-    }
-
-    private void drawMoreButton() {
-        ImageButton more = (ImageButton) activity.findViewById(R.id.more);
-        if (null != more) {
-            more.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
-                }
-            });
-        }
     }
 
     public void unregisterReceivers() {

@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore.model;
 
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 
@@ -40,6 +41,7 @@ public class App implements Comparable<App> {
     private boolean containsAds;
     private Set<String> dependencies = new HashSet<>();
     private Map<String, String> offerDetails = new HashMap<>();
+    private boolean system;
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -61,6 +63,7 @@ public class App implements Comparable<App> {
         this.packageInfo = packageInfo;
         this.setVersionName(packageInfo.versionName);
         this.setVersionCode(packageInfo.versionCode);
+        this.setSystem((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
     }
 
     public String getDisplayName() {
@@ -233,6 +236,14 @@ public class App implements Comparable<App> {
 
     public Map<String, String> getOfferDetails() {
         return offerDetails;
+    }
+
+    public boolean isSystem() {
+        return system;
+    }
+
+    public void setSystem(boolean system) {
+        this.system = system;
     }
 
     @Override

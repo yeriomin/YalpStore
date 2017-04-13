@@ -6,9 +6,12 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -22,6 +25,7 @@ public class DetailsActivity extends YalpStoreActivity {
 
     protected DownloadOrInstallFragment downloadOrInstallManager;
     private IgnoreOptionFragment ignoreOptionManager;
+    private DownloadOptionsFragment downloadOptionsFragment;
 
     static public void start(Context context, String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
@@ -71,24 +75,6 @@ public class DetailsActivity extends YalpStoreActivity {
         task.execute();
     }
 
-    private DetailsTask getDetailsTask(String packageName) {
-        DetailsTask task = new DetailsTask() {
-
-            @Override
-            protected void onPostExecute(Throwable e) {
-                super.onPostExecute(e);
-                if (this.app != null) {
-                    DetailsDependentActivity.app = this.app;
-                    drawDetails(this.app);
-                }
-            }
-        };
-        task.setPackageName(packageName);
-        task.setContext(this);
-        task.setProgressIndicator(findViewById(R.id.progress));
-        return task;
-    }
-
     @Override
     protected void onPause() {
         if (null != downloadOrInstallManager) {
@@ -117,9 +103,21 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (requestCode == PERMISSIONS_REQUEST_CODE
-            && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+        ) {
             downloadOrInstallManager.downloadOrInstall();
         }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        downloadOptionsFragment.inflate(menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        return downloadOptionsFragment.onContextItemSelected(item);
     }
 
     private String getIntentPackageName(Intent intent) {
@@ -127,8 +125,8 @@ public class DetailsActivity extends YalpStoreActivity {
             return intent.getStringExtra(INTENT_PACKAGE_NAME);
         } else if (intent.getScheme() != null
             && (intent.getScheme().equals("market")
-                || intent.getScheme().equals("http")
-                || intent.getScheme().equals("https")
+            || intent.getScheme().equals("http")
+            || intent.getScheme().equals("https")
         )) {
             return intent.getData().getQueryParameter("id");
         }
@@ -151,5 +149,25 @@ public class DetailsActivity extends YalpStoreActivity {
         downloadOrInstallManager = new DownloadOrInstallFragment(this, app);
         downloadOrInstallManager.registerReceivers();
         downloadOrInstallManager.draw();
+        downloadOptionsFragment = new DownloadOptionsFragment(this, app);
+        downloadOptionsFragment.draw();
+    }
+
+    private DetailsTask getDetailsTask(String packageName) {
+        DetailsTask task = new DetailsTask() {
+
+            @Override
+            protected void onPostExecute(Throwable e) {
+                super.onPostExecute(e);
+                if (this.app != null) {
+                    DetailsDependentActivity.app = this.app;
+                    drawDetails(this.app);
+                }
+            }
+        };
+        task.setPackageName(packageName);
+        task.setContext(this);
+        task.setProgressIndicator(findViewById(R.id.progress));
+        return task;
     }
 }

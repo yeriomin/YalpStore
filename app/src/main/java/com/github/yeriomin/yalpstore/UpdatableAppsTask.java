@@ -27,11 +27,10 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_META_DATA);
         for (PackageInfo packageInfo : packages) {
-            if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                // This is a system app - skipping
+            App app = new App(packageInfo);
+            if (app.isSystem()) {
                 continue;
             }
-            App app = new App(packageInfo);
             app.setDisplayName(pm.getApplicationLabel(packageInfo.applicationInfo).toString());
             app.setIcon(pm.getApplicationIcon(packageInfo.applicationInfo));
             app.setInstalled(true);

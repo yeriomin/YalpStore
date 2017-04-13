@@ -40,6 +40,7 @@ public class DetailsTask extends GoogleApiAsyncTask {
             PackageManager pm = this.context.getPackageManager();
             ApplicationInfo installedApp = pm.getApplicationInfo(packageName, 0);
             icon = pm.getApplicationIcon(installedApp);
+            this.app.getPackageInfo().applicationInfo = installedApp;
             this.app.setInstalled(true);
         } catch (PackageManager.NameNotFoundException e) {
             BitmapManager manager = new BitmapManager(this.context);
