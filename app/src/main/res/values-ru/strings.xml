@@ -52,6 +52,8 @@
     <string name="action_logout">Разлогиниться</string>
     <string name="action_search">Поиск</string>
     <string name="action_categories">Категории</string>
+    <string name="action_manual">Ручное скачивание</string>
+    <string name="action_get_local_apk">Получить установленный apk</string>
     <string name="search_filter">Все приложения</string>
     <string name="search_title">Поиск приложений</string>
     <string name="error_incorrect_password">Неверный email или пароль.</string>
@@ -99,6 +101,8 @@
     <string name="details_contains_ads">Содержит рекламу</string>
     <string name="details_no_ads">Без рекламы</string>
     <string name="details_not_available_on_play_store">Этого приложения нет в Play Store</string>
+    <string name="details_saved_in_downloads">Сохранено в каталог загрузок по-умолчанию</string>
+    <string name="details_could_not_copy_apk">Не удалось скопировать apk</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>
     <string name="credentials_hint_email">e-mail</string>
