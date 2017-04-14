@@ -39,6 +39,8 @@ public class DownloadOptionsFragment extends DetailsFragment {
         if (app.isInstalled()) {
             menu.findItem(R.id.action_get_local_apk).setVisible(true);
         }
+        menu.findItem(R.id.action_make_system).setVisible(!app.isSystem());
+        menu.findItem(R.id.action_make_normal).setVisible(app.isSystem());
     }
 
     public boolean onContextItemSelected(MenuItem item) {
@@ -47,6 +49,12 @@ public class DownloadOptionsFragment extends DetailsFragment {
                 activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
                 return true;
             case R.id.action_get_local_apk:
+                copyLocalApk();
+                return true;
+            case R.id.action_make_system:
+                copyLocalApk();
+                return true;
+            case R.id.action_make_normal:
                 copyLocalApk();
                 return true;
             default:
