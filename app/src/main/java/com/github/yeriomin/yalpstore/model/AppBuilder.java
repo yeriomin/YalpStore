@@ -43,6 +43,7 @@ public class AppBuilder {
         app.setChanges(appDetails.getRecentChangesHtml());
         app.setPermissions(appDetails.getPermissionList());
         app.setContainsAds(appDetails.hasContainsAds() && !TextUtils.isEmpty(appDetails.getContainsAds()));
+        app.setInPlayStore(true);
         fillImages(app, details.getImageList());
         fillDeveloper(app, appDetails);
         fillDependencies(app, appDetails);

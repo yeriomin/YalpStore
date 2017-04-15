@@ -28,17 +28,24 @@ public class GeneralDetailsFragment extends DetailsFragment {
 
     @Override
     public void draw() {
-        drawGeneralDetails(app);
+        drawAppBadge(app);
+        if (app.isInPlayStore()) {
+            drawGeneralDetails(app);
+        }
         drawDescription(app);
         drawPermissions(app);
         new GoogleDependencyFragment(activity, app).draw();
     }
 
-    private void drawGeneralDetails(App app) {
+    private void drawAppBadge(App app) {
         ((ImageView) activity.findViewById(R.id.icon)).setImageDrawable(app.getIcon());
 
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, app.getPackageName());
+    }
+
+    private void drawGeneralDetails(App app) {
+        activity.findViewById(R.id.general_details).setVisibility(View.VISIBLE);
         setText(R.id.installs, R.string.details_installs, app.getInstalls());
         setText(R.id.rating, R.string.details_rating, app.getRating().getAverage());
         setText(R.id.updated, R.string.details_updated, app.getUpdated());
@@ -123,5 +130,8 @@ public class GeneralDetailsFragment extends DetailsFragment {
             }
         }
         setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
+        if (!app.isInPlayStore()) {
+            activity.findViewById(R.id.permissions_header).performClick();
+        }
     }
 }

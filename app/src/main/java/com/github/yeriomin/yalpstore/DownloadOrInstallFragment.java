@@ -49,7 +49,7 @@ public class DownloadOrInstallFragment extends DetailsFragment {
     private void drawDownloadButton() {
         Button downloadButton = (Button) activity.findViewById(R.id.download);
         downloadButton.setText(apkPath.exists() ? R.string.details_install : R.string.details_download);
-        downloadButton.setEnabled(true);
+        downloadButton.setEnabled(apkPath.exists() || app.isInPlayStore());
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

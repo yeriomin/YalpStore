@@ -24,6 +24,8 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_REQUESTED_LANGUAGE = "PREFERENCE_REQUESTED_LANGUAGE";
     public static final String PREFERENCE_DEVICE_TO_PRETEND_TO_BE = "PREFERENCE_DEVICE_TO_PRETEND_TO_BE";
     public static final String PREFERENCE_INSTALLATION_METHOD = "PREFERENCE_INSTALLATION_METHOD";
+    public static final String PREFERENCE_UPDATES_ONLY = "PREFERENCE_UPDATES_ONLY";
+    public static final String PREFERENCE_SHOW_SYSTEM_APPS = "PREFERENCE_SHOW_SYSTEM_APPS";
 
     public static final String INSTALLATION_METHOD_DEFAULT = "default";
     public static final String INSTALLATION_METHOD_ROOT = "root";

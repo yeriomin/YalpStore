@@ -32,8 +32,6 @@ Touchez \"créer un mot de passe\" pour être redirigé vers la page de créatio
 <string name="dialog_message_reviews">"Chargement des avis. Attendez SVP"</string>
 <string name="dialog_title_purchasing_app">"Téléchargement en cours"</string>
 <string name="dialog_message_purchasing_app">"Démarrage du téléchargement de l'application sélectionnée. Attendez SVP"</string>
-<string name="dialog_title_loading_app_details">"Obtention des détails"</string>
-<string name="dialog_message_loading_app_details">"Obtention des détails de l'application, patientez SVP"</string>
 <string name="dialog_title_loading_app_list_search">"Recherche en cours"</string>
 <string name="dialog_message_loading_app_list_search">"Recherche d'apps, patientez SVP"</string>
 <string name="dialog_account_type_provided_by_user">"Avec mon compte Google"</string>
@@ -82,7 +80,7 @@ Touchez \"créer un mot de passe\" pour être redirigé vers la page de créatio
 <string name="credentials_message">"Cette app a besoin d'un compte Google pour fonctionner.
 
 Utiliser Yalp Store se fait en violation des conditions d'utilisation du Play Store. Il est recommandé d'utiliser un compte Google jetable, qui a été utilisé au moins une fois avec le Play Store, au cas où ce compte serait bloqué."</string>
-<string name="activity_title_updates">"Mises à jour"</string>
+<string name="activity_title_updates_only">"Mises à jour"</string>
 <string name="activity_title_search">"Recherche de \"%1$s\" "</string>
 <string name="notification_download_complete">"Téléchargement terminé. Touchez pour installer."</string>
 <string name="notification_download_complete_toast">"Téléchargement de %1$s terminé. Touchez le bouton d'installation ou la ntofication pour installer."</string>

@@ -29,6 +29,10 @@ public class ReviewFragment extends DetailsFragment {
 
     @Override
     public void draw() {
+        if (!app.isInPlayStore()) {
+            return;
+        }
+
         initExpandableGroup(R.id.reviews_header, R.id.reviews_container, new View.OnClickListener() {
             @Override
             public void onClick(View v) {

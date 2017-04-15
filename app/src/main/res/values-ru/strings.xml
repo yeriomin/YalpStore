@@ -18,6 +18,8 @@
     <string name="list_app_no_ads">нет рекламы</string>
     <string name="list_app_depends_on_gsf">зависит от GSF</string>
     <string name="list_app_independent_from_gsf">не зависит от GSF</string>
+    <string name="list_app_system">Системное.</string>
+    <string name="list_app_exists_in_play_store">Есть в Play Store.</string>
     <string name="dialog_title_package_id">Найдено точное соответствие</string>
     <string name="dialog_message_package_id">Найдено приложение с таким идентификатором. Перейти сразу на страницу этого приложения?</string>
     <string name="dialog_title_application_crashed">В Yalp Store произошёл сбой</string>
@@ -32,8 +34,6 @@
     <string name="dialog_message_reviews">Подождите. Получаем отзывы.</string>
     <string name="dialog_title_purchasing_app">Скачиваем</string>
     <string name="dialog_message_purchasing_app">Подождите. Запускаем закачку приложения.</string>
-    <string name="dialog_title_loading_app_details">Подробности</string>
-    <string name="dialog_message_loading_app_details">Подождите. Получаем подробности о приложении.</string>
     <string name="dialog_title_loading_app_list_search">Поиск</string>
     <string name="dialog_message_loading_app_list_search">Подождите. Ищем приложения по вашему запросу.</string>
     <string name="dialog_account_type_provided_by_user">Через мой аккаунт Google</string>
@@ -111,7 +111,8 @@
     <string name="credentials_hint_password">пароль</string>
     <string name="credentials_title">Вход в аккаунт Google</string>
     <string name="credentials_message">Для работы приложения требуются данные для доступа к аккаунту Google.\n\nИмейте в виду, что это приложение нарушает договор использования Play Store. Так что безопаснее использовать любой одноразовый Google аккаунт, под которым вы хотя бы раз залогинились в Play Store.</string>
-    <string name="activity_title_updates">Ваши приложения</string>
+    <string name="activity_title_updates_only">Обновления</string>
+    <string name="activity_title_updates_and_other_apps">Ваши приложения</string>
     <string name="activity_title_search">"Поиск: \"%1$s\""</string>
     <string name="notification_installation_complete">Установлено обновление.</string>
     <string name="notification_installation_complete_toast">"Приложение %1$s обновлено."</string>
@@ -167,6 +168,7 @@
     <string name="pref_hide_apps_with_ads_summary_off">Сейчас приложения с рекламой отображаются</string>
     <string name="pref_hide_apps_with_ads_summary_on">Сейчас приложения с рекламой не отображаются</string>
     <string name="pref_category_updates">Обновления</string>
+    <string name="pref_category_updates_page">Вид страницы обновлений</string>
     <string name="pref_category_search">Фильтрация при поиске</string>
     <string name="pref_category_installation">Установка приложений</string>
     <string name="pref_category_spoofing">Взаимодействие с Play Store</string>
@@ -176,6 +178,12 @@
     <string name="pref_installation_method_default">Обычный установочный диалог, без фоновой установки</string>
     <string name="pref_installation_method_root">С использованием root</string>
     <string name="pref_installation_method_privileged">С системными правами</string>
+    <string name="pref_updates_only">Показывать только приложения с обновлениями</string>
+    <string name="pref_updates_only_summary_off">Сейчас показываются все приложения</string>
+    <string name="pref_updates_only_summary_on">Сейчас показываются только приложения с обновлениями</string>
+    <string name="pref_show_system_apps">Показывать системные приложения</string>
+    <string name="pref_show_system_apps_summary_off">Сейчас системные приложения спрятаны</string>
+    <string name="pref_show_system_apps_summary_on">Сейчас системные приложения показываются</string>
     <string name="download_manager_ERROR_UNKNOWN">Неизвестная ошибка.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Неизвестная ошибка сохранения файла.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Сетевая ошибка. Попробуйте позднее.</string>

@@ -32,8 +32,6 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="dialog_message_reviews">"Bitte warten. Bewertungen werden geladen."</string>
 <string name="dialog_title_purchasing_app">"App wird heruntergeladen"</string>
 <string name="dialog_message_purchasing_app">"Bitte warten. Starte das Herunterladen der gewählten App."</string>
-<string name="dialog_title_loading_app_details">"Details werden geladen"</string>
-<string name="dialog_message_loading_app_details">"Bitte warten. Details der gewählten App werden ermittelt."</string>
 <string name="dialog_title_loading_app_list_search">"Suche"</string>
 <string name="dialog_message_loading_app_list_search">"Bitte warten. Apps werden gesucht."</string>
 <string name="dialog_account_type_provided_by_user">"Mit meinem eigenen Google Account"</string>
@@ -81,7 +79,7 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="credentials_title">"Google Konto Zugang"</string>
 <string name="credentials_message">"Für die Verwendung dieser App wird eine Google E-Mail Adresse und ein Passwort benötigt.
 Vergiss nicht, dass die Verwendung dieser App gegen die Play Store Nutzungsbedingungen verstößt. Wahrscheinlich ist es sicherer ein unwichtiges Google-Konto zu verwenden, welches mindestens einmal im Play Store eingeloggt war, um den Nutzungsbedingungen zuzustimmen."</string>
-<string name="activity_title_updates">"Deine Apps"</string>
+<string name="activity_title_updates_and_other_apps">"Deine Apps"</string>
 <string name="activity_title_search">"Suche: \"%1$s\""</string>
 <string name="notification_download_complete">"Herunterladen abgeschlossen. Tippe zum Installieren."</string>
 <string name="notification_download_complete_toast">"%1$s heruntergeladen. Tippe Benachrichtigung zum Installieren."</string>

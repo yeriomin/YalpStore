@@ -41,7 +41,7 @@ public class InstalledReceiver extends BroadcastReceiver {
         App app = new App();
         PackageManager pm = context.getPackageManager();
         try {
-            app.setPackageInfo(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA));
+            app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA));
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(InstalledReceiver.class.getName(), "Install broadcast received, but package " + packageName + " not found");
         }

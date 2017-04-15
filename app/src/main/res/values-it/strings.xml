@@ -32,8 +32,6 @@ Tocca \"Crea password\" per esser reindirizzato alla creazione della password."<
 <string name="dialog_message_reviews">"Caricamento recensioni. Attendi."</string>
 <string name="dialog_title_purchasing_app">"Scaricamento app"</string>
 <string name="dialog_message_purchasing_app">"Avvio download dell'app richiesta. Attendi."</string>
-<string name="dialog_title_loading_app_details">"Caricamento dettagli"</string>
-<string name="dialog_message_loading_app_details">"Caricamento dettagli dell'app richiesta. Attendi."</string>
 <string name="dialog_title_loading_app_list_search">"Ricerca"</string>
 <string name="dialog_message_loading_app_list_search">"Ricerca in corso. Attendi."</string>
 <string name="dialog_account_type_provided_by_user">"Con il mio account Google"</string>
@@ -83,7 +81,7 @@ Vado alla relativa pagina sul Play Store?"</string>
 <string name="credentials_message">"Email e password dell'account Google sono richiesti per permettere all'app di funzionare.
 
 Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più sicuro usare un account usa e getta che abbia avuto accesso al Play Store e accettato i termini d'utilizzo."</string>
-<string name="activity_title_updates">"Aggiornamenti"</string>
+<string name="activity_title_updates_only">"Aggiornamenti"</string>
 <string name="activity_title_search">"Ricerca: %1$s"</string>
 <string name="notification_download_complete">"Download completo. Tocca per installare."</string>
 <string name="notification_download_complete_toast">"%1$s scaricata. Tocca il tasto o la notifica per installarla."</string>

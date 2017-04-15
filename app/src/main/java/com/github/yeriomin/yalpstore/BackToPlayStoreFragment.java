@@ -19,7 +19,7 @@ public class BackToPlayStoreFragment extends DetailsFragment {
 
     @Override
     public void draw() {
-        if (!isPlayStoreInstalled()) {
+        if (!isPlayStoreInstalled() || !app.isInPlayStore()) {
             return;
         }
         TextView toPlayStore = (TextView) activity.findViewById(R.id.to_play_store);

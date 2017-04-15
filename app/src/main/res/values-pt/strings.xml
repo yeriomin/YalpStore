@@ -32,8 +32,6 @@ Carrega em \"criar password\" para seres redirecionado à página para a criares
 <string name="dialog_message_reviews">"Por favor aguarde. A carregar críticas."</string>
 <string name="dialog_title_purchasing_app">"A transferir aplicação"</string>
 <string name="dialog_message_purchasing_app">"Por Favor aguarde. A iniciar transferência da aplicação selecionada."</string>
-<string name="dialog_title_loading_app_details">"A carregar detalhes"</string>
-<string name="dialog_message_loading_app_details">"Por favor aguarde. A carregar detalhes sobre a aplicação selecionada."</string>
 <string name="dialog_title_loading_app_list_search">"A procurar"</string>
 <string name="dialog_message_loading_app_list_search">"Por favor aguarde enquanto procuramos aplicações."</string>
 <string name="dialog_account_type_provided_by_user">"Com a minha conta Google"</string>
@@ -83,7 +81,7 @@ Redirecionar para a página web dela ?"</string>
 <string name="credentials_message">"Uma conta Google totalmente funcional é necessária para o correto funcionamento desta app.
 
 Mantém em mente que ao usares esta aplicação, estás a violar os termos e condições da Google Play Store. É suregido utilizar uma conta secundária para evitar futura perda da sua conta principal."</string>
-<string name="activity_title_updates">"Atualizações"</string>
+<string name="activity_title_updates_only">"Atualizações"</string>
 <string name="activity_title_search">"Procurar: \"%1$s\""</string>
 <string name="notification_download_complete">"Download completo. Tocar para instalar."</string>
 <string name="notification_download_complete_toast">"%1$s download completo. Tocar no botão ou na notificação, para instalar."</string>

@@ -32,8 +32,6 @@ Yalp Store 専用のアプリパスワードを作成して、Yalp Store のロ�
 <string name="dialog_message_reviews">"しばらくお待ちください。レビューを取得しています"</string>
 <string name="dialog_title_purchasing_app">"アプリのダウンロード中"</string>
 <string name="dialog_message_purchasing_app">"しばらくお待ちください。 リクエストしたアプリのダウンロードを開始しています。"</string>
-<string name="dialog_title_loading_app_details">"詳細の取得中"</string>
-<string name="dialog_message_loading_app_details">"しばらくお待ちください。 リクエストしたアプリの詳細を取得しています。"</string>
 <string name="dialog_title_loading_app_list_search">"検索中"</string>
 <string name="dialog_message_loading_app_list_search">"しばらくお待ちください。 アプリの検索中。"</string>
 <string name="dialog_account_type_provided_by_user">"自分の Google アカウントで"</string>
@@ -82,7 +80,7 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="credentials_title">"Google アカウントアクセス"</string>
 <string name="credentials_message">"このアプリの動作に Google アカウントのメールアドレスとパスワードが必要です。
 このアプリを使用すると Play ストアの利用規約に違反することにご注意ください。 少なくとも一回 Play ストアにログインして、Play ストアの利用規約を受け入れた、使い捨ての Google アカウントを使用する方が安全でしょう。"</string>
-<string name="activity_title_updates">"更新"</string>
+<string name="activity_title_updates_only">"更新"</string>
 <string name="activity_title_search">"検索中: \"%1$s\""</string>
 <string name="notification_download_complete">"ダウンロード完了。タッチするとインストールします"</string>
 <string name="notification_download_complete_toast">"%1$s をダウンロードしました。インストールボタンまたは通知をタッチしてインストールします。"</string>

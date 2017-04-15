@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
@@ -12,6 +11,7 @@ import android.util.Log;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,10 +25,11 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
         List<App> apps = new ArrayList<>();
 
         PackageManager pm = context.getPackageManager();
-        List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_META_DATA);
+        boolean showSystemApps = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS);
+        List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS);
         for (PackageInfo packageInfo : packages) {
             App app = new App(packageInfo);
-            if (app.isSystem()) {
+            if (!showSystemApps && app.isSystem()) {
                 continue;
             }
             app.setDisplayName(pm.getApplicationLabel(packageInfo.applicationInfo).toString());
@@ -80,6 +81,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
         try {
             appsFromPlayMarket.addAll(wrapper.getDetails(installedAppIds));
         } catch (Throwable e) {
+            otherInstalledApps.addAll(appMap.values());
             return e;
         }
         // Comparing versions and building updatable apps list
@@ -89,17 +91,18 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
                 continue;
             }
             App installedApp = appMap.get(packageName);
-            installedApp.setOfferType(appFromMarket.getOfferType());
-            installedApp.setPermissions(appFromMarket.getPermissions());
+            appFromMarket.setPackageInfo(installedApp.getPackageInfo());
+            appFromMarket.setDisplayName(installedApp.getDisplayName());
+            appFromMarket.setIcon(installedApp.getIcon());
+            appFromMarket.setSystem(installedApp.isSystem());
             if (installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
-                appFromMarket.setDisplayName(installedApp.getDisplayName());
-                appFromMarket.setIcon(installedApp.getIcon());
-                appFromMarket.setInstalled(true);
+                appMap.remove(packageName);
                 updatableApps.add(appFromMarket);
             } else {
-                otherInstalledApps.add(installedApp);
+                appMap.put(packageName, appFromMarket);
             }
         }
+        otherInstalledApps.addAll(appMap.values());
         return null;
     }
 }

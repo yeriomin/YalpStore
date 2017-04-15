@@ -30,6 +30,20 @@
             android:key="PREFERENCE_UPDATE_LIST"
             android:title="@string/pref_update_list_black" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_category_updates_page">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="PREFERENCE_UPDATES_ONLY"
+            android:summaryOff="@string/pref_updates_only_summary_off"
+            android:summaryOn="@string/pref_updates_only_summary_on"
+            android:title="@string/pref_updates_only" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="PREFERENCE_SHOW_SYSTEM_APPS"
+            android:summaryOff="@string/pref_show_system_apps_summary_off"
+            android:summaryOn="@string/pref_show_system_apps_summary_on"
+            android:title="@string/pref_show_system_apps" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_search">
         <CheckBoxPreference
             android:defaultValue="false"

@@ -32,8 +32,6 @@ Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz 
 <string name="dialog_message_reviews">"Proszę poczekać. Trwa ładowanie recenzji."</string>
 <string name="dialog_title_purchasing_app">"Pobieranie aplikacji"</string>
 <string name="dialog_message_purchasing_app">"Proszę czekać. Zaczynam pobieranie wskazanej aplikacji."</string>
-<string name="dialog_title_loading_app_details">"Ładowanie szczegółów"</string>
-<string name="dialog_message_loading_app_details">"Proszę czekać. Trwa ładowanie szczegółów o wskazanej aplikacji."</string>
 <string name="dialog_title_loading_app_list_search">"Wyszukiwanie"</string>
 <string name="dialog_message_loading_app_list_search">"Proszę czekać. Szukanie aplikacji."</string>
 <string name="dialog_account_type_provided_by_user">"Z moim kontem Google"</string>
@@ -82,7 +80,7 @@ Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz 
 <string name="credentials_message">"Do poprawnego funkcjonowania tej aplikacji wymagany jest adres e-mail oraz hasło do konta Google.
 
 Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania usługi Google Play. Najbezpieczniejszym sposobem na korzystanie z tej aplikacji jest stworzenie nowego konta Google, które zalogowało się do sklepu Google Play przynajmniej raz i zaakceptowało regulamin."</string>
-<string name="activity_title_updates">"Twoje aplikacje"</string>
+<string name="activity_title_updates_and_other_apps">"Twoje aplikacje"</string>
 <string name="activity_title_search">"Wyszukiwanie: \"%1$s\""</string>
 <string name="notification_download_complete">"Pobieranie zakończone. Dotknij, by zainstalować."</string>
 <string name="notification_download_complete_toast">"Pobieranie %1$s zakończone. Dotknij powiadomienie bądź przycisk instalacji, by zainstalować."</string>

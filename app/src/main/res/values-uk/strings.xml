@@ -32,8 +32,6 @@
 <string name="dialog_message_reviews">"Будь ласка, зачекайте. Отримання відгуків."</string>
 <string name="dialog_title_purchasing_app">"Завантаження додатку"</string>
 <string name="dialog_message_purchasing_app">"Будь ласка, зачекайте. Початок завантаження вказаного додатку."</string>
-<string name="dialog_title_loading_app_details">"Отримання подробиць"</string>
-<string name="dialog_message_loading_app_details">"Будь ласка, зачекайте. Отримання подробиць вказаного додатку."</string>
 <string name="dialog_title_loading_app_list_search">"Пошук"</string>
 <string name="dialog_message_loading_app_list_search">"Будь ласка, зачекайте. Пошук додатків."</string>
 <string name="dialog_account_type_provided_by_user">"З власним обліковим записом Google"</string>
@@ -84,7 +82,7 @@
 
 Майте на увазі, що цей додаток порушує договір використанні Play Store.
 Тому безпечніше використовувати будь-який одноразовий обліковий запис google, під яким хоча б раз увійшли до Play Store."</string>
-<string name="activity_title_updates">"Оновлення"</string>
+<string name="activity_title_updates_only">"Оновлення"</string>
 <string name="activity_title_search">"Пошук: %1$s"</string>
 <string name="notification_download_complete">"Завантаження завершене. Торкніться для встановлення."</string>
 <string name="notification_download_complete_toast">"%1$s завантажено. Торкніться кнопки Встановити чи сповіщення для встановлення."</string>

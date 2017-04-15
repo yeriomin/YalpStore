@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,7 +30,7 @@ public class App implements Comparable<App> {
     private String changes;
     private Developer developer = new Developer();
     private String description;
-    private Set<String> permissions;
+    private Set<String> permissions = new HashSet<>();
     private boolean isInstalled;
     private boolean isFree;
     private List<String> screenshotUrls = new ArrayList<>();
@@ -42,6 +43,7 @@ public class App implements Comparable<App> {
     private Set<String> dependencies = new HashSet<>();
     private Map<String, String> offerDetails = new HashMap<>();
     private boolean system;
+    private boolean inPlayStore;
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -49,6 +51,12 @@ public class App implements Comparable<App> {
 
     public App(PackageInfo packageInfo) {
         this.setPackageInfo(packageInfo);
+        this.setVersionName(packageInfo.versionName);
+        this.setVersionCode(packageInfo.versionCode);
+        this.setSystem((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
+        if (null != packageInfo.requestedPermissions) {
+            this.setPermissions(Arrays.asList(packageInfo.requestedPermissions));
+        }
     }
 
     public PackageInfo getPackageInfo() {
@@ -61,9 +69,6 @@ public class App implements Comparable<App> {
 
     public void setPackageInfo(PackageInfo packageInfo) {
         this.packageInfo = packageInfo;
-        this.setVersionName(packageInfo.versionName);
-        this.setVersionCode(packageInfo.versionCode);
-        this.setSystem((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
     }
 
     public String getDisplayName() {
@@ -244,6 +249,14 @@ public class App implements Comparable<App> {
 
     public void setSystem(boolean system) {
         this.system = system;
+    }
+
+    public boolean isInPlayStore() {
+        return inPlayStore;
+    }
+
+    public void setInPlayStore(boolean inPlayStore) {
+        this.inPlayStore = inPlayStore;
     }
 
     @Override

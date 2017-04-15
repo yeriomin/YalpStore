@@ -32,8 +32,6 @@ Tocar \"Crear contraseña\" para ser redirigido"</string>
 <string name="dialog_message_reviews">"Por favor espere. Obteniendo reseñas."</string>
 <string name="dialog_title_purchasing_app">"Descargando app"</string>
 <string name="dialog_message_purchasing_app">"Por favor espere. Iniciando descarga de la aplicación solicitada."</string>
-<string name="dialog_title_loading_app_details">"Obteniendo detalles"</string>
-<string name="dialog_message_loading_app_details">"Por favor espere, obteniendo detalles de la aplicación solicitada."</string>
 <string name="dialog_title_loading_app_list_search">"Buscando"</string>
 <string name="dialog_message_loading_app_list_search">"Por favor espere, buscando apps."</string>
 <string name="dialog_account_type_provided_by_user">"Con mi cuenta de Google"</string>
@@ -82,7 +80,7 @@ Tocar \"Crear contraseña\" para ser redirigido"</string>
 <string name="credentials_message">"Esta aplicación requiere email y contraseña de una cuenta de Google.
 
 Ten en cuenta que esta app viola los términos de servicio del Play Store. Es probablemente más seguro utilizar una cuenta de usar y tirar, que haya iniciado sesión al menos una vez, y haya aceptado los terḿinos y servicios."</string>
-<string name="activity_title_updates">"Actualizaciones"</string>
+<string name="activity_title_updates_only">"Actualizaciones"</string>
 <string name="activity_title_search">"Buscando: \"%1$s\""</string>
 <string name="notification_download_complete">"Descarga completada. Toca para instalar."</string>
 <string name="notification_download_complete_toast">"%1$s descargado. Toca el botón de instalar o la notificación para instalarlo."</string>

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UpdatableAppsActivity extends AppListActivity {
@@ -25,7 +26,6 @@ public class UpdatableAppsActivity extends AppListActivity {
         super.onCreate(savedInstanceState);
 
         setNeedsUpdate(true);
-        setTitle(getString(R.string.activity_title_updates));
         ((TextView) getListView().getEmptyView()).setText(getString(R.string.list_empty_updates));
     }
 
@@ -34,6 +34,10 @@ public class UpdatableAppsActivity extends AppListActivity {
         super.onResume();
 
         if (UpdatableAppsActivity.needsUpdate) {
+            setTitle(getString(showUpdatesOnly()
+                ? R.string.activity_title_updates_only
+                : R.string.activity_title_updates_and_other_apps
+            ));
             this.data.clear();
             loadApps();
             setNeedsUpdate(false);
@@ -55,6 +59,16 @@ public class UpdatableAppsActivity extends AppListActivity {
         if (!TextUtils.isEmpty(updated)) {
             map.put(LINE2, getString(R.string.list_line_2_updatable, updated));
         }
+        String line3 = "";
+        if (app.isSystem()) {
+            line3 += getString(R.string.list_app_system) + " ";
+        }
+        if (app.isInPlayStore() && !showUpdatesOnly()) {
+            line3 += getString(R.string.list_app_exists_in_play_store);
+        }
+        if (!TextUtils.isEmpty(line3)) {
+            map.put(LINE3, line3);
+        }
         map.put(ICON, app.getIcon());
         return map;
     }
@@ -72,17 +86,10 @@ public class UpdatableAppsActivity extends AppListActivity {
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
                 clearApps();
-                if (null != e) {
+                if (null != e && PreferenceActivity.getBoolean(UpdatableAppsActivity.this, PreferenceActivity.PREFERENCE_UPDATES_ONLY)) {
                     return;
                 }
-                if (!updatableApps.isEmpty()) {
-                    data.add(getHeader(R.string.list_has_update));
-                    addApps(this.updatableApps);
-                }
-                if (!otherInstalledApps.isEmpty()) {
-                    data.add(getHeader(R.string.list_no_update));
-                    addApps(this.otherInstalledApps);
-                }
+                addApps(updatableApps, otherInstalledApps);
                 toggleUpdateAll(this.updatableApps.size() > 0);
                 new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
                 new FirstLaunchChecker(context).setLaunched();
@@ -94,6 +101,25 @@ public class UpdatableAppsActivity extends AppListActivity {
         return task;
     }
 
+    private void addApps(List<App> updatable, List<App> other) {
+        if (showUpdatesOnly()) {
+            addApps(updatable);
+        } else {
+            if (!updatable.isEmpty()) {
+                data.add(getHeader(R.string.list_has_update));
+                addApps(updatable);
+            }
+            if (!other.isEmpty()) {
+                data.add(getHeader(R.string.list_no_update));
+                addApps(other);
+            }
+        }
+    }
+
+    private boolean showUpdatesOnly() {
+        return PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_UPDATES_ONLY);
+    }
+
     private Map<String, Object> getHeader(int headerTextResId) {
         Map<String, Object> map = new HashMap<>();
         map.put(LINE1, getString(headerTextResId));
@@ -102,8 +128,9 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     private void toggleUpdateAll(boolean enable) {
         Button button = (Button) findViewById(R.id.update_all);
-        boolean backgroundUpdatesEnabled = PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
-        button.setVisibility((enable && backgroundUpdatesEnabled) ? View.VISIBLE : View.GONE);
+        boolean backgroundUpdates = PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
+        boolean backgroundDownloads = PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD);
+        button.setVisibility((enable && (backgroundUpdates || backgroundDownloads)) ? View.VISIBLE : View.GONE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
