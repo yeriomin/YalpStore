@@ -105,6 +105,7 @@
     <string name="details_not_available_on_play_store">Этого приложения нет в Play Store</string>
     <string name="details_saved_in_downloads">Сохранено в каталог загрузок по-умолчанию</string>
     <string name="details_could_not_copy_apk">Не удалось скопировать apk</string>
+    <string name="details_system_app_info">Системная информация</string>
     <string name="suffix_million">млн</string>
     <string name="suffix_billion">млрд</string>
     <string name="credentials_hint_email">e-mail</string>
