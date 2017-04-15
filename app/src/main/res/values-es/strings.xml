@@ -6,7 +6,7 @@
 <string name="list_line_2_updatable">"Actualizado el %1$s "</string>
 <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"No hay actualizaciones"</string>
-<string name="list_empty_search">"No se encontraron apps"</string>
+<string name="list_empty_search">"No se encontraron aplis"</string>
 <string name="list_incompatible">"incompatible"</string>
 <string name="action_about">"Acerca de"</string>
 <string name="action_settings">"Ajustes"</string>
@@ -80,7 +80,6 @@ Tocar \"Crear contraseña\" para ser redirigido"</string>
 <string name="credentials_message">"Esta aplicación requiere email y contraseña de una cuenta de Google.
 
 Ten en cuenta que esta app viola los términos de servicio del Play Store. Es probablemente más seguro utilizar una cuenta de usar y tirar, que haya iniciado sesión al menos una vez, y haya aceptado los terḿinos y servicios."</string>
-<string name="activity_title_updates_only">"Actualizaciones"</string>
 <string name="activity_title_search">"Buscando: \"%1$s\""</string>
 <string name="notification_download_complete">"Descarga completada. Toca para instalar."</string>
 <string name="notification_download_complete_toast">"%1$s descargado. Toca el botón de instalar o la notificación para instalarlo."</string>
@@ -166,6 +165,49 @@ Ten en cuenta que descargar versiones arbitrarias del Play Store no está soport
 <string name="details_uninstall">"Desinstalar"</string>
 <string name="notification_download_starting">"Iniciando descarga"</string>
 <string name="notification_download_progress">"%1$s de %2$s descargado"</string>
+<string name="pref_requested_language">"Lenguaje que comunicar a Play Store"</string>
+<string name="pref_requested_language_default">"Tu lenguaje por defecto"</string>
+<string name="pref_hide_apps_with_ads">"Esconder aplicaciones con publicidad"</string>
+<string name="pref_hide_apps_with_ads_summary_off">"Se muestran las aplis con anuncios"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"No se muestran las aplis con anuncios"</string>
+<string name="pref_device_to_pretend_to_be">"Simular un dispositivo distinto"</string>
+<string name="pref_device_to_pretend_to_be_default">"Información original de tu dispositivo"</string>
+<string name="pref_device_to_pretend_to_be_toast">"Este cambio tendrá efecto después de iniciar sesión de nuevo"</string>
 <string name="pref_category_updates">"Actualizaciones"</string>
+<string name="pref_category_search">"Filtrado en la búsqueda"</string>
+<string name="pref_category_installation">"Instalación"</string>
+<string name="pref_category_spoofing">"Falsificación"</string>
 <string name="pref_category_ui">"Mostrar"</string>
+<string name="details_installing">"Instalando…"</string>
+<string name="details_installed">"Instalación con éxito"</string>
+<string name="details_install_failure">"No se pudo instalar"</string>
+<string name="notification_download_complete_new_permissions">"Descarga completa. Se requieren nuevos permisos."</string>
+<string name="notification_download_complete_new_permissions_toast">"Se descargó %1$s. La nueva versión de la apli necesita nuevos permisos. Comprueba la lista de permisos."</string>
+<string name="pref_not_privileged">"Solo si Yalp es una aplicación de sistema"</string>
+<string name="pref_installation_method">"Método de instalación"</string>
+<string name="pref_installation_method_default">"Instalación con el diálogo nativo, no se instalará en segundo plano"</string>
+<string name="pref_installation_method_root">"Usar permisos de administración"</string>
+<string name="pref_installation_method_privileged">"Usar permisos de sistema"</string>
+<string name="pref_background_update_download_summary_off">"Solo se mostrará una notificación"</string>
+<string name="pref_background_update_download_summary_on">"Se descargarán las actualizaciones si se encuentran"</string>
+<string name="pref_background_update_download">"Descargar también las actualizaciones"</string>
+<string name="details_not_available_on_play_store">"No disponible en Play Store"</string>
+<string name="action_manual">"Descarga manual"</string>
+<string name="action_get_local_apk">"Obtener APK local"</string>
+<string name="details_saved_in_downloads">"Guardado en tu carpeta de descargas"</string>
+<string name="details_could_not_copy_apk">"No se pudo copiar el APK"</string>
+<string name="action_make_system">"Convertir a aplicación de sistema"</string>
+<string name="action_make_normal">"Convertir a aplicación normal"</string>
+<string name="list_app_system">"Aplicación de sistema."</string>
+<string name="list_app_exists_in_play_store">"Disponible en Play Store."</string>
+<string name="activity_title_updates_only">"Actualizaciones"</string>
+<string name="activity_title_updates_and_other_apps">"Tus aplicaciones"</string>
+<string name="pref_category_updates_page">"Actualizar páginas"</string>
+<string name="pref_updates_only">"Mostrar solo aplicaciones actualizables"</string>
+<string name="pref_updates_only_summary_off">"Se muestran todas las aplicaciones"</string>
+<string name="pref_updates_only_summary_on">"Se muestran solo las aplis actualizables"</string>
+<string name="pref_show_system_apps">"Mostrar aplicaciones de sistema"</string>
+<string name="pref_show_system_apps_summary_off">"Se muestran las aplicaciones de sistema"</string>
+<string name="pref_show_system_apps_summary_on">"No se muestran las aplicaciones de sistema"</string>
+<string name="details_system_app_info">"Información de sistema"</string>
 </resources>
