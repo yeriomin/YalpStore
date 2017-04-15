@@ -63,7 +63,7 @@ Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz 
 <string name="details_versionName_updatable">"Wersja %1$s → %2$s"</string>
 <string name="details_download">"Pobrane"</string>
 <string name="details_install">"Instalacja"</string>
-<string name="details_downloading">"Pobieranie..."</string>
+<string name="details_downloading">"Pobieranie…"</string>
 <string name="details_review_dialog_title">"Dodać coś jeszcze?"</string>
 <string name="details_review_dialog_review_title_hint">"tytuł"</string>
 <string name="details_review_dialog_review_comment_hint">"komentarz"</string>
@@ -80,7 +80,6 @@ Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz 
 <string name="credentials_message">"Do poprawnego funkcjonowania tej aplikacji wymagany jest adres e-mail oraz hasło do konta Google.
 
 Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania usługi Google Play. Najbezpieczniejszym sposobem na korzystanie z tej aplikacji jest stworzenie nowego konta Google, które zalogowało się do sklepu Google Play przynajmniej raz i zaakceptowało regulamin."</string>
-<string name="activity_title_updates_and_other_apps">"Twoje aplikacje"</string>
 <string name="activity_title_search">"Wyszukiwanie: \"%1$s\""</string>
 <string name="notification_download_complete">"Pobieranie zakończone. Dotknij, by zainstalować."</string>
 <string name="notification_download_complete_toast">"Pobieranie %1$s zakończone. Dotknij powiadomienie bądź przycisk instalacji, by zainstalować."</string>
@@ -130,7 +129,7 @@ Proszę opisać co robiłeś w momencie wystąpienia błędu.
 
 Żadne prywatne lub poufne informacje nie są zbierane, jeśli masz wątpliwości zapoznaj się z treścią listu."</string>
 <string name="details_to_play_store">"Zobacz w sklepie Google Play"</string>
-<string name="about_self_update_checking">"...sprawdzanie"</string>
+<string name="about_self_update_checking">"…sprawdzanie"</string>
 <string name="about_self_update_available">"…0.%1$d dostępny"</string>
 <string name="about_self_update_unavailable">"…nie znaleziono aktualizacji"</string>
 <string name="action_categories">"Kategorie"</string>
@@ -153,7 +152,7 @@ Proszę opisać co robiłeś w momencie wystąpienia błędu.
 <string name="details_no_ads">"Brak reklam"</string>
 <string name="dialog_title_package_id">"Pakiet o tej nazwie już istnieje"</string>
 <string name="dialog_message_package_id">"Jest tam pakiet o dokładnie tej nazwie. Czy chcesz przejść bezpośrednio do strony z jego szczegółami?"</string>
-<string name="details_download_checking">"Sprawdzanie..."</string>
+<string name="details_download_checking">"Sprawdzanie…"</string>
 <string name="details_download_not_available">"Niedostępne "</string>
 <string name="manual_download_incompatible">"Sklep Google Play uważa tę aplikację za niezgodną z Twoim urządzeniem. Oznacza to, że kod wersji nie został zwrócony przez serwer sklepu Google Play."</string>
 <string name="manual_download_compatible">"Pole kodu wersji zostało wcześniej wypełnione z najnowszą dostępną wersją. Jeśli chcesz używać poprzedniej wersji, po prostu wpisz numer wersji mniejszy niż bieżący. Jeśli deweloper nie usunął pliku .apk poprzedniej wersji ze sklepu Google Play, będzie możliwe rozpoczęcie pobierania."</string>
@@ -179,4 +178,36 @@ Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji apli
 <string name="pref_category_installation">"Instalacja"</string>
 <string name="pref_category_spoofing">"Udawanie"</string>
 <string name="pref_category_ui">"Interfejs użytkownika"</string>
+<string name="details_installing">"Installing…"</string>
+<string name="details_installed">"Installed successfully"</string>
+<string name="details_install_failure">"Could not install"</string>
+<string name="notification_download_complete_new_permissions">"Download complete. New permissions requested."</string>
+<string name="notification_download_complete_new_permissions_toast">"%1$s downloaded. New version of the app requests more permissions. Check the new permissions list."</string>
+<string name="pref_not_privileged">"Only available if Yalp is a system app"</string>
+<string name="pref_installation_method">"Installation method"</string>
+<string name="pref_installation_method_default">"Default installation dialog, no background installs"</string>
+<string name="pref_installation_method_root">"Using root"</string>
+<string name="pref_installation_method_privileged">"Using system permissions"</string>
+<string name="pref_background_update_download_summary_off">"You only get a notification"</string>
+<string name="pref_background_update_download_summary_on">"Updates are downloaded if found"</string>
+<string name="pref_background_update_download">"Also download the updates"</string>
+<string name="details_not_available_on_play_store">"Not available on Play Store"</string>
+<string name="action_manual">"Manual download"</string>
+<string name="action_get_local_apk">"Get local apk"</string>
+<string name="details_saved_in_downloads">"Saved in your Downloads folder"</string>
+<string name="details_could_not_copy_apk">"Could not copy apk"</string>
+<string name="action_make_system">"Convert to system app"</string>
+<string name="action_make_normal">"Convert to normal app"</string>
+<string name="list_app_system">"System app."</string>
+<string name="list_app_exists_in_play_store">"Available in Play Store."</string>
+<string name="activity_title_updates_only">"Updates"</string>
+<string name="activity_title_updates_and_other_apps">"Twoje aplikacje"</string>
+<string name="pref_category_updates_page">"Update page"</string>
+<string name="pref_updates_only">"Show only updatable apps"</string>
+<string name="pref_updates_only_summary_off">"All apps are shown now"</string>
+<string name="pref_updates_only_summary_on">"Only updatable apps are shown now"</string>
+<string name="pref_show_system_apps">"Show system apps"</string>
+<string name="pref_show_system_apps_summary_off">"System apps are hidden now"</string>
+<string name="pref_show_system_apps_summary_on">"System apps are shown now"</string>
+<string name="details_system_app_info">"System info"</string>
 </resources>
