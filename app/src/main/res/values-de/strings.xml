@@ -79,7 +79,6 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="credentials_title">"Google Konto Zugang"</string>
 <string name="credentials_message">"Für die Verwendung dieser App wird eine Google E-Mail Adresse und ein Passwort benötigt.
 Vergiss nicht, dass die Verwendung dieser App gegen die Play Store Nutzungsbedingungen verstößt. Wahrscheinlich ist es sicherer ein unwichtiges Google-Konto zu verwenden, welches mindestens einmal im Play Store eingeloggt war, um den Nutzungsbedingungen zuzustimmen."</string>
-<string name="activity_title_updates_and_other_apps">"Deine Apps"</string>
 <string name="activity_title_search">"Suche: \"%1$s\""</string>
 <string name="notification_download_complete">"Herunterladen abgeschlossen. Tippe zum Installieren."</string>
 <string name="notification_download_complete_toast">"%1$s heruntergeladen. Tippe Benachrichtigung zum Installieren."</string>
@@ -178,7 +177,7 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="pref_category_installation">"Installation"</string>
 <string name="pref_category_spoofing">"Verschleierung"</string>
 <string name="pref_category_ui">"Anzeige"</string>
-<string name="details_installing">"Wird installiert..."</string>
+<string name="details_installing">"Wird installiert…"</string>
 <string name="details_installed">"Erfolgreich installiert"</string>
 <string name="details_install_failure">"Konnte nicht installiert werden"</string>
 <string name="notification_download_complete_new_permissions">"Herunterladen abgeschlossen. Neue Berechtigungen eingefordert."</string>
@@ -198,4 +197,16 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="details_could_not_copy_apk">"APK-Datei konnte nicht kopiert werden"</string>
 <string name="action_make_system">"In System-App umwandeln"</string>
 <string name="action_make_normal">"In normale App umwandeln"</string>
+<string name="list_app_system">"System app."</string>
+<string name="list_app_exists_in_play_store">"Available in Play Store."</string>
+<string name="activity_title_updates_only">"Updates"</string>
+<string name="activity_title_updates_and_other_apps">"Deine Apps"</string>
+<string name="pref_category_updates_page">"Update page"</string>
+<string name="pref_updates_only">"Show only updatable apps"</string>
+<string name="pref_updates_only_summary_off">"All apps are shown now"</string>
+<string name="pref_updates_only_summary_on">"Only updatable apps are shown now"</string>
+<string name="pref_show_system_apps">"Show system apps"</string>
+<string name="pref_show_system_apps_summary_off">"System apps are hidden now"</string>
+<string name="pref_show_system_apps_summary_on">"System apps are shown now"</string>
+<string name="details_system_app_info">"System info"</string>
 </resources>
