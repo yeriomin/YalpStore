@@ -26,20 +26,24 @@ public class SystemAppPageFragment extends DetailsFragment {
         systemAppInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    activity.startActivity(getIntent());
-                } catch (ActivityNotFoundException e) {
-                    Log.w(getClass().getName(), "Could not find system app activity");
-                }
+                startActivity();
             }
         });
+    }
+
+    private void startActivity() {
+        try {
+            activity.startActivity(getIntent());
+        } catch (ActivityNotFoundException e) {
+            Log.w(getClass().getName(), "Could not find system app activity");
+        }
     }
 
     private Intent getIntent() {
         Intent intent;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
             intent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS", Uri.parse("package:" + app.getPackageName()));
-        }  else  {
+        } else {
             intent = new Intent(Intent.ACTION_VIEW);
             intent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
             intent.putExtra("com.android.settings.ApplicationPkgName", app.getPackageName());
