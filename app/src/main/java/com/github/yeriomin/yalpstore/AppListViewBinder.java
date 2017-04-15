@@ -33,7 +33,7 @@ class AppListViewBinder implements SimpleAdapter.ViewBinder {
             ImageDownloadTask task = new ImageDownloadTask();
             task.setView(view);
             task.execute((String) drawableOrUrl);
-        } else {
+        } else if (null != drawableOrUrl) {
             view.setImageDrawable((Drawable) drawableOrUrl);
         }
         return true;

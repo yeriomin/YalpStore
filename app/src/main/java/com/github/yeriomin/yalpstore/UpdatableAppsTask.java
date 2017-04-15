@@ -33,7 +33,11 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
                 continue;
             }
             app.setDisplayName(pm.getApplicationLabel(packageInfo.applicationInfo).toString());
-            app.setIcon(pm.getApplicationIcon(packageInfo.applicationInfo));
+            try {
+                app.setIcon(pm.getApplicationIcon(packageInfo.applicationInfo));
+            } catch (OutOfMemoryError e) {
+                Log.e(UpdatableAppsTask.class.getName(), "OutOfMemoryError occurred while trying to get icon for " + packageInfo.packageName);
+            }
             app.setInstalled(true);
             apps.add(app);
         }
