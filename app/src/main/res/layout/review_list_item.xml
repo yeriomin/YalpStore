@@ -13,6 +13,7 @@
 
         <ImageView
             android:id="@+id/avatar"
+            android:contentDescription="@string/content_description_review_author_avatar"
             android:layout_width="48dip"
             android:layout_height="48dip"
             android:layout_marginRight="6dip"

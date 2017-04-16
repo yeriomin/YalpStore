@@ -6,6 +6,7 @@
 
     <ImageView
         android:id="@+id/icon"
+        android:contentDescription="@string/content_description_app_icon"
         android:src="@drawable/ic_placeholder"
         android:layout_width="64dip"
         android:layout_height="64dip"

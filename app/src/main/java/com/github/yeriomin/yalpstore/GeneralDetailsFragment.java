@@ -85,7 +85,7 @@ public class GeneralDetailsFragment extends DetailsFragment {
         }
         TextView itemView = new TextView(activity);
         itemView.setAutoLinkMask(Linkify.ALL);
-        itemView.setText(key + " " + Html.fromHtml(value));
+        itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
         ((LinearLayout) activity.findViewById(R.id.offer_details)).addView(itemView);
     }
 

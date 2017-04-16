@@ -36,6 +36,7 @@
 
                     <ImageView
                         android:id="@+id/icon"
+                        android:contentDescription="@string/content_description_app_icon"
                         android:src="@drawable/ic_placeholder"
                         android:layout_width="64dip"
                         android:layout_height="64dip"
@@ -248,12 +249,14 @@
 
                             <ImageView
                                 android:id="@+id/user_review_edit"
+                                android:contentDescription="@string/content_description_review_edit"
                                 android:src="@drawable/ic_edit"
                                 android:layout_width="32dip"
                                 android:layout_height="32dip" />
 
                             <ImageView
                                 android:id="@+id/user_review_delete"
+                                android:contentDescription="@string/content_description_review_delete"
                                 android:src="@drawable/ic_delete"
                                 android:layout_width="32dip"
                                 android:layout_height="32dip" />
@@ -378,6 +381,7 @@
 
                         <ImageButton
                             android:id="@+id/reviews_previous"
+                            android:contentDescription="@string/content_description_review_previous_page"
                             android:src="@drawable/ic_chevron_left"
                             android:visibility="invisible"
                             android:background="#0000"
@@ -394,6 +398,7 @@
 
                         <ImageButton
                             android:id="@+id/reviews_next"
+                            android:contentDescription="@string/content_description_review_next_page"
                             android:src="@drawable/ic_chevron_right"
                             android:background="#0000"
                             android:layout_gravity="center"
@@ -542,6 +547,7 @@
         <ImageButton
             android:id="@+id/more"
             android:src="@drawable/ic_more"
+            android:contentDescription="@string/content_description_download_options"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_weight="0" />

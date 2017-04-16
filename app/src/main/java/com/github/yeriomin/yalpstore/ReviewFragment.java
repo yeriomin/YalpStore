@@ -109,12 +109,13 @@ public class ReviewFragment extends DetailsFragment {
     }
 
     private void addReviewToList(Review review, ViewGroup parent) {
-        LinearLayout reviewLayout = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.review_list_item, null, false);
+        LinearLayout reviewLayout = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.review_list_item, parent, false);
         ((TextView) reviewLayout.findViewById(R.id.author)).setText(review.getUserName());
-        ((TextView) reviewLayout.findViewById(R.id.title)).setText(
-            activity.getString(R.string.details_rating, (double) review.getRating())
-                + " " + review.getTitle()
-        );
+        ((TextView) reviewLayout.findViewById(R.id.title)).setText(activity.getString(
+            R.string.two_items,
+            activity.getString(R.string.details_rating, (double) review.getRating()),
+            review.getTitle()
+        ));
         ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
         parent.addView(reviewLayout);
         ImageDownloadTask task = new ImageDownloadTask();
