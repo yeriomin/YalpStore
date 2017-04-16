@@ -93,10 +93,7 @@ public class PreferenceCheckUpdatesFragment extends PreferenceFragment {
         }
 
         private boolean isPrivileged() {
-            PackageManager pm = activity.getPackageManager();
-            return  pm.checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED
-                && pm.checkPermission(Manifest.permission.DELETE_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED
-            ;
+            return  activity.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED;
         }
     }
 }

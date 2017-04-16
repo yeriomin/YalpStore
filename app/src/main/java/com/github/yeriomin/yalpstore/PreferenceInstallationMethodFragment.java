@@ -61,10 +61,7 @@ public class PreferenceInstallationMethodFragment extends PreferenceFragment {
         }
 
         private boolean checkPrivileged() {
-            PackageManager pm = activity.getPackageManager();
-            boolean privileged = pm.checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED
-                && pm.checkPermission(Manifest.permission.DELETE_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED
-            ;
+            boolean privileged = activity.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED;
             if (!privileged) {
                 Toast.makeText(activity, R.string.pref_not_privileged, Toast.LENGTH_LONG).show();
             }
