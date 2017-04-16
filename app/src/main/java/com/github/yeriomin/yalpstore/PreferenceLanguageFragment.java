@@ -37,7 +37,7 @@ public class PreferenceLanguageFragment extends PreferenceListFragment {
         Map<String, String> languages = new HashMap<>();
         for (Locale locale: Locale.getAvailableLocales()) {
             String displayName = locale.getDisplayName();
-            displayName = displayName.substring(0, 1).toUpperCase() + displayName.substring(1);
+            displayName = displayName.substring(0, 1).toUpperCase(Locale.getDefault()) + displayName.substring(1);
             languages.put(locale.toString(), displayName);
         }
         languages = Util.sort(languages);

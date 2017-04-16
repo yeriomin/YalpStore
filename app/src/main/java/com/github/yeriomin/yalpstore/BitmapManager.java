@@ -28,7 +28,7 @@ public class BitmapManager {
     private Context context;
 
     static {
-        HttpsURLConnection.setDefaultHostnameVerifier(new NullHostNameVerifier());
+        HttpsURLConnection.setDefaultHostnameVerifier(HttpsURLConnection.getDefaultHostnameVerifier());
         try {
             SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(null, new X509TrustManager[]{new NullX509TrustManager()}, new SecureRandom());
