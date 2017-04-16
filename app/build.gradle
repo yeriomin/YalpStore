@@ -20,7 +20,7 @@ android {
     }
     lintOptions {
         warning 'MissingTranslation'
-        disable 'GoogleAppIndexingWarning','GoogleAppIndexingApiWarning'
+        disable 'GoogleAppIndexingWarning','GoogleAppIndexingApiWarning','TrulyRandom','IconMissingDensityFolder','IconLocation'
     }
 
     def otaDir = "${project.rootDir}/yalp-store-ota-zip"
