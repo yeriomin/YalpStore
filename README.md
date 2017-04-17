@@ -3,7 +3,7 @@
 <a href="https://f-droid.org/repository/browse/?fdid=com.github.yeriomin.yalpstore" target="_blank">
   <img src="https://f-droid.org/badge/get-it-on.png" height="80"/>
 </a>
-
+<br/>
 <a href="https://poeditor.com/join/project/LUPUijv2Cs" target="_blank">
   <img src="https://poeditor.com/public/images/logo_small.png" />
 </a>
