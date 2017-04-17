@@ -19,13 +19,28 @@ public class ManualDownloadActivity extends DetailsActivity {
 
     @Override
     protected void onNewIntent(Intent intent) {
-        final App app = DetailsDependentActivity.app;
+        if (null == DetailsDependentActivity.app) {
+            Log.e(getClass().getName(), "No app stored");
+            finish();
+            return;
+        }
+        draw(DetailsDependentActivity.app);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ThemeManager.setTheme(this);
+        setContentView(R.layout.manual_download_activity_layout);
+        super.onCreate(savedInstanceState);
+    }
+
+    private void draw(App app) {
         setTitle(app.getDisplayName());
         app.setOfferType(1);
         ((TextView) findViewById(R.id.compatibility)).setText(
             app.getVersionCode() > 0
-            ? R.string.manual_download_compatible
-            : R.string.manual_download_incompatible
+                ? R.string.manual_download_compatible
+                : R.string.manual_download_incompatible
         );
         if (app.getVersionCode() > 0) {
             ((EditText) findViewById(R.id.version_code)).setHint(String.valueOf(app.getVersionCode()));
@@ -41,13 +56,6 @@ public class ManualDownloadActivity extends DetailsActivity {
         ((EditText) findViewById(R.id.version_code)).addTextChangedListener(textWatcher);
         downloadOrInstallManager.registerReceivers();
         downloadOrInstallManager.draw();
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        ThemeManager.setTheme(this);
-        setContentView(R.layout.manual_download_activity_layout);
-        super.onCreate(savedInstanceState);
     }
 
     private class ManualDownloadTextWatcher implements TextWatcher {
