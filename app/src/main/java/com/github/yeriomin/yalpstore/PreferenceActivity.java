@@ -47,6 +47,12 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         return PreferenceManager.getDefaultSharedPreferences(context).getString(key, "");
     }
 
+    static public boolean canInstallInBackground(Context context) {
+        return getString(context, PREFERENCE_INSTALLATION_METHOD).equals(INSTALLATION_METHOD_ROOT)
+            || getString(context, PREFERENCE_INSTALLATION_METHOD).equals(INSTALLATION_METHOD_PRIVILEGED)
+        ;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         ThemeManager.setTheme(this);

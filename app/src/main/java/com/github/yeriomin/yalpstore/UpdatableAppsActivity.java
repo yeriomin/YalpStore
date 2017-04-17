@@ -130,11 +130,11 @@ public class UpdatableAppsActivity extends AppListActivity {
         Button button = (Button) findViewById(R.id.update_all);
         boolean backgroundUpdates = PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
         boolean backgroundDownloads = PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD);
-        button.setVisibility((enable && (backgroundUpdates || backgroundDownloads)) ? View.VISIBLE : View.GONE);
+        button.setVisibility((enable && (backgroundUpdates || backgroundDownloads || PreferenceActivity.canInstallInBackground(this))) ? View.VISIBLE : View.GONE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new UpdateChecker().onReceive(v.getContext(), getIntent());
+                new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
             }
         });
     }

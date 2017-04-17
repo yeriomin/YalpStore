@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -63,6 +64,7 @@ public class UpdateChecker extends BroadcastReceiver {
         for (App app: apps) {
             Log.i(getClass().getName(), "Starting download of update for " + app.getPackageName());
             DownloadState state = DownloadState.get(app.getPackageName());
+            state.setExplicitInstall(context instanceof Activity);
             state.setApp(app);
             getPurchaseTask(context, app).execute();
         }

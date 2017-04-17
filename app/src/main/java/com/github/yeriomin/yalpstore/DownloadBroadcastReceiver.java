@@ -43,12 +43,12 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
         }
 
         if (state.isEverythingFinished() && state.isEverythingSuccessful()) {
-            verifyAndInstall(app);
+            verifyAndInstall(app, state.isExplicitInstall());
         }
     }
 
-    private void verifyAndInstall(App app) {
-        if (shouldAutoInstall() || needToInstallUpdates()) {
+    private void verifyAndInstall(App app, boolean explicitInstall) {
+        if (shouldAutoInstall() || needToInstallUpdates() || (explicitInstall && PreferenceActivity.canInstallInBackground(context))) {
             InstallerAbstract installer = InstallerFactory.get(context);
             installer.verifyAndInstall(app);
         } else {

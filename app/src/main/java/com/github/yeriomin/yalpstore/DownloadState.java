@@ -16,6 +16,7 @@ public class DownloadState {
     private Set<Long> finished = new HashSet<>();
     private Set<Long> successful = new HashSet<>();
     private App app;
+    private boolean explicitInstall;
 
     static public DownloadState get(String packageName) {
         if (!state.containsKey(packageName)) {
@@ -58,5 +59,13 @@ public class DownloadState {
 
     public void setSuccessful(long downloadId) {
         successful.add(downloadId);
+    }
+
+    public boolean isExplicitInstall() {
+        return explicitInstall;
+    }
+
+    public void setExplicitInstall(boolean explicitInstall) {
+        this.explicitInstall = explicitInstall;
     }
 }
