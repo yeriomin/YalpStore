@@ -35,11 +35,10 @@ public class BackToPlayStoreFragment extends DetailsFragment {
     }
 
     private boolean isPlayStoreInstalled() {
-        for (PackageInfo packageInfo: activity.getPackageManager().getInstalledPackages(PackageManager.GET_META_DATA)) {
-            if (packageInfo.packageName.equals(PLAY_STORE_PACKAGE_NAME)) {
-                return true;
-            }
+        try {
+            return null != activity.getPackageManager().getPackageInfo(PLAY_STORE_PACKAGE_NAME, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
         }
-        return false;
     }
 }
