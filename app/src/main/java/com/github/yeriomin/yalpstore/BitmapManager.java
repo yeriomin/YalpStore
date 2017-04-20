@@ -76,8 +76,8 @@ public class BitmapManager {
             options.inJustDecodeBounds = false;
             options.inDither = false;
             return BitmapFactory.decodeStream(new FileInputStream(cached), null, options);
-        } catch (FileNotFoundException e) {
-            // We just checked for that
+        } catch (Throwable e) {
+            Log.e(BitmapManager.class.getName(), "Could not get cached bitmap: " + e.getClass().getName() + " " + e.getMessage());
             return null;
         }
     }
