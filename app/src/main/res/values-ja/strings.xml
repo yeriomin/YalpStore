@@ -80,7 +80,6 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="credentials_title">"Google アカウントアクセス"</string>
 <string name="credentials_message">"このアプリの動作に Google アカウントのメールアドレスとパスワードが必要です。
 このアプリを使用すると Play ストアの利用規約に違反することにご注意ください。 少なくとも一回 Play ストアにログインして、Play ストアの利用規約を受け入れた、使い捨ての Google アカウントを使用する方が安全でしょう。"</string>
-<string name="activity_title_updates_only">"更新"</string>
 <string name="activity_title_search">"検索中: \"%1$s\""</string>
 <string name="notification_download_complete">"ダウンロード完了。タッチするとインストールします"</string>
 <string name="notification_download_complete_toast">"%1$s をダウンロードしました。インストールボタンまたは通知をタッチしてインストールします。"</string>
@@ -179,4 +178,36 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="pref_category_installation">"インストール"</string>
 <string name="pref_category_spoofing">"なりすまし"</string>
 <string name="pref_category_ui">"表示"</string>
+<string name="details_installing">"インストール中…"</string>
+<string name="details_installed">"正常にインストールしました"</string>
+<string name="details_install_failure">"インストールできませんでした"</string>
+<string name="notification_download_complete_new_permissions">"ダウンロードが完了しました。新しいアクセス許可を要求しました。"</string>
+<string name="notification_download_complete_new_permissions_toast">"%1$s をダウンロードしました。新しいバージョンのアプリが追加のアクセス許可を要求しました。新しいアクセス許可のリストを確認してください。"</string>
+<string name="pref_not_privileged">"Yalp がシステムアプリの場合のみ利用可能です"</string>
+<string name="pref_installation_method">"インストール方法"</string>
+<string name="pref_installation_method_default">"デフォルトのインストールダイアログ。バックグラウンドインストールなし"</string>
+<string name="pref_installation_method_root">"root を使用"</string>
+<string name="pref_installation_method_privileged">"システムアクセス許可を使用"</string>
+<string name="pref_background_update_download_summary_off">"通知を受け取るのみ"</string>
+<string name="pref_background_update_download_summary_on">"更新が見つかった場合、ダウンロードします"</string>
+<string name="pref_background_update_download">"更新もダウンロードします"</string>
+<string name="details_not_available_on_play_store">"Play ストアで利用できません"</string>
+<string name="action_manual">"手動ダウンロード"</string>
+<string name="action_get_local_apk">"ローカルの apk を入手"</string>
+<string name="details_saved_in_downloads">"Downloads フォルダーに保存しました"</string>
+<string name="details_could_not_copy_apk">"apk をコピーできませんでした"</string>
+<string name="action_make_system">"システムアプリに変換"</string>
+<string name="action_make_normal">"通常アプリに変換"</string>
+<string name="list_app_system">"システムアプリ"</string>
+<string name="list_app_exists_in_play_store">"Play ストアで利用可能"</string>
+<string name="activity_title_updates_only">"更新"</string>
+<string name="activity_title_updates_and_other_apps">"あなたのアプリ"</string>
+<string name="pref_category_updates_page">"更新ページ"</string>
+<string name="pref_updates_only">"更新可能アプリのみ表示"</string>
+<string name="pref_updates_only_summary_off">"すべてのアプリが表示されます"</string>
+<string name="pref_updates_only_summary_on">"更新可能なアプリのみ表示されます"</string>
+<string name="pref_show_system_apps">"システムアプリを表示"</string>
+<string name="pref_show_system_apps_summary_off">"システムアプリは非表示です"</string>
+<string name="pref_show_system_apps_summary_on">"システムアプリを表示します"</string>
+<string name="details_system_app_info">"システム情報"</string>
 </resources>
