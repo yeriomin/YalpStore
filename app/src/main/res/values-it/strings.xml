@@ -77,21 +77,20 @@ Vado alla relativa pagina sul Play Store?"</string>
 <string name="suffix_billion">"mld"</string>
 <string name="credentials_hint_email">"email"</string>
 <string name="credentials_hint_password">"password"</string>
-<string name="credentials_title">"Acceddo all'account Google"</string>
+<string name="credentials_title">"Accesso all'account Google"</string>
 <string name="credentials_message">"Email e password dell'account Google sono richiesti per permettere all'app di funzionare.
 
 Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più sicuro usare un account usa e getta che abbia avuto accesso al Play Store e accettato i termini d'utilizzo."</string>
-<string name="activity_title_updates_only">"Aggiornamenti"</string>
 <string name="activity_title_search">"Ricerca: %1$s"</string>
 <string name="notification_download_complete">"Download completo. Tocca per installare."</string>
-<string name="notification_download_complete_toast">"%1$s scaricata. Tocca il tasto o la notifica per installarla."</string>
+<string name="notification_download_complete_toast">"%1$s scaricata. Tocca il relativo tasto o la notifica per installarla."</string>
 <string name="notification_download_complete_signature_mismatch">"Download completato con firma non corrispondente."</string>
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s scaricata. La firma dell\'apk non corrisponde a quella dell\'app installata. E\' stata originariamente scaricata dal Play Store? E\' necessario rimuoverla."</string>
 <string name="notification_updates_available_title">"Aggiornamenti disponibili."</string>
 <string name="notification_updates_available_message">"Aggiornamenti disponibili per %1$d delle tue app."</string>
-<string name="pref_hide_nonfree_apps_summary_off">"Le app pagate sono visualizzate."</string>
-<string name="pref_hide_nonfree_apps_summary_on">"Le app a pagamento sono nascoste."</string>
-<string name="pref_hide_nonfree_apps">"Nascondi app pagate."</string>
+<string name="pref_hide_nonfree_apps_summary_off">"Le app a pagamento sono visualizzate"</string>
+<string name="pref_hide_nonfree_apps_summary_on">"Le app a pagamento sono nascoste"</string>
+<string name="pref_hide_nonfree_apps">"Nascondi app a pagamento"</string>
 <string name="pref_auto_install_summary_off">"Le app vengono installate quando l'utente tocca la notifica di completamento."</string>
 <string name="pref_auto_install_summary_on">"Le app vengono installate appena finisce il download"</string>
 <string name="pref_auto_install">"Installa app immediatamente"</string>
@@ -142,7 +141,7 @@ Non vengono raccolti dati sensibili, ma se non ti fidi controlla pure il testo d
 <string name="notification_installation_failed_toast">"Non posso aggiornare %1$s. Root non permesso?"</string>
 <string name="pref_background_update_install_summary_off">"Riceverai solo una notifica"</string>
 <string name="pref_background_update_install_summary_on">"Installa aggiornamenti quando disponibili (root)"</string>
-<string name="pref_background_update_install">"Installa anche gli aggiornamenti (root)"</string>
+<string name="pref_background_update_install">"Installa gli aggiornamenti (root)"</string>
 <string name="pref_no_root">"Opzione disponibile solo su dispositivi con root"</string>
 <string name="list_app_has_ads">"Con ads"</string>
 <string name="list_app_no_ads">"Senza ads"</string>
@@ -158,26 +157,62 @@ Non vengono raccolti dati sensibili, ma se non ti fidi controlla pure il testo d
 <string name="details_download_not_available">"Non disponibile"</string>
 <string name="manual_download_incompatible">"Google Play Store ritiene l'app incompatibile con il tuo dispositivo. Ciò significa che il numero di versione non è stato riconosciuto dal server."</string>
 <string name="manual_download_compatible">"Il numero di versione è stato compilato con l'ultimo compatibile. Se vuoi una versione precedente, inserisci un numero inferiore all'attuale. Se lo sviluppatore non ha eliminato il vecchio apk, il download dovrebbe avviarsi."</string>
-<string name="manual_download_warning">"Questa pagina permette di scegliere manualmente la versione da scaricare. Il numero di versione identifica la versione di una app. Parte da 1 e viene incrementato dallo sviluppatore ogni volta che c'è una nuova versione. Il Play Store di solito permette il download solo dell'ultima versione compatibile con il dispositivo, ma modificando questo valore si possono scaricare anche altre versioni.
+<string name="manual_download_warning">"Questa pagina permette di scegliere manualmente la versione da scaricare. Il numero di versione, che identifica la versione di una app, parte da 1 e viene incrementato dallo sviluppatore ogni volta che c'è una nuova versione. Il Play Store, di solito, permette solo il download dell'ultima versione compatibile con il dispositivo, ma modificando questo valore è possibile scaricare anche altre versioni.
 
-Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store e il successo dipende dalla fortuna nell'indovinare il numero di versione. Anche indovinando, l'apk potrebbe comunque non essere compatibile. È facile che tu stai sprecando il tuo tempo!"</string>
+Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store e il successo dipende dalla fortuna nell'indovinare il numero di versione. Tuttavia, anche indovinando, l'apk potrebbe comunque non essere compatibile. È probabile che tu stia sprecando tempo!"</string>
 <string name="manual_download_hint_version_code">"Numero di versione"</string>
 <string name="list_has_update">"Aggiornabile"</string>
 <string name="list_no_update">"Già aggiornata"</string>
 <string name="details_uninstall">"Disinstalla"</string>
-<string name="notification_download_starting">"Starting download"</string>
-<string name="notification_download_progress">"%1$s of %2$s downloaded"</string>
-<string name="pref_requested_language">"Play Store requests language"</string>
-<string name="pref_requested_language_default">"Your default language"</string>
-<string name="pref_hide_apps_with_ads">"Hide apps with ads"</string>
-<string name="pref_hide_apps_with_ads_summary_off">"Apps with ads are displayed now"</string>
-<string name="pref_hide_apps_with_ads_summary_on">"Apps with ads are not displayed now"</string>
-<string name="pref_device_to_pretend_to_be">"Pretend to be a different device"</string>
-<string name="pref_device_to_pretend_to_be_default">"Your original device info"</string>
-<string name="pref_device_to_pretend_to_be_toast">"This change will be applied after you re-login"</string>
+<string name="notification_download_starting">"Avvio del download"</string>
+<string name="notification_download_progress">"%1$s di %2$s scaricati"</string>
+<string name="pref_requested_language">"Lingua richiesta al Play Store"</string>
+<string name="pref_requested_language_default">"Lingua predefinita"</string>
+<string name="pref_hide_apps_with_ads">"Nascondi app con ads"</string>
+<string name="pref_hide_apps_with_ads_summary_off">"Le app con ads vengono mostrate"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"Le app con ads sono nascoste"</string>
+<string name="pref_device_to_pretend_to_be">"Simula dispositivo differente"</string>
+<string name="pref_device_to_pretend_to_be_default">"Info reali del dispositivo"</string>
+<string name="pref_device_to_pretend_to_be_toast">"Eseguire di nuovo l'accesso per applicare le modifiche"</string>
 <string name="pref_category_updates">"Aggiornamenti"</string>
-<string name="pref_category_search">"Search filtering"</string>
-<string name="pref_category_installation">"Installation"</string>
-<string name="pref_category_spoofing">"Spoofing"</string>
+<string name="pref_category_search">"Filtro di ricerca"</string>
+<string name="pref_category_installation">"Installazione"</string>
+<string name="pref_category_spoofing">"Mascheramento"</string>
 <string name="pref_category_ui">"Mostra"</string>
+<string name="details_installing">"Installazione..."</string>
+<string name="details_installed">"Installato con successo"</string>
+<string name="details_install_failure">"Impossibile installare"</string>
+<string name="notification_download_complete_new_permissions">"Download completo. Richieste nuove autorizzazioni."</string>
+<string name="notification_download_complete_new_permissions_toast">"%1$s scaricati. La nuova versione richiede più autorizzazioni. Controlla la lista dei permessi."</string>
+<string name="pref_not_privileged">"Disponibile solo se Yalp è una app di sistema"</string>
+<string name="pref_installation_method">"Metodo d'installazione"</string>
+<string name="pref_installation_method_default">"Schermata standard, nessun aggiornamento in background"</string>
+<string name="pref_installation_method_root">"Utilizzo root"</string>
+<string name="pref_installation_method_privileged">"Utilizzo permessi di sistema"</string>
+<string name="pref_background_update_download_summary_off">"Riceverai solo una notifica"</string>
+<string name="pref_background_update_download_summary_on">"Scarica aggiornamenti quando rilevati"</string>
+<string name="pref_background_update_download">"Scarica aggiornamenti"</string>
+<string name="details_not_available_on_play_store">"Non disponibile su Play Store"</string>
+<string name="action_manual">"Download manuale"</string>
+
+<!-- Can you explain where this string is used? Thanks -->
+<string name="action_get_local_apk">"Salva apk in locale"</string>
+<string name="details_saved_in_downloads">"Salvato nella cartella Download"</string>
+<string name="details_could_not_copy_apk">"Impossibile copiare apk"</string>
+<string name="action_make_system">"Rendi app di sistema"</string>
+<string name="action_make_normal">"Rendi app normale"</string>
+<string name="list_app_system">"App di sistema"</string>
+<string name="list_app_exists_in_play_store">"Disponibile su Play Store"</string>
+<string name="activity_title_updates_only">"Aggiornamenti"</string>
+<string name="activity_title_updates_and_other_apps">"Le tue app"</string>
+
+<!-- Hi, I can't understand how to translate this. Does it means "Reload page", "Page with the list of updates" or what else? -->
+<string name="pref_category_updates_page">"Lista aggiornamenti"</string>
+<string name="pref_updates_only">"Mostra solo aggiornabili"</string>
+<string name="pref_updates_only_summary_off">"Vengono mostrate tutte le app"</string>
+<string name="pref_updates_only_summary_on">"Vengono mostrate solo app aggiornabili"</string>
+<string name="pref_show_system_apps">"Mostra appa di sistema"</string>
+<string name="pref_show_system_apps_summary_off">"App di sistema nascoste"</string>
+<string name="pref_show_system_apps_summary_on">"App di sistema visualizzate"</string>
+<string name="details_system_app_info">"Info di sistema"</string>
 </resources>
