@@ -42,6 +42,17 @@
     <string name="dialog_title_logging_in">Входим</string>
     <string name="dialog_message_logging_in_provided_by_user">Пытаемся подключиться через ваш аккаунт</string>
     <string name="dialog_message_logging_in_predefined">Пытаемся подключиться через аккаунт, предоставленный Yalp Store</string>
+    <string name="dialog_title_remounting_system">Работаем с разделом /system</string>
+    <string name="dialog_message_remounting_system">"Работаем с разделом /system. Это может быть небыстро."</string>
+    <string name="dialog_title_checking_busybox">Ищем busybox</string>
+    <string name="dialog_message_checking_busybox">Для работы с системными приложениями требуется busybox. Проверяем, установлен ли он.</string>
+    <string name="dialog_title_busybox_not_available">Busybox не найден</string>
+    <string name="dialog_message_busybox_not_available">Для работы с системными приложениями требуется busybox. Поискать установщик busybox?</string>
+    <string name="dialog_title_reboot_required">Требуется перезагрузка</string>
+    <string name="dialog_message_reboot_required">Изменения вступят в силу после перезагрузки. Перезагрузиться немедленно?</string>
+    <string name="dialog_title_system_app_warning">Внимание!</string>
+    <string name="dialog_message_system_app_warning_to_system">Вы хотите сделать приложение системным. Большинству приложений не нужно быть системными чтобы работать.\n\nИмейте в виду, что этот процесс НЕ поддерживается ОС Android и следовательно НЕ безопасен и НЕТ гарантии, что он сработает.\n\nНе стоит делать этого из любопытства. Вы можете испортить ваше устройство. Сделайте backup.</string>
+    <string name="dialog_message_system_app_warning_to_normal">Вы хотите сделать системое приложение обычным. Большинству системных приложений нужно быть системными чтобы работать.\n\nИмейте в виду, что этот процесс НЕ поддерживается ОС Android и следовательно НЕ безопасен и НЕТ гарантии, что он сработает.\n\nНе стоит делать этого из любопытства. Вы можете испортить ваше устройство. Сделайте backup.</string>
     <string name="action_about">О приложении</string>
     <string name="action_settings">Настройки</string>
     <string name="action_updates">Обновления</string>
