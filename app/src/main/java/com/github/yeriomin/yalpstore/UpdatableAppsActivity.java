@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -107,10 +108,12 @@ public class UpdatableAppsActivity extends AppListActivity {
         } else {
             if (!updatable.isEmpty()) {
                 data.add(getHeader(R.string.list_has_update));
+                Collections.sort(updatable);
                 addApps(updatable);
             }
             if (!other.isEmpty()) {
                 data.add(getHeader(R.string.list_no_update));
+                Collections.sort(other);
                 addApps(other);
             }
         }
