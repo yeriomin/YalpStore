@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -48,12 +49,16 @@ public class DownloadOrInstallFragment extends DetailsFragment {
 
     private void drawDownloadButton() {
         Button downloadButton = (Button) activity.findViewById(R.id.download);
-        downloadButton.setText(apkPath.exists() ? R.string.details_install : R.string.details_download);
-        downloadButton.setEnabled(apkPath.exists() || app.isInPlayStore());
+        downloadButton.setText(getDownloadButtonText());
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
+                if (isLatestVersion()) {
+                    Intent launchIntent = getLaunchIntent();
+                    if (null != launchIntent) {
+                        activity.startActivity(launchIntent);
+                    }
+                } else if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
                     activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
                 } else if (checkPermission()) {
                     downloadOrInstall();
@@ -62,6 +67,33 @@ public class DownloadOrInstallFragment extends DetailsFragment {
                 }
             }
         });
+    }
+
+    private int getDownloadButtonText() {
+        int stringId = R.string.details_download;
+        if (isLatestVersion() && null != getLaunchIntent()) {
+            stringId = R.string.details_run;
+        } else if (apkPath.exists()) {
+            stringId = R.string.details_install;
+        }
+        return stringId;
+    }
+
+    private boolean isLatestVersion() {
+        try {
+            return activity.getPackageManager().getPackageInfo(app.getPackageName(), 0).versionCode == app.getVersionCode();
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    private Intent getLaunchIntent() {
+        Intent i = activity.getPackageManager().getLaunchIntentForPackage(app.getPackageName());
+        if (i == null) {
+            return null;
+        }
+        i.addCategory(Intent.CATEGORY_LAUNCHER);
+        return i;
     }
 
     public void unregisterReceivers() {

@@ -80,6 +80,7 @@
     <string name="details_permissions">Разрешения:</string>
     <string name="details_versionName">"Версия %1$s"</string>
     <string name="details_versionName_updatable">"Версия %1$s → %2$s"</string>
+    <string name="details_run">Запустить</string>
     <string name="details_download">Скачать</string>
     <string name="details_install">Установить</string>
     <string name="details_uninstall">Удалить</string>

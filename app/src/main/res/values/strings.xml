@@ -79,6 +79,7 @@
     <string name="details_permissions">Permissions:</string>
     <string name="details_versionName">"Version %1$s"</string>
     <string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
+    <string name="details_run">Run</string>
     <string name="details_download">Download</string>
     <string name="details_install">Install</string>
     <string name="details_uninstall">Uninstall</string>
