@@ -57,6 +57,17 @@
     <string name="dialog_title_logging_in">Logging in</string>
     <string name="dialog_message_logging_in_provided_by_user">Trying to log in with the credentials you provided</string>
     <string name="dialog_message_logging_in_predefined">Trying to log in with credentials provided by Yalp Store</string>
+    <string name="dialog_title_remounting_system">Working with /system partition</string>
+    <string name="dialog_message_remounting_system">"Working with /system partition. This might take some time."</string>
+    <string name="dialog_title_checking_busybox">Checking if busybox is available</string>
+    <string name="dialog_message_checking_busybox">Certain system tools are required to work with system apps. Checking if they are available.</string>
+    <string name="dialog_title_busybox_not_available">Busybox not available</string>
+    <string name="dialog_message_busybox_not_available">A rooted device with busybox installed is required to work with system apps. Search for a busybox installer now?</string>
+    <string name="dialog_title_reboot_required">Reboot required</string>
+    <string name="dialog_message_reboot_required">Changes will be applied after reboot. Reboot now?</string>
+    <string name="dialog_title_system_app_warning">Warning!</string>
+    <string name="dialog_message_system_app_warning_to_system">You have selected to convert the app into system app. Most apps do not need to be system apps to work.\n\nKeep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.\n\nDo not do it out of curiosity. It might break your device. Backup your device before trying.</string>
+    <string name="dialog_message_system_app_warning_to_normal">You have selected to convert a system app into a normal app. Most system apps need to be system apps to work.\n\nKeep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.\n\nDo not do it out of curiosity. It might break your device. Backup your device before trying.</string>
     <string name="error_incorrect_password">Incorrect email or password.</string>
     <string name="error_credentials_empty">Provide google account credentials, please.</string>
     <string name="error_no_network">No network connection.</string>

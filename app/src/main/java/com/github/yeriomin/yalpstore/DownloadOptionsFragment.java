@@ -1,7 +1,10 @@
 package com.github.yeriomin.yalpstore;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.preference.CheckBoxPreference;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -39,8 +42,10 @@ public class DownloadOptionsFragment extends DetailsFragment {
         if (app.isInstalled()) {
             menu.findItem(R.id.action_get_local_apk).setVisible(true);
         }
-        menu.findItem(R.id.action_make_system).setVisible(!app.isSystem());
-        menu.findItem(R.id.action_make_normal).setVisible(app.isSystem());
+        if (isConvertible(app)) {
+            menu.findItem(R.id.action_make_system).setVisible(!app.isSystem());
+            menu.findItem(R.id.action_make_normal).setVisible(app.isSystem());
+        }
     }
 
     public boolean onContextItemSelected(MenuItem item) {
@@ -52,10 +57,10 @@ public class DownloadOptionsFragment extends DetailsFragment {
                 copyLocalApk();
                 return true;
             case R.id.action_make_system:
-                copyLocalApk();
+                askAndExecute(new ConvertToSystemTask(activity, app));
                 return true;
             case R.id.action_make_normal:
-                copyLocalApk();
+                askAndExecute(new ConvertToNormalTask(activity, app));
                 return true;
             default:
                 return activity.onContextItemSelected(item);
@@ -80,5 +85,37 @@ public class DownloadOptionsFragment extends DetailsFragment {
             }
         };
         task.execute();
+    }
+
+    private void askAndExecute(SystemRemountTask task) {
+        final CheckShellTask checkTask = new CheckShellTask(activity);
+        checkTask.setPrimaryTask(task);
+        new AlertDialog.Builder(activity)
+            .setMessage(task instanceof ConvertToSystemTask
+                ? R.string.dialog_message_system_app_warning_to_system
+                : R.string.dialog_message_system_app_warning_to_normal
+            )
+            .setTitle(R.string.dialog_title_system_app_warning)
+            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    checkTask.execute();
+                    dialog.dismiss();
+                }
+            })
+            .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            })
+            .show()
+        ;
+    }
+
+    private boolean isConvertible(App app) {
+        return !app.getPackageName().equals(BuildConfig.APPLICATION_ID)
+            && !app.getPackageInfo().applicationInfo.sourceDir.endsWith("pkg.apk")
+        ;
     }
 }
