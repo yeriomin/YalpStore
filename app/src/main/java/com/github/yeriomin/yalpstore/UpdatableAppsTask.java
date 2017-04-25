@@ -99,6 +99,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
             appFromMarket.setDisplayName(installedApp.getDisplayName());
             appFromMarket.setIcon(installedApp.getIcon());
             appFromMarket.setSystem(installedApp.isSystem());
+            appFromMarket.setInstalled(true);
             if (installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
                 appMap.remove(packageName);
                 updatableApps.add(appFromMarket);
