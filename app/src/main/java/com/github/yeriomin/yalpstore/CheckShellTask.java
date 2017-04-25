@@ -88,12 +88,11 @@ public class CheckShellTask extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected void onPreExecute() {
-        ProgressDialog dialog = new ProgressDialog(context);
-        dialog.setTitle(R.string.dialog_title_checking_busybox);
-        dialog.setMessage(context.getString(R.string.dialog_message_checking_busybox));
-        dialog.setIndeterminate(true);
-        dialog.setCancelable(false);
-        progressDialog = dialog;
+        progressDialog = Util.prepareProgressDialog(
+            context,
+            R.string.dialog_message_checking_busybox,
+            R.string.dialog_title_checking_busybox
+        );
         progressDialog.show();
     }
 
