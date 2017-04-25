@@ -5,14 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class DetailsDownloadReceiver extends BroadcastReceiver {
 
-    private Button button;
+    private Button buttonDownload;
+    private Button buttonInstall;
 
-    public DetailsDownloadReceiver(DetailsActivity activity, Button button) {
-        this.button = button;
+    public DetailsDownloadReceiver(DetailsActivity activity) {
+        buttonDownload = (Button) activity.findViewById(R.id.download);
+        buttonInstall = (Button) activity.findViewById(R.id.install);
         IntentFilter filter = new IntentFilter();
         filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
         activity.registerReceiver(this, filter);
@@ -36,11 +39,11 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
         if (!state.isEverythingFinished()) {
             return;
         }
+        buttonDownload.setText(R.string.details_download);
+        buttonDownload.setEnabled(true);
         if (state.isEverythingSuccessful()) {
-            button.setText(R.string.details_install);
-        } else {
-            button.setText(R.string.details_download);
+            buttonDownload.setVisibility(View.GONE);
+            buttonInstall.setVisibility(View.VISIBLE);
         }
-        button.setEnabled(true);
     }
 }

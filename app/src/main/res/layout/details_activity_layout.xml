@@ -542,7 +542,24 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_weight="1"
+            android:visibility="gone"
             android:text="@string/details_download" />
+
+        <Button
+            android:id="@+id/install"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:text="@string/details_install" />
+
+        <Button
+            android:id="@+id/run"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:text="@string/details_run" />
 
         <ImageButton
             android:id="@+id/more"

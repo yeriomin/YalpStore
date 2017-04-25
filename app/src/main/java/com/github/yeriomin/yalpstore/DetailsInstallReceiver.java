@@ -14,9 +14,9 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
     private Button buttonUninstall;
     private Button buttonInstall;
 
-    public DetailsInstallReceiver(DetailsActivity activity, Button buttonInstall, Button buttonUninstall) {
-        this.buttonInstall = buttonInstall;
-        this.buttonUninstall = buttonUninstall;
+    public DetailsInstallReceiver(DetailsActivity activity) {
+        buttonInstall = (Button) activity.findViewById(R.id.install);
+        buttonUninstall = (Button) activity.findViewById(R.id.uninstall);
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_PACKAGE_INSTALL);
         filter.addAction(Intent.ACTION_PACKAGE_ADDED);

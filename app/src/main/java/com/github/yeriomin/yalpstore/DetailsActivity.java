@@ -8,12 +8,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -23,8 +19,8 @@ public class DetailsActivity extends YalpStoreActivity {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
-    protected DownloadOrInstallFragment downloadOrInstallManager;
-    private IgnoreOptionFragment ignoreOptionManager;
+    protected DownloadOrInstallFragment downloadOrInstallFragment;
+    private IgnoreOptionFragment ignoreOptionFragment;
     private DownloadOptionsFragment downloadOptionsFragment;
 
     static public void start(Context context, String packageName) {
@@ -38,9 +34,9 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         boolean result = super.onCreateOptionsMenu(menu);
-        if (null != ignoreOptionManager) {
-            ignoreOptionManager.setMenu(menu);
-            ignoreOptionManager.draw();
+        if (null != ignoreOptionFragment) {
+            ignoreOptionFragment.setMenu(menu);
+            ignoreOptionFragment.draw();
         }
         return result;
     }
@@ -48,7 +44,7 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_ignore) {
-            ignoreOptionManager.toggleBlackWhiteList();
+            ignoreOptionFragment.toggleBlackWhiteList();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -63,7 +59,7 @@ public class DetailsActivity extends YalpStoreActivity {
             finishActivity(0);
             return;
         }
-        ignoreOptionManager = new IgnoreOptionFragment(this, new App());
+        ignoreOptionFragment = new IgnoreOptionFragment(this, new App());
 
         if (null != DetailsDependentActivity.app) {
             drawDetails(DetailsDependentActivity.app);
@@ -77,18 +73,18 @@ public class DetailsActivity extends YalpStoreActivity {
 
     @Override
     protected void onPause() {
-        if (null != downloadOrInstallManager) {
-            downloadOrInstallManager.unregisterReceivers();
+        if (null != downloadOrInstallFragment) {
+            downloadOrInstallFragment.unregisterReceivers();
         }
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        if (null != downloadOrInstallManager) {
-            downloadOrInstallManager.unregisterReceivers();
-            downloadOrInstallManager.registerReceivers();
-            downloadOrInstallManager.draw();
+        if (null != downloadOrInstallFragment) {
+            downloadOrInstallFragment.unregisterReceivers();
+            downloadOrInstallFragment.registerReceivers();
+            downloadOrInstallFragment.draw();
         }
         super.onResume();
     }
@@ -105,7 +101,7 @@ public class DetailsActivity extends YalpStoreActivity {
         if (requestCode == PERMISSIONS_REQUEST_CODE
             && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
         ) {
-            downloadOrInstallManager.downloadOrInstall();
+            downloadOrInstallFragment.download();
         }
     }
 
@@ -142,14 +138,14 @@ public class DetailsActivity extends YalpStoreActivity {
         new AppListsFragment(this, app).draw();
         new BackToPlayStoreFragment(this, app).draw();
         new SystemAppPageFragment(this, app).draw();
-        ignoreOptionManager.setApp(app);
-        ignoreOptionManager.draw();
-        if (null != downloadOrInstallManager) {
-            downloadOrInstallManager.unregisterReceivers();
+        ignoreOptionFragment.setApp(app);
+        ignoreOptionFragment.draw();
+        if (null != downloadOrInstallFragment) {
+            downloadOrInstallFragment.unregisterReceivers();
         }
-        downloadOrInstallManager = new DownloadOrInstallFragment(this, app);
-        downloadOrInstallManager.registerReceivers();
-        downloadOrInstallManager.draw();
+        downloadOrInstallFragment = new DownloadOrInstallFragment(this, app);
+        downloadOrInstallFragment.registerReceivers();
+        downloadOrInstallFragment.draw();
         downloadOptionsFragment = new DownloadOptionsFragment(this, app);
         downloadOptionsFragment.draw();
     }
