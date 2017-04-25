@@ -35,12 +35,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
     }
 
     public void prepareDialog(int messageId, int titleId) {
-        ProgressDialog dialog = new ProgressDialog(context);
-        dialog.setTitle(this.context.getString(titleId));
-        dialog.setMessage(this.context.getString(messageId));
-        dialog.setIndeterminate(true);
-        dialog.setCancelable(false);
-        this.progressDialog = dialog;
+        this.progressDialog = Util.prepareProgressDialog(context, messageId, titleId);
     }
 
     public void setErrorView(TextView errorView) {

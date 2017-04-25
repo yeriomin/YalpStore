@@ -39,12 +39,11 @@ public abstract class SystemRemountTask extends AsyncTask<Void, Void, List<Strin
 
     @Override
     protected void onPreExecute() {
-        ProgressDialog dialog = new ProgressDialog(context);
-        dialog.setTitle(R.string.dialog_title_remounting_system);
-        dialog.setMessage(context.getString(R.string.dialog_message_remounting_system));
-        dialog.setIndeterminate(true);
-        dialog.setCancelable(false);
-        progressDialog = dialog;
+        progressDialog = Util.prepareProgressDialog(
+            context,
+            R.string.dialog_message_remounting_system,
+            R.string.dialog_title_remounting_system
+        );
         progressDialog.show();
     }
 
