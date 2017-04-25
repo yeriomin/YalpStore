@@ -47,12 +47,7 @@ public class DetailsButtonDownloadFragment extends DetailsButtonFragment {
     }
 
     public void download() {
-        File apkPath = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-        File dir = apkPath.getParentFile();
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        if (dir.exists() && dir.isDirectory() && dir.canWrite()) {
+        if (prepareDownloadsDir()) {
             getPurchaseTask().execute();
         } else {
             Toast.makeText(
@@ -61,6 +56,14 @@ public class DetailsButtonDownloadFragment extends DetailsButtonFragment {
                 Toast.LENGTH_LONG
             ).show();
         }
+    }
+
+    private boolean prepareDownloadsDir() {
+        File dir = Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).getParentFile();
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        return dir.exists() && dir.isDirectory() && dir.canWrite();
     }
 
     private PurchaseTask getPurchaseTask() {
