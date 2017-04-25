@@ -114,6 +114,7 @@
     <string name="activity_title_updates_only">Updates</string>
     <string name="activity_title_updates_and_other_apps">Your apps</string>
     <string name="activity_title_search">"Searching: \"%1$s\""</string>
+    <string name="activity_title_search_publisher">"Apps by %1$s"</string>
     <string name="notification_installation_complete">Update installed.</string>
     <string name="notification_installation_complete_toast">"App %1$s updated."</string>
     <string name="notification_installation_failed">Update installation failed.</string>

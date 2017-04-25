@@ -115,6 +115,7 @@
     <string name="activity_title_updates_only">Обновления</string>
     <string name="activity_title_updates_and_other_apps">Ваши приложения</string>
     <string name="activity_title_search">"Поиск: \"%1$s\""</string>
+    <string name="activity_title_search_publisher">"Приложения от %1$s"</string>
     <string name="notification_installation_complete">Установлено обновление.</string>
     <string name="notification_installation_complete_toast">"Приложение %1$s обновлено."</string>
     <string name="notification_installation_failed">Не удалось установить обновление.</string>

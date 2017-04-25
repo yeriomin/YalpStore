@@ -13,6 +13,8 @@ import java.util.regex.Pattern;
 
 public class SearchResultActivity extends EndlessScrollActivity {
 
+    static private final String PUBLISHER_PREFIX = "pub:";
+
     private String query;
     private String categoryId = CategoryManager.TOP;
 
@@ -25,7 +27,7 @@ public class SearchResultActivity extends EndlessScrollActivity {
             this.categoryId = CategoryManager.TOP;
             this.query = newQuery;
             this.data.clear();
-            setTitle(getString(R.string.activity_title_search, this.query));
+            setTitle(getSearchTitle());
             if (looksLikeAPackageId(query)) {
                 Log.i(getClass().getName(), query + " looks like a package id");
                 checkPackageId(query);
@@ -66,6 +68,13 @@ public class SearchResultActivity extends EndlessScrollActivity {
         task.setCategoryManager(new CategoryManager(this));
         prepareTask(task).execute(query, categoryId);
         ((SimpleAdapter) getListView().getAdapter()).notifyDataSetChanged();
+    }
+
+    private String getSearchTitle() {
+        if (query.startsWith(PUBLISHER_PREFIX)) {
+            return getString(R.string.activity_title_search_publisher, query.substring(PUBLISHER_PREFIX.length()));
+        }
+        return getString(R.string.activity_title_search, query);
     }
 
     private String getQuery(Intent intent) {
