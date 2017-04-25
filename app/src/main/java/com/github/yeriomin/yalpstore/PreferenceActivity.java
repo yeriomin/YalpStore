@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
+import android.preference.Preference;
 import android.preference.PreferenceManager;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
@@ -103,5 +104,18 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         PreferenceInstallationMethodFragment installationMethodFragment = new PreferenceInstallationMethodFragment(this);
         installationMethodFragment.setInstallationMethodPreference((ListPreference) findPreference(PREFERENCE_INSTALLATION_METHOD));
         installationMethodFragment.draw();
+    }
+
+    private void drawUpdatePagePreferences() {
+        findPreference(PREFERENCE_SHOW_SYSTEM_APPS).setOnPreferenceChangeListener(new OnUpdatePagePreferenceChangeListener());
+        findPreference(PREFERENCE_UPDATES_ONLY).setOnPreferenceChangeListener(new OnUpdatePagePreferenceChangeListener());
+    }
+
+    private class OnUpdatePagePreferenceChangeListener implements Preference.OnPreferenceChangeListener {
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            UpdatableAppsActivity.setNeedsUpdate(true);
+            return true;
+        }
     }
 }
