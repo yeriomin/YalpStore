@@ -42,6 +42,7 @@ public class GeneralDetailsFragment extends DetailsFragment {
 
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, app.getPackageName());
+        drawVersion((TextView) activity.findViewById(R.id.versionString), app);
     }
 
     private void drawGeneralDetails(App app) {
@@ -55,7 +56,6 @@ public class GeneralDetailsFragment extends DetailsFragment {
         setText(R.id.contains_ads, app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
         drawOfferDetails(app);
         drawChanges(app);
-        drawVersion((TextView) activity.findViewById(R.id.versionString), app);
         if (app.getVersionCode() == 0) {
             activity.findViewById(R.id.updated).setVisibility(View.GONE);
             activity.findViewById(R.id.size).setVisibility(View.GONE);
