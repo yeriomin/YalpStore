@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -10,6 +11,7 @@ import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -114,6 +116,14 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
         }
         otherInstalledApps.addAll(appMap.values());
         return null;
+    }
+
+    @Override
+    protected void processIOException(IOException e) {
+        super.processIOException(e);
+        if (noNetwork(e) && context instanceof Activity) {
+            toast(context, context.getString(R.string.error_no_network));
+        }
     }
 
     private boolean doNotCheckForUpdates() {
