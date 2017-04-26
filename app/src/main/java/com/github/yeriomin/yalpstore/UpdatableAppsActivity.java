@@ -43,6 +43,18 @@ public class UpdatableAppsActivity extends AppListActivity {
             loadApps();
             setNeedsUpdate(false);
         }
+        if (doNotCheckForUpdates()) {
+            Button checkUpdates = (Button) findViewById(R.id.check_updates);
+            checkUpdates.setVisibility(View.VISIBLE);
+            checkUpdates.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    UpdatableAppsTask task = getTask();
+                    task.setExplicitCheck(true);
+                    task.execute();
+                }
+            });
+        }
     }
 
     @Override
@@ -74,6 +86,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         return map;
     }
 
+    @Override
     protected void loadApps() {
         UpdatableAppsTask taskClone = getTask();
         UpdatableAppsTask task = getTask();
@@ -90,7 +103,7 @@ public class UpdatableAppsActivity extends AppListActivity {
                 if (null != e && PreferenceActivity.getBoolean(UpdatableAppsActivity.this, PreferenceActivity.PREFERENCE_UPDATES_ONLY)) {
                     return;
                 }
-                addApps(updatableApps, otherInstalledApps);
+                addApps(updatableApps, otherInstalledApps, explicitCheck);
                 toggleUpdateAll(this.updatableApps.size() > 0);
                 new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
                 new FirstLaunchChecker(context).setLaunched();
@@ -102,7 +115,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         return task;
     }
 
-    private void addApps(List<App> updatable, List<App> other) {
+    private void addApps(List<App> updatable, List<App> other, boolean explicitCheck) {
         if (showUpdatesOnly()) {
             addApps(updatable);
         } else {
@@ -112,7 +125,9 @@ public class UpdatableAppsActivity extends AppListActivity {
                 addApps(updatable);
             }
             if (!other.isEmpty()) {
-                data.add(getHeader(R.string.list_no_update));
+                if (!doNotCheckForUpdates() || explicitCheck) {
+                    data.add(getHeader(R.string.list_no_update));
+                }
                 Collections.sort(other);
                 addApps(other);
             }
@@ -121,6 +136,11 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     private boolean showUpdatesOnly() {
         return PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_UPDATES_ONLY);
+    }
+
+    private boolean doNotCheckForUpdates() {
+        String updateInterval = PreferenceActivity.getString(this, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL);
+        return Integer.parseInt(TextUtils.isEmpty(updateInterval) ? "0" : updateInterval) < 0;
     }
 
     private Map<String, Object> getHeader(int headerTextResId) {

@@ -11,7 +11,6 @@ import android.util.Log;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +19,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
 
     protected List<App> updatableApps = new ArrayList<>();
     protected List<App> otherInstalledApps = new ArrayList<>();
+    protected boolean explicitCheck;
 
     static public List<App> getInstalledApps(Context context) {
         List<App> apps = new ArrayList<>();
@@ -33,15 +33,15 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
                 continue;
             }
             app.setDisplayName(pm.getApplicationLabel(packageInfo.applicationInfo).toString());
-            try {
-                app.setIcon(pm.getApplicationIcon(packageInfo.applicationInfo));
-            } catch (OutOfMemoryError e) {
-                Log.e(UpdatableAppsTask.class.getName(), "OutOfMemoryError occurred while trying to get icon for " + packageInfo.packageName);
-            }
+            app.setIcon(pm.getApplicationIcon(packageInfo.applicationInfo));
             app.setInstalled(true);
             apps.add(app);
         }
         return apps;
+    }
+
+    public void setExplicitCheck(boolean explicitCheck) {
+        this.explicitCheck = explicitCheck;
     }
 
     private List<App> getFilteredInstalledApps(Context context) {
@@ -79,6 +79,10 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
             installedAppIds.add(packageName);
             appMap.put(packageName, installedApp);
         }
+        if (doNotCheckForUpdates() && !explicitCheck) {
+            otherInstalledApps.addAll(appMap.values());
+            return null;
+        }
         // Requesting info from Google Play Market for installed apps
         PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.context);
         List<App> appsFromPlayMarket = new ArrayList<>();
@@ -109,5 +113,10 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
         }
         otherInstalledApps.addAll(appMap.values());
         return null;
+    }
+
+    private boolean doNotCheckForUpdates() {
+        String updateInterval = PreferenceActivity.getString(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL);
+        return Integer.parseInt(TextUtils.isEmpty(updateInterval) ? "0" : updateInterval) < 0;
     }
 }

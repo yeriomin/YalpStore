@@ -12,6 +12,7 @@
     <string name="list_empty_updates">No apps need to be updated</string>
     <string name="list_empty_search">No apps found</string>
     <string name="list_incompatible">incompatible</string>
+    <string name="list_check_updates">Check updates</string>
     <string name="list_update_all">Update all</string>
     <string name="list_app_has_ads">has ads</string>
     <string name="list_app_no_ads">no ads</string>
@@ -160,6 +161,7 @@
     <string name="pref_ui_theme_light">Light</string>
     <string name="pref_ui_theme_dark">Dark</string>
     <string name="pref_ui_theme_black">Black</string>
+    <string name="pref_background_update_interval_manually">Only manually</string>
     <string name="pref_background_update_interval_never">Only when you launch Yalp Store</string>
     <string name="pref_background_update_interval_hourly">Hourly</string>
     <string name="pref_background_update_interval_daily">Daily</string>

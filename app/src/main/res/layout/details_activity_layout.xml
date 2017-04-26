@@ -532,7 +532,7 @@
         <Button
             android:id="@+id/uninstall"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:visibility="gone"
             android:text="@string/details_uninstall" />
@@ -540,7 +540,7 @@
         <Button
             android:id="@+id/download"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:visibility="gone"
             android:text="@string/details_download" />
@@ -548,7 +548,7 @@
         <Button
             android:id="@+id/install"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:visibility="gone"
             android:text="@string/details_install" />
@@ -556,7 +556,7 @@
         <Button
             android:id="@+id/run"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:visibility="gone"
             android:text="@string/details_run" />
@@ -566,7 +566,7 @@
             android:src="@drawable/ic_more"
             android:contentDescription="@string/content_description_download_options"
             android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_height="match_parent"
             android:layout_weight="0" />
 
     </LinearLayout>

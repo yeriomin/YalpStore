@@ -13,6 +13,7 @@
     <string name="list_empty_updates">Обновлений нет</string>
     <string name="list_empty_search">Ничего не найдено</string>
     <string name="list_incompatible">несовместимо</string>
+    <string name="list_check_updates">Проверить обновления</string>
     <string name="list_update_all">Обновить всё</string>
     <string name="list_app_has_ads">есть реклама</string>
     <string name="list_app_no_ads">нет рекламы</string>
@@ -161,6 +162,7 @@
     <string name="pref_ui_theme_light">Светлая</string>
     <string name="pref_ui_theme_dark">Тёмная</string>
     <string name="pref_ui_theme_black">Чёрная</string>
+    <string name="pref_background_update_interval_manually">Только вручную</string>
     <string name="pref_background_update_interval_never">Только при запуске Yalp Store</string>
     <string name="pref_background_update_interval_hourly">Раз в час</string>
     <string name="pref_background_update_interval_daily">Раз в день</string>

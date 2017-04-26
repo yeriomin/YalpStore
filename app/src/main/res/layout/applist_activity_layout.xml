@@ -40,11 +40,27 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/update_all"
-        android:visibility="gone"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/list_update_all" />
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/update_all"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/list_update_all" />
+
+        <Button
+            android:id="@+id/check_updates"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/list_check_updates" />
+
+    </LinearLayout>
 
 </LinearLayout>
