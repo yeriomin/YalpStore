@@ -236,5 +236,9 @@ Mantém em mente que esta processo de conversão NÃO É SUPORTADO pelo Android 
 Não o faças por mera curiosidade. Isto poderá dafinicar o teu dispositivo. Efetua um backup antes de experimentares."</string>
 <string name="list_check_updates">"Verificar atualizações"</string>
 <string name="pref_background_update_interval_manually">"Apenas manualmente"</string>
-<string name="dialog_message_system_app_warning_uninstall">"Tens certeza que queres remover esta aplicação de sistema ? Aplicações de sistema são introduzidas no teu dispositivo pela marca deste e, "</string>
+<string name="dialog_message_system_app_warning_uninstall">"Tens certeza que queres remover esta aplicação de sistema ? Aplicações de sistema são introduzidas no teu dispositivo pela marca deste e, provavelmente, são necessárias para o bom funcionamento do mesmo.
+
+Mantém em mente que remover uma app de sistema, NÃO É SUPORTADO PELO Android OS e, por isso, NÃO É SEGURO NEM GARANTIDO que funcione.
+
+Não o faças por mera curiosidade. Isto poderá dafinicar o teu dispositivo. Efetua um backup antes de experimentares."</string>
 </resources>
