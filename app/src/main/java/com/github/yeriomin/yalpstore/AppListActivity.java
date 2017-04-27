@@ -42,7 +42,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
                     return;
                 }
                 DetailsDependentActivity.app = apps.get(packageName);
-                DetailsActivity.start(getApplicationContext(), packageName);
+                DetailsActivity.start(AppListActivity.this, packageName);
             }
         });
     }
