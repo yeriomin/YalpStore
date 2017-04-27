@@ -9,7 +9,7 @@
     <string name="content_description_review_author_avatar" translatable="false">"Review author avatar"</string>
     <string name="content_description_review_edit" translatable="false">"Edit your review"</string>
     <string name="content_description_review_delete" translatable="false">"Delete your review"</string>
-    <string name="content_description_review_previous_page" translatable="false">"Previous review pagew"</string>
+    <string name="content_description_review_previous_page" translatable="false">"Previous review page"</string>
     <string name="content_description_review_next_page" translatable="false">"Next review page"</string>
     <string name="content_description_app_icon" translatable="false">"App icon"</string>
 </resources>
