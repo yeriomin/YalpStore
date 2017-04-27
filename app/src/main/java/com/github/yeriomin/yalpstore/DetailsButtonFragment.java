@@ -22,6 +22,9 @@ public abstract class DetailsButtonFragment extends DetailsFragment {
 
     @Override
     public void draw() {
+        if (null == button) {
+            return;
+        }
         button.setVisibility(shouldBeVisible() ? View.VISIBLE : View.GONE);
         button.setOnClickListener(getOnClickListener());
     }
