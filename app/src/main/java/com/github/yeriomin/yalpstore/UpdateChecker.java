@@ -37,7 +37,6 @@ public class UpdateChecker extends BroadcastReceiver {
     }
 
     private UpdatableAppsTask getTask(Context context) {
-        final boolean updateAllButtonClicked = context instanceof Activity;
         UpdatableAppsTask task = new UpdatableAppsTask() {
             @Override
             protected void onPostExecute(Throwable e) {
@@ -50,14 +49,14 @@ public class UpdateChecker extends BroadcastReceiver {
                 if (updatesCount == 0) {
                     return;
                 }
-                if (updateAllButtonClicked || PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)) {
+                if (explicitCheck || PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)) {
                     download(context, updatableApps);
                 } else {
                     createNotification(context, updatesCount);
                 }
             }
         };
-        task.setExplicitCheck(updateAllButtonClicked);
+        task.setExplicitCheck(context instanceof Activity);
         task.setContext(context);
         return task;
     }
