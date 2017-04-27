@@ -43,7 +43,7 @@ public class UpdatableAppsActivity extends AppListActivity {
             loadApps();
             setNeedsUpdate(false);
         }
-        if (doNotCheckForUpdates()) {
+        if (PreferenceActivity.getUpdateInterval(this) < 0) {
             Button checkUpdates = (Button) findViewById(R.id.check_updates);
             checkUpdates.setVisibility(View.VISIBLE);
             checkUpdates.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +125,7 @@ public class UpdatableAppsActivity extends AppListActivity {
                 addApps(updatable);
             }
             if (!other.isEmpty()) {
-                if (!doNotCheckForUpdates() || explicitCheck) {
+                if (!(PreferenceActivity.getUpdateInterval(this) < 0) || explicitCheck) {
                     data.add(getHeader(R.string.list_no_update));
                 }
                 Collections.sort(other);
@@ -136,11 +136,6 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     private boolean showUpdatesOnly() {
         return PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_UPDATES_ONLY);
-    }
-
-    private boolean doNotCheckForUpdates() {
-        String updateInterval = PreferenceActivity.getString(this, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL);
-        return Integer.parseInt(TextUtils.isEmpty(updateInterval) ? "0" : updateInterval) < 0;
     }
 
     private Map<String, Object> getHeader(int headerTextResId) {

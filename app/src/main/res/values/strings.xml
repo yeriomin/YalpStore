@@ -165,7 +165,7 @@
     <string name="pref_ui_theme_dark">Dark</string>
     <string name="pref_ui_theme_black">Black</string>
     <string name="pref_background_update_interval_manually">Only manually</string>
-    <string name="pref_background_update_interval_never">Only when you launch Yalp Store</string>
+    <string name="pref_background_update_interval_never">Only on Yalp Store launch</string>
     <string name="pref_background_update_interval_hourly">Hourly</string>
     <string name="pref_background_update_interval_daily">Daily</string>
     <string name="pref_background_update_interval_weekly">Weekly</string>

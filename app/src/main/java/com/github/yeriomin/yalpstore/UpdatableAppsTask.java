@@ -81,7 +81,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
             installedAppIds.add(packageName);
             appMap.put(packageName, installedApp);
         }
-        if (doNotCheckForUpdates() && !explicitCheck) {
+        if (PreferenceActivity.getUpdateInterval(context) < 0 && !explicitCheck) {
             otherInstalledApps.addAll(appMap.values());
             return null;
         }
@@ -124,10 +124,5 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
         if (noNetwork(e) && context instanceof Activity) {
             toast(context, context.getString(R.string.error_no_network));
         }
-    }
-
-    private boolean doNotCheckForUpdates() {
-        String updateInterval = PreferenceActivity.getString(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL);
-        return Integer.parseInt(TextUtils.isEmpty(updateInterval) ? "0" : updateInterval) < 0;
     }
 }

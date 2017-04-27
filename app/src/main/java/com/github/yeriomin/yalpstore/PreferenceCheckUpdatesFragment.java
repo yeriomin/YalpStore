@@ -62,12 +62,12 @@ public class PreferenceCheckUpdatesFragment extends PreferenceFragment {
             case week:
                 summaryId = R.string.pref_background_update_interval_weekly;
                 break;
+            case 0:
+                summaryId = R.string.pref_background_update_interval_never;
+                break;
+            default:
             case -1:
                 summaryId = R.string.pref_background_update_interval_manually;
-                break;
-            case 0:
-            default:
-                summaryId = R.string.pref_background_update_interval_never;
                 break;
         }
         return summaryId;

@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -48,6 +49,10 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         return PreferenceManager.getDefaultSharedPreferences(context).getString(key, "");
     }
 
+    static public int getUpdateInterval(Context context) {
+        return Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1"));
+    }
+
     static public boolean canInstallInBackground(Context context) {
         return getString(context, PREFERENCE_INSTALLATION_METHOD).equals(INSTALLATION_METHOD_ROOT)
             || getString(context, PREFERENCE_INSTALLATION_METHOD).equals(INSTALLATION_METHOD_PRIVILEGED)
@@ -65,6 +70,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         drawUpdatesCheck();
         drawDevices();
         drawInstallationMethod();
+        drawUpdatePagePreferences();
     }
 
     private void drawBlackList() {

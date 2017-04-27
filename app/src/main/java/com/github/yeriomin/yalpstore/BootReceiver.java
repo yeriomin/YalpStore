@@ -13,11 +13,6 @@ public class BootReceiver extends BroadcastReceiver {
         if (!Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             return;
         }
-        UpdateChecker.enable(context.getApplicationContext(), getUpdateInterval(context));
-    }
-
-    private int getUpdateInterval(Context context) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return Integer.parseInt(prefs.getString(PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "0"));
+        UpdateChecker.enable(context.getApplicationContext(), PreferenceActivity.getUpdateInterval(context));
     }
 }
