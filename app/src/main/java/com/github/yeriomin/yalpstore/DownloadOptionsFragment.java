@@ -33,15 +33,15 @@ public class DownloadOptionsFragment extends DetailsFragment {
                 more.showContextMenu();
             }
         });
-
     }
 
     public void inflate(Menu menu) {
         MenuInflater inflater = activity.getMenuInflater();
         inflater.inflate(R.menu.menu_download, menu);
-        if (app.isInstalled()) {
-            menu.findItem(R.id.action_get_local_apk).setVisible(true);
+        if (!app.isInstalled()) {
+            return;
         }
+        menu.findItem(R.id.action_get_local_apk).setVisible(true);
         if (isConvertible(app)) {
             menu.findItem(R.id.action_make_system).setVisible(!app.isSystem());
             menu.findItem(R.id.action_make_normal).setVisible(app.isSystem());
