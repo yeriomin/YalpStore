@@ -11,7 +11,7 @@ public class CheckSuTask extends AsyncTask<Void, Void, Void> {
 
     private PreferenceActivity activity;
 
-    private boolean available;
+    protected boolean available;
 
     public CheckSuTask(PreferenceActivity activity) {
         this.activity = activity;
