@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -17,8 +18,8 @@ public class DetailsButtonUninstallFragment extends DetailsButtonFragment {
     }
 
     @Override
-    protected Button getButton() {
-        return (Button) activity.findViewById(R.id.uninstall);
+    protected View getButton() {
+        return activity.findViewById(R.id.uninstall);
     }
 
     @Override

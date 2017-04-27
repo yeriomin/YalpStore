@@ -7,14 +7,14 @@ import com.github.yeriomin.yalpstore.model.App;
 
 public abstract class DetailsButtonFragment extends DetailsFragment {
 
-    protected Button button;
+    protected View button;
 
     public DetailsButtonFragment(DetailsActivity activity, App app) {
         super(activity, app);
         this.button = getButton();
     }
 
-    abstract protected Button getButton();
+    abstract protected View getButton();
 
     abstract protected boolean shouldBeVisible();
 

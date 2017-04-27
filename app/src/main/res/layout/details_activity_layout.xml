@@ -527,15 +527,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="end"
         android:orientation="horizontal" >
 
-        <Button
+        <ImageButton
             android:id="@+id/uninstall"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/details_uninstall"
+            android:scaleType="centerCrop"
             android:visibility="gone"
-            android:text="@string/details_uninstall" />
+            android:elevation="2dp"
+            android:src="@drawable/ic_delete" />
 
         <Button
             android:id="@+id/download"
@@ -563,11 +566,12 @@
 
         <ImageButton
             android:id="@+id/more"
-            android:src="@drawable/ic_more"
-            android:contentDescription="@string/content_description_download_options"
             android:layout_width="48dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0" />
+            android:layout_height="48dp"
+            android:contentDescription="@string/content_description_download_options"
+            android:scaleType="centerCrop"
+            android:elevation="2dp"
+            android:src="@drawable/ic_more"/>
 
     </LinearLayout>
 
