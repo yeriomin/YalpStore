@@ -184,7 +184,7 @@ Lembre-se de que o download de versões arbitrárias de aplicativos não é comp
 <string name="pref_category_spoofing">"
 Spoofing"</string>
 <string name="pref_category_ui">"Mostrar"</string>
-<string name="details_installing">"Instalando ..."</string>
+<string name="details_installing">"Instalando…"</string>
 <string name="details_installed">"Instalado com êxito"</string>
 <string name="details_install_failure">"Não foi possível instalar"</string>
 <string name="notification_download_complete_new_permissions">"Download completo. Novas permissões solicitadas."</string>
@@ -217,4 +217,32 @@ Spoofing"</string>
 <string name="pref_show_system_apps_summary_on">"Os aplicativos do sistema são exibidos agora"</string>
 <string name="details_system_app_info">"Info do sistema
 "</string>
+<string name="activity_title_search_publisher">"Aplicativos de %1$s"</string>
+<string name="details_run">"Executar"</string>
+<string name="dialog_title_remounting_system">"Trabalhando com / partição de sistema"</string>
+<string name="dialog_message_remounting_system">"Trabalhando com / partição do sistema. Isso pode levar algum tempo"</string>
+<string name="dialog_title_checking_busybox">"Verificar se a busybox está disponível"</string>
+<string name="dialog_message_checking_busybox">"Certas ferramentas do sistema são necessárias para trabalhar com aplicativos do sistema. Verificar se eles estão disponíveis."</string>
+<string name="dialog_title_busybox_not_available">"Busybox não disponível"</string>
+<string name="dialog_message_busybox_not_available">"Um dispositivo root com busybox instalado é necessário para trabalhar com aplicativos do sistema. Procure um instalador de busybox agora?"</string>
+<string name="dialog_title_reboot_required">"Reinicialização necessária"</string>
+<string name="dialog_message_reboot_required">"As alterações serão aplicadas após a reinicialização. Reiniciar agora?"</string>
+<string name="dialog_title_system_app_warning">"Atenção!"</string>
+<string name="dialog_message_system_app_warning_to_system">"Você selecionou para converter o app em aplicativo do sistema. A maioria dos aplicativos não precisa ser aplicativos do sistema para funcionar.
+
+Tenha em mente que o processo de conversão NÃO é suportado pelo sistema operacional Android e, portanto, NÃO é seguro e não é garantido para o trabalho.
+
+Não faça isso por curiosidade. Pode quebrar seu dispositivo. Faça backup do dispositivo antes de tentar."</string>
+<string name="dialog_message_system_app_warning_to_normal">"Você selecionou para converter um aplicativo do sistema em um aplicativo normal. A maioria dos aplicativos de sistema precisa ser aplicativos de sistema para funcionar.
+
+Tenha em mente que o processo de conversão NÃO é suportado pelo sistema operacional Android e, portanto, NÃO é seguro e não é garantido para o trabalho.
+
+Não faça isso por curiosidade. Pode quebrar seu dispositivo. Faça backup do dispositivo antes de tentar."</string>
+<string name="list_check_updates">"Check updates"</string>
+<string name="pref_background_update_interval_manually">"Only manually"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.
+
+Keep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+
+Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
 </resources>
