@@ -152,7 +152,7 @@ Aucune donnée personnelle ou sensible n'est enregistrée, vous pouvez relire le
 <string name="details_no_ads">"Pas de publicité"</string>
 <string name="dialog_title_package_id">"Un paquet avec ce nom existe"</string>
 <string name="dialog_message_package_id">"Il y a un paquet avec ce nom exact. Voulez-vous l'afficher ?"</string>
-<string name="details_download_checking">"Vérification en cours..."</string>
+<string name="details_download_checking">"Vérification en cours…"</string>
 <string name="details_download_not_available">"Indisponible"</string>
 <string name="manual_download_incompatible">"Le Play Store considère cette appli incompatible avec votre appareil. Cela signifie que le code de la version n'a pas été renvoyé par le serveur Google Play."</string>
 <string name="manual_download_compatible">"Le champ code de version a été pré-rempli avec la dernière version de l'application compatible avec votre appareil. Si vous voulez une version précédente, choisissez un nombre inférieur : si le développeur n'a pas supprimé l'apk du Play Store, le téléchargement devrait commencer."</string>
@@ -178,7 +178,7 @@ Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, 
 <string name="pref_category_installation">"Installation"</string>
 <string name="pref_category_spoofing">"Usurpation"</string>
 <string name="pref_category_ui">"Interface utilisateur"</string>
-<string name="details_installing">"Installation..."</string>
+<string name="details_installing">"Installation…"</string>
 <string name="details_installed">"Installé avec succès"</string>
 <string name="details_install_failure">"N'a pas pu être installé"</string>
 <string name="notification_download_complete_new_permissions">"Téléchargement terminé. Nouvelles permissions requises."</string>
@@ -231,4 +231,11 @@ N'effectuez pas cette manipulation par curiosité. Cela pourrait endommager votr
 Gardez à l'esprit que cette conversion n'est PAS supportée par Android et par conséquent n'est PAS sûre et n'a AUCUNE garantie de fonctionner.
 
 N'effectuez pas cette manipulation par curiosité. Cela pourrait endommager votre téléphone. Sauvegardez votre téléphone avant d'essayer."</string>
+<string name="list_check_updates">"Check updates"</string>
+<string name="pref_background_update_interval_manually">"Only manually"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.
+
+Keep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+
+Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
 </resources>
