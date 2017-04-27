@@ -25,12 +25,12 @@
     <string name="dialog_message_package_id">Найдено приложение с таким идентификатором. Перейти сразу на страницу этого приложения?</string>
     <string name="dialog_title_application_crashed">В Yalp Store произошёл сбой</string>
     <string name="dialog_message_application_crashed">Вы можете помочь разработчику исправить это, отправив email с подробностями об ошибке. Нажмите OK чтобы открыть ваше email-приложение с письмом для разработчика, готовым к отправке.\n\nПожалуйста, опишите что вы собирались сделать когда произошла ошибка.\n\nНикакой чувствительной и личной информации отправлено не будет, проверьте текст письма, если сомеваетесь.</string>
-    <string name="dialog_two_factor_cancel">Позднее</string>
+    <string name="dialog_two_factor_cancel">Потом</string>
     <string name="dialog_two_factor_create_password">Создать пароль</string>
     <string name="dialog_title_two_factor">Двухэтапная аутентификация</string>
     <string name="dialog_message_two_factor">Похоже, в вашем аккаунте включена двухэтапная аутентификация.\n\nПожалуйста, создайте пароль приложения для Yalp Store и используйте его для входа.\n\nНажмите \"Создать пароль\" для перехода на страницу создания паролей приложений.</string>
     <string name="dialog_title_logout">Разлогиниться?</string>
-    <string name="dialog_message_logout">Вы уверены что хотите разлогиниться?</string>
+    <string name="dialog_message_logout">Вы уверены что хотите выйти?</string>
     <string name="dialog_title_reviews">Получаем отзывы</string>
     <string name="dialog_message_reviews">Подождите. Получаем отзывы.</string>
     <string name="dialog_title_purchasing_app">Скачиваем</string>
@@ -148,7 +148,7 @@
     <string name="notification_updates_available_message">"Для %1$d приложений есть обновления."</string>
     <string name="pref_hide_nonfree_apps_summary_off">Сейчас платные приложения отображаются</string>
     <string name="pref_hide_nonfree_apps_summary_on">Сейчас платные приложения не отображаются</string>
-    <string name="pref_hide_nonfree_apps">Прятать платные</string>
+    <string name="pref_hide_nonfree_apps">Скрывать платные</string>
     <string name="pref_auto_install_summary_off">Приложения устанавливаются когда вы нажимаете уведомление</string>
     <string name="pref_auto_install_summary_on">Приложения устанавливаются сразу после завершения скачивания</string>
     <string name="pref_auto_install">Устанавливать сразу</string>
