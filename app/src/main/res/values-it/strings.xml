@@ -179,7 +179,7 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="pref_category_installation">"Installazione"</string>
 <string name="pref_category_spoofing">"Mascheramento"</string>
 <string name="pref_category_ui">"Mostra"</string>
-<string name="details_installing">"Installazione..."</string>
+<string name="details_installing">"Installazione…"</string>
 <string name="details_installed">"Installato con successo"</string>
 <string name="details_install_failure">"Impossibile installare"</string>
 <string name="notification_download_complete_new_permissions">"Download completo. Richieste nuove autorizzazioni."</string>
@@ -215,4 +215,32 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="pref_show_system_apps_summary_off">"App di sistema nascoste"</string>
 <string name="pref_show_system_apps_summary_on">"App di sistema visualizzate"</string>
 <string name="details_system_app_info">"Info di sistema"</string>
+<string name="activity_title_search_publisher">"Apps by %1$s"</string>
+<string name="details_run">"Avvia"</string>
+<string name="dialog_title_remounting_system">"Working with /system partition"</string>
+<string name="dialog_message_remounting_system">"Working with /system partition. This might take some time."</string>
+<string name="dialog_title_checking_busybox">"Checking if busybox is available"</string>
+<string name="dialog_message_checking_busybox">"Certain system tools are required to work with system apps. Checking if they are available."</string>
+<string name="dialog_title_busybox_not_available">"Busybox not available"</string>
+<string name="dialog_message_busybox_not_available">"A rooted device with busybox installed is required to work with system apps. Search for a busybox installer now?"</string>
+<string name="dialog_title_reboot_required">"Reboot required"</string>
+<string name="dialog_message_reboot_required">"Changes will be applied after reboot. Reboot now?"</string>
+<string name="dialog_title_system_app_warning">"Warning!"</string>
+<string name="dialog_message_system_app_warning_to_system">"You have selected to convert the app into system app. Most apps do not need to be system apps to work.
+
+Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+
+Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
+<string name="dialog_message_system_app_warning_to_normal">"You have selected to convert a system app into a normal app. Most system apps need to be system apps to work.
+
+Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+
+Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
+<string name="list_check_updates">"Check updates"</string>
+<string name="pref_background_update_interval_manually">"Only manually"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.
+
+Keep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+
+Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
 </resources>
