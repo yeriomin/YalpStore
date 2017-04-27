@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Email do desenvolvedor:"</string>
+<string name="about_developer_email_label">"Email do programador:"</string>
 <string name="about_logged_in">"Sessão iniciada como:"</string>
 <string name="about_copied_to_clipboard">"Copiado para a área de transferência"</string>
 <string name="list_line_2_updatable">"Atualizado em %1$s"</string>
@@ -27,7 +27,7 @@ Por favor, cria uma app password dedicada à Yalp Store e usa-a para fazer login
 
 Carrega em \"criar password\" para seres redirecionado à página para a criares."</string>
 <string name="dialog_title_logout">"Terminar sessão ?"</string>
-<string name="dialog_message_logout">"Tens certeza que pertendes terminar sessão?"</string>
+<string name="dialog_message_logout">"Tem a certeza que pertende terminar sessão?"</string>
 <string name="dialog_title_reviews">"A carregar comentários"</string>
 <string name="dialog_message_reviews">"Por favor aguarde. A carregar comentários."</string>
 <string name="dialog_title_purchasing_app">"A transferir aplicação"</string>
@@ -36,7 +36,7 @@ Carrega em \"criar password\" para seres redirecionado à página para a criares
 <string name="dialog_message_loading_app_list_search">"Por favor aguarde enquanto procuramos aplicações."</string>
 <string name="dialog_account_type_provided_by_user">"Com a minha conta Google"</string>
 <string name="dialog_account_type_predefined">"Com uma conta fornecida pela Yalp Store"</string>
-<string name="dialog_account_type_title">"Como queres efetuar login ?"</string>
+<string name="dialog_account_type_title">"Como quer efetuar login ?"</string>
 <string name="dialog_title_logging_in">"A iniciar sessão.."</string>
 <string name="dialog_message_logging_in_provided_by_user">"A efetuar log in com as credenciais fornecidas"</string>
 <string name="dialog_message_logging_in_predefined">"A efetuar log in com as credendiais fornecidas pela Yalp Store"</string>
@@ -120,7 +120,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="download_manager_ERROR_BLOCKED">"O download falhou devido à NetworkPolicyManager controlar a aplicação solicitante. Verifique suas configurações.
 "</string>
 <string name="search_filter">"Todas as aplicações"</string>
-<string name="details_category">"Category: %1$s"</string>
+<string name="details_category">"Categoria: %1$s"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Agora os ficheiros das aplicações não são apagadas após instalação"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Agora os ficheiros das aplicações serão apagadas após instalação"</string>
 <string name="pref_delete_apk_after_install">"Apagar ficheiros das aplicações após instalação"</string>
