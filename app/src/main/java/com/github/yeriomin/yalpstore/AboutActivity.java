@@ -29,7 +29,10 @@ public class AboutActivity extends YalpStoreActivity {
         findViewById(R.id.developer_email).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new YalpStoreUncaughtExceptionHandler(AboutActivity.this).send(null);
+                CrashLetterActivity.send(
+                    AboutActivity.this,
+                    new CrashLetterBuilder(AboutActivity.this).build(null)
+                );
             }
         });
         if (hasPermission()) {
