@@ -17,6 +17,7 @@ public class UninstallSystemAppTask extends SystemRemountTask {
     protected List<String> getCommands() {
         List<String> commands = new ArrayList<>();
         String from = app.getPackageInfo().applicationInfo.sourceDir;
+        commands.add("am force-stop " + app.getPackageName());
         commands.add(getBusyboxCommand("rm -rf " + from));
         return commands;
     }

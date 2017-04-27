@@ -18,7 +18,6 @@ public abstract class SystemRemountTask extends AsyncTask<Void, Void, List<Strin
 
     static private final String MOUNT_RW = "mount -o rw,remount,rw /system";
     static private final String MOUNT_RO = "mount -o ro,remount,ro /system";
-    static private final String FORCE_STOP = "am force-stop ";
 
     protected Context context;
     protected App app;
@@ -51,7 +50,6 @@ public abstract class SystemRemountTask extends AsyncTask<Void, Void, List<Strin
     protected List<String> doInBackground(Void[] params) {
         List<String> commands = new ArrayList<>();
         commands.add(MOUNT_RW);
-        commands.add(FORCE_STOP + app.getPackageName());
         commands.addAll(getCommands());
         commands.add(MOUNT_RO);
         return Shell.SU.run(commands);
