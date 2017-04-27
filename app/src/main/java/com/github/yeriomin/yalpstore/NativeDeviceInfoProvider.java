@@ -185,13 +185,12 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     private AndroidBuildProto getBuildProto() {
-        boolean froyo = Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO;
         return AndroidBuildProto.newBuilder()
             .setId(Build.FINGERPRINT)
-            .setProduct(froyo ? Build.HARDWARE : Build.PRODUCT)
+            .setProduct(Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
             .setCarrier(Build.BRAND)
-            .setRadio(froyo ? Build.RADIO : Build.MODEL)
-            .setBootloader(froyo ? Build.BOOTLOADER : Build.MODEL)
+            .setRadio(Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.RADIO : Build.MODEL)
+            .setBootloader(Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.BOOTLOADER : Build.MODEL)
             .setDevice(Build.DEVICE)
             .setSdkVersion(Build.VERSION.SDK_INT)
             .setModel(Build.MODEL)

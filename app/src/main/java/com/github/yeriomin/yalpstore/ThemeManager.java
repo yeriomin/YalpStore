@@ -28,10 +28,9 @@ public class ThemeManager {
     }
 
     static private int getThemeLight() {
-        int sdk = Build.VERSION.SDK_INT;
-        if (sdk >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return android.R.style.Theme_Material_Light;
-        } else if (sdk >= Build.VERSION_CODES.HONEYCOMB) {
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             return android.R.style.Theme_Holo_Light;
         } else {
             return android.R.style.Theme_Light;
@@ -39,10 +38,9 @@ public class ThemeManager {
     }
 
     static private int getThemeDark() {
-        int sdk = Build.VERSION.SDK_INT;
-        if (sdk >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return android.R.style.Theme_Material;
-        } else if (sdk >= Build.VERSION_CODES.HONEYCOMB) {
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             return android.R.style.Theme_Holo;
         } else {
             return android.R.style.Theme;

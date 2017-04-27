@@ -77,7 +77,7 @@ public class CheckShellTask extends AsyncTask<Void, Void, Boolean> {
         for (String line: output) {
             Log.d(getClass().getName(), line);
             for (String command: COMMANDS) {
-                if (line.toLowerCase().contains(command + COMMAND_RETURNED)) {
+                if (line.contains(command + COMMAND_RETURNED)) {
                     int returnCode = Integer.parseInt(line.substring((command + COMMAND_RETURNED).length()).trim());
                     flags.put(command, returnCode != RETURN_CODE_NOT_FOUND);
                 }
