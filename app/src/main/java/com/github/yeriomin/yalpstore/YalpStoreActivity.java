@@ -9,6 +9,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -20,6 +21,7 @@ public abstract class YalpStoreActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.v(getClass().getName(), "Starting activity");
         logout = false;
         if (isTv()) {
             requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
@@ -32,6 +34,7 @@ public abstract class YalpStoreActivity extends Activity {
 
     @Override
     protected void onResume() {
+        Log.v(getClass().getName(), "Resuming activity");
         super.onResume();
         if (logout) {
             finish();

@@ -23,6 +23,7 @@ public class SearchResultActivity extends EndlessScrollActivity {
         super.onNewIntent(intent);
 
         String newQuery = getQuery(intent);
+        Log.i(getClass().getName(), "Searching: " + newQuery);
         if (null != newQuery && !newQuery.equals(this.query)) {
             this.categoryId = CategoryManager.TOP;
             this.query = newQuery;

@@ -8,20 +8,38 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.ClipboardManager;
+import android.text.TextUtils;
+
+import java.util.ArrayList;
 
 public class CrashLetterActivity extends Activity {
 
-    static public void send(Context activity, String letter) {
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-        emailIntent.setData(Uri.fromParts("mailto", activity.getString(R.string.about_developer_email), null));
-        emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, activity.getPackageName() + " Crash Report");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, letter);
-        if (emailIntent.resolveActivity(activity.getPackageManager()) != null) {
-            activity.startActivity(emailIntent);
+    static public void send(Context context, String stackTrace) {
+        Intent emailIntent = getEmailIntent(context, stackTrace);
+        if (emailIntent.resolveActivity(context.getPackageManager()) != null) {
+            context.startActivity(emailIntent);
         } else {
-            ((ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE)).setText(letter);
+            ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE)).setText(stackTrace);
         }
+    }
+
+    static private Intent getEmailIntent(Context context, String stackTrace) {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        String developerEmail = context.getString(R.string.about_developer_email);
+        emailIntent.setData(Uri.fromParts("mailto", developerEmail, null));
+        emailIntent.setType("plain/text");
+        emailIntent.setType("message/rfc822");
+        emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {developerEmail});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, BuildConfig.APPLICATION_ID + " " + BuildConfig.VERSION_NAME + " Crash Report");
+        ArrayList<Uri> uris = new ArrayList<>();
+        uris.add(new CrashLetterDeviceInfoBuilder(context).getUri());
+        uris.add(new CrashLetterLogBuilder(context).getUri());
+        if (!TextUtils.isEmpty(stackTrace)) {
+            uris.add(new CrashLetterStackTraceBuilder(context).setStackTrace(stackTrace).getUri());
+        }
+        emailIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+        return emailIntent;
     }
 
     @Override
