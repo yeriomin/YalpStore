@@ -14,8 +14,6 @@ import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

@@ -1,8 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.preference.ListPreference;
@@ -75,24 +73,10 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
     }
 
     private void showPrivilegedInstallationDialog() {
-        final CheckShellTask checkTask = new CheckShellTask(activity);
-        checkTask.setPrimaryTask(new ConvertToSystemTask(activity, getSelf()));
-        new AlertDialog.Builder(activity)
+        new SystemRemountDialogBuilder(activity)
+            .setPrimaryTask(new ConvertToSystemTask(activity, getSelf()))
             .setMessage(R.string.dialog_message_system_app_self)
             .setTitle(R.string.dialog_title_system_app_self)
-            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    checkTask.execute();
-                    dialog.dismiss();
-                }
-            })
-            .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            })
             .show()
         ;
     }

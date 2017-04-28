@@ -1,13 +1,9 @@
 package com.github.yeriomin.yalpstore;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -51,24 +47,10 @@ public class DetailsButtonUninstallFragment extends DetailsButtonFragment {
     }
 
     private void askAndUninstall() {
-        final CheckShellTask checkTask = new CheckShellTask(activity);
-        checkTask.setPrimaryTask(new UninstallSystemAppTask(activity, app));
-        new AlertDialog.Builder(activity)
-            .setMessage(R.string.dialog_message_system_app_warning_uninstall)
-            .setTitle(R.string.dialog_title_system_app_warning)
-            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    checkTask.execute();
-                    dialog.dismiss();
-                }
-            })
-            .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            })
+        new SystemRemountDialogBuilder(activity)
+            .setPrimaryTask(new UninstallSystemAppTask(activity, app))
+            .setMessage(R.string.dialog_message_system_app_self)
+            .setTitle(R.string.dialog_title_system_app_self)
             .show()
         ;
     }

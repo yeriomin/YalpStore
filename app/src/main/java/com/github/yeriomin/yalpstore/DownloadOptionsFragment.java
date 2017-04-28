@@ -1,10 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.preference.CheckBoxPreference;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -88,27 +85,13 @@ public class DownloadOptionsFragment extends DetailsFragment {
     }
 
     private void askAndExecute(SystemRemountTask task) {
-        final CheckShellTask checkTask = new CheckShellTask(activity);
-        checkTask.setPrimaryTask(task);
-        new AlertDialog.Builder(activity)
+        new SystemRemountDialogBuilder(activity)
+            .setPrimaryTask(task)
             .setMessage(task instanceof ConvertToSystemTask
                 ? R.string.dialog_message_system_app_warning_to_system
                 : R.string.dialog_message_system_app_warning_to_normal
             )
             .setTitle(R.string.dialog_title_system_app_warning)
-            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    checkTask.execute();
-                    dialog.dismiss();
-                }
-            })
-            .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            })
             .show()
         ;
     }
