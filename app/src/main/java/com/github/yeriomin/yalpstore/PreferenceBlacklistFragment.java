@@ -41,24 +41,7 @@ public class PreferenceBlacklistFragment extends PreferenceFragment {
             }
         });
 
-        Preference.OnPreferenceChangeListener listener = new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                String value = (String) newValue;
-                boolean isBlackList = null != value && value.equals(PreferenceActivity.LIST_BLACK);
-                appList.setTitle(activity.getString(
-                    isBlackList
-                        ? R.string.pref_update_list_black
-                        : R.string.pref_update_list_white
-                ));
-                preference.setSummary(activity.getString(
-                    isBlackList
-                        ? R.string.pref_update_list_white_or_black_black
-                        : R.string.pref_update_list_white_or_black_white
-                ));
-                return true;
-            }
-        };
+        Preference.OnPreferenceChangeListener listener = new BlackListOnPreferenceChangeListener();
         blackOrWhite.setOnPreferenceChangeListener(listener);
         listener.onPreferenceChange(blackOrWhite, blackOrWhite.getValue());
     }
@@ -75,5 +58,25 @@ public class PreferenceBlacklistFragment extends PreferenceFragment {
             appNames.put(info.packageName, pm.getApplicationLabel(info.applicationInfo).toString());
         }
         return Util.sort(appNames);
+    }
+
+    private class BlackListOnPreferenceChangeListener implements Preference.OnPreferenceChangeListener {
+
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            String value = (String) newValue;
+            boolean isBlackList = null != value && value.equals(PreferenceActivity.LIST_BLACK);
+            appList.setTitle(activity.getString(
+                isBlackList
+                    ? R.string.pref_update_list_black
+                    : R.string.pref_update_list_white
+            ));
+            preference.setSummary(activity.getString(
+                isBlackList
+                    ? R.string.pref_update_list_white_or_black_black
+                    : R.string.pref_update_list_white_or_black_white
+            ));
+            return true;
+        }
     }
 }

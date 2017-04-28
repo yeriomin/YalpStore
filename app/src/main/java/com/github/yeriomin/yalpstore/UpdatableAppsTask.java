@@ -46,7 +46,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
         this.explicitCheck = explicitCheck;
     }
 
-    private List<App> getFilteredInstalledApps(Context context) {
+    private Map<String, App> getFilteredInstalledApps(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         boolean isBlacklist = prefs.getString(
             PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
@@ -54,7 +54,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
         ).equals(PreferenceActivity.LIST_BLACK);
         BlackWhiteListManager manager = new BlackWhiteListManager(context);
 
-        List<App> apps = new ArrayList<>();
+        Map<String, App> apps = new HashMap<>();
         for (App app: getInstalledApps(context)) {
             boolean inList = manager.contains(app.getPackageName());
             if ((isBlacklist && inList) || (!isBlacklist && !inList)) {
@@ -66,7 +66,7 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
                 );
                 continue;
             }
-            apps.add(app);
+            apps.put(app.getPackageName(), app);
         }
         return apps;
     }
@@ -74,48 +74,47 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
     @Override
     protected Throwable doInBackground(String... params) {
         // Building local apps list
-        List<String> installedAppIds = new ArrayList<>();
-        Map<String, App> appMap = new HashMap<>();
-        for (App installedApp: getFilteredInstalledApps(context)) {
-            String packageName = installedApp.getPackageInfo().packageName;
-            installedAppIds.add(packageName);
-            appMap.put(packageName, installedApp);
-        }
+        Map<String, App> installedApps = getFilteredInstalledApps(context);
         if (PreferenceActivity.getUpdateInterval(context) < 0 && !explicitCheck) {
-            otherInstalledApps.addAll(appMap.values());
+            otherInstalledApps.addAll(installedApps.values());
             return null;
         }
         // Requesting info from Google Play Market for installed apps
         PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.context);
         List<App> appsFromPlayMarket = new ArrayList<>();
         try {
-            appsFromPlayMarket.addAll(wrapper.getDetails(installedAppIds));
+            appsFromPlayMarket.addAll(wrapper.getDetails(new ArrayList<>(installedApps.keySet())));
         } catch (Throwable e) {
-            otherInstalledApps.addAll(appMap.values());
+            otherInstalledApps.addAll(installedApps.values());
             return e;
         }
         // Comparing versions and building updatable apps list
-        for (App appFromMarket : appsFromPlayMarket) {
+        for (App appFromMarket: appsFromPlayMarket) {
             String packageName = appFromMarket.getPackageName();
             if (TextUtils.isEmpty(packageName)) {
                 continue;
             }
-            App installedApp = appMap.get(packageName);
-            appFromMarket.setPackageInfo(installedApp.getPackageInfo());
-            appFromMarket.setVersionName(installedApp.getVersionName());
-            appFromMarket.setDisplayName(installedApp.getDisplayName());
-            appFromMarket.setIcon(installedApp.getIcon());
-            appFromMarket.setSystem(installedApp.isSystem());
-            appFromMarket.setInstalled(true);
+            App installedApp = installedApps.get(packageName);
+            appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
             if (installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
-                appMap.remove(packageName);
+                installedApps.remove(packageName);
                 updatableApps.add(appFromMarket);
             } else {
-                appMap.put(packageName, appFromMarket);
+                installedApps.put(packageName, appFromMarket);
             }
         }
-        otherInstalledApps.addAll(appMap.values());
+        otherInstalledApps.addAll(installedApps.values());
         return null;
+    }
+
+    private App addInstalledAppInfo(App appFromMarket, App installedApp) {
+        appFromMarket.setPackageInfo(installedApp.getPackageInfo());
+        appFromMarket.setVersionName(installedApp.getVersionName());
+        appFromMarket.setDisplayName(installedApp.getDisplayName());
+        appFromMarket.setIcon(installedApp.getIcon());
+        appFromMarket.setSystem(installedApp.isSystem());
+        appFromMarket.setInstalled(true);
+        return appFromMarket;
     }
 
     @Override
