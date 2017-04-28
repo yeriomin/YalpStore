@@ -37,8 +37,8 @@ public class PreferenceCheckUpdatesFragment extends PreferenceFragment {
                 int interval = parseInt((String) newValue);
                 UpdateChecker.enable(activity, interval);
                 preference.setSummary(activity.getString(getUpdateSummaryStringId((String) newValue)));
-                alsoDownload.setEnabled(interval != 0);
-                alsoInstall.setEnabled(interval != 0);
+                alsoDownload.setEnabled(interval > 0);
+                alsoInstall.setEnabled(interval > 0);
                 return true;
             }
         });
