@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -23,6 +24,7 @@ public abstract class YalpStoreActivity extends Activity {
         if (isTv()) {
             requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
         }
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         ThemeManager.setTheme(this);
         Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(this));
         super.onCreate(savedInstanceState);

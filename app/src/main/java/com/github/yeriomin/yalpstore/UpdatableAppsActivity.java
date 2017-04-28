@@ -100,7 +100,7 @@ public class UpdatableAppsActivity extends AppListActivity {
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
                 clearApps();
-                if (null != e && PreferenceActivity.getBoolean(UpdatableAppsActivity.this, PreferenceActivity.PREFERENCE_UPDATES_ONLY)) {
+                if (null != e && showUpdatesOnly()) {
                     return;
                 }
                 addApps(updatableApps, otherInstalledApps, explicitCheck);
