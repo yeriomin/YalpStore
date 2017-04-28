@@ -19,44 +19,45 @@
 # communicate with it using the recovery api.
 # arg 3 is the zip file
 
-echo -n -e 'ui_print Installing Yalp Store...\n' > /proc/self/fd/$2
+PACKAGE_NAME=YalpStore
 
-YALP_NAME=YalpStore
-YALP=${YALP_NAME}.apk
-ADDOND=81-yalp.sh
+echo -n -e 'ui_print Installing ${PACKAGE_NAME} as a privileged app...\n' > /proc/self/fd/$2
+
+APK_FILENAME=${PACKAGE_NAME}.apk
+ADDOND=81-${PACKAGE_NAME}.sh
 
 cd /tmp
-mkdir yalp
-cd yalp
+mkdir ${PACKAGE_NAME}
+cd ${PACKAGE_NAME}
 unzip -o "$3"
 if [ "$?" -ne "0" ]
 then
-  cp /cache/${YALP} .
+  cp /cache/${APK_FILENAME} .
   cp /cache/${ADDOND} .
 fi
 
 mount /system
-rm -f /system/app/YalpStore*
-rm -f /system/app/YalpStore*/*
-rm -f /system/priv-app/YalpStore*
-rm -f /system/priv-app/YalpStore*/*
+rm -f /system/app/${PACKAGE_NAME}*
+rm -f /system/app/${PACKAGE_NAME}*/*
+rm -f /system/priv-app/${PACKAGE_NAME}*
+rm -f /system/priv-app/${PACKAGE_NAME}*/*
 
 BUILD_VERSION_SDK="$(grep -F ro.build.version.sdk /system/build.prop)"
 BUILD_VERSION_SDK_INT="${BUILD_VERSION_SDK#*=}"
 if [ "${BUILD_VERSION_SDK_INT}" -ge 21 ]
 then
-  YALP_DIR="/system/priv-app/${YALP_NAME}"
-  mkdir ${YALP_DIR}
-  chmod 755 ${YALP_DIR}
+  PACKAGE_DIR="/system/priv-app/${PACKAGE_NAME}"
+  mkdir ${PACKAGE_DIR}
+  chmod 755 ${PACKAGE_DIR}
 elif [ "${BUILD_VERSION_SDK_INT}" -ge 19 ]
 then
-  YALP_DIR="/system/priv-app"
+  PACKAGE_DIR="/system/priv-app"
 else
-  YALP_DIR="/system/app"
+  PACKAGE_DIR="/system/app"
 fi
 
-cp ${YALP} ${YALP_DIR}
-chmod 644 ${YALP_DIR}/${YALP}
+cp ${APK_FILENAME} ${PACKAGE_DIR}
+chmod 644 ${PACKAGE_DIR}/${APK_FILENAME}
 
 cp ${ADDOND} /system/addon.d/
 

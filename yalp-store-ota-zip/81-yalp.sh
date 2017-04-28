@@ -1,19 +1,18 @@
 #!/sbin/sh
-# 
-# /system/addon.d/81-yalp.sh
-# During a system upgrade, this script backs up Yalp Store apk,
-# /system is formatted and reinstalled, then the file is restored.
-#
 
 . /tmp/backuptool.functions
+
+PACKAGE_NAME=YalpStore
+
 list_files() {
 cat <<EOF
-app/YalpStore.apk
-app/YalpStore/YalpStore.apk
-priv-app/YalpStore
-priv-app/YalpStore/YalpStore.apk
+app/${PACKAGE_NAME}.apk
+app/${PACKAGE_NAME}/${PACKAGE_NAME}.apk
+priv-app/${PACKAGE_NAME}
+priv-app/${PACKAGE_NAME}/${PACKAGE_NAME}.apk
 EOF
 }
+
 case "$1" in
   backup)
     list_files | while read FILE DUMMY; do
