@@ -106,7 +106,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
         builder.setTaskClone(this.taskClone);
         if (e instanceof CredentialsEmptyException) {
             Log.i(getClass().getName(), "Credentials empty");
-            if (new FirstLaunchChecker(context).isFirstLaunch()) {
+            if (new FirstLaunchChecker(context).isFirstLogin()) {
                 Log.i(getClass().getName(), "First launch, so using built-in account");
                 builder.logInWithPredefinedAccount();
                 return;

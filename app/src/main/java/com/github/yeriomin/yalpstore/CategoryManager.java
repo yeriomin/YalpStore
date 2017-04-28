@@ -38,7 +38,9 @@ public class CategoryManager {
 
     public void downloadCategoryNames() {
         if (needToDownload()) {
-            getTask().execute();
+            CategoryTask task = getTask();
+            task.setTaskClone(getTask());
+            task.execute();
         }
     }
 

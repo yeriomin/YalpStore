@@ -6,7 +6,7 @@ import android.preference.PreferenceManager;
 
 public class FirstLaunchChecker {
 
-    static private final String FIRST_LAUNCH = "FIRST_LAUNCH";
+    static private final String FIRST_LOGIN = "FIRST_LOGIN";
 
     private SharedPreferences prefs;
 
@@ -14,13 +14,13 @@ public class FirstLaunchChecker {
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public boolean isFirstLaunch() {
-        return prefs.getBoolean(FIRST_LAUNCH, true);
+    public boolean isFirstLogin() {
+        return prefs.getBoolean(FIRST_LOGIN, true);
     }
 
-    public void setLaunched() {
+    public void setLoggedIn() {
         prefs.edit()
-            .putBoolean(FIRST_LAUNCH, false)
+            .putBoolean(FIRST_LOGIN, false)
             .commit()
         ;
     }

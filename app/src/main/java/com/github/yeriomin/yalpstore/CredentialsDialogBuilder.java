@@ -59,6 +59,7 @@ abstract public class CredentialsDialogBuilder {
                 }
                 builder.show();
             } else {
+                new FirstLaunchChecker(context).setLoggedIn();
                 if (null != this.taskClone) {
                     this.taskClone.execute();
                 } else {

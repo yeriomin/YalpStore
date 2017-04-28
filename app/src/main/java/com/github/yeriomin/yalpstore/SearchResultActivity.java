@@ -53,6 +53,13 @@ public class SearchResultActivity extends EndlessScrollActivity {
     }
 
     public void loadApps() {
+        SearchTask task = getTask();
+        task.setTaskClone(getTask());
+        task.execute(query, categoryId);
+        ((SimpleAdapter) getListView().getAdapter()).notifyDataSetChanged();
+    }
+
+    private SearchTask getTask() {
         SearchTask task = new SearchTask() {
 
             @Override
@@ -66,8 +73,7 @@ public class SearchResultActivity extends EndlessScrollActivity {
             }
         };
         task.setCategoryManager(new CategoryManager(this));
-        prepareTask(task).execute(query, categoryId);
-        ((SimpleAdapter) getListView().getAdapter()).notifyDataSetChanged();
+        return (SearchTask) prepareTask(task);
     }
 
     private String getSearchTitle() {
