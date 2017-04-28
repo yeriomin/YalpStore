@@ -47,11 +47,8 @@ public class DetailsButtonUninstallFragment extends DetailsButtonFragment {
     }
 
     private void askAndUninstall() {
-        new SystemRemountDialogBuilder(activity)
-            .setPrimaryTask(new UninstallSystemAppTask(activity, app))
-            .setMessage(R.string.dialog_message_system_app_self)
-            .setTitle(R.string.dialog_title_system_app_self)
-            .show()
-        ;
+        CheckShellTask checkShellTask = new CheckShellTask(activity);
+        checkShellTask.setPrimaryTask(new UninstallSystemAppTask(activity, app));
+        checkShellTask.execute();
     }
 }

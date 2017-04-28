@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +56,14 @@ public class CheckShellTask extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... params) {
-        Map<String, Boolean> flags = processOutput(Shell.SU.run(getCommands()));
+        if (!Shell.SU.available()) {
+            return false;
+        }
+        List<String> output = Shell.SU.run(getCommands());
+        if (null == output) {
+            return false;
+        }
+        Map<String, Boolean> flags = processOutput(output);
         availableCoreutils = flags.get(COMMAND_MV) && flags.get(COMMAND_RM) && flags.get(COMMAND_MKDIR) && flags.get(COMMAND_CHMOD);
         availableBusybox = flags.get(COMMAND_BUSYBOX);
         Log.i(getClass().getName(), "Coreutils available " + availableCoreutils);
@@ -99,12 +107,21 @@ public class CheckShellTask extends AsyncTask<Void, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean result) {
         progressDialog.dismiss();
-        if (!availableBusybox && !availableCoreutils) {
+        if (!result) {
+            Toast.makeText(context, R.string.pref_no_root, Toast.LENGTH_LONG).show();
+        } else if (!availableBusybox && !availableCoreutils) {
             showBusyboxDialog();
         } else {
             primaryTask.setBusybox(availableBusybox);
-            primaryTask.execute();
+            askAndExecute(primaryTask);
         }
+    }
+
+    private void askAndExecute(SystemRemountTask task) {
+        new SystemRemountDialogBuilder(context)
+            .setPrimaryTask(task)
+            .show()
+        ;
     }
 
     private void showBusyboxDialog() {

@@ -73,12 +73,9 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
     }
 
     private void showPrivilegedInstallationDialog() {
-        new SystemRemountDialogBuilder(activity)
-            .setPrimaryTask(new ConvertToSystemTask(activity, getSelf()))
-            .setMessage(R.string.dialog_message_system_app_self)
-            .setTitle(R.string.dialog_title_system_app_self)
-            .show()
-        ;
+        CheckShellTask checkShellTask = new CheckShellTask(activity);
+        checkShellTask.setPrimaryTask(new ConvertToSystemTask(activity, getSelf()));
+        checkShellTask.execute();
     }
 
     private App getSelf() {

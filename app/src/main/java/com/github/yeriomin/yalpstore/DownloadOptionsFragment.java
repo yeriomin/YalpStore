@@ -54,10 +54,10 @@ public class DownloadOptionsFragment extends DetailsFragment {
                 copyLocalApk();
                 return true;
             case R.id.action_make_system:
-                askAndExecute(new ConvertToSystemTask(activity, app));
+                checkAndExecute(new ConvertToSystemTask(activity, app));
                 return true;
             case R.id.action_make_normal:
-                askAndExecute(new ConvertToNormalTask(activity, app));
+                checkAndExecute(new ConvertToNormalTask(activity, app));
                 return true;
             default:
                 return activity.onContextItemSelected(item);
@@ -84,20 +84,15 @@ public class DownloadOptionsFragment extends DetailsFragment {
         task.execute();
     }
 
-    private void askAndExecute(SystemRemountTask task) {
-        new SystemRemountDialogBuilder(activity)
-            .setPrimaryTask(task)
-            .setMessage(task instanceof ConvertToSystemTask
-                ? R.string.dialog_message_system_app_warning_to_system
-                : R.string.dialog_message_system_app_warning_to_normal
-            )
-            .setTitle(R.string.dialog_title_system_app_warning)
-            .show()
-        ;
+    private void checkAndExecute(SystemRemountTask primaryTask) {
+        CheckShellTask checkShellTask = new CheckShellTask(activity);
+        checkShellTask.setPrimaryTask(primaryTask);
+        checkShellTask.execute();
     }
 
     private boolean isConvertible(App app) {
-        return !app.getPackageName().equals(BuildConfig.APPLICATION_ID)
+        return app.isInstalled()
+            && !app.getPackageName().equals(BuildConfig.APPLICATION_ID)
             && !app.getPackageInfo().applicationInfo.sourceDir.endsWith("pkg.apk")
         ;
     }

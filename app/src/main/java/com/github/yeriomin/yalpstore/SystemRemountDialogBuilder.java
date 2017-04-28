@@ -6,15 +6,14 @@ import android.content.DialogInterface;
 
 public class SystemRemountDialogBuilder extends AlertDialog.Builder {
 
-    private CheckShellTask checkTask;
+    private SystemRemountTask primaryTask;
 
     public SystemRemountDialogBuilder(Context context) {
         super(context);
-        checkTask = new CheckShellTask(context);
         setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                checkTask.execute();
+                primaryTask.execute();
                 dialog.dismiss();
             }
         });
@@ -27,7 +26,28 @@ public class SystemRemountDialogBuilder extends AlertDialog.Builder {
     }
 
     public SystemRemountDialogBuilder setPrimaryTask(SystemRemountTask primaryTask) {
-        checkTask.setPrimaryTask(primaryTask);
+        this.primaryTask = primaryTask;
+        setMessage(getMessageId());
+        setTitle(getTitleId());
         return this;
+    }
+
+    private int getMessageId() {
+        if (primaryTask instanceof ConvertToNormalTask) {
+            return R.string.dialog_message_system_app_warning_to_normal;
+        } else if (primaryTask instanceof UninstallSystemAppTask) {
+            return R.string.dialog_message_system_app_warning_uninstall;
+        }
+        return primaryTask.getApp().getPackageName().equals(BuildConfig.APPLICATION_ID)
+            ? R.string.dialog_message_system_app_self
+            : R.string.dialog_message_system_app_warning_to_system
+        ;
+    }
+
+    private int getTitleId() {
+        return primaryTask.getApp().getPackageName().equals(BuildConfig.APPLICATION_ID)
+            ? R.string.dialog_title_system_app_self
+            : R.string.dialog_title_system_app_warning
+        ;
     }
 }

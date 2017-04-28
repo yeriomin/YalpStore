@@ -32,6 +32,10 @@ public abstract class SystemRemountTask extends AsyncTask<Void, Void, List<Strin
         this.app = app;
     }
 
+    public App getApp() {
+        return app;
+    }
+
     public void setBusybox(boolean busybox) {
         this.busybox = busybox;
     }
