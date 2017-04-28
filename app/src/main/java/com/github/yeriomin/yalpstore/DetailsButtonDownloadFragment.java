@@ -84,7 +84,7 @@ public class DetailsButtonDownloadFragment extends DetailsButtonFragment {
     }
 
     private boolean checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED;
         }
@@ -92,7 +92,7 @@ public class DetailsButtonDownloadFragment extends DetailsButtonFragment {
     }
 
     private void requestPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             activity.requestPermissions(
                 new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
                 DetailsActivity.PERMISSIONS_REQUEST_CODE

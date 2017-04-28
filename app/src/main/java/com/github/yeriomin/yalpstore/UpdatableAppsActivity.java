@@ -1,6 +1,9 @@
 package com.github.yeriomin.yalpstore;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 public class UpdatableAppsActivity extends AppListActivity {
+
+    static private final int PERMISSIONS_REQUEST_CODE = 91;
 
     static private boolean needsUpdate;
 
@@ -94,6 +99,15 @@ public class UpdatableAppsActivity extends AppListActivity {
         task.execute();
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (requestCode == PERMISSIONS_REQUEST_CODE
+            && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+        ) {
+            new UpdateChecker().onReceive(this, getIntent());
+        }
+    }
+
     private UpdatableAppsTask getTask() {
         UpdatableAppsTask task = new UpdatableAppsTask() {
             @Override
@@ -145,15 +159,33 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     private void toggleUpdateAll(boolean enable) {
         Button button = (Button) findViewById(R.id.update_all);
-        boolean backgroundUpdates = PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
-        boolean backgroundDownloads = PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD);
-        button.setVisibility((enable && (backgroundUpdates || backgroundDownloads || PreferenceActivity.canInstallInBackground(this))) ? View.VISIBLE : View.GONE);
+        button.setVisibility(enable ? View.VISIBLE : View.GONE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
+                if (checkPermission()) {
+                    new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
+                } else {
+                    requestPermission();
+                }
             }
         });
+    }
+
+    private boolean checkPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        }
+        return true;
+    }
+
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(
+                new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
+                PERMISSIONS_REQUEST_CODE
+            );
+        }
     }
 }
 
