@@ -5,17 +5,19 @@
 <string name="about_copied_to_clipboard">"Copiado para a área de transferência"</string>
 <string name="list_line_2_updatable">"Atualizado em %1$s"</string>
 <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
-<string name="list_empty_updates">"Nenhuma aplicação necessita de atualizações"</string>
+<string name="list_empty_updates">"Nenhuma aplicação necessita de ser atualizada"</string>
 <string name="list_empty_search">"Nenhuma aplicação encontrada"</string>
 <string name="list_incompatible">"Incompatível"</string>
 <string name="action_about">"Sobre"</string>
-<string name="action_settings">"Definições"</string>
+<string name="action_settings">"Preferências"</string>
 <string name="action_logout">"Terminar sessão"</string>
 <string name="action_search">"Procurar"</string>
-<string name="action_updates">"Atualizar lista"</string>
+
+<!-- is this the button on the top right menu ? -->
+<string name="action_updates">"Atualizar"</string>
 <string name="action_ignore">"Ignorar atualizações"</string>
 <string name="action_unignore">"Não ignorar atualizações"</string>
-<string name="action_whitelist">"Lista branca para atualizações"</string>
+<string name="action_whitelist">"Lista branca de atualizações"</string>
 <string name="action_unwhitelist">"Ignorar atualizações"</string>
 <string name="search_title">"Procurar aplicações"</string>
 <string name="dialog_two_factor_cancel">"Mais tarde"</string>
@@ -23,7 +25,7 @@
 <string name="dialog_title_two_factor">"Verificação de 2-passos"</string>
 <string name="dialog_message_two_factor">"Ativaste a verificação de 2-passos na tua conta.
 
-Por favor, cria uma app password dedicada à Yalp Store e usa-a para fazer login.
+Por favor, cria uma app-password dedicada à Yalp Store e usa-a para fazer login.
 
 Carrega em \"criar password\" para seres redirecionado à página para a criares."</string>
 <string name="dialog_title_logout">"Terminar sessão ?"</string>
@@ -53,7 +55,7 @@ Redirecionar para a página web dela ?"</string>
 <string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"Atualizado %1$s"</string>
 <string name="details_size">"Tamanho da aplicação %1$s"</string>
-<string name="details_description">"Descriçao:"</string>
+<string name="details_description">"Descrição:"</string>
 <string name="details_changelog">"O que há de novo?"</string>
 <string name="details_screenshots">"Screenshots:"</string>
 <string name="details_reviews">"Críticas:"</string>
@@ -94,8 +96,8 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="pref_auto_install_summary_off">"Aplicações serão instaladas quando tocar na notificação"</string>
 <string name="pref_auto_install_summary_on">"Aplicações serão instaladas mal sejam transferidas"</string>
 <string name="pref_auto_install">"Instalar aplicações imediatamente"</string>
-<string name="pref_update_list_white_or_black_black">"Aplicações escolhidas serao ignoradas quando verificar por atualizações"</string>
-<string name="pref_update_list_white_or_black_white">"Apenas as aplicações escolhidas serão verificadas para atualizações"</string>
+<string name="pref_update_list_white_or_black_black">"Aplicações escolhidas serão ignoradas quando verificar por atualizações"</string>
+<string name="pref_update_list_white_or_black_white">"Apenas as aplicações escolhidas serão verificadas por atualizações"</string>
 <string name="pref_update_list_white_or_black">"Lista branca ou preta de aplicações para atualizar"</string>
 <string name="pref_update_list_black">"Modificar aplicações na lista negra"</string>
 <string name="pref_update_list_white">"Modificar aplicações na lista branca"</string>
@@ -108,7 +110,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="pref_background_update_interval_hourly">"De hora em hora"</string>
 <string name="pref_background_update_interval_daily">"Diariamente"</string>
 <string name="pref_background_update_interval_weekly">"Semanalmente"</string>
-<string name="pref_background_update_interval">"Verificar aplicações periódicamente "</string>
+<string name="pref_background_update_interval">"Verificar aplicações periódicamente"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Erro desconhecido."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Erro de armazenamento desconhecido."</string>
 <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Foi recebido o código HTTP que o gestor de transferências não consegue processar. Este é um erro de servidor."</string>
@@ -117,7 +119,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Espaço de armazenamento insuficiente."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Nenhum dispositivo de armazenamento externo foi encintrado. Talvez o cartão SD não esteja montado."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Ocorreu algum erro transitório, mas não podemos retomar o download. Tente novamente mais tarde."</string>
-<string name="download_manager_ERROR_BLOCKED">"O download falhou devido à NetworkPolicyManager controlar a aplicação solicitante. Verifique suas configurações.
+<string name="download_manager_ERROR_BLOCKED">"O download falhou devido à NetworkPolicyManager controlar a aplicação solicitante. Verifica as tuas configurações.
 "</string>
 <string name="search_filter">"Todas as aplicações"</string>
 <string name="details_category">"Category: %1$s"</string>
@@ -142,8 +144,8 @@ Nenhuma informação sensível ou privada será enviada nesta mensagem, por favo
 <string name="notification_installation_failed">"Instalação da atualização falhou."</string>
 <string name="notification_installation_failed_toast">"Não foi possível atualizar %1$s. Verifique as permissões root."</string>
 <string name="pref_background_update_install_summary_off">"Apenas receber uma notificação"</string>
-<string name="pref_background_update_install_summary_on">"Atualizações serão actualizadas se disponível (necessita root)"</string>
-<string name="pref_background_update_install">"Também instalar as atualizações (necessita root)"</string>
+<string name="pref_background_update_install_summary_on">"Atualizações serão actualizadas se disponível (root)"</string>
+<string name="pref_background_update_install">"Também instalar as atualizações (root)"</string>
 <string name="pref_no_root">"Esta opção apenas está disponível para dispositivos com root"</string>
 <string name="list_app_has_ads">"Contém publicidade"</string>
 <string name="list_app_no_ads">"Não contém publicidade"</string>
@@ -176,7 +178,7 @@ Mantém em mente que ao efetuar o download de versões arbitrárias de aplicaç�
 <string name="pref_device_to_pretend_to_be">"\"Fazer de conta\""</string>
 <string name="pref_device_to_pretend_to_be_default">"Usar informação original"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Esta modificação será aplicada após novo login"</string>
-<string name="pref_category_updates">"Aplicações"</string>
+<string name="pref_category_updates">"Atualizações"</string>
 <string name="pref_category_search">"Filtro de pesquisa"</string>
 <string name="pref_category_installation">"Instalação"</string>
 <string name="pref_category_spoofing">"Spoofing"</string>
@@ -204,8 +206,8 @@ Mantém em mente que ao efetuar o download de versões arbitrárias de aplicaç�
 <string name="list_app_system">"Aplicação de sistema."</string>
 <string name="list_app_exists_in_play_store">"Disponível na Play Store."</string>
 <string name="activity_title_updates_only">"Atualização"</string>
-<string name="activity_title_updates_and_other_apps">"As tuas aplicações"</string>
-<string name="pref_category_updates_page">"Atualizar página"</string>
+<string name="activity_title_updates_and_other_apps">"Aplicações"</string>
+<string name="pref_category_updates_page">"Atualizações"</string>
 <string name="pref_updates_only">"Apresentar apenas aplicações por atualizar"</string>
 <string name="pref_updates_only_summary_off">"Todas as aplicações serão apresentadas"</string>
 <string name="pref_updates_only_summary_on">"Aplicações atualizáveis serão apresentadas"</string>
@@ -241,4 +243,10 @@ Não o faças por mera curiosidade. Isto poderá dafinicar o teu dispositivo. Ef
 Mantém em mente que remover uma app de sistema, NÃO É SUPORTADO PELO Android OS e, por isso, NÃO É SEGURO NEM GARANTIDO que funcione.
 
 Não o faças por mera curiosidade. Isto poderá dafinicar o teu dispositivo. Efetua um backup antes de experimentares."</string>
+<string name="dialog_title_system_app_self">"Fazer da Yalp Store uma aplicação de sistema"</string>
+<string name="dialog_message_system_app_self">"O uso de permissões privilegiadas para permitir a instalação de apps em segundo plano exige que a Yalp Store seja uma app de sistema.
+
+O processo é imperfeito e específico do fornecedor, por isso, poderá não funcionar.
+
+Continuar mesmo assim ?"</string>
 </resources>
