@@ -231,11 +231,17 @@ N'effectuez pas cette manipulation par curiosité. Cela pourrait endommager votr
 Gardez à l'esprit que cette conversion n'est PAS supportée par Android et par conséquent n'est PAS sûre et n'a AUCUNE garantie de fonctionner.
 
 N'effectuez pas cette manipulation par curiosité. Cela pourrait endommager votre téléphone. Sauvegardez votre téléphone avant d'essayer."</string>
-<string name="list_check_updates">"Check updates"</string>
+<string name="list_check_updates">"Check for updates"</string>
 <string name="pref_background_update_interval_manually">"Only manually"</string>
 <string name="dialog_message_system_app_warning_uninstall">"Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.
 
 Keep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
 
 Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
+<string name="dialog_title_system_app_self">"Making Yalp a system app"</string>
+<string name="dialog_message_system_app_self">"Using privileged permissions to allow background installation of apps requires making Yalp Store a system app.
+
+The process is imperfect and vendor-specific, so it might not work.
+
+Do it?"</string>
 </resources>
