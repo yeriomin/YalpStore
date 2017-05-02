@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         applicationId "com.github.yeriomin.yalpstore"
@@ -73,6 +73,6 @@ android {
 }
 
 dependencies {
-    compile 'com.github.yeriomin:play-store-api:d9fa8d8'
+    compile 'com.github.yeriomin:play-store-api:0.14'
     compile 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }
