@@ -14,6 +14,12 @@ public class DetailsButtonInstallFragment extends DetailsButtonFragment {
     }
 
     @Override
+    public void draw() {
+        super.draw();
+        ((Button) button).setText(R.string.details_install);
+    }
+
+    @Override
     protected Button getButton() {
         return (Button) activity.findViewById(R.id.install);
     }

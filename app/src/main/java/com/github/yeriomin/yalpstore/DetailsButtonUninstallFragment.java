@@ -20,12 +20,7 @@ public class DetailsButtonUninstallFragment extends DetailsButtonFragment {
 
     @Override
     protected boolean shouldBeVisible() {
-        try {
-            activity.getPackageManager().getPackageInfo(app.getPackageName(), 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
+        return isInstalled();
     }
 
     @Override

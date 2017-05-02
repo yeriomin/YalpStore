@@ -19,7 +19,7 @@ public class DetailsButtonRunFragment extends DetailsButtonFragment {
 
     @Override
     protected boolean shouldBeVisible() {
-        return app.isInstalled() && null != getLaunchIntent();
+        return isInstalled() && null != getLaunchIntent();
     }
 
     @Override
