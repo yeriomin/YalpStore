@@ -25,7 +25,9 @@ public class DetailsButtonDownloadFragment extends DetailsButtonFragment {
 
     @Override
     protected boolean shouldBeVisible() {
-        return !Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists() && !isLatestVersion();
+        return !Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+            && (!isLatestVersion() || activity instanceof ManualDownloadActivity)
+        ;
     }
 
     @Override

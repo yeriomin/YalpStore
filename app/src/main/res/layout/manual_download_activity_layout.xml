@@ -47,10 +47,29 @@
         android:hint="@string/manual_download_hint_version_code"
         android:inputType="number" />
 
-    <Button
-        android:id="@+id/download"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/details_download" />
+        android:gravity="end"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/download"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:text="@string/details_download" />
+
+        <Button
+            android:id="@+id/install"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:text="@string/details_install" />
+
+    </LinearLayout>
 
 </LinearLayout>
