@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,7 +36,7 @@ public class DownloadOptionsFragment extends DetailsFragment {
     public void inflate(Menu menu) {
         MenuInflater inflater = activity.getMenuInflater();
         inflater.inflate(R.menu.menu_download, menu);
-        if (!app.isInstalled()) {
+        if (!isInstalled(app)) {
             return;
         }
         menu.findItem(R.id.action_get_local_apk).setVisible(true);
@@ -91,9 +92,18 @@ public class DownloadOptionsFragment extends DetailsFragment {
     }
 
     private boolean isConvertible(App app) {
-        return app.isInstalled()
+        return isInstalled(app)
             && !app.getPackageName().equals(BuildConfig.APPLICATION_ID)
             && !app.getPackageInfo().applicationInfo.sourceDir.endsWith("pkg.apk")
         ;
+    }
+
+    private boolean isInstalled(App app) {
+        try {
+            activity.getPackageManager().getPackageInfo(app.getPackageName(), 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
     }
 }

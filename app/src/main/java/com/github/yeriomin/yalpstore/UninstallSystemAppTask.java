@@ -21,4 +21,10 @@ public class UninstallSystemAppTask extends SystemRemountTask {
         commands.add(getBusyboxCommand("rm -rf " + from));
         return commands;
     }
+
+    @Override
+    protected void onPostExecute(List<String> output) {
+        super.onPostExecute(output);
+        app.setInstalled(false);
+    }
 }
