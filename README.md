@@ -12,7 +12,7 @@
 Yalp Store lets you download apps from Google Play Store **as apk files**. It searches for **updates** of installed apps when it starts and lets you **search** for other apps. Thats it. Yalp saves downloaded apks to your default download folder so you can later open it in your favorite file manager app and tap each one to install the apps.
 
 ## Why would I use it?
-If you are content with Google Play Store app, you will not need this app.
+If you are searched content on Google Play Store app, you will not need this app.
 
 The point of Yalp Store is to be small and independent from Google Services Framework. As time passed, Google Services Framework and Google Play Store apps grew in size, which made them almost too big for old phones (Nexus One has 150Mb memory available for apps, half of it would be taken by Google apps). Another reason to use Yalp Store is if you frequently flash experimental ROMs. This often breaks gapps and even prevents their reinstallation. In this situation Yalp will still work.
 
