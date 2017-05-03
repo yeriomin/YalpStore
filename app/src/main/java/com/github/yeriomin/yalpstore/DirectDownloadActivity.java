@@ -25,7 +25,9 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             finish();
             return;
         }
-        getDetailsTask(packageName).execute();
+        DetailsTask task = getDetailsTask(packageName);
+        task.setTaskClone(getDetailsTask(packageName));
+        task.execute();
         finish();
     }
 
