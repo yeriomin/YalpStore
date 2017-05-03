@@ -35,7 +35,6 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
                 continue;
             }
             app.setDisplayName(pm.getApplicationLabel(packageInfo.applicationInfo).toString());
-            app.setIcon(pm.getApplicationIcon(packageInfo.applicationInfo));
             app.setInstalled(true);
             apps.add(app);
         }
@@ -111,7 +110,6 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
         appFromMarket.setPackageInfo(installedApp.getPackageInfo());
         appFromMarket.setVersionName(installedApp.getVersionName());
         appFromMarket.setDisplayName(installedApp.getDisplayName());
-        appFromMarket.setIcon(installedApp.getIcon());
         appFromMarket.setSystem(installedApp.isSystem());
         appFromMarket.setInstalled(true);
         return appFromMarket;

@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore.model;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +26,6 @@ public class App implements Comparable<App> {
     private long size;
     private String installs;
     private Rating rating = new Rating();
-    private Drawable icon;
     private String iconUrl;
     private String changes;
     private Developer developer = new Developer();
@@ -131,20 +131,19 @@ public class App implements Comparable<App> {
         return rating;
     }
 
-    public Drawable getIcon() {
-        return this.icon;
-    }
-
-    public void setIcon(Drawable icon) {
-        this.icon = icon;
-    }
-
     public void setIconUrl(String iconUrl) {
         this.iconUrl = iconUrl;
     }
 
-    public String getIconUrl() {
-        return this.iconUrl;
+    public IconInfo getIconInfo() {
+        IconInfo iconInfo = new IconInfo();
+        if (null != packageInfo && null != packageInfo.applicationInfo) {
+            iconInfo.setApplicationInfo(packageInfo.applicationInfo);
+        }
+        if (!TextUtils.isEmpty(iconUrl)) {
+            iconInfo.setUrl(iconUrl);
+        }
+        return iconInfo;
     }
 
     public String getChanges() {

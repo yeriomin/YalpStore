@@ -31,25 +31,16 @@ public class DetailsTask extends GoogleApiAsyncTask {
     protected Throwable doInBackground(String... params) {
         PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.context);
         try {
-            this.app = wrapper.getDetails(packageName);
+            app = wrapper.getDetails(packageName);
         } catch (Throwable e) {
             return e;
         }
-        Drawable icon;
         try {
-            PackageManager pm = this.context.getPackageManager();
-            ApplicationInfo installedApp = pm.getApplicationInfo(packageName, 0);
-            icon = pm.getApplicationIcon(installedApp);
-            this.app.getPackageInfo().applicationInfo = installedApp;
-            this.app.setInstalled(true);
+            app.getPackageInfo().applicationInfo = context.getPackageManager().getApplicationInfo(packageName, 0);
+            app.setInstalled(true);
         } catch (PackageManager.NameNotFoundException e) {
-            BitmapManager manager = new BitmapManager(this.context);
-            icon = null == app.getIconUrl()
-                ? this.context.getResources().getDrawable(R.drawable.ic_placeholder)
-                : new BitmapDrawable(manager.getBitmap(app.getIconUrl()))
-            ;
+            // App is not installed
         }
-        this.app.setIcon(icon);
         return null;
     }
 }

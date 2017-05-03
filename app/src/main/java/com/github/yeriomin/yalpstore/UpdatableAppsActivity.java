@@ -87,7 +87,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         if (!TextUtils.isEmpty(line3)) {
             map.put(LINE3, line3);
         }
-        map.put(ICON, app.getIcon());
+        map.put(ICON, app.getIconInfo());
         return map;
     }
 

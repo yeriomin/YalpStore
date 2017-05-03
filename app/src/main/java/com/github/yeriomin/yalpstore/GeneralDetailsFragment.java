@@ -36,7 +36,7 @@ public class GeneralDetailsFragment extends DetailsFragment {
     }
 
     private void drawAppBadge(App app) {
-        ((ImageView) activity.findViewById(R.id.icon)).setImageDrawable(app.getIcon());
+        new LoadIconTask((ImageView) activity.findViewById(R.id.icon)).execute(app.getIconInfo());
 
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, app.getPackageName());
