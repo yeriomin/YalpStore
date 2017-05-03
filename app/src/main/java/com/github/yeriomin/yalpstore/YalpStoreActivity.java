@@ -28,7 +28,7 @@ public abstract class YalpStoreActivity extends Activity {
         }
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         ThemeManager.setTheme(this);
-        Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(this));
+        Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
         super.onCreate(savedInstanceState);
     }
 
