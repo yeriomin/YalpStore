@@ -27,7 +27,6 @@ public class LoadIconTask extends AsyncTask<IconInfo, Void, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
         if (null != drawable) {
             imageView.setImageDrawable(drawable);
         }

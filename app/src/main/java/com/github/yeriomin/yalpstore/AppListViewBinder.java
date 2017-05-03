@@ -32,7 +32,9 @@ class AppListViewBinder implements SimpleAdapter.ViewBinder {
     private boolean setViewValue(ImageView view, Object iconInfo) {
         if (iconInfo instanceof IconInfo) {
             new LoadIconTask(view).execute((IconInfo) iconInfo);
+        } else {
+            view.setImageDrawable(null);
         }
-        return false;
+        return true;
     }
 }
