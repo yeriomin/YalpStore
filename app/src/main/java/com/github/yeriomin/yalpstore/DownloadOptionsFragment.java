@@ -28,6 +28,9 @@ public class DownloadOptionsFragment extends DetailsFragment {
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (null == more) {
+                    return;
+                }
                 more.showContextMenu();
             }
         });

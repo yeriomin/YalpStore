@@ -33,6 +33,6 @@ class AppListViewBinder implements SimpleAdapter.ViewBinder {
         if (iconInfo instanceof IconInfo) {
             new LoadIconTask(view).execute((IconInfo) iconInfo);
         }
-        return true;
+        return false;
     }
 }

@@ -16,8 +16,10 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
 public class BitmapManager {
@@ -27,7 +29,13 @@ public class BitmapManager {
     private Context context;
 
     static {
-        HttpsURLConnection.setDefaultHostnameVerifier(HttpsURLConnection.getDefaultHostnameVerifier());
+        HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
+
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        });
         try {
             SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(null, new X509TrustManager[]{new NullX509TrustManager()}, new SecureRandom());
