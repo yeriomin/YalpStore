@@ -4,12 +4,20 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
 
+    def getVersionName = { ->
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--tags'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    }
     defaultConfig {
         applicationId "com.github.yeriomin.yalpstore"
         minSdkVersion 5
         targetSdkVersion 25
         versionCode 14
-        versionName "0.14"
+        versionName getVersionName()
     }
     buildTypes {
         release {
