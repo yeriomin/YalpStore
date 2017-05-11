@@ -14,9 +14,11 @@ public class LoadIconTask extends AsyncTask<IconInfo, Void, Void> {
     private ImageView imageView;
     private Context context;
     private Drawable drawable;
+    private String tag;
 
     public LoadIconTask(ImageView imageView) {
         this.imageView = imageView;
+        tag = (String) imageView.getTag();
         context = imageView.getContext();
     }
 
@@ -27,6 +29,9 @@ public class LoadIconTask extends AsyncTask<IconInfo, Void, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
+        if (null != imageView.getTag() && !imageView.getTag().equals(tag)) {
+            return;
+        }
         if (null != drawable) {
             imageView.setImageDrawable(drawable);
         }

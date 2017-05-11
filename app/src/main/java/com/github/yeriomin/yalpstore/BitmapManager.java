@@ -24,7 +24,8 @@ import javax.net.ssl.X509TrustManager;
 
 public class BitmapManager {
 
-    private static final long VALID_MILLIS = 1000*60*60*24*7;
+    static private final long VALID_MILLIS = 1000*60*60*24*7;
+    static private LruCache<String, Bitmap> memoryCache;
 
     private Context context;
 
@@ -45,6 +46,13 @@ public class BitmapManager {
         } catch (KeyManagementException e) {
             // Impossible
         }
+        final int cacheSize = (int) (Runtime.getRuntime().maxMemory() / 1024 / 8);
+        memoryCache = new LruCache<String, Bitmap>(cacheSize) {
+            @Override
+            protected int sizeOf(String key, Bitmap bitmap) {
+                return bitmap.getRowBytes() * bitmap.getHeight() / 1024;
+            }
+        };
     }
 
     public BitmapManager(Context context) {
@@ -56,15 +64,20 @@ public class BitmapManager {
     }
 
     public Bitmap getBitmap(String url, boolean fullSize) {
-        File cached = getFileName(url);
-        Bitmap bitmap;
-        if (!cached.exists() || !isValid(cached)) {
-            bitmap = downloadBitmap(url, fullSize);
-            if (null != bitmap) {
-                cacheBitmap(bitmap, cached);
-            }
-        } else {
-            bitmap = getCachedBitmap(cached);
+        Bitmap bitmap = memoryCache.get(url);
+        if (null != bitmap) {
+            return bitmap;
+        }
+        File onDisk = getFileName(url);
+        if (onDisk.exists() && isValid(onDisk) && onDisk.length() > 0) {
+            bitmap = getCachedBitmapFromDisk(onDisk);
+            cacheBitmapInMemory(url, bitmap);
+            return bitmap;
+        }
+        bitmap = downloadBitmap(url, fullSize);
+        if (null != bitmap) {
+            cacheBitmapOnDisk(bitmap, onDisk);
+            cacheBitmapInMemory(url, bitmap);
         }
         return bitmap;
     }
@@ -77,7 +90,7 @@ public class BitmapManager {
         return cached.lastModified() + VALID_MILLIS > System.currentTimeMillis();
     }
 
-    static private Bitmap getCachedBitmap(File cached) {
+    static private Bitmap getCachedBitmapFromDisk(File cached) {
         try {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inJustDecodeBounds = false;
@@ -89,7 +102,7 @@ public class BitmapManager {
         }
     }
 
-    static private void cacheBitmap(Bitmap bitmap, File cached) {
+    static private void cacheBitmapOnDisk(Bitmap bitmap, File cached) {
         try {
             FileOutputStream out = new FileOutputStream(cached);
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
@@ -97,6 +110,12 @@ public class BitmapManager {
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    static private void cacheBitmapInMemory(String url, Bitmap bitmap) {
+        if (null != url && null != bitmap) {
+            memoryCache.put(url, bitmap);
         }
     }
 
