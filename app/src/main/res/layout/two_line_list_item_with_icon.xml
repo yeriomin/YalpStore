@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:gravity="center_vertical"
     android:padding="6dip">
 
@@ -66,6 +67,18 @@
         <TextView
             android:id="@+id/label"
             android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/progress"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

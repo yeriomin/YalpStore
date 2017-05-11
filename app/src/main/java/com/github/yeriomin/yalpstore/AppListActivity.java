@@ -9,6 +9,7 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.view.AppBadge;
 import com.github.yeriomin.yalpstore.view.ListItem;
 import com.github.yeriomin.yalpstore.view.ListSeparator;
+import com.github.yeriomin.yalpstore.view.ProgressIndicator;
 
 import java.util.List;
 
@@ -58,12 +59,18 @@ abstract public class AppListActivity extends YalpStoreActivity {
     }
 
     protected void addApps(List<App> appsToAdd) {
+        addApps(appsToAdd, true);
+    }
+
+    protected void addApps(List<App> appsToAdd, boolean update) {
         AppListAdapter adapter = (AppListAdapter) getListView().getAdapter();
         adapter.setNotifyOnChange(false);
         for (App app: appsToAdd) {
             adapter.add(getListItem(app));
         }
-        adapter.notifyDataSetChanged();
+        if (update) {
+            ((AppListAdapter) getListView().getAdapter()).notifyDataSetChanged();
+        }
     }
 
     protected void clearApps() {

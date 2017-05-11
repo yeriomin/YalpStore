@@ -17,6 +17,7 @@ public class ListSeparator extends ListItem {
     public void draw() {
         view.findViewById(R.id.separator).setVisibility(View.VISIBLE);
         view.findViewById(R.id.app).setVisibility(View.GONE);
+        view.findViewById(R.id.progress).setVisibility(View.GONE);
         ((TextView) view.findViewById(R.id.label)).setText(label);
     }
 }
