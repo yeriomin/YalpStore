@@ -3,7 +3,6 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.SimpleAdapter;
 
 public class CategoryAppsActivity extends EndlessScrollActivity {
 
@@ -28,11 +27,10 @@ public class CategoryAppsActivity extends EndlessScrollActivity {
             return;
         }
         if (null == categoryId || !newCategoryId.equals(categoryId)) {
-            this.data.clear();
             categoryId = newCategoryId;
             setTitle(new CategoryManager(this).getCategoryName(categoryId));
+            clearApps();
             loadApps();
-            ((SimpleAdapter) getListView().getAdapter()).notifyDataSetChanged();
         }
     }
 

@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 
 import java.util.regex.Pattern;
@@ -25,9 +24,9 @@ public class SearchResultActivity extends EndlessScrollActivity {
         String newQuery = getQuery(intent);
         Log.i(getClass().getName(), "Searching: " + newQuery);
         if (null != newQuery && !newQuery.equals(this.query)) {
+            clearApps();
             this.categoryId = CategoryManager.TOP;
             this.query = newQuery;
-            this.data.clear();
             setTitle(getSearchTitle());
             if (looksLikeAPackageId(query)) {
                 Log.i(getClass().getName(), query + " looks like a package id");
@@ -48,7 +47,7 @@ public class SearchResultActivity extends EndlessScrollActivity {
     public void setCategoryId(String categoryId) {
         if (!categoryId.equals(this.categoryId)) {
             this.categoryId = categoryId;
-            data.clear();
+            clearApps();
             loadApps();
         }
     }
@@ -57,7 +56,6 @@ public class SearchResultActivity extends EndlessScrollActivity {
         SearchTask task = getTask();
         task.setTaskClone(getTask());
         task.execute(query, categoryId);
-        ((SimpleAdapter) getListView().getAdapter()).notifyDataSetChanged();
     }
 
     private SearchTask getTask() {

@@ -5,17 +5,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.view.ListItem;
+import com.github.yeriomin.yalpstore.view.UpdatableAppBadge;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class UpdatableAppsActivity extends AppListActivity {
 
@@ -44,7 +43,6 @@ public class UpdatableAppsActivity extends AppListActivity {
                 ? R.string.activity_title_updates_only
                 : R.string.activity_title_updates_and_other_apps
             ));
-            this.data.clear();
             loadApps();
             setNeedsUpdate(false);
         }
@@ -71,27 +69,6 @@ public class UpdatableAppsActivity extends AppListActivity {
     }
 
     @Override
-    protected Map<String, Object> formatApp(App app) {
-        Map<String, Object> map = super.formatApp(app);
-        String updated = app.getUpdated();
-        if (!TextUtils.isEmpty(updated)) {
-            map.put(LINE2, getString(R.string.list_line_2_updatable, updated));
-        }
-        String line3 = "";
-        if (app.isSystem()) {
-            line3 += getString(R.string.list_app_system) + " ";
-        }
-        if (app.isInPlayStore() && !showUpdatesOnly()) {
-            line3 += getString(R.string.list_app_exists_in_play_store);
-        }
-        if (!TextUtils.isEmpty(line3)) {
-            map.put(LINE3, line3);
-        }
-        map.put(ICON, app.getIconInfo());
-        return map;
-    }
-
-    @Override
     protected void loadApps() {
         UpdatableAppsTask taskClone = getTask();
         UpdatableAppsTask task = getTask();
@@ -106,6 +83,13 @@ public class UpdatableAppsActivity extends AppListActivity {
         ) {
             new UpdateChecker().onReceive(this, getIntent());
         }
+    }
+
+    @Override
+    protected ListItem getListItem(App app) {
+        UpdatableAppBadge appBadge = new UpdatableAppBadge();
+        appBadge.setApp(app);
+        return appBadge;
     }
 
     private UpdatableAppsTask getTask() {
@@ -133,13 +117,13 @@ public class UpdatableAppsActivity extends AppListActivity {
             addApps(updatable);
         } else {
             if (!updatable.isEmpty()) {
-                data.add(getHeader(R.string.list_has_update));
+                addSeparator(getString(R.string.list_has_update));
                 Collections.sort(updatable);
                 addApps(updatable);
             }
             if (!other.isEmpty()) {
                 if (!(PreferenceActivity.getUpdateInterval(this) < 0) || explicitCheck) {
-                    data.add(getHeader(R.string.list_no_update));
+                    addSeparator(getString(R.string.list_no_update));
                 }
                 Collections.sort(other);
                 addApps(other);
@@ -149,12 +133,6 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     private boolean showUpdatesOnly() {
         return PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_UPDATES_ONLY);
-    }
-
-    private Map<String, Object> getHeader(int headerTextResId) {
-        Map<String, Object> map = new HashMap<>();
-        map.put(LINE1, getString(headerTextResId));
-        return map;
     }
 
     private void toggleUpdateAll(boolean enable) {
