@@ -238,11 +238,15 @@ Não faça isso por curiosidade. Pode quebrar seu dispositivo. Faça backup do d
 Tenha em mente que o processo de conversão NÃO é suportado pelo sistema operacional Android e, portanto, NÃO é seguro e não é garantido para o trabalho.
 
 Não faça isso por curiosidade. Pode quebrar seu dispositivo. Faça backup do dispositivo antes de tentar."</string>
-<string name="list_check_updates">"Check updates"</string>
-<string name="pref_background_update_interval_manually">"Only manually"</string>
-<string name="dialog_message_system_app_warning_uninstall">"Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.
+<string name="list_check_updates">"Verificar atualizações"</string>
+<string name="pref_background_update_interval_manually">"Apenas manualmente"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Tem a certeza de que pretende remover esta aplicação de sistema? Os aplicativos do sistema são colocados em seu dispositivo pelo fornecedor do dispositivo e são mais prováveis necessários para que ele funcione conforme o pretendido.
 
-Keep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Lembre-se de que a remoção de aplicativos do sistema não é compatível com o sistema operacional Android e, portanto, NÃO é seguro e não é garantido funcionar.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
+Não faça isso por curiosidade. Pode quebrar seu dispositivo. Faça backup do dispositivo antes de tentar."</string>
+<string name="dialog_title_system_app_self">"Tornando o Yalp um aplicativo do sistema"</string>
+<string name="dialog_message_system_app_self">"O uso de permissões privilegiadas para permitir a instalação em segundo plano de aplicativos exige que o Yap Store seja um aplicativo do sistema.
+O processo é imperfeito e específico do fornecedor, portanto, pode não funcionar.
+Fazer?"</string>
 </resources>

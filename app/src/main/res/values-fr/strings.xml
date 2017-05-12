@@ -231,17 +231,17 @@ N'effectuez pas cette manipulation par curiosité. Cela pourrait endommager votr
 Gardez à l'esprit que cette conversion n'est PAS supportée par Android et par conséquent n'est PAS sûre et n'a AUCUNE garantie de fonctionner.
 
 N'effectuez pas cette manipulation par curiosité. Cela pourrait endommager votre téléphone. Sauvegardez votre téléphone avant d'essayer."</string>
-<string name="list_check_updates">"Check for updates"</string>
-<string name="pref_background_update_interval_manually">"Only manually"</string>
-<string name="dialog_message_system_app_warning_uninstall">"Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.
+<string name="list_check_updates">"Vérifier les mises à jour"</string>
+<string name="pref_background_update_interval_manually">"Seulement manuellement"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Êtes vous sûr de supprimer une application système ? Les applications système ont été installées par le fabricant et sont probablement nécessaires au fonctionnement de l'appareil.
 
-Keep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Supprimer des apps système n'est PAS supporté par Android, et n'est donc PAS sûr, et PAS garanti de fonctionner.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
-<string name="dialog_title_system_app_self">"Making Yalp a system app"</string>
-<string name="dialog_message_system_app_self">"Using privileged permissions to allow background installation of apps requires making Yalp Store a system app.
+Ne faites cela que si vous savez ce que vous faites, cela pourrait endommager votre appareil. Faites une sauvegarde avant d'essayer."</string>
+<string name="dialog_title_system_app_self">"Faire de Yalp une application système"</string>
+<string name="dialog_message_system_app_self">"Faire de Yalp Store une application système afin de permettre l'installation en arrière-plan des apps.
 
-The process is imperfect and vendor-specific, so it might not work.
+Le processus dépend du fabricant et peut ne pas fonctionner.
 
-Do it?"</string>
+Poursuivre ?"</string>
 </resources>
