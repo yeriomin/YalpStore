@@ -23,7 +23,7 @@ public class AppListsFragment extends DetailsFragment {
 
     private void drawAppsByThisDev() {
         View appsByThisDev = activity.findViewById(R.id.apps_by_this_dev);
-        if (TextUtils.isEmpty(app.getDeveloper().getName())) {
+        if (TextUtils.isEmpty(app.getDeveloperName())) {
             appsByThisDev.setVisibility(View.GONE);
         } else {
             appsByThisDev.setVisibility(View.VISIBLE);
@@ -33,7 +33,7 @@ public class AppListsFragment extends DetailsFragment {
                     Intent i = super.getIntent();
                     i.setAction(Intent.ACTION_SEARCH);
                     i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    i.putExtra(SearchManager.QUERY, "pub:" + app.getDeveloper().getName());
+                    i.putExtra(SearchManager.QUERY, "pub:" + app.getDeveloperName());
                     return i;
                 }
             });

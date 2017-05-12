@@ -9,7 +9,6 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.view.AppBadge;
 import com.github.yeriomin.yalpstore.view.ListItem;
 import com.github.yeriomin.yalpstore.view.ListSeparator;
-import com.github.yeriomin.yalpstore.view.ProgressIndicator;
 
 import java.util.List;
 

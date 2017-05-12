@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore.model;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class App implements Comparable<App> {
     private Rating rating = new Rating();
     private String iconUrl;
     private String changes;
-    private Developer developer = new Developer();
+    private String developerName;
     private String description;
     private Set<String> permissions = new HashSet<>();
     private boolean isInstalled;
@@ -154,8 +153,12 @@ public class App implements Comparable<App> {
         this.changes = changes;
     }
 
-    public Developer getDeveloper() {
-        return developer;
+    public String getDeveloperName() {
+        return developerName;
+    }
+
+    public void setDeveloperName(String developerName) {
+        this.developerName = developerName;
     }
 
     public String getDescription() {

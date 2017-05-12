@@ -37,6 +37,7 @@ public class AppBuilder {
         app.getPackageInfo().packageName = appDetails.getPackageName();
         app.setVersionName(appDetails.getVersionString());
         app.setVersionCode(appDetails.getVersionCode());
+        app.setDeveloperName(appDetails.getDeveloperName());
         app.setSize(appDetails.getInstallationSize());
         app.setInstalls(getInstallsNum(appDetails.getNumDownloads()));
         app.setUpdated(appDetails.getUploadDate());
@@ -45,7 +46,6 @@ public class AppBuilder {
         app.setContainsAds(appDetails.hasContainsAds() && !TextUtils.isEmpty(appDetails.getContainsAds()));
         app.setInPlayStore(true);
         fillImages(app, details.getImageList());
-        fillDeveloper(app, appDetails);
         fillDependencies(app, appDetails);
         return app;
     }
@@ -71,13 +71,6 @@ public class AppBuilder {
         rating.setStars(3, (int) aggregateRating.getThreeStarRatings());
         rating.setStars(4, (int) aggregateRating.getFourStarRatings());
         rating.setStars(5, (int) aggregateRating.getFiveStarRatings());
-    }
-
-    static private void fillDeveloper(App app, AppDetails appDetails) {
-        Developer developer = app.getDeveloper();
-        developer.setName(appDetails.getDeveloperName());
-        developer.setEmail(appDetails.getDeveloperEmail());
-        developer.setWebsite(appDetails.getDeveloperWebsite());
     }
 
     static private void fillDependencies(App app, AppDetails appDetails) {
