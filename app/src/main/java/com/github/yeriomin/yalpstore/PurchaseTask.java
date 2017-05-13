@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.yalpstore.model.App;
