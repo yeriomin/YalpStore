@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.yalpstore.model.App;
 
 public class PurchaseTask extends GoogleApiAsyncTask {
@@ -40,6 +42,15 @@ public class PurchaseTask extends GoogleApiAsyncTask {
             } catch (WindowManager.BadTokenException e1) {
                 Log.e(getClass().getName(), "Could not create purchase error dialog: " + e1.getMessage());
             }
+        }
+    }
+
+    @Override
+    protected void processAuthException(AuthException e) {
+        if (e.getCode() == 403 & isContextUiCapable()) {
+            toast(context, R.string.details_download_not_available);
+        } else {
+            super.processAuthException(e);
         }
     }
 
