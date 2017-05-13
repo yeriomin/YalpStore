@@ -1,13 +1,11 @@
 package com.github.yeriomin.yalpstore;
 
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
 
+import com.github.yeriomin.yalpstore.model.App;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PreferenceBlacklistFragment extends PreferenceFragment {
@@ -47,15 +45,9 @@ public class PreferenceBlacklistFragment extends PreferenceFragment {
     }
 
     private Map<String, String> getInstalledAppNames() {
-        PackageManager pm = activity.getPackageManager();
-        List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_META_DATA);
         Map<String, String> appNames = new HashMap<>();
-        for (PackageInfo info: packages) {
-            if ((info.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                // This is a system app - skipping
-                continue;
-            }
-            appNames.put(info.packageName, pm.getApplicationLabel(info.applicationInfo).toString());
+        for (App app: UpdatableAppsTask.getInstalledApps(activity)) {
+            appNames.put(app.getPackageName(), app.getDisplayName());
         }
         return Util.sort(appNames);
     }

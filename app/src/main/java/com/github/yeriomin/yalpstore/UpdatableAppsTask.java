@@ -28,13 +28,17 @@ class UpdatableAppsTask extends GoogleApiAsyncTask {
 
         PackageManager pm = context.getPackageManager();
         boolean showSystemApps = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS);
-        List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS);
-        for (PackageInfo packageInfo : packages) {
-            App app = new App(packageInfo);
+        for (PackageInfo reducedPackageInfo: pm.getInstalledPackages(0)) {
+            App app;
+            try {
+                app = new App(pm.getPackageInfo(reducedPackageInfo.packageName, PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
+            } catch (PackageManager.NameNotFoundException e) {
+                continue;
+            }
             if (!showSystemApps && app.isSystem()) {
                 continue;
             }
-            app.setDisplayName(pm.getApplicationLabel(packageInfo.applicationInfo).toString());
+            app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
             app.setInstalled(true);
             apps.add(app);
         }
