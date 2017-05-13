@@ -49,7 +49,11 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     }
 
     static public int getUpdateInterval(Context context) {
-        return Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1"));
+        try {
+            return Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1"));
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 
     static public boolean canInstallInBackground(Context context) {
