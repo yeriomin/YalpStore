@@ -44,6 +44,10 @@ public abstract class YalpStoreActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem updates = menu.findItem(R.id.action_updates);
+        if (null != updates && !PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_UPDATES_ONLY)) {
+            updates.setTitle(R.string.activity_title_updates_and_other_apps);
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
