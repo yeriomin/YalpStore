@@ -15,7 +15,7 @@ To supplement the features related to Google Play, Yalp Store has ordinary packa
 
 If root is available, Yalp Store can update your apps in background, install and uninstall system apps.
 
-Yalp Store can be installed as a system app to gain background package installation permission. In ths case "Unknown sources" setting can be left off.
+Yalp Store can be installed as a system app to gain background package installation permission. In ths case "Unknown sources" setting can be left off. You can let Yalp Store self-install as a system app, or get the OTA zip from the [releases page](https://github.com/yeriomin/YalpStore/releases).
 
 ## Why would I use it?
 If you are content with Google Play Store app, you will not need this app.
