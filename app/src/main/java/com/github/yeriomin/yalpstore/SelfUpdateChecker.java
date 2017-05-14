@@ -36,6 +36,7 @@ public class SelfUpdateChecker extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPreExecute() {
         button.setText(R.string.about_self_update_checking);
+        button.setVisibility(View.VISIBLE);
     }
 
     @Override
