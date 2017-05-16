@@ -215,39 +215,37 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="pref_show_system_apps_summary_off">"App di sistema nascoste"</string>
 <string name="pref_show_system_apps_summary_on">"App di sistema visualizzate"</string>
 <string name="details_system_app_info">"Info di sistema"</string>
-<string name="activity_title_search_publisher">"Apps by %1$s"</string>
+<string name="activity_title_search_publisher">"App di %1$s"</string>
 <string name="details_run">"Avvia"</string>
-<string name="dialog_title_remounting_system">"Working with /system partition"</string>
-<string name="dialog_message_remounting_system">"Working with /system partition. This might take some time."</string>
-<string name="dialog_title_checking_busybox">"Checking if busybox is available"</string>
-<string name="dialog_message_checking_busybox">"Certain system tools are required to work with system apps. Checking if they are available."</string>
-<string name="dialog_title_busybox_not_available">"Busybox not available"</string>
-<string name="dialog_message_busybox_not_available">"A rooted device with busybox installed is required to work with system apps. Search for a busybox installer now?"</string>
-<string name="dialog_title_reboot_required">"Reboot required"</string>
-<string name="dialog_message_reboot_required">"Changes will be applied after reboot. Reboot now?"</string>
-<string name="dialog_title_system_app_warning">"Warning!"</string>
-<string name="dialog_message_system_app_warning_to_system">"You have selected to convert the app into system app. Most apps do not need to be system apps to work.
+<string name="dialog_title_remounting_system">"Esecuzione su partizione /system"</string>
+<string name="dialog_message_remounting_system">"Esecuzione su partizione /system. Può volerci del tempo."</string>
+<string name="dialog_title_checking_busybox">"Verifica disponibilità di busybox"</string>
+<string name="dialog_message_checking_busybox">"Alcuni strumenti sono richiesti per operare sulle app di sistema. Verifico se sono disponibili."</string>
+<string name="dialog_title_busybox_not_available">"Busybox non disponibile"</string>
+<string name="dialog_message_busybox_not_available">"Un dispositivo con root e busybox installato è necessario per operare sulle app di sistema. Cerco un installer busybox?"</string>
+<string name="dialog_title_reboot_required">"Riavvio richiesto"</string>
+<string name="dialog_message_reboot_required">"Le modifiche saranno applicate dopo il riavvio. Riavvio ora?"</string>
+<string name="dialog_title_system_app_warning">"Attenzione!"</string>
+<string name="dialog_message_system_app_warning_to_system">"Hai scelto di convertire una app in app di sistema. Quasi tutte le app non ne hanno bisogno per funzionare.
 
-Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Ricorda che il processo di conversione NON è supportato da Android, NON è sicuro e NON ne viene garantito il funzionamento.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
-<string name="dialog_message_system_app_warning_to_normal">"You have selected to convert a system app into a normal app. Most system apps need to be system apps to work.
+Non farlo per curiosità, potrebbe danneggiare il dispositivo. Fai un backup prima di provare."</string>
+<string name="dialog_message_system_app_warning_to_normal">"Hai scelto di convertire una app di sistema in una app normale. Molte applicazioni di sistema necessitano di questa condizione per funzionare.
 
-Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Ricorda che il processo di conversione NON è supportato da Android, NON è sicuro e NON ne viene garantito il funzionamento.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
-<string name="list_check_updates">"Check for updates"</string>
-<string name="pref_background_update_interval_manually">"Only manually"</string>
-<string name="dialog_message_system_app_warning_uninstall">"Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.
+Non farlo per curiosità, potrebbe danneggiare il dispositivo. Fai un backup prima di provare."</string>
+<string name="list_check_updates">"Verifica aggiornamenti"</string>
+<string name="pref_background_update_interval_manually">"Solo manualmente"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Sicuro di voler rimuovere questa app di sistema? Le app di sistema vengono inserite dal produttore del dispositivo e sono necessarie perchè funzioni come previsto.
 
-Keep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Ricorda che rimuovere app di ssitema NON è supportato da Android, NON è sicuro e NON ne viene garantito il funzionamento.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
-<string name="dialog_title_system_app_self">"Making Yalp a system app"</string>
-<string name="dialog_message_system_app_self">"Using privileged permissions to allow background installation of apps requires making Yalp Store a system app.
+Non farlo per curiosità, potrebbe danneggiare il dispositivo. Fai un backup prima di provare."</string>
+<string name="dialog_title_system_app_self">"Rendo Yalp app di sistema"</string>
+<string name="dialog_message_system_app_self">"L'uso di permessi privilegiati per installare le app in background richiede che Yalp Store sia una app di sistema.
 
-The process is imperfect and vendor-specific, so it might not work.
-
-Do it?"</string>
+Il processo non è perfetto o specifico per produttore: potrebbe non funzionare. Lo faccio?"</string>
 <string name="about_website_label">"Sito web:"</string>
 </resources>
