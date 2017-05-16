@@ -193,7 +193,7 @@ Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, 
 <string name="pref_background_update_download">"Télécharger aussi les mises à jour"</string>
 <string name="details_not_available_on_play_store">"Indisponible dans le Play Store"</string>
 <string name="action_manual">"Téléchargement manuel"</string>
-<string name="action_get_local_apk">"Récupérer l'apk locale"</string>
+<string name="action_get_local_apk">"Enregistrer l'apk"</string>
 <string name="details_saved_in_downloads">"Sauvegardé dans votre dossier Téléchargements"</string>
 <string name="details_could_not_copy_apk">"Impossible de copier l'apk"</string>
 <string name="action_make_system">"Convertir en application système"</string>
