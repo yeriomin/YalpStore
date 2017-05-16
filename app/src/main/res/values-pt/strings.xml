@@ -72,7 +72,7 @@ Redirecionar para a página web dela ?"</string>
 <string name="details_review_dialog_review_comment_hint">"Comentário:"</string>
 <string name="details_review_dialog_fields_optional">"Podes deixar em como está e enviar assim."</string>
 <string name="details_apps_by_this_dev">"Outras Apps criadas pelo mesmo programador."</string>
-<string name="details_similar_apps">"Aplicações Semelhantes"</string>
+<string name="details_similar_apps">"Aplicações semelhantes"</string>
 <string name="details_users_also_installed">"Utilizadores também instalaram"</string>
 <string name="details_signature_mismatch">"A nova versao é assinada com uma chave diferente da anterior. Para instalar a nova versão deves primeiro desinstalar a antiga. Por favor faz isso e tenta de novo. (Nota que ao desinstalar a versão antiga, irás apagar todos os dados da aplicação)"</string>
 <string name="suffix_million">"M"</string>
@@ -91,7 +91,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="notification_updates_available_title">"Atualizações disponíveis."</string>
 <string name="notification_updates_available_message">"Atualizações disponíveis para %1$d aplicações."</string>
 <string name="pref_hide_nonfree_apps_summary_off">"Aplicações pagas serão mostradas"</string>
-<string name="pref_hide_nonfree_apps_summary_on">"Aplicações pagas serão mostradas"</string>
+<string name="pref_hide_nonfree_apps_summary_on">"Aplicações pagas não serão mostradas"</string>
 <string name="pref_hide_nonfree_apps">"Esconder aplicações pagas"</string>
 <string name="pref_auto_install_summary_off">"Aplicações serão instaladas quando tocar na notificação"</string>
 <string name="pref_auto_install_summary_on">"Aplicações serão instaladas mal sejam transferidas"</string>
@@ -106,7 +106,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="pref_ui_theme_light">"Claro"</string>
 <string name="pref_ui_theme_dark">"Escuro"</string>
 <string name="pref_ui_theme_black">"Preto"</string>
-<string name="pref_background_update_interval_never">"Apenas quando abrir a Yalp Store"</string>
+<string name="pref_background_update_interval_never">"Quando abrir a Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"De hora em hora"</string>
 <string name="pref_background_update_interval_daily">"Diariamente"</string>
 <string name="pref_background_update_interval_weekly">"Semanalmente"</string>
@@ -123,8 +123,8 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 "</string>
 <string name="search_filter">"Todas as aplicações"</string>
 <string name="details_category">"Category: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Agora os ficheiros das aplicações não são apagadas após instalação"</string>
-<string name="pref_delete_apk_after_install_summary_on">"Agora os ficheiros das aplicações serão apagadas após instalação"</string>
+<string name="pref_delete_apk_after_install_summary_off">"Ficheiros das aplicações não são apagadas após instalação"</string>
+<string name="pref_delete_apk_after_install_summary_on">"Ficheiros das aplicações serão apagadas após instalação"</string>
 <string name="pref_delete_apk_after_install">"Apagar ficheiros das aplicações após instalação"</string>
 <string name="dialog_title_application_crashed">"Desculpa, a Yalp Store crashou"</string>
 <string name="dialog_message_application_crashed">"Podes ajudar a resolver este erro enviando os dados referentes ao desenvolvedor.
@@ -211,7 +211,7 @@ Mantém em mente que ao efetuar o download de versões arbitrárias de aplicaç�
 <string name="pref_updates_only">"Apresentar apenas aplicações por atualizar"</string>
 <string name="pref_updates_only_summary_off">"Todas as aplicações serão apresentadas"</string>
 <string name="pref_updates_only_summary_on">"Aplicações atualizáveis serão apresentadas"</string>
-<string name="pref_show_system_apps">"Mostrar apenas aplicações de sistema"</string>
+<string name="pref_show_system_apps">"Mostrar aplicações de sistema"</string>
 <string name="pref_show_system_apps_summary_off">"Aplicações de sistema são escondidas"</string>
 <string name="pref_show_system_apps_summary_on">"Aplicações de sistema são visíveis"</string>
 <string name="details_system_app_info">"Informação de sistema"</string>
@@ -224,7 +224,7 @@ Mantém em mente que ao efetuar o download de versões arbitrárias de aplicaç�
 <string name="dialog_title_busybox_not_available">"Busybox não disponível"</string>
 <string name="dialog_message_busybox_not_available">"É necessário um telemóvel com permissões de super administrador e busybox instalado, para poder trabalhar com aplicações de sistema. Pretende procurar um instalador de busybox ?"</string>
 <string name="dialog_title_reboot_required">"É necessário reiniciar o seu dispositivo"</string>
-<string name="dialog_message_reboot_required">"Modificações serão aplicadas após reniciar. Reiniciar dispositivo agora ?"</string>
+<string name="dialog_message_reboot_required">"Modificações serão aplicadas após reniciar. Reiniciar dispositivo ?"</string>
 <string name="dialog_title_system_app_warning">"Advertência !"</string>
 <string name="dialog_message_system_app_warning_to_system">"Escolheste converter a app numa app de sistema. A maioria das aplicações não precisa pertencer ao sistema para funcionar.
 
@@ -237,7 +237,7 @@ Mantém em mente que esta processo de conversão NÃO É SUPORTADO pelo Android 
 
 Não o faças por mera curiosidade. Isto poderá dafinicar o teu dispositivo. Efetua um backup antes de experimentares."</string>
 <string name="list_check_updates">"Verificar atualizações"</string>
-<string name="pref_background_update_interval_manually">"Apenas manualmente"</string>
+<string name="pref_background_update_interval_manually">"Manualmente"</string>
 <string name="dialog_message_system_app_warning_uninstall">"Tens certeza que queres remover esta aplicação de sistema ? Aplicações de sistema são introduzidas no teu dispositivo pela marca deste e, provavelmente, são necessárias para o bom funcionamento do mesmo.
 
 Mantém em mente que remover uma app de sistema, NÃO É SUPORTADO PELO Android OS e, por isso, NÃO É SEGURO NEM GARANTIDO que funcione.
