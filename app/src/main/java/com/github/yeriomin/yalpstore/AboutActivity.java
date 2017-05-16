@@ -2,8 +2,10 @@ package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -30,6 +32,15 @@ public class AboutActivity extends YalpStoreActivity {
             @Override
             public void onClick(View v) {
                 CrashLetterActivity.send(AboutActivity.this, null);
+            }
+        });
+        findViewById(R.id.website).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse((String) ((TextView) v).getText()));
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                }
             }
         });
         if (hasPermission()) {

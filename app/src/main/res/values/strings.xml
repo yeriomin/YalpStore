@@ -1,4 +1,5 @@
 <resources>
+    <string name="about_website_label">Website:</string>
     <string name="about_developer_email_label">Developer\'s email:</string>
     <string name="about_logged_in">You are logged in as:</string>
     <string name="about_copied_to_clipboard">Copied to clipboard</string>
