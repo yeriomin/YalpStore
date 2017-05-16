@@ -249,4 +249,5 @@ Não faça isso por curiosidade. Pode quebrar seu dispositivo. Faça backup do d
 <string name="dialog_message_system_app_self">"O uso de permissões privilegiadas para permitir a instalação em segundo plano de aplicativos exige que o Yap Store seja um aplicativo do sistema.
 O processo é imperfeito e específico do fornecedor, portanto, pode não funcionar.
 Fazer?"</string>
+<string name="about_website_label">"Página web:"</string>
 </resources>
