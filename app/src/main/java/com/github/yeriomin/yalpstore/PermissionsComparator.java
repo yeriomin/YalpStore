@@ -24,7 +24,11 @@ public class PermissionsComparator {
         PackageManager pm = context.getPackageManager();
         try {
             PackageInfo pi = pm.getPackageInfo(app.getPackageName(), PackageManager.GET_PERMISSIONS);
-            Set<String> requestedPermissions = new HashSet<>(Arrays.asList(pi.requestedPermissions));
+            Set<String> requestedPermissions = new HashSet<>(Arrays.asList(
+                null == pi.requestedPermissions
+                ? new String[0]
+                : pi.requestedPermissions
+            ));
             boolean result = requestedPermissions.equals(app.getPermissions());
             if (!result) {
                 requestedPermissions.removeAll(app.getPermissions());
