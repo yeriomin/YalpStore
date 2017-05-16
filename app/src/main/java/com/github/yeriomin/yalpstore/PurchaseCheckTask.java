@@ -46,11 +46,10 @@ public class PurchaseCheckTask extends AsyncTask<Void, Void, AndroidAppDeliveryD
     protected void onPostExecute(AndroidAppDeliveryData androidAppDeliveryData) {
         boolean success = null != androidAppDeliveryData;
         downloadOrInstallManager.draw();
-        if (null != downloadButton) {
-            if (!success) {
-                downloadButton.setText(R.string.details_download_not_available);
-            }
-            downloadButton.setEnabled(success);
+        if (null == downloadButton) {
+            return;
         }
+        downloadButton.setText(success ? R.string.details_download : R.string.details_download_not_available);
+        downloadButton.setEnabled(success);
     }
 }

@@ -27,15 +27,9 @@ public class ManualDownloadActivity extends DetailsActivity {
         draw(DetailsDependentActivity.app);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        ThemeManager.setTheme(this);
-        setContentView(R.layout.manual_download_activity_layout);
-        super.onCreate(savedInstanceState);
-    }
-
     private void draw(App app) {
         setTitle(app.getDisplayName());
+        setContentView(R.layout.manual_download_activity_layout);
         app.setOfferType(1);
         ((TextView) findViewById(R.id.compatibility)).setText(
             app.getVersionCode() > 0
