@@ -97,6 +97,8 @@ public class DownloadOptionsFragment extends DetailsFragment {
     private boolean isConvertible(App app) {
         return isInstalled(app)
             && !app.getPackageName().equals(BuildConfig.APPLICATION_ID)
+            && null != app.getPackageInfo().applicationInfo
+            && null != app.getPackageInfo().applicationInfo.sourceDir
             && !app.getPackageInfo().applicationInfo.sourceDir.endsWith("pkg.apk")
         ;
     }
