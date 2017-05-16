@@ -32,7 +32,7 @@ Choisissez  « créer un mot de passe » pour être redirigé vers la page de 
 <string name="dialog_message_reviews">"Chargement des avis, patientez SVP"</string>
 <string name="dialog_title_purchasing_app">"Téléchargement de l'app"</string>
 <string name="dialog_message_purchasing_app">"Téléchargement de l'app démarré, patientez SVP"</string>
-<string name="dialog_title_loading_app_list_search">"Recherche..."</string>
+<string name="dialog_title_loading_app_list_search">"Recherche…"</string>
 <string name="dialog_message_loading_app_list_search">"Recherche en cours, veuillez patienter."</string>
 <string name="dialog_account_type_provided_by_user">"Avec mon compte Google"</string>
 <string name="dialog_account_type_predefined">"avec un faux compte Yalp Store"</string>
@@ -63,7 +63,7 @@ Choisissez  « créer un mot de passe » pour être redirigé vers la page de 
 <string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
 <string name="details_download">"Télécharger"</string>
 <string name="details_install">"Installer"</string>
-<string name="details_downloading">"Téléchargement..."</string>
+<string name="details_downloading">"Téléchargement…"</string>
 <string name="details_review_dialog_title">"Quelque chose à ajouter ?"</string>
 <string name="details_review_dialog_review_title_hint">"Titre ici"</string>
 <string name="details_review_dialog_review_comment_hint">"Commentaire ici"</string>
@@ -129,9 +129,9 @@ Veuillez renseigner ce que vous étiez en train de faire quand l'erreur a eu lie
 
 Aucune donnée personnelle ou sensible n'est normalement envoyée, vous pouvez relire le message avant l'envoi en cas de doute."</string>
 <string name="details_to_play_store">"Voir dans le Play Store"</string>
-<string name="about_self_update_checking">"...vérification"</string>
+<string name="about_self_update_checking">"…vérification"</string>
 <string name="about_self_update_available">"…0.%1$d disponible"</string>
-<string name="about_self_update_unavailable">"...pas de mise à jour trouvée"</string>
+<string name="about_self_update_unavailable">"…pas de mise à jour trouvée"</string>
 <string name="action_categories">"Catégories"</string>
 <string name="list_update_all">"Tout mettre à jour"</string>
 <string name="notification_installation_complete">"Mise à jour installée."</string>
@@ -152,7 +152,7 @@ Aucune donnée personnelle ou sensible n'est normalement envoyée, vous pouvez r
 <string name="details_no_ads">"Sans pub"</string>
 <string name="dialog_title_package_id">"Un package avec ce nom a été trouvé"</string>
 <string name="dialog_message_package_id">"Un package avec ce nom existe. Aller directement sur sa page ?"</string>
-<string name="details_download_checking">"Vérification..."</string>
+<string name="details_download_checking">"Vérification…"</string>
 <string name="details_download_not_available">"Non disponible"</string>
 <string name="manual_download_incompatible">"Pour le Play Store considère, cette application est incompatible avec votre appareil.Le code de version n'a donc pas été renvoyé par les serveur du Google Play Store."</string>
 <string name="manual_download_compatible">"Le code de version a été rempli avec la dernière version de l'application compatible avec votre appareil. Pour une version précédente, choisissez un nombre inférieur : si le développeur n'a pas supprimé l'apk du Play Store, le téléchargement devrait commencer."</string>
