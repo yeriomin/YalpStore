@@ -246,4 +246,5 @@ Do not do it out of curiosity. It might break your device. Backup your device be
 The process is imperfect and vendor-specific, so it might not work.
 
 Do it?"</string>
+<string name="about_website_label">"Sitio web:"</string>
 </resources>
