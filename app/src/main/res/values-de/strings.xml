@@ -12,7 +12,10 @@
 <string name="action_settings">"Einstellungen"</string>
 <string name="action_logout">"Abmelden"</string>
 <string name="action_search">"Suchen"</string>
-<string name="action_updates">"Aktualisierungen"</string>
+
+<!-- Fuzzy -->
+<string name="action_updates">"Aktualisierungen
+"</string>
 <string name="action_ignore">"Ignoriere Aktualisierungen"</string>
 <string name="action_unignore">"Ignoriere Aktualisierungen nicht mehr"</string>
 <string name="action_whitelist">"Whitelist für Aktualisierungen"</string>
@@ -130,7 +133,7 @@ Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den M
 <string name="details_to_play_store">"Im Play Store ansehen"</string>
 <string name="about_self_update_checking">"…kontrolliere"</string>
 <string name="about_self_update_available">"…0.%1$d verfügbar"</string>
-<string name="about_self_update_unavailable">"…kein Update gefunden"</string>
+<string name="about_self_update_unavailable">"…keine Aktualisierung gefunden"</string>
 <string name="action_categories">"Kategorien"</string>
 <string name="list_update_all">"Alle aktualisieren"</string>
 <string name="notification_installation_complete">"Update installiert"</string>
@@ -197,16 +200,50 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="details_could_not_copy_apk">"APK-Datei konnte nicht kopiert werden"</string>
 <string name="action_make_system">"In System-App umwandeln"</string>
 <string name="action_make_normal">"In normale App umwandeln"</string>
-<string name="list_app_system">"System app."</string>
-<string name="list_app_exists_in_play_store">"Available in Play Store."</string>
+<string name="list_app_system">"System App."</string>
+<string name="list_app_exists_in_play_store">"Verfügbar im Play Store"</string>
 <string name="activity_title_updates_only">"Updates"</string>
 <string name="activity_title_updates_and_other_apps">"Deine Apps"</string>
-<string name="pref_category_updates_page">"Update page"</string>
-<string name="pref_updates_only">"Show only updatable apps"</string>
-<string name="pref_updates_only_summary_off">"All apps are shown now"</string>
-<string name="pref_updates_only_summary_on">"Only updatable apps are shown now"</string>
-<string name="pref_show_system_apps">"Show system apps"</string>
-<string name="pref_show_system_apps_summary_off">"System apps are hidden now"</string>
-<string name="pref_show_system_apps_summary_on">"System apps are shown now"</string>
+<string name="pref_category_updates_page">"Update Seite"</string>
+<string name="pref_updates_only">"Zeige nur Zpps, die aktualisierbar sind"</string>
+<string name="pref_updates_only_summary_off">"Alle Apps werden nun angezeigt"</string>
+<string name="pref_updates_only_summary_on">"Nur Apps, die aktualisierbar sind, werden angezeigt"</string>
+<string name="pref_show_system_apps">"Zeige System Apps"</string>
+<string name="pref_show_system_apps_summary_off">"System Apps sind nun ausgeblendet"</string>
+<string name="pref_show_system_apps_summary_on">"System Apps sind nun eingeblendet"</string>
 <string name="details_system_app_info">"System info"</string>
+<string name="activity_title_search_publisher">"Apps von %1$s"</string>
+<string name="details_run">"Starten"</string>
+<string name="dialog_title_remounting_system">"Arbeite auf /system Partition"</string>
+<string name="dialog_message_remounting_system">"Arbeite auf /system Partition. Das könnte länger dauern"</string>
+<string name="dialog_title_checking_busybox">"Überprüfe ob busybox verfügbar ist."</string>
+<string name="dialog_message_checking_busybox">"Bestimmte System Tools benötigen System Apps. Überprüfe ob diese verfügbar sind."</string>
+<string name="dialog_title_busybox_not_available">"Busybox ist nicht verfügbar"</string>
+<string name="dialog_message_busybox_not_available">"Ein gerootetes Gerät mit installiertem Busybox wird benötigt um System Apps zu bearbeiten. Soll jetzt nach einem Busybox installer gesucht werden?"</string>
+<string name="dialog_title_reboot_required">"Neustart erforderlich"</string>
+<string name="dialog_message_reboot_required">"Änderungen werden nach einem Neustart übernommen. Jetzt neu starten?"</string>
+<string name="dialog_title_system_app_warning">"Achtung!"</string>
+<string name="dialog_message_system_app_warning_to_system">"Sie sind im Begriff diese App in eine System App umzuwandeln. Dies ist für die meisten Apps nicht erforderlich.
+
+Bitte beachten Sie, dass eine solche Umwandlung vom Android OS nicht unterstützt wird und daher immer ein Risiko besteht, dass der Vorgang nicht erfolgreich ist oder sogar zu Problemen führt.
+
+Fahren Sie nur fort, wenn Sie genau wissen was Sie tun. Die Umwandlung könnte Ihr Gerät funktionsuntüchtig machen. Erstellen Sie in jedem Fall vorher ein Backup ihrer Daten."</string>
+<string name="dialog_message_system_app_warning_to_normal">"Sie sind im Begriff diese App in eine System App umzuwandeln. Dies ist für die meisten Apps nicht erforderlich.
+
+Bitte beachten Sie, dass eine solche Umwandlung vom Android OS nicht unterstützt wird und daher immer ein Risiko besteht, dass der Vorgang nicht erfolgreich ist oder sogar zu Problemen führt.
+
+Fahren Sie nur fort, wenn Sie genau wissen was Sie tun. Die Umwandlung könnte Ihr Gerät funktionsuntüchtig machen. Erstellen Sie in jedem Fall vorher ein Backup ihrer Daten."</string>
+<string name="list_check_updates">"Nach Updates suchen"</string>
+<string name="pref_background_update_interval_manually">"nur manuell"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Sind Sie sicher, dass Sie diese System App entfernen möchten? System Apps sind von ihrem Geräte Hersteller vorinstalliert. Sie werden wahrscheinlich benötigt, damit Ihr Gerät wie gewünscht funktioniert.
+
+Bitte beachten Sie, dass das Entfernen von System Apps vom Android OS nicht unterstützt wird und daher immer ein Risiko besteht, dass der Vorgang nicht erfolgreich ist oder sogar zu Problemen führt.
+
+Fahren Sie nur fort, wenn Sie genau wissen was Sie tun. Das Entfernen von System Apps könnte Ihr Gerät funktionsuntüchtig machen. Erstellen Sie in jedem Fall vorher ein Backup ihrer Daten."</string>
+<string name="dialog_title_system_app_self">"Yalp zu einer System App machen"</string>
+<string name="dialog_message_system_app_self">"Yalp Store muss zu einer System App umgewandelt werden, um die  privilegierten Zulassungen (privileged permissions) für Hintergrund Aktualisierungen zu nutzen.
+
+Diese Funktion ist noch in Entwicklung und kann je nach Hersteller unterschiedlich gut funktionieren.
+
+Fortfahren?"</string>
 </resources>
