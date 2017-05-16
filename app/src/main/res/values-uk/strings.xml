@@ -82,7 +82,6 @@
 
 Майте на увазі, що цей додаток порушує договір використанні Play Store.
 Тому безпечніше використовувати будь-який одноразовий обліковий запис google, під яким хоча б раз увійшли до Play Store."</string>
-<string name="activity_title_updates_only">"Оновлення"</string>
 <string name="activity_title_search">"Пошук: %1$s"</string>
 <string name="notification_download_complete">"Завантаження завершене. Торкніться для встановлення."</string>
 <string name="notification_download_complete_toast">"%1$s завантажено. Торкніться кнопки Встановити чи сповіщення для встановлення."</string>
@@ -168,7 +167,7 @@
 <string name="details_uninstall">"Видалити"</string>
 <string name="notification_download_starting">"запуск завантаження"</string>
 <string name="notification_download_progress">"%1$s з %2$s завантажено"</string>
-<string name="pref_requested_language">"Мова запиту до Play Store "</string>
+<string name="pref_requested_language">"Мова запиту до Play Store"</string>
 <string name="pref_requested_language_default">"Ваша мова"</string>
 <string name="pref_hide_apps_with_ads">"Приховати додатки з рекламою"</string>
 <string name="pref_hide_apps_with_ads_summary_off">"Показувати додатки з рекламою"</string>
@@ -181,4 +180,70 @@
 <string name="pref_category_installation">"Втсановлення"</string>
 <string name="pref_category_spoofing">"Spoofing"</string>
 <string name="pref_category_ui">"Інтерфейс"</string>
+<string name="details_installing">"Installing…"</string>
+<string name="details_installed">"Installed successfully"</string>
+<string name="details_install_failure">"Could not install"</string>
+<string name="notification_download_complete_new_permissions">"Download complete. New permissions requested."</string>
+<string name="notification_download_complete_new_permissions_toast">"%1$s downloaded. New version of the app requests more permissions. Check the new permissions list."</string>
+<string name="pref_not_privileged">"Only available if Yalp is a system app"</string>
+<string name="pref_installation_method">"Installation method"</string>
+<string name="pref_installation_method_default">"Default installation dialog, no background installs"</string>
+<string name="pref_installation_method_root">"Using root"</string>
+<string name="pref_installation_method_privileged">"Using system permissions"</string>
+<string name="pref_background_update_download_summary_off">"You only get a notification"</string>
+<string name="pref_background_update_download_summary_on">"Updates are downloaded if found"</string>
+<string name="pref_background_update_download">"Also download the updates"</string>
+<string name="details_not_available_on_play_store">"Not available on Play Store"</string>
+<string name="action_manual">"Manual download"</string>
+<string name="action_get_local_apk">"Get local apk"</string>
+<string name="details_saved_in_downloads">"Saved in your Downloads folder"</string>
+<string name="details_could_not_copy_apk">"Could not copy apk"</string>
+<string name="action_make_system">"Convert to system app"</string>
+<string name="action_make_normal">"Convert to normal app"</string>
+<string name="list_app_system">"System app."</string>
+<string name="list_app_exists_in_play_store">"Available in Play Store."</string>
+<string name="activity_title_updates_only">"Оновлення"</string>
+<string name="activity_title_updates_and_other_apps">"Your apps"</string>
+<string name="pref_category_updates_page">"Update page"</string>
+<string name="pref_updates_only">"Show only updatable apps"</string>
+<string name="pref_updates_only_summary_off">"All apps are shown now"</string>
+<string name="pref_updates_only_summary_on">"Only updatable apps are shown now"</string>
+<string name="pref_show_system_apps">"Show system apps"</string>
+<string name="pref_show_system_apps_summary_off">"System apps are hidden now"</string>
+<string name="pref_show_system_apps_summary_on">"System apps are shown now"</string>
+<string name="details_system_app_info">"System info"</string>
+<string name="activity_title_search_publisher">"Apps by %1$s"</string>
+<string name="details_run">"Запуск"</string>
+<string name="dialog_title_remounting_system">"Working with /system partition"</string>
+<string name="dialog_message_remounting_system">"Working with /system partition. This might take some time."</string>
+<string name="dialog_title_checking_busybox">"Checking if busybox is available"</string>
+<string name="dialog_message_checking_busybox">"Certain system tools are required to work with system apps. Checking if they are available."</string>
+<string name="dialog_title_busybox_not_available">"Busybox not available"</string>
+<string name="dialog_message_busybox_not_available">"A rooted device with busybox installed is required to work with system apps. Search for a busybox installer now?"</string>
+<string name="dialog_title_reboot_required">"Reboot required"</string>
+<string name="dialog_message_reboot_required">"Changes will be applied after reboot. Reboot now?"</string>
+<string name="dialog_title_system_app_warning">"Warning!"</string>
+<string name="dialog_message_system_app_warning_to_system">"You have selected to convert the app into system app. Most apps do not need to be system apps to work.
+
+Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+
+Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
+<string name="dialog_message_system_app_warning_to_normal">"You have selected to convert a system app into a normal app. Most system apps need to be system apps to work.
+
+Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+
+Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
+<string name="list_check_updates">"Check for updates"</string>
+<string name="pref_background_update_interval_manually">"Only manually"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.
+
+Keep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+
+Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
+<string name="dialog_title_system_app_self">"Making Yalp a system app"</string>
+<string name="dialog_message_system_app_self">"Using privileged permissions to allow background installation of apps requires making Yalp Store a system app.
+
+The process is imperfect and vendor-specific, so it might not work.
+
+Do it?"</string>
 </resources>
