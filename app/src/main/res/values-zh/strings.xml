@@ -88,7 +88,7 @@
 <string name="notification_download_complete_signature_mismatch">"下载完成。 但apk签名不匹配。"</string>
 <string name="notification_download_complete_signature_mismatch_toast">"已下载%1$s。但是apk签名与安装的应用程序不匹配。您可能必须首先卸载它。"</string>
 <string name="notification_updates_available_title">"应用有可用更新。"</string>
-<string name="notification_updates_available_message">"您的应用的％1 $ d可用更新。"</string>
+<string name="notification_updates_available_message">"您的应用的%1$d可用更新。"</string>
 <string name="pref_hide_nonfree_apps_summary_off">"付费应用程序现在显示"</string>
 <string name="pref_hide_nonfree_apps_summary_on">"付费应用程序现在不显示"</string>
 <string name="pref_hide_nonfree_apps">"隐藏付费应用"</string>
