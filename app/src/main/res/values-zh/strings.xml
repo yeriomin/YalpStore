@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!-- 开发者邮箱 -->
+<string name="about_developer_email_label">"开发者邮箱："</string>
+<string name="about_logged_in">"你已登录为："</string>
+<string name="about_copied_to_clipboard">"复制到剪贴板"</string>
+<string name="list_line_2_updatable">"更新于 %1$s"</string>
+<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
+<string name="list_empty_updates">"没有应用需要更新"</string>
+<string name="list_empty_search">"未找到应用"</string>
+<string name="list_incompatible">"不兼容的"</string>
+<string name="action_about">"关于"</string>
+<string name="action_settings">"设置"</string>
+<string name="action_logout">"注销"</string>
+<string name="action_search">"搜索"</string>
+<string name="action_updates">"更新"</string>
+<string name="action_ignore">"忽略更新"</string>
+<string name="action_unignore">"取消忽略更新"</string>
+<string name="action_whitelist">"应用白名单"</string>
+<string name="action_unwhitelist">"忽略更新"</string>
+<string name="search_title">"搜索应用程序"</string>
+<string name="dialog_two_factor_cancel">"不是现在"</string>
+<string name="dialog_two_factor_create_password">"创建密码"</string>
+<string name="dialog_title_two_factor">"两步验证"</string>
+<string name="dialog_message_two_factor">"看来你已经为你的帐户启用了两步验证。
+
+请为 Yalp Store 创建一个专用的应用程序密码并使用它来登录到 Yalp Store。
+
+点击“创建密码”将被重定向到密码创建页面。"</string>
+<string name="dialog_title_logout">"注销？"</string>
+<string name="dialog_message_logout">"确定要注销吗？"</string>
+<string name="dialog_title_reviews">"获取评论"</string>
+<string name="dialog_message_reviews">"获取评论中，请等待。"</string>
+<string name="dialog_title_purchasing_app">"正在下载应用"</string>
+<string name="dialog_message_purchasing_app">"开始下载所请求应用，请等待。"</string>
+<string name="dialog_title_loading_app_list_search">"查找"</string>
+<string name="dialog_message_loading_app_list_search">"请稍等，正在查找本机应用。"</string>
+<string name="dialog_account_type_provided_by_user">"登陆我自己的谷歌账号"</string>
+<string name="dialog_account_type_predefined">"登陆YALP谷歌账号。"</string>
+<string name="dialog_account_type_title">"您想登录Google Play商店吗？"</string>
+<string name="dialog_title_logging_in">"登陆"</string>
+<string name="dialog_message_logging_in_provided_by_user">"正在尝试登陆您所提供的凭证。"</string>
+<string name="dialog_message_logging_in_predefined">"正在尝试登陆YALP所提供的凭证。"</string>
+<string name="error_incorrect_password">"不正确的邮箱或密码。"</string>
+<string name="error_credentials_empty">"请提供您的google账号。"</string>
+<string name="error_no_network">"没有网络连接。"</string>
+<string name="error_network_other">"网络错误：%1$s"</string>
+<string name="error_not_purchased">"您似乎并没有购买这个应用，是否重定向到google页面去查找本应用?"</string>
+<string name="error_downloads_directory_not_writable">"无法创建下载目录或其属性只读。"</string>
+<string name="error_token_dispenser_problem">"无法登录不存在的帐户，尝试使用YALP帐户。"</string>
+<string name="details_installs">"%1$s ↓"</string>
+<string name="details_rating">"%1$.1f★"</string>
+<string name="details_rating_specific">"%1$d★ %2$d"</string>
+<string name="details_updated">"更新 %1$s"</string>
+<string name="details_size">"应用大小 %1$s"</string>
+<string name="details_description">"描述"</string>
+<string name="details_changelog">"新特性"</string>
+<string name="details_screenshots">"截图"</string>
+<string name="details_reviews">"复查"</string>
+<string name="details_rate_this_app">"为这个应用软件评分："</string>
+<string name="details_you_rated_this_app">"你已评价这个应用："</string>
+<string name="details_permissions">"权限"</string>
+<string name="details_versionName">"版本 %1$s"</string>
+<string name="details_versionName_updatable">"版本 %1$s → %2$s"</string>
+<string name="details_download">"下载"</string>
+<string name="details_install">"安装"</string>
+<string name="details_downloading">"下载中"</string>
+<string name="details_review_dialog_title">"还有什么要补充的？"</string>
+<string name="details_review_dialog_review_title_hint">"标题在这里"</string>
+<string name="details_review_dialog_review_comment_hint">"在这里评论"</string>
+<string name="details_review_dialog_fields_optional">"你可以留下任何"</string>
+<string name="details_apps_by_this_dev">"开发者的其他应用程序"</string>
+<string name="details_similar_apps">"类似的应用"</string>
+<string name="details_users_also_installed">"用户也安装了"</string>
+<string name="details_signature_mismatch">"新版本签名与旧版本不同，请先卸载旧版本应用再安装新版本。（注意：卸载旧版本会清除该应用存储的所有内部数据）"</string>
+<string name="suffix_million">"百万"</string>
+<string name="suffix_billion">"十亿"</string>
+<string name="credentials_hint_email">"邮箱"</string>
+<string name="credentials_hint_password">"密码"</string>
+<string name="credentials_title">"Google帐户访问权限"</string>
+<string name="credentials_message">"需要Google帐户的电子邮件地址和密码才能使用此应用。
+
+请记住，使用此应用程序违反Play Store ToS。使用已经登录Play Store的一次性Google帐户可能会更安全，并已接受Play Store ToS。"</string>
+<string name="activity_title_search">"搜索：“%1$s”"</string>
+<string name="notification_download_complete">"下载完成，点击安装。"</string>
+<string name="notification_download_complete_toast">"%1$s 下载完成，触摸安装按钮或通知安装。"</string>
+<string name="notification_download_complete_signature_mismatch">"下载完成。 但apk签名不匹配。"</string>
+<string name="notification_download_complete_signature_mismatch_toast">"已下载%1$s。但是apk签名与安装的应用程序不匹配。您可能必须首先卸载它。"</string>
+<string name="notification_updates_available_title">"应用有可用更新。"</string>
+<string name="notification_updates_available_message">"您的应用的％1 $ d可用更新。"</string>
+<string name="pref_hide_nonfree_apps_summary_off">"付费应用程序现在显示"</string>
+<string name="pref_hide_nonfree_apps_summary_on">"付费应用程序现在不显示"</string>
+<string name="pref_hide_nonfree_apps">"隐藏付费应用"</string>
+<string name="pref_auto_install_summary_off">"当用户点击完成通知时安装应用程序"</string>
+<string name="pref_auto_install_summary_on">"应用程序在下载完成后立即安装"</string>
+<string name="pref_auto_install">"立即安装应用程序"</string>
+<string name="pref_update_list_white_or_black_black">"检查更新时，选择的应用将被忽略"</string>
+<string name="pref_update_list_white_or_black_white">"只会选择所选的应用程序进行更新"</string>
+<string name="pref_update_list_white_or_black">"用于更新的黑色或白色应用程序列表"</string>
+<string name="pref_update_list_black">"更改应用程序黑名单"</string>
+<string name="pref_update_list_white">"更改应用程序白名单"</string>
+<string name="pref_ui_theme">"主题"</string>
+<string name="pref_ui_theme_none">"默认"</string>
+<string name="pref_ui_theme_light">"明亮"</string>
+<string name="pref_ui_theme_dark">"夜间"</string>
+<string name="pref_ui_theme_black">"黑暗"</string>
+<string name="pref_background_update_interval_never">"只有Yalp Store才推出"</string>
+<string name="pref_background_update_interval_hourly">"每小时"</string>
+<string name="pref_background_update_interval_daily">"每天"</string>
+<string name="pref_background_update_interval_weekly">"每周"</string>
+<string name="pref_background_update_interval">"定期检查更新"</string>
+<string name="download_manager_ERROR_UNKNOWN">"未知错误"</string>
+<string name="download_manager_ERROR_FILE_ERROR">"未知的文件存储错误。"</string>
+<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"接收到HTTP代码，下载管理器无法处理。这是服务器错误。"</string>
+<string name="download_manager_ERROR_HTTP_DATA_ERROR">"在HTTP级别发生接收或处理数据时发生错误。"</string>
+<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"重定向太多"</string>
+<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"存储空间不足。"</string>
+<string name="download_manager_ERROR_DEVICE_NOT_FOUND">"没有找到外部存储设备。也许SD卡没有安装。"</string>
+<string name="download_manager_ERROR_CANNOT_RESUME">"有些可能会出现暂时性错误，但我们无法恢复下载。请稍后再试。"</string>
+<string name="download_manager_ERROR_BLOCKED">"由于无法请求应用程序上的NetworkPolicyManager控件，下载失败。检查您的设置。"</string>
+<string name="search_filter">"所有应用"</string>
+<string name="details_category">"类别：%1$s"</string>
+<string name="pref_delete_apk_after_install_summary_off">"现在安装后，.apks不会被删除"</string>
+<string name="pref_delete_apk_after_install_summary_on">"现在安装后删除.apks"</string>
+<string name="pref_delete_apk_after_install">"安装后删除.apk"</string>
+<string name="dialog_title_application_crashed">"抱歉，Yalp Store崩溃了。"</string>
+<string name="dialog_message_application_crashed">"您可以通过向开发人员发送错误数据来帮助解决此问题。点击确定将带您到您的默认电子邮件应用程序，一个完整的电子邮件可以发送给开发人员。
+
+请说明发生错误时您尝试做什么。
+
+没有收集私人或敏感信息，如果您怀疑，请检查信件内容。"</string>
+<string name="details_to_play_store">"在Play商店中查看"</string>
+<string name="about_self_update_checking">"…检查"</string>
+<string name="about_self_update_available">"…0.%1$d可用"</string>
+<string name="about_self_update_unavailable">"…没有找到可用更新"</string>
+<string name="action_categories">"分类"</string>
+<string name="list_update_all">"全部更新"</string>
+<string name="notification_installation_complete">"已安装更新。"</string>
+<string name="notification_installation_complete_toast">"%1$s已更新。"</string>
+<string name="notification_installation_failed">"更新安装失败。"</string>
+<string name="notification_installation_failed_toast">"无法更新%1$s。root没有授予？"</string>
+<string name="pref_background_update_install_summary_off">"您只收到通知"</string>
+<string name="pref_background_update_install_summary_on">"如果找到更新（root）"</string>
+<string name="pref_background_update_install">"还安装更新（root）"</string>
+<string name="pref_no_root">"此选项仅在已root设备上可用"</string>
+<string name="list_app_has_ads">"有广告"</string>
+<string name="list_app_no_ads">"无广告"</string>
+<string name="list_app_depends_on_gsf">"取决于 GSF"</string>
+<string name="list_app_independent_from_gsf">"不依赖GSF"</string>
+<string name="details_depends_on">"取决于：%1$s"</string>
+<string name="details_no_dependencies">"无"</string>
+<string name="details_contains_ads">"包含广告。"</string>
+<string name="details_no_ads">"无广告"</string>
+<string name="dialog_title_package_id">"包含此名称的包存在"</string>
+<string name="dialog_message_package_id">"有一个这个确切名称的包。你想直接去其详细信息页面吗？"</string>
+<string name="details_download_checking">"检查中…"</string>
+<string name="details_download_not_available">"不可用"</string>
+<string name="manual_download_incompatible">"Google Play商店认为此应用与您的设备不兼容。这意味着Google Play商店服务器尚未退回版本代码。"</string>
+<string name="manual_download_compatible">"版本代码字段已预先填写此应用程序的最新兼容版本代码。如果您想要以前的版本，只需输入一个小于当前值的数字即可。如果开发人员尚未从Play Store中删除之前版本的apk，您可能可以开始下载。"</string>
+<string name="manual_download_warning">"此页面允许您手动选择要下载的应用程序的版本。版本代码是标识应用版本的数字。它从1开始，每当有新版本由应用程序开发人员增加。通常的Play商店让您只下载与您的设备兼容的最新的apk。通过手动提供此号码，您也可以获得其他版本。
+
+请注意，Google Play商店不支持下载任意版本的应用程式。您的成功取决于版本代码的幸运猜测。即使你猜对了，你得到下载开始，你可能会得到一个不兼容的apk。很有可能，你正在浪费你的时间！"</string>
+<string name="manual_download_hint_version_code">"版本代码在这里"</string>
+<string name="list_has_update">"可更新"</string>
+<string name="list_no_update">"已经是最新的"</string>
+<string name="details_uninstall">"卸载"</string>
+<string name="notification_download_starting">"开始下载"</string>
+<string name="notification_download_progress">"%1$s的%2$s已下载"</string>
+<string name="pref_requested_language">"Play商店请求语言"</string>
+<string name="pref_requested_language_default">"您的默认语言"</string>
+<string name="pref_hide_apps_with_ads">"隐藏广告应用"</string>
+<string name="pref_hide_apps_with_ads_summary_off">"现在显示有广告的应用"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"现在不显示带有广告的应用"</string>
+<string name="pref_device_to_pretend_to_be">"假装是不同的设备"</string>
+<string name="pref_device_to_pretend_to_be_default">"您的原始设备信息"</string>
+<string name="pref_device_to_pretend_to_be_toast">"重新登录后，此应用将会更改"</string>
+<string name="pref_category_updates">"升级"</string>
+<string name="pref_category_search">"搜索筛选"</string>
+<string name="pref_category_installation">"安装"</string>
+<string name="pref_category_spoofing">"伪装"</string>
+<string name="pref_category_ui">"显示"</string>
+<string name="details_installing">"安装中…"</string>
+<string name="details_installed">"已成功安装"</string>
+<string name="details_install_failure">"无法安装"</string>
+<string name="notification_download_complete_new_permissions">"下载完成。请求新的权限。"</string>
+<string name="notification_download_complete_new_permissions_toast">"已下载%1$s。新版本的应用程序请求更多权限。检查新的权限列表。"</string>
+<string name="pref_not_privileged">"只有Yalp是系统应用程序才可用"</string>
+<string name="pref_installation_method">"安装方法"</string>
+<string name="pref_installation_method_default">"默认安装对话框，没有后台安装"</string>
+<string name="pref_installation_method_root">"使用root"</string>
+<string name="pref_installation_method_privileged">"使用系统权限"</string>
+<string name="pref_background_update_download_summary_off">"您只收到通知"</string>
+<string name="pref_background_update_download_summary_on">"如果找到更新的话"</string>
+<string name="pref_background_update_download">"仍然下载更新"</string>
+<string name="details_not_available_on_play_store">"Play商店不可用"</string>
+<string name="action_manual">"手动下载"</string>
+<string name="action_get_local_apk">"获取本地的apk"</string>
+<string name="details_saved_in_downloads">"保存在您的下载文件夹中"</string>
+<string name="details_could_not_copy_apk">"无法复制apk"</string>
+<string name="action_make_system">"转换为系统应用程序"</string>
+<string name="action_make_normal">"转换为普通应用"</string>
+<string name="list_app_system">"系统应用"</string>
+<string name="list_app_exists_in_play_store">"可在Play商店"</string>
+<string name="activity_title_updates_only">"更新"</string>
+<string name="activity_title_updates_and_other_apps">"你的应用"</string>
+<string name="pref_category_updates_page">"更新页面"</string>
+<string name="pref_updates_only">"只显示可更新应用"</string>
+<string name="pref_updates_only_summary_off">"所有应用都已展示"</string>
+<string name="pref_updates_only_summary_on">"只有可更新应用可展示"</string>
+<string name="pref_show_system_apps">"展示系统应用"</string>
+<string name="pref_show_system_apps_summary_off">"系统应用已隐藏"</string>
+<string name="pref_show_system_apps_summary_on">"系统应用已展示"</string>
+<string name="details_system_app_info">"系统信息"</string>
+<string name="activity_title_search_publisher">"%1$s的应用"</string>
+<string name="details_run">"运行"</string>
+<string name="dialog_title_remounting_system">"使用/系统分区"</string>
+<string name="dialog_message_remounting_system">"使用/系统分区。这可能需要一些时间。"</string>
+<string name="dialog_title_checking_busybox">"检查busybox是否可用"</string>
+<string name="dialog_message_checking_busybox">"某些系统工具需要与系统应用程序配合使用。检查是否可用"</string>
+<string name="dialog_title_busybox_not_available">"Busybox不可用"</string>
+<string name="dialog_message_busybox_not_available">"需要安装busybox的根设备才能与系统应用程序配合使用。现在搜索一个busybox安装程序？"</string>
+<string name="dialog_title_reboot_required">"需要重启"</string>
+<string name="dialog_message_reboot_required">"更改将在重新启动后应用。马上重启？"</string>
+<string name="dialog_title_system_app_warning">"警告"</string>
+<string name="dialog_message_system_app_warning_to_system">"您已经选择将该应用程序转换为系统应用程序。大多数应用程序不需要系统应用程序工作。
+
+请记住，Android OS不支持转换过程，因此不安全，不能保证工作。
+
+不要因为好奇而做。它可能会破坏您的设备。尝试前备份您的设备。"</string>
+<string name="dialog_message_system_app_warning_to_normal">"您已经选择将系统应用程序转换为普通应用程序。大多数系统应用程序需要系统应用程序才能正常工作。
+
+请记住，Android OS不支持转换过程，因此不安全，不能保证工作。
+
+不要因为好奇而做。它可能会破坏您的设备。尝试前备份您的设备。"</string>
+<string name="list_check_updates">"检查更新"</string>
+<string name="pref_background_update_interval_manually">"只能手动"</string>
+<string name="dialog_message_system_app_warning_uninstall">"您确定要删除此系统应用程序吗？系统应用程序由设备供应商放入您的设备，并且最有可能需要它按预期的方式运行。
+
+请记住，删除系统应用程序不受Android操作系统的支持，因此不安全，不能保证工作。
+
+不要因为好奇而做。它可能会破坏您的设备。尝试前备份您的设备。"</string>
+<string name="dialog_title_system_app_self">"使Yalp成为系统应用程序"</string>
+<string name="dialog_message_system_app_self">"使用特权来允许后台安装应用程序需要使Yalp Store系统应用程序。
+
+这个过程是不完善的和供应商特定的，所以它可能不起作用。
+
+做吗"</string>
+<string name="about_website_label">"网址"</string>
+</resources>
