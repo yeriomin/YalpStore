@@ -44,14 +44,17 @@ public abstract class InstallerAbstract {
     public void verifyAndInstall(App app) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         if (!new ApkSignatureVerifier(context).match(app.getPackageName(), file)) {
+            Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
             if (background) {
                 notifySignatureMismatch(app);
             } else {
                 getSignatureMismatchDialog().show();
             }
         } else if (background && !new PermissionsComparator(context).isSame(app)) {
+            Log.i(getClass().getName(), "New permissions for " + app.getPackageName());
             notifyNewPermissions(app);
         } else {
+            Log.i(getClass().getName(), "Installing " + app.getPackageName());
             install(app);
         }
     }
