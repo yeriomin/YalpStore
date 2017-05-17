@@ -238,7 +238,7 @@ Ricorda che il processo di conversione NON è supportato da Android, NON è sicu
 Non farlo per curiosità, potrebbe danneggiare il dispositivo. Fai un backup prima di provare."</string>
 <string name="list_check_updates">"Verifica aggiornamenti"</string>
 <string name="pref_background_update_interval_manually">"Solo manualmente"</string>
-<string name="dialog_message_system_app_warning_uninstall">"Sicuro di voler rimuovere questa app di sistema? Le app di sistema vengono inserite dal produttore del dispositivo e sono necessarie perchè funzioni come previsto.
+<string name="dialog_message_system_app_warning_uninstall">"Sicuro di voler rimuovere questa app di sistema? Le app di sistema vengono inserite dal produttore del dispositivo e sono necessarie perché funzioni come previsto.
 
 Ricorda che rimuovere app di ssitema NON è supportato da Android, NON è sicuro e NON ne viene garantito il funzionamento.
 
