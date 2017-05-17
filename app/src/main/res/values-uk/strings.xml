@@ -180,7 +180,7 @@
 <string name="pref_category_installation">"Втсановлення"</string>
 <string name="pref_category_spoofing">"Spoofing"</string>
 <string name="pref_category_ui">"Інтерфейс"</string>
-<string name="details_installing">"Встановлення..."</string>
+<string name="details_installing">"Встановлення…"</string>
 <string name="details_installed">"Встановлено успішно"</string>
 <string name="details_install_failure">"Не вдалося встановити"</string>
 <string name="notification_download_complete_new_permissions">"Завантаження завершено. Необхідні нові дозволи."</string>
