@@ -223,28 +223,28 @@ Ten en cuenta que Play Store no está a favor de descargar versiones arbitrarias
 <string name="dialog_title_reboot_required">"Se necesita reiniciar"</string>
 <string name="dialog_message_reboot_required">"Los cambios tendrán efecto una vez se reinicie. ¿Reiniciar ahora?"</string>
 <string name="dialog_title_system_app_warning">"¡Cuidado!"</string>
-<string name="dialog_message_system_app_warning_to_system">"You have selected to convert the app into system app. Most apps do not need to be system apps to work.
+<string name="dialog_message_system_app_warning_to_system">"Has seleccionado integrar una aplicación en el sistema. La mayoría de aplicaciones no necesitan integrarse en el sistema para funcionar.
 
-Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Ten en cuenta que este proceso de conversión NO está soportado en el SO Android y, por tanto, NO puede considerarse seguro y NO tiene garantías de funcionar correctamente.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
-<string name="dialog_message_system_app_warning_to_normal">"You have selected to convert a system app into a normal app. Most system apps need to be system apps to work.
+No lo hagas solo por curiosidad, podría romper tu dispositivo. Haz una copia de seguridad del dispositivo antes de seguir."</string>
+<string name="dialog_message_system_app_warning_to_normal">"Has seleccionado convertir una aplicación del sistema en aplicación de usuario. La mayoría de aplicaciones del sistema necesitan ser parte del sistema para funcionar.
 
-Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Ten en cuenta que este proceso de conversión NO está soportado en el SO Android y, por tanto, NO puede considerarse seguro y NO tiene garantías de funcionar correctamente.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
+No lo hagas solo por curiosidad, podría romper tu dispositivo. Haz una copia de seguridad del dispositivo antes de seguir."</string>
 <string name="list_check_updates">"Comprobar actualizaciones"</string>
 <string name="pref_background_update_interval_manually">"Solo manualmente"</string>
-<string name="dialog_message_system_app_warning_uninstall">"Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.
+<string name="dialog_message_system_app_warning_uninstall">"¿Seguro que quieres eliminar esta aplicación del sistema? Las aplicaciones del sistema de tu dispositivo han sido puestas ahí por el fabricante y probablemente se necesitan para que todo funcione correctamente.
 
-Keep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Ten en cuenta que eliminar aplicaciones del sistema NO está soportado en el SO Android y, por tanto, NO puede considerarse seguro y NO tiene garantías de funcionar correctamente.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
+No lo hagas solo por curiosidad, podría romper tu dispositivo. Haz una copia de seguridad del dispositivo antes de seguir."</string>
 <string name="dialog_title_system_app_self">"Convirtiendo Yalp en una apli del sistema"</string>
-<string name="dialog_message_system_app_self">"Using privileged permissions to allow background installation of apps requires making Yalp Store a system app.
+<string name="dialog_message_system_app_self">"Usar permisos privilegiados para permitir la instalación en segundo plano de aplicaciones requiere que Yalp Store se integre en el sistema.
 
-The process is imperfect and vendor-specific, so it might not work.
+El proceso de conversión es imperfecto y específico para cada marca, así que podría no funcionar.
 
-Do it?"</string>
+¿Continuar de todas maneras?"</string>
 <string name="about_website_label">"Sitio web:"</string>
 </resources>
