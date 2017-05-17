@@ -19,24 +19,24 @@
 <string name="action_unwhitelist">"Ignoruj aktualizacje"</string>
 <string name="search_title">"Szukaj aktualizacji"</string>
 <string name="dialog_two_factor_cancel">"Nie teraz"</string>
-<string name="dialog_two_factor_create_password">"Ustaw hasło"</string>
+<string name="dialog_two_factor_create_password">"Utwórz hasło"</string>
 <string name="dialog_title_two_factor">"Weryfikacja dwuetapowa"</string>
 <string name="dialog_message_two_factor">"Wygląda na to, że masz włączoną weryfikację dwuetapową na Twoim koncie. 
 
 Proszę o stworzenie dedykowanego hasła aplikacji dla Yalp Store i używanie go do logowania. 
 
 Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz mógł utworzyć to hasło."</string>
-<string name="dialog_title_logout">"Wyloguj?"</string>
+<string name="dialog_title_logout">"Wylogować?"</string>
 <string name="dialog_message_logout">"Jesteś pewien, że chcesz się wylogować?"</string>
 <string name="dialog_title_reviews">"Trwa ładowanie recenzji"</string>
 <string name="dialog_message_reviews">"Proszę poczekać. Trwa ładowanie recenzji."</string>
 <string name="dialog_title_purchasing_app">"Pobieranie aplikacji"</string>
-<string name="dialog_message_purchasing_app">"Proszę czekać. Zaczynam pobieranie wskazanej aplikacji."</string>
+<string name="dialog_message_purchasing_app">"Proszę czekać. Zaczynam pobieranie aplikacji."</string>
 <string name="dialog_title_loading_app_list_search">"Wyszukiwanie"</string>
 <string name="dialog_message_loading_app_list_search">"Proszę czekać. Szukanie aplikacji."</string>
 <string name="dialog_account_type_provided_by_user">"Z moim kontem Google"</string>
 <string name="dialog_account_type_predefined">"Bez konta (eksperymentalne)"</string>
-<string name="dialog_account_type_title">"W jaki sposób chciałbyś zalogować się do sklepu Google Play?"</string>
+<string name="dialog_account_type_title">"W jaki sposób chciałbyś zalogować się do Google Play?"</string>
 <string name="dialog_title_logging_in">"Logowanie"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Próba logowania"</string>
 <string name="dialog_message_logging_in_predefined">"Próba logowania danymi dostarczonymi przez Yalp Store"</string>
@@ -54,15 +54,15 @@ Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz 
 <string name="details_size">"Rozmiar aplikacji %1$s"</string>
 <string name="details_description">"Opis:"</string>
 <string name="details_changelog">"Co nowego:"</string>
-<string name="details_screenshots">"Screeny:"</string>
+<string name="details_screenshots">"Zrzuty ekranu:"</string>
 <string name="details_reviews">"Recenzje:"</string>
 <string name="details_rate_this_app">"Oceń tę aplikację:"</string>
 <string name="details_you_rated_this_app">"Oceniłeś tę aplikację:"</string>
 <string name="details_permissions">"Uprawnienia:"</string>
 <string name="details_versionName">"Wersja %1$s"</string>
 <string name="details_versionName_updatable">"Wersja %1$s → %2$s"</string>
-<string name="details_download">"Pobrane"</string>
-<string name="details_install">"Instalacja"</string>
+<string name="details_download">"Pobierz"</string>
+<string name="details_install">"Instaluj"</string>
 <string name="details_downloading">"Pobieranie…"</string>
 <string name="details_review_dialog_title">"Dodać coś jeszcze?"</string>
 <string name="details_review_dialog_review_title_hint">"tytuł"</string>
@@ -83,7 +83,7 @@ Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania
 <string name="activity_title_search">"Wyszukiwanie: \"%1$s\""</string>
 <string name="notification_download_complete">"Pobieranie zakończone. Dotknij, by zainstalować."</string>
 <string name="notification_download_complete_toast">"Pobieranie %1$s zakończone. Dotknij powiadomienie bądź przycisk instalacji, by zainstalować."</string>
-<string name="notification_download_complete_signature_mismatch">"Pobieranie zakończone."</string>
+<string name="notification_download_complete_signature_mismatch">"Pobieranie zakończone. Niezgodność podpisu cyfrowego apk."</string>
 <string name="notification_download_complete_signature_mismatch_toast">"Pobieranie %1$s zakończone. Sygnatura pliku .apk nie jest zgodna z wersją aplikacji zainstalowaną na twoim urządzeniu. Jeśli pobrałeś ją ze sklepu Google Play, może być konieczne odinstalowanie poprzedniej wersji."</string>
 <string name="notification_updates_available_title">"Dostępne aktualizacje aplikacji."</string>
 <string name="notification_updates_available_message">"Dostępne są aktualizacje dla %1$d z Twoich aplikacji."</string>
@@ -119,10 +119,10 @@ Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania
 <string name="download_manager_ERROR_BLOCKED">"Pobieranie nie powiodło się z powodu kontroli NetworkPolicyManager nad żądaniem aplikacji. Sprawdź swoje ustawienia."</string>
 <string name="search_filter">"Wszystkie aplikacje"</string>
 <string name="details_category">"Kategoria: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Teraz pliki .apk nie będą usuwane po instalacji"</string>
-<string name="pref_delete_apk_after_install_summary_on">"Teraz pliki .apk są usuwane po instalacji"</string>
+<string name="pref_delete_apk_after_install_summary_off">"Pliki .apk nie będą teraz usuwane po instalacji"</string>
+<string name="pref_delete_apk_after_install_summary_on">"Pliki .apk są teraz usuwane po instalacji"</string>
 <string name="pref_delete_apk_after_install">"Usuwaj pliki .apk po instalacji"</string>
-<string name="dialog_title_application_crashed">"Przepraszamy, Yalp Store śpi z rybkami"</string>
+<string name="dialog_title_application_crashed">"Przepraszamy, Yalp Store poszedł spać z rybkami."</string>
 <string name="dialog_message_application_crashed">"Możesz pomóc to naprawić wysyłając dane o błędzie deweloperowi. Klikając OK zostaniesz przeniesiony do swojej domyślnej aplikacji e-mail z gotowym mailem do wysłania deweloperowi. 
 
 Proszę opisać co robiłeś w momencie wystąpienia błędu.
@@ -153,7 +153,7 @@ Proszę opisać co robiłeś w momencie wystąpienia błędu.
 <string name="dialog_title_package_id">"Pakiet o tej nazwie już istnieje"</string>
 <string name="dialog_message_package_id">"Jest tam pakiet o dokładnie tej nazwie. Czy chcesz przejść bezpośrednio do strony z jego szczegółami?"</string>
 <string name="details_download_checking">"Sprawdzanie…"</string>
-<string name="details_download_not_available">"Niedostępne "</string>
+<string name="details_download_not_available">"Niedostępne"</string>
 <string name="manual_download_incompatible">"Sklep Google Play uważa tę aplikację za niezgodną z Twoim urządzeniem. Oznacza to, że kod wersji nie został zwrócony przez serwer sklepu Google Play."</string>
 <string name="manual_download_compatible">"Pole kodu wersji zostało wcześniej wypełnione z najnowszą dostępną wersją. Jeśli chcesz używać poprzedniej wersji, po prostu wpisz numer wersji mniejszy niż bieżący. Jeśli deweloper nie usunął pliku .apk poprzedniej wersji ze sklepu Google Play, będzie możliwe rozpoczęcie pobierania."</string>
 <string name="manual_download_warning">"Na tej stronie można ręcznie wybrać wersję aplikacji do pobrania. Kod wersji to numer identyfikujący wersję aplikacji. Zaczyna się od 1 i jest stopniowo zwiększany przez dewelopera aplikacji za każdym razem, gdy wychodzi nowa wersja. Normalnie sklep Google Play umożliwia pobranie tylko najnowszego pliku .apk zgodnego z Twoim urządzeniem. Wprowadzając ten numer ręcznie możesz uzyskać także inne wersje.
@@ -161,7 +161,7 @@ Proszę opisać co robiłeś w momencie wystąpienia błędu.
 Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji aplikacji. Twój sukces zależy od szczęśliwego odgadnięcia kodu wersji. Nawet jeśli się zgadnie, a pobieranie rozpocznie się, możesz trafić na niekompatybilny plik apk. Najprawdopodobniej tracisz tylko czas!"</string>
 <string name="manual_download_hint_version_code">"tutaj jest kod wersji"</string>
 <string name="list_has_update">"Dostępne aktualizacje"</string>
-<string name="list_no_update">"Już aktualne"</string>
+<string name="list_no_update">"Aktualne"</string>
 <string name="details_uninstall">"Odinstaluj"</string>
 <string name="notification_download_starting">"Rozpoczynanie pobierania"</string>
 <string name="notification_download_progress">"%1$s z %2$s pobrano"</string>
@@ -178,71 +178,67 @@ Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji apli
 <string name="pref_category_installation">"Instalacja"</string>
 <string name="pref_category_spoofing">"Udawanie"</string>
 <string name="pref_category_ui">"Interfejs użytkownika"</string>
-<string name="details_installing">"Installing…"</string>
-<string name="details_installed">"Installed successfully"</string>
-<string name="details_install_failure">"Could not install"</string>
-<string name="notification_download_complete_new_permissions">"Download complete. New permissions requested."</string>
-<string name="notification_download_complete_new_permissions_toast">"%1$s downloaded. New version of the app requests more permissions. Check the new permissions list."</string>
-<string name="pref_not_privileged">"Only available if Yalp is a system app"</string>
-<string name="pref_installation_method">"Installation method"</string>
-<string name="pref_installation_method_default">"Default installation dialog, no background installs"</string>
-<string name="pref_installation_method_root">"Using root"</string>
-<string name="pref_installation_method_privileged">"Using system permissions"</string>
-<string name="pref_background_update_download_summary_off">"You only get a notification"</string>
-<string name="pref_background_update_download_summary_on">"Updates are downloaded if found"</string>
-<string name="pref_background_update_download">"Also download the updates"</string>
-<string name="details_not_available_on_play_store">"Not available on Play Store"</string>
-<string name="action_manual">"Manual download"</string>
-<string name="action_get_local_apk">"Get local apk"</string>
-<string name="details_saved_in_downloads">"Saved in your Downloads folder"</string>
-<string name="details_could_not_copy_apk">"Could not copy apk"</string>
-<string name="action_make_system">"Convert to system app"</string>
-<string name="action_make_normal">"Convert to normal app"</string>
-<string name="list_app_system">"System app."</string>
-<string name="list_app_exists_in_play_store">"Available in Play Store."</string>
-<string name="activity_title_updates_only">"Updates"</string>
+<string name="details_installing">"Instalowanie"</string>
+<string name="details_installed">"Zainstalowano pomyślnie"</string>
+<string name="details_install_failure">"Nie można zainstalować"</string>
+<string name="notification_download_complete_new_permissions">"Pobieranie ukończone. Wymagane nowe uprawnienia."</string>
+<string name="notification_download_complete_new_permissions_toast">"%1$s pobrane. Nowa wersja aplikacji wymaga więcej uprawnień. Sprawdź nową listę uprawnień.."</string>
+<string name="pref_not_privileged">"Dostępne tylko wtedy, gdy Yalp jest aplikacją systemową"</string>
+<string name="pref_installation_method">"Metoda instalacji"</string>
+<string name="pref_installation_method_default">"Domyślne okno instalacji, bez instalacji w tle"</string>
+<string name="pref_installation_method_root">"Korzystając z root"</string>
+<string name="pref_installation_method_privileged">"Korzystając z uprawnień systemowych"</string>
+<string name="pref_background_update_download_summary_off">"Otrzymasz tylko powiadomienie"</string>
+<string name="pref_background_update_download_summary_on">"Aktualizacje są pobierane, jeśli są znalezione"</string>
+<string name="pref_background_update_download">"Pobierz również aktualizacje"</string>
+<string name="details_not_available_on_play_store">"Niedostępne w Sklepie Play"</string>
+<string name="action_manual">"Pobieranie ręczne"</string>
+<string name="action_get_local_apk">"Pobierz apk"</string>
+<string name="details_saved_in_downloads">"Zapisano w folderze Downloads"</string>
+<string name="details_could_not_copy_apk">"Nie można skopiować apk"</string>
+<string name="action_make_system">"Konwertuj na aplikację systemową"</string>
+<string name="action_make_normal">"Konwertuj do normalnej aplikacji"</string>
+<string name="list_app_system">"Aplikacja systemowa."</string>
+<string name="list_app_exists_in_play_store">"Dostępne w sklepie Google Play."</string>
+<string name="activity_title_updates_only">"Aktualizacje"</string>
 <string name="activity_title_updates_and_other_apps">"Twoje aplikacje"</string>
-<string name="pref_category_updates_page">"Update page"</string>
-<string name="pref_updates_only">"Show only updatable apps"</string>
-<string name="pref_updates_only_summary_off">"All apps are shown now"</string>
-<string name="pref_updates_only_summary_on">"Only updatable apps are shown now"</string>
-<string name="pref_show_system_apps">"Show system apps"</string>
-<string name="pref_show_system_apps_summary_off">"System apps are hidden now"</string>
-<string name="pref_show_system_apps_summary_on">"System apps are shown now"</string>
-<string name="details_system_app_info">"System info"</string>
-<string name="activity_title_search_publisher">"Apps by %1$s"</string>
+<string name="pref_category_updates_page">"Aktualizuj stronę"</string>
+<string name="pref_updates_only">"Pokaż tylko aktualizowane aplikacje"</string>
+<string name="pref_updates_only_summary_off">"Wszystkie aplikacje są teraz wyświetlane"</string>
+<string name="pref_updates_only_summary_on">"Tylko aplikacje z dostępnymi aktualizacjami są teraz pokazywane"</string>
+<string name="pref_show_system_apps">"Pokaż aplikacje systemowe"</string>
+<string name="pref_show_system_apps_summary_off">"Aplikacje systemowe są teraz ukryte"</string>
+<string name="pref_show_system_apps_summary_on">"Aplikacje systemowe są teraz wyświetlane"</string>
+<string name="details_system_app_info">"Informacja o systemie"</string>
+<string name="activity_title_search_publisher">"Aplikacje przez %1$s "</string>
 <string name="details_run">"Uruchom"</string>
-<string name="dialog_title_remounting_system">"Working with /system partition"</string>
-<string name="dialog_message_remounting_system">"Working with /system partition. This might take some time."</string>
-<string name="dialog_title_checking_busybox">"Checking if busybox is available"</string>
-<string name="dialog_message_checking_busybox">"Certain system tools are required to work with system apps. Checking if they are available."</string>
-<string name="dialog_title_busybox_not_available">"Busybox not available"</string>
-<string name="dialog_message_busybox_not_available">"A rooted device with busybox installed is required to work with system apps. Search for a busybox installer now?"</string>
-<string name="dialog_title_reboot_required">"Reboot required"</string>
-<string name="dialog_message_reboot_required">"Changes will be applied after reboot. Reboot now?"</string>
-<string name="dialog_title_system_app_warning">"Warning!"</string>
-<string name="dialog_message_system_app_warning_to_system">"You have selected to convert the app into system app. Most apps do not need to be system apps to work.
+<string name="dialog_title_remounting_system">"Praca z partycją /system"</string>
+<string name="dialog_message_remounting_system">"Pracja z partycją /system. Może to zająć trochę czasu."</string>
+<string name="dialog_title_checking_busybox">"Sprawdzanie dostępności busybox"</string>
+<string name="dialog_message_checking_busybox">"Do pracy z aplikacjami systemowymi wymagane są pewne narzędzia systemowe. Sprawdzanie, czy są one dostępne."</string>
+<string name="dialog_title_busybox_not_available">"Busybox nie jest dostępny"</string>
+<string name="dialog_message_busybox_not_available">"Zrootowane urządzenie z busybox jest wymagane do działania z aplikacjami systemowymi. Poszukać instalatora busybox teraz?"</string>
+<string name="dialog_title_reboot_required">"Wymagany restart"</string>
+<string name="dialog_message_reboot_required">"Zmiany zostaną zastosowane po restarcie. Zrestartować teraz?"</string>
+<string name="dialog_title_system_app_warning">"Ostrzeżenie!"</string>
+<string name="dialog_message_system_app_warning_to_system">"Wybrano opcję przekształcenia aplikacji w aplikację systemową. Większość aplikacji nie musi być aplikacjami systemowymi.
 
-Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Pamiętaj, że proces konwersji NIE jest obsługiwany przez system operacyjny Android, dlatego nie jest bezpieczny i nie gwarantuje poprawności działania.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
-<string name="dialog_message_system_app_warning_to_normal">"You have selected to convert a system app into a normal app. Most system apps need to be system apps to work.
+Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasową urządzenia przed próbą."</string>
+<string name="dialog_message_system_app_warning_to_normal">"Wybrano opcję konwertowania aplikacji systemowej na zwykłą aplikację. Większość aplikacji systemowych musi być aplikacjami systemowymi działającymi.
 
-Keep in mind that the conversion process is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Pamiętaj, że proces konwersji NIE jest obsługiwany przez system operacyjny Android, dlatego nie jest bezpieczny i nie gwarantuje poprawności działania.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
-<string name="list_check_updates">"Check for updates"</string>
-<string name="pref_background_update_interval_manually">"Only manually"</string>
-<string name="dialog_message_system_app_warning_uninstall">"Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.
+Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasową urządzenia przed próbą."</string>
+<string name="list_check_updates">"Sprawdź aktualizacje"</string>
+<string name="pref_background_update_interval_manually">"Tylko ręcznie"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Czy na pewno chcesz usunąć tę aplikację systemową? Aplikacje systemowe są umieszczane w urządzeniu przez sprzedawcę urządzeń i najprawdopodobniej są wymagane, aby działało zgodnie z oczekiwaniami.
 
-Keep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.
+Pamiętaj, że usunięcie aplikacji systemowych nie jest obsługiwane przez system operacyjny Android, dlatego nie jest bezpieczne i nie gwarantuje poprawności działania.
 
-Do not do it out of curiosity. It might break your device. Backup your device before trying."</string>
-<string name="dialog_title_system_app_self">"Making Yalp a system app"</string>
-<string name="dialog_message_system_app_self">"Using privileged permissions to allow background installation of apps requires making Yalp Store a system app.
-
-The process is imperfect and vendor-specific, so it might not work.
-
-Do it?"</string>
+Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasową urządzenia przed próbą."</string>
+<string name="dialog_title_system_app_self">"Konwersja Yalp w aplikację systemową"</string>
+<string name="dialog_message_system_app_self">"Korzystanie z uprzywilejowanych uprawnień, aby umożliwić instalację aplikacji w tle, wymaga konwersji Yalp Store na aplikację systemową."</string>
 <string name="about_website_label">"Strona internetowa:"</string>
 </resources>
