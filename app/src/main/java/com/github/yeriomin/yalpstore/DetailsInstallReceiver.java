@@ -14,10 +14,14 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
 
     private ImageButton buttonUninstall;
     private Button buttonInstall;
+    private Button buttonRun;
+    private boolean deleteApk;
 
     public DetailsInstallReceiver(DetailsActivity activity) {
+        buttonRun = (Button) activity.findViewById(R.id.run);
         buttonInstall = (Button) activity.findViewById(R.id.install);
         buttonUninstall = (ImageButton) activity.findViewById(R.id.uninstall);
+        deleteApk = PreferenceActivity.getBoolean(activity, PreferenceActivity.PREFERENCE_DELETE_APK_AFTER_INSTALL);
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_PACKAGE_INSTALL);
         filter.addAction(Intent.ACTION_PACKAGE_ADDED);
@@ -28,8 +32,12 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        buttonUninstall.setVisibility(View.VISIBLE);
-        buttonInstall.setEnabled(true);
-        buttonInstall.setText(R.string.details_install);
+        if (null != buttonRun) {
+            buttonRun.setVisibility(View.VISIBLE);
+        }
+        if (null != buttonUninstall) {
+            buttonUninstall.setVisibility(View.VISIBLE);
+        }
+        buttonInstall.setVisibility(deleteApk ? View.GONE : View.VISIBLE);
     }
 }
