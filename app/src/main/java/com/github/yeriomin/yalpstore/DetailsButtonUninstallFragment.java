@@ -37,7 +37,11 @@ public class DetailsButtonUninstallFragment extends DetailsButtonFragment {
     }
 
     private boolean isSystemAndReadyForPermanentUninstallation() {
-        return app.isSystem() && app.getPackageInfo().applicationInfo.sourceDir.startsWith("/system/");
+        return app.isSystem()
+            && null != app.getPackageInfo().applicationInfo
+            && null != app.getPackageInfo().applicationInfo.sourceDir
+            && app.getPackageInfo().applicationInfo.sourceDir.startsWith("/system/")
+        ;
     }
 
     private void askAndUninstall() {
