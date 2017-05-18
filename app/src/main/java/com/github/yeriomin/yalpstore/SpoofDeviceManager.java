@@ -17,7 +17,7 @@ import java.util.jar.JarFile;
 
 public class SpoofDeviceManager {
 
-    static private final String DEVICES_LIST_KEY = "DEVICE_LIST_" + Integer.toString(BuildConfig.VERSION_CODE);
+    static private final String DEVICES_LIST_KEY = "DEVICE_LIST_" + BuildConfig.VERSION_NAME;
     static private final String SPOOF_FILE_PREFIX = "device-";
     static private final String SPOOF_FILE_SUFFIX = ".properties";
 
