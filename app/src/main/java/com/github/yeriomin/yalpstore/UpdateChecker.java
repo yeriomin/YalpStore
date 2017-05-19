@@ -50,7 +50,7 @@ public class UpdateChecker extends BroadcastReceiver {
                     return;
                 }
                 if (explicitCheck || PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)) {
-                    download(context, updatableApps);
+                    process(context, updatableApps);
                 } else {
                     createNotification(context, updatesCount);
                 }
@@ -61,14 +61,25 @@ public class UpdateChecker extends BroadcastReceiver {
         return task;
     }
 
-    private void download(Context context, List<App> apps) {
+    private void process(Context context, List<App> apps) {
+        boolean canInstallInBackground = PreferenceActivity.canInstallInBackground(context);
         for (App app: apps) {
-            Log.i(getClass().getName(), "Starting download of update for " + app.getPackageName());
-            DownloadState state = DownloadState.get(app.getPackageName());
-            state.setExplicitInstall(context instanceof Activity);
-            state.setApp(app);
-            getPurchaseTask(context, app).execute();
+            if (!Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists()) {
+                download(context, app);
+            } else if (canInstallInBackground) {
+                // Not passing context because it might be an activity
+                // and we want it to run in background
+                InstallerFactory.get(context.getApplicationContext()).verifyAndInstall(app);
+            }
         }
+    }
+
+    private void download(Context context, App app) {
+        Log.i(getClass().getName(), "Starting download of update for " + app.getPackageName());
+        DownloadState state = DownloadState.get(app.getPackageName());
+        state.setExplicitInstall(context instanceof Activity);
+        state.setApp(app);
+        getPurchaseTask(context, app).execute();
     }
 
     private PurchaseTask getPurchaseTask(Context context, App app) {
