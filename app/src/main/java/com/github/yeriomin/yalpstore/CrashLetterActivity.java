@@ -14,13 +14,13 @@ import java.util.ArrayList;
 
 public class CrashLetterActivity extends Activity {
 
-    static public void send(Context context, String stackTrace) {
+    static public boolean send(Context context, String stackTrace) {
         Intent emailIntent = getEmailIntent(context, stackTrace);
         if (emailIntent.resolveActivity(context.getPackageManager()) != null) {
             context.startActivity(emailIntent);
-        } else {
-            ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE)).setText(stackTrace);
+            return true;
         }
+        return false;
     }
 
     static private Intent getEmailIntent(Context context, String stackTrace) {
