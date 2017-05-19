@@ -102,6 +102,10 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
     }
 
     protected void processAuthException(AuthException e) {
+        if (!isContextUiCapable()) {
+            Log.e(getClass().getName(), "AuthException happened and the provided context is not ui capable");
+            return;
+        }
         AccountTypeDialogBuilder builder = new AccountTypeDialogBuilder(this.context);
         builder.setTaskClone(this.taskClone);
         if (e instanceof CredentialsEmptyException) {
@@ -111,9 +115,6 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
                 builder.logInWithPredefinedAccount();
                 return;
             }
-        } else if (!isContextUiCapable()) {
-            Log.e(getClass().getName(), "AuthException happened and the provided context is not ui capable");
-            return;
         } else {
             toast(this.context, R.string.error_incorrect_password);
             new PlayStoreApiAuthenticator(context).logout();
