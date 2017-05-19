@@ -51,6 +51,7 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
         }
         int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
         int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
+        cursor.close();
         return status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS;
     }
 
@@ -58,9 +59,11 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
     public String getError(long downloadId) {
         Cursor cursor = getCursor(downloadId);
         if (null == cursor) {
-            getErrorString(context, DownloadManagerInterface.ERROR_UNKNOWN);
+            return getErrorString(context, DownloadManagerInterface.ERROR_UNKNOWN);
         }
-        return getErrorString(context, cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON)));
+        int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
+        cursor.close();
+        return getErrorString(context, reason);
     }
 
     private Cursor getCursor(long downloadId) {
