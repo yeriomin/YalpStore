@@ -59,12 +59,12 @@ public class DetailsActivity extends YalpStoreActivity {
             finishActivity(0);
             return;
         }
+        Log.i(getClass().getName(), "Getting info about " + packageName);
         ignoreOptionFragment = new IgnoreOptionFragment(this, new App());
 
         if (null != DetailsDependentActivity.app) {
             drawDetails(DetailsDependentActivity.app);
         }
-        Log.i(this.getClass().getName(), "Getting info about " + packageName);
 
         DetailsTask task = getDetailsTask(packageName);
         task.setTaskClone(getDetailsTask(packageName));
