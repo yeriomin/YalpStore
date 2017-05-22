@@ -26,9 +26,7 @@ public abstract class YalpStoreActivity extends Activity {
         if (isTv()) {
             requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
         }
-        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         ThemeManager.setTheme(this);
-        Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
         super.onCreate(savedInstanceState);
     }
 

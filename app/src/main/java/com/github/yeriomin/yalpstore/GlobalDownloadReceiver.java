@@ -10,7 +10,7 @@ import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.File;
 
-public class DownloadBroadcastReceiver extends BroadcastReceiver {
+public class GlobalDownloadReceiver extends BroadcastReceiver {
 
     private Context context;
     private NotificationUtil notificationUtil;
