@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.notification.NotificationManagerFactory;
 
 import java.util.List;
 
@@ -92,7 +93,7 @@ public class UpdateChecker extends BroadcastReceiver {
     private void createNotification(Context context, int updatesCount) {
         Intent i = new Intent(context, UpdatableAppsActivity.class);
         i.setAction(Intent.ACTION_VIEW);
-        new NotificationUtil(context).show(
+        NotificationManagerFactory.get(context).show(
                 i,
                 context.getString(R.string.notification_updates_available_title),
                 context.getString(R.string.notification_updates_available_message, updatesCount)

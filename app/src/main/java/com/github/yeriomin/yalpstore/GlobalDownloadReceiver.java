@@ -7,18 +7,20 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.notification.NotificationManagerFactory;
+import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.io.File;
 
 public class GlobalDownloadReceiver extends BroadcastReceiver {
 
     private Context context;
-    private NotificationUtil notificationUtil;
+    private NotificationManagerWrapper notificationManager;
 
     @Override
     public void onReceive(Context c, Intent i) {
         context = c;
-        notificationUtil = new NotificationUtil(c);
+        notificationManager = NotificationManagerFactory.get(c);
 
         Bundle extras = i.getExtras();
         long downloadId = extras.getLong(DownloadManagerInterface.EXTRA_DOWNLOAD_ID);
@@ -39,7 +41,7 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
         } else {
             String error = dm.getError(downloadId);
             Toast.makeText(context, error, Toast.LENGTH_LONG).show();
-            notificationUtil.show(new Intent(), app.getDisplayName(), error);
+            notificationManager.show(new Intent(), app.getDisplayName(), error);
         }
 
         if (state.isEverythingFinished() && state.isEverythingSuccessful()) {
@@ -67,7 +69,7 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
     private void notifyAndToast(int notificationStringId, int toastStringId, App app) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = InstallerAbstract.getOpenApkIntent(context, file);
-        notificationUtil.show(
+        notificationManager.show(
             openApkIntent,
             app.getDisplayName(),
             context.getString(notificationStringId)

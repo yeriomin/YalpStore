@@ -8,6 +8,7 @@ import android.text.format.Formatter;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.notification.NotificationManagerFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -54,7 +55,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        new NotificationUtil(context).show(
+        NotificationManagerFactory.get(context).show(
             new Intent(),
             getNotificationTitle(),
             context.getString(R.string.notification_download_starting)
@@ -64,7 +65,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     @Override
     protected void onPostExecute(Boolean result) {
         super.onPostExecute(result);
-        new NotificationUtil(context).cancel(getNotificationTitle());
+        NotificationManagerFactory.get(context).cancel(getNotificationTitle());
         Intent intent = new Intent();
         intent.setAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
         intent.putExtra(DownloadManagerInterface.EXTRA_DOWNLOAD_ID, downloadId);
@@ -74,7 +75,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     @Override
     protected void onProgressUpdate(Long... values) {
         super.onProgressUpdate(values);
-        new NotificationUtil(context).show(
+        NotificationManagerFactory.get(context).show(
             new Intent(),
             getNotificationTitle(),
             context.getString(

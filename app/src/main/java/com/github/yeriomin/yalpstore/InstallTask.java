@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.github.yeriomin.yalpstore.notification.NotificationManagerFactory;
+
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
@@ -22,7 +24,7 @@ public class InstallTask extends AsyncTask<String, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean result) {
-        new NotificationUtil(context).show(
+        NotificationManagerFactory.get(context).show(
             new Intent(),
             appDisplayName,
             context.getString(
