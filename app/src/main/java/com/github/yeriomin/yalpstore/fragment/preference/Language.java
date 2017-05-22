@@ -1,6 +1,12 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.preference;
 
 import android.preference.Preference;
+
+import com.github.yeriomin.yalpstore.OnListPreferenceChangeListener;
+import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
+import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.Util;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -8,9 +14,9 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class PreferenceLanguageFragment extends PreferenceListFragment {
+public class Language extends List {
 
-    public PreferenceLanguageFragment(PreferenceActivity activity) {
+    public Language(PreferenceActivity activity) {
         super(activity);
     }
 

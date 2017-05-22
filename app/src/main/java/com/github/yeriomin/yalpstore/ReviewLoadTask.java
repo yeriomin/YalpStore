@@ -2,24 +2,24 @@ package com.github.yeriomin.yalpstore;
 
 import android.util.Log;
 
-import com.github.yeriomin.yalpstore.model.Review;
+import com.github.yeriomin.yalpstore.fragment.details.Review;
 
 import java.util.List;
 
 public class ReviewLoadTask extends GoogleApiAsyncTask {
 
-    private List<Review> list;
+    private List<com.github.yeriomin.yalpstore.model.Review> list;
     private ReviewStorageIterator iterator;
-    private ReviewFragment manager;
+    private Review manager;
     private boolean next;
 
-    public ReviewLoadTask(ReviewStorageIterator iterator, ReviewFragment manager, boolean next) {
+    public ReviewLoadTask(ReviewStorageIterator iterator, Review manager, boolean next) {
         this.iterator = iterator;
         this.manager = manager;
         this.next = next;
     }
 
-    public List<Review> getList() {
+    public List<com.github.yeriomin.yalpstore.model.Review> getList() {
         return list;
     }
 

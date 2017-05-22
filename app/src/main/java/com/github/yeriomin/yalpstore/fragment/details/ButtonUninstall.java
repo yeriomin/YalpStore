@@ -1,14 +1,18 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
+import com.github.yeriomin.yalpstore.CheckShellTask;
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.UninstallSystemAppTask;
 import com.github.yeriomin.yalpstore.model.App;
 
-public class DetailsButtonUninstallFragment extends DetailsButtonFragment {
+public class ButtonUninstall extends Button {
 
-    public DetailsButtonUninstallFragment(DetailsActivity activity, App app) {
+    public ButtonUninstall(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

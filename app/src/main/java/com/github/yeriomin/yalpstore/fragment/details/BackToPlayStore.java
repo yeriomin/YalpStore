@@ -1,4 +1,4 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -6,13 +6,16 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.TextView;
 
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.PurchaseTask;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
-public class BackToPlayStoreFragment extends DetailsFragment {
+public class BackToPlayStore extends Abstract {
 
     static private final String PLAY_STORE_PACKAGE_NAME = "com.android.vending";
 
-    public BackToPlayStoreFragment(DetailsActivity activity, App app) {
+    public BackToPlayStore(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

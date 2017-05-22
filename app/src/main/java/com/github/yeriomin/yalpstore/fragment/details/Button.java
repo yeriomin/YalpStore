@@ -1,16 +1,16 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.pm.PackageManager;
 import android.view.View;
-import android.widget.Button;
 
+import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.model.App;
 
-public abstract class DetailsButtonFragment extends DetailsFragment {
+public abstract class Button extends Abstract {
 
     protected View button;
 
-    public DetailsButtonFragment(DetailsActivity activity, App app) {
+    public Button(DetailsActivity activity, App app) {
         super(activity, app);
         this.button = getButton();
     }
@@ -32,7 +32,7 @@ public abstract class DetailsButtonFragment extends DetailsFragment {
     }
 
     protected void disableButton(int buttonId, int stringId) {
-        Button button = (Button) activity.findViewById(buttonId);
+        android.widget.Button button = (android.widget.Button) activity.findViewById(buttonId);
         button.setText(stringId);
         button.setEnabled(false);
     }

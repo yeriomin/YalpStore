@@ -1,19 +1,23 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.widget.TextView;
 
+import com.github.yeriomin.yalpstore.DependencyTranslationTask;
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.SharedPreferencesTranslator;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class GoogleDependencyFragment extends DetailsFragment {
+public class GoogleDependency extends Abstract {
 
     private SharedPreferencesTranslator translator;
 
-    public GoogleDependencyFragment(DetailsActivity activity, App app) {
+    public GoogleDependency(DetailsActivity activity, App app) {
         super(activity, app);
         translator = new SharedPreferencesTranslator(PreferenceManager.getDefaultSharedPreferences(activity));
     }

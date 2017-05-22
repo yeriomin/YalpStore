@@ -1,4 +1,4 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.preference;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -6,13 +6,19 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 
-public class PreferenceCheckUpdatesFragment extends PreferenceFragment {
+import com.github.yeriomin.yalpstore.BuildConfig;
+import com.github.yeriomin.yalpstore.CheckSuTask;
+import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.UpdateChecker;
+
+public class CheckUpdates extends Abstract {
 
     private ListPreference checkForUpdates;
     private CheckBoxPreference alsoInstall;
     private CheckBoxPreference alsoDownload;
 
-    public PreferenceCheckUpdatesFragment(PreferenceActivity activity) {
+    public CheckUpdates(PreferenceActivity activity) {
         super(activity);
     }
 

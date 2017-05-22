@@ -34,7 +34,7 @@ public abstract class InstallerAbstract {
         return intent;
     }
 
-    abstract protected void install(App app);
+    abstract public void install(App app);
 
     public InstallerAbstract(Context context) {
         Log.i(getClass().getName(), "Installer chosen");

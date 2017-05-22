@@ -4,14 +4,16 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.fragment.details.Review;
+
 import java.io.IOException;
 
-class ReviewDeleteTask extends AsyncTask<String, Void, Throwable> {
+public class ReviewDeleteTask extends AsyncTask<String, Void, Throwable> {
 
     private Context context;
-    private ReviewFragment manager;
+    private Review manager;
 
-    ReviewDeleteTask(Context context, ReviewFragment manager) {
+    public ReviewDeleteTask(Context context, Review manager) {
         this.context = context;
         this.manager = manager;
     }

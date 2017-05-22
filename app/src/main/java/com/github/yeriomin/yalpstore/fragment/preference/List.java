@@ -1,17 +1,20 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.preference;
 
 import android.preference.ListPreference;
 
+import com.github.yeriomin.yalpstore.OnListPreferenceChangeListener;
+import com.github.yeriomin.yalpstore.PreferenceActivity;
+
 import java.util.Map;
 
-public abstract class PreferenceListFragment extends PreferenceFragment {
+public abstract class List extends Abstract {
 
     protected ListPreference listPreference;
 
     abstract protected Map<String, String> getKeyValueMap();
     abstract protected OnListPreferenceChangeListener getOnListPreferenceChangeListener();
 
-    public PreferenceListFragment(PreferenceActivity activity) {
+    public List(PreferenceActivity activity) {
         super(activity);
     }
 

@@ -1,27 +1,31 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.app.NotificationManager;
 import android.content.Context;
 import android.view.View;
-import android.widget.Button;
 
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.Downloader;
+import com.github.yeriomin.yalpstore.InstallerDefault;
+import com.github.yeriomin.yalpstore.InstallerFactory;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
-public class DetailsButtonInstallFragment extends DetailsButtonFragment {
+public class ButtonInstall extends Button {
 
-    public DetailsButtonInstallFragment(DetailsActivity activity, App app) {
+    public ButtonInstall(DetailsActivity activity, App app) {
         super(activity, app);
     }
 
     @Override
     public void draw() {
         super.draw();
-        ((Button) button).setText(R.string.details_install);
+        ((android.widget.Button) button).setText(R.string.details_install);
     }
 
     @Override
-    protected Button getButton() {
-        return (Button) activity.findViewById(R.id.install);
+    protected android.widget.Button getButton() {
+        return (android.widget.Button) activity.findViewById(R.id.install);
     }
 
     @Override
@@ -37,7 +41,7 @@ public class DetailsButtonInstallFragment extends DetailsButtonFragment {
                 disableButton(R.id.install, R.string.details_installing);
                 NotificationManager manager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
                 manager.cancel(app.getDisplayName().hashCode());
-                InstallerFactory.get(activity).install(app);
+                new InstallerDefault(activity).install(app);
             }
         };
     }

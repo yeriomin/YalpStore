@@ -1,13 +1,17 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.github.yeriomin.yalpstore.BlackWhiteListManager;
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
-public class IgnoreOptionFragment extends DetailsFragment {
+public class IgnoreOption extends Abstract {
 
     private Menu menu;
 
@@ -28,7 +32,7 @@ public class IgnoreOptionFragment extends DetailsFragment {
         this.menu = menu;
     }
 
-    public IgnoreOptionFragment(DetailsActivity activity, App app) {
+    public IgnoreOption(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

@@ -1,20 +1,21 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
 
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
-public class DetailsButtonRunFragment extends DetailsButtonFragment {
+public class ButtonRun extends Button {
 
-    public DetailsButtonRunFragment(DetailsActivity activity, App app) {
+    public ButtonRun(DetailsActivity activity, App app) {
         super(activity, app);
     }
 
     @Override
-    protected Button getButton() {
-        return (Button) activity.findViewById(R.id.run);
+    protected android.widget.Button getButton() {
+        return (android.widget.Button) activity.findViewById(R.id.run);
     }
 
     @Override

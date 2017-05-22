@@ -69,7 +69,7 @@ public class InstallerPrivileged extends InstallerAbstract {
     }
 
     @Override
-    protected void install(App app) {
+    public void install(App app) {
         File apkFile = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         if (!apkFile.exists()) throw new IllegalArgumentException();
         PackageManager pm = context.getPackageManager();

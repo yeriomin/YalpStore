@@ -1,13 +1,15 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.preference;
 
 import android.preference.ListPreference;
 import android.preference.Preference;
 
-public class PreferenceInstallationMethodFragment extends PreferenceFragment {
+import com.github.yeriomin.yalpstore.PreferenceActivity;
+
+public class InstallationMethod extends Abstract {
 
     private ListPreference installationMethod;
 
-    public PreferenceInstallationMethodFragment(PreferenceActivity activity) {
+    public InstallationMethod(PreferenceActivity activity) {
         super(activity);
     }
 

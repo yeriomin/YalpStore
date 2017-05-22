@@ -1,13 +1,16 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.preference;
 
 import android.preference.ListPreference;
 import android.preference.Preference;
 
-public class PreferenceThemeFragment extends PreferenceFragment {
+import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.R;
+
+public class Theme extends Abstract {
 
     private ListPreference themePreference;
 
-    public PreferenceThemeFragment(PreferenceActivity activity) {
+    public Theme(PreferenceActivity activity) {
         super(activity);
     }
 

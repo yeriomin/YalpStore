@@ -5,23 +5,23 @@ import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
 
-import com.github.yeriomin.yalpstore.model.Review;
+import com.github.yeriomin.yalpstore.fragment.details.Review;
 
 public class UserReviewDialogBuilder {
 
     private Context context;
-    private ReviewFragment manager;
+    private Review manager;
     private String packageName;
 
     private Dialog dialog;
 
-    public UserReviewDialogBuilder(Context context, ReviewFragment manager, String packageName) {
+    public UserReviewDialogBuilder(Context context, Review manager, String packageName) {
         this.context = context;
         this.manager = manager;
         this.packageName = packageName;
     }
 
-    public Dialog show(final Review review) {
+    public Dialog show(final com.github.yeriomin.yalpstore.model.Review review) {
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.review_dialog_layout);
 
@@ -52,9 +52,9 @@ public class UserReviewDialogBuilder {
 
     private class DoneOnClickListener implements View.OnClickListener {
 
-        private final Review review;
+        private final com.github.yeriomin.yalpstore.model.Review review;
 
-        public DoneOnClickListener(Review review) {
+        public DoneOnClickListener(com.github.yeriomin.yalpstore.model.Review review) {
             this.review = review;
         }
 

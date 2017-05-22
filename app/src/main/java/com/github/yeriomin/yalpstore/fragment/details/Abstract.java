@@ -1,19 +1,21 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
-public abstract class DetailsFragment {
+public abstract class Abstract {
 
     protected DetailsActivity activity;
     protected App app;
 
     abstract public void draw();
 
-    public DetailsFragment(DetailsActivity activity, App app) {
+    public Abstract(DetailsActivity activity, App app) {
         this.activity = activity;
         this.app = app;
     }

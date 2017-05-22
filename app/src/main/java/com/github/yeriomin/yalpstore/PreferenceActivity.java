@@ -7,6 +7,13 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 
+import com.github.yeriomin.yalpstore.fragment.preference.InstallationMethod;
+import com.github.yeriomin.yalpstore.fragment.preference.Blacklist;
+import com.github.yeriomin.yalpstore.fragment.preference.CheckUpdates;
+import com.github.yeriomin.yalpstore.fragment.preference.Device;
+import com.github.yeriomin.yalpstore.fragment.preference.Language;
+import com.github.yeriomin.yalpstore.fragment.preference.Theme;
+
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 
     public static final String PREFERENCE_EMAIL = "PREFERENCE_EMAIL";
@@ -77,20 +84,20 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     }
 
     private void drawBlackList() {
-        PreferenceBlacklistFragment blacklistFragment = new PreferenceBlacklistFragment(this);
+        Blacklist blacklistFragment = new Blacklist(this);
         blacklistFragment.setBlackOrWhite((ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK));
         blacklistFragment.setAppList((MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST));
         blacklistFragment.draw();
     }
 
     private void drawTheme() {
-        PreferenceThemeFragment themeFragment = new PreferenceThemeFragment(this);
+        Theme themeFragment = new Theme(this);
         themeFragment.setThemePreference((ListPreference) findPreference(PREFERENCE_UI_THEME));
         themeFragment.draw();
     }
 
     private void drawUpdatesCheck() {
-        PreferenceCheckUpdatesFragment checkUpdatesFragment = new PreferenceCheckUpdatesFragment(this);
+        CheckUpdates checkUpdatesFragment = new CheckUpdates(this);
         checkUpdatesFragment.setCheckForUpdates((ListPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INTERVAL));
         checkUpdatesFragment.setAlsoInstall((CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_INSTALL));
         checkUpdatesFragment.setAlsoDownload((CheckBoxPreference) findPreference(PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD));
@@ -98,19 +105,19 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     }
 
     private void drawLanguages() {
-        PreferenceLanguageFragment languageFragment = new PreferenceLanguageFragment(this);
+        Language languageFragment = new Language(this);
         languageFragment.setListPreference((ListPreference) findPreference(PREFERENCE_REQUESTED_LANGUAGE));
         languageFragment.draw();
     }
 
     private void drawDevices() {
-        PreferenceDeviceFragment languageFragment = new PreferenceDeviceFragment(this);
+        Device languageFragment = new Device(this);
         languageFragment.setListPreference((ListPreference) findPreference(PREFERENCE_DEVICE_TO_PRETEND_TO_BE));
         languageFragment.draw();
     }
 
     private void drawInstallationMethod() {
-        PreferenceInstallationMethodFragment installationMethodFragment = new PreferenceInstallationMethodFragment(this);
+        InstallationMethod installationMethodFragment = new InstallationMethod(this);
         installationMethodFragment.setInstallationMethodPreference((ListPreference) findPreference(PREFERENCE_INSTALLATION_METHOD));
         installationMethodFragment.draw();
     }

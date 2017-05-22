@@ -11,7 +11,7 @@ public class InstallerRoot extends InstallerAbstract {
     }
 
     @Override
-    protected void install(App app) {
+    public void install(App app) {
         new InstallTask(context, app.getDisplayName())
             .execute(Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).toString());
     }

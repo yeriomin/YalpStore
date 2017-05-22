@@ -12,7 +12,7 @@ public class InstallerDefault extends InstallerAbstract {
     }
 
     @Override
-    protected void install(App app) {
+    public void install(App app) {
         if (background) {
             Log.i(getClass().getName(), "Background installation is not supported by default installer");
             return;

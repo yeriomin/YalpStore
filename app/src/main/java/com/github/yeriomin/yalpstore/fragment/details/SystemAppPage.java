@@ -1,4 +1,4 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -8,11 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
-public class SystemAppPageFragment extends DetailsFragment {
+public class SystemAppPage extends Abstract {
 
-    public SystemAppPageFragment(DetailsActivity activity, App app) {
+    public SystemAppPage(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

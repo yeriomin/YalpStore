@@ -1,4 +1,4 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -12,15 +12,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.github.yeriomin.yalpstore.CategoryManager;
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.LoadIconTask;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GeneralDetailsFragment extends DetailsFragment {
+public class GeneralDetails extends Abstract {
 
-    public GeneralDetailsFragment(DetailsActivity activity, App app) {
+    public GeneralDetails(DetailsActivity activity, App app) {
         super(activity, app);
     }
 
@@ -32,7 +36,7 @@ public class GeneralDetailsFragment extends DetailsFragment {
         }
         drawDescription(app);
         drawPermissions(app);
-        new GoogleDependencyFragment(activity, app).draw();
+        new GoogleDependency(activity, app).draw();
     }
 
     private void drawAppBadge(App app) {

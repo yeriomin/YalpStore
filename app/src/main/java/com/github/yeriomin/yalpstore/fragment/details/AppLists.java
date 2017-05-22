@@ -1,16 +1,22 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.app.SearchManager;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.DetailsDependentActivity;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.SearchResultActivity;
+import com.github.yeriomin.yalpstore.SimilarAppsActivity;
+import com.github.yeriomin.yalpstore.UsersAlsoInstalledActivity;
 import com.github.yeriomin.yalpstore.model.App;
 
 
-public class AppListsFragment extends DetailsFragment {
+public class AppLists extends Abstract {
 
-    public AppListsFragment(DetailsActivity activity, App app) {
+    public AppLists(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

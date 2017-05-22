@@ -1,26 +1,30 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.Downloader;
+import com.github.yeriomin.yalpstore.ManualDownloadActivity;
+import com.github.yeriomin.yalpstore.PurchaseTask;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.File;
 
-public class DetailsButtonDownloadFragment extends DetailsButtonFragment {
+public class ButtonDownload extends Button {
 
-    public DetailsButtonDownloadFragment(DetailsActivity activity, App app) {
+    public ButtonDownload(DetailsActivity activity, App app) {
         super(activity, app);
     }
 
     @Override
-    protected Button getButton() {
-        return (Button) activity.findViewById(R.id.download);
+    protected android.widget.Button getButton() {
+        return (android.widget.Button) activity.findViewById(R.id.download);
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Button;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;
@@ -14,10 +15,10 @@ public class PurchaseCheckTask extends AsyncTask<Void, Void, AndroidAppDeliveryD
 
     private Context context;
     private App app;
-    private DownloadOrInstallFragment downloadOrInstallManager;
+    private DownloadOrInstall downloadOrInstallManager;
     private Button downloadButton;
 
-    public PurchaseCheckTask(Context context, App app, DownloadOrInstallFragment downloadOrInstallManager) {
+    public PurchaseCheckTask(Context context, App app, DownloadOrInstall downloadOrInstallManager) {
         this.context = context;
         this.app = app;
         this.downloadOrInstallManager = downloadOrInstallManager;

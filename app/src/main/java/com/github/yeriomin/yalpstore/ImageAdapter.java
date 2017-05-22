@@ -11,13 +11,13 @@ import android.widget.ImageView;
 
 import java.util.List;
 
-class ImageAdapter extends BaseAdapter {
+public class ImageAdapter extends BaseAdapter {
 
     protected Context context;
     protected List<String> screenshotUrls;
     protected int screenWidth;
 
-    ImageAdapter(Context context, List<String> screenshotUrls, int screenWidth) {
+    public ImageAdapter(Context context, List<String> screenshotUrls, int screenWidth) {
         this.context = context;
         this.screenshotUrls = screenshotUrls;
         this.screenWidth = screenWidth;

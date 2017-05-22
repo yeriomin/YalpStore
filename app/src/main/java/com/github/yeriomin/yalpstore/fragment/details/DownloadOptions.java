@@ -1,4 +1,4 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,11 +10,20 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.github.yeriomin.yalpstore.BuildConfig;
+import com.github.yeriomin.yalpstore.CheckShellTask;
+import com.github.yeriomin.yalpstore.ConvertToNormalTask;
+import com.github.yeriomin.yalpstore.ConvertToSystemTask;
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.InstalledApkCopier;
+import com.github.yeriomin.yalpstore.ManualDownloadActivity;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.SystemRemountTask;
 import com.github.yeriomin.yalpstore.model.App;
 
-public class DownloadOptionsFragment extends DetailsFragment {
+public class DownloadOptions extends Abstract {
 
-    public DownloadOptionsFragment(DetailsActivity activity, App app) {
+    public DownloadOptions(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

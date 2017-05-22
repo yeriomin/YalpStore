@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.Timer;
@@ -38,7 +39,7 @@ public class ManualDownloadActivity extends DetailsActivity {
         if (app.getVersionCode() > 0) {
             ((EditText) findViewById(R.id.version_code)).setHint(String.valueOf(app.getVersionCode()));
         }
-        downloadOrInstallFragment = new DownloadOrInstallFragment(this, app);
+        downloadOrInstallFragment = new DownloadOrInstall(this, app);
         ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(
             app,
             (Button) findViewById(R.id.download),
@@ -57,10 +58,10 @@ public class ManualDownloadActivity extends DetailsActivity {
 
         private final App app;
         private final Button downloadButton;
-        private DownloadOrInstallFragment downloadOrInstallManager;
+        private DownloadOrInstall downloadOrInstallManager;
         private Timer timer;
 
-        public ManualDownloadTextWatcher(App app, Button downloadButton, DownloadOrInstallFragment downloadOrInstallManager) {
+        public ManualDownloadTextWatcher(App app, Button downloadButton, DownloadOrInstall downloadOrInstallManager) {
             this.app = app;
             this.downloadButton = downloadButton;
             this.downloadOrInstallManager = downloadOrInstallManager;

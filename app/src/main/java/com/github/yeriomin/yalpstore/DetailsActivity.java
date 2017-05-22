@@ -11,6 +11,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.github.yeriomin.yalpstore.fragment.details.AppLists;
+import com.github.yeriomin.yalpstore.fragment.details.BackToPlayStore;
+import com.github.yeriomin.yalpstore.fragment.details.DownloadOptions;
+import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
+import com.github.yeriomin.yalpstore.fragment.details.GeneralDetails;
+import com.github.yeriomin.yalpstore.fragment.details.IgnoreOption;
+import com.github.yeriomin.yalpstore.fragment.details.Review;
+import com.github.yeriomin.yalpstore.fragment.details.Screenshot;
+import com.github.yeriomin.yalpstore.fragment.details.SystemAppPage;
 import com.github.yeriomin.yalpstore.model.App;
 
 public class DetailsActivity extends YalpStoreActivity {
@@ -19,9 +28,9 @@ public class DetailsActivity extends YalpStoreActivity {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
-    protected DownloadOrInstallFragment downloadOrInstallFragment;
-    private IgnoreOptionFragment ignoreOptionFragment;
-    private DownloadOptionsFragment downloadOptionsFragment;
+    protected DownloadOrInstall downloadOrInstallFragment;
+    private IgnoreOption ignoreOptionFragment;
+    private DownloadOptions downloadOptionsFragment;
 
     static public void start(Context context, String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
@@ -60,7 +69,7 @@ public class DetailsActivity extends YalpStoreActivity {
             return;
         }
         Log.i(getClass().getName(), "Getting info about " + packageName);
-        ignoreOptionFragment = new IgnoreOptionFragment(this, new App());
+        ignoreOptionFragment = new IgnoreOption(this, new App());
 
         if (null != DetailsDependentActivity.app) {
             drawDetails(DetailsDependentActivity.app);
@@ -132,21 +141,21 @@ public class DetailsActivity extends YalpStoreActivity {
     private void drawDetails(App app) {
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
-        new GeneralDetailsFragment(this, app).draw();
-        new ScreenshotFragment(this, app).draw();
-        new ReviewFragment(this, app).draw();
-        new AppListsFragment(this, app).draw();
-        new BackToPlayStoreFragment(this, app).draw();
-        new SystemAppPageFragment(this, app).draw();
+        new GeneralDetails(this, app).draw();
+        new Screenshot(this, app).draw();
+        new Review(this, app).draw();
+        new AppLists(this, app).draw();
+        new BackToPlayStore(this, app).draw();
+        new SystemAppPage(this, app).draw();
         ignoreOptionFragment.setApp(app);
         ignoreOptionFragment.draw();
         if (null != downloadOrInstallFragment) {
             downloadOrInstallFragment.unregisterReceivers();
         }
-        downloadOrInstallFragment = new DownloadOrInstallFragment(this, app);
+        downloadOrInstallFragment = new DownloadOrInstall(this, app);
         downloadOrInstallFragment.registerReceivers();
         downloadOrInstallFragment.draw();
-        downloadOptionsFragment = new DownloadOptionsFragment(this, app);
+        downloadOptionsFragment = new DownloadOptions(this, app);
         downloadOptionsFragment.draw();
     }
 

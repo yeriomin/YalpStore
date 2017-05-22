@@ -1,4 +1,4 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -9,18 +9,26 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.github.yeriomin.yalpstore.AccountTypeDialogBuilder;
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.ImageDownloadTask;
+import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.ReviewDeleteTask;
+import com.github.yeriomin.yalpstore.ReviewLoadTask;
+import com.github.yeriomin.yalpstore.ReviewStorageIterator;
+import com.github.yeriomin.yalpstore.UserReviewDialogBuilder;
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.model.Review;
 
 import java.util.List;
 
-public class ReviewFragment extends DetailsFragment {
+public class Review extends Abstract {
 
     static private int[] averageStarIds = new int[] { R.id.average_stars1, R.id.average_stars2, R.id.average_stars3, R.id.average_stars4, R.id.average_stars5 };
 
     private ReviewStorageIterator iterator;
 
-    public ReviewFragment(DetailsActivity activity, App app) {
+    public Review(DetailsActivity activity, App app) {
         super(activity, app);
         iterator = new ReviewStorageIterator();
         iterator.setPackageName(app.getPackageName());
@@ -47,7 +55,7 @@ public class ReviewFragment extends DetailsFragment {
         }
 
         activity.findViewById(R.id.user_review_container).setVisibility(isReviewable(app) ? View.VISIBLE : View.GONE);
-        Review review = app.getUserReview();
+        com.github.yeriomin.yalpstore.model.Review review = app.getUserReview();
         initUserReviewControls(app);
         if (null != review) {
             fillUserReview(review);
@@ -61,7 +69,7 @@ public class ReviewFragment extends DetailsFragment {
             ;
     }
 
-    public void fillUserReview(Review review) {
+    public void fillUserReview(com.github.yeriomin.yalpstore.model.Review review) {
         clearUserReview();
         app.setUserReview(review);
         ((RatingBar) activity.findViewById(R.id.user_stars)).setRating(review.getRating());
@@ -81,8 +89,8 @@ public class ReviewFragment extends DetailsFragment {
         activity.findViewById(R.id.user_review).setVisibility(View.GONE);
     }
 
-    private Review getUpdatedUserReview(Review oldReview, int stars) {
-        Review review = new Review();
+    private com.github.yeriomin.yalpstore.model.Review getUpdatedUserReview(com.github.yeriomin.yalpstore.model.Review oldReview, int stars) {
+        com.github.yeriomin.yalpstore.model.Review review = new com.github.yeriomin.yalpstore.model.Review();
         review.setRating(stars);
         if (null != oldReview) {
             review.setComment(oldReview.getComment());
@@ -91,12 +99,12 @@ public class ReviewFragment extends DetailsFragment {
         return review;
     }
 
-    public void showReviews(List<Review> reviews) {
+    public void showReviews(List<com.github.yeriomin.yalpstore.model.Review> reviews) {
         activity.findViewById(R.id.reviews_previous).setVisibility(iterator.hasPrevious() ? View.VISIBLE : View.INVISIBLE);
         activity.findViewById(R.id.reviews_next).setVisibility(iterator.hasNext() ? View.VISIBLE : View.INVISIBLE);
         LinearLayout listView = (LinearLayout) activity.findViewById(R.id.reviews_list);
         listView.removeAllViews();
-        for (Review review: reviews) {
+        for (com.github.yeriomin.yalpstore.model.Review review: reviews) {
             addReviewToList(review, listView);
         }
     }
@@ -108,7 +116,7 @@ public class ReviewFragment extends DetailsFragment {
         return task;
     }
 
-    private void addReviewToList(Review review, ViewGroup parent) {
+    private void addReviewToList(com.github.yeriomin.yalpstore.model.Review review, ViewGroup parent) {
         LinearLayout reviewLayout = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.review_list_item, parent, false);
         ((TextView) reviewLayout.findViewById(R.id.author)).setText(review.getUserName());
         ((TextView) reviewLayout.findViewById(R.id.title)).setText(activity.getString(
@@ -141,21 +149,21 @@ public class ReviewFragment extends DetailsFragment {
                 if (!fromUser) {
                     return;
                 }
-                new UserReviewDialogBuilder(activity, ReviewFragment.this, app.getPackageName())
+                new UserReviewDialogBuilder(activity, Review.this, app.getPackageName())
                     .show(getUpdatedUserReview(app.getUserReview(), (int) rating));
             }
         });
         activity.findViewById(R.id.user_review_edit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new UserReviewDialogBuilder(activity, ReviewFragment.this, app.getPackageName())
+                new UserReviewDialogBuilder(activity, Review.this, app.getPackageName())
                     .show(app.getUserReview());
             }
         });
         activity.findViewById(R.id.user_review_delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReviewDeleteTask task = new ReviewDeleteTask(v.getContext(), ReviewFragment.this);
+                ReviewDeleteTask task = new ReviewDeleteTask(v.getContext(), Review.this);
                 task.execute(app.getPackageName());
             }
         });

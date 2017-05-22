@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class UpdatableAppsTask extends GoogleApiAsyncTask {
+public class UpdatableAppsTask extends GoogleApiAsyncTask {
 
     protected List<App> updatableApps = new ArrayList<>();
     protected List<App> otherInstalledApps = new ArrayList<>();

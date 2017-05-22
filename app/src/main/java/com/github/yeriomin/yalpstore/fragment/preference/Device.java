@@ -1,14 +1,20 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.preference;
 
 import android.preference.Preference;
 import android.widget.Toast;
 
+import com.github.yeriomin.yalpstore.OnListPreferenceChangeListener;
+import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.SpoofDeviceManager;
+import com.github.yeriomin.yalpstore.Util;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class PreferenceDeviceFragment extends PreferenceListFragment {
+public class Device extends List {
 
-    public PreferenceDeviceFragment(PreferenceActivity activity) {
+    public Device(PreferenceActivity activity) {
         super(activity);
     }
 

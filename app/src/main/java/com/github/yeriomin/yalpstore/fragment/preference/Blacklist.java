@@ -1,19 +1,25 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.preference;
 
 import android.preference.ListPreference;
 import android.preference.Preference;
 
+import com.github.yeriomin.yalpstore.MultiSelectListPreference;
+import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
+import com.github.yeriomin.yalpstore.UpdatableAppsTask;
+import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class PreferenceBlacklistFragment extends PreferenceFragment {
+public class Blacklist extends Abstract {
 
     private ListPreference blackOrWhite;
     private MultiSelectListPreference appList;
 
-    public PreferenceBlacklistFragment(PreferenceActivity activity) {
+    public Blacklist(PreferenceActivity activity) {
         super(activity);
     }
 

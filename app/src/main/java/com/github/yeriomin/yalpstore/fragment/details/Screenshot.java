@@ -1,15 +1,19 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Gallery;
 
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.FullscreenImageActivity;
+import com.github.yeriomin.yalpstore.ImageAdapter;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
-public class ScreenshotFragment extends DetailsFragment {
+public class Screenshot extends Abstract {
 
-    public ScreenshotFragment(DetailsActivity activity, App app) {
+    public Screenshot(DetailsActivity activity, App app) {
         super(activity, app);
     }
 

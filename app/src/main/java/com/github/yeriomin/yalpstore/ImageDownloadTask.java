@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
-class ImageDownloadTask extends AsyncTask<String, Void, Void> {
+public class ImageDownloadTask extends AsyncTask<String, Void, Void> {
 
     protected ImageView view;
     private boolean fullSize;
