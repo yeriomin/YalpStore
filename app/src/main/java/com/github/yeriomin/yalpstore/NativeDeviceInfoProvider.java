@@ -25,8 +25,7 @@ import java.util.TimeZone;
 
 public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
-    // Getting this requires a permission and google services to be installed
-    static private final int GOOGLE_SERVICES_VERSION_CODE = 80711500;
+    static private final int GOOGLE_SERVICES_VERSION_CODE = 10548448;
 
     private Context context;
     private String localeString;
@@ -46,12 +45,13 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     public String getUserAgentString() {
         return "Android-Finsky/7.1.15 ("
             + "api=3"
-            + ",versionCode=" + GOOGLE_SERVICES_VERSION_CODE
+            + ",versionCode=" + getGsfVersionCode(context)
             + ",sdk=" + Build.VERSION.SDK_INT
             + ",device=" + Build.DEVICE
             + ",hardware=" + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
             + ",product=" + Build.PRODUCT
-            + ")";
+            + ")"
+        ;
     }
 
     public AndroidCheckinRequest generateAndroidCheckinRequest() {
@@ -64,7 +64,8 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
             .setVersion(3)
             .setDeviceConfiguration(getDeviceConfigurationProto())
             .setFragment(0)
-            .build();
+            .build()
+        ;
     }
 
     private AndroidCheckinProto getCheckinProto() {
@@ -95,8 +96,9 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
             .setClient("android-google")
             .setOtaInstalled(false)
             .setTimestamp(System.currentTimeMillis() / 1000)
-            .setGoogleServices(GOOGLE_SERVICES_VERSION_CODE)
-            .build();
+            .setGoogleServices(getGsfVersionCode(context))
+            .build()
+        ;
     }
 
     public DeviceConfigurationProto getDeviceConfigurationProto() {
@@ -111,7 +113,8 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
             .addAllSystemSupportedLocale(getLocales(context))
             .setGlEsVersion(configurationInfo.reqGlEsVersion)
             .addAllGlExtension(EglExtensionRetriever.getEglExtensions())
-            .build();
+            .build()
+        ;
     }
 
     private DeviceConfigurationProto.Builder addDisplayMetrics(DeviceConfigurationProto.Builder builder) {
@@ -175,5 +178,13 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
     static public List<String> getSharedLibraries(Context context) {
         return Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames());
+    }
+
+    static public int getGsfVersionCode(Context context) {
+        try {
+            return context.getPackageManager().getPackageInfo("com.google.android.gms", 0).versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            return GOOGLE_SERVICES_VERSION_CODE;
+        }
     }
 }

@@ -22,7 +22,6 @@ public class CrashLetterDeviceInfoBuilder extends CrashLetterBuilder {
 
     static {
         staticProperties.put("Client", "android-google");
-        staticProperties.put("GSF.version", "16");
         staticProperties.put("Roaming", "mobile-notroaming");
         staticProperties.put("TimeZone", TimeZone.getDefault().getID());
         staticProperties.put("GL.Extensions", TextUtils.join(",", EglExtensionRetriever.getEglExtensions()));
@@ -92,6 +91,7 @@ public class CrashLetterDeviceInfoBuilder extends CrashLetterBuilder {
         values.put("HasFiveWayNavigation", Boolean.toString(config.navigation == Configuration.NAVIGATIONHIDDEN_YES));
         ConfigurationInfo configurationInfo = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getDeviceConfigurationInfo();
         values.put("GL.Version", Integer.toString(configurationInfo.reqGlEsVersion));
+        values.put("GSF.version", Integer.toString(NativeDeviceInfoProvider.getGsfVersionCode(context)));
         return values;
     }
 
