@@ -76,7 +76,7 @@
             </intent-filter>
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
         </activity>
-        <activity android:name=".SearchResultActivity" android:launchMode="singleTask" android:configChanges="keyboardHidden|orientation|screenSize" >
+        <activity android:name=".SearchResultActivity" android:configChanges="keyboardHidden|orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>

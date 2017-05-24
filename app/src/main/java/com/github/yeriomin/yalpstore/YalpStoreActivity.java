@@ -40,6 +40,18 @@ public abstract class YalpStoreActivity extends Activity {
     }
 
     @Override
+    protected void onPause() {
+        Log.v(getClass().getName(), "Pausing activity");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.v(getClass().getName(), "Stopping activity");
+        super.onStop();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem updates = menu.findItem(R.id.action_updates);
