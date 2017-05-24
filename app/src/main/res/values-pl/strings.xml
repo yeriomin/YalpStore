@@ -180,7 +180,7 @@ Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji apli
 <string name="pref_category_installation">"Instalacja"</string>
 <string name="pref_category_spoofing">"Udawanie"</string>
 <string name="pref_category_ui">"Interfejs użytkownika"</string>
-<string name="details_installing">"Instalowanie..."</string>
+<string name="details_installing">"Instalowanie…"</string>
 <string name="details_installed">"Zainstalowano pomyślnie"</string>
 <string name="details_install_failure">"Nie można zainstalować"</string>
 <string name="notification_download_complete_new_permissions">"Pobieranie ukończone. Wymagane nowe uprawnienia."</string>
