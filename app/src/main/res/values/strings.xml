@@ -113,6 +113,7 @@
     <string name="details_similar_apps">Similar apps</string>
     <string name="details_users_also_installed">Users also installed</string>
     <string name="details_to_play_store">View in Play Store</string>
+    <string name="details_share">Share</string>
     <string name="details_signature_mismatch">The new version is signed with a different key to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
     <string name="details_depends_on">"Depends on: %1$s"</string>
     <string name="details_no_dependencies">nothing</string>

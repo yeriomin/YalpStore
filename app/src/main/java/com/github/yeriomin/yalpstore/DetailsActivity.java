@@ -19,6 +19,7 @@ import com.github.yeriomin.yalpstore.fragment.details.GeneralDetails;
 import com.github.yeriomin.yalpstore.fragment.details.IgnoreOption;
 import com.github.yeriomin.yalpstore.fragment.details.Review;
 import com.github.yeriomin.yalpstore.fragment.details.Screenshot;
+import com.github.yeriomin.yalpstore.fragment.details.Share;
 import com.github.yeriomin.yalpstore.fragment.details.SystemAppPage;
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -146,6 +147,7 @@ public class DetailsActivity extends YalpStoreActivity {
         new Review(this, app).draw();
         new AppLists(this, app).draw();
         new BackToPlayStore(this, app).draw();
+        new Share(this, app).draw();
         new SystemAppPage(this, app).draw();
         ignoreOptionFragment.setApp(app);
         ignoreOptionFragment.draw();
