@@ -27,6 +27,10 @@ Yalp Store uses the same (protobuf) API the android Play Store app uses. It down
 
 By default Yalp Store connects to Google services using a built-in account, so **you do not have to own a Google account to use it**. The only reason to use a live Google account is to access the paid apps you own.
 
+## Screenshots
+
+<img alt="Updates page" src="screenshots/updates.png" width="30%" hspace="5" /><img alt="Details page" src="screenshots/details.png" width="30%" hspace="5" /><img alt="Search page" src="screenshots/search.png" width="30%" hspace="5" />
+
 ## FAQ
 >Q: What about buying apps, books, music, movies? Is it going to be implemented at some point?
 >
