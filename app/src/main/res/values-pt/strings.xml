@@ -96,9 +96,9 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="pref_auto_install_summary_off">"Aplicações serão instaladas quando tocar na notificação"</string>
 <string name="pref_auto_install_summary_on">"Aplicações serão instaladas mal sejam transferidas"</string>
 <string name="pref_auto_install">"Instalar aplicações imediatamente"</string>
-<string name="pref_update_list_white_or_black_black">"Aplicações escolhidas serão ignoradas quando verificar por atualizações"</string>
-<string name="pref_update_list_white_or_black_white">"Apenas as aplicações escolhidas serão verificadas por atualizações"</string>
-<string name="pref_update_list_white_or_black">"Lista branca ou preta de aplicações para atualizar"</string>
+<string name="pref_update_list_white_or_black_black">"Aplicações escolhidas serão ignoradas"</string>
+<string name="pref_update_list_white_or_black_white">"Aplicações escolhidas serão verificadas"</string>
+<string name="pref_update_list_white_or_black">"Lista branca/negra"</string>
 <string name="pref_update_list_black">"Modificar aplicações na lista negra"</string>
 <string name="pref_update_list_white">"Modificar aplicações na lista branca"</string>
 <string name="pref_ui_theme">"Tema"</string>
@@ -182,7 +182,7 @@ Mantém em mente que ao efetuar o download de versões arbitrárias de aplicaç�
 <string name="pref_category_search">"Filtro de pesquisa"</string>
 <string name="pref_category_installation">"Instalação"</string>
 <string name="pref_category_spoofing">"Spoofing"</string>
-<string name="pref_category_ui">"Exibição"</string>
+<string name="pref_category_ui">"Interface"</string>
 <string name="details_installing">"A instalar .."</string>
 <string name="details_installed">"Instalado com sucesso"</string>
 <string name="details_install_failure">"Não foi possível concluir a instalação"</string>
@@ -247,7 +247,7 @@ Não o faças por mera curiosidade. Isto poderá dafinicar o teu dispositivo. Ef
 <string name="dialog_message_system_app_self">"O uso de permissões privilegiadas para permitir a instalação de apps em segundo plano exige que a Yalp Store seja uma app de sistema.
 
 O processo é imperfeito e específico do fornecedor, por isso, poderá não funcionar.
-
-Continuar mesmo assim ?"</string>
+Prosseguir mesmo assim ?"</string>
 <string name="about_website_label">"Página web:"</string>
+<string name="details_share">"Partilhar"</string>
 </resources>
