@@ -13,4 +13,6 @@
     <string name="content_description_review_previous_page" translatable="false">"Previous review page"</string>
     <string name="content_description_review_next_page" translatable="false">"Next review page"</string>
     <string name="content_description_app_icon" translatable="false">"App icon"</string>
+    <string name="email_subject_feedback" translatable="false">"%1$s %2$s User Feedback"</string>
+    <string name="email_subject_crash_report" translatable="false">"%1$s %2$s Crash Report"</string>
 </resources>

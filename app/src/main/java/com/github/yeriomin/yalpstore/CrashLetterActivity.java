@@ -31,7 +31,14 @@ public class CrashLetterActivity extends Activity {
         emailIntent.setType("message/rfc822");
         emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {developerEmail});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, BuildConfig.APPLICATION_ID + " " + BuildConfig.VERSION_NAME + " Crash Report");
+        emailIntent.putExtra(
+            Intent.EXTRA_SUBJECT,
+            context.getString(
+                TextUtils.isEmpty(stackTrace) ? R.string.email_subject_feedback : R.string.email_subject_crash_report,
+                BuildConfig.APPLICATION_ID,
+                BuildConfig.VERSION_NAME
+            )
+        );
         ArrayList<Uri> uris = new ArrayList<>();
         uris.add(new CrashLetterDeviceInfoBuilder(context).getUri());
         uris.add(new CrashLetterLogBuilder(context).getUri());
