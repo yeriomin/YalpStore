@@ -47,7 +47,7 @@ Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz 
 <string name="error_no_network">"Brak połączenia internetowego."</string>
 <string name="error_network_other">"Błąd sieci: %1$s"</string>
 <string name="error_not_purchased">"Aplikacja nie została zakupiona. Przekierować do jej strony w sklepie Google Play?"</string>
-<string name="error_downloads_directory_not_writable">"Katalog pobrań nie może zostać utworzony lub brak do niego dostępu."</string>
+<string name="error_downloads_directory_not_writable">"Katalog pobrań nie może zostać utworzony lub nie ma do niego dostępu."</string>
 <string name="error_token_dispenser_problem">"Nie można zalogować się bez konta. Spróbuj użyć swojego lub innego konta."</string>
 <string name="details_installs">"%1$s ↓"</string>
 <string name="details_rating">"%1$.1f★"</string>
@@ -73,7 +73,7 @@ Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz 
 <string name="details_apps_by_this_dev">"Inne aplikacje tego programisty"</string>
 <string name="details_similar_apps">"Podobne aplikacje"</string>
 <string name="details_users_also_installed">"Użytkownicy instalowali również"</string>
-<string name="details_signature_mismatch">"Nowa wersja jest podpisana cyfrowo innym kluczem niż obecna. Aby zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (spowoduje to usunięcie wszystkich jej danych i ustawień)"</string>
+<string name="details_signature_mismatch">"Nowa wersja jest podpisana cyfrowo innym kluczem niż obecna. Aby zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (spowoduje to usunięcie wszystkich jej danych i ustawień)."</string>
 <string name="suffix_million">"mil"</string>
 <string name="suffix_billion">"bil"</string>
 <string name="credentials_hint_email">"Wpisz adres e-mail"</string>
@@ -124,7 +124,7 @@ Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania
 <string name="pref_delete_apk_after_install_summary_off">"Pliki .apk nie będą teraz usuwane po instalacji"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Pliki .apk są teraz usuwane po instalacji"</string>
 <string name="pref_delete_apk_after_install">"Usuwaj pliki .apk po instalacji"</string>
-<string name="dialog_title_application_crashed">"Przepraszamy, Yalp Store uległ awarii."</string>
+<string name="dialog_title_application_crashed">"Niestety Yalp Store uległ awarii. "</string>
 <string name="dialog_message_application_crashed">"Możesz pomóc w naprawie wysyłając dane o błędzie deweloperowi. Klikając OK zostaniesz przeniesiony do swojej domyślnej aplikacji e-mail z gotowym mailem do wysłania deweloperowi. 
 
 Proszę opisać co robiłeś w momencie wystąpienia błędu.
@@ -171,10 +171,10 @@ Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji apli
 <string name="pref_requested_language_default">"Domyślny język"</string>
 <string name="pref_hide_apps_with_ads">"Ukryj aplikacje z reklamami"</string>
 <string name="pref_hide_apps_with_ads_summary_off">"Aplikacje z reklamami są teraz wyświetlane"</string>
-<string name="pref_hide_apps_with_ads_summary_on">"Aplikacje z reklamami nie będą teraz wyświetlane"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"Aplikacje z reklamami są teraz ukryte"</string>
 <string name="pref_device_to_pretend_to_be">"Udawanie innego urządzenia."</string>
 <string name="pref_device_to_pretend_to_be_default">"Oryginalna nazwa Twojego urządzenia"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Zmiana zostanie zastosowana po ponownym zalogowaniu"</string>
+<string name="pref_device_to_pretend_to_be_toast">"Ta zmiana będzie zastosowana po ponownym zalogowaniu"</string>
 <string name="pref_category_updates">"Aktualizacje"</string>
 <string name="pref_category_search">"Filtrowanie wyników wyszukiwania"</string>
 <string name="pref_category_installation">"Instalacja"</string>
@@ -243,4 +243,5 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="dialog_title_system_app_self">"Konwersja Yalp w aplikację systemową"</string>
 <string name="dialog_message_system_app_self">"Korzystanie z uprzywilejowanych uprawnień, aby umożliwić instalację aplikacji w tle, wymaga konwersji Yalp Store na aplikację systemową."</string>
 <string name="about_website_label">"Strona internetowa:"</string>
+<string name="details_share">"Udostępnij"</string>
 </resources>
