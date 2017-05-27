@@ -30,7 +30,7 @@ Touchez \"créer un mot de passe\" pour être redirigé vers la page de créatio
 <string name="dialog_message_logout">"Confirmer la déconnexion ?"</string>
 <string name="dialog_title_reviews">"Chargement des avis"</string>
 <string name="dialog_message_reviews">"Chargement des avis. Veuillez patienter."</string>
-<string name="dialog_title_purchasing_app">"Téléchargement en cours"</string>
+<string name="dialog_title_purchasing_app">"Téléchargement..."</string>
 <string name="dialog_message_purchasing_app">"Démarrage du téléchargement de l'application sélectionnée. Veuillez patienter."</string>
 <string name="dialog_title_loading_app_list_search">"Recherche en cours"</string>
 <string name="dialog_message_loading_app_list_search">"Recherche d'apps. Veuillez patienter."</string>
@@ -63,7 +63,9 @@ Touchez \"créer un mot de passe\" pour être redirigé vers la page de créatio
 <string name="details_versionName_updatable">"Version %1$s → %2$s "</string>
 <string name="details_download">"Télécharger"</string>
 <string name="details_install">"Installer"</string>
-<string name="details_downloading">"Téléchargement en cours"</string>
+
+<!-- When using "Téléchargement en cours" a part of the sentence is hidden in the button. -->
+<string name="details_downloading">"En cours"</string>
 <string name="details_review_dialog_title">"Quelque chose à ajouter ?"</string>
 <string name="details_review_dialog_review_title_hint">"Titre ici"</string>
 <string name="details_review_dialog_review_comment_hint">"Commentaire ici"</string>
@@ -245,4 +247,5 @@ Le processus dépend du fabricant et peut ne pas fonctionner.
 
 Poursuivre ?"</string>
 <string name="about_website_label">"Site web:"</string>
+<string name="details_share">"Partager"</string>
 </resources>
