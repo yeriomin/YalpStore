@@ -30,7 +30,7 @@ Choisissez  « créer un mot de passe » pour être redirigé vers la page de 
 <string name="dialog_message_logout">"Confirmer la déconnexion ?"</string>
 <string name="dialog_title_reviews">"Chargement des avis"</string>
 <string name="dialog_message_reviews">"Chargement des avis, patientez SVP"</string>
-<string name="dialog_title_purchasing_app">"Téléchargement de l'app"</string>
+<string name="dialog_title_purchasing_app">"Téléchargement..."</string>
 <string name="dialog_message_purchasing_app">"Téléchargement de l'app démarré, patientez SVP"</string>
 <string name="dialog_title_loading_app_list_search">"Recherche…"</string>
 <string name="dialog_message_loading_app_list_search">"Recherche en cours, veuillez patienter."</string>
@@ -245,4 +245,5 @@ Le processus dépend du fabricant et peut ne pas fonctionner.
 
 Poursuivre ?"</string>
 <string name="about_website_label">"Site web:"</string>
+<string name="details_share">"Partager"</string>
 </resources>
