@@ -69,7 +69,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         }
         addBody(connection, body);
 
-        byte[] content = new byte[0];
+        byte[] content;
         Log.i(getClass().getName(), "Requesting " + connection.getURL().toString());
         connection.connect();
 

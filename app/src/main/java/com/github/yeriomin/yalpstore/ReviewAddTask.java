@@ -30,7 +30,6 @@ class ReviewAddTask extends AsyncTask<com.github.yeriomin.yalpstore.model.Review
         try {
             review = wrapper.addOrEditReview(packageName, params[0]);
         } catch (IOException e) {
-            System.out.println(e.getClass().getName() + " " + e.getMessage());
             e.printStackTrace();
             return e;
         }

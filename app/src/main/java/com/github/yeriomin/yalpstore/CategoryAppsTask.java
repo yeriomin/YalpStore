@@ -21,9 +21,7 @@ class CategoryAppsTask extends GoogleApiAsyncTask {
             if (!iterator.hasNext()) {
                 return null;
             }
-            for (App app: iterator.next()) {
-                apps.add(app);
-            }
+            apps.addAll(iterator.next());
         } catch (Throwable e) {
             return e;
         }

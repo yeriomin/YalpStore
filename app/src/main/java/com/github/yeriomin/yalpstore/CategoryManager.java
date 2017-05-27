@@ -21,12 +21,10 @@ public class CategoryManager {
 
     private Activity activity;
     private SharedPreferencesTranslator translator;
-    private SharedPreferences prefs;
 
     public CategoryManager(Activity activity) {
         this.activity = activity;
-        prefs = PreferenceManager.getDefaultSharedPreferences(activity);
-        translator = new SharedPreferencesTranslator(prefs);
+        translator = new SharedPreferencesTranslator(PreferenceManager.getDefaultSharedPreferences(activity));
     }
 
     public String getCategoryName(String categoryId) {
