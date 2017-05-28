@@ -43,6 +43,6 @@ public abstract class DownloadRequestBuilder {
     }
 
     private Uri getDownloadUri() {
-        return Uri.parse(getDownloadUrl().replace("https", "http"));
+        return Uri.parse(getDownloadUrl());
     }
 }
