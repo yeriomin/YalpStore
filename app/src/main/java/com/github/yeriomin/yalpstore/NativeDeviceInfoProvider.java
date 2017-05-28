@@ -159,8 +159,8 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         PackageManager packageManager = context.getPackageManager();
         FeatureInfo[] featuresList = packageManager.getSystemAvailableFeatures();
         List<String> featureStringList = new ArrayList<>();
-        for (FeatureInfo feature : featuresList) {
-            if (feature.name != null) {
+        for (FeatureInfo feature: featuresList) {
+            if (!TextUtils.isEmpty(feature.name)) {
                 featureStringList.add(feature.name);
             }
         }
@@ -168,9 +168,12 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     static public List<String> getLocales(Context context) {
-        List<String> locales = Arrays.asList(context.getAssets().getLocales());
-        for (int i = 0; i < locales.size(); i++) {
-            locales.set(i, locales.get(i).replace("-", "_"));
+        List<String> locales = new ArrayList<>();
+        for (String locale: context.getAssets().getLocales()) {
+            if (TextUtils.isEmpty(locale)) {
+                continue;
+            }
+            locales.add(locale.replace("-", "_"));
         }
         Collections.sort(locales);
         return locales;
