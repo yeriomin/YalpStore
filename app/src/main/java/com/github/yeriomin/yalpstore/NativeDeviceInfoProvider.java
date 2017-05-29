@@ -185,7 +185,8 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
     static public int getGsfVersionCode(Context context) {
         try {
-            return context.getPackageManager().getPackageInfo("com.google.android.gms", 0).versionCode;
+            int versionCode = context.getPackageManager().getPackageInfo("com.google.android.gms", 0).versionCode;
+            return versionCode > GOOGLE_SERVICES_VERSION_CODE ? versionCode : GOOGLE_SERVICES_VERSION_CODE;
         } catch (PackageManager.NameNotFoundException e) {
             return GOOGLE_SERVICES_VERSION_CODE;
         }
