@@ -7,13 +7,13 @@ android:
     - platform-tools
     - build-tools-25.0.3
     - android-25
-deploy:
-  provider: releases
-  api_key:
-    secure: mJRRKJLGtbEc5s6VKq4bqbDRLn6mpjJ2e+9IjtMJUT+WuxtjEx2aCvHLVSmG0gJGwvbBhyVShkqIQYSu0NNx98O7n8ePy9cxRWmsuhbwAdMNLG3MuT+HFVR2VVbRh4aZvUgFKbbob1B4P1WC2+6+C1i/m42jz0XnNCVpwCfevEhYxeGtbSOWDSguDeAs/YYb3kpVSNvUKRdTEMYY1zETuhmt5AoPSBfkraffo/m6YPy7Kt0nZkFjjqA5yObF1JDROQBdj/U9qV651X8c9hQfaH/n0yIbPrPGnkAliCW0IBw42ifVsH2pQcPMUzJ/ZPJtKcQMOR6h7lO6iYpbCZUw3tgHXBNYSGtNzVNC3oOwg0Or0rSkcMz4wdRDktietxxTsvOhObrJubglY2q58d6ejZvf37ronCsDzkaB8TNNSSLCADP7hvFhAFfHQsC1WzVQa3orJAyjc981LNX4BGdc68vXIzfkEkJpOFmTWoQiHXbrB0gtpzJGKrclc5DQ9IQHmqU1/iMZf+3vasGNwsA9Ro6k98/HrhKTC+oh9ygI5oNjMhgZ3JcJO3r9xEhmsKNuI9jkeEs4WhN4CLyp6ZgnqgLbdGF0LjbTx2z4Emi3oyAVXB+VV3JshRljXsAvMNYFV3eqLKK9ZYIHnWvxP+cgzvZnAc4vV1Hx55VjhjcqqFc=
-  file: app/build/yalp-store-ota.zip
-  skip_cleanup: true
-  on:
-    all_branches: true
-    tags: true
-    repo: yeriomin/YalpStore
+#deploy:
+#  provider: releases
+#  api_key:
+#    secure: mJRRKJLGtbEc5s6VKq4bqbDRLn6mpjJ2e+9IjtMJUT+WuxtjEx2aCvHLVSmG0gJGwvbBhyVShkqIQYSu0NNx98O7n8ePy9cxRWmsuhbwAdMNLG3MuT+HFVR2VVbRh4aZvUgFKbbob1B4P1WC2+6+C1i/m42jz0XnNCVpwCfevEhYxeGtbSOWDSguDeAs/YYb3kpVSNvUKRdTEMYY1zETuhmt5AoPSBfkraffo/m6YPy7Kt0nZkFjjqA5yObF1JDROQBdj/U9qV651X8c9hQfaH/n0yIbPrPGnkAliCW0IBw42ifVsH2pQcPMUzJ/ZPJtKcQMOR6h7lO6iYpbCZUw3tgHXBNYSGtNzVNC3oOwg0Or0rSkcMz4wdRDktietxxTsvOhObrJubglY2q58d6ejZvf37ronCsDzkaB8TNNSSLCADP7hvFhAFfHQsC1WzVQa3orJAyjc981LNX4BGdc68vXIzfkEkJpOFmTWoQiHXbrB0gtpzJGKrclc5DQ9IQHmqU1/iMZf+3vasGNwsA9Ro6k98/HrhKTC+oh9ygI5oNjMhgZ3JcJO3r9xEhmsKNuI9jkeEs4WhN4CLyp6ZgnqgLbdGF0LjbTx2z4Emi3oyAVXB+VV3JshRljXsAvMNYFV3eqLKK9ZYIHnWvxP+cgzvZnAc4vV1Hx55VjhjcqqFc=
+#  file: app/build/yalp-store-ota.zip
+#  skip_cleanup: true
+#  on:
+#    all_branches: true
+#    tags: true
+#    repo: yeriomin/YalpStore
