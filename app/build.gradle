@@ -33,7 +33,7 @@ android {
 
     def otaDir = "${project.rootDir}/yalp-store-ota-zip"
     def apkDir = "${project.buildDir}/outputs/apk"
-    def otaZip = "yalp-store-ota.zip"
+    def otaZip = "yalp-store-ota-${android.defaultConfig.versionCode}.zip"
     def apkFilename = "YalpStore.apk"
     task deleteOldOtaZip(type: Delete) {
         delete "${project.buildDir}/${otaZip}"
