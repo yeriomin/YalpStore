@@ -13,6 +13,7 @@ import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -108,6 +109,13 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
         }
         otherInstalledApps.addAll(installedApps.values());
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Throwable result) {
+        super.onPostExecute(result);
+        Collections.sort(updatableApps);
+        Collections.sort(otherInstalledApps);
     }
 
     private App addInstalledAppInfo(App appFromMarket, App installedApp) {

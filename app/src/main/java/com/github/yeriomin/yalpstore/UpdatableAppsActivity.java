@@ -13,7 +13,6 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.view.ListItem;
 import com.github.yeriomin.yalpstore.view.UpdatableAppBadge;
 
-import java.util.Collections;
 import java.util.List;
 
 public class UpdatableAppsActivity extends AppListActivity {
@@ -102,7 +101,14 @@ public class UpdatableAppsActivity extends AppListActivity {
                 if (null != e && showUpdatesOnly()) {
                     return;
                 }
-                addApps(updatableApps, otherInstalledApps, explicitCheck);
+                if (showUpdatesOnly()) {
+                    addApps(updatableApps);
+                } else if (null != e || (!explicitCheck && PreferenceActivity.getUpdateInterval(context) == -1)) {
+                    addApps(otherInstalledApps);
+                } else {
+                    addApps(updatableApps, R.string.list_has_update);
+                    addApps(otherInstalledApps, R.string.list_no_update);
+                }
                 toggleUpdateAll(this.updatableApps.size() > 0);
                 new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
             }
@@ -113,23 +119,11 @@ public class UpdatableAppsActivity extends AppListActivity {
         return task;
     }
 
-    private void addApps(List<App> updatable, List<App> other, boolean explicitCheck) {
-        if (showUpdatesOnly()) {
-            addApps(updatable);
-        } else {
-            if (!updatable.isEmpty()) {
-                addSeparator(getString(R.string.list_has_update));
-                Collections.sort(updatable);
-                addApps(updatable);
-            }
-            if (!other.isEmpty()) {
-                if (!(PreferenceActivity.getUpdateInterval(this) < 0) || explicitCheck) {
-                    addSeparator(getString(R.string.list_no_update));
-                }
-                Collections.sort(other);
-                addApps(other);
-            }
+    private void addApps(List<App> apps, int labelStringId) {
+        if (!apps.isEmpty()) {
+            addSeparator(getString(labelStringId));
         }
+        addApps(apps);
     }
 
     private boolean showUpdatesOnly() {
