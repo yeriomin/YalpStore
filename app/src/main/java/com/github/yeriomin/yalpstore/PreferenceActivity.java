@@ -7,10 +7,10 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 
-import com.github.yeriomin.yalpstore.fragment.preference.InstallationMethod;
 import com.github.yeriomin.yalpstore.fragment.preference.Blacklist;
 import com.github.yeriomin.yalpstore.fragment.preference.CheckUpdates;
 import com.github.yeriomin.yalpstore.fragment.preference.Device;
+import com.github.yeriomin.yalpstore.fragment.preference.InstallationMethod;
 import com.github.yeriomin.yalpstore.fragment.preference.Language;
 import com.github.yeriomin.yalpstore.fragment.preference.Theme;
 

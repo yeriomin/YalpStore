@@ -3,15 +3,8 @@ package com.github.yeriomin.yalpstore;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.net.ConnectivityManager;
-import android.net.Network;
-import android.net.NetworkCapabilities;
 import android.os.Build;
 import android.util.Log;
-
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
 
