@@ -35,19 +35,14 @@ public class ButtonDownload extends Button {
     }
 
     @Override
-    protected View.OnClickListener getOnClickListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
-                    activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
-                } else if (checkPermission()) {
-                    download();
-                } else {
-                    requestPermission();
-                }
-            }
-        };
+    protected void onButtonClick(View v) {
+        if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
+            activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
+        } else if (checkPermission()) {
+            download();
+        } else {
+            requestPermission();
+        }
     }
 
     public void download() {

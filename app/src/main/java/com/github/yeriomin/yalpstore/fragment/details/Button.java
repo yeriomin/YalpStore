@@ -19,7 +19,7 @@ public abstract class Button extends Abstract {
 
     abstract protected boolean shouldBeVisible();
 
-    abstract protected View.OnClickListener getOnClickListener();
+    abstract protected void onButtonClick(View v);
 
     @Override
     public void draw() {
@@ -28,7 +28,12 @@ public abstract class Button extends Abstract {
         }
         button.setEnabled(true);
         button.setVisibility(shouldBeVisible() ? View.VISIBLE : View.GONE);
-        button.setOnClickListener(getOnClickListener());
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonClick(v);
+            }
+        });
     }
 
     protected void disableButton(int buttonId, int stringId) {

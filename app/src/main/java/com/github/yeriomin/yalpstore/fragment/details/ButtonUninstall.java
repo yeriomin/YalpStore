@@ -27,17 +27,12 @@ public class ButtonUninstall extends Button {
     }
 
     @Override
-    protected View.OnClickListener getOnClickListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isSystemAndReadyForPermanentUninstallation()) {
-                    askAndUninstall();
-                } else {
-                    activity.startActivity(new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + app.getPackageName())));
-                }
-            }
-        };
+    protected void onButtonClick(View v) {
+        if (isSystemAndReadyForPermanentUninstallation()) {
+            askAndUninstall();
+        } else {
+            activity.startActivity(new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + app.getPackageName())));
+        }
     }
 
     private boolean isSystemAndReadyForPermanentUninstallation() {

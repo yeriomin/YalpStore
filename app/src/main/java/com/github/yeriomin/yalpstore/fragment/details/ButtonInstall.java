@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.Downloader;
-import com.github.yeriomin.yalpstore.InstallerDefault;
 import com.github.yeriomin.yalpstore.InstallerFactory;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
@@ -34,15 +33,9 @@ public class ButtonInstall extends Button {
     }
 
     @Override
-    protected View.OnClickListener getOnClickListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                disableButton(R.id.install, R.string.details_installing);
-                NotificationManager manager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
-                manager.cancel(app.getDisplayName().hashCode());
-                new InstallerDefault(activity).install(app);
-            }
-        };
+    protected void onButtonClick(View v) {
+        disableButton(R.id.install, R.string.details_installing);
+        ((NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE)).cancel(app.getDisplayName().hashCode());
+        InstallerFactory.get(activity).verifyAndInstall(app);
     }
 }

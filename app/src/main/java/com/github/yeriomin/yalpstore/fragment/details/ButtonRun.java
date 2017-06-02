@@ -24,13 +24,8 @@ public class ButtonRun extends Button {
     }
 
     @Override
-    protected View.OnClickListener getOnClickListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.startActivity(getLaunchIntent());
-            }
-        };
+    protected void onButtonClick(View v) {
+        activity.startActivity(getLaunchIntent());
     }
 
     private Intent getLaunchIntent() {
