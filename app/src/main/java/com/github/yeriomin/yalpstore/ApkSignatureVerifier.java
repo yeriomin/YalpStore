@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.os.Build;
 import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
@@ -45,6 +46,11 @@ class ApkSignatureVerifier {
     }
 
     public boolean match(String packageName, File apkFile) {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD_MR1) {
+            // Android bug
+            // PackageManager#getPackageArchiveInfo(String, int) does not include signatures if Android version is 2.3.7 and less.
+            return true;
+        }
         byte[] apkSig = getApkSignature(apkFile);
         byte[] localSig = getLocalSignature(packageName);
         return localSig.length == 0 || Arrays.equals(apkSig, localSig);
