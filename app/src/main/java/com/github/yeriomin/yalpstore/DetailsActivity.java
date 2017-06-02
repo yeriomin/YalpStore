@@ -139,7 +139,7 @@ public class DetailsActivity extends YalpStoreActivity {
         return null;
     }
 
-    private void drawDetails(App app) {
+    public void drawDetails(App app) {
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
         new GeneralDetails(this, app).draw();
