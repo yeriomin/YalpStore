@@ -39,11 +39,19 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
         if (!state.isEverythingFinished()) {
             return;
         }
+        draw(context, state);
+    }
+
+    private void draw(Context context, DownloadState state) {
         buttonDownload.setText(R.string.details_download);
         buttonDownload.setEnabled(true);
         if (state.isEverythingSuccessful()) {
             buttonDownload.setVisibility(View.GONE);
             buttonInstall.setVisibility(View.VISIBLE);
+            if (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)) {
+                buttonInstall.setEnabled(false);
+                buttonInstall.setText(R.string.details_installing);
+            }
         }
     }
 }
