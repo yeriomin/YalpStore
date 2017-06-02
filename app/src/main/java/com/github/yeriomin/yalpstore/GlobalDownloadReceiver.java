@@ -45,13 +45,25 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
         }
 
         if (state.isEverythingFinished() && state.isEverythingSuccessful()) {
-            verifyAndInstall(app, state.isExplicitInstall());
+            verifyAndInstall(app, state.getTriggeredBy());
         }
     }
 
-    private void verifyAndInstall(App app, boolean explicitInstall) {
-        if (shouldAutoInstall() || needToInstallUpdates() || (explicitInstall && PreferenceActivity.canInstallInBackground(context))) {
+    private void verifyAndInstall(App app, DownloadState.TriggeredBy triggeredBy) {
+        boolean autoInstall = triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON) && shouldAutoInstall();
+        if (autoInstall
+            || (
+                needToInstallUpdates()
+                && PreferenceActivity.canInstallInBackground(context)
+                && (triggeredBy.equals(DownloadState.TriggeredBy.SCHEDULED_UPDATE)
+                    || triggeredBy.equals(DownloadState.TriggeredBy.UPDATE_ALL_BUTTON)
+                )
+            )
+        ) {
             InstallerAbstract installer = InstallerFactory.get(context);
+            if (autoInstall) {
+                installer.setBackground(false);
+            }
             installer.verifyAndInstall(app);
         } else {
             notifyDownloadComplete(app);

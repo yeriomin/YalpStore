@@ -9,6 +9,12 @@ import java.util.Set;
 
 public class DownloadState {
 
+    public enum TriggeredBy {
+        DOWNLOAD_BUTTON,
+        UPDATE_ALL_BUTTON,
+        SCHEDULED_UPDATE
+    }
+
     static private Map<String, DownloadState> state = new HashMap<>();
     static private Map<Long, String> downloadIds = new HashMap<>();
 
@@ -16,7 +22,7 @@ public class DownloadState {
     private Set<Long> finished = new HashSet<>();
     private Set<Long> successful = new HashSet<>();
     private App app;
-    private boolean explicitInstall;
+    private TriggeredBy triggeredBy = TriggeredBy.DOWNLOAD_BUTTON;
 
     static public DownloadState get(String packageName) {
         if (!state.containsKey(packageName)) {
@@ -61,11 +67,11 @@ public class DownloadState {
         successful.add(downloadId);
     }
 
-    public boolean isExplicitInstall() {
-        return explicitInstall;
+    public TriggeredBy getTriggeredBy() {
+        return triggeredBy;
     }
 
-    public void setExplicitInstall(boolean explicitInstall) {
-        this.explicitInstall = explicitInstall;
+    public void setTriggeredBy(TriggeredBy triggeredBy) {
+        this.triggeredBy = triggeredBy;
     }
 }

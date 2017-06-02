@@ -78,7 +78,6 @@ public class UpdateChecker extends BroadcastReceiver {
     private void download(Context context, App app) {
         Log.i(getClass().getName(), "Starting download of update for " + app.getPackageName());
         DownloadState state = DownloadState.get(app.getPackageName());
-        state.setExplicitInstall(context instanceof Activity);
         state.setApp(app);
         getPurchaseTask(context, app).execute();
     }
@@ -87,6 +86,10 @@ public class UpdateChecker extends BroadcastReceiver {
         PurchaseTask task = new PurchaseTask();
         task.setApp(app);
         task.setContext(context);
+        task.setTriggeredBy(context instanceof Activity
+            ? DownloadState.TriggeredBy.UPDATE_ALL_BUTTON
+            : DownloadState.TriggeredBy.SCHEDULED_UPDATE
+        );
         return task;
     }
 

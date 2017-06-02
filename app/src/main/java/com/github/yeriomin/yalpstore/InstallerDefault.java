@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.io.File;
+
 public class InstallerDefault extends InstallerAbstract {
 
     public InstallerDefault(Context context) {
@@ -12,11 +14,23 @@ public class InstallerDefault extends InstallerAbstract {
     }
 
     @Override
-    public void install(App app) {
+    public void verifyAndInstall(App app) {
         if (background) {
             Log.i(getClass().getName(), "Background installation is not supported by default installer");
             return;
         }
+        File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
+        if (!new ApkSignatureVerifier(context).match(app.getPackageName(), file)) {
+            Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
+            getSignatureMismatchDialog().show();
+        } else {
+            Log.i(getClass().getName(), "Installing " + app.getPackageName());
+            install(app);
+        }
+    }
+
+    @Override
+    protected void install(App app) {
         context.startActivity(
             InstallerAbstract.getOpenApkIntent(
                 context,

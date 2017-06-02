@@ -16,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InstallerPrivileged extends InstallerAbstract {
+public class InstallerPrivileged extends InstallerBackground {
 
     public final int INSTALL_REPLACE_EXISTING = 2;
 
@@ -69,20 +69,14 @@ public class InstallerPrivileged extends InstallerAbstract {
     }
 
     @Override
-    public void install(App app) {
+    protected void install(App app) {
         File apkFile = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         if (!apkFile.exists()) throw new IllegalArgumentException();
         PackageManager pm = context.getPackageManager();
         Class<?>[] types = new Class[] {Uri.class, IPackageInstallObserver.class, int.class, String.class};
         try {
             pm.getClass().getMethod("installPackage", types).invoke(pm, Uri.fromFile(apkFile), new InstallObserver(app), INSTALL_REPLACE_EXISTING, BuildConfig.APPLICATION_ID);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
     }
@@ -100,12 +94,8 @@ public class InstallerPrivileged extends InstallerAbstract {
             Log.i(getClass().getName(), "Installation of " + packageName + " complete with code " + returnCode);
             context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM));
             Looper.prepare();
-            int stringId = returnCode > 0 ? R.string.details_installed : R.string.details_install_failure;
-            if (background) {
-                showNotification(stringId, app);
-            } else {
-                toast(context.getString(stringId));
-            }
+            String resultString = context.getString(returnCode > 0 ? R.string.details_installed : R.string.details_install_failure);
+            postInstallationResult(resultString, app.getDisplayName());
             if (errors.containsKey(returnCode)) {
                 Log.e(getClass().getName(), errors.get(returnCode));
             }

@@ -34,33 +34,20 @@ public abstract class InstallerAbstract {
         return intent;
     }
 
-    abstract public void install(App app);
+    abstract public void verifyAndInstall(App app);
+    abstract protected void install(App app);
 
     public InstallerAbstract(Context context) {
         Log.i(getClass().getName(), "Installer chosen");
         this.context = context;
-        this.background = !(context instanceof Activity);
+        background = !(context instanceof Activity);
     }
 
-    public void verifyAndInstall(App app) {
-        File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-        if (!new ApkSignatureVerifier(context).match(app.getPackageName(), file)) {
-            Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
-            if (background) {
-                notifySignatureMismatch(app);
-            } else {
-                getSignatureMismatchDialog().show();
-            }
-        } else if (background && !new PermissionsComparator(context).isSame(app)) {
-            Log.i(getClass().getName(), "New permissions for " + app.getPackageName());
-            notifyNewPermissions(app);
-        } else {
-            Log.i(getClass().getName(), "Installing " + app.getPackageName());
-            install(app);
-        }
+    public void setBackground(boolean background) {
+        this.background = background;
     }
 
-    private AlertDialog getSignatureMismatchDialog() {
+    protected AlertDialog getSignatureMismatchDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder
             .setMessage(R.string.details_signature_mismatch)
@@ -77,23 +64,7 @@ public abstract class InstallerAbstract {
         return builder.create();
     }
 
-    private void notifySignatureMismatch(App app) {
-        notifyAndToast(
-            R.string.notification_download_complete_signature_mismatch,
-            R.string.notification_download_complete_signature_mismatch_toast,
-            app
-        );
-    }
-
-    private void notifyNewPermissions(App app) {
-        notifyAndToast(
-            R.string.notification_download_complete_new_permissions,
-            R.string.notification_download_complete_new_permissions_toast,
-            app
-        );
-    }
-
-    private void notifyAndToast(int notificationStringId, int toastStringId, App app) {
+    protected void notifyAndToast(int notificationStringId, int toastStringId, App app) {
         showNotification(notificationStringId, app);
         toast(context.getString(toastStringId, app.getDisplayName()));
     }
