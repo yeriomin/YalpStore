@@ -28,7 +28,9 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
         String oldValue = ((ListPreference) preference).getValue();
         if (null != oldValue && !oldValue.equals(newValue)) {
             if (PreferenceActivity.INSTALLATION_METHOD_PRIVILEGED.equals(newValue)) {
-                return checkPrivileged();
+                if (!checkPrivileged()) {
+                    return false;
+                }
             } else if (PreferenceActivity.INSTALLATION_METHOD_ROOT.equals(newValue)) {
                 new CheckSuTask(activity).execute();
             }
