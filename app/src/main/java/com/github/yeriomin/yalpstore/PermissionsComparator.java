@@ -24,20 +24,21 @@ public class PermissionsComparator {
         PackageManager pm = context.getPackageManager();
         try {
             PackageInfo pi = pm.getPackageInfo(app.getPackageName(), PackageManager.GET_PERMISSIONS);
-            Set<String> requestedPermissions = new HashSet<>(Arrays.asList(
+            Set<String> oldPermissions = new HashSet<>(Arrays.asList(
                 null == pi.requestedPermissions
                 ? new String[0]
                 : pi.requestedPermissions
             ));
-            boolean result = requestedPermissions.equals(app.getPermissions());
+            boolean result = oldPermissions.equals(app.getPermissions());
             if (!result) {
-                requestedPermissions.removeAll(app.getPermissions());
-                Log.i(getClass().getName(), app.getPackageName() + " requests " + requestedPermissions.size() + " new permissions");
+                Set<String> newPermissions = new HashSet<>(app.getPermissions());
+                newPermissions.removeAll(oldPermissions);
+                Log.i(getClass().getName(), app.getPackageName() + " requests " + newPermissions.size() + " new permissions");
             }
             return result;
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(getClass().getName(), "Package " + app.getPackageName() + " doesn't seem to be installed");
         }
-        return false;
+        return true;
     }
 }
