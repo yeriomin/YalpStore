@@ -25,6 +25,7 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             finish();
             return;
         }
+        Log.i(getClass().getName(), "Getting package " + packageName);
         DetailsTask task = getDetailsTask(packageName);
         task.setTaskClone(getDetailsTask(packageName));
         task.execute();
@@ -37,7 +38,12 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             Log.w(getClass().getName(), "Intent does not have " + Intent.EXTRA_TEXT);
             return null;
         }
-        return Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT)).getQueryParameter("id");
+        try {
+            return Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT)).getQueryParameter("id");
+        } catch (UnsupportedOperationException e) {
+            Log.w(getClass().getName(), "Could not parse URI " + intent.getStringExtra(Intent.EXTRA_TEXT) + ": " + e.getMessage());
+            return null;
+        }
     }
 
     private DetailsTask getDetailsTask(final String packageName) {
@@ -68,7 +74,7 @@ public class DirectDownloadActivity extends YalpStoreActivity {
     }
 
     private boolean checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED;
         }
