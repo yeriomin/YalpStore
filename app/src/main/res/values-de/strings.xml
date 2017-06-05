@@ -16,8 +16,8 @@
 <!-- Fuzzy -->
 <string name="action_updates">"Aktualisierungen
 "</string>
-<string name="action_ignore">"Ignoriere Aktualisierungen"</string>
-<string name="action_unignore">"Ignoriere Aktualisierungen nicht mehr"</string>
+<string name="action_ignore">"Aktualisierungen ignorieren"</string>
+<string name="action_unignore">"Aktualisierungen nicht ignorieren"</string>
 <string name="action_whitelist">"Whitelist für Aktualisierungen"</string>
 <string name="action_unwhitelist">"Ignoriere Aktualisierungen"</string>
 <string name="search_title">"Suche nach Apps"</string>
@@ -90,13 +90,13 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play Store Nutzungsbedin
 <string name="notification_updates_available_title">"App Aktualisierungen verfügbar."</string>
 <string name="notification_updates_available_message">"Es sind %1$d Aktualisierungen für deine Apps verfügbar."</string>
 <string name="pref_hide_nonfree_apps_summary_off">"Kostenpflichtige Apps werden angezeigt"</string>
-<string name="pref_hide_nonfree_apps_summary_on">"Kostenpflichtige Apps werden nicht angezeigt"</string>
-<string name="pref_hide_nonfree_apps">"Blende kostenpflichtige Apps aus"</string>
-<string name="pref_auto_install_summary_off">"Apps werden installiert, wenn die Abschluss-Benachrichtigung angetippt wird"</string>
+<string name="pref_hide_nonfree_apps_summary_on">"Kostenpflichtige Apps werden versteckt"</string>
+<string name="pref_hide_nonfree_apps">"Kostenpflichtige Apps verstecken"</string>
+<string name="pref_auto_install_summary_off">"Apps werden installiert, sobald die Abschluss-Benachrichtigung angetippt wird"</string>
 <string name="pref_auto_install_summary_on">"Apps werden installiert, sobald der Download abgeschlossen ist"</string>
 <string name="pref_auto_install">"Apps sofort installieren"</string>
-<string name="pref_update_list_white_or_black_black">"Nur für ausgewählte Apps werden keine Aktualisierungen gesucht"</string>
-<string name="pref_update_list_white_or_black_white">"Nur für ausgewählte Apps werden Aktualisierungen gesucht"</string>
+<string name="pref_update_list_white_or_black_black">"Für ausgewählte Apps werden keine Aktualisierungen gesucht"</string>
+<string name="pref_update_list_white_or_black_white">"Für ausgewählte Apps werden Aktualisierungen gesucht"</string>
 <string name="pref_update_list_white_or_black">"Black- oder Whitelist für App-Aktualisierungen verwenden"</string>
 <string name="pref_update_list_black">"App-Blacklist verwalten"</string>
 <string name="pref_update_list_white">"App-Whitelist verwalten"</string>
@@ -109,7 +109,7 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play Store Nutzungsbedin
 <string name="pref_background_update_interval_hourly">"Stündlich"</string>
 <string name="pref_background_update_interval_daily">"Täglich"</string>
 <string name="pref_background_update_interval_weekly">"Wöchentlich"</string>
-<string name="pref_background_update_interval">"Suche automatisch nach neuen Aktualisierungen"</string>
+<string name="pref_background_update_interval">"Suche regelmäßig nach neuen Aktualisierungen"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Unbekannter Fehler."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Unbekannter Speicherfehler."</string>
 <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Es wurde ein HTTP-Code empfangen, den die Download-Verwaltung nicht verarbeiten kann. Dies ist ein Serverfehler."</string>
@@ -121,28 +121,28 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play Store Nutzungsbedin
 <string name="download_manager_ERROR_BLOCKED">"Das Herunterladen ist fehlgeschlagen weil der Netzwerk-Richtlinien-Manager die Kontrolle über die anfordernde App hat. Überprüfe deine Einstellungen."</string>
 <string name="search_filter">"Alle Apps"</string>
 <string name="details_category">"Kategorie: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Installationsdateien werden nun nach der Installation nicht gelöscht"</string>
-<string name="pref_delete_apk_after_install_summary_on">"Installationsdateien werden nun nach der Installation gelöscht"</string>
-<string name="pref_delete_apk_after_install">"Installaltionsdatei nach der Installation löschen"</string>
+<string name="pref_delete_apk_after_install_summary_off">"apk-Dateien werden nach der Installation behalten"</string>
+<string name="pref_delete_apk_after_install_summary_on">"apk-Dateien werden nach der Installation gelöscht"</string>
+<string name="pref_delete_apk_after_install">"apk-Datei nach der Installation löschen"</string>
 <string name="dialog_title_application_crashed">"Entschuldigung, Yalp Store ist abgestürtzt"</string>
-<string name="dialog_message_application_crashed">"Du kannst dabei helfen, dies zu beheben, indem du Fehlerdaten an den Entwickler schickst. Wenn du auf OK klickst, wirst du mit einer fertigen E-Mail zu deiner Standard-E-Mail-App weitergeleitet, die du an den Entwickler senden kannst.
+<string name="dialog_message_application_crashed">"Du kannst dabei helfen, dies zu beheben, indem du Fehlerdaten an den Entwickler schickst. Wenn du auf OK klickst, wirst du mit einer fertigen E-Mail zu deiner Standard-E-Mail-App weitergeleitet, damit du sie an den Entwickler senden kannst.
 
 Bitte beschreibe, was du gemacht hast, als der Fehler aufgetreten ist.
 
-Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den Mailinhalt, falls du Zweifel hast."</string>
+Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den Mailinhalt bei Zweifeln."</string>
 <string name="details_to_play_store">"Im Play Store ansehen"</string>
-<string name="about_self_update_checking">"…kontrolliere"</string>
+<string name="about_self_update_checking">"…prüfe"</string>
 <string name="about_self_update_available">"…0.%1$d verfügbar"</string>
 <string name="about_self_update_unavailable">"…keine Aktualisierung gefunden"</string>
 <string name="action_categories">"Kategorien"</string>
 <string name="list_update_all">"Alle aktualisieren"</string>
-<string name="notification_installation_complete">"Update installiert"</string>
+<string name="notification_installation_complete">"Aktualisierung installiert"</string>
 <string name="notification_installation_complete_toast">"App %1$s aktualisiert."</string>
-<string name="notification_installation_failed">"Update fehlgeschlagen."</string>
-<string name="notification_installation_failed_toast">"Konnte Update %1$s nicht ausführen. Root-Rechte nicht zugelassen?"</string>
+<string name="notification_installation_failed">"Aktualisierung fehlgeschlagen."</string>
+<string name="notification_installation_failed_toast">"Konnte %1$s nicht aktualisieren. Root-Rechte wurden nicht gewährt."</string>
 <string name="pref_background_update_install_summary_off">"Du erhälst nur eine Benachrichtigung"</string>
-<string name="pref_background_update_install_summary_on">"Updates werden installiert, sobald sie verfügbar sind (root)"</string>
-<string name="pref_background_update_install">"Installiere die Updates gleich (root)"</string>
+<string name="pref_background_update_install_summary_on">"Verfügbare Aktualisierungen werden automatisch installiert (root)"</string>
+<string name="pref_background_update_install">"Neue Aktualisierungen installieren (root)"</string>
 <string name="pref_no_root">"Diese Funktion ist nur auf gerooteten Geräten verfügbar"</string>
 <string name="list_app_has_ads">"Enthält Werbung"</string>
 <string name="list_app_no_ads">"Keine Werbung"</string>
@@ -169,9 +169,9 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="notification_download_progress">"%1$s von %2$s heruntergeladen"</string>
 <string name="pref_requested_language">"Sprache für Play Store Anfragen"</string>
 <string name="pref_requested_language_default">"Deine Standardsprache"</string>
-<string name="pref_hide_apps_with_ads">"Verstecke Apps mit Werbung"</string>
+<string name="pref_hide_apps_with_ads">"Apps mit Werbung verstecken"</string>
 <string name="pref_hide_apps_with_ads_summary_off">"Apps mit Werbung werden angezeigt"</string>
-<string name="pref_hide_apps_with_ads_summary_on">"Apps mit Werbung werden ausgeblendet"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"Apps mit Werbung werden versteckt"</string>
 <string name="pref_device_to_pretend_to_be">"Täusche ein anderes Gerät vor"</string>
 <string name="pref_device_to_pretend_to_be_default">"Deine tatsächlichen Gerätedaten"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Diese Änderung wird angewendet, sobald du dich neu anmeldest"</string>
@@ -188,11 +188,11 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="pref_not_privileged">"Nur verfügbar, wenn Yalp als System-App installiert ist"</string>
 <string name="pref_installation_method">"Installationsmethode"</string>
 <string name="pref_installation_method_default">"Standartmäßiger Installationsdialog, keine Installationen im Hintergrund"</string>
-<string name="pref_installation_method_root">"Mit Root-Rechten"</string>
-<string name="pref_installation_method_privileged">"Mit Systemberechtigungen"</string>
-<string name="pref_background_update_download_summary_off">"Du erhälst nur eine Nachricht."</string>
-<string name="pref_background_update_download_summary_on">"Gefundene Updates werden heruntergeladen"</string>
-<string name="pref_background_update_download">"Updates auch installieren"</string>
+<string name="pref_installation_method_root">"Nutze Root-Rechte"</string>
+<string name="pref_installation_method_privileged">"Nutze System-Rechte"</string>
+<string name="pref_background_update_download_summary_off">"Du erhälst nur eine Benachrichtigung"</string>
+<string name="pref_background_update_download_summary_on">"Verfügbare Aktualisierungen werden automatisch heruntergeladen"</string>
+<string name="pref_background_update_download">"Neue Aktualisierungen herunterladen"</string>
 <string name="details_not_available_on_play_store">"Nicht im Google Play Store verfügbar"</string>
 <string name="action_manual">"Manueller Download"</string>
 <string name="action_get_local_apk">"Lokale APK-Datei erhalten"</string>
@@ -202,24 +202,24 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="action_make_normal">"In normale App umwandeln"</string>
 <string name="list_app_system">"System App."</string>
 <string name="list_app_exists_in_play_store">"Verfügbar im Play Store"</string>
-<string name="activity_title_updates_only">"Updates"</string>
+<string name="activity_title_updates_only">"Aktualisierungen"</string>
 <string name="activity_title_updates_and_other_apps">"Deine Apps"</string>
-<string name="pref_category_updates_page">"Update Seite"</string>
-<string name="pref_updates_only">"Zeige nur Zpps, die aktualisierbar sind"</string>
-<string name="pref_updates_only_summary_off">"Alle Apps werden nun angezeigt"</string>
-<string name="pref_updates_only_summary_on">"Nur Apps, die aktualisierbar sind, werden angezeigt"</string>
-<string name="pref_show_system_apps">"Zeige System Apps"</string>
-<string name="pref_show_system_apps_summary_off">"System Apps sind nun ausgeblendet"</string>
-<string name="pref_show_system_apps_summary_on">"System Apps sind nun eingeblendet"</string>
+<string name="pref_category_updates_page">"Aktualisierungsseite"</string>
+<string name="pref_updates_only">"Nur aktualisierbare Apps anzeigen"</string>
+<string name="pref_updates_only_summary_off">"Alle Apps werden angezeigt"</string>
+<string name="pref_updates_only_summary_on">"Nur aktualisierbare Apps werden angezeigt"</string>
+<string name="pref_show_system_apps">"System Apps anzeigen"</string>
+<string name="pref_show_system_apps_summary_off">"System Apps werden versteckt"</string>
+<string name="pref_show_system_apps_summary_on">"System Apps werden angezeigt"</string>
 <string name="details_system_app_info">"System info"</string>
 <string name="activity_title_search_publisher">"Apps von %1$s"</string>
 <string name="details_run">"Starten"</string>
 <string name="dialog_title_remounting_system">"Arbeite auf /system Partition"</string>
 <string name="dialog_message_remounting_system">"Arbeite auf /system Partition. Das könnte länger dauern"</string>
 <string name="dialog_title_checking_busybox">"Überprüfe ob busybox verfügbar ist."</string>
-<string name="dialog_message_checking_busybox">"Bestimmte System Tools benötigen System Apps. Überprüfe ob diese verfügbar sind."</string>
+<string name="dialog_message_checking_busybox">"Bestimmte System-Tools werden benötigt um mit System Apps arbeiten zu können. Überprüfe ob diese verfügbar sind."</string>
 <string name="dialog_title_busybox_not_available">"Busybox ist nicht verfügbar"</string>
-<string name="dialog_message_busybox_not_available">"Ein gerootetes Gerät mit installiertem Busybox wird benötigt um System Apps zu bearbeiten. Soll jetzt nach einem Busybox installer gesucht werden?"</string>
+<string name="dialog_message_busybox_not_available">"Ein gerootetes Gerät mit installierter Busybox wird benötigt um mit System Apps arbeiten zu können. Soll jetzt nach einem Busybox installer gesucht werden?"</string>
 <string name="dialog_title_reboot_required">"Neustart erforderlich"</string>
 <string name="dialog_message_reboot_required">"Änderungen werden nach einem Neustart übernommen. Jetzt neu starten?"</string>
 <string name="dialog_title_system_app_warning">"Achtung!"</string>
@@ -233,7 +233,7 @@ Fahren Sie nur fort, wenn Sie genau wissen was Sie tun. Die Umwandlung könnte I
 Bitte beachten Sie, dass eine solche Umwandlung vom Android OS nicht unterstützt wird und daher immer ein Risiko besteht, dass der Vorgang nicht erfolgreich ist oder sogar zu Problemen führt.
 
 Fahren Sie nur fort, wenn Sie genau wissen was Sie tun. Die Umwandlung könnte Ihr Gerät funktionsuntüchtig machen. Erstellen Sie in jedem Fall vorher ein Backup ihrer Daten."</string>
-<string name="list_check_updates">"Nach Updates suchen"</string>
+<string name="list_check_updates">"Nach Aktualisierungen suchen"</string>
 <string name="pref_background_update_interval_manually">"nur manuell"</string>
 <string name="dialog_message_system_app_warning_uninstall">"Sind Sie sicher, dass Sie diese System App entfernen möchten? System Apps sind von ihrem Geräte Hersteller vorinstalliert. Sie werden wahrscheinlich benötigt, damit Ihr Gerät wie gewünscht funktioniert.
 
