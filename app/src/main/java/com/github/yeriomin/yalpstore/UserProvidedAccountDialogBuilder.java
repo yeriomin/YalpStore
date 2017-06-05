@@ -6,10 +6,21 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.github.yeriomin.playstoreapi.AuthException;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
 public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
+
+    static private final String USED_EMAILS_SET = "USED_EMAILS_SET";
 
     private String previousEmail = "";
 
@@ -29,7 +40,8 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         ad.setTitle(context.getString(R.string.credentials_title));
         ad.setCancelable(false);
 
-        final EditText editEmail = (EditText) ad.findViewById(R.id.email);
+        final AutoCompleteTextView editEmail = (AutoCompleteTextView) ad.findViewById(R.id.email);
+        editEmail.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, getUsedEmails()));
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         editEmail.setText(prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, this.previousEmail));
         final EditText editPassword = (EditText) ad.findViewById(R.id.password);
@@ -67,6 +79,18 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         return ad;
     }
 
+    private void addUsedEmail(String email) {
+        Set<String> emailsSet = Util.getStringSet(context, USED_EMAILS_SET);
+        emailsSet.add(email);
+        Util.putStringSet(context, USED_EMAILS_SET, emailsSet);
+    }
+
+    private List<String> getUsedEmails() {
+        List<String> emails = new ArrayList<>(Util.getStringSet(context, USED_EMAILS_SET));
+        Collections.sort(emails);
+        return emails;
+    }
+
     private class UserProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
 
         private String previousEmail;
@@ -89,7 +113,11 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
             previousEmail = params[0];
             try {
                 new PlayStoreApiAuthenticator(context).login(params[0], params[1]);
+                addUsedEmail(params[0]);
             } catch (Throwable e) {
+                if (e instanceof AuthException && null != ((AuthException) e).getTwoFactorUrl()) {
+                    addUsedEmail(params[0]);
+                }
                 return e;
             }
             return null;
