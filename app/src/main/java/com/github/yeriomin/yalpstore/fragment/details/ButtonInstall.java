@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.InstallerFactory;
 import com.github.yeriomin.yalpstore.R;
@@ -29,7 +30,9 @@ public class ButtonInstall extends Button {
 
     @Override
     protected boolean shouldBeVisible() {
-        return Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists();
+        return Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+            && DownloadState.get(app.getPackageName()).isEverythingSuccessful()
+        ;
     }
 
     @Override

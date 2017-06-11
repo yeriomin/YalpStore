@@ -32,7 +32,9 @@ public class ButtonDownload extends Button {
 
     @Override
     protected boolean shouldBeVisible() {
-        return !Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+        return (!Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+                || !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
+            )
             && app.isInPlayStore()
             && (!isLatestVersion() || activity instanceof ManualDownloadActivity)
         ;
@@ -46,6 +48,16 @@ public class ButtonDownload extends Button {
             download();
         } else {
             requestPermission();
+        }
+    }
+
+    @Override
+    public void draw() {
+        super.draw();
+        if (Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+            && !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
+        ) {
+            disableButton(R.id.download, R.string.details_downloading);
         }
     }
 
