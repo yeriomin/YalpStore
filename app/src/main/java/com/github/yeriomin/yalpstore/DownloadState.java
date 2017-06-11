@@ -17,15 +17,19 @@ public class DownloadState {
         SCHEDULED_UPDATE
     }
 
+    enum Status {
+        STARTED,
+        FINISHED,
+        SUCCESSFUL
+    }
+
     static private Map<String, DownloadState> state = new HashMap<>();
     static private Map<Long, String> downloadIds = new HashMap<>();
 
-    private Set<Long> started = new HashSet<>();
-    private Set<Long> finished = new HashSet<>();
-    private Set<Long> successful = new HashSet<>();
     private App app;
     private TriggeredBy triggeredBy = TriggeredBy.DOWNLOAD_BUTTON;
     private Map<Long, Pair<Integer, Integer>> progress = new HashMap<>();
+    private Map<Long, Status> status = new HashMap<>();
 
     static public DownloadState get(String packageName) {
         if (!state.containsKey(packageName)) {
@@ -50,24 +54,38 @@ public class DownloadState {
     }
 
     public boolean isEverythingFinished() {
-        return started.size() == finished.size();
+        boolean isEverythingFinished = true;
+        for (Long downloadId: status.keySet()) {
+            if (status.get(downloadId).equals(Status.STARTED)) {
+                isEverythingFinished = false;
+                break;
+            }
+        }
+        return isEverythingFinished;
     }
 
     public boolean isEverythingSuccessful() {
-        return started.size() == successful.size();
+        boolean isEverythingSuccessful = true;
+        for (Long downloadId: status.keySet()) {
+            if (!status.get(downloadId).equals(Status.SUCCESSFUL)) {
+                isEverythingSuccessful = false;
+                break;
+            }
+        }
+        return isEverythingSuccessful;
     }
 
     public void setStarted(long downloadId) {
-        started.add(downloadId);
+        status.put(downloadId, Status.STARTED);
         downloadIds.put(downloadId, app.getPackageName());
     }
 
     public void setFinished(long downloadId) {
-        finished.add(downloadId);
+        status.put(downloadId, Status.FINISHED);
     }
 
     public void setSuccessful(long downloadId) {
-        successful.add(downloadId);
+        status.put(downloadId, Status.SUCCESSFUL);
     }
 
     public TriggeredBy getTriggeredBy() {
@@ -79,13 +97,9 @@ public class DownloadState {
     }
 
     public Pair<Integer, Integer> getProgress() {
-        Set<Long> allDownloadIds = new HashSet<>();
-        allDownloadIds.addAll(started);
-        allDownloadIds.addAll(finished);
-        allDownloadIds.addAll(successful);
         int complete = 0;
         int total = 0;
-        for (long downloadId: allDownloadIds) {
+        for (long downloadId: status.keySet()) {
             Pair<Integer, Integer> current = progress.get(downloadId);
             if (null == current) {
                 continue;
