@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
+import com.github.yeriomin.yalpstore.OnDownloadProgressListener;
 import com.github.yeriomin.yalpstore.PurchaseTask;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
@@ -76,6 +79,9 @@ public class ButtonDownload extends Button {
                 }
             }
         };
+        ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
+        progressBar.setVisibility(View.VISIBLE);
+        purchaseTask.setOnDownloadProgressListener(new OnDownloadProgressListener(progressBar, DownloadState.get(app.getPackageName())));
         purchaseTask.setApp(app);
         purchaseTask.setContext(activity);
         purchaseTask.prepareDialog(

@@ -28,6 +28,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     private App app;
     private File targetFile;
     private long downloadId;
+    private OnDownloadProgressListener listener;
 
     private String getNotificationTitle() {
         if (targetFile.toString().endsWith(EXTENSION_OBB)) {
@@ -50,6 +51,10 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
 
     public void setDownloadId(long downloadId) {
         this.downloadId = downloadId;
+    }
+
+    public void setOnDownloadProgressListener(OnDownloadProgressListener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -75,6 +80,10 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     @Override
     protected void onProgressUpdate(Long... values) {
         super.onProgressUpdate(values);
+        DownloadState.get(downloadId).setProgress(downloadId, values[0].intValue(), values[1].intValue());
+        if (null != listener) {
+            listener.onDownloadProgress();
+        }
         NotificationManagerFactory.get(context).show(
             new Intent(),
             getNotificationTitle(),

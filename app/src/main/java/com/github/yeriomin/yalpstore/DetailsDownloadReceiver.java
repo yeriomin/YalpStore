@@ -7,15 +7,18 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 public class DetailsDownloadReceiver extends BroadcastReceiver {
 
     private Button buttonDownload;
     private Button buttonInstall;
+    private ProgressBar progressBar;
 
     public DetailsDownloadReceiver(DetailsActivity activity) {
         buttonDownload = (Button) activity.findViewById(R.id.download);
         buttonInstall = (Button) activity.findViewById(R.id.install);
+        progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
         IntentFilter filter = new IntentFilter();
         filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
         activity.registerReceiver(this, filter);
@@ -43,6 +46,7 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
     }
 
     private void draw(Context context, DownloadState state) {
+        progressBar.setVisibility(View.GONE);
         buttonDownload.setText(R.string.details_download);
         buttonDownload.setEnabled(true);
         if (state.isEverythingSuccessful()) {

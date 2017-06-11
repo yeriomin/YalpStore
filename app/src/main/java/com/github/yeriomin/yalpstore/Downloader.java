@@ -30,19 +30,19 @@ public class Downloader {
         this.dm = DownloadManagerFactory.get(context);
     }
 
-    public void download(App app, AndroidAppDeliveryData deliveryData) {
+    public void download(App app, AndroidAppDeliveryData deliveryData, OnDownloadProgressListener listener) {
         DownloadState state = DownloadState.get(app.getPackageName());
         state.setApp(app);
-        state.setStarted(dm.enqueue(app, deliveryData, DownloadManagerInterface.Type.APK));
+        state.setStarted(dm.enqueue(app, deliveryData, DownloadManagerInterface.Type.APK, listener));
         if (deliveryData.getAdditionalFileCount() > 0) {
-            checkAndStartObbDownload(state, deliveryData, true);
+            checkAndStartObbDownload(state, deliveryData, true, listener);
         }
         if (deliveryData.getAdditionalFileCount() > 1) {
-            checkAndStartObbDownload(state, deliveryData, false);
+            checkAndStartObbDownload(state, deliveryData, false, listener);
         }
     }
 
-    private void checkAndStartObbDownload(DownloadState state, AndroidAppDeliveryData deliveryData, boolean main) {
+    private void checkAndStartObbDownload(DownloadState state, AndroidAppDeliveryData deliveryData, boolean main, OnDownloadProgressListener listener) {
         App app = state.getApp();
         AppFileMetadata metadata = deliveryData.getAdditionalFile(main ? 0 : 1);
         File file = getObbPath(app.getPackageName(), metadata.getVersionCode(), main);
@@ -55,7 +55,8 @@ public class Downloader {
             state.setStarted(dm.enqueue(
                 app,
                 deliveryData,
-                main ? DownloadManagerInterface.Type.OBB_MAIN : DownloadManagerInterface.Type.OBB_PATCH
+                main ? DownloadManagerInterface.Type.OBB_MAIN : DownloadManagerInterface.Type.OBB_PATCH,
+                listener
             ));
         }
     }

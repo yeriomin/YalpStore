@@ -25,7 +25,7 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
     }
 
     @Override
-    public long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type) {
+    public long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type, OnDownloadProgressListener listener) {
         String url;
         File destinationFile;
         switch (type) {
@@ -54,6 +54,7 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
             task.setApp(app);
             task.setDownloadId(downloadId);
             task.setTargetFile(destinationFile);
+            task.setOnDownloadProgressListener(listener);
             String cookieString = null;
             if (deliveryData.getDownloadAuthCookieCount() > 0) {
                 HttpCookie cookie = deliveryData.getDownloadAuthCookie(0);

@@ -1,5 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
+import android.util.Pair;
+
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.HashMap;
@@ -23,6 +25,7 @@ public class DownloadState {
     private Set<Long> successful = new HashSet<>();
     private App app;
     private TriggeredBy triggeredBy = TriggeredBy.DOWNLOAD_BUTTON;
+    private Map<Long, Pair<Integer, Integer>> progress = new HashMap<>();
 
     static public DownloadState get(String packageName) {
         if (!state.containsKey(packageName)) {
@@ -73,5 +76,27 @@ public class DownloadState {
 
     public void setTriggeredBy(TriggeredBy triggeredBy) {
         this.triggeredBy = triggeredBy;
+    }
+
+    public Pair<Integer, Integer> getProgress() {
+        Set<Long> allDownloadIds = new HashSet<>();
+        allDownloadIds.addAll(started);
+        allDownloadIds.addAll(finished);
+        allDownloadIds.addAll(successful);
+        int complete = 0;
+        int total = 0;
+        for (long downloadId: allDownloadIds) {
+            Pair<Integer, Integer> current = progress.get(downloadId);
+            if (null == current) {
+                continue;
+            }
+            complete += current.first;
+            total += current.second;
+        }
+        return new Pair<>(complete, total);
+    }
+
+    public void setProgress(long downloadId, int complete, int total) {
+        progress.put(downloadId, new Pair<>(complete, total));
     }
 }

@@ -90,7 +90,7 @@ public class SelfUpdateChecker extends AsyncTask<Void, Void, Void> {
             .setDownloadUrl(parser.getLatestLink())
             .build();
 
-        downloader.download(app, deliveryData);
+        downloader.download(app, deliveryData, null);
     }
 
     private String getHtml() throws IOException {

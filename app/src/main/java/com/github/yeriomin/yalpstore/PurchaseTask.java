@@ -18,6 +18,7 @@ public class PurchaseTask extends GoogleApiAsyncTask {
     protected App app;
 
     private DownloadState.TriggeredBy triggeredBy = DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
+    private OnDownloadProgressListener listener;
 
     public void setApp(App app) {
         this.app = app;
@@ -27,12 +28,16 @@ public class PurchaseTask extends GoogleApiAsyncTask {
         this.triggeredBy = triggeredBy;
     }
 
+    public void setOnDownloadProgressListener(OnDownloadProgressListener listener) {
+        this.listener = listener;
+    }
+
     @Override
     protected Throwable doInBackground(String... params) {
         PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
         try {
             DownloadState.get(app.getPackageName()).setTriggeredBy(triggeredBy);
-            new Downloader(context).download(app, wrapper.purchaseOrDeliver(app));
+            new Downloader(context).download(app, wrapper.purchaseOrDeliver(app), listener);
         } catch (Throwable e) {
             return e;
         }

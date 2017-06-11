@@ -56,7 +56,7 @@
                             android:layout_height="0dip"
                             android:layout_weight="1.2"
                             android:textStyle="bold"
-                            android:maxLines="1"
+                            android:singleLine="true"
                             android:ellipsize="marquee" />
 
                         <TextView
@@ -65,7 +65,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="0dip"
                             android:layout_weight="1"
-                            android:maxLines="1"
+                            android:singleLine="true"
                             android:ellipsize="marquee" />
 
                         <TextView
@@ -74,7 +74,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="0dip"
                             android:layout_weight="1"
-                            android:maxLines="1"
+                            android:singleLine="true"
                             android:ellipsize="marquee"
                             android:visibility="gone" />
 
@@ -534,6 +534,18 @@
         </ScrollView>
 
     </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/download_progress"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:indeterminate="false"
+        android:visibility="gone"
+        style="@android:style/Widget.ProgressBar.Horizontal" />
 
     <LinearLayout
         android:layout_width="match_parent"
