@@ -103,9 +103,16 @@ public class GeneralDetails extends Abstract {
         }
         try {
             PackageInfo info = activity.getPackageManager().getPackageInfo(app.getPackageName(), 0);
-            if (info.versionCode != app.getVersionCode()) {
-                textView.setText(activity.getString(R.string.details_versionName_updatable, info.versionName, versionName));
+            if (info.versionCode == app.getVersionCode()) {
+                return;
             }
+            String currentVersion = info.versionName;
+            String newVersion = versionName;
+            if (currentVersion.equals(newVersion)) {
+                currentVersion += " (" + info.versionCode;
+                newVersion = app.getVersionCode() + ")";
+            }
+            textView.setText(activity.getString(R.string.details_versionName_updatable, currentVersion, newVersion));
         } catch (PackageManager.NameNotFoundException e) {
             // We've checked for that already
         }
