@@ -6,6 +6,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.text.util.Linkify;
+import android.util.AndroidRuntimeException;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -86,8 +87,14 @@ public class GeneralDetails extends Abstract {
             return;
         }
         TextView itemView = new TextView(activity);
-        itemView.setAutoLinkMask(Linkify.ALL);
-        itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
+        try {
+            itemView.setAutoLinkMask(Linkify.ALL);
+            itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
+        } catch (AndroidRuntimeException e) {
+            Log.w(getClass().getName(), "System WebView missing: " + e.getMessage());
+            itemView.setAutoLinkMask(0);
+            itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
+        }
         ((LinearLayout) activity.findViewById(R.id.offer_details)).addView(itemView);
     }
 
