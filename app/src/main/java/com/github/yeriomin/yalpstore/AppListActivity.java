@@ -32,7 +32,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
                     return;
                 }
                 App app = ((AppBadge) listItem).getApp();
-                DetailsDependentActivity.app = app;
+                DetailsActivity.app = app;
                 DetailsActivity.start(AppListActivity.this, app.getPackageName());
             }
         });

@@ -34,8 +34,6 @@ public class App implements Comparable<App> {
     private boolean isFree;
     private List<String> screenshotUrls = new ArrayList<>();
     private Review userReview;
-    private List<App> similarApps = new ArrayList<>();
-    private List<App> usersAlsoInstalledApps = new ArrayList<>();
     private String categoryId;
     private String price;
     private boolean containsAds;
@@ -43,6 +41,7 @@ public class App implements Comparable<App> {
     private Map<String, String> offerDetails = new HashMap<>();
     private boolean system;
     private boolean inPlayStore;
+    private Map<String, String> relatedLinks = new HashMap<>();
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -205,14 +204,6 @@ public class App implements Comparable<App> {
         this.userReview = userReview;
     }
 
-    public List<App> getSimilarApps() {
-        return similarApps;
-    }
-
-    public List<App> getUsersAlsoInstalledApps() {
-        return usersAlsoInstalledApps;
-    }
-
     public String getCategoryId() {
         return categoryId;
     }
@@ -259,6 +250,10 @@ public class App implements Comparable<App> {
 
     public void setInPlayStore(boolean inPlayStore) {
         this.inPlayStore = inPlayStore;
+    }
+
+    public Map<String, String> getRelatedLinks() {
+        return relatedLinks;
     }
 
     @Override

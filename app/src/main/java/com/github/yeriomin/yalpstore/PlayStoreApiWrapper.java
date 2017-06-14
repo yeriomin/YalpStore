@@ -11,7 +11,6 @@ import com.github.yeriomin.playstoreapi.BrowseResponse;
 import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
 import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.DetailsResponse;
-import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.ReviewResponse;
 import com.github.yeriomin.playstoreapi.SearchIterator;
@@ -35,9 +34,6 @@ import java.util.Map;
  * android PackageInfo
  */
 public class PlayStoreApiWrapper {
-
-    private static final String BACKEND_DOCID_SIMILAR_APPS = "similar_apps";
-    private static final String BACKEND_DOCID_USERS_ALSO_INSTALLED = "users_also_installed";
 
     private static AppSearchResultIterator searchResultIterator;
     private static CategoryAppsIterator categoryAppsIterator;
@@ -82,21 +78,6 @@ public class PlayStoreApiWrapper {
         App app = AppBuilder.build(response.getDocV2());
         if (response.hasUserReview()) {
             app.setUserReview(ReviewBuilder.build(response.getUserReview()));
-        }
-        for (DocV2 doc: response.getDocV2().getChildList()) {
-            boolean isSimilarApps = doc.getBackendDocid().contains(BACKEND_DOCID_SIMILAR_APPS);
-            boolean isUsersAlsoInstalled = doc.getBackendDocid().contains(BACKEND_DOCID_USERS_ALSO_INSTALLED);
-            if (isUsersAlsoInstalled && app.getUsersAlsoInstalledApps().size() > 0) {
-                // Two users_also_installed lists are returned, consisting of mostly the same apps
-                continue;
-            }
-            for (DocV2 child: doc.getChildList()) {
-                if (isSimilarApps) {
-                    app.getSimilarApps().add(AppBuilder.build(child));
-                } else if (isUsersAlsoInstalled) {
-                    app.getUsersAlsoInstalledApps().add(AppBuilder.build(child));
-                }
-            }
         }
         return app;
     }

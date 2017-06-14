@@ -7,6 +7,7 @@ import com.github.yeriomin.playstoreapi.AppDetails;
 import com.github.yeriomin.playstoreapi.Dependency;
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.Image;
+import com.github.yeriomin.playstoreapi.RelatedLink;
 import com.github.yeriomin.playstoreapi.Unknown25Item;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class AppBuilder {
         }
         fillOfferDetails(app, details);
         fillAggregateRating(app, details.getAggregateRating());
+        fillRelatedLinks(app, details);
         AppDetails appDetails = details.getDetails().getAppDetails();
         app.getPackageInfo().packageName = appDetails.getPackageName();
         app.setVersionName(appDetails.getVersionString());
@@ -91,6 +93,18 @@ public class AppBuilder {
                 continue;
             }
             app.getOfferDetails().put(item.getLabel(), item.getContainer().getValue());
+        }
+    }
+
+    static private void fillRelatedLinks(App app, DocV2 details) {
+        if (!details.hasRelatedLinks()) {
+            return;
+        }
+        for (RelatedLink link: details.getRelatedLinks().getRelatedLinksList()) {
+            if (!link.hasLabel() || !link.hasUrl1()) {
+                continue;
+            }
+            app.getRelatedLinks().put(link.getLabel(), link.getUrl1());
         }
     }
 

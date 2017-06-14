@@ -446,7 +446,6 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="6dip"  />
 
-
                 <LinearLayout
                     android:id="@+id/permissions_container"
                     android:layout_width="match_parent"
@@ -461,38 +460,14 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/apps_by_this_dev"
-                    android:drawableLeft="@drawable/ic_chevron_right"
-                    android:drawableStart="@drawable/ic_chevron_right"
-                    android:textSize="20sp"
-                    android:text="@string/details_apps_by_this_dev"
-                    android:gravity="center_vertical"
+                <LinearLayout
+                    android:id="@+id/related_links"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="6dip" />
+                    android:visibility="gone"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/similar_apps"
-                    android:drawableLeft="@drawable/ic_chevron_right"
-                    android:drawableStart="@drawable/ic_chevron_right"
-                    android:textSize="20sp"
-                    android:text="@string/details_similar_apps"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="6dip" />
-
-                <TextView
-                    android:id="@+id/users_also_installed"
-                    android:drawableLeft="@drawable/ic_chevron_right"
-                    android:drawableStart="@drawable/ic_chevron_right"
-                    android:textSize="20sp"
-                    android:text="@string/details_users_also_installed"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="6dip" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/to_play_store"

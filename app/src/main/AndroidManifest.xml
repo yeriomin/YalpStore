@@ -105,10 +105,7 @@
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
         </activity>
         <activity android:name=".FullscreenImageActivity" />
-        <activity android:name=".SimilarAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
-        </activity>
-        <activity android:name=".UsersAlsoInstalledActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
+        <activity android:name=".ClusterActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
             <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
         </activity>
         <activity android:name=".ManualDownloadActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >

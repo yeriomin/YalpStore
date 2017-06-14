@@ -19,12 +19,12 @@ public class ManualDownloadActivity extends DetailsActivity {
 
     @Override
     protected void onNewIntent(Intent intent) {
-        if (null == DetailsDependentActivity.app) {
+        if (null == DetailsActivity.app) {
             Log.e(getClass().getName(), "No app stored");
             finish();
             return;
         }
-        draw(DetailsDependentActivity.app);
+        draw(DetailsActivity.app);
     }
 
     private void draw(App app) {

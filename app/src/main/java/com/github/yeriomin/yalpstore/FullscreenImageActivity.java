@@ -31,7 +31,7 @@ public class FullscreenImageActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
-        if (null == DetailsDependentActivity.app) {
+        if (null == DetailsActivity.app) {
             Log.w(getClass().getName(), "No app stored");
             finish();
             return;
@@ -40,7 +40,7 @@ public class FullscreenImageActivity extends Activity {
         Gallery gallery = ((Gallery) findViewById(R.id.gallery));
         gallery.setAdapter(new FullscreenImageAdapter(
             this,
-            DetailsDependentActivity.app.getScreenshotUrls(),
+            DetailsActivity.app.getScreenshotUrls(),
             getWindowManager().getDefaultDisplay().getWidth(),
             getWindowManager().getDefaultDisplay().getHeight()
         ));

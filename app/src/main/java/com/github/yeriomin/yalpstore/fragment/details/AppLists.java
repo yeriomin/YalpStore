@@ -1,18 +1,15 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
-import android.app.SearchManager;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.github.yeriomin.yalpstore.ClusterActivity;
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.DetailsDependentActivity;
 import com.github.yeriomin.yalpstore.R;
-import com.github.yeriomin.yalpstore.SearchResultActivity;
-import com.github.yeriomin.yalpstore.SimilarAppsActivity;
-import com.github.yeriomin.yalpstore.UsersAlsoInstalledActivity;
 import com.github.yeriomin.yalpstore.model.App;
-
 
 public class AppLists extends Abstract {
 
@@ -22,65 +19,26 @@ public class AppLists extends Abstract {
 
     @Override
     public void draw() {
-        drawAppsByThisDev();
-        drawSimilarApps();
-        drawUsersAlsoInstalled();
-    }
-
-    private void drawAppsByThisDev() {
-        View appsByThisDev = activity.findViewById(R.id.apps_by_this_dev);
-        if (TextUtils.isEmpty(app.getDeveloperName())) {
-            appsByThisDev.setVisibility(View.GONE);
-        } else {
-            appsByThisDev.setVisibility(View.VISIBLE);
-            appsByThisDev.setOnClickListener(new AppListOnClickListener(SearchResultActivity.class) {
-                @Override
-                protected Intent getIntent() {
-                    Intent i = super.getIntent();
-                    i.setAction(Intent.ACTION_SEARCH);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    i.putExtra(SearchManager.QUERY, "pub:" + app.getDeveloperName());
-                    return i;
-                }
-            });
+        LinearLayout relatedLinksLayout = (LinearLayout) activity.findViewById(R.id.related_links);
+        for (final String label: app.getRelatedLinks().keySet()) {
+            relatedLinksLayout.setVisibility(View.VISIBLE);
+            relatedLinksLayout.addView(buildLinkView(label, app.getRelatedLinks().get(label)));
         }
     }
 
-    private void drawSimilarApps() {
-        View similarApps = activity.findViewById(R.id.similar_apps);
-        if (DetailsDependentActivity.app.getSimilarApps().isEmpty()) {
-            similarApps.setVisibility(View.GONE);
-        } else {
-            similarApps.setVisibility(View.VISIBLE);
-            similarApps.setOnClickListener(new AppListOnClickListener(SimilarAppsActivity.class));
-        }
-    }
-
-    private void drawUsersAlsoInstalled() {
-        View alsoInstalled = activity.findViewById(R.id.users_also_installed);
-        if (DetailsDependentActivity.app.getUsersAlsoInstalledApps().isEmpty()) {
-            alsoInstalled.setVisibility(View.GONE);
-        } else {
-            alsoInstalled.setVisibility(View.VISIBLE);
-            alsoInstalled.setOnClickListener(new AppListOnClickListener(UsersAlsoInstalledActivity.class));
-        }
-    }
-
-    private class AppListOnClickListener implements View.OnClickListener {
-
-        Class activityClass;
-
-        public AppListOnClickListener(Class activityClass) {
-            this.activityClass = activityClass;
-        }
-
-        @Override
-        public void onClick(View v) {
-            activity.startActivity(getIntent());
-        }
-
-        protected Intent getIntent() {
-            return new Intent(activity, activityClass);
-        }
+    private TextView buildLinkView(final String label, final String url) {
+        TextView linkView = new TextView(activity);
+        linkView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_chevron_right, 0, 0, 0);
+        linkView.setText(label);
+        linkView.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+        linkView.setPadding(0,6,0,0);
+        linkView.setGravity(Gravity.CENTER_VERTICAL);
+        linkView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClusterActivity.start(activity, url, label);
+            }
+        });
+        return linkView;
     }
 }

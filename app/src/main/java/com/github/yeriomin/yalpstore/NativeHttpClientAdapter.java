@@ -12,6 +12,7 @@ import com.github.yeriomin.playstoreapi.HttpClientAdapter;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -36,13 +37,13 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
 
     @Override
     public byte[] get(String url, Map<String, String> params, Map<String, String> headers) throws IOException {
-        HttpURLConnection connection = (HttpURLConnection) new URL(addQueryParams(url, params)).openConnection();
+        HttpURLConnection connection = (HttpURLConnection) new URL(buildUrl(url, params)).openConnection();
         return request(connection, null, headers);
     }
 
     @Override
     public byte[] postWithoutBody(String url, Map<String, String> urlParams, Map<String, String> headers) throws IOException {
-        return post(addQueryParams(url, urlParams), new HashMap<String, String>(), headers);
+        return post(buildUrl(url, urlParams), new HashMap<String, String>(), headers);
     }
 
     @Override
@@ -59,6 +60,15 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
         connection.setRequestMethod("POST");
         return request(connection, body, headers);
+    }
+
+    @Override
+    public String buildUrl(String url, Map<String, String> params) {
+        Uri.Builder builder = Uri.parse(url).buildUpon();
+        for (String key: params.keySet()) {
+            builder.appendQueryParameter(key, params.get(key));
+        }
+        return builder.build().toString();
     }
 
     private byte[] request(HttpURLConnection connection, byte[] body, Map<String, String> headers) throws IOException {
@@ -86,8 +96,20 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         } finally {
             connection.disconnect();
         }
+        write("/sdcard/Download/" + System.currentTimeMillis() + "-response.bin", content);
         processHttpErrorCode(code, content);
         return content;
+    }
+
+    private static void write(String path, byte[] body) {
+        FileOutputStream stream;
+        try {
+            stream = new FileOutputStream(path);
+            stream.write(body);
+            stream.close();
+        } catch (IOException e) {
+            System.out.println("Could not write to " + path + ": " + e.getMessage());
+        }
     }
 
     static public String urlEncode(String input) {
@@ -140,14 +162,6 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         byte[] result = outputStream.toByteArray();
         bufferedInputStream.close();
         return result;
-    }
-
-    static private String addQueryParams(String url, Map<String, String> params) {
-        Uri.Builder builder = Uri.parse(url).buildUpon();
-        for (String key: params.keySet()) {
-            builder.appendQueryParameter(key, params.get(key));
-        }
-        return builder.build().toString();
     }
 
     static private String buildFormBody(Map<String, String> params) {

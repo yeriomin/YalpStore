@@ -29,6 +29,8 @@ public class DetailsActivity extends YalpStoreActivity {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
+    static public App app;
+
     protected DownloadOrInstall downloadOrInstallFragment;
     private IgnoreOption ignoreOptionFragment;
     private DownloadOptions downloadOptionsFragment;
@@ -72,8 +74,8 @@ public class DetailsActivity extends YalpStoreActivity {
         Log.i(getClass().getName(), "Getting info about " + packageName);
         ignoreOptionFragment = new IgnoreOption(this, new App());
 
-        if (null != DetailsDependentActivity.app) {
-            drawDetails(DetailsDependentActivity.app);
+        if (null != DetailsActivity.app) {
+            drawDetails(DetailsActivity.app);
         }
 
         DetailsTask task = getDetailsTask(packageName);
@@ -168,7 +170,7 @@ public class DetailsActivity extends YalpStoreActivity {
             protected void onPostExecute(Throwable e) {
                 super.onPostExecute(e);
                 if (this.app != null) {
-                    DetailsDependentActivity.app = this.app;
+                    DetailsActivity.app = this.app;
                     drawDetails(this.app);
                 }
             }
