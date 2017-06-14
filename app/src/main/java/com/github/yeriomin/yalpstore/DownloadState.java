@@ -5,9 +5,7 @@ import android.util.Pair;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class DownloadState {
 
