@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="about_developer_email_label">"بريد المطور:"</string>
+<string name="about_logged_in">"أنت الآن مسجل دخول ك:"</string>
+<string name="about_copied_to_clipboard">"تم النسخ للحافظة"</string>
+<string name="list_line_2_updatable">"تم التحديث في %1$s"</string>
+<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
+<string name="list_empty_updates">"لا توجد تطبيقات تحتاج للتحديث"</string>
+<string name="list_empty_search">"لا توجد تطبيقات"</string>
+<string name="list_incompatible">"غير متوافق"</string>
+<string name="action_about">"عن"</string>
+<string name="action_settings">"الإعدادات"</string>
+<string name="action_logout">"تسجيل خروج"</string>
+<string name="action_search">"بحث"</string>
+<string name="action_updates">"تحديثات"</string>
+<string name="action_ignore">"تجاهل التحديثات"</string>
+<string name="action_unignore">"لا تتجاهل التحديثات"</string>
+<string name="action_whitelist">"القائمة البيضاء للتحديثات"</string>
+<string name="action_unwhitelist">"تجاهل التحديثات"</string>
+<string name="search_title">"ابحث عن تطبيقات"</string>
+<string name="dialog_two_factor_cancel">"ليس الآن"</string>
+<string name="dialog_two_factor_create_password">"أنشيء كلمة سر"</string>
+<string name="dialog_title_two_factor">"التحقق بخطوتين"</string>
+<string name="dialog_message_two_factor">"يبدو أنك قمت بتفيعل التحقق بخطوتين في حسابك.
+فضلا، قم بإنشاء كلة سر مخصصة لتطبيق Yalp Store واستخدمها في تسجيل الدخول.
+اضغط \"أنشيء كلمة سر\" ليتم توجيهك لصفحة إنشاء كلمة السر."</string>
+<string name="dialog_title_logout">"سجل خروج؟"</string>
+<string name="dialog_message_logout">"هل أنت متأكد أنك تريد تسجيل الخروج؟"</string>
+<string name="dialog_title_reviews">"جاري الحصول على التعليقات"</string>
+<string name="dialog_message_reviews">"من فضلك انتظر. جاري الحصول على التعليقات."</string>
+<string name="dialog_title_purchasing_app">"جاري تنزيل التطبيق"</string>
+<string name="dialog_message_purchasing_app">"انتظرقليلا. سيبدأ تنزيل التطبيق المطلوب."</string>
+<string name="dialog_title_loading_app_list_search">"جاري البحث"</string>
+<string name="dialog_message_loading_app_list_search">"انتظر قليلا. جاري البحث عن التطبيقات."</string>
+<string name="dialog_account_type_provided_by_user">"باستخدام حسابي الخاص على جوجل"</string>
+<string name="dialog_account_type_predefined">"باستعمال حساب وهمي من Yalp Store"</string>
+<string name="dialog_account_type_title">"هل تود تسجيل الدخول إلى سوق بلاي Google Play Store ؟"</string>
+<string name="dialog_title_logging_in">"جاري تسجيل الدخول"</string>
+<string name="dialog_message_logging_in_provided_by_user">"جاري تسجيل الدخول ببيانات حسابك"</string>
+<string name="dialog_message_logging_in_predefined">"جاي تسجيل الدخول بحساب وهمي من Yalp Store"</string>
+<string name="error_incorrect_password">"خطأ في عنوان البريد أو كلمة السر."</string>
+<string name="error_credentials_empty">"من فضلك أدخل بيانات حساب جوجل."</string>
+<string name="error_no_network">"لا يوجد اتصال بالانترنت."</string>
+<string name="error_network_other">"خطأ بالاتصال: %1$s"</string>
+<string name="error_not_purchased">"يبدو أنك لم تقم بشراء هذا التطبيق. هل تريد الانتقال لصفحته على سوق بلاي؟"</string>
+<string name="error_downloads_directory_not_writable">"مجلد التنزيلات Downloads لا يمكن إنشاؤه أو غير قابل للكتابة."</string>
+<string name="error_token_dispenser_problem">"لا يمكن الدخول بدون حساب. جرب استعمال حسابك."</string>
+<string name="details_installs">"%1$s ↓"</string>
+<string name="details_rating">"%1$.1f★"</string>
+<string name="details_rating_specific">"%1$d★ %2$d"</string>
+<string name="details_updated">"تم التحديث %1$s"</string>
+<string name="details_size">"حجم ملف Apk %1$s"</string>
+<string name="details_description">"الوصف:"</string>
+<string name="details_changelog">"ما الجديد:"</string>
+<string name="details_screenshots">"لقطات شاشة:"</string>
+<string name="details_reviews">"تعلقيات:"</string>
+<string name="details_rate_this_app">"قيم هذا التطبيق:"</string>
+<string name="details_you_rated_this_app">"لقد قمت بتقييم هذا التطبيق:"</string>
+<string name="details_permissions">"الصلاحيات:"</string>
+<string name="details_versionName">"الإصدار %1$s"</string>
+<string name="details_versionName_updatable">"الإصدار %1$s → %2$s"</string>
+<string name="details_download">"تنزيل"</string>
+<string name="details_install">"تثبيت"</string>
+<string name="details_downloading">"جاري التنزيل"</string>
+<string name="details_review_dialog_title">"هل من شيء آخر تضيفه؟"</string>
+<string name="details_review_dialog_review_title_hint">"العنوان هنا"</string>
+<string name="details_review_dialog_review_comment_hint">"التعليق هنا"</string>
+<string name="details_review_dialog_fields_optional">"يمكنك أن تترك كل شيء فارغا."</string>
+<string name="details_apps_by_this_dev">"تطبيقات أخرى من هذا المطور"</string>
+<string name="details_similar_apps">"تطبيقات شبيهة"</string>
+<string name="details_users_also_installed">"ثبت المستخدمون أيضا"</string>
+<string name="details_signature_mismatch">"الإصدار الجديد بتوقيع مختلف. يجب أن تقوم بإزالة التطبيق القديم أولا وإعادة المحاولة. (انتبه حذف التطبيق سيحذف بياناته)"</string>
+<string name="suffix_million">"ميلون"</string>
+<string name="suffix_billion">"مليار"</string>
+<string name="credentials_hint_email">"الإيميل هنا"</string>
+<string name="credentials_hint_password">"كلمة السر هنا"</string>
+<string name="credentials_title">"نجاح حساب جوجل"</string>
+<string name="credentials_message">"هذا التطبيق يتطلب حساب جوجل للعمل.
+لتأخذ بالاعتبار أن استخدام يعد انتهاكات لاتفاقية الاستخدام مع سوق بلاي. قد يكون أأمن أن تسجل الدخول بحساب جوجل ولو لمرة واحدة على سوق بلاي وتوافق على اتفاقية الاستخدام."</string>
+<string name="activity_title_search">"جاري البحث: \"%1$s\""</string>
+<string name="notification_download_complete">"تم التنزيل. المس للتثبيت."</string>
+<string name="notification_download_complete_toast">"%1$s تم تنزيله. المس زر التثبيت أو التنبيه لتثبيت."</string>
+<string name="notification_download_complete_signature_mismatch">"تم التنزيل إلا أن توقيع الملف غير متطابق."</string>
+<string name="notification_download_complete_signature_mismatch_toast">"%1$s تم تنزيله. إلا أن توقيع الملف لا يتطابق مع المثبت حاليا. قد تحتاج لإلغاء تثبيته أولا."</string>
+<string name="notification_updates_available_title">"توجد تحديثات للتطبيق."</string>
+<string name="notification_updates_available_message">"توجد تحديثات ل %1$d من تطبيقاتك."</string>
+<string name="pref_hide_nonfree_apps_summary_off">"التطبيقات المدفوعة سيتم عرضها الآن."</string>
+<string name="pref_hide_nonfree_apps_summary_on">"التطبيقات المدفوعة لن يتم عرضها الآن."</string>
+<string name="pref_hide_nonfree_apps">"أخفي التطبيقات المدفوعة"</string>
+<string name="pref_auto_install_summary_off">"يتم تثبيت التطبيقات عندما تقوم بلمس إشعار الاستكمال."</string>
+<string name="pref_auto_install_summary_on">"يتم تثبيت التطبيقات بمجرد انتهاء التحميل."</string>
+<string name="pref_auto_install">"ثبت التطبيقات فورا"</string>
+<string name="pref_update_list_white_or_black_black">"سيتم تجاهل التطبيقات المختارة أثناء التحديث"</string>
+<string name="pref_update_list_white_or_black_white">"فقط التطبيقات المختارة سيتم تحديثها"</string>
+<string name="pref_update_list_white_or_black">"قائمة سوداء أو بيضاء للتحديثات"</string>
+<string name="pref_update_list_black">"عدل القائمة السوداء للتطبيقات"</string>
+<string name="pref_update_list_white">"عجل القائمة البيضاء للتطبيقات"</string>
+<string name="pref_ui_theme">"الواجهة"</string>
+<string name="pref_ui_theme_none">"الافتراضي"</string>
+<string name="pref_ui_theme_light">"مضيء"</string>
+<string name="pref_ui_theme_dark">"معتم"</string>
+<string name="pref_ui_theme_black">"أسود"</string>
+<string name="pref_background_update_interval_never">"فقط عند تشغيل Yalp Store"</string>
+<string name="pref_background_update_interval_hourly">"كل ساعة"</string>
+<string name="pref_background_update_interval_daily">"يوميا"</string>
+<string name="pref_background_update_interval_weekly">"أسبوعيا"</string>
+<string name="pref_background_update_interval">"ابحث عن التحديثات دوريا"</string>
+<string name="download_manager_ERROR_UNKNOWN">"خطأ غير معلوم."</string>
+<string name="download_manager_ERROR_FILE_ERROR">"خطأ غير معلوم  بتخزين الملف."</string>
+<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"يوجد خطأ HTTP في التحميل من الخادم."</string>
+<string name="download_manager_ERROR_HTTP_DATA_ERROR">"خطأ في استلام أو معالجة البيانات على مستوى HTTP."</string>
+<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"إعادة توجيه أكثر من اللازم."</string>
+<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"مساحة تخزين غير كافية."</string>
+<string name="download_manager_ERROR_DEVICE_NOT_FOUND">"لا يوجد وسيط تخزين خارجي. ربما لم يتم تحميل كرت الذاكرة."</string>
+<string name="download_manager_ERROR_CANNOT_RESUME">"حدثت بعض الأخطاء العارضة لكن لا يمكننا استكمال التنزيل. حاول لاحقا."</string>
+<string name="download_manager_ERROR_BLOCKED">"فشل التنزيل بسبب سياسة إدارة الشبكة. تأكد من إعداداتك."</string>
+<string name="search_filter">"كل التطبيقات"</string>
+<string name="details_category">"التصنيف: %1$s"</string>
+<string name="pref_delete_apk_after_install_summary_off">"الآن لن يتم حذف ملفات .apk بعد التثبيت"</string>
+<string name="pref_delete_apk_after_install_summary_on">"الآن سيتم حذف ملفات .apk بعد التثبيت"</string>
+<string name="pref_delete_apk_after_install">"احذف ملفات .apk بعد التثبيت"</string>
+<string name="dialog_title_application_crashed">"معذرة. توقف Yalp Store عن العمل"</string>
+<string name="dialog_message_application_crashed">"يمكنك المساعدة بإصلاح المشكلة بإرسال الخطأ عبر الإيميل.
+
+قم بوصف ما كنت تقوم به أثناء حدوث المشكلة.
+
+لن يتم جمع معلومات خاصة أو حساسة ويمكنك مراجعة المحتوى قبل إرساله."</string>
+<string name="details_to_play_store">"عرض في سوق بلاي"</string>
+<string name="about_self_update_checking">"…جاري الفحص"</string>
+<string name="about_self_update_available">"…0.%1$d متاح"</string>
+<string name="about_self_update_unavailable">"…لا يوجد تحديث"</string>
+<string name="action_categories">"التصنيفات"</string>
+<string name="list_update_all">"حدث الكل"</string>
+<string name="notification_installation_complete">"تم تثبيت التحديث."</string>
+<string name="notification_installation_complete_toast">"التطبيق  %1$s تم تحديثه."</string>
+<string name="notification_installation_failed">"فشل تثبيت التحديث."</string>
+<string name="notification_installation_failed_toast">"لا يمكن تحديث  %1$s. هل سمحت بالرووت؟"</string>
+<string name="pref_background_update_install_summary_off">"ستحصل فقط على إشعار."</string>
+<string name="pref_background_update_install_summary_on">"يتم تثبيت التحديثات إن وجدت (رووت)"</string>
+<string name="pref_background_update_install">"أيضا ثبت التحديثات (رووت)"</string>
+<string name="pref_no_root">"هذا الخيار فقط للأجهزة التي تدعم رووت"</string>
+<string name="list_app_has_ads">"به إعلانات"</string>
+<string name="list_app_no_ads">"لا إعلانات"</string>
+<string name="list_app_depends_on_gsf">"يعتمد على خدمات جوجل"</string>
+<string name="list_app_independent_from_gsf">"لا يعتمد على خدمات جوجل"</string>
+<string name="details_depends_on">"يعتمد على: %1$s"</string>
+<string name="details_no_dependencies">"لا شيء"</string>
+<string name="details_contains_ads">"يحتوي إعلانات"</string>
+<string name="details_no_ads">"لا إعلانات"</string>
+<string name="dialog_title_package_id">"يوجد حزمة بهذا الاسم"</string>
+<string name="dialog_message_package_id">"يوجد حزمة بهذا الاسم تماما. هل تريد التوجه مباشرة لصفحتها؟"</string>
+<string name="details_download_checking">"جاري الفحص…"</string>
+<string name="details_download_not_available">"غير متاح"</string>
+<string name="manual_download_incompatible">"يعتبر سوق بلاي أن هذا التطبيق غير متوافق مع جهازك. هذا يعني أن رقم الإصدار لم يتحصل عليه من خادم إصدار سوق بلاي."</string>
+<string name="manual_download_compatible">"حقل رقم الإصدار تم تعبئته برقم آخر إصدار متوافق من التطبيق. يمكنك وضع رقم أقل للحصول على نسخة أقدم إذا لم يكن قد قام المطور بحذفها."</string>
+<string name="manual_download_warning">"هذه الصفحة تسمح لك باختيار رقم الإصدار التي تريده. رقم الإصدار يبدأ برقم 1 ويتم زيادته مع كل إصدار جديد للتطبيق. في العادة يسمح لك سوق بلاي بتحميل آخر إصدار متوافق مع جهازك فقط. بتحديد رقم الإصدار قد يمكنك أن تحصل على إصدارات أخرى أيضا.
+
+لا يمكن تحميل إصدار برقم عشوائي التحميل يعتمد على تخمينك الصحيح وحتى لو خمنت رقم صحيح فقد تحصل على حزمة apk غير متوافقة مع جهازك. على الأغلب أنت تضيع وقتك!"</string>
+<string name="manual_download_hint_version_code">"رقم الإصدار هنا"</string>
+<string name="list_has_update">"قابل للتحديث"</string>
+<string name="list_no_update">"محدث بالفعل"</string>
+<string name="details_uninstall">"إلغاء التثبيت"</string>
+<string name="notification_download_starting">"جاري بدء التحميل"</string>
+<string name="notification_download_progress">"%1$s من %2$s تم تحميله"</string>
+<string name="pref_requested_language">"لغة التعامل مع سوق بلاي"</string>
+<string name="pref_requested_language_default">"اللغة الافتراضية"</string>
+<string name="pref_hide_apps_with_ads">"أخف التطبيقات المحتوية إعلانات"</string>
+<string name="pref_hide_apps_with_ads_summary_off">"التطبيقات المحتوية إعلانات سيتم عرضها"</string>
+<string name="pref_hide_apps_with_ads_summary_on">"التطبيقات المحتوية إعلانات لن يتم عرضها"</string>
+<string name="pref_device_to_pretend_to_be">"تظاهر أنك جهاز آخر"</string>
+<string name="pref_device_to_pretend_to_be_default">"معلومات جهازك الأصلية"</string>
+<string name="pref_device_to_pretend_to_be_toast">"هذا التعديل سيتطلب إعادة تسجيل الدخول"</string>
+<string name="pref_category_updates">"التحديثات"</string>
+<string name="pref_category_search">"فلترة البحث"</string>
+<string name="pref_category_installation">"التثبيت"</string>
+<string name="pref_category_spoofing">"الانتحال"</string>
+<string name="pref_category_ui">"واجهة المستخدم"</string>
+<string name="details_installing">"جاري التثبيت…"</string>
+<string name="details_installed">"تم التثبيت بنجاح"</string>
+<string name="details_install_failure">"لم يمكن التثبيت"</string>
+<string name="notification_download_complete_new_permissions">"تم استكمال التنزيل. يتطلب صلاحيات جديدة."</string>
+<string name="notification_download_complete_new_permissions_toast">"%1$s تم تنزيله. الإصدار الأحدث يتطلب صلاحيات إضافية. راجع الصلاحيات الجديدة."</string>
+<string name="pref_not_privileged">"متاح فقط إذا كان Yalp مثبت كتطبيق نظام"</string>
+<string name="pref_installation_method">"طريقة التثبيت"</string>
+<string name="pref_installation_method_default">"معالج التثبيت الافتراضي، لا يوجد تثبيت في الخلفية"</string>
+<string name="pref_installation_method_root">"باستخدام رووت"</string>
+<string name="pref_installation_method_privileged">"باستخدام صلاحيات النظام"</string>
+<string name="pref_background_update_download_summary_off">"فقط سيتم إشعارك"</string>
+<string name="pref_background_update_download_summary_on">"يتم تنزيل التحديثات إن وجدت"</string>
+<string name="pref_background_update_download">"أيضا نزل التحديثات"</string>
+<string name="details_not_available_on_play_store">"غير متوفر في سوق بلاي"</string>
+<string name="action_manual">"تنزيل يدوي"</string>
+<string name="action_get_local_apk">"احصل على حزمة apk المحلية"</string>
+<string name="details_saved_in_downloads">"مخزن في مجلد Downloads"</string>
+<string name="details_could_not_copy_apk">"لا يمكن نسخ apk"</string>
+<string name="action_make_system">"حول إلى برنامج نظام"</string>
+<string name="action_make_normal">"حول إلى برنامج عادي"</string>
+<string name="list_app_system">"برنامج نظام"</string>
+<string name="list_app_exists_in_play_store">"متوفر في سوق بلاي."</string>
+<string name="activity_title_updates_only">"التحديثات"</string>
+<string name="activity_title_updates_and_other_apps">"تطبيقاتك"</string>
+<string name="pref_category_updates_page">"صفحة التحديث"</string>
+<string name="pref_updates_only">"أظهر التطبيقات القابلة للتحديث فقط"</string>
+<string name="pref_updates_only_summary_off">"كل التطبيقات يتم عرضها الآن"</string>
+<string name="pref_updates_only_summary_on">"فقط التطبيقات القابلة للتحديث يتم عرضها"</string>
+<string name="pref_show_system_apps">"أظهر تطبيقات النظام"</string>
+<string name="pref_show_system_apps_summary_off">"تطبيقات النظام مخفية الآن"</string>
+<string name="pref_show_system_apps_summary_on">"تطبيقات النظام معروضة الآن"</string>
+<string name="details_system_app_info">"معلومات النظام"</string>
+<string name="activity_title_search_publisher">"التطبيقات بواسطة %1$s"</string>
+<string name="details_run">"شغل"</string>
+<string name="dialog_title_remounting_system">"جاري العمل على قسم /system"</string>
+<string name="dialog_message_remounting_system">"جاري العمل على قسم /system. قد يستغرق ذلك بعض الوقت."</string>
+<string name="dialog_title_checking_busybox">"جاري التأكد من وجود busybox"</string>
+<string name="dialog_message_checking_busybox">"بعض الأدوات لابد منها للعمل مع تطبيقات النظام. جاري التأكد من وجودها."</string>
+<string name="dialog_title_busybox_not_available">"busybox غير موجود"</string>
+<string name="dialog_message_busybox_not_available">"تحتاج لجهاز يدعم \"رووت\" وكذلك busybox للعمل مع تطبيقات النظام. هل تريد البحث عن مثبت busybox الآن؟"</string>
+<string name="dialog_title_reboot_required">"إعادة التشغيل مطلوبة"</string>
+<string name="dialog_message_reboot_required">"سيتم تفعييل التغييرات بعد إعادة التشغيل. أعد التشغيل الآن؟"</string>
+<string name="dialog_title_system_app_warning">"تحذير!"</string>
+<string name="dialog_message_system_app_warning_to_system">"لقد اخترت تحويل التطبيق إلى تطبيق نظام. أغلب الطبيقات لا تتطلب ذلك لتعمل.
+
+هذه العملية غير مدعومة من نظام أندرويد وقد تكون غير آمنة ولا تعمل.
+
+لا تقم بها إذا لم تكن متأكدا. قم بأخذ نسة احتياطية قبل المحاولة."</string>
+<string name="dialog_message_system_app_warning_to_normal">"تريد تحويل تطبيق نظام إلى تطبيق عادي.أغلب تطبيقات النظام تحتاج أن تكون كذلك حتى تعمل.
+
+هذه العملية غير مدعومة من نظام أندرويد وقد تكون غير آمنة ولا تعمل.
+
+لا تقم بها إذا لم تكن متأكدا. قم بأخذ نسة احتياطية قبل المحاولة."</string>
+<string name="list_check_updates">"ابحث عن التحديثات"</string>
+<string name="pref_background_update_interval_manually">"فقط يدويا"</string>
+<string name="dialog_message_system_app_warning_uninstall">"هل أنت متأكد من رغبتك في حذف تطبيق النظام هذا؟ أغلب تطبيقات النظام لها وظيفة تؤديها وتم وضعها لغرض.
+
+هذه العملية غير مدعومة من نظام أندرويد وقد تكون غير آمنة ولا تعمل.
+
+لا تقم بها إذا لم تكن متأكدا. قم بأخذ نسة احتياطية قبل المحاولة."</string>
+<string name="dialog_title_system_app_self">"جعل Yalp تطبيق نظام"</string>
+<string name="dialog_message_system_app_self">"استخدام صلاحيات عليا للسماح بتثبيت التطبيقات في الخلفية يتطلب جعل Yalp Store تطبيق نظام.
+
+هذه العملية غير مضمونة وقد لا تعمل.
+
+قم بها؟"</string>
+<string name="about_website_label">"الموقع:"</string>
+<string name="details_share">"شارك"</string>
+</resources>
