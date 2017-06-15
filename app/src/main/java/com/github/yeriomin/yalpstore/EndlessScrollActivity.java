@@ -12,6 +12,14 @@ import java.util.List;
 
 abstract public class EndlessScrollActivity extends AppListActivity {
 
+    protected AppListIterator iterator;
+
+    abstract protected EndlessScrollTask getTask();
+
+    public void setIterator(AppListIterator iterator) {
+        this.iterator = iterator;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +43,7 @@ abstract public class EndlessScrollActivity extends AppListActivity {
     }
 
     @Override
-    protected void addApps(List<App> appsToAdd) {
+    public void addApps(List<App> appsToAdd) {
         AppListAdapter adapter = (AppListAdapter) getListView().getAdapter();
         if (!adapter.isEmpty()) {
             ListItem last = adapter.getItem(adapter.getCount() - 1);
@@ -50,12 +58,25 @@ abstract public class EndlessScrollActivity extends AppListActivity {
         adapter.notifyDataSetChanged();
     }
 
-    protected GoogleApiAsyncTask prepareTask(GoogleApiAsyncTask task) {
+    @Override
+    protected void clearApps() {
+        super.clearApps();
+        iterator = null;
+    }
+
+    protected EndlessScrollTask prepareTask(EndlessScrollTask task) {
         task.setContext(this);
         task.setErrorView((TextView) getListView().getEmptyView());
         if (getListView().getAdapter().isEmpty()) {
             task.prepareDialog(R.string.dialog_message_loading_app_list_search, R.string.dialog_title_loading_app_list_search);
         }
         return task;
+    }
+
+    @Override
+    public void loadApps() {
+        EndlessScrollTask task = prepareTask(getTask());
+        task.setTaskClone(prepareTask(getTask()));
+        task.execute();
     }
 }

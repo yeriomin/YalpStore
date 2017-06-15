@@ -1,20 +1,20 @@
 package com.github.yeriomin.yalpstore;
 
 import com.github.yeriomin.playstoreapi.DocV2;
-import com.github.yeriomin.playstoreapi.ListResponse;
+import com.github.yeriomin.playstoreapi.SearchResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryAppsIterator extends AppListIterator {
+class SearchIterator extends AppListIterator {
 
-    public CategoryAppsIterator(com.github.yeriomin.playstoreapi.CategoryAppsIterator iterator) {
+    public SearchIterator(com.github.yeriomin.playstoreapi.SearchIterator iterator) {
         super(iterator);
     }
 
     @Override
     protected List<DocV2> getDocList() {
-        ListResponse response = ((com.github.yeriomin.playstoreapi.CategoryAppsIterator) iterator).next();
+        SearchResponse response = ((com.github.yeriomin.playstoreapi.SearchIterator) iterator).next();
         if (response.getDocCount() == 0) {
             return new ArrayList<>();
         }

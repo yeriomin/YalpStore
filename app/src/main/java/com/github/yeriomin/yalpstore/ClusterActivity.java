@@ -11,7 +11,6 @@ public class ClusterActivity extends EndlessScrollActivity {
     static private final String INTENT_TITLE = "INTENT_TITLE";
 
     private String clusterUrl;
-    private ClusterIterator clusterIterator;
 
     static public void start(Context context, String url, String title) {
         Intent intent = new Intent(context, ClusterActivity.class);
@@ -38,19 +37,9 @@ public class ClusterActivity extends EndlessScrollActivity {
     }
 
     @Override
-    public void loadApps() {
-        ClusterTask task = new ClusterTask(clusterIterator) {
-
-            @Override
-            protected void onPostExecute(Throwable e) {
-                super.onPostExecute(e);
-                if (null == ClusterActivity.this.clusterIterator) {
-                    clusterIterator = iterator;
-                }
-                addApps(apps);
-                apps.clear();
-            }
-        };
-        prepareTask(task).execute(clusterUrl);
+    protected ClusterTask getTask() {
+        ClusterTask task = new ClusterTask(iterator);
+        task.setClusterUrl(clusterUrl);
+        return task;
     }
 }

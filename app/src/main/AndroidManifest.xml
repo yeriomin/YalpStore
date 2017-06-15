@@ -44,7 +44,7 @@
             android:authorities="com.github.yeriomin.yalpstore.YalpSuggestionProvider"
             android:enabled="true" />
         <activity android:name=".DetailsActivity" android:configChanges="keyboardHidden|orientation|screenSize">
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -74,9 +74,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
-        <activity android:name=".SearchResultActivity" android:configChanges="keyboardHidden|orientation|screenSize" >
+        <activity android:name=".SearchActivity" android:configChanges="keyboardHidden|orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -99,20 +99,20 @@
         </activity>
         <activity android:name=".PreferenceActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".CategoryListActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
         <activity android:name=".CategoryAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
         <activity android:name=".FullscreenImageActivity" />
         <activity android:name=".ClusterActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
         <activity android:name=".ManualDownloadActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
         <activity android:name=".AboutActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
         <activity android:name=".CrashLetterActivity" android:process=":report_process" />
     </application>

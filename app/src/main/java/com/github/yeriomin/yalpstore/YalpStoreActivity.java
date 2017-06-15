@@ -110,7 +110,7 @@ public abstract class YalpStoreActivity extends Activity {
             .setPositiveButton(android.R.string.search_go, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Intent i = new Intent(getApplicationContext(), SearchResultActivity.class);
+                    Intent i = new Intent(getApplicationContext(), SearchActivity.class);
                     i.setAction(Intent.ACTION_SEARCH);
                     i.putExtra(SearchManager.QUERY, textView.getText().toString());
                     startActivity(i);

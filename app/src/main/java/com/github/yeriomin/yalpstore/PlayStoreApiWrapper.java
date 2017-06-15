@@ -13,7 +13,6 @@ import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.DetailsResponse;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.ReviewResponse;
-import com.github.yeriomin.playstoreapi.SearchIterator;
 import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
@@ -29,14 +28,11 @@ import java.util.Map;
 
 /**
  * Akdeniz Google Play Crawler classes are supposed to be independent from android,
- * so this warpper manages anything android-related and feeds it to the Akdeniz's classes
+ * so this wrapper manages anything android-related and feeds it to the Akdeniz's classes
  * Specifically: credentials via Preferences, downloads via DownloadManager, app details using
  * android PackageInfo
  */
 public class PlayStoreApiWrapper {
-
-    private static AppSearchResultIterator searchResultIterator;
-    private static CategoryAppsIterator categoryAppsIterator;
 
     private Context context;
 
@@ -101,37 +97,6 @@ public class PlayStoreApiWrapper {
         }
         Collections.sort(apps);
         return apps;
-    }
-
-    public AppSearchResultIterator getSearchIterator(String query, String categoryId) throws IOException {
-        if (TextUtils.isEmpty(query)) {
-            Log.w(this.getClass().getName(), "Query empty, so don't expect meaningful results");
-        }
-        if (null == searchResultIterator
-            || !searchResultIterator.getQuery().equals(query)
-            || !searchResultIterator.getCategoryId().equals(categoryId)
-        ) {
-            searchResultIterator = new AppSearchResultIterator(new SearchIterator(new PlayStoreApiAuthenticator(context).getApi(), query));
-            searchResultIterator.setHideNonfreeApps(PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS));
-            searchResultIterator.setHideAppsWithAds(PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_APPS_WITH_ADS));
-            searchResultIterator.setCategoryId(categoryId);
-        }
-        return searchResultIterator;
-    }
-
-    public CategoryAppsIterator getCategoryAppsIterator(String categoryId) throws IOException {
-        if (null == categoryAppsIterator
-            || !categoryAppsIterator.getCategoryId().equals(categoryId)
-        ) {
-            categoryAppsIterator = new CategoryAppsIterator(
-                new com.github.yeriomin.playstoreapi.CategoryAppsIterator(
-                    new PlayStoreApiAuthenticator(context).getApi(),
-                    categoryId,
-                    GooglePlayAPI.SUBCATEGORY.TOP_FREE
-                )
-            );
-        }
-        return categoryAppsIterator;
     }
 
     public List<String> getSearchSuggestions(String query) throws IOException {

@@ -146,7 +146,7 @@ public class CheckShellTask extends AsyncTask<Void, Void, Boolean> {
     }
 
     private Intent getBusyboxSearchIntent() {
-        Intent i = new Intent(context, SearchResultActivity.class);
+        Intent i = new Intent(context, SearchActivity.class);
         i.setAction(Intent.ACTION_SEARCH);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.putExtra(SearchManager.QUERY, "busybox");

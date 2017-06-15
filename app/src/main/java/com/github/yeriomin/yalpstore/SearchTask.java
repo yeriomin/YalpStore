@@ -1,58 +1,59 @@
 package com.github.yeriomin.yalpstore;
 
+import android.app.Activity;
+import android.content.Context;
+
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-class SearchTask extends GoogleApiAsyncTask {
+class SearchTask extends EndlessScrollTask {
 
-    protected List<App> apps = new ArrayList<>();
     private Set<String> installedPackageNames = new HashSet<>();
     private CategoryManager categoryManager;
+    private String query;
+    private String categoryId;
+
+    public SearchTask(AppListIterator iterator) {
+        super(iterator);
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    @Override
+    protected SearchIterator initIterator() throws IOException {
+        return new SearchIterator(new com.github.yeriomin.playstoreapi.SearchIterator(new PlayStoreApiAuthenticator(context).getApi(), query));
+    }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        categoryManager = new CategoryManager((Activity) context);
         List<App> installed = UpdatableAppsTask.getInstalledApps(context);
         for (App installedApp : installed) {
             installedPackageNames.add(installedApp.getPackageName());
         }
     }
 
-    /**
-     * params[0] is search query
-     * params[1] is category id
-     *
-     */
     @Override
-    protected Throwable doInBackground(String... params) {
-        PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
-        try {
-            AppSearchResultIterator iterator = wrapper.getSearchIterator(params[0], params[1]);
-            while (iterator.hasNext() && apps.isEmpty()) {
-                getNextBatch(iterator, params[1]);
-            }
-            for (App app: apps) {
-                app.setInstalled(installedPackageNames.contains(app.getPackageName()));
-            }
-        } catch (Throwable e) {
-            return e;
-        }
-        return null;
-    }
-
-    private void getNextBatch(AppSearchResultIterator iterator, String chosenCategoryId) {
+    protected List<App> getNextBatch(AppListIterator iterator) {
+        List<App> apps = new ArrayList<>();
         for (App app: iterator.next()) {
-            if (categoryManager.fits(app.getCategoryId(), chosenCategoryId)) {
+            app.setInstalled(installedPackageNames.contains(app.getPackageName()));
+            if (categoryManager.fits(app.getCategoryId(), categoryId)) {
                 apps.add(app);
             }
         }
-    }
-
-    public void setCategoryManager(CategoryManager categoryManager) {
-        this.categoryManager = categoryManager;
+        return apps;
     }
 }

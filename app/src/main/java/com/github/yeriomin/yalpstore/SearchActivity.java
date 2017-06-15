@@ -10,7 +10,7 @@ import android.widget.Spinner;
 
 import java.util.regex.Pattern;
 
-public class SearchResultActivity extends EndlessScrollActivity {
+public class SearchActivity extends EndlessScrollActivity {
 
     static private final String PUBLISHER_PREFIX = "pub:";
 
@@ -52,27 +52,12 @@ public class SearchResultActivity extends EndlessScrollActivity {
         }
     }
 
-    public void loadApps() {
-        SearchTask task = getTask();
-        task.setTaskClone(getTask());
-        task.execute(query, categoryId);
-    }
-
-    private SearchTask getTask() {
-        SearchTask task = new SearchTask() {
-
-            @Override
-            protected void onPostExecute(Throwable e) {
-                super.onPostExecute(e);
-                if (e == null) {
-                    addApps(apps);
-                } else {
-                    clearApps();
-                }
-            }
-        };
-        task.setCategoryManager(new CategoryManager(this));
-        return (SearchTask) prepareTask(task);
+    @Override
+    protected SearchTask getTask() {
+        SearchTask task = new SearchTask(iterator);
+        task.setQuery(query);
+        task.setCategoryId(categoryId);
+        return task;
     }
 
     private String getSearchTitle() {
@@ -126,7 +111,7 @@ public class SearchResultActivity extends EndlessScrollActivity {
             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    DetailsActivity.start(SearchResultActivity.this, packageId);
+                    DetailsActivity.start(SearchActivity.this, packageId);
                     dialogInterface.dismiss();
                     finish();
                 }

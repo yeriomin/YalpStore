@@ -35,15 +35,9 @@ public class CategoryAppsActivity extends EndlessScrollActivity {
     }
 
     @Override
-    public void loadApps() {
-        CategoryAppsTask task = new CategoryAppsTask() {
-
-            @Override
-            protected void onPostExecute(Throwable e) {
-                super.onPostExecute(e);
-                addApps(apps);
-            }
-        };
-        prepareTask(task).execute(categoryId);
+    protected EndlessScrollTask getTask() {
+        CategoryAppsTask task = new CategoryAppsTask(iterator);
+        task.setCategoryId(categoryId);
+        return task;
     }
 }

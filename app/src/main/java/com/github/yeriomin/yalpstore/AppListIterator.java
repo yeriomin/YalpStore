@@ -2,28 +2,24 @@ package com.github.yeriomin.yalpstore;
 
 import android.util.Log;
 
+import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.AppBuilder;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class AppListIterator implements Iterator {
+abstract public class AppListIterator implements Iterator {
 
     protected boolean hideNonfreeApps;
     protected boolean hideAppsWithAds;
-    protected String categoryId = CategoryManager.TOP;
     protected com.github.yeriomin.playstoreapi.AppListIterator iterator;
+
+    abstract protected List<DocV2> getDocList();
 
     public AppListIterator(com.github.yeriomin.playstoreapi.AppListIterator iterator) {
         this.iterator = iterator;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
     }
 
     public void setHideNonfreeApps(boolean hideNonfreeApps) {
@@ -32,6 +28,15 @@ public abstract class AppListIterator implements Iterator {
 
     public void setHideAppsWithAds(boolean hideAppsWithAds) {
         this.hideAppsWithAds = hideAppsWithAds;
+    }
+
+    @Override
+    public List<App> next() {
+        List<App> apps = new ArrayList<>();
+        for (DocV2 details: getDocList()) {
+            addApp(apps, AppBuilder.build(details));
+        }
+        return apps;
     }
 
     @Override

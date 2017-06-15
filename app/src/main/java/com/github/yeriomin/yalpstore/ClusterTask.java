@@ -1,33 +1,23 @@
 package com.github.yeriomin.yalpstore;
 
 import com.github.yeriomin.playstoreapi.UrlIterator;
-import com.github.yeriomin.yalpstore.model.App;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
-public class ClusterTask extends GoogleApiAsyncTask {
+public class ClusterTask extends EndlessScrollTask {
 
-    protected ClusterIterator iterator;
-    protected List<App> apps = new ArrayList<>();
+    private String clusterUrl;
 
-    public ClusterTask(ClusterIterator iterator) {
-        this.iterator = iterator;
+    public ClusterTask(AppListIterator iterator) {
+        super(iterator);
+    }
+
+    public void setClusterUrl(String clusterUrl) {
+        this.clusterUrl = clusterUrl;
     }
 
     @Override
-    protected Throwable doInBackground(String... clusterUrl) {
-        try {
-            if (null == iterator) {
-                iterator = new ClusterIterator(new UrlIterator(new PlayStoreApiAuthenticator(context).getApi(), clusterUrl[0]));
-            }
-            if (!iterator.hasNext()) {
-                return null;
-            }
-            apps.addAll(iterator.next());
-        } catch (Throwable e) {
-            return e;
-        }
-        return null;
+    protected AppListIterator initIterator() throws IOException {
+        return new ClusterIterator(new UrlIterator(new PlayStoreApiAuthenticator(context).getApi(), clusterUrl));
     }
 }

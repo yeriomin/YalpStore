@@ -1,38 +1,27 @@
 package com.github.yeriomin.yalpstore;
 
-import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-class CategoryAppsTask extends GoogleApiAsyncTask {
+class CategoryAppsTask extends EndlessScrollTask {
 
-    protected List<App> apps = new ArrayList<>();
+    private String categoryId;
 
-    /**
-     * params[0] is category id
-     *
-     */
-    @Override
-    protected Throwable doInBackground(String... params) {
-        try {
-            CategoryAppsIterator iterator = getIterator(params[0]);
-            if (!iterator.hasNext()) {
-                return null;
-            }
-            apps.addAll(iterator.next());
-        } catch (Throwable e) {
-            return e;
-        }
-        return null;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
-    private CategoryAppsIterator getIterator(String categoryId) throws IOException {
-        PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
-        CategoryAppsIterator iterator = wrapper.getCategoryAppsIterator(categoryId);
-        iterator.setHideAppsWithAds(PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_APPS_WITH_ADS));
-        iterator.setHideNonfreeApps(PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS));
-        return iterator;
+    public CategoryAppsTask(AppListIterator iterator) {
+        super(iterator);
+    }
+
+    @Override
+    protected CategoryAppsIterator initIterator() throws IOException {
+        return new CategoryAppsIterator(new com.github.yeriomin.playstoreapi.CategoryAppsIterator(
+            new PlayStoreApiAuthenticator(context).getApi(),
+            categoryId,
+            GooglePlayAPI.SUBCATEGORY.TOP_FREE
+        ));
     }
 }
