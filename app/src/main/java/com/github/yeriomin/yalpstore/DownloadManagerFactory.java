@@ -6,8 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
 
-import eu.chainfire.libsuperuser.Shell;
-
 public class DownloadManagerFactory {
 
     private static final String DOWNLOAD_MANAGER_PACKAGE_NAME = "com.android.providers.downloads";
@@ -49,13 +47,6 @@ public class DownloadManagerFactory {
         if (Build.VERSION.SDK_INT != Build.VERSION_CODES.N && Build.VERSION.SDK_INT != Build.VERSION_CODES.N_MR1) {
             return false;
         }
-        for (String line: Shell.SH.run("ls -1 /sys/class/net")) {
-            String networkName = line.trim();
-            if (networkName.startsWith("tun") || networkName.startsWith("ppp")) {
-                Log.i(DownloadManagerFactory.class.getName(), "VPN seems to be on: " + networkName);
-                return true;
-            }
-        }
-        return false;
+        return NetworkState.isVpn();
     }
 }

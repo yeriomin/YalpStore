@@ -50,11 +50,22 @@ public class UpdateChecker extends BroadcastReceiver {
                 if (updatesCount == 0) {
                     return;
                 }
-                if (explicitCheck || PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)) {
+                if (canUpdate()) {
                     process(context, updatableApps);
                 } else {
                     createNotification(context, updatesCount);
                 }
+            }
+
+            private boolean canUpdate() {
+                return explicitCheck ||
+                    (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
+                        && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
+                            || !PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
+                            || NetworkState.isWifi()
+                        )
+                    )
+                ;
             }
         };
         task.setExplicitCheck(context instanceof Activity);

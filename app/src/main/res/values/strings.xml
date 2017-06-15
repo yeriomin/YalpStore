@@ -179,6 +179,7 @@
     <string name="pref_background_update_download_summary_off">You only get a notification</string>
     <string name="pref_background_update_download_summary_on">Updates are downloaded if found</string>
     <string name="pref_background_update_download">Also download the updates</string>
+    <string name="pref_background_update_wifi_only">On Wi-Fi only</string>
     <string name="pref_no_root">This option is only available on rooted devices</string>
     <string name="pref_requested_language">Play Store requests language</string>
     <string name="pref_requested_language_default">Your default language</string>

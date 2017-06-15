@@ -15,6 +15,11 @@
             android:title="@string/pref_background_update_download" />
         <CheckBoxPreference
             android:dependency="PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD"
+            android:defaultValue="true"
+            android:key="PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY"
+            android:title="@string/pref_background_update_wifi_only" />
+        <CheckBoxPreference
+            android:dependency="PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD"
             android:defaultValue="false"
             android:key="PREFERENCE_BACKGROUND_UPDATE_INSTALL"
             android:summaryOff="@string/pref_background_update_install_summary_off"
