@@ -55,6 +55,7 @@ public class GeneralDetails extends Abstract {
         setText(R.id.updated, R.string.details_updated, app.getUpdated());
         setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(activity, app.getSize()));
         setText(R.id.category, R.string.details_category, new CategoryManager(activity).getCategoryName(app.getCategoryId()));
+        setText(R.id.developer, R.string.details_developer, app.getDeveloperName());
         setText(R.id.price, app.getPrice());
         setText(R.id.contains_ads, app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
         drawOfferDetails(app);

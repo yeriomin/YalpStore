@@ -75,8 +75,7 @@
                             android:layout_height="0dip"
                             android:layout_weight="1"
                             android:singleLine="true"
-                            android:ellipsize="marquee"
-                            android:visibility="gone" />
+                            android:ellipsize="marquee" />
 
                     </LinearLayout>
 
@@ -91,6 +90,12 @@
 
                     <TextView
                         android:id="@+id/category"
+                        android:paddingTop="6dip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/developer"
                         android:paddingTop="6dip"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -155,13 +160,6 @@
 
                     </TableLayout>
 
-                    <LinearLayout
-                        android:id="@+id/offer_details"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="6dip"
-                        android:orientation="vertical" />
-
                     <TextView
                         android:id="@+id/google_dependencies"
                         android:paddingTop="6dip"
@@ -201,7 +199,7 @@
                         android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="6dip"  />
+                        android:paddingTop="10dip"  />
 
                     <TextView
                         android:id="@+id/changes"
@@ -210,6 +208,13 @@
                         android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:id="@+id/offer_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="10dip" />
 
                 </LinearLayout>
 

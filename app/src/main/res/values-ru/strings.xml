@@ -82,6 +82,7 @@
     <string name="error_downloads_directory_not_writable">Каталог закачек недоступен для записи.</string>
     <string name="error_token_dispenser_problem">Подключиться без аккаунта не удалось. Попробуйте подключиться через ваш Google аккаунт.</string>
     <string name="details_category">"Категория: %1$s"</string>
+    <string name="details_developer">"Разработчик: %1$s"</string>
     <string name="details_installs">"%1$s ↓"</string>
     <string name="details_rating">"%1$.1f★"</string>
     <string name="details_rating_specific">"%1$d★ %2$d"</string>
