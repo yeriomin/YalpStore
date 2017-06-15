@@ -181,8 +181,7 @@ Lembre-se de que o download de versões arbitrárias de aplicativos não é comp
 <string name="pref_category_updates">"Atualizações"</string>
 <string name="pref_category_search">"Filtragem de pesquisa"</string>
 <string name="pref_category_installation">"Instalação"</string>
-<string name="pref_category_spoofing">"
-Spoofing"</string>
+<string name="pref_category_spoofing">"Spoofing"</string>
 <string name="pref_category_ui">"Mostrar"</string>
 <string name="details_installing">"Instalando…"</string>
 <string name="details_installed">"Instalado com êxito"</string>
@@ -251,4 +250,6 @@ O processo é imperfeito e específico do fornecedor, portanto, pode não funcio
 Fazer?"</string>
 <string name="about_website_label">"Página web:"</string>
 <string name="details_share">"Compartilhar"</string>
+<string name="details_developer">"Desenvolvedor: %1$s"</string>
+<string name="pref_background_update_wifi_only">"Somente por Wi-Fi"</string>
 </resources>
