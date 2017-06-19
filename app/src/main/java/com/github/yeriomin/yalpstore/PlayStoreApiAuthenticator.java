@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
@@ -68,7 +69,7 @@ public class PlayStoreApiAuthenticator {
         String token = prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, "");
 
         com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
-            .setHttpClient(new NativeHttpClientAdapter())
+            .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
             .setDeviceInfoProvider(getDeviceInfoProvider())
             .setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale))
             .setEmail(email)

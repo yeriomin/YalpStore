@@ -71,7 +71,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         return builder.build().toString();
     }
 
-    private byte[] request(HttpURLConnection connection, byte[] body, Map<String, String> headers) throws IOException {
+    protected byte[] request(HttpURLConnection connection, byte[] body, Map<String, String> headers) throws IOException {
         connection.setConnectTimeout(TIMEOUT);
         connection.setReadTimeout(TIMEOUT);
         for (String headerName: headers.keySet()) {
@@ -96,20 +96,8 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         } finally {
             connection.disconnect();
         }
-        write("/sdcard/Download/" + System.currentTimeMillis() + "-response.bin", content);
         processHttpErrorCode(code, content);
         return content;
-    }
-
-    private static void write(String path, byte[] body) {
-        FileOutputStream stream;
-        try {
-            stream = new FileOutputStream(path);
-            stream.write(body);
-            stream.close();
-        } catch (IOException e) {
-            System.out.println("Could not write to " + path + ": " + e.getMessage());
-        }
     }
 
     static public String urlEncode(String input) {
