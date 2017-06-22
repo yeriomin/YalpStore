@@ -46,7 +46,9 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
     }
 
     private void draw(Context context, DownloadState state) {
-        progressBar.setVisibility(View.GONE);
+        if (null != progressBar) {
+            progressBar.setVisibility(View.GONE);
+        }
         buttonDownload.setText(R.string.details_download);
         buttonDownload.setEnabled(true);
         if (state.isEverythingSuccessful()) {
