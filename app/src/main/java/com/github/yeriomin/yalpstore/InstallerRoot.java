@@ -20,11 +20,10 @@ public class InstallerRoot extends InstallerBackground {
         return new InstallTask() {
 
             @Override
-            protected void onPostExecute(Boolean result) {
-                super.onPostExecute(result);
+            protected void onPostExecute(Boolean success) {
+                super.onPostExecute(success);
                 context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM));
-                String resultString = context.getString(result ? R.string.details_installed : R.string.details_install_failure);
-                postInstallationResult(resultString, app.getDisplayName());
+                postInstallationResult(app, success);
             }
         };
     }

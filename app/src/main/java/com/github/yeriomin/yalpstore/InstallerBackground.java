@@ -34,12 +34,18 @@ abstract public class InstallerBackground extends InstallerAbstract {
         }
     }
 
-    protected void postInstallationResult(String resultString, String displayName) {
+    protected void postInstallationResult(App app, boolean success) {
+        String resultString = context.getString(
+            success
+            ? (app.isInstalled() ? R.string.notification_installation_complete : R.string.details_installed)
+            : (app.isInstalled() ? R.string.notification_installation_failed : R.string.details_install_failure)
+        );
         if (background) {
-            NotificationManagerFactory.get(context).show(new Intent(), displayName, resultString);
+            NotificationManagerFactory.get(context).show(new Intent(), app.getDisplayName(), resultString);
         } else {
             toast(resultString);
         }
+        app.setInstalled(true);
     }
 
     private void notifySignatureMismatch(App app) {

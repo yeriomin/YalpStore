@@ -94,8 +94,7 @@ public class InstallerPrivileged extends InstallerBackground {
             Log.i(getClass().getName(), "Installation of " + packageName + " complete with code " + returnCode);
             context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM));
             Looper.prepare();
-            String resultString = context.getString(returnCode > 0 ? R.string.details_installed : R.string.details_install_failure);
-            postInstallationResult(resultString, app.getDisplayName());
+            postInstallationResult(app, returnCode > 0);
             if (errors.containsKey(returnCode)) {
                 Log.e(getClass().getName(), errors.get(returnCode));
             }
