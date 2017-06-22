@@ -23,6 +23,6 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        activity.drawDetails(DetailsActivity.app);
+        activity.redrawDetails(DetailsActivity.app);
     }
 }

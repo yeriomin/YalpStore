@@ -52,6 +52,14 @@ public class ManualDownloadActivity extends DetailsActivity {
         downloadOrInstallFragment.draw();
     }
 
+    @Override
+    public void redrawDetails(App app) {
+        if (null == downloadOrInstallFragment) {
+            return;
+        }
+        downloadOrInstallFragment.draw();
+    }
+
     private class ManualDownloadTextWatcher implements TextWatcher {
 
         static private final int TIMEOUT = 1000;

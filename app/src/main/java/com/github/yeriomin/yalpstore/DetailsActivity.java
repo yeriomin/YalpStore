@@ -75,7 +75,7 @@ public class DetailsActivity extends YalpStoreActivity {
         ignoreOptionFragment = new IgnoreOption(this, new App());
 
         if (null != DetailsActivity.app) {
-            drawDetails(DetailsActivity.app);
+            redrawDetails(DetailsActivity.app);
         }
 
         DetailsTask task = getDetailsTask(packageName);
@@ -141,7 +141,7 @@ public class DetailsActivity extends YalpStoreActivity {
         return null;
     }
 
-    public void drawDetails(App app) {
+    public void redrawDetails(App app) {
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
         new GeneralDetails(this, app).draw();
@@ -171,7 +171,7 @@ public class DetailsActivity extends YalpStoreActivity {
                 super.onPostExecute(e);
                 if (this.app != null) {
                     DetailsActivity.app = this.app;
-                    drawDetails(this.app);
+                    redrawDetails(this.app);
                 }
             }
         };
