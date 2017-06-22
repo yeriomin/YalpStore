@@ -34,10 +34,12 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
         write(getFileName(url, true, true), requestHeaders.toString().getBytes());
         write(getFileName(url, true, false), body);
         byte[] responseBody;
+        IOException exception = null;
         try {
             responseBody = super.request(connection, body, headers);
             write(getFileName(url, false, false), responseBody);
         } catch (IOException e) {
+            exception = e;
             responseBody = new byte[0];
         } finally {
             StringBuilder responseHeaders = new StringBuilder();
@@ -55,6 +57,9 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
                 }
             }
             write(getFileName(url, false, true), responseHeaders.toString().getBytes());
+            if (null != exception) {
+                throw exception;
+            }
         }
         return responseBody;
     }
