@@ -20,7 +20,7 @@ abstract public class InstallerBackground extends InstallerAbstract {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         if (!new ApkSignatureVerifier(context).match(app.getPackageName(), file)) {
             Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
-            if (background) {
+            if (background || !Util.isContextUiCapable(context)) {
                 notifySignatureMismatch(app);
             } else {
                 getSignatureMismatchDialog().show();
@@ -46,14 +46,6 @@ abstract public class InstallerBackground extends InstallerAbstract {
             toast(resultString);
         }
         app.setInstalled(true);
-    }
-
-    private void notifySignatureMismatch(App app) {
-        notifyAndToast(
-            R.string.notification_download_complete_signature_mismatch,
-            R.string.notification_download_complete_signature_mismatch_toast,
-            app
-        );
     }
 
     private void notifyNewPermissions(App app) {

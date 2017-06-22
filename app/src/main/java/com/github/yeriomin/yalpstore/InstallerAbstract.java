@@ -64,12 +64,22 @@ public abstract class InstallerAbstract {
         return builder.create();
     }
 
-    protected void notifyAndToast(int notificationStringId, int toastStringId, App app) {
-        showNotification(notificationStringId, app);
-        toast(context.getString(toastStringId, app.getDisplayName()));
+    protected void notifySignatureMismatch(App app) {
+        notifyAndToast(
+            R.string.notification_download_complete_signature_mismatch,
+            R.string.notification_download_complete_signature_mismatch_toast,
+            app
+        );
     }
 
-    protected void showNotification(int notificationStringId, App app) {
+    protected void notifyAndToast(int notificationStringId, int toastStringId, App app) {
+        showNotification(notificationStringId, app);
+        if (!background) {
+            toast(context.getString(toastStringId, app.getDisplayName()));
+        }
+    }
+
+    private void showNotification(int notificationStringId, App app) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = getOpenApkIntent(context, file);
         NotificationManagerFactory.get(context).show(

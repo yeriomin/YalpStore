@@ -60,7 +60,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
 
     @Override
     protected void onPostExecute(Throwable result) {
-        if (null != this.progressDialog && isContextUiCapable()) {
+        if (null != this.progressDialog && Util.isContextUiCapable(context)) {
             this.progressDialog.dismiss();
         }
         if (null != progressIndicator) {
@@ -102,7 +102,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
     }
 
     protected void processAuthException(AuthException e) {
-        if (!isContextUiCapable()) {
+        if (!Util.isContextUiCapable(context)) {
             Log.e(getClass().getName(), "AuthException happened and the provided context is not ui capable");
             return;
         }
@@ -120,18 +120,6 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
             new PlayStoreApiAuthenticator(context).logout();
         }
         builder.show();
-    }
-
-    protected boolean isContextUiCapable() {
-        if (!(context instanceof Activity)) {
-            return false;
-        }
-        Activity activity = (Activity) context;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return !activity.isDestroyed();
-        } else {
-            return !activity.isFinishing();
-        }
     }
 
     static public boolean noNetwork(Throwable e) {

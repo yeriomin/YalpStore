@@ -22,7 +22,11 @@ public class InstallerDefault extends InstallerAbstract {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         if (!new ApkSignatureVerifier(context).match(app.getPackageName(), file)) {
             Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
-            getSignatureMismatchDialog().show();
+            if (Util.isContextUiCapable(context)) {
+                getSignatureMismatchDialog().show();
+            } else {
+                notifySignatureMismatch(app);
+            }
         } else {
             Log.i(getClass().getName(), "Installing " + app.getPackageName());
             install(app);

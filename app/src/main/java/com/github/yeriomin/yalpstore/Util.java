@@ -1,7 +1,9 @@
 package com.github.yeriomin.yalpstore;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
@@ -71,5 +73,17 @@ public class Util {
         dialog.setIndeterminate(true);
         dialog.setCancelable(false);
         return dialog;
+    }
+
+    static public boolean isContextUiCapable(Context context) {
+        if (!(context instanceof Activity)) {
+            return false;
+        }
+        Activity activity = (Activity) context;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return !activity.isDestroyed();
+        } else {
+            return !activity.isFinishing();
+        }
     }
 }
