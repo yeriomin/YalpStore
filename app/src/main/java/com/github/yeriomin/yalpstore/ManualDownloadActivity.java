@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -43,6 +44,7 @@ public class ManualDownloadActivity extends DetailsActivity {
         ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(
             app,
             (Button) findViewById(R.id.download),
+            (Button) findViewById(R.id.install),
             downloadOrInstallFragment
         );
         String versionCode = Integer.toString(app.getVersionCode());
@@ -66,12 +68,14 @@ public class ManualDownloadActivity extends DetailsActivity {
 
         private final App app;
         private final Button downloadButton;
+        private final Button installButton;
         private DownloadOrInstall downloadOrInstallManager;
         private Timer timer;
 
-        public ManualDownloadTextWatcher(App app, Button downloadButton, DownloadOrInstall downloadOrInstallManager) {
+        public ManualDownloadTextWatcher(App app, Button downloadButton, Button installButton, DownloadOrInstall downloadOrInstallManager) {
             this.app = app;
             this.downloadButton = downloadButton;
+            this.installButton = installButton;
             this.downloadOrInstallManager = downloadOrInstallManager;
         }
 
@@ -84,8 +88,10 @@ public class ManualDownloadActivity extends DetailsActivity {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             try {
                 app.setVersionCode(Integer.parseInt(s.toString()));
+                installButton.setVisibility(View.GONE);
                 downloadButton.setText(R.string.details_download_checking);
                 downloadButton.setEnabled(false);
+                downloadButton.setVisibility(View.VISIBLE);
                 restartTimer();
             } catch (NumberFormatException e) {
                 Log.w(getClass().getName(), s.toString() + " is not a number");

@@ -12,7 +12,8 @@ public class DownloadState {
     public enum TriggeredBy {
         DOWNLOAD_BUTTON,
         UPDATE_ALL_BUTTON,
-        SCHEDULED_UPDATE
+        SCHEDULED_UPDATE,
+        MANUAL_DOWNLOAD_BUTTON
     }
 
     enum Status {

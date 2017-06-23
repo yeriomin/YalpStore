@@ -19,6 +19,9 @@ import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.File;
 
+import static com.github.yeriomin.yalpstore.DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
+import static com.github.yeriomin.yalpstore.DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON;
+
 public class ButtonDownload extends Button {
 
     public ButtonDownload(DetailsActivity activity, App app) {
@@ -96,6 +99,7 @@ public class ButtonDownload extends Button {
         purchaseTask.setOnDownloadProgressListener(new OnDownloadProgressListener(progressBar, DownloadState.get(app.getPackageName())));
         purchaseTask.setApp(app);
         purchaseTask.setContext(activity);
+        purchaseTask.setTriggeredBy(activity instanceof ManualDownloadActivity ? MANUAL_DOWNLOAD_BUTTON : DOWNLOAD_BUTTON);
         purchaseTask.prepareDialog(
             R.string.dialog_message_purchasing_app,
             R.string.dialog_title_purchasing_app

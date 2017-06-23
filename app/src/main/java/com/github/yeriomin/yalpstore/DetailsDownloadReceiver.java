@@ -51,13 +51,19 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
         }
         buttonDownload.setText(R.string.details_download);
         buttonDownload.setEnabled(true);
-        if (state.isEverythingSuccessful()) {
-            buttonDownload.setVisibility(View.GONE);
-            buttonInstall.setVisibility(View.VISIBLE);
-            if (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)) {
-                buttonInstall.setEnabled(false);
-                buttonInstall.setText(R.string.details_installing);
-            }
+        if (!state.isEverythingSuccessful()) {
+            return;
+        }
+        buttonDownload.setVisibility(View.GONE);
+        buttonInstall.setVisibility(View.VISIBLE);
+        if (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
+            && !state.getTriggeredBy().equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
+        ) {
+            buttonInstall.setEnabled(false);
+            buttonInstall.setText(R.string.details_installing);
+        } else {
+            buttonInstall.setEnabled(true);
+            buttonInstall.setText(R.string.details_install);
         }
     }
 }
