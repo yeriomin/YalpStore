@@ -7,8 +7,6 @@ import android.content.DialogInterface;
 
 public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
 
-    static public final String APP_PROVIDED_EMAIL = "yalp.store.user.one@gmail.com";
-
     public AccountTypeDialogBuilder(Context context) {
         super(context);
     }
@@ -48,7 +46,7 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
         task.setTaskClone(taskClone);
         task.setContext(context);
         task.prepareDialog(R.string.dialog_message_logging_in_predefined, R.string.dialog_title_logging_in);
-        task.execute(APP_PROVIDED_EMAIL);
+        task.execute();
     }
 
     private class AppProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
@@ -61,7 +59,7 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
         @Override
         protected Throwable doInBackground(String[] params) {
             try {
-                new PlayStoreApiAuthenticator(context).login(params[0]);
+                new PlayStoreApiAuthenticator(context).login();
             } catch (Throwable e) {
                 return e;
             }

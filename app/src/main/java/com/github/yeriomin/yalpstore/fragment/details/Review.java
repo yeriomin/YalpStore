@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.AccountTypeDialogBuilder;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.ImageDownloadTask;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
@@ -64,9 +63,8 @@ public class Review extends Abstract {
 
     private boolean isReviewable(App app) {
         return app.isInstalled() && !PreferenceManager.getDefaultSharedPreferences(activity)
-            .getString(PreferenceActivity.PREFERENCE_EMAIL, "")
-            .equals(AccountTypeDialogBuilder.APP_PROVIDED_EMAIL)
-            ;
+            .getBoolean(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL, false)
+        ;
     }
 
     public void fillUserReview(com.github.yeriomin.yalpstore.model.Review review) {

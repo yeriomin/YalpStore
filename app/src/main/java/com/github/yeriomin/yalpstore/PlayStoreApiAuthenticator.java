@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
@@ -15,6 +14,8 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class PlayStoreApiAuthenticator {
+
+    static private final String DISPENSER_URL = "http://tokendispenser-yeriomin.rhcloud.com";
 
     private Context context;
 
@@ -31,12 +32,18 @@ public class PlayStoreApiAuthenticator {
         return api;
     }
 
-    public void login(String email) throws IOException {
-        build(email);
+    public void login() throws IOException {
+        build(null, null);
+        SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
+        prefs.putBoolean(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL, true);
+        prefs.commit();
     }
 
     public void login(String email, String password) throws IOException {
         build(email, password);
+        SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
+        prefs.remove(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL);
+        prefs.commit();
     }
 
     public void logout() {
@@ -44,6 +51,7 @@ public class PlayStoreApiAuthenticator {
         prefs.remove(PreferenceActivity.PREFERENCE_EMAIL);
         prefs.remove(PreferenceActivity.PREFERENCE_GSF_ID);
         prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
+        prefs.remove(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL);
         prefs.commit();
         api = null;
     }
@@ -51,18 +59,13 @@ public class PlayStoreApiAuthenticator {
     private GooglePlayAPI build() throws IOException {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String email = prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, "");
-        return build(email);
-    }
-
-    private GooglePlayAPI build(String email) throws IOException {
+        if (TextUtils.isEmpty(email)) {
+            throw new CredentialsEmptyException();
+        }
         return build(email, null);
     }
 
     private GooglePlayAPI build(String email, String password) throws IOException {
-        if (TextUtils.isEmpty(email)) {
-            throw new CredentialsEmptyException();
-        }
-
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String locale = prefs.getString(PreferenceActivity.PREFERENCE_REQUESTED_LANGUAGE, "");
         String gsfId = prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
@@ -76,6 +79,7 @@ public class PlayStoreApiAuthenticator {
             .setPassword(password)
             .setGsfId(gsfId)
             .setToken(token)
+            .setTokenDispenserUrl(DISPENSER_URL)
         ;
         try {
             api = builder.build();
@@ -84,7 +88,7 @@ public class PlayStoreApiAuthenticator {
         }
 
         SharedPreferences.Editor prefsEditor = prefs.edit();
-        prefsEditor.putString(PreferenceActivity.PREFERENCE_EMAIL, email);
+        prefsEditor.putString(PreferenceActivity.PREFERENCE_EMAIL, builder.getEmail());
         prefsEditor.putString(PreferenceActivity.PREFERENCE_GSF_ID, api.getGsfId());
         prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, api.getToken());
         prefsEditor.commit();

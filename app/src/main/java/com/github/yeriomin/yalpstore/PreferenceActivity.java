@@ -19,6 +19,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_EMAIL = "PREFERENCE_EMAIL";
     public static final String PREFERENCE_AUTH_TOKEN = "PREFERENCE_AUTH_TOKEN";
     public static final String PREFERENCE_GSF_ID = "PREFERENCE_GSF_ID";
+    public static final String PREFERENCE_APP_PROVIDED_EMAIL = "PREFERENCE_APP_PROVIDED_EMAIL";
     public static final String PREFERENCE_AUTO_INSTALL = "PREFERENCE_AUTO_INSTALL";
     public static final String PREFERENCE_HIDE_NONFREE_APPS = "PREFERENCE_HIDE_NONFREE_APPS";
     public static final String PREFERENCE_HIDE_APPS_WITH_ADS = "PREFERENCE_HIDE_APPS_WITH_ADS";
