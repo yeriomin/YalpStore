@@ -32,8 +32,10 @@ public class DetailsTask extends GoogleApiAsyncTask {
         } catch (Throwable e) {
             return e;
         }
+        PackageManager pm = context.getPackageManager();
         try {
-            app.getPackageInfo().applicationInfo = context.getPackageManager().getApplicationInfo(packageName, 0);
+            app.getPackageInfo().applicationInfo = pm.getApplicationInfo(packageName, 0);
+            app.getPackageInfo().versionCode = pm.getPackageInfo(packageName, 0).versionCode;
             app.setInstalled(true);
         } catch (PackageManager.NameNotFoundException e) {
             // App is not installed

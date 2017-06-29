@@ -85,7 +85,7 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
             .append(System.currentTimeMillis())
             .append(".")
             .append(request ? "request" : "response")
-            .append(url.replace("=", ".").replace("/", ".").replace(":", "."))
+            .append(url.replace("&", ".").replace("=", ".").replace("/", ".").replace(":", "."))
             .append(headers ? ".txt" : ".bin")
             .toString()
         ;

@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
+import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.HttpCookie;
@@ -26,12 +27,17 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
 
     @Override
     public long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type, OnDownloadProgressListener listener) {
+        Log.i(getClass().getName(), "Downloading " + type.name() + " for " + app.getPackageName());
         String url;
         File destinationFile;
         switch (type) {
             case APK:
                 url = deliveryData.getDownloadUrl();
                 destinationFile = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
+                break;
+            case DELTA:
+                url = deliveryData.getPatchData().getDownloadUrl();
+                destinationFile = Downloader.getDeltaPath(app.getPackageName(), app.getVersionCode());
                 break;
             case OBB_MAIN:
                 url = deliveryData.getAdditionalFile(0).getDownloadUrl();

@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -15,21 +14,29 @@ import java.io.OutputStream;
 public class InstalledApkCopier {
 
     static public boolean copy(App app) {
-        String currentApkPath = null;
-        if (null != app.getPackageInfo() && null != app.getPackageInfo().applicationInfo) {
-            currentApkPath = app.getPackageInfo().applicationInfo.sourceDir;
-        }
-        if (TextUtils.isEmpty(currentApkPath)) {
-            Log.e(InstalledApkCopier.class.getName(), "applicationInfo.sourceDir is empty");
-            return false;
-        }
-        File destination = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
+        File destination = Downloader.getApkPath(app.getPackageName(), app.getInstalledVersionCode());
         if (destination.exists()) {
             Log.i(InstalledApkCopier.class.getName(), destination.toString() + " exists");
             return true;
         }
-        copy(new File(currentApkPath), destination);
+        File currentApk = getCurrentApk(app);
+        if (null == currentApk) {
+            Log.e(InstalledApkCopier.class.getName(), "applicationInfo.sourceDir is empty");
+            return false;
+        }
+        if (!currentApk.exists()) {
+            Log.e(InstalledApkCopier.class.getName(), currentApk + " does not exist");
+            return false;
+        }
+        copy(currentApk, destination);
         return true;
+    }
+
+    static public File getCurrentApk(App app) {
+        if (null != app.getPackageInfo() && null != app.getPackageInfo().applicationInfo) {
+            return new File(app.getPackageInfo().applicationInfo.sourceDir);
+        }
+        return null;
     }
 
     static private void copy(File input, File output) {

@@ -39,7 +39,7 @@ public class ButtonDownload extends Button {
                 || !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
             )
             && app.isInPlayStore()
-            && (!isLatestVersion() || activity instanceof ManualDownloadActivity)
+            && (getInstalledVersionCode() != app.getVersionCode() || activity instanceof ManualDownloadActivity)
         ;
     }
 
@@ -124,11 +124,11 @@ public class ButtonDownload extends Button {
         }
     }
 
-    private boolean isLatestVersion() {
+    private int getInstalledVersionCode() {
         try {
-            return activity.getPackageManager().getPackageInfo(app.getPackageName(), 0).versionCode == app.getVersionCode();
+            return activity.getPackageManager().getPackageInfo(app.getPackageName(), 0).versionCode;
         } catch (PackageManager.NameNotFoundException e) {
-            return false;
+            return 0;
         }
     }
 }

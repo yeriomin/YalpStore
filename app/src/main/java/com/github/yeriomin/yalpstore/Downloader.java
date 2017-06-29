@@ -20,6 +20,10 @@ public class Downloader {
         return new File(downloadsDir, filename);
     }
 
+    static public File getDeltaPath(String packageName, int version) {
+        return new File(Downloader.getApkPath(packageName, version).getAbsolutePath() + ".delta");
+    }
+
     static public File getObbPath(String packageName, int version, boolean main) {
         File obbDir = new File(new File(Environment.getExternalStorageDirectory(), "Android/obb"), packageName);
         String filename = (main ? "main" : "patch") + "." + String.valueOf(version) + "." + packageName + ".obb";
@@ -33,7 +37,11 @@ public class Downloader {
     public void download(App app, AndroidAppDeliveryData deliveryData, OnDownloadProgressListener listener) {
         DownloadState state = DownloadState.get(app.getPackageName());
         state.setApp(app);
-        state.setStarted(dm.enqueue(app, deliveryData, DownloadManagerInterface.Type.APK, listener));
+        DownloadManagerInterface.Type type = app.getVersionCode() > app.getInstalledVersionCode() && deliveryData.hasPatchData()
+            ? DownloadManagerInterface.Type.DELTA
+            : DownloadManagerInterface.Type.APK
+        ;
+        state.setStarted(dm.enqueue(app, deliveryData, type, listener));
         if (deliveryData.getAdditionalFileCount() > 0) {
             checkAndStartObbDownload(state, deliveryData, true, listener);
         }

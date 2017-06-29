@@ -34,7 +34,6 @@ public abstract class InstallerAbstract {
         return intent;
     }
 
-    abstract public void verifyAndInstall(App app);
     abstract protected void install(App app);
 
     public InstallerAbstract(Context context) {
@@ -45,6 +44,31 @@ public abstract class InstallerAbstract {
 
     public void setBackground(boolean background) {
         this.background = background;
+    }
+
+    public void verifyAndInstall(App app) {
+        if (verify(app)) {
+            Log.i(getClass().getName(), "Installing " + app.getPackageName());
+            install(app);
+        } else {
+            context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED));
+        }
+    }
+
+    protected boolean verify(App app) {
+        if (!new ApkSignatureVerifier(context).match(
+            app.getPackageName(),
+            Downloader.getApkPath(app.getPackageName(), app.getVersionCode())
+        )) {
+            Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
+            if (Util.isContextUiCapable(context)) {
+                getSignatureMismatchDialog().show();
+            } else {
+                notifySignatureMismatch(app);
+            }
+            return false;
+        }
+        return true;
     }
 
     protected AlertDialog getSignatureMismatchDialog() {
@@ -79,6 +103,10 @@ public abstract class InstallerAbstract {
         }
     }
 
+    protected void toast(String message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
+
     private void showNotification(int notificationStringId, App app) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = getOpenApkIntent(context, file);
@@ -87,9 +115,5 @@ public abstract class InstallerAbstract {
             app.getDisplayName(),
             context.getString(notificationStringId)
         );
-    }
-
-    protected void toast(String message) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 }

@@ -7,8 +7,6 @@ import android.util.Log;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerFactory;
 
-import java.io.File;
-
 abstract public class InstallerBackground extends InstallerAbstract {
 
     public InstallerBackground(Context context) {
@@ -16,22 +14,16 @@ abstract public class InstallerBackground extends InstallerAbstract {
     }
 
     @Override
-    public void verifyAndInstall(App app) {
-        File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-        if (!new ApkSignatureVerifier(context).match(app.getPackageName(), file)) {
-            Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
-            if (background || !Util.isContextUiCapable(context)) {
-                notifySignatureMismatch(app);
-            } else {
-                getSignatureMismatchDialog().show();
-            }
-        } else if (background && !new PermissionsComparator(context).isSame(app)) {
+    public boolean verify(App app) {
+        if (!super.verify(app)) {
+            return false;
+        }
+        if (background && !new PermissionsComparator(context).isSame(app)) {
             Log.i(getClass().getName(), "New permissions for " + app.getPackageName());
             notifyNewPermissions(app);
-        } else {
-            Log.i(getClass().getName(), "Installing " + app.getPackageName());
-            install(app);
+            return false;
         }
+        return true;
     }
 
     protected void postInstallationResult(App app, boolean success) {

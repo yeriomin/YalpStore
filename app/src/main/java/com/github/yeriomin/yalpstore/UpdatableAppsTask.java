@@ -40,7 +40,6 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
                 continue;
             }
             app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
-            app.setInstalled(true);
             apps.add(app);
         }
         return apps;

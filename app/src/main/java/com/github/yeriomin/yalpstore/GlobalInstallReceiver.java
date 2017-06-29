@@ -24,12 +24,29 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         ) {
             return;
         }
+        updateDetails(intent);
         UpdatableAppsActivity.setNeedsUpdate(true);
         if (needToRemoveApk(context) && action.equals(Intent.ACTION_PACKAGE_ADDED)) {
             App app = getApp(context, intent.getData().getSchemeSpecificPart());
             File apkPath = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
             boolean deleted = apkPath.delete();
             Log.i(getClass().getName(), "Removed " + apkPath + " successfully: " + deleted);
+        }
+    }
+
+    static public void updateDetails(Intent intent) {
+        if (intent.getAction().equals(Intent.ACTION_PACKAGE_REMOVED)
+            || intent.getAction().equals(Intent.ACTION_PACKAGE_FULLY_REMOVED)
+            ) {
+            DetailsActivity.app.getPackageInfo().versionCode = 0;
+            DetailsActivity.app.setInstalled(false);
+        } else if (intent.getAction().equals(Intent.ACTION_PACKAGE_INSTALL)
+            || intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)
+            || intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)
+            || intent.getAction().equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
+            ) {
+            DetailsActivity.app.getPackageInfo().versionCode = DetailsActivity.app.getVersionCode();
+            DetailsActivity.app.setInstalled(true);
         }
     }
 

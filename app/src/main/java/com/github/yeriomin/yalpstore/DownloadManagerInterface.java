@@ -22,7 +22,7 @@ public interface DownloadManagerInterface {
     int ERROR_BLOCKED = 1010;
 
     enum Type {
-        APK, OBB_MAIN, OBB_PATCH
+        APK, DELTA, OBB_MAIN, OBB_PATCH
     }
 
     long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type, OnDownloadProgressListener listener);

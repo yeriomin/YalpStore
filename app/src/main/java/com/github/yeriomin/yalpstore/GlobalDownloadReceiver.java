@@ -45,8 +45,17 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
         }
 
         if (state.isEverythingFinished() && state.isEverythingSuccessful()) {
+            if (isDelta(app)) {
+                DeltaPatcherFactory.get(app).patch();
+            }
             verifyAndInstall(app, state.getTriggeredBy());
         }
+    }
+
+    private boolean isDelta(App app) {
+        return !Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+            && Downloader.getDeltaPath(app.getPackageName(), app.getVersionCode()).exists()
+        ;
     }
 
     private void verifyAndInstall(App app, DownloadState.TriggeredBy triggeredBy) {

@@ -3,6 +3,9 @@ package com.github.yeriomin.yalpstore;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 
 public class YalpStoreApplication extends Application {
@@ -17,9 +20,11 @@ public class YalpStoreApplication extends Application {
     }
 
     private void registerDownloadReceiver() {
+        HandlerThread handlerThread = new HandlerThread("handlerThread");
+        handlerThread.start();
         IntentFilter filter = new IntentFilter();
         filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
-        registerReceiver(new GlobalDownloadReceiver(), filter);
+        registerReceiver(new GlobalDownloadReceiver(), filter, null, new Handler(handlerThread.getLooper()));
     }
 
     private void registerInstallReceiver() {

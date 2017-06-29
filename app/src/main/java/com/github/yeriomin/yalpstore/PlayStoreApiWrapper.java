@@ -127,19 +127,39 @@ public class PlayStoreApiWrapper {
         return categories;
     }
 
-    public AndroidAppDeliveryData purchaseOrDeliver(App app) throws IOException, NotPurchasedException {
-        if (app.isFree()) {
-            return new PlayStoreApiAuthenticator(context).getApi()
-                .purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType())
-                .getPurchaseStatusResponse()
-                .getAppDeliveryData();
-        }
+    public AndroidAppDeliveryData purchase(App app) throws IOException {
+        return new PlayStoreApiAuthenticator(context).getApi()
+            .purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType())
+            .getPurchaseStatusResponse()
+            .getAppDeliveryData()
+        ;
+    }
+
+    private AndroidAppDeliveryData deliver(App app) throws IOException, NotPurchasedException {
         DeliveryResponse response = new PlayStoreApiAuthenticator(context).getApi().delivery(
-            app.getPackageName(), app.getVersionCode(), app.getOfferType());
+            app.getPackageName(),
+            app.getInstalledVersionCode(),
+            app.getVersionCode(),
+            app.getOfferType(),
+            GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF
+        );
         if (response.hasAppDeliveryData()) {
             return response.getAppDeliveryData();
         } else {
             throw new NotPurchasedException();
+        }
+    }
+
+    public AndroidAppDeliveryData purchaseOrDeliver(App app) throws IOException, NotPurchasedException {
+        PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
+        try {
+            return wrapper.deliver(app);
+        } catch (NotPurchasedException e) {
+            if (app.isFree()) {
+                return wrapper.purchase(app);
+            } else {
+                throw e;
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Build;
+import android.util.Log;
 import android.util.Pair;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
@@ -23,9 +24,13 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
     @Override
     public long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type, OnDownloadProgressListener listener) {
         DownloadManager.Request request;
+        Log.i(getClass().getName(), "Downloading " + type.name() + " for " + app.getPackageName());
         switch (type) {
             case APK:
                 request = new DownloadRequestBuilderApk(app, deliveryData).build();
+                break;
+            case DELTA:
+                request = new DownloadRequestBuilderDelta(app, deliveryData).build();
                 break;
             case OBB_MAIN:
                 request = new DownloadRequestBuilderObb(app, deliveryData).setContext(context).setMain(true).build();
