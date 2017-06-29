@@ -20,8 +20,10 @@ import java.util.Map;
 
 public class UpdatableAppsTask extends GoogleApiAsyncTask {
 
+    static private List<App> appsFromPlayStore = new ArrayList<>();
+
     protected List<App> updatableApps = new ArrayList<>();
-    protected List<App> otherInstalledApps = new ArrayList<>();
+    protected Map<String, App> installedApps = new HashMap<>();
     protected boolean explicitCheck;
 
     static public List<App> getInstalledApps(Context context) {
@@ -77,22 +79,16 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
     @Override
     protected Throwable doInBackground(String... params) {
         // Building local apps list
-        Map<String, App> installedApps = getFilteredInstalledApps(context);
-        if (PreferenceActivity.getUpdateInterval(context) < 0 && !explicitCheck) {
-            otherInstalledApps.addAll(installedApps.values());
-            return null;
-        }
+        installedApps = getFilteredInstalledApps(context);
         // Requesting info from Google Play Market for installed apps
-        PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.context);
-        List<App> appsFromPlayMarket = new ArrayList<>();
+        List<App> appsFromPlayStore = new ArrayList<>();
         try {
-            appsFromPlayMarket.addAll(wrapper.getDetails(new ArrayList<>(installedApps.keySet())));
+            appsFromPlayStore.addAll(getAppsFromPlayStore(new ArrayList<>(installedApps.keySet())));
         } catch (Throwable e) {
-            otherInstalledApps.addAll(installedApps.values());
             return e;
         }
         // Comparing versions and building updatable apps list
-        for (App appFromMarket: appsFromPlayMarket) {
+        for (App appFromMarket: appsFromPlayStore) {
             String packageName = appFromMarket.getPackageName();
             if (TextUtils.isEmpty(packageName)) {
                 continue;
@@ -106,7 +102,6 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
                 installedApps.put(packageName, appFromMarket);
             }
         }
-        otherInstalledApps.addAll(installedApps.values());
         return null;
     }
 
@@ -114,7 +109,14 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
     protected void onPostExecute(Throwable result) {
         super.onPostExecute(result);
         Collections.sort(updatableApps);
-        Collections.sort(otherInstalledApps);
+    }
+
+    @Override
+    protected void processIOException(IOException e) {
+        super.processIOException(e);
+        if (noNetwork(e) && context instanceof Activity) {
+            toast(context, context.getString(R.string.error_no_network));
+        }
     }
 
     private App addInstalledAppInfo(App appFromMarket, App installedApp) {
@@ -126,11 +128,10 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
         return appFromMarket;
     }
 
-    @Override
-    protected void processIOException(IOException e) {
-        super.processIOException(e);
-        if (noNetwork(e) && context instanceof Activity) {
-            toast(context, context.getString(R.string.error_no_network));
+    private List<App> getAppsFromPlayStore(List<String> packageNames) throws IOException {
+        if (PreferenceActivity.getUpdateInterval(context) != -1 || explicitCheck) {
+            appsFromPlayStore = new PlayStoreApiWrapper(this.context).getDetails(packageNames);
         }
+        return appsFromPlayStore;
     }
 }

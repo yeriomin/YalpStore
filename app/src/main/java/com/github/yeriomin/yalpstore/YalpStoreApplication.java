@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.Looper;
 import android.preference.PreferenceManager;
 
 public class YalpStoreApplication extends Application {

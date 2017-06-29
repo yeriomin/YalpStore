@@ -13,6 +13,8 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.view.ListItem;
 import com.github.yeriomin.yalpstore.view.UpdatableAppBadge;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class UpdatableAppsActivity extends AppListActivity {
@@ -101,10 +103,10 @@ public class UpdatableAppsActivity extends AppListActivity {
                 if (null != e && showUpdatesOnly()) {
                     return;
                 }
+                List<App> otherInstalledApps = new ArrayList<>(this.installedApps.values());
+                Collections.sort(otherInstalledApps);
                 if (showUpdatesOnly()) {
                     addApps(updatableApps);
-                } else if (null != e || (!explicitCheck && PreferenceActivity.getUpdateInterval(context) == -1)) {
-                    addApps(otherInstalledApps);
                 } else {
                     addApps(updatableApps, R.string.list_has_update);
                     addApps(otherInstalledApps, R.string.list_no_update);

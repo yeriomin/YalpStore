@@ -35,16 +35,19 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
     }
 
     static public void updateDetails(Intent intent) {
+        if (null == DetailsActivity.app) {
+            return;
+        }
         if (intent.getAction().equals(Intent.ACTION_PACKAGE_REMOVED)
             || intent.getAction().equals(Intent.ACTION_PACKAGE_FULLY_REMOVED)
-            ) {
+        ) {
             DetailsActivity.app.getPackageInfo().versionCode = 0;
             DetailsActivity.app.setInstalled(false);
         } else if (intent.getAction().equals(Intent.ACTION_PACKAGE_INSTALL)
             || intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)
             || intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)
             || intent.getAction().equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
-            ) {
+        ) {
             DetailsActivity.app.getPackageInfo().versionCode = DetailsActivity.app.getVersionCode();
             DetailsActivity.app.setInstalled(true);
         }
