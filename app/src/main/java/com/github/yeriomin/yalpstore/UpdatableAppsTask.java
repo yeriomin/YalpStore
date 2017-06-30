@@ -2,12 +2,10 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -18,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class UpdatableAppsTask extends GoogleApiAsyncTask {
 
@@ -29,17 +28,12 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
 
     static public Map<String, App> getInstalledApps(Context context) {
         Map<String, App> apps = new HashMap<>();
-
         PackageManager pm = context.getPackageManager();
-        boolean showSystemApps = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS);
         for (PackageInfo reducedPackageInfo: pm.getInstalledPackages(0)) {
             App app;
             try {
                 app = new App(pm.getPackageInfo(reducedPackageInfo.packageName, PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
             } catch (PackageManager.NameNotFoundException e) {
-                continue;
-            }
-            if (!showSystemApps && app.isSystem()) {
                 continue;
             }
             app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
@@ -56,11 +50,10 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
     protected Throwable doInBackground(String... params) {
         // Building local apps list
         installedApps = getInstalledApps(context);
-        List<String> filteredPackageNames = new ArrayList<>(filterPackageNames(installedApps.keySet()));
         // Requesting info from Google Play Market for installed apps
         List<App> appsFromPlayStore = new ArrayList<>();
         try {
-            appsFromPlayStore.addAll(getAppsFromPlayStore(filteredPackageNames));
+            appsFromPlayStore.addAll(getAppsFromPlayStore(filterPackageNames(installedApps)));
         } catch (Throwable e) {
             return e;
         }
@@ -72,7 +65,7 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
             }
             App installedApp = installedApps.get(packageName);
             appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
-            if (installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
+            if (null != installedApp && installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
                 installedApps.remove(packageName);
                 updatableApps.add(appFromMarket);
             } else {
@@ -97,26 +90,37 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
     }
 
     private App addInstalledAppInfo(App appFromMarket, App installedApp) {
-        appFromMarket.setPackageInfo(installedApp.getPackageInfo());
-        appFromMarket.setVersionName(installedApp.getVersionName());
-        appFromMarket.setDisplayName(installedApp.getDisplayName());
-        appFromMarket.setSystem(installedApp.isSystem());
-        appFromMarket.setInstalled(true);
+        if (null != installedApp) {
+            appFromMarket.setPackageInfo(installedApp.getPackageInfo());
+            appFromMarket.setVersionName(installedApp.getVersionName());
+            appFromMarket.setDisplayName(installedApp.getDisplayName());
+            appFromMarket.setSystem(installedApp.isSystem());
+            appFromMarket.setInstalled(true);
+        }
         return appFromMarket;
     }
 
-    private Collection<String> filterPackageNames(Collection<String> installedPackageNames) {
+    private Collection<String> filterPackageNames(Map<String, App> installedPackages) {
+        Set<String> installedPackageNames = installedPackages.keySet();
         if (PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceActivity.LIST_BLACK).equals(PreferenceActivity.LIST_BLACK)) {
             installedPackageNames.removeAll(new BlackWhiteListManager(context).get());
         } else {
             installedPackageNames.retainAll(new BlackWhiteListManager(context).get());
         }
-        return installedPackageNames;
+        List<String> apps = new ArrayList<>();
+        boolean showSystemApps = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS);
+        for (String packageName: installedPackageNames) {
+            if (!showSystemApps && installedPackages.get(packageName).isSystem()) {
+                continue;
+            }
+            apps.add(packageName);
+        }
+        return apps;
     }
 
-    private List<App> getAppsFromPlayStore(List<String> packageNames) throws IOException {
-        if (PreferenceActivity.getUpdateInterval(context) != -1 || explicitCheck) {
-            appsFromPlayStore = new PlayStoreApiWrapper(this.context).getDetails(packageNames);
+    private List<App> getAppsFromPlayStore(Collection<String> packageNames) throws IOException {
+        if (explicitCheck) {
+            appsFromPlayStore = new PlayStoreApiWrapper(this.context).getDetails(new ArrayList<>(packageNames));
         }
         return appsFromPlayStore;
     }

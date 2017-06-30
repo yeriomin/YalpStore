@@ -107,7 +107,7 @@ public class UpdatableAppsActivity extends AppListActivity {
                 Collections.sort(otherInstalledApps);
                 if (showUpdatesOnly()) {
                     addApps(updatableApps);
-                } if (null != e || (!explicitCheck && PreferenceActivity.getUpdateInterval(context) == -1)) {
+                } if (null != e || !explicitCheck) {
                     addApps(otherInstalledApps);
                 } else {
                     addApps(updatableApps, R.string.list_has_update);
@@ -117,6 +117,7 @@ public class UpdatableAppsActivity extends AppListActivity {
                 new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
             }
         };
+        task.setExplicitCheck(PreferenceActivity.getUpdateInterval(this) == -1);
         task.setErrorView((TextView) getListView().getEmptyView());
         task.setContext(this);
         task.setProgressIndicator(findViewById(R.id.progress));
