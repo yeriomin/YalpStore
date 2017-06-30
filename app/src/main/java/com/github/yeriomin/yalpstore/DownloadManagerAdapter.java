@@ -82,6 +82,12 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
         return getErrorString(context, reason);
     }
 
+    @Override
+    public void cancel(long downloadId) {
+        super.cancel(downloadId);
+        dm.remove(downloadId);
+    }
+
     public Pair<Integer, Integer> getProgress(long downloadId) {
         Cursor cursor = getCursor(downloadId);
         if (null == cursor) {

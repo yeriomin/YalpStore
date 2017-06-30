@@ -42,6 +42,6 @@ public class DownloadRequestBuilderObb extends DownloadRequestBuilder {
 
     @Override
     protected String getNotificationTitle() {
-        return context.getString(R.string.expansion_file, app.getDisplayName());
+        return context.getString(main ? R.string.expansion_file_main : R.string.expansion_file_patch, app.getDisplayName());
     }
 }

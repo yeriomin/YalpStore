@@ -9,14 +9,32 @@ import com.github.yeriomin.yalpstore.R;
 
 import java.lang.reflect.Method;
 
-public class NotificationManagerWrapperLegacy extends NotificationManagerWrapper {
+class NotificationBuilderLegacy extends NotificationBuilder {
 
-    public NotificationManagerWrapperLegacy(Context context) {
-        super(context);
+    private String title;
+    private String message;
+    private Intent intent;
+
+    @Override
+    public NotificationBuilder setTitle(String title) {
+        this.title = title;
+        return this;
     }
 
     @Override
-    protected Notification get(Intent intent, String title, String message) {
+    public NotificationBuilder setMessage(String message) {
+        this.message = message;
+        return this;
+    }
+
+    @Override
+    public NotificationBuilder setIntent(Intent intent) {
+        this.intent = intent;
+        return this;
+    }
+
+    @Override
+    public Notification build() {
         Notification notification = new Notification(R.drawable.ic_notification, "", System.currentTimeMillis());
         try {
             // try to call "setLatestEventInfo" if available
@@ -27,5 +45,9 @@ public class NotificationManagerWrapperLegacy extends NotificationManagerWrapper
             // do nothing
         }
         return notification;
+    }
+
+    public NotificationBuilderLegacy(Context context) {
+        super(context);
     }
 }

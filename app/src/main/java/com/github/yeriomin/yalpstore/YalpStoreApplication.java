@@ -22,6 +22,7 @@ public class YalpStoreApplication extends Application {
         HandlerThread handlerThread = new HandlerThread("handlerThread");
         handlerThread.start();
         IntentFilter filter = new IntentFilter();
+        filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED);
         filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
         registerReceiver(new GlobalDownloadReceiver(), filter, null, new Handler(handlerThread.getLooper()));
     }

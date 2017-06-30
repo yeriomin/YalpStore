@@ -1,5 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -8,7 +10,8 @@ import android.text.format.Formatter;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.notification.NotificationManagerFactory;
+import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
+import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,8 +34,12 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     private OnDownloadProgressListener listener;
 
     private String getNotificationTitle() {
-        if (targetFile.toString().endsWith(EXTENSION_OBB)) {
-            return context.getString(R.string.expansion_file, app.getDisplayName());
+        String fileName = targetFile.getName();
+        if (fileName.endsWith(EXTENSION_OBB)) {
+            return context.getString(
+                fileName.startsWith("main") ? R.string.expansion_file_main : R.string.expansion_file_patch,
+                app.getDisplayName()
+            );
         }
         return app.getDisplayName();
     }
@@ -60,7 +67,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        NotificationManagerFactory.get(context).show(
+        new NotificationManagerWrapper(context).show(
             new Intent(),
             getNotificationTitle(),
             context.getString(R.string.notification_download_starting)
@@ -70,9 +77,9 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     @Override
     protected void onPostExecute(Boolean result) {
         super.onPostExecute(result);
-        NotificationManagerFactory.get(context).cancel(getNotificationTitle());
+        new NotificationManagerWrapper(context).cancel(getNotificationTitle());
         Intent intent = new Intent();
-        intent.setAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
+        intent.setAction(result ? DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE : DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED);
         intent.putExtra(DownloadManagerInterface.EXTRA_DOWNLOAD_ID, downloadId);
         context.sendBroadcast(intent);
     }
@@ -84,15 +91,34 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         if (null != listener) {
             listener.onDownloadProgress();
         }
-        NotificationManagerFactory.get(context).show(
-            new Intent(),
-            getNotificationTitle(),
-            context.getString(
+        String title = getNotificationTitle();
+        Intent intentCancel = new Intent(context, CancelDownloadService.class);
+        intentCancel.putExtra(CancelDownloadService.DOWNLOAD_ID, downloadId);
+        Notification notification = NotificationManagerWrapper.getBuilder(context)
+            .setMessage(context.getString(
                 R.string.notification_download_progress,
                 Formatter.formatFileSize(context, values[0]),
                 Formatter.formatFileSize(context, values[1])
-            )
-        );
+            ))
+            .setTitle(title)
+            .setIntent(new Intent())
+            .setProgress(values[1].intValue(), values[0].intValue())
+            .addAction(android.R.drawable.ic_menu_close_clear_cancel, android.R.string.cancel, getPendingIntent(intentCancel))
+            .build()
+        ;
+        new NotificationManagerWrapper(context).show(title, notification);
+    }
+
+    @Override
+    protected void onCancelled() {
+        super.onCancelled();
+        Log.i(getClass().getName(), "Cancelled download " + downloadId);
+        targetFile.delete();
+        onPostExecute(false);
+    }
+
+    private PendingIntent getPendingIntent(Intent intent) {
+        return PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     @Override
@@ -154,7 +180,12 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
             totalBytesRead += bytesRead;
             if (lastProgressUpdate + PROGRESS_INTERVAL < System.currentTimeMillis()) {
                 lastProgressUpdate = System.currentTimeMillis();
-                publishProgress(totalBytesRead, fileSize);
+                if (DownloadState.get(downloadId).isCancelled(downloadId)) {
+                    cancel(true);
+                    return;
+                } else {
+                    publishProgress(totalBytesRead, fileSize);
+                }
             }
             try {
                 out.write(buffer, 0, bytesRead);

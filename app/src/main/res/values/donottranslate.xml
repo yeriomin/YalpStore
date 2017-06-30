@@ -4,7 +4,8 @@
     <string name="about_developer_email" translatable="false">yalp.store.dev@gmail.com</string>
     <string name="about_gsf_id" translatable="false">Google Services Framework id:</string>
     <string name="list_line_3_search" translatable="false">"%1$s, %2$s, %3$s"</string>
-    <string name="expansion_file" translatable="false">"%1$s - Expansion File"</string>
+    <string name="expansion_file_main" translatable="false">"%1$s - Main expansion"</string>
+    <string name="expansion_file_patch" translatable="false">"%1$s - Secondary expansion"</string>
     <string name="two_items" translatable="false">"%1$s %2$s"</string>
     <string name="content_description_download_options" translatable="false">"Download options"</string>
     <string name="content_description_review_author_avatar" translatable="false">"Review author avatar"</string>
@@ -13,6 +14,7 @@
     <string name="content_description_review_previous_page" translatable="false">"Previous review page"</string>
     <string name="content_description_review_next_page" translatable="false">"Next review page"</string>
     <string name="content_description_app_icon" translatable="false">"App icon"</string>
+    <string name="content_description_cancel_download" translatable="false">"Cancel download"</string>
     <string name="email_subject_feedback" translatable="false">"%1$s %2$s User Feedback"</string>
     <string name="email_subject_crash_report" translatable="false">"%1$s %2$s Crash Report"</string>
 </resources>

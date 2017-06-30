@@ -11,7 +11,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.notification.NotificationManagerFactory;
+import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.io.File;
 
@@ -110,7 +110,7 @@ public abstract class InstallerAbstract {
     private void showNotification(int notificationStringId, App app) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = getOpenApkIntent(context, file);
-        NotificationManagerFactory.get(context).show(
+        new NotificationManagerWrapper(context).show(
             openApkIntent,
             app.getDisplayName(),
             context.getString(notificationStringId)

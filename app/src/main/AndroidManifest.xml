@@ -115,6 +115,7 @@
             <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
         <activity android:name=".CrashLetterActivity" android:process=":report_process" />
+        <service android:enabled="true" android:name=".notification.CancelDownloadService" />
     </application>
 
 </manifest>

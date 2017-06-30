@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
 public class DetailsDownloadReceiver extends BroadcastReceiver {
@@ -14,13 +15,16 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
     private Button buttonDownload;
     private Button buttonInstall;
     private ProgressBar progressBar;
+    private ImageButton buttonCancel;
 
     public DetailsDownloadReceiver(DetailsActivity activity) {
         buttonDownload = (Button) activity.findViewById(R.id.download);
         buttonInstall = (Button) activity.findViewById(R.id.install);
         progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
+        buttonCancel = (ImageButton) activity.findViewById(R.id.cancel);
         IntentFilter filter = new IntentFilter();
         filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
+        filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED);
         activity.registerReceiver(this, filter);
     }
 
@@ -36,7 +40,7 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
             return;
         }
         state.setFinished(id);
-        if (DownloadManagerFactory.get(context).success(id)) {
+        if (DownloadManagerFactory.get(context).success(id) && intent.getAction().equals(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE)) {
             state.setSuccessful(id);
         }
         if (!state.isEverythingFinished()) {
@@ -48,6 +52,9 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
     private void draw(Context context, DownloadState state) {
         if (null != progressBar) {
             progressBar.setVisibility(View.GONE);
+        }
+        if (null != buttonCancel) {
+            buttonCancel.setVisibility(View.GONE);
         }
         buttonDownload.setText(R.string.details_download);
         buttonDownload.setEnabled(true);

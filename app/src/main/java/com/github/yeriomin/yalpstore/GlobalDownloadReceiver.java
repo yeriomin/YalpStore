@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.notification.NotificationManagerFactory;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.io.File;
@@ -20,7 +19,7 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context c, Intent i) {
         context = c;
-        notificationManager = NotificationManagerFactory.get(c);
+        notificationManager = new NotificationManagerWrapper(c);
 
         Bundle extras = i.getExtras();
         long downloadId = extras.getLong(DownloadManagerInterface.EXTRA_DOWNLOAD_ID);
@@ -36,7 +35,9 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
             return;
         }
         state.setFinished(downloadId);
-        if (dm.success(downloadId)) {
+        if (i.getAction().equals(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
+            return;
+        } else if (dm.success(downloadId)) {
             state.setSuccessful(downloadId);
         } else {
             String error = dm.getError(downloadId);

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.notification.NotificationManagerFactory;
+import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 abstract public class InstallerBackground extends InstallerAbstract {
 
@@ -33,7 +33,7 @@ abstract public class InstallerBackground extends InstallerAbstract {
             : (app.isInstalled() ? R.string.notification_installation_failed : R.string.details_install_failure)
         );
         if (background) {
-            NotificationManagerFactory.get(context).show(new Intent(), app.getDisplayName(), resultString);
+            new NotificationManagerWrapper(context).show(new Intent(), app.getDisplayName(), resultString);
         } else {
             toast(resultString);
         }

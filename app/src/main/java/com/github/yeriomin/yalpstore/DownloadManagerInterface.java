@@ -7,6 +7,7 @@ public interface DownloadManagerInterface {
 
     String EXTRA_DOWNLOAD_ID = "extra_download_id";
     String ACTION_DOWNLOAD_COMPLETE = "android.intent.action.DOWNLOAD_COMPLETE";
+    String ACTION_DOWNLOAD_CANCELLED = "ACTION_DOWNLOAD_CANCELLED";
 
     int SUCCESS = 1;
     int IN_PROGRESS = 0;
@@ -29,4 +30,5 @@ public interface DownloadManagerInterface {
     boolean finished(long downloadId);
     boolean success(long downloadId);
     String getError(long downloadId);
+    void cancel(long downloadId);
 }

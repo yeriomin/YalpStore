@@ -4,7 +4,9 @@ import android.util.Pair;
 
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DownloadState {
@@ -19,7 +21,8 @@ public class DownloadState {
     enum Status {
         STARTED,
         FINISHED,
-        SUCCESSFUL
+        SUCCESSFUL,
+        CANCELLED,
     }
 
     static private Map<String, DownloadState> state = new HashMap<>();
@@ -85,6 +88,25 @@ public class DownloadState {
 
     public void setSuccessful(long downloadId) {
         status.put(downloadId, Status.SUCCESSFUL);
+    }
+
+    public void setCancelled(long downloadId) {
+        status.put(downloadId, Status.CANCELLED);
+    }
+
+    public boolean isCancelled(long downloadId) {
+        Status status = this.status.get(downloadId);
+        return null != status && status.equals(Status.CANCELLED);
+    }
+
+    public List<Long> getDownloadIds() {
+        List<Long> ids = new ArrayList<>();
+        for (Long id: downloadIds.keySet()) {
+            if (app.getPackageName().equals(downloadIds.get(id))) {
+                ids.add(id);
+            }
+        }
+        return ids;
     }
 
     public TriggeredBy getTriggeredBy() {

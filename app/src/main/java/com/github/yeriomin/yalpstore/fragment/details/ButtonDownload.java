@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import com.github.yeriomin.yalpstore.OnDownloadProgressListener;
 import com.github.yeriomin.yalpstore.PurchaseTask;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
 
 import java.io.File;
 
@@ -24,8 +26,20 @@ import static com.github.yeriomin.yalpstore.DownloadState.TriggeredBy.MANUAL_DOW
 
 public class ButtonDownload extends Button {
 
-    public ButtonDownload(DetailsActivity activity, App app) {
+    private ImageButton cancelButton;
+
+    public ButtonDownload(final DetailsActivity activity, final App app) {
         super(activity, app);
+        cancelButton = (ImageButton) activity.findViewById(R.id.cancel);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCancel = new Intent(activity.getApplicationContext(), CancelDownloadService.class);
+                intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
+                activity.startService(intentCancel);
+                v.setVisibility(View.GONE);
+            }
+        });
     }
 
     @Override
@@ -49,6 +63,7 @@ public class ButtonDownload extends Button {
             activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
         } else if (checkPermission()) {
             download();
+            cancelButton.setVisibility(View.VISIBLE);
         } else {
             requestPermission();
         }

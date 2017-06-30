@@ -44,4 +44,9 @@ public abstract class DownloadManagerAbstract implements DownloadManagerInterfac
         }
         return context.getString(stringId);
     }
+
+    @Override
+    public void cancel(long downloadId) {
+        DownloadState.get(downloadId).setCancelled(downloadId);
+    }
 }
