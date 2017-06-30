@@ -116,6 +116,7 @@
         </activity>
         <activity android:name=".CrashLetterActivity" android:process=":report_process" />
         <service android:enabled="true" android:name=".notification.CancelDownloadService" />
+        <service android:enabled="true" android:name=".notification.IgnoreUpdatesService" />
     </application>
 
 </manifest>

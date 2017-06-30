@@ -38,10 +38,7 @@ class SearchTask extends EndlessScrollTask {
     protected void onPreExecute() {
         super.onPreExecute();
         categoryManager = new CategoryManager((Activity) context);
-        List<App> installed = UpdatableAppsTask.getInstalledApps(context);
-        for (App installedApp : installed) {
-            installedPackageNames.add(installedApp.getPackageName());
-        }
+        installedPackageNames.addAll(UpdatableAppsTask.getInstalledApps(context).keySet());
     }
 
     @Override

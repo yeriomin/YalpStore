@@ -13,6 +13,7 @@ import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -26,8 +27,8 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
     protected Map<String, App> installedApps = new HashMap<>();
     protected boolean explicitCheck;
 
-    static public List<App> getInstalledApps(Context context) {
-        List<App> apps = new ArrayList<>();
+    static public Map<String, App> getInstalledApps(Context context) {
+        Map<String, App> apps = new HashMap<>();
 
         PackageManager pm = context.getPackageManager();
         boolean showSystemApps = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS);
@@ -42,7 +43,7 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
                 continue;
             }
             app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
-            apps.add(app);
+            apps.put(app.getPackageName(), app);
         }
         return apps;
     }
@@ -51,39 +52,15 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
         this.explicitCheck = explicitCheck;
     }
 
-    private Map<String, App> getFilteredInstalledApps(Context context) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean isBlacklist = prefs.getString(
-            PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
-            PreferenceActivity.LIST_BLACK
-        ).equals(PreferenceActivity.LIST_BLACK);
-        BlackWhiteListManager manager = new BlackWhiteListManager(context);
-
-        Map<String, App> apps = new HashMap<>();
-        for (App app: getInstalledApps(context)) {
-            boolean inList = manager.contains(app.getPackageName());
-            if ((isBlacklist && inList) || (!isBlacklist && !inList)) {
-                Log.i(
-                    UpdatableAppsActivity.class.getName(),
-                    "Ignoring updates for " + app.getPackageName()
-                        + " isBlacklist=" + isBlacklist
-                        + " inList=" + inList
-                );
-                continue;
-            }
-            apps.put(app.getPackageName(), app);
-        }
-        return apps;
-    }
-
     @Override
     protected Throwable doInBackground(String... params) {
         // Building local apps list
-        installedApps = getFilteredInstalledApps(context);
+        installedApps = getInstalledApps(context);
+        List<String> filteredPackageNames = new ArrayList<>(filterPackageNames(installedApps.keySet()));
         // Requesting info from Google Play Market for installed apps
         List<App> appsFromPlayStore = new ArrayList<>();
         try {
-            appsFromPlayStore.addAll(getAppsFromPlayStore(new ArrayList<>(installedApps.keySet())));
+            appsFromPlayStore.addAll(getAppsFromPlayStore(filteredPackageNames));
         } catch (Throwable e) {
             return e;
         }
@@ -126,6 +103,15 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
         appFromMarket.setSystem(installedApp.isSystem());
         appFromMarket.setInstalled(true);
         return appFromMarket;
+    }
+
+    private Collection<String> filterPackageNames(Collection<String> installedPackageNames) {
+        if (PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceActivity.LIST_BLACK).equals(PreferenceActivity.LIST_BLACK)) {
+            installedPackageNames.removeAll(new BlackWhiteListManager(context).get());
+        } else {
+            installedPackageNames.retainAll(new BlackWhiteListManager(context).get());
+        }
+        return installedPackageNames;
     }
 
     private List<App> getAppsFromPlayStore(List<String> packageNames) throws IOException {

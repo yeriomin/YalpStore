@@ -537,10 +537,12 @@
 
         <Button
             android:id="@+id/download"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:visibility="gone"
+            android:ellipsize="marquee"
+            android:singleLine="true"
             android:text="@string/details_download" />
 
         <ImageButton
@@ -555,18 +557,22 @@
 
         <Button
             android:id="@+id/install"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:visibility="gone"
+            android:ellipsize="marquee"
+            android:singleLine="true"
             android:text="@string/details_install" />
 
         <Button
             android:id="@+id/run"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:visibility="gone"
+            android:ellipsize="marquee"
+            android:singleLine="true"
             android:text="@string/details_run" />
 
         <ImageButton

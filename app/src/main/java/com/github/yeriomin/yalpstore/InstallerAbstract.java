@@ -2,6 +2,8 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +13,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.notification.IgnoreUpdatesService;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.io.File;
@@ -62,38 +65,13 @@ public abstract class InstallerAbstract {
         )) {
             Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
             if (Util.isContextUiCapable(context)) {
-                getSignatureMismatchDialog().show();
+                getSignatureMismatchDialog(app).show();
             } else {
                 notifySignatureMismatch(app);
             }
             return false;
         }
         return true;
-    }
-
-    protected AlertDialog getSignatureMismatchDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder
-            .setMessage(R.string.details_signature_mismatch)
-            .setPositiveButton(
-                android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                }
-            )
-        ;
-        return builder.create();
-    }
-
-    protected void notifySignatureMismatch(App app) {
-        notifyAndToast(
-            R.string.notification_download_complete_signature_mismatch,
-            R.string.notification_download_complete_signature_mismatch_toast,
-            app
-        );
     }
 
     protected void notifyAndToast(int notificationStringId, int toastStringId, App app) {
@@ -107,13 +85,62 @@ public abstract class InstallerAbstract {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
+    private AlertDialog getSignatureMismatchDialog(final App app) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder
+            .setMessage(R.string.details_signature_mismatch)
+            .setPositiveButton(
+                android.R.string.ok,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }
+            )
+            .setNegativeButton(
+                R.string.action_ignore,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        context.startService(getIgnoreIntent(app));
+                        dialog.cancel();
+                    }
+                }
+            )
+        ;
+        return builder.create();
+    }
+
+    private void notifySignatureMismatch(App app) {
+        notifyAndToast(
+            R.string.notification_download_complete_signature_mismatch,
+            R.string.notification_download_complete_signature_mismatch_toast,
+            app
+        );
+    }
+
     private void showNotification(int notificationStringId, App app) {
         File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = getOpenApkIntent(context, file);
-        new NotificationManagerWrapper(context).show(
-            openApkIntent,
-            app.getDisplayName(),
-            context.getString(notificationStringId)
-        );
+        Notification notification = NotificationManagerWrapper.getBuilder(context)
+            .setIntent(openApkIntent)
+            .setTitle(app.getDisplayName())
+            .setMessage(context.getString(notificationStringId))
+            .addAction(
+                android.R.drawable.ic_menu_close_clear_cancel,
+                R.string.action_ignore,
+                PendingIntent.getService(context, 0, getIgnoreIntent(app), PendingIntent.FLAG_UPDATE_CURRENT)
+            )
+            .build()
+        ;
+        new NotificationManagerWrapper(context).show(app.getDisplayName(), notification);
+    }
+
+    private Intent getIgnoreIntent(App app) {
+        Intent intentIgnore = new Intent(context, IgnoreUpdatesService.class);
+        intentIgnore.putExtra(IgnoreUpdatesService.PACKAGE_NAME, app.getPackageName());
+        intentIgnore.putExtra(IgnoreUpdatesService.VERSION_CODE, app.getVersionCode());
+        return intentIgnore;
     }
 }
