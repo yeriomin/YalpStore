@@ -34,10 +34,10 @@ public class GeneralDetails extends Abstract {
         drawAppBadge(app);
         if (app.isInPlayStore()) {
             drawGeneralDetails(app);
+            drawDescription(app);
+            new GoogleDependency(activity, app).draw();
         }
-        drawDescription(app);
         drawPermissions(app);
-        new GoogleDependency(activity, app).draw();
     }
 
     private void drawAppBadge(App app) {
@@ -132,6 +132,7 @@ public class GeneralDetails extends Abstract {
         } else {
             setText(R.id.description, Html.fromHtml(app.getDescription()).toString());
             initExpandableGroup(R.id.description_header, R.id.description_container);
+            activity.findViewById(R.id.description_header).performClick();
         }
     }
 
