@@ -107,6 +107,8 @@ public class UpdatableAppsActivity extends AppListActivity {
                 Collections.sort(otherInstalledApps);
                 if (showUpdatesOnly()) {
                     addApps(updatableApps);
+                } if (null != e || (!explicitCheck && PreferenceActivity.getUpdateInterval(context) == -1)) {
+                    addApps(otherInstalledApps);
                 } else {
                     addApps(updatableApps, R.string.list_has_update);
                     addApps(otherInstalledApps, R.string.list_no_update);
