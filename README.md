@@ -40,6 +40,14 @@ By default Yalp Store connects to Google services using a built-in account, so *
 >
 >A: No. The priority for Yalp Store is backwards compatibility and size. It works on every android since Android 2.0 Eclair. Implementing Material Design would require adding a heavy dependency and a lot of purely-UI code.
 
+>Q: I don't like Android built-in DownloadManager. Is Yalp going to have its own download manager?
+>
+>A: Yalp already **has** a mini download manager. It is used as a fallback when system DownloadManager is disabled or unavailable for any other reason. You can force Yalp to use the fallback download manager like this: Settings -> Apps -> Show system -> Download Manager -> Disable. I'm not setting the fallback as default because it is very minimalisic and is never going to be as well-tested and feature-rish as the system DownloadManager.
+
+>Q: Can Yalp Store download region-locked apps?
+>
+>A: Not directly. But it is easier than with Play Store. Play Store servers detect your location by your ip address, so to appear to be in a different region you are going to need a VPN. Log out of Yalp Store (clearing Yalp Store app data does the same thing). Turn your VPN solution on and choose a desired location. Log in to Yalp Store again. You should be able to download apps from your chosen region now.
+
 >Q: Is it **legal** to use Yalp Store with my own Google account?
 >
 >A: No. Yalp Store violates [§3.3 of Google Play Terms of Service](https://www.google.com/mobile/android/market-tos.html). Your account might be disabled, robbing you of any apps you have purchased.
