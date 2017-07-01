@@ -40,10 +40,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         ad.setTitle(context.getString(R.string.credentials_title));
         ad.setCancelable(false);
 
-        final AutoCompleteTextView editEmail = (AutoCompleteTextView) ad.findViewById(R.id.email);
-        editEmail.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, getUsedEmails()));
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        editEmail.setText(prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, this.previousEmail));
+        final AutoCompleteTextView editEmail = getEmailInput(ad);
         final EditText editPassword = (EditText) ad.findViewById(R.id.password);
 
         Button buttonExit = (Button) ad.findViewById(R.id.button_exit);
@@ -59,24 +56,34 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
             @Override
             public void onClick(View view) {
                 Context c = view.getContext();
-                final String email = editEmail.getText().toString();
-                final String password = editPassword.getText().toString();
+                String email = editEmail.getText().toString();
+                String password = editPassword.getText().toString();
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                     toast(c, R.string.error_credentials_empty);
                     return;
                 }
-
                 ad.dismiss();
-                UserProvidedCredentialsTask task = new UserProvidedCredentialsTask();
-                task.setTaskClone(taskClone);
-                task.setContext(context);
-                task.prepareDialog(R.string.dialog_message_logging_in_provided_by_user, R.string.dialog_title_logging_in);
-                task.execute(email, password);
+                getUserCredentialsTask().execute(email, password);
             }
         });
 
         ad.show();
         return ad;
+    }
+
+    private UserProvidedCredentialsTask getUserCredentialsTask() {
+        UserProvidedCredentialsTask task = new UserProvidedCredentialsTask();
+        task.setTaskClone(taskClone);
+        task.setContext(context);
+        task.prepareDialog(R.string.dialog_message_logging_in_provided_by_user, R.string.dialog_title_logging_in);
+        return task;
+    }
+
+    private AutoCompleteTextView getEmailInput(Dialog ad) {
+        AutoCompleteTextView editEmail = (AutoCompleteTextView) ad.findViewById(R.id.email);
+        editEmail.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, getUsedEmails()));
+        editEmail.setText(PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_EMAIL, this.previousEmail));
+        return editEmail;
     }
 
     private void addUsedEmail(String email) {

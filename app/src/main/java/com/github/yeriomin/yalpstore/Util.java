@@ -86,4 +86,12 @@ public class Util {
             return !activity.isFinishing();
         }
     }
+
+    static public int parseInt(String intAsString, int defaultValue) {
+        try {
+            return Integer.parseInt(intAsString);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
 }

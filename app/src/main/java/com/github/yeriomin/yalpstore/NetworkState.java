@@ -29,12 +29,9 @@ public class NetworkState {
                     continue;
                 }
                 component = component.replace(".", "");
-                try {
-                    boolean isZero = Integer.parseInt(component) == 0;
-                    if (!isZero) {
-                        return true;
-                    }
-                } catch (NumberFormatException e) {
+                boolean isZero = Util.parseInt(component, 0) == 0;
+                if (!isZero) {
+                    return true;
                 }
             }
         }
