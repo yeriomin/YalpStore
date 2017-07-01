@@ -42,26 +42,30 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
             exception = e;
             responseBody = new byte[0];
         } finally {
-            StringBuilder responseHeaders = new StringBuilder();
-            for (String key: connection.getHeaderFields().keySet()) {
-                List<String> header = connection.getHeaderFields().get(key);
-                if (null == header || header.isEmpty()) {
-                    continue;
-                }
-                if (TextUtils.isEmpty(key)) {
-                    responseHeaders.append(header.get(0)).append("\n");
-                } else {
-                    for (String duplicate: header) {
-                        responseHeaders.append(key).append(": ").append(duplicate).append("\n");
-                    }
-                }
-            }
-            write(getFileName(url, false, true), responseHeaders.toString().getBytes());
+            write(getFileName(url, false, true), getResponseHeaders(connection.getHeaderFields()).getBytes());
             if (null != exception) {
                 throw exception;
             }
         }
         return responseBody;
+    }
+
+    private static String getResponseHeaders(Map<String, List<String>> headers) {
+        StringBuilder responseHeaders = new StringBuilder();
+        for (String key: headers.keySet()) {
+            List<String> header = headers.get(key);
+            if (null == header || header.isEmpty()) {
+                continue;
+            }
+            if (TextUtils.isEmpty(key)) {
+                responseHeaders.append(header.get(0)).append("\n");
+            } else {
+                for (String duplicate: header) {
+                    responseHeaders.append(key).append(": ").append(duplicate).append("\n");
+                }
+            }
+        }
+        return responseHeaders.toString();
     }
 
     private static void write(String fileName, byte[] body) {
