@@ -42,7 +42,7 @@ By default Yalp Store connects to Google services using a built-in account, so *
 
 >Q: I don't like Android built-in DownloadManager. Is Yalp going to have its own download manager?
 >
->A: Yalp already **has** a mini download manager. It is used as a fallback when system DownloadManager is disabled or unavailable for any other reason. You can force Yalp to use the fallback download manager like this: Settings -> Apps -> Show system -> Download Manager -> Disable. I'm not setting the fallback as default because it is very minimalisic and is never going to be as well-tested and feature-rish as the system DownloadManager.
+>A: Yalp already **has** a mini download manager. It is used as a fallback when system DownloadManager is disabled or unavailable for any other reason. You can force Yalp to use the fallback download manager like this: Settings -> Apps -> Show system -> Download Manager -> Disable. I'm not setting the fallback as default because it is very minimalisic and is never going to be as well-tested and feature-rich as the system DownloadManager.
 
 >Q: Can Yalp Store download region-locked apps?
 >
