@@ -15,13 +15,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-        if (!action.equals(Intent.ACTION_PACKAGE_INSTALL)
-            && !action.equals(Intent.ACTION_PACKAGE_ADDED)
-            && !action.equals(Intent.ACTION_PACKAGE_REPLACED)
-            && !action.equals(Intent.ACTION_PACKAGE_REMOVED)
-            && !action.equals(Intent.ACTION_PACKAGE_FULLY_REMOVED)
-            && !action.equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
-        ) {
+        if (!expectedAction(action)) {
             return;
         }
         updateDetails(intent);
@@ -51,6 +45,16 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             DetailsActivity.app.getPackageInfo().versionCode = DetailsActivity.app.getVersionCode();
             DetailsActivity.app.setInstalled(true);
         }
+    }
+
+    static private boolean expectedAction(String action) {
+        return action.equals(Intent.ACTION_PACKAGE_INSTALL)
+            || action.equals(Intent.ACTION_PACKAGE_ADDED)
+            || action.equals(Intent.ACTION_PACKAGE_REPLACED)
+            || action.equals(Intent.ACTION_PACKAGE_REMOVED)
+            || action.equals(Intent.ACTION_PACKAGE_FULLY_REMOVED)
+            || action.equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
+        ;
     }
 
     static private boolean needToRemoveApk(Context context) {

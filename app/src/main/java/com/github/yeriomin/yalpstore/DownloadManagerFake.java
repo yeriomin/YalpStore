@@ -28,28 +28,7 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
     @Override
     public long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type, OnDownloadProgressListener listener) {
         Log.i(getClass().getName(), "Downloading " + type.name() + " for " + app.getPackageName());
-        String url;
-        File destinationFile;
-        switch (type) {
-            case APK:
-                url = deliveryData.getDownloadUrl();
-                destinationFile = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-                break;
-            case DELTA:
-                url = deliveryData.getPatchData().getDownloadUrl();
-                destinationFile = Downloader.getDeltaPath(app.getPackageName(), app.getVersionCode());
-                break;
-            case OBB_MAIN:
-                url = deliveryData.getAdditionalFile(0).getDownloadUrl();
-                destinationFile = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-                break;
-            case OBB_PATCH:
-                url = deliveryData.getAdditionalFile(1).getDownloadUrl();
-                destinationFile = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
-                break;
-            default:
-                throw new RuntimeException("Unknown request type");
-        }
+        String url = getUrl(deliveryData, type);
         long downloadId = url.hashCode();
         statuses.put(downloadId, DownloadManagerInterface.IN_PROGRESS);
         if (!enoughSpace(deliveryData)) {
@@ -57,9 +36,8 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
         } else {
             HttpURLConnectionDownloadTask task = new HttpURLConnectionDownloadTask();
             task.setContext(context);
-            task.setApp(app);
             task.setDownloadId(downloadId);
-            task.setTargetFile(destinationFile);
+            task.setTargetFile(getDestinationFile(app, type));
             task.setOnDownloadProgressListener(listener);
             String cookieString = null;
             if (deliveryData.getDownloadAuthCookieCount() > 0) {
@@ -97,5 +75,35 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
         StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
         long bytesAvailable = (long) stat.getBlockSize() * (long) stat.getBlockCount();
         return bytesAvailable >= bytesNeeded;
+    }
+
+    private String getUrl(AndroidAppDeliveryData deliveryData, Type type) {
+        switch (type) {
+            case APK:
+                return deliveryData.getDownloadUrl();
+            case DELTA:
+                return deliveryData.getPatchData().getDownloadUrl();
+            case OBB_MAIN:
+                return deliveryData.getAdditionalFile(0).getDownloadUrl();
+            case OBB_PATCH:
+                return deliveryData.getAdditionalFile(1).getDownloadUrl();
+            default:
+                throw new RuntimeException("Unknown request type");
+        }
+    }
+
+    private File getDestinationFile(App app, Type type) {
+        switch (type) {
+            case APK:
+                return Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
+            case DELTA:
+                return Downloader.getDeltaPath(app.getPackageName(), app.getVersionCode());
+            case OBB_MAIN:
+                return Downloader.getObbPath(app.getPackageName(), app.getVersionCode(), true);
+            case OBB_PATCH:
+                return Downloader.getObbPath(app.getPackageName(), app.getVersionCode(), false);
+            default:
+                throw new RuntimeException("Unknown request type");
+        }
     }
 }
