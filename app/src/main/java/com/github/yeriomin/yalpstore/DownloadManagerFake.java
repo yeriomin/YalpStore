@@ -31,6 +31,7 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
         String url = getUrl(deliveryData, type);
         long downloadId = url.hashCode();
         statuses.put(downloadId, DownloadManagerInterface.IN_PROGRESS);
+        DownloadState.get(app.getPackageName()).setStarted(downloadId);
         if (!enoughSpace(deliveryData)) {
             statuses.put(downloadId, DownloadManagerInterface.ERROR_INSUFFICIENT_SPACE);
         } else {
