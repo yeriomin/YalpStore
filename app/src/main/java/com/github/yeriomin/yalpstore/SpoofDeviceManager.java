@@ -6,6 +6,9 @@ import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -23,6 +26,10 @@ public class SpoofDeviceManager {
 
     private Context context;
 
+    static private boolean filenameValid(String filename) {
+        return filename.startsWith(SPOOF_FILE_PREFIX) && filename.endsWith(SPOOF_FILE_SUFFIX);
+    }
+
     public SpoofDeviceManager(Context context) {
         this.context = context;
     }
@@ -33,12 +40,20 @@ public class SpoofDeviceManager {
             devices = getDevicesFromApk();
             putDevicesToSharedPreferences(devices);
         }
+        devices.putAll(getDevicesFromYalpDirectory());
         return devices;
     }
 
     public Properties getProperties(String entryName) {
-        JarFile jarFile = getApkAsJar();
-        return getProperties(jarFile, (JarEntry) jarFile.getEntry(entryName));
+        File defaultDirectoryFile = new File(Paths.getYalpPath(), entryName);
+        if (defaultDirectoryFile.exists()) {
+            Log.i(getClass().getName(), "Loading device info from " + defaultDirectoryFile.getAbsolutePath());
+            return getProperties(defaultDirectoryFile);
+        } else {
+            Log.i(getClass().getName(), "Loading device info from " + getApkPath() + "/" + entryName);
+            JarFile jarFile = getApkAsJar();
+            return getProperties(jarFile, (JarEntry) jarFile.getEntry(entryName));
+        }
     }
 
     private Properties getProperties(JarFile jarFile, JarEntry entry) {
@@ -46,7 +61,17 @@ public class SpoofDeviceManager {
         try {
             properties.load(jarFile.getInputStream(entry));
         } catch (IOException e) {
-            Log.i(getClass().getName(), "Could not read " + entry.getName());
+            Log.e(getClass().getName(), "Could not read " + entry.getName());
+        }
+        return properties;
+    }
+
+    private Properties getProperties(File file) {
+        Properties properties = new Properties();
+        try {
+            properties.load(new BufferedInputStream(new FileInputStream(file)));
+        } catch (IOException e) {
+            Log.e(getClass().getName(), "Could not read " + file.getName());
         }
         return properties;
     }
@@ -73,23 +98,22 @@ public class SpoofDeviceManager {
     private Map<String, String> getDevicesFromApk() {
         JarFile jarFile = getApkAsJar();
         Enumeration<JarEntry> entries = jarFile.entries();
-        Map<String, String> devices = new HashMap<>();
+        Map<String, String> deviceNames = new HashMap<>();
         while (entries.hasMoreElements()) {
             JarEntry entry = entries.nextElement();
-            if (!entry.getName().startsWith(SPOOF_FILE_PREFIX) || !entry.getName().endsWith(SPOOF_FILE_SUFFIX)) {
+            if (!filenameValid(entry.getName())) {
                 continue;
             }
-            Properties properties = getProperties(jarFile, entry);
-            devices.put(entry.getName(), properties.getProperty("UserReadableName"));
+            deviceNames.put(entry.getName(), getProperties(jarFile, entry).getProperty("UserReadableName"));
         }
-        return devices;
+        return deviceNames;
     }
 
     private JarFile getApkAsJar() {
         try {
             return new JarFile(getApkPath());
         } catch (IOException e) {
-            // Having a currently running app uninstalled is unlikely
+            Log.e(getClass().getName(), "Could not open Yalp Store apk as a jar file: " + e.getMessage());
             return null;
         }
     }
@@ -101,5 +125,20 @@ public class SpoofDeviceManager {
             // Having a currently running app uninstalled is unlikely
             return null;
         }
+    }
+
+    private Map<String, String> getDevicesFromYalpDirectory() {
+        Map<String, String> deviceNames = new HashMap<>();
+        File defaultDir = Paths.getYalpPath();
+        if (!defaultDir.exists()) {
+            return deviceNames;
+        }
+        for (File file: defaultDir.listFiles()) {
+            if (!file.isFile() || !filenameValid(file.getName())) {
+                continue;
+            }
+            deviceNames.put(file.getName(), getProperties(file).getProperty("UserReadableName"));
+        }
+        return deviceNames;
     }
 }

@@ -25,7 +25,7 @@ public class InstallerDefault extends InstallerAbstract {
         context.startActivity(
             InstallerAbstract.getOpenApkIntent(
                 context,
-                Downloader.getApkPath(app.getPackageName(), app.getVersionCode())
+                Paths.getApkPath(app.getPackageName(), app.getVersionCode())
             )
         );
     }

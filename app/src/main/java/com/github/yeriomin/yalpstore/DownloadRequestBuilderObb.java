@@ -28,7 +28,7 @@ public class DownloadRequestBuilderObb extends DownloadRequestBuilder {
 
     @Override
     protected File getDestinationFile() {
-        return Downloader.getObbPath(
+        return Paths.getObbPath(
             app.getPackageName(),
             deliveryData.getAdditionalFile(main ? 0 : 1).getVersionCode(),
             main

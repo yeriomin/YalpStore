@@ -11,9 +11,9 @@ import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DownloadState;
-import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.OnDownloadProgressListener;
+import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PurchaseTask;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
@@ -49,7 +49,7 @@ public class ButtonDownload extends Button {
 
     @Override
     protected boolean shouldBeVisible() {
-        return (!Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+        return (!Paths.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
                 || !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
             )
             && app.isInPlayStore()
@@ -72,7 +72,7 @@ public class ButtonDownload extends Button {
     @Override
     public void draw() {
         super.draw();
-        if (Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+        if (Paths.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
             && !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
         ) {
             disableButton(R.id.download, R.string.details_downloading);
@@ -92,7 +92,7 @@ public class ButtonDownload extends Button {
     }
 
     private boolean prepareDownloadsDir() {
-        File dir = Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).getParentFile();
+        File dir = Paths.getApkPath(app.getPackageName(), app.getVersionCode()).getParentFile();
         if (!dir.exists()) {
             dir.mkdirs();
         }

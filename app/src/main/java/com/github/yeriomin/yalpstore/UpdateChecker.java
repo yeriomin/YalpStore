@@ -76,7 +76,7 @@ public class UpdateChecker extends BroadcastReceiver {
     private void process(Context context, List<App> apps) {
         boolean canInstallInBackground = PreferenceActivity.canInstallInBackground(context);
         for (App app: apps) {
-            if (!Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists()) {
+            if (!Paths.getApkPath(app.getPackageName(), app.getVersionCode()).exists()) {
                 download(context, app);
             } else if (canInstallInBackground) {
                 // Not passing context because it might be an activity

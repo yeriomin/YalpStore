@@ -14,7 +14,7 @@ import java.io.OutputStream;
 public class InstalledApkCopier {
 
     static public boolean copy(App app) {
-        File destination = Downloader.getApkPath(app.getPackageName(), app.getInstalledVersionCode());
+        File destination = Paths.getApkPath(app.getPackageName(), app.getInstalledVersionCode());
         if (destination.exists()) {
             Log.i(InstalledApkCopier.class.getName(), destination.toString() + " exists");
             return true;

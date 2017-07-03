@@ -13,7 +13,7 @@ public class InstallerRoot extends InstallerBackground {
 
     @Override
     protected void install(App app) {
-        getTask(app).execute(Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).toString());
+        getTask(app).execute(Paths.getApkPath(app.getPackageName(), app.getVersionCode()).toString());
     }
 
     private InstallTask getTask(final App app) {

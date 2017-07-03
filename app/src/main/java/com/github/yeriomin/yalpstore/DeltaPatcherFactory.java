@@ -13,7 +13,7 @@ import java.util.zip.GZIPInputStream;
 public class DeltaPatcherFactory {
 
     static public DeltaPatcherAbstract get(App app) {
-        File patch = Downloader.getDeltaPath(app.getPackageName(), app.getVersionCode());
+        File patch = Paths.getDeltaPath(app.getPackageName(), app.getVersionCode());
         if (isGZipped(patch)) {
             return new DeltaPatcherGDiffGzipped(app);
         } else {

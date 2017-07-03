@@ -54,8 +54,8 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
     }
 
     private boolean isDelta(App app) {
-        return !Downloader.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
-            && Downloader.getDeltaPath(app.getPackageName(), app.getVersionCode()).exists()
+        return !Paths.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+            && Paths.getDeltaPath(app.getPackageName(), app.getVersionCode()).exists()
         ;
     }
 
@@ -89,7 +89,7 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
     }
 
     private void notifyAndToast(int notificationStringId, int toastStringId, App app) {
-        File file = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
+        File file = Paths.getApkPath(app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = InstallerAbstract.getOpenApkIntent(context, file);
         notificationManager.show(
             openApkIntent,

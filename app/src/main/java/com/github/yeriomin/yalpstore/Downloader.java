@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.os.Environment;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
@@ -13,22 +12,6 @@ import java.io.File;
 public class Downloader {
 
     private DownloadManagerInterface dm;
-
-    static public File getApkPath(String packageName, int version) {
-        File downloadsDir = new File(Environment.getExternalStorageDirectory(), "Download");
-        String filename = packageName + "." + String.valueOf(version) + ".apk";
-        return new File(downloadsDir, filename);
-    }
-
-    static public File getDeltaPath(String packageName, int version) {
-        return new File(Downloader.getApkPath(packageName, version).getAbsolutePath() + ".delta");
-    }
-
-    static public File getObbPath(String packageName, int version, boolean main) {
-        File obbDir = new File(new File(Environment.getExternalStorageDirectory(), "Android/obb"), packageName);
-        String filename = (main ? "main" : "patch") + "." + String.valueOf(version) + "." + packageName + ".obb";
-        return new File(obbDir, filename);
-    }
 
     public Downloader(Context context) {
         this.dm = DownloadManagerFactory.get(context);
@@ -53,7 +36,7 @@ public class Downloader {
     private void checkAndStartObbDownload(DownloadState state, AndroidAppDeliveryData deliveryData, boolean main, OnDownloadProgressListener listener) {
         App app = state.getApp();
         AppFileMetadata metadata = deliveryData.getAdditionalFile(main ? 0 : 1);
-        File file = getObbPath(app.getPackageName(), metadata.getVersionCode(), main);
+        File file = Paths.getObbPath(app.getPackageName(), metadata.getVersionCode(), main);
         Log.i(getClass().getName(), "file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + metadata.getSize());
         if (file.exists() && file.length() != metadata.getSize()) {
             Log.i(getClass().getName(), "Deleted old obb file: " + file.delete());

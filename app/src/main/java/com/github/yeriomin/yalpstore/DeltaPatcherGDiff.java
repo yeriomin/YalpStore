@@ -24,7 +24,7 @@ public class DeltaPatcherGDiff extends DeltaPatcherAbstract {
         Log.i(DeltaPatcherGDiff.class.getName(), "Patching with " + patch);
         com.nothome.delta.GDiffPatcher patcher = new com.nothome.delta.GDiffPatcher();
         try {
-            File destinationApk = Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
+            File destinationApk = Paths.getApkPath(app.getPackageName(), app.getVersionCode());
             patcher.patch(originalApk, patch, destinationApk);
             Log.i(DeltaPatcherGDiff.class.getName(), "Patching successfully completed");
             return true;

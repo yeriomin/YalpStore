@@ -18,7 +18,7 @@ public class DownloadRequestBuilderApk extends DownloadRequestBuilder {
 
     @Override
     protected File getDestinationFile() {
-        return Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
+        return Paths.getApkPath(app.getPackageName(), app.getVersionCode());
     }
 
     @Override

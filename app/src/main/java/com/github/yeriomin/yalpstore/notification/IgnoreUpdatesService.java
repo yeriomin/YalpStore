@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
-import com.github.yeriomin.yalpstore.Downloader;
+import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
 
 public class IgnoreUpdatesService extends IntentService {
@@ -30,7 +30,7 @@ public class IgnoreUpdatesService extends IntentService {
         new BlackWhiteListManager(getApplicationContext()).add(packageName);
         cancelNotification(packageName);
         UpdatableAppsActivity.setNeedsUpdate(true);
-        Downloader.getApkPath(packageName, intent.getIntExtra(VERSION_CODE, 0)).delete();
+        Paths.getApkPath(packageName, intent.getIntExtra(VERSION_CODE, 0)).delete();
     }
 
     private void cancelNotification(String packageName) {

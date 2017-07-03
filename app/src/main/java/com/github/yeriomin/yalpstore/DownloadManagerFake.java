@@ -96,13 +96,13 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
     private File getDestinationFile(App app, Type type) {
         switch (type) {
             case APK:
-                return Downloader.getApkPath(app.getPackageName(), app.getVersionCode());
+                return Paths.getApkPath(app.getPackageName(), app.getVersionCode());
             case DELTA:
-                return Downloader.getDeltaPath(app.getPackageName(), app.getVersionCode());
+                return Paths.getDeltaPath(app.getPackageName(), app.getVersionCode());
             case OBB_MAIN:
-                return Downloader.getObbPath(app.getPackageName(), app.getVersionCode(), true);
+                return Paths.getObbPath(app.getPackageName(), app.getVersionCode(), true);
             case OBB_PATCH:
-                return Downloader.getObbPath(app.getPackageName(), app.getVersionCode(), false);
+                return Paths.getObbPath(app.getPackageName(), app.getVersionCode(), false);
             default:
                 throw new RuntimeException("Unknown request type");
         }

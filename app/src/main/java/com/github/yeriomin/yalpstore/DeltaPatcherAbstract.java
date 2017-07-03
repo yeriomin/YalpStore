@@ -14,7 +14,7 @@ abstract public class DeltaPatcherAbstract {
     public DeltaPatcherAbstract(App app) {
         Log.i(getClass().getName(), "Chosen delta patcher");
         this.app = app;
-        patch = Downloader.getDeltaPath(app.getPackageName(), app.getVersionCode());
+        patch = Paths.getDeltaPath(app.getPackageName(), app.getVersionCode());
     }
 
     abstract boolean patch();

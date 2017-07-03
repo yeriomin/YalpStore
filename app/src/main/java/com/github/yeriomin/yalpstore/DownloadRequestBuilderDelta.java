@@ -18,6 +18,6 @@ public class DownloadRequestBuilderDelta extends DownloadRequestBuilderApk {
 
     @Override
     protected File getDestinationFile() {
-        return Downloader.getDeltaPath(app.getPackageName(), app.getVersionCode());
+        return Paths.getDeltaPath(app.getPackageName(), app.getVersionCode());
     }
 }
