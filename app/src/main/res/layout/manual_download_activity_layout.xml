@@ -73,6 +73,16 @@
             android:visibility="gone"
             android:text="@string/details_download" />
 
+        <ImageButton
+            android:id="@+id/cancel"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/content_description_cancel_download"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            android:elevation="2dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
         <Button
             android:id="@+id/install"
             android:layout_width="match_parent"
