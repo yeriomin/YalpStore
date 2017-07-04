@@ -108,7 +108,7 @@ public class CrashLetterDeviceInfoBuilder extends CrashLetterBuilder {
         Map<String, String> values = new LinkedHashMap<>();
         values.put("Platforms", TextUtils.join(",", NativeDeviceInfoProvider.getPlatforms()));
         values.put("SharedLibraries", TextUtils.join(",", NativeDeviceInfoProvider.getSharedLibraries(context)));
-        values.put("Features", TextUtils.join(",", context.getPackageManager().getSystemSharedLibraryNames()));
+        values.put("Features", TextUtils.join(",", NativeDeviceInfoProvider.getFeatures(context)));
         values.put("Locales", TextUtils.join(",", NativeDeviceInfoProvider.getLocales(context)));
         return values;
     }
