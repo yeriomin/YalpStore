@@ -27,6 +27,10 @@ Yalp Store uses the same (protobuf) API the android Play Store app uses. It down
 
 By default Yalp Store connects to Google services using a built-in account, so **you do not have to own a Google account to use it**. The only reason to use a live Google account is to access the paid apps you own.
 
+Each time you log in a new Google Services Framework id (also known as device id) is generated using your device parameters. The list of parameters Google requires for that is rather long ([example](https://github.com/yeriomin/play-store-api/blob/master/src/main/resources/device-sailfish.properties)). They are used for app filtering and compatibility checks *on the server side*. It is possible to mimic a different device. In Yalp Store settings you will find a list of bundled device definitions. Note that no personal info is disclosed, only technical information about your device.
+
+When the GSF id is ready, your email and password (if you provided them) are used to generate an authorization token. The authorization token is used to sign all Play Store API requests. Your password is used only once and is not stored, the token is enough for all the requests.
+
 ## Screenshots
 
 <img alt="Updates page" src="screenshots/updates.png" width="30%" hspace="5" /><img alt="Details page" src="screenshots/details.png" width="30%" hspace="5" /><img alt="Search page" src="screenshots/search.png" width="30%" hspace="5" />
