@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about_website_label">Сайт проекта:</string>
+    <string name="about_bitcoin_label">Пожертвования Bitcoin:</string>
     <string name="about_developer_email_label">Почта разработчика:</string>
     <string name="about_logged_in">Ваш текущий аккаунт:</string>
     <string name="about_copied_to_clipboard">Скопировано в буфер обмена</string>

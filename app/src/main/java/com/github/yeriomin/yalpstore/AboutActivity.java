@@ -22,27 +22,22 @@ public class AboutActivity extends YalpStoreActivity {
         setContentView(R.layout.about_activity_layout);
         ((TextView) findViewById(R.id.version)).setText(BuildConfig.VERSION_NAME);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String email = sharedPreferences.getString(PreferenceActivity.PREFERENCE_EMAIL, "");
-        String gsfId = sharedPreferences.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
-        ((TextView) findViewById(R.id.user_email)).setText(email);
+        ((TextView) findViewById(R.id.user_email)).setText(sharedPreferences.getString(PreferenceActivity.PREFERENCE_EMAIL, ""));
         TextView gsfIdView = (TextView) findViewById(R.id.gsf_id);
-        gsfIdView.setText(gsfId);
+        gsfIdView.setText(sharedPreferences.getString(PreferenceActivity.PREFERENCE_GSF_ID, ""));
         gsfIdView.setOnClickListener(new CopyToClipboardListener());
-        findViewById(R.id.developer_email).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.developer_email).setOnClickListener(new CopyToClipboardListener() {
             @Override
             public void onClick(View v) {
-                if (!CrashLetterActivity.send(AboutActivity.this, null)) {
-                    new CopyToClipboardListener().onClick(v);
-                }
+                super.onClick(v);
+                CrashLetterActivity.send(AboutActivity.this, null);
             }
         });
-        findViewById(R.id.website).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.website).setOnClickListener(new UriOpeningListener());
+        findViewById(R.id.bitcoin).setOnClickListener(new UriOpeningListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse((String) ((TextView) v).getText()));
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intent);
-                }
+            protected String getUri(View v) {
+                return "bitcoin:" + super.getUri(v) + "?label=YalpStore";
             }
         });
         if (hasPermission()) {
@@ -70,6 +65,21 @@ public class AboutActivity extends YalpStoreActivity {
         public void onClick(View v) {
             ((ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE)).setText(((TextView) v).getText());
             Toast.makeText(v.getContext(), R.string.about_copied_to_clipboard, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public class UriOpeningListener extends CopyToClipboardListener {
+        @Override
+        public void onClick(View v) {
+            super.onClick(v);
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getUri(v)));
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+        }
+
+        protected String getUri(View v) {
+            return (String) ((TextView) v).getText();
         }
     }
 }
