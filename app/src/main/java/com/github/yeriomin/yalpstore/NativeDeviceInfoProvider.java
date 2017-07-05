@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.pm.ConfigurationInfo;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -26,6 +25,7 @@ import java.util.TimeZone;
 public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
     static private final int GOOGLE_SERVICES_VERSION_CODE = 10548448;
+    static private final int GOOGLE_VENDING_VERSION_CODE = 80798000;
 
     private Context context;
     private String localeString;
@@ -45,7 +45,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     public String getUserAgentString() {
         return "Android-Finsky/7.1.15 ("
             + "api=3"
-            + ",versionCode=" + getGsfVersionCode(context)
+            + ",versionCode=" + getVendingVersionCode(context)
             + ",sdk=" + Build.VERSION.SDK_INT
             + ",device=" + Build.DEVICE
             + ",hardware=" + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
@@ -105,13 +105,12 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         DeviceConfigurationProto.Builder builder = DeviceConfigurationProto.newBuilder();
         addDisplayMetrics(builder);
         addConfiguration(builder);
-        ConfigurationInfo configurationInfo = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getDeviceConfigurationInfo();
         return builder
             .addAllNativePlatform(getPlatforms())
             .addAllSystemSharedLibrary(getSharedLibraries(context))
             .addAllSystemAvailableFeature(getFeatures(context))
             .addAllSystemSupportedLocale(getLocales(context))
-            .setGlEsVersion(configurationInfo.reqGlEsVersion)
+            .setGlEsVersion(((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getDeviceConfigurationInfo().reqGlEsVersion)
             .addAllGlExtension(EglExtensionRetriever.getEglExtensions())
             .build()
         ;
@@ -142,7 +141,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
     static public List<String> getPlatforms() {
         List<String> platforms = new ArrayList<>();
-        if (Build.VERSION.SDK_INT >= 21) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             platforms = Arrays.asList(Build.SUPPORTED_ABIS);
         } else {
             if (!TextUtils.isEmpty(Build.CPU_ABI)) {
@@ -156,10 +155,8 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     static public List<String> getFeatures(Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        FeatureInfo[] featuresList = packageManager.getSystemAvailableFeatures();
         List<String> featureStringList = new ArrayList<>();
-        for (FeatureInfo feature: featuresList) {
+        for (FeatureInfo feature: context.getPackageManager().getSystemAvailableFeatures()) {
             if (!TextUtils.isEmpty(feature.name)) {
                 featureStringList.add(feature.name);
             }
@@ -183,12 +180,20 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         return Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames());
     }
 
-    static public int getGsfVersionCode(Context context) {
+    static private int getVersionCode(Context context, String packageName, int defaultVersionCode) {
         try {
-            int versionCode = context.getPackageManager().getPackageInfo("com.google.android.gms", 0).versionCode;
-            return versionCode > GOOGLE_SERVICES_VERSION_CODE ? versionCode : GOOGLE_SERVICES_VERSION_CODE;
+            int versionCode = context.getPackageManager().getPackageInfo(packageName, 0).versionCode;
+            return versionCode > defaultVersionCode ? versionCode : defaultVersionCode;
         } catch (PackageManager.NameNotFoundException e) {
-            return GOOGLE_SERVICES_VERSION_CODE;
+            return defaultVersionCode;
         }
+    }
+
+    static public int getGsfVersionCode(Context context) {
+        return getVersionCode(context, "com.google.android.gms", GOOGLE_SERVICES_VERSION_CODE);
+    }
+
+    static public int getVendingVersionCode(Context context) {
+        return getVersionCode(context, "com.android.vending  ", GOOGLE_VENDING_VERSION_CODE);
     }
 }
