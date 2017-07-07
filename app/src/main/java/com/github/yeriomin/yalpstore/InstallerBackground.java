@@ -9,6 +9,8 @@ import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 abstract public class InstallerBackground extends InstallerAbstract {
 
+    private boolean wasInstalled;
+
     public InstallerBackground(Context context) {
         super(context);
     }
@@ -23,14 +25,15 @@ abstract public class InstallerBackground extends InstallerAbstract {
             notifyNewPermissions(app);
             return false;
         }
+        wasInstalled = app.isInstalled();
         return true;
     }
 
     protected void postInstallationResult(App app, boolean success) {
         String resultString = context.getString(
             success
-            ? (app.isInstalled() ? R.string.notification_installation_complete : R.string.details_installed)
-            : (app.isInstalled() ? R.string.notification_installation_failed : R.string.details_install_failure)
+            ? (wasInstalled ? R.string.notification_installation_complete : R.string.details_installed)
+            : (wasInstalled ? R.string.notification_installation_failed : R.string.details_install_failure)
         );
         if (background) {
             new NotificationManagerWrapper(context).show(new Intent(), app.getDisplayName(), resultString);
