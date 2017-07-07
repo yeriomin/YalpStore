@@ -21,24 +21,28 @@ public class PermissionsComparator {
 
     public boolean isSame(App app) {
         Log.i(getClass().getName(), "Checking " + app.getPackageName());
+        Set<String> oldPermissions = getOldPermissions(app.getPackageName());
+        if (null == oldPermissions) {
+            return true;
+        }
+        Set<String> newPermissions = new HashSet<>(app.getPermissions());
+        newPermissions.removeAll(oldPermissions);
+        Log.i(getClass().getName(), app.getPackageName() + " requests " + newPermissions.size() + " new permissions");
+        return newPermissions.isEmpty();
+    }
+
+    private Set<String> getOldPermissions(String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
-            PackageInfo pi = pm.getPackageInfo(app.getPackageName(), PackageManager.GET_PERMISSIONS);
-            Set<String> oldPermissions = new HashSet<>(Arrays.asList(
+            PackageInfo pi = pm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
+            return new HashSet<>(Arrays.asList(
                 null == pi.requestedPermissions
-                ? new String[0]
-                : pi.requestedPermissions
+                    ? new String[0]
+                    : pi.requestedPermissions
             ));
-            boolean result = oldPermissions.equals(app.getPermissions());
-            if (!result) {
-                Set<String> newPermissions = new HashSet<>(app.getPermissions());
-                newPermissions.removeAll(oldPermissions);
-                Log.i(getClass().getName(), app.getPackageName() + " requests " + newPermissions.size() + " new permissions");
-            }
-            return result;
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(getClass().getName(), "Package " + app.getPackageName() + " doesn't seem to be installed");
+            Log.e(getClass().getName(), "Package " + packageName + " doesn't seem to be installed");
         }
-        return true;
+        return null;
     }
 }
