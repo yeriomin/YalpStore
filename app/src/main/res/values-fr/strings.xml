@@ -250,4 +250,5 @@ Poursuivre ?"</string>
 <string name="details_share">"Partager"</string>
 <string name="details_developer">"Développeur : %1$s"</string>
 <string name="pref_background_update_wifi_only">"Via le Wi-Fi uniquement"</string>
+<string name="about_bitcoin_label">"Bitcoin:"</string>
 </resources>
