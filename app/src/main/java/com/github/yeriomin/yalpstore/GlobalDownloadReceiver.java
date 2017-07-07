@@ -21,9 +21,7 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
         context = c;
         notificationManager = new NotificationManagerWrapper(c);
 
-        Bundle extras = i.getExtras();
-        long downloadId = extras.getLong(DownloadManagerInterface.EXTRA_DOWNLOAD_ID);
-
+        long downloadId = i.getLongExtra(DownloadManagerInterface.EXTRA_DOWNLOAD_ID, 0L);
         DownloadState state = DownloadState.get(downloadId);
         if (null == state) {
             return;

@@ -39,6 +39,7 @@ public class PurchaseTask extends GoogleApiAsyncTask {
             DownloadState.get(app.getPackageName()).setTriggeredBy(triggeredBy);
             new Downloader(context).download(app, wrapper.purchaseOrDeliver(app), listener);
         } catch (Throwable e) {
+            context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
             return e;
         }
         return null;

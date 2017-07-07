@@ -30,13 +30,12 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Bundle extras = intent.getExtras();
-        if (null == extras) {
-            return;
-        }
-        long id = extras.getLong(DownloadManagerInterface.EXTRA_DOWNLOAD_ID);
+        long id = intent.getLongExtra(DownloadManagerInterface.EXTRA_DOWNLOAD_ID, 0L);
         DownloadState state = DownloadState.get(id);
         if (null == state) {
+            if (intent.getAction().equals(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
+                cleanup();
+            }
             return;
         }
         state.setFinished(id);
@@ -50,14 +49,7 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
     }
 
     private void draw(Context context, DownloadState state) {
-        if (null != progressBar) {
-            progressBar.setVisibility(View.GONE);
-        }
-        if (null != buttonCancel) {
-            buttonCancel.setVisibility(View.GONE);
-        }
-        buttonDownload.setText(R.string.details_download);
-        buttonDownload.setEnabled(true);
+        cleanup();
         if (!state.isEverythingSuccessful()) {
             return;
         }
@@ -72,5 +64,16 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
             buttonInstall.setEnabled(true);
             buttonInstall.setText(R.string.details_install);
         }
+    }
+
+    private void cleanup() {
+        if (null != progressBar) {
+            progressBar.setVisibility(View.GONE);
+        }
+        if (null != buttonCancel) {
+            buttonCancel.setVisibility(View.GONE);
+        }
+        buttonDownload.setText(R.string.details_download);
+        buttonDownload.setEnabled(true);
     }
 }
