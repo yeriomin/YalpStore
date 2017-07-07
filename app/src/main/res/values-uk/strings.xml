@@ -250,4 +250,5 @@ Do it?"</string>
 <string name="details_share">"Поділитися"</string>
 <string name="details_developer">"Розробник: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Лише через Wi-Fi"</string>
+<string name="about_bitcoin_label">"Bitcoin:"</string>
 </resources>
