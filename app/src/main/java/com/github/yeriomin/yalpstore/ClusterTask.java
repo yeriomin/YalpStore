@@ -18,6 +18,6 @@ public class ClusterTask extends EndlessScrollTask {
 
     @Override
     protected AppListIterator initIterator() throws IOException {
-        return new ClusterIterator(new UrlIterator(new PlayStoreApiAuthenticator(context).getApi(), clusterUrl));
+        return new AppListIterator(new UrlIterator(new PlayStoreApiAuthenticator(context).getApi(), clusterUrl));
     }
 }

@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.Activity;
 
+import com.github.yeriomin.playstoreapi.SearchIterator;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;
@@ -30,8 +31,8 @@ class SearchTask extends EndlessScrollTask {
     }
 
     @Override
-    protected SearchIterator initIterator() throws IOException {
-        return new SearchIterator(new com.github.yeriomin.playstoreapi.SearchIterator(new PlayStoreApiAuthenticator(context).getApi(), query));
+    protected AppListIterator initIterator() throws IOException {
+        return new AppListIterator(new SearchIterator(new PlayStoreApiAuthenticator(context).getApi(), query));
     }
 
     @Override

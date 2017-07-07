@@ -10,13 +10,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-abstract public class AppListIterator implements Iterator {
+public class AppListIterator implements Iterator {
 
     protected boolean hideNonfreeApps;
     protected boolean hideAppsWithAds;
     protected com.github.yeriomin.playstoreapi.AppListIterator iterator;
-
-    abstract protected List<DocV2> getDocList();
 
     public AppListIterator(com.github.yeriomin.playstoreapi.AppListIterator iterator) {
         this.iterator = iterator;
@@ -33,7 +31,7 @@ abstract public class AppListIterator implements Iterator {
     @Override
     public List<App> next() {
         List<App> apps = new ArrayList<>();
-        for (DocV2 details: getDocList()) {
+        for (DocV2 details: iterator.next()) {
             addApp(apps, AppBuilder.build(details));
         }
         return apps;

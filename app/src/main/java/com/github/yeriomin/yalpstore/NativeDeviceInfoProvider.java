@@ -43,7 +43,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     public String getUserAgentString() {
-        return "Android-Finsky/7.1.15 ("
+        return "Android-Finsky/7.9.80 ("
             + "api=3"
             + ",versionCode=" + getVendingVersionCode(context)
             + ",sdk=" + Build.VERSION.SDK_INT
@@ -161,6 +161,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
                 featureStringList.add(feature.name);
             }
         }
+        Collections.sort(featureStringList);
         return featureStringList;
     }
 
@@ -177,7 +178,10 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     static public List<String> getSharedLibraries(Context context) {
-        return Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames());
+        List<String> libraries = new ArrayList<>();
+        libraries.addAll(Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames()));
+        Collections.sort(libraries);
+        return libraries;
     }
 
     static private int getVersionCode(Context context, String packageName, int defaultVersionCode) {
@@ -194,6 +198,6 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     static public int getVendingVersionCode(Context context) {
-        return getVersionCode(context, "com.android.vending  ", GOOGLE_VENDING_VERSION_CODE);
+        return getVersionCode(context, "com.android.vending", GOOGLE_VENDING_VERSION_CODE);
     }
 }
