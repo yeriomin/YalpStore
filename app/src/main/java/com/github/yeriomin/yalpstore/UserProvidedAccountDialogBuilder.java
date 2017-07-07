@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
