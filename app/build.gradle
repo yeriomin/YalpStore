@@ -16,7 +16,7 @@ android {
         applicationId "com.github.yeriomin.yalpstore"
         minSdkVersion 5
         targetSdkVersion 26
-        versionCode 18
+        versionCode 19
         versionName getVersionName()
     }
     buildTypes {
@@ -82,6 +82,6 @@ android {
 
 dependencies {
     compile group: 'com.nothome', name: 'javaxdelta', version: '2.0.1'
-    compile 'com.github.yeriomin:play-store-api:d2c5ed9'
+    compile 'com.github.yeriomin:play-store-api:0.19'
     compile 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }
