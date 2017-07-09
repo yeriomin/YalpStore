@@ -70,9 +70,6 @@ Touchez \"créer un mot de passe\" pour être redirigé vers la page de créatio
 <string name="details_review_dialog_review_title_hint">"Titre ici"</string>
 <string name="details_review_dialog_review_comment_hint">"Commentaire ici"</string>
 <string name="details_review_dialog_fields_optional">"Champ optionnel"</string>
-<string name="details_apps_by_this_dev">"Autres applications de ce développeur"</string>
-<string name="details_similar_apps">"Applications similaires"</string>
-<string name="details_users_also_installed">"Les utilisateurs ont aussi installé"</string>
 <string name="details_signature_mismatch">"La nouvelle version est signée avec une clé différente. Veuillez d'abord désinstaller l'ancienne version et réessayer. (Attention, désinstaller une application effacera toutes ses données enregistrées dans le stockage interne)"</string>
 <string name="suffix_million">"million"</string>
 <string name="suffix_billion">"milliard"</string>
@@ -137,9 +134,7 @@ Aucune donnée personnelle ou sensible n'est enregistrée, vous pouvez relire le
 <string name="action_categories">"Catégories"</string>
 <string name="list_update_all">"Tout mettre à jour"</string>
 <string name="notification_installation_complete">"Mise à jour installée."</string>
-<string name="notification_installation_complete_toast">"L'app %1$s a été mise à jour"</string>
 <string name="notification_installation_failed">"La mise à jour a échoué"</string>
-<string name="notification_installation_failed_toast">"Impossible de mettre %1$s à jour. Avez-vous les droits super-utilisateur ?"</string>
 <string name="pref_background_update_install_summary_off">"Uniquement une notification"</string>
 <string name="pref_background_update_install_summary_on">"Installer les mises à jour si trouvées (root)"</string>
 <string name="pref_background_update_install">"Installer aussi les mises à jour (root)"</string>

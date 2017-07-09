@@ -70,9 +70,6 @@ Toca \"Crear contraseña\" para ser redirigido"</string>
 <string name="details_review_dialog_review_title_hint">"Título"</string>
 <string name="details_review_dialog_review_comment_hint">"Comentario"</string>
 <string name="details_review_dialog_fields_optional">"Puedes dejar todo en blanco"</string>
-<string name="details_apps_by_this_dev">"Más aplicaciones del desarrollador"</string>
-<string name="details_similar_apps">"Aplicaciones similares"</string>
-<string name="details_users_also_installed">"Otros usuarios también instalaron…"</string>
 <string name="details_signature_mismatch">"Esta versión esta firmada con una clave distinta a la anterior. Para instalar la nueva versión, la anterior debe desinstalarse primero. Por favor, reinténtalo después de desinstalarla. (¡Desinstalarla borrará todos los datos almacenados por la app!)"</string>
 <string name="suffix_million">"M"</string>
 <string name="suffix_billion">"1000M"</string>
@@ -137,9 +134,7 @@ No se enviará información privada de ningún tipo. Por favor, revisa el conten
 <string name="action_categories">"Categorías"</string>
 <string name="list_update_all">"Actualizar todo"</string>
 <string name="notification_installation_complete">"Actualizar instalados."</string>
-<string name="notification_installation_complete_toast">"App %1$s actualizada."</string>
 <string name="notification_installation_failed">"Fallo al instalar actualización."</string>
-<string name="notification_installation_failed_toast">"No se pudo actualizar %1$s. ¿Se concedió permiso de administración?"</string>
 <string name="pref_background_update_install_summary_off">"Solo se mostrará una notificación"</string>
 <string name="pref_background_update_install_summary_on">"Se instalan las actualizaciones si se encuentran (permiso de administración)"</string>
 <string name="pref_background_update_install">"También instalar las actualizaciones (permiso de administración)"</string>

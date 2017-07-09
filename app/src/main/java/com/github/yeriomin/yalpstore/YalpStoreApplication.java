@@ -1,8 +1,10 @@
 package com.github.yeriomin.yalpstore;
 
+import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.preference.PreferenceManager;
@@ -27,6 +29,7 @@ public class YalpStoreApplication extends Application {
         registerReceiver(new GlobalDownloadReceiver(), filter, null, new Handler(handlerThread.getLooper()));
     }
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void registerInstallReceiver() {
         IntentFilter filter = new IntentFilter();
         filter.addDataScheme("package");

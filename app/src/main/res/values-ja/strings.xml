@@ -69,9 +69,6 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="details_review_dialog_review_title_hint">"ここにタイトル"</string>
 <string name="details_review_dialog_review_comment_hint">"ここにコメント"</string>
 <string name="details_review_dialog_fields_optional">"すべてを空白のままにすることができます。"</string>
-<string name="details_apps_by_this_dev">"この開発者の他のアプリ"</string>
-<string name="details_similar_apps">"類似のアプリ"</string>
-<string name="details_users_also_installed">"ユーザーが他にインストールした"</string>
 <string name="details_signature_mismatch">"新しいﾊﾞｰｼﾞｮﾝは､以前のものと異なる暗号鍵で署名されています｡新しいﾊﾞｰｼﾞｮﾝをｲﾝｽﾄｰﾙするには､まず以前のﾊﾞｰｼﾞｮﾝをｱﾝｲﾝｽﾄｰﾙする必要があります｡その後で再度実行してください｡(ｱﾌﾟﾘｹｰｼｮﾝをｱﾝｲﾝｽﾄｰﾙすると保存したﾃﾞｰﾀｰが消えることに注意してください)"</string>
 <string name="suffix_million">"百万"</string>
 <string name="suffix_billion">"十億"</string>
@@ -135,9 +132,7 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="action_categories">"カテゴリー"</string>
 <string name="list_update_all">"すべて更新"</string>
 <string name="notification_installation_complete">"更新をインストールしました。"</string>
-<string name="notification_installation_complete_toast">"アプリ %1$s を更新しました。"</string>
 <string name="notification_installation_failed">"更新のインストールに失敗しました。"</string>
-<string name="notification_installation_failed_toast">"%1$s を更新できませんでした。 root が許可されていませんか?"</string>
 <string name="pref_background_update_install_summary_off">"通知のみ取得します"</string>
 <string name="pref_background_update_install_summary_on">"更新が見つかった場合はインストールします (root)"</string>
 <string name="pref_background_update_install">"更新のインストールもします (root)"</string>

@@ -71,9 +71,6 @@ Redirecionar para a página web dela ?"</string>
 <string name="details_review_dialog_review_title_hint">"Título:"</string>
 <string name="details_review_dialog_review_comment_hint">"Comentário:"</string>
 <string name="details_review_dialog_fields_optional">"Podes deixar em como está e enviar assim."</string>
-<string name="details_apps_by_this_dev">"Outras Apps criadas pelo mesmo programador."</string>
-<string name="details_similar_apps">"Aplicações semelhantes"</string>
-<string name="details_users_also_installed">"Utilizadores também instalaram"</string>
 <string name="details_signature_mismatch">"A nova versao é assinada com uma chave diferente da anterior. Para instalar a nova versão deves primeiro desinstalar a antiga. Por favor faz isso e tenta de novo. (Nota que ao desinstalar a versão antiga, irás apagar todos os dados da aplicação)"</string>
 <string name="suffix_million">"M"</string>
 <string name="suffix_billion">"B"</string>
@@ -140,9 +137,7 @@ Nenhuma informação sensível ou privada será enviada nesta mensagem, por favo
 <string name="action_categories">"Categorias"</string>
 <string name="list_update_all">"Atualizar todas"</string>
 <string name="notification_installation_complete">"Atualização instalada."</string>
-<string name="notification_installation_complete_toast">"Aplicação %1$s atualizada."</string>
 <string name="notification_installation_failed">"Instalação da atualização falhou."</string>
-<string name="notification_installation_failed_toast">"Não foi possível atualizar %1$s. Verifique as permissões root."</string>
 <string name="pref_background_update_install_summary_off">"Apenas receber uma notificação"</string>
 <string name="pref_background_update_install_summary_on">"Atualizações serão actualizadas se disponível (root)"</string>
 <string name="pref_background_update_install">"Também instalar as atualizações (root)"</string>

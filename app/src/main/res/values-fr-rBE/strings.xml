@@ -68,9 +68,6 @@ Choisissez  « créer un mot de passe » pour être redirigé vers la page de 
 <string name="details_review_dialog_review_title_hint">"Titre ici"</string>
 <string name="details_review_dialog_review_comment_hint">"Commentaire ici"</string>
 <string name="details_review_dialog_fields_optional">"Champs optionnels"</string>
-<string name="details_apps_by_this_dev">"Du même développeur"</string>
-<string name="details_similar_apps">"Apps similaires"</string>
-<string name="details_users_also_installed">"Les utilisateurs ont aussi installé"</string>
 <string name="details_signature_mismatch">"La nouvelle version est signée avec une clé différente de l'ancienne. Veuillez commencer par désinstaller l'ancienne version, et réessayer. Attention, toutes les données et sauvegarde de l'application seront effacées."</string>
 <string name="suffix_million">"M"</string>
 <string name="suffix_billion">"G"</string>
@@ -135,9 +132,7 @@ Aucune donnée personnelle ou sensible n'est normalement envoyée, vous pouvez r
 <string name="action_categories">"Catégories"</string>
 <string name="list_update_all">"Tout mettre à jour"</string>
 <string name="notification_installation_complete">"Mise à jour installée."</string>
-<string name="notification_installation_complete_toast">"%1$s mis à jour."</string>
 <string name="notification_installation_failed">"La mise à jour a échoué"</string>
-<string name="notification_installation_failed_toast">"Impossible de mettre %1$s à jour. Vérifier les permissions root ?"</string>
 <string name="pref_background_update_install_summary_off">"Uniquement une notification"</string>
 <string name="pref_background_update_install_summary_on">"Installer automatiquement les mises à jour disponibles (root)"</string>
 <string name="pref_background_update_install">"Installer aussi les mises à jour (root)"</string>

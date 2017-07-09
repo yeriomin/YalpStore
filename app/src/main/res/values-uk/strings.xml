@@ -69,9 +69,6 @@
 <string name="details_review_dialog_review_title_hint">"коротко"</string>
 <string name="details_review_dialog_review_comment_hint">"детальніше"</string>
 <string name="details_review_dialog_fields_optional">"Можна і не заповнювати"</string>
-<string name="details_apps_by_this_dev">"Інші додатки від даного розробника"</string>
-<string name="details_similar_apps">"Схожі додатки"</string>
-<string name="details_users_also_installed">"Користувачі також встановлюють"</string>
 <string name="details_signature_mismatch">"Нова версія підписана іншим ключем. Для встановлення оновленої версії, спершу необхідно видалити попередню версію. Будь ласка, зробіть це, та спробуйте ще раз. (Увага: видаливши додаток разом із ним буде видалено і повʼязані локальні дані)"</string>
 <string name="suffix_million">"млн"</string>
 <string name="suffix_billion">"млрд"</string>
@@ -137,9 +134,7 @@
 <string name="action_categories">"Категорії"</string>
 <string name="list_update_all">"Оновити всі"</string>
 <string name="notification_installation_complete">"Оновлення встановлено."</string>
-<string name="notification_installation_complete_toast">"%1$s додатків оновлено."</string>
 <string name="notification_installation_failed">"Помилка встановлення оновлення."</string>
-<string name="notification_installation_failed_toast">"Не вдалося оновити %1$s. Чи надано права Root?"</string>
 <string name="pref_background_update_install_summary_off">"Отримувати лише сповіщення"</string>
 <string name="pref_background_update_install_summary_on">"Встановлювати оновлення, якщо є (root)"</string>
 <string name="pref_background_update_install">"Встановлювати оновлення (root)"</string>

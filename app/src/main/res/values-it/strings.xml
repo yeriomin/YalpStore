@@ -69,9 +69,6 @@ Vado alla relativa pagina sul Play Store?"</string>
 <string name="details_review_dialog_review_title_hint">"Titolo"</string>
 <string name="details_review_dialog_review_comment_hint">"Commento"</string>
 <string name="details_review_dialog_fields_optional">"Puoi lasciare tutto vuoto."</string>
-<string name="details_apps_by_this_dev">"Altre app dello sviluppatore"</string>
-<string name="details_similar_apps">"App simili"</string>
-<string name="details_users_also_installed">"Gli utenti installano anche"</string>
 <string name="details_signature_mismatch">"La nuova versione è firmata con una chiave diversa. Per installare la nuova versione è necessario rimuovere la precedente. Per favore, rimuovila e riprova (Nota che rimuovere la app cancellerà tutti i dati in essa contenuti)."</string>
 <string name="suffix_million">"mln"</string>
 <string name="suffix_billion">"mld"</string>
@@ -136,9 +133,7 @@ Non vengono raccolti dati sensibili, ma se non ti fidi controlla pure il testo d
 <string name="action_categories">"Categorie"</string>
 <string name="list_update_all">"Aggiorna tutto"</string>
 <string name="notification_installation_complete">"Aggiornamento installato"</string>
-<string name="notification_installation_complete_toast">"App %1$s aggiornata."</string>
 <string name="notification_installation_failed">"Installazione aggiornamento fallita."</string>
-<string name="notification_installation_failed_toast">"Non posso aggiornare %1$s. Root non permesso?"</string>
 <string name="pref_background_update_install_summary_off">"Riceverai solo una notifica"</string>
 <string name="pref_background_update_install_summary_on">"Installa aggiornamenti quando disponibili (root)"</string>
 <string name="pref_background_update_install">"Installa gli aggiornamenti (root)"</string>

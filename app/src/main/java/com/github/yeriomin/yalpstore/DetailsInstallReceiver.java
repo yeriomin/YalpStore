@@ -1,9 +1,11 @@
 package com.github.yeriomin.yalpstore;
 
+import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 
 public class DetailsInstallReceiver extends BroadcastReceiver {
 
@@ -12,6 +14,7 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
 
     private DetailsActivity activity;
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public DetailsInstallReceiver(DetailsActivity activity) {
         this.activity = activity;
         IntentFilter filter = new IntentFilter();

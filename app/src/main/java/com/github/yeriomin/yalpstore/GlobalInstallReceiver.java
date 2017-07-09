@@ -1,9 +1,11 @@
 package com.github.yeriomin.yalpstore;
 
+import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -47,6 +49,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     static private boolean expectedAction(String action) {
         return action.equals(Intent.ACTION_PACKAGE_INSTALL)
             || action.equals(Intent.ACTION_PACKAGE_ADDED)

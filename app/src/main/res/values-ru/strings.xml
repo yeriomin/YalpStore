@@ -112,9 +112,6 @@
     <string name="details_review_dialog_review_title_hint">вкратце</string>
     <string name="details_review_dialog_review_comment_hint">подробнее</string>
     <string name="details_review_dialog_fields_optional">Можно и не заполнять.</string>
-    <string name="details_apps_by_this_dev">Приложения этого разработчика</string>
-    <string name="details_similar_apps">Похожие приложения</string>
-    <string name="details_users_also_installed">Пользователи также установили</string>
     <string name="details_to_play_store">Перейти в Play Store</string>
     <string name="details_share">Поделиться</string>
     <string name="details_signature_mismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте ещё раз. (При удалении приложения все его данные будут потеряны)</string>
@@ -137,9 +134,7 @@
     <string name="activity_title_search">"Поиск: \"%1$s\""</string>
     <string name="activity_title_search_publisher">"Приложения от %1$s"</string>
     <string name="notification_installation_complete">Установлено обновление.</string>
-    <string name="notification_installation_complete_toast">"Приложение %1$s обновлено."</string>
     <string name="notification_installation_failed">Не удалось установить обновление.</string>
-    <string name="notification_installation_failed_toast">"Ошибка при обновлении %1$s. Нет root-доступа?"</string>
     <string name="notification_download_starting">Скачивание начинается</string>
     <string name="notification_download_progress">"%1$s из %2$s скачано"</string>
     <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>

@@ -69,9 +69,6 @@ Přesměrovat na její stránku v obchodu Play?"</string>
 <string name="details_review_dialog_review_title_hint">"titulek zde"</string>
 <string name="details_review_dialog_review_comment_hint">"komentář zde"</string>
 <string name="details_review_dialog_fields_optional">"Můžete vše nechat prázdné."</string>
-<string name="details_apps_by_this_dev">"Ostatní aplikace tohoto vývojáře"</string>
-<string name="details_similar_apps">"Podobné aplikace"</string>
-<string name="details_users_also_installed">"Uživatelé také nainstalovali"</string>
 <string name="details_signature_mismatch">"Nová verze aplikace je podepsána jiným klíčem než starší verze. Pro instalaci nové verze je nutné nejprve odinstalovat starší verzi. Odinstalujte ji prosím a instalaci zkuste znovu. (Pozor, odinstalace aplikace smaže veškerá její interní data)"</string>
 <string name="suffix_million">"mil"</string>
 <string name="suffix_billion">"mld"</string>
@@ -136,9 +133,7 @@ Prosím popište, co jste s aplikací dělali v momentě, kdy se vyskytla chyba.
 <string name="action_categories">"Kategorie"</string>
 <string name="list_update_all">"Aktualizovat vše"</string>
 <string name="notification_installation_complete">"Aktualizace dokončena."</string>
-<string name="notification_installation_complete_toast">"Aplikace %1$s byla aktualizována."</string>
 <string name="notification_installation_failed">"Instalace aktualizace selhala."</string>
-<string name="notification_installation_failed_toast">"Nelze aktualizovat %1$s. Root nepovolen?"</string>
 <string name="pref_background_update_install_summary_off">"Dostanete pouze upozornění"</string>
 <string name="pref_background_update_install_summary_on">"Aktualizace jsou instalovány při nalezení (root)"</string>
 <string name="pref_background_update_install">"Instalovat také aktualizace (root)"</string>

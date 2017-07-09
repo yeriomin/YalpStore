@@ -71,9 +71,6 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="details_review_dialog_review_title_hint">"Titel"</string>
 <string name="details_review_dialog_review_comment_hint">"Kommentar"</string>
 <string name="details_review_dialog_fields_optional">"Du kannst alles leer lassen."</string>
-<string name="details_apps_by_this_dev">"Weitere Apps von diesem Entwickler"</string>
-<string name="details_similar_apps">"Ähnliche Apps"</string>
-<string name="details_users_also_installed">"Nutzer installierten auch"</string>
 <string name="details_signature_mismatch">"Die neue Version wurde mit einem anderen Schlüssel signiert als die Alte. Um die neue Version zu installieren, muss die alte zunächst entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: Beim Entfernen werden alle intern gespeicherten Daten dieser Anwendung gelöscht.)"</string>
 <string name="suffix_million">"Mio"</string>
 <string name="suffix_billion">"Mrd"</string>
@@ -137,9 +134,7 @@ Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den M
 <string name="action_categories">"Kategorien"</string>
 <string name="list_update_all">"Alle aktualisieren"</string>
 <string name="notification_installation_complete">"Aktualisierung installiert"</string>
-<string name="notification_installation_complete_toast">"App %1$s aktualisiert."</string>
 <string name="notification_installation_failed">"Aktualisierung fehlgeschlagen."</string>
-<string name="notification_installation_failed_toast">"Konnte %1$s nicht aktualisieren. Root-Rechte wurden nicht gewährt."</string>
 <string name="pref_background_update_install_summary_off">"Du erhälst nur eine Benachrichtigung"</string>
 <string name="pref_background_update_install_summary_on">"Verfügbare Aktualisierungen werden automatisch installiert (root)"</string>
 <string name="pref_background_update_install">"Neue Aktualisierungen installieren (root)"</string>

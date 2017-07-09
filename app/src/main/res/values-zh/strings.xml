@@ -70,9 +70,6 @@
 <string name="details_review_dialog_review_title_hint">"标题在这里"</string>
 <string name="details_review_dialog_review_comment_hint">"在这里评论"</string>
 <string name="details_review_dialog_fields_optional">"你可以留下任何"</string>
-<string name="details_apps_by_this_dev">"开发者的其他应用程序"</string>
-<string name="details_similar_apps">"类似的应用"</string>
-<string name="details_users_also_installed">"用户也安装了"</string>
 <string name="details_signature_mismatch">"新版本签名与旧版本不同，请先卸载旧版本应用再安装新版本。（注意：卸载旧版本会清除该应用存储的所有内部数据）"</string>
 <string name="suffix_million">"百万"</string>
 <string name="suffix_billion">"十亿"</string>
@@ -137,9 +134,7 @@
 <string name="action_categories">"分类"</string>
 <string name="list_update_all">"全部更新"</string>
 <string name="notification_installation_complete">"已安装更新。"</string>
-<string name="notification_installation_complete_toast">"%1$s已更新。"</string>
 <string name="notification_installation_failed">"更新安装失败。"</string>
-<string name="notification_installation_failed_toast">"无法更新%1$s。root没有授予？"</string>
 <string name="pref_background_update_install_summary_off">"您只收到通知"</string>
 <string name="pref_background_update_install_summary_on">"如果找到更新（root）"</string>
 <string name="pref_background_update_install">"还安装更新（root）"</string>

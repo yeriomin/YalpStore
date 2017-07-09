@@ -70,9 +70,6 @@ Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz 
 <string name="details_review_dialog_review_title_hint">"tytuł"</string>
 <string name="details_review_dialog_review_comment_hint">"komentarz"</string>
 <string name="details_review_dialog_fields_optional">"Możesz zostawić wszystkie pola puste."</string>
-<string name="details_apps_by_this_dev">"Inne aplikacje tego programisty"</string>
-<string name="details_similar_apps">"Podobne aplikacje"</string>
-<string name="details_users_also_installed">"Użytkownicy instalowali również"</string>
 <string name="details_signature_mismatch">"Nowa wersja jest podpisana cyfrowo innym kluczem niż obecna. Aby zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (spowoduje to usunięcie wszystkich jej danych i ustawień)."</string>
 <string name="suffix_million">"mil"</string>
 <string name="suffix_billion">"bil"</string>
@@ -137,9 +134,7 @@ Proszę opisać co robiłeś w momencie wystąpienia błędu.
 <string name="action_categories">"Kategorie"</string>
 <string name="list_update_all">"Zaktualizuj wszystko"</string>
 <string name="notification_installation_complete">"Aktualizacja została zainstalowana."</string>
-<string name="notification_installation_complete_toast">"Aplikacja %1$s zaktualizowana."</string>
 <string name="notification_installation_failed">"Instalacja aktualizacji nie powiodła się."</string>
-<string name="notification_installation_failed_toast">"Nie można zaktualizować %1$s. Uprawnienia root przyznane?"</string>
 <string name="pref_background_update_install_summary_off">"Otrzymasz tylko powiadomienie"</string>
 <string name="pref_background_update_install_summary_on">"Aktualizacje są instalowane, jeśli znaleziono (root)"</string>
 <string name="pref_background_update_install">"Zainstaluj również aktualizacje (root)"</string>

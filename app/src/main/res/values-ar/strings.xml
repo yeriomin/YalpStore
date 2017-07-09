@@ -66,9 +66,6 @@
 <string name="details_review_dialog_review_title_hint">"العنوان هنا"</string>
 <string name="details_review_dialog_review_comment_hint">"التعليق هنا"</string>
 <string name="details_review_dialog_fields_optional">"يمكنك أن تترك كل شيء فارغا."</string>
-<string name="details_apps_by_this_dev">"تطبيقات أخرى من هذا المطور"</string>
-<string name="details_similar_apps">"تطبيقات شبيهة"</string>
-<string name="details_users_also_installed">"ثبت المستخدمون أيضا"</string>
 <string name="details_signature_mismatch">"الإصدار الجديد بتوقيع مختلف. يجب أن تقوم بإزالة التطبيق القديم أولا وإعادة المحاولة. (انتبه حذف التطبيق سيحذف بياناته)"</string>
 <string name="suffix_million">"ميلون"</string>
 <string name="suffix_billion">"مليار"</string>
@@ -132,9 +129,7 @@
 <string name="action_categories">"التصنيفات"</string>
 <string name="list_update_all">"حدث الكل"</string>
 <string name="notification_installation_complete">"تم تثبيت التحديث."</string>
-<string name="notification_installation_complete_toast">"التطبيق  %1$s تم تحديثه."</string>
 <string name="notification_installation_failed">"فشل تثبيت التحديث."</string>
-<string name="notification_installation_failed_toast">"لا يمكن تحديث  %1$s. هل سمحت بالرووت؟"</string>
 <string name="pref_background_update_install_summary_off">"ستحصل فقط على إشعار."</string>
 <string name="pref_background_update_install_summary_on">"يتم تثبيت التحديثات إن وجدت (رووت)"</string>
 <string name="pref_background_update_install">"أيضا ثبت التحديثات (رووت)"</string>
