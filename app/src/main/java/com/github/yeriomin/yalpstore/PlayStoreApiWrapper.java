@@ -136,13 +136,21 @@ public class PlayStoreApiWrapper {
     }
 
     private AndroidAppDeliveryData deliver(App app) throws IOException, NotPurchasedException {
-        DeliveryResponse response = new PlayStoreApiAuthenticator(context).getApi().delivery(
-            app.getPackageName(),
-            app.getInstalledVersionCode(),
-            app.getVersionCode(),
-            app.getOfferType(),
-            GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF
-        );
+        GooglePlayAPI api = new PlayStoreApiAuthenticator(context).getApi();
+        DeliveryResponse response = app.getInstalledVersionCode() < app.getVersionCode()
+            ? api.delivery(
+                app.getPackageName(),
+                app.getInstalledVersionCode(),
+                app.getVersionCode(),
+                app.getOfferType(),
+                GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF
+            )
+            : api.delivery(
+                app.getPackageName(),
+                app.getVersionCode(),
+                app.getOfferType()
+            )
+        ;
         if (response.hasAppDeliveryData()) {
             return response.getAppDeliveryData();
         } else {
