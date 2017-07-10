@@ -92,6 +92,7 @@ public class CrashLetterDeviceInfoBuilder extends CrashLetterBuilder {
         ConfigurationInfo configurationInfo = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getDeviceConfigurationInfo();
         values.put("GL.Version", Integer.toString(configurationInfo.reqGlEsVersion));
         values.put("GSF.version", Integer.toString(NativeDeviceInfoProvider.getGsfVersionCode(context)));
+        values.put("Vending.version", Integer.toString(NativeDeviceInfoProvider.getVendingVersionCode(context)));
         return values;
     }
 
