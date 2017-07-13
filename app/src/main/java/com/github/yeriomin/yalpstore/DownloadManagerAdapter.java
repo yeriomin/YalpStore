@@ -106,6 +106,9 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
 
     private Cursor getCursor(long downloadId) {
         Cursor cursor = dm.query(new DownloadManager.Query().setFilterById(downloadId));
+        if (null == cursor) {
+            return null;
+        }
         if (!cursor.moveToFirst()) {
             cursor.close();
             return null;
