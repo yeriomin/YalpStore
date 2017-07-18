@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -13,12 +12,10 @@ import java.util.Map;
 
 public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
 
-    static private final String DUMP_DIR = "YalpStoreDebug";
-
     static private File dumpDirectory;
 
     public DebugHttpClientAdapter() {
-        dumpDirectory = new File(Environment.getExternalStorageDirectory(), DUMP_DIR);
+        dumpDirectory = Paths.getYalpPath();
         if (!dumpDirectory.exists()) {
             dumpDirectory.mkdirs();
         }
