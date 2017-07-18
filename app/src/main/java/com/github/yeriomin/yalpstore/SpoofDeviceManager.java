@@ -130,7 +130,7 @@ public class SpoofDeviceManager {
     private Map<String, String> getDevicesFromYalpDirectory() {
         Map<String, String> deviceNames = new HashMap<>();
         File defaultDir = Paths.getYalpPath();
-        if (!defaultDir.exists()) {
+        if (!defaultDir.exists() || null == defaultDir.listFiles()) {
             return deviceNames;
         }
         for (File file: defaultDir.listFiles()) {
