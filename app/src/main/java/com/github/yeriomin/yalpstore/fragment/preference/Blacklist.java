@@ -52,7 +52,7 @@ public class Blacklist extends Abstract {
 
     private Map<String, String> getInstalledAppNames() {
         Map<String, String> appNames = new HashMap<>();
-        Map<String, App> installedApps = UpdatableAppsTask.getInstalledApps(activity);
+        Map<String, App> installedApps = UpdatableAppsTask.filterSystemApps(UpdatableAppsTask.getInstalledApps(activity));
         for (String packageName: installedApps.keySet()) {
             appNames.put(packageName, installedApps.get(packageName).getDisplayName());
         }

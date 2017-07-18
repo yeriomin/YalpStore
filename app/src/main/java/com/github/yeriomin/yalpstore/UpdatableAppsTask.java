@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -42,6 +43,32 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
         return apps;
     }
 
+    static public Map<String, App> filterSystemApps(Map<String, App> apps) {
+        Map<String, App> result = new HashMap<>();
+        for (App app: apps.values()) {
+            if (!app.isSystem()) {
+                result.put(app.getPackageName(), app);
+            }
+        }
+        return result;
+    }
+
+    static public Map<String, App> filterBlacklistedApps(Context context, Map<String, App> apps) {
+        Set<String> packageNames = new HashSet<>(apps.keySet());
+        if (PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceActivity.LIST_BLACK).equals(PreferenceActivity.LIST_BLACK)) {
+            packageNames.removeAll(new BlackWhiteListManager(context).get());
+        } else {
+            packageNames.retainAll(new BlackWhiteListManager(context).get());
+        }
+        Map<String, App> result = new HashMap<>();
+        for (App app: apps.values()) {
+            if (packageNames.contains(app.getPackageName())) {
+                result.put(app.getPackageName(), app);
+            }
+        }
+        return result;
+    }
+
     public void setExplicitCheck(boolean explicitCheck) {
         this.explicitCheck = explicitCheck;
     }
@@ -50,10 +77,13 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
     protected Throwable doInBackground(String... params) {
         // Building local apps list
         installedApps = getInstalledApps(context);
+        if (!PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS)) {
+            installedApps = filterSystemApps(installedApps);
+        }
         // Requesting info from Google Play Market for installed apps
         List<App> appsFromPlayStore = new ArrayList<>();
         try {
-            appsFromPlayStore.addAll(getAppsFromPlayStore(filterPackageNames(installedApps)));
+            appsFromPlayStore.addAll(getAppsFromPlayStore(filterBlacklistedApps(context, installedApps).keySet()));
         } catch (Throwable e) {
             return e;
         }
@@ -98,24 +128,6 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
             appFromMarket.setInstalled(true);
         }
         return appFromMarket;
-    }
-
-    private Collection<String> filterPackageNames(Map<String, App> installedPackages) {
-        Set<String> installedPackageNames = installedPackages.keySet();
-        if (PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceActivity.LIST_BLACK).equals(PreferenceActivity.LIST_BLACK)) {
-            installedPackageNames.removeAll(new BlackWhiteListManager(context).get());
-        } else {
-            installedPackageNames.retainAll(new BlackWhiteListManager(context).get());
-        }
-        List<String> apps = new ArrayList<>();
-        boolean showSystemApps = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS);
-        for (String packageName: installedPackageNames) {
-            if (!showSystemApps && installedPackages.get(packageName).isSystem()) {
-                continue;
-            }
-            apps.add(packageName);
-        }
-        return apps;
     }
 
     private List<App> getAppsFromPlayStore(Collection<String> packageNames) throws IOException {
