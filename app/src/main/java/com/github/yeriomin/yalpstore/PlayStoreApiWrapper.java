@@ -85,7 +85,6 @@ public class PlayStoreApiWrapper {
         for (BulkDetailsEntry details: new PlayStoreApiAuthenticator(context).getApi().bulkDetails(packageIds).getEntryList()) {
             i++;
             if (!details.hasDoc()) {
-                Log.i(this.getClass().getName(), "Empty response for " + packageIds.get(i));
                 continue;
             }
             App app = AppBuilder.build(details.getDoc());
