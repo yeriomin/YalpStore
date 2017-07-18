@@ -117,7 +117,7 @@ public class UpdatableAppsActivity extends AppListActivity {
                 new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
             }
         };
-        task.setExplicitCheck(PreferenceActivity.getUpdateInterval(this) == -1);
+        task.setExplicitCheck(PreferenceActivity.getUpdateInterval(this) != -1);
         task.setErrorView((TextView) getListView().getEmptyView());
         task.setContext(this);
         task.setProgressIndicator(findViewById(R.id.progress));
