@@ -72,7 +72,7 @@ public class BitmapManager {
             cacheBitmapInMemory(url, bitmap);
             return bitmap;
         }
-        if (noImages) {
+        if (noImages && !NetworkState.isWifi()) {
             return null;
         }
         bitmap = downloadBitmap(url, fullSize);

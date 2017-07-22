@@ -51,10 +51,14 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
             drawable = imageView.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo());
         } else if (!TextUtils.isEmpty(imageSource.getUrl())) {
             Bitmap bitmap = new BitmapManager(imageView.getContext()).getBitmap(imageSource.getUrl(), imageSource.isFullSize());
-            if (null != bitmap || !PreferenceActivity.getBoolean(imageView.getContext(), PreferenceActivity.PREFERENCE_NO_IMAGES)) {
+            if (null != bitmap || !noImages()) {
                 drawable = new BitmapDrawable(bitmap);
             }
         }
         return null;
+    }
+    
+    private boolean noImages() {
+        return !NetworkState.isWifi() && PreferenceActivity.getBoolean(imageView.getContext(), PreferenceActivity.PREFERENCE_NO_IMAGES);
     }
 }
