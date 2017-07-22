@@ -1,4 +1,4 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.bugreport;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -9,14 +9,16 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 
-import java.io.File;
-import java.io.IOException;
+import com.github.yeriomin.yalpstore.EglExtensionRetriever;
+import com.github.yeriomin.yalpstore.NativeDeviceInfoProvider;
+import com.github.yeriomin.yalpstore.bugreport.BugReportBuilder;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TimeZone;
 
-public class CrashLetterDeviceInfoBuilder extends CrashLetterBuilder {
+public class BugReportDeviceInfoBuilder extends BugReportBuilder {
 
     static private Map<String, String> staticProperties = new HashMap<>();
 
@@ -27,28 +29,22 @@ public class CrashLetterDeviceInfoBuilder extends CrashLetterBuilder {
         staticProperties.put("GL.Extensions", TextUtils.join(",", EglExtensionRetriever.getEglExtensions()));
     }
 
-    public CrashLetterDeviceInfoBuilder(Context context) {
+    public BugReportDeviceInfoBuilder(Context context) {
         super(context);
+        setFileName("device-" + Build.DEVICE + ".properties");
     }
 
     @Override
-    public String build() {
+    public BugReportDeviceInfoBuilder build() {
         StringBuilder body = new StringBuilder();
         Map<String, String> deviceInfo = getDeviceInfo();
         for (String key : deviceInfo.keySet()) {
             body.append(key).append(" = ").append(deviceInfo.get(key)).append("\n");
         }
         body.append("\n\n");
-        return body.toString();
-    }
-
-    @Override
-    protected File getFile() {
-        try {
-            return File.createTempFile("device-" + Build.DEVICE + "-", ".properties");
-        } catch (IOException e) {
-            return null;
-        }
+        setContent(body.toString());
+        super.build();
+        return this;
     }
 
     private Map<String, String> getDeviceInfo() {

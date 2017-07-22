@@ -31,20 +31,23 @@ public class DeltaPatcherGDiffGzipped extends DeltaPatcherGDiff {
     }
 
     static private boolean GUnZip(File from, File to) {
+        GZIPInputStream zipInputStream = null;
+        FileOutputStream fileOutputStream = null;
         try {
-            GZIPInputStream zipInputStream = new GZIPInputStream(new FileInputStream(from));
-            FileOutputStream fileOutputStream = new FileOutputStream(to);
+            zipInputStream = new GZIPInputStream(new FileInputStream(from));
+            fileOutputStream = new FileOutputStream(to);
             byte[] buffer = new byte[0x1000];
             int count;
             while ((count = zipInputStream.read(buffer)) != -1) {
                 fileOutputStream.write(buffer, 0, count);
             }
-            fileOutputStream.close();
-            zipInputStream.close();
             return true;
         } catch (IOException e) {
             Log.e(DeltaPatcherGDiff.class.getName(), "Could not unzip the patch: " + e.getMessage());
             return false;
+        } finally {
+            Util.closeSilently(fileOutputStream);
+            Util.closeSilently(zipInputStream);
         }
     }
 }

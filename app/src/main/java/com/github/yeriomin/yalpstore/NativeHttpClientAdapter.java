@@ -147,7 +147,8 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
             outputStream.write(buffer, 0, bytesRead);
         }
         byte[] result = outputStream.toByteArray();
-        bufferedInputStream.close();
+        Util.closeSilently(bufferedInputStream);
+        Util.closeSilently(outputStream);
         return result;
     }
 

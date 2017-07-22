@@ -96,20 +96,22 @@ public class BitmapManager {
             options.inJustDecodeBounds = false;
             options.inDither = false;
             return BitmapFactory.decodeStream(new FileInputStream(cached), null, options);
-        } catch (Throwable e) {
+        } catch (IOException e) {
             Log.e(BitmapManager.class.getName(), "Could not get cached bitmap: " + e.getClass().getName() + " " + e.getMessage());
             return null;
         }
     }
 
     static private void cacheBitmapOnDisk(Bitmap bitmap, File cached) {
+        FileOutputStream out = null;
         try {
-            FileOutputStream out = new FileOutputStream(cached);
+            out = new FileOutputStream(cached);
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
             out.flush();
-            out.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            Util.closeSilently(out);
         }
     }
 

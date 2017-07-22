@@ -28,6 +28,10 @@
         android:title="@string/action_logout"
         android:icon="@drawable/ic_logout" />
     <item
+        android:id="@+id/action_bug_report"
+        android:title="@string/action_bug_report"
+        android:icon="@drawable/ic_bug_report" />
+    <item
         android:id="@+id/action_about"
         android:title="@string/action_about"
         android:icon="@drawable/ic_about" />

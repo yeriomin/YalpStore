@@ -83,6 +83,9 @@ public abstract class YalpStoreActivity extends Activity {
             case R.id.action_about:
                 startActivity(new Intent(this, AboutActivity.class));
                 break;
+            case R.id.action_bug_report:
+                startActivity(new Intent(this, BugReportActivity.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

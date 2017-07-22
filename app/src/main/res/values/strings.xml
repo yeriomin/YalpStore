@@ -36,6 +36,7 @@
     <string name="action_get_local_apk">Get local apk</string>
     <string name="action_make_system">Convert to system app</string>
     <string name="action_make_normal">Convert to normal app</string>
+    <string name="action_bug_report">Report a problem</string>
     <string name="search_filter">All apps</string>
     <string name="search_title">Search applications</string>
     <string name="dialog_title_package_id">Package with this name exists</string>
@@ -215,4 +216,9 @@
     <string name="manual_download_compatible">Version code field has been pre-filled with this app\'s latest compatible version code. If you want the previous version, simply input a number smaller than the current. If the developer has not deleted the apk of the previous version from Play Store, you might be able to start the download.</string>
     <string name="manual_download_warning">This page lets you manually choose the version of the app to download. Version code is a number identifying the version of an app. It starts from 1 and is incremented by the app developer every time there is a new version. Normally Play Store lets you download only the latest apk compatible with your device. By manually supplying this number you might be able to get other versions as well.\n\nKeep in mind that downloading arbitrary versions of apps is not supported by Google Play Store. Your success depends on a lucky guess of the version code. Even if you guess right and you get the download to start, you might get an incompatible apk. Most likely, you are wasting your time!</string>
     <string name="manual_download_hint_version_code">version code here</string>
+    <string name="bug_report_hint_message">Detailed issue description</string>
+    <string name="bug_report_hint_identification">Your email/name/anything (optional)</string>
+    <string name="bug_report_explanation_content">Info about your device, Yalp Store logs and some of Yalp Store preferences will be automatically added to your message. No private or sensitive information is collected.</string>
+    <string name="bug_report_explanation_crash">You can help fix this by sending a bug report to the developer. Please describe what you were trying to do when the error occurred and tap OK to send it.</string>
+    <string name="bug_report_explanation_bug_report">Please describe the issue. Be specific if possible. Does the problem occur with a specific app? Does it happen all the time or only sometimes? How can it be reproduced?</string>
 </resources>

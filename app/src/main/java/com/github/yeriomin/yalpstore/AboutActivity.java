@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.yeriomin.yalpstore.bugreport.BugReportSenderEmail;
+
 public class AboutActivity extends YalpStoreActivity {
 
     @Override
@@ -30,7 +32,7 @@ public class AboutActivity extends YalpStoreActivity {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                CrashLetterActivity.send(AboutActivity.this, null);
+                new BugReportSenderEmail(getApplicationContext()).send();
             }
         });
         findViewById(R.id.website).setOnClickListener(new UriOpeningListener());

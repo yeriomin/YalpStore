@@ -56,22 +56,12 @@ public class InstalledApkCopier {
                 out.write(buffer, 0, read);
             }
 
-            in.close();
             out.flush();
-            out.close();
         } catch (IOException e) {
             Log.e(InstalledApkCopier.class.getName(), e.getClass().getName() + " " + e.getMessage());
         } finally {
-            try {
-                if (null != in) {
-                    in.close();
-                }
-                if (null != out) {
-                    out.close();
-                }
-            } catch (IOException e) {
-                // Could not close
-            }
+            Util.closeSilently(in);
+            Util.closeSilently(out);
         }
     }
 }

@@ -7,6 +7,8 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -92,6 +94,17 @@ public class Util {
             return Integer.parseInt(intAsString);
         } catch (NumberFormatException e) {
             return defaultValue;
+        }
+    }
+
+    static public void closeSilently(Closeable closeable) {
+        if (null == closeable) {
+            return;
+        }
+        try {
+            closeable.close();
+        } catch (IOException e) {
+            // Closing silently
         }
     }
 }

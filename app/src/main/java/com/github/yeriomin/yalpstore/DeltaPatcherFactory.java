@@ -23,12 +23,14 @@ public class DeltaPatcherFactory {
 
     static private boolean isGZipped(File f) {
         int magic = 0;
+        RandomAccessFile raf = null;
         try {
-            RandomAccessFile raf = new RandomAccessFile(f, "r");
+            raf = new RandomAccessFile(f, "r");
             magic = raf.read() & 0xff | ((raf.read() << 8) & 0xff00);
-            raf.close();
         } catch (IOException e) {
             Log.e(DeltaPatcherGDiff.class.getName(), "Could not check if patch is gzipped");
+        } finally {
+            Util.closeSilently(raf);
         }
         return magic == GZIPInputStream.GZIP_MAGIC;
     }

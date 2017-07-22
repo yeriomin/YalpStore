@@ -1,20 +1,21 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.bugreport;
 
 import android.content.Context;
 
+import com.github.yeriomin.yalpstore.bugreport.BugReportBuilder;
+
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class CrashLetterLogBuilder extends CrashLetterBuilder {
+public class BugReportLogBuilder extends BugReportBuilder {
 
-    public CrashLetterLogBuilder(Context context) {
+    public BugReportLogBuilder(Context context) {
         super(context);
+        setFileName("log.txt");
     }
 
     @Override
-    protected String build() {
+    public BugReportLogBuilder build() {
         StringBuilder result = new StringBuilder();
         Process logcat;
         try {
@@ -27,15 +28,8 @@ public class CrashLetterLogBuilder extends CrashLetterBuilder {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result.toString();
-    }
-
-    @Override
-    protected File getFile() {
-        try {
-            return File.createTempFile("log-", ".txt");
-        } catch (IOException e) {
-            return null;
-        }
+        setContent(result.toString());
+        super.build();
+        return this;
     }
 }

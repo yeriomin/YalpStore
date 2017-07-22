@@ -18,4 +18,5 @@
     <string name="content_description_cancel_download" translatable="false">"Cancel download"</string>
     <string name="email_subject_feedback" translatable="false">"%1$s %2$s User Feedback"</string>
     <string name="email_subject_crash_report" translatable="false">"%1$s %2$s Crash Report"</string>
+    <string name="bug_report_message" translatable="false">"From: %1$s\n\nMessage:\n%2$s"</string>
 </resources>

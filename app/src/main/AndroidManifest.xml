@@ -23,7 +23,7 @@
         <provider
             android:name="com.github.yeriomin.yalpstore.FileProvider"
             android:authorities="com.github.yeriomin.yalpstore.fileprovider"
-            android:exported="false"
+            android:exported="true"
             android:grantUriPermissions="true" >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
@@ -114,9 +114,10 @@
         <activity android:name=".AboutActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
             <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
-        <activity android:name=".CrashLetterActivity" android:process=":report_process" />
+        <activity android:name=".BugReportActivity" android:launchMode="singleInstance" android:noHistory="true" android:process=":report_process" />
         <service android:enabled="true" android:name=".notification.CancelDownloadService" />
         <service android:enabled="true" android:name=".notification.IgnoreUpdatesService" />
+        <service android:enabled="true" android:name=".bugreport.BugReportService" />
     </application>
 
 </manifest>

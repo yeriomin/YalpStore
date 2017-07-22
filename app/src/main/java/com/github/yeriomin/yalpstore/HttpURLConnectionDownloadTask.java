@@ -160,12 +160,9 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
             Log.e(getClass().getName(), "Could not read: " + e.getMessage());
             DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_HTTP_DATA_ERROR);
             return false;
-        }
-        try {
-            in.close();
-            out.close();
-        } catch (IOException e) {
-            // Could not close
+        } finally {
+            Util.closeSilently(in);
+            Util.closeSilently(out);
         }
         return true;
     }

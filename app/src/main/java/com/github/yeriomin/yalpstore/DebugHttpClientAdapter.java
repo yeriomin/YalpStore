@@ -71,13 +71,14 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
         }
         String path = new File(dumpDirectory, fileName).getAbsolutePath();
         Log.i(DebugHttpClientAdapter.class.getName(), "Writing to " + path);
-        FileOutputStream stream;
+        FileOutputStream stream = null;
         try {
             stream = new FileOutputStream(path);
             stream.write(body);
-            stream.close();
         } catch (IOException e) {
             Log.e(DebugHttpClientAdapter.class.getName(), "Could not dump request/response to " + path + ": " + e.getMessage());
+        } finally {
+            Util.closeSilently(stream);
         }
     }
 

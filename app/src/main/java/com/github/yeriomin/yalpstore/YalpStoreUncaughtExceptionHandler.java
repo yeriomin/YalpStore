@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-class YalpStoreUncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
+import com.github.yeriomin.yalpstore.bugreport.BugReportService;
 
-    static public final String INTENT_MESSAGE = "INTENT_MESSAGE";
+class YalpStoreUncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
 
     private Context context;
 
@@ -17,11 +17,10 @@ class YalpStoreUncaughtExceptionHandler implements Thread.UncaughtExceptionHandl
     @Override
     public void uncaughtException(Thread t, final Throwable e) {
         e.printStackTrace();
-        Intent errorIntent = new Intent(context.getApplicationContext(), CrashLetterActivity.class);
-        errorIntent.putExtra(INTENT_MESSAGE, Log.getStackTraceString(e));
-        errorIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent errorIntent = new Intent(context.getApplicationContext(), BugReportActivity.class);
+        errorIntent.putExtra(BugReportService.INTENT_STACKTRACE, Log.getStackTraceString(e));
+        errorIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.getApplicationContext().startActivity(errorIntent);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(2);
+        System.exit(0);
     }
 }
