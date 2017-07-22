@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.bugreport.BugReportService;
 
@@ -36,6 +37,7 @@ public class BugReportActivity extends Activity {
     }
 
     public void sendBugReport(View view) {
+        Toast.makeText(getApplicationContext(), getString(R.string.thank_you), Toast.LENGTH_SHORT).show();
         startService(getBugReportIntent(
             stackTrace,
             ((EditText) findViewById(R.id.message)).getText().toString(),
