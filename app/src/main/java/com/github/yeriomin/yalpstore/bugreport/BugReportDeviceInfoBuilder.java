@@ -11,7 +11,6 @@ import android.util.DisplayMetrics;
 
 import com.github.yeriomin.yalpstore.EglExtensionRetriever;
 import com.github.yeriomin.yalpstore.NativeDeviceInfoProvider;
-import com.github.yeriomin.yalpstore.bugreport.BugReportBuilder;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

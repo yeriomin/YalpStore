@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore.bugreport;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.github.yeriomin.yalpstore.PreferenceActivity;

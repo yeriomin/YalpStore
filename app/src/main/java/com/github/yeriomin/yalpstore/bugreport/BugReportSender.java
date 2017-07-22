@@ -3,7 +3,6 @@ package com.github.yeriomin.yalpstore.bugreport;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -2,8 +2,6 @@ package com.github.yeriomin.yalpstore.bugreport;
 
 import android.content.Context;
 
-import com.github.yeriomin.yalpstore.bugreport.BugReportBuilder;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 

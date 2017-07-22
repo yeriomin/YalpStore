@@ -1,12 +1,8 @@
 package com.github.yeriomin.yalpstore.bugreport;
 
 import android.content.Context;
-import android.net.Uri;
-import android.os.Build;
 import android.util.Log;
 
-import com.github.yeriomin.yalpstore.BuildConfig;
-import com.github.yeriomin.yalpstore.FileProvider;
 import com.github.yeriomin.yalpstore.Util;
 
 import java.io.BufferedWriter;
