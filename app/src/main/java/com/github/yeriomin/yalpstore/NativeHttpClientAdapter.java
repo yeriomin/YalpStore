@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.GZIPInputStream;
 
 public class NativeHttpClientAdapter extends HttpClientAdapter {
 
@@ -73,6 +74,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     protected byte[] request(HttpURLConnection connection, byte[] body, Map<String, String> headers) throws IOException {
         connection.setConnectTimeout(TIMEOUT);
         connection.setReadTimeout(TIMEOUT);
+        connection.setRequestProperty("Accept-Encoding", "gzip");
         for (String headerName: headers.keySet()) {
             connection.addRequestProperty(headerName, headers.get(headerName));
         }
@@ -84,10 +86,11 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
 
         int code = connection.getResponseCode();
         Log.i(getClass().getName(), "HTTP result code " + code);
+        boolean isGzip = connection.getContentEncoding().contains("gzip");
         try {
-            content = readFully(connection.getInputStream());
+            content = readFully(connection.getInputStream(), isGzip);
         } catch (IOException e) {
-            content = readFully(connection.getErrorStream());
+            content = readFully(connection.getErrorStream(), isGzip);
             Log.e(getClass().getName(), "Exception " + e.getClass().getName() + " " + e.getMessage());
             if (code < 400) {
                 throw e;
@@ -138,7 +141,10 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         }
     }
 
-    static private byte[] readFully(InputStream inputStream) throws IOException {
+    static private byte[] readFully(InputStream inputStream, boolean gzipped) throws IOException {
+        if (gzipped) {
+            inputStream = new GZIPInputStream(inputStream);
+        }
         InputStream bufferedInputStream = new BufferedInputStream(inputStream);
         byte[] buffer = new byte[8192];
         int bytesRead;
