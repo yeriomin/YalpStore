@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
 
+import com.github.yeriomin.yalpstore.model.ImageSource;
+
 import java.util.List;
 
 public class ImageAdapter extends BaseAdapter {
@@ -39,35 +41,43 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageDownloadTask task = getTask();
+        LoadImageTask task = getTask();
         ImageView imageView = new ImageView(context);
-        task.setView(imageView);
-        task.execute((String) getItem(position));
+        task.setImageView(imageView);
+        ImageSource source = new ImageSource((String) getItem(position));
+        source.setFullSize(true);
+        task.execute(source);
         return imageView;
     }
 
-    protected ImageDownloadTask getTask() {
-        ImageDownloadTask task = new ImageDownloadTask() {
+    protected LoadImageTask getTask() {
+        return new AdapterLoadImageTask(screenWidth);
+    }
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                Bitmap bitmap = ((BitmapDrawable) this.view.getDrawable()).getBitmap();
-                int w = screenWidth;
-                int h = screenWidth;
-                if (null != bitmap) {
-                    w = Math.min(w, bitmap.getWidth());
-                    h = Math.min(h, bitmap.getHeight());
-                }
-                this.view.setLayoutParams(new Gallery.LayoutParams(w, h));
-                this.view.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                if (this.view.getParent() instanceof Gallery) {
-                    Gallery gallery = (Gallery) this.view.getParent();
-                    gallery.setMinimumHeight(Math.max(gallery.getMeasuredHeight(), h));
-                }
+    static class AdapterLoadImageTask extends LoadImageTask {
+
+        protected int screenWidth;
+
+        public AdapterLoadImageTask(int screenWidth) {
+            this.screenWidth = screenWidth;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+            int w = screenWidth;
+            int h = screenWidth;
+            if (null != bitmap) {
+                w = Math.min(w, bitmap.getWidth());
+                h = Math.min(h, bitmap.getHeight());
             }
-        };
-        task.setFullSize(true);
-        return task;
+            imageView.setLayoutParams(new Gallery.LayoutParams(w, h));
+            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            if (imageView.getParent() instanceof Gallery) {
+                Gallery gallery = (Gallery) imageView.getParent();
+                gallery.setMinimumHeight(Math.max(gallery.getMeasuredHeight(), h));
+            }
+        }
     }
 }

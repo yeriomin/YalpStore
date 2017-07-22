@@ -27,7 +27,8 @@ public class BitmapManager {
     static private final long VALID_MILLIS = 1000*60*60*24*7;
     static private LruCache<String, Bitmap> memoryCache;
 
-    private Context context;
+    private File baseDir;
+    private boolean noImages;
 
     static {
         HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
@@ -56,11 +57,8 @@ public class BitmapManager {
     }
 
     public BitmapManager(Context context) {
-        this.context = context;
-    }
-
-    public Bitmap getBitmap(String url) {
-        return getBitmap(url, false);
+        baseDir = context.getCacheDir();
+        noImages = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_NO_IMAGES);
     }
 
     public Bitmap getBitmap(String url, boolean fullSize) {
@@ -68,11 +66,14 @@ public class BitmapManager {
         if (null != bitmap) {
             return bitmap;
         }
-        File onDisk = getFileName(url);
-        if (onDisk.exists() && isValid(onDisk) && onDisk.length() > 0) {
+        File onDisk = getFile(url);
+        if (isStoredAndValid(onDisk)) {
             bitmap = getCachedBitmapFromDisk(onDisk);
             cacheBitmapInMemory(url, bitmap);
             return bitmap;
+        }
+        if (noImages) {
+            return null;
         }
         bitmap = downloadBitmap(url, fullSize);
         if (null != bitmap) {
@@ -82,12 +83,15 @@ public class BitmapManager {
         return bitmap;
     }
 
-    private File getFileName(String urlString) {
-        return new File(context.getCacheDir(), String.valueOf(urlString.hashCode()) + ".png");
+    private File getFile(String urlString) {
+        return new File(baseDir, String.valueOf(urlString.hashCode()) + ".png");
     }
 
-    static private boolean isValid(File cached) {
-        return cached.lastModified() + VALID_MILLIS > System.currentTimeMillis();
+    static private boolean isStoredAndValid(File cached) {
+        return cached.exists()
+            && cached.lastModified() + VALID_MILLIS > System.currentTimeMillis()
+            && cached.length() > 0
+        ;
     }
 
     static private Bitmap getCachedBitmapFromDisk(File cached) {

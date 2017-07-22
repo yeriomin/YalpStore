@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.LoadIconTask;
+import com.github.yeriomin.yalpstore.LoadImageTask;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -13,7 +13,7 @@ import java.util.WeakHashMap;
 
 public abstract class AppBadge extends ListItem {
 
-    static private WeakHashMap<Integer, LoadIconTask> tasks = new WeakHashMap<>();
+    static private WeakHashMap<Integer, LoadImageTask> tasks = new WeakHashMap<>();
 
     protected App app;
 
@@ -42,8 +42,8 @@ public abstract class AppBadge extends ListItem {
             return;
         }
         imageView.setTag(app.getPackageName());
-        LoadIconTask task = new LoadIconTask(imageView);
-        LoadIconTask previousTask = tasks.get(imageView.hashCode());
+        LoadImageTask task = new LoadImageTask(imageView);
+        LoadImageTask previousTask = tasks.get(imageView.hashCode());
         if (null != previousTask) {
             previousTask.cancel(true);
         }

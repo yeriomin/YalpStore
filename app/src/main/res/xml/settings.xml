@@ -96,5 +96,11 @@
             android:title="@string/pref_ui_theme"
             android:entries="@array/uiThemeLabels"
             android:entryValues="@array/uiThemeValues"/>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="PREFERENCE_NO_IMAGES"
+            android:summaryOff="@string/pref_no_images_summary_off"
+            android:summaryOn="@string/pref_no_images_summary_on"
+            android:title="@string/pref_no_images" />
     </PreferenceCategory>
 </PreferenceScreen>

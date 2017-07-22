@@ -36,6 +36,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_INSTALLATION_METHOD = "PREFERENCE_INSTALLATION_METHOD";
     public static final String PREFERENCE_UPDATES_ONLY = "PREFERENCE_UPDATES_ONLY";
     public static final String PREFERENCE_SHOW_SYSTEM_APPS = "PREFERENCE_SHOW_SYSTEM_APPS";
+    public static final String PREFERENCE_NO_IMAGES = "PREFERENCE_NO_IMAGES";
 
     public static final String INSTALLATION_METHOD_DEFAULT = "default";
     public static final String INSTALLATION_METHOD_ROOT = "root";

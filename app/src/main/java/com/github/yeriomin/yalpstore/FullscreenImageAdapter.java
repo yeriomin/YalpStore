@@ -16,17 +16,24 @@ class FullscreenImageAdapter extends ImageAdapter {
     }
 
     @Override
-    protected ImageDownloadTask getTask() {
-        ImageDownloadTask task = new ImageDownloadTask() {
+    protected LoadImageTask getTask() {
+        return new FullscreenLoadImageTask(screenWidth, screenHeight);
+    }
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                this.view.setLayoutParams(new Gallery.LayoutParams(screenWidth, screenHeight));
-                this.view.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            }
-        };
-        task.setFullSize(true);
-        return task;
+    static class FullscreenLoadImageTask extends AdapterLoadImageTask {
+
+        private int screenHeight;
+
+        public FullscreenLoadImageTask(int screenWidth, int screenHeight) {
+            super(screenWidth);
+            this.screenHeight = screenHeight;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            imageView.setLayoutParams(new Gallery.LayoutParams(screenWidth, screenHeight));
+            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        }
     }
 }

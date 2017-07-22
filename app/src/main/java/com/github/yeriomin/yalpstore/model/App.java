@@ -134,15 +134,15 @@ public class App implements Comparable<App> {
         this.iconUrl = iconUrl;
     }
 
-    public IconInfo getIconInfo() {
-        IconInfo iconInfo = new IconInfo();
+    public ImageSource getIconInfo() {
+        ImageSource imageSource = new ImageSource();
         if (null != packageInfo && null != packageInfo.applicationInfo) {
-            iconInfo.setApplicationInfo(packageInfo.applicationInfo);
+            imageSource.setApplicationInfo(packageInfo.applicationInfo);
         }
         if (!TextUtils.isEmpty(iconUrl)) {
-            iconInfo.setUrl(iconUrl);
+            imageSource.setUrl(iconUrl);
         }
-        return iconInfo;
+        return imageSource;
     }
 
     public String getChanges() {

@@ -10,7 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.ImageDownloadTask;
+import com.github.yeriomin.yalpstore.LoadImageTask;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.ReviewDeleteTask;
@@ -18,6 +18,7 @@ import com.github.yeriomin.yalpstore.ReviewLoadTask;
 import com.github.yeriomin.yalpstore.ReviewStorageIterator;
 import com.github.yeriomin.yalpstore.UserReviewDialogBuilder;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.ImageSource;
 
 import java.util.List;
 
@@ -124,9 +125,7 @@ public class Review extends Abstract {
         ));
         ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
         parent.addView(reviewLayout);
-        ImageDownloadTask task = new ImageDownloadTask();
-        task.setView((ImageView) reviewLayout.findViewById(R.id.avatar));
-        task.execute((String) review.getUserPhotoUrl());
+        new LoadImageTask((ImageView) reviewLayout.findViewById(R.id.avatar)).execute(new ImageSource(review.getUserPhotoUrl()));
     }
 
     private void initReviewListControls() {
