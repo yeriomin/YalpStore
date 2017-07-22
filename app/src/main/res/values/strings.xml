@@ -36,7 +36,7 @@
     <string name="action_get_local_apk">Get local apk</string>
     <string name="action_make_system">Convert to system app</string>
     <string name="action_make_normal">Convert to normal app</string>
-    <string name="action_bug_report">Report a problem</string>
+    <string name="action_bug_report">Report an issue</string>
     <string name="search_filter">All apps</string>
     <string name="search_title">Search applications</string>
     <string name="dialog_title_package_id">Package with this name exists</string>
