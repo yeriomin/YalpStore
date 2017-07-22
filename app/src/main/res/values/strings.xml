@@ -75,6 +75,8 @@
     <string name="dialog_message_system_app_warning_uninstall">Are you sure you want to remove this system app? System apps are placed into your device by device vendor and are most likely required for it to function as intended.\n\nKeep in mind that removing system apps is NOT supported by the Android OS and therefore is NOT safe and NOT guaranteed to work.\n\nDo not do it out of curiosity. It might break your device. Backup your device before trying.</string>
     <string name="dialog_title_system_app_self">Making Yalp a system app</string>
     <string name="dialog_message_system_app_self">Using privileged permissions to allow background installation of apps requires making Yalp Store a system app.\n\nThe process is imperfect and vendor-specific, so it might not work.\n\nDo it?</string>
+    <string name="dialog_title_spoof_request">Request</string>
+    <string name="dialog_message_spoof_request">Device spoofing is possible because users such as you submit bug reports with device information. If you want the definitions to be precise and up-to-date, please tap OK and your device information will be sent to the Yalp Store developer.</string>
     <string name="error_incorrect_password">Incorrect email or password.</string>
     <string name="error_credentials_empty">Provide google account credentials, please.</string>
     <string name="error_no_network">No network connection.</string>
@@ -183,6 +185,7 @@
     <string name="pref_device_to_pretend_to_be">Pretend to be a different device</string>
     <string name="pref_device_to_pretend_to_be_default">Your original device info</string>
     <string name="pref_device_to_pretend_to_be_toast">This change will be applied after you re-login</string>
+    <string name="pref_device_to_pretend_to_be_notice">"If you put device definitions into %1$s they will appear in this list"</string>
     <string name="pref_hide_apps_with_ads">Hide apps with ads</string>
     <string name="pref_hide_apps_with_ads_summary_off">Apps with ads are displayed now</string>
     <string name="pref_hide_apps_with_ads_summary_on">Apps with ads are not displayed now</string>
@@ -224,4 +227,5 @@
     <string name="bug_report_explanation_content">Info about your device, Yalp Store logs and some of Yalp Store preferences will be automatically added to your message. No private or sensitive information is collected.</string>
     <string name="bug_report_explanation_crash">You can help fix this by sending a bug report to the developer. Please describe what you were trying to do when the error occurred and tap OK to send it.</string>
     <string name="bug_report_explanation_bug_report">Please describe the issue. Be specific if possible. Does the problem occur with a specific app? Does it happen all the time or only sometimes? How can it be reproduced?</string>
+    <string name="thank_you">Thank you</string>
 </resources>

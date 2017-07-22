@@ -18,6 +18,10 @@ public abstract class YalpStoreActivity extends Activity {
 
     static protected boolean logout = false;
 
+    public static void cascadeFinish() {
+        YalpStoreActivity.logout = true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.v(getClass().getName(), "Starting activity");
