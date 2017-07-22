@@ -81,7 +81,8 @@ android {
 }
 
 dependencies {
-    compile group: 'com.nothome', name: 'javaxdelta', version: '2.0.1'
-    compile 'com.github.yeriomin:play-store-api:0.19'
+    compile 'com.nothome:javaxdelta:2.0.1'
+    debugCompile 'com.github.yeriomin:play-store-api:master-SNAPSHOT'
+    releaseCompile 'com.github.yeriomin:play-store-api:0.' + android.defaultConfig.versionCode
     compile 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }
