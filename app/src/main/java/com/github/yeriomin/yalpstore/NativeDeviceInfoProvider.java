@@ -24,6 +24,9 @@ import java.util.TimeZone;
 
 public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
+    static public final String GOOGLE_SERVICES_PACKAGE_ID = "com.google.android.gms";
+    static public final String GOOGLE_VENDING_PACKAGE_ID = "com.android.vending";
+
     static private final int GOOGLE_SERVICES_VERSION_CODE = 10548448;
     static private final int GOOGLE_VENDING_VERSION_CODE = 80798000;
 
@@ -184,7 +187,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         return libraries;
     }
 
-    static private int getVersionCode(Context context, String packageName, int defaultVersionCode) {
+    static public int getVersionCode(Context context, String packageName, int defaultVersionCode) {
         try {
             int versionCode = context.getPackageManager().getPackageInfo(packageName, 0).versionCode;
             return versionCode > defaultVersionCode ? versionCode : defaultVersionCode;
@@ -194,10 +197,10 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     static public int getGsfVersionCode(Context context) {
-        return getVersionCode(context, "com.google.android.gms", GOOGLE_SERVICES_VERSION_CODE);
+        return getVersionCode(context, GOOGLE_SERVICES_PACKAGE_ID, GOOGLE_SERVICES_VERSION_CODE);
     }
 
     static public int getVendingVersionCode(Context context) {
-        return getVersionCode(context, "com.android.vending", GOOGLE_VENDING_VERSION_CODE);
+        return getVersionCode(context, GOOGLE_VENDING_PACKAGE_ID, GOOGLE_VENDING_VERSION_CODE);
     }
 }

@@ -17,6 +17,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TimeZone;
 
+import static com.github.yeriomin.yalpstore.NativeDeviceInfoProvider.GOOGLE_SERVICES_PACKAGE_ID;
+import static com.github.yeriomin.yalpstore.NativeDeviceInfoProvider.GOOGLE_VENDING_PACKAGE_ID;
+
 public class BugReportDeviceInfoBuilder extends BugReportBuilder {
 
     static private Map<String, String> staticProperties = new HashMap<>();
@@ -86,8 +89,8 @@ public class BugReportDeviceInfoBuilder extends BugReportBuilder {
         values.put("HasFiveWayNavigation", Boolean.toString(config.navigation == Configuration.NAVIGATIONHIDDEN_YES));
         ConfigurationInfo configurationInfo = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getDeviceConfigurationInfo();
         values.put("GL.Version", Integer.toString(configurationInfo.reqGlEsVersion));
-        values.put("GSF.version", Integer.toString(NativeDeviceInfoProvider.getGsfVersionCode(context)));
-        values.put("Vending.version", Integer.toString(NativeDeviceInfoProvider.getVendingVersionCode(context)));
+        values.put("GSF.version", Integer.toString(NativeDeviceInfoProvider.getVersionCode(context, GOOGLE_SERVICES_PACKAGE_ID, 0)));
+        values.put("Vending.version", Integer.toString(NativeDeviceInfoProvider.getVersionCode(context, GOOGLE_VENDING_PACKAGE_ID, 0)));
         return values;
     }
 
