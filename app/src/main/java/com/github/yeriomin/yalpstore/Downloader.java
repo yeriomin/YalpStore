@@ -20,7 +20,7 @@ public class Downloader {
     public void download(App app, AndroidAppDeliveryData deliveryData, OnDownloadProgressListener listener) {
         DownloadState state = DownloadState.get(app.getPackageName());
         state.setApp(app);
-        DownloadManagerInterface.Type type = app.getVersionCode() > app.getInstalledVersionCode() && deliveryData.hasPatchData()
+        DownloadManagerInterface.Type type = shouldDownloadDelta(app, deliveryData)
             ? DownloadManagerInterface.Type.DELTA
             : DownloadManagerInterface.Type.APK
         ;
@@ -50,5 +50,14 @@ public class Downloader {
                 listener
             ));
         }
+    }
+
+    static private boolean shouldDownloadDelta(App app, AndroidAppDeliveryData deliveryData) {
+        File currentApk = InstalledApkCopier.getCurrentApk(app);
+        return app.getVersionCode() > app.getInstalledVersionCode()
+            && deliveryData.hasPatchData()
+            && null != currentApk
+            && currentApk.exists()
+        ;
     }
 }

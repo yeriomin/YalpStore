@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
@@ -29,7 +30,7 @@ public class DownloadOptions extends Abstract {
 
     @Override
     public void draw() {
-        final ImageButton more = (ImageButton) activity.findViewById(R.id.more);
+        final ImageButton more = activity.findViewById(R.id.more);
         if (null == more) {
             return;
         }
@@ -37,9 +38,6 @@ public class DownloadOptions extends Abstract {
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null == more) {
-                    return;
-                }
                 more.showContextMenu();
             }
         });
@@ -64,7 +62,7 @@ public class DownloadOptions extends Abstract {
                 activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
                 return true;
             case R.id.action_get_local_apk:
-                copyLocalApk();
+                new CopyTask(activity).execute(app);
                 return true;
             case R.id.action_make_system:
                 checkAndExecute(new ConvertToSystemTask(activity, app));
@@ -75,26 +73,6 @@ public class DownloadOptions extends Abstract {
             default:
                 return activity.onContextItemSelected(item);
         }
-    }
-
-    private void copyLocalApk() {
-        AsyncTask<Void, Void, Boolean> task = new AsyncTask<Void, Void, Boolean>() {
-
-            @Override
-            protected void onPostExecute(Boolean result) {
-                String message = activity.getString(InstalledApkCopier.copy(app)
-                    ? R.string.details_saved_in_downloads
-                    : R.string.details_could_not_copy_apk
-                );
-                Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            protected Boolean doInBackground(Void... params) {
-                return InstalledApkCopier.copy(app);
-            }
-        };
-        task.execute();
     }
 
     private void checkAndExecute(SystemRemountTask primaryTask) {
@@ -118,6 +96,31 @@ public class DownloadOptions extends Abstract {
             return true;
         } catch (PackageManager.NameNotFoundException e) {
             return false;
+        }
+    }
+
+    static class CopyTask extends AsyncTask<App, Void, Boolean> {
+
+        private Activity activity;
+        private App app;
+
+        public CopyTask(Activity activity) {
+            this.activity = activity;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            String message = activity.getString(InstalledApkCopier.copy(app)
+                ? R.string.details_saved_in_downloads
+                : R.string.details_could_not_copy_apk
+            );
+            Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        protected Boolean doInBackground(App... apps) {
+            app = apps[0];
+            return InstalledApkCopier.copy(app);
         }
     }
 }
