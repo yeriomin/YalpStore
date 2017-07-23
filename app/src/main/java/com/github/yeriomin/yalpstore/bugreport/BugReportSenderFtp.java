@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore.bugreport;
 import android.content.Context;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.Util;
 
 import org.apache.commons.net.ftp.FTP;
@@ -100,6 +101,6 @@ public class BugReportSenderFtp extends BugReportSender {
     static private String getDirName() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS", Locale.getDefault());
         format.setTimeZone(TimeZone.getTimeZone("GMT"));
-        return format.format(Calendar.getInstance(TimeZone.getTimeZone("GMT")).getTimeInMillis());
+        return format.format(Calendar.getInstance(TimeZone.getTimeZone("GMT")).getTimeInMillis()) + "-" + BuildConfig.VERSION_NAME;
     }
 }
