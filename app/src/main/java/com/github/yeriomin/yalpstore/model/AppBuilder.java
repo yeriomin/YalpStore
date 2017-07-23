@@ -9,6 +9,7 @@ import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.Image;
 import com.github.yeriomin.playstoreapi.RelatedLink;
 import com.github.yeriomin.playstoreapi.Unknown25Item;
+import com.github.yeriomin.yalpstore.Util;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -53,14 +54,16 @@ public class AppBuilder {
     }
 
     static private String getInstallsNum(String installsRaw) {
-        Pattern pattern = Pattern.compile("[ ,>\\.\\+\\d\\s]+");
-        Matcher matcher = pattern.matcher(installsRaw);
+        Matcher matcher = Pattern.compile("[\\d]+").matcher(installsRaw.replaceAll("[,\\.\\s]+", ""));
         if (matcher.find()) {
-            return matcher.group(0)
-                .replaceAll("[\\s\\.,]000[\\s\\.,]000[\\s\\.,]000", suffixBil)
-                .replaceAll("[\\s\\.,]000[\\s\\.,]000", suffixMil)
-                .trim()
-            ;
+            int num = Util.parseInt(matcher.group(0), 0);
+            if (num >= 1000000000) {
+                return (num / 1000000000) + suffixBil;
+            } else if (num >= 1000000) {
+                return (num / 1000000) + suffixMil;
+            } else {
+                return Integer.toString(num);
+            }
         }
         return null;
     }
