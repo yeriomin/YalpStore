@@ -17,8 +17,8 @@ public class DeltaPatcherGDiff extends DeltaPatcherAbstract {
     public boolean patch() {
         Log.i(DeltaPatcherGDiff.class.getName(), "Preparing to apply delta patch to " + app.getPackageName());
         File originalApk = InstalledApkCopier.getCurrentApk(app);
-        if (!originalApk.exists()) {
-            Log.e(DeltaPatcherGDiff.class.getName(), "Could not find existing apk to patch it");
+        if (null == originalApk || !originalApk.exists()) {
+            Log.e(DeltaPatcherGDiff.class.getName(), "Could not find existing apk to patch it: " + originalApk);
             return false;
         }
         Log.i(DeltaPatcherGDiff.class.getName(), "Patching with " + patch);

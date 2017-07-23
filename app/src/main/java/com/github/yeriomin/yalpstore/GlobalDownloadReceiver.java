@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -42,12 +43,16 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
             notificationManager.show(new Intent(), app.getDisplayName(), error);
         }
 
-        if (state.isEverythingFinished() && state.isEverythingSuccessful()) {
-            if (isDelta(app)) {
-                DeltaPatcherFactory.get(app).patch();
-            }
-            verifyAndInstall(app, state.getTriggeredBy());
+        if (!state.isEverythingFinished() || !state.isEverythingSuccessful()) {
+            return;
         }
+        if (isDelta(app)) {
+            if (!DeltaPatcherFactory.get(app).patch()) {
+                Log.e(getClass().getName(), "Delta patching failed for " + app.getPackageName());
+                return;
+            }
+        }
+        verifyAndInstall(app, state.getTriggeredBy());
     }
 
     private boolean isDelta(App app) {
