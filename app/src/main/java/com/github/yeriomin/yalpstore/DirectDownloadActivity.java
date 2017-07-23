@@ -26,7 +26,7 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             return;
         }
         Log.i(getClass().getName(), "Getting package " + packageName);
-        DetailsTask task = getDetailsTask(packageName);
+        DetailsAndPurchaseTask task = getDetailsTask(packageName);
         task.setTaskClone(getDetailsTask(packageName));
         task.execute();
         finish();
@@ -46,29 +46,9 @@ public class DirectDownloadActivity extends YalpStoreActivity {
         }
     }
 
-    private DetailsTask getDetailsTask(final String packageName) {
-        DetailsTask task = new DetailsTask() {
-            @Override
-            protected void onPostExecute(Throwable result) {
-                Throwable e = result;
-                if (result instanceof RuntimeException && null != result.getCause()) {
-                    e = result.getCause();
-                }
-                if (null == e) {
-                    getPurchaseTask(app).execute();
-                } else {
-                    DetailsActivity.start(context, packageName);
-                }
-            }
-        };
+    private DetailsAndPurchaseTask getDetailsTask(final String packageName) {
+        DetailsAndPurchaseTask task = new DetailsAndPurchaseTask();
         task.setPackageName(packageName);
-        task.setContext(this);
-        return task;
-    }
-
-    private PurchaseTask getPurchaseTask(App app) {
-        PurchaseTask task = new PurchaseTask();
-        task.setApp(app);
         task.setContext(this);
         return task;
     }
@@ -79,5 +59,28 @@ public class DirectDownloadActivity extends YalpStoreActivity {
                 == PackageManager.PERMISSION_GRANTED;
         }
         return true;
+    }
+
+    static class DetailsAndPurchaseTask extends DetailsTask {
+
+        @Override
+        protected void onPostExecute(Throwable result) {
+            Throwable e = result;
+            if (result instanceof RuntimeException && null != result.getCause()) {
+                e = result.getCause();
+            }
+            if (null == e) {
+                getPurchaseTask(app).execute();
+            } else {
+                DetailsActivity.start(context, packageName);
+            }
+        }
+
+        private PurchaseTask getPurchaseTask(App app) {
+            PurchaseTask task = new PurchaseTask();
+            task.setApp(app);
+            task.setContext(context);
+            return task;
+        }
     }
 }

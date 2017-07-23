@@ -111,10 +111,10 @@ public class GeneralDetails extends Abstract {
         }
         try {
             PackageInfo info = activity.getPackageManager().getPackageInfo(app.getPackageName(), 0);
-            if (info.versionCode == app.getVersionCode()) {
+            String currentVersion = info.versionName;
+            if (info.versionCode == app.getVersionCode() || null == currentVersion) {
                 return;
             }
-            String currentVersion = info.versionName;
             String newVersion = versionName;
             if (currentVersion.equals(newVersion)) {
                 currentVersion += " (" + info.versionCode;

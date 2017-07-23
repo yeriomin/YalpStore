@@ -78,7 +78,7 @@ public class DetailsActivity extends YalpStoreActivity {
             redrawDetails(DetailsActivity.app);
         }
 
-        DetailsTask task = getDetailsTask(packageName);
+        GetAndRedrawDetailsTask task = getDetailsTask(packageName);
         task.setTaskClone(getDetailsTask(packageName));
         task.execute();
     }
@@ -163,21 +163,29 @@ public class DetailsActivity extends YalpStoreActivity {
         downloadOptionsFragment.draw();
     }
 
-    private DetailsTask getDetailsTask(String packageName) {
-        DetailsTask task = new DetailsTask() {
-
-            @Override
-            protected void onPostExecute(Throwable e) {
-                super.onPostExecute(e);
-                if (this.app != null) {
-                    DetailsActivity.app = this.app;
-                    redrawDetails(this.app);
-                }
-            }
-        };
+    private GetAndRedrawDetailsTask getDetailsTask(String packageName) {
+        GetAndRedrawDetailsTask task = new GetAndRedrawDetailsTask(this);
         task.setPackageName(packageName);
         task.setContext(this);
         task.setProgressIndicator(findViewById(R.id.progress));
         return task;
+    }
+
+    static class GetAndRedrawDetailsTask extends DetailsTask {
+
+        private DetailsActivity activity;
+
+        public GetAndRedrawDetailsTask(DetailsActivity activity) {
+            this.activity = activity;
+        }
+
+        @Override
+        protected void onPostExecute(Throwable e) {
+            super.onPostExecute(e);
+            if (this.app != null) {
+                DetailsActivity.app = this.app;
+                activity.redrawDetails(this.app);
+            }
+        }
     }
 }
