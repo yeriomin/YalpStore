@@ -80,19 +80,11 @@ public class PlayStoreApiWrapper {
 
     public List<App> getDetails(List<String> packageIds) throws IOException {
         List<App> apps = new ArrayList<>();
-        int i = -1;
-        boolean hideNonFree = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS);
         for (BulkDetailsEntry details: new PlayStoreApiAuthenticator(context).getApi().bulkDetails(packageIds).getEntryList()) {
-            i++;
             if (!details.hasDoc()) {
                 continue;
             }
-            App app = AppBuilder.build(details.getDoc());
-            if (hideNonFree && !app.isFree()) {
-                Log.i(this.getClass().getName(), "Skipping non-free app " + packageIds.get(i));
-                continue;
-            }
-            apps.add(app);
+            apps.add(AppBuilder.build(details.getDoc()));
         }
         Collections.sort(apps);
         return apps;
