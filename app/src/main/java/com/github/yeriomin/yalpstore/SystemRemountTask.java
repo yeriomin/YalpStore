@@ -62,8 +62,10 @@ public abstract class SystemRemountTask extends AsyncTask<Void, Void, List<Strin
     @Override
     protected void onPostExecute(List<String> output) {
         progressDialog.dismiss();
-        for (String outputLine: output) {
-            Log.i(getClass().getName(), outputLine);
+        if (null != output) {
+            for (String outputLine: output) {
+                Log.i(getClass().getName(), outputLine);
+            }
         }
         showRebootDialog();
     }
