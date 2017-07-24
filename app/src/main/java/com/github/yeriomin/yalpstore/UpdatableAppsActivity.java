@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -95,28 +96,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     }
 
     private UpdatableAppsTask getTask() {
-        UpdatableAppsTask task = new UpdatableAppsTask() {
-            @Override
-            protected void onPostExecute(Throwable e) {
-                super.onPostExecute(e);
-                clearApps();
-                if (null != e && showUpdatesOnly()) {
-                    return;
-                }
-                List<App> otherInstalledApps = new ArrayList<>(this.installedApps.values());
-                Collections.sort(otherInstalledApps);
-                if (showUpdatesOnly()) {
-                    addApps(updatableApps);
-                } else if (null != e || !explicitCheck) {
-                    addApps(otherInstalledApps);
-                } else {
-                    addApps(updatableApps, R.string.list_has_update);
-                    addApps(otherInstalledApps, R.string.list_no_update);
-                }
-                toggleUpdateAll(this.updatableApps.size() > 0);
-                new CategoryManager(UpdatableAppsActivity.this).downloadCategoryNames();
-            }
-        };
+        UpdatableAppsTask task = new LocalUpdatableAppsTask(this);
         task.setExplicitCheck(PreferenceActivity.getUpdateInterval(this) != -1);
         task.setErrorView((TextView) getListView().getEmptyView());
         task.setContext(this);
@@ -163,6 +143,36 @@ public class UpdatableAppsActivity extends AppListActivity {
                 new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
                 PERMISSIONS_REQUEST_CODE
             );
+        }
+    }
+
+    static class LocalUpdatableAppsTask extends UpdatableAppsTask {
+
+        private UpdatableAppsActivity activity;
+
+        public LocalUpdatableAppsTask(UpdatableAppsActivity activity) {
+            this.activity = activity;
+        }
+
+        @Override
+        protected void onPostExecute(Throwable e) {
+            super.onPostExecute(e);
+            activity.clearApps();
+            if (null != e && activity.showUpdatesOnly()) {
+                return;
+            }
+            List<App> otherInstalledApps = new ArrayList<>(this.installedApps.values());
+            Collections.sort(otherInstalledApps);
+            if (activity.showUpdatesOnly()) {
+                activity.addApps(updatableApps);
+            } else if (null != e || !explicitCheck) {
+                activity.addApps(otherInstalledApps);
+            } else {
+                activity.addApps(updatableApps, R.string.list_has_update);
+                activity.addApps(otherInstalledApps, R.string.list_no_update);
+            }
+            activity.toggleUpdateAll(this.updatableApps.size() > 0);
+            new CategoryManager(activity).downloadCategoryNames();
         }
     }
 }

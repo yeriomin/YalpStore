@@ -90,38 +90,48 @@ public class SearchActivity extends EndlessScrollActivity {
     }
 
     private void checkPackageId(String packageId) {
-        DetailsTask task = new DetailsTask() {
-            @Override
-            protected void onPostExecute(Throwable result) {
-                super.onPostExecute(result);
-                if (null != app) {
-                    showPackageIdDialog(app.getPackageName());
-                }
-            }
-        };
+        DetailsTask task = new CheckPackageIdTask(this);
         task.setContext(this);
         task.setPackageName(packageId);
         task.execute();
     }
 
-    private AlertDialog showPackageIdDialog(final String packageId) {
-        return new AlertDialog.Builder(this)
-            .setMessage(R.string.dialog_message_package_id)
-            .setTitle(R.string.dialog_title_package_id)
-            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    DetailsActivity.start(SearchActivity.this, packageId);
-                    dialogInterface.dismiss();
-                    finish();
-                }
-            })
-            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    loadApps();
-                }
-            })
-            .show();
+    static private class CheckPackageIdTask extends DetailsTask {
+
+        private SearchActivity activity;
+
+        public CheckPackageIdTask(SearchActivity activity) {
+            this.activity = activity;
+        }
+
+        @Override
+        protected void onPostExecute(Throwable result) {
+            super.onPostExecute(result);
+            if (null != app) {
+                showPackageIdDialog(app.getPackageName());
+            }
+        }
+
+        private AlertDialog showPackageIdDialog(final String packageId) {
+            return new AlertDialog.Builder(activity)
+                .setMessage(R.string.dialog_message_package_id)
+                .setTitle(R.string.dialog_title_package_id)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DetailsActivity.start(activity, packageId);
+                        dialogInterface.dismiss();
+                        activity.finish();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        activity.loadApps();
+                    }
+                })
+                .show()
+            ;
+        }
     }
 }
