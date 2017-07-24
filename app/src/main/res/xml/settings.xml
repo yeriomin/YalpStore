@@ -3,6 +3,7 @@
 
     <PreferenceCategory android:title="@string/pref_category_updates">
         <ListPreference
+            android:defaultValue="-1"
             android:key="PREFERENCE_BACKGROUND_UPDATE_INTERVAL"
             android:title="@string/pref_background_update_interval"
             android:entries="@array/updateIntervalLabels"
@@ -26,6 +27,7 @@
             android:summaryOn="@string/pref_background_update_install_summary_on"
             android:title="@string/pref_background_update_install" />
         <ListPreference
+            android:defaultValue="black"
             android:key="PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK"
             android:title="@string/pref_update_list_white_or_black"
             android:entries="@array/blackOrWhiteLabels"
@@ -77,6 +79,7 @@
             android:summaryOn="@string/pref_delete_apk_after_install_summary_on"
             android:title="@string/pref_delete_apk_after_install" />
         <ListPreference
+            android:defaultValue="default"
             android:key="PREFERENCE_INSTALLATION_METHOD"
             android:title="@string/pref_installation_method"
             android:entries="@array/installationMethodLabels"
@@ -84,14 +87,17 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_spoofing">
         <ListPreference
+            android:defaultValue=""
             android:key="PREFERENCE_REQUESTED_LANGUAGE"
             android:title="@string/pref_requested_language"/>
         <ListPreference
+            android:defaultValue=""
             android:key="PREFERENCE_DEVICE_TO_PRETEND_TO_BE"
             android:title="@string/pref_device_to_pretend_to_be"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_ui">
         <ListPreference
+            android:defaultValue="none"
             android:key="PREFERENCE_UI_THEME"
             android:title="@string/pref_ui_theme"
             android:entries="@array/uiThemeLabels"
