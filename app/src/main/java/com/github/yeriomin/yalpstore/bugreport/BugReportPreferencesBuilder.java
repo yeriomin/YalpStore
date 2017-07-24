@@ -29,6 +29,7 @@ class BugReportPreferencesBuilder extends BugReportBuilder {
         PreferenceActivity.PREFERENCE_INSTALLATION_METHOD,
         PreferenceActivity.PREFERENCE_UPDATES_ONLY,
         PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS,
+        PreferenceActivity.PREFERENCE_NO_IMAGES,
     };
 
     public BugReportPreferencesBuilder(Context context) {
