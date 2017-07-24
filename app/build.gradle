@@ -16,7 +16,7 @@ android {
         applicationId "com.github.yeriomin.yalpstore"
         minSdkVersion 5
         targetSdkVersion 26
-        versionCode 19
+        versionCode 20
         versionName getVersionName()
     }
     buildTypes {
