@@ -1,28 +1,32 @@
 package com.github.yeriomin.yalpstore;
 
-import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;
+import java.util.Timer;
 
-public class PurchaseCheckTask extends AsyncTask<Void, Void, AndroidAppDeliveryData> {
+public class PurchaseCheckTask extends GoogleApiAsyncTask {
 
-    private Context context;
     private App app;
-    private DownloadOrInstall downloadOrInstallManager;
+    private DownloadOrInstall downloadOrInstallFragment;
     private Button downloadButton;
+    private Timer timer;
 
-    public PurchaseCheckTask(Context context, App app, DownloadOrInstall downloadOrInstallManager) {
-        this.context = context;
+    public void setApp(App app) {
         this.app = app;
-        this.downloadOrInstallManager = downloadOrInstallManager;
+    }
+
+    public void setDownloadOrInstallFragment(DownloadOrInstall downloadOrInstallFragment) {
+        this.downloadOrInstallFragment = downloadOrInstallFragment;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
     }
 
     public void setDownloadButton(Button downloadButton) {
@@ -30,27 +34,31 @@ public class PurchaseCheckTask extends AsyncTask<Void, Void, AndroidAppDeliveryD
     }
 
     @Override
-    protected AndroidAppDeliveryData doInBackground(Void... params) {
-        PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.context);
+    protected Throwable doInBackground(String... params) {
         try {
-            return wrapper.purchase(app);
+            new PlayStoreApiWrapper(context).purchase(app);
         } catch (IOException e) {
-            // Since Play Store returns 403 error on an attempt to download a non-existing version,
-            // we'll cannot use GoogleApiAsyncTask used for all the other requests
-            Log.w(getClass().getName(), e.getClass().getName() + " " + e.getMessage());
+            return e;
         }
         return null;
     }
 
     @Override
-    protected void onPostExecute(AndroidAppDeliveryData androidAppDeliveryData) {
-        boolean success = null != androidAppDeliveryData;
-        downloadOrInstallManager.draw();
+    protected void onPostExecute(Throwable e) {
+        boolean success = null == e;
+        downloadOrInstallFragment.draw();
         if (null == downloadButton) {
             return;
         }
         downloadButton.setText(success ? R.string.details_download : R.string.details_download_not_available);
         downloadButton.setEnabled(success);
         downloadButton.setVisibility(View.VISIBLE);
+        timer.cancel();
+    }
+
+    @Override
+    protected void processAuthException(AuthException e) {
+        // Since Play Store returns 403 error on an attempt to download a non-existing version,
+        // we need to ignore it
     }
 }

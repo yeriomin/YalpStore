@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -62,21 +61,21 @@ public class ManualDownloadActivity extends DetailsActivity {
         downloadOrInstallFragment.draw();
     }
 
-    private class ManualDownloadTextWatcher implements TextWatcher {
+    static private class ManualDownloadTextWatcher implements TextWatcher {
 
         static private final int TIMEOUT = 1000;
 
         private final App app;
         private final Button downloadButton;
         private final Button installButton;
-        private DownloadOrInstall downloadOrInstallManager;
+        private DownloadOrInstall downloadOrInstallFragment;
         private Timer timer;
 
-        public ManualDownloadTextWatcher(App app, Button downloadButton, Button installButton, DownloadOrInstall downloadOrInstallManager) {
+        public ManualDownloadTextWatcher(App app, Button downloadButton, Button installButton, DownloadOrInstall downloadOrInstallFragment) {
             this.app = app;
             this.downloadButton = downloadButton;
             this.installButton = installButton;
-            this.downloadOrInstallManager = downloadOrInstallManager;
+            this.downloadOrInstallFragment = downloadOrInstallFragment;
         }
 
         @Override
@@ -116,14 +115,12 @@ public class ManualDownloadActivity extends DetailsActivity {
             }, TIMEOUT);
         }
 
-        private PurchaseCheckTask getTask(final Timer timer) {
-            PurchaseCheckTask task = new PurchaseCheckTask(ManualDownloadActivity.this, app, downloadOrInstallManager) {
-                @Override
-                protected void onPostExecute(AndroidAppDeliveryData androidAppDeliveryData) {
-                    super.onPostExecute(androidAppDeliveryData);
-                    timer.cancel();
-                }
-            };
+        private PurchaseCheckTask getTask(Timer timer) {
+            PurchaseCheckTask task = new PurchaseCheckTask();
+            task.setContext(downloadButton.getContext());
+            task.setTimer(timer);
+            task.setApp(app);
+            task.setDownloadOrInstallFragment(downloadOrInstallFragment);
             task.setDownloadButton(downloadButton);
             return task;
         }
