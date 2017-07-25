@@ -16,7 +16,6 @@ import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SpoofDeviceManager;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
-import com.github.yeriomin.yalpstore.bugreport.BugReportSenderFtp;
 import com.github.yeriomin.yalpstore.bugreport.BugReportService;
 
 import java.util.LinkedHashMap;
