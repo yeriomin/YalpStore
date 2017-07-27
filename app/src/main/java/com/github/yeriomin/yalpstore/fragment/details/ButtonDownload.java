@@ -9,13 +9,17 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DownloadState;
+import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.OnDownloadProgressListener;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PurchaseTask;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.SelfUpdateChecker;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
 
@@ -30,7 +34,7 @@ public class ButtonDownload extends Button {
 
     public ButtonDownload(final DetailsActivity activity, final App app) {
         super(activity, app);
-        cancelButton = (ImageButton) activity.findViewById(R.id.cancel);
+        cancelButton = activity.findViewById(R.id.cancel);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +56,7 @@ public class ButtonDownload extends Button {
         return (!Paths.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
                 || !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
             )
-            && app.isInPlayStore()
+            && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID))
             && (getInstalledVersionCode() != app.getVersionCode() || activity instanceof ManualDownloadActivity)
         ;
     }
@@ -80,7 +84,13 @@ public class ButtonDownload extends Button {
     }
 
     public void download() {
-        if (prepareDownloadsDir()) {
+        if (app.getPackageName().equals(BuildConfig.APPLICATION_ID)) {
+            new Downloader(button.getContext()).download(
+                app,
+                AndroidAppDeliveryData.newBuilder().setDownloadUrl(SelfUpdateChecker.getUrlString(app.getVersionCode())).build(),
+                getDownloadProgressListener()
+            );
+        } else if (prepareDownloadsDir()) {
             getPurchaseTask().execute();
         } else {
             Toast.makeText(
@@ -99,16 +109,14 @@ public class ButtonDownload extends Button {
         return dir.exists() && dir.isDirectory() && dir.canWrite();
     }
 
+    private OnDownloadProgressListener getDownloadProgressListener() {
+        ProgressBar progressBar = activity.findViewById(R.id.download_progress);
+        progressBar.setVisibility(View.VISIBLE);
+        return new OnDownloadProgressListener(progressBar, DownloadState.get(app.getPackageName()));
+    }
+
     private PurchaseTask getPurchaseTask() {
-        PurchaseTask purchaseTask = new PurchaseTask() {
-            @Override
-            protected void onPostExecute(Throwable e) {
-                super.onPostExecute(e);
-                if (null == e) {
-                    disableButton(R.id.download, R.string.details_downloading);
-                }
-            }
-        };
+        PurchaseTask purchaseTask = new LocalPurchaseTask(this);
         ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
         progressBar.setVisibility(View.VISIBLE);
         purchaseTask.setOnDownloadProgressListener(new OnDownloadProgressListener(progressBar, DownloadState.get(app.getPackageName())));
@@ -144,6 +152,23 @@ public class ButtonDownload extends Button {
             return activity.getPackageManager().getPackageInfo(app.getPackageName(), 0).versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             return 0;
+        }
+    }
+
+    static class LocalPurchaseTask extends PurchaseTask {
+
+        private ButtonDownload fragment;
+
+        public LocalPurchaseTask(ButtonDownload fragment) {
+            this.fragment = fragment;
+        }
+
+        @Override
+        protected void onPostExecute(Throwable e) {
+            super.onPostExecute(e);
+            if (null == e) {
+                fragment.disableButton(R.id.download, R.string.details_downloading);
+            }
         }
     }
 }

@@ -154,6 +154,23 @@ public class UpdatableAppsActivity extends AppListActivity {
         }
 
         @Override
+        protected Throwable doInBackground(String... params) {
+            Throwable result = super.doInBackground(params);
+            if (null != result || !explicitCheck) {
+                return result;
+            }
+            int latestVersionCode = SelfUpdateChecker.getLatestVersionCode();
+            if (latestVersionCode > BuildConfig.VERSION_CODE) {
+                App yalp = installedApps.get(BuildConfig.APPLICATION_ID);
+                installedApps.remove(yalp);
+                yalp.setVersionCode(latestVersionCode);
+                yalp.setVersionName("0." + latestVersionCode);
+                updatableApps.add(yalp);
+            }
+            return result;
+        }
+
+        @Override
         protected void onPostExecute(Throwable e) {
             super.onPostExecute(e);
             activity.clearApps();
