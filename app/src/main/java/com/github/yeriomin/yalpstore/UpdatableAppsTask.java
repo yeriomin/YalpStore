@@ -103,7 +103,6 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
             }
         }
         return null;
-//        throw new RuntimeException("aaaaaa");
     }
 
     @Override
