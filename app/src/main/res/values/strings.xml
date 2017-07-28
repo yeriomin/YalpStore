@@ -84,6 +84,7 @@
     <string name="error_not_purchased">The app does not seem to be purchased.\nRedirect to its Play Store web page?</string>
     <string name="error_downloads_directory_not_writable">Downloads directory could not be created or is not writable.</string>
     <string name="error_token_dispenser_problem">Could not log in without an account. Try using your own account.</string>
+    <string name="error_invalid_device_definition">Device definition rejected.</string>
     <string name="details_category">"Category: %1$s"</string>
     <string name="details_developer">"Developer: %1$s"</string>
     <string name="details_installs">"%1$s ↓"</string>

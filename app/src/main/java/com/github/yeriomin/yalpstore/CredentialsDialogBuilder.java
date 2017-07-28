@@ -6,10 +6,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AuthException;
+import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.playstoreapi.TokenDispenserException;
 
 import java.io.IOException;
@@ -45,20 +48,8 @@ abstract public class CredentialsDialogBuilder {
 
         @Override
         protected void onPostExecute(Throwable e) {
-            if (null != this.progressDialog) {
-                this.progressDialog.dismiss();
-            }
-            if (null != e) {
-                handleException(e);
-                if (e instanceof AuthException && null != ((AuthException) e).getTwoFactorUrl()) {
-                    return;
-                }
-                CredentialsDialogBuilder builder = getDialogBuilder();
-                if (null != this.taskClone) {
-                    builder.setTaskClone(this.taskClone);
-                }
-                builder.show();
-            } else {
+            super.onPostExecute(e);
+            if (null == e) {
                 new FirstLaunchChecker(context).setLoggedIn();
                 if (null != this.taskClone) {
                     this.taskClone.execute();
@@ -68,29 +59,42 @@ abstract public class CredentialsDialogBuilder {
             }
         }
 
-        private void handleException(Throwable e) {
-            if (e instanceof CredentialsEmptyException) {
-                Log.w(getClass().getName(), "Credentials empty");
-            } else if (e instanceof TokenDispenserException) {
+        @Override
+        protected void processException(Throwable e) {
+            super.processException(e);
+            if ((e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 500)
+                || (e instanceof AuthException && !TextUtils.isEmpty(((AuthException) e).getTwoFactorUrl()))
+            ) {
+                return;
+            }
+            CredentialsDialogBuilder builder = getDialogBuilder();
+            if (null != this.taskClone) {
+                builder.setTaskClone(this.taskClone);
+            }
+            builder.show();
+        }
+
+        @Override
+        protected void processIOException(IOException e) {
+            super.processIOException(e);
+            if (e instanceof TokenDispenserException) {
                 e.getCause().printStackTrace();
                 toast(context, R.string.error_token_dispenser_problem);
-            } else if (e instanceof AuthException) {
-                if (null != ((AuthException) e).getTwoFactorUrl()) {
-                    getTwoFactorAuthDialog().show();
-                } else {
-                    toast(context, R.string.error_incorrect_password);
-                }
-            } else if (e instanceof IOException) {
-                String message;
-                if (GoogleApiAsyncTask.noNetwork(e)) {
-                    message = this.context.getString(R.string.error_no_network);
-                } else {
-                    message = this.context.getString(R.string.error_network_other, e.getClass().getName() + " " + e.getMessage());
-                }
-                toast(context, message);
+            } else if (e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 500) {
+                PreferenceManager.getDefaultSharedPreferences(context).edit().putString(PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1").commit();
+                toast(context, R.string.error_invalid_device_definition);
+                context.startActivity(new Intent(context, PreferenceActivity.class));
+            }
+        }
+
+        @Override
+        protected void processAuthException(AuthException e) {
+            if (e instanceof CredentialsEmptyException) {
+                Log.w(getClass().getName(), "Credentials empty");
+            } else if (null != e.getTwoFactorUrl()) {
+                getTwoFactorAuthDialog().show();
             } else {
-                Log.w(getClass().getName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
-                e.printStackTrace();
+                toast(context, R.string.error_incorrect_password);
             }
         }
 
