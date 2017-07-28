@@ -26,6 +26,7 @@ public class App implements Comparable<App> {
     private String installs;
     private Rating rating = new Rating();
     private String iconUrl;
+    private String videoUrl;
     private String changes;
     private String developerName;
     private String description;
@@ -143,6 +144,14 @@ public class App implements Comparable<App> {
             imageSource.setUrl(iconUrl);
         }
         return imageSource;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 
     public String getChanges() {

@@ -21,6 +21,7 @@ public class AppBuilder {
     public static String suffixBil;
 
     private static final int IMAGE_ICON = 4;
+    private static final int IMAGE_VIDEO = 3;
     private static final int IMAGE_SCREENSHOT = 1;
 
     static public App build(DocV2 details) {
@@ -115,6 +116,8 @@ public class AppBuilder {
         for (Image image: images) {
             if (image.getImageType() == IMAGE_ICON) {
                 app.setIconUrl(image.getImageUrl());
+            } else if (image.getImageType() == IMAGE_VIDEO) {
+                app.setVideoUrl(image.getImageUrl());
             } else if (image.getImageType() == IMAGE_SCREENSHOT) {
                 app.getScreenshotUrls().add(image.getImageUrl());
             }

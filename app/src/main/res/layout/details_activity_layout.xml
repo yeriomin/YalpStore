@@ -409,6 +409,18 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/video"
+                    android:drawableLeft="@drawable/ic_chevron_right"
+                    android:drawableStart="@drawable/ic_chevron_right"
+                    android:textSize="20sp"
+                    android:text="@string/details_video"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6dip"
+                    android:visibility="gone" />
+
+                <TextView
                     android:id="@+id/screenshots_header"
                     android:visibility="gone"
                     android:drawableLeft="@drawable/ic_expand_more"

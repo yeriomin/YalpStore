@@ -117,6 +117,7 @@
     <string name="details_review_dialog_review_comment_hint">подробнее</string>
     <string name="details_review_dialog_fields_optional">Можно и не заполнять.</string>
     <string name="details_to_play_store">Перейти в Play Store</string>
+    <string name="details_video">Видео</string>
     <string name="details_share">Поделиться</string>
     <string name="details_signature_mismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте ещё раз. (При удалении приложения все его данные будут потеряны)</string>
     <string name="details_depends_on">"Зависит от: %1$s"</string>
