@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
@@ -91,7 +92,7 @@ public class GeneralDetails extends Abstract {
         try {
             itemView.setAutoLinkMask(Linkify.ALL);
             itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
-        } catch (AndroidRuntimeException e) {
+        } catch (AndroidRuntimeException | Resources.NotFoundException e) {
             Log.w(getClass().getName(), "System WebView missing: " + e.getMessage());
             itemView.setAutoLinkMask(0);
             itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
