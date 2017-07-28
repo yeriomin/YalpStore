@@ -53,16 +53,6 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
         return result;
     }
 
-    static public Map<String, App> filterPaidApps(Map<String, App> apps) {
-        Map<String, App> result = new HashMap<>();
-        for (App app: apps.values()) {
-            if (app.isFree()) {
-                result.put(app.getPackageName(), app);
-            }
-        }
-        return result;
-    }
-
     static public Map<String, App> filterBlacklistedApps(Context context, Map<String, App> apps) {
         Set<String> packageNames = new HashSet<>(apps.keySet());
         if (PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceActivity.LIST_BLACK).equals(PreferenceActivity.LIST_BLACK)) {
@@ -89,9 +79,6 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
         installedApps = getInstalledApps(context);
         if (!PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS)) {
             installedApps = filterSystemApps(installedApps);
-        }
-        if (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL)) {
-            installedApps = filterPaidApps(installedApps);
         }
         // Requesting info from Google Play Market for installed apps
         List<App> appsFromPlayStore = new ArrayList<>();
@@ -145,7 +132,13 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
 
     private List<App> getAppsFromPlayStore(Collection<String> packageNames) throws IOException {
         if (explicitCheck) {
-            appsFromPlayStore = new PlayStoreApiWrapper(this.context).getDetails(new ArrayList<>(packageNames));
+            appsFromPlayStore.clear();
+            boolean builtInAccount = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL);
+            for (App app: new PlayStoreApiWrapper(context).getDetails(new ArrayList<>(packageNames))) {
+                if (!builtInAccount || app.isFree()) {
+                    appsFromPlayStore.add(app);
+                }
+            }
         }
         return appsFromPlayStore;
     }
