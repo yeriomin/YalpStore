@@ -46,7 +46,7 @@ public class AboutActivity extends YalpStoreActivity {
         @Override
         public void onClick(View v) {
             ((ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE)).setText(((TextView) v).getText());
-            Toast.makeText(v.getContext(), R.string.about_copied_to_clipboard, Toast.LENGTH_SHORT).show();
+            Toast.makeText(v.getContext().getApplicationContext(), R.string.about_copied_to_clipboard, Toast.LENGTH_SHORT).show();
         }
     }
 

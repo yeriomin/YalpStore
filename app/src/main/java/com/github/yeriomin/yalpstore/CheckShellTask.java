@@ -108,7 +108,7 @@ public class CheckShellTask extends AsyncTask<Void, Void, Boolean> {
     protected void onPostExecute(Boolean result) {
         progressDialog.dismiss();
         if (!result) {
-            Toast.makeText(context, R.string.pref_no_root, Toast.LENGTH_LONG).show();
+            Toast.makeText(context.getApplicationContext(), R.string.pref_no_root, Toast.LENGTH_LONG).show();
         } else if (!availableBusybox && !availableCoreutils) {
             showBusyboxDialog();
         } else {

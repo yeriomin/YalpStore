@@ -22,7 +22,7 @@ public class CheckSuTask extends AsyncTask<Void, Void, Void> {
         if (!available) {
             ((CheckBoxPreference) activity.findPreference(PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL)).setChecked(false);
             ((ListPreference) activity.findPreference(PreferenceActivity.PREFERENCE_INSTALLATION_METHOD)).setValueIndex(0);
-            Toast.makeText(activity, activity.getString(R.string.pref_no_root), Toast.LENGTH_LONG).show();
+            Toast.makeText(activity.getApplicationContext(), activity.getString(R.string.pref_no_root), Toast.LENGTH_LONG).show();
         }
     }
 

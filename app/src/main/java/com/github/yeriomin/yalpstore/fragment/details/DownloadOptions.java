@@ -114,7 +114,7 @@ public class DownloadOptions extends Abstract {
                 ? R.string.details_saved_in_downloads
                 : R.string.details_could_not_copy_apk
             );
-            Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(activity.getApplicationContext(), message, Toast.LENGTH_LONG).show();
         }
 
         @Override

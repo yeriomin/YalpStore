@@ -39,7 +39,7 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
             state.setSuccessful(downloadId);
         } else {
             String error = dm.getError(downloadId);
-            Toast.makeText(context, error, Toast.LENGTH_LONG).show();
+            Toast.makeText(context.getApplicationContext(), error, Toast.LENGTH_LONG).show();
             notificationManager.show(new Intent(), app.getDisplayName(), error);
         }
 
@@ -98,7 +98,7 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
             app.getDisplayName(),
             context.getString(notificationStringId)
         );
-        Toast.makeText(context, context.getString(toastStringId, app.getDisplayName()), Toast.LENGTH_LONG).show();
+        Toast.makeText(context.getApplicationContext(), context.getString(toastStringId, app.getDisplayName()), Toast.LENGTH_LONG).show();
     }
 
     private boolean needToInstallUpdates() {

@@ -72,7 +72,7 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
             @Override
             protected void onPostExecute(Void aVoid) {
                 if (!available) {
-                    Toast.makeText(activity, R.string.pref_not_privileged, Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity.getApplicationContext(), R.string.pref_not_privileged, Toast.LENGTH_LONG).show();
                     return;
                 }
                 showPrivilegedInstallationDialog();

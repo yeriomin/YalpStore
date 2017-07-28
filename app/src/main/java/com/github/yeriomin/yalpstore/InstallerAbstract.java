@@ -82,7 +82,7 @@ public abstract class InstallerAbstract {
     }
 
     protected void toast(String message) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(context.getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
     private AlertDialog getSignatureMismatchDialog(final App app) {

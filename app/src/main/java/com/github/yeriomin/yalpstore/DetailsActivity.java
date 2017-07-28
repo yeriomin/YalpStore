@@ -94,12 +94,16 @@ public class DetailsActivity extends YalpStoreActivity {
 
     @Override
     protected void onResume() {
+        redrawButtons();
+        super.onResume();
+    }
+
+    private void redrawButtons() {
         if (null != downloadOrInstallFragment) {
             downloadOrInstallFragment.unregisterReceivers();
             downloadOrInstallFragment.registerReceivers();
             downloadOrInstallFragment.draw();
         }
-        super.onResume();
     }
 
     @Override
@@ -114,7 +118,13 @@ public class DetailsActivity extends YalpStoreActivity {
         if (requestCode == PERMISSIONS_REQUEST_CODE
             && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
         ) {
-            downloadOrInstallFragment.download();
+            if (null == downloadOrInstallFragment && null != app) {
+                downloadOrInstallFragment = new DownloadOrInstall(this, app);
+                redrawButtons();
+            }
+            if (null != downloadOrInstallFragment) {
+                downloadOrInstallFragment.download();
+            }
         }
     }
 
