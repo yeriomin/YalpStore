@@ -2,9 +2,11 @@ package com.github.yeriomin.yalpstore.bugreport;
 
 import android.content.Context;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
+import com.github.yeriomin.yalpstore.SelfSignatureChecker;
 import com.github.yeriomin.yalpstore.Util;
 
 import org.apache.commons.net.ftp.FTP;
@@ -99,9 +101,12 @@ public class BugReportSenderFtp extends BugReportSender {
         }
     }
 
-    static private String getDirName() {
+    private String getDirName() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS", Locale.getDefault());
         format.setTimeZone(TimeZone.getTimeZone("GMT"));
-        return format.format(Calendar.getInstance(TimeZone.getTimeZone("GMT")).getTimeInMillis()) + "-" + BuildConfig.VERSION_NAME + "-" + Build.DEVICE;
+        return format.format(Calendar.getInstance(TimeZone.getTimeZone("GMT")).getTimeInMillis())
+            + "-" + BuildConfig.VERSION_NAME
+            + "-" + (SelfSignatureChecker.isFdroid(context) ? "fdroid" : "selfsigned")
+            + "-" + (TextUtils.isEmpty(stackTrace) ? "feedback" : "crash");
     }
 }
