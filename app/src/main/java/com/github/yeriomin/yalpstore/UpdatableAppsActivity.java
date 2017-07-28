@@ -54,8 +54,10 @@ public class UpdatableAppsActivity extends AppListActivity {
                 @Override
                 public void onClick(View v) {
                     UpdatableAppsTask task = getTask();
+                    UpdatableAppsTask clone = getTask();
                     task.setExplicitCheck(true);
-                    task.setTaskClone(getTask());
+                    clone.setExplicitCheck(true);
+                    task.setTaskClone(clone);
                     task.execute();
                 }
             });
