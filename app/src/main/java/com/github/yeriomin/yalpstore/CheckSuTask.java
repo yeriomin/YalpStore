@@ -9,8 +9,7 @@ import eu.chainfire.libsuperuser.Shell;
 
 public class CheckSuTask extends AsyncTask<Void, Void, Void> {
 
-    private PreferenceActivity activity;
-
+    protected PreferenceActivity activity;
     protected boolean available;
 
     public CheckSuTask(PreferenceActivity activity) {

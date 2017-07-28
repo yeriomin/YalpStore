@@ -61,36 +61,38 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
     private boolean checkPrivileged() {
         boolean privileged = activity.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED;
         if (!privileged) {
-            getPrivilegedCheckSuTask().execute();
+            new LocalCheckSuTask(activity).execute();
         }
         return privileged;
     }
 
-    private CheckSuTask getPrivilegedCheckSuTask() {
-        return new CheckSuTask(activity) {
+    static class LocalCheckSuTask extends CheckSuTask {
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                if (!available) {
-                    Toast.makeText(activity.getApplicationContext(), R.string.pref_not_privileged, Toast.LENGTH_LONG).show();
-                    return;
-                }
-                showPrivilegedInstallationDialog();
+        public LocalCheckSuTask(PreferenceActivity activity) {
+            super(activity);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            if (!available) {
+                Toast.makeText(activity.getApplicationContext(), R.string.pref_not_privileged, Toast.LENGTH_LONG).show();
+                return;
             }
-        };
-    }
+            showPrivilegedInstallationDialog();
+        }
 
-    private void showPrivilegedInstallationDialog() {
-        CheckShellTask checkShellTask = new CheckShellTask(activity);
-        checkShellTask.setPrimaryTask(new ConvertToSystemTask(activity, getSelf()));
-        checkShellTask.execute();
-    }
+        private void showPrivilegedInstallationDialog() {
+            CheckShellTask checkShellTask = new CheckShellTask(activity);
+            checkShellTask.setPrimaryTask(new ConvertToSystemTask(activity, getSelf()));
+            checkShellTask.execute();
+        }
 
-    private App getSelf() {
-        PackageInfo yalp = new PackageInfo();
-        yalp.applicationInfo = activity.getApplicationInfo();
-        yalp.packageName = BuildConfig.APPLICATION_ID;
-        yalp.versionCode = BuildConfig.VERSION_CODE;
-        return new App(yalp);
+        private App getSelf() {
+            PackageInfo yalp = new PackageInfo();
+            yalp.applicationInfo = activity.getApplicationInfo();
+            yalp.packageName = BuildConfig.APPLICATION_ID;
+            yalp.versionCode = BuildConfig.VERSION_CODE;
+            return new App(yalp);
+        }
     }
 }
