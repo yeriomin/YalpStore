@@ -79,6 +79,7 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
             installer.verifyAndInstall(app);
         } else {
             notifyDownloadComplete(app);
+            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
         }
     }
 

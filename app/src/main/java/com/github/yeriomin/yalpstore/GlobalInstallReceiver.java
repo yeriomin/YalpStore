@@ -22,8 +22,10 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         }
         updateDetails(intent);
         UpdatableAppsActivity.setNeedsUpdate(true);
+        String packageName = intent.getData().getSchemeSpecificPart();
+        ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName);
         if (needToRemoveApk(context) && action.equals(Intent.ACTION_PACKAGE_ADDED)) {
-            App app = getApp(context, intent.getData().getSchemeSpecificPart());
+            App app = getApp(context, packageName);
             File apkPath = Paths.getApkPath(app.getPackageName(), app.getVersionCode());
             boolean deleted = apkPath.delete();
             Log.i(getClass().getName(), "Removed " + apkPath + " successfully: " + deleted);

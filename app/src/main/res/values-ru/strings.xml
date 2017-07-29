@@ -17,6 +17,7 @@
     <string name="list_incompatible">несовместимо</string>
     <string name="list_check_updates">Проверить обновления</string>
     <string name="list_update_all">Обновить всё</string>
+    <string name="list_updating">Обновляем…</string>
     <string name="list_app_has_ads">есть реклама</string>
     <string name="list_app_no_ads">нет рекламы</string>
     <string name="list_app_depends_on_gsf">зависит от GSF</string>

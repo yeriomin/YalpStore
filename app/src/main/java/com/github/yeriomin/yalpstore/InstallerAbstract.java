@@ -64,6 +64,7 @@ public abstract class InstallerAbstract {
             Paths.getApkPath(app.getPackageName(), app.getVersionCode())
         )) {
             Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
+            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             if (Util.isContextUiCapable(context)) {
                 getSignatureMismatchDialog(app).show();
             } else {

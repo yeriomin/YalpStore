@@ -23,6 +23,8 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     static private boolean needsUpdate;
 
+    private UpdateAllReceiver updateAllReceiver;
+
     static public void setNeedsUpdate(boolean needsUpdate) {
         UpdatableAppsActivity.needsUpdate = needsUpdate;
     }
@@ -62,6 +64,15 @@ public class UpdatableAppsActivity extends AppListActivity {
                 }
             });
         }
+        updateAllReceiver = new UpdateAllReceiver(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (null != updateAllReceiver) {
+            unregisterReceiver(updateAllReceiver);
+        }
     }
 
     @Override
@@ -85,7 +96,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         if (requestCode == PERMISSIONS_REQUEST_CODE
             && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
         ) {
-            new UpdateChecker().onReceive(this, getIntent());
+            launchUpdateAll();
         }
     }
 
@@ -117,18 +128,30 @@ public class UpdatableAppsActivity extends AppListActivity {
     }
 
     private void toggleUpdateAll(boolean enable) {
-        Button button = (Button) findViewById(R.id.update_all);
+        Button button = findViewById(R.id.update_all);
         button.setVisibility(enable ? View.VISIBLE : View.GONE);
+        if (((YalpStoreApplication) getApplication()).isBackgroundUpdating()) {
+            button.setEnabled(false);
+            button.setText(R.string.list_updating);
+        }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkPermission()) {
-                    new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
+                    launchUpdateAll();
                 } else {
                     requestPermission();
                 }
             }
         });
+    }
+
+    private void launchUpdateAll() {
+        ((YalpStoreApplication) getApplicationContext()).setBackgroundUpdating(true);
+        new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
+        Button button = findViewById(R.id.update_all);
+        button.setEnabled(false);
+        button.setText(R.string.list_updating);
     }
 
     private boolean checkPermission() {
@@ -173,6 +196,14 @@ public class UpdatableAppsActivity extends AppListActivity {
         }
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Button button = activity.findViewById(R.id.check_updates);
+            button.setEnabled(false);
+            button.setText(R.string.details_download_checking);
+        }
+
+        @Override
         protected void onPostExecute(Throwable e) {
             super.onPostExecute(e);
             activity.clearApps();
@@ -191,6 +222,9 @@ public class UpdatableAppsActivity extends AppListActivity {
             }
             activity.toggleUpdateAll(this.updatableApps.size() > 0);
             new CategoryManager(activity).downloadCategoryNames();
+            Button button = activity.findViewById(R.id.check_updates);
+            button.setEnabled(true);
+            button.setText(R.string.list_check_updates);
         }
     }
 }

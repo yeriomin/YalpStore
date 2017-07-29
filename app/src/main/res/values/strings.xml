@@ -16,6 +16,7 @@
     <string name="list_incompatible">incompatible</string>
     <string name="list_check_updates">Check for updates</string>
     <string name="list_update_all">Update all</string>
+    <string name="list_updating">Updating…</string>
     <string name="list_app_has_ads">has ads</string>
     <string name="list_app_no_ads">no ads</string>
     <string name="list_app_depends_on_gsf">depends on GSF</string>
