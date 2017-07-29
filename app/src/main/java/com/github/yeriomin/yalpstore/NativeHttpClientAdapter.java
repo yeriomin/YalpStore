@@ -142,6 +142,9 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     }
 
     static private byte[] readFully(InputStream inputStream, boolean gzipped) throws IOException {
+        if (null == inputStream) {
+            return new byte[0];
+        }
         if (gzipped) {
             inputStream = new GZIPInputStream(inputStream);
         }
