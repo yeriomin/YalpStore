@@ -59,6 +59,6 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
     }
 
     private boolean noImages() {
-        return !NetworkState.isWifi() && PreferenceActivity.getBoolean(imageView.getContext(), PreferenceActivity.PREFERENCE_NO_IMAGES);
+        return NetworkState.isMetered(imageView.getContext()) && PreferenceActivity.getBoolean(imageView.getContext(), PreferenceActivity.PREFERENCE_NO_IMAGES);
     }
 }

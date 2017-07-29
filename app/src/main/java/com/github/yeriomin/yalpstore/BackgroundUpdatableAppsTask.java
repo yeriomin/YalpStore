@@ -35,7 +35,7 @@ class BackgroundUpdatableAppsTask extends UpdatableAppsTask {
             (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
                 && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
                     || !PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
-                    || NetworkState.isWifi()
+                    || !NetworkState.isMetered(context)
                 )
             )
         ;
