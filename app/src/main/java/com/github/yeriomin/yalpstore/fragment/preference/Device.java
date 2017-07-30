@@ -8,6 +8,7 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
+import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
 import com.github.yeriomin.yalpstore.OnListPreferenceChangeListener;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
@@ -19,6 +20,7 @@ import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.bugreport.BugReportService;
 
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Device extends List {
@@ -48,9 +50,12 @@ public class Device extends List {
         OnListPreferenceChangeListener listener = new OnListPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                boolean result = super.onPreferenceChange(preference, newValue);
+                if (!isDeviceDefinitionValid((String) newValue)) {
+                    Toast.makeText(activity, R.string.error_invalid_device_definition, Toast.LENGTH_LONG).show();
+                    return false;
+                }
                 showLogOutDialog();
-                return result;
+                return super.onPreferenceChange(preference, newValue);
             }
         };
         listener.setDefaultLabel(activity.getString(R.string.pref_device_to_pretend_to_be_default));
@@ -67,6 +72,13 @@ public class Device extends List {
             activity.getString(R.string.pref_device_to_pretend_to_be_default)
         );
         return devices;
+    }
+
+    private boolean isDeviceDefinitionValid(String spoofDevice) {
+        PropertiesDeviceInfoProvider deviceInfoProvider = new PropertiesDeviceInfoProvider();
+        deviceInfoProvider.setProperties(new SpoofDeviceManager(activity).getProperties(spoofDevice));
+        deviceInfoProvider.setLocaleString(Locale.getDefault().toString());
+        return deviceInfoProvider.isValid();
     }
 
     private AlertDialog showRequestDialog(boolean logOut) {
