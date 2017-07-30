@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SelfSignatureChecker;
 import com.github.yeriomin.yalpstore.Util;
 
@@ -107,6 +108,18 @@ public class BugReportSenderFtp extends BugReportSender {
         return format.format(Calendar.getInstance(TimeZone.getTimeZone("GMT")).getTimeInMillis())
             + "-" + BuildConfig.VERSION_NAME
             + "-" + (SelfSignatureChecker.isFdroid(context) ? "fdroid" : "selfsigned")
-            + "-" + (TextUtils.isEmpty(stackTrace) ? "feedback" : "crash");
+            + "-" + getTopic()
+            + "-" + Build.DEVICE
+        ;
+    }
+
+    private String getTopic() {
+        if (!TextUtils.isEmpty(stackTrace)) {
+            return "crash";
+        } else if (userMessage.equals(context.getString(R.string.sent_from_device_definition_dialog))) {
+            return "device";
+        } else {
+            return "feedback";
+        }
     }
 }

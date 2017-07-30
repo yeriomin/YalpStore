@@ -111,7 +111,7 @@ public class Device extends List {
     private void send() {
         Intent intentBugReport = new Intent(activity.getApplicationContext(), BugReportService.class);
         intentBugReport.setAction(BugReportService.ACTION_SEND_FTP);
-        intentBugReport.putExtra(BugReportService.INTENT_MESSAGE, "Sent from device definition request dialog");
+        intentBugReport.putExtra(BugReportService.INTENT_MESSAGE, R.string.sent_from_device_definition_dialog);
         activity.startService(intentBugReport);
     }
 
