@@ -52,6 +52,9 @@ public class SpoofDeviceManager {
         } else {
             Log.i(getClass().getName(), "Loading device info from " + getApkPath() + "/" + entryName);
             JarFile jarFile = getApkAsJar();
+            if (null == jarFile) {
+                return new Properties();
+            }
             return getProperties(jarFile, (JarEntry) jarFile.getEntry(entryName));
         }
     }
