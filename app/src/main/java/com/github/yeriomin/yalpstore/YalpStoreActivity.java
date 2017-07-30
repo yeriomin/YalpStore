@@ -1,10 +1,12 @@
 package com.github.yeriomin.yalpstore;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +17,8 @@ import android.view.Window;
 import android.widget.EditText;
 
 public abstract class YalpStoreActivity extends Activity {
+
+    private static final int PERMISSIONS_REQUEST_CODE = 384;
 
     static protected boolean logout = false;
 
@@ -92,6 +96,29 @@ public abstract class YalpStoreActivity extends Activity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected boolean isGranted(int requestCode, String permissions[], int[] grantResults) {
+        return requestCode == PERMISSIONS_REQUEST_CODE
+            && grantResults.length > 0
+            && grantResults[0] == PackageManager.PERMISSION_GRANTED
+        ;
+    }
+
+    public boolean checkPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        }
+        return true;
+    }
+
+    public void requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(
+                new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
+                PERMISSIONS_REQUEST_CODE
+            );
+        }
     }
 
     private AlertDialog showLogOutDialog() {

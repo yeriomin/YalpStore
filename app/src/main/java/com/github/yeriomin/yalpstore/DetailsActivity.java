@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -25,8 +24,6 @@ import com.github.yeriomin.yalpstore.fragment.details.Video;
 import com.github.yeriomin.yalpstore.model.App;
 
 public class DetailsActivity extends YalpStoreActivity {
-
-    static public final int PERMISSIONS_REQUEST_CODE = 828;
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
@@ -115,9 +112,7 @@ public class DetailsActivity extends YalpStoreActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (requestCode == PERMISSIONS_REQUEST_CODE
-            && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
-        ) {
+        if (isGranted(requestCode, permissions, grantResults)) {
             if (null == downloadOrInstallFragment && null != app) {
                 downloadOrInstallFragment = new DownloadOrInstall(this, app);
                 redrawButtons();

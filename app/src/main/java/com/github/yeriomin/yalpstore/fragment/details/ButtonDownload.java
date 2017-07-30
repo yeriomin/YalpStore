@@ -1,9 +1,7 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -65,11 +63,11 @@ public class ButtonDownload extends Button {
     protected void onButtonClick(View v) {
         if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
             activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
-        } else if (checkPermission()) {
+        } else if (activity.checkPermission()) {
             download();
             cancelButton.setVisibility(View.VISIBLE);
         } else {
-            requestPermission();
+            activity.requestPermission();
         }
     }
 
@@ -128,23 +126,6 @@ public class ButtonDownload extends Button {
             R.string.dialog_title_purchasing_app
         );
         return purchaseTask;
-    }
-
-    private boolean checkPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED;
-        }
-        return true;
-    }
-
-    private void requestPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            activity.requestPermissions(
-                new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
-                DetailsActivity.PERMISSIONS_REQUEST_CODE
-            );
-        }
     }
 
     private int getInstalledVersionCode() {

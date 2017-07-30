@@ -1,10 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -51,14 +48,6 @@ public class DirectDownloadActivity extends YalpStoreActivity {
         task.setPackageName(packageName);
         task.setContext(this);
         return task;
-    }
-
-    private boolean checkPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED;
-        }
-        return true;
     }
 
     static class DetailsAndPurchaseTask extends DetailsTask {
