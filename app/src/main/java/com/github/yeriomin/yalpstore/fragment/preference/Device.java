@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
@@ -50,7 +51,7 @@ public class Device extends List {
         OnListPreferenceChangeListener listener = new OnListPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                if (!isDeviceDefinitionValid((String) newValue)) {
+                if (!TextUtils.isEmpty((String) newValue) && !isDeviceDefinitionValid((String) newValue)) {
                     Toast.makeText(activity, R.string.error_invalid_device_definition, Toast.LENGTH_LONG).show();
                     return false;
                 }
