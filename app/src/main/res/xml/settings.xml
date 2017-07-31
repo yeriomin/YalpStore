@@ -73,7 +73,7 @@
             android:summaryOn="@string/pref_auto_install_summary_on"
             android:title="@string/pref_auto_install" />
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="PREFERENCE_DELETE_APK_AFTER_INSTALL"
             android:summaryOff="@string/pref_delete_apk_after_install_summary_off"
             android:summaryOn="@string/pref_delete_apk_after_install_summary_on"
