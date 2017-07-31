@@ -33,12 +33,12 @@ public class DetailsActivity extends YalpStoreActivity {
     private IgnoreOption ignoreOptionFragment;
     private DownloadOptions downloadOptionsFragment;
 
-    static public void start(Context context, String packageName) {
+    static public Intent getDetailsIntent(Context context, String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra(DetailsActivity.INTENT_PACKAGE_NAME, packageName);
-        context.startActivity(intent);
+        return intent;
     }
 
     @Override
@@ -164,8 +164,7 @@ public class DetailsActivity extends YalpStoreActivity {
             downloadOrInstallFragment.unregisterReceivers();
         }
         downloadOrInstallFragment = new DownloadOrInstall(this, app);
-        downloadOrInstallFragment.registerReceivers();
-        downloadOrInstallFragment.draw();
+        redrawButtons();
         downloadOptionsFragment = new DownloadOptions(this, app);
         downloadOptionsFragment.draw();
     }

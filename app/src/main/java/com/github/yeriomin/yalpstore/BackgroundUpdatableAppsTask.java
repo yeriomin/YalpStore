@@ -67,8 +67,8 @@ class BackgroundUpdatableAppsTask extends UpdatableAppsTask {
         getPurchaseTask(context, app).execute();
     }
 
-    private PurchaseTask getPurchaseTask(Context context, App app) {
-        PurchaseTask task = new PurchaseTask();
+    private BackgroundPurchaseTask getPurchaseTask(Context context, App app) {
+        BackgroundPurchaseTask task = new BackgroundPurchaseTask();
         task.setApp(app);
         task.setContext(context);
         task.setTriggeredBy(context instanceof Activity

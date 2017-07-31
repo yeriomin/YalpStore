@@ -18,7 +18,7 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             return;
         }
         if (!checkPermission()) {
-            DetailsActivity.start(this, packageName);
+            startActivity(DetailsActivity.getDetailsIntent(this, packageName));
             finish();
             return;
         }
@@ -61,7 +61,7 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             if (null == e) {
                 getPurchaseTask(app).execute();
             } else {
-                DetailsActivity.start(context, packageName);
+                context.startActivity(DetailsActivity.getDetailsIntent(context, packageName));
             }
         }
 

@@ -119,7 +119,7 @@ public class SearchActivity extends EndlessScrollActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        DetailsActivity.start(activity, packageId);
+                        activity.startActivity(DetailsActivity.getDetailsIntent(activity, packageId));
                         dialogInterface.dismiss();
                         activity.finish();
                     }
