@@ -26,7 +26,7 @@ class BackgroundUpdatableAppsTask extends UpdatableAppsTask {
         if (canUpdate()) {
             process(context, updatableApps);
         } else {
-            createNotification(context, updatesCount);
+            notifyUpdatesFound(context, updatesCount);
         }
     }
 
@@ -54,6 +54,7 @@ class BackgroundUpdatableAppsTask extends UpdatableAppsTask {
                 // and we want it to run in background
                 InstallerFactory.get(context.getApplicationContext()).verifyAndInstall(app);
             } else {
+                notifyDownloadedAlready(app);
                 application.removePendingUpdate(app.getPackageName());
             }
         }
@@ -77,13 +78,21 @@ class BackgroundUpdatableAppsTask extends UpdatableAppsTask {
         return task;
     }
 
-    private void createNotification(Context context, int updatesCount) {
+    private void notifyUpdatesFound(Context context, int updatesCount) {
         Intent i = new Intent(context, UpdatableAppsActivity.class);
         i.setAction(Intent.ACTION_VIEW);
         new NotificationManagerWrapper(context).show(
             i,
             context.getString(R.string.notification_updates_available_title),
             context.getString(R.string.notification_updates_available_message, updatesCount)
+        );
+    }
+
+    private void notifyDownloadedAlready(App app) {
+        new NotificationManagerWrapper(context).show(
+            InstallerAbstract.getOpenApkIntent(context, Paths.getApkPath(app.getPackageName(), app.getVersionCode())),
+            app.getDisplayName(),
+            context.getString(R.string.notification_download_complete)
         );
     }
 }
