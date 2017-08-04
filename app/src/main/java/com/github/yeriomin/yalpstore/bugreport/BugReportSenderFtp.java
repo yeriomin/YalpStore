@@ -116,7 +116,7 @@ public class BugReportSenderFtp extends BugReportSender {
     private String getTopic() {
         if (!TextUtils.isEmpty(stackTrace)) {
             return "crash";
-        } else if (userMessage.equals(context.getString(R.string.sent_from_device_definition_dialog))) {
+        } else if (!TextUtils.isEmpty(userMessage) && userMessage.equals(context.getString(R.string.sent_from_device_definition_dialog))) {
             return "device";
         } else {
             return "feedback";
