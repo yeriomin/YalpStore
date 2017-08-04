@@ -3,3 +3,4 @@
 /app/src/main/java/com/github/yeriomin/yalpstore/MultiSelectListPreference.java
 /app/src/main/java/com/github/yeriomin/yalpstore/EglExtensionRetriever.java
 /app/src/main/java/com/github/yeriomin/yalpstore/model/App.java
+/app/src/main/java/com/github/yeriomin/yalpstore/model/AppBuilder.java
