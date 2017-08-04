@@ -37,11 +37,7 @@ public class Downloader {
         App app = state.getApp();
         AppFileMetadata metadata = deliveryData.getAdditionalFile(main ? 0 : 1);
         File file = Paths.getObbPath(app.getPackageName(), metadata.getVersionCode(), main);
-        Log.i(getClass().getName(), "file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + metadata.getSize());
-        if (file.exists() && file.length() != metadata.getSize()) {
-            Log.i(getClass().getName(), "Deleted old obb file: " + file.delete());
-        }
-        file.getParentFile().mkdirs();
+        prepare(file, metadata.getSize());
         if (!file.exists()) {
             state.setStarted(dm.enqueue(
                 app,
@@ -50,6 +46,14 @@ public class Downloader {
                 listener
             ));
         }
+    }
+
+    static private void prepare(File file, long expectedSize) {
+        Log.i(Downloader.class.getName(), "file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + expectedSize);
+        if (file.exists() && file.length() != expectedSize) {
+            Log.i(Downloader.class.getName(), "Deleted old obb file: " + file.delete());
+        }
+        file.getParentFile().mkdirs();
     }
 
     static private boolean shouldDownloadDelta(App app, AndroidAppDeliveryData deliveryData) {

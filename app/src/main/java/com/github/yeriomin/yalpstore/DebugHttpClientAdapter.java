@@ -24,11 +24,7 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
     @Override
     protected byte[] request(HttpURLConnection connection, byte[] body, Map<String, String> headers) throws IOException {
         String url = connection.getURL().getPath() + "." + connection.getURL().getQuery();
-        StringBuilder requestHeaders = new StringBuilder();
-        for (String key: headers.keySet()) {
-            requestHeaders.append(key).append(": ").append(headers.get(key)).append("\n");
-        }
-        write(getFileName(url, true, true), requestHeaders.toString().getBytes());
+        write(getFileName(url, true, true), getRequestHeaders(headers).getBytes());
         write(getFileName(url, true, false), body);
         byte[] responseBody;
         IOException exception = null;
@@ -45,6 +41,14 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
             }
         }
         return responseBody;
+    }
+
+    private static String getRequestHeaders(Map<String, String> headers) {
+        StringBuilder requestHeaders = new StringBuilder();
+        for (String key: headers.keySet()) {
+            requestHeaders.append(key).append(": ").append(headers.get(key)).append("\n");
+        }
+        return requestHeaders.toString();
     }
 
     private static String getResponseHeaders(Map<String, List<String>> headers) {

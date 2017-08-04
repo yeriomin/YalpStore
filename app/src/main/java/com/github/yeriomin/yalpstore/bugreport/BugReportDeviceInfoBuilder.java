@@ -87,10 +87,7 @@ public class BugReportDeviceInfoBuilder extends BugReportBuilder {
         values.put("ScreenLayout", Integer.toString(config.screenLayout & 15));
         values.put("HasHardKeyboard", Boolean.toString(config.keyboard == Configuration.KEYBOARD_QWERTY));
         values.put("HasFiveWayNavigation", Boolean.toString(config.navigation == Configuration.NAVIGATIONHIDDEN_YES));
-        ConfigurationInfo configurationInfo = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getDeviceConfigurationInfo();
-        values.put("GL.Version", Integer.toString(configurationInfo.reqGlEsVersion));
-        values.put("GSF.version", Integer.toString(NativeDeviceInfoProvider.getVersionCode(context, GOOGLE_SERVICES_PACKAGE_ID, 0)));
-        values.put("Vending.version", Integer.toString(NativeDeviceInfoProvider.getVersionCode(context, GOOGLE_VENDING_PACKAGE_ID, 0)));
+        values.put("GL.Version", Integer.toString(((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getDeviceConfigurationInfo().reqGlEsVersion));
         return values;
     }
 
@@ -109,6 +106,8 @@ public class BugReportDeviceInfoBuilder extends BugReportBuilder {
         values.put("SharedLibraries", TextUtils.join(",", NativeDeviceInfoProvider.getSharedLibraries(context)));
         values.put("Features", TextUtils.join(",", NativeDeviceInfoProvider.getFeatures(context)));
         values.put("Locales", TextUtils.join(",", NativeDeviceInfoProvider.getLocales(context)));
+        values.put("GSF.version", Integer.toString(NativeDeviceInfoProvider.getVersionCode(context, GOOGLE_SERVICES_PACKAGE_ID, 0)));
+        values.put("Vending.version", Integer.toString(NativeDeviceInfoProvider.getVersionCode(context, GOOGLE_VENDING_PACKAGE_ID, 0)));
         return values;
     }
 
