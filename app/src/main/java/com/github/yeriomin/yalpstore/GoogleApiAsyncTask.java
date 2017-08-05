@@ -111,6 +111,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
             if (new FirstLaunchChecker(context).isFirstLogin()) {
                 Log.i(getClass().getName(), "First launch, so using built-in account");
                 builder.logInWithPredefinedAccount();
+                toast(context, R.string.first_login_message);
                 return;
             }
         } else {
