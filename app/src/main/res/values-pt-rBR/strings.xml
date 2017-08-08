@@ -255,7 +255,7 @@ Fazer?"</string>
 <string name="thank_you">"Obrigado"</string>
 <string name="list_updating">"Atualizando…"</string>
 <string name="error_invalid_device_definition">"Definição do dispositivo rejeitada."</string>
-<string name="details_video">"Video"</string>
+<string name="details_video">"Vídeo"</string>
 <string name="error_could_not_download">"Could not download."</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 </resources>
