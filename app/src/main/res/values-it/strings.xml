@@ -241,7 +241,7 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="about_bitcoin_label">"Bitcoin:"</string>
 <string name="action_bug_report">"Segnala un problema"</string>
 <string name="dialog_title_spoof_request">"Richieste"</string>
-<string name="dialog_message_spoof_request">"La mascheratura del device è possibile perchè le persone hanno inserito bug report con le info del dispositivo. Se desideri che le definizioni siano aggiornate e precise, premi OK e le info del dispositivo saranno inviate allo sviluppatore,"</string>
+<string name="dialog_message_spoof_request">"La mascheratura del device è possibile perché le persone hanno inserito bug report con le info del dispositivo. Se desideri che le definizioni siano aggiornate e precise, premi OK e le info del dispositivo saranno inviate allo sviluppatore,"</string>
 <string name="pref_device_to_pretend_to_be_notice">"Se inserisci le info del dispositivo in %1$s, appariranno nella lista"</string>
 <string name="pref_no_images">"Scarica immagini solo in Wi-Fi"</string>
 <string name="pref_no_images_summary_off">"Le immagini vengono sempre scaricate"</string>
