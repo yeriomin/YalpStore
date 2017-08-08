@@ -3,7 +3,7 @@
 <string name="about_developer_email_label">"courriel du développeur"</string>
 <string name="about_logged_in">"Connecté(e) en tant que :"</string>
 <string name="about_copied_to_clipboard">"Copié dans le presse-papier"</string>
-<string name="list_line_2_updatable">"Mis à jour le %1$s "</string>
+<string name="list_line_2_updatable">"Mis à jour le %1$s"</string>
 <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"Aucune app n'a besoin d'être mise à jour"</string>
 <string name="list_empty_search">"Aucune app trouvée"</string>
@@ -236,4 +236,22 @@ Poursuivre ?"</string>
 <string name="details_developer">"Développeur : %1$s"</string>
 <string name="pref_background_update_wifi_only">"Via le Wi-Fi uniquement"</string>
 <string name="about_bitcoin_label">"Bitcoin:"</string>
+<string name="action_bug_report">"Report an issue"</string>
+<string name="dialog_title_spoof_request">"Request"</string>
+<string name="dialog_message_spoof_request">"Device spoofing is possible because users such as you submit bug reports with device information. If you want the definitions to be precise and up-to-date, please tap OK and your device information will be sent to the Yalp Store developer."</string>
+<string name="pref_device_to_pretend_to_be_notice">"If you put device definitions into %1$s they will appear in this list"</string>
+<string name="pref_no_images">"Charger les images uniquement en WiFi"</string>
+<string name="pref_no_images_summary_off">"Les images seront toujours chargées"</string>
+<string name="pref_no_images_summary_on">"Les images ne sont chargées qu'en WiFi"</string>
+<string name="bug_report_hint_message">"Description détaillée du programme"</string>
+<string name="bug_report_hint_identification">"Votre "</string>
+<string name="bug_report_explanation_content">"Info about your device, Yalp Store logs and some of Yalp Store preferences will be automatically added to your message. No private or sensitive information is collected."</string>
+<string name="bug_report_explanation_crash">"You can help fix this by sending a bug report to the developer. Please describe what you were trying to do when the error occurred and tap OK to send it."</string>
+<string name="bug_report_explanation_bug_report">"Please describe the issue. Be specific if possible. Does the problem occur with a specific app? Does it happen all the time or only sometimes? How can it be reproduced?"</string>
+<string name="thank_you">"Merci"</string>
+<string name="list_updating">"actualisation…"</string>
+<string name="error_invalid_device_definition">"Caractéristiques de l'appareil refusées"</string>
+<string name="details_video">"Vidéo"</string>
+<string name="error_could_not_download">"Téléchargement impossible"</string>
+<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 </resources>
