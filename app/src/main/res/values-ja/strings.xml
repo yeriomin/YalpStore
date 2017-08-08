@@ -236,4 +236,22 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="details_developer">"開発元: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Wi-Fi のみを使用"</string>
 <string name="about_bitcoin_label">"Bitcoin:"</string>
+<string name="action_bug_report">"問題を報告"</string>
+<string name="dialog_title_spoof_request">"リクエスト"</string>
+<string name="dialog_message_spoof_request">"デバイスの情報を含むバグレポートを送信するなどで、デバイスのなりすましが可能です。 定義を正確かつ最新にするには、OK をタップして、デバイス情報を Yalp Store 開発者に送信してください。"</string>
+<string name="pref_device_to_pretend_to_be_notice">"デバイス定義を %1$s に入れると、このリストにデバイス定義が表示されます"</string>
+<string name="pref_no_images">"Wi-Fi でのみ画像をダウンロード"</string>
+<string name="pref_no_images_summary_off">"常に画像をすぐにダウンロードします"</string>
+<string name="pref_no_images_summary_on">"Wi-Fi でのみ画像をダウンロードします"</string>
+<string name="bug_report_hint_message">"問題の詳細な説明"</string>
+<string name="bug_report_hint_identification">"あなたのメールアドレス/名前/その他 (任意)"</string>
+<string name="bug_report_explanation_content">"お使いのデバイスに関する情報、Yalp Store のログ、いくつかの Yalp Store の設定はメッセージに自動的に追加されます。 個人情報または機密情報は収集されません。"</string>
+<string name="bug_report_explanation_crash">"開発者にバグレポートを送ることで、この問題を解決する手助けができます。 エラーが発生したときに何をしようとしていたのかを説明して、OK をタップして送信してください。"</string>
+<string name="bug_report_explanation_bug_report">"問題を説明してください。 可能であれば特定してください。 特定のアプリで問題が発生しますか? それはいつも起こりますか、それとも時々ですか? どのようにそれを再現することができますか?"</string>
+<string name="thank_you">"ありがとうございます"</string>
+<string name="list_updating">"更新中…"</string>
+<string name="error_invalid_device_definition">"デバイス定義が拒否されました。"</string>
+<string name="details_video">"ビデオ"</string>
+<string name="error_could_not_download">"ダウンロードできませんでした。"</string>
+<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 </resources>
