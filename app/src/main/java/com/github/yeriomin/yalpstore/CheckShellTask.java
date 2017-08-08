@@ -82,6 +82,9 @@ public class CheckShellTask extends AsyncTask<Void, Void, Boolean> {
 
     private Map<String, Boolean> processOutput(List<String> output) {
         Map<String, Boolean> flags = new HashMap<>();
+        for (String command: COMMANDS) {
+            flags.put(command, false);
+        }
         for (String line: output) {
             Log.d(getClass().getName(), line);
             for (String command: COMMANDS) {
