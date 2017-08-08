@@ -257,7 +257,7 @@
 <string name="bug_report_explanation_crash">"你可以通过给开发者发送一个错误报告帮助修复这个问题。请描述当错误发生时你在做什么，并点击确定来发送它。"</string>
 <string name="bug_report_explanation_bug_report">"请描述问题。如果可能的话尽量具体。这个问题与特定应用一起发生吗？它一直发生或仅是偶尔发生？怎样重现这个问题？"</string>
 <string name="thank_you">"谢谢"</string>
-<string name="list_updating">"更新中..."</string>
+<string name="list_updating">"更新中…"</string>
 <string name="error_invalid_device_definition">"设备定义被拒绝"</string>
 <string name="details_video">"视频"</string>
 <string name="error_could_not_download">"无法下载"</string>
