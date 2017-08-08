@@ -237,7 +237,7 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="action_bug_report">"Zgłoś błąd"</string>
 <string name="dialog_title_spoof_request">"Zapytanie"</string>
 <string name="dialog_message_spoof_request">"Fałszowanie urządzeń jest możliwe, ponieważ użytkownicy, na przykład wysyłając raporty o błędach z informacjami o urządzeniu. Jeśli chcesz, aby definicje były precyzyjne i aktualne, kliknij OK, a informacje o urządzeniu zostaną wysłane do twórcy Sklepu Yalp."</string>
-<string name="pref_device_to_pretend_to_be_notice">"Jeśli umieścisz definicje urządzeń w% 1 $ s, zostaną one wyświetlone na tej liście"</string>
+<string name="pref_device_to_pretend_to_be_notice">"Jeśli umieścisz definicje urządzeń w %1$s, zostaną one wyświetlone na tej liście"</string>
 <string name="pref_no_images">"Pobieraj obrazy tylko po WI-Fi"</string>
 <string name="pref_no_images_summary_off">"Obrazy są teraz zawsze pobierane"</string>
 <string name="pref_no_images_summary_on">"Obrazy są zawsze pobierane tylko po Wi-Fi"</string>
