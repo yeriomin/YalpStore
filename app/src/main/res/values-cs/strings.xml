@@ -237,4 +237,22 @@ Pokračovat?"</string>
 <string name="details_developer">"Vývojář: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Pouze přes Wi-Fi"</string>
 <string name="about_bitcoin_label">"Bitcoin:"</string>
+<string name="action_bug_report">"Oznámit chybu"</string>
+<string name="dialog_title_spoof_request">"Prosba"</string>
+<string name="dialog_message_spoof_request">"Spoofing zařízení je možný díky uživatelům jako vy, kteří odesílají oznámení o chybách s informacemi o zařízení. Pokud chcete, aby definice byly přesné a aktuální, klepněte prosím na OK a informace o vašem zařízení budou odeslány vývojáři Yalp Store."</string>
+<string name="pref_device_to_pretend_to_be_notice">"Pokud vložíte definice zařízení do %1$s, objeví se na tomto listu"</string>
+<string name="pref_no_images">"Stahovat obrázky pouze na Wi-Fi"</string>
+<string name="pref_no_images_summary_off">"Obrázky jsou nyní vždy stahovány"</string>
+<string name="pref_no_images_summary_on">"Obrázky jsou nyní stahovány pouze na Wi-Fi"</string>
+<string name="bug_report_hint_message">"Detailní popis chyby"</string>
+<string name="bug_report_hint_identification">"Váš email/jméno/cokoli (nepovinné)"</string>
+<string name="bug_report_explanation_content">"Informace o vašem zařízení, logy Yalp Store a některá nastavení Yalp Store budou automaticky přibalena k vaší zprávě. Žádné soukromé či citlivé informace nejsou sbírány."</string>
+<string name="bug_report_explanation_crash">"Můžete přispět k nápravě odesláním zprávy o chybě vývojáři. Popiště prosím, co jste se pokoušeli provést při nastání chyby a klepněte na OK pro odeslání."</string>
+<string name="bug_report_explanation_bug_report">"Popište prosím problém. Buďte co nejvíce specifičtí. Je problém vázán s určitou aplikací? Stává se neustále, nebo pouze občas? Jak jej lze reprodukovat?"</string>
+<string name="thank_you">"Děkuji"</string>
+<string name="list_updating">"Aktualizuji..."</string>
+<string name="error_invalid_device_definition">"Definice zařízení odmítnuta."</string>
+<string name="details_video">"Video"</string>
+<string name="error_could_not_download">"Nelze stáhnout."</string>
+<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 </resources>
