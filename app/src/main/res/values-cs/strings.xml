@@ -250,7 +250,7 @@ Pokračovat?"</string>
 <string name="bug_report_explanation_crash">"Můžete přispět k nápravě odesláním zprávy o chybě vývojáři. Popiště prosím, co jste se pokoušeli provést při nastání chyby a klepněte na OK pro odeslání."</string>
 <string name="bug_report_explanation_bug_report">"Popište prosím problém. Buďte co nejvíce specifičtí. Je problém vázán s určitou aplikací? Stává se neustále, nebo pouze občas? Jak jej lze reprodukovat?"</string>
 <string name="thank_you">"Děkuji"</string>
-<string name="list_updating">"Aktualizuji..."</string>
+<string name="list_updating">"Aktualizuji…"</string>
 <string name="error_invalid_device_definition">"Definice zařízení odmítnuta."</string>
 <string name="details_video">"Video"</string>
 <string name="error_could_not_download">"Nelze stáhnout."</string>
