@@ -234,4 +234,22 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="details_developer">"Programista: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Tylko przez Wi-Fi"</string>
 <string name="about_bitcoin_label">"Bitcoin:"</string>
+<string name="action_bug_report">"Zgłoś błąd"</string>
+<string name="dialog_title_spoof_request">"Zapytanie"</string>
+<string name="dialog_message_spoof_request">"Fałszowanie urządzeń jest możliwe, ponieważ użytkownicy, na przykład wysyłając raporty o błędach z informacjami o urządzeniu. Jeśli chcesz, aby definicje były precyzyjne i aktualne, kliknij OK, a informacje o urządzeniu zostaną wysłane do twórcy Sklepu Yalp."</string>
+<string name="pref_device_to_pretend_to_be_notice">"Jeśli umieścisz definicje urządzeń w% 1 $ s, zostaną one wyświetlone na tej liście"</string>
+<string name="pref_no_images">"Pobieraj obrazy tylko po WI-Fi"</string>
+<string name="pref_no_images_summary_off">"Obrazy są teraz zawsze pobierane"</string>
+<string name="pref_no_images_summary_on">"Obrazy są zawsze pobierane tylko po Wi-Fi"</string>
+<string name="bug_report_hint_message">"Szczegółowy opis problemu"</string>
+<string name="bug_report_hint_identification">"Twój e-mail / nazwa / cokolwiek (opcjonalnie)"</string>
+<string name="bug_report_explanation_content">"Informacje o urządzeniu, dzienniki Yalp Store i niektóre z preferencji Sklepu Yalp zostaną automatycznie dodane do Twojej wiadomości. Żadne prywatne lub poufne informacje nie są gromadzone."</string>
+<string name="bug_report_explanation_crash">"Możesz to naprawić, wysyłając zgłoszenie błędu do programisty. Proszę opisać, co próbujesz zrobić, gdy wystąpił błąd i stuknij OK, aby go wysłać."</string>
+<string name="bug_report_explanation_bug_report">"Proszę opisać problem. Bądź konkretny, jeśli to możliwe. Czy problem występuje z określoną aplikacją? Czy zdarza się to przez cały czas, czy tylko niekiedy? Jak można go odtworzyć?"</string>
+<string name="thank_you">"Dziękuję ci"</string>
+<string name="list_updating">"Aktualizacja…"</string>
+<string name="error_invalid_device_definition">"Odrzucona definicja urządzenia."</string>
+<string name="details_video">"Wideo"</string>
+<string name="error_could_not_download">"Nie można pobrać."</string>
+<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 </resources>
