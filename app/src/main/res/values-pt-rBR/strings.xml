@@ -122,15 +122,7 @@ Lembre-se de que usar este aplicativo viola o Play Store ToS. Seria provavelment
 <string name="pref_delete_apk_after_install_summary_on">"Agora, os apks são apagadas após a instalação"</string>
 <string name="pref_delete_apk_after_install">"Excluir .apk após a instalação"</string>
 <string name="dialog_title_application_crashed">"Desculpe, o Yelp Store falhou"</string>
-<string name="dialog_message_application_crashed">"Você pode ajudar a corrigir isso enviando dados de erro para o desenvolvedor. Clicar em OK levará você ao seu aplicativo de e-mail padrão com um e-mail completo pronto para ser enviado ao desenvolvedor.
-
-Descreva o que você estava tentando fazer quando o erro ocorreu.
-
-Nenhuma informação confidencial ou confidencial é coletada, por favor revise o conteúdo da carta se você duvidar."</string>
 <string name="details_to_play_store">"Ver na Play Store"</string>
-<string name="about_self_update_checking">"…verificando"</string>
-<string name="about_self_update_available">"…0.%1$d disponível"</string>
-<string name="about_self_update_unavailable">"…não foi encontrada nenhuma atualização"</string>
 <string name="action_categories">"Categorias"</string>
 <string name="list_update_all">"Atualizar tudo"</string>
 <string name="notification_installation_complete">"Atualização instalada"</string>

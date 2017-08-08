@@ -122,15 +122,7 @@ Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania
 <string name="pref_delete_apk_after_install_summary_on">"Pliki .apk są teraz usuwane po instalacji"</string>
 <string name="pref_delete_apk_after_install">"Usuwaj pliki .apk po instalacji"</string>
 <string name="dialog_title_application_crashed">"Niestety Yalp Store uległ awarii. "</string>
-<string name="dialog_message_application_crashed">"Możesz pomóc w naprawie wysyłając dane o błędzie deweloperowi. Klikając OK zostaniesz przeniesiony do swojej domyślnej aplikacji e-mail z gotowym mailem do wysłania deweloperowi. 
-
-Proszę opisać co robiłeś w momencie wystąpienia błędu.
-
-Żadne prywatne lub poufne informacje nie są zbierane, jeśli masz wątpliwości zapoznaj się z treścią listu."</string>
 <string name="details_to_play_store">"Zobacz w sklepie Google Play"</string>
-<string name="about_self_update_checking">"…sprawdzanie"</string>
-<string name="about_self_update_available">"…0.%1$d dostępny"</string>
-<string name="about_self_update_unavailable">"…nie znaleziono aktualizacji"</string>
 <string name="action_categories">"Kategorie"</string>
 <string name="list_update_all">"Zaktualizuj wszystko"</string>
 <string name="notification_installation_complete">"Aktualizacja została zainstalowana."</string>

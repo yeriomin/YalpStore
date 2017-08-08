@@ -12,10 +12,7 @@
 <string name="action_settings">"Einstellungen"</string>
 <string name="action_logout">"Abmelden"</string>
 <string name="action_search">"Suchen"</string>
-
-<!-- Fuzzy -->
-<string name="action_updates">"Aktualisierungen
-"</string>
+<string name="action_updates">"Aktualisierungen"</string>
 <string name="action_ignore">"Aktualisierungen ignorieren"</string>
 <string name="action_unignore">"Aktualisierungen nicht ignorieren"</string>
 <string name="action_whitelist">"Whitelist für Aktualisierungen"</string>
@@ -122,15 +119,7 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play Store Nutzungsbedin
 <string name="pref_delete_apk_after_install_summary_on">"apk-Dateien werden nach der Installation gelöscht"</string>
 <string name="pref_delete_apk_after_install">"apk-Datei nach der Installation löschen"</string>
 <string name="dialog_title_application_crashed">"Entschuldigung, Yalp Store ist abgestürtzt"</string>
-<string name="dialog_message_application_crashed">"Du kannst dabei helfen, dies zu beheben, indem du Fehlerdaten an den Entwickler schickst. Wenn du auf OK klickst, wirst du mit einer fertigen E-Mail zu deiner Standard-E-Mail-App weitergeleitet, damit du sie an den Entwickler senden kannst.
-
-Bitte beschreibe, was du gemacht hast, als der Fehler aufgetreten ist.
-
-Es werden keine privaten oder sensiblen Daten gesammelt, bitte überprüfe den Mailinhalt bei Zweifeln."</string>
 <string name="details_to_play_store">"Im Play Store ansehen"</string>
-<string name="about_self_update_checking">"…prüfe"</string>
-<string name="about_self_update_available">"…0.%1$d verfügbar"</string>
-<string name="about_self_update_unavailable">"…keine Aktualisierung gefunden"</string>
 <string name="action_categories">"Kategorien"</string>
 <string name="list_update_all">"Alle aktualisieren"</string>
 <string name="notification_installation_complete">"Aktualisierung installiert"</string>

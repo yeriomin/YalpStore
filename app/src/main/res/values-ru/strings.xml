@@ -5,9 +5,6 @@
     <string name="about_developer_email_label">Почта разработчика:</string>
     <string name="about_logged_in">Ваш текущий аккаунт:</string>
     <string name="about_copied_to_clipboard">Скопировано в буфер обмена</string>
-    <string name="about_self_update_checking">…проверяем</string>
-    <string name="about_self_update_available">"…доступна 0.%1$d"</string>
-    <string name="about_self_update_unavailable">…обновления нет</string>
     <string name="list_line_2_updatable">"Обновлено %1$s"</string>
     <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
     <string name="list_has_update">Есть обновления</string>
@@ -27,7 +24,6 @@
     <string name="dialog_title_package_id">Найдено точное соответствие</string>
     <string name="dialog_message_package_id">Найдено приложение с таким идентификатором. Перейти сразу на страницу этого приложения?</string>
     <string name="dialog_title_application_crashed">В Yalp Store произошёл сбой</string>
-    <string name="dialog_message_application_crashed">Вы можете помочь разработчику исправить это, отправив email с подробностями об ошибке. Нажмите OK чтобы открыть ваше email-приложение с письмом для разработчика, готовым к отправке.\n\nПожалуйста, опишите что вы собирались сделать когда произошла ошибка.\n\nНикакой чувствительной и личной информации отправлено не будет, проверьте текст письма, если сомеваетесь.</string>
     <string name="dialog_two_factor_cancel">Позднее</string>
     <string name="dialog_two_factor_create_password">Создать пароль</string>
     <string name="dialog_title_two_factor">Двухэтапная аутентификация</string>

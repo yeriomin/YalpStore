@@ -124,16 +124,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="pref_delete_apk_after_install_summary_on">"Ficheiros das aplicações serão apagadas após instalação"</string>
 <string name="pref_delete_apk_after_install">"Apagar ficheiros das aplicações após instalação"</string>
 <string name="dialog_title_application_crashed">"Desculpa, a Yalp Store crashou"</string>
-<string name="dialog_message_application_crashed">"Podes ajudar a resolver este erro enviando os dados referentes ao desenvolvedor.
-Ao clicar em OK redirecionaremos-te à tua aplicação de e-mail com um email completo proto a ser enviado ao desenvolvedor.
-
-Por favor descreve o que estavas a tentar fazer quando o erro ocorreu.
-
-Nenhuma informação sensível ou privada será enviada nesta mensagem, por favor re-vê o seu conteúdo se duvidares do mesmo."</string>
 <string name="details_to_play_store">"Ver na Play Store"</string>
-<string name="about_self_update_checking">"…a verificar"</string>
-<string name="about_self_update_available">"…0.%1$d disponível"</string>
-<string name="about_self_update_unavailable">"…nenhuma atualização encontrada"</string>
 <string name="action_categories">"Categorias"</string>
 <string name="list_update_all">"Atualizar todas"</string>
 <string name="notification_installation_complete">"Atualização instalada."</string>

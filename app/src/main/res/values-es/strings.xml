@@ -122,15 +122,7 @@ Ten en cuenta que Yalp viola los términos de servicio del Play Store. Es probab
 <string name="pref_delete_apk_after_install_summary_on">"Se borrarán los APKs después de la instalación"</string>
 <string name="pref_delete_apk_after_install">"Borrar APK después de la instalación"</string>
 <string name="dialog_title_application_crashed">"Lo sentimos, Yalp Store se ha detenido"</string>
-<string name="dialog_message_application_crashed">"Puedes ayudar a arreglar este error enviando informacíon sobre el mismo al desarrollador. Pulsando OK se abrirá tu aplicación de email con todo lo necesario.
-
-Por favor, describe lo que estabas intentando hacer cuando ocurrió el error.
-
-No se enviará información privada de ningún tipo. Por favor, revisa el contenido del email en caso de dudas."</string>
 <string name="details_to_play_store">"Ver en Play Store"</string>
-<string name="about_self_update_checking">"…comprobando"</string>
-<string name="about_self_update_available">"…0.%1$d disponible"</string>
-<string name="about_self_update_unavailable">"…no se encontró actualización"</string>
 <string name="action_categories">"Categorías"</string>
 <string name="list_update_all">"Actualizar todo"</string>
 <string name="notification_installation_complete">"Actualizar instalados."</string>

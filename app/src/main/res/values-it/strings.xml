@@ -121,15 +121,7 @@ Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più s
 <string name="pref_delete_apk_after_install_summary_on">"Gli apk vengono eliminati dopo l'installazione"</string>
 <string name="pref_delete_apk_after_install">"Elimina .apk dopo l'installazione"</string>
 <string name="dialog_title_application_crashed">"Yalp Store è stato chiuso"</string>
-<string name="dialog_message_application_crashed">"Puoi aiutare a risolvere il problema inviando i dati dell'errore allo sviluppatore. Selezionando OK si aprirà un'email già pronta per essere inviata allo sviluppatore.
-
-Se vuoi, aggiungi una descrizione del problema o qualsiasi altro messaggio.
-
-Non vengono raccolti dati sensibili, ma se non ti fidi controlla pure il testo dell'email."</string>
 <string name="details_to_play_store">"Vedi nel Play Store"</string>
-<string name="about_self_update_checking">"…controllo"</string>
-<string name="about_self_update_available">"0.%1$d disponibile"</string>
-<string name="about_self_update_unavailable">"…nessun aggiornamento"</string>
 <string name="action_categories">"Categorie"</string>
 <string name="list_update_all">"Aggiorna tutto"</string>
 <string name="notification_installation_complete">"Aggiornamento installato"</string>

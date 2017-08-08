@@ -121,15 +121,7 @@ Mějte prosím na paměti, že užití této aplikace je v rozporu s podmínkami
 <string name="pref_delete_apk_after_install_summary_on">".apk soubory jsou nyní mazány po instalaci"</string>
 <string name="pref_delete_apk_after_install">"Mazat .apk soubory po instalaci"</string>
 <string name="dialog_title_application_crashed">"Omlouváme se, Yalp Store spadl"</string>
-<string name="dialog_message_application_crashed">"Můžete pomoci tuto chybu opravit odesíláním zprávy o chybě vývojáři. Kliknutím na OK budete přesměrování do vašeho emailového klienta s vyplněným emailem čekajícím na odeslání.
-
-Prosím popište, co jste s aplikací dělali v momentě, kdy se vyskytla chyba.
-
-Žádné soukromé a osobní informace jsou odesílány, jste-li na pochybách, zkontrolujte obsah emailu prosím."</string>
 <string name="details_to_play_store">"Otevřít v obchodě Play"</string>
-<string name="about_self_update_checking">"…ověřuji"</string>
-<string name="about_self_update_available">"…0.%1$d dostupných"</string>
-<string name="about_self_update_unavailable">"…žádné aktualizace nenalezeny"</string>
 <string name="action_categories">"Kategorie"</string>
 <string name="list_update_all">"Aktualizovat vše"</string>
 <string name="notification_installation_complete">"Aktualizace dokončena."</string>

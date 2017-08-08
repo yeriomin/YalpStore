@@ -120,15 +120,7 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="pref_delete_apk_after_install_summary_on">"インストール後に .apks は削除されます"</string>
 <string name="pref_delete_apk_after_install">"インストール後に .apk を削除"</string>
 <string name="dialog_title_application_crashed">"申し訳ありません。Yalp Store がクラッシュしました"</string>
-<string name="dialog_message_application_crashed">"エラーデータを開発者に送信すると、この解決に役立ちます。 OK をクリックすると、デフォルトのメールアプリ表示されて、開発者にメールを送信できます。
-
-エラーが発生したときにしていたことを説明してください。
-
-個人的または機密情報は収集されません。疑う場合は、メールの内容を確認してください。"</string>
 <string name="details_to_play_store">"Play ストアで表示"</string>
-<string name="about_self_update_checking">"…確認中"</string>
-<string name="about_self_update_available">"…0.%1$d 利用できます"</string>
-<string name="about_self_update_unavailable">"…更新は見つかりません"</string>
 <string name="action_categories">"カテゴリー"</string>
 <string name="list_update_all">"すべて更新"</string>
 <string name="notification_installation_complete">"更新をインストールしました。"</string>

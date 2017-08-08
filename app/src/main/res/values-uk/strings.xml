@@ -122,15 +122,7 @@
 <string name="pref_delete_apk_after_install_summary_on">"Зараз apk вилучатимуться після встановлення "</string>
 <string name="pref_delete_apk_after_install">"Видалити .apk після втановлення"</string>
 <string name="dialog_title_application_crashed">"Вибачте, Yalp Store зазнав краху"</string>
-<string name="dialog_message_application_crashed">"Ви можете допомогти розробнику виправити це, надіславши звіт. Натисніть «Гаразд», аби надіслати вже сформований E-mail розробнику через типовий поштовий додаток.
-
-Будь ласка, опишіть, що ви збиралися зробити, коли це трапилося.
-
-Жодної приватної чи особистої інформації не буде надіслано, перевірте текст листа, якщо маєте сумнів."</string>
 <string name="details_to_play_store">"Переглянути в Play Store"</string>
-<string name="about_self_update_checking">"…перевірка"</string>
-<string name="about_self_update_available">"…0.%1$d доступно"</string>
-<string name="about_self_update_unavailable">"…оновлень не знайдено"</string>
 <string name="action_categories">"Категорії"</string>
 <string name="list_update_all">"Оновити всі"</string>
 <string name="notification_installation_complete">"Оновлення встановлено."</string>

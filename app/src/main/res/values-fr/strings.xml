@@ -122,15 +122,7 @@ Utiliser Yalp Store se fait en violation des conditions d'utilisation du Play St
 <string name="pref_delete_apk_after_install_summary_on">"Les .apk sont maintenant supprimés après installation"</string>
 <string name="pref_delete_apk_after_install">"Supprimer les .apk après installation"</string>
 <string name="dialog_title_application_crashed">"Désolé, Yalp Store a planté"</string>
-<string name="dialog_message_application_crashed">"Vous pouvez aider à réparer le problème en contactant le développeur. Cliquer sur OK lance l'application mail avec un message prêt à être envoyé.
-
-Veuillez renseigner ce que vous étiez en train de faire quand l'erreur a eu lieu.
-
-Aucune donnée personnelle ou sensible n'est enregistrée, vous pouvez relire le message en cas de doute."</string>
 <string name="details_to_play_store">"Voir dans le Play Store"</string>
-<string name="about_self_update_checking">"Vérification en cours"</string>
-<string name="about_self_update_available">"…0.%1$d disponible"</string>
-<string name="about_self_update_unavailable">"Pas de mise à jour trouvée"</string>
 <string name="action_categories">"Catégories"</string>
 <string name="list_update_all">"Tout mettre à jour"</string>
 <string name="notification_installation_complete">"Mise à jour installée."</string>

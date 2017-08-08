@@ -122,15 +122,7 @@
 <string name="pref_delete_apk_after_install_summary_on">"现在安装后删除.apks"</string>
 <string name="pref_delete_apk_after_install">"安装后删除.apk"</string>
 <string name="dialog_title_application_crashed">"抱歉，Yalp Store崩溃了。"</string>
-<string name="dialog_message_application_crashed">"您可以通过向开发人员发送错误数据来帮助解决此问题。点击确定将带您到您的默认电子邮件应用程序，一个完整的电子邮件可以发送给开发人员。
-
-请说明发生错误时您尝试做什么。
-
-没有收集私人或敏感信息，如果您怀疑，请检查信件内容。"</string>
 <string name="details_to_play_store">"在Play商店中查看"</string>
-<string name="about_self_update_checking">"…检查"</string>
-<string name="about_self_update_available">"…0.%1$d可用"</string>
-<string name="about_self_update_unavailable">"…没有找到可用更新"</string>
 <string name="action_categories">"分类"</string>
 <string name="list_update_all">"全部更新"</string>
 <string name="notification_installation_complete">"已安装更新。"</string>

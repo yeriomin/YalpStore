@@ -4,9 +4,6 @@
     <string name="about_developer_email_label">Developer\'s email:</string>
     <string name="about_logged_in">You are logged in as:</string>
     <string name="about_copied_to_clipboard">Copied to clipboard</string>
-    <string name="about_self_update_checking">…checking</string>
-    <string name="about_self_update_available">"…0.%1$d available"</string>
-    <string name="about_self_update_unavailable">…no update found</string>
     <string name="list_line_2_updatable">"Updated on %1$s"</string>
     <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
     <string name="list_has_update">Updatable</string>
@@ -43,7 +40,6 @@
     <string name="dialog_title_package_id">Package with this name exists</string>
     <string name="dialog_message_package_id">There is a package with this exact name. Would you like to go directly to its details page?</string>
     <string name="dialog_title_application_crashed">Sorry, Yalp Store crashed</string>
-    <string name="dialog_message_application_crashed">You can help fix this by sending error data to the developer. Clicking OK will take you to your default email app with a complete email ready to be sent to the developer.\n\nPlease describe what you were trying to do when the error occurred.\n\nNo private or sensitive information is collected, please review the letter content if you doubt it.</string>
     <string name="dialog_two_factor_cancel">Not now</string>
     <string name="dialog_two_factor_create_password">Create password</string>
     <string name="dialog_title_two_factor">2-Step Verification</string>
