@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Email do desenvolvedor:"</string>
+<string name="about_developer_email_label">"Email do programador:"</string>
 <string name="about_logged_in">"Sessão iniciada como:"</string>
 <string name="about_copied_to_clipboard">"Copiado para a área de transferência"</string>
 <string name="list_line_2_updatable">"Atualizado em %1$s"</string>
@@ -29,26 +29,26 @@ Por favor, cria uma app-password dedicada à Yalp Store e usa-a para fazer login
 
 Carrega em \"criar password\" para seres redirecionado à página para a criares."</string>
 <string name="dialog_title_logout">"Terminar sessão ?"</string>
-<string name="dialog_message_logout">"Tens certeza que pertendes terminar sessão?"</string>
-<string name="dialog_title_reviews">"A carregar comentários"</string>
-<string name="dialog_message_reviews">"Por favor aguarde. A carregar comentários."</string>
+<string name="dialog_message_logout">"Tens a certeza que queres terminar sessão?"</string>
+<string name="dialog_title_reviews">"A carregar criticas"</string>
+<string name="dialog_message_reviews">"Por favor aguarde. A carregar criticas."</string>
 <string name="dialog_title_purchasing_app">"A transferir aplicação"</string>
-<string name="dialog_message_purchasing_app">"Por favor aguarde. A transferir aplicação selecionada."</string>
+<string name="dialog_message_purchasing_app">"Por favor aguarde. A iniciar transferência da aplicação selecionada."</string>
 <string name="dialog_title_loading_app_list_search">"A procurar.."</string>
 <string name="dialog_message_loading_app_list_search">"Por favor aguarde enquanto procuramos aplicações."</string>
 <string name="dialog_account_type_provided_by_user">"Com a minha conta Google"</string>
 <string name="dialog_account_type_predefined">"Com uma conta fornecida pela Yalp Store"</string>
-<string name="dialog_account_type_title">"Como queres efetuar login ?"</string>
+<string name="dialog_account_type_title">"Como quer iniciar sessão no Google Play Store?"</string>
 <string name="dialog_title_logging_in">"A iniciar sessão.."</string>
-<string name="dialog_message_logging_in_provided_by_user">"A efetuar log in com as credenciais fornecidas"</string>
-<string name="dialog_message_logging_in_predefined">"A efetuar log in com as credendiais fornecidas pela Yalp Store"</string>
+<string name="dialog_message_logging_in_provided_by_user">"A iniciar sessão com as credenciais fornecidas"</string>
+<string name="dialog_message_logging_in_predefined">"A iniciar sessão com as credenciais fornecidas pela Yalp Store"</string>
 <string name="error_incorrect_password">"Email ou palavra-passe incorretos."</string>
 <string name="error_credentials_empty">"Por favor, forneca as suas credencias."</string>
-<string name="error_no_network">"Não existe nenhuma conexão à rede."</string>
+<string name="error_no_network">"Não existe nenhuma ligação à rede."</string>
 <string name="error_network_other">"Erro de rede: %1$s"</string>
 <string name="error_not_purchased">"A aplicação não parece ter sido comprada.
-Redirecionar para a página web dela ?"</string>
-<string name="error_downloads_directory_not_writable">"Pasta Downloads não foi encontrada ou não temos permissões para escrever."</string>
+Redirecionar para a página no Play Store?"</string>
+<string name="error_downloads_directory_not_writable">"Pasta Transferências não foi encontrada ou não temos permissões para escrever."</string>
 <string name="error_token_dispenser_problem">"Não foi possível iniciar sessão sem conta. Tenta usar a tua própria conta."</string>
 <string name="details_installs">"%1$s ↓"</string>
 <string name="details_rating">"%1$.1f★"</string>
@@ -57,7 +57,7 @@ Redirecionar para a página web dela ?"</string>
 <string name="details_size">"Tamanho da aplicação %1$s"</string>
 <string name="details_description">"Descrição:"</string>
 <string name="details_changelog">"O que há de novo?"</string>
-<string name="details_screenshots">"Screenshots:"</string>
+<string name="details_screenshots">"Capturas de ecrã:"</string>
 <string name="details_reviews">"Críticas:"</string>
 <string name="details_rate_this_app">"Votar esta app:"</string>
 <string name="details_you_rated_this_app">"Votaste esta app:"</string>
@@ -81,9 +81,9 @@ Redirecionar para a página web dela ?"</string>
 
 Mantém em mente que ao usares esta aplicação, estás a violar os termos e condições da Google Play Store. É suregido utilizar uma conta secundária para evitar futura perda da sua conta principal."</string>
 <string name="activity_title_search">"Procurar: \"%1$s\""</string>
-<string name="notification_download_complete">"Download completo. Tocar para instalar."</string>
-<string name="notification_download_complete_toast">"%1$s download completo. Tocar no botão ou na notificação, para instalar."</string>
-<string name="notification_download_complete_signature_mismatch">"Download completo. Assinatura da aplicacao não correspondente"</string>
+<string name="notification_download_complete">"Transferência completa. Tocar para instalar."</string>
+<string name="notification_download_complete_toast">"%1$s transferido. Tocar no botão instalar ou na notificação, para instalar."</string>
+<string name="notification_download_complete_signature_mismatch">"Transferência completa. Assinatura da aplicação não correspondente."</string>
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s transferido. A assinatura digital da aplicação não corresponde à anterior. Como obteste esta aplicação originalmente, pela Google Play ? Para instalares a atualização necessitas de desinstalar a versão anterior."</string>
 <string name="notification_updates_available_title">"Atualizações disponíveis."</string>
 <string name="notification_updates_available_message">"Atualizações disponíveis para %1$d aplicações."</string>
@@ -95,7 +95,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="pref_auto_install">"Instalar aplicações imediatamente"</string>
 <string name="pref_update_list_white_or_black_black">"Aplicações escolhidas serão ignoradas"</string>
 <string name="pref_update_list_white_or_black_white">"Aplicações escolhidas serão verificadas"</string>
-<string name="pref_update_list_white_or_black">"Lista branca/negra"</string>
+<string name="pref_update_list_white_or_black">"Lista branca/negra de aplicações a atualizar"</string>
 <string name="pref_update_list_black">"Modificar aplicações na lista negra"</string>
 <string name="pref_update_list_white">"Modificar aplicações na lista branca"</string>
 <string name="pref_ui_theme">"Tema"</string>
@@ -115,15 +115,14 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Demasiados redirecionamentos."</string>
 <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Espaço de armazenamento insuficiente."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Nenhum dispositivo de armazenamento externo foi encintrado. Talvez o cartão SD não esteja montado."</string>
-<string name="download_manager_ERROR_CANNOT_RESUME">"Ocorreu algum erro transitório, mas não podemos retomar o download. Tente novamente mais tarde."</string>
-<string name="download_manager_ERROR_BLOCKED">"O download falhou devido à NetworkPolicyManager controlar a aplicação solicitante. Verifica as tuas configurações.
-"</string>
+<string name="download_manager_ERROR_CANNOT_RESUME">"Ocorreu algum erro transitório, mas não podemos resumir a transferência. Tente novamente mais tarde."</string>
+<string name="download_manager_ERROR_BLOCKED">"A transferência falhou devido à NetworkPolicyManager controlar a aplicação solicitante. Verifica as tuas definições."</string>
 <string name="search_filter">"Todas as aplicações"</string>
 <string name="details_category">"Category: %1$s"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Ficheiros das aplicações não são apagadas após instalação"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Ficheiros das aplicações serão apagadas após instalação"</string>
 <string name="pref_delete_apk_after_install">"Apagar ficheiros das aplicações após instalação"</string>
-<string name="dialog_title_application_crashed">"Desculpa, a Yalp Store crashou"</string>
+<string name="dialog_title_application_crashed">"Desculpa, a Yalp Store deixou de funcionar"</string>
 <string name="details_to_play_store">"Ver na Play Store"</string>
 <string name="action_categories">"Categorias"</string>
 <string name="list_update_all">"Atualizar todas"</string>
@@ -137,7 +136,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="list_app_no_ads">"Não contém publicidade"</string>
 <string name="list_app_depends_on_gsf">"Depende de GSF"</string>
 <string name="list_app_independent_from_gsf">"Não dependente de GSF"</string>
-<string name="details_depends_on">"Depende de: %1$s"</string>
+<string name="details_depends_on">"Dependências: %1$s"</string>
 <string name="details_no_dependencies">"Nada"</string>
 <string name="details_contains_ads">"Contém publicidade"</string>
 <string name="details_no_ads">"Não contém publicidade"</string>
@@ -145,43 +144,43 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="dialog_message_package_id">"Existe uma aplicação com o mesmo exato nome que este. Gostarias de ir diretamente para a página da aplicação?"</string>
 <string name="details_download_checking">"A verificar…"</string>
 <string name="details_download_not_available">"Indisponível"</string>
-<string name="manual_download_incompatible">"A Google Play Store considera o teu dispositivo incompatível com esta aplicação. Isto significa que a versao de codigo não foi retornada pelo servidor da Google Play Store."</string>
-<string name="manual_download_compatible">"O campo do código da versão foi pré-preenchido com o correspondente ao da última versão compativel. Se quiseres o de uma outra versão, terás que o introduzir manualmente.(Note que terá sempre que ser um número inferior ao da corrente versão) Se o desenvolvedor da aplicação ainda não tiver apagado a aplicação anterior, poderás ainda efetuar o download da mesma."</string>
-<string name="manual_download_warning">"Esta página deixa-te escolher manualmente a versão da aplicação a transferir. O código da versão é um número a identificar a versão da aplicação. Começa desde 1 e é incrementado pelo desenvolvedor sempre que existe uma nova versão. Normalmente a Play Store deixa-te transferir apenas a última aplicação compatível com o teu dispositivo. Ao introduzir manualmente o código, poderás ter acesso a versões mais antigas.
+<string name="manual_download_incompatible">"A Google Play Store considera o teu dispositivo incompatível com esta aplicação. Isto significa que a versão de código não foi retornada pelo servidor da Google Play Store."</string>
+<string name="manual_download_compatible">"O campo do código da versão foi pré-preenchido com o correspondente ao da última versão compatível. Se quiser versão anterior, simplesmente introduza um numero menor do que a atual. Se o programador da aplicação ainda não tiver apagado a aplicação anterior do Play Store, poderá ainda efetuar a transferência da mesma."</string>
+<string name="manual_download_warning">"Esta página deixa-te escolher manualmente a versão da aplicação a transferir. O código da versão é um número a identificar a versão da aplicação. Começa desde 1 e é incrementado pelo programador sempre que existe uma nova versão. Normalmente a Play Store deixa-te transferir apenas a última aplicação compatível com o teu dispositivo. Ao introduzir manualmente este numero, deverá ter acesso a versões mais antigas.
 
-Mantém em mente que ao efetuar o download de versões arbitrárias de aplicações não é suportada pela Google Play Store. O teu sucesso depende num mero palpite de um código. Mesmo que acertes, poderás transferir uma palicação incompatível com o teu dispositivo."</string>
+Lembre-se que ao efetuar a transferência de versões arbitrárias de aplicações não é suportada pela Google Play Store. O teu sucesso depende num mero palpite de um código. Mesmo que acerte, poderá transferir uma aplicação incompatível com o teu dispositivo."</string>
 <string name="manual_download_hint_version_code">"Código da versão"</string>
-<string name="list_has_update">"Para atualizar"</string>
+<string name="list_has_update">"Atualizável"</string>
 <string name="list_no_update">"Já atualizadas"</string>
 <string name="details_uninstall">"Desinstalar"</string>
 <string name="notification_download_starting">"A iniciar transferência"</string>
 <string name="notification_download_progress">"%1$s of %2$s transferido"</string>
-<string name="pref_requested_language">"Linguagem de pedidos da Play Store"</string>
-<string name="pref_requested_language_default">"Liguagem predefinida"</string>
+<string name="pref_requested_language">"Idioma da Play Store"</string>
+<string name="pref_requested_language_default">"Idioma predefinido"</string>
 <string name="pref_hide_apps_with_ads">"Esconder aplicações com publicidade"</string>
 <string name="pref_hide_apps_with_ads_summary_off">"Aplicações com publicidade serão mostradas"</string>
 <string name="pref_hide_apps_with_ads_summary_on">"Aplicações com publicidade serão ocultadas"</string>
-<string name="pref_device_to_pretend_to_be">"\"Fazer de conta\""</string>
-<string name="pref_device_to_pretend_to_be_default">"Usar informação original"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Esta modificação será aplicada após novo login"</string>
+<string name="pref_device_to_pretend_to_be">"Simular um dispositivo diferente"</string>
+<string name="pref_device_to_pretend_to_be_default">"Informação original do dispositivo"</string>
+<string name="pref_device_to_pretend_to_be_toast">"Esta modificação será aplicada após iniciar sessão novamente"</string>
 <string name="pref_category_updates">"Atualizações"</string>
 <string name="pref_category_search">"Filtro de pesquisa"</string>
 <string name="pref_category_installation">"Instalação"</string>
-<string name="pref_category_spoofing">"Spoofing"</string>
+<string name="pref_category_spoofing">"Replicar"</string>
 <string name="pref_category_ui">"Interface"</string>
 <string name="details_installing">"A instalar .."</string>
 <string name="details_installed">"Instalado com sucesso"</string>
 <string name="details_install_failure">"Não foi possível concluir a instalação"</string>
-<string name="notification_download_complete_new_permissions">"Download completo. Novas permissões requisitadas."</string>
+<string name="notification_download_complete_new_permissions">"Transferência completa. Novas permissões requisitadas."</string>
 <string name="notification_download_complete_new_permissions_toast">"%1$s transferido. A nova versão da aplicação requer mais permissões. Verifique a lista de novas permissões."</string>
 <string name="pref_not_privileged">"Apenas disponível se a Yalp for uma aplicação de sistema."</string>
 <string name="pref_installation_method">"Método de instalação"</string>
 <string name="pref_installation_method_default">"Dialogo de instalação pre-definido, não instalar em segundo plano"</string>
-<string name="pref_installation_method_root">"Root em utilização"</string>
+<string name="pref_installation_method_root">"A usar Root"</string>
 <string name="pref_installation_method_privileged">"A usar permissões de sistema"</string>
 <string name="pref_background_update_download_summary_off">"Apenas receber uma notificação"</string>
 <string name="pref_background_update_download_summary_on">"Atualizações serão transferidas"</string>
-<string name="pref_background_update_download">"Transferir, também, atualizações"</string>
+<string name="pref_background_update_download">"Transferir também atualizações"</string>
 <string name="details_not_available_on_play_store">"Indisponível na Play Store"</string>
 <string name="action_manual">"Transferir manualmente"</string>
 <string name="action_get_local_apk">"Guardar apk"</string>
@@ -191,7 +190,7 @@ Mantém em mente que ao efetuar o download de versões arbitrárias de aplicaç�
 <string name="action_make_normal">"Converter para aplicação normal"</string>
 <string name="list_app_system">"Aplicação de sistema."</string>
 <string name="list_app_exists_in_play_store">"Disponível na Play Store."</string>
-<string name="activity_title_updates_only">"Atualização"</string>
+<string name="activity_title_updates_only">"Atualizações"</string>
 <string name="activity_title_updates_and_other_apps">"Aplicações"</string>
 <string name="pref_category_updates_page">"Atualizações"</string>
 <string name="pref_updates_only">"Apresentar apenas aplicações por atualizar"</string>
@@ -206,37 +205,55 @@ Mantém em mente que ao efetuar o download de versões arbitrárias de aplicaç�
 <string name="dialog_title_remounting_system">"A usar partição de sistema"</string>
 <string name="dialog_message_remounting_system">"A usar partição de sistema. Isto poderá levar algum tempo."</string>
 <string name="dialog_title_checking_busybox">"A verificar se busybox está disponível"</string>
-<string name="dialog_message_checking_busybox">"Certas ferramentas de sistema são requeridas para trabalhar com aplicações de sistema. Verificando se estas estão disponíveis.."</string>
+<string name="dialog_message_checking_busybox">"Certas ferramentas de sistema são requeridas para funcionar com aplicações de sistema. A verificar se estas estão disponíveis.."</string>
 <string name="dialog_title_busybox_not_available">"Busybox não disponível"</string>
 <string name="dialog_message_busybox_not_available">"É necessário um telemóvel com permissões de super administrador e busybox instalado, para poder trabalhar com aplicações de sistema. Pretende procurar um instalador de busybox ?"</string>
-<string name="dialog_title_reboot_required">"É necessário reiniciar o seu dispositivo"</string>
-<string name="dialog_message_reboot_required">"Modificações serão aplicadas após reniciar. Reiniciar dispositivo ?"</string>
-<string name="dialog_title_system_app_warning">"Advertência !"</string>
-<string name="dialog_message_system_app_warning_to_system">"Escolheste converter a app numa app de sistema. A maioria das aplicações não precisa pertencer ao sistema para funcionar.
+<string name="dialog_title_reboot_required">"Necessário reiniciar o dispositivo"</string>
+<string name="dialog_message_reboot_required">"Modificações serão aplicadas após reiniciar. Reiniciar agora?"</string>
+<string name="dialog_title_system_app_warning">"Advertência!"</string>
+<string name="dialog_message_system_app_warning_to_system">"Escolheu converter a aplicação para aplicação de sistema. A maioria das aplicações não precisa pertencer ao sistema para funcionar.
 
-Mantém em mente que esta conversão não é suportada pelo Android OS e por isso NÃO É SEGURO NEM GARANTIDO que funcione.
+Lembre-se que esta conversão NÃO é suportada pelo Android OS e por isso NÃO É SEGURO NEM GARANTIDO que funcione.
 
-Não o faças por mera curiosidade. Isto pode danificar o teu dispositivo. Efetua um backup antes de experimentares."</string>
-<string name="dialog_message_system_app_warning_to_normal">"Escolheste converter a app numa app de normal. A maioria das aplicações de sistema precisa de pertencer ao sistema para funcionar.
+Não o faça por mera curiosidade. Isto pode danificar o seu dispositivo. Faça um backup antes de experimentar."</string>
+<string name="dialog_message_system_app_warning_to_normal">"Escolheu converter a aplicação para aplicação de normal. A maioria das aplicações de sistema precisa de pertencer ao sistema para funcionar.
 
-Mantém em mente que esta processo de conversão NÃO É SUPORTADO pelo Android OS e, por isso, NÃO É SEGURO NEM GARANTIDO que funcione.
+Lembre-se que esta processo de conversão NÃO é suportado pelo Android OS e por isso, NÃO É SEGURO NEM GARANTIDO que funcione.
 
-Não o faças por mera curiosidade. Isto poderá dafinicar o teu dispositivo. Efetua um backup antes de experimentares."</string>
-<string name="list_check_updates">"Verificar atualizações"</string>
+Não o faça por mera curiosidade. Isto poderá danificar o teu dispositivo. Faça um backup antes de experimentar."</string>
+<string name="list_check_updates">"Procurar atualizações"</string>
 <string name="pref_background_update_interval_manually">"Manualmente"</string>
-<string name="dialog_message_system_app_warning_uninstall">"Tens certeza que queres remover esta aplicação de sistema ? Aplicações de sistema são introduzidas no teu dispositivo pela marca deste e, provavelmente, são necessárias para o bom funcionamento do mesmo.
+<string name="dialog_message_system_app_warning_uninstall">"Tem certeza que quer remover esta aplicação de sistema? Aplicações de sistema são introduzidas no seu dispositivo pela marca deste e provavelmente, são necessárias para o bom funcionamento do mesmo.
 
-Mantém em mente que remover uma app de sistema, NÃO É SUPORTADO PELO Android OS e, por isso, NÃO É SEGURO NEM GARANTIDO que funcione.
+Lembre-se que remover uma aplicação de sistema, NÃO é suportado pelo Android OS e por isso NÃO É SEGURO NEM GARANTIDO que funcione.
 
-Não o faças por mera curiosidade. Isto poderá dafinicar o teu dispositivo. Efetua um backup antes de experimentares."</string>
+Não o faça por mera curiosidade. Isto poderá danificar o teu dispositivo. Faça um backup antes de experimentar."</string>
 <string name="dialog_title_system_app_self">"Fazer da Yalp Store uma aplicação de sistema"</string>
-<string name="dialog_message_system_app_self">"O uso de permissões privilegiadas para permitir a instalação de apps em segundo plano exige que a Yalp Store seja uma app de sistema.
+<string name="dialog_message_system_app_self">"O uso de permissões privilegiadas para permitir a instalação de aplicações em segundo plano exige que a Yalp Store seja uma aplicação de sistema.
 
-O processo é imperfeito e específico do fornecedor, por isso, poderá não funcionar.
-Prosseguir mesmo assim ?"</string>
+O processo é imperfeito e específico do fornecedor, por isso poderá não funcionar.
+Prosseguir mesmo assim?"</string>
 <string name="about_website_label">"Página web:"</string>
 <string name="details_share">"Partilhar"</string>
-<string name="details_developer">"Desenvolvedor: %1$s"</string>
+<string name="details_developer">"Autor: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Somente por Wi-Fi"</string>
-<string name="about_bitcoin_label">"Bitcoin:"</string>
+<string name="about_bitcoin_label">"Doar Bitcoin:"</string>
+<string name="action_bug_report">"Relatar um problema"</string>
+<string name="dialog_title_spoof_request">"Pedido"</string>
+<string name="dialog_message_spoof_request">"A falsificação de dispositivos é possível porque utilizadores como você enviam relatórios de erros com as informações do dispositivo. Se desejar que as definições sejam precisas e atualizadas, toque OK e as informações do seu dispositivo serão enviadas para o programador da Yalp Store."</string>
+<string name="pref_device_to_pretend_to_be_notice">"Se colocar definições de dispositivo em %1$s, elas aparecerão nesta lista"</string>
+<string name="pref_no_images">"Transferir imagem apenas em Wi-Fi"</string>
+<string name="pref_no_images_summary_off">"Imagens serão sempre transferidas agora"</string>
+<string name="pref_no_images_summary_on">"Imagens transferiras apenas em Wi-Fi"</string>
+<string name="bug_report_hint_message">"Descrição detalhada do problema"</string>
+<string name="bug_report_hint_identification">"Nome/email/qualquer coisa (opcional)"</string>
+<string name="bug_report_explanation_content">"Informações sobre o seu dispositivo, os registos do Yalp Store e algumas das preferências da Yalp Store serão automaticamente adicionados à sua mensagem. Nenhuma informação confidencial ou confidencial é coletada."</string>
+<string name="bug_report_explanation_crash">"Pode ajudar a corrigir isso enviando um relatório de erro ao programador. Por favor, descreva o que estava a tentar fazer quando o erro ocorreu e toque OK para enviá-lo."</string>
+<string name="bug_report_explanation_bug_report">"Descreva o problema. Seja específico, se possível. O problema ocorre com uma aplicação específica? Isso acontece sempre ou só às vezes? Como pode ser reproduzido?"</string>
+<string name="thank_you">"Obrigado"</string>
+<string name="list_updating">"A enviar…"</string>
+<string name="error_invalid_device_definition">"Definição do dispositivo rejeitada."</string>
+<string name="details_video">"Vídeo"</string>
+<string name="error_could_not_download">"Erro de transferência."</string>
+<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 </resources>
