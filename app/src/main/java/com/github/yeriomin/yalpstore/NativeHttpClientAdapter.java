@@ -86,7 +86,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
 
         int code = connection.getResponseCode();
         Log.i(getClass().getName(), "HTTP result code " + code);
-        boolean isGzip = connection.getContentEncoding().contains("gzip");
+        boolean isGzip = null != connection.getContentEncoding() && connection.getContentEncoding().contains("gzip");
         try {
             content = readFully(connection.getInputStream(), isGzip);
         } catch (IOException e) {
