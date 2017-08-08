@@ -239,4 +239,22 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="details_developer">"Sviluppatore: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Solo Wi-Fi"</string>
 <string name="about_bitcoin_label">"Bitcoin:"</string>
+<string name="action_bug_report">"Segnala un problema"</string>
+<string name="dialog_title_spoof_request">"Richieste"</string>
+<string name="dialog_message_spoof_request">"La mascheratura del device è possibile perchè le persone hanno inserito bug report con le info del dispositivo. Se desideri che le definizioni siano aggiornate e precise, premi OK e le info del dispositivo saranno inviate allo sviluppatore,"</string>
+<string name="pref_device_to_pretend_to_be_notice">"Se inserisci le info del dispositivo in %1$s, appariranno nella lista"</string>
+<string name="pref_no_images">"Scarica immagini solo in Wi-Fi"</string>
+<string name="pref_no_images_summary_off">"Le immagini vengono sempre scaricate"</string>
+<string name="pref_no_images_summary_on">"Le immagini vengono scaricate solo in Wi-Fi"</string>
+<string name="bug_report_hint_message">"Descrizione dettagliata del problema"</string>
+<string name="bug_report_hint_identification">"Tua email/nome/altro (facoltativo)"</string>
+<string name="bug_report_explanation_content">"Info sul dispositivo. I registri di Yalp Store e alcune preferenze verranno inserire automaticamente nel messaggio. Non saranno raccolte informazioni private o sensibili."</string>
+<string name="bug_report_explanation_crash">"Puoi aiutare a risolverlo inviando una segnalazione allo sviluppatore. Descrivi cosa volevi fare quando l'errore si è presentato e premi OK per inviare"</string>
+<string name="bug_report_explanation_bug_report">"Descrivi il problema precisamente. Si verifica con una certa app? Succede sempre o occasionalmente? Come si può riprodurre?"</string>
+<string name="thank_you">"Grazie"</string>
+<string name="list_updating">"Aggiornamento…"</string>
+<string name="error_invalid_device_definition">"Info del dispositivo rifiutate"</string>
+<string name="details_video">"Video"</string>
+<string name="error_could_not_download">"Impossibile scaricare"</string>
+<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 </resources>
