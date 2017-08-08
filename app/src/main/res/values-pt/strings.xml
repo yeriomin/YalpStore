@@ -30,8 +30,8 @@ Por favor, cria uma app-password dedicada à Yalp Store e usa-a para fazer login
 Carrega em \"criar password\" para seres redirecionado à página para a criares."</string>
 <string name="dialog_title_logout">"Terminar sessão ?"</string>
 <string name="dialog_message_logout">"Tens a certeza que queres terminar sessão?"</string>
-<string name="dialog_title_reviews">"A carregar criticas"</string>
-<string name="dialog_message_reviews">"Por favor aguarde. A carregar criticas."</string>
+<string name="dialog_title_reviews">"A carregar críticas"</string>
+<string name="dialog_message_reviews">"Por favor aguarde. A carregar críticas."</string>
 <string name="dialog_title_purchasing_app">"A transferir aplicação"</string>
 <string name="dialog_message_purchasing_app">"Por favor aguarde. A iniciar transferência da aplicação selecionada."</string>
 <string name="dialog_title_loading_app_list_search">"A procurar.."</string>
@@ -145,8 +145,8 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="details_download_checking">"A verificar…"</string>
 <string name="details_download_not_available">"Indisponível"</string>
 <string name="manual_download_incompatible">"A Google Play Store considera o teu dispositivo incompatível com esta aplicação. Isto significa que a versão de código não foi retornada pelo servidor da Google Play Store."</string>
-<string name="manual_download_compatible">"O campo do código da versão foi pré-preenchido com o correspondente ao da última versão compatível. Se quiser versão anterior, simplesmente introduza um numero menor do que a atual. Se o programador da aplicação ainda não tiver apagado a aplicação anterior do Play Store, poderá ainda efetuar a transferência da mesma."</string>
-<string name="manual_download_warning">"Esta página deixa-te escolher manualmente a versão da aplicação a transferir. O código da versão é um número a identificar a versão da aplicação. Começa desde 1 e é incrementado pelo programador sempre que existe uma nova versão. Normalmente a Play Store deixa-te transferir apenas a última aplicação compatível com o teu dispositivo. Ao introduzir manualmente este numero, deverá ter acesso a versões mais antigas.
+<string name="manual_download_compatible">"O campo do código da versão foi pré-preenchido com o correspondente ao da última versão compatível. Se quiser versão anterior, simplesmente introduza um número menor do que a atual. Se o programador da aplicação ainda não tiver apagado a aplicação anterior do Play Store, poderá ainda efetuar a transferência da mesma."</string>
+<string name="manual_download_warning">"Esta página deixa-te escolher manualmente a versão da aplicação a transferir. O código da versão é um número a identificar a versão da aplicação. Começa desde 1 e é incrementado pelo programador sempre que existe uma nova versão. Normalmente a Play Store deixa-te transferir apenas a última aplicação compatível com o teu dispositivo. Ao introduzir manualmente este número, deverá ter acesso a versões mais antigas.
 
 Lembre-se que ao efetuar a transferência de versões arbitrárias de aplicações não é suportada pela Google Play Store. O teu sucesso depende num mero palpite de um código. Mesmo que acerte, poderá transferir uma aplicação incompatível com o teu dispositivo."</string>
 <string name="manual_download_hint_version_code">"Código da versão"</string>
