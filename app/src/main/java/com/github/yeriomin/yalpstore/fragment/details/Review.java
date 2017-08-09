@@ -37,7 +37,7 @@ public class Review extends Abstract {
 
     @Override
     public void draw() {
-        if (!app.isInPlayStore()) {
+        if (!app.isInPlayStore() || app.isEarlyAccess()) {
             return;
         }
 

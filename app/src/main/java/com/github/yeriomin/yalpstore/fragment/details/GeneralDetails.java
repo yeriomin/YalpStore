@@ -52,7 +52,11 @@ public class GeneralDetails extends Abstract {
     private void drawGeneralDetails(App app) {
         activity.findViewById(R.id.general_details).setVisibility(View.VISIBLE);
         setText(R.id.installs, R.string.details_installs, app.getInstalls());
-        setText(R.id.rating, R.string.details_rating, app.getRating().getAverage());
+        if (app.isEarlyAccess()) {
+            setText(R.id.rating, R.string.early_access);
+        } else {
+            setText(R.id.rating, R.string.details_rating, app.getRating().getAverage());
+        }
         setText(R.id.updated, R.string.details_updated, app.getUpdated());
         setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(activity, app.getSize()));
         setText(R.id.category, R.string.details_category, new CategoryManager(activity).getCategoryName(app.getCategoryId()));

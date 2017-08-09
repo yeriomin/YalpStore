@@ -43,6 +43,7 @@ public class App implements Comparable<App> {
     private boolean system;
     private boolean inPlayStore;
     private Map<String, String> relatedLinks = new HashMap<>();
+    private boolean earlyAccess;
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -271,6 +272,14 @@ public class App implements Comparable<App> {
 
     public Map<String, String> getRelatedLinks() {
         return relatedLinks;
+    }
+
+    public boolean isEarlyAccess() {
+        return earlyAccess;
+    }
+
+    public void setEarlyAccess(boolean earlyAccess) {
+        this.earlyAccess = earlyAccess;
     }
 
     @Override

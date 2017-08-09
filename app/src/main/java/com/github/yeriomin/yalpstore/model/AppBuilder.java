@@ -49,6 +49,7 @@ public class AppBuilder {
         app.setPermissions(appDetails.getPermissionList());
         app.setContainsAds(appDetails.hasContainsAds() && !TextUtils.isEmpty(appDetails.getContainsAds()));
         app.setInPlayStore(true);
+        app.setEarlyAccess(appDetails.hasEarlyAccessInfo());
         fillImages(app, details.getImageList());
         fillDependencies(app, appDetails);
         return app;

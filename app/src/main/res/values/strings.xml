@@ -5,7 +5,6 @@
     <string name="about_logged_in">You are logged in as:</string>
     <string name="about_copied_to_clipboard">Copied to clipboard</string>
     <string name="list_line_2_updatable">"Updated on %1$s"</string>
-    <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
     <string name="list_has_update">Updatable</string>
     <string name="list_no_update">Already up to date</string>
     <string name="list_empty_updates">No apps need to be updated</string>
@@ -229,4 +228,5 @@
     <string name="bug_report_explanation_bug_report">Please describe the issue. Be specific if possible. Does the problem occur with a specific app? Does it happen all the time or only sometimes? How can it be reproduced?</string>
     <string name="thank_you">Thank you</string>
     <string name="first_login_message">To use your own account choose "Log out" in the menu</string>
+    <string name="early_access">Early access</string>
 </resources>
