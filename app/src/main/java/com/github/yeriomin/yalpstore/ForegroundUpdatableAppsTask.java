@@ -25,13 +25,16 @@ class ForegroundUpdatableAppsTask extends UpdatableAppsTask {
         }
         int latestVersionCode = SelfUpdateChecker.getLatestVersionCode();
         if (latestVersionCode > BuildConfig.VERSION_CODE) {
-            App yalp = installedApps.get(BuildConfig.APPLICATION_ID);
-            installedApps.remove(yalp);
+            App yalp = getSelf();
+            installedApps.remove(BuildConfig.APPLICATION_ID);
+            if (null == yalp) {
+                return null;
+            }
             yalp.setVersionCode(latestVersionCode);
             yalp.setVersionName("0." + latestVersionCode);
             updatableApps.add(yalp);
         }
-        return result;
+        return null;
     }
 
     @Override
@@ -64,6 +67,14 @@ class ForegroundUpdatableAppsTask extends UpdatableAppsTask {
         Button button = activity.findViewById(R.id.check_updates);
         button.setEnabled(true);
         button.setText(R.string.list_check_updates);
+    }
+
+    private App getSelf() {
+        if (installedApps.containsKey(BuildConfig.APPLICATION_ID)) {
+            return installedApps.get(BuildConfig.APPLICATION_ID);
+        } else {
+            return getInstalledApp(context.getPackageManager(), BuildConfig.APPLICATION_ID);
+        }
     }
 
     private void toggleUpdateAll(boolean enable) {

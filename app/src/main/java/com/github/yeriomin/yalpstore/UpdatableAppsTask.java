@@ -31,16 +31,22 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
         Map<String, App> apps = new HashMap<>();
         PackageManager pm = context.getPackageManager();
         for (PackageInfo reducedPackageInfo: pm.getInstalledPackages(0)) {
-            App app;
-            try {
-                app = new App(pm.getPackageInfo(reducedPackageInfo.packageName, PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
-            } catch (PackageManager.NameNotFoundException e) {
-                continue;
+            App app = getInstalledApp(pm, reducedPackageInfo.packageName);
+            if (null != app) {
+                apps.put(app.getPackageName(), app);
             }
-            app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
-            apps.put(app.getPackageName(), app);
         }
         return apps;
+    }
+
+    static protected App getInstalledApp(PackageManager pm, String packageName) {
+        try {
+            App app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
+            app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
+            return app;
+        } catch (PackageManager.NameNotFoundException e) {
+            return null;
+        }
     }
 
     static public Map<String, App> filterSystemApps(Map<String, App> apps) {
