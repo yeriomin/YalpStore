@@ -149,7 +149,7 @@ public class GeneralDetails extends Abstract {
             try {
                 localizedPermissions.add(pm.getPermissionInfo(permissionName, 0).loadLabel(pm).toString());
             } catch (PackageManager.NameNotFoundException e) {
-                Log.w(getClass().getName(), "No human-readable name found for permission " + permissionName);
+                // No human-readable name found for permission
             }
         }
         setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
