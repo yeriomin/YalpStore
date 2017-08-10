@@ -4,7 +4,6 @@
 <string name="about_logged_in">"Ви увійшли як:"</string>
 <string name="about_copied_to_clipboard">"Скопійовано до буферу обміну"</string>
 <string name="list_line_2_updatable">"Оновлено %1$s"</string>
-<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"Жоден додаток не потребує оновлень"</string>
 <string name="list_empty_search">"Жодних додатків не знайдено"</string>
 <string name="list_incompatible">"несумісний"</string>

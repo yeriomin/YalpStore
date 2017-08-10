@@ -4,7 +4,6 @@
 <string name="about_logged_in">"Você está logado como:"</string>
 <string name="about_copied_to_clipboard">"Copiado para a área de transferência"</string>
 <string name="list_line_2_updatable">"Atualizado em %1$s"</string>
-<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"Nenhum app precisa ser atualizado"</string>
 <string name="list_empty_search">"Nenhum app encontrado"</string>
 <string name="list_incompatible">"incompatível"</string>

@@ -4,7 +4,6 @@
 <string name="about_logged_in">"Accesso effettuato come:"</string>
 <string name="about_copied_to_clipboard">"Copiato negli appunti"</string>
 <string name="list_line_2_updatable">"Aggiornata il %1$s"</string>
-<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"Nessuna app da aggiornare"</string>
 <string name="list_empty_search">"Nessuna app trovata"</string>
 <string name="list_incompatible">"incompatibile"</string>

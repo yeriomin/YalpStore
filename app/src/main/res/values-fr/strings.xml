@@ -4,7 +4,6 @@
 <string name="about_logged_in">"Vous êtes connecté en tant que :"</string>
 <string name="about_copied_to_clipboard">"Copié dans le presse-papier"</string>
 <string name="list_line_2_updatable">"Mis à jour le %1$s"</string>
-<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"Aucune application n\'est à mettre à jour"</string>
 <string name="list_empty_search">"Aucune application trouvée"</string>
 <string name="list_incompatible">"incompatible"</string>

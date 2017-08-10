@@ -4,7 +4,6 @@
 <string name="about_logged_in">"Sessão iniciada como:"</string>
 <string name="about_copied_to_clipboard">"Copiado para a área de transferência"</string>
 <string name="list_line_2_updatable">"Atualizado em %1$s"</string>
-<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"Nenhuma aplicação necessita de ser atualizada"</string>
 <string name="list_empty_search">"Nenhuma aplicação encontrada"</string>
 <string name="list_incompatible">"Incompatível"</string>

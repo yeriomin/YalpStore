@@ -4,7 +4,6 @@
 <string name="about_logged_in">"Nyní jste přihlášen jako:"</string>
 <string name="about_copied_to_clipboard">"Zkopírováno do schránky"</string>
 <string name="list_line_2_updatable">"Aktualizováno %1$s"</string>
-<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"Žádné aplikace nevyžadují aktualizaci"</string>
 <string name="list_empty_search">"Žádné aplikace nenalezeny"</string>
 <string name="list_incompatible">"nekompatibilní"</string>

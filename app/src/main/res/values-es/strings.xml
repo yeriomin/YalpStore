@@ -4,7 +4,6 @@
 <string name="about_logged_in">"Has iniciado sesión como:"</string>
 <string name="about_copied_to_clipboard">"Copiado al portapapeles"</string>
 <string name="list_line_2_updatable">"Actualizado el %1$s "</string>
-<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"No hay actualizaciones"</string>
 <string name="list_empty_search">"No se encontraron aplicaciones"</string>
 <string name="list_incompatible">"incompatible"</string>

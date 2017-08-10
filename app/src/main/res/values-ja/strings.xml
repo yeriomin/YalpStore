@@ -4,7 +4,6 @@
 <string name="about_logged_in">"ログイン:"</string>
 <string name="about_copied_to_clipboard">"クリップボードにコピーしました"</string>
 <string name="list_line_2_updatable">"更新 %1$s"</string>
-<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"更新が必要なアプリはありません"</string>
 <string name="list_empty_search">"アプリが見つかりません"</string>
 <string name="list_incompatible">"非互換性"</string>

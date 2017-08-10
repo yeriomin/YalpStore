@@ -4,7 +4,6 @@
 <string name="about_logged_in">"Du bist eingeloggt als:"</string>
 <string name="about_copied_to_clipboard">"In die Zwischenablage kopiert"</string>
 <string name="list_line_2_updatable">"Aktualisiert am %1$s"</string>
-<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"Es müssen keine Apps aktualisiert werden"</string>
 <string name="list_empty_search">"Keine Apps gefunden"</string>
 <string name="list_incompatible">"Inkompatibel"</string>

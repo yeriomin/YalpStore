@@ -6,7 +6,6 @@
 <string name="about_logged_in">"你已登录为："</string>
 <string name="about_copied_to_clipboard">"复制到剪贴板"</string>
 <string name="list_line_2_updatable">"更新于 %1$s"</string>
-<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"没有应用需要更新"</string>
 <string name="list_empty_search">"未找到应用"</string>
 <string name="list_incompatible">"不兼容的"</string>

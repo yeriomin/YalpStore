@@ -6,7 +6,6 @@
     <string name="about_logged_in">Ваш текущий аккаунт:</string>
     <string name="about_copied_to_clipboard">Скопировано в буфер обмена</string>
     <string name="list_line_2_updatable">"Обновлено %1$s"</string>
-    <string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
     <string name="list_has_update">Есть обновления</string>
     <string name="list_no_update">Нет обновлений</string>
     <string name="list_empty_updates">Обновлений нет</string>

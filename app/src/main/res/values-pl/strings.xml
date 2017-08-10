@@ -4,7 +4,6 @@
 <string name="about_logged_in">"Zalogowany jako:"</string>
 <string name="about_copied_to_clipboard">"Skopiowano do schowka"</string>
 <string name="list_line_2_updatable">"Zaktualizowano o %1$s"</string>
-<string name="list_line_2_search">"%1$s ↓, %2$.1f★, %3$s"</string>
 <string name="list_empty_updates">"Brak dostępnych aktualizacji"</string>
 <string name="list_empty_search">"Nie znaleziono aplikacji"</string>
 <string name="list_incompatible">"niekompatybilne"</string>
