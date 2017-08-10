@@ -57,7 +57,7 @@ public class App implements Comparable<App> {
         this.setVersionName(packageInfo.versionName);
         this.setVersionCode(packageInfo.versionCode);
         this.setInstalled(true);
-        this.setSystem((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
+        this.setSystem(null != packageInfo.applicationInfo && (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
         if (null != packageInfo.requestedPermissions) {
             this.setPermissions(Arrays.asList(packageInfo.requestedPermissions));
         }
