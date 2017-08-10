@@ -230,6 +230,7 @@
     <string name="bug_report_explanation_bug_report">Пожалуйста, подробно опишите проблему. Может быть проблема происходит с конкретными приложениями? Всегда или иногда? Как разработчик может повторить проблему?</string>
     <string name="thank_you">Спасибо</string>
     <string name="first_login_message">Чтобы использовать свой аккаунт выберите "Разлогиниться" в меню</string>
+    <string name="early_access">Бета-версия</string>
     <string name="testing_program_opt_in">Присоединиться</string>
     <string name="testing_program_opt_out">Выйти</string>
     <string name="testing_program_section_opted_in_message">При обновлении приложения будут устанавливаться бета-версии функций, до тех пор пока вы не покинете программу.</string>

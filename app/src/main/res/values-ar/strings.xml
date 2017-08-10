@@ -233,6 +233,7 @@
 <string name="details_developer">"مطوّر البرامج: %1$s"</string>
 <string name="pref_background_update_wifi_only">"على Wi-Fi فقط"</string>
 <string name="about_bitcoin_label">"عملة البيتكوين (BitCoin)"</string>
+<string name="early_access">الاستخدام التجريبي</string>
 <string name="testing_program_opt_in">انضمام</string>
 <string name="testing_program_opt_out">مغادرة</string>
 <string name="testing_program_section_opted_in_message">ستتضمن تحديثات التطبيق الإصدارات التجريبية. إذا غادرت البرنامج التجريبي من هذا التطبيق، فلن تتمكن مرة أخرى من الحصول على التحديثات التجريبية.</string>

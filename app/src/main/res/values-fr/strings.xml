@@ -232,6 +232,7 @@
 <string name="details_video">"Vidéo"</string>
 <string name="error_could_not_download">"Téléchargement impossible"</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
+<string name="early_access">Accès anticipé</string>
 <string name="testing_program_opt_in">rejoindre</string>
 <string name="testing_program_opt_out">quitter</string>
 <string name="testing_program_section_opted_in_message">"Les mises à jour de l'application comprendront les versions bêta. Si vous quittez le programme bêta de cette application, vous ne recevrez plus les mises à jour bêta."</string>

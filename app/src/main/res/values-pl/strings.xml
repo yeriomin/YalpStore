@@ -251,6 +251,7 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="error_invalid_device_definition">"Odrzucona definicja urządzenia."</string>
 <string name="details_video">"Wideo"</string>
 <string name="error_could_not_download">"Nie można pobrać."</string>
+<string name="early_access">Wcześniejszy dostęp</string>
 <string name="testing_program_opt_in">dołącz</string>
 <string name="testing_program_opt_out">zrezygnuj</string>
 <string name="testing_program_section_opted_in_message">Aktualizacje aplikacji będą obejmować wersje beta. Jeśli opuścisz program testów beta tej aplikacji, nie będziesz już otrzymywać aktualizacji wersji beta.</string>

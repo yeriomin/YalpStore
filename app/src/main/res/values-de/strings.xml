@@ -235,6 +235,7 @@ Fortfahren?"</string>
 <string name="details_developer">"Entwickler: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Nur über WLAN"</string>
 <string name="about_bitcoin_label">"Bitcoin:"</string>
+<string name="early_access">Beta</string>
 <string name="testing_program_opt_in">Mitmachen</string>
 <string name="testing_program_opt_out">Verlassen</string>
 <string name="testing_program_section_opted_in_message">Zu den App-Updates gehören Betaversionen. Wenn du das Betaprogramm für diese App verlässt, erhältst du keine Betaupdates mehr.</string>

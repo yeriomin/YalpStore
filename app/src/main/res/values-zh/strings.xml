@@ -261,6 +261,7 @@
 <string name="error_invalid_device_definition">"设备定义被拒绝"</string>
 <string name="details_video">"视频"</string>
 <string name="error_could_not_download">"无法下载"</string>
+<string name="early_access">抢先体验</string>
 <string name="testing_program_opt_in">加入</string>
 <string name="testing_program_opt_out">退出</string>
 <string name="testing_program_section_opted_in_message">应用更新将包含 Beta 版。因此，如果您退出此应用的 Beta 版计划，那么将无法再收到 Beta 版更新内容。</string>

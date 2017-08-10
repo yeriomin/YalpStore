@@ -255,6 +255,7 @@ Prosseguir mesmo assim?"</string>
 <string name="error_invalid_device_definition">"Definição do dispositivo rejeitada."</string>
 <string name="details_video">"Vídeo"</string>
 <string name="error_could_not_download">"Erro de transferência."</string>
+<string name="early_access">Antecipado</string>
 <string name="testing_program_opt_in">participar</string>
 <string name="testing_program_opt_out">sair</string>
 <string name="testing_program_section_opted_in_message">Todas as atualizações incluirão versões Beta. Caso saia do programa Beta do app, você deixará de receber atualizações da versão Beta.</string>

@@ -255,6 +255,7 @@ Pokračovat?"</string>
 <string name="details_video">"Video"</string>
 <string name="error_could_not_download">"Nelze stáhnout."</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
+<string name="early_access">Předběžný přístup</string>
 <string name="testing_program_opt_in">zapojit se</string>
 <string name="testing_program_opt_out">odejít</string>
 <string name="testing_program_section_opted_in_message">Aktualizace aplikace budou zahrnovat beta verze. Pokud program testování beta verze opustíte, aktualizace beta verze již nebudete dostávat.</string>

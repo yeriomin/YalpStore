@@ -257,6 +257,7 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="details_video">"Video"</string>
 <string name="error_could_not_download">"Impossibile scaricare"</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
+<string name="early_access">In anteprima</string>
 <string name="testing_program_opt_in">partecipa</string>
 <string name="testing_program_opt_out">abbandona</string>
 <string name="testing_program_section_opted_in_message">"Gli aggiornamenti delle app includeranno le versioni Beta. Se esci dal Programma Beta dell'app, non riceverai più gli aggiornamenti della versione Beta."</string>

@@ -201,8 +201,7 @@ Lembre-se de que o download de versões arbitrárias de aplicativos não é comp
 <string name="pref_show_system_apps">"Mostrar aplicativos do sistema"</string>
 <string name="pref_show_system_apps_summary_off">"Os aplicativos do sistema estão ocultos agora"</string>
 <string name="pref_show_system_apps_summary_on">"Os aplicativos do sistema são exibidos agora"</string>
-<string name="details_system_app_info">"Info do sistema
-"</string>
+<string name="details_system_app_info">"Info do sistema"</string>
 <string name="activity_title_search_publisher">"Aplicativos de %1$s"</string>
 <string name="details_run">"Executar"</string>
 <string name="dialog_title_remounting_system">"Trabalhando com / partição de sistema"</string>

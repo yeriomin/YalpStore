@@ -238,6 +238,7 @@ Do it?"</string>
 <string name="details_developer">"Розробник: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Лише через Wi-Fi"</string>
 <string name="about_bitcoin_label">"Bitcoin:"</string>
+<string name="early_access">Ранній доступ</string>
 <string name="testing_program_opt_in">Приєднатися</string>
 <string name="testing_program_opt_out">Вийти</string>
 <string name="testing_program_section_opted_in_message">Оновлення додатка включатимуть бета-версії. Якщо ви вийдете з програми бета-тестування цього додатка, то більше не отримуватиме оновлень бета-версії.</string>

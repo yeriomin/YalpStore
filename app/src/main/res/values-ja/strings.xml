@@ -253,6 +253,7 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="error_invalid_device_definition">"デバイス定義が拒否されました。"</string>
 <string name="details_video">"ビデオ"</string>
 <string name="error_could_not_download">"ダウンロードできませんでした。"</string>
+<string name="early_access">早期アクセス</string>
 <string name="testing_program_opt_in">登録</string>
 <string name="testing_program_opt_out">登録を解除する</string>
 <string name="testing_program_section_opted_in_message">アプリのアップデートにベータ版が追加されます。このアプリのベータ版プログラムの登録を解除すると、ベータ版のアップデートは提供されなくなります。</string>
