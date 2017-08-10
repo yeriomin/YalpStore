@@ -50,6 +50,11 @@ public class AppBuilder {
         app.setContainsAds(appDetails.hasContainsAds() && !TextUtils.isEmpty(appDetails.getContainsAds()));
         app.setInPlayStore(true);
         app.setEarlyAccess(appDetails.hasEarlyAccessInfo());
+        app.setTestingProgramAvailable(appDetails.hasTestingProgramInfo());
+        if (app.isTestingProgramAvailable()) {
+            app.setTestingProgramOptedIn(appDetails.getTestingProgramInfo().hasSubscribed() && appDetails.getTestingProgramInfo().getSubscribed());
+            app.setTestingProgramEmail(appDetails.getTestingProgramInfo().getTestingProgramEmail());
+        }
         fillImages(app, details.getImageList());
         fillDependencies(app, appDetails);
         return app;

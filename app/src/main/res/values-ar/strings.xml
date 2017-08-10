@@ -233,4 +233,12 @@
 <string name="details_developer">"مطوّر البرامج: %1$s"</string>
 <string name="pref_background_update_wifi_only">"على Wi-Fi فقط"</string>
 <string name="about_bitcoin_label">"عملة البيتكوين (BitCoin)"</string>
+<string name="testing_program_opt_in">انضمام</string>
+<string name="testing_program_opt_out">مغادرة</string>
+<string name="testing_program_section_opted_in_message">ستتضمن تحديثات التطبيق الإصدارات التجريبية. إذا غادرت البرنامج التجريبي من هذا التطبيق، فلن تتمكن مرة أخرى من الحصول على التحديثات التجريبية.</string>
+<string name="testing_program_section_opted_in_propagating_message">خلال بضع دقائق، ستتم إضافتك إلى البرنامج التجريبي. ويمكنك بعد ذلك التحديث إلى الإصدار التجريبي من هذا التطبيق، عند توفره.</string>
+<string name="testing_program_section_opted_in_title">أنت أحد مختبري الإصدار التجريبي</string>
+<string name="testing_program_section_opted_out_message">يمكنك تجربة الميزات الجديدة قبل إتاحتها للجمهور. وبذلك يمكنك تقديم تعليقاتك إلى مطوِّر البرنامج مباشرة.</string>
+<string name="testing_program_section_opted_out_propagating_message">قد تستغرق إزالتك من البرنامج التجريبي بضع دقائق.</string>
+<string name="testing_program_section_opted_out_title">الانضمام إلى مختبِري الإصدار التجريبي</string>
 </resources>

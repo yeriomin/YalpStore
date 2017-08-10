@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.github.yeriomin.yalpstore.fragment.details.AppLists;
 import com.github.yeriomin.yalpstore.fragment.details.BackToPlayStore;
+import com.github.yeriomin.yalpstore.fragment.details.Beta;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOptions;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 import com.github.yeriomin.yalpstore.fragment.details.GeneralDetails;
@@ -158,6 +159,7 @@ public class DetailsActivity extends YalpStoreActivity {
         new Share(this, app).draw();
         new SystemAppPage(this, app).draw();
         new Video(this, app).draw();
+        new Beta(this, app).draw();
         ignoreOptionFragment.setApp(app);
         ignoreOptionFragment.draw();
         if (null != downloadOrInstallFragment) {

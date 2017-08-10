@@ -238,4 +238,12 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="details_developer">"Desarrollador: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Solo por Wi-Fi"</string>
 <string name="about_bitcoin_label">"Bitcoin:"</string>
+<string name="testing_program_opt_in">unirse</string>
+<string name="testing_program_opt_out">salir</string>
+<string name="testing_program_section_opted_in_message">Las actualizaciones de la aplicación incluirán versiones Beta. Si sales del programa Beta de esta aplicación, dejarás de recibir actualizaciones Beta.</string>
+<string name="testing_program_section_opted_in_propagating_message">Empezarás a participar en el programa Beta en unos minutos y podrás instalar la versión beta de esta aplicación, si está disponible.</string>
+<string name="testing_program_section_opted_in_title">Eres un tester Beta</string>
+<string name="testing_program_section_opted_out_message">Prueba nuevas funciones antes de que se hagan públicas. Envía tus comentarios directamente al desarrollador.</string>
+<string name="testing_program_section_opted_out_propagating_message">Podemos tardar unos minutos en retirarte del programa Beta.</string>
+<string name="testing_program_section_opted_out_title">Convertirte en tester Beta</string>
 </resources>

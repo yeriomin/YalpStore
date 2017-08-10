@@ -261,5 +261,12 @@
 <string name="error_invalid_device_definition">"设备定义被拒绝"</string>
 <string name="details_video">"视频"</string>
 <string name="error_could_not_download">"无法下载"</string>
-<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
+<string name="testing_program_opt_in">加入</string>
+<string name="testing_program_opt_out">退出</string>
+<string name="testing_program_section_opted_in_message">应用更新将包含 Beta 版。因此，如果您退出此应用的 Beta 版计划，那么将无法再收到 Beta 版更新内容。</string>
+<string name="testing_program_section_opted_in_propagating_message">您将在几分钟后加入 Beta 版计划，然后您就可以更新到此应用的 Beta 版（如果有）。</string>
+<string name="testing_program_section_opted_in_title">您已成为 Beta 版测试人员</string>
+<string name="testing_program_section_opted_out_message">可在新功能公开发布之前进行试用，并可直接向开发者提供反馈。</string>
+<string name="testing_program_section_opted_out_propagating_message">您可能需要等待几分钟才能退出 Beta 版计划。</string>
+<string name="testing_program_section_opted_out_title">成为 Beta 版测试人员</string>
 </resources>

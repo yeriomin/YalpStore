@@ -251,5 +251,12 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="error_invalid_device_definition">"Odrzucona definicja urządzenia."</string>
 <string name="details_video">"Wideo"</string>
 <string name="error_could_not_download">"Nie można pobrać."</string>
-<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
+<string name="testing_program_opt_in">dołącz</string>
+<string name="testing_program_opt_out">zrezygnuj</string>
+<string name="testing_program_section_opted_in_message">Aktualizacje aplikacji będą obejmować wersje beta. Jeśli opuścisz program testów beta tej aplikacji, nie będziesz już otrzymywać aktualizacji wersji beta.</string>
+<string name="testing_program_section_opted_in_propagating_message">Za kilka minut staniesz się uczestnikiem programu testów beta. Możesz wtedy zaktualizować aplikację do wersji beta, o ile jest dostępna.</string>
+<string name="testing_program_section_opted_in_title">Jesteś betatesterem</string>
+<string name="testing_program_section_opted_out_message">Wypróbuj nowe funkcje, zanim zostaną udostępnione wszystkim użytkownikom. Przekazuj swoje opinie bezpośrednio programiście.</string>
+<string name="testing_program_section_opted_out_propagating_message">Opuszczanie programu testów beta może potrwać kilka minut.</string>
+<string name="testing_program_section_opted_out_title">Zostań betatesterem</string>
 </resources>

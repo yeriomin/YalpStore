@@ -255,5 +255,12 @@ Prosseguir mesmo assim?"</string>
 <string name="error_invalid_device_definition">"Definição do dispositivo rejeitada."</string>
 <string name="details_video">"Vídeo"</string>
 <string name="error_could_not_download">"Erro de transferência."</string>
-<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
+<string name="testing_program_opt_in">participar</string>
+<string name="testing_program_opt_out">sair</string>
+<string name="testing_program_section_opted_in_message">Todas as atualizações incluirão versões Beta. Caso saia do programa Beta do app, você deixará de receber atualizações da versão Beta.</string>
+<string name="testing_program_section_opted_in_propagating_message">Em alguns minutos, você será adicionado ao programa Beta. Em seguida, será possível atualizar a versão Beta deste app, se disponível.</string>
+<string name="testing_program_section_opted_in_title">Você é um testador Beta</string>
+<string name="testing_program_section_opted_out_message">Teste novos recursos antes que eles se tornem públicos. Envie seus comentários diretamente para o desenvolvedor.</string>
+<string name="testing_program_section_opted_out_propagating_message">Pode levar alguns minutos para remover você do programa Beta.</string>
+<string name="testing_program_section_opted_out_title">Seja um testador Beta</string>
 </resources>
