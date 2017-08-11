@@ -72,12 +72,14 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
                 )
             )
         ) {
+            Log.i(getClass().getName(), "Launching installer for " + app.getPackageName());
             InstallerAbstract installer = InstallerFactory.get(context);
             if (autoInstall) {
                 installer.setBackground(false);
             }
             installer.verifyAndInstall(app);
         } else {
+            Log.i(getClass().getName(), "Notifying about download completion of " + app.getPackageName());
             notifyDownloadComplete(app);
             ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
         }
