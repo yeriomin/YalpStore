@@ -23,7 +23,7 @@ abstract public class NotificationBuilder {
     }
 
     public NotificationBuilder(Context context) {
-        this.context = context;
+        this.context = context.getApplicationContext();
     }
 
     protected PendingIntent getPendingIntent(Intent intent) {
