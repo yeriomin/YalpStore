@@ -183,7 +183,7 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="details_could_not_copy_apk">"APK-Datei konnte nicht kopiert werden"</string>
 <string name="action_make_system">"In System-App umwandeln"</string>
 <string name="action_make_normal">"In normale App umwandeln"</string>
-<string name="list_app_system">"System App."</string>
+<string name="list_app_system">"System App"</string>
 <string name="list_app_exists_in_play_store">"Verfügbar im Play Store"</string>
 <string name="activity_title_updates_only">"Aktualisierungen"</string>
 <string name="activity_title_updates_and_other_apps">"Deine Apps"</string>
