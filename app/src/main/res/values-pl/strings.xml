@@ -183,8 +183,8 @@ Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji apli
 <string name="details_could_not_copy_apk">"Nie można skopiować pliku apk"</string>
 <string name="action_make_system">"Konwertuj na aplikację systemową"</string>
 <string name="action_make_normal">"Konwertuj do normalnej aplikacji"</string>
-<string name="list_app_system">"Aplikacja systemowa."</string>
-<string name="list_app_exists_in_play_store">"Dostępne w sklepie Google Play."</string>
+<string name="list_app_system">"Aplikacja systemowa"</string>
+<string name="list_app_exists_in_play_store">"Dostępne w sklepie Google Play"</string>
 <string name="activity_title_updates_only">"Aktualizacje"</string>
 <string name="activity_title_updates_and_other_apps">"Twoje aplikacje"</string>
 <string name="pref_category_updates_page">"Odśwież stronę"</string>
