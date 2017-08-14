@@ -228,13 +228,14 @@
 <string name="details_video">"Vidéo"</string>
 <string name="error_could_not_download">"Téléchargement impossible"</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
-<string name="early_access">Accès anticipé</string>
-<string name="testing_program_opt_in">rejoindre</string>
-<string name="testing_program_opt_out">quitter</string>
+<string name="early_access">"Accès anticipé"</string>
+<string name="testing_program_opt_in">"rejoindre"</string>
+<string name="testing_program_opt_out">"quitter"</string>
 <string name="testing_program_section_opted_in_message">"Les mises à jour de l'application comprendront les versions bêta. Si vous quittez le programme bêta de cette application, vous ne recevrez plus les mises à jour bêta."</string>
-<string name="testing_program_section_opted_in_propagating_message">Dans quelques minutes, vous serez inscrit au programme bêta. Vous pourrez ensuite passer à la version bêta de cette application, le cas échéant.</string>
-<string name="testing_program_section_opted_in_title">Vous êtes testeur bêta</string>
+<string name="testing_program_section_opted_in_propagating_message">"Dans quelques minutes, vous serez inscrit au programme bêta. Vous pourrez ensuite passer à la version bêta de cette application, le cas échéant."</string>
+<string name="testing_program_section_opted_in_title">"Vous êtes testeur bêta"</string>
 <string name="testing_program_section_opted_out_message">"Essayez de nouvelles fonctionnalités avant qu'elles ne soient rendues publiques. Envoyez vos commentaires directement au développeur."</string>
-<string name="testing_program_section_opted_out_propagating_message">Votre désinscription du programme bêta peut prendre quelques minutes.</string>
-<string name="testing_program_section_opted_out_title">Devenir testeur bêta</string>
+<string name="testing_program_section_opted_out_propagating_message">"Votre désinscription du programme bêta peut prendre quelques minutes."</string>
+<string name="testing_program_section_opted_out_title">"Devenir testeur bêta"</string>
+<string name="notification_not_privileged">"Install permission not granted"</string>
 </resources>
