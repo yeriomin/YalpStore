@@ -175,8 +175,8 @@
 <string name="details_could_not_copy_apk">"Impossible de copier l\'apk"</string>
 <string name="action_make_system">"Convertir en application système"</string>
 <string name="action_make_normal">"Convertir en application utilisateur"</string>
-<string name="list_app_system">"Application système."</string>
-<string name="list_app_exists_in_play_store">"Disponible dans le Play Store."</string>
+<string name="list_app_system">"Application système"</string>
+<string name="list_app_exists_in_play_store">"Disponible dans le Play Store"</string>
 <string name="activity_title_updates_only">"Mises à jour"</string>
 <string name="activity_title_updates_and_other_apps">"Vos applications"</string>
 <string name="pref_category_updates_page">"Page de mise à jour"</string>
