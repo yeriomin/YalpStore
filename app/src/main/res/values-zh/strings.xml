@@ -48,9 +48,6 @@
 <string name="error_not_purchased">"您似乎并没有购买这个应用，是否重定向到google页面去查找本应用?"</string>
 <string name="error_downloads_directory_not_writable">"无法创建下载目录或其属性只读。"</string>
 <string name="error_token_dispenser_problem">"无法登录不存在的帐户，尝试使用YALP帐户。"</string>
-<string name="details_installs">"%1$s ↓"</string>
-<string name="details_rating">"%1$.1f★"</string>
-<string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"更新 %1$s"</string>
 <string name="details_size">"应用大小 %1$s"</string>
 <string name="details_description">"描述"</string>

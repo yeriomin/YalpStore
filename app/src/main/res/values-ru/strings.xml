@@ -18,8 +18,8 @@
     <string name="list_app_no_ads">нет рекламы</string>
     <string name="list_app_depends_on_gsf">зависит от GSF</string>
     <string name="list_app_independent_from_gsf">не зависит от GSF</string>
-    <string name="list_app_system">Системное.</string>
-    <string name="list_app_exists_in_play_store">Есть в Play Store.</string>
+    <string name="list_app_system">Системное</string>
+    <string name="list_app_exists_in_play_store">Есть в Play Store</string>
     <string name="dialog_title_package_id">Найдено точное соответствие</string>
     <string name="dialog_message_package_id">Найдено приложение с таким идентификатором. Перейти сразу на страницу этого приложения?</string>
     <string name="dialog_title_application_crashed">В Yalp Store произошёл сбой</string>
@@ -85,9 +85,6 @@
     <string name="error_could_not_download">Не удалось скачать.</string>
     <string name="details_category">"Категория: %1$s"</string>
     <string name="details_developer">"Разработчик: %1$s"</string>
-    <string name="details_installs">"%1$s ↓"</string>
-    <string name="details_rating">"%1$.1f★"</string>
-    <string name="details_rating_specific">"%1$d★ %2$d"</string>
     <string name="details_updated">"Обновлено %1$s"</string>
     <string name="details_size">"Размер apk %1$s"</string>
     <string name="details_description">Описание:</string>

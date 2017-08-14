@@ -49,9 +49,6 @@ Carrega em \"criar password\" para seres redirecionado à página para a criares
 Redirecionar para a página no Play Store?"</string>
 <string name="error_downloads_directory_not_writable">"Pasta Transferências não foi encontrada ou não temos permissões para escrever."</string>
 <string name="error_token_dispenser_problem">"Não foi possível iniciar sessão sem conta. Tenta usar a tua própria conta."</string>
-<string name="details_installs">"%1$s ↓"</string>
-<string name="details_rating">"%1$.1f★"</string>
-<string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"Atualizado %1$s"</string>
 <string name="details_size">"Tamanho da aplicação %1$s"</string>
 <string name="details_description">"Descrição:"</string>

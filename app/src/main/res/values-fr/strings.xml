@@ -42,9 +42,6 @@
 <string name="error_not_purchased">"Cette application ne semble pas avoir été achetée. Voir la page sur le Play Store ?"</string>
 <string name="error_downloads_directory_not_writable">"Le dossier des téléchargement n\'a pas pu être créé ou n\'a pas d\'accès en écriture"</string>
 <string name="error_token_dispenser_problem">"Impossible de se connecter sans compte. Essayez avec le vôtre."</string>
-<string name="details_installs">"%1$s ↓"</string>
-<string name="details_rating">"%1$.1f★"</string>
-<string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"Mis à jour : %1$s"</string>
 <string name="details_size">"Taille de %1$s "</string>
 <string name="details_description">"Description :"</string>

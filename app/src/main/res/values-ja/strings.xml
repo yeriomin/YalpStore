@@ -47,9 +47,6 @@ Yalp Store 専用のアプリパスワードを作成して、Yalp Store のロ�
 Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="error_downloads_directory_not_writable">"ダウンロードディレクトリーを作成できなかったか、書き込み可能ではありません。"</string>
 <string name="error_token_dispenser_problem">"アカウントなしでログインできませんでした。 自分のアカウントを使ってみてください。"</string>
-<string name="details_installs">"%1$s ↓"</string>
-<string name="details_rating">"%1$.1f★"</string>
-<string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"更新しました %1$s"</string>
 <string name="details_size">"Apk サイズ %1$s"</string>
 <string name="details_description">"説明:"</string>

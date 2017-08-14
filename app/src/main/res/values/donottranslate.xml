@@ -4,7 +4,6 @@
     <string name="about_bitcoin" translatable="false">14HvYHKe6joHbQjVdAPd1Ha1yXaGS2pVTW</string>
     <string name="about_developer_email" translatable="false">yalp.store.dev@gmail.com</string>
     <string name="about_gsf_id" translatable="false">Google Services Framework id:</string>
-    <string name="list_line_3_search" translatable="false">"%1$s, %2$s, %3$s"</string>
     <string name="expansion_file_main" translatable="false">"%1$s - Main expansion"</string>
     <string name="expansion_file_patch" translatable="false">"%1$s - Secondary expansion"</string>
     <string name="two_items" translatable="false">"%1$s %2$s"</string>
@@ -20,4 +19,7 @@
     <string name="email_subject_crash_report" translatable="false">"%1$s %2$s Crash Report"</string>
     <string name="bug_report_message" translatable="false">"From: %1$s\n\nMessage:\n%2$s"</string>
     <string name="sent_from_device_definition_dialog" translatable="false">"Sent from device definition request dialog"</string>
+    <string name="details_installs" translatable="false">"%1$s↓"</string>
+    <string name="details_rating" translatable="false">"%1$.1f★"</string>
+    <string name="details_rating_specific" translatable="false">"%1$d★ %2$d"</string>
 </resources>

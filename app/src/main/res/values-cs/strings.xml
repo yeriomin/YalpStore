@@ -47,9 +47,6 @@ Klikněte na \"Vytvořit heslo\" pro přesměrování na stránky pro vytvořen�
 Přesměrovat na její stránku v obchodu Play?"</string>
 <string name="error_downloads_directory_not_writable">"Složka stahování nemohla být vytvořena nebo je pouze pro čtení."</string>
 <string name="error_token_dispenser_problem">"Nelze se přihlásit uvedeným účtem. Zkuste použít svůj účet."</string>
-<string name="details_installs">"%1$s ↓"</string>
-<string name="details_rating">"%1$.1f★"</string>
-<string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"Aktualizováno %1$s"</string>
 <string name="details_size">"Velikost apk %1$s"</string>
 <string name="details_description">"Popis:"</string>

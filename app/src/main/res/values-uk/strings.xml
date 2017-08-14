@@ -47,9 +47,6 @@
 Перейти на сторінку додатку Play Store?"</string>
 <string name="error_downloads_directory_not_writable">"Тека для завантаження не може бути створена, або не має прав на запис."</string>
 <string name="error_token_dispenser_problem">"Не вдалося увійти без облікового запису. Спроба зайти через наш запис."</string>
-<string name="details_installs">"%1$s ↓"</string>
-<string name="details_rating">"%1$.1f★"</string>
-<string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"Оновлено %1$s"</string>
 <string name="details_size">"Розмір apk %1$s"</string>
 <string name="details_description">"Опис:"</string>

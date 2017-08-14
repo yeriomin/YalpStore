@@ -44,9 +44,6 @@
 <string name="error_not_purchased">"يبدو أنك لم تقم بشراء هذا التطبيق. هل تريد الانتقال لصفحته على سوق بلاي؟"</string>
 <string name="error_downloads_directory_not_writable">"مجلد التنزيلات Downloads لا يمكن إنشاؤه أو غير قابل للكتابة."</string>
 <string name="error_token_dispenser_problem">"لا يمكن الدخول بدون حساب. جرب استعمال حسابك."</string>
-<string name="details_installs">"%1$s ↓"</string>
-<string name="details_rating">"%1$.1f★"</string>
-<string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"تم التحديث %1$s"</string>
 <string name="details_size">"حجم ملف Apk %1$s"</string>
 <string name="details_description">"الوصف:"</string>

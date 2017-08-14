@@ -48,9 +48,6 @@ Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz 
 <string name="error_not_purchased">"Aplikacja nie została zakupiona. Przekierować do jej strony w sklepie Google Play?"</string>
 <string name="error_downloads_directory_not_writable">"Katalog pobrań nie może zostać utworzony lub nie ma do niego dostępu."</string>
 <string name="error_token_dispenser_problem">"Nie można zalogować się bez konta. Spróbuj użyć swojego lub innego konta."</string>
-<string name="details_installs">"%1$s ↓"</string>
-<string name="details_rating">"%1$.1f★"</string>
-<string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"Zaktualizowano %1$s"</string>
 <string name="details_size">"Rozmiar aplikacji %1$s"</string>
 <string name="details_description">"Opis:"</string>

@@ -9,6 +9,8 @@ import com.github.yeriomin.yalpstore.LoadImageTask;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.WeakHashMap;
 
 public abstract class AppBadge extends ListItem {
@@ -16,6 +18,8 @@ public abstract class AppBadge extends ListItem {
     static private WeakHashMap<Integer, LoadImageTask> tasks = new WeakHashMap<>();
 
     protected App app;
+    protected List<String> line2 = new ArrayList<>();
+    protected List<String> line3 = new ArrayList<>();
 
     public void setApp(App app) {
         this.app = app;
@@ -32,6 +36,8 @@ public abstract class AppBadge extends ListItem {
         view.findViewById(R.id.app).setVisibility(View.VISIBLE);
 
         ((TextView) view.findViewById(R.id.text1)).setText(app.getDisplayName());
+        ((TextView) view.findViewById(R.id.text2)).setText(TextUtils.join(", ", line2));
+        ((TextView) view.findViewById(R.id.text3)).setText(TextUtils.join(", ", line3));
 
         drawIcon((ImageView) view.findViewById(R.id.icon));
     }

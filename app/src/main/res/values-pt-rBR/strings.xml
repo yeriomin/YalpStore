@@ -48,9 +48,6 @@ Toque em \"Criar senha\" para ser redirecionado para a página de criação de s
 Redirecionar para a sua página da Play Store?"</string>
 <string name="error_downloads_directory_not_writable">"O Diretório de Downloads não pôde ser criado ou não é gravável."</string>
 <string name="error_token_dispenser_problem">"Não foi possível fazer login sem uma conta. Tente usar sua própria conta."</string>
-<string name="details_installs">"%1$s ↓"</string>
-<string name="details_rating">"%1$.1f★"</string>
-<string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"Atualizado %1$s"</string>
 <string name="details_size">"Apk tamanho %1$s"</string>
 <string name="details_description">"Descrição:"</string>

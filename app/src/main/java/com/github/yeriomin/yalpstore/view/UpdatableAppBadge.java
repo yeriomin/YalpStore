@@ -10,20 +10,20 @@ public class UpdatableAppBadge extends AppBadge {
 
     @Override
     public void draw() {
-        super.draw();
+        line2.clear();
+        line3.clear();
         Context c = view.getContext();
         String updated = app.getUpdated();
         if (!TextUtils.isEmpty(updated)) {
-            setText(R.id.text2, c.getString(R.string.list_line_2_updatable, updated));
+            line2.add(c.getString(R.string.list_line_2_updatable, updated));
         }
-        String line3 = "";
         if (app.isSystem()) {
-            line3 += c.getString(R.string.list_app_system) + " ";
+            line3.add(c.getString(R.string.list_app_system));
         }
         if (app.isInPlayStore() && !showUpdatesOnly()) {
-            line3 += c.getString(R.string.list_app_exists_in_play_store);
+            line3.add(c.getString(R.string.list_app_exists_in_play_store));
         }
-        setText(R.id.text3, line3);
+        super.draw();
     }
 
     private boolean showUpdatesOnly() {

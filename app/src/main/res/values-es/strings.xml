@@ -46,9 +46,6 @@ Toca \"Crear contraseña\" para ser redirigido"</string>
 <string name="error_not_purchased">"Parece que esta aplicación no está comprada. ¿Quiere ir a la web de Play Store?"</string>
 <string name="error_downloads_directory_not_writable">"La carpeta de descargas no se pudo crear o no se concedió el permiso de escritura"</string>
 <string name="error_token_dispenser_problem">"No se pudo iniciar sesión sin una cuenta, inténtalo de nuevo usando tu propia cuenta."</string>
-<string name="details_installs">"%1$s ↓"</string>
-<string name="details_rating">"%1$.1f★"</string>
-<string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"Actualizado %1$s"</string>
 <string name="details_size">"Tamaño del APK: %1$s"</string>
 
@@ -71,7 +68,7 @@ Toca \"Crear contraseña\" para ser redirigido"</string>
 <string name="details_review_dialog_fields_optional">"Puedes dejar todo en blanco"</string>
 <string name="details_signature_mismatch">"Esta versión esta firmada con una clave distinta a la anterior. Para instalar la nueva versión, la anterior debe desinstalarse primero. Por favor, reinténtalo después de desinstalarla. (¡Desinstalarla borrará todos los datos almacenados por la app!)"</string>
 <string name="suffix_million">"M"</string>
-<string name="suffix_billion">"1000M"</string>
+<string name="suffix_billion">"G"</string>
 <string name="credentials_hint_email">"Correo electrónico"</string>
 <string name="credentials_hint_password">"Contraseña"</string>
 <string name="credentials_title">"Acceso a cuenta de Google"</string>

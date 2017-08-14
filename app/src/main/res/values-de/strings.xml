@@ -46,9 +46,6 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="error_not_purchased">"Anscheinen ist diese App nicht gekauft. Zur Play Store Website weiterleiten?"</string>
 <string name="error_downloads_directory_not_writable">"Download-Ordner konnte nicht erstellt werden oder ist nicht beschreibbar."</string>
 <string name="error_token_dispenser_problem">"Authentifizierung ohne Account fehlgeschlagen. Versuche deinen eigenen Account zu benutzen."</string>
-<string name="details_installs">"%1$s ↓"</string>
-<string name="details_rating">"%1$.1f★"</string>
-<string name="details_rating_specific">"%1$d★ %2$d"</string>
 <string name="details_updated">"Aktualisiert am %1$s"</string>
 <string name="details_size">"Apk Größe %1$s"</string>
 <string name="details_description">"Beschreibung:"</string>

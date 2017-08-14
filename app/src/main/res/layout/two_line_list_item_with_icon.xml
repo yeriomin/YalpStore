@@ -34,7 +34,6 @@
                 android:layout_weight="1.2"
                 android:textStyle="bold"
                 android:maxLines="1"
-                android:ellipsize="marquee"
                 android:gravity="center_vertical" />
 
             <TextView
@@ -43,8 +42,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dip"
                 android:layout_weight="1"
-                android:maxLines="1"
-                android:ellipsize="marquee" />
+                android:maxLines="1" />
 
             <TextView
                 android:id="@+id/text3"
@@ -52,8 +50,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dip"
                 android:layout_weight="1"
-                android:maxLines="1"
-                android:ellipsize="marquee" />
+                android:maxLines="1" />
 
         </LinearLayout>
 
