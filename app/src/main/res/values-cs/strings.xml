@@ -251,13 +251,14 @@ Pokračovat?"</string>
 <string name="details_video">"Video"</string>
 <string name="error_could_not_download">"Nelze stáhnout."</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
-<string name="early_access">Předběžný přístup</string>
-<string name="testing_program_opt_in">zapojit se</string>
-<string name="testing_program_opt_out">odejít</string>
-<string name="testing_program_section_opted_in_message">Aktualizace aplikace budou zahrnovat beta verze. Pokud program testování beta verze opustíte, aktualizace beta verze již nebudete dostávat.</string>
-<string name="testing_program_section_opted_in_propagating_message">Za okamžik budete přidáni do programu testování beta verze. Poté si aplikaci budete moci aktualizovat na beta verzi (pokud je aktualizace k dispozici).</string>
-<string name="testing_program_section_opted_in_title">Jste tester beta verze</string>
-<string name="testing_program_section_opted_out_message">Vyzkoušejte nové funkce, ještě než budou publikovány. Odešlete zpětnou vazbu přímo vývojáři.</string>
-<string name="testing_program_section_opted_out_propagating_message">Opuštění programu testování beta verze může chvíli trvat.</string>
-<string name="testing_program_section_opted_out_title">Staňte se testerem beta verze</string>
+<string name="early_access">"Předběžný přístup"</string>
+<string name="testing_program_opt_in">"zapojit se"</string>
+<string name="testing_program_opt_out">"odejít"</string>
+<string name="testing_program_section_opted_in_message">"Aktualizace aplikace budou zahrnovat beta verze. Pokud program testování beta verze opustíte, aktualizace beta verze již nebudete dostávat."</string>
+<string name="testing_program_section_opted_in_propagating_message">"Za okamžik budete přidáni do programu testování beta verze. Poté si aplikaci budete moci aktualizovat na beta verzi (pokud je aktualizace k dispozici)."</string>
+<string name="testing_program_section_opted_in_title">"Jste tester beta verze"</string>
+<string name="testing_program_section_opted_out_message">"Vyzkoušejte nové funkce, ještě než budou publikovány. Odešlete zpětnou vazbu přímo vývojáři."</string>
+<string name="testing_program_section_opted_out_propagating_message">"Opuštění programu testování beta verze může chvíli trvat."</string>
+<string name="testing_program_section_opted_out_title">"Staňte se testerem beta verze"</string>
+<string name="notification_not_privileged">"Install permission not granted"</string>
 </resources>
