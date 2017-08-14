@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -70,5 +71,13 @@ public class YalpStoreApplication extends Application {
         filter.addAction(Intent.ACTION_PACKAGE_FULLY_REMOVED);
         filter.addAction(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM);
         registerReceiver(new GlobalInstallReceiver(), filter);
+    }
+
+    public boolean isTv() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO) {
+            return false;
+        }
+        int uiMode = getResources().getConfiguration().uiMode;
+        return (uiMode & Configuration.UI_MODE_TYPE_MASK) == Configuration.UI_MODE_TYPE_TELEVISION;
     }
 }

@@ -1,10 +1,13 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 
 public class ButtonRun extends Button {
@@ -25,15 +28,26 @@ public class ButtonRun extends Button {
 
     @Override
     protected void onButtonClick(View v) {
-        activity.startActivity(getLaunchIntent());
+        Intent i = getLaunchIntent();
+        if (null != i) {
+            activity.startActivity(i);
+        }
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private Intent getLaunchIntent() {
         Intent i = activity.getPackageManager().getLaunchIntentForPackage(app.getPackageName());
+        boolean isTv = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ((YalpStoreApplication) activity.getApplication()).isTv();
+        if (isTv) {
+            Intent l = activity.getPackageManager().getLeanbackLaunchIntentForPackage(app.getPackageName());
+            if (null != l) {
+                i = l;
+            }
+        }
         if (i == null) {
             return null;
         }
-        i.addCategory(Intent.CATEGORY_LAUNCHER);
+        i.addCategory(isTv ? Intent.CATEGORY_LEANBACK_LAUNCHER : Intent.CATEGORY_LAUNCHER);
         return i;
     }
 }

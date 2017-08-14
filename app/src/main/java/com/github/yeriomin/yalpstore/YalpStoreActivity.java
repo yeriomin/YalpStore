@@ -30,7 +30,7 @@ public abstract class YalpStoreActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         Log.v(getClass().getName(), "Starting activity");
         logout = false;
-        if (isTv()) {
+        if (((YalpStoreApplication) getApplication()).isTv()) {
             requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
         }
         ThemeManager.setTheme(this);
@@ -152,14 +152,6 @@ public abstract class YalpStoreActivity extends Activity {
             })
             .setNegativeButton(android.R.string.cancel, null)
             .show();
-    }
-
-    private boolean isTv() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO) {
-            return false;
-        }
-        int uiMode = getResources().getConfiguration().uiMode;
-        return (uiMode & Configuration.UI_MODE_TYPE_MASK) == Configuration.UI_MODE_TYPE_TELEVISION;
     }
 
     protected void finishAll() {
