@@ -182,8 +182,8 @@ Mějte na paměti, že stahování starších verzí aplikací není podporován
 <string name="details_could_not_copy_apk">"Nelze zkopírovat apk"</string>
 <string name="action_make_system">"Převést na systémovou aplikaci"</string>
 <string name="action_make_normal">"Převést na normální aplikaci"</string>
-<string name="list_app_system">"Systémová aplikace."</string>
-<string name="list_app_exists_in_play_store">"Dosupné na obchodě Play."</string>
+<string name="list_app_system">"Systémová aplikace"</string>
+<string name="list_app_exists_in_play_store">"Dosupné na obchodě Play"</string>
 <string name="activity_title_updates_only">"Aktualizace"</string>
 <string name="activity_title_updates_and_other_apps">"Vaše aplikace"</string>
 <string name="pref_category_updates_page">"Stránka aktualizací"</string>
