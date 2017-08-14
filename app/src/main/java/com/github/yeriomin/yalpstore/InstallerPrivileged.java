@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.IPackageInstallObserver;
@@ -66,6 +67,20 @@ public class InstallerPrivileged extends InstallerBackground {
 
     public InstallerPrivileged(Context context) {
         super(context);
+    }
+
+    @Override
+    public boolean verify(App app) {
+        if (!super.verify(app)) {
+            return false;
+        }
+        if (context.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) != PackageManager.PERMISSION_GRANTED) {
+            Log.i(getClass().getName(), Manifest.permission.INSTALL_PACKAGES + " not granted");
+            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
+            notifyAndToast(R.string.notification_not_privileged, R.string.pref_not_privileged, app);
+            return false;
+        }
+        return true;
     }
 
     @Override

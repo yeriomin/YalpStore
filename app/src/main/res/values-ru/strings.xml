@@ -137,6 +137,7 @@
     <string name="activity_title_search_publisher">"Приложения от %1$s"</string>
     <string name="notification_installation_complete">Установлено обновление.</string>
     <string name="notification_installation_failed">Не удалось установить обновление.</string>
+    <string name="notification_not_privileged">Нет разрешения на установку</string>
     <string name="notification_download_starting">Скачивание начинается</string>
     <string name="notification_download_progress">"%1$s из %2$s скачано"</string>
     <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>
