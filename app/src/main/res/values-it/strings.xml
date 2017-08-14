@@ -253,13 +253,14 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="details_video">"Video"</string>
 <string name="error_could_not_download">"Impossibile scaricare"</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
-<string name="early_access">In anteprima</string>
-<string name="testing_program_opt_in">partecipa</string>
-<string name="testing_program_opt_out">abbandona</string>
+<string name="early_access">"In anteprima"</string>
+<string name="testing_program_opt_in">"partecipa"</string>
+<string name="testing_program_opt_out">"abbandona"</string>
 <string name="testing_program_section_opted_in_message">"Gli aggiornamenti delle app includeranno le versioni Beta. Se esci dal Programma Beta dell'app, non riceverai più gli aggiornamenti della versione Beta."</string>
 <string name="testing_program_section_opted_in_propagating_message">"Fra qualche minuto verrai aggiunto al Programma Beta. Dopodiché potrai eseguire l'aggiornamento alla versione Beta dell'app, se disponibile."</string>
-<string name="testing_program_section_opted_in_title">Sei un beta tester</string>
-<string name="testing_program_section_opted_out_message">Prova le nuove funzioni prima che vengano rese pubbliche. Dai i tuoi feedback direttamente allo sviluppatore.</string>
-<string name="testing_program_section_opted_out_propagating_message">Sono necessari alcuni minuti per rimuoverti dal Programma Beta.</string>
-<string name="testing_program_section_opted_out_title">Diventa un beta tester</string>
+<string name="testing_program_section_opted_in_title">"Sei un beta tester"</string>
+<string name="testing_program_section_opted_out_message">"Prova le nuove funzioni prima che vengano rese pubbliche. Dai i tuoi feedback direttamente allo sviluppatore."</string>
+<string name="testing_program_section_opted_out_propagating_message">"Sono necessari alcuni minuti per rimuoverti dal Programma Beta."</string>
+<string name="testing_program_section_opted_out_title">"Diventa un beta tester"</string>
+<string name="notification_not_privileged">"Install permission not granted"</string>
 </resources>
