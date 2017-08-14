@@ -186,8 +186,8 @@ Lembre-se de que o download de versões arbitrárias de aplicativos não é comp
 <string name="details_could_not_copy_apk">"Não foi possível copiar o apk"</string>
 <string name="action_make_system">"Converter para aplicativo de sistema"</string>
 <string name="action_make_normal">"Converter para o aplicativo normal"</string>
-<string name="list_app_system">"Aplicação do sistema."</string>
-<string name="list_app_exists_in_play_store">"Disponível na Play Store."</string>
+<string name="list_app_system">"Aplicação do sistema"</string>
+<string name="list_app_exists_in_play_store">"Disponível na Play Store"</string>
 <string name="activity_title_updates_only">"Atualizações"</string>
 <string name="activity_title_updates_and_other_apps">"As suas aplicações"</string>
 <string name="pref_category_updates_page">"Atualizar página"</string>
