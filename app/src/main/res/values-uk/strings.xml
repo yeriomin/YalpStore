@@ -183,8 +183,8 @@
 <string name="details_could_not_copy_apk">"Не вдалося скопіювати apk"</string>
 <string name="action_make_system">"Конвертувати в системний додаток"</string>
 <string name="action_make_normal">"Конвертувати в звичайний додаток"</string>
-<string name="list_app_system">"Системний додаток."</string>
-<string name="list_app_exists_in_play_store">"Доступно в Play Store."</string>
+<string name="list_app_system">"Системний додаток"</string>
+<string name="list_app_exists_in_play_store">"Доступно в Play Store"</string>
 <string name="activity_title_updates_only">"Оновлення"</string>
 <string name="activity_title_updates_and_other_apps">"Ваші додатки"</string>
 <string name="pref_category_updates_page">"Сторінка оновлення"</string>
