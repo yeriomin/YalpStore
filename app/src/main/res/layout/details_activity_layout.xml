@@ -162,6 +162,7 @@
 
                 <TextView
                     android:id="@+id/description_header"
+                    android:focusable="true"
                     android:visibility="gone"
                     android:drawableLeft="@drawable/ic_expand_less"
                     android:drawableStart="@drawable/ic_expand_less"
@@ -214,6 +215,7 @@
 
                 <TextView
                     android:id="@+id/reviews_header"
+                    android:focusable="true"
                     android:visibility="gone"
                     android:drawableLeft="@drawable/ic_expand_more"
                     android:drawableStart="@drawable/ic_expand_more"
@@ -410,6 +412,7 @@
 
                 <TextView
                     android:id="@+id/video"
+                    android:focusable="true"
                     android:drawableLeft="@drawable/ic_chevron_right"
                     android:drawableStart="@drawable/ic_chevron_right"
                     android:textSize="20sp"
@@ -422,6 +425,7 @@
 
                 <TextView
                     android:id="@+id/screenshots_header"
+                    android:focusable="true"
                     android:visibility="gone"
                     android:drawableLeft="@drawable/ic_expand_more"
                     android:drawableStart="@drawable/ic_expand_more"
@@ -452,6 +456,7 @@
                     android:drawableLeft="@drawable/ic_expand_more"
                     android:drawableStart="@drawable/ic_expand_more"
                     android:textSize="20sp"
+                    android:focusable="true"
                     android:gravity="center_vertical"
                     android:text="@string/details_permissions"
                     android:layout_width="match_parent"
@@ -474,6 +479,7 @@
 
                 <TextView
                     android:id="@+id/beta_header"
+                    android:focusable="true"
                     android:visibility="gone"
                     android:drawableLeft="@drawable/ic_expand_more"
                     android:drawableStart="@drawable/ic_expand_more"
@@ -529,6 +535,7 @@
 
                 <TextView
                     android:id="@+id/to_play_store"
+                    android:focusable="true"
                     android:drawableLeft="@drawable/ic_chevron_right"
                     android:drawableStart="@drawable/ic_chevron_right"
                     android:textSize="20sp"
@@ -541,6 +548,7 @@
 
                 <TextView
                     android:id="@+id/share"
+                    android:focusable="true"
                     android:drawableLeft="@drawable/ic_chevron_right"
                     android:drawableStart="@drawable/ic_chevron_right"
                     android:textSize="20sp"
@@ -552,6 +560,7 @@
 
                 <TextView
                     android:id="@+id/system_app_info"
+                    android:focusable="true"
                     android:drawableLeft="@drawable/ic_chevron_right"
                     android:drawableStart="@drawable/ic_chevron_right"
                     android:textSize="20sp"
