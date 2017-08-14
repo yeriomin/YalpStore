@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:id="@+id/app"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
 
@@ -23,7 +23,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
             <TextView
@@ -34,6 +34,7 @@
                 android:layout_weight="1.2"
                 android:textStyle="bold"
                 android:maxLines="1"
+                android:ellipsize="end"
                 android:gravity="center_vertical" />
 
             <TextView
@@ -42,7 +43,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dip"
                 android:layout_weight="1"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:ellipsize="end" />
 
             <TextView
                 android:id="@+id/text3"
@@ -50,7 +52,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dip"
                 android:layout_weight="1"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:ellipsize="end" />
 
         </LinearLayout>
 
