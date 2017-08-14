@@ -96,7 +96,7 @@ public class GeneralDetails extends Abstract {
         try {
             itemView.setAutoLinkMask(Linkify.ALL);
             itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
-        } catch (AndroidRuntimeException | Resources.NotFoundException e) {
+        } catch (RuntimeException e) {
             Log.w(getClass().getName(), "System WebView missing: " + e.getMessage());
             itemView.setAutoLinkMask(0);
             itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
