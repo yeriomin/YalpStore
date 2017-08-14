@@ -129,11 +129,27 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     }
 
     private void drawUpdatePagePreferences() {
-        findPreference(PREFERENCE_SHOW_SYSTEM_APPS).setOnPreferenceChangeListener(new OnUpdatePagePreferenceChangeListener());
+        findPreference(PREFERENCE_SHOW_SYSTEM_APPS).setOnPreferenceChangeListener(new OnSystemAppsPreferenceChangeListener(this));
         findPreference(PREFERENCE_UPDATES_ONLY).setOnPreferenceChangeListener(new OnUpdatePagePreferenceChangeListener());
     }
 
-    private class OnUpdatePagePreferenceChangeListener implements Preference.OnPreferenceChangeListener {
+    static private class OnSystemAppsPreferenceChangeListener extends OnUpdatePagePreferenceChangeListener {
+
+        private PreferenceActivity activity;
+
+        public OnSystemAppsPreferenceChangeListener(PreferenceActivity activity) {
+            this.activity = activity;
+        }
+
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            activity.drawBlackList();
+            return super.onPreferenceChange(preference, newValue);
+        }
+    }
+
+    static private class OnUpdatePagePreferenceChangeListener implements Preference.OnPreferenceChangeListener {
+
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             UpdatableAppsActivity.setNeedsUpdate(true);
