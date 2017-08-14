@@ -102,7 +102,7 @@ public class DownloadState {
     public List<Long> getDownloadIds() {
         List<Long> ids = new ArrayList<>();
         for (Long id: downloadIds.keySet()) {
-            if (app.getPackageName().equals(downloadIds.get(id))) {
+            if (null != app && null != app.getPackageName() && app.getPackageName().equals(downloadIds.get(id))) {
                 ids.add(id);
             }
         }
