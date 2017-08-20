@@ -254,14 +254,14 @@ Fazer?"</string>
 <string name="details_video">"Vídeo"</string>
 <string name="error_could_not_download">"Could not download."</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
-<string name="early_access">"Early access"</string>
-<string name="testing_program_opt_in">"join"</string>
-<string name="testing_program_opt_out">"leave"</string>
-<string name="testing_program_section_opted_in_message">"App updates will include beta versions. If you leave this app's beta program, you will no longer get beta updates."</string>
-<string name="testing_program_section_opted_in_propagating_message">"In a few minutes, you'll be added to the beta program. You can then update to the beta version of this app, if available."</string>
-<string name="testing_program_section_opted_in_title">"You're a beta tester"</string>
-<string name="testing_program_section_opted_out_message">"Try new features before they're made public. Give your feedback directly to the developer."</string>
-<string name="testing_program_section_opted_out_propagating_message">"It can take a few minutes to remove you from the beta program."</string>
-<string name="testing_program_section_opted_out_title">"Become a beta tester"</string>
-<string name="notification_not_privileged">"Install permission not granted"</string>
+<string name="early_access">"Acesso antecipado"</string>
+<string name="testing_program_opt_in">"Junte-se"</string>
+<string name="testing_program_opt_out">"sair"</string>
+<string name="testing_program_section_opted_in_message">"As atualizações de aplicativos incluirão versões beta. Se você deixar o programa beta dessa aplicação, você não receberá mais atualizações beta."</string>
+<string name="testing_program_section_opted_in_propagating_message">"Em alguns minutos, você será adicionado ao programa beta. Você pode então atualizar para a versão beta deste aplicativo, se disponível."</string>
+<string name="testing_program_section_opted_in_title">"Você é um testador beta"</string>
+<string name="testing_program_section_opted_out_message">"Experimente novos recursos antes de serem tornados públicos. Envie seus comentários diretamente ao desenvolvedor."</string>
+<string name="testing_program_section_opted_out_propagating_message">"Pode levar alguns minutos para removê-lo do programa beta."</string>
+<string name="testing_program_section_opted_out_title">"Torne-se um testador beta"</string>
+<string name="notification_not_privileged">"Instalar permissão não concedida"</string>
 </resources>
