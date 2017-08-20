@@ -257,7 +257,7 @@
 <string name="error_invalid_device_definition">"设备定义被拒绝"</string>
 <string name="details_video">"视频"</string>
 <string name="error_could_not_download">"无法下载"</string>
-<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
+<string name="first_login_message">"要使用您自己的帐户，请选择在菜单中注销"</string>
 <string name="early_access">"抢先体验"</string>
 <string name="testing_program_opt_in">"加入"</string>
 <string name="testing_program_opt_out">"退出"</string>
@@ -267,5 +267,5 @@
 <string name="testing_program_section_opted_out_message">"可在新功能公开发布之前进行试用，并可直接向开发者提供反馈。"</string>
 <string name="testing_program_section_opted_out_propagating_message">"您可能需要等待几分钟才能退出 Beta 版计划。"</string>
 <string name="testing_program_section_opted_out_title">"成为 Beta 版测试人员"</string>
-<string name="notification_not_privileged">"Install permission not granted"</string>
+<string name="notification_not_privileged">"安装权限未授予"</string>
 </resources>
