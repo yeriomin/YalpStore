@@ -4,17 +4,21 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.ApiBuilderException;
+import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.playstoreapi.DeviceInfoProvider;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
+import com.github.yeriomin.yalpstore.model.LoginInfo;
 
 import java.io.IOException;
 import java.util.Locale;
 
 public class PlayStoreApiAuthenticator {
 
+    static private final int RETRIES = 5;
     static private final String DISPENSER_URL = "http://tokendispenser-yeriomin.rhcloud.com";
 
     private Context context;
@@ -33,26 +37,26 @@ public class PlayStoreApiAuthenticator {
     }
 
     public void login() throws IOException {
-        build(null, null);
-        SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        prefs.putBoolean(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL, true);
-        prefs.commit();
+        build(new LoginInfo());
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL, true).commit();
     }
 
     public void login(String email, String password) throws IOException {
-        build(email, password);
-        SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        prefs.remove(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL);
-        prefs.commit();
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setEmail(email);
+        loginInfo.setPassword(password);
+        build(loginInfo);
+        PreferenceManager.getDefaultSharedPreferences(context).edit().remove(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL).commit();
     }
 
     public void logout() {
-        SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        prefs.remove(PreferenceActivity.PREFERENCE_EMAIL);
-        prefs.remove(PreferenceActivity.PREFERENCE_GSF_ID);
-        prefs.remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN);
-        prefs.remove(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL);
-        prefs.commit();
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+            .remove(PreferenceActivity.PREFERENCE_EMAIL)
+            .remove(PreferenceActivity.PREFERENCE_GSF_ID)
+            .remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN)
+            .remove(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL)
+            .commit()
+        ;
         api = null;
     }
 
@@ -62,37 +66,52 @@ public class PlayStoreApiAuthenticator {
         if (TextUtils.isEmpty(email)) {
             throw new CredentialsEmptyException();
         }
-        return build(email, null);
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setEmail(email);
+        return build(loginInfo);
     }
 
-    private GooglePlayAPI build(String email, String password) throws IOException {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String locale = prefs.getString(PreferenceActivity.PREFERENCE_REQUESTED_LANGUAGE, "");
-        String gsfId = prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, "");
-        String token = prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, "");
+    private GooglePlayAPI build(LoginInfo loginInfo) throws IOException {
+        api = build(loginInfo, TextUtils.isEmpty(loginInfo.getEmail()) ? RETRIES : 1);
+        loginInfo.setGsfId(api.getGsfId());
+        loginInfo.setToken(api.getToken());
+        save(loginInfo);
+        return api;
+    }
 
-        com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
+    private GooglePlayAPI build(LoginInfo loginInfo, int retries) throws IOException {
+        int tried = 0;
+        while (tried < retries) {
+            try {
+                Log.i(getClass().getName(), "Login attempt #" + (tried + 1));
+                com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = getBuilder(loginInfo);
+                GooglePlayAPI api = builder.build();
+                loginInfo.setEmail(builder.getEmail());
+                return api;
+            } catch (ApiBuilderException e) {
+                Log.i(getClass().getName(), "ApiBuilderException: " + e.getMessage());
+            } catch (AuthException e) {
+                tried++;
+                if (tried >= retries) {
+                    throw e;
+                }
+            }
+        }
+        return null;
+    }
+
+    private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
+        fill(loginInfo);
+        return new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
             .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
             .setDeviceInfoProvider(getDeviceInfoProvider())
-            .setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale))
-            .setEmail(email)
-            .setPassword(password)
-            .setGsfId(gsfId)
-            .setToken(token)
+            .setLocale(loginInfo.getLocale())
+            .setEmail(loginInfo.getEmail())
+            .setPassword(loginInfo.getPassword())
+            .setGsfId(loginInfo.getGsfId())
+            .setToken(loginInfo.getToken())
             .setTokenDispenserUrl(DISPENSER_URL)
         ;
-        try {
-            api = builder.build();
-        } catch (ApiBuilderException e) {
-            // Should not happen
-        }
-
-        SharedPreferences.Editor prefsEditor = prefs.edit();
-        prefsEditor.putString(PreferenceActivity.PREFERENCE_EMAIL, builder.getEmail());
-        prefsEditor.putString(PreferenceActivity.PREFERENCE_GSF_ID, api.getGsfId());
-        prefsEditor.putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, api.getToken());
-        prefsEditor.commit();
-        return api;
     }
 
     private DeviceInfoProvider getDeviceInfoProvider() {
@@ -110,5 +129,22 @@ public class PlayStoreApiAuthenticator {
             ((PropertiesDeviceInfoProvider) deviceInfoProvider).setLocaleString(Locale.getDefault().toString());
         }
         return deviceInfoProvider;
+    }
+
+    private void fill(LoginInfo loginInfo) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String locale = prefs.getString(PreferenceActivity.PREFERENCE_REQUESTED_LANGUAGE, "");
+        loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale));
+        loginInfo.setGsfId(prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, ""));
+        loginInfo.setToken(prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, ""));
+    }
+
+    private void save(LoginInfo loginInfo) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+            .putString(PreferenceActivity.PREFERENCE_EMAIL, loginInfo.getEmail())
+            .putString(PreferenceActivity.PREFERENCE_GSF_ID, loginInfo.getGsfId())
+            .putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
+            .commit()
+        ;
     }
 }
