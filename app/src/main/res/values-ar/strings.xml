@@ -257,4 +257,5 @@
 <string name="testing_program_section_opted_out_propagating_message">"قد تستغرق إزالتك من البرنامج التجريبي بضع دقائق."</string>
 <string name="testing_program_section_opted_out_title">"الانضمام إلى مختبِري الإصدار التجريبي"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
+<string name="about_paypal_label">"التبرع"</string>
 </resources>
