@@ -268,4 +268,5 @@
 <string name="testing_program_section_opted_out_propagating_message">"您可能需要等待几分钟才能退出 Beta 版计划。"</string>
 <string name="testing_program_section_opted_out_title">"成为 Beta 版测试人员"</string>
 <string name="notification_not_privileged">"安装权限未授予"</string>
+<string name="about_paypal_label">"捐赠"</string>
 </resources>
