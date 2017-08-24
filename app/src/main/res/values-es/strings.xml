@@ -262,4 +262,5 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="testing_program_section_opted_out_propagating_message">"Podemos tardar unos minutos en retirarte del programa Beta."</string>
 <string name="testing_program_section_opted_out_title">"Convertirte en tester Beta"</string>
 <string name="notification_not_privileged">"Permiso de instalación no concedido"</string>
+<string name="about_paypal_label">"Donar:"</string>
 </resources>
