@@ -263,4 +263,5 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="testing_program_section_opted_out_propagating_message">"Sono necessari alcuni minuti per rimuoverti dal Programma Beta."</string>
 <string name="testing_program_section_opted_out_title">"Diventa un beta tester"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
+<string name="about_paypal_label">"Dona:"</string>
 </resources>
