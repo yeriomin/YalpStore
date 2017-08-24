@@ -262,4 +262,5 @@ Fortfahren?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Bis du aus dem Betaprogramm entfernt wurdest, kann es einige Minuten dauern."</string>
 <string name="testing_program_section_opted_out_title">"Betatester werden"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
+<string name="about_paypal_label">"Spenden:"</string>
 </resources>
