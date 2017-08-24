@@ -42,6 +42,12 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     }
 
     @Override
+    public byte[] getEx(String url, Map<String, List<String>> params, Map<String, String> headers) throws IOException {
+        HttpURLConnection connection = (HttpURLConnection) new URL(buildUrlEx(url, params)).openConnection();
+        return request(connection, null, headers);
+    }
+
+    @Override
     public byte[] postWithoutBody(String url, Map<String, String> urlParams, Map<String, String> headers) throws IOException {
         return post(buildUrl(url, urlParams), new HashMap<String, String>(), headers);
     }
@@ -67,6 +73,17 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         Uri.Builder builder = Uri.parse(url).buildUpon();
         for (String key: params.keySet()) {
             builder.appendQueryParameter(key, params.get(key));
+        }
+        return builder.build().toString();
+    }
+
+    @Override
+    public String buildUrlEx(String url, Map<String, List<String>> params) {
+        Uri.Builder builder = Uri.parse(url).buildUpon();
+        for (String key: params.keySet()) {
+            for (String value: params.get(key)) {
+                builder.appendQueryParameter(key, value);
+            }
         }
         return builder.build().toString();
     }

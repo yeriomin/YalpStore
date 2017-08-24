@@ -12,7 +12,6 @@ import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.DetailsResponse;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.ReviewResponse;
-import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
 import com.github.yeriomin.yalpstore.model.Review;
@@ -87,14 +86,6 @@ public class PlayStoreApiWrapper {
         }
         Collections.sort(apps);
         return apps;
-    }
-
-    public List<String> getSearchSuggestions(String query) throws IOException {
-        List<String> suggestions = new ArrayList<>();
-        for (SearchSuggestEntry suggestion: new PlayStoreApiAuthenticator(context).getApi().searchSuggest(query).getEntryList()) {
-            suggestions.add(suggestion.getSuggestedQuery());
-        }
-        return suggestions;
     }
 
     public Map<String, String> getCategories() throws IOException {

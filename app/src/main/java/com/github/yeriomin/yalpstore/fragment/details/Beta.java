@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 

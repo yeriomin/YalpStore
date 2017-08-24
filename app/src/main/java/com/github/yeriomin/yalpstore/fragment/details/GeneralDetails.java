@@ -2,12 +2,10 @@ package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.text.util.Linkify;
-import android.util.AndroidRuntimeException;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;

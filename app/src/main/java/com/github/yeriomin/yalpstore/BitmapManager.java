@@ -83,6 +83,19 @@ public class BitmapManager {
         return bitmap;
     }
 
+    public File downloadAndGetFile(String url) {
+        File onDisk = getFile(url);
+        if (isStoredAndValid(onDisk)) {
+            return onDisk;
+        }
+        Bitmap bitmap = downloadBitmap(url, true);
+        if (null != bitmap) {
+            cacheBitmapOnDisk(bitmap, onDisk);
+            return onDisk;
+        }
+        return null;
+    }
+
     private File getFile(String urlString) {
         return new File(baseDir, String.valueOf(urlString.hashCode()) + ".png");
     }

@@ -67,7 +67,7 @@ public class DetailsActivity extends YalpStoreActivity {
         final String packageName = getIntentPackageName(intent);
         if (TextUtils.isEmpty(packageName)) {
             Log.e(this.getClass().getName(), "No package name provided");
-            finishActivity(0);
+            finish();
             return;
         }
         Log.i(getClass().getName(), "Getting info about " + packageName);

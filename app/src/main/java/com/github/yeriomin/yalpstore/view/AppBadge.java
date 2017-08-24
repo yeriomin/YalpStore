@@ -9,8 +9,8 @@ import com.github.yeriomin.yalpstore.LoadImageTask;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.WeakHashMap;
 
 public abstract class AppBadge extends ListItem {

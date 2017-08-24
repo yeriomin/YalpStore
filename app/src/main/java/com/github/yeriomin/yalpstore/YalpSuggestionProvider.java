@@ -7,17 +7,17 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
+
+import java.io.File;
 
 public class YalpSuggestionProvider extends ContentProvider {
 
-    private PlayStoreApiWrapper api;
-
     @Override
     public boolean onCreate() {
-        api = new PlayStoreApiWrapper(getContext());
         return true;
     }
 
@@ -28,22 +28,19 @@ public class YalpSuggestionProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        String query = uri.getLastPathSegment();
-
-        List<String> suggestions;
-        try {
-            suggestions = api.getSearchSuggestions(query);
-        } catch (Throwable e) {
-            suggestions = new ArrayList<>();
-        }
-
         MatrixCursor cursor = new MatrixCursor(new String[] {
             BaseColumns._ID,
             SearchManager.SUGGEST_COLUMN_TEXT_1,
-            SearchManager.SUGGEST_COLUMN_INTENT_DATA
+            SearchManager.SUGGEST_COLUMN_INTENT_DATA,
+            SearchManager.SUGGEST_COLUMN_ICON_1
         });
-        for (int id = 0; id < suggestions.size(); id++) {
-            cursor.addRow(new Object[] { id, suggestions.get(id), suggestions.get(id) });
+        try {
+            int i = 0;
+            for (SearchSuggestEntry entry: new PlayStoreApiAuthenticator(getContext()).getApi().searchSuggest(uri.getLastPathSegment()).getEntryList()) {
+                cursor.addRow(constructRow(entry, i++));
+            }
+        } catch (Throwable e) {
+            Log.e(getClass().getName(), e.getClass().getName() + ": " + e.getMessage());
         }
         return cursor;
     }
@@ -61,5 +58,18 @@ public class YalpSuggestionProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         return 0;
+    }
+
+    private Object[] constructRow(SearchSuggestEntry entry, int id) {
+        return entry.getType() == GooglePlayAPI.SEARCH_SUGGESTION_TYPE.APP.value ? constructAppRow(entry, id) : constructSuggestionRow(entry, id);
+    }
+
+    private Object[] constructAppRow(SearchSuggestEntry entry, int id) {
+        File file = new BitmapManager(getContext()).downloadAndGetFile(entry.getImageContainer().getImageUrl());
+        return new Object[] { id, entry.getTitle(), entry.getPackageNameContainer().getPackageName(), null != file ? Uri.fromFile(file) : R.drawable.ic_placeholder };
+    }
+
+    private Object[] constructSuggestionRow(SearchSuggestEntry entry, int id) {
+        return new Object[] { id, entry.getSuggestedQuery(), entry.getSuggestedQuery(), R.drawable.ic_search };
     }
 }

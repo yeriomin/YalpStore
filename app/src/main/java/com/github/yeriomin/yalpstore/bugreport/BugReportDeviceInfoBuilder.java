@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore.bugreport;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.pm.ConfigurationInfo;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.telephony.TelephonyManager;

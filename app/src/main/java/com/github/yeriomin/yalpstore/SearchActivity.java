@@ -22,6 +22,12 @@ public class SearchActivity extends EndlessScrollActivity {
         super.onNewIntent(intent);
 
         String newQuery = getQuery(intent);
+        if (getIntent().getAction().equals(Intent.ACTION_VIEW) && looksLikeAPackageId(newQuery)) {
+            Log.i(getClass().getName(), "Following search suggestion to app page: " + newQuery);
+            startActivity(DetailsActivity.getDetailsIntent(this, newQuery));
+            finish();
+            return;
+        }
         Log.i(getClass().getName(), "Searching: " + newQuery);
         if (null != newQuery && !newQuery.equals(this.query)) {
             clearApps();
@@ -108,6 +114,7 @@ public class SearchActivity extends EndlessScrollActivity {
         protected void onPostExecute(Throwable result) {
             super.onPostExecute(result);
             if (null != app) {
+                DetailsActivity.app = app;
                 showPackageIdDialog(app.getPackageName());
             }
         }
