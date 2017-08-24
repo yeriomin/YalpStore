@@ -260,4 +260,5 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="testing_program_section_opted_out_propagating_message">"ベータ版プログラムの登録が解除されるまで数分ほどかかることがあります。"</string>
 <string name="testing_program_section_opted_out_title">"ベータ版を使ってみる"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
+<string name="about_paypal_label">"寄付:"</string>
 </resources>
