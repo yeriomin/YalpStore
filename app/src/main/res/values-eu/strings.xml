@@ -260,4 +260,5 @@ Jarraitu?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Minutu batzuk behar izan ditzakegu zu beta sarbideko programatik kentzeko."</string>
 <string name="testing_program_section_opted_out_title">"Bihurtu beta-probatzaile"</string>
 <string name="notification_not_privileged">"Ez da eman instalatzeko baimena"</string>
+<string name="about_paypal_label">"Egin dohaintza:"</string>
 </resources>
