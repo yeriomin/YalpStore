@@ -3,9 +3,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:paddingLeft="25dip"
-    android:paddingRight="25dip"
-    android:paddingBottom="25dip" >
+    android:paddingLeft="15dip"
+    android:paddingRight="15dip"
+    android:paddingBottom="15dip" >
 
     <TextView
         android:text="@string/details_review_dialog_fields_optional"
@@ -26,6 +26,7 @@
         android:id="@+id/review_dialog_review_comment"
         android:hint="@string/details_review_dialog_review_comment_hint"
         android:inputType="textCapSentences|textMultiLine"
+        android:maxLines="8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
