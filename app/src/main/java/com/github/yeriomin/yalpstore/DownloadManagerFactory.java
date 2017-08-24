@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -13,7 +12,7 @@ public class DownloadManagerFactory {
     static public DownloadManagerInterface get(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB
             || !nativeDownloadManagerEnabled(context)
-            || nougatVpn()
+            || nougatVpn(context)
         ) {
             Log.i(DownloadManagerFactory.class.getName(), "DownloadManager unavailable - using a fallback");
             return new DownloadManagerFake(context);
@@ -42,11 +41,10 @@ public class DownloadManagerFactory {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.N)
-    static private boolean nougatVpn() {
+    static private boolean nougatVpn(Context context) {
         if (Build.VERSION.SDK_INT != Build.VERSION_CODES.N && Build.VERSION.SDK_INT != Build.VERSION_CODES.N_MR1) {
             return false;
         }
-        return NetworkState.isVpn();
+        return NetworkState.isVpn(context);
     }
 }
