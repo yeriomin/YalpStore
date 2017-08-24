@@ -63,6 +63,21 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dip"
         android:textSize="18sp"
+        android:text="@string/about_paypal_label" />
+
+    <TextView
+        android:id="@+id/paypal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#5555ff"
+        android:textSize="18sp"
+        android:text="@string/about_paypal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dip"
+        android:textSize="18sp"
         android:text="@string/about_bitcoin_label" />
 
     <TextView
