@@ -77,6 +77,12 @@ public class Blacklist extends Abstract {
         }
 
         @Override
+        protected void onPreExecute() {
+            appList.setEntries(new String[0]);
+            appList.setEntryValues(new String[0]);
+        }
+
+        @Override
         protected void onPostExecute(Void aVoid) {
             int count = appNames.size();
             appList.setEntries(appNames.values().toArray(new String[count]));

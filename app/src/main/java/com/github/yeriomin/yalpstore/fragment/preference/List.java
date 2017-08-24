@@ -40,6 +40,12 @@ public abstract class List extends Abstract {
         }
 
         @Override
+        protected void onPreExecute() {
+            listPreference.setEntries(new String[0]);
+            listPreference.setEntryValues(new String[0]);
+        }
+
+        @Override
         protected void onPostExecute(Void aVoid) {
             int count = list.keyValueMap.size();
             listPreference.setEntries(list.keyValueMap.values().toArray(new CharSequence[count]));
