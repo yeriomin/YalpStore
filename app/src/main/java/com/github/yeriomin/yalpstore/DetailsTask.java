@@ -20,7 +20,7 @@ public class DetailsTask extends GoogleApiAsyncTask {
     @Override
     protected void processIOException(IOException e) {
         if (null != e && e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 404) {
-            toast(this.context, R.string.details_not_available_on_play_store);
+            ContextUtil.toast(this.context, R.string.details_not_available_on_play_store);
         }
     }
 

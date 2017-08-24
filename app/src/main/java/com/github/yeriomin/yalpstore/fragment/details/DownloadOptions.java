@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.CheckShellTask;
+import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.ConvertToNormalTask;
 import com.github.yeriomin.yalpstore.ConvertToSystemTask;
 import com.github.yeriomin.yalpstore.DetailsActivity;
@@ -110,11 +111,13 @@ public class DownloadOptions extends Abstract {
 
         @Override
         protected void onPostExecute(Boolean result) {
-            String message = activity.getString(InstalledApkCopier.copy(app)
-                ? R.string.details_saved_in_downloads
-                : R.string.details_could_not_copy_apk
+            ContextUtil.toastLong(
+                activity.getApplicationContext(),
+                activity.getString(InstalledApkCopier.copy(app)
+                    ? R.string.details_saved_in_downloads
+                    : R.string.details_could_not_copy_apk
+                )
             );
-            Toast.makeText(activity.getApplicationContext(), message, Toast.LENGTH_LONG).show();
         }
 
         @Override

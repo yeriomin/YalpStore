@@ -58,7 +58,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
 
     @Override
     protected void onPostExecute(Throwable result) {
-        if (null != this.progressDialog && Util.isContextUiCapable(context)) {
+        if (null != this.progressDialog && ContextUtil.isAlive(context)) {
             this.progressDialog.dismiss();
         }
         if (null != progressIndicator) {
@@ -95,12 +95,12 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
         if (null != this.errorView) {
             this.errorView.setText(message);
         } else {
-            toast(this.context, message);
+            ContextUtil.toastLong(this.context, message);
         }
     }
 
     protected void processAuthException(AuthException e) {
-        if (!Util.isContextUiCapable(context)) {
+        if (!ContextUtil.isAlive(context)) {
             Log.e(getClass().getName(), "AuthException happened and the provided context is not ui capable");
             return;
         }
@@ -111,11 +111,11 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
             if (new FirstLaunchChecker(context).isFirstLogin()) {
                 Log.i(getClass().getName(), "First launch, so using built-in account");
                 builder.logInWithPredefinedAccount();
-                toast(context, R.string.first_login_message);
+                ContextUtil.toast(context, R.string.first_login_message);
                 return;
             }
         } else {
-            toast(this.context, R.string.error_incorrect_password);
+            ContextUtil.toast(this.context, R.string.error_incorrect_password);
             new PlayStoreApiAuthenticator(context).logout();
         }
         builder.show();
@@ -127,17 +127,5 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
             || e instanceof ConnectException
             || e instanceof SocketException
             || e instanceof SocketTimeoutException;
-    }
-
-    static protected void toast(Context c, String message) {
-        Toast.makeText(
-            c.getApplicationContext(),
-            message,
-            Toast.LENGTH_LONG
-        ).show();
-    }
-
-    static protected void toast(Context c, int stringId, String... stringArgs) {
-        toast(c, c.getString(stringId, (Object[]) stringArgs));
     }
 }

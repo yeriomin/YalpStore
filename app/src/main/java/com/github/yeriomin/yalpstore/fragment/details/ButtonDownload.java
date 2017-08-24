@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.BuildConfig;
+import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.Downloader;
@@ -91,11 +92,7 @@ public class ButtonDownload extends Button {
         } else if (prepareDownloadsDir()) {
             getPurchaseTask().execute();
         } else {
-            Toast.makeText(
-                this.activity.getApplicationContext(),
-                this.activity.getString(R.string.error_downloads_directory_not_writable),
-                Toast.LENGTH_LONG
-            ).show();
+            ContextUtil.toast(this.activity.getApplicationContext(), R.string.error_downloads_directory_not_writable);
         }
     }
 

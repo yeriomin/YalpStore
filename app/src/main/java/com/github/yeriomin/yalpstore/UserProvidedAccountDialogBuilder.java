@@ -58,7 +58,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
                 String email = editEmail.getText().toString();
                 String password = editPassword.getText().toString();
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    toast(c, R.string.error_credentials_empty);
+                    ContextUtil.toast(c.getApplicationContext(), R.string.error_credentials_empty);
                     return;
                 }
                 ad.dismiss();

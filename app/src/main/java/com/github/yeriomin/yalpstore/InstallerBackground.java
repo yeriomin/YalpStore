@@ -39,7 +39,7 @@ abstract public class InstallerBackground extends InstallerAbstract {
         if (background) {
             new NotificationManagerWrapper(context).show(new Intent(), app.getDisplayName(), resultString);
         } else {
-            toast(resultString);
+            ContextUtil.toastLong(context, resultString);
         }
         app.setInstalled(true);
     }

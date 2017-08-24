@@ -37,7 +37,7 @@ public class BugReportActivity extends Activity {
     }
 
     public void sendBugReport(View view) {
-        Toast.makeText(getApplicationContext(), getString(R.string.thank_you), Toast.LENGTH_SHORT).show();
+        ContextUtil.toastShort(getApplicationContext(), getString(R.string.thank_you));
         startService(getBugReportIntent(
             stackTrace,
             ((EditText) findViewById(R.id.message)).getText().toString(),

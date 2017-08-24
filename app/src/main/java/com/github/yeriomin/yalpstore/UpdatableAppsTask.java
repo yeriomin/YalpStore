@@ -121,7 +121,7 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
     protected void processIOException(IOException e) {
         super.processIOException(e);
         if (noNetwork(e) && context instanceof Activity) {
-            toast(context, context.getString(R.string.error_no_network));
+            ContextUtil.toast(context, R.string.error_no_network);
         }
     }
 

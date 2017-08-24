@@ -60,8 +60,8 @@ public class PurchaseTask extends GoogleApiAsyncTask {
     @Override
     protected void processAuthException(AuthException e) {
         if (e.getCode() == 403) {
-            if (Util.isContextUiCapable(context)) {
-                toast(context, R.string.details_download_not_available);
+            if (ContextUtil.isAlive(context)) {
+                ContextUtil.toast(context, R.string.details_download_not_available);
             } else {
                 Log.w(getClass().getName(), app.getPackageName() + " not available");
             }

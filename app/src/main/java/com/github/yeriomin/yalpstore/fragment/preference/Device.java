@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
+import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.OnListPreferenceChangeListener;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
@@ -36,11 +36,7 @@ public class Device extends List {
         listPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                Toast.makeText(
-                    activity.getApplicationContext(),
-                    activity.getString(R.string.pref_device_to_pretend_to_be_notice, Paths.getYalpPath().getName()),
-                    Toast.LENGTH_LONG
-                ).show();
+                ContextUtil.toast(activity.getApplicationContext(), R.string.pref_device_to_pretend_to_be_notice, Paths.getYalpPath().getName());
                 return false;
             }
         });
@@ -52,7 +48,7 @@ public class Device extends List {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if (!TextUtils.isEmpty((String) newValue) && !isDeviceDefinitionValid((String) newValue)) {
-                    Toast.makeText(activity, R.string.error_invalid_device_definition, Toast.LENGTH_LONG).show();
+                    ContextUtil.toast(activity.getApplicationContext(), R.string.error_invalid_device_definition);
                     return false;
                 }
                 showLogOutDialog();
@@ -95,11 +91,7 @@ public class Device extends List {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     send();
-                    Toast.makeText(
-                        activity.getApplicationContext(),
-                        activity.getString(R.string.thank_you),
-                        Toast.LENGTH_SHORT
-                    ).show();
+                    ContextUtil.toastShort(activity.getApplicationContext(), activity.getString(R.string.thank_you));
                     super.onClick(dialogInterface, i);
                 }
             })

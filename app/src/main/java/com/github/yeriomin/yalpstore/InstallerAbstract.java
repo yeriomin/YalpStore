@@ -65,7 +65,7 @@ public abstract class InstallerAbstract {
         )) {
             Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
             ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
-            if (Util.isContextUiCapable(context)) {
+            if (ContextUtil.isAlive(context)) {
                 getSignatureMismatchDialog(app).show();
             } else {
                 notifySignatureMismatch(app);
@@ -78,12 +78,8 @@ public abstract class InstallerAbstract {
     protected void notifyAndToast(int notificationStringId, int toastStringId, App app) {
         showNotification(notificationStringId, app);
         if (!background) {
-            toast(context.getString(toastStringId, app.getDisplayName()));
+            ContextUtil.toast(context, toastStringId, app.getDisplayName());
         }
-    }
-
-    protected void toast(String message) {
-        Toast.makeText(context.getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
     private AlertDialog getSignatureMismatchDialog(final App app) {
