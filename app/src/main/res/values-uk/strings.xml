@@ -262,4 +262,5 @@ Do it?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Вилучення з програми бета-тестування може тривати кілька хвилин."</string>
 <string name="testing_program_section_opted_out_title">"Станьте тестувальником бета-версії"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
+<string name="about_paypal_label">"Пожертва:"</string>
 </resources>
