@@ -261,4 +261,5 @@ Pokračovat?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Opuštění programu testování beta verze může chvíli trvat."</string>
 <string name="testing_program_section_opted_out_title">"Staňte se testerem beta verze"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
+<string name="about_paypal_label">"Přispět:"</string>
 </resources>
