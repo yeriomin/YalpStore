@@ -116,6 +116,8 @@
             <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
         <activity android:name=".BugReportActivity" android:launchMode="singleInstance" android:noHistory="true" android:process=":report_process" />
+        <activity android:name=".DeviceInfoActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <service android:enabled="true" android:name=".notification.CancelDownloadService" />
         <service android:enabled="true" android:name=".notification.IgnoreUpdatesService" />
         <service android:enabled="true" android:name=".bugreport.BugReportService" />

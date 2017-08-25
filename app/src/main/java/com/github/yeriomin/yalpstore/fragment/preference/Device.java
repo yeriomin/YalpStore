@@ -7,9 +7,12 @@ import android.content.Intent;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
 
 import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
 import com.github.yeriomin.yalpstore.ContextUtil;
+import com.github.yeriomin.yalpstore.DeviceInfoActivity;
 import com.github.yeriomin.yalpstore.OnListPreferenceChangeListener;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
@@ -37,6 +40,15 @@ public class Device extends List {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 ContextUtil.toast(activity.getApplicationContext(), R.string.pref_device_to_pretend_to_be_notice, Paths.getYalpPath().getName());
+                ((AlertDialog) listPreference.getDialog()).getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
+                        Intent i = new Intent(activity, DeviceInfoActivity.class);
+                        i.putExtra(DeviceInfoActivity.INTENT_DEVICE_NAME, (String) keyValueMap.keySet().toArray()[position]);
+                        activity.startActivity(i);
+                        return false;
+                    }
+                });
                 return false;
             }
         });
