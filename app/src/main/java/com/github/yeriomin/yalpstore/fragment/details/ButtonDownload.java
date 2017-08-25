@@ -5,7 +5,6 @@ import android.content.pm.PackageManager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.BuildConfig;

@@ -3,7 +3,6 @@ package com.github.yeriomin.yalpstore;
 import android.os.AsyncTask;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
-import android.widget.Toast;
 
 import eu.chainfire.libsuperuser.Shell;
 

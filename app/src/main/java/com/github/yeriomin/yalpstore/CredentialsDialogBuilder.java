@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.playstoreapi.GooglePlayException;

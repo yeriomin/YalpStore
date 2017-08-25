@@ -3,7 +3,6 @@ package com.github.yeriomin.yalpstore;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.util.Log;
@@ -11,8 +10,6 @@ import android.util.Log;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Collections;
-
-import eu.chainfire.libsuperuser.Shell;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 import static android.net.ConnectivityManager.TYPE_MOBILE;
