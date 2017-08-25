@@ -43,9 +43,11 @@ public class Device extends List {
                 ((AlertDialog) listPreference.getDialog()).getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
-                        Intent i = new Intent(activity, DeviceInfoActivity.class);
-                        i.putExtra(DeviceInfoActivity.INTENT_DEVICE_NAME, (String) keyValueMap.keySet().toArray()[position]);
-                        activity.startActivity(i);
+                        if (position > 0) {
+                            Intent i = new Intent(activity, DeviceInfoActivity.class);
+                            i.putExtra(DeviceInfoActivity.INTENT_DEVICE_NAME, (String) keyValueMap.keySet().toArray()[position]);
+                            activity.startActivity(i);
+                        }
                         return false;
                     }
                 });

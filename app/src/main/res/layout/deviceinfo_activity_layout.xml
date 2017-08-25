@@ -7,10 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <TextView android:id="@+id/device_info"
+        <TableLayout
+            android:id="@+id/device_info"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:typeface="monospace" />
+            android:layout_height="wrap_content" />
 
     </ScrollView>
 
