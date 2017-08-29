@@ -42,7 +42,7 @@ class ForegroundUpdatableAppsTask extends UpdatableAppsTask {
         super.onPreExecute();
         Button button = activity.findViewById(R.id.check_updates);
         button.setEnabled(false);
-        button.setText(R.string.details_download_checking);
+        button.setText(R.string.ellipsis);
     }
 
     @Override
@@ -67,6 +67,14 @@ class ForegroundUpdatableAppsTask extends UpdatableAppsTask {
         Button button = activity.findViewById(R.id.check_updates);
         button.setEnabled(true);
         button.setText(R.string.list_check_updates);
+    }
+
+    @Override
+    protected void onProgressUpdate(Void... values) {
+        super.onProgressUpdate(values);
+        Button button = activity.findViewById(R.id.check_updates);
+        button.setEnabled(false);
+        button.setText(R.string.details_download_checking);
     }
 
     private App getSelf() {

@@ -87,6 +87,7 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
             installedApps = filterSystemApps(installedApps);
         }
         // Requesting info from Google Play Market for installed apps
+        publishProgress();
         List<App> appsFromPlayStore = new ArrayList<>();
         try {
             appsFromPlayStore.addAll(getAppsFromPlayStore(filterBlacklistedApps(context, installedApps).keySet()));
