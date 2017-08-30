@@ -14,7 +14,6 @@ import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.DeviceInfoActivity;
 import com.github.yeriomin.yalpstore.OnListPreferenceChangeListener;
-import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
@@ -39,7 +38,11 @@ public class Device extends List {
         listPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                ContextUtil.toast(activity.getApplicationContext(), R.string.pref_device_to_pretend_to_be_notice, Paths.getYalpPath().getName());
+                ContextUtil.toast(
+                    activity.getApplicationContext(),
+                    R.string.pref_device_to_pretend_to_be_notice,
+                    PreferenceManager.getDefaultSharedPreferences(activity).getString(PreferenceActivity.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+                );
                 ((AlertDialog) listPreference.getDialog()).getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {

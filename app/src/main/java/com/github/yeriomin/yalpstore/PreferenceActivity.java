@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
@@ -10,6 +11,7 @@ import android.preference.PreferenceManager;
 import com.github.yeriomin.yalpstore.fragment.preference.Blacklist;
 import com.github.yeriomin.yalpstore.fragment.preference.CheckUpdates;
 import com.github.yeriomin.yalpstore.fragment.preference.Device;
+import com.github.yeriomin.yalpstore.fragment.preference.DownloadDirectory;
 import com.github.yeriomin.yalpstore.fragment.preference.InstallationMethod;
 import com.github.yeriomin.yalpstore.fragment.preference.Language;
 import com.github.yeriomin.yalpstore.fragment.preference.Theme;
@@ -38,6 +40,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_SHOW_SYSTEM_APPS = "PREFERENCE_SHOW_SYSTEM_APPS";
     public static final String PREFERENCE_NO_IMAGES = "PREFERENCE_NO_IMAGES";
     public static final String PREFERENCE_DEVICE_DEFINITION_REQUESTED = "PREFERENCE_DEVICE_DEFINITION_REQUESTED";
+    public static final String PREFERENCE_DOWNLOAD_DIRECTORY = "PREFERENCE_DOWNLOAD_DIRECTORY";
 
     public static final String INSTALLATION_METHOD_DEFAULT = "default";
     public static final String INSTALLATION_METHOD_ROOT = "root";
@@ -87,6 +90,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         drawDevices();
         drawInstallationMethod();
         drawUpdatePagePreferences();
+        new DownloadDirectory(this).setPreference((EditTextPreference) findPreference(PREFERENCE_DOWNLOAD_DIRECTORY)).draw();
     }
 
     private void drawBlackList() {

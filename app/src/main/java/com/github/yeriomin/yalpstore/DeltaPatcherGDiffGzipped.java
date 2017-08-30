@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -12,8 +13,8 @@ import java.util.zip.GZIPInputStream;
 
 public class DeltaPatcherGDiffGzipped extends DeltaPatcherGDiff {
 
-    public DeltaPatcherGDiffGzipped(App app) {
-        super(app);
+    public DeltaPatcherGDiffGzipped(Context context, App app) {
+        super(context, app);
     }
 
     @Override

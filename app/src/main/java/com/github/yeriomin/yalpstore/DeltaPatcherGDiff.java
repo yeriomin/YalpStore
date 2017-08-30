@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -9,8 +10,8 @@ import java.io.IOException;
 
 public class DeltaPatcherGDiff extends DeltaPatcherAbstract {
 
-    public DeltaPatcherGDiff(App app) {
-        super(app);
+    public DeltaPatcherGDiff(Context context, App app) {
+        super(context, app);
     }
 
     @Override
@@ -24,7 +25,7 @@ public class DeltaPatcherGDiff extends DeltaPatcherAbstract {
         Log.i(DeltaPatcherGDiff.class.getName(), "Patching with " + patch);
         com.nothome.delta.GDiffPatcher patcher = new com.nothome.delta.GDiffPatcher();
         try {
-            File destinationApk = Paths.getApkPath(app.getPackageName(), app.getVersionCode());
+            File destinationApk = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
             patcher.patch(originalApk, patch, destinationApk);
             Log.i(DeltaPatcherGDiff.class.getName(), "Patching successfully completed");
             return true;

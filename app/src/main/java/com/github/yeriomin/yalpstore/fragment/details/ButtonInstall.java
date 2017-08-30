@@ -30,7 +30,7 @@ public class ButtonInstall extends Button {
 
     @Override
     protected boolean shouldBeVisible() {
-        return Paths.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+        return Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
             && DownloadState.get(app.getPackageName()).isEverythingSuccessful()
         ;
     }

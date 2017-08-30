@@ -85,7 +85,7 @@ public class InstallerPrivileged extends InstallerBackground {
 
     @Override
     protected void install(App app) {
-        File apkFile = Paths.getApkPath(app.getPackageName(), app.getVersionCode());
+        File apkFile = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         if (!apkFile.exists()) throw new IllegalArgumentException();
         PackageManager pm = context.getPackageManager();
         Class<?>[] types = new Class[] {Uri.class, IPackageInstallObserver.class, int.class, String.class};

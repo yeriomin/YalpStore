@@ -45,7 +45,7 @@ public class SpoofDeviceManager {
     }
 
     public Properties getProperties(String entryName) {
-        File defaultDirectoryFile = new File(Paths.getYalpPath(), entryName);
+        File defaultDirectoryFile = new File(Paths.getYalpPath(context), entryName);
         if (defaultDirectoryFile.exists()) {
             Log.i(getClass().getName(), "Loading device info from " + defaultDirectoryFile.getAbsolutePath());
             return getProperties(defaultDirectoryFile);
@@ -132,7 +132,7 @@ public class SpoofDeviceManager {
 
     private Map<String, String> getDevicesFromYalpDirectory() {
         Map<String, String> deviceNames = new HashMap<>();
-        File defaultDir = Paths.getYalpPath();
+        File defaultDir = Paths.getYalpPath(context);
         if (!defaultDir.exists() || null == defaultDir.listFiles()) {
             return deviceNames;
         }

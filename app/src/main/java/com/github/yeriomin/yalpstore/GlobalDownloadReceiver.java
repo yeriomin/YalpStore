@@ -46,7 +46,7 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
             return;
         }
         if (isDelta(app)) {
-            if (!DeltaPatcherFactory.get(app).patch()) {
+            if (!DeltaPatcherFactory.get(context, app).patch()) {
                 Log.e(getClass().getName(), "Delta patching failed for " + app.getPackageName());
                 return;
             }
@@ -55,8 +55,8 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
     }
 
     private boolean isDelta(App app) {
-        return !Paths.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
-            && Paths.getDeltaPath(app.getPackageName(), app.getVersionCode()).exists()
+        return !Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).exists()
+            && Paths.getDeltaPath(context, app.getPackageName(), app.getVersionCode()).exists()
         ;
     }
 
@@ -93,7 +93,7 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
     }
 
     private void notifyAndToast(int notificationStringId, int toastStringId, App app) {
-        File file = Paths.getApkPath(app.getPackageName(), app.getVersionCode());
+        File file = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = InstallerAbstract.getOpenApkIntent(context, file);
         notificationManager.show(
             openApkIntent,

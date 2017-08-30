@@ -208,6 +208,7 @@
     <string name="pref_no_images">Загружать изображения только по Wi-fi</string>
     <string name="pref_no_images_summary_off">Сейчас изображения загружаются всегда</string>
     <string name="pref_no_images_summary_on">Сейчас изображения загружаются только по Wi-fi</string>
+    <string name="pref_download_directory">Куда сохранять apk</string>
     <string name="download_manager_ERROR_UNKNOWN">Неизвестная ошибка.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Неизвестная ошибка сохранения файла.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Сетевая ошибка. Попробуйте позднее.</string>

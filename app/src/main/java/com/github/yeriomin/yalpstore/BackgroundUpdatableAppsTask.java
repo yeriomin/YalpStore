@@ -47,7 +47,7 @@ class BackgroundUpdatableAppsTask extends UpdatableAppsTask {
         application.clearPendingUpdates();
         for (App app: apps) {
             application.addPendingUpdate(app.getPackageName());
-            if (!Paths.getApkPath(app.getPackageName(), app.getVersionCode()).exists()) {
+            if (!Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).exists()) {
                 download(context, app);
             } else if (canInstallInBackground) {
                 // Not passing context because it might be an activity
@@ -90,7 +90,7 @@ class BackgroundUpdatableAppsTask extends UpdatableAppsTask {
 
     private void notifyDownloadedAlready(App app) {
         new NotificationManagerWrapper(context).show(
-            InstallerAbstract.getOpenApkIntent(context, Paths.getApkPath(app.getPackageName(), app.getVersionCode())),
+            InstallerAbstract.getOpenApkIntent(context, Paths.getApkPath(context, app.getPackageName(), app.getVersionCode())),
             app.getDisplayName(),
             context.getString(R.string.notification_download_complete)
         );

@@ -1,6 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
-
+import android.content.Context;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -12,12 +12,12 @@ import java.util.zip.GZIPInputStream;
 
 public class DeltaPatcherFactory {
 
-    static public DeltaPatcherAbstract get(App app) {
-        File patch = Paths.getDeltaPath(app.getPackageName(), app.getVersionCode());
+    static public DeltaPatcherAbstract get(Context context, App app) {
+        File patch = Paths.getDeltaPath(context, app.getPackageName(), app.getVersionCode());
         if (isGZipped(patch)) {
-            return new DeltaPatcherGDiffGzipped(app);
+            return new DeltaPatcherGDiffGzipped(context, app);
         } else {
-            return new DeltaPatcherGDiff(app);
+            return new DeltaPatcherGDiff(context, app);
         }
     }
 

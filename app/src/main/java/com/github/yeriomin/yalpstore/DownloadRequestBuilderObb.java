@@ -10,19 +10,13 @@ import java.io.File;
 public class DownloadRequestBuilderObb extends DownloadRequestBuilder {
 
     private boolean main;
-    private Context context;
 
-    public DownloadRequestBuilderObb(App app, AndroidAppDeliveryData deliveryData) {
-        super(app, deliveryData);
+    public DownloadRequestBuilderObb(Context context, App app, AndroidAppDeliveryData deliveryData) {
+        super(context, app, deliveryData);
     }
 
     public DownloadRequestBuilderObb setMain(boolean main) {
         this.main = main;
-        return this;
-    }
-
-    public DownloadRequestBuilderObb setContext(Context context) {
-        this.context = context;
         return this;
     }
 

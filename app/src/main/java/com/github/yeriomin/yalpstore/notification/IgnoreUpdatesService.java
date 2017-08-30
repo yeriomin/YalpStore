@@ -30,7 +30,7 @@ public class IgnoreUpdatesService extends IntentService {
         new BlackWhiteListManager(getApplicationContext()).add(packageName);
         cancelNotification(packageName);
         UpdatableAppsActivity.setNeedsUpdate(true);
-        Paths.getApkPath(packageName, intent.getIntExtra(VERSION_CODE, 0)).delete();
+        Paths.getApkPath(getApplicationContext(), packageName, intent.getIntExtra(VERSION_CODE, 0)).delete();
     }
 
     private void cancelNotification(String packageName) {

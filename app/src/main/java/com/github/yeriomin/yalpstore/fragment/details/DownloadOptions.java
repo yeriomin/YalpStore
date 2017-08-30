@@ -112,7 +112,7 @@ public class DownloadOptions extends Abstract {
         protected void onPostExecute(Boolean result) {
             ContextUtil.toastLong(
                 activity.getApplicationContext(),
-                activity.getString(InstalledApkCopier.copy(app)
+                activity.getString(result
                     ? R.string.details_saved_in_downloads
                     : R.string.details_could_not_copy_apk
                 )
@@ -122,7 +122,7 @@ public class DownloadOptions extends Abstract {
         @Override
         protected Boolean doInBackground(App... apps) {
             app = apps[0];
-            return InstalledApkCopier.copy(app);
+            return InstalledApkCopier.copy(activity, app);
         }
     }
 }

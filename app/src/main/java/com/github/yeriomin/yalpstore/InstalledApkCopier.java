@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -13,8 +14,8 @@ import java.io.OutputStream;
 
 public class InstalledApkCopier {
 
-    static public boolean copy(App app) {
-        File destination = Paths.getApkPath(app.getPackageName(), app.getInstalledVersionCode());
+    static public boolean copy(Context context, App app) {
+        File destination = Paths.getApkPath(context, app.getPackageName(), app.getInstalledVersionCode());
         if (destination.exists()) {
             Log.i(InstalledApkCopier.class.getName(), destination.toString() + " exists");
             return true;

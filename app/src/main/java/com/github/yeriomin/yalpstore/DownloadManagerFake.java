@@ -96,9 +96,9 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
     private File getDestinationFile(App app, Type type) {
         switch (type) {
             case APK:
-                return Paths.getApkPath(app.getPackageName(), app.getVersionCode());
+                return Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
             case DELTA:
-                return Paths.getDeltaPath(app.getPackageName(), app.getVersionCode());
+                return Paths.getDeltaPath(context, app.getPackageName(), app.getVersionCode());
             case OBB_MAIN:
                 return Paths.getObbPath(app.getPackageName(), app.getVersionCode(), true);
             case OBB_PATCH:

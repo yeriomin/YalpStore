@@ -60,7 +60,7 @@ public abstract class InstallerAbstract {
     protected boolean verify(App app) {
         if (!new ApkSignatureVerifier(context).match(
             app.getPackageName(),
-            Paths.getApkPath(app.getPackageName(), app.getVersionCode())
+            Paths.getApkPath(context, app.getPackageName(), app.getVersionCode())
         )) {
             Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
             ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
@@ -117,7 +117,7 @@ public abstract class InstallerAbstract {
     }
 
     private void showNotification(int notificationStringId, App app) {
-        File file = Paths.getApkPath(app.getPackageName(), app.getVersionCode());
+        File file = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = getOpenApkIntent(context, file);
         Notification notification = NotificationManagerWrapper.getBuilder(context)
             .setIntent(openApkIntent)

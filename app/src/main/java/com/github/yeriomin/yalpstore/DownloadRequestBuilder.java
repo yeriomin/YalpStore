@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.annotation.TargetApi;
 import android.app.DownloadManager;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 
@@ -14,10 +15,12 @@ import java.io.File;
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public abstract class DownloadRequestBuilder {
 
-    App app;
-    AndroidAppDeliveryData deliveryData;
+    protected Context context;
+    protected App app;
+    protected AndroidAppDeliveryData deliveryData;
 
-    public DownloadRequestBuilder(App app, AndroidAppDeliveryData deliveryData) {
+    public DownloadRequestBuilder(Context context, App app, AndroidAppDeliveryData deliveryData) {
+        this.context = context;
         this.app = app;
         this.deliveryData = deliveryData;
     }

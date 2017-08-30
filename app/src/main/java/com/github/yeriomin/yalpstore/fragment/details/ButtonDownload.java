@@ -51,7 +51,7 @@ public class ButtonDownload extends Button {
 
     @Override
     protected boolean shouldBeVisible() {
-        return (!Paths.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+        return (!Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
                 || !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
             )
             && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID))
@@ -74,7 +74,7 @@ public class ButtonDownload extends Button {
     @Override
     public void draw() {
         super.draw();
-        if (Paths.getApkPath(app.getPackageName(), app.getVersionCode()).exists()
+        if (Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
             && !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
         ) {
             disableButton(R.id.download, R.string.details_downloading);
@@ -96,7 +96,7 @@ public class ButtonDownload extends Button {
     }
 
     private boolean prepareDownloadsDir() {
-        File dir = Paths.getApkPath(app.getPackageName(), app.getVersionCode()).getParentFile();
+        File dir = Paths.getYalpPath(activity);
         if (!dir.exists()) {
             dir.mkdirs();
         }
