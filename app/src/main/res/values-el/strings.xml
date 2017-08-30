@@ -85,14 +85,14 @@
 <string name="pref_hide_nonfree_apps_summary_off">"Τώρα, προβάλλονται καί οι επί πληρωμή εφαρμογές"</string>
 <string name="pref_hide_nonfree_apps_summary_on">"Τώρα δεν προβάλλονται οι επί πληρωμή εφρομογές"</string>
 <string name="pref_hide_nonfree_apps">"Απόκρυψη των επί πληρωμή εφαρμογών"</string>
-<string name="pref_auto_install_summary_off">"Οι εφαρμογές εγκαθίστανται, όταν ο χρήστης αγγίζει την ενημέρωση της ολοκλήρωσης"</string>
+<string name="pref_auto_install_summary_off">"Οι εφαρμογές εγκαθίστανται, όταν ο χρήστης αγγίζει το μήνυμα της ολοκλήρωσης"</string>
 <string name="pref_auto_install_summary_on">"Οι εφαρμογές εγκαθίστανται μόλις ολοκληρωθεί η λήψη"</string>
 <string name="pref_auto_install">"Άμεση εγκατάσταση των εφαρμογών"</string>
 <string name="pref_update_list_white_or_black_black">"Οι επιλεγμένες εφαρμογές θα αγνοούνται, όταν γίνεται έλεγχος για ενημερώσεις"</string>
 <string name="pref_update_list_white_or_black_white">"Μόνο για τις επιλεγμένες εφαρμογές θα γίνεται έλεγχος για ενημερώσεις"</string>
-<string name="pref_update_list_white_or_black">"Μαύρο ή λευκό κατάστιχο των εφαρμογών προς ενημέρωση"</string>
-<string name="pref_update_list_black">"Αλλαγή του μαύρου κατάστιχου των εφαρμογών"</string>
-<string name="pref_update_list_white">"Αλλαγή του λευκού κατάστιχου των εφαρμογών"</string>
+<string name="pref_update_list_white_or_black">"Μαύρη ή λευκή λίστα των εφαρμογών προς ενημέρωση"</string>
+<string name="pref_update_list_black">"Αλλαγή της μαύρης λίστας των εφαρμογών"</string>
+<string name="pref_update_list_white">"Αλλαγή της λευκής λίστας των εφαρμογών"</string>
 <string name="pref_ui_theme">"Θέμα"</string>
 <string name="pref_ui_theme_none">"Προεπιλογή"</string>
 <string name="pref_ui_theme_light">"Φωτεινό"</string>
@@ -102,7 +102,7 @@
 <string name="pref_background_update_interval_hourly">"Ωριαία"</string>
 <string name="pref_background_update_interval_daily">"Ημερησίως"</string>
 <string name="pref_background_update_interval_weekly">"Εβδομαδιαία"</string>
-<string name="pref_background_update_interval">"Περιοδικός έλεγχος ενημερώσεων"</string>
+<string name="pref_background_update_interval">"Περιοδικός έλεγχος των ενημερώσεων"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Άγνωστο σφάλμα."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Άγνωστο σφάλμα αποθήκευσης αρχείων."</string>
 <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Λήφθηκε HTTP κώδικας, το οποίο δεν μπορεί να χειριστεί ο διαχειριστής λήψεων. Αυτό είναι ένα πρόβλημα του εξυπηρετητή."</string>
@@ -115,7 +115,7 @@
 <string name="search_filter">"Όλες οι εφαρμογές"</string>
 <string name="details_category">"Κατηγορία: %1$s"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Τώρα, τα .apk δεν θα διαγράφονται, μετά από την ολοκλήρωση της εγκατάστασης"</string>
-<string name="pref_delete_apk_after_install_summary_on">"Τώρα, τα .apk θα διαγράφονται, μετά την ολοκλήρωση της εγκατάστασης"</string>
+<string name="pref_delete_apk_after_install_summary_on">"Τώρα, τα .apk θα διαγράφονται, μετά από την ολοκλήρωση της εγκατάστασης"</string>
 <string name="pref_delete_apk_after_install">"Διαγραφή των .apk, μετά από την εγκατάσταση"</string>
 <string name="dialog_title_application_crashed">"Δυστυχώς το Yalp Store κατέρρευσε"</string>
 <string name="details_to_play_store">"Προβολή στο Play Store"</string>
@@ -123,14 +123,16 @@
 <string name="list_update_all">"Ενημέρωση όλων"</string>
 <string name="notification_installation_complete">"Η ενημέρωση εγκαταστάθηκε."</string>
 <string name="notification_installation_failed">"Η εγκατάσταση της ενημέρωσης απέτυχε."</string>
-<string name="pref_background_update_install_summary_off">"Λαμβάνεις, μόνο, μία ειδοποίηση"</string>
+<string name="pref_background_update_install_summary_off">"Λαμβάνεις μόνο μία ειδοποίηση"</string>
 <string name="pref_background_update_install_summary_on">"Οι ενημερώσεις εγκαθίστανται, αν βρεθούν (υπερχρήστης)"</string>
-<string name="pref_background_update_install">"Επίσης εγκατάσταση των ενημερώσεων (υπερχρήστης)"</string>
+<string name="pref_background_update_install">"Επίσης, εγκατάσταση των ενημερώσεων (υπερχρήστης)"</string>
 <string name="pref_no_root">"Αυτή η επιλογή είναι διαθέσιμη μόνο σε συσκευές με πρόσβαση υπερχρήστη"</string>
-<string name="list_app_has_ads">"έχει διαφημίσεις"</string>
-<string name="list_app_no_ads">"χωρίς διαφημίσεις"</string>
-<string name="list_app_depends_on_gsf">"εξαρτάται από το GSF"</string>
-<string name="list_app_independent_from_gsf">"ανεξάρτητο από το GSF"</string>
+<string name="list_app_has_ads">"έχει διαφ/εις"</string>
+
+<!-- Try to make it short. -->
+<string name="list_app_no_ads">"χωρίς διαφ/εις"</string>
+<string name="list_app_depends_on_gsf">"GSF εξαρτ/ο"</string>
+<string name="list_app_independent_from_gsf">"GSF ανεξ/ο"</string>
 <string name="details_depends_on">"Εξαρτάται από: %1$s"</string>
 <string name="details_no_dependencies">"τίποτα"</string>
 <string name="details_contains_ads">"Με διαφ/σεις"</string>
@@ -154,10 +156,10 @@
 <string name="notification_download_progress">"%1$s/%2$s έχουν ληφθεί"</string>
 <string name="pref_requested_language">"Το Play Store ζητά γλώσσα"</string>
 <string name="pref_requested_language_default">"Η προεπιλεγμένη γλώσσα σου"</string>
-<string name="pref_hide_apps_with_ads">"Απόκρυψη των εφαρμογών που περιέχουν διαφημίσεις"</string>
+<string name="pref_hide_apps_with_ads">"Απόκρυψη των, με διαφημίσεις, εφαρμογών"</string>
 <string name="pref_hide_apps_with_ads_summary_off">"Οι εφαρμογές με διαφημίσεις, τώρα, εμφανίζονται"</string>
 <string name="pref_hide_apps_with_ads_summary_on">"Οι εφαρμογές με διαφημίσεις, τώρα, δεν εμφανίζονται"</string>
-<string name="pref_device_to_pretend_to_be">"Προσποιήθηκε πως ήταν διαφορετική συσκευή"</string>
+<string name="pref_device_to_pretend_to_be">"Προσποίηση διαφορετικής συσκευής"</string>
 <string name="pref_device_to_pretend_to_be_default">"Οι γνήσιες πληροφορίες της συσκευής σου"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Αυτή η αλλαγή θα εφαρμοστεί αφού επανασυνδεθείς"</string>
 <string name="pref_category_updates">"Ενημερώσεις"</string>
@@ -177,7 +179,7 @@
 <string name="pref_installation_method_privileged">"Χρησιμοποιούνται διακαιώματα του συστήματος"</string>
 <string name="pref_background_update_download_summary_off">"Λαμβάνεις μόνο μία ειδοποίηση"</string>
 <string name="pref_background_update_download_summary_on">"Οι ενημερώσεις λαμβάνονται, αν υπάρχουν"</string>
-<string name="pref_background_update_download">"Επίσης να λαμβάνονται και οι ενημερώσεις"</string>
+<string name="pref_background_update_download">"Επίσης, να λαμβάνονται και οι ενημερώσεις"</string>
 <string name="details_not_available_on_play_store">"Μη διαθέσιμο στο Play Store"</string>
 <string name="action_manual">"Χειροκίνητη λήψη"</string>
 <string name="action_get_local_apk">"Πάρε το τοπικό apk"</string>
@@ -246,10 +248,10 @@
 <string name="pref_no_images_summary_off">"Οι εικόνες λαμβάνονται πάντα, τώρα"</string>
 <string name="pref_no_images_summary_on">"Οι εικόνες λαμβάνονται μόνο με το Γουάι-Φάι"</string>
 <string name="bug_report_hint_message">"Λεπτομερής περιγραφή του προβλήματος"</string>
-<string name="bug_report_hint_identification">"Η διέυθ. του ηλ. ταχυδρομείου σου ή το όνομα ή οτιδήποτε (προαιρετικό)"</string>
+<string name="bug_report_hint_identification">"Η διέυθυνση του ηλεκτρονικού ταχυδρομείου σου, ή το όνομα, ή οτιδήποτε (προαιρετικό)"</string>
 <string name="bug_report_explanation_content">"Πληροφορίες για τη συσκευή σου, καταγραφές και κάποιες προτιμήσεις του Γιαλπ Στορ, θα προστεθούν αυτόματα στο μήνυμά σου. Δεν συλλέγονται προσωπικές και ευαίσθητες πληροφορίες."</string>
 <string name="bug_report_explanation_crash">"Μπορείς να βοηθήσεις στο να το διορθώσουμε αυτό, στέλνοντας μία αναφορά δυσλειτουργίας στον προγραμματιστή. Παρακαλώ, περιέγραψε αυτό που προσπαθούσες να κάνεις, όταν συνέβη το σφάλμα, και άγγιξε στο Εντάξει, για να το στείλεις."</string>
-<string name="bug_report_explanation_bug_report">"Παρακαλώ περιέγραψε το πρόβλημα. Δώσε όσο γίνεται περισσότερες λεπτομέρειες. Μήπως το πρόβλημα συμβαίνει με κάποια συγκεκριμένη εφαρμογή; Μήπως συμβαίνει πάντοτε ή μήπως μόνο μερικές φορές; Πώς μπορεί να αναπαραχθεί;"</string>
+<string name="bug_report_explanation_bug_report">"Παρακαλώ περιέγραψε το πρόβλημα. Δώσε όσο γίνεται περισσότερες λεπτομέρειες. Μήπως το πρόβλημα συμβαίνει με κάποια συγκεκριμένη εφαρμογή; Μήπως συμβαίνει πάντοτε, ή μήπως μόνο μερικές φορές; Πώς μπορεί να αναπαραχθεί;"</string>
 <string name="thank_you">"Σε ευχαριστούμε"</string>
 <string name="list_updating">"Γίνεται ενημέρωση"</string>
 <string name="error_invalid_device_definition">"Ο προσδιορισμός της συσκευής απορρίφθηκε."</string>
