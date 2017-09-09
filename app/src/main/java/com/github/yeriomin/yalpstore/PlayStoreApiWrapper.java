@@ -4,11 +4,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.BrowseLink;
 import com.github.yeriomin.playstoreapi.BrowseResponse;
 import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
-import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.DetailsResponse;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.ReviewResponse;
@@ -106,49 +104,5 @@ public class PlayStoreApiWrapper {
             categories.put(categoryId, category.getName());
         }
         return categories;
-    }
-
-    public AndroidAppDeliveryData purchase(App app) throws IOException {
-        return new PlayStoreApiAuthenticator(context).getApi()
-            .purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType())
-            .getPurchaseStatusResponse()
-            .getAppDeliveryData()
-        ;
-    }
-
-    private AndroidAppDeliveryData deliver(App app) throws IOException, NotPurchasedException {
-        GooglePlayAPI api = new PlayStoreApiAuthenticator(context).getApi();
-        DeliveryResponse response = app.getInstalledVersionCode() < app.getVersionCode()
-            ? api.delivery(
-                app.getPackageName(),
-                app.getInstalledVersionCode(),
-                app.getVersionCode(),
-                app.getOfferType(),
-                GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF
-            )
-            : api.delivery(
-                app.getPackageName(),
-                app.getVersionCode(),
-                app.getOfferType()
-            )
-        ;
-        if (response.hasAppDeliveryData()) {
-            return response.getAppDeliveryData();
-        } else {
-            throw new NotPurchasedException();
-        }
-    }
-
-    public AndroidAppDeliveryData purchaseOrDeliver(App app) throws IOException, NotPurchasedException {
-        PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
-        try {
-            return wrapper.deliver(app);
-        } catch (NotPurchasedException e) {
-            if (app.isFree()) {
-                return wrapper.purchase(app);
-            } else {
-                throw e;
-            }
-        }
     }
 }

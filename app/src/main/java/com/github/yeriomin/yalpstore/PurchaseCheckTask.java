@@ -5,21 +5,14 @@ import android.widget.Button;
 
 import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
-import com.github.yeriomin.yalpstore.model.App;
 
-import java.io.IOException;
 import java.util.Timer;
 
-public class PurchaseCheckTask extends GoogleApiAsyncTask {
+public class PurchaseCheckTask extends DeliveryDataTask {
 
-    private App app;
     private DownloadOrInstall downloadOrInstallFragment;
     private Button downloadButton;
     private Timer timer;
-
-    public void setApp(App app) {
-        this.app = app;
-    }
 
     public void setDownloadOrInstallFragment(DownloadOrInstall downloadOrInstallFragment) {
         this.downloadOrInstallFragment = downloadOrInstallFragment;
@@ -34,18 +27,8 @@ public class PurchaseCheckTask extends GoogleApiAsyncTask {
     }
 
     @Override
-    protected Throwable doInBackground(String... params) {
-        try {
-            new PlayStoreApiWrapper(context).purchase(app);
-        } catch (IOException e) {
-            return e;
-        }
-        return null;
-    }
-
-    @Override
     protected void onPostExecute(Throwable e) {
-        boolean success = null == e;
+        boolean success = null == e && null != deliveryData;
         downloadOrInstallFragment.draw();
         if (null == downloadButton) {
             return;

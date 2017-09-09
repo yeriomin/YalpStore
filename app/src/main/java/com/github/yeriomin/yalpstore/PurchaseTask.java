@@ -9,20 +9,13 @@ import android.util.Log;
 import android.view.WindowManager;
 
 import com.github.yeriomin.playstoreapi.AuthException;
-import com.github.yeriomin.yalpstore.model.App;
 
-public class PurchaseTask extends GoogleApiAsyncTask {
+public class PurchaseTask extends DeliveryDataTask {
 
     static public final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
 
-    protected App app;
-
     private DownloadState.TriggeredBy triggeredBy = DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
     private OnDownloadProgressListener listener;
-
-    public void setApp(App app) {
-        this.app = app;
-    }
 
     public void setTriggeredBy(DownloadState.TriggeredBy triggeredBy) {
         this.triggeredBy = triggeredBy;
@@ -34,10 +27,17 @@ public class PurchaseTask extends GoogleApiAsyncTask {
 
     @Override
     protected Throwable doInBackground(String... params) {
-        PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(context);
+        DownloadState.get(app.getPackageName()).setTriggeredBy(triggeredBy);
         try {
-            DownloadState.get(app.getPackageName()).setTriggeredBy(triggeredBy);
-            new Downloader(context).download(app, wrapper.purchaseOrDeliver(app), listener);
+            Throwable result = super.doInBackground(params);
+            if (null != result) {
+                return result;
+            }
+            if (null == deliveryData) {
+                Log.e(getClass().getName(), app.getPackageName() + " no download link returned");
+                return null;
+            }
+            new Downloader(context).download(app, deliveryData, listener);
         } catch (Throwable e) {
             context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
             return e;
