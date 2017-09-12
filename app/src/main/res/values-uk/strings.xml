@@ -66,8 +66,6 @@
 <string name="details_review_dialog_review_comment_hint">"детальніше"</string>
 <string name="details_review_dialog_fields_optional">"Можна і не заповнювати"</string>
 <string name="details_signature_mismatch">"Нова версія підписана іншим ключем. Для встановлення оновленої версії, спершу необхідно видалити попередню версію. Будь ласка, зробіть це, та спробуйте ще раз. (Увага: видаливши додаток разом із ним буде видалено і повʼязані локальні дані)"</string>
-<string name="suffix_million">"млн"</string>
-<string name="suffix_billion">"млрд"</string>
 <string name="credentials_hint_email">"E-mail"</string>
 <string name="credentials_hint_password">"пароль"</string>
 <string name="credentials_title">"Вхід до облікового запису Google"</string>

@@ -65,8 +65,6 @@ Tik op 'wachtwoord maken' om te worden doorgestuurd naar de pagina voor het make
 <string name="details_review_dialog_review_comment_hint">"Maak een reactie hier"</string>
 <string name="details_review_dialog_fields_optional">"Je kunt alles leeg laten."</string>
 <string name="details_signature_mismatch">"De nieuwe versie heeft een andere handtekening dan de oude. Om de nieuwe versie te installeren moet u de oude deïnstalleren. Probeer vervolgens opnieuw. (Door het deïnstalleren van de oude versie verliest u alle gegevens van deze applicatie)"</string>
-<string name="suffix_million">"Mljn"</string>
-<string name="suffix_billion">"Mljrd"</string>
 <string name="credentials_hint_email">"E-mail hier"</string>
 <string name="credentials_hint_password">"Wachtwoord hier"</string>
 <string name="credentials_title">"Google account toegang"</string>

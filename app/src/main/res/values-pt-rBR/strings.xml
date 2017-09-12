@@ -67,8 +67,6 @@ Redirecionar para a sua página da Play Store?"</string>
 <string name="details_review_dialog_review_comment_hint">"Comente aqui"</string>
 <string name="details_review_dialog_fields_optional">"Você pode deixar tudo em branco."</string>
 <string name="details_signature_mismatch">"A nova versão é assinada com uma chave diferente da antiga. Para instalar a nova versão, a antiga deve ser desinstalada primeiro. Faça isso e tente novamente. (Observe que a desinstalação apagará todos os dados internos armazenados pela aplicação)"</string>
-<string name="suffix_million">"mil"</string>
-<string name="suffix_billion">"bil"</string>
 <string name="credentials_hint_email">"E-mail aqui"</string>
 <string name="credentials_hint_password">"Senha aqui"</string>
 <string name="credentials_title">"Acesso à Conta do Google"</string>

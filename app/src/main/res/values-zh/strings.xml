@@ -67,8 +67,6 @@
 <string name="details_review_dialog_review_comment_hint">"在这里评论"</string>
 <string name="details_review_dialog_fields_optional">"你可以留下任何"</string>
 <string name="details_signature_mismatch">"新版本签名与旧版本不同，请先卸载旧版本应用再安装新版本。（注意：卸载旧版本会清除该应用存储的所有内部数据）"</string>
-<string name="suffix_million">"百万"</string>
-<string name="suffix_billion">"十亿"</string>
 <string name="credentials_hint_email">"邮箱"</string>
 <string name="credentials_hint_password">"密码"</string>
 <string name="credentials_title">"Google帐户访问权限"</string>

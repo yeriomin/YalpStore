@@ -67,8 +67,6 @@ Toca \"Crear contraseña\" para ser redirigido"</string>
 <string name="details_review_dialog_review_comment_hint">"Comentario"</string>
 <string name="details_review_dialog_fields_optional">"Puedes dejar todo en blanco"</string>
 <string name="details_signature_mismatch">"Esta versión esta firmada con una clave distinta a la anterior. Para instalar la nueva versión, la anterior debe desinstalarse primero. Por favor, reinténtalo después de desinstalarla. (¡Desinstalarla borrará todos los datos almacenados por la app!)"</string>
-<string name="suffix_million">"M"</string>
-<string name="suffix_billion">"1000M"</string>
 <string name="credentials_hint_email">"Correo electrónico"</string>
 <string name="credentials_hint_password">"Contraseña"</string>
 <string name="credentials_title">"Acceso a cuenta de Google"</string>

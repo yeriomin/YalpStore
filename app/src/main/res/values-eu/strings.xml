@@ -65,8 +65,6 @@ Sakatu \"Sortu pasahitza\" pasahitza saortzeko orrira joateko."</string>
 <string name="details_review_dialog_review_comment_hint">"iruzkina hemen"</string>
 <string name="details_review_dialog_fields_optional">"Dena hutsik laga dezakezu"</string>
 <string name="details_signature_mismatch">"Bertsio berriak aurrekoaren desberdina den sinadura bat darama. Bertsio berria instalatzeko, zaharra aurretik desinstalatu behar da. Egin hau eta saiatu berriro. (Kontuan izan desinstalatzean aplikazioaren barne informazioa ezabatu litekeela)"</string>
-<string name="suffix_million">"milloi"</string>
-<string name="suffix_billion">"mila milloi"</string>
 <string name="credentials_hint_email">"e-maila hemen"</string>
 <string name="credentials_hint_password">"pasahitza hemen"</string>
 <string name="credentials_title">"Google kontura sarbidea"</string>

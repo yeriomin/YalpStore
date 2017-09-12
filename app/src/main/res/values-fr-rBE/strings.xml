@@ -65,8 +65,6 @@ Choisissez  « créer un mot de passe » pour être redirigé vers la page de 
 <string name="details_review_dialog_review_comment_hint">"Commentaire ici"</string>
 <string name="details_review_dialog_fields_optional">"Champs optionnels"</string>
 <string name="details_signature_mismatch">"La nouvelle version est signée avec une clé différente de l'ancienne. Veuillez commencer par désinstaller l'ancienne version, et réessayer. Attention, toutes les données et sauvegarde de l'application seront effacées."</string>
-<string name="suffix_million">"M"</string>
-<string name="suffix_billion">"G"</string>
 <string name="credentials_hint_email">"courriel ici"</string>
 <string name="credentials_hint_password">"mot de passe ici"</string>
 <string name="credentials_title">"Identifiants Google"</string>

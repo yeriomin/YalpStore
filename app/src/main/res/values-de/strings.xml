@@ -68,8 +68,6 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="details_review_dialog_review_comment_hint">"Kommentar"</string>
 <string name="details_review_dialog_fields_optional">"Du kannst alles leer lassen."</string>
 <string name="details_signature_mismatch">"Die neue Version wurde mit einem anderen Schlüssel signiert als die Alte. Um die neue Version zu installieren, muss die alte zunächst entfernt werden. Versuchen Sie es bitte danach nochmal. (Hinweis: Beim Entfernen werden alle intern gespeicherten Daten dieser Anwendung gelöscht.)"</string>
-<string name="suffix_million">"Mio"</string>
-<string name="suffix_billion">"Mrd"</string>
 <string name="credentials_hint_email">"E-mail"</string>
 <string name="credentials_hint_password">"Passwort"</string>
 <string name="credentials_title">"Google Konto Zugang"</string>

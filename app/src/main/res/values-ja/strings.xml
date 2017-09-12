@@ -66,8 +66,6 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="details_review_dialog_review_comment_hint">"ここにコメント"</string>
 <string name="details_review_dialog_fields_optional">"すべてを空白のままにすることができます。"</string>
 <string name="details_signature_mismatch">"新しいﾊﾞｰｼﾞｮﾝは､以前のものと異なる暗号鍵で署名されています｡新しいﾊﾞｰｼﾞｮﾝをｲﾝｽﾄｰﾙするには､まず以前のﾊﾞｰｼﾞｮﾝをｱﾝｲﾝｽﾄｰﾙする必要があります｡その後で再度実行してください｡(ｱﾌﾟﾘｹｰｼｮﾝをｱﾝｲﾝｽﾄｰﾙすると保存したﾃﾞｰﾀｰが消えることに注意してください)"</string>
-<string name="suffix_million">"百万"</string>
-<string name="suffix_billion">"十億"</string>
 <string name="credentials_hint_email">"ここにメールアドレス"</string>
 <string name="credentials_hint_password">"ここにパスワード"</string>
 <string name="credentials_title">"Google アカウントアクセス"</string>

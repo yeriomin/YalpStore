@@ -67,8 +67,6 @@
 <string name="details_review_dialog_fields_optional">"Μπορείς να τα αφήσεις όλα κενά."</string>
 <string name="details_signature_mismatch">"Η νέα έκδοση είναι υπογεγραμμένη με διαφορετικό κλειδί, από ότι η παλιότερη. Για να εγκαταστήσεις τη νέα έκδοση, θα πρέπει, πρώτα, να απεγκατασταθεί η παλιά. Παρακαλώ, κάνε αυτό, και μετά ξαναδοκίμασε.
 (Σημείωση: η απεγκατάσταση θα σβήσει όλα τα εσωτερικά δεδομένα, που είχαν αποθηκευθεί από την εφαρμογή)"</string>
-<string name="suffix_million">"εκατομ."</string>
-<string name="suffix_billion">"δισεκατομ."</string>
 <string name="credentials_hint_email">"εδώ η διεύθ. ηλ. ταχυδρομείου"</string>
 <string name="credentials_hint_password">"εδώ το συνθηματικό"</string>
 <string name="credentials_title">"Πρόσβαση στο λογαριασμό Google"</string>

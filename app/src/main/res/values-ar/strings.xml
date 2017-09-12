@@ -63,8 +63,6 @@
 <string name="details_review_dialog_review_comment_hint">"التعليق هنا"</string>
 <string name="details_review_dialog_fields_optional">"يمكنك أن تترك كل شيء فارغا."</string>
 <string name="details_signature_mismatch">"الإصدار الجديد بتوقيع مختلف. يجب أن تقوم بإزالة التطبيق القديم أولا وإعادة المحاولة. (انتبه حذف التطبيق سيحذف بياناته)"</string>
-<string name="suffix_million">"ميلون"</string>
-<string name="suffix_billion">"مليار"</string>
 <string name="credentials_hint_email">"الإيميل هنا"</string>
 <string name="credentials_hint_password">"كلمة السر هنا"</string>
 <string name="credentials_title">"نجاح حساب جوجل"</string>

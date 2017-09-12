@@ -34,8 +34,6 @@ public class PlayStoreApiWrapper {
 
     public PlayStoreApiWrapper(Context context) {
         this.context = context;
-        AppBuilder.suffixMil = context.getString(R.string.suffix_million);
-        AppBuilder.suffixBil = context.getString(R.string.suffix_billion);
     }
 
     public List<Review> getReviews(String packageId, int offset, int numberOfResults) throws IOException {

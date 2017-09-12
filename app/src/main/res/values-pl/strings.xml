@@ -67,8 +67,6 @@ Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz 
 <string name="details_review_dialog_review_comment_hint">"komentarz"</string>
 <string name="details_review_dialog_fields_optional">"Możesz zostawić wszystkie pola puste."</string>
 <string name="details_signature_mismatch">"Nowa wersja jest podpisana cyfrowo innym kluczem niż obecna. Aby zainstalować nową wersję, obecna musi zostać najpierw odinstalowana (spowoduje to usunięcie wszystkich jej danych i ustawień)."</string>
-<string name="suffix_million">"mil"</string>
-<string name="suffix_billion">"bil"</string>
 <string name="credentials_hint_email">"Wpisz adres e-mail"</string>
 <string name="credentials_hint_password">"Wpisz hasło"</string>
 <string name="credentials_title">"Dostęp do konta Google Play"</string>

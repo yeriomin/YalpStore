@@ -66,8 +66,6 @@ Vado alla relativa pagina sul Play Store?"</string>
 <string name="details_review_dialog_review_comment_hint">"Commento"</string>
 <string name="details_review_dialog_fields_optional">"Puoi lasciare tutto vuoto."</string>
 <string name="details_signature_mismatch">"La nuova versione è firmata con una chiave diversa. Per installare la nuova versione è necessario rimuovere la precedente. Per favore, rimuovila e riprova (Nota che rimuovere la app cancellerà tutti i dati in essa contenuti)."</string>
-<string name="suffix_million">"mln"</string>
-<string name="suffix_billion">"mld"</string>
 <string name="credentials_hint_email">"email"</string>
 <string name="credentials_hint_password">"password"</string>
 <string name="credentials_title">"Accesso all'account Google"</string>

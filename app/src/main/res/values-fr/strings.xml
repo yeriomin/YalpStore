@@ -63,8 +63,6 @@
 <string name="details_review_dialog_review_comment_hint">"commentaire ici"</string>
 <string name="details_review_dialog_fields_optional">"Champ optionnel"</string>
 <string name="details_signature_mismatch">"La nouvelle version est signée avec une clé différente. Veuillez d\'abord désinstaller l\'ancienne version et réessayer. (Attention, désinstaller une application effacera toutes ses données enregistrées dans le stockage interne)"</string>
-<string name="suffix_million">"million"</string>
-<string name="suffix_billion">"milliard"</string>
 <string name="credentials_hint_email">"adresse e-mail ici"</string>
 <string name="credentials_hint_password">"mot de passe ici"</string>
 <string name="credentials_title">"Accès au compte Google"</string>

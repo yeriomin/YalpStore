@@ -66,8 +66,6 @@ Přesměrovat na její stránku v obchodu Play?"</string>
 <string name="details_review_dialog_review_comment_hint">"komentář zde"</string>
 <string name="details_review_dialog_fields_optional">"Můžete vše nechat prázdné."</string>
 <string name="details_signature_mismatch">"Nová verze aplikace je podepsána jiným klíčem než starší verze. Pro instalaci nové verze je nutné nejprve odinstalovat starší verzi. Odinstalujte ji prosím a instalaci zkuste znovu. (Pozor, odinstalace aplikace smaže veškerá její interní data)"</string>
-<string name="suffix_million">"mil"</string>
-<string name="suffix_billion">"mld"</string>
 <string name="credentials_hint_email">"e-mail zde"</string>
 <string name="credentials_hint_password">"heslo zde"</string>
 <string name="credentials_title">"Přístup k účtu Google"</string>

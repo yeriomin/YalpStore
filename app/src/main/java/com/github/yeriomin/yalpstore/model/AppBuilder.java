@@ -17,9 +17,6 @@ import java.util.regex.Pattern;
 
 public class AppBuilder {
 
-    public static String suffixMil;
-    public static String suffixBil;
-
     private static final int IMAGE_ICON = 4;
     private static final int IMAGE_VIDEO = 3;
     private static final int IMAGE_SCREENSHOT = 1;
@@ -63,14 +60,7 @@ public class AppBuilder {
     static private String getInstallsNum(String installsRaw) {
         Matcher matcher = Pattern.compile("[\\d]+").matcher(installsRaw.replaceAll("[,\\.\\s]+", ""));
         if (matcher.find()) {
-            int num = Util.parseInt(matcher.group(0), 0);
-            if (num >= 1000000000) {
-                return (num / 1000000000) + suffixBil;
-            } else if (num >= 1000000) {
-                return (num / 1000000) + suffixMil;
-            } else {
-                return Integer.toString(num);
-            }
+            return Util.addSiPrefix(Util.parseInt(matcher.group(0), 0));
         }
         return null;
     }
