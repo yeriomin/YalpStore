@@ -259,4 +259,5 @@ Nu doen?"</string>
 <string name="testing_program_section_opted_out_title">"Bètatester worden"</string>
 <string name="notification_not_privileged">"Installatie permissie niet toegezegd"</string>
 <string name="about_paypal_label">"Doneer:"</string>
+<string name="pref_download_directory">"Download folder"</string>
 </resources>
