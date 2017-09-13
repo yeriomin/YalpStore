@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -10,29 +9,29 @@ import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.io.File;
 
-public class GlobalDownloadReceiver extends BroadcastReceiver {
+public class GlobalDownloadReceiver extends DownloadReceiver {
 
-    private Context context;
     private NotificationManagerWrapper notificationManager;
 
     @Override
-    public void onReceive(Context c, Intent i) {
-        context = c;
+    protected void process(Context c, Intent i) {
         notificationManager = new NotificationManagerWrapper(c);
-
-        long downloadId = i.getLongExtra(DownloadManagerInterface.EXTRA_DOWNLOAD_ID, 0L);
-        DownloadState state = DownloadState.get(downloadId);
-        if (null == state) {
-            return;
-        }
         App app = state.getApp();
 
         DownloadManagerInterface dm = DownloadManagerFactory.get(context);
         if (!dm.finished(downloadId)) {
             return;
         }
+        boolean patchSuccess = false;
+        if (isDelta(app)) {
+            patchSuccess = DeltaPatcherFactory.get(context, app).patch();
+            if (!patchSuccess) {
+                Log.e(getClass().getName(), "Delta patching failed for " + app.getPackageName());
+                return;
+            }
+        }
         state.setFinished(downloadId);
-        if (i.getAction().equals(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
+        if (actionIs(i, DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
             return;
         } else if (dm.success(downloadId)) {
             state.setSuccessful(downloadId);
@@ -45,19 +44,12 @@ public class GlobalDownloadReceiver extends BroadcastReceiver {
         if (!state.isEverythingFinished() || !state.isEverythingSuccessful()) {
             return;
         }
-        if (isDelta(app)) {
-            if (!DeltaPatcherFactory.get(context, app).patch()) {
-                Log.e(getClass().getName(), "Delta patching failed for " + app.getPackageName());
-                return;
-            }
-        }
         verifyAndInstall(app, state.getTriggeredBy());
-    }
-
-    private boolean isDelta(App app) {
-        return !Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).exists()
-            && Paths.getDeltaPath(context, app.getPackageName(), app.getVersionCode()).exists()
-        ;
+        if (patchSuccess) {
+            Intent patchingCompleteIntent = new Intent(ACTION_DELTA_PATCHING_COMPLETE);
+            patchingCompleteIntent.putExtra(DownloadManagerInterface.EXTRA_DOWNLOAD_ID, downloadId);
+            context.sendBroadcast(patchingCompleteIntent);
+        }
     }
 
     private void verifyAndInstall(App app, DownloadState.TriggeredBy triggeredBy) {

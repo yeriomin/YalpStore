@@ -106,14 +106,13 @@ public class ButtonDownload extends Button {
     private OnDownloadProgressListener getDownloadProgressListener() {
         ProgressBar progressBar = activity.findViewById(R.id.download_progress);
         progressBar.setVisibility(View.VISIBLE);
+        progressBar.setProgress(0);
         return new OnDownloadProgressListener(progressBar, DownloadState.get(app.getPackageName()));
     }
 
     private PurchaseTask getPurchaseTask() {
         PurchaseTask purchaseTask = new LocalPurchaseTask(this);
-        ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
-        progressBar.setVisibility(View.VISIBLE);
-        purchaseTask.setOnDownloadProgressListener(new OnDownloadProgressListener(progressBar, DownloadState.get(app.getPackageName())));
+        purchaseTask.setOnDownloadProgressListener(getDownloadProgressListener());
         purchaseTask.setApp(app);
         purchaseTask.setContext(activity);
         purchaseTask.setTriggeredBy(activity instanceof ManualDownloadActivity ? MANUAL_DOWNLOAD_BUTTON : DOWNLOAD_BUTTON);

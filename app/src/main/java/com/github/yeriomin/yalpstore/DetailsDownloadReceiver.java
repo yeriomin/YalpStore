@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -9,7 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
-public class DetailsDownloadReceiver extends BroadcastReceiver {
+public class DetailsDownloadReceiver extends DownloadReceiver {
 
     private Button buttonDownload;
     private Button buttonInstall;
@@ -22,6 +21,7 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
         progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
         buttonCancel = (ImageButton) activity.findViewById(R.id.cancel);
         IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_DELTA_PATCHING_COMPLETE);
         filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
         filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED);
         activity.registerReceiver(this, filter);
@@ -29,17 +29,22 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        long id = intent.getLongExtra(DownloadManagerInterface.EXTRA_DOWNLOAD_ID, 0L);
-        DownloadState state = DownloadState.get(id);
+        super.onReceive(context, intent);
         if (null == state) {
-            if (intent.getAction().equals(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
+            if (actionIs(intent, DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
                 cleanup();
             }
+        }
+    }
+
+    @Override
+    protected void process(Context context, Intent intent) {
+        if (actionIs(intent, DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE) && isDelta(state.getApp())) {
             return;
         }
-        state.setFinished(id);
-        if (DownloadManagerFactory.get(context).success(id) && intent.getAction().equals(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE)) {
-            state.setSuccessful(id);
+        state.setFinished(downloadId);
+        if (DownloadManagerFactory.get(context).success(downloadId) && !actionIs(intent, DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
+            state.setSuccessful(downloadId);
         }
         if (!state.isEverythingFinished()) {
             return;
@@ -68,6 +73,7 @@ public class DetailsDownloadReceiver extends BroadcastReceiver {
     private void cleanup() {
         if (null != progressBar) {
             progressBar.setVisibility(View.GONE);
+            progressBar.setProgress(0);
         }
         if (null != buttonCancel) {
             buttonCancel.setVisibility(View.GONE);
