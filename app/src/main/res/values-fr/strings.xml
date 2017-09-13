@@ -217,15 +217,15 @@
 <string name="pref_no_images_summary_on">"Les images sont téléchargées uniquement en WiFi"</string>
 <string name="bug_report_hint_message">"Description détaillée de l'erreur"</string>
 <string name="bug_report_hint_identification">"Votre adresse courriel/nom/pseudo (optionnel)"</string>
-<string name="bug_report_explanation_content">"Infos sur votre appareil. les logs et certaines préférences Yalp Store seront ajoutées automatiquement. Les données personnelles ou sensibles ne sont pas envoyées."</string>
+<string name="bug_report_explanation_content">"Des informations sur votre appareil, les logs et certaines préférences Yalp Store seront ajoutées automatiquement. Les données personnelles ou sensibles ne sont pas envoyées."</string>
 <string name="bug_report_explanation_crash">"Vous pouvez contribuer à résoudre le problème en envoyant un rapport au développeur. Décrivez ce que vous étiez en train de faire et choisissez OK pour l'envoyer."</string>
-<string name="bug_report_explanation_bug_report">"Veuillez SVP décrire le problème. Soyez le plus précis possible : le problème se passe avec une seule app, certaines, toutes ? À chaque fois, certaines fois ? Comment reproduire le problème ?"</string>
+<string name="bug_report_explanation_bug_report">"Veuillez s'il vous plaît décrire le problème. Soyez le plus précis possible : le problème se passe avec une seule app, certaines, toutes ? À chaque fois, certaines fois ? Comment reproduire le problème ?"</string>
 <string name="thank_you">"Merci"</string>
 <string name="list_updating">"Mise à jour…"</string>
 <string name="error_invalid_device_definition">"Description du produit rejetée"</string>
 <string name="details_video">"Vidéo"</string>
 <string name="error_could_not_download">"Téléchargement impossible"</string>
-<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
+<string name="first_login_message">"Pour utiliser votre propre compte déconnectez vous en cliquant sur \"Se déconnecter\" dans le menu"</string>
 <string name="early_access">"Accès anticipé"</string>
 <string name="testing_program_opt_in">"rejoindre"</string>
 <string name="testing_program_opt_out">"quitter"</string>
@@ -237,4 +237,5 @@
 <string name="testing_program_section_opted_out_title">"Devenir testeur bêta"</string>
 <string name="notification_not_privileged">"Permission d'installation non accordée"</string>
 <string name="about_paypal_label">"Faire un don:"</string>
+<string name="pref_download_directory">"Dossier de téléchargements"</string>
 </resources>
