@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -16,7 +15,6 @@ import com.github.yeriomin.yalpstore.fragment.details.Beta;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOptions;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 import com.github.yeriomin.yalpstore.fragment.details.GeneralDetails;
-import com.github.yeriomin.yalpstore.fragment.details.IgnoreOption;
 import com.github.yeriomin.yalpstore.fragment.details.Review;
 import com.github.yeriomin.yalpstore.fragment.details.Screenshot;
 import com.github.yeriomin.yalpstore.fragment.details.Share;
@@ -31,7 +29,6 @@ public class DetailsActivity extends YalpStoreActivity {
     static public App app;
 
     protected DownloadOrInstall downloadOrInstallFragment;
-    private IgnoreOption ignoreOptionFragment;
     private DownloadOptions downloadOptionsFragment;
 
     static public Intent getDetailsIntent(Context context, String packageName) {
@@ -40,24 +37,6 @@ public class DetailsActivity extends YalpStoreActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra(DetailsActivity.INTENT_PACKAGE_NAME, packageName);
         return intent;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        boolean result = super.onCreateOptionsMenu(menu);
-        if (null != ignoreOptionFragment) {
-            ignoreOptionFragment.setMenu(menu);
-            ignoreOptionFragment.draw();
-        }
-        return result;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_ignore) {
-            ignoreOptionFragment.toggleBlackWhiteList();
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -71,7 +50,6 @@ public class DetailsActivity extends YalpStoreActivity {
             return;
         }
         Log.i(getClass().getName(), "Getting info about " + packageName);
-        ignoreOptionFragment = new IgnoreOption(this, new App());
 
         if (null != DetailsActivity.app) {
             redrawDetails(DetailsActivity.app);
@@ -160,8 +138,6 @@ public class DetailsActivity extends YalpStoreActivity {
         new SystemAppPage(this, app).draw();
         new Video(this, app).draw();
         new Beta(this, app).draw();
-        ignoreOptionFragment.setApp(app);
-        ignoreOptionFragment.draw();
         if (null != downloadOrInstallFragment) {
             downloadOrInstallFragment.unregisterReceivers();
         }

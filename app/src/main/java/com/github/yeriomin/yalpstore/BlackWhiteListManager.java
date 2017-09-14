@@ -42,6 +42,16 @@ public class BlackWhiteListManager {
         return true;
     }
 
+    public boolean isBlack() {
+        return preferences.getString(PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceActivity.LIST_BLACK).equals(PreferenceActivity.LIST_BLACK);
+    }
+
+    public boolean isUpdatable(String packageName) {
+        boolean isContained = contains(packageName);
+        boolean isBlackList = isBlack();
+        return (isBlackList && !isContained) || (!isBlackList && isContained);
+    }
+
     public Set<String> get() {
         return blackWhiteSet;
     }

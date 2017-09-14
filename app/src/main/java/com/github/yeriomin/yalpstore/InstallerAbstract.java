@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,6 +12,7 @@ import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.notification.IgnoreUpdatesService;
+import com.github.yeriomin.yalpstore.notification.NotificationBuilder;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.io.File;
@@ -94,7 +94,9 @@ public abstract class InstallerAbstract {
                     }
                 }
             )
-            .setNegativeButton(
+        ;
+        if (new BlackWhiteListManager(context).isUpdatable(app.getPackageName())) {
+            builder.setNegativeButton(
                 R.string.action_ignore,
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -103,8 +105,8 @@ public abstract class InstallerAbstract {
                         dialog.cancel();
                     }
                 }
-            )
-        ;
+            );
+        }
         return builder.create();
     }
 
@@ -119,18 +121,19 @@ public abstract class InstallerAbstract {
     private void showNotification(int notificationStringId, App app) {
         File file = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = getOpenApkIntent(context, file);
-        Notification notification = NotificationManagerWrapper.getBuilder(context)
+        NotificationBuilder builder = NotificationManagerWrapper.getBuilder(context)
             .setIntent(openApkIntent)
             .setTitle(app.getDisplayName())
             .setMessage(context.getString(notificationStringId))
-            .addAction(
+        ;
+        if (new BlackWhiteListManager(context).isUpdatable(app.getPackageName())) {
+            builder.addAction(
                 android.R.drawable.ic_menu_close_clear_cancel,
                 R.string.action_ignore,
                 PendingIntent.getService(context, 0, getIgnoreIntent(app), PendingIntent.FLAG_UPDATE_CURRENT)
-            )
-            .build()
-        ;
-        new NotificationManagerWrapper(context).show(app.getDisplayName(), notification);
+            );
+        }
+        new NotificationManagerWrapper(context).show(app.getDisplayName(), builder.build());
     }
 
     private Intent getIgnoreIntent(App app) {

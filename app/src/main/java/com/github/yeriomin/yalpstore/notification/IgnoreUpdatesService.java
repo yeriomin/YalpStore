@@ -27,7 +27,12 @@ public class IgnoreUpdatesService extends IntentService {
             return;
         }
         Log.i(getClass().getName(), "Adding " + packageName + " to ignore list");
-        new BlackWhiteListManager(getApplicationContext()).add(packageName);
+        BlackWhiteListManager manager = new BlackWhiteListManager(getApplicationContext());
+        if (manager.isBlack()) {
+            manager.add(packageName);
+        } else {
+            manager.remove(packageName);
+        }
         cancelNotification(packageName);
         UpdatableAppsActivity.setNeedsUpdate(true);
         Paths.getApkPath(getApplicationContext(), packageName, intent.getIntExtra(VERSION_CODE, 0)).delete();
