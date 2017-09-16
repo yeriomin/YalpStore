@@ -23,6 +23,9 @@ class ForegroundUpdatableAppsTask extends UpdatableAppsTask {
         if (null != result || !explicitCheck) {
             return result;
         }
+        if (!new BlackWhiteListManager(context).isUpdatable(BuildConfig.APPLICATION_ID)) {
+            return null;
+        }
         int latestVersionCode = SelfUpdateChecker.getLatestVersionCode();
         if (latestVersionCode > BuildConfig.VERSION_CODE) {
             App yalp = getSelf();
