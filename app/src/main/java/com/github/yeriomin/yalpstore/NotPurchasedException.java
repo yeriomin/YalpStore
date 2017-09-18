@@ -1,4 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
-public class NotPurchasedException extends Exception {
+import java.io.IOException;
+
+public class NotPurchasedException extends IOException {
 }

@@ -3,7 +3,6 @@ package com.github.yeriomin.yalpstore;
 import android.view.View;
 import android.widget.Button;
 
-import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 
 import java.util.Timer;
@@ -37,11 +36,5 @@ public class PurchaseCheckTask extends DeliveryDataTask {
         downloadButton.setEnabled(success);
         downloadButton.setVisibility(View.VISIBLE);
         timer.cancel();
-    }
-
-    @Override
-    protected void processAuthException(AuthException e) {
-        // Since Play Store returns 403 error on an attempt to download a non-existing version,
-        // we need to ignore it
     }
 }

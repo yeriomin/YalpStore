@@ -10,6 +10,8 @@ import android.view.WindowManager;
 
 import com.github.yeriomin.playstoreapi.AuthException;
 
+import java.io.IOException;
+
 public class PurchaseTask extends DeliveryDataTask {
 
     static public final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
@@ -33,11 +35,12 @@ public class PurchaseTask extends DeliveryDataTask {
             if (null != result) {
                 return result;
             }
-            if (null == deliveryData) {
+            if (null != deliveryData) {
+                new Downloader(context).download(app, deliveryData, listener);
+            } else {
+                context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
                 Log.e(getClass().getName(), app.getPackageName() + " no download link returned");
-                return null;
             }
-            new Downloader(context).download(app, deliveryData, listener);
         } catch (Throwable e) {
             context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
             return e;
@@ -54,6 +57,13 @@ public class PurchaseTask extends DeliveryDataTask {
             } catch (WindowManager.BadTokenException e1) {
                 Log.e(getClass().getName(), "Could not create purchase error dialog: " + e1.getMessage());
             }
+        }
+    }
+
+    @Override
+    protected void processIOException(IOException e) {
+        if (!(e instanceof NotPurchasedException)) {
+            super.processIOException(e);
         }
     }
 
