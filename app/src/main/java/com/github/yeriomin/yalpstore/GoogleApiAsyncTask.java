@@ -16,6 +16,7 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLHandshakeException;
+import javax.net.ssl.SSLPeerUnverifiedException;
 
 abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
 
@@ -123,6 +124,7 @@ abstract class GoogleApiAsyncTask extends AsyncTask<String, Void, Throwable> {
     static public boolean noNetwork(Throwable e) {
         return e instanceof UnknownHostException
             || e instanceof SSLHandshakeException
+            || e instanceof SSLPeerUnverifiedException
             || e instanceof ConnectException
             || e instanceof SocketException
             || e instanceof SocketTimeoutException;
