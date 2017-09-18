@@ -17,6 +17,8 @@ import java.util.TimerTask;
 
 public class ManualDownloadActivity extends DetailsActivity {
 
+    private int latestVersionCode;
+
     @Override
     protected void onNewIntent(Intent intent) {
         if (null == DetailsActivity.app) {
@@ -24,20 +26,29 @@ public class ManualDownloadActivity extends DetailsActivity {
             finish();
             return;
         }
+        latestVersionCode = DetailsActivity.app.getVersionCode();
         draw(DetailsActivity.app);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        DetailsActivity.app.setVersionCode(latestVersionCode);
     }
 
     private void draw(App app) {
         setTitle(app.getDisplayName());
         setContentView(R.layout.manual_download_activity_layout);
-        app.setOfferType(1);
+        if (app.getOfferType() == 0) {
+            app.setOfferType(1);
+        }
         ((TextView) findViewById(R.id.compatibility)).setText(
             app.getVersionCode() > 0
                 ? R.string.manual_download_compatible
                 : R.string.manual_download_incompatible
         );
         if (app.getVersionCode() > 0) {
-            ((EditText) findViewById(R.id.version_code)).setHint(String.valueOf(app.getVersionCode()));
+            ((EditText) findViewById(R.id.version_code)).setHint(String.valueOf(latestVersionCode));
         }
         downloadOrInstallFragment = new DownloadOrInstall(this, app);
         ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(
