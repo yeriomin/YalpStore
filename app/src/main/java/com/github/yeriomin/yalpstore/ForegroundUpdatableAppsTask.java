@@ -5,13 +5,22 @@ import android.widget.Button;
 
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 class ForegroundUpdatableAppsTask extends UpdatableAppsTask {
 
+    static private List<App> appsFromPlayStore = new ArrayList<>();
+
     private UpdatableAppsActivity activity;
+    protected boolean explicitCheck;
+
+    public void setExplicitCheck(boolean explicitCheck) {
+        this.explicitCheck = explicitCheck;
+    }
 
     public ForegroundUpdatableAppsTask(UpdatableAppsActivity activity) {
         this.activity = activity;
@@ -78,6 +87,14 @@ class ForegroundUpdatableAppsTask extends UpdatableAppsTask {
         Button button = activity.findViewById(R.id.check_updates);
         button.setEnabled(false);
         button.setText(R.string.details_download_checking);
+    }
+
+    @Override
+    protected List<App> getAppsFromPlayStore(Collection<String> packageNames) throws IOException {
+        if (explicitCheck) {
+            appsFromPlayStore = super.getAppsFromPlayStore(packageNames);
+        }
+        return appsFromPlayStore;
     }
 
     private App getSelf() {

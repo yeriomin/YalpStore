@@ -29,8 +29,8 @@ public class UpdateChecker extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.i(getClass().getName(), "Started");
-        UpdatableAppsTask task = new BackgroundUpdatableAppsTask();
-        task.setExplicitCheck(context instanceof Activity);
+        BackgroundUpdatableAppsTask task = new BackgroundUpdatableAppsTask();
+        task.setForceUpdate(context instanceof Activity);
         task.setContext(context);
         task.execute();
     }

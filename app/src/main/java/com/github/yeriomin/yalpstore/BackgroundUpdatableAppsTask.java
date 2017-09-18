@@ -12,6 +12,12 @@ import java.util.List;
 
 class BackgroundUpdatableAppsTask extends UpdatableAppsTask {
 
+    private boolean forceUpdate = false;
+
+    public void setForceUpdate(boolean forceUpdate) {
+        this.forceUpdate = forceUpdate;
+    }
+
     @Override
     protected void onPostExecute(Throwable e) {
         super.onPostExecute(e);
@@ -31,7 +37,7 @@ class BackgroundUpdatableAppsTask extends UpdatableAppsTask {
     }
 
     private boolean canUpdate() {
-        return explicitCheck ||
+        return forceUpdate ||
             (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
                 && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
                     || !PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)

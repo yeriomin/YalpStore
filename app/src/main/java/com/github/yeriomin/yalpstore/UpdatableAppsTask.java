@@ -21,11 +21,8 @@ import java.util.Set;
 
 public class UpdatableAppsTask extends GoogleApiAsyncTask {
 
-    static private List<App> appsFromPlayStore = new ArrayList<>();
-
     protected List<App> updatableApps = new ArrayList<>();
     protected Map<String, App> installedApps = new HashMap<>();
-    protected boolean explicitCheck;
 
     static public Map<String, App> getInstalledApps(Context context) {
         Map<String, App> apps = new HashMap<>();
@@ -73,10 +70,6 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
             }
         }
         return result;
-    }
-
-    public void setExplicitCheck(boolean explicitCheck) {
-        this.explicitCheck = explicitCheck;
     }
 
     @Override
@@ -137,14 +130,12 @@ public class UpdatableAppsTask extends GoogleApiAsyncTask {
         return appFromMarket;
     }
 
-    private List<App> getAppsFromPlayStore(Collection<String> packageNames) throws IOException {
-        if (explicitCheck) {
-            appsFromPlayStore.clear();
-            boolean builtInAccount = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL);
-            for (App app: new PlayStoreApiWrapper(context).getDetails(new ArrayList<>(packageNames))) {
-                if (!builtInAccount || app.isFree()) {
-                    appsFromPlayStore.add(app);
-                }
+    protected List<App> getAppsFromPlayStore(Collection<String> packageNames) throws IOException {
+        List<App> appsFromPlayStore = new ArrayList<>();
+        boolean builtInAccount = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL);
+        for (App app: new PlayStoreApiWrapper(context).getDetails(new ArrayList<>(packageNames))) {
+            if (!builtInAccount || app.isFree()) {
+                appsFromPlayStore.add(app);
             }
         }
         return appsFromPlayStore;

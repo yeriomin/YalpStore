@@ -48,8 +48,8 @@ public class UpdatableAppsActivity extends AppListActivity {
             checkUpdates.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    UpdatableAppsTask task = getTask();
-                    UpdatableAppsTask clone = getTask();
+                    ForegroundUpdatableAppsTask task = getTask();
+                    ForegroundUpdatableAppsTask clone = getTask();
                     task.setExplicitCheck(true);
                     clone.setExplicitCheck(true);
                     task.setTaskClone(clone);
@@ -98,8 +98,8 @@ public class UpdatableAppsActivity extends AppListActivity {
         return appBadge;
     }
 
-    private UpdatableAppsTask getTask() {
-        UpdatableAppsTask task = new ForegroundUpdatableAppsTask(this);
+    private ForegroundUpdatableAppsTask getTask() {
+        ForegroundUpdatableAppsTask task = new ForegroundUpdatableAppsTask(this);
         task.setExplicitCheck(PreferenceActivity.getUpdateInterval(this) != -1);
         task.setErrorView((TextView) getListView().getEmptyView());
         task.setContext(this);
