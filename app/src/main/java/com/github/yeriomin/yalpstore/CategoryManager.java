@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.github.yeriomin.yalpstore.task.playstore.CategoryTask;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -35,8 +37,9 @@ public class CategoryManager {
 
     public void downloadCategoryNames() {
         if (needToDownload()) {
-            CategoryTask task = getTask();
-            task.setTaskClone(getTask());
+            CategoryTask task = new CategoryTask();
+            task.setManager(this);
+            task.setContext(activity);
             task.execute();
         }
     }
@@ -102,13 +105,6 @@ public class CategoryManager {
         int size = topSet.size();
         String categoryId = topSet.toArray(new String[size])[size - 1];
         return translator.getString(categoryId).equals(categoryId);
-    }
-
-    private CategoryTask getTask() {
-        CategoryTask task = new CategoryTask();
-        task.setManager(this);
-        task.setContext(activity);
-        return task;
     }
 
     private Map<String, String> getCategoriesFromSharedPreferences() {

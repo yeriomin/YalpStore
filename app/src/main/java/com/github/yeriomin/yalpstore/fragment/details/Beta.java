@@ -4,11 +4,11 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.BetaToggleTask;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.playstore.BetaToggleTask;
 
 public class Beta extends Abstract {
 
@@ -24,7 +24,6 @@ public class Beta extends Abstract {
         ) {
             return;
         }
-        System.out.println();
         initExpandableGroup(R.id.beta_header, R.id.beta_container);
         setText(R.id.beta_header, app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_in_title : R.string.testing_program_section_opted_out_title);
         setText(R.id.beta_message, app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_in_message : R.string.testing_program_section_opted_out_message);

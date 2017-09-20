@@ -4,6 +4,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import com.github.yeriomin.yalpstore.task.ConvertToNormalTask;
+import com.github.yeriomin.yalpstore.task.SystemRemountTask;
+import com.github.yeriomin.yalpstore.task.UninstallSystemAppTask;
+
 public class SystemRemountDialogBuilder extends AlertDialog.Builder {
 
     private SystemRemountTask primaryTask;

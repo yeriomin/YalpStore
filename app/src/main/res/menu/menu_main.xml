@@ -7,10 +7,9 @@
         android:showAsAction="ifRoom"
         android:icon="@drawable/ic_search" />
     <item
-        android:id="@+id/action_ignore"
-        android:title="@string/action_ignore"
-        android:icon="@drawable/ic_ignore"
-        android:visible="false" />
+        android:id="@+id/action_installed_apps"
+        android:title="@string/activity_title_updates_and_other_apps"
+        android:icon="@drawable/ic_refresh" />
     <item
         android:id="@+id/action_updates"
         android:title="@string/action_updates"

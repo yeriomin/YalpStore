@@ -8,6 +8,7 @@ import android.util.Log;
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.HttpCookie;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.HttpURLConnectionDownloadTask;
 
 import java.io.File;
 import java.util.HashMap;

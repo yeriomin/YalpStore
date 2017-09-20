@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.PurchaseTask;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.playstore.PurchaseTask;
 
 public class BackToPlayStore extends Abstract {
 

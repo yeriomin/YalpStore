@@ -69,12 +69,7 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/activity_title_updates_only">
             <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
         <activity android:name=".SearchActivity" android:configChanges="keyboardHidden|orientation|screenSize" >
@@ -98,7 +93,7 @@
             </intent-filter>
             <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
         </activity>
-        <activity android:name=".PreferenceActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".PreferenceActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_settings" />
         <activity android:name=".CategoryListActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
             <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
@@ -109,14 +104,22 @@
         <activity android:name=".ClusterActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
             <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
-        <activity android:name=".ManualDownloadActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
+        <activity android:name=".ManualDownloadActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_manual" >
             <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
-        <activity android:name=".AboutActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
+        <activity android:name=".AboutActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_about" >
             <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
         <activity android:name=".BugReportActivity" android:launchMode="singleInstance" android:noHistory="true" android:process=":report_process" />
         <activity android:name=".DeviceInfoActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".InstalledAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        </activity>
 
         <service android:enabled="true" android:name=".notification.CancelDownloadService" />
         <service android:enabled="true" android:name=".notification.IgnoreUpdatesService" />

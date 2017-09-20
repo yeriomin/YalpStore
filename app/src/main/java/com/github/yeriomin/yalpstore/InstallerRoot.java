@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.InstallTask;
 
 public class InstallerRoot extends InstallerBackground {
 

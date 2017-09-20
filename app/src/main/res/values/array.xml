@@ -22,14 +22,12 @@
     </string-array>
     <string-array translatable="false" name="updateIntervalValues">
         <item>-1</item>
-        <item>0</item>
         <item>3600000</item>
         <item>86400000</item>
         <item>604800000</item>
     </string-array>
     <string-array name="updateIntervalLabels">
         <item>@string/pref_background_update_interval_manually</item>
-        <item>@string/pref_background_update_interval_never</item>
         <item>@string/pref_background_update_interval_hourly</item>
         <item>@string/pref_background_update_interval_daily</item>
         <item>@string/pref_background_update_interval_weekly</item>

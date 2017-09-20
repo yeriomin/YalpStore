@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -71,15 +70,6 @@ public class Util {
 
     static public void putStringSet(Context context, String key, Set<String> set) {
         PreferenceManager.getDefaultSharedPreferences(context).edit().putString(key, TextUtils.join(DELIMITER, set)).commit();
-    }
-
-    static public ProgressDialog prepareProgressDialog(Context context, int messageId, int titleId) {
-        ProgressDialog dialog = new ProgressDialog(context);
-        dialog.setTitle(context.getString(titleId));
-        dialog.setMessage(context.getString(messageId));
-        dialog.setIndeterminate(true);
-        dialog.setCancelable(false);
-        return dialog;
     }
 
     static public int parseInt(String intAsString, int defaultValue) {

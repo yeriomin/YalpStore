@@ -4,6 +4,8 @@ import android.content.Context;
 import android.widget.Gallery;
 import android.widget.ImageView;
 
+import com.github.yeriomin.yalpstore.task.LoadImageTask;
+
 import java.util.List;
 
 class FullscreenImageAdapter extends ImageAdapter {

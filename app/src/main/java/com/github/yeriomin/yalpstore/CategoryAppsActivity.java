@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.task.playstore.CategoryAppsTask;
+import com.github.yeriomin.yalpstore.task.playstore.EndlessScrollTask;
+
 public class CategoryAppsActivity extends EndlessScrollActivity {
 
     static private final String INTENT_CATEGORY_ID = "INTENT_CATEGORY_ID";

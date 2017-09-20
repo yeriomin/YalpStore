@@ -1,16 +1,15 @@
 package com.github.yeriomin.yalpstore.fragment.preference;
 
-import android.os.AsyncTask;
 import android.preference.ListPreference;
 import android.preference.Preference;
 
 import com.github.yeriomin.yalpstore.MultiSelectListPreference;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
-import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
-import com.github.yeriomin.yalpstore.UpdatableAppsTask;
 import com.github.yeriomin.yalpstore.Util;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +33,9 @@ public class Blacklist extends Abstract {
 
     @Override
     public void draw() {
-        new AppListTask(appList).execute();
+        AppListTask task = new AppListTask(appList);
+        task.setIncludeSystemApps(true);
+        task.execute();
 
         Preference.OnPreferenceChangeListener listener = new BlackListOnPreferenceChangeListener(appList);
         blackOrWhite.setOnPreferenceChangeListener(listener);
@@ -67,13 +68,14 @@ public class Blacklist extends Abstract {
         }
     }
 
-    static class AppListTask extends AsyncTask<Void, Void, Void> {
+    static class AppListTask extends InstalledAppsTask {
 
         private MultiSelectListPreference appList;
         private Map<String, String> appNames;
 
         public AppListTask(MultiSelectListPreference appList) {
             this.appList = appList;
+            setContext(appList.getContext());
         }
 
         @Override
@@ -83,35 +85,28 @@ public class Blacklist extends Abstract {
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
+        protected void onPostExecute(Map<String, App> installedApps) {
             int count = appNames.size();
             appList.setEntries(appNames.values().toArray(new String[count]));
             appList.setEntryValues(appNames.keySet().toArray(new String[count]));
             appList.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    UpdatableAppsActivity.setNeedsUpdate(true);
+                    ((YalpStoreApplication) appList.getContext().getApplicationContext()).setAppListNeedsUpdate(true);
                     return true;
                 }
             });
         }
 
         @Override
-        protected Void doInBackground(Void... voids) {
-            appNames = getInstalledAppNames();
-            return null;
-        }
-
-        private Map<String, String> getInstalledAppNames() {
+        protected Map<String, App> doInBackground(String... strings) {
+            super.doInBackground(strings);
             Map<String, String> appNames = new HashMap<>();
-            Map<String, App> installedApps = UpdatableAppsTask.getInstalledApps(appList.getContext());
-            if (!PreferenceActivity.getBoolean(appList.getContext(), PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS)) {
-                installedApps = UpdatableAppsTask.filterSystemApps(installedApps);
-            }
             for (String packageName: installedApps.keySet()) {
                 appNames.put(packageName, installedApps.get(packageName).getDisplayName());
             }
-            return Util.sort(appNames);
+            this.appNames = Util.sort(appNames);
+            return installedApps;
         }
     }
 }

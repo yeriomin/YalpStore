@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.playstore.EndlessScrollTask;
 import com.github.yeriomin.yalpstore.view.ListItem;
 import com.github.yeriomin.yalpstore.view.ProgressIndicator;
 import com.github.yeriomin.yalpstore.view.SearchResultAppBadge;
@@ -59,7 +60,7 @@ abstract public class EndlessScrollActivity extends AppListActivity {
     }
 
     @Override
-    protected void clearApps() {
+    public void clearApps() {
         super.clearApps();
         iterator = null;
     }
@@ -75,8 +76,6 @@ abstract public class EndlessScrollActivity extends AppListActivity {
 
     @Override
     public void loadApps() {
-        EndlessScrollTask task = prepareTask(getTask());
-        task.setTaskClone(prepareTask(getTask()));
-        task.execute();
+        prepareTask(getTask()).execute();
     }
 }

@@ -10,6 +10,7 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 
 import com.github.yeriomin.yalpstore.model.ImageSource;
+import com.github.yeriomin.yalpstore.task.LoadImageTask;
 
 import java.util.List;
 

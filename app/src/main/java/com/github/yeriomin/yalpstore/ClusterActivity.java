@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.task.playstore.ClusterTask;
+
 public class ClusterActivity extends EndlessScrollActivity {
 
     static private final String INTENT_URL = "INTENT_URL";

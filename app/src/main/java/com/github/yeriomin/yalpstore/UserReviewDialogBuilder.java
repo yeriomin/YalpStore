@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.github.yeriomin.yalpstore.fragment.details.Review;
+import com.github.yeriomin.yalpstore.task.playstore.ReviewAddTask;
 
 public class UserReviewDialogBuilder {
 
@@ -60,11 +61,14 @@ public class UserReviewDialogBuilder {
 
         @Override
         public void onClick(View v) {
-            ReviewAddTask task = new ReviewAddTask(v.getContext(), manager);
+            ReviewAddTask task = new ReviewAddTask();
+            task.setContext(v.getContext());
             task.setPackageName(packageName);
+            task.setFragment(manager);
             review.setComment(getCommentView().getText().toString());
             review.setTitle(getTitleView().getText().toString());
-            task.execute(review);
+            task.setReview(review);
+            task.execute();
             dialog.dismiss();
         }
     }

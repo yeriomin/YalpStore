@@ -8,7 +8,6 @@ import android.widget.ListView;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.view.AppBadge;
 import com.github.yeriomin.yalpstore.view.ListItem;
-import com.github.yeriomin.yalpstore.view.ListSeparator;
 
 import java.util.List;
 
@@ -51,17 +50,11 @@ abstract public class AppListActivity extends YalpStoreActivity {
         }
     }
 
-    protected void addSeparator(String label) {
-        ListSeparator listSeparator = new ListSeparator();
-        listSeparator.setLabel(label);
-        ((AppListAdapter) getListView().getAdapter()).add(listSeparator);
-    }
-
-    protected void addApps(List<App> appsToAdd) {
+    public void addApps(List<App> appsToAdd) {
         addApps(appsToAdd, true);
     }
 
-    protected void addApps(List<App> appsToAdd, boolean update) {
+    public void addApps(List<App> appsToAdd, boolean update) {
         AppListAdapter adapter = (AppListAdapter) getListView().getAdapter();
         adapter.setNotifyOnChange(false);
         for (App app: appsToAdd) {
@@ -72,7 +65,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
         }
     }
 
-    protected void clearApps() {
+    public void clearApps() {
         ((AppListAdapter) getListView().getAdapter()).clear();
     }
 

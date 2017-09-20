@@ -156,7 +156,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
-            UpdatableAppsActivity.setNeedsUpdate(true);
+            ((YalpStoreApplication) preference.getContext().getApplicationContext()).setAppListNeedsUpdate(true);
             return true;
         }
     }

@@ -72,7 +72,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
 
     private UserProvidedCredentialsTask getUserCredentialsTask() {
         UserProvidedCredentialsTask task = new UserProvidedCredentialsTask();
-        task.setTaskClone(taskClone);
+        task.setCaller(caller);
         task.setContext(context);
         task.prepareDialog(R.string.dialog_message_logging_in_provided_by_user, R.string.dialog_title_logging_in);
         return task;
@@ -107,14 +107,15 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         }
 
         @Override
-        protected Throwable doInBackground(String[] params) {
+        protected Void doInBackground(String[] params) {
             if (params.length < 2
                 || params[0] == null
                 || params[1] == null
                 || TextUtils.isEmpty(params[0])
                 || TextUtils.isEmpty(params[1])
             ) {
-                return new CredentialsEmptyException();
+                exception = new CredentialsEmptyException();
+                return null;
             }
             previousEmail = params[0];
             try {
@@ -124,7 +125,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
                 if (e instanceof AuthException && null != ((AuthException) e).getTwoFactorUrl()) {
                     addUsedEmail(params[0]);
                 }
-                return e;
+                exception = e;
             }
             return null;
         }

@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import java.io.IOException;
+
 public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
 
     public AccountTypeDialogBuilder(Context context) {
@@ -37,13 +39,13 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
 
     private Dialog showCredentialsDialog() {
         UserProvidedAccountDialogBuilder builder = new UserProvidedAccountDialogBuilder(this.context);
-        builder.setTaskClone(this.taskClone);
+        builder.setCaller(caller);
         return builder.show();
     }
 
     public void logInWithPredefinedAccount() {
         AppProvidedCredentialsTask task = new AppProvidedCredentialsTask();
-        task.setTaskClone(taskClone);
+        task.setCaller(caller);
         task.setContext(context);
         task.prepareDialog(R.string.dialog_message_logging_in_predefined, R.string.dialog_title_logging_in);
         task.execute();
@@ -57,11 +59,11 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
         }
 
         @Override
-        protected Throwable doInBackground(String[] params) {
+        protected Void doInBackground(String[] params) {
             try {
                 new PlayStoreApiAuthenticator(context).login();
-            } catch (Throwable e) {
-                return e;
+            } catch (IOException e) {
+                exception = e;
             }
             return null;
         }

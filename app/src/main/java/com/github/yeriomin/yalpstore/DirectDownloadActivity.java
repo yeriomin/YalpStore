@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
+import com.github.yeriomin.yalpstore.task.playstore.PurchaseTask;
 
 public class DirectDownloadActivity extends YalpStoreActivity {
 
@@ -23,8 +25,10 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             return;
         }
         Log.i(getClass().getName(), "Getting package " + packageName);
-        DetailsAndPurchaseTask task = getDetailsTask(packageName);
-        task.setTaskClone(getDetailsTask(packageName));
+
+        DetailsAndPurchaseTask task = new DetailsAndPurchaseTask();
+        task.setPackageName(packageName);
+        task.setContext(this);
         task.execute();
         finish();
     }
@@ -43,22 +47,11 @@ public class DirectDownloadActivity extends YalpStoreActivity {
         }
     }
 
-    private DetailsAndPurchaseTask getDetailsTask(final String packageName) {
-        DetailsAndPurchaseTask task = new DetailsAndPurchaseTask();
-        task.setPackageName(packageName);
-        task.setContext(this);
-        return task;
-    }
-
     static class DetailsAndPurchaseTask extends DetailsTask {
 
         @Override
-        protected void onPostExecute(Throwable result) {
-            Throwable e = result;
-            if (result instanceof RuntimeException && null != result.getCause()) {
-                e = result.getCause();
-            }
-            if (null == e) {
+        protected void onPostExecute(App app) {
+            if (success()) {
                 getPurchaseTask(app).execute();
             } else {
                 context.startActivity(DetailsActivity.getDetailsIntent(context, packageName));

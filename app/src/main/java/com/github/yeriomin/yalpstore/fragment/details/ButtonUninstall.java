@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
-import com.github.yeriomin.yalpstore.CheckShellTask;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
-import com.github.yeriomin.yalpstore.UninstallSystemAppTask;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.CheckShellTask;
+import com.github.yeriomin.yalpstore.task.UninstallSystemAppTask;
 
 public class ButtonUninstall extends Button {
 

@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.LoadImageTask;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.LoadImageTask;
 
 import java.util.ArrayList;
 import java.util.List;

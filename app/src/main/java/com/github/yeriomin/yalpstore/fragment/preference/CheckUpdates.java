@@ -7,11 +7,11 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
-import com.github.yeriomin.yalpstore.CheckSuTask;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.UpdateChecker;
 import com.github.yeriomin.yalpstore.Util;
+import com.github.yeriomin.yalpstore.task.CheckSuTask;
 
 public class CheckUpdates extends Abstract {
 

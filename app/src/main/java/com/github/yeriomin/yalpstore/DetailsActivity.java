@@ -21,6 +21,8 @@ import com.github.yeriomin.yalpstore.fragment.details.Share;
 import com.github.yeriomin.yalpstore.fragment.details.SystemAppPage;
 import com.github.yeriomin.yalpstore.fragment.details.Video;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.playstore.CloneableTask;
+import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
 
 public class DetailsActivity extends YalpStoreActivity {
 
@@ -55,8 +57,9 @@ public class DetailsActivity extends YalpStoreActivity {
             redrawDetails(DetailsActivity.app);
         }
 
-        GetAndRedrawDetailsTask task = getDetailsTask(packageName);
-        task.setTaskClone(getDetailsTask(packageName));
+        GetAndRedrawDetailsTask task = new GetAndRedrawDetailsTask(this);
+        task.setPackageName(packageName);
+        task.setProgressIndicator(findViewById(R.id.progress));
         task.execute();
     }
 
@@ -147,28 +150,30 @@ public class DetailsActivity extends YalpStoreActivity {
         downloadOptionsFragment.draw();
     }
 
-    private GetAndRedrawDetailsTask getDetailsTask(String packageName) {
-        GetAndRedrawDetailsTask task = new GetAndRedrawDetailsTask(this);
-        task.setPackageName(packageName);
-        task.setContext(this);
-        task.setProgressIndicator(findViewById(R.id.progress));
-        return task;
-    }
-
-    static class GetAndRedrawDetailsTask extends DetailsTask {
+    static class GetAndRedrawDetailsTask extends DetailsTask implements CloneableTask {
 
         private DetailsActivity activity;
 
         public GetAndRedrawDetailsTask(DetailsActivity activity) {
             this.activity = activity;
+            setContext(activity);
         }
 
         @Override
-        protected void onPostExecute(Throwable e) {
-            super.onPostExecute(e);
-            if (this.app != null) {
-                DetailsActivity.app = this.app;
-                activity.redrawDetails(this.app);
+        public CloneableTask clone() {
+            GetAndRedrawDetailsTask task = new GetAndRedrawDetailsTask(activity);
+            task.setErrorView(errorView);
+            task.setPackageName(packageName);
+            task.setProgressIndicator(progressIndicator);
+            return task;
+        }
+
+        @Override
+        protected void onPostExecute(App app) {
+            super.onPostExecute(app);
+            if (app != null) {
+                DetailsActivity.app = app;
+                activity.redrawDetails(app);
             }
         }
     }

@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.task.playstore.BackgroundUpdatableAppsTask;
+
 public class UpdateChecker extends BroadcastReceiver {
 
     static public void enable(Context context, int interval) {

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.playstore.PurchaseCheckTask;
 
 import java.util.Timer;
 import java.util.TimerTask;

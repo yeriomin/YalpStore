@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Spinner;
 
+import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
+import com.github.yeriomin.yalpstore.task.playstore.SearchTask;
+
 import java.util.regex.Pattern;
 
 public class SearchActivity extends EndlessScrollActivity {
-
-    static private final String PUBLISHER_PREFIX = "pub:";
 
     private String query;
     private String categoryId = CategoryManager.TOP;
@@ -33,7 +35,7 @@ public class SearchActivity extends EndlessScrollActivity {
             clearApps();
             this.categoryId = CategoryManager.TOP;
             this.query = newQuery;
-            setTitle(getSearchTitle());
+            setTitle(getString(R.string.activity_title_search, query));
             if (looksLikeAPackageId(query)) {
                 Log.i(getClass().getName(), query + " looks like a package id");
                 checkPackageId(query);
@@ -64,13 +66,6 @@ public class SearchActivity extends EndlessScrollActivity {
         task.setQuery(query);
         task.setCategoryId(categoryId);
         return task;
-    }
-
-    private String getSearchTitle() {
-        if (query.startsWith(PUBLISHER_PREFIX)) {
-            return getString(R.string.activity_title_search_publisher, query.substring(PUBLISHER_PREFIX.length()));
-        }
-        return getString(R.string.activity_title_search, query);
     }
 
     private String getQuery(Intent intent) {
@@ -111,8 +106,8 @@ public class SearchActivity extends EndlessScrollActivity {
         }
 
         @Override
-        protected void onPostExecute(Throwable result) {
-            super.onPostExecute(result);
+        protected void onPostExecute(App app) {
+            super.onPostExecute(app);
             if (null != app) {
                 DetailsActivity.app = app;
                 showPackageIdDialog(app.getPackageName());

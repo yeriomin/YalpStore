@@ -4,13 +4,14 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.DependencyTranslationTask;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SharedPreferencesTranslator;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.playstore.DependencyTranslationTask;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class GoogleDependency extends Abstract {
@@ -55,10 +56,11 @@ public class GoogleDependency extends Abstract {
 
     private void getTranslations(Set<String> untranslated) {
         DependencyTranslationTask task = new DependencyTranslationTask() {
+
             @Override
-            protected void onPostExecute(Throwable result) {
-                super.onPostExecute(result);
-                if (null != result) {
+            protected void onPostExecute(List<App> apps) {
+                super.onPostExecute(apps);
+                if (!success()) {
                     return;
                 }
                 for (String packageName: translated.keySet()) {
@@ -68,7 +70,6 @@ public class GoogleDependency extends Abstract {
             }
         };
         task.setContext(activity);
-        task.setPackageNames(untranslated);
-        task.execute();
+        task.execute(untranslated.toArray(new String[untranslated.size()]));
     }
 }

@@ -23,8 +23,9 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         String packageName = intent.getData().getSchemeSpecificPart();
         Log.i(getClass().getName(), "Finished installation of " + packageName);
         updateDetails(intent);
-        UpdatableAppsActivity.setNeedsUpdate(true);
-        ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName);
+        YalpStoreApplication application = (YalpStoreApplication) context.getApplicationContext();
+        application.setAppListNeedsUpdate(true);
+        application.removePendingUpdate(packageName);
         if (needToRemoveApk(context) && action.equals(Intent.ACTION_PACKAGE_ADDED)) {
             App app = getApp(context, packageName);
             File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());

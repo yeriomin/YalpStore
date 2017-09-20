@@ -10,15 +10,15 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.LoadImageTask;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
-import com.github.yeriomin.yalpstore.ReviewDeleteTask;
-import com.github.yeriomin.yalpstore.ReviewLoadTask;
 import com.github.yeriomin.yalpstore.ReviewStorageIterator;
 import com.github.yeriomin.yalpstore.UserReviewDialogBuilder;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.ImageSource;
+import com.github.yeriomin.yalpstore.task.LoadImageTask;
+import com.github.yeriomin.yalpstore.task.playstore.ReviewDeleteTask;
+import com.github.yeriomin.yalpstore.task.playstore.ReviewLoadTask;
 
 import java.util.List;
 
@@ -109,7 +109,10 @@ public class Review extends Abstract {
     }
 
     private ReviewLoadTask getTask(boolean next) {
-        ReviewLoadTask task = new ReviewLoadTask(iterator, this, next);
+        ReviewLoadTask task = new ReviewLoadTask();
+        task.setIterator(iterator);
+        task.setFragment(this);
+        task.setNext(next);
         task.setContext(activity);
         task.prepareDialog(R.string.dialog_message_reviews, R.string.dialog_title_reviews);
         return task;
@@ -160,7 +163,9 @@ public class Review extends Abstract {
         activity.findViewById(R.id.user_review_delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReviewDeleteTask task = new ReviewDeleteTask(v.getContext(), Review.this);
+                ReviewDeleteTask task = new ReviewDeleteTask();
+                task.setFragment(Review.this);
+                task.setContext(v.getContext());
                 task.execute(app.getPackageName());
             }
         });

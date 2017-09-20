@@ -8,12 +8,12 @@ import android.preference.Preference;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
-import com.github.yeriomin.yalpstore.CheckShellTask;
-import com.github.yeriomin.yalpstore.CheckSuTask;
-import com.github.yeriomin.yalpstore.ConvertToSystemTask;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.CheckShellTask;
+import com.github.yeriomin.yalpstore.task.CheckSuTask;
+import com.github.yeriomin.yalpstore.task.ConvertToSystemTask;
 
 class OnInstallationMethodChangeListener implements Preference.OnPreferenceChangeListener {
 
