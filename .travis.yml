@@ -18,21 +18,24 @@ env:
   - secure: kBDjXk/PyOpYLdngyrRuEMaGM85m41fowGgTi9LxNPxXb/mfoq42Dwyet+KRRD5/zFwJ8ZHCVpdyF/wieyS7EXk3o9KoK3M7znhB3YNQTKvUuYLxJxBiJqSxQOPIj8tMwLrY5xw2iNmJqpdKneFlJ6euyy/sSAj/EmKd3IpxQIyCfJJIlOO8CwbtAi3CBGk+RpxTckrREQWOulj5ZsLgAMJLtd3xvYAB2sp9R0jGfDPQBbKWoElKQPn04CR2s9otsmFIzChn+O86eiNepCrEl2C0kajzL8c9OWOui4xMWl3xaUucMvPCZjP2vsloVozMOj0ODWmNi3RHLp2vs8pL7YuXsaylisP/HWMEEkB7t6/0dFXvtCB42yYWex8cn9NSL9hVaZEeXSf+7b+LDzhQiSLRvLfey38Li/0eROByM4pVPFD59foJT+AqlE6jtDqBG3EvlkiW9kxbT5QkYKfiXJg2qq8zgmAXrTZT7mYhDPeMVq4W5QJofq+f+vDGr6n2aJEFz+tMgWiNPiE0Qjdzt0YAKCDSs8sMHLZ/Vay22DBXOLjdja03qCWwmzl4wDN2tL5Hj58a88lNJy94nVEkXavupZ6KVNaE0fhj8F/8z2U/tp+7/MOZ8oB7Ue+hfNrr11e5w+Ex8NsN7/Ir1S70pdp/taPwvgzVoWN+evLkip8=
 before_deploy:
   - export VERSION_CODE=`echo $TRAVIS_TAG | cut -d"." -f2`
-  - cp $TRAVIS_BUILD_DIR/.keystore $HOME
+  - export APK_NAME=com.github.yeriomin.yalpstore_$VERSION_CODE.apk
+  - export OTA_NAME=yalp-store-ota-$VERSION_CODE.zip
   - cd app/build/outputs/apk/
-  - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/yeriomin-keystore.jks -storepass $storepass -keypass $keypass app-release-unsigned.apk AndroidKey
+  - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $TRAVIS_BUILD_DIR/yeriomin-keystore.jks -storepass $storepass -keypass $keypass app-release-unsigned.apk AndroidKey
   - jarsigner -verify app-release-unsigned.apk
-  - "${ANDROID_HOME}/build-tools/26.0.0/zipalign -v 4 app-release-unsigned.apk com.github.yeriomin.yalpstore.${VERSION_CODE}.apk"
-  - cd $HOME
-  - cp app/build/outputs/apk/com.github.yeriomin.yalpstore.$VERSION_CODE.apk yalp-store-ota-zip
-  - zip -r app/build/yalp-store-ota-$VERSION_CODE.zip yalp-store-ota-zip
+  - "$ANDROID_HOME/build-tools/26.0.0/zipalign -v 4 app-release-unsigned.apk $APK_NAME"
+  - "cp $APK_NAME $TRAVIS_BUILD_DIR/yalp-store-ota-zip/YalpStore.apk"
+  - "cp $APK_NAME $TRAVIS_BUILD_DIR"
+  - "cd $TRAVIS_BUILD_DIR/yalp-store-ota-zip"
+  - "zip -r $TRAVIS_BUILD_DIR/$OTA_NAME *"
+  - "cd $TRAVIS_BUILD_DIR"
 deploy:
   provider: releases
   api_key:
     secure: mJRRKJLGtbEc5s6VKq4bqbDRLn6mpjJ2e+9IjtMJUT+WuxtjEx2aCvHLVSmG0gJGwvbBhyVShkqIQYSu0NNx98O7n8ePy9cxRWmsuhbwAdMNLG3MuT+HFVR2VVbRh4aZvUgFKbbob1B4P1WC2+6+C1i/m42jz0XnNCVpwCfevEhYxeGtbSOWDSguDeAs/YYb3kpVSNvUKRdTEMYY1zETuhmt5AoPSBfkraffo/m6YPy7Kt0nZkFjjqA5yObF1JDROQBdj/U9qV651X8c9hQfaH/n0yIbPrPGnkAliCW0IBw42ifVsH2pQcPMUzJ/ZPJtKcQMOR6h7lO6iYpbCZUw3tgHXBNYSGtNzVNC3oOwg0Or0rSkcMz4wdRDktietxxTsvOhObrJubglY2q58d6ejZvf37ronCsDzkaB8TNNSSLCADP7hvFhAFfHQsC1WzVQa3orJAyjc981LNX4BGdc68vXIzfkEkJpOFmTWoQiHXbrB0gtpzJGKrclc5DQ9IQHmqU1/iMZf+3vasGNwsA9Ro6k98/HrhKTC+oh9ygI5oNjMhgZ3JcJO3r9xEhmsKNuI9jkeEs4WhN4CLyp6ZgnqgLbdGF0LjbTx2z4Emi3oyAVXB+VV3JshRljXsAvMNYFV3eqLKK9ZYIHnWvxP+cgzvZnAc4vV1Hx55VjhjcqqFc=
   file:
-    - "app/build/yalp-store-ota-${VERSION_CODE}.zip"
-    - "app/build/outputs/apk/com.github.yeriomin.yalpstore_${VERSION_CODE}.apk"
+    - "$OTA_NAME"
+    - "$APK_NAME"
   skip_cleanup: true
   on:
     all_branches: true
