@@ -1,19 +1,40 @@
 language: android
+sudo: required
 jdk: oraclejdk8
 android:
   components:
-    - tools
-    - tools # see https://github.com/travis-ci/travis-ci/issues/6040#issuecomment-219367943)
-    - platform-tools
-    - build-tools-26.0.0
-    - android-26
-#deploy:
-#  provider: releases
-#  api_key:
-#    secure: mJRRKJLGtbEc5s6VKq4bqbDRLn6mpjJ2e+9IjtMJUT+WuxtjEx2aCvHLVSmG0gJGwvbBhyVShkqIQYSu0NNx98O7n8ePy9cxRWmsuhbwAdMNLG3MuT+HFVR2VVbRh4aZvUgFKbbob1B4P1WC2+6+C1i/m42jz0XnNCVpwCfevEhYxeGtbSOWDSguDeAs/YYb3kpVSNvUKRdTEMYY1zETuhmt5AoPSBfkraffo/m6YPy7Kt0nZkFjjqA5yObF1JDROQBdj/U9qV651X8c9hQfaH/n0yIbPrPGnkAliCW0IBw42ifVsH2pQcPMUzJ/ZPJtKcQMOR6h7lO6iYpbCZUw3tgHXBNYSGtNzVNC3oOwg0Or0rSkcMz4wdRDktietxxTsvOhObrJubglY2q58d6ejZvf37ronCsDzkaB8TNNSSLCADP7hvFhAFfHQsC1WzVQa3orJAyjc981LNX4BGdc68vXIzfkEkJpOFmTWoQiHXbrB0gtpzJGKrclc5DQ9IQHmqU1/iMZf+3vasGNwsA9Ro6k98/HrhKTC+oh9ygI5oNjMhgZ3JcJO3r9xEhmsKNuI9jkeEs4WhN4CLyp6ZgnqgLbdGF0LjbTx2z4Emi3oyAVXB+VV3JshRljXsAvMNYFV3eqLKK9ZYIHnWvxP+cgzvZnAc4vV1Hx55VjhjcqqFc=
-#  file: app/build/yalp-store-ota.zip
-#  skip_cleanup: true
-#  on:
-#    all_branches: true
-#    tags: true
-#    repo: yeriomin/YalpStore
+  - tools
+  - tools
+  - platform-tools
+  - build-tools-26.0.0
+  - android-26
+before_install:
+  - openssl aes-256-cbc -K $encrypted_a12ad885c361_key -iv $encrypted_a12ad885c361_iv -in yeriomin-keystore.jks.enc -out yeriomin-keystore.jks -d
+install:
+  - sudo apt-get update && sudo apt-get --assume-yes install zip
+env:
+  global:
+  - secure: FQeZo97VDMs0jneEeHJYJ5pKGr49s4O3QnCqv6D972KvuvZRXila4rIP/dodVXHlamOaQ9HJt5N/BK/Jk37Kwy795s/dNq49yetZ3Fay+YsI1Wb2WbKLMqc6iiOwwQJKcRTpBG44ycEWntLTpo8sQVoAsHvM/81D8+2MSGt6Eo4q5zVef/QQlCW1OOiUKq6gibzELqt+0NwoJmnc33snWFCr3mTVBmbq0qUx1VDVuXK4b8vaTp1XYVYH5FfZdDz2KP8eM+WhoZH8BoDvpnFFx8vzC4uDkFe1q/tAd6mO8aB6qHUbJMa3CJ8rPE0CHJczdmvFlaz+tm1Vz0KcxYk7HIcm5S4sM5iFwrRV+EE5Ztipj2n2yw9JEL3WtTe4mIuZ40Dl6iqy+MOmP/kZXOhhHbXPuhkG/sWNY3LfkyIl5cU0qet8oM48qskS8S7uWHQ/e/pgcpiPjqOL/FBLo1aHuqq7sXvO8F7yqTeE/hEwKCEADsK8R1vqoup9exCIW93Od1IyDKkIaFXXNsu1q7/WdtnA4AscfoqW+LvcpGdM/rMIy3QlfiECAO7c3Kok6GD/dctb9pmFI02vHJlJnWi9mNPJOQEWcsBIl2swmD2v8MmUL2ncdYcgB8N32pCztuKW8w04dzfdFDCWBB6oBB21WN/TJStGBA/6JpY0G8IxuiI=
+  - secure: kBDjXk/PyOpYLdngyrRuEMaGM85m41fowGgTi9LxNPxXb/mfoq42Dwyet+KRRD5/zFwJ8ZHCVpdyF/wieyS7EXk3o9KoK3M7znhB3YNQTKvUuYLxJxBiJqSxQOPIj8tMwLrY5xw2iNmJqpdKneFlJ6euyy/sSAj/EmKd3IpxQIyCfJJIlOO8CwbtAi3CBGk+RpxTckrREQWOulj5ZsLgAMJLtd3xvYAB2sp9R0jGfDPQBbKWoElKQPn04CR2s9otsmFIzChn+O86eiNepCrEl2C0kajzL8c9OWOui4xMWl3xaUucMvPCZjP2vsloVozMOj0ODWmNi3RHLp2vs8pL7YuXsaylisP/HWMEEkB7t6/0dFXvtCB42yYWex8cn9NSL9hVaZEeXSf+7b+LDzhQiSLRvLfey38Li/0eROByM4pVPFD59foJT+AqlE6jtDqBG3EvlkiW9kxbT5QkYKfiXJg2qq8zgmAXrTZT7mYhDPeMVq4W5QJofq+f+vDGr6n2aJEFz+tMgWiNPiE0Qjdzt0YAKCDSs8sMHLZ/Vay22DBXOLjdja03qCWwmzl4wDN2tL5Hj58a88lNJy94nVEkXavupZ6KVNaE0fhj8F/8z2U/tp+7/MOZ8oB7Ue+hfNrr11e5w+Ex8NsN7/Ir1S70pdp/taPwvgzVoWN+evLkip8=
+before_deploy:
+  - export VERSION_CODE=`echo $TRAVIS_TAG | cut -d"." -f2`
+  - cp $TRAVIS_BUILD_DIR/.keystore $HOME
+  - cd app/build/outputs/apk/
+  - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/yeriomin-keystore.jks -storepass $storepass -keypass $keypass app-release-unsigned.apk AndroidKey
+  - jarsigner -verify app-release-unsigned.apk
+  - "${ANDROID_HOME}/build-tools/26.0.0/zipalign -v 4 app-release-unsigned.apk com.github.yeriomin.yalpstore.${VERSION_CODE}.apk"
+  - cd $HOME
+  - cp app/build/outputs/apk/com.github.yeriomin.yalpstore.$VERSION_CODE.apk yalp-store-ota-zip
+  - zip -r app/build/yalp-store-ota-$VERSION_CODE.zip yalp-store-ota-zip
+deploy:
+  provider: releases
+  api_key:
+    secure: mJRRKJLGtbEc5s6VKq4bqbDRLn6mpjJ2e+9IjtMJUT+WuxtjEx2aCvHLVSmG0gJGwvbBhyVShkqIQYSu0NNx98O7n8ePy9cxRWmsuhbwAdMNLG3MuT+HFVR2VVbRh4aZvUgFKbbob1B4P1WC2+6+C1i/m42jz0XnNCVpwCfevEhYxeGtbSOWDSguDeAs/YYb3kpVSNvUKRdTEMYY1zETuhmt5AoPSBfkraffo/m6YPy7Kt0nZkFjjqA5yObF1JDROQBdj/U9qV651X8c9hQfaH/n0yIbPrPGnkAliCW0IBw42ifVsH2pQcPMUzJ/ZPJtKcQMOR6h7lO6iYpbCZUw3tgHXBNYSGtNzVNC3oOwg0Or0rSkcMz4wdRDktietxxTsvOhObrJubglY2q58d6ejZvf37ronCsDzkaB8TNNSSLCADP7hvFhAFfHQsC1WzVQa3orJAyjc981LNX4BGdc68vXIzfkEkJpOFmTWoQiHXbrB0gtpzJGKrclc5DQ9IQHmqU1/iMZf+3vasGNwsA9Ro6k98/HrhKTC+oh9ygI5oNjMhgZ3JcJO3r9xEhmsKNuI9jkeEs4WhN4CLyp6ZgnqgLbdGF0LjbTx2z4Emi3oyAVXB+VV3JshRljXsAvMNYFV3eqLKK9ZYIHnWvxP+cgzvZnAc4vV1Hx55VjhjcqqFc=
+  file:
+    - "app/build/yalp-store-ota-${VERSION_CODE}.zip"
+    - "app/build/outputs/apk/com.github.yeriomin.yalpstore_${VERSION_CODE}.apk"
+  skip_cleanup: true
+  on:
+    all_branches: true
+    tags: true
+    repo: yeriomin/YalpStore
