@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 
@@ -24,13 +23,10 @@ public class InstalledAppsActivity extends AppListActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToUpdates();
+                startActivity(new Intent(getApplicationContext(), UpdatableAppsActivity.class));
             }
         });
         ((YalpStoreApplication) getApplicationContext()).setAppListNeedsUpdate(true);
-        if (isAppLaunch() && PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_UPDATES_ONLY)) {
-            goToUpdates();
-        }
     }
 
     @Override
@@ -53,20 +49,5 @@ public class InstalledAppsActivity extends AppListActivity {
         UpdatableAppBadge appBadge = new UpdatableAppBadge();
         appBadge.setApp(app);
         return appBadge;
-    }
-
-    private boolean isAppLaunch() {
-        Intent intent = getIntent();
-        String action = intent.getAction();
-        return !TextUtils.isEmpty(action)
-            && action.equals(Intent.ACTION_MAIN)
-            && (intent.hasCategory(Intent.CATEGORY_LAUNCHER)
-                || intent.hasCategory(Intent.CATEGORY_LEANBACK_LAUNCHER
-            )
-        );
-    }
-
-    private void goToUpdates() {
-        startActivity(new Intent(this, UpdatableAppsActivity.class));
     }
 }

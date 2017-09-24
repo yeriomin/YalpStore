@@ -14,7 +14,6 @@ import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.playstoreapi.TokenDispenserException;
 import com.github.yeriomin.yalpstore.task.playstore.CloneableTask;
-import com.github.yeriomin.yalpstore.task.playstore.PlayStorePayloadTask;
 import com.github.yeriomin.yalpstore.task.playstore.PlayStoreTask;
 
 import java.io.IOException;

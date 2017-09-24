@@ -1,19 +1,16 @@
 package com.github.yeriomin.yalpstore.task;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SearchActivity;
 import com.github.yeriomin.yalpstore.SystemRemountDialogBuilder;
-import com.github.yeriomin.yalpstore.Util;
 
 import java.util.ArrayList;
 import java.util.HashMap;

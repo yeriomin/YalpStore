@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore.task;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 
