@@ -8,10 +8,10 @@ import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.CategoryManager;
 import com.github.yeriomin.yalpstore.R;
-import com.github.yeriomin.yalpstore.SelfUpdateChecker;
 import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.selfupdate.UpdaterFactory;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         if (!success() || !new BlackWhiteListManager(context).isUpdatable(BuildConfig.APPLICATION_ID)) {
             return updatableApps;
         }
-        int latestVersionCode = SelfUpdateChecker.getLatestVersionCode();
+        int latestVersionCode = UpdaterFactory.get(context).getLatestVersionCode();
         if (latestVersionCode > BuildConfig.VERSION_CODE) {
             App yalp = InstalledAppsTask.getInstalledApp(context.getPackageManager(), BuildConfig.APPLICATION_ID);
             if (null == yalp) {

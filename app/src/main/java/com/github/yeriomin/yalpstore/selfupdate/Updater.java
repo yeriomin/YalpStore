@@ -1,4 +1,6 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.selfupdate;
+
+import com.github.yeriomin.yalpstore.BuildConfig;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,9 +9,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class SelfUpdateChecker {
+abstract public class Updater {
 
-    static public int getLatestVersionCode() {
+    abstract public String getUrlString(int versionCode);
+
+    public int getLatestVersionCode() {
         int latestVersionCode = BuildConfig.VERSION_CODE;
         while (isAvailable(latestVersionCode + 1)) {
             latestVersionCode++;
@@ -17,11 +21,7 @@ public class SelfUpdateChecker {
         return latestVersionCode;
     }
 
-    static public String getUrlString(int versionCode) {
-        return "https://f-droid.org/repo/com.github.yeriomin.yalpstore_" + versionCode + ".apk";
-    }
-
-    static private URL getUrl(int versionCode) {
+    private URL getUrl(int versionCode) {
         try {
             return new URL(getUrlString(versionCode));
         } catch (MalformedURLException e) {
@@ -30,7 +30,7 @@ public class SelfUpdateChecker {
         return null;
     }
 
-    static private boolean isAvailable(int versionCode) {
+    private boolean isAvailable(int versionCode) {
         try {
             URLConnection connection = getUrl(versionCode).openConnection();
             if (connection instanceof HttpURLConnection) {
