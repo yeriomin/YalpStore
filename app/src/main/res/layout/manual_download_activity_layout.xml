@@ -81,7 +81,7 @@
             android:scaleType="centerCrop"
             android:visibility="gone"
             android:elevation="2dp"
-            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+            android:src="@drawable/ic_cancel" />
 
         <Button
             android:id="@+id/install"

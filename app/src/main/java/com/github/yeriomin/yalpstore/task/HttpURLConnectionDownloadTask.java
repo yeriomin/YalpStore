@@ -128,7 +128,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
                 .setTitle(title)
                 .setIntent(new Intent())
                 .setProgress((int) max, (int) progress)
-                .addAction(android.R.drawable.ic_menu_close_clear_cancel, android.R.string.cancel, getCancelIntent())
+                .addAction(R.drawable.ic_cancel, android.R.string.cancel, getCancelIntent())
                 .build()
         );
     }

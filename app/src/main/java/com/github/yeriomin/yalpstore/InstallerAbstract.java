@@ -128,7 +128,7 @@ public abstract class InstallerAbstract {
         ;
         if (new BlackWhiteListManager(context).isUpdatable(app.getPackageName())) {
             builder.addAction(
-                android.R.drawable.ic_menu_close_clear_cancel,
+                R.drawable.ic_cancel,
                 R.string.action_ignore,
                 PendingIntent.getService(context, 0, getIgnoreIntent(app), PendingIntent.FLAG_UPDATE_CURRENT)
             );
