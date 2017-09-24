@@ -9,7 +9,7 @@
     <item
         android:id="@+id/action_installed_apps"
         android:title="@string/activity_title_updates_and_other_apps"
-        android:icon="@drawable/ic_refresh" />
+        android:icon="@drawable/ic_apps" />
     <item
         android:id="@+id/action_updates"
         android:title="@string/action_updates"

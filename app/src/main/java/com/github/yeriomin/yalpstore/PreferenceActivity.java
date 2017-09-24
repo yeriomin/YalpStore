@@ -89,7 +89,6 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         drawUpdatesCheck();
         drawDevices();
         drawInstallationMethod();
-        drawUpdatePagePreferences();
         new DownloadDirectory(this).setPreference((EditTextPreference) findPreference(PREFERENCE_DOWNLOAD_DIRECTORY)).draw();
     }
 
@@ -130,34 +129,5 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         InstallationMethod installationMethodFragment = new InstallationMethod(this);
         installationMethodFragment.setInstallationMethodPreference((ListPreference) findPreference(PREFERENCE_INSTALLATION_METHOD));
         installationMethodFragment.draw();
-    }
-
-    private void drawUpdatePagePreferences() {
-        findPreference(PREFERENCE_SHOW_SYSTEM_APPS).setOnPreferenceChangeListener(new OnSystemAppsPreferenceChangeListener(this));
-        findPreference(PREFERENCE_UPDATES_ONLY).setOnPreferenceChangeListener(new OnUpdatePagePreferenceChangeListener());
-    }
-
-    static private class OnSystemAppsPreferenceChangeListener extends OnUpdatePagePreferenceChangeListener {
-
-        private PreferenceActivity activity;
-
-        public OnSystemAppsPreferenceChangeListener(PreferenceActivity activity) {
-            this.activity = activity;
-        }
-
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object newValue) {
-            activity.drawBlackList();
-            return super.onPreferenceChange(preference, newValue);
-        }
-    }
-
-    static private class OnUpdatePagePreferenceChangeListener implements Preference.OnPreferenceChangeListener {
-
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object newValue) {
-            ((YalpStoreApplication) preference.getContext().getApplicationContext()).setAppListNeedsUpdate(true);
-            return true;
-        }
     }
 }
