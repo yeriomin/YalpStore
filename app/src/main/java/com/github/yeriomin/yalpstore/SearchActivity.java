@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 public class SearchActivity extends EndlessScrollActivity {
 
     static private final String PUBLISHER_PREFIX = "pub:";
+    private static final String TAG = SearchActivity.class.getSimpleName();
 
     private String query;
     private String categoryId = CategoryManager.TOP;
@@ -20,8 +21,8 @@ public class SearchActivity extends EndlessScrollActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-
         String newQuery = getQuery(intent);
+        LogHelper.d(TAG, "SearchActivity onNewIntent newQuery->" + newQuery);
         if (getIntent().getAction().equals(Intent.ACTION_VIEW) && looksLikeAPackageId(newQuery)) {
             Log.i(getClass().getName(), "Following search suggestion to app page: " + newQuery);
             startActivity(DetailsActivity.getDetailsIntent(this, newQuery));
@@ -75,10 +76,10 @@ public class SearchActivity extends EndlessScrollActivity {
 
     private String getQuery(Intent intent) {
         if (intent.getScheme() != null
-            && (intent.getScheme().equals("market")
-            || intent.getScheme().equals("http")
-            || intent.getScheme().equals("https"))
-        ) {
+                && (intent.getScheme().equals("market")
+                || intent.getScheme().equals("http")
+                || intent.getScheme().equals("https"))
+                ) {
             return intent.getData().getQueryParameter("q");
         }
         if (intent.getAction().equals(Intent.ACTION_SEARCH)) {
@@ -90,6 +91,7 @@ public class SearchActivity extends EndlessScrollActivity {
     }
 
     private boolean looksLikeAPackageId(String query) {
+        LogHelper.i(TAG,"判断是否为一个package id");
         String pattern = "([\\p{L}_$][\\p{L}\\p{N}_$]*\\.)+[\\p{L}_$][\\p{L}\\p{N}_$]*";
         Pattern r = Pattern.compile(pattern);
         return r.matcher(query).matches();
@@ -121,24 +123,24 @@ public class SearchActivity extends EndlessScrollActivity {
 
         private AlertDialog showPackageIdDialog(final String packageId) {
             return new AlertDialog.Builder(activity)
-                .setMessage(R.string.dialog_message_package_id)
-                .setTitle(R.string.dialog_title_package_id)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        activity.startActivity(DetailsActivity.getDetailsIntent(activity, packageId));
-                        dialogInterface.dismiss();
-                        activity.finish();
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        activity.loadApps();
-                    }
-                })
-                .show()
-            ;
+                    .setMessage(R.string.dialog_message_package_id)
+                    .setTitle(R.string.dialog_title_package_id)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            activity.startActivity(DetailsActivity.getDetailsIntent(activity, packageId));
+                            dialogInterface.dismiss();
+                            activity.finish();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            activity.loadApps();
+                        }
+                    })
+                    .show()
+                    ;
         }
     }
 }

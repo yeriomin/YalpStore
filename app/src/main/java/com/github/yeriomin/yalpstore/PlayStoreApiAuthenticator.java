@@ -20,6 +20,7 @@ public class PlayStoreApiAuthenticator {
 
     static private final int RETRIES = 5;
     static private final String DISPENSER_URL = "http://tokendispenser-yeriomin.rhcloud.com";
+    private static final String TAG = PlayStoreApiAuthenticator.class.getSimpleName();
 
     private Context context;
 
@@ -51,11 +52,11 @@ public class PlayStoreApiAuthenticator {
 
     public void logout() {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .remove(PreferenceActivity.PREFERENCE_EMAIL)
-            .remove(PreferenceActivity.PREFERENCE_GSF_ID)
-            .remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN)
-            .remove(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL)
-            .commit()
+                .remove(PreferenceActivity.PREFERENCE_EMAIL)
+                .remove(PreferenceActivity.PREFERENCE_GSF_ID)
+                .remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN)
+                .remove(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL)
+                .commit()
         ;
         api = null;
     }
@@ -86,7 +87,10 @@ public class PlayStoreApiAuthenticator {
                 Log.i(getClass().getName(), "Login attempt #" + (tried + 1));
                 com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = getBuilder(loginInfo);
                 GooglePlayAPI api = builder.build();
-                loginInfo.setEmail(builder.getEmail());
+                String email = builder.getEmail();
+                String token = api.getToken();
+                LogHelper.i(TAG, "登录信息： email is " + email + ",token is " + token);
+                loginInfo.setEmail(email);
                 return api;
             } catch (ApiBuilderException e) {
                 Log.i(getClass().getName(), "ApiBuilderException: " + e.getMessage());
@@ -102,23 +106,22 @@ public class PlayStoreApiAuthenticator {
 
     private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
         fill(loginInfo);
+        LogHelper.d(TAG, "login getBuilder 登录信息：" + loginInfo.toString());
         return new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
-            .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
-            .setDeviceInfoProvider(getDeviceInfoProvider())
-            .setLocale(loginInfo.getLocale())
-            .setEmail(loginInfo.getEmail())
-            .setPassword(loginInfo.getPassword())
-            .setGsfId(loginInfo.getGsfId())
-            .setToken(loginInfo.getToken())
-            .setTokenDispenserUrl(DISPENSER_URL)
-        ;
+                .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
+                .setDeviceInfoProvider(getDeviceInfoProvider())
+                .setLocale(loginInfo.getLocale())
+                .setEmail(loginInfo.getEmail())
+                .setPassword(loginInfo.getPassword())
+                .setGsfId(loginInfo.getGsfId())
+                .setToken(loginInfo.getToken())
+                .setTokenDispenserUrl(DISPENSER_URL);
     }
 
     private DeviceInfoProvider getDeviceInfoProvider() {
         DeviceInfoProvider deviceInfoProvider;
         String spoofDevice = PreferenceManager.getDefaultSharedPreferences(context)
-            .getString(PreferenceActivity.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "")
-        ;
+                .getString(PreferenceActivity.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
         if (TextUtils.isEmpty(spoofDevice)) {
             deviceInfoProvider = new NativeDeviceInfoProvider();
             ((NativeDeviceInfoProvider) deviceInfoProvider).setContext(context);
@@ -141,10 +144,10 @@ public class PlayStoreApiAuthenticator {
 
     private void save(LoginInfo loginInfo) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .putString(PreferenceActivity.PREFERENCE_EMAIL, loginInfo.getEmail())
-            .putString(PreferenceActivity.PREFERENCE_GSF_ID, loginInfo.getGsfId())
-            .putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
-            .commit()
+                .putString(PreferenceActivity.PREFERENCE_EMAIL, loginInfo.getEmail())
+                .putString(PreferenceActivity.PREFERENCE_GSF_ID, loginInfo.getGsfId())
+                .putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
+                .commit()
         ;
     }
 }

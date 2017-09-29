@@ -49,4 +49,15 @@ public class LoginInfo {
     public void setLocale(Locale locale) {
         this.locale = locale;
     }
+
+    @Override
+    public String toString() {
+        return "LoginInfo{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", gsfId='" + gsfId + '\'' +
+                ", token='" + token + '\'' +
+                ", locale=" + locale +
+                '}';
+    }
 }
