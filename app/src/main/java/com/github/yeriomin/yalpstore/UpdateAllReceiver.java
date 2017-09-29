@@ -13,7 +13,7 @@ public class UpdateAllReceiver extends BroadcastReceiver {
     private Button button;
 
     public UpdateAllReceiver(UpdatableAppsActivity activity) {
-        button = activity.findViewById(R.id.update_all);
+        button = (Button) activity.findViewById(R.id.update_all);
         IntentFilter filter = new IntentFilter();
         filter.addAction(UpdateAllReceiver.ACTION_UPDATE_COMPLETE);
         activity.registerReceiver(this, filter);

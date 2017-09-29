@@ -24,18 +24,20 @@ public class DownloadManagerProgressUpdater {
             return;
         }
         new Handler(Looper.getMainLooper()).postDelayed(
-            new Runnable() {
-                @Override
-                public void run() {
-                    DownloadState.get(downloadId).setProgress(downloadId, progress.first, progress.second);
-                    listener.onDownloadProgress();
-                    if (DownloadState.get(downloadId).isEverythingFinished()) {
-                        return;
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        DownloadState.get(downloadId).setProgress(downloadId, progress.first, progress.second);
+                        LogHelper.d("DownloadManagerProgressUpdater", "下载进度更新：downloadId->" + downloadId + ", " +
+                                "progress:" + progress.first + "," + progress.second);
+                        listener.onDownloadProgress();
+                        if (DownloadState.get(downloadId).isEverythingFinished()) {
+                            return;
+                        }
+                        update();
                     }
-                    update();
-                }
-            },
-            INTERVAL
+                },
+                INTERVAL
         );
     }
 }

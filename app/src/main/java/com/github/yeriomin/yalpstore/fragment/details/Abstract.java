@@ -5,6 +5,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.LogHelper;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -16,6 +17,7 @@ public abstract class Abstract {
     abstract public void draw();
 
     public Abstract(DetailsActivity activity, App app) {
+        LogHelper.d("Abstract", "new Abstract-->" + app.getPackageName());
         this.activity = activity;
         this.app = app;
     }

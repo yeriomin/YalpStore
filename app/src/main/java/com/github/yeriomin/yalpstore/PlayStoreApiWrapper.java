@@ -38,11 +38,11 @@ public class PlayStoreApiWrapper {
 
     public List<Review> getReviews(String packageId, int offset, int numberOfResults) throws IOException {
         List<Review> reviews = new ArrayList<>();
-        for (com.github.yeriomin.playstoreapi.Review review: new PlayStoreApiAuthenticator(context).getApi().reviews(
-            packageId,
-            GooglePlayAPI.REVIEW_SORT.HELPFUL,
-            offset,
-            numberOfResults
+        for (com.github.yeriomin.playstoreapi.Review review : new PlayStoreApiAuthenticator(context).getApi().reviews(
+                packageId,
+                GooglePlayAPI.REVIEW_SORT.HELPFUL,
+                offset,
+                numberOfResults
         ).getGetResponse().getReviewList()) {
             reviews.add(ReviewBuilder.build(review));
         }
@@ -51,10 +51,10 @@ public class PlayStoreApiWrapper {
 
     public Review addOrEditReview(String packageId, Review inputReview) throws IOException {
         ReviewResponse response = new PlayStoreApiAuthenticator(context).getApi().addOrEditReview(
-            packageId,
-            inputReview.getComment(),
-            inputReview.getTitle(),
-            inputReview.getRating()
+                packageId,
+                inputReview.getComment(),
+                inputReview.getTitle(),
+                inputReview.getRating()
         );
         return ReviewBuilder.build(response.getUserReview());
     }
@@ -65,16 +65,20 @@ public class PlayStoreApiWrapper {
 
     public App getDetails(String packageId) throws IOException {
         DetailsResponse response = new PlayStoreApiAuthenticator(context).getApi().details(packageId);
+        LogHelper.d("PlayStoreApiWrapper", "DetailsResponse-->" + response);
         App app = AppBuilder.build(response.getDocV2());
+        LogHelper.d("PlayStoreApiWrapper", "DetailsResponse new app-->" + app);
         if (response.hasUserReview()) {
-            app.setUserReview(ReviewBuilder.build(response.getUserReview()));
+            com.github.yeriomin.playstoreapi.Review userReview = response.getUserReview();
+            LogHelper.d("PlayStoreApiWrapper", "DetailsResponse new app-->" + userReview.getComment());
+            app.setUserReview(ReviewBuilder.build(userReview));
         }
         return app;
     }
 
     public List<App> getDetails(List<String> packageIds) throws IOException {
         List<App> apps = new ArrayList<>();
-        for (BulkDetailsEntry details: new PlayStoreApiAuthenticator(context).getApi().bulkDetails(packageIds).getEntryList()) {
+        for (BulkDetailsEntry details : new PlayStoreApiAuthenticator(context).getApi().bulkDetails(packageIds).getEntryList()) {
             if (!details.hasDoc()) {
                 continue;
             }
@@ -94,7 +98,7 @@ public class PlayStoreApiWrapper {
 
     private Map<String, String> buildCategoryMap(BrowseResponse response) {
         Map<String, String> categories = new HashMap<>();
-        for (BrowseLink category: response.getCategoryContainer().getCategoryList()) {
+        for (BrowseLink category : response.getCategoryContainer().getCategoryList()) {
             String categoryId = Uri.parse(category.getDataUrl()).getQueryParameter("cat");
             if (TextUtils.isEmpty(categoryId)) {
                 continue;

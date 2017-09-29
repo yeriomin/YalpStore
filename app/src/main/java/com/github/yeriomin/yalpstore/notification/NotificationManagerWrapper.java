@@ -12,9 +12,7 @@ public class NotificationManagerWrapper {
     protected NotificationManager manager;
 
     static public NotificationBuilder getBuilder(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            return new NotificationBuilderO(context);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             return new NotificationBuilderJellybean(context);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             return new NotificationBuilderHoneycomb(context);

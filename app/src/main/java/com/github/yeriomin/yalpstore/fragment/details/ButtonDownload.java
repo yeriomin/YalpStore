@@ -32,7 +32,7 @@ public class ButtonDownload extends Button {
 
     public ButtonDownload(final DetailsActivity activity, final App app) {
         super(activity, app);
-        cancelButton = activity.findViewById(R.id.cancel);
+        cancelButton = (ImageButton) activity.findViewById(R.id.cancel);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +104,7 @@ public class ButtonDownload extends Button {
     }
 
     private OnDownloadProgressListener getDownloadProgressListener() {
-        ProgressBar progressBar = activity.findViewById(R.id.download_progress);
+        ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
         progressBar.setVisibility(View.VISIBLE);
         progressBar.setProgress(0);
         return new OnDownloadProgressListener(progressBar, DownloadState.get(app.getPackageName()));

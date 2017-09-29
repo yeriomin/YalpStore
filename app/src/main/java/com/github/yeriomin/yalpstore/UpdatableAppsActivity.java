@@ -43,7 +43,7 @@ public class UpdatableAppsActivity extends AppListActivity {
             setNeedsUpdate(false);
         }
         if (PreferenceActivity.getUpdateInterval(this) < 0) {
-            Button checkUpdates = findViewById(R.id.check_updates);
+            Button checkUpdates = (Button) findViewById(R.id.check_updates);
             checkUpdates.setVisibility(View.VISIBLE);
             checkUpdates.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -117,7 +117,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     public void launchUpdateAll() {
         ((YalpStoreApplication) getApplicationContext()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
-        Button button = findViewById(R.id.update_all);
+        Button button = (Button) findViewById(R.id.update_all);
         button.setEnabled(false);
         button.setText(R.string.list_updating);
     }

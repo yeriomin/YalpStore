@@ -4,6 +4,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.text.TextUtils;
 
+import com.github.yeriomin.yalpstore.LogHelper;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -49,10 +51,12 @@ public class App implements Comparable<App> {
     private String testingProgramEmail;
 
     public App() {
+        LogHelper.d("App", "new APP");
         this.packageInfo = new PackageInfo();
     }
 
     public App(PackageInfo packageInfo) {
+        LogHelper.d("App", "new APP from packageInfo:" + packageInfo);
         this.setPackageInfo(packageInfo);
         this.setVersionName(packageInfo.versionName);
         this.setVersionCode(packageInfo.versionCode);
@@ -312,5 +316,26 @@ public class App implements Comparable<App> {
     @Override
     public int compareTo(App o) {
         return getDisplayName().compareToIgnoreCase(o.getDisplayName());
+    }
+
+    @Override
+    public String toString() {
+        return "App{" +
+                "displayName='" + displayName + '\'' +
+                ", versionName='" + versionName + '\'' +
+                ", versionCode=" + versionCode +
+                ", offerType=" + offerType +
+                ", updated='" + updated + '\'' +
+                ", size=" + size +
+                ", installs='" + installs + '\'' +
+                ", rating=" + rating +
+                ", iconUrl='" + iconUrl + '\'' +
+                ", videoUrl='" + videoUrl + '\'' +
+                ", changes='" + changes + '\'' +
+                ", developerName='" + developerName + '\'' +
+                ", description='" + description + '\'' +
+                ", isInstalled=" + isInstalled +
+                ", isFree=" + isFree +
+                '}';
     }
 }

@@ -1,0 +1,64 @@
+apply plugin: 'java'
+
+group = 'com.github.yeriomin'
+version = '0.26'
+sourceCompatibility = JavaVersion.VERSION_1_5
+targetCompatibility = JavaVersion.VERSION_1_5
+compileJava.options.encoding = 'UTF-8'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.0'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'com.google.protobuf'
+
+sourceSets {
+    main {
+        proto {
+            srcDir 'src/main/proto'
+        }
+        java {
+            srcDir 'src/main/java'
+            srcDir 'build/generated/source/proto/main/javalite'
+        }
+    }
+}
+
+dependencies {
+    testCompile "junit:junit:4.12"
+    testCompile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.5.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.0.0'
+    }
+    plugins {
+        javalite {
+            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            javalite { }
+        }
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+        }
+    }
+}

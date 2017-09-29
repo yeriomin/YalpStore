@@ -21,7 +21,7 @@ public class Video extends Abstract {
         if (TextUtils.isEmpty(app.getVideoUrl())) {
             return;
         }
-        TextView systemAppInfo = activity.findViewById(R.id.video);
+        TextView systemAppInfo = (TextView) activity.findViewById(R.id.video);
         systemAppInfo.setVisibility(View.VISIBLE);
         systemAppInfo.setOnClickListener(new View.OnClickListener() {
             @Override

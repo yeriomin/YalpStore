@@ -42,7 +42,7 @@ public class DeviceInfoActivity extends YalpStoreActivity {
         }
         Collections.sort(keys);
 
-        TableLayout table = findViewById(R.id.device_info);
+        TableLayout table = (TableLayout) findViewById(R.id.device_info);
         for (String key: keys) {
             addRow(table, key, ((String) properties.get(key)).replace(",", ", "));
         }

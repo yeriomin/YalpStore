@@ -52,7 +52,7 @@ class ForegroundUpdatableAppsTask extends UpdatableAppsTask {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Button button = activity.findViewById(R.id.check_updates);
+        Button button = (Button) activity.findViewById(R.id.check_updates);
         button.setEnabled(false);
         button.setText(R.string.ellipsis);
     }
@@ -76,7 +76,7 @@ class ForegroundUpdatableAppsTask extends UpdatableAppsTask {
         }
         toggleUpdateAll(this.updatableApps.size() > 0);
         new CategoryManager(activity).downloadCategoryNames();
-        Button button = activity.findViewById(R.id.check_updates);
+        Button button = (Button) activity.findViewById(R.id.check_updates);
         button.setEnabled(true);
         button.setText(R.string.list_check_updates);
     }
@@ -84,7 +84,7 @@ class ForegroundUpdatableAppsTask extends UpdatableAppsTask {
     @Override
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
-        Button button = activity.findViewById(R.id.check_updates);
+        Button button = (Button) activity.findViewById(R.id.check_updates);
         button.setEnabled(false);
         button.setText(R.string.details_download_checking);
     }
@@ -106,7 +106,7 @@ class ForegroundUpdatableAppsTask extends UpdatableAppsTask {
     }
 
     private void toggleUpdateAll(boolean enable) {
-        Button button = activity.findViewById(R.id.update_all);
+        Button button = (Button) activity.findViewById(R.id.update_all);
         button.setVisibility(enable ? View.VISIBLE : View.GONE);
         if (((YalpStoreApplication) activity.getApplication()).isBackgroundUpdating()) {
             button.setEnabled(false);

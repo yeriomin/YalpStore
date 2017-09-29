@@ -30,8 +30,9 @@ public class AppListIterator implements Iterator {
 
     @Override
     public List<App> next() {
+        LogHelper.d("AppListIterator", "AppListIterator next DocV2 details");
         List<App> apps = new ArrayList<>();
-        for (DocV2 details: iterator.next()) {
+        for (DocV2 details : iterator.next()) {
             addApp(apps, AppBuilder.build(details));
         }
         return apps;
