@@ -19,12 +19,16 @@ public class SearchActivity extends EndlessScrollActivity {
     private String query;
     private String categoryId = CategoryManager.TOP;
 
+    static protected boolean actionIs(Intent intent, String action) {
+        return null != intent && null != intent.getAction() && intent.getAction().equals(action);
+    }
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
         String newQuery = getQuery(intent);
-        if (getIntent().getAction().equals(Intent.ACTION_VIEW) && looksLikeAPackageId(newQuery)) {
+        if (actionIs(intent, Intent.ACTION_VIEW) && looksLikeAPackageId(newQuery)) {
             Log.i(getClass().getName(), "Following search suggestion to app page: " + newQuery);
             startActivity(DetailsActivity.getDetailsIntent(this, newQuery));
             finish();
@@ -71,14 +75,15 @@ public class SearchActivity extends EndlessScrollActivity {
     private String getQuery(Intent intent) {
         if (intent.getScheme() != null
             && (intent.getScheme().equals("market")
-            || intent.getScheme().equals("http")
-            || intent.getScheme().equals("https"))
+                || intent.getScheme().equals("http")
+                || intent.getScheme().equals("https")
+            )
         ) {
             return intent.getData().getQueryParameter("q");
         }
-        if (intent.getAction().equals(Intent.ACTION_SEARCH)) {
+        if (actionIs(intent, Intent.ACTION_SEARCH)) {
             return intent.getStringExtra(SearchManager.QUERY);
-        } else if (intent.getAction().equals(Intent.ACTION_VIEW)) {
+        } else if (actionIs(intent, Intent.ACTION_VIEW)) {
             return intent.getDataString();
         }
         return null;
