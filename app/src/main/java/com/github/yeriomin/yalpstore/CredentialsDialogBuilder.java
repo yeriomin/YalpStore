@@ -76,7 +76,6 @@ abstract public class CredentialsDialogBuilder {
         protected void processIOException(IOException e) {
             super.processIOException(e);
             if (e instanceof TokenDispenserException) {
-                e.getCause().printStackTrace();
                 ContextUtil.toast(context, R.string.error_token_dispenser_problem);
             } else if (e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 500) {
                 PreferenceManager.getDefaultSharedPreferences(context).edit().putString(PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1").commit();
