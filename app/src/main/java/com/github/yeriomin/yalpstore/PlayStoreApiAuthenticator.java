@@ -19,7 +19,7 @@ import java.util.Locale;
 public class PlayStoreApiAuthenticator {
 
     static private final int RETRIES = 5;
-    static private final String DISPENSER_URL = "http://tokendispenser-yeriomin.rhcloud.com";
+    static private final String DISPENSER_URL = "http://route-play-store-token-dispenser.1d35.starter-us-east-1.openshiftapps.com";
 
     private Context context;
 
