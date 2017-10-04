@@ -44,7 +44,7 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
         task.setErrorView(errorView);
         task.setContext(context);
         task.setProgressIndicator(progressIndicator);
-        return null;
+        return task;
     }
 
     @Override
