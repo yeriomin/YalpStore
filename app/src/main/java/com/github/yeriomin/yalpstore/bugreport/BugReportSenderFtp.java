@@ -109,7 +109,7 @@ public class BugReportSenderFtp extends BugReportSender {
             + "-" + BuildConfig.VERSION_NAME
             + "-" + getSource()
             + "-" + getTopic()
-            + "-" + Build.DEVICE
+            + "-" + Build.DEVICE.replace("-", "_")
         ;
     }
 
