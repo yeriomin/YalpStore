@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.net.Uri;
 import android.text.TextUtils;
+import android.widget.ArrayAdapter;
 
 import com.github.yeriomin.playstoreapi.BrowseLink;
 import com.github.yeriomin.playstoreapi.BrowseResponse;
@@ -9,25 +10,34 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.CategoryManager;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CategoryTask extends PlayStorePayloadTask<Void> implements CloneableTask {
+abstract public class CategoryTask extends PlayStorePayloadTask<Void> {
 
-    private CategoryManager manager;
+    protected CategoryManager manager;
+
+    abstract protected void fill();
 
     public void setManager(CategoryManager manager) {
         this.manager = manager;
     }
 
     @Override
-    public CloneableTask clone() {
-        CategoryTask task = new CategoryTask();
-        task.setManager(manager);
-        task.setErrorView(errorView);
-        task.setContext(context);
-        task.setProgressIndicator(progressIndicator);
-        return task;
+    protected void onPostExecute(Void result) {
+        super.onPostExecute(result);
+        if (success()) {
+            fill();
+        }
+    }
+
+    @Override
+    protected Void doInBackground(String... arguments) {
+        if (manager.categoryListEmpty()) {
+            super.doInBackground(arguments);
+        }
+        return null;
     }
 
     @Override
@@ -38,6 +48,14 @@ public class CategoryTask extends PlayStorePayloadTask<Void> implements Cloneabl
             manager.save(categoryId, buildCategoryMap(api.categories(categoryId)));
         }
         return null;
+    }
+
+    protected ArrayAdapter getAdapter(Map<String, String> categories, int itemLayoutId) {
+        return new ArrayAdapter<>(
+            context,
+            itemLayoutId,
+            new ArrayList<>(categories.values())
+        );
     }
 
     private Map<String, String> buildCategoryMap(BrowseResponse response) {

@@ -4,9 +4,7 @@ import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-import android.widget.Spinner;
 
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
@@ -47,13 +45,6 @@ public class SearchActivity extends EndlessScrollActivity {
                 loadApps();
             }
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        new CategoryManager(this).fill((Spinner) findViewById(R.id.filter));
     }
 
     public void setCategoryId(String categoryId) {

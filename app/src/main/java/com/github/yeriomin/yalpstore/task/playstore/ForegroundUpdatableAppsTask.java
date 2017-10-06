@@ -6,7 +6,6 @@ import android.widget.Button;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.BuildConfig;
-import com.github.yeriomin.yalpstore.CategoryManager;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
@@ -62,7 +61,6 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         }
         activity.addApps(updatableApps);
         toggleUpdateAll(this.updatableApps.size() > 0);
-        new CategoryManager(activity).downloadCategoryNames();
     }
 
     private void toggleUpdateAll(boolean enable) {

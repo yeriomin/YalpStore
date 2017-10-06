@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore.task.playstore;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 
@@ -55,8 +54,19 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        categoryManager = new CategoryManager((Activity) context);
+        categoryManager = new CategoryManager(context);
         installedPackageNames.addAll(getInstalledPackageNames(context));
+    }
+
+    @Override
+    protected void onPostExecute(List<App> apps) {
+        super.onPostExecute(apps);
+        if (success()) {
+            CategorySpinnerTask task = new CategorySpinnerTask();
+            task.setContext(context);
+            task.setManager(categoryManager);
+            task.execute();
+        }
     }
 
     @Override
