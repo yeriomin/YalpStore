@@ -47,6 +47,9 @@ public abstract class DownloadManagerAbstract implements DownloadManagerInterfac
 
     @Override
     public void cancel(long downloadId) {
-        DownloadState.get(downloadId).setCancelled(downloadId);
+        DownloadState state = DownloadState.get(downloadId);
+        if (null != state) {
+            state.setCancelled(downloadId);
+        }
     }
 }
