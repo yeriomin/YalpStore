@@ -19,7 +19,6 @@ import java.util.Locale;
 public class PlayStoreApiAuthenticator {
 
     static private final int RETRIES = 5;
-    static private final String DISPENSER_URL = "http://route-play-store-token-dispenser.1d35.starter-us-east-1.openshiftapps.com";
 
     private Context context;
 
@@ -110,7 +109,7 @@ public class PlayStoreApiAuthenticator {
             .setPassword(loginInfo.getPassword())
             .setGsfId(loginInfo.getGsfId())
             .setToken(loginInfo.getToken())
-            .setTokenDispenserUrl(DISPENSER_URL)
+            .setTokenDispenserUrl(TokenDispenserMirrors.get())
         ;
     }
 
