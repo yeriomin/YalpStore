@@ -7,6 +7,7 @@ import com.github.yeriomin.playstoreapi.BuyResponse;
 import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
+import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
             if (buyResponse.hasPurchaseStatusResponse()
                 && buyResponse.getPurchaseStatusResponse().hasAppDeliveryData()
                 && buyResponse.getPurchaseStatusResponse().getAppDeliveryData().hasDownloadUrl()
-                ) {
+            ) {
                 deliveryData = buyResponse.getPurchaseStatusResponse().getAppDeliveryData();
             }
             if (buyResponse.hasDownloadToken()) {
@@ -48,7 +49,7 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
     protected void delivery(GooglePlayAPI api) throws IOException {
         DeliveryResponse deliveryResponse = api.delivery(
             app.getPackageName(),
-            app.getInstalledVersionCode() >= app.getVersionCode() ? 0 : app.getInstalledVersionCode(),
+            shouldDownloadDelta() ? app.getInstalledVersionCode() : 0,
             app.getVersionCode(),
             app.getOfferType(),
             GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF,
@@ -61,5 +62,11 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
         } else {
             throw new NotPurchasedException();
         }
+    }
+
+    private boolean shouldDownloadDelta() {
+        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_DELTAS)
+            && app.getInstalledVersionCode() < app.getVersionCode()
+        ;
     }
 }

@@ -205,6 +205,9 @@
     <string name="pref_no_images">Download images on Wi-Fi only</string>
     <string name="pref_no_images_summary_off">Images are always downloaded now</string>
     <string name="pref_no_images_summary_on">Images are downloaded on Wi-Fi only</string>
+    <string name="pref_download_deltas">Delta updates</string>
+    <string name="pref_download_deltas_summary_off">Full apk is downloaded every time</string>
+    <string name="pref_download_deltas_summary_on">Only changes are downloaded during updates</string>
     <string name="pref_download_directory">Download directory</string>
     <string name="download_manager_ERROR_UNKNOWN">Unknown error.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unknown file storage error.</string>
