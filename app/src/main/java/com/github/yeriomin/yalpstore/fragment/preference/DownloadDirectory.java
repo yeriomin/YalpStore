@@ -7,6 +7,7 @@ import android.preference.EditTextPreference;
 import android.preference.Preference;
 
 import com.github.yeriomin.yalpstore.ContextUtil;
+import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 
@@ -24,7 +25,7 @@ public class DownloadDirectory extends Abstract {
 
     @Override
     public void draw() {
-        preference.setSummary(preference.getText());
+        preference.setSummary(Paths.getYalpPath(activity).getAbsolutePath());
         preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object o) {
@@ -33,7 +34,7 @@ public class DownloadDirectory extends Abstract {
                 if (!result) {
                     ContextUtil.toast(activity, R.string.error_downloads_directory_not_writable);
                 } else {
-                    preference.setSummary(newValue);
+                    preference.setSummary(new File(Environment.getExternalStorageDirectory(), newValue).getAbsolutePath());
                 }
                 return result;
             }
