@@ -14,6 +14,7 @@ import java.util.List;
 
 abstract public class AppListActivity extends YalpStoreActivity {
 
+    private static final String TAG = AppListActivity.class.getSimpleName();
     protected ListView listView;
 
     abstract protected void loadApps();
@@ -32,6 +33,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
                     return;
                 }
                 App app = ((AppBadge) listItem).getApp();
+                LogHelper.i(TAG,"从app list进入Detail");
                 DetailsActivity.app = app;
                 startActivity(DetailsActivity.getDetailsIntent(AppListActivity.this, app.getPackageName()));
             }

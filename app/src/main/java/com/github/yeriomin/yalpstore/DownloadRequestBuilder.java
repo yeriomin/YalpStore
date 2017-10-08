@@ -14,7 +14,7 @@ import java.io.File;
 
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public abstract class DownloadRequestBuilder {
-
+    private static final String TAG = DownloadRequestBuilder.class.getSimpleName();
     protected Context context;
     protected App app;
     protected AndroidAppDeliveryData deliveryData;
@@ -26,18 +26,28 @@ public abstract class DownloadRequestBuilder {
     }
 
     abstract protected File getDestinationFile();
+
     abstract protected String getNotificationTitle();
+
     abstract protected String getDownloadUrl();
 
     public DownloadManager.Request build() {
         DownloadManager.Request request = new DownloadManager.Request(getDownloadUri());
+        String cookies = "";
         if (deliveryData.getDownloadAuthCookieCount() > 0) {
             HttpCookie cookie = deliveryData.getDownloadAuthCookie(0);
-            request.addRequestHeader("Cookie", cookie.getName() + "=" + cookie.getValue());
+            cookies = cookie.getName() + "=" + cookie.getValue();
+            request.addRequestHeader("Cookie", cookies);
         }
         request.setDestinationUri(getDestinationUri());
+        // 描述里有下载包名
         request.setDescription(app.getPackageName());
         request.setTitle(getNotificationTitle());
+
+        LogHelper.i(TAG, "设置 request 成功：title:"
+                + getNotificationTitle() + ",url"
+                + getDownloadUrl() + "\n,dest:"
+                + getDestinationUri() + ",cook:" + cookies);
         return request;
     }
 

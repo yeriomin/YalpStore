@@ -25,6 +25,7 @@ import com.github.yeriomin.yalpstore.model.App;
 public class DetailsActivity extends YalpStoreActivity {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
+    private static final String TAG = DetailsActivity.class.getSimpleName();
 
     static public App app;
 
@@ -117,9 +118,9 @@ public class DetailsActivity extends YalpStoreActivity {
         if (intent.hasExtra(INTENT_PACKAGE_NAME)) {
             return intent.getStringExtra(INTENT_PACKAGE_NAME);
         } else if (intent.getScheme() != null
-            && (intent.getScheme().equals("market")
-            || intent.getScheme().equals("http")
-            || intent.getScheme().equals("https")
+                && (intent.getScheme().equals("market")
+                || intent.getScheme().equals("http")
+                || intent.getScheme().equals("https")
         )) {
             return intent.getData().getQueryParameter("id");
         }
@@ -127,6 +128,7 @@ public class DetailsActivity extends YalpStoreActivity {
     }
 
     public void redrawDetails(App app) {
+        LogHelper.i(TAG, "重绘详情页");
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
         new GeneralDetails(this, app).draw();

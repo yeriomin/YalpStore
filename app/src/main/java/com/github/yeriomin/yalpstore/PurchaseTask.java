@@ -15,6 +15,7 @@ import java.io.IOException;
 public class PurchaseTask extends DeliveryDataTask {
 
     static public final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
+    private static final String TAG = PurchaseTask.class.getSimpleName();
 
     private DownloadState.TriggeredBy triggeredBy = DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
     private OnDownloadProgressListener listener;
@@ -36,6 +37,7 @@ public class PurchaseTask extends DeliveryDataTask {
                 return result;
             }
             if (null != deliveryData) {
+                LogHelper.i(TAG, "开始下载");
                 new Downloader(context).download(app, deliveryData, listener);
             } else {
                 context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
@@ -83,27 +85,27 @@ public class PurchaseTask extends DeliveryDataTask {
     private AlertDialog getNotPurchasedDialog(Context c) {
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
         builder
-            .setMessage(R.string.error_not_purchased)
-            .setPositiveButton(
-                android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        i.setData(Uri.parse(URL_PURCHASE + app.getPackageName()));
-                        context.startActivity(i);
-                    }
-                }
-            )
-            .setNegativeButton(
-                android.R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                }
-            )
+                .setMessage(R.string.error_not_purchased)
+                .setPositiveButton(
+                        android.R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent i = new Intent(Intent.ACTION_VIEW);
+                                i.setData(Uri.parse(URL_PURCHASE + app.getPackageName()));
+                                context.startActivity(i);
+                            }
+                        }
+                )
+                .setNegativeButton(
+                        android.R.string.cancel,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        }
+                )
         ;
         return builder.create();
     }

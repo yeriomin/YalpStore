@@ -9,6 +9,8 @@ import com.github.yeriomin.yalpstore.model.App;
 
 public class DirectDownloadActivity extends YalpStoreActivity {
 
+    private static final String TAG = DirectDownloadActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,7 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             return;
         }
         Log.i(getClass().getName(), "Getting package " + packageName);
+        LogHelper.i(TAG, "DirectDownloadActivity启动，正在生成purchaseTask");
         DetailsAndPurchaseTask task = getDetailsTask(packageName);
         task.setTaskClone(getDetailsTask(packageName));
         task.execute();

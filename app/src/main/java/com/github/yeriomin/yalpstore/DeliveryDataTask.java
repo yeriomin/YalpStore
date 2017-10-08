@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class DeliveryDataTask extends GoogleApiAsyncTask {
 
+    private static final String TAG = DeliveryDataTask.class.getSimpleName();
     protected App app;
     protected String downloadToken;
     protected AndroidAppDeliveryData deliveryData;
@@ -22,6 +23,7 @@ public class DeliveryDataTask extends GoogleApiAsyncTask {
 
     @Override
     protected Throwable doInBackground(String... params) {
+        LogHelper.i(TAG, "doInBackground, 开始购买和delivery");
         try {
             GooglePlayAPI api = new PlayStoreApiAuthenticator(context).getApi();
             purchase(api);
@@ -36,9 +38,9 @@ public class DeliveryDataTask extends GoogleApiAsyncTask {
         try {
             BuyResponse buyResponse = api.purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
             if (buyResponse.hasPurchaseStatusResponse()
-                && buyResponse.getPurchaseStatusResponse().hasAppDeliveryData()
-                && buyResponse.getPurchaseStatusResponse().getAppDeliveryData().hasDownloadUrl()
-                ) {
+                    && buyResponse.getPurchaseStatusResponse().hasAppDeliveryData()
+                    && buyResponse.getPurchaseStatusResponse().getAppDeliveryData().hasDownloadUrl()
+                    ) {
                 deliveryData = buyResponse.getPurchaseStatusResponse().getAppDeliveryData();
             }
             if (buyResponse.hasDownloadToken()) {
@@ -51,16 +53,16 @@ public class DeliveryDataTask extends GoogleApiAsyncTask {
 
     protected void delivery(GooglePlayAPI api) throws IOException {
         DeliveryResponse deliveryResponse = api.delivery(
-            app.getPackageName(),
-            app.getInstalledVersionCode() >= app.getVersionCode() ? 0 : app.getInstalledVersionCode(),
-            app.getVersionCode(),
-            app.getOfferType(),
-            GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF,
-            downloadToken
+                app.getPackageName(),
+                app.getInstalledVersionCode() >= app.getVersionCode() ? 0 : app.getInstalledVersionCode(),
+                app.getVersionCode(),
+                app.getOfferType(),
+                GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF,
+                downloadToken
         );
         if (deliveryResponse.hasAppDeliveryData()
-            && deliveryResponse.getAppDeliveryData().hasDownloadUrl()
-        ) {
+                && deliveryResponse.getAppDeliveryData().hasDownloadUrl()
+                ) {
             deliveryData = deliveryResponse.getAppDeliveryData();
         } else {
             throw new NotPurchasedException();
