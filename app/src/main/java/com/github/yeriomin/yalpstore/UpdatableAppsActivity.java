@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -46,18 +45,7 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     @Override
     protected void loadApps() {
-        try {
-            getTask().execute();
-        } catch (RuntimeException e) {
-            Throwable t = e;
-            while (t != null) {
-                Log.e(getClass().getName(), t.getClass().getName() + ": " + t.getMessage());
-                for (StackTraceElement element: t.getStackTrace()) {
-                    Log.e(getClass().getName(), element.toString());
-                }
-                t = t.getCause();
-            }
-        }
+        getTask().execute();
     }
 
     @Override
