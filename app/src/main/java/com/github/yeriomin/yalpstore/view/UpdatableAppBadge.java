@@ -20,13 +20,6 @@ public class UpdatableAppBadge extends AppBadge {
         if (app.isSystem()) {
             line3.add(c.getString(R.string.list_app_system));
         }
-        if (app.isInPlayStore() && !showUpdatesOnly()) {
-            line3.add(c.getString(R.string.list_app_exists_in_play_store));
-        }
         super.draw();
-    }
-
-    private boolean showUpdatesOnly() {
-        return PreferenceActivity.getBoolean(view.getContext(), PreferenceActivity.PREFERENCE_UPDATES_ONLY);
     }
 }
