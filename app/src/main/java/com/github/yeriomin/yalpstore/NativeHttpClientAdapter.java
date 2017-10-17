@@ -92,6 +92,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         connection.setConnectTimeout(TIMEOUT);
         connection.setReadTimeout(TIMEOUT);
         connection.setRequestProperty("Accept-Encoding", "gzip");
+        connection.addRequestProperty("Cache-Control", "max-age=300");
         for (String headerName: headers.keySet()) {
             connection.addRequestProperty(headerName, headers.get(headerName));
         }
