@@ -15,17 +15,8 @@ import java.util.List;
 
 public class YalpStoreApplication extends Application {
 
-    private boolean appListNeedsUpdate = true;
     private boolean isBackgroundUpdating = false;
     private List<String> pendingUpdates = new ArrayList<>();
-
-    public boolean appListNeedsUpdate() {
-        return appListNeedsUpdate;
-    }
-
-    public void setAppListNeedsUpdate(boolean appListNeedsUpdate) {
-        this.appListNeedsUpdate = appListNeedsUpdate;
-    }
 
     public boolean isBackgroundUpdating() {
         return isBackgroundUpdating;

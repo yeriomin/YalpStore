@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.AppListValidityCheckTask;
 import com.github.yeriomin.yalpstore.task.ForegroundInstalledAppsTask;
 import com.github.yeriomin.yalpstore.view.ListItem;
 import com.github.yeriomin.yalpstore.view.UpdatableAppBadge;
@@ -26,21 +27,18 @@ public class InstalledAppsActivity extends AppListActivity {
                 startActivity(new Intent(getApplicationContext(), UpdatableAppsActivity.class));
             }
         });
-        ((YalpStoreApplication) getApplicationContext()).setAppListNeedsUpdate(true);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        YalpStoreApplication application = (YalpStoreApplication) getApplicationContext();
-        if (application.appListNeedsUpdate()) {
-            loadApps();
-            application.setAppListNeedsUpdate(false);
-        }
+        AppListValidityCheckTask task = new AppListValidityCheckTask(this);
+        task.setIncludeSystemApps(PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS));
+        task.execute();
     }
 
     @Override
-    protected void loadApps() {
+    public void loadApps() {
         new ForegroundInstalledAppsTask(this).execute();
     }
 

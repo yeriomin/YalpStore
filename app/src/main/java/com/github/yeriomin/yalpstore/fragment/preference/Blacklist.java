@@ -7,7 +7,6 @@ import com.github.yeriomin.yalpstore.MultiSelectListPreference;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.Util;
-import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
@@ -89,13 +88,6 @@ public class Blacklist extends Abstract {
             int count = appNames.size();
             appList.setEntries(appNames.values().toArray(new String[count]));
             appList.setEntryValues(appNames.keySet().toArray(new String[count]));
-            appList.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    ((YalpStoreApplication) appList.getContext().getApplicationContext()).setAppListNeedsUpdate(true);
-                    return true;
-                }
-            });
         }
 
         @Override

@@ -9,13 +9,17 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.view.AppBadge;
 import com.github.yeriomin.yalpstore.view.ListItem;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 abstract public class AppListActivity extends YalpStoreActivity {
 
     protected ListView listView;
+    protected Map<String, ListItem> listItems = new HashMap<>();
 
-    abstract protected void loadApps();
+    abstract public void loadApps();
     abstract protected ListItem getListItem(App app);
 
     @Override
@@ -58,11 +62,21 @@ abstract public class AppListActivity extends YalpStoreActivity {
         AppListAdapter adapter = (AppListAdapter) getListView().getAdapter();
         adapter.setNotifyOnChange(false);
         for (App app: appsToAdd) {
-            adapter.add(getListItem(app));
+            ListItem listItem = getListItem(app);
+            listItems.put(app.getPackageName(), listItem);
+            adapter.add(listItem);
         }
         if (update) {
-            ((AppListAdapter) getListView().getAdapter()).notifyDataSetChanged();
+            adapter.notifyDataSetChanged();
         }
+    }
+
+    public void removeApp(String packageName) {
+        ((AppListAdapter) getListView().getAdapter()).remove(listItems.get(packageName));
+    }
+
+    public Set<String> getListedPackageNames() {
+        return listItems.keySet();
     }
 
     public void clearApps() {
