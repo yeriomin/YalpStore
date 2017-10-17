@@ -46,7 +46,8 @@ public class ReviewStorageIterator extends ReviewIterator {
     }
 
     private List<Review> current() {
-        int offset = PAGE_SIZE * page;
-        return list.subList(offset, offset + PAGE_SIZE);
+        int from = PAGE_SIZE * page;
+        int to = from + PAGE_SIZE;
+        return (from < 0 || to > list.size()) ? new ArrayList<Review>() : list.subList(from, to);
     }
 }
