@@ -53,19 +53,12 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
     }
 
     private void verifyAndInstall(App app, DownloadState.TriggeredBy triggeredBy) {
-        boolean autoInstall = triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON) && shouldAutoInstall();
-        if (autoInstall
-            || (
-                needToInstallUpdates()
-                && PreferenceActivity.canInstallInBackground(context)
-                && (triggeredBy.equals(DownloadState.TriggeredBy.SCHEDULED_UPDATE)
-                    || triggeredBy.equals(DownloadState.TriggeredBy.UPDATE_ALL_BUTTON)
-                )
-            )
-        ) {
+        if (shouldInstall(triggeredBy)) {
             Log.i(getClass().getName(), "Launching installer for " + app.getPackageName());
             InstallerAbstract installer = InstallerFactory.get(context);
-            if (autoInstall) {
+            if (triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
+                && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
+            ) {
                 installer.setBackground(false);
             }
             installer.verifyAndInstall(app);
@@ -95,11 +88,17 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
         ContextUtil.toast(context.getApplicationContext(), toastStringId, app.getDisplayName());
     }
 
-    private boolean needToInstallUpdates() {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
-    }
-
-    private boolean shouldAutoInstall() {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL);
+    private boolean shouldInstall(DownloadState.TriggeredBy triggeredBy) {
+        switch (triggeredBy) {
+            case DOWNLOAD_BUTTON:
+                return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL);
+            case UPDATE_ALL_BUTTON:
+                return PreferenceActivity.canInstallInBackground(context);
+            case SCHEDULED_UPDATE:
+                return PreferenceActivity.canInstallInBackground(context) && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
+            case MANUAL_DOWNLOAD_BUTTON:
+            default:
+                return false;
+        }
     }
 }
