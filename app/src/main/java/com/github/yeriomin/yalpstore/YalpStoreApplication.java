@@ -5,11 +5,15 @@ import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
+import android.net.http.HttpResponseCache;
 import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,10 +35,19 @@ public class YalpStoreApplication extends Application {
     }
 
     public void removePendingUpdate(String packageName) {
+        removePendingUpdate(packageName, false);
+    }
+
+    public void removePendingUpdate(String packageName, boolean installed) {
         pendingUpdates.remove(packageName);
+        Intent appIntent = new Intent(UpdateAllReceiver.ACTION_APP_UPDATE_COMPLETE);
+        appIntent.putExtra(UpdateAllReceiver.EXTRA_PACKAGE_NAME, packageName);
+        appIntent.putExtra(UpdateAllReceiver.EXTRA_UPDATE_ACTUALLY_INSTALLED, installed);
+        sendBroadcast(appIntent, null);
         if (pendingUpdates.isEmpty()) {
             isBackgroundUpdating = false;
-            sendBroadcast(new Intent(UpdateAllReceiver.ACTION_UPDATE_COMPLETE));
+            Intent allIntent = new Intent(UpdateAllReceiver.ACTION_ALL_UPDATES_COMPLETE);
+            sendBroadcast(allIntent, null);
         }
     }
 

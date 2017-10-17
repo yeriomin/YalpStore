@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.SearchManager;
+import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -94,6 +95,18 @@ public abstract class YalpStoreActivity extends Activity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void unregisterReceiver(BroadcastReceiver receiver) {
+        if (null == receiver) {
+            return;
+        }
+        try {
+            super.unregisterReceiver(receiver);
+        } catch (IllegalArgumentException e) {
+            // Ignoring
+        }
     }
 
     protected boolean isGranted(int requestCode, String permissions[], int[] grantResults) {

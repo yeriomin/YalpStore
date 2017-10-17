@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.AppListValidityCheckTask;
 import com.github.yeriomin.yalpstore.task.playstore.ForegroundUpdatableAppsTask;
 import com.github.yeriomin.yalpstore.view.ListItem;
 import com.github.yeriomin.yalpstore.view.UpdatableAppBadge;
@@ -25,14 +26,15 @@ public class UpdatableAppsActivity extends AppListActivity {
     protected void onResume() {
         super.onResume();
         updateAllReceiver = new UpdateAllReceiver(this);
+        AppListValidityCheckTask task = new AppListValidityCheckTask(this);
+        task.setRespectUpdateBlacklist(true);
+        task.execute();
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        if (null != updateAllReceiver) {
-            unregisterReceiver(updateAllReceiver);
-        }
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(updateAllReceiver);
     }
 
     @Override
@@ -44,7 +46,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     }
 
     @Override
-    protected void loadApps() {
+    public void loadApps() {
         getTask().execute();
     }
 

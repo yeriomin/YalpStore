@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -23,10 +24,8 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         String packageName = intent.getData().getSchemeSpecificPart();
         Log.i(getClass().getName(), "Finished installation of " + packageName);
         updateDetails(intent);
-        YalpStoreApplication application = (YalpStoreApplication) context.getApplicationContext();
-        application.setAppListNeedsUpdate(true);
-        application.removePendingUpdate(packageName);
-        if (needToRemoveApk(context) && action.equals(Intent.ACTION_PACKAGE_ADDED)) {
+        ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall(intent));
+        if (needToRemoveApk(context) && actionIsInstall(intent)) {
             App app = getApp(context, packageName);
             File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
             boolean deleted = apkPath.delete();
@@ -38,19 +37,31 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         if (null == DetailsActivity.app) {
             return;
         }
-        if (intent.getAction().equals(Intent.ACTION_PACKAGE_REMOVED)
-            || intent.getAction().equals(Intent.ACTION_PACKAGE_FULLY_REMOVED)
-        ) {
+        if (actionIsUninstall(intent)) {
             DetailsActivity.app.getPackageInfo().versionCode = 0;
             DetailsActivity.app.setInstalled(false);
-        } else if (intent.getAction().equals(Intent.ACTION_PACKAGE_INSTALL)
-            || intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)
-            || intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)
-            || intent.getAction().equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
-        ) {
+        } else if (actionIsInstall(intent)) {
             DetailsActivity.app.getPackageInfo().versionCode = DetailsActivity.app.getVersionCode();
             DetailsActivity.app.setInstalled(true);
         }
+    }
+
+    static private boolean actionIsUninstall(Intent intent) {
+        return !TextUtils.isEmpty(intent.getAction())
+            && (intent.getAction().equals(Intent.ACTION_PACKAGE_REMOVED)
+                || intent.getAction().equals(Intent.ACTION_PACKAGE_FULLY_REMOVED)
+            )
+        ;
+    }
+
+    static private boolean actionIsInstall(Intent intent) {
+        return !TextUtils.isEmpty(intent.getAction())
+            && (intent.getAction().equals(Intent.ACTION_PACKAGE_INSTALL)
+                || intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)
+                || intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)
+                || intent.getAction().equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
+            )
+        ;
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)

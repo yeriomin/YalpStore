@@ -27,14 +27,10 @@ public class DownloadOrInstall extends Abstract {
     }
 
     public void unregisterReceivers() {
-        if (null != downloadReceiver) {
-            activity.unregisterReceiver(downloadReceiver);
-            downloadReceiver = null;
-        }
-        if (null != installReceiver) {
-            activity.unregisterReceiver(installReceiver);
-            installReceiver = null;
-        }
+        activity.unregisterReceiver(downloadReceiver);
+        downloadReceiver = null;
+        activity.unregisterReceiver(installReceiver);
+        installReceiver = null;
     }
 
     public void registerReceivers() {
