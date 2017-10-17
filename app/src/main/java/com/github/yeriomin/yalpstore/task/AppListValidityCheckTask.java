@@ -35,7 +35,7 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String
         Set<String> newPackageNames = new HashSet<>(installedPackageNames);
         newPackageNames.removeAll(activity.getListedPackageNames());
         if (newPackageNames.size() > 0) {
-            Log.i(getClass().getName(), newPackageNames.size() + " new packages not found in list. Rebuilding.");
+            Log.i(getClass().getName(), "Rebuilding app list");
             activity.loadApps();
             return;
         }
