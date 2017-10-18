@@ -245,7 +245,7 @@ Fortfahren?"</string>
 <string name="bug_report_explanation_crash">"Du kannst helfen, dies zu beheben, indem du ein Fehlerbericht an den Entwickler sendest. Bitte beschreibe, was du versucht hast zu tun, als der Fehler auftrat und drücke OK um ihn zu versenden."</string>
 <string name="bug_report_explanation_bug_report">"Bitte beschreibe das Problem. Sei so präzise wie möglich. Tritt das Problem bei einer bestimmten App auf? Passiert es immer oder nur manchmal? Wie kann es reproduziert werden?"</string>
 <string name="thank_you">"Danke!"</string>
-<string name="list_updating">"Wird aktualisiert..."</string>
+<string name="list_updating">"Wird aktualisiert…"</string>
 <string name="error_invalid_device_definition">"Gerätebeschreibung abgelehnt"</string>
 <string name="details_video">"Video"</string>
 <string name="error_could_not_download">"Konnte nicht heruntergeladen werden"</string>
@@ -262,4 +262,7 @@ Fortfahren?"</string>
 <string name="notification_not_privileged">"Berechtigung zum Installieren nicht bewilligt."</string>
 <string name="about_paypal_label">"Spenden:"</string>
 <string name="pref_download_directory">"Download-Ordner"</string>
+<string name="pref_download_deltas">"Delta-Aktualisierungen"</string>
+<string name="pref_download_deltas_summary_off">"Die gesamte apk wird jedes Mal heruntergeladen"</string>
+<string name="pref_download_deltas_summary_on">"Beim Aktualisieren werden nur Änderungen heruntergeladen"</string>
 </resources>
