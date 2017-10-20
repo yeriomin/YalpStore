@@ -11,6 +11,7 @@ import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.playstoreapi.DeviceInfoProvider;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
+import com.github.yeriomin.playstoreapi.TokenDispenserException;
 import com.github.yeriomin.yalpstore.model.LoginInfo;
 
 import java.io.IOException;
@@ -89,7 +90,7 @@ public class PlayStoreApiAuthenticator {
                 return api;
             } catch (ApiBuilderException e) {
                 Log.i(getClass().getName(), "ApiBuilderException: " + e.getMessage());
-            } catch (AuthException e) {
+            } catch (AuthException | TokenDispenserException e) {
                 tried++;
                 if (tried >= retries) {
                     throw e;
