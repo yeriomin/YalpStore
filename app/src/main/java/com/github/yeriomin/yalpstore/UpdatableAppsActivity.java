@@ -28,6 +28,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         updateAllReceiver = new UpdateAllReceiver(this);
         AppListValidityCheckTask task = new AppListValidityCheckTask(this);
         task.setRespectUpdateBlacklist(true);
+        task.setIncludeSystemApps(true);
         task.execute();
     }
 
