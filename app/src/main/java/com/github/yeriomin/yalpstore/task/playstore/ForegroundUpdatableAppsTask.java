@@ -60,9 +60,7 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
             return;
         }
         activity.addApps(updatableApps);
-        if (this.updatableApps.isEmpty()) {
-            this.errorView.setText(R.string.list_empty_updates);
-        }
+        this.errorView.setText(R.string.list_empty_updates);
         toggleUpdateAll(this.updatableApps.size() > 0);
     }
 
