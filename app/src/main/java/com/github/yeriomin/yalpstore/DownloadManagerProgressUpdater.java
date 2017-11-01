@@ -27,9 +27,13 @@ public class DownloadManagerProgressUpdater {
             new Runnable() {
                 @Override
                 public void run() {
-                    DownloadState.get(downloadId).setProgress(downloadId, progress.first, progress.second);
+                    DownloadState state = DownloadState.get(downloadId);
+                    if (null == state) {
+                        return;
+                    }
+                    state.setProgress(downloadId, progress.first, progress.second);
                     listener.onDownloadProgress();
-                    if (DownloadState.get(downloadId).isEverythingFinished()) {
+                    if (state.isEverythingFinished()) {
                         return;
                     }
                     update();
