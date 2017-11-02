@@ -6,7 +6,7 @@ android:
   - tools
   - tools
   - platform-tools
-  - build-tools-26.0.0
+  - build-tools-26.0.2
   - android-26
 before_install:
   - openssl aes-256-cbc -K $encrypted_a12ad885c361_key -iv $encrypted_a12ad885c361_iv -in yeriomin-keystore.jks.enc -out yeriomin-keystore.jks -d
@@ -23,7 +23,7 @@ before_deploy:
   - cd app/build/outputs/apk/
   - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $TRAVIS_BUILD_DIR/yeriomin-keystore.jks -storepass $storepass -keypass $keypass app-release-unsigned.apk AndroidKey
   - jarsigner -verify app-release-unsigned.apk
-  - "$ANDROID_HOME/build-tools/26.0.0/zipalign -v 4 app-release-unsigned.apk $APK_NAME"
+  - "$ANDROID_HOME/build-tools/26.0.2/zipalign -v 4 app-release-unsigned.apk $APK_NAME"
   - "cp $APK_NAME $TRAVIS_BUILD_DIR/yalp-store-ota-zip/YalpStore.apk"
   - "cp $APK_NAME $TRAVIS_BUILD_DIR"
   - "cd $TRAVIS_BUILD_DIR/yalp-store-ota-zip"
