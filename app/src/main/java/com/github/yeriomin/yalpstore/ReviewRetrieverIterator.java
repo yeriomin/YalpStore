@@ -1,5 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
+import android.util.Log;
+
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.model.Review;
 import com.github.yeriomin.yalpstore.model.ReviewBuilder;
@@ -21,15 +23,18 @@ public class ReviewRetrieverIterator extends ReviewIterator {
     @Override
     public List<Review> next() {
         page++;
+        List<Review> list = new ArrayList<>();
         try {
-            List<Review> list = getReviews(packageName, PAGE_SIZE * page, PAGE_SIZE);
+            list.addAll(getReviews(packageName, PAGE_SIZE * page, PAGE_SIZE));
             if (list.size() < PAGE_SIZE) {
                 hasNext = false;
             }
-            return list;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            // Review list does not seem important enough to let tha app crash if something happens here
+            // TODO: It is unclear if this error even should be shown in the UI
+            Log.i(getClass().getName(), e.getClass().getName() + ": " + e.getMessage());
         }
+        return list;
     }
 
     private List<Review> getReviews(String packageId, int offset, int numberOfResults) throws IOException {
