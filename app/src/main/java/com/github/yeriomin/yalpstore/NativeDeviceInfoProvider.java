@@ -72,12 +72,18 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     private AndroidCheckinProto getCheckinProto() {
+        String networkOperator = "";
+        String simOperator = "";
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (null != tm) {
+            networkOperator = null != tm.getNetworkOperator() ? tm.getNetworkOperator() : "";
+            simOperator = null != tm.getSimOperator() ? tm.getSimOperator() : "";
+        }
         return AndroidCheckinProto.newBuilder()
             .setBuild(getBuildProto())
             .setLastCheckinMsec(0)
-            .setCellOperator(tm.getNetworkOperator())
-            .setSimOperator(tm.getSimOperator())
+            .setCellOperator(networkOperator)
+            .setSimOperator(simOperator)
             .setRoaming("mobile-notroaming")
             .setUserNumber(0)
             .build()
