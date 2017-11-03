@@ -36,8 +36,8 @@ public abstract class AppBadge extends ListItem {
         view.findViewById(R.id.app).setVisibility(View.VISIBLE);
 
         ((TextView) view.findViewById(R.id.text1)).setText(app.getDisplayName());
-        ((TextView) view.findViewById(R.id.text2)).setText(TextUtils.join(", ", line2));
-        ((TextView) view.findViewById(R.id.text3)).setText(TextUtils.join(", ", line3));
+        setText(R.id.text2, TextUtils.join(", ", line2));
+        setText(R.id.text3, TextUtils.join(", ", line3));
 
         drawIcon((ImageView) view.findViewById(R.id.icon));
     }

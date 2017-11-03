@@ -24,16 +24,15 @@
             android:orientation="vertical"
             android:layout_gravity="center_vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/text1"
                 android:textSize="18sp"
                 android:layout_width="fill_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1.2"
+                android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:ellipsize="end"
                 android:gravity="center_vertical" />
 
@@ -41,18 +40,18 @@
                 android:id="@+id/text2"
                 android:textSize="16sp"
                 android:layout_width="fill_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1"
-                android:maxLines="1"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:visibility="gone"
                 android:ellipsize="end" />
 
             <TextView
                 android:id="@+id/text3"
                 android:textSize="16sp"
                 android:layout_width="fill_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1"
-                android:maxLines="1"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:visibility="gone"
                 android:ellipsize="end" />
 
         </LinearLayout>
