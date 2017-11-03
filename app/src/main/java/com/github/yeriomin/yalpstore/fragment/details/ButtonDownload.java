@@ -28,20 +28,8 @@ import static com.github.yeriomin.yalpstore.DownloadState.TriggeredBy.MANUAL_DOW
 
 public class ButtonDownload extends Button {
 
-    private ImageButton cancelButton;
-
     public ButtonDownload(final DetailsActivity activity, final App app) {
         super(activity, app);
-        cancelButton = activity.findViewById(R.id.cancel);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentCancel = new Intent(activity.getApplicationContext(), CancelDownloadService.class);
-                intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
-                activity.startService(intentCancel);
-                v.setVisibility(View.GONE);
-            }
-        });
     }
 
     @Override
@@ -65,7 +53,7 @@ public class ButtonDownload extends Button {
             activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
         } else if (activity.checkPermission()) {
             download();
-            cancelButton.setVisibility(View.VISIBLE);
+            activity.findViewById(R.id.cancel).setVisibility(View.VISIBLE);
         } else {
             activity.requestPermission();
         }

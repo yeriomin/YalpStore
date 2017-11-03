@@ -8,6 +8,7 @@ import android.util.Log;
 import com.github.yeriomin.yalpstore.DownloadManagerFactory;
 import com.github.yeriomin.yalpstore.DownloadManagerInterface;
 import com.github.yeriomin.yalpstore.DownloadState;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class CancelDownloadService extends IntentService {
             downloadIds.add(downloadId);
         }
         if (!TextUtils.isEmpty(packageName)) {
+            ((YalpStoreApplication) getApplicationContext()).removePendingUpdate(packageName);
             downloadIds.addAll(DownloadState.get(packageName).getDownloadIds());
         }
         for (long id: downloadIds) {
