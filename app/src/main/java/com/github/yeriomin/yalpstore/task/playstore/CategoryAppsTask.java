@@ -7,7 +7,7 @@ import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 
 import java.io.IOException;
 
-public class CategoryAppsTask extends EndlessScrollTask {
+public class CategoryAppsTask extends EndlessScrollTask implements CloneableTask {
 
     private String categoryId;
 
@@ -17,6 +17,16 @@ public class CategoryAppsTask extends EndlessScrollTask {
 
     public CategoryAppsTask(AppListIterator iterator) {
         super(iterator);
+    }
+
+    @Override
+    public CloneableTask clone() {
+        CategoryAppsTask task = new CategoryAppsTask(iterator);
+        task.setCategoryId(categoryId);
+        task.setErrorView(errorView);
+        task.setContext(context);
+        task.setProgressIndicator(progressIndicator);
+        return task;
     }
 
     @Override

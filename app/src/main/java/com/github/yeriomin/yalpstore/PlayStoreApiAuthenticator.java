@@ -29,7 +29,7 @@ public class PlayStoreApiAuthenticator {
         this.context = context;
     }
 
-    public GooglePlayAPI getApi() throws IOException {
+    public GooglePlayAPI getApi() throws CredentialsEmptyException {
         if (api == null) {
             api = build();
         }
@@ -60,7 +60,7 @@ public class PlayStoreApiAuthenticator {
         api = null;
     }
 
-    private GooglePlayAPI build() throws IOException {
+    private GooglePlayAPI build() throws CredentialsEmptyException {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String email = prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, "");
         if (TextUtils.isEmpty(email)) {
@@ -68,7 +68,13 @@ public class PlayStoreApiAuthenticator {
         }
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setEmail(email);
-        return build(loginInfo);
+        try {
+            return build(loginInfo);
+        } catch (CredentialsEmptyException e) {
+            throw e;
+        } catch (IOException e) {
+            throw new RuntimeException("IOException while building api object from preferences: " + e.getMessage(), e);
+        }
     }
 
     private GooglePlayAPI build(LoginInfo loginInfo) throws IOException {
@@ -81,10 +87,11 @@ public class PlayStoreApiAuthenticator {
 
     private GooglePlayAPI build(LoginInfo loginInfo, int retries) throws IOException {
         int tried = 0;
+        TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
         while (tried < retries) {
             try {
                 Log.i(getClass().getName(), "Login attempt #" + (tried + 1));
-                com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = getBuilder(loginInfo);
+                com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = getBuilder(loginInfo, tokenDispenserMirrors.get());
                 GooglePlayAPI api = builder.build();
                 loginInfo.setEmail(builder.getEmail());
                 return api;
@@ -100,7 +107,7 @@ public class PlayStoreApiAuthenticator {
         return null;
     }
 
-    private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
+    private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo, String tokenDispenserUrl) {
         fill(loginInfo);
         return new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
             .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
@@ -110,7 +117,7 @@ public class PlayStoreApiAuthenticator {
             .setPassword(loginInfo.getPassword())
             .setGsfId(loginInfo.getGsfId())
             .setToken(loginInfo.getToken())
-            .setTokenDispenserUrl(TokenDispenserMirrors.get())
+            .setTokenDispenserUrl(tokenDispenserUrl)
         ;
     }
 

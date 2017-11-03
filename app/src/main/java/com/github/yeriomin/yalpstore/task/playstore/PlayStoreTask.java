@@ -4,11 +4,13 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.AuthException;
+import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.yalpstore.AccountTypeDialogBuilder;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.CredentialsEmptyException;
 import com.github.yeriomin.yalpstore.FirstLaunchChecker;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
+import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.task.TaskWithProgress;
 
@@ -86,6 +88,11 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
                 ContextUtil.toast(context, R.string.first_login_message);
                 return;
             }
+        } else if (e.getCode() == 401 && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL)) {
+            Log.i(getClass().getName(), "Token is stale");
+            new PlayStoreApiAuthenticator(context).logout();
+            builder.logInWithPredefinedAccount();
+            return;
         } else {
             ContextUtil.toast(this.context, R.string.error_incorrect_password);
             new PlayStoreApiAuthenticator(context).logout();

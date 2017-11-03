@@ -21,12 +21,24 @@ import com.github.yeriomin.yalpstore.R;
 
 import java.io.IOException;
 
-public class PurchaseTask extends DeliveryDataTask {
+public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 
     static public final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
 
     private DownloadState.TriggeredBy triggeredBy = DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
     private OnDownloadProgressListener listener;
+
+    @Override
+    public CloneableTask clone() {
+        PurchaseTask task = new PurchaseTask();
+        task.setOnDownloadProgressListener(listener);
+        task.setTriggeredBy(triggeredBy);
+        task.setApp(app);
+        task.setErrorView(errorView);
+        task.setContext(context);
+        task.setProgressIndicator(progressIndicator);
+        return task;
+    }
 
     public void setTriggeredBy(DownloadState.TriggeredBy triggeredBy) {
         this.triggeredBy = triggeredBy;

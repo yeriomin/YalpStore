@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.DocV2;
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
 
@@ -18,6 +19,10 @@ public class AppListIterator implements Iterator {
 
     public AppListIterator(com.github.yeriomin.playstoreapi.AppListIterator iterator) {
         this.iterator = iterator;
+    }
+
+    public void setGooglePlayApi(GooglePlayAPI googlePlayApi) {
+        iterator.setGooglePlayApi(googlePlayApi);
     }
 
     public void setHideNonfreeApps(boolean hideNonfreeApps) {

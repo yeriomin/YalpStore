@@ -84,6 +84,6 @@ dependencies {
     compile 'commons-net:commons-net:3.5'
     compile 'com.nothome:javaxdelta:2.0.1'
     debugCompile 'com.github.yeriomin:play-store-api:master-SNAPSHOT'
-    releaseCompile 'com.github.yeriomin:play-store-api:0.27'
+    releaseCompile 'com.github.yeriomin:play-store-api:0.29'
     compile 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }
