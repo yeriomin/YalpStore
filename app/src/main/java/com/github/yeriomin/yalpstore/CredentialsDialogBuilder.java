@@ -69,7 +69,9 @@ abstract public class CredentialsDialogBuilder {
             if (null != caller) {
                 builder.setCaller(caller);
             }
-            builder.show();
+            if (ContextUtil.isAlive(context)) {
+                builder.show();
+            }
         }
 
         @Override
