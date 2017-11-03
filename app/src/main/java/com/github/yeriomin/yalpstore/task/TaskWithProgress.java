@@ -32,7 +32,7 @@ abstract public class TaskWithProgress<T> extends AsyncTask<String, Void, T> {
 
     @Override
     protected void onPreExecute() {
-        if (null != this.progressDialog) {
+        if (null != this.progressDialog && ContextUtil.isAlive(context)) {
             this.progressDialog.show();
         }
         if (null != progressIndicator) {
