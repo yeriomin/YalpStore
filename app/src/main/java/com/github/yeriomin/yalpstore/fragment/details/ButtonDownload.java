@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -79,6 +80,8 @@ public class ButtonDownload extends Button {
         } else if (prepareDownloadsDir()) {
             getPurchaseTask().execute();
         } else {
+            File dir = Paths.getYalpPath(activity);
+            Log.i(getClass().getName(), dir.getAbsolutePath() + " exists=" + dir.exists() + ", isDirectory=" + dir.isDirectory() + ", writable=" + dir.canWrite());
             ContextUtil.toast(this.activity.getApplicationContext(), R.string.error_downloads_directory_not_writable);
         }
     }
