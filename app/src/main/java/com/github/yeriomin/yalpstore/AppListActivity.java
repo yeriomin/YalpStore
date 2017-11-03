@@ -73,6 +73,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
 
     public void removeApp(String packageName) {
         ((AppListAdapter) getListView().getAdapter()).remove(listItems.get(packageName));
+        listItems.remove(packageName);
     }
 
     public Set<String> getListedPackageNames() {
@@ -80,6 +81,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
     }
 
     public void clearApps() {
+        listItems.clear();
         ((AppListAdapter) getListView().getAdapter()).clear();
     }
 

@@ -3,7 +3,6 @@ package com.github.yeriomin.yalpstore.task;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.github.yeriomin.yalpstore.AppListActivity;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
@@ -35,14 +34,12 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String
         Set<String> newPackageNames = new HashSet<>(installedPackageNames);
         newPackageNames.removeAll(activity.getListedPackageNames());
         if (!respectUpdateBlacklist && newPackageNames.size() > 0) {
-            Log.i(getClass().getName(), "Rebuilding app list");
             activity.loadApps();
             return;
         }
         Set<String> removedPackageNames = new HashSet<>(activity.getListedPackageNames());
         removedPackageNames.removeAll(installedPackageNames);
         for (String packageName: removedPackageNames) {
-            Log.i(getClass().getName(), "Removing package from list: " + packageName);
             activity.removeApp(packageName);
         }
     }
