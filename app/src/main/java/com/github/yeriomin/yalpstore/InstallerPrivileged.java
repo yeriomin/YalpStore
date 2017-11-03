@@ -86,13 +86,20 @@ public class InstallerPrivileged extends InstallerBackground {
     @Override
     protected void install(App app) {
         File apkFile = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
-        if (!apkFile.exists()) throw new IllegalArgumentException();
+        if (!apkFile.exists()) {
+            Log.e(getClass().getName(), "Installation requested for apk " + apkFile.getAbsolutePath() + " which does not exist");
+            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
+            context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED));
+            return;
+        }
         PackageManager pm = context.getPackageManager();
         Class<?>[] types = new Class[] {Uri.class, IPackageInstallObserver.class, int.class, String.class};
         try {
             pm.getClass().getMethod("installPackage", types).invoke(pm, Uri.fromFile(apkFile), new InstallObserver(app), INSTALL_REPLACE_EXISTING, BuildConfig.APPLICATION_ID);
         } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
+            Log.e(getClass().getName(), "Could not start privileged installation: " + e.getClass().getName() + " " + e.getMessage());
+            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
+            context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED));
         }
     }
 
