@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -81,6 +82,9 @@ public class SearchActivity extends EndlessScrollActivity {
     }
 
     private boolean looksLikeAPackageId(String query) {
+        if (TextUtils.isEmpty(query)) {
+            return false;
+        }
         String pattern = "([\\p{L}_$][\\p{L}\\p{N}_$]*\\.)+[\\p{L}_$][\\p{L}\\p{N}_$]*";
         Pattern r = Pattern.compile(pattern);
         return r.matcher(query).matches();
