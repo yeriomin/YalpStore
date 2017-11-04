@@ -20,7 +20,7 @@ before_deploy:
   - export VERSION_CODE=`echo $TRAVIS_TAG | cut -d"." -f2`
   - export APK_NAME=com.github.yeriomin.yalpstore_$VERSION_CODE.apk
   - export OTA_NAME=yalp-store-ota-$VERSION_CODE.zip
-  - cd app/build/outputs/apk/
+  - cd app/build/outputs/apk/release/
   - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $TRAVIS_BUILD_DIR/yeriomin-keystore.jks -storepass $storepass -keypass $keypass app-release-unsigned.apk AndroidKey
   - jarsigner -verify app-release-unsigned.apk
   - "$ANDROID_HOME/build-tools/26.0.2/zipalign -v 4 app-release-unsigned.apk $APK_NAME"
