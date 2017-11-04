@@ -51,6 +51,9 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
 
     private static String getResponseHeaders(Map<String, List<String>> headers) {
         StringBuilder responseHeaders = new StringBuilder();
+        if (null == headers) {
+            return "";
+        }
         for (String key: headers.keySet()) {
             List<String> header = headers.get(key);
             if (null == header || header.isEmpty()) {
