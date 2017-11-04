@@ -109,7 +109,11 @@ abstract public class CredentialsDialogBuilder {
                         public void onClick(DialogInterface dialog, int which) {
                             Intent i = new Intent(Intent.ACTION_VIEW);
                             i.setData(Uri.parse(APP_PASSWORDS_URL));
-                            context.startActivity(i);
+                            if (i.resolveActivity(context.getPackageManager()) != null) {
+                                context.startActivity(i);
+                            } else {
+                                Log.e(getClass().getName(), "No application available to handle http links... very strange");
+                            }
                             android.os.Process.killProcess(android.os.Process.myPid());
                         }
                     }
