@@ -4,7 +4,7 @@
 <string name="about_logged_in">"U bent ingelogd als:"</string>
 <string name="about_copied_to_clipboard">"Gekopieerd naar het klembord"</string>
 <string name="list_line_2_updatable">"Geüpdatet op %1$s"</string>
-<string name="list_empty_updates">"Geen apps moeten worden bijgewerkt"</string>
+<string name="list_empty_updates">"Alle apps zijn up to date"</string>
 <string name="list_empty_search">"Geen apps gevonden"</string>
 <string name="list_incompatible">"Incompatibel"</string>
 <string name="action_about">"Over"</string>
@@ -98,7 +98,7 @@ Wees alert dat het gebruik van deze app in gaat tegen het ToS van de Play Store.
 <string name="pref_background_update_interval_hourly">"Elk uur"</string>
 <string name="pref_background_update_interval_daily">"Dagelijks"</string>
 <string name="pref_background_update_interval_weekly">"Wekelijks"</string>
-<string name="pref_background_update_interval">"Controlleer periodiek voor updates"</string>
+<string name="pref_background_update_interval">"Controleer periodiek voor updates"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Onbekende fout."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Onbekende bestand opslag fout."</string>
 <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Er is HTTP code ontvangen die de download manager niet kan gebruiken. Dit is een server error."</string>
@@ -133,7 +133,7 @@ Wees alert dat het gebruik van deze app in gaat tegen het ToS van de Play Store.
 <string name="details_no_ads">"Geen reclames"</string>
 <string name="dialog_title_package_id">"Package met deze naam bestaat"</string>
 <string name="dialog_message_package_id">"Er is een package met dezelfde naam. Wilt u naar de details pagina?"</string>
-<string name="details_download_checking">"Aan het checken…"</string>
+<string name="details_download_checking">"Controleren…"</string>
 <string name="details_download_not_available">"Niet beschikbaar"</string>
 <string name="manual_download_incompatible">"Google Play Store beschouwd deze app als incompatibel met jouw toestel. Dit betekend dat de versie code nog niet is opgegeven door de Google Play Store server."</string>
 <string name="manual_download_compatible">"Versiecode veld is voorgevuld met de nieuwste compatibele versiecode van deze app. Als u de vorige versie wilt, voert u gewoon een nummer in die kleiner is dan de huidige. Als de ontwikkelaar de apk van de vorige versie van Play Store niet heeft verwijderd, kunt u de download starten."</string>
@@ -146,13 +146,16 @@ Houd er rekening mee dat het downloaden van willekeurige versies van apps niet o
 <string name="details_uninstall">"deïnstalleer"</string>
 <string name="notification_download_starting">"Download wordt gestart"</string>
 <string name="notification_download_progress">"%1$s van de %2$s gedownload"</string>
-<string name="pref_requested_language">"Play Store heeft taal nodig"</string>
+<string name="pref_requested_language">"Play Store tonen in:"</string>
 <string name="pref_requested_language_default">"Je standaard taal"</string>
 <string name="pref_hide_apps_with_ads">"Verberg apps met reclames"</string>
 <string name="pref_hide_apps_with_ads_summary_off">"Apps met reclame worden nu getoond"</string>
 <string name="pref_hide_apps_with_ads_summary_on">"Apps met reclame worden nu niet getoond"</string>
-<string name="pref_device_to_pretend_to_be">"Doe alsof dit een ander toestel is"</string>
-<string name="pref_device_to_pretend_to_be_default">"Je originele toestel info"</string>
+
+<!-- Originele engelse tekst is slecht te vertalen, eerdere vertaling "Doe alsof dit een ander toestel is" is een vage vertaling. -->
+<!-- Fuzzy -->
+<string name="pref_device_to_pretend_to_be">"Gebruik apparaat info van"</string>
+<string name="pref_device_to_pretend_to_be_default">"Uw eigen apparaat"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Deze wijziging wordt toegepast wanneer u opnieuw inlogt"</string>
 <string name="pref_category_updates">"Updates"</string>
 <string name="pref_category_search">"Zoek filteren"</string>
@@ -175,7 +178,7 @@ Houd er rekening mee dat het downloaden van willekeurige versies van apps niet o
 <string name="details_not_available_on_play_store">"Niet beschikbaar op de Play Store"</string>
 <string name="action_manual">"Handmatige download"</string>
 <string name="action_get_local_apk">"Verkrijg lokale apk"</string>
-<string name="details_saved_in_downloads">"Opgeslagen in je Downloads map"</string>
+<string name="details_saved_in_downloads">"Opgeslagen in de map Downloads"</string>
 <string name="details_could_not_copy_apk">"Apk kon niet worden gekopieerd"</string>
 <string name="action_make_system">"Converteer naar systeem app"</string>
 <string name="action_make_normal">"Concerteer naar normale app"</string>
@@ -259,5 +262,8 @@ Nu doen?"</string>
 <string name="testing_program_section_opted_out_title">"Bètatester worden"</string>
 <string name="notification_not_privileged">"Installatie permissie niet toegezegd"</string>
 <string name="about_paypal_label">"Doneer:"</string>
-<string name="pref_download_directory">"Download folder"</string>
+<string name="pref_download_directory">"Download locatie"</string>
+<string name="pref_download_deltas">"Delta updates"</string>
+<string name="pref_download_deltas_summary_off">"De volledige apk wordt bij iedere update gedownload"</string>
+<string name="pref_download_deltas_summary_on">"Alleen de veranderingen aan de app worden gedownload"</string>
 </resources>
