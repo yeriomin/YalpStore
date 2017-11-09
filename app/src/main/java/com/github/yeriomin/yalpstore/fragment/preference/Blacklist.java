@@ -58,6 +58,7 @@ public class Blacklist extends Abstract {
                     ? R.string.pref_update_list_black
                     : R.string.pref_update_list_white
             ));
+            appList.setDialogTitle(appList.getTitle());
             preference.setSummary(appList.getContext().getString(
                 isBlackList
                     ? R.string.pref_update_list_white_or_black_black
