@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -27,7 +28,7 @@ public class PermissionsComparator {
         }
         Set<String> newPermissions = new HashSet<>(app.getPermissions());
         newPermissions.removeAll(oldPermissions);
-        Log.i(getClass().getName(), app.getPackageName() + " requests " + newPermissions.size() + " new permissions");
+        Log.i(getClass().getName(), app.getPackageName() + " requests new permissions: " + TextUtils.join(", ", newPermissions));
         return newPermissions.isEmpty();
     }
 
