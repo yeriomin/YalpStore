@@ -22,12 +22,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static com.github.yeriomin.playstoreapi.GooglePlayAPI.FDFE_URL;
+
 public class UpdatableAppsTask extends RemoteAppListTask {
 
     protected List<App> updatableApps = new ArrayList<>();
 
     @Override
     protected List<App> getResult(GooglePlayAPI api, String... packageNames) throws IOException {
+        api.genericGet(FDFE_URL + "toc", null);
         Map<String, App> installedApps = getInstalledApps();
         for (App appFromMarket: getAppsFromPlayStore(api, filterBlacklistedApps(installedApps).keySet())) {
             String packageName = appFromMarket.getPackageName();
