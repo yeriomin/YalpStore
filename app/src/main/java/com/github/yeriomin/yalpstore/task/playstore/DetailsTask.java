@@ -5,11 +5,13 @@ import android.content.pm.PackageManager;
 import com.github.yeriomin.playstoreapi.DetailsResponse;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.GooglePlayException;
+import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
 import com.github.yeriomin.yalpstore.model.ReviewBuilder;
+import com.github.yeriomin.yalpstore.selfupdate.UpdaterFactory;
 
 import java.io.IOException;
 
@@ -43,6 +45,26 @@ public class DetailsTask extends PlayStorePayloadTask<App> {
         } catch (PackageManager.NameNotFoundException e) {
             // App is not installed
         }
+        return app;
+    }
+
+    @Override
+    protected App doInBackground(String... arguments) {
+        return packageName.equals(BuildConfig.APPLICATION_ID) ? getSelf() : super.doInBackground(arguments);
+    }
+
+    private App getSelf() {
+        App app = new App();
+        PackageManager pm = context.getPackageManager();
+        try {
+            app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
+            app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
+        } catch (PackageManager.NameNotFoundException e) {
+            // App is not installed
+        }
+        int latestVersionCode = UpdaterFactory.get(context).getLatestVersionCode();
+        app.setVersionCode(latestVersionCode);
+        app.setVersionName("0." + latestVersionCode);
         return app;
     }
 }
