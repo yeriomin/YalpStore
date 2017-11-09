@@ -36,7 +36,7 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     @Override
     protected List<App> getResult(GooglePlayAPI api, String... packageNames) throws IOException {
         super.getResult(api, packageNames);
-        if (!success() || !new BlackWhiteListManager(context).isUpdatable(BuildConfig.APPLICATION_ID)) {
+        if (!new BlackWhiteListManager(context).isUpdatable(BuildConfig.APPLICATION_ID)) {
             return updatableApps;
         }
         int latestVersionCode = UpdaterFactory.get(context).getLatestVersionCode();
@@ -56,12 +56,11 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     protected void onPostExecute(List<App> result) {
         super.onPostExecute(result);
         activity.clearApps();
-        if (!success()) {
-            return;
-        }
         activity.addApps(updatableApps);
-        this.errorView.setText(R.string.list_empty_updates);
-        toggleUpdateAll(this.updatableApps.size() > 0);
+        if (!noNetwork(getException()) && updatableApps.isEmpty()) {
+            this.errorView.setText(R.string.list_empty_updates);
+        }
+        toggleUpdateAll(!updatableApps.isEmpty());
     }
 
     private void toggleUpdateAll(boolean enable) {

@@ -1,6 +1,12 @@
 package com.github.yeriomin.yalpstore.selfupdate;
 
+import android.content.Context;
+
 class UpdaterGithub extends Updater {
+
+    public UpdaterGithub(Context context) {
+        super(context);
+    }
 
     @Override
     public String getUrlString(int versionCode) {

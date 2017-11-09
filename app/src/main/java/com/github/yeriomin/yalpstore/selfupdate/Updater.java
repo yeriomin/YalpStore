@@ -1,5 +1,10 @@
 package com.github.yeriomin.yalpstore.selfupdate;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.provider.Settings;
+
 import com.github.yeriomin.yalpstore.BuildConfig;
 
 import java.io.IOException;
@@ -11,14 +16,43 @@ import java.net.URLConnection;
 
 abstract public class Updater {
 
+    static private final String CACHED_VERSION_CODE = "CACHED_VERSION_CODE";
+    static private final String CACHED_VERSION_CODE_CHECKED_AT = "CACHED_VERSION_CODE_CHECKED_AT";
+    static private final long CACHED_VERSION_CODE_VALID_FOR = 60*60;
+
+    protected Context context;
+
+    public Updater(Context context) {
+        this.context = context;
+    }
+
     abstract public String getUrlString(int versionCode);
 
     public int getLatestVersionCode() {
-        int latestVersionCode = BuildConfig.VERSION_CODE;
-        while (isAvailable(latestVersionCode + 1)) {
-            latestVersionCode++;
+        int latestVersionCode = getCachedVersionCode();
+        if (latestVersionCode == 0) {
+            latestVersionCode = BuildConfig.VERSION_CODE;
+            while (isAvailable(latestVersionCode + 1)) {
+                latestVersionCode++;
+            }
+            cacheVersionCode(latestVersionCode);
         }
         return latestVersionCode;
+    }
+
+    private int getCachedVersionCode() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return (System.currentTimeMillis() - preferences.getLong(CACHED_VERSION_CODE_CHECKED_AT, 0)) > CACHED_VERSION_CODE_VALID_FOR
+            ? 0
+            : preferences.getInt(CACHED_VERSION_CODE, 0)
+        ;
+    }
+
+    private void cacheVersionCode(int versionCode) {
+        SharedPreferences.Editor preferences = PreferenceManager.getDefaultSharedPreferences(context).edit();
+        preferences.putInt(CACHED_VERSION_CODE, versionCode);
+        preferences.putLong(CACHED_VERSION_CODE_CHECKED_AT, System.currentTimeMillis());
+        preferences.commit();
     }
 
     private URL getUrl(int versionCode) {
