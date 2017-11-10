@@ -23,11 +23,13 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_gravity="center_vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
 
             <TextView
-                android:id="@+id/text1"
+                android:id="@+id/installed_app_name"
                 android:textSize="18sp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -36,6 +38,21 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical" />
 
+            <TextView
+                android:id="@+id/installed_app_pname"
+                android:textSize="16sp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/installed_app_version"
+                android:textSize="16sp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="end" />
             <TextView
                 android:id="@+id/text2"
                 android:textSize="16sp"
