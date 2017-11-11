@@ -7,7 +7,9 @@ import android.os.AsyncTask;
 import com.github.yeriomin.yalpstore.AppListActivity;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String>> {
@@ -47,8 +49,16 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String
     @Override
     protected Set<String> doInBackground(String... strings) {
         Set<String> installedApps = new HashSet<>();
+        List<PackageInfo> installedPackages = new ArrayList<>();
+        try {
+            installedPackages.addAll(activity.getPackageManager().getInstalledPackages(0));
+        } catch (RuntimeException e) {
+            // Sometimes TransactionTooLargeException is thrown even though getInstalledPackages is
+            // called with 0 flags. App list validity check is not essential, so this can be ignored
+            // TODO: There might be a way to avoid this exception, although I doubt it
+        }
         BlackWhiteListManager manager = new BlackWhiteListManager(activity);
-        for (PackageInfo reducedPackageInfo: activity.getPackageManager().getInstalledPackages(0)) {
+        for (PackageInfo reducedPackageInfo: installedPackages) {
             if (!includeSystemApps
                 && null != reducedPackageInfo.applicationInfo
                 && (reducedPackageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
