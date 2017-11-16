@@ -4,15 +4,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
-import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.CheckShellTask;
 import com.github.yeriomin.yalpstore.task.UninstallSystemAppTask;
 
 public class ButtonUninstall extends Button {
 
-    public ButtonUninstall(DetailsActivity activity, App app) {
+    public ButtonUninstall(YalpStoreActivity activity, App app) {
         super(activity, app);
     }
 
@@ -22,12 +22,16 @@ public class ButtonUninstall extends Button {
     }
 
     @Override
-    protected boolean shouldBeVisible() {
+    public boolean shouldBeVisible() {
         return isInstalled();
     }
 
     @Override
     protected void onButtonClick(View v) {
+        uninstall();
+    }
+
+    public void uninstall() {
         if (isSystemAndReadyForPermanentUninstallation()) {
             askAndUninstall();
         } else {

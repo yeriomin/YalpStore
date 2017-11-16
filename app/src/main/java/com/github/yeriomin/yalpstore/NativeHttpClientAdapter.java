@@ -98,21 +98,24 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         }
         addBody(connection, body);
 
-        byte[] content;
+        byte[] content = new byte[0];
         Log.i(getClass().getName(), "Requesting " + connection.getURL().toString());
         connection.connect();
 
-        int code = connection.getResponseCode();
-        Log.i(getClass().getName(), "HTTP result code " + code);
+        int code = 0;
         boolean isGzip = null != connection.getContentEncoding() && connection.getContentEncoding().contains("gzip");
         try {
+            code = connection.getResponseCode();
+            Log.i(getClass().getName(), "HTTP result code " + code);
             content = readFully(connection.getInputStream(), isGzip);
         } catch (IOException e) {
             content = readFully(connection.getErrorStream(), isGzip);
-            Log.e(getClass().getName(), "Exception " + e.getClass().getName() + " " + e.getMessage());
+            Log.e(getClass().getName(), "IOException " + e.getClass().getName() + " " + e.getMessage());
             if (code < 400) {
                 throw e;
             }
+        } catch (Throwable e) {
+            Log.e(getClass().getName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
         } finally {
             connection.disconnect();
         }

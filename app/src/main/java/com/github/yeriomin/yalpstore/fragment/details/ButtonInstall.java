@@ -37,7 +37,7 @@ public class ButtonInstall extends Button {
 
     @Override
     protected void onButtonClick(View v) {
-        disableButton(R.id.install, R.string.details_installing);
+        disable(R.string.details_installing);
         ((NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE)).cancel(app.getDisplayName().hashCode());
         InstallerFactory.get(activity).verifyAndInstall(app);
     }

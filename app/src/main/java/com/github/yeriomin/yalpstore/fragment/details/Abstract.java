@@ -4,18 +4,18 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.model.App;
 
 public abstract class Abstract {
 
-    protected DetailsActivity activity;
+    protected YalpStoreActivity activity;
     protected App app;
 
     abstract public void draw();
 
-    public Abstract(DetailsActivity activity, App app) {
+    public Abstract(YalpStoreActivity activity, App app) {
         this.activity = activity;
         this.app = app;
     }

@@ -18,9 +18,9 @@ public class DownloadOrInstall extends Abstract {
     public void draw() {
         new ButtonUninstall(activity, app).draw();
         new ButtonDownload(activity, app).draw();
-        new ButtonCancel(activity, app).draw();
-        new ButtonInstall(activity, app).draw();
-        new ButtonRun(activity, app).draw();
+        new ButtonCancel((DetailsActivity) activity, app).draw();
+        new ButtonInstall((DetailsActivity) activity, app).draw();
+        new ButtonRun((DetailsActivity) activity, app).draw();
     }
 
     public void download() {
@@ -36,10 +36,10 @@ public class DownloadOrInstall extends Abstract {
 
     public void registerReceivers() {
         if (null == downloadReceiver) {
-            downloadReceiver = new DetailsDownloadReceiver(activity);
+            downloadReceiver = new DetailsDownloadReceiver((DetailsActivity) activity);
         }
         if (null == installReceiver) {
-            installReceiver = new DetailsInstallReceiver(activity);
+            installReceiver = new DetailsInstallReceiver((DetailsActivity) activity);
         }
     }
 }

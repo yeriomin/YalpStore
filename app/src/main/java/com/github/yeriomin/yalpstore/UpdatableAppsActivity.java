@@ -2,6 +2,8 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -56,6 +58,23 @@ public class UpdatableAppsActivity extends AppListActivity {
         if (isGranted(requestCode, permissions, grantResults)) {
             launchUpdateAll();
         }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        if (item.getItemId() == R.id.action_ignore || item.getItemId() == R.id.action_unwhitelist) {
+            String packageName = getAppByListPosition(info.position).getPackageName();
+            BlackWhiteListManager manager = new BlackWhiteListManager(this);
+            if (item.getItemId() == R.id.action_ignore) {
+                manager.add(packageName);
+            } else {
+                manager.remove(packageName);
+            }
+            removeApp(packageName);
+            return true;
+        }
+        return super.onContextItemSelected(item);
     }
 
     @Override

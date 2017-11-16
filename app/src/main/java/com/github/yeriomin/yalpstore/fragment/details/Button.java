@@ -3,14 +3,14 @@ package com.github.yeriomin.yalpstore.fragment.details;
 import android.content.pm.PackageManager;
 import android.view.View;
 
-import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.model.App;
 
 public abstract class Button extends Abstract {
 
     protected View button;
 
-    public Button(DetailsActivity activity, App app) {
+    public Button(YalpStoreActivity activity, App app) {
         super(activity, app);
         this.button = getButton();
     }
@@ -36,9 +36,11 @@ public abstract class Button extends Abstract {
         });
     }
 
-    protected void disableButton(int buttonId, int stringId) {
-        android.widget.Button button = (android.widget.Button) activity.findViewById(buttonId);
-        button.setText(stringId);
+    protected void disable(int stringId) {
+        if (null == button) {
+            return;
+        }
+        ((android.widget.Button) button).setText(stringId);
         button.setEnabled(false);
     }
 

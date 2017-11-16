@@ -1,10 +1,14 @@
 package com.github.yeriomin.yalpstore;
 
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.github.yeriomin.yalpstore.fragment.details.ButtonUninstall;
+import com.github.yeriomin.yalpstore.fragment.details.DownloadOptions;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.view.AppBadge;
 import com.github.yeriomin.yalpstore.view.ListItem;
@@ -30,15 +34,36 @@ abstract public class AppListActivity extends YalpStoreActivity {
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ListItem listItem = (ListItem) getListView().getItemAtPosition(position);
-                if (null == listItem || !(listItem instanceof AppBadge)) {
-                    return;
-                }
-                App app = ((AppBadge) listItem).getApp();
-                DetailsActivity.app = app;
-                startActivity(DetailsActivity.getDetailsIntent(AppListActivity.this, app.getPackageName()));
+                DetailsActivity.app = getAppByListPosition(position);
+                startActivity(DetailsActivity.getDetailsIntent(AppListActivity.this, DetailsActivity.app.getPackageName()));
             }
         });
+        registerForContextMenu(getListView());
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        DetailsActivity.app = getAppByListPosition(info.position);
+        DownloadOptions menuManager = new DownloadOptions(this, DetailsActivity.app);
+        menuManager.inflate(menu);
+        if (DetailsActivity.app.isInstalled()) {
+            menu.findItem(R.id.action_uninstall).setVisible(true);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        DetailsActivity.app = getAppByListPosition(info.position);
+        if (item.getItemId() == R.id.action_uninstall) {
+            ButtonUninstall buttonUninstall = new ButtonUninstall(this, DetailsActivity.app);
+            buttonUninstall.uninstall();
+        } else {
+            DownloadOptions menuManager = new DownloadOptions(this, DetailsActivity.app);
+            menuManager.onContextItemSelected(item);
+        }
+        return true;
     }
 
     @Override
@@ -52,6 +77,14 @@ abstract public class AppListActivity extends YalpStoreActivity {
         if (null == listView.getAdapter()) {
             listView.setAdapter(new AppListAdapter(this, R.layout.two_line_list_item_with_icon));
         }
+    }
+
+    protected App getAppByListPosition(int position) {
+        ListItem listItem = (ListItem) getListView().getItemAtPosition(position);
+        if (null == listItem || !(listItem instanceof AppBadge)) {
+            return null;
+        }
+        return ((AppBadge) listItem).getApp();
     }
 
     public void addApps(List<App> appsToAdd) {

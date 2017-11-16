@@ -34,7 +34,7 @@ public class GeneralDetails extends Abstract {
         if (app.isInPlayStore()) {
             drawGeneralDetails(app);
             drawDescription(app);
-            new GoogleDependency(activity, app).draw();
+            new GoogleDependency((DetailsActivity) activity, app).draw();
         }
         drawPermissions(app);
     }

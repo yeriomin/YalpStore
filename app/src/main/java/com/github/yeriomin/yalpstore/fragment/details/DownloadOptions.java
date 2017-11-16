@@ -13,10 +13,10 @@ import android.widget.ImageButton;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.ContextUtil;
-import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.InstalledApkCopier;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.CheckShellTask;
 import com.github.yeriomin.yalpstore.task.ConvertToNormalTask;
@@ -25,7 +25,7 @@ import com.github.yeriomin.yalpstore.task.SystemRemountTask;
 
 public class DownloadOptions extends Abstract {
 
-    public DownloadOptions(DetailsActivity activity, App app) {
+    public DownloadOptions(YalpStoreActivity activity, App app) {
         super(activity, app);
     }
 

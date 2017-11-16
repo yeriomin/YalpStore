@@ -1,8 +1,14 @@
 package com.github.yeriomin.yalpstore;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
+import com.github.yeriomin.yalpstore.fragment.details.ButtonDownload;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.EndlessScrollTask;
 import com.github.yeriomin.yalpstore.view.ListItem;
@@ -63,6 +69,34 @@ abstract public class EndlessScrollActivity extends AppListActivity {
     public void clearApps() {
         super.clearApps();
         iterator = null;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        DetailsActivity.app = getAppByListPosition(info.position);
+        menu.findItem(R.id.action_download).setVisible(new ButtonDownload(this, DetailsActivity.app).shouldBeVisible());
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_download) {
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+            App app = getAppByListPosition(info.position);
+            new ButtonDownload(this, app).checkAndDownload();
+            return true;
+        } else {
+            return super.onContextItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (isGranted(requestCode, permissions, grantResults)) {
+            Log.i(getClass().getName(), "User granted the write permission");
+            new ButtonDownload(this, DetailsActivity.app).download();
+        }
     }
 
     protected EndlessScrollTask prepareTask(EndlessScrollTask task) {
