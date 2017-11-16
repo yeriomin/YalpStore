@@ -4,7 +4,6 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.AuthException;
-import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.yalpstore.AccountTypeDialogBuilder;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.CredentialsEmptyException;
@@ -74,15 +73,11 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
     }
 
     protected void processAuthException(AuthException e) {
-        if (!ContextUtil.isAlive(context)) {
-            Log.e(getClass().getName(), "AuthException happened and the provided context is not ui capable");
-            return;
-        }
         AccountTypeDialogBuilder builder = new AccountTypeDialogBuilder(this.context);
         builder.setCaller(this);
         if (e instanceof CredentialsEmptyException) {
             Log.i(getClass().getName(), "Credentials empty");
-            if (new FirstLaunchChecker(context).isFirstLogin()) {
+            if (new FirstLaunchChecker(context).isFirstLogin() && ContextUtil.isAlive(context)) {
                 Log.i(getClass().getName(), "First launch, so using built-in account");
                 builder.logInWithPredefinedAccount();
                 ContextUtil.toast(context, R.string.first_login_message);
@@ -97,7 +92,11 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
             ContextUtil.toast(this.context, R.string.error_incorrect_password);
             new PlayStoreApiAuthenticator(context).logout();
         }
-        builder.show();
+        if (ContextUtil.isAlive(context)) {
+            builder.show();
+        } else {
+            Log.e(getClass().getName(), "AuthException happened and the provided context is not ui capable");
+        }
     }
 
     static protected boolean noNetwork(Throwable e) {

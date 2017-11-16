@@ -21,12 +21,20 @@ import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.util.List;
 
-public class BackgroundUpdatableAppsTask extends UpdatableAppsTask {
+public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements CloneableTask {
 
     private boolean forceUpdate = false;
 
     public void setForceUpdate(boolean forceUpdate) {
         this.forceUpdate = forceUpdate;
+    }
+
+    @Override
+    public CloneableTask clone() {
+        BackgroundUpdatableAppsTask task = new BackgroundUpdatableAppsTask();
+        task.setForceUpdate(forceUpdate);
+        task.setContext(context);
+        return task;
     }
 
     @Override
