@@ -31,7 +31,6 @@ public class DetailsActivity extends YalpStoreActivity {
     static public App app;
 
     protected DownloadOrInstall downloadOrInstallFragment;
-    private DownloadOptions downloadOptionsFragment;
 
     static public Intent getDetailsIntent(Context context, String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
@@ -108,12 +107,12 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        downloadOptionsFragment.inflate(menu);
+        new DownloadOptions(this, app).inflate(menu);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        return downloadOptionsFragment.onContextItemSelected(item);
+        return new DownloadOptions(this, app).onContextItemSelected(item);
     }
 
     private String getIntentPackageName(Intent intent) {
@@ -146,8 +145,7 @@ public class DetailsActivity extends YalpStoreActivity {
         }
         downloadOrInstallFragment = new DownloadOrInstall(this, app);
         redrawButtons();
-        downloadOptionsFragment = new DownloadOptions(this, app);
-        downloadOptionsFragment.draw();
+        new DownloadOptions(this, app).draw();
     }
 
     static class GetAndRedrawDetailsTask extends DetailsTask implements CloneableTask {
