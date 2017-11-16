@@ -118,6 +118,7 @@ public abstract class YalpStoreActivity extends Activity {
 
     public boolean checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Log.i(getClass().getName(), "Checking if write permission is granted");
             return checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
         }
         return true;
@@ -125,6 +126,7 @@ public abstract class YalpStoreActivity extends Activity {
 
     public void requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Log.i(getClass().getName(), "Requesting the write permission");
             requestPermissions(
                 new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
                 PERMISSIONS_REQUEST_CODE

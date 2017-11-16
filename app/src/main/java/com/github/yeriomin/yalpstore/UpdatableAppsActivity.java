@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -56,6 +57,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (isGranted(requestCode, permissions, grantResults)) {
+            Log.i(getClass().getName(), "User granted the write permission");
             launchUpdateAll();
         }
     }

@@ -1,8 +1,11 @@
 package com.github.yeriomin.yalpstore.task.playstore;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.DownloadManagerAdapter;
@@ -56,6 +59,14 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     }
 
     private boolean canUpdate() {
+        boolean writePermission = true;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            writePermission = context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        }
+        if (!writePermission) {
+            Log.i(getClass().getName(), "Write permission not granted");
+            return false;
+        }
         return forceUpdate ||
             (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
                 && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
