@@ -3,7 +3,6 @@ package com.github.yeriomin.yalpstore.view;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 
 public class UpdatableAppBadge extends AppBadge {
