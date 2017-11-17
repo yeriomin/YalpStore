@@ -39,7 +39,7 @@ public class ReviewLoadTask extends PlayStorePayloadTask<List<Review>> {
         if (success()) {
             fragment.showReviews(reviews);
         } else {
-            Log.e(DetailsActivity.class.getName(), "Could not get reviews: " + getException().getMessage());
+            Log.e(DetailsActivity.class.getSimpleName(), "Could not get reviews: " + getException().getMessage());
         }
     }
 }

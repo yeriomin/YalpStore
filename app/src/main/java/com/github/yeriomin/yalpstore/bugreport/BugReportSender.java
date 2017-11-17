@@ -38,7 +38,7 @@ public abstract class BugReportSender {
     }
 
     protected void compose() {
-        Log.i(getClass().getName(), "Composing a report");
+        Log.i(getClass().getSimpleName(), "Composing a report");
         files.add(new BugReportDeviceInfoBuilder(context).build().getFile());
         files.add(new BugReportLogBuilder(context).build().getFile());
         files.add(new BugReportPreferencesBuilder(context).build().getFile());

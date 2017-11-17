@@ -66,8 +66,8 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
         Map<String, Boolean> flags = processOutput(output);
         availableCoreutils = flags.get(COMMAND_MV) && flags.get(COMMAND_RM) && flags.get(COMMAND_MKDIR) && flags.get(COMMAND_CHMOD);
         availableBusybox = flags.get(COMMAND_BUSYBOX);
-        Log.i(getClass().getName(), "Coreutils available " + availableCoreutils);
-        Log.i(getClass().getName(), "Busybox available " + availableBusybox);
+        Log.i(getClass().getSimpleName(), "Coreutils available " + availableCoreutils);
+        Log.i(getClass().getSimpleName(), "Busybox available " + availableBusybox);
         return true;
     }
 
@@ -86,7 +86,7 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
             flags.put(command, false);
         }
         for (String line: output) {
-            Log.d(getClass().getName(), line);
+            Log.d(getClass().getSimpleName(), line);
             for (String command: COMMANDS) {
                 if (line.contains(command + COMMAND_RETURNED)) {
                     int returnCode = Integer.parseInt(line.substring((command + COMMAND_RETURNED).length()).trim());

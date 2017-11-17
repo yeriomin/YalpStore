@@ -82,7 +82,7 @@ class ApkSignatureVerifier {
             try {
                 outputStream.write(sig.toByteArray());
             } catch (IOException e) {
-                Log.e(getClass().getName(), "Should not happen! Concatenating signatures failed");
+                Log.e(getClass().getSimpleName(), "Should not happen! Concatenating signatures failed");
             }
         }
 

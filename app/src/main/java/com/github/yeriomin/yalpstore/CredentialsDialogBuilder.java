@@ -51,7 +51,7 @@ abstract public class CredentialsDialogBuilder {
             if (success()) {
                 new FirstLaunchChecker(context).setLoggedIn();
                 if (caller instanceof CloneableTask) {
-                    Log.i(getClass().getName(), caller.getClass().getName() + " is cloneable. Retrying.");
+                    Log.i(getClass().getSimpleName(), caller.getClass().getName() + " is cloneable. Retrying.");
                     ((PlayStoreTask) ((CloneableTask) caller).clone()).execute(new String[] {});
                 }
             }
@@ -89,7 +89,7 @@ abstract public class CredentialsDialogBuilder {
         @Override
         protected void processAuthException(AuthException e) {
             if (e instanceof CredentialsEmptyException) {
-                Log.w(getClass().getName(), "Credentials empty");
+                Log.w(getClass().getSimpleName(), "Credentials empty");
             } else if (null != e.getTwoFactorUrl()) {
                 getTwoFactorAuthDialog().show();
             } else {
@@ -112,7 +112,7 @@ abstract public class CredentialsDialogBuilder {
                             if (i.resolveActivity(context.getPackageManager()) != null) {
                                 context.startActivity(i);
                             } else {
-                                Log.e(getClass().getName(), "No application available to handle http links... very strange");
+                                Log.e(getClass().getSimpleName(), "No application available to handle http links... very strange");
                             }
                             android.os.Process.killProcess(android.os.Process.myPid());
                         }

@@ -28,7 +28,7 @@ public class DeltaPatcherFactory {
             raf = new RandomAccessFile(f, "r");
             magic = raf.read() & 0xff | ((raf.read() << 8) & 0xff00);
         } catch (IOException e) {
-            Log.e(DeltaPatcherGDiff.class.getName(), "Could not check if patch is gzipped");
+            Log.e(DeltaPatcherGDiff.class.getSimpleName(), "Could not check if patch is gzipped");
         } finally {
             Util.closeSilently(raf);
         }

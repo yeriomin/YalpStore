@@ -20,12 +20,12 @@ public class DeltaPatcherGDiffGzipped extends DeltaPatcherGDiff {
     @Override
     public boolean patch() {
         File patchUncompressed = new File(patch.getAbsolutePath() + ".unpacked");
-        Log.i(DeltaPatcherGDiff.class.getName(), "Decompressing");
+        Log.i(DeltaPatcherGDiff.class.getSimpleName(), "Decompressing");
         File patchCompressed = patch;
         if (!GUnZip(patchCompressed, patchUncompressed)) {
             return false;
         }
-        Log.i(DeltaPatcherGDiff.class.getName(), "Deleting " + patchCompressed);
+        Log.i(DeltaPatcherGDiff.class.getSimpleName(), "Deleting " + patchCompressed);
         patchCompressed.delete();
         patch = patchUncompressed;
         return super.patch();
@@ -44,7 +44,7 @@ public class DeltaPatcherGDiffGzipped extends DeltaPatcherGDiff {
             }
             return true;
         } catch (IOException e) {
-            Log.e(DeltaPatcherGDiff.class.getName(), "Could not unzip the patch: " + e.getMessage());
+            Log.e(DeltaPatcherGDiff.class.getSimpleName(), "Could not unzip the patch: " + e.getMessage());
             return false;
         } finally {
             Util.closeSilently(fileOutputStream);

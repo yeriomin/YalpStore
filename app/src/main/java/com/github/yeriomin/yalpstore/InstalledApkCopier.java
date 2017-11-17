@@ -17,16 +17,16 @@ public class InstalledApkCopier {
     static public boolean copy(Context context, App app) {
         File destination = Paths.getApkPath(context, app.getPackageName(), app.getInstalledVersionCode());
         if (destination.exists()) {
-            Log.i(InstalledApkCopier.class.getName(), destination.toString() + " exists");
+            Log.i(InstalledApkCopier.class.getSimpleName(), destination.toString() + " exists");
             return true;
         }
         File currentApk = getCurrentApk(app);
         if (null == currentApk) {
-            Log.e(InstalledApkCopier.class.getName(), "applicationInfo.sourceDir is empty");
+            Log.e(InstalledApkCopier.class.getSimpleName(), "applicationInfo.sourceDir is empty");
             return false;
         }
         if (!currentApk.exists()) {
-            Log.e(InstalledApkCopier.class.getName(), currentApk + " does not exist");
+            Log.e(InstalledApkCopier.class.getSimpleName(), currentApk + " does not exist");
             return false;
         }
         copy(currentApk, destination);
@@ -59,7 +59,7 @@ public class InstalledApkCopier {
 
             out.flush();
         } catch (IOException e) {
-            Log.e(InstalledApkCopier.class.getName(), e.getClass().getName() + " " + e.getMessage());
+            Log.e(InstalledApkCopier.class.getSimpleName(), e.getClass().getName() + " " + e.getMessage());
         } finally {
             Util.closeSilently(in);
             Util.closeSilently(out);

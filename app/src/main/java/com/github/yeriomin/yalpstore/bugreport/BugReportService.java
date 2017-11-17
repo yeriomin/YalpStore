@@ -28,7 +28,7 @@ public class BugReportService extends IntentService {
                 sender = new BugReportSenderEmail(getApplicationContext());
                 break;
             default:
-                Log.e(getClass().getName(), "Unsupported action: " + intent.getAction());
+                Log.e(getClass().getSimpleName(), "Unsupported action: " + intent.getAction());
                 return;
         }
         sender

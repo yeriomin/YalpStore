@@ -14,10 +14,10 @@ public class DownloadManagerFactory {
             || !nativeDownloadManagerEnabled(context)
             || nougatVpn(context)
         ) {
-            Log.i(DownloadManagerFactory.class.getName(), "DownloadManager unavailable - using a fallback");
+            Log.i(DownloadManagerFactory.class.getSimpleName(), "DownloadManager unavailable - using a fallback");
             return new DownloadManagerFake(context);
         } else {
-            Log.i(DownloadManagerFactory.class.getName(), "DownloadManager is found and is going to be used");
+            Log.i(DownloadManagerFactory.class.getSimpleName(), "DownloadManager is found and is going to be used");
             return new DownloadManagerAdapter(context);
         }
     }
@@ -27,7 +27,7 @@ public class DownloadManagerFactory {
         try {
             state = context.getPackageManager().getApplicationEnabledSetting(DOWNLOAD_MANAGER_PACKAGE_NAME);
         } catch (Throwable e) {
-            Log.w(DownloadManagerFactory.class.getName(), "Could not check DownloadManager status: " + e.getMessage());
+            Log.w(DownloadManagerFactory.class.getSimpleName(), "Could not check DownloadManager status: " + e.getMessage());
         }
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
             return !(state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED

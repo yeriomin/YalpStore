@@ -53,7 +53,7 @@ public class AppListIterator implements Iterator {
 
     protected void addApp(List<App> apps, App app) {
         if (shouldSkip(app)) {
-            Log.i(getClass().getName(), "Skipping non-free/ad-containing app " + app.getPackageName());
+            Log.i(getClass().getSimpleName(), "Skipping non-free/ad-containing app " + app.getPackageName());
         } else {
             apps.add(app);
         }

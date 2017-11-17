@@ -85,7 +85,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     @Override
     protected void onCancelled() {
         super.onCancelled();
-        Log.i(getClass().getName(), "Cancelled download " + downloadId);
+        Log.i(getClass().getSimpleName(), "Cancelled download " + downloadId);
         targetFile.delete();
         onPostExecute(false);
     }
@@ -163,7 +163,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         try {
             copyStream(in, out, fileSize);
         } catch (IOException e) {
-            Log.e(getClass().getName(), "Could not read: " + e.getMessage());
+            Log.e(getClass().getSimpleName(), "Could not read: " + e.getMessage());
             DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_HTTP_DATA_ERROR);
             return false;
         } finally {
@@ -192,7 +192,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
             try {
                 out.write(buffer, 0, bytesRead);
             } catch (IOException e) {
-                Log.e(getClass().getName(), "Could not write file: " + e.getMessage());
+                Log.e(getClass().getSimpleName(), "Could not write file: " + e.getMessage());
                 DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_FILE_ERROR);
                 return;
             }

@@ -21,14 +21,14 @@ public class PermissionsComparator {
     }
 
     public boolean isSame(App app) {
-        Log.i(getClass().getName(), "Checking " + app.getPackageName());
+        Log.i(getClass().getSimpleName(), "Checking " + app.getPackageName());
         Set<String> oldPermissions = getOldPermissions(app.getPackageName());
         if (null == oldPermissions) {
             return true;
         }
         Set<String> newPermissions = new HashSet<>(app.getPermissions());
         newPermissions.removeAll(oldPermissions);
-        Log.i(getClass().getName(), app.getPackageName() + " requests new permissions: " + TextUtils.join(", ", newPermissions));
+        Log.i(getClass().getSimpleName(), app.getPackageName() + " requests new permissions: " + TextUtils.join(", ", newPermissions));
         return newPermissions.isEmpty();
     }
 
@@ -42,7 +42,7 @@ public class PermissionsComparator {
                     : pi.requestedPermissions
             ));
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(getClass().getName(), "Package " + packageName + " doesn't seem to be installed");
+            Log.e(getClass().getSimpleName(), "Package " + packageName + " doesn't seem to be installed");
         }
         return null;
     }

@@ -47,10 +47,10 @@ public class SpoofDeviceManager {
     public Properties getProperties(String entryName) {
         File defaultDirectoryFile = new File(Paths.getYalpPath(context), entryName);
         if (defaultDirectoryFile.exists()) {
-            Log.i(getClass().getName(), "Loading device info from " + defaultDirectoryFile.getAbsolutePath());
+            Log.i(getClass().getSimpleName(), "Loading device info from " + defaultDirectoryFile.getAbsolutePath());
             return getProperties(defaultDirectoryFile);
         } else {
-            Log.i(getClass().getName(), "Loading device info from " + getApkPath() + "/" + entryName);
+            Log.i(getClass().getSimpleName(), "Loading device info from " + getApkPath() + "/" + entryName);
             JarFile jarFile = getApkAsJar();
             if (null == jarFile || null == jarFile.getEntry(entryName)) {
                 Properties empty = new Properties();
@@ -66,7 +66,7 @@ public class SpoofDeviceManager {
         try {
             properties.load(jarFile.getInputStream(entry));
         } catch (IOException e) {
-            Log.e(getClass().getName(), "Could not read " + entry.getName());
+            Log.e(getClass().getSimpleName(), "Could not read " + entry.getName());
         }
         return properties;
     }
@@ -76,7 +76,7 @@ public class SpoofDeviceManager {
         try {
             properties.load(new BufferedInputStream(new FileInputStream(file)));
         } catch (IOException e) {
-            Log.e(getClass().getName(), "Could not read " + file.getName());
+            Log.e(getClass().getSimpleName(), "Could not read " + file.getName());
         }
         return properties;
     }
@@ -118,7 +118,7 @@ public class SpoofDeviceManager {
         try {
             return new JarFile(getApkPath());
         } catch (IOException e) {
-            Log.e(getClass().getName(), "Could not open Yalp Store apk as a jar file: " + e.getMessage());
+            Log.e(getClass().getSimpleName(), "Could not open Yalp Store apk as a jar file: " + e.getMessage());
             return null;
         }
     }

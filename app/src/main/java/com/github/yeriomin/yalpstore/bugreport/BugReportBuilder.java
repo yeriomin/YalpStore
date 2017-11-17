@@ -36,7 +36,7 @@ public class BugReportBuilder {
 
     public BugReportBuilder build() {
         if (null == file) {
-            Log.e(getClass().getName(), "No file specified");
+            Log.e(getClass().getSimpleName(), "No file specified");
             return this;
         }
         file.delete();
@@ -50,7 +50,7 @@ public class BugReportBuilder {
             bw = new BufferedWriter(new FileWriter(file));
             bw.write(content);
         } catch (IOException e) {
-            Log.e(getClass().getName(), "Could not write to temp file: " + e.getMessage());
+            Log.e(getClass().getSimpleName(), "Could not write to temp file: " + e.getMessage());
         } finally {
             Util.closeSilently(bw);
         }

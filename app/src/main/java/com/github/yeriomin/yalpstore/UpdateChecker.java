@@ -18,7 +18,7 @@ public class UpdateChecker extends BroadcastReceiver {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
         if (interval > 0) {
-            Log.i(UpdateChecker.class.getName(), "Enabling periodic update checks");
+            Log.i(UpdateChecker.class.getSimpleName(), "Enabling periodic update checks");
             alarmManager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
                 System.currentTimeMillis(),
@@ -30,7 +30,7 @@ public class UpdateChecker extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.i(getClass().getName(), "Started");
+        Log.i(getClass().getSimpleName(), "Started");
         BackgroundUpdatableAppsTask task = new BackgroundUpdatableAppsTask();
         task.setForceUpdate(context instanceof Activity);
         task.setContext(context);

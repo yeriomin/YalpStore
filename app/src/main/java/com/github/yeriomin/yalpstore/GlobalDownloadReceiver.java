@@ -26,7 +26,7 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
         if (isDelta(app)) {
             patchSuccess = DeltaPatcherFactory.get(context, app).patch();
             if (!patchSuccess) {
-                Log.e(getClass().getName(), "Delta patching failed for " + app.getPackageName());
+                Log.e(getClass().getSimpleName(), "Delta patching failed for " + app.getPackageName());
                 return;
             }
         }
@@ -54,7 +54,7 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
 
     private void verifyAndInstall(App app, DownloadState.TriggeredBy triggeredBy) {
         if (shouldInstall(triggeredBy)) {
-            Log.i(getClass().getName(), "Launching installer for " + app.getPackageName());
+            Log.i(getClass().getSimpleName(), "Launching installer for " + app.getPackageName());
             InstallerAbstract installer = InstallerFactory.get(context);
             if (triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
                 && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
@@ -63,7 +63,7 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
             }
             installer.verifyAndInstall(app);
         } else {
-            Log.i(getClass().getName(), "Notifying about download completion of " + app.getPackageName());
+            Log.i(getClass().getSimpleName(), "Notifying about download completion of " + app.getPackageName());
             notifyDownloadComplete(app);
             ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
         }

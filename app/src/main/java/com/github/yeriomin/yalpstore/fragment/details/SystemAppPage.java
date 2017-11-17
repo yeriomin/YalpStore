@@ -37,7 +37,7 @@ public class SystemAppPage extends Abstract {
         try {
             activity.startActivity(getIntent());
         } catch (ActivityNotFoundException e) {
-            Log.w(getClass().getName(), "Could not find system app activity");
+            Log.w(getClass().getSimpleName(), "Could not find system app activity");
         }
     }
 

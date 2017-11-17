@@ -62,7 +62,7 @@ public class YalpStoreApplication extends Application {
             try {
                 HttpResponseCache.install(new File(getCacheDir(), "http"), 5 * 1024 * 1024);
             } catch (IOException e) {
-                Log.e(getClass().getName(), "Could not register cache " + e.getMessage());
+                Log.e(getClass().getSimpleName(), "Could not register cache " + e.getMessage());
             }
         }
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);

@@ -39,7 +39,7 @@ public abstract class InstallerAbstract {
     abstract protected void install(App app);
 
     public InstallerAbstract(Context context) {
-        Log.i(getClass().getName(), "Installer chosen");
+        Log.i(getClass().getSimpleName(), "Installer chosen");
         this.context = context;
         background = !(context instanceof Activity);
     }
@@ -50,7 +50,7 @@ public abstract class InstallerAbstract {
 
     public void verifyAndInstall(App app) {
         if (verify(app)) {
-            Log.i(getClass().getName(), "Installing " + app.getPackageName());
+            Log.i(getClass().getSimpleName(), "Installing " + app.getPackageName());
             install(app);
         } else {
             context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED));
@@ -62,7 +62,7 @@ public abstract class InstallerAbstract {
             app.getPackageName(),
             Paths.getApkPath(context, app.getPackageName(), app.getVersionCode())
         )) {
-            Log.i(getClass().getName(), "Signature mismatch for " + app.getPackageName());
+            Log.i(getClass().getSimpleName(), "Signature mismatch for " + app.getPackageName());
             ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             if (ContextUtil.isAlive(context)) {
                 getSignatureMismatchDialog(app).show();

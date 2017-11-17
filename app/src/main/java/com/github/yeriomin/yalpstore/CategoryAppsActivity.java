@@ -26,7 +26,7 @@ public class CategoryAppsActivity extends EndlessScrollActivity {
 
         String newCategoryId = intent.getStringExtra(INTENT_CATEGORY_ID);
         if (null == newCategoryId) {
-            Log.w(getClass().getName(), "No category id");
+            Log.w(getClass().getSimpleName(), "No category id");
             return;
         }
         if (null == categoryId || !newCategoryId.equals(categoryId)) {

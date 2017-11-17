@@ -24,7 +24,7 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             finish();
             return;
         }
-        Log.i(getClass().getName(), "Getting package " + packageName);
+        Log.i(getClass().getSimpleName(), "Getting package " + packageName);
 
         DetailsAndPurchaseTask task = new DetailsAndPurchaseTask();
         task.setPackageName(packageName);
@@ -36,13 +36,13 @@ public class DirectDownloadActivity extends YalpStoreActivity {
     private String getIntentPackageName() {
         Intent intent = getIntent();
         if (!intent.hasExtra(Intent.EXTRA_TEXT)) {
-            Log.w(getClass().getName(), "Intent does not have " + Intent.EXTRA_TEXT);
+            Log.w(getClass().getSimpleName(), "Intent does not have " + Intent.EXTRA_TEXT);
             return null;
         }
         try {
             return Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT)).getQueryParameter("id");
         } catch (UnsupportedOperationException e) {
-            Log.w(getClass().getName(), "Could not parse URI " + intent.getStringExtra(Intent.EXTRA_TEXT) + ": " + e.getMessage());
+            Log.w(getClass().getSimpleName(), "Could not parse URI " + intent.getStringExtra(Intent.EXTRA_TEXT) + ": " + e.getMessage());
             return null;
         }
     }

@@ -64,7 +64,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
             writePermission = context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
         }
         if (!writePermission) {
-            Log.i(getClass().getName(), "Write permission not granted");
+            Log.i(getClass().getSimpleName(), "Write permission not granted");
             return false;
         }
         return forceUpdate ||
@@ -97,7 +97,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     }
 
     private void download(Context context, App app) {
-        Log.i(getClass().getName(), "Starting download of update for " + app.getPackageName());
+        Log.i(getClass().getSimpleName(), "Starting download of update for " + app.getPackageName());
         DownloadState state = DownloadState.get(app.getPackageName());
         state.setApp(app);
         getPurchaseTask(context, app).execute();

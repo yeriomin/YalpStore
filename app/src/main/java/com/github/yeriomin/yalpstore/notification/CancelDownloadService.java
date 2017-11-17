@@ -30,7 +30,7 @@ public class CancelDownloadService extends IntentService {
         long downloadId = intent.getLongExtra(DOWNLOAD_ID, 0L);
         String packageName = intent.getStringExtra(PACKAGE_NAME);
         if (downloadId == 0 && TextUtils.isEmpty(packageName)) {
-            Log.w(getClass().getName(), "No download id or package name provided in the intent");
+            Log.w(getClass().getSimpleName(), "No download id or package name provided in the intent");
         }
         List<Long> downloadIds = new ArrayList<>();
         if (downloadId != 0) {
@@ -46,7 +46,7 @@ public class CancelDownloadService extends IntentService {
     }
 
     private void cancel(long downloadId) {
-        Log.i(getClass().getName(), "Cancelling download " + downloadId);
+        Log.i(getClass().getSimpleName(), "Cancelling download " + downloadId);
         dm.cancel(downloadId);
     }
 }

@@ -49,9 +49,9 @@ public class Downloader {
     }
 
     static private void prepare(File file, long expectedSize) {
-        Log.i(Downloader.class.getName(), "file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + expectedSize);
+        Log.i(Downloader.class.getSimpleName(), "file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + expectedSize);
         if (file.exists() && file.length() != expectedSize) {
-            Log.i(Downloader.class.getName(), "Deleted old obb file: " + file.delete());
+            Log.i(Downloader.class.getSimpleName(), "Deleted old obb file: " + file.delete());
         }
         file.getParentFile().mkdirs();
     }

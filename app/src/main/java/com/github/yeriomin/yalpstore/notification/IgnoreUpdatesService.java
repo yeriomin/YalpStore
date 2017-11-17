@@ -22,10 +22,10 @@ public class IgnoreUpdatesService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         String packageName = intent.getStringExtra(PACKAGE_NAME);
         if (TextUtils.isEmpty(packageName)) {
-            Log.w(getClass().getName(), "No package name provided in the intent");
+            Log.w(getClass().getSimpleName(), "No package name provided in the intent");
             return;
         }
-        Log.i(getClass().getName(), "Adding " + packageName + " to ignore list");
+        Log.i(getClass().getSimpleName(), "Adding " + packageName + " to ignore list");
         BlackWhiteListManager manager = new BlackWhiteListManager(getApplicationContext());
         if (manager.isBlack()) {
             manager.add(packageName);

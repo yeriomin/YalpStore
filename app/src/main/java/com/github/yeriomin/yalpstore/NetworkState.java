@@ -51,7 +51,7 @@ public class NetworkState {
         try {
             for (NetworkInterface ni: Collections.list(NetworkInterface.getNetworkInterfaces())) {
                 if (ni.isUp() && (ni.getName().startsWith("tun") || ni.getName().startsWith("ppp")))  {
-                    Log.i(NetworkState.class.getName(), "VPN seems to be on: " + ni.getName());
+                    Log.i(NetworkState.class.getSimpleName(), "VPN seems to be on: " + ni.getName());
                     return true;
                 }
             }

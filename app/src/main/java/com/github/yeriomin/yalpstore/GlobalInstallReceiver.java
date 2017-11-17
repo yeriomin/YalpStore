@@ -22,14 +22,14 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             return;
         }
         String packageName = intent.getData().getSchemeSpecificPart();
-        Log.i(getClass().getName(), "Finished installation of " + packageName);
+        Log.i(getClass().getSimpleName(), "Finished installation of " + packageName);
         updateDetails(intent);
         ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall(intent));
         if (needToRemoveApk(context) && actionIsInstall(intent)) {
             App app = getApp(context, packageName);
             File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
             boolean deleted = apkPath.delete();
-            Log.i(getClass().getName(), "Removed " + apkPath + " successfully: " + deleted);
+            Log.i(getClass().getSimpleName(), "Removed " + apkPath + " successfully: " + deleted);
         }
     }
 
@@ -85,7 +85,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         try {
             app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA));
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(GlobalInstallReceiver.class.getName(), "Install broadcast received, but package " + packageName + " not found");
+            Log.e(GlobalInstallReceiver.class.getSimpleName(), "Install broadcast received, but package " + packageName + " not found");
         }
         return app;
     }

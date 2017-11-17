@@ -75,7 +75,7 @@ public class InstallerPrivileged extends InstallerBackground {
             return false;
         }
         if (context.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) != PackageManager.PERMISSION_GRANTED) {
-            Log.i(getClass().getName(), Manifest.permission.INSTALL_PACKAGES + " not granted");
+            Log.i(getClass().getSimpleName(), Manifest.permission.INSTALL_PACKAGES + " not granted");
             ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             notifyAndToast(R.string.notification_not_privileged, R.string.pref_not_privileged, app);
             return false;
@@ -87,7 +87,7 @@ public class InstallerPrivileged extends InstallerBackground {
     protected void install(App app) {
         File apkFile = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         if (!apkFile.exists()) {
-            Log.e(getClass().getName(), "Installation requested for apk " + apkFile.getAbsolutePath() + " which does not exist");
+            Log.e(getClass().getSimpleName(), "Installation requested for apk " + apkFile.getAbsolutePath() + " which does not exist");
             ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED));
             return;
@@ -97,7 +97,7 @@ public class InstallerPrivileged extends InstallerBackground {
         try {
             pm.getClass().getMethod("installPackage", types).invoke(pm, Uri.fromFile(apkFile), new InstallObserver(app), INSTALL_REPLACE_EXISTING, BuildConfig.APPLICATION_ID);
         } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
-            Log.e(getClass().getName(), "Could not start privileged installation: " + e.getClass().getName() + " " + e.getMessage());
+            Log.e(getClass().getSimpleName(), "Could not start privileged installation: " + e.getClass().getName() + " " + e.getMessage());
             ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED));
         }
@@ -113,12 +113,12 @@ public class InstallerPrivileged extends InstallerBackground {
 
         @Override
         public void packageInstalled(String packageName, int returnCode) throws RemoteException {
-            Log.i(getClass().getName(), "Installation of " + packageName + " complete with code " + returnCode);
+            Log.i(getClass().getSimpleName(), "Installation of " + packageName + " complete with code " + returnCode);
             context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM));
             Looper.prepare();
             postInstallationResult(app, returnCode > 0);
             if (errors.containsKey(returnCode)) {
-                Log.e(getClass().getName(), errors.get(returnCode));
+                Log.e(getClass().getSimpleName(), errors.get(returnCode));
             }
             Looper.loop();
         }

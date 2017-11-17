@@ -47,13 +47,13 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
     }
 
     protected void processException(Throwable e) {
-        Log.d(getClass().getName(), e.getClass().getName() + " caught during a google api request: " + e.getMessage());
+        Log.d(getClass().getSimpleName(), e.getClass().getName() + " caught during a google api request: " + e.getMessage());
         if (e instanceof AuthException) {
             processAuthException((AuthException) e);
         } else if (e instanceof IOException) {
             processIOException((IOException) e);
         } else {
-            Log.e(getClass().getName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
+            Log.e(getClass().getSimpleName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -76,15 +76,15 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
         AccountTypeDialogBuilder builder = new AccountTypeDialogBuilder(this.context);
         builder.setCaller(this);
         if (e instanceof CredentialsEmptyException) {
-            Log.i(getClass().getName(), "Credentials empty");
+            Log.i(getClass().getSimpleName(), "Credentials empty");
             if (new FirstLaunchChecker(context).isFirstLogin() && ContextUtil.isAlive(context)) {
-                Log.i(getClass().getName(), "First launch, so using built-in account");
+                Log.i(getClass().getSimpleName(), "First launch, so using built-in account");
                 builder.logInWithPredefinedAccount();
                 ContextUtil.toast(context, R.string.first_login_message);
                 return;
             }
         } else if (e.getCode() == 401 && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL)) {
-            Log.i(getClass().getName(), "Token is stale");
+            Log.i(getClass().getSimpleName(), "Token is stale");
             new PlayStoreApiAuthenticator(context).logout();
             builder.logInWithPredefinedAccount();
             return;
@@ -95,7 +95,7 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
         if (ContextUtil.isAlive(context)) {
             builder.show();
         } else {
-            Log.e(getClass().getName(), "AuthException happened and the provided context is not ui capable");
+            Log.e(getClass().getSimpleName(), "AuthException happened and the provided context is not ui capable");
         }
     }
 

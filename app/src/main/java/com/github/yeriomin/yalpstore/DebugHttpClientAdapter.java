@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.os.Environment;
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -74,14 +73,12 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
         if (null == body) {
             return;
         }
-        String path = new File(dumpDirectory, fileName).getAbsolutePath();
-        Log.i(DebugHttpClientAdapter.class.getName(), "Writing to " + path);
         FileOutputStream stream = null;
         try {
-            stream = new FileOutputStream(path);
+            stream = new FileOutputStream(new File(dumpDirectory, fileName).getAbsolutePath());
             stream.write(body);
         } catch (IOException e) {
-            Log.e(DebugHttpClientAdapter.class.getName(), "Could not dump request/response to " + path + ": " + e.getMessage());
+            // Failure to log the request is not very important
         } finally {
             Util.closeSilently(stream);
         }

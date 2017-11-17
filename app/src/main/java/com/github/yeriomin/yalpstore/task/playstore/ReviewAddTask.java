@@ -44,7 +44,7 @@ public class ReviewAddTask extends PlayStorePayloadTask<Review> {
         if (success()) {
             fragment.fillUserReview(review);
         } else {
-            Log.e(DetailsActivity.class.getName(), "Error adding the review: " + getException().getMessage());
+            Log.e(DetailsActivity.class.getSimpleName(), "Error adding the review: " + getException().getMessage());
             getException().printStackTrace();
         }
     }

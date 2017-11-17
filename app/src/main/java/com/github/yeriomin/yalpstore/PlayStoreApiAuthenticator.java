@@ -90,13 +90,13 @@ public class PlayStoreApiAuthenticator {
         TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
         while (tried < retries) {
             try {
-                Log.i(getClass().getName(), "Login attempt #" + (tried + 1));
+                Log.i(getClass().getSimpleName(), "Login attempt #" + (tried + 1));
                 com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = getBuilder(loginInfo, tokenDispenserMirrors.get());
                 GooglePlayAPI api = builder.build();
                 loginInfo.setEmail(builder.getEmail());
                 return api;
             } catch (ApiBuilderException e) {
-                Log.i(getClass().getName(), "ApiBuilderException: " + e.getMessage());
+                Log.i(getClass().getSimpleName(), "ApiBuilderException: " + e.getMessage());
             } catch (AuthException | TokenDispenserException e) {
                 tried++;
                 if (tried >= retries) {

@@ -24,7 +24,7 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
     @Override
     public long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type, OnDownloadProgressListener listener) {
         DownloadManager.Request request;
-        Log.i(getClass().getName(), "Downloading " + type.name() + " for " + app.getPackageName());
+        Log.i(getClass().getSimpleName(), "Downloading " + type.name() + " for " + app.getPackageName());
         switch (type) {
             case APK:
                 request = new DownloadRequestBuilderApk(context, app, deliveryData).build();

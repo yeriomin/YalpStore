@@ -27,7 +27,7 @@ public class ClusterActivity extends EndlessScrollActivity {
         if (TextUtils.isEmpty(intent.getStringExtra(ClusterActivity.INTENT_URL))
             || TextUtils.isEmpty(intent.getStringExtra(ClusterActivity.INTENT_TITLE))
         ) {
-            Log.w(getClass().getName(), "No cluster url or title provided in the intent");
+            Log.w(getClass().getSimpleName(), "No cluster url or title provided in the intent");
             finish();
             return;
         }

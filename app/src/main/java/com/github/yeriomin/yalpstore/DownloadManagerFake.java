@@ -28,7 +28,7 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
 
     @Override
     public long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type, OnDownloadProgressListener listener) {
-        Log.i(getClass().getName(), "Downloading " + type.name() + " for " + app.getPackageName());
+        Log.i(getClass().getSimpleName(), "Downloading " + type.name() + " for " + app.getPackageName());
         String url = getUrl(deliveryData, type);
         long downloadId = url.hashCode();
         statuses.put(downloadId, DownloadManagerInterface.IN_PROGRESS);

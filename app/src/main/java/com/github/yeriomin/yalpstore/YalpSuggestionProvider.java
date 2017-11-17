@@ -40,7 +40,7 @@ public class YalpSuggestionProvider extends ContentProvider {
                 cursor.addRow(constructRow(entry, i++));
             }
         } catch (Throwable e) {
-            Log.e(getClass().getName(), e.getClass().getName() + ": " + e.getMessage());
+            Log.e(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
         }
         return cursor;
     }

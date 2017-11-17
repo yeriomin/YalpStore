@@ -34,7 +34,7 @@ abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> 
         try {
             iterator.setGooglePlayApi(new PlayStoreApiAuthenticator(context).getApi());
         } catch (IOException e) {
-            Log.e(getClass().getName(), "Building an api object from preferences failed");
+            Log.e(getClass().getSimpleName(), "Building an api object from preferences failed");
         }
         if (!iterator.hasNext()) {
             return apps;

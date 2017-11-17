@@ -87,7 +87,7 @@ public class GeneralDetails extends Abstract {
             activity.findViewById(R.id.changes_upper).setVisibility(View.VISIBLE);
             setText(R.id.changes_upper, Html.fromHtml(changes).toString());
             initExpandableGroup(R.id.changes_header, R.id.changes_container);
-            Log.i(getClass().getName(), "clicking on whats new");
+            Log.i(getClass().getSimpleName(), "clicking on whats new");
             activity.findViewById(R.id.changes_header).performClick();
         }
     }
@@ -109,7 +109,7 @@ public class GeneralDetails extends Abstract {
             itemView.setAutoLinkMask(Linkify.ALL);
             itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
         } catch (RuntimeException e) {
-            Log.w(getClass().getName(), "System WebView missing: " + e.getMessage());
+            Log.w(getClass().getSimpleName(), "System WebView missing: " + e.getMessage());
             itemView.setAutoLinkMask(0);
             itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
         }
@@ -150,7 +150,7 @@ public class GeneralDetails extends Abstract {
             setText(R.id.description, Html.fromHtml(app.getDescription()).toString());
             initExpandableGroup(R.id.description_header, R.id.description_container);
             if (app.getInstalledVersionCode() == 0 || TextUtils.isEmpty(app.getChanges())) {
-                Log.i(getClass().getName(), "clicking on details");
+                Log.i(getClass().getSimpleName(), "clicking on details");
                 activity.findViewById(R.id.description_header).performClick();
             }
         }

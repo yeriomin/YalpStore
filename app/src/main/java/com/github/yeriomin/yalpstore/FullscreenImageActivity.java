@@ -32,7 +32,7 @@ public class FullscreenImageActivity extends Activity {
         super.onNewIntent(intent);
 
         if (null == DetailsActivity.app) {
-            Log.w(getClass().getName(), "No app stored");
+            Log.w(getClass().getSimpleName(), "No app stored");
             finish();
             return;
         }

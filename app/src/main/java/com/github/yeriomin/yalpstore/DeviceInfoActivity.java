@@ -29,7 +29,7 @@ public class DeviceInfoActivity extends YalpStoreActivity {
         super.onNewIntent(intent);
         String deviceName = intent.getStringExtra(INTENT_DEVICE_NAME);
         if (TextUtils.isEmpty(deviceName)) {
-            Log.e(getClass().getName(), "No device name given");
+            Log.e(getClass().getSimpleName(), "No device name given");
             finish();
             return;
         }

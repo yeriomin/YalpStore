@@ -28,7 +28,7 @@ public abstract class YalpStoreActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.v(getClass().getName(), "Starting activity");
+        Log.v(getClass().getSimpleName(), "Starting activity");
         logout = false;
         if (((YalpStoreApplication) getApplication()).isTv()) {
             requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
@@ -39,7 +39,7 @@ public abstract class YalpStoreActivity extends Activity {
 
     @Override
     protected void onResume() {
-        Log.v(getClass().getName(), "Resuming activity");
+        Log.v(getClass().getSimpleName(), "Resuming activity");
         super.onResume();
         if (logout) {
             finish();
@@ -48,13 +48,13 @@ public abstract class YalpStoreActivity extends Activity {
 
     @Override
     protected void onPause() {
-        Log.v(getClass().getName(), "Pausing activity");
+        Log.v(getClass().getSimpleName(), "Pausing activity");
         super.onPause();
     }
 
     @Override
     protected void onStop() {
-        Log.v(getClass().getName(), "Stopping activity");
+        Log.v(getClass().getSimpleName(), "Stopping activity");
         super.onStop();
     }
 
@@ -118,7 +118,7 @@ public abstract class YalpStoreActivity extends Activity {
 
     public boolean checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Log.i(getClass().getName(), "Checking if write permission is granted");
+            Log.i(getClass().getSimpleName(), "Checking if write permission is granted");
             return checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
         }
         return true;
@@ -126,7 +126,7 @@ public abstract class YalpStoreActivity extends Activity {
 
     public void requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Log.i(getClass().getName(), "Requesting the write permission");
+            Log.i(getClass().getSimpleName(), "Requesting the write permission");
             requestPermissions(
                 new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
                 PERMISSIONS_REQUEST_CODE

@@ -114,7 +114,7 @@ public class BitmapManager {
             options.inDither = false;
             return BitmapFactory.decodeStream(new FileInputStream(cached), null, options);
         } catch (IOException e) {
-            Log.e(BitmapManager.class.getName(), "Could not get cached bitmap: " + e.getClass().getName() + " " + e.getMessage());
+            Log.e(BitmapManager.class.getSimpleName(), "Could not get cached bitmap: " + e.getClass().getName() + " " + e.getMessage());
             return null;
         }
     }
@@ -153,7 +153,7 @@ public class BitmapManager {
 
             return BitmapFactory.decodeStream(input, null, options);
         } catch (IOException e) {
-            Log.e(BitmapManager.class.getName(), "Could not get icon from " + url + " " + e.getMessage());
+            Log.e(BitmapManager.class.getSimpleName(), "Could not get icon from " + url + " " + e.getMessage());
         }
         return null;
     }

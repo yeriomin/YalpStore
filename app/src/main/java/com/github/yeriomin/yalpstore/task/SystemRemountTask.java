@@ -59,7 +59,7 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
         super.onPostExecute(output);
         if (null != output) {
             for (String outputLine: output) {
-                Log.i(getClass().getName(), outputLine);
+                Log.i(getClass().getSimpleName(), outputLine);
             }
         }
         showRebootDialog();

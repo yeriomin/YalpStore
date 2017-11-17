@@ -27,7 +27,7 @@ public class ReviewDeleteTask extends PlayStorePayloadTask<Void> {
         if (success()) {
             fragment.clearUserReview();
         } else {
-            Log.e(DetailsActivity.class.getName(), "Error deleting the review: " + getException().getMessage());
+            Log.e(DetailsActivity.class.getSimpleName(), "Error deleting the review: " + getException().getMessage());
         }
     }
 }

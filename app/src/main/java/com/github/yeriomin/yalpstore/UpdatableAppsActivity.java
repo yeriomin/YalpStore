@@ -57,7 +57,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (isGranted(requestCode, permissions, grantResults)) {
-            Log.i(getClass().getName(), "User granted the write permission");
+            Log.i(getClass().getSimpleName(), "User granted the write permission");
             launchUpdateAll();
         }
     }

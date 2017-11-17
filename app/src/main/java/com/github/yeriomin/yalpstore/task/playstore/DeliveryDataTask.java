@@ -42,7 +42,7 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
                 downloadToken = buyResponse.getDownloadToken();
             }
         } catch (IOException e) {
-            Log.w(getClass().getName(), "Purchase for " + app.getPackageName() + " failed with " + e.getClass().getName() + ": " + e.getMessage());
+            Log.w(getClass().getSimpleName(), "Purchase for " + app.getPackageName() + " failed with " + e.getClass().getName() + ": " + e.getMessage());
         }
     }
 

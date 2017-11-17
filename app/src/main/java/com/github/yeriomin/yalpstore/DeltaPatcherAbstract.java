@@ -14,7 +14,7 @@ abstract public class DeltaPatcherAbstract {
     protected File patch;
 
     public DeltaPatcherAbstract(Context context, App app) {
-        Log.i(getClass().getName(), "Chosen delta patcher");
+        Log.i(getClass().getSimpleName(), "Chosen delta patcher");
         this.app = app;
         this.context = context;
         patch = Paths.getDeltaPath(context, app.getPackageName(), app.getVersionCode());

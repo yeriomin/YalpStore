@@ -28,19 +28,19 @@ public class SearchActivity extends EndlessScrollActivity {
 
         String newQuery = getQuery(intent);
         if (actionIs(intent, Intent.ACTION_VIEW) && looksLikeAPackageId(newQuery)) {
-            Log.i(getClass().getName(), "Following search suggestion to app page: " + newQuery);
+            Log.i(getClass().getSimpleName(), "Following search suggestion to app page: " + newQuery);
             startActivity(DetailsActivity.getDetailsIntent(this, newQuery));
             finish();
             return;
         }
-        Log.i(getClass().getName(), "Searching: " + newQuery);
+        Log.i(getClass().getSimpleName(), "Searching: " + newQuery);
         if (null != newQuery && !newQuery.equals(this.query)) {
             clearApps();
             this.categoryId = CategoryManager.TOP;
             this.query = newQuery;
             setTitle(getString(R.string.activity_title_search, query));
             if (looksLikeAPackageId(query)) {
-                Log.i(getClass().getName(), query + " looks like a package id");
+                Log.i(getClass().getSimpleName(), query + " looks like a package id");
                 checkPackageId(query);
             } else {
                 loadApps();

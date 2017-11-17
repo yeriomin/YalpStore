@@ -46,9 +46,9 @@ public class BugReportSenderFtp extends BugReportSender {
     @Override
     public boolean send() {
         compose();
-        Log.i(BugReportSenderFtp.class.getName(), "Uploading");
+        Log.i(BugReportSenderFtp.class.getSimpleName(), "Uploading");
         boolean result = uploadAll();
-        Log.i(BugReportSenderFtp.class.getName(), "Done");
+        Log.i(BugReportSenderFtp.class.getSimpleName(), "Done");
         return result;
     }
 
@@ -70,7 +70,7 @@ public class BugReportSenderFtp extends BugReportSender {
             }
             return result;
         } catch (IOException e) {
-            Log.e(BugReportSenderFtp.class.getName(), "FTP network error: " + e.getMessage());
+            Log.e(BugReportSenderFtp.class.getSimpleName(), "FTP network error: " + e.getMessage());
         } finally {
             closeSilently(ftpClient);
         }
@@ -87,8 +87,8 @@ public class BugReportSenderFtp extends BugReportSender {
         try {
             return client.storeFile(destination, fileInputStream);
         } catch (IOException e) {
-            Log.e(BugReportSenderFtp.class.getName(), client.getReplyString());
-            Log.e(BugReportSenderFtp.class.getName(), "FTP network error: " + e.getMessage());
+            Log.e(BugReportSenderFtp.class.getSimpleName(), client.getReplyString());
+            Log.e(BugReportSenderFtp.class.getSimpleName(), "FTP network error: " + e.getMessage());
         } finally {
             Util.closeSilently(fileInputStream);
         }

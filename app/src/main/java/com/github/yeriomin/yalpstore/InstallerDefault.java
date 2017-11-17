@@ -14,7 +14,7 @@ public class InstallerDefault extends InstallerAbstract {
     @Override
     public boolean verify(App app) {
         if (background) {
-            Log.i(getClass().getName(), "Background installation is not supported by default installer");
+            Log.i(getClass().getSimpleName(), "Background installation is not supported by default installer");
             return false;
         }
         return super.verify(app);

@@ -32,7 +32,7 @@ public class ReviewRetrieverIterator extends ReviewIterator {
         } catch (IOException e) {
             // Review list does not seem important enough to let tha app crash if something happens here
             // TODO: It is unclear if this error even should be shown in the UI
-            Log.i(getClass().getName(), e.getClass().getName() + ": " + e.getMessage());
+            Log.i(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
         }
         return list;
     }

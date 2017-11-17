@@ -23,7 +23,7 @@ public class ManualDownloadActivity extends DetailsActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         if (null == DetailsActivity.app) {
-            Log.e(getClass().getName(), "No app stored");
+            Log.e(getClass().getSimpleName(), "No app stored");
             finish();
             return;
         }
@@ -105,7 +105,7 @@ public class ManualDownloadActivity extends DetailsActivity {
                 downloadButton.setVisibility(View.VISIBLE);
                 restartTimer();
             } catch (NumberFormatException e) {
-                Log.w(getClass().getName(), s.toString() + " is not a number");
+                Log.w(getClass().getSimpleName(), s.toString() + " is not a number");
             }
         }
 

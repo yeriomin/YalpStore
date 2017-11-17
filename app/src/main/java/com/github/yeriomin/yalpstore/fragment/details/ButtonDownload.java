@@ -55,7 +55,7 @@ public class ButtonDownload extends Button {
         if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
             activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
         } else if (activity.checkPermission()) {
-            Log.i(getClass().getName(), "Write permission granted");
+            Log.i(getClass().getSimpleName(), "Write permission granted");
             download();
             View buttonCancel = activity.findViewById(R.id.cancel);
             if (null != buttonCancel) {
@@ -85,12 +85,12 @@ public class ButtonDownload extends Button {
             );
         } else {
             boolean writePermission = activity.checkPermission();
-            Log.i(getClass().getName(), "Write permission granted - " + writePermission);
+            Log.i(getClass().getSimpleName(), "Write permission granted - " + writePermission);
             if (writePermission && prepareDownloadsDir()) {
                 getPurchaseTask().execute();
             } else {
                 File dir = Paths.getYalpPath(activity);
-                Log.i(getClass().getName(), dir.getAbsolutePath() + " exists=" + dir.exists() + ", isDirectory=" + dir.isDirectory() + ", writable=" + dir.canWrite());
+                Log.i(getClass().getSimpleName(), dir.getAbsolutePath() + " exists=" + dir.exists() + ", isDirectory=" + dir.isDirectory() + ", writable=" + dir.canWrite());
                 ContextUtil.toast(this.activity.getApplicationContext(), R.string.error_downloads_directory_not_writable);
             }
         }

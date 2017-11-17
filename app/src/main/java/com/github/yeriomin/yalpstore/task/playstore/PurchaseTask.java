@@ -56,7 +56,7 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
             new Downloader(context).download(app, deliveryData, listener);
         } else {
             context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
-            Log.e(getClass().getName(), app.getPackageName() + " no download link returned");
+            Log.e(getClass().getSimpleName(), app.getPackageName() + " no download link returned");
         }
         return deliveryData;
     }
@@ -74,7 +74,7 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
             try {
                 getNotPurchasedDialog(context).show();
             } catch (WindowManager.BadTokenException e1) {
-                Log.e(getClass().getName(), "Could not create purchase error dialog: " + e1.getMessage());
+                Log.e(getClass().getSimpleName(), "Could not create purchase error dialog: " + e1.getMessage());
             }
         }
     }
@@ -92,7 +92,7 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
             if (ContextUtil.isAlive(context)) {
                 ContextUtil.toast(context, R.string.details_download_not_available);
             } else {
-                Log.w(getClass().getName(), app.getPackageName() + " not available");
+                Log.w(getClass().getSimpleName(), app.getPackageName() + " not available");
             }
         } else {
             super.processAuthException(e);
