@@ -262,4 +262,7 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="notification_not_privileged">"Permiso de instalación no concedido"</string>
 <string name="about_paypal_label">"Donar:"</string>
 <string name="pref_download_directory">"Carpeta de descargas"</string>
+<string name="pref_download_deltas">"Actualizaciones Delta"</string>
+<string name="pref_download_deltas_summary_off">"Descarga completa del apk cada vez"</string>
+<string name="pref_download_deltas_summary_on">"Solo los cambios son descargados durante las actualizaciones."</string>
 </resources>
