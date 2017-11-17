@@ -19,7 +19,7 @@ import java.util.TimeZone;
 import static com.github.yeriomin.yalpstore.NativeDeviceInfoProvider.GOOGLE_SERVICES_PACKAGE_ID;
 import static com.github.yeriomin.yalpstore.NativeDeviceInfoProvider.GOOGLE_VENDING_PACKAGE_ID;
 
-public class BugReportDeviceInfoBuilder extends BugReportBuilder {
+public class BugReportDeviceInfoBuilder extends BugReportPropertiesBuilder {
 
     static private Map<String, String> staticProperties = new HashMap<>();
 
@@ -37,13 +37,7 @@ public class BugReportDeviceInfoBuilder extends BugReportBuilder {
 
     @Override
     public BugReportDeviceInfoBuilder build() {
-        StringBuilder body = new StringBuilder();
-        Map<String, String> deviceInfo = getDeviceInfo();
-        for (String key : deviceInfo.keySet()) {
-            body.append(key).append(" = ").append(deviceInfo.get(key)).append("\n");
-        }
-        body.append("\n\n");
-        setContent(body.toString());
+        setContent(buildProperties(getDeviceInfo()));
         super.build();
         return this;
     }

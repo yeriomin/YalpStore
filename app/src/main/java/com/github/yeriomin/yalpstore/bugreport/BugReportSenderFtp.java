@@ -2,13 +2,10 @@ package com.github.yeriomin.yalpstore.bugreport;
 
 import android.content.Context;
 import android.os.Build;
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
-import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.Util;
-import com.github.yeriomin.yalpstore.selfupdate.Signature;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -36,7 +33,14 @@ public class BugReportSenderFtp extends BugReportSender {
     @Override
     protected void compose() {
         super.compose();
-        files.add(new BugReportMessageBuilder(context).setIdentification(userIdentification).setMessage(userMessage).build().getFile());
+        files.add(new BugReportMessageBuilder(context)
+            .setIdentification(userIdentification)
+            .setStackTrace(userIdentification)
+            .setIdentification(stackTrace)
+            .setMessage(userMessage)
+            .build()
+            .getFile()
+        );
     }
 
     @Override
@@ -107,28 +111,7 @@ public class BugReportSenderFtp extends BugReportSender {
         format.setTimeZone(TimeZone.getTimeZone("GMT"));
         return format.format(Calendar.getInstance(TimeZone.getTimeZone("GMT")).getTimeInMillis())
             + "-" + BuildConfig.VERSION_NAME
-            + "-" + getSource()
-            + "-" + getTopic()
             + "-" + Build.DEVICE.replace("-", "_")
         ;
-    }
-
-    private String getSource() {
-        if (Signature.isFdroid(context)) {
-            return "fdroid";
-        } else if (Signature.isGithub(context)) {
-            return "github";
-        }
-        return "selfsigned";
-    }
-
-    private String getTopic() {
-        if (!TextUtils.isEmpty(stackTrace)) {
-            return "crash";
-        } else if (!TextUtils.isEmpty(userMessage) && userMessage.equals(context.getString(R.string.sent_from_device_definition_dialog))) {
-            return "device";
-        } else {
-            return "feedback";
-        }
     }
 }

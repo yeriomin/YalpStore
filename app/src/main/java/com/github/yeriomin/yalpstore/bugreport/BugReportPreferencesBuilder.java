@@ -6,11 +6,12 @@ import android.preference.PreferenceManager;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-class BugReportPreferencesBuilder extends BugReportBuilder {
+class BugReportPreferencesBuilder extends BugReportPropertiesBuilder {
 
     static private final String[] PREFERENCES = {
         PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL,
@@ -39,16 +40,16 @@ class BugReportPreferencesBuilder extends BugReportBuilder {
 
     @Override
     public BugReportBuilder build() {
-        StringBuilder result = new StringBuilder();
         Map<String, ?> prefs = PreferenceManager.getDefaultSharedPreferences(context).getAll();
         Set<String> whitelist = new HashSet<>(Arrays.asList(PREFERENCES));
+        Map<String, String> filtered = new HashMap<>();
         for (String key: prefs.keySet()) {
             if (!whitelist.contains(key)) {
                 continue;
             }
-            result.append(key).append(" = ").append(String.valueOf(prefs.get(key))).append("\n");
+            filtered.put(key, String.valueOf(prefs.get(key)));
         }
-        setContent(result.toString());
+        setContent(buildProperties(filtered));
         super.build();
         return this;
     }
