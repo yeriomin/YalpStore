@@ -161,11 +161,42 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/changes_header"
+                    android:focusable="true"
+                    android:visibility="gone"
+                    android:drawableLeft="@drawable/ic_expand_more"
+                    android:drawableStart="@drawable/ic_expand_more"
+                    android:textSize="20sp"
+                    android:text="@string/details_changelog"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6dip" />
+
+                <LinearLayout
+                    android:id="@+id/changes_container"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/changes_upper"
+                        android:textIsSelectable="true"
+                        android:visibility="gone"
+                        android:autoLink="web|email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="6dip" />
+
+                </LinearLayout>
+
+                <TextView
                     android:id="@+id/description_header"
                     android:focusable="true"
                     android:visibility="gone"
-                    android:drawableLeft="@drawable/ic_expand_less"
-                    android:drawableStart="@drawable/ic_expand_less"
+                    android:drawableLeft="@drawable/ic_expand_more"
+                    android:drawableStart="@drawable/ic_expand_more"
                     android:textSize="20sp"
                     android:text="@string/details_description"
                     android:gravity="center_vertical"

@@ -71,10 +71,24 @@ public class GeneralDetails extends Abstract {
 
     private void drawChanges(App app) {
         String changes = app.getChanges();
-        if (!TextUtils.isEmpty(changes)) {
+        if (TextUtils.isEmpty(changes)) {
+            activity.findViewById(R.id.changes).setVisibility(View.GONE);
+            activity.findViewById(R.id.changes_title).setVisibility(View.GONE);
+            activity.findViewById(R.id.changes_header).setVisibility(View.GONE);
+            activity.findViewById(R.id.changes_container).setVisibility(View.GONE);
+            activity.findViewById(R.id.changes_upper).setVisibility(View.GONE);
+            return;
+        }
+        if (app.getInstalledVersionCode() == 0) {
             setText(R.id.changes, Html.fromHtml(changes).toString());
             activity.findViewById(R.id.changes).setVisibility(View.VISIBLE);
             activity.findViewById(R.id.changes_title).setVisibility(View.VISIBLE);
+        } else {
+            activity.findViewById(R.id.changes_upper).setVisibility(View.VISIBLE);
+            setText(R.id.changes_upper, Html.fromHtml(changes).toString());
+            initExpandableGroup(R.id.changes_header, R.id.changes_container);
+            Log.i(getClass().getName(), "clicking on whats new");
+            activity.findViewById(R.id.changes_header).performClick();
         }
     }
 
@@ -135,7 +149,10 @@ public class GeneralDetails extends Abstract {
         } else {
             setText(R.id.description, Html.fromHtml(app.getDescription()).toString());
             initExpandableGroup(R.id.description_header, R.id.description_container);
-            activity.findViewById(R.id.description_header).performClick();
+            if (app.getInstalledVersionCode() == 0 || TextUtils.isEmpty(app.getChanges())) {
+                Log.i(getClass().getName(), "clicking on details");
+                activity.findViewById(R.id.description_header).performClick();
+            }
         }
     }
 
