@@ -144,9 +144,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 
 Lembre-se que ao efetuar a transferência de versões arbitrárias de aplicações não é suportada pela Google Play Store. O teu sucesso depende num mero palpite de um código. Mesmo que acerte, poderá transferir uma aplicação incompatível com o teu dispositivo."</string>
 <string name="manual_download_hint_version_code">"Código da versão"</string>
-<string name="list_has_update">"Atualizável"</string>
-<string name="list_no_update">"Já atualizadas"</string>
-<string name="details_uninstall">"Desinstalar"</string>
+    <string name="details_uninstall">"Desinstalar"</string>
 <string name="notification_download_starting">"A iniciar transferência"</string>
 <string name="notification_download_progress">"%1$s of %2$s transferido"</string>
 <string name="pref_requested_language">"Idioma da Play Store"</string>
@@ -183,19 +181,13 @@ Lembre-se que ao efetuar a transferência de versões arbitrárias de aplicaçõ
 <string name="action_make_system">"Converter para aplicação de sistema"</string>
 <string name="action_make_normal">"Converter para aplicação normal"</string>
 <string name="list_app_system">"Aplicação de sistema"</string>
-<string name="list_app_exists_in_play_store">"Disponível na Play Store"</string>
-<string name="activity_title_updates_only">"Atualizações"</string>
+    <string name="activity_title_updates_only">"Atualizações"</string>
 <string name="activity_title_updates_and_other_apps">"Aplicações"</string>
-<string name="pref_category_updates_page">"Atualizações"</string>
-<string name="pref_updates_only">"Apresentar apenas aplicações por atualizar"</string>
-<string name="pref_updates_only_summary_off">"Todas as aplicações serão apresentadas"</string>
-<string name="pref_updates_only_summary_on">"Aplicações atualizáveis serão apresentadas"</string>
-<string name="pref_show_system_apps">"Mostrar aplicações de sistema"</string>
+    <string name="pref_show_system_apps">"Mostrar aplicações de sistema"</string>
 <string name="pref_show_system_apps_summary_off">"Aplicações de sistema são escondidas"</string>
 <string name="pref_show_system_apps_summary_on">"Aplicações de sistema são visíveis"</string>
 <string name="details_system_app_info">"Informação de sistema"</string>
-<string name="activity_title_search_publisher">"Editor: %1$s"</string>
-<string name="details_run">"Abrir"</string>
+    <string name="details_run">"Abrir"</string>
 <string name="dialog_title_remounting_system">"A usar partição de sistema"</string>
 <string name="dialog_message_remounting_system">"A usar partição de sistema. Isto poderá levar algum tempo."</string>
 <string name="dialog_title_checking_busybox">"A verificar se busybox está disponível"</string>

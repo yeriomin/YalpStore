@@ -143,9 +143,7 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play Store Nutzungsbedin
 
 Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Store offiziell nicht unterstützt. Der Erfolg dieses Vorhabens hängt von dem richtigen Raten der Versionsnummer ab. Selbst wenn das Raten erfolgreich war und die Version runtergeladen werden konnte, kann es immer noch sein, dass die Version inkompatibel ist. Höchstwahrscheinlich ist dies hier Zeitverschwendung!"</string>
 <string name="manual_download_hint_version_code">"Versionsnummer hier"</string>
-<string name="list_has_update">"Aktualisierbar"</string>
-<string name="list_no_update">"Bereits aktuell"</string>
-<string name="details_uninstall">"Deinstallieren"</string>
+    <string name="details_uninstall">"Deinstallieren"</string>
 <string name="notification_download_starting">"Beginne Download"</string>
 <string name="notification_download_progress">"%1$s von %2$s heruntergeladen"</string>
 <string name="pref_requested_language">"Sprache für Play Store Anfragen"</string>
@@ -182,19 +180,13 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="action_make_system">"In System-App umwandeln"</string>
 <string name="action_make_normal">"In normale App umwandeln"</string>
 <string name="list_app_system">"System App"</string>
-<string name="list_app_exists_in_play_store">"Verfügbar im Play Store"</string>
-<string name="activity_title_updates_only">"Aktualisierungen"</string>
+    <string name="activity_title_updates_only">"Aktualisierungen"</string>
 <string name="activity_title_updates_and_other_apps">"Deine Apps"</string>
-<string name="pref_category_updates_page">"Aktualisierungsseite"</string>
-<string name="pref_updates_only">"Nur aktualisierbare Apps anzeigen"</string>
-<string name="pref_updates_only_summary_off">"Alle Apps werden angezeigt"</string>
-<string name="pref_updates_only_summary_on">"Nur aktualisierbare Apps werden angezeigt"</string>
-<string name="pref_show_system_apps">"System Apps anzeigen"</string>
+    <string name="pref_show_system_apps">"System Apps anzeigen"</string>
 <string name="pref_show_system_apps_summary_off">"System Apps werden versteckt"</string>
 <string name="pref_show_system_apps_summary_on">"System Apps werden angezeigt"</string>
 <string name="details_system_app_info">"System info"</string>
-<string name="activity_title_search_publisher">"Apps von %1$s"</string>
-<string name="details_run">"Starten"</string>
+    <string name="details_run">"Starten"</string>
 <string name="dialog_title_remounting_system">"Arbeite auf /system Partition"</string>
 <string name="dialog_message_remounting_system">"Arbeite auf /system Partition. Das könnte länger dauern"</string>
 <string name="dialog_title_checking_busybox">"Überprüfe ob busybox verfügbar ist."</string>

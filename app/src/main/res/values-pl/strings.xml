@@ -143,9 +143,7 @@ Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania
 
 Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji aplikacji. Twój sukces zależy od szczęśliwego odgadnięcia kodu wersji. Nawet jeśli się zgadnie, a pobieranie rozpocznie się, możesz trafić na niekompatybilny plik apk. Najprawdopodobniej tracisz tylko czas!"</string>
 <string name="manual_download_hint_version_code">"tutaj jest kod wersji"</string>
-<string name="list_has_update">"Dostępne aktualizacje"</string>
-<string name="list_no_update">"Aktualne"</string>
-<string name="details_uninstall">"Odinstaluj"</string>
+    <string name="details_uninstall">"Odinstaluj"</string>
 <string name="notification_download_starting">"Rozpoczynanie pobierania"</string>
 <string name="notification_download_progress">"%1$s z %2$s pobrano"</string>
 <string name="pref_requested_language">"Żądana wersja językowa Google Play"</string>
@@ -182,19 +180,13 @@ Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji apli
 <string name="action_make_system">"Konwertuj na aplikację systemową"</string>
 <string name="action_make_normal">"Konwertuj do normalnej aplikacji"</string>
 <string name="list_app_system">"Aplikacja systemowa"</string>
-<string name="list_app_exists_in_play_store">"Dostępne w sklepie Google Play"</string>
-<string name="activity_title_updates_only">"Aktualizacje"</string>
+    <string name="activity_title_updates_only">"Aktualizacje"</string>
 <string name="activity_title_updates_and_other_apps">"Twoje aplikacje"</string>
-<string name="pref_category_updates_page">"Odśwież stronę"</string>
-<string name="pref_updates_only">"Pokaż tylko aplikacje z aktualizacjami"</string>
-<string name="pref_updates_only_summary_off">"Wszystkie aplikacje są teraz wyświetlane"</string>
-<string name="pref_updates_only_summary_on">"Tylko aplikacje z dostępnymi aktualizacjami są teraz pokazywane"</string>
-<string name="pref_show_system_apps">"Pokaż aplikacje systemowe"</string>
+    <string name="pref_show_system_apps">"Pokaż aplikacje systemowe"</string>
 <string name="pref_show_system_apps_summary_off">"Aplikacje systemowe są teraz ukryte"</string>
 <string name="pref_show_system_apps_summary_on">"Aplikacje systemowe są teraz wyświetlane"</string>
 <string name="details_system_app_info">"Informacja o systemie"</string>
-<string name="activity_title_search_publisher">"Aplikacje przez %1$s "</string>
-<string name="details_run">"Uruchom"</string>
+    <string name="details_run">"Uruchom"</string>
 <string name="dialog_title_remounting_system">"Praca z partycją /system"</string>
 <string name="dialog_message_remounting_system">"Pracja z partycją /system. Może to zająć trochę czasu."</string>
 <string name="dialog_title_checking_busybox">"Sprawdzanie dostępności busybox"</string>

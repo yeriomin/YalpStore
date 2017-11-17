@@ -143,9 +143,7 @@ Ten en cuenta que Yalp viola los términos de servicio del Play Store. Es probab
 
 Ten en cuenta que Play Store no está a favor de descargar versiones arbitrarias de Play Store. El éxito dependerá de la suerte al adivinar el número adecuado. Incluso si se consigue descargar un APK, es posible que sea incompatible. Con casi total seguridad, ¡esto es una pérdida de tiempo!"</string>
 <string name="manual_download_hint_version_code">"código de versión"</string>
-<string name="list_has_update">"Actualizable"</string>
-<string name="list_no_update">"Actualizada"</string>
-<string name="details_uninstall">"Desinstalar"</string>
+    <string name="details_uninstall">"Desinstalar"</string>
 <string name="notification_download_starting">"Iniciando descarga"</string>
 <string name="notification_download_progress">"%1$s de %2$s descargado"</string>
 <string name="pref_requested_language">"Lenguaje que comunicar a Play Store"</string>
@@ -182,19 +180,13 @@ Ten en cuenta que Play Store no está a favor de descargar versiones arbitrarias
 <string name="action_make_system">"Convertir a aplicación de sistema"</string>
 <string name="action_make_normal">"Convertir a aplicación normal"</string>
 <string name="list_app_system">"Aplicación de sistema"</string>
-<string name="list_app_exists_in_play_store">"Disponible en Play Store"</string>
-<string name="activity_title_updates_only">"Actualizaciones"</string>
+    <string name="activity_title_updates_only">"Actualizaciones"</string>
 <string name="activity_title_updates_and_other_apps">"Tus aplicaciones"</string>
-<string name="pref_category_updates_page">"Actualizar páginas"</string>
-<string name="pref_updates_only">"Mostrar solo actualizables"</string>
-<string name="pref_updates_only_summary_off">"Se muestran todas las aplicaciones"</string>
-<string name="pref_updates_only_summary_on">"Se muestran solo las aplicaciones actualizables"</string>
-<string name="pref_show_system_apps">"Mostrar aplicaciones de sistema"</string>
+    <string name="pref_show_system_apps">"Mostrar aplicaciones de sistema"</string>
 <string name="pref_show_system_apps_summary_off">"Se muestran las aplicaciones de sistema"</string>
 <string name="pref_show_system_apps_summary_on">"No se muestran las aplicaciones de sistema"</string>
 <string name="details_system_app_info">"Información de sistema"</string>
-<string name="activity_title_search_publisher">"Aplicaciones de %1$s"</string>
-<string name="details_run">"Ejecutar"</string>
+    <string name="details_run">"Ejecutar"</string>
 <string name="dialog_title_remounting_system">"Se está modificando la partición de sistema"</string>
 <string name="dialog_message_remounting_system">"Se está modificando la partición de sistema. Puede tomar algún tiempo."</string>
 <string name="dialog_title_checking_busybox">"Comprobando si busybox está disponible"</string>

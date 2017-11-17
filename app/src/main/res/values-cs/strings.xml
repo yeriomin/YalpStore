@@ -142,8 +142,6 @@ Mějte prosím na paměti, že užití této aplikace je v rozporu s podmínkami
 
 Mějte na paměti, že stahování starších verzí aplikací není podporováno obchodem Play. Váš úspěch závisí na úspěšném odhadnutí kódu verze. Pokud kód odhadnete správně a započnete stahování, můžete stáhnout nekompatibilní apk. Pravděpodobně tím ztrácíte čas!"</string>
 <string name="manual_download_hint_version_code">"kód verze zde"</string>
-<string name="list_has_update">"Aktualizovatelné"</string>
-<string name="list_no_update">"Již aktuální"</string>
 <string name="details_uninstall">"Odinstalovat"</string>
 <string name="notification_download_starting">"Začínám stahovat"</string>
 <string name="notification_download_progress">"%1$s z %2$s staženo"</string>
@@ -181,18 +179,12 @@ Mějte na paměti, že stahování starších verzí aplikací není podporován
 <string name="action_make_system">"Převést na systémovou aplikaci"</string>
 <string name="action_make_normal">"Převést na normální aplikaci"</string>
 <string name="list_app_system">"Systémová aplikace"</string>
-<string name="list_app_exists_in_play_store">"Dosupné na obchodě Play"</string>
 <string name="activity_title_updates_only">"Aktualizace"</string>
 <string name="activity_title_updates_and_other_apps">"Vaše aplikace"</string>
-<string name="pref_category_updates_page">"Stránka aktualizací"</string>
-<string name="pref_updates_only">"Zobrazit pouze aktualizovatelné aplikace"</string>
-<string name="pref_updates_only_summary_off">"Všechny aplikace jsou nyní zobrazeny"</string>
-<string name="pref_updates_only_summary_on">"Pouze aktualizovatelné aplikace jsou nyní zobrazeny"</string>
 <string name="pref_show_system_apps">"Zobrazovat systémové aplikace"</string>
 <string name="pref_show_system_apps_summary_off">"Systémové aplikace jsou nyní skryty"</string>
 <string name="pref_show_system_apps_summary_on">"Systémové aplikace jsou nyní zobrazeny"</string>
 <string name="details_system_app_info">"Systémové informace"</string>
-<string name="activity_title_search_publisher">"Aplikace od %1$s"</string>
 <string name="details_run">"Spustit"</string>
 <string name="dialog_title_remounting_system">"Pracuji s /system oddílem"</string>
 <string name="dialog_message_remounting_system">"Pracuji s /system oddílem. Toto může chvíli trvat."</string>

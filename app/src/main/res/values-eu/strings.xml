@@ -141,9 +141,7 @@ Kontuan izan aplikazio hau erabiltzea Google Play Storeren erabilera baldintzak 
 
 Play Storek ez du bestelako bertsioak deskargatzeko euskarririk. Emaitza bertsio kodea ondo asmatzearen araberakoa da, eta igartzen baduzu ere eta deskargatzea lortzen baduzu, agian ez dabil zure gailuan. Debora galera bat izan daiteke."</string>
 <string name="manual_download_hint_version_code">"bertsio-kodea hemen"</string>
-<string name="list_has_update">"Eguneragarria"</string>
-<string name="list_no_update">"Eguneratua"</string>
-<string name="details_uninstall">"Desinstalatu"</string>
+    <string name="details_uninstall">"Desinstalatu"</string>
 <string name="notification_download_starting">"Deskarga hasten"</string>
 <string name="notification_download_progress">"%1$s / %2$s deskargatuta"</string>
 <string name="pref_requested_language">"Play Storek hizkuntza galdetzen du"</string>
@@ -180,19 +178,13 @@ Play Storek ez du bestelako bertsioak deskargatzeko euskarririk. Emaitza bertsio
 <string name="action_make_system">"Bihurtu sistemako aplikazio"</string>
 <string name="action_make_normal">"Bihurtu aplikazio arrunta"</string>
 <string name="list_app_system">"Sistemako aplikazioa"</string>
-<string name="list_app_exists_in_play_store">"Play Storen eskuragarri"</string>
-<string name="activity_title_updates_only">"Eguneraketak"</string>
+    <string name="activity_title_updates_only">"Eguneraketak"</string>
 <string name="activity_title_updates_and_other_apps">"Zure aplikazioak"</string>
-<string name="pref_category_updates_page">"Eguneratu orria"</string>
-<string name="pref_updates_only">"Erakutsi eguneratu daitezkeen aplikazioak besterik ez"</string>
-<string name="pref_updates_only_summary_off">"Orain aplikazio guztiak erakutsiko dira"</string>
-<string name="pref_updates_only_summary_on">"Orain eguneratu daitezkeen aplikazioak besterik ez dira erakutsiko"</string>
-<string name="pref_show_system_apps">"Erakutsi sistemako aplikazioak"</string>
+    <string name="pref_show_system_apps">"Erakutsi sistemako aplikazioak"</string>
 <string name="pref_show_system_apps_summary_off">"Orain sistemako aplikazioak ezkutatzen dira"</string>
 <string name="pref_show_system_apps_summary_on">"Orain sistemako aplikazioak erakusten dira"</string>
 <string name="details_system_app_info">"Sitemaren informazioa"</string>
-<string name="activity_title_search_publisher">"%1$s(e)k egindako aplikazioak"</string>
-<string name="details_run">"Exekutatu"</string>
+    <string name="details_run">"Exekutatu"</string>
 <string name="dialog_title_remounting_system">"/system partizioan lanean"</string>
 <string name="dialog_message_remounting_system">"/system partizioan lanean. Honek denbora bat eraman dezake."</string>
 <string name="dialog_title_checking_busybox">"Busybox erabilgarri dagoen egiaztatzen"</string>

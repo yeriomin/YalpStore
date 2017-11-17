@@ -142,9 +142,7 @@ Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più s
 
 Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store e il successo dipende dalla fortuna nell'indovinare il numero di versione. Tuttavia, anche indovinando, l'apk potrebbe comunque non essere compatibile. È probabile che tu stia sprecando tempo!"</string>
 <string name="manual_download_hint_version_code">"Numero di versione"</string>
-<string name="list_has_update">"Aggiornabile"</string>
-<string name="list_no_update">"Già aggiornata"</string>
-<string name="details_uninstall">"Disinstalla"</string>
+    <string name="details_uninstall">"Disinstalla"</string>
 <string name="notification_download_starting">"Avvio del download"</string>
 <string name="notification_download_progress">"%1$s di %2$s scaricati"</string>
 <string name="pref_requested_language">"Lingua richiesta al Play Store"</string>
@@ -183,21 +181,15 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="action_make_system">"Rendi app di sistema"</string>
 <string name="action_make_normal">"Rendi app normale"</string>
 <string name="list_app_system">"App di sistema"</string>
-<string name="list_app_exists_in_play_store">"Disponibile su Play Store"</string>
-<string name="activity_title_updates_only">"Aggiornamenti"</string>
+    <string name="activity_title_updates_only">"Aggiornamenti"</string>
 <string name="activity_title_updates_and_other_apps">"Le tue app"</string>
 
 <!-- Hi, I can't understand how to translate this. Does it means "Reload page", "Page with the list of updates" or what else? -->
-<string name="pref_category_updates_page">"Lista aggiornamenti"</string>
-<string name="pref_updates_only">"Mostra solo aggiornabili"</string>
-<string name="pref_updates_only_summary_off">"Vengono mostrate tutte le app"</string>
-<string name="pref_updates_only_summary_on">"Vengono mostrate solo app aggiornabili"</string>
-<string name="pref_show_system_apps">"Mostra appa di sistema"</string>
+    <string name="pref_show_system_apps">"Mostra appa di sistema"</string>
 <string name="pref_show_system_apps_summary_off">"App di sistema nascoste"</string>
 <string name="pref_show_system_apps_summary_on">"App di sistema visualizzate"</string>
 <string name="details_system_app_info">"Info di sistema"</string>
-<string name="activity_title_search_publisher">"App di %1$s"</string>
-<string name="details_run">"Avvia"</string>
+    <string name="details_run">"Avvia"</string>
 <string name="dialog_title_remounting_system">"Esecuzione su partizione /system"</string>
 <string name="dialog_message_remounting_system">"Esecuzione su partizione /system. Può volerci del tempo."</string>
 <string name="dialog_title_checking_busybox">"Verifica disponibilità di busybox"</string>

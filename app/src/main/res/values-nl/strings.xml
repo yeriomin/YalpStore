@@ -141,9 +141,7 @@ Wees alert dat het gebruik van deze app in gaat tegen het ToS van de Play Store.
 
 Houd er rekening mee dat het downloaden van willekeurige versies van apps niet ondersteund wordt door Google Play Store. Uw succes hangt af van een gelukkige gok van de versiecode. Zelfs als je het goed raad en je krijgt de download dan krijg je misschien een incompatibele apk. Hoogstwaarschijnlijk verspil je je tijd!"</string>
 <string name="manual_download_hint_version_code">"Versie code hier"</string>
-<string name="list_has_update">"Te updaten"</string>
-<string name="list_no_update">"Reeds up tot date"</string>
-<string name="details_uninstall">"deïnstalleer"</string>
+    <string name="details_uninstall">"deïnstalleer"</string>
 <string name="notification_download_starting">"Download wordt gestart"</string>
 <string name="notification_download_progress">"%1$s van de %2$s gedownload"</string>
 <string name="pref_requested_language">"Play Store tonen in:"</string>
@@ -183,19 +181,13 @@ Houd er rekening mee dat het downloaden van willekeurige versies van apps niet o
 <string name="action_make_system">"Converteer naar systeem app"</string>
 <string name="action_make_normal">"Concerteer naar normale app"</string>
 <string name="list_app_system">"Systeem app"</string>
-<string name="list_app_exists_in_play_store">"Beschikbaar in de Play Store"</string>
-<string name="activity_title_updates_only">"Updates"</string>
+    <string name="activity_title_updates_only">"Updates"</string>
 <string name="activity_title_updates_and_other_apps">"Uw apps"</string>
-<string name="pref_category_updates_page">"Update pagina"</string>
-<string name="pref_updates_only">"Toon alleen updatebare apps"</string>
-<string name="pref_updates_only_summary_off">"Alle apps worden momenteel getoond"</string>
-<string name="pref_updates_only_summary_on">"Alleen updatebare apps worden nu getoond"</string>
-<string name="pref_show_system_apps">"Toon systeem apps"</string>
+    <string name="pref_show_system_apps">"Toon systeem apps"</string>
 <string name="pref_show_system_apps_summary_off">"Systeem apps worden nu verborgen"</string>
 <string name="pref_show_system_apps_summary_on">"Systeem apps worden nu getoond"</string>
 <string name="details_system_app_info">"Systeem info"</string>
-<string name="activity_title_search_publisher">"Apps van %1$s"</string>
-<string name="details_run">"Start"</string>
+    <string name="details_run">"Start"</string>
 <string name="dialog_title_remounting_system">"Werkt met /system partitie"</string>
 <string name="dialog_message_remounting_system">"Werkt met /system partitie. Dit kan even duren."</string>
 <string name="dialog_title_checking_busybox">"Controleren of busybox aanwezig is"</string>

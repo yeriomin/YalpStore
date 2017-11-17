@@ -146,9 +146,7 @@ Isso significa que o código da versão não foi retornado pelo servidor da Goog
 
 Lembre-se de que o download de versões arbitrárias de aplicativos não é compatível com o Google Play Store. Seu sucesso depende de uma suposição afortunada do código da versão. Mesmo se você adivinhar direito e você começa o download para começar, você pode obter um apk incompatível. Muito provavelmente, você está desperdiçando seu tempo!"</string>
 <string name="manual_download_hint_version_code">"Código da versão aqui"</string>
-<string name="list_has_update">"Atualizável"</string>
-<string name="list_no_update">"Já atualizado"</string>
-<string name="details_uninstall">"Desinstalar"</string>
+    <string name="details_uninstall">"Desinstalar"</string>
 <string name="notification_download_starting">"Iniciando o download"</string>
 <string name="notification_download_progress">"%1$s de %2$s baixado"</string>
 <string name="pref_requested_language">"Idioma das solicitações da Play Store"</string>
@@ -185,20 +183,14 @@ Lembre-se de que o download de versões arbitrárias de aplicativos não é comp
 <string name="action_make_system">"Converter para aplicativo de sistema"</string>
 <string name="action_make_normal">"Converter para o aplicativo normal"</string>
 <string name="list_app_system">"Aplicação do sistema"</string>
-<string name="list_app_exists_in_play_store">"Disponível na Play Store"</string>
-<string name="activity_title_updates_only">"Atualizações"</string>
+    <string name="activity_title_updates_only">"Atualizações"</string>
 <string name="activity_title_updates_and_other_apps">"As suas aplicações"</string>
-<string name="pref_category_updates_page">"Atualizar página"</string>
-<string name="pref_updates_only">"Mostrar apenas aplicações actualizáveis"</string>
-<string name="pref_updates_only_summary_off">"Todos os aplicativos são exibidos agora"</string>
-<string name="pref_updates_only_summary_on">"Apenas as aplicações actualizáveis são apresentadas agora"</string>
-<string name="pref_show_system_apps">"Mostrar aplicativos do sistema"</string>
+    <string name="pref_show_system_apps">"Mostrar aplicativos do sistema"</string>
 <string name="pref_show_system_apps_summary_off">"Os aplicativos do sistema estão ocultos agora"</string>
 <string name="pref_show_system_apps_summary_on">"Os aplicativos do sistema são exibidos agora"</string>
 <string name="details_system_app_info">"Info do sistema
 "</string>
-<string name="activity_title_search_publisher">"Aplicativos de %1$s"</string>
-<string name="details_run">"Executar"</string>
+    <string name="details_run">"Executar"</string>
 <string name="dialog_title_remounting_system">"Trabalhando com / partição de sistema"</string>
 <string name="dialog_message_remounting_system">"Trabalhando com / partição do sistema. Isso pode levar algum tempo"</string>
 <string name="dialog_title_checking_busybox">"Verificar se a busybox está disponível"</string>

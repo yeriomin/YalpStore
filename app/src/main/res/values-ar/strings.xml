@@ -138,8 +138,6 @@
 
 لا يمكن تحميل إصدار برقم عشوائي التحميل يعتمد على تخمينك الصحيح وحتى لو خمنت رقم صحيح فقد تحصل على حزمة apk غير متوافقة مع جهازك. على الأغلب أنت تضيع وقتك!"</string>
 <string name="manual_download_hint_version_code">"رقم الإصدار هنا"</string>
-<string name="list_has_update">"قابل للتحديث"</string>
-<string name="list_no_update">"محدث بالفعل"</string>
 <string name="details_uninstall">"إلغاء التثبيت"</string>
 <string name="notification_download_starting">"جاري بدء التحميل"</string>
 <string name="notification_download_progress">"%1$s من %2$s تم تحميله"</string>
@@ -177,18 +175,12 @@
 <string name="action_make_system">"حول إلى برنامج نظام"</string>
 <string name="action_make_normal">"حول إلى برنامج عادي"</string>
 <string name="list_app_system">"برنامج نظام"</string>
-<string name="list_app_exists_in_play_store">"متوفر في سوق بلاي."</string>
 <string name="activity_title_updates_only">"التحديثات"</string>
 <string name="activity_title_updates_and_other_apps">"تطبيقاتك"</string>
-<string name="pref_category_updates_page">"صفحة التحديث"</string>
-<string name="pref_updates_only">"أظهر التطبيقات القابلة للتحديث فقط"</string>
-<string name="pref_updates_only_summary_off">"كل التطبيقات يتم عرضها الآن"</string>
-<string name="pref_updates_only_summary_on">"فقط التطبيقات القابلة للتحديث يتم عرضها"</string>
 <string name="pref_show_system_apps">"أظهر تطبيقات النظام"</string>
 <string name="pref_show_system_apps_summary_off">"تطبيقات النظام مخفية الآن"</string>
 <string name="pref_show_system_apps_summary_on">"تطبيقات النظام معروضة الآن"</string>
 <string name="details_system_app_info">"معلومات النظام"</string>
-<string name="activity_title_search_publisher">"التطبيقات بواسطة %1$s"</string>
 <string name="details_run">"شغل"</string>
 <string name="dialog_title_remounting_system">"جاري العمل على قسم /system"</string>
 <string name="dialog_message_remounting_system">"جاري العمل على قسم /system. قد يستغرق ذلك بعض الوقت."</string>

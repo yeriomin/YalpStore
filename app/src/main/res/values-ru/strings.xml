@@ -7,8 +7,6 @@
     <string name="about_logged_in">Ваш текущий аккаунт:</string>
     <string name="about_copied_to_clipboard">Скопировано в буфер обмена</string>
     <string name="list_line_2_updatable">"Обновлено %1$s"</string>
-    <string name="list_has_update">Есть обновления</string>
-    <string name="list_no_update">Нет обновлений</string>
     <string name="list_empty_updates">Обновлений нет</string>
     <string name="list_empty_search">Ничего не найдено</string>
     <string name="list_incompatible">несовместимо</string>
@@ -20,7 +18,6 @@
     <string name="list_app_depends_on_gsf">зависит от GSF</string>
     <string name="list_app_independent_from_gsf">не зависит от GSF</string>
     <string name="list_app_system">Системное</string>
-    <string name="list_app_exists_in_play_store">Есть в Play Store</string>
     <string name="dialog_title_package_id">Найдено точное соответствие</string>
     <string name="dialog_message_package_id">Найдено приложение с таким идентификатором. Перейти сразу на страницу этого приложения?</string>
     <string name="dialog_title_application_crashed">В Yalp Store произошёл сбой</string>
@@ -130,7 +127,6 @@
     <string name="activity_title_updates_only">Обновления</string>
     <string name="activity_title_updates_and_other_apps">Ваши приложения</string>
     <string name="activity_title_search">"Поиск: \"%1$s\""</string>
-    <string name="activity_title_search_publisher">"Приложения от %1$s"</string>
     <string name="notification_installation_complete">Установлено обновление.</string>
     <string name="notification_installation_failed">Не удалось установить обновление.</string>
     <string name="notification_not_privileged">Нет разрешения на установку</string>
@@ -187,7 +183,6 @@
     <string name="pref_hide_apps_with_ads_summary_off">Сейчас приложения с рекламой отображаются</string>
     <string name="pref_hide_apps_with_ads_summary_on">Сейчас приложения с рекламой не отображаются</string>
     <string name="pref_category_updates">Обновления</string>
-    <string name="pref_category_updates_page">Вид страницы обновлений</string>
     <string name="pref_category_search">Фильтрация при поиске</string>
     <string name="pref_category_installation">Установка приложений</string>
     <string name="pref_category_spoofing">Взаимодействие с Play Store</string>
@@ -197,9 +192,6 @@
     <string name="pref_installation_method_default">Обычный установочный диалог, без фоновой установки</string>
     <string name="pref_installation_method_root">С использованием root</string>
     <string name="pref_installation_method_privileged">С системными правами</string>
-    <string name="pref_updates_only">Только обновления</string>
-    <string name="pref_updates_only_summary_off">Сейчас показываются все приложения</string>
-    <string name="pref_updates_only_summary_on">Сейчас показываются только приложения с обновлениями</string>
     <string name="pref_show_system_apps">Системные приложения</string>
     <string name="pref_show_system_apps_summary_off">Сейчас системные приложения спрятаны</string>
     <string name="pref_show_system_apps_summary_on">Сейчас системные приложения показываются</string>

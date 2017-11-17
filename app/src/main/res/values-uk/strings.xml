@@ -143,9 +143,7 @@
 
 Майте на увазі, що Google Play Store не підтримує завантаження будь-якої версії, окрім крайньої сумісної. Ви вгадуєте номер версії. Якщо навіть завантаженні і розпочнеться, ви можете отримати не сумісний apk. Тому, скоріш за все, ви дарма втрачаєте час!"</string>
 <string name="manual_download_hint_version_code">"версія"</string>
-<string name="list_has_update">"Є оновлення"</string>
-<string name="list_no_update">"Оновлено"</string>
-<string name="details_uninstall">"Видалити"</string>
+    <string name="details_uninstall">"Видалити"</string>
 <string name="notification_download_starting">"запуск завантаження"</string>
 <string name="notification_download_progress">"%1$s з %2$s завантажено"</string>
 <string name="pref_requested_language">"Мова запиту до Play Store"</string>
@@ -182,19 +180,13 @@
 <string name="action_make_system">"Конвертувати в системний додаток"</string>
 <string name="action_make_normal">"Конвертувати в звичайний додаток"</string>
 <string name="list_app_system">"Системний додаток"</string>
-<string name="list_app_exists_in_play_store">"Доступно в Play Store"</string>
-<string name="activity_title_updates_only">"Оновлення"</string>
+    <string name="activity_title_updates_only">"Оновлення"</string>
 <string name="activity_title_updates_and_other_apps">"Ваші додатки"</string>
-<string name="pref_category_updates_page">"Сторінка оновлення"</string>
-<string name="pref_updates_only">"Показувати лише оновлювані"</string>
-<string name="pref_updates_only_summary_off">"Показані всі додатки"</string>
-<string name="pref_updates_only_summary_on">"Показані лише оновлювані додатки"</string>
-<string name="pref_show_system_apps">"Показувати системні додатки"</string>
+    <string name="pref_show_system_apps">"Показувати системні додатки"</string>
 <string name="pref_show_system_apps_summary_off">"Системні додатки приховано"</string>
 <string name="pref_show_system_apps_summary_on">"Системні додатки показано"</string>
 <string name="details_system_app_info">"Системна інформація"</string>
-<string name="activity_title_search_publisher">"Додатки від %1$s"</string>
-<string name="details_run">"Запуск"</string>
+    <string name="details_run">"Запуск"</string>
 <string name="dialog_title_remounting_system">"Working with /system partition"</string>
 <string name="dialog_message_remounting_system">"Working with /system partition. This might take some time."</string>
 <string name="dialog_title_checking_busybox">"Перевірка на наявність busybox"</string>

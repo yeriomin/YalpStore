@@ -143,9 +143,7 @@
 
 请注意，Google Play商店不支持下载任意版本的应用程式。您的成功取决于版本代码的幸运猜测。即使你猜对了，你得到下载开始，你可能会得到一个不兼容的apk。很有可能，你正在浪费你的时间！"</string>
 <string name="manual_download_hint_version_code">"版本代码在这里"</string>
-<string name="list_has_update">"可更新"</string>
-<string name="list_no_update">"已经是最新的"</string>
-<string name="details_uninstall">"卸载"</string>
+    <string name="details_uninstall">"卸载"</string>
 <string name="notification_download_starting">"开始下载"</string>
 <string name="notification_download_progress">"%1$s的%2$s已下载"</string>
 <string name="pref_requested_language">"Play商店请求语言"</string>
@@ -182,19 +180,13 @@
 <string name="action_make_system">"转换为系统应用程序"</string>
 <string name="action_make_normal">"转换为普通应用"</string>
 <string name="list_app_system">"系统应用"</string>
-<string name="list_app_exists_in_play_store">"可在Play商店"</string>
-<string name="activity_title_updates_only">"更新"</string>
+    <string name="activity_title_updates_only">"更新"</string>
 <string name="activity_title_updates_and_other_apps">"你的应用"</string>
-<string name="pref_category_updates_page">"更新页面"</string>
-<string name="pref_updates_only">"只显示可更新应用"</string>
-<string name="pref_updates_only_summary_off">"所有应用都已展示"</string>
-<string name="pref_updates_only_summary_on">"只有可更新应用可展示"</string>
-<string name="pref_show_system_apps">"展示系统应用"</string>
+    <string name="pref_show_system_apps">"展示系统应用"</string>
 <string name="pref_show_system_apps_summary_off">"系统应用已隐藏"</string>
 <string name="pref_show_system_apps_summary_on">"系统应用已展示"</string>
 <string name="details_system_app_info">"系统信息"</string>
-<string name="activity_title_search_publisher">"%1$s的应用"</string>
-<string name="details_run">"运行"</string>
+    <string name="details_run">"运行"</string>
 <string name="dialog_title_remounting_system">"使用/系统分区"</string>
 <string name="dialog_message_remounting_system">"使用/系统分区。这可能需要一些时间。"</string>
 <string name="dialog_title_checking_busybox">"检查busybox是否可用"</string>

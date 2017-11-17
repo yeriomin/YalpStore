@@ -147,9 +147,7 @@
 
 Κατά πάσα πιθανότητα, απλά ξοδεύεις το χρόνο σου."</string>
 <string name="manual_download_hint_version_code">"εδώ ο κωδικός έκδοση"</string>
-<string name="list_has_update">"Ενημερώσιμο"</string>
-<string name="list_no_update">"Ήδη ενημερωμένο"</string>
-<string name="details_uninstall">"Απεγκατάσταση"</string>
+    <string name="details_uninstall">"Απεγκατάσταση"</string>
 <string name="notification_download_starting">"Αρχίζει η λήψη"</string>
 <string name="notification_download_progress">"%1$s/%2$s έχουν ληφθεί"</string>
 <string name="pref_requested_language">"Το Play Store ζητά γλώσσα"</string>
@@ -186,19 +184,13 @@
 <string name="action_make_system">"Μετατροπή σε εφαρμογή συστήματος"</string>
 <string name="action_make_normal">"Μετατροπή σε κανονική εφαρμογή"</string>
 <string name="list_app_system">"Εφαρμογή του συστήματος"</string>
-<string name="list_app_exists_in_play_store">"Διαθέσιμο στο Play Store"</string>
-<string name="activity_title_updates_only">"Ενημερώσεις"</string>
+    <string name="activity_title_updates_only">"Ενημερώσεις"</string>
 <string name="activity_title_updates_and_other_apps">"Οι εφαρμογές σου"</string>
-<string name="pref_category_updates_page">"Σελίδα ενημέρωσης"</string>
-<string name="pref_updates_only">"Προβολή μόνο των ενημερώσιμων εφαρμογών"</string>
-<string name="pref_updates_only_summary_off">"Τώρα, προβάλλονται όλες οι εφαρμογές"</string>
-<string name="pref_updates_only_summary_on">"Τώρα, προβάλλονται μόνο οι ενημερώσιμες εφαρμογές"</string>
-<string name="pref_show_system_apps">"Προβολή των εφαρμογών του συστήματος"</string>
+    <string name="pref_show_system_apps">"Προβολή των εφαρμογών του συστήματος"</string>
 <string name="pref_show_system_apps_summary_off">"Οι εφαρμογές του συστήματος, τώρα, είναι κρυμμένες"</string>
 <string name="pref_show_system_apps_summary_on">"Οι εφαρμογές του συστήματος, τώρα, εμφανίζονται"</string>
 <string name="details_system_app_info">"Πληροφορίες συστήματος"</string>
-<string name="activity_title_search_publisher">"Εφαρμογές από %1$s"</string>
-<string name="details_run">"Τρέξιμο"</string>
+    <string name="details_run">"Τρέξιμο"</string>
 <string name="dialog_title_remounting_system">"Εργασία με την κατάτμηση /system"</string>
 <string name="dialog_message_remounting_system">"Γίνεται εργασία με την κατάτμηση /system. Αυτό, ίσως, πάρει λίγο χρόνο."</string>
 <string name="dialog_title_checking_busybox">"Γίνεται έλεγχος για το αν είναι διαθέσιμο το busybox"</string>
