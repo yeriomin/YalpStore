@@ -9,6 +9,7 @@ public class SearchResultAppBadge extends AppBadge {
 
     @Override
     public void draw() {
+        view.findViewById(R.id.installed_app_version).setVisibility(view.GONE);
         line2.clear();
         line3.clear();
         Context c = view.getContext();
