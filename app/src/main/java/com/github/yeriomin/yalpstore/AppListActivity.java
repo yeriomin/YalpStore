@@ -1,12 +1,14 @@
 package com.github.yeriomin.yalpstore;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.github.yeriomin.yalpstore.fragment.details.ButtonDownload;
 import com.github.yeriomin.yalpstore.fragment.details.ButtonUninstall;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOptions;
 import com.github.yeriomin.yalpstore.model.App;
@@ -45,25 +47,34 @@ abstract public class AppListActivity extends YalpStoreActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
         DetailsActivity.app = getAppByListPosition(info.position);
-        DownloadOptions menuManager = new DownloadOptions(this, DetailsActivity.app);
-        menuManager.inflate(menu);
-        if (DetailsActivity.app.isInstalled()) {
-            menu.findItem(R.id.action_uninstall).setVisible(true);
-        }
+        new DownloadOptions(this, DetailsActivity.app).inflate(menu);
+        menu.findItem(R.id.action_download).setVisible(new ButtonDownload(this, DetailsActivity.app).shouldBeVisible());
+        menu.findItem(R.id.action_uninstall).setVisible(DetailsActivity.app.isInstalled());
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         DetailsActivity.app = getAppByListPosition(info.position);
-        if (item.getItemId() == R.id.action_uninstall) {
-            ButtonUninstall buttonUninstall = new ButtonUninstall(this, DetailsActivity.app);
-            buttonUninstall.uninstall();
-        } else {
-            DownloadOptions menuManager = new DownloadOptions(this, DetailsActivity.app);
-            menuManager.onContextItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_download:
+                new ButtonDownload(this, DetailsActivity.app).checkAndDownload();
+                break;
+            case R.id.action_uninstall:
+                new ButtonUninstall(this, DetailsActivity.app).uninstall();
+                break;
+            default:
+                return new DownloadOptions(this, DetailsActivity.app).onContextItemSelected(item);
         }
         return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (isGranted(requestCode, permissions, grantResults)) {
+            Log.i(getClass().getName(), "User granted the write permission");
+            new ButtonDownload(this, DetailsActivity.app).download();
+        }
     }
 
     @Override
