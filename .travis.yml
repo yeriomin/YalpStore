@@ -41,3 +41,5 @@ deploy:
     all_branches: true
     tags: true
     repo: yeriomin/YalpStore
+notifications:
+  email: false
