@@ -32,8 +32,8 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return screenshotUrls.get(position);
+    public String getItem(int position) {
+        return position >= 0 && position < screenshotUrls.size() ? screenshotUrls.get(position) : "";
     }
 
     @Override
