@@ -1,8 +1,10 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.annotation.TargetApi;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
@@ -30,7 +32,11 @@ public class ButtonRun extends Button {
     protected void onButtonClick(View v) {
         Intent i = getLaunchIntent();
         if (null != i) {
-            activity.startActivity(i);
+            try {
+                activity.startActivity(i);
+            } catch (ActivityNotFoundException e) {
+                Log.e(getClass().getName(), "getLaunchIntentForPackage returned an intent, but starting the activity failed for " + app.getPackageName());
+            }
         }
     }
 
