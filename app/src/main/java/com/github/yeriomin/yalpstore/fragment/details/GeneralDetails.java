@@ -87,7 +87,6 @@ public class GeneralDetails extends Abstract {
             activity.findViewById(R.id.changes_upper).setVisibility(View.VISIBLE);
             setText(R.id.changes_upper, Html.fromHtml(changes).toString());
             initExpandableGroup(R.id.changes_header, R.id.changes_container);
-            Log.i(getClass().getSimpleName(), "clicking on whats new");
             activity.findViewById(R.id.changes_header).performClick();
         }
     }
@@ -150,7 +149,6 @@ public class GeneralDetails extends Abstract {
             setText(R.id.description, Html.fromHtml(app.getDescription()).toString());
             initExpandableGroup(R.id.description_header, R.id.description_container);
             if (app.getInstalledVersionCode() == 0 || TextUtils.isEmpty(app.getChanges())) {
-                Log.i(getClass().getSimpleName(), "clicking on details");
                 activity.findViewById(R.id.description_header).performClick();
             }
         }
