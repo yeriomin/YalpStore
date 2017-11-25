@@ -14,6 +14,8 @@ import com.github.yeriomin.yalpstore.model.App;
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public class DownloadManagerAdapter extends DownloadManagerAbstract {
 
+    static private final int PROGRESS_INTERVAL = 100;
+
     private DownloadManager dm;
 
     public DownloadManagerAdapter(Context context) {
@@ -22,7 +24,7 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
     }
 
     @Override
-    public long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type, OnDownloadProgressListener listener) {
+    public long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type) {
         DownloadManager.Request request;
         Log.i(getClass().getSimpleName(), "Downloading " + type.name() + " for " + app.getPackageName());
         switch (type) {
@@ -47,10 +49,7 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
         }
         long downloadId = dm.enqueue(request);
-        if (null != listener) {
-            DownloadManagerProgressUpdater updater = new DownloadManagerProgressUpdater(downloadId, this, listener);
-            updater.update();
-        }
+        new DownloadManagerProgressUpdater(downloadId, this).execute(PROGRESS_INTERVAL);
         return downloadId;
     }
 

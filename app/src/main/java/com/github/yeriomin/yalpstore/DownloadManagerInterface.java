@@ -26,7 +26,7 @@ public interface DownloadManagerInterface {
         APK, DELTA, OBB_MAIN, OBB_PATCH
     }
 
-    long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type, OnDownloadProgressListener listener);
+    long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type);
     boolean finished(long downloadId);
     boolean success(long downloadId);
     String getError(long downloadId);

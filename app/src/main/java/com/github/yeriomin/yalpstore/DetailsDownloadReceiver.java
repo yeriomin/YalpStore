@@ -8,18 +8,16 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
+import java.lang.ref.WeakReference;
+
 public class DetailsDownloadReceiver extends DownloadReceiver {
 
-    private Button buttonDownload;
-    private Button buttonInstall;
-    private ProgressBar progressBar;
-    private ImageButton buttonCancel;
+    private WeakReference<DetailsActivity> activityRef = new WeakReference<>(null);
+    private String packageName;
 
-    public DetailsDownloadReceiver(DetailsActivity activity) {
-        buttonDownload = (Button) activity.findViewById(R.id.download);
-        buttonInstall = (Button) activity.findViewById(R.id.install);
-        progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
-        buttonCancel = (ImageButton) activity.findViewById(R.id.cancel);
+    public DetailsDownloadReceiver(DetailsActivity activity, String packageName) {
+        activityRef = new WeakReference<>(activity);
+        this.packageName = packageName;
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_DELTA_PATCHING_COMPLETE);
         filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
@@ -30,6 +28,10 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+        DetailsActivity activity = activityRef.get();
+        if (null == activity || !ContextUtil.isAlive(activity)) {
+            return;
+        }
         if (null == state) {
             if (actionIs(intent, DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
                 cleanup();
@@ -39,6 +41,9 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
 
     @Override
     protected void process(Context context, Intent intent) {
+        if (!state.getApp().getPackageName().equals(packageName)) {
+            return;
+        }
         if (actionIs(intent, DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE) && isDelta(state.getApp())) {
             return;
         }
@@ -57,7 +62,9 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
         if (!state.isEverythingSuccessful()) {
             return;
         }
+        Button buttonDownload = activityRef.get().findViewById(R.id.download);
         buttonDownload.setVisibility(View.GONE);
+        Button buttonInstall = activityRef.get().findViewById(R.id.install);
         buttonInstall.setVisibility(View.VISIBLE);
         if (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
             && !state.getTriggeredBy().equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
@@ -71,13 +78,16 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
     }
 
     private void cleanup() {
+        ProgressBar progressBar = (ProgressBar) activityRef.get().findViewById(R.id.download_progress);
         if (null != progressBar) {
             progressBar.setVisibility(View.GONE);
             progressBar.setProgress(0);
         }
+        ImageButton buttonCancel = (ImageButton) activityRef.get().findViewById(R.id.cancel);
         if (null != buttonCancel) {
             buttonCancel.setVisibility(View.GONE);
         }
+        Button buttonDownload = activityRef.get().findViewById(R.id.download);
         buttonDownload.setText(R.string.details_download);
         buttonDownload.setEnabled(true);
     }

@@ -13,10 +13,10 @@ import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.DownloadManagerInterface;
+import com.github.yeriomin.yalpstore.DownloadProgressBarUpdater;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
-import com.github.yeriomin.yalpstore.OnDownloadProgressListener;
 import com.github.yeriomin.yalpstore.R;
 
 import java.io.IOException;
@@ -24,14 +24,15 @@ import java.io.IOException;
 public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 
     static public final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
+    static public final long UPDATE_INTERVAL = 300;
 
-    private DownloadState.TriggeredBy triggeredBy = DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
-    private OnDownloadProgressListener listener;
+    protected DownloadState.TriggeredBy triggeredBy = DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
+    protected DownloadProgressBarUpdater progressBarUpdater;
 
     @Override
     public CloneableTask clone() {
         PurchaseTask task = new PurchaseTask();
-        task.setOnDownloadProgressListener(listener);
+        task.setDownloadProgressBarUpdater(progressBarUpdater);
         task.setTriggeredBy(triggeredBy);
         task.setApp(app);
         task.setErrorView(errorView);
@@ -44,8 +45,8 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
         this.triggeredBy = triggeredBy;
     }
 
-    public void setOnDownloadProgressListener(OnDownloadProgressListener listener) {
-        this.listener = listener;
+    public void setDownloadProgressBarUpdater(DownloadProgressBarUpdater progressBarUpdater) {
+        this.progressBarUpdater = progressBarUpdater;
     }
 
     @Override
@@ -53,7 +54,10 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
         DownloadState.get(app.getPackageName()).setTriggeredBy(triggeredBy);
         super.getResult(api, arguments);
         if (null != deliveryData) {
-            new Downloader(context).download(app, deliveryData, listener);
+            new Downloader(context).download(app, deliveryData);
+            if (null != progressBarUpdater) {
+                progressBarUpdater.execute(UPDATE_INTERVAL);
+            }
         } else {
             context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
             Log.e(getClass().getSimpleName(), app.getPackageName() + " no download link returned");

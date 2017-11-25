@@ -9,10 +9,10 @@ import android.widget.ProgressBar;
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.ContextUtil;
+import com.github.yeriomin.yalpstore.DownloadProgressBarUpdater;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
-import com.github.yeriomin.yalpstore.OnDownloadProgressListener;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
@@ -69,10 +69,15 @@ public class ButtonDownload extends Button {
     @Override
     public void draw() {
         super.draw();
+        DownloadState state = DownloadState.get(app.getPackageName());
         if (Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
-            && !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
+            && !state.isEverythingSuccessful()
         ) {
             disable(R.string.details_downloading);
+            ProgressBar progressBar = activity.findViewById(R.id.download_progress);
+            if (null != progressBar) {
+                new DownloadProgressBarUpdater(app.getPackageName(), progressBar).execute(PurchaseTask.UPDATE_INTERVAL);
+            }
         }
     }
 
@@ -80,8 +85,7 @@ public class ButtonDownload extends Button {
         if (app.getPackageName().equals(BuildConfig.APPLICATION_ID)) {
             new Downloader(button.getContext()).download(
                 app,
-                AndroidAppDeliveryData.newBuilder().setDownloadUrl(UpdaterFactory.get(activity).getUrlString(app.getVersionCode())).build(),
-                getDownloadProgressListener()
+                AndroidAppDeliveryData.newBuilder().setDownloadUrl(UpdaterFactory.get(activity).getUrlString(app.getVersionCode())).build()
             );
         } else {
             boolean writePermission = activity.checkPermission();
@@ -104,26 +108,17 @@ public class ButtonDownload extends Button {
         return dir.exists() && dir.isDirectory() && dir.canWrite();
     }
 
-    private OnDownloadProgressListener getDownloadProgressListener() {
+    private LocalPurchaseTask getPurchaseTask() {
+        LocalPurchaseTask purchaseTask = new LocalPurchaseTask();
+        purchaseTask.setFragment(this);
         ProgressBar progressBar = activity.findViewById(R.id.download_progress);
-        if (null == progressBar) {
-            return null;
+        if (null != progressBar) {
+            purchaseTask.setDownloadProgressBarUpdater(new DownloadProgressBarUpdater(app.getPackageName(), progressBar));
         }
-        progressBar.setVisibility(View.VISIBLE);
-        progressBar.setProgress(0);
-        return new OnDownloadProgressListener(progressBar, DownloadState.get(app.getPackageName()));
-    }
-
-    private PurchaseTask getPurchaseTask() {
-        PurchaseTask purchaseTask = new LocalPurchaseTask(this);
-        purchaseTask.setOnDownloadProgressListener(getDownloadProgressListener());
         purchaseTask.setApp(app);
         purchaseTask.setContext(activity);
         purchaseTask.setTriggeredBy(activity instanceof ManualDownloadActivity ? MANUAL_DOWNLOAD_BUTTON : DOWNLOAD_BUTTON);
-        purchaseTask.prepareDialog(
-            R.string.dialog_message_purchasing_app,
-            R.string.dialog_title_purchasing_app
-        );
+        purchaseTask.setProgressIndicator(activity.findViewById(R.id.progress));
         return purchaseTask;
     }
 
@@ -139,15 +134,35 @@ public class ButtonDownload extends Button {
 
         private ButtonDownload fragment;
 
-        public LocalPurchaseTask(ButtonDownload fragment) {
+        public LocalPurchaseTask setFragment(ButtonDownload fragment) {
             this.fragment = fragment;
+            return this;
+        }
+
+        @Override
+        public LocalPurchaseTask clone() {
+            LocalPurchaseTask task = new LocalPurchaseTask();
+            task.setDownloadProgressBarUpdater(progressBarUpdater);
+            task.setTriggeredBy(triggeredBy);
+            task.setApp(app);
+            task.setErrorView(errorView);
+            task.setContext(context);
+            task.setProgressIndicator(progressIndicator);
+            task.setFragment(fragment);
+            return task;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            fragment.disable(R.string.details_downloading);
         }
 
         @Override
         protected void onPostExecute(AndroidAppDeliveryData deliveryData) {
             super.onPostExecute(deliveryData);
-            if (success()) {
-                fragment.disable(R.string.details_downloading);
+            if (!success()) {
+                fragment.draw();
             }
         }
     }

@@ -17,23 +17,23 @@ public class Downloader {
         this.dm = DownloadManagerFactory.get(context);
     }
 
-    public void download(App app, AndroidAppDeliveryData deliveryData, OnDownloadProgressListener listener) {
+    public void download(App app, AndroidAppDeliveryData deliveryData) {
         DownloadState state = DownloadState.get(app.getPackageName());
         state.setApp(app);
         DownloadManagerInterface.Type type = shouldDownloadDelta(app, deliveryData)
             ? DownloadManagerInterface.Type.DELTA
             : DownloadManagerInterface.Type.APK
         ;
-        state.setStarted(dm.enqueue(app, deliveryData, type, listener));
+        state.setStarted(dm.enqueue(app, deliveryData, type));
         if (deliveryData.getAdditionalFileCount() > 0) {
-            checkAndStartObbDownload(state, deliveryData, true, listener);
+            checkAndStartObbDownload(state, deliveryData, true);
         }
         if (deliveryData.getAdditionalFileCount() > 1) {
-            checkAndStartObbDownload(state, deliveryData, false, listener);
+            checkAndStartObbDownload(state, deliveryData, false);
         }
     }
 
-    private void checkAndStartObbDownload(DownloadState state, AndroidAppDeliveryData deliveryData, boolean main, OnDownloadProgressListener listener) {
+    private void checkAndStartObbDownload(DownloadState state, AndroidAppDeliveryData deliveryData, boolean main) {
         App app = state.getApp();
         AppFileMetadata metadata = deliveryData.getAdditionalFile(main ? 0 : 1);
         File file = Paths.getObbPath(app.getPackageName(), metadata.getVersionCode(), main);
@@ -42,8 +42,7 @@ public class Downloader {
             state.setStarted(dm.enqueue(
                 app,
                 deliveryData,
-                main ? DownloadManagerInterface.Type.OBB_MAIN : DownloadManagerInterface.Type.OBB_PATCH,
-                listener
+                main ? DownloadManagerInterface.Type.OBB_MAIN : DownloadManagerInterface.Type.OBB_PATCH
             ));
         }
     }

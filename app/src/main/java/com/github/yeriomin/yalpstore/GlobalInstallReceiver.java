@@ -34,7 +34,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
     }
 
     static public void updateDetails(Intent intent) {
-        if (null == DetailsActivity.app) {
+        if (null == DetailsActivity.app || !intent.getData().getSchemeSpecificPart().equals(DetailsActivity.app.getPackageName())) {
             return;
         }
         if (actionIsUninstall(intent)) {

@@ -36,10 +36,10 @@ public class DownloadOrInstall extends Abstract {
 
     public void registerReceivers() {
         if (null == downloadReceiver) {
-            downloadReceiver = new DetailsDownloadReceiver((DetailsActivity) activity);
+            downloadReceiver = new DetailsDownloadReceiver((DetailsActivity) activity, app.getPackageName());
         }
         if (null == installReceiver) {
-            installReceiver = new DetailsInstallReceiver((DetailsActivity) activity);
+            installReceiver = new DetailsInstallReceiver((DetailsActivity) activity, app.getPackageName());
         }
     }
 }

@@ -1,45 +1,33 @@
 package com.github.yeriomin.yalpstore;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Pair;
 
-public class DownloadManagerProgressUpdater {
-
-    static private final int INTERVAL = 100;
+public class DownloadManagerProgressUpdater extends RepeatingTask {
 
     private long downloadId;
     private DownloadManagerAdapter dm;
-    private OnDownloadProgressListener listener;
 
-    public DownloadManagerProgressUpdater(long downloadId, DownloadManagerAdapter dm, OnDownloadProgressListener listener) {
+    public DownloadManagerProgressUpdater(long downloadId, DownloadManagerAdapter dm) {
         this.downloadId = downloadId;
         this.dm = dm;
-        this.listener = listener;
     }
 
-    public void update() {
+    @Override
+    protected void payload() {
         final Pair<Integer, Integer> progress = dm.getProgress(downloadId);
         if (null == progress) {
             return;
         }
-        new Handler(Looper.getMainLooper()).postDelayed(
-            new Runnable() {
-                @Override
-                public void run() {
-                    DownloadState state = DownloadState.get(downloadId);
-                    if (null == state) {
-                        return;
-                    }
-                    state.setProgress(downloadId, progress.first, progress.second);
-                    listener.onDownloadProgress();
-                    if (state.isEverythingFinished()) {
-                        return;
-                    }
-                    update();
-                }
-            },
-            INTERVAL
-        );
+        DownloadState state = DownloadState.get(downloadId);
+        if (null == state) {
+            return;
+        }
+        state.setProgress(downloadId, progress.first, progress.second);
+    }
+
+    @Override
+    protected boolean shouldRunAgain() {
+        DownloadState state = DownloadState.get(downloadId);
+        return null != state && !state.isEverythingFinished();
     }
 }

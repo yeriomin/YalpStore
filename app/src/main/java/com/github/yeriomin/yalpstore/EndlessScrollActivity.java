@@ -1,14 +1,8 @@
 package com.github.yeriomin.yalpstore;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.fragment.details.ButtonDownload;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.EndlessScrollTask;
 import com.github.yeriomin.yalpstore.view.ListItem;
