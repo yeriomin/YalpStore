@@ -114,7 +114,7 @@ public class Review extends Abstract {
         task.setFragment(this);
         task.setNext(next);
         task.setContext(activity);
-        task.prepareDialog(R.string.dialog_message_reviews, R.string.dialog_title_reviews);
+        task.setProgressIndicator(activity.findViewById(R.id.progress));
         return task;
     }
 

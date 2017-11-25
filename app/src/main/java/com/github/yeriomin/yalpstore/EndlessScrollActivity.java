@@ -74,9 +74,7 @@ abstract public class EndlessScrollActivity extends AppListActivity {
     protected EndlessScrollTask prepareTask(EndlessScrollTask task) {
         task.setContext(this);
         task.setErrorView((TextView) getListView().getEmptyView());
-        if (getListView().getAdapter().isEmpty()) {
-            task.prepareDialog(R.string.dialog_message_loading_app_list_search, R.string.dialog_title_loading_app_list_search);
-        }
+        task.setProgressIndicator(findViewById(R.id.progress));
         return task;
     }
 
