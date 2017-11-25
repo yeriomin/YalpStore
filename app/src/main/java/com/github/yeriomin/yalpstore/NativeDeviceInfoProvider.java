@@ -32,9 +32,16 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
     private Context context;
     private String localeString;
+    private String networkOperator = "";
+    private String simOperator = "";
 
     public void setContext(Context context) {
         this.context = context;
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (null != tm) {
+            networkOperator = null != tm.getNetworkOperator() ? tm.getNetworkOperator() : "";
+            simOperator = null != tm.getSimOperator() ? tm.getSimOperator() : "";
+        }
     }
 
     public void setLocaleString(String localeString) {
@@ -72,13 +79,6 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     private AndroidCheckinProto getCheckinProto() {
-        String networkOperator = "";
-        String simOperator = "";
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        if (null != tm) {
-            networkOperator = null != tm.getNetworkOperator() ? tm.getNetworkOperator() : "";
-            simOperator = null != tm.getSimOperator() ? tm.getSimOperator() : "";
-        }
         return AndroidCheckinProto.newBuilder()
             .setBuild(getBuildProto())
             .setLastCheckinMsec(0)
