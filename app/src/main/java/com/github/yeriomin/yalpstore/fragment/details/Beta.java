@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.BetaToggleTask;
@@ -20,7 +20,7 @@ public class Beta extends Abstract {
     public void draw() {
         if (!app.isInstalled()
             || !app.isTestingProgramAvailable()
-            || PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL, false)
+            || PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
         ) {
             return;
         }

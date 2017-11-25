@@ -17,10 +17,6 @@ import com.github.yeriomin.yalpstore.fragment.preference.Theme;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 
-    public static final String PREFERENCE_EMAIL = "PREFERENCE_EMAIL";
-    public static final String PREFERENCE_AUTH_TOKEN = "PREFERENCE_AUTH_TOKEN";
-    public static final String PREFERENCE_GSF_ID = "PREFERENCE_GSF_ID";
-    public static final String PREFERENCE_APP_PROVIDED_EMAIL = "PREFERENCE_APP_PROVIDED_EMAIL";
     public static final String PREFERENCE_AUTO_INSTALL = "PREFERENCE_AUTO_INSTALL";
     public static final String PREFERENCE_HIDE_NONFREE_APPS = "PREFERENCE_HIDE_NONFREE_APPS";
     public static final String PREFERENCE_HIDE_APPS_WITH_ADS = "PREFERENCE_HIDE_APPS_WITH_ADS";
@@ -38,7 +34,6 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_UPDATES_ONLY = "PREFERENCE_UPDATES_ONLY";
     public static final String PREFERENCE_SHOW_SYSTEM_APPS = "PREFERENCE_SHOW_SYSTEM_APPS";
     public static final String PREFERENCE_NO_IMAGES = "PREFERENCE_NO_IMAGES";
-    public static final String PREFERENCE_DEVICE_DEFINITION_REQUESTED = "PREFERENCE_DEVICE_DEFINITION_REQUESTED";
     public static final String PREFERENCE_DOWNLOAD_DIRECTORY = "PREFERENCE_DOWNLOAD_DIRECTORY";
     public static final String PREFERENCE_DOWNLOAD_DELTAS = "PREFERENCE_DOWNLOAD_DELTAS";
 

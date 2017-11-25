@@ -81,7 +81,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
     private AutoCompleteTextView getEmailInput(Dialog ad) {
         AutoCompleteTextView editEmail = (AutoCompleteTextView) ad.findViewById(R.id.email);
         editEmail.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, getUsedEmails()));
-        editEmail.setText(PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_EMAIL, this.previousEmail));
+        editEmail.setText(PreferenceManager.getDefaultSharedPreferences(context).getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, this.previousEmail));
         return editEmail;
     }
 

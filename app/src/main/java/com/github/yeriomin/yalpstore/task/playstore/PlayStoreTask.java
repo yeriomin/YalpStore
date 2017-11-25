@@ -83,7 +83,7 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
                 ContextUtil.toast(context, R.string.first_login_message);
                 return;
             }
-        } else if (e.getCode() == 401 && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL)) {
+        } else if (e.getCode() == 401 && PreferenceActivity.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
             Log.i(getClass().getSimpleName(), "Token is stale");
             new PlayStoreApiAuthenticator(context).logout();
             builder.logInWithPredefinedAccount();

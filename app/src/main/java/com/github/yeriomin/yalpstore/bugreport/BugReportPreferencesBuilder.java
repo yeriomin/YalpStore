@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore.bugreport;
 import android.content.Context;
 import android.preference.PreferenceManager;
 
+import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.Set;
 class BugReportPreferencesBuilder extends BugReportPropertiesBuilder {
 
     static private final String[] PREFERENCES = {
-        PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL,
+        PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL,
         PreferenceActivity.PREFERENCE_AUTO_INSTALL,
         PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS,
         PreferenceActivity.PREFERENCE_HIDE_APPS_WITH_ADS,

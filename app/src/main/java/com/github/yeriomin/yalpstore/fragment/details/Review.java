@@ -10,7 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.ReviewStorageIterator;
 import com.github.yeriomin.yalpstore.UserReviewDialogBuilder;
@@ -64,7 +64,7 @@ public class Review extends Abstract {
 
     private boolean isReviewable(App app) {
         return app.isInstalled() && !PreferenceManager.getDefaultSharedPreferences(activity)
-            .getBoolean(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL, false)
+            .getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
         ;
     }
 

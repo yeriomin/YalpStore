@@ -30,8 +30,8 @@ public class BugReportActivity extends Activity {
         triggeredByCrash = !TextUtils.isEmpty(stackTrace);
         setTitle(triggeredByCrash ? R.string.dialog_title_application_crashed : R.string.action_bug_report);
         ((TextView) findViewById(R.id.explanation)).setText(triggeredByCrash ? R.string.bug_report_explanation_crash : R.string.bug_report_explanation_bug_report);
-        if (!PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL)) {
-            ((EditText) findViewById(R.id.identification)).setText(PreferenceActivity.getString(this, PreferenceActivity.PREFERENCE_EMAIL));
+        if (!PreferenceActivity.getBoolean(this, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
+            ((EditText) findViewById(R.id.identification)).setText(PreferenceActivity.getString(this, PlayStoreApiAuthenticator.PREFERENCE_EMAIL));
         }
     }
 

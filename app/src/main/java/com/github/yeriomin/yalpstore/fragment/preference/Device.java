@@ -28,6 +28,8 @@ import java.util.Map;
 
 public class Device extends List {
 
+    private static final String PREFERENCE_DEVICE_DEFINITION_REQUESTED = "PREFERENCE_DEVICE_DEFINITION_REQUESTED";
+
     public Device(PreferenceActivity activity) {
         super(activity);
     }
@@ -98,7 +100,7 @@ public class Device extends List {
     private AlertDialog showRequestDialog(boolean logOut) {
         PreferenceManager.getDefaultSharedPreferences(activity)
             .edit()
-            .putBoolean(PreferenceActivity.PREFERENCE_DEVICE_DEFINITION_REQUESTED, true)
+            .putBoolean(PREFERENCE_DEVICE_DEFINITION_REQUESTED, true)
             .commit()
         ;
         return new AlertDialog.Builder(activity)
@@ -146,7 +148,7 @@ public class Device extends List {
         private boolean askedAlready;
 
         public RequestOnClickListener(Activity activity, boolean logOut) {
-            askedAlready = PreferenceActivity.getBoolean(activity, PreferenceActivity.PREFERENCE_DEVICE_DEFINITION_REQUESTED);
+            askedAlready = PreferenceActivity.getBoolean(activity, PREFERENCE_DEVICE_DEFINITION_REQUESTED);
             this.logOut = logOut;
         }
 

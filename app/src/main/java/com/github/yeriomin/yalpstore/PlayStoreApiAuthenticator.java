@@ -19,6 +19,12 @@ import java.util.Locale;
 
 public class PlayStoreApiAuthenticator {
 
+    public static final String PREFERENCE_EMAIL = "PREFERENCE_EMAIL";
+    public static final String PREFERENCE_APP_PROVIDED_EMAIL = "PREFERENCE_APP_PROVIDED_EMAIL";
+    public static final String PREFERENCE_GSF_ID = "PREFERENCE_GSF_ID";
+
+    private static final String PREFERENCE_AUTH_TOKEN = "PREFERENCE_AUTH_TOKEN";
+
     static private final int RETRIES = 5;
 
     private Context context;
@@ -38,7 +44,7 @@ public class PlayStoreApiAuthenticator {
 
     public void login() throws IOException {
         build(new LoginInfo());
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL, true).commit();
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true).commit();
     }
 
     public void login(String email, String password) throws IOException {
@@ -46,15 +52,15 @@ public class PlayStoreApiAuthenticator {
         loginInfo.setEmail(email);
         loginInfo.setPassword(password);
         build(loginInfo);
-        PreferenceManager.getDefaultSharedPreferences(context).edit().remove(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL).commit();
+        PreferenceManager.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_APP_PROVIDED_EMAIL).commit();
     }
 
     public void logout() {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .remove(PreferenceActivity.PREFERENCE_EMAIL)
-            .remove(PreferenceActivity.PREFERENCE_GSF_ID)
-            .remove(PreferenceActivity.PREFERENCE_AUTH_TOKEN)
-            .remove(PreferenceActivity.PREFERENCE_APP_PROVIDED_EMAIL)
+            .remove(PREFERENCE_EMAIL)
+            .remove(PREFERENCE_GSF_ID)
+            .remove(PREFERENCE_AUTH_TOKEN)
+            .remove(PREFERENCE_APP_PROVIDED_EMAIL)
             .commit()
         ;
         api = null;
@@ -62,7 +68,7 @@ public class PlayStoreApiAuthenticator {
 
     private GooglePlayAPI build() throws CredentialsEmptyException {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String email = prefs.getString(PreferenceActivity.PREFERENCE_EMAIL, "");
+        String email = prefs.getString(PREFERENCE_EMAIL, "");
         if (TextUtils.isEmpty(email)) {
             throw new CredentialsEmptyException();
         }
@@ -142,15 +148,15 @@ public class PlayStoreApiAuthenticator {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String locale = prefs.getString(PreferenceActivity.PREFERENCE_REQUESTED_LANGUAGE, "");
         loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale));
-        loginInfo.setGsfId(prefs.getString(PreferenceActivity.PREFERENCE_GSF_ID, ""));
-        loginInfo.setToken(prefs.getString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, ""));
+        loginInfo.setGsfId(prefs.getString(PREFERENCE_GSF_ID, ""));
+        loginInfo.setToken(prefs.getString(PREFERENCE_AUTH_TOKEN, ""));
     }
 
     private void save(LoginInfo loginInfo) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .putString(PreferenceActivity.PREFERENCE_EMAIL, loginInfo.getEmail())
-            .putString(PreferenceActivity.PREFERENCE_GSF_ID, loginInfo.getGsfId())
-            .putString(PreferenceActivity.PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
+            .putString(PREFERENCE_EMAIL, loginInfo.getEmail())
+            .putString(PREFERENCE_GSF_ID, loginInfo.getGsfId())
+            .putString(PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
             .commit()
         ;
     }
