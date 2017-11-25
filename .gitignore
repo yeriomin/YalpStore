@@ -35,4 +35,5 @@ proguard/
 gradle-app.setting
 *.zip
 
+*.jar
 app/release/output.json
