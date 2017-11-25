@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
+import android.util.Log;
 
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.Paths;
@@ -34,7 +35,12 @@ public class DownloadDirectory extends Abstract {
                 if (!result) {
                     ContextUtil.toast(activity, R.string.error_downloads_directory_not_writable);
                 } else {
-                    preference.setSummary(new File(Environment.getExternalStorageDirectory(), newValue).getAbsolutePath());
+                    try {
+                        preference.setSummary(new File(Environment.getExternalStorageDirectory(), newValue).getCanonicalPath());
+                    } catch (IOException e) {
+                        Log.i(getClass().getName(), "checkNewValue returned true, but drawing the path \"" + newValue + "\" in the summary failed... strange");
+                        return false;
+                    }
                 }
                 return result;
             }
@@ -42,6 +48,9 @@ public class DownloadDirectory extends Abstract {
             private boolean checkNewValue(String newValue) {
                 try {
                     File newDir = new File(Environment.getExternalStorageDirectory(), newValue).getCanonicalFile();
+                    if (!newDir.getCanonicalPath().startsWith(Environment.getExternalStorageDirectory().getCanonicalPath())) {
+                        return false;
+                    }
                     if (newDir.exists()) {
                         return true;
                     }
