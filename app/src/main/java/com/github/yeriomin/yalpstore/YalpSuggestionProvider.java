@@ -10,9 +10,11 @@ import android.provider.BaseColumns;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 
 import java.io.File;
+import java.io.IOException;
 
 public class YalpSuggestionProvider extends ContentProvider {
 
@@ -35,9 +37,12 @@ public class YalpSuggestionProvider extends ContentProvider {
             SearchManager.SUGGEST_COLUMN_ICON_1
         });
         try {
-            int i = 0;
-            for (SearchSuggestEntry entry: new PlayStoreApiAuthenticator(getContext()).getApi().searchSuggest(uri.getLastPathSegment()).getEntryList()) {
-                cursor.addRow(constructRow(entry, i++));
+            fill(cursor, uri);
+        } catch (GooglePlayException e) {
+            if (e.getCode() == 401) {
+                refreshAndRetry(cursor, uri);
+            } else {
+                Log.e(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
             }
         } catch (Throwable e) {
             Log.e(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
@@ -58,6 +63,22 @@ public class YalpSuggestionProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         return 0;
+    }
+
+    private void refreshAndRetry(MatrixCursor cursor, Uri uri) {
+        try {
+            new PlayStoreApiAuthenticator(getContext()).refreshToken();
+            fill(cursor, uri);
+        } catch (Throwable e) {
+            Log.e(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
+        }
+    }
+
+    private void fill(MatrixCursor cursor, Uri uri) throws IOException {
+        int i = 0;
+        for (SearchSuggestEntry entry: new PlayStoreApiAuthenticator(getContext()).getApi().searchSuggest(uri.getLastPathSegment()).getEntryList()) {
+            cursor.addRow(constructRow(entry, i++));
+        }
     }
 
     private Object[] constructRow(SearchSuggestEntry entry, int id) {

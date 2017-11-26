@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -43,15 +44,24 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
         return builder.show();
     }
 
+    public void refreshToken() {
+        RefreshTokenTask task = new RefreshTokenTask();
+        task.setCaller(caller);
+        task.setContext(context);
+        task.execute();
+    }
+
     public void logInWithPredefinedAccount() {
-        AppProvidedCredentialsTask task = new AppProvidedCredentialsTask();
+        LoginTask task = new LoginTask();
         task.setCaller(caller);
         task.setContext(context);
         task.prepareDialog(R.string.dialog_message_logging_in_predefined, R.string.dialog_title_logging_in);
         task.execute();
     }
 
-    private class AppProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
+    abstract private class AppProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
+
+        abstract protected void payload() throws IOException;
 
         @Override
         protected CredentialsDialogBuilder getDialogBuilder() {
@@ -61,11 +71,27 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
         @Override
         protected Void doInBackground(String[] params) {
             try {
-                new PlayStoreApiAuthenticator(context).login();
+                payload();
             } catch (IOException e) {
                 exception = e;
             }
             return null;
+        }
+    }
+
+    private class RefreshTokenTask extends AppProvidedCredentialsTask {
+
+        @Override
+        protected void payload() throws IOException {
+            new PlayStoreApiAuthenticator(context).refreshToken();
+        }
+    }
+
+    private class LoginTask extends AppProvidedCredentialsTask {
+
+        @Override
+        protected void payload() throws IOException {
+            new PlayStoreApiAuthenticator(context).login();
         }
     }
 }

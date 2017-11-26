@@ -24,6 +24,7 @@ public class PlayStoreApiAuthenticator {
     public static final String PREFERENCE_GSF_ID = "PREFERENCE_GSF_ID";
 
     private static final String PREFERENCE_AUTH_TOKEN = "PREFERENCE_AUTH_TOKEN";
+    private static final String PREFERENCE_LAST_USED_TOKEN_DISPENSER = "PREFERENCE_LAST_USED_TOKEN_DISPENSER";
 
     static private final int RETRIES = 5;
 
@@ -55,11 +56,18 @@ public class PlayStoreApiAuthenticator {
         PreferenceManager.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_APP_PROVIDED_EMAIL).commit();
     }
 
+    public void refreshToken() throws CredentialsEmptyException {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_AUTH_TOKEN).commit();
+        api.setToken(null);
+        build();
+    }
+
     public void logout() {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
             .remove(PREFERENCE_EMAIL)
             .remove(PREFERENCE_GSF_ID)
             .remove(PREFERENCE_AUTH_TOKEN)
+            .remove(PREFERENCE_LAST_USED_TOKEN_DISPENSER)
             .remove(PREFERENCE_APP_PROVIDED_EMAIL)
             .commit()
         ;
@@ -94,10 +102,19 @@ public class PlayStoreApiAuthenticator {
     private GooglePlayAPI build(LoginInfo loginInfo, int retries) throws IOException {
         int tried = 0;
         TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
+        boolean shouldRefresh = retries == 1
+            && PreferenceActivity.getBoolean(context, PREFERENCE_APP_PROVIDED_EMAIL)
+            && TextUtils.isEmpty(loginInfo.getToken())
+            && !TextUtils.isEmpty(loginInfo.getGsfId())
+        ;
         while (tried < retries) {
+            loginInfo.setTokenDispenserUrl(shouldRefresh
+                ? PreferenceManager.getDefaultSharedPreferences(context).getString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, tokenDispenserMirrors.get())
+                : tokenDispenserMirrors.get()
+            );
             try {
                 Log.i(getClass().getSimpleName(), "Login attempt #" + (tried + 1));
-                com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = getBuilder(loginInfo, tokenDispenserMirrors.get());
+                com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = getBuilder(loginInfo);
                 GooglePlayAPI api = builder.build();
                 loginInfo.setEmail(builder.getEmail());
                 return api;
@@ -113,7 +130,7 @@ public class PlayStoreApiAuthenticator {
         return null;
     }
 
-    private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo, String tokenDispenserUrl) {
+    private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
         fill(loginInfo);
         return new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
             .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
@@ -123,7 +140,7 @@ public class PlayStoreApiAuthenticator {
             .setPassword(loginInfo.getPassword())
             .setGsfId(loginInfo.getGsfId())
             .setToken(loginInfo.getToken())
-            .setTokenDispenserUrl(tokenDispenserUrl)
+            .setTokenDispenserUrl(loginInfo.getTokenDispenserUrl())
         ;
     }
 
@@ -157,6 +174,7 @@ public class PlayStoreApiAuthenticator {
             .putString(PREFERENCE_EMAIL, loginInfo.getEmail())
             .putString(PREFERENCE_GSF_ID, loginInfo.getGsfId())
             .putString(PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
+            .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
             .commit()
         ;
     }

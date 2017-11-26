@@ -9,6 +9,7 @@ public class LoginInfo {
     private String gsfId;
     private String token;
     private Locale locale;
+    private String tokenDispenserUrl;
 
     public String getEmail() {
         return email;
@@ -48,5 +49,13 @@ public class LoginInfo {
 
     public void setLocale(Locale locale) {
         this.locale = locale;
+    }
+
+    public String getTokenDispenserUrl() {
+        return tokenDispenserUrl;
+    }
+
+    public void setTokenDispenserUrl(String tokenDispenserUrl) {
+        this.tokenDispenserUrl = tokenDispenserUrl;
     }
 }
