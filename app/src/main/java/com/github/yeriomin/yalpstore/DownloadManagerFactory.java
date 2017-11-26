@@ -14,10 +14,8 @@ public class DownloadManagerFactory {
             || !nativeDownloadManagerEnabled(context)
             || nougatVpn(context)
         ) {
-            Log.i(DownloadManagerFactory.class.getSimpleName(), "DownloadManager unavailable - using a fallback");
             return new DownloadManagerFake(context);
         } else {
-            Log.i(DownloadManagerFactory.class.getSimpleName(), "DownloadManager is found and is going to be used");
             return new DownloadManagerAdapter(context);
         }
     }
