@@ -92,7 +92,7 @@ public class PlayStoreApiAuthenticator {
     }
 
     private GooglePlayAPI build(LoginInfo loginInfo) throws IOException {
-        api = build(loginInfo, TextUtils.isEmpty(loginInfo.getEmail()) ? RETRIES : 1);
+        api = build(loginInfo, RETRIES);
         loginInfo.setGsfId(api.getGsfId());
         loginInfo.setToken(api.getToken());
         save(loginInfo);
@@ -102,12 +102,11 @@ public class PlayStoreApiAuthenticator {
     private GooglePlayAPI build(LoginInfo loginInfo, int retries) throws IOException {
         int tried = 0;
         TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
-        boolean shouldRefresh = retries == 1
-            && PreferenceActivity.getBoolean(context, PREFERENCE_APP_PROVIDED_EMAIL)
-            && TextUtils.isEmpty(loginInfo.getToken())
-            && !TextUtils.isEmpty(loginInfo.getGsfId())
-        ;
         while (tried < retries) {
+            boolean shouldRefresh = PreferenceActivity.getBoolean(context, PREFERENCE_APP_PROVIDED_EMAIL)
+                && TextUtils.isEmpty(loginInfo.getToken())
+                && !TextUtils.isEmpty(loginInfo.getGsfId())
+            ;
             loginInfo.setTokenDispenserUrl(shouldRefresh
                 ? PreferenceManager.getDefaultSharedPreferences(context).getString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, tokenDispenserMirrors.get())
                 : tokenDispenserMirrors.get()
@@ -119,8 +118,12 @@ public class PlayStoreApiAuthenticator {
                 loginInfo.setEmail(builder.getEmail());
                 return api;
             } catch (ApiBuilderException e) {
-                Log.i(getClass().getSimpleName(), "ApiBuilderException: " + e.getMessage());
+                Log.e(getClass().getSimpleName(), "ApiBuilderException: " + e.getMessage());
             } catch (AuthException | TokenDispenserException e) {
+                if (shouldRefresh && tried == 0) {
+                    loginInfo.setEmail(null);
+                    loginInfo.setGsfId(null);
+                }
                 tried++;
                 if (tried >= retries) {
                     throw e;
