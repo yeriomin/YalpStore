@@ -159,6 +159,8 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         } catch (IOException e) {
             Log.e(getClass().getSimpleName(), "Could not read: " + e.getMessage());
             DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_HTTP_DATA_ERROR);
+            Util.closeSilently(out);
+            targetFile.delete();
             return false;
         } finally {
             Util.closeSilently(in);
@@ -188,6 +190,8 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
             } catch (IOException e) {
                 Log.e(getClass().getSimpleName(), "Could not write file: " + e.getMessage());
                 DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_FILE_ERROR);
+                Util.closeSilently(out);
+                targetFile.delete();
                 return;
             }
         }
