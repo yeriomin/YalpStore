@@ -78,12 +78,12 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
     }
 
     private void cleanup() {
-        ProgressBar progressBar = (ProgressBar) activityRef.get().findViewById(R.id.download_progress);
+        ProgressBar progressBar = activityRef.get().findViewById(R.id.download_progress);
         if (null != progressBar) {
             progressBar.setVisibility(View.GONE);
             progressBar.setProgress(0);
         }
-        ImageButton buttonCancel = (ImageButton) activityRef.get().findViewById(R.id.cancel);
+        ImageButton buttonCancel = activityRef.get().findViewById(R.id.cancel);
         if (null != buttonCancel) {
             buttonCancel.setVisibility(View.GONE);
         }
