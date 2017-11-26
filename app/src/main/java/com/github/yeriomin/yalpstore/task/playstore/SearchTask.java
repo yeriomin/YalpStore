@@ -55,7 +55,9 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
     protected void onPreExecute() {
         super.onPreExecute();
         categoryManager = new CategoryManager(context);
-        installedPackageNames.addAll(getInstalledPackageNames(context));
+        if (installedPackageNames.isEmpty()) {
+            installedPackageNames = getInstalledPackageNames(context);
+        }
     }
 
     @Override
@@ -82,11 +84,15 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
     }
 
     static private Set<String> getInstalledPackageNames(Context context) {
-        if (installedPackageNames.isEmpty()) {
-            for (PackageInfo reducedPackageInfo: context.getPackageManager().getInstalledPackages(0)) {
-                installedPackageNames.add(reducedPackageInfo.packageName);
+        Set<String> newList = new HashSet<>();
+        try {
+            for (PackageInfo reducedPackageInfo : context.getPackageManager().getInstalledPackages(0)) {
+                newList.add(reducedPackageInfo.packageName);
             }
+        } catch (RuntimeException e) {
+            // TransactionTooLargeException might happen if the user has too many apps
+            // Marking apps as installed in search is not very important, so lets ignore this
         }
-        return installedPackageNames;
+        return newList;
     }
 }
