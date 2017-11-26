@@ -18,6 +18,15 @@ public class Beta extends Abstract {
 
     @Override
     public void draw() {
+        if (PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
+            && app.isTestingProgramAvailable()
+            && app.isTestingProgramOptedIn()
+        ) {
+            // Auto-leave beta program if current account is built-in.
+            // The users expect stable to be default.
+            new BetaToggleTask(app).execute();
+            return;
+        }
         if (!app.isInstalled()
             || !app.isTestingProgramAvailable()
             || PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
