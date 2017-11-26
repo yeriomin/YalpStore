@@ -1,12 +1,14 @@
 package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.util.Log;
+import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.AppListIterator;
 import com.github.yeriomin.yalpstore.EndlessScrollActivity;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;
@@ -59,6 +61,9 @@ abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> 
         }
         activity.addApps(apps);
         activity.setIterator(iterator);
+        if (null != errorView && apps.isEmpty()) {
+            errorView.setText(context.getString(R.string.list_empty_search));
+        }
         apps.clear();
     }
 }

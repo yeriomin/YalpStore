@@ -53,6 +53,12 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        this.errorView.setText("");
+    }
+
+    @Override
     protected void onPostExecute(List<App> result) {
         super.onPostExecute(result);
         activity.clearApps();

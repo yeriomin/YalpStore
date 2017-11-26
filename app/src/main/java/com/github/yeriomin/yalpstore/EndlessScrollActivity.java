@@ -25,7 +25,6 @@ abstract public class EndlessScrollActivity extends AppListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ((TextView) getListView().getEmptyView()).setText(getString(R.string.list_empty_search));
         onNewIntent(getIntent());
         getListView().setOnScrollListener(new ScrollEdgeListener() {
 
