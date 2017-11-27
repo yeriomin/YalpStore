@@ -141,7 +141,7 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 
 Google Play ストアでは、任意のバージョンのアプリをダウンロードすることはできません。 成功するかは、バージョンコードの推測の運によります。 正しいと推測してダウンロードする場合でも、互換性のない apk を取得する可能性があります。 おそらく、時間を無駄にすることになります!"</string>
 <string name="manual_download_hint_version_code">"ここにバージョンコード"</string>
-    <string name="details_uninstall">"アンインストール"</string>
+<string name="details_uninstall">"アンインストール"</string>
 <string name="notification_download_starting">"ダウンロードの開始中"</string>
 <string name="notification_download_progress">"%1$s / %2$s ダウンロード済"</string>
 <string name="pref_requested_language">"Play ストアをリクエストする言語"</string>
@@ -178,13 +178,13 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="action_make_system">"システムアプリに変換"</string>
 <string name="action_make_normal">"通常アプリに変換"</string>
 <string name="list_app_system">"システムアプリ"</string>
-    <string name="activity_title_updates_only">"更新"</string>
+<string name="activity_title_updates_only">"更新"</string>
 <string name="activity_title_updates_and_other_apps">"あなたのアプリ"</string>
-    <string name="pref_show_system_apps">"システムアプリを表示"</string>
+<string name="pref_show_system_apps">"システムアプリを表示"</string>
 <string name="pref_show_system_apps_summary_off">"システムアプリは非表示です"</string>
 <string name="pref_show_system_apps_summary_on">"システムアプリを表示します"</string>
 <string name="details_system_app_info">"システム情報"</string>
-    <string name="details_run">"実行"</string>
+<string name="details_run">"実行"</string>
 <string name="dialog_title_remounting_system">"/system パーティションで動作"</string>
 <string name="dialog_message_remounting_system">"/system パーティションで動作します。これは時間がかかることがあります。"</string>
 <string name="dialog_title_checking_busybox">"buxybox が利用可能かどうか確認しています"</string>
@@ -249,6 +249,10 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="testing_program_section_opted_out_message">"公開前の新機能を試して、開発元にフィードバックを提供しましょう。"</string>
 <string name="testing_program_section_opted_out_propagating_message">"ベータ版プログラムの登録が解除されるまで数分ほどかかることがあります。"</string>
 <string name="testing_program_section_opted_out_title">"ベータ版を使ってみる"</string>
-<string name="notification_not_privileged">"Install permission not granted"</string>
+<string name="notification_not_privileged">"インストール権限が付与されていません"</string>
 <string name="about_paypal_label">"寄付:"</string>
+<string name="pref_download_directory">"ダウンロードディレクトリー"</string>
+<string name="pref_download_deltas">"デルタアップデート"</string>
+<string name="pref_download_deltas_summary_off">"毎回すべての apk をダウンロードします"</string>
+<string name="pref_download_deltas_summary_on">"更新の際、変更のみダウンロードします"</string>
 </resources>
