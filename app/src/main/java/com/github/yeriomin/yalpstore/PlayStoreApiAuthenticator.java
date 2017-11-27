@@ -31,6 +31,7 @@ public class PlayStoreApiAuthenticator {
     private Context context;
 
     private static GooglePlayAPI api;
+    private static TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
 
     public PlayStoreApiAuthenticator(Context context) {
         this.context = context;
@@ -38,28 +39,40 @@ public class PlayStoreApiAuthenticator {
 
     public GooglePlayAPI getApi() throws CredentialsEmptyException {
         if (api == null) {
-            api = build();
+            api = buildFromPreferences();
         }
         return api;
     }
 
     public void login() throws IOException {
-        build(new LoginInfo());
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true).commit();
+        LoginInfo loginInfo = new LoginInfo();
+        api = build(loginInfo);
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+            .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
+            .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
+            .commit()
+        ;
     }
 
     public void login(String email, String password) throws IOException {
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setEmail(email);
         loginInfo.setPassword(password);
-        build(loginInfo);
+        api = build(loginInfo);
         PreferenceManager.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_APP_PROVIDED_EMAIL).commit();
     }
 
-    public void refreshToken() throws CredentialsEmptyException {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_AUTH_TOKEN).commit();
-        api.setToken(null);
-        build();
+    public void refreshToken() throws IOException {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().remove(PREFERENCE_AUTH_TOKEN).commit();
+        String email = prefs.getString(PREFERENCE_EMAIL, "");
+        if (TextUtils.isEmpty(email)) {
+            throw new CredentialsEmptyException();
+        }
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setEmail(email);
+        loginInfo.setTokenDispenserUrl(prefs.getString(PREFERENCE_LAST_USED_TOKEN_DISPENSER,""));
+        api = build(loginInfo);
     }
 
     public void logout() {
@@ -74,7 +87,7 @@ public class PlayStoreApiAuthenticator {
         api = null;
     }
 
-    private GooglePlayAPI build() throws CredentialsEmptyException {
+    private GooglePlayAPI buildFromPreferences() throws CredentialsEmptyException {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String email = prefs.getString(PREFERENCE_EMAIL, "");
         if (TextUtils.isEmpty(email)) {
@@ -101,33 +114,22 @@ public class PlayStoreApiAuthenticator {
 
     private GooglePlayAPI build(LoginInfo loginInfo, int retries) throws IOException {
         int tried = 0;
-        TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
         while (tried < retries) {
-            boolean shouldRefresh = PreferenceActivity.getBoolean(context, PREFERENCE_APP_PROVIDED_EMAIL)
-                && TextUtils.isEmpty(loginInfo.getToken())
-                && !TextUtils.isEmpty(loginInfo.getGsfId())
-            ;
-            loginInfo.setTokenDispenserUrl(shouldRefresh
-                ? PreferenceManager.getDefaultSharedPreferences(context).getString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, tokenDispenserMirrors.get())
-                : tokenDispenserMirrors.get()
-            );
             try {
-                Log.i(getClass().getSimpleName(), "Login attempt #" + (tried + 1));
                 com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = getBuilder(loginInfo);
                 GooglePlayAPI api = builder.build();
                 loginInfo.setEmail(builder.getEmail());
                 return api;
             } catch (ApiBuilderException e) {
-                Log.e(getClass().getSimpleName(), "ApiBuilderException: " + e.getMessage());
+                // Impossible, unless there are mistakes, so no need to make it a declared exception
+                throw new RuntimeException(e);
             } catch (AuthException | TokenDispenserException e) {
-                if (shouldRefresh && tried == 0) {
-                    loginInfo.setEmail(null);
-                    loginInfo.setGsfId(null);
-                }
+                loginInfo.setTokenDispenserUrl(null);
                 tried++;
                 if (tried >= retries) {
                     throw e;
                 }
+                Log.i(getClass().getSimpleName(), "Login retry #" + tried);
             }
         }
         return null;
@@ -170,6 +172,9 @@ public class PlayStoreApiAuthenticator {
         loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale));
         loginInfo.setGsfId(prefs.getString(PREFERENCE_GSF_ID, ""));
         loginInfo.setToken(prefs.getString(PREFERENCE_AUTH_TOKEN, ""));
+        if (TextUtils.isEmpty(loginInfo.getTokenDispenserUrl())) {
+            loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get());
+        }
     }
 
     private void save(LoginInfo loginInfo) {
@@ -177,7 +182,6 @@ public class PlayStoreApiAuthenticator {
             .putString(PREFERENCE_EMAIL, loginInfo.getEmail())
             .putString(PREFERENCE_GSF_ID, loginInfo.getGsfId())
             .putString(PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
-            .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
             .commit()
         ;
     }

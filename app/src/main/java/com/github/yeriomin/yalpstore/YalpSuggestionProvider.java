@@ -39,7 +39,9 @@ public class YalpSuggestionProvider extends ContentProvider {
         try {
             fill(cursor, uri);
         } catch (GooglePlayException e) {
-            if (e.getCode() == 401) {
+            if (e.getCode() == 401
+                && PreferenceActivity.getBoolean(getContext(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+            ) {
                 refreshAndRetry(cursor, uri);
             } else {
                 Log.e(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
