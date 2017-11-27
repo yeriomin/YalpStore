@@ -77,7 +77,7 @@ Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania
 <string name="notification_download_complete">"Pobieranie zakończone. Dotknij, by zainstalować."</string>
 <string name="notification_download_complete_toast">"Pobieranie %1$s zakończone. Dotknij powiadomienie bądź przycisk instalacji, by zainstalować."</string>
 <string name="notification_download_complete_signature_mismatch">"Pobieranie zakończone. Niezgodność podpisu cyfrowego apk."</string>
-<string name="notification_download_complete_signature_mismatch_toast">"Pobieranie %1$s zakończone. Sygnatura pliku .apk nie jest zgodna z wersją aplikacji zainstalowaną na twoim urządzeniu. Jeśli pobrałeś ją ze sklepu Google Play, może być konieczne odinstalowanie poprzedniej wersji."</string>
+<string name="notification_download_complete_signature_mismatch_toast">"Pobieranie %1$s zakończone. Sygnatura pliku .apk nie jest zgodna z wersją aplikacji zainstalowaną na Twoim urządzeniu. Jeśli pobrałeś ją ze sklepu Google Play, może być konieczne odinstalowanie poprzedniej wersji."</string>
 <string name="notification_updates_available_title">"Dostępne aktualizacje aplikacji."</string>
 <string name="notification_updates_available_message">"Dostępne są aktualizacje dla %1$d z Twoich aplikacji."</string>
 <string name="pref_hide_nonfree_apps_summary_off">"Płatne aplikacje są teraz wyświetlane"</string>
@@ -139,11 +139,11 @@ Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania
 <string name="details_download_not_available">"Niedostępne"</string>
 <string name="manual_download_incompatible">"Sklep Google Play uważa tę aplikację za niezgodną z Twoim urządzeniem. Oznacza to, że kod wersji nie został zwrócony przez serwer sklepu Google Play."</string>
 <string name="manual_download_compatible">"Pole kodu wersji zostało wcześniej wypełnione z najnowszą dostępną wersją. Jeśli chcesz używać poprzedniej wersji, po prostu wpisz numer wersji mniejszy niż bieżący. Jeśli deweloper nie usunął pliku .apk poprzedniej wersji ze sklepu Google Play, będzie możliwe rozpoczęcie pobierania."</string>
-<string name="manual_download_warning">"Na tej stronie można ręcznie wybrać wersję aplikacji do pobrania. Kod wersji to numer identyfikujący wersję aplikacji. Zaczyna się od 1 i jest stopniowo zwiększany przez dewelopera aplikacji za każdym razem, gdy wychodzi nowa wersja. Normalnie sklep Google Play umożliwia pobranie tylko najnowszego pliku .apk zgodnego z Twoim urządzeniem. Wprowadzając ten numer ręcznie możesz uzyskać także inne wersje.
+<string name="manual_download_warning">"Na tej stronie można ręcznie wybrać wersję aplikacji do pobrania. Kod wersji to numer identyfikujący wersję aplikacji. Zaczyna się od 1 i jest stopniowo zwiększany przez dewelopera aplikacji za każdym razem, gdy wychodzi nowa wersja. Normalnie sklep Google Play umożliwia pobranie tylko najnowszego pliku .apk zgodnego z Twoim urządzeniem. Wprowadzając ten numer ręcznie, możesz uzyskać także inne wersje.
 
 Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji aplikacji. Twój sukces zależy od szczęśliwego odgadnięcia kodu wersji. Nawet jeśli się zgadnie, a pobieranie rozpocznie się, możesz trafić na niekompatybilny plik apk. Najprawdopodobniej tracisz tylko czas!"</string>
 <string name="manual_download_hint_version_code">"tutaj jest kod wersji"</string>
-    <string name="details_uninstall">"Odinstaluj"</string>
+<string name="details_uninstall">"Odinstaluj"</string>
 <string name="notification_download_starting">"Rozpoczynanie pobierania"</string>
 <string name="notification_download_progress">"%1$s z %2$s pobrano"</string>
 <string name="pref_requested_language">"Żądana wersja językowa Google Play"</string>
@@ -180,13 +180,13 @@ Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji apli
 <string name="action_make_system">"Konwertuj na aplikację systemową"</string>
 <string name="action_make_normal">"Konwertuj do normalnej aplikacji"</string>
 <string name="list_app_system">"Aplikacja systemowa"</string>
-    <string name="activity_title_updates_only">"Aktualizacje"</string>
+<string name="activity_title_updates_only">"Aktualizacje"</string>
 <string name="activity_title_updates_and_other_apps">"Twoje aplikacje"</string>
-    <string name="pref_show_system_apps">"Pokaż aplikacje systemowe"</string>
+<string name="pref_show_system_apps">"Pokaż aplikacje systemowe"</string>
 <string name="pref_show_system_apps_summary_off">"Aplikacje systemowe są teraz ukryte"</string>
 <string name="pref_show_system_apps_summary_on">"Aplikacje systemowe są teraz wyświetlane"</string>
 <string name="details_system_app_info">"Informacja o systemie"</string>
-    <string name="details_run">"Uruchom"</string>
+<string name="details_run">"Uruchom"</string>
 <string name="dialog_title_remounting_system">"Praca z partycją /system"</string>
 <string name="dialog_message_remounting_system">"Pracja z partycją /system. Może to zająć trochę czasu."</string>
 <string name="dialog_title_checking_busybox">"Sprawdzanie dostępności busybox"</string>
@@ -237,7 +237,7 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="error_invalid_device_definition">"Odrzucona definicja urządzenia."</string>
 <string name="details_video">"Wideo"</string>
 <string name="error_could_not_download">"Nie można pobrać."</string>
-<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
+<string name="first_login_message">"Aby użyć swojego konta, wybierz opcję Wyloguj znajdującą się w menu"</string>
 <string name="early_access">"Wcześniejszy dostęp"</string>
 <string name="testing_program_opt_in">"dołącz"</string>
 <string name="testing_program_opt_out">"zrezygnuj"</string>
@@ -247,6 +247,10 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="testing_program_section_opted_out_message">"Wypróbuj nowe funkcje, zanim zostaną udostępnione wszystkim użytkownikom. Przekazuj swoje opinie bezpośrednio programiście."</string>
 <string name="testing_program_section_opted_out_propagating_message">"Opuszczanie programu testów beta może potrwać kilka minut."</string>
 <string name="testing_program_section_opted_out_title">"Zostań betatesterem"</string>
-<string name="notification_not_privileged">"Install permission not granted"</string>
+<string name="notification_not_privileged">"Uprawnienia do instalacji nie zostały przyznane"</string>
 <string name="about_paypal_label">"Dotacja:"</string>
+<string name="pref_download_directory">"Katalog pobrań"</string>
+<string name="pref_download_deltas">"Aktualizacje delta"</string>
+<string name="pref_download_deltas_summary_off">"Pełny plik .apk jest pobierany za każdym razem"</string>
+<string name="pref_download_deltas_summary_on">"Tylko zmiany są pobierane podczas aktualizacji"</string>
 </resources>
