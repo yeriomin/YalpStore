@@ -127,7 +127,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="pref_background_update_install">"Também instalar as atualizações (root)"</string>
 <string name="pref_no_root">"Esta opção apenas está disponível para dispositivos com root"</string>
 <string name="list_app_has_ads">"Contém publicidade"</string>
-<string name="list_app_no_ads">"Não contém publicidade"</string>
+<string name="list_app_no_ads">"Sem publicidade"</string>
 <string name="list_app_depends_on_gsf">"Depende de GSF"</string>
 <string name="list_app_independent_from_gsf">"Não dependente de GSF"</string>
 <string name="details_depends_on">"Dependências: %1$s"</string>
@@ -144,7 +144,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 
 Lembre-se que ao efetuar a transferência de versões arbitrárias de aplicações não é suportada pela Google Play Store. O teu sucesso depende num mero palpite de um código. Mesmo que acerte, poderá transferir uma aplicação incompatível com o teu dispositivo."</string>
 <string name="manual_download_hint_version_code">"Código da versão"</string>
-    <string name="details_uninstall">"Desinstalar"</string>
+<string name="details_uninstall">"Desinstalar"</string>
 <string name="notification_download_starting">"A iniciar transferência"</string>
 <string name="notification_download_progress">"%1$s of %2$s transferido"</string>
 <string name="pref_requested_language">"Idioma da Play Store"</string>
@@ -181,13 +181,13 @@ Lembre-se que ao efetuar a transferência de versões arbitrárias de aplicaçõ
 <string name="action_make_system">"Converter para aplicação de sistema"</string>
 <string name="action_make_normal">"Converter para aplicação normal"</string>
 <string name="list_app_system">"Aplicação de sistema"</string>
-    <string name="activity_title_updates_only">"Atualizações"</string>
+<string name="activity_title_updates_only">"Atualizações"</string>
 <string name="activity_title_updates_and_other_apps">"Aplicações"</string>
-    <string name="pref_show_system_apps">"Mostrar aplicações de sistema"</string>
+<string name="pref_show_system_apps">"Mostrar aplicações de sistema"</string>
 <string name="pref_show_system_apps_summary_off">"Aplicações de sistema são escondidas"</string>
 <string name="pref_show_system_apps_summary_on">"Aplicações de sistema são visíveis"</string>
 <string name="details_system_app_info">"Informação de sistema"</string>
-    <string name="details_run">"Abrir"</string>
+<string name="details_run">"Abrir"</string>
 <string name="dialog_title_remounting_system">"A usar partição de sistema"</string>
 <string name="dialog_message_remounting_system">"A usar partição de sistema. Isto poderá levar algum tempo."</string>
 <string name="dialog_title_checking_busybox">"A verificar se busybox está disponível"</string>
@@ -251,6 +251,10 @@ Prosseguir mesmo assim?"</string>
 <string name="testing_program_section_opted_out_message">"Teste novos recursos antes que eles se tornem públicos. Envie seus comentários diretamente para o desenvolvedor."</string>
 <string name="testing_program_section_opted_out_propagating_message">"Pode levar alguns minutos para remover você do programa Beta."</string>
 <string name="testing_program_section_opted_out_title">"Seja um testador Beta"</string>
-<string name="notification_not_privileged">"Install permission not granted"</string>
+<string name="notification_not_privileged">"Permissão para instalar não concedida"</string>
 <string name="about_paypal_label">"Doar:"</string>
+<string name="pref_download_directory">"Diretório Downloads"</string>
+<string name="pref_download_deltas">"Atualizações Delta"</string>
+<string name="pref_download_deltas_summary_off">"Aplicação completa será transferida sempre"</string>
+<string name="pref_download_deltas_summary_on">"Apenas modificações serão transferidas durante atualizações"</string>
 </resources>
