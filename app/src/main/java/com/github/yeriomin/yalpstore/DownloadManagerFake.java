@@ -1,8 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.os.Environment;
-import android.os.StatFs;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
@@ -33,20 +31,17 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
         long downloadId = url.hashCode();
         statuses.put(downloadId, DownloadManagerInterface.IN_PROGRESS);
         DownloadState.get(app.getPackageName()).setStarted(downloadId);
-        if (!enoughSpace(deliveryData)) {
-            statuses.put(downloadId, DownloadManagerInterface.ERROR_INSUFFICIENT_SPACE);
-        } else {
-            HttpURLConnectionDownloadTask task = new HttpURLConnectionDownloadTask();
-            task.setContext(context);
-            task.setDownloadId(downloadId);
-            task.setTargetFile(getDestinationFile(app, type));
-            String cookieString = null;
-            if (deliveryData.getDownloadAuthCookieCount() > 0) {
-                HttpCookie cookie = deliveryData.getDownloadAuthCookie(0);
-                cookieString = cookie.getName() + "=" + cookie.getValue();
-            }
-            task.execute(url, cookieString);
+
+        HttpURLConnectionDownloadTask task = new HttpURLConnectionDownloadTask();
+        task.setContext(context);
+        task.setDownloadId(downloadId);
+        task.setTargetFile(getDestinationFile(app, type));
+        String cookieString = null;
+        if (deliveryData.getDownloadAuthCookieCount() > 0) {
+            HttpCookie cookie = deliveryData.getDownloadAuthCookie(0);
+            cookieString = cookie.getName() + "=" + cookie.getValue();
         }
+        task.execute(url, cookieString);
         return downloadId;
     }
 
@@ -62,20 +57,7 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
 
     @Override
     public String getError(long downloadId) {
-        return null;
-    }
-
-    private boolean enoughSpace(AndroidAppDeliveryData deliveryData) {
-        long bytesNeeded = 0;
-        bytesNeeded += deliveryData.getDownloadSize();
-        if (deliveryData.getAdditionalFileCount() == 2) {
-            bytesNeeded += deliveryData.getAdditionalFile(1).getSize();
-        } else if (deliveryData.getAdditionalFileCount() == 1) {
-            bytesNeeded += deliveryData.getAdditionalFile(0).getSize();
-        }
-        StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
-        long bytesAvailable = (long) stat.getBlockSize() * (long) stat.getBlockCount();
-        return bytesAvailable >= bytesNeeded;
+        return getErrorString(context, statuses.get(downloadId));
     }
 
     private String getUrl(AndroidAppDeliveryData deliveryData, Type type) {

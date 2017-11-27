@@ -54,9 +54,16 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
         DownloadState.get(app.getPackageName()).setTriggeredBy(triggeredBy);
         super.getResult(api, arguments);
         if (null != deliveryData) {
-            new Downloader(context).download(app, deliveryData);
-            if (null != progressBarUpdater) {
-                progressBarUpdater.execute(UPDATE_INTERVAL);
+            Downloader downloader = new Downloader(context);
+            if (downloader.enoughSpace(deliveryData)) {
+                downloader.download(app, deliveryData);
+                if (null != progressBarUpdater) {
+                    progressBarUpdater.execute(UPDATE_INTERVAL);
+                }
+            } else {
+                context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
+                Log.e(getClass().getSimpleName(), app.getPackageName() + " not enough storage space");
+                throw new IOException(context.getString(R.string.download_manager_ERROR_INSUFFICIENT_SPACE));
             }
         } else {
             context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));

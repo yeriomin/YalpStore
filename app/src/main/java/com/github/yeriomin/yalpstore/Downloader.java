@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.os.StatFs;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
@@ -12,9 +13,11 @@ import java.io.File;
 public class Downloader {
 
     private DownloadManagerInterface dm;
+    private File storagePath;
 
     public Downloader(Context context) {
         this.dm = DownloadManagerFactory.get(context);
+        storagePath = Paths.getYalpPath(context);
     }
 
     public void download(App app, AndroidAppDeliveryData deliveryData) {
@@ -31,6 +34,18 @@ public class Downloader {
         if (deliveryData.getAdditionalFileCount() > 1) {
             checkAndStartObbDownload(state, deliveryData, false);
         }
+    }
+
+    public boolean enoughSpace(AndroidAppDeliveryData deliveryData) {
+        long bytesNeeded = deliveryData.getDownloadSize();
+        if (deliveryData.getAdditionalFileCount() > 0) {
+            bytesNeeded += deliveryData.getAdditionalFile(0).getSize();
+        }
+        if (deliveryData.getAdditionalFileCount() > 1) {
+            bytesNeeded += deliveryData.getAdditionalFile(1).getSize();
+        }
+        StatFs stat = new StatFs(storagePath.getPath());
+        return (long) stat.getBlockSize() * (long) stat.getAvailableBlocks() >= bytesNeeded;
     }
 
     private void checkAndStartObbDownload(DownloadState state, AndroidAppDeliveryData deliveryData, boolean main) {
