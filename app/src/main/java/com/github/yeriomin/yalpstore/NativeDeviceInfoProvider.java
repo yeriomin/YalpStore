@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.FeatureInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -29,6 +30,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
     static private final int GOOGLE_SERVICES_VERSION_CODE = 10548448;
     static private final int GOOGLE_VENDING_VERSION_CODE = 80798000;
+    static private final String GOOGLE_VENDING_VERSION_STRING = "7.9.80";
 
     private Context context;
     private String localeString;
@@ -52,14 +54,36 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         return Build.VERSION.SDK_INT;
     }
 
+    public int getPlayServicesVersion() {
+        return getGsfVersionCode(context);
+    }
+
+    public String getMccmnc() {
+        return simOperator;
+    }
+
+    public String getAuthUserAgentString() {
+        return "GoogleAuth/1.4 (" + Build.DEVICE + " " + Build.ID + ")";
+    }
+
     public String getUserAgentString() {
-        return "Android-Finsky/7.9.80 ("
+        int vc = getVendingVersionCode(context);
+        String vcString = GOOGLE_VENDING_VERSION_STRING;
+        if (vc > 0) {
+            vcString = new StringBuilder(Integer.toString(vc).substring(2, 6)).insert(2, ".").insert(1, ".").toString();
+        }
+        return "Android-Finsky/" + vcString + " ("
             + "api=3"
-            + ",versionCode=" + getVendingVersionCode(context)
+            + ",versionCode=" + vc
             + ",sdk=" + Build.VERSION.SDK_INT
             + ",device=" + Build.DEVICE
             + ",hardware=" + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
             + ",product=" + Build.PRODUCT
+            + ",platformVersionRelease=" + Build.VERSION.RELEASE
+            + ",model=" + Build.MODEL
+            + ",buildId=" + Build.ID
+            + ",isWideScreen=" + (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? "1" : "0")
+            + ",supportedAbis=" + TextUtils.join(";", getPlatforms())
             + ")"
         ;
     }
