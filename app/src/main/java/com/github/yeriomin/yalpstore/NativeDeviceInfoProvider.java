@@ -36,6 +36,8 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     private String localeString;
     private String networkOperator = "";
     private String simOperator = "";
+    private int vendingVersionCode = GOOGLE_VENDING_VERSION_CODE;
+    private String vendingVersionString = GOOGLE_VENDING_VERSION_STRING;
 
     public void setContext(Context context) {
         this.context = context;
@@ -44,6 +46,8 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
             networkOperator = null != tm.getNetworkOperator() ? tm.getNetworkOperator() : "";
             simOperator = null != tm.getSimOperator() ? tm.getSimOperator() : "";
         }
+        vendingVersionCode = getVendingVersionCode(context);
+        vendingVersionString = getVendingVersionString(context, GOOGLE_VENDING_VERSION_STRING);
     }
 
     public void setLocaleString(String localeString) {
@@ -67,14 +71,9 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     public String getUserAgentString() {
-        int vc = getVendingVersionCode(context);
-        String vcString = GOOGLE_VENDING_VERSION_STRING;
-        if (vc > 0) {
-            vcString = new StringBuilder(Integer.toString(vc).substring(2, 6)).insert(2, ".").insert(1, ".").toString();
-        }
-        return "Android-Finsky/" + vcString + " ("
+        return "Android-Finsky/" + vendingVersionString + " ("
             + "api=3"
-            + ",versionCode=" + vc
+            + ",versionCode=" + vendingVersionCode
             + ",sdk=" + Build.VERSION.SDK_INT
             + ",device=" + Build.DEVICE
             + ",hardware=" + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
@@ -232,5 +231,13 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
     static public int getVendingVersionCode(Context context) {
         return getVersionCode(context, GOOGLE_VENDING_PACKAGE_ID, GOOGLE_VENDING_VERSION_CODE);
+    }
+
+    static public String getVendingVersionString(Context context, String defaultVersionString) {
+        try {
+            return context.getPackageManager().getPackageInfo(GOOGLE_VENDING_PACKAGE_ID, 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            return defaultVersionString;
+        }
     }
 }
