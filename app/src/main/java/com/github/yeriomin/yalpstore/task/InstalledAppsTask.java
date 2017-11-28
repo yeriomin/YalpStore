@@ -10,7 +10,6 @@ import java.util.Map;
 
 public class InstalledAppsTask extends TaskWithProgress<Map<String, App>> {
 
-    protected Map<String, App> installedApps = new HashMap<>();
     protected boolean includeSystemApps = false;
 
     public void setIncludeSystemApps(boolean includeSystemApps) {
@@ -54,7 +53,6 @@ public class InstalledAppsTask extends TaskWithProgress<Map<String, App>> {
 
     @Override
     protected Map<String, App> doInBackground(String... strings) {
-        installedApps = getInstalledApps();
-        return installedApps;
+        return getInstalledApps(true);
     }
 }

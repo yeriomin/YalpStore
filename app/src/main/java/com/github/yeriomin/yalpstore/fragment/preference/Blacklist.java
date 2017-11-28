@@ -93,7 +93,7 @@ public class Blacklist extends Abstract {
 
         @Override
         protected Map<String, App> doInBackground(String... strings) {
-            super.doInBackground(strings);
+            Map<String, App> installedApps = super.doInBackground(strings);
             Map<String, String> appNames = new HashMap<>();
             for (String packageName: installedApps.keySet()) {
                 appNames.put(packageName, installedApps.get(packageName).getDisplayName());

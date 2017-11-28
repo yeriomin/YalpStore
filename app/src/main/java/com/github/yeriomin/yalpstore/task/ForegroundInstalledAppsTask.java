@@ -25,7 +25,7 @@ public class ForegroundInstalledAppsTask extends InstalledAppsTask {
     protected void onPostExecute(Map<String, App> result) {
         super.onPostExecute(result);
         activity.clearApps();
-        List<App> installedApps = new ArrayList<>(this.installedApps.values());
+        List<App> installedApps = new ArrayList<>(result.values());
         Collections.sort(installedApps);
         activity.addApps(installedApps);
     }
