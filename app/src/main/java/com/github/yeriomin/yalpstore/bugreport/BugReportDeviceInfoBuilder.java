@@ -68,6 +68,8 @@ public class BugReportDeviceInfoBuilder extends BugReportPropertiesBuilder {
         values.put("Build.MODEL", Build.MODEL);
         values.put("Build.MANUFACTURER", Build.MANUFACTURER);
         values.put("Build.PRODUCT", Build.PRODUCT);
+        values.put("Build.ID", Build.ID);
+        values.put("Build.VERSION.RELEASE", Build.VERSION.RELEASE);
         return values;
     }
 
@@ -101,6 +103,7 @@ public class BugReportDeviceInfoBuilder extends BugReportPropertiesBuilder {
         values.put("Locales", TextUtils.join(",", NativeDeviceInfoProvider.getLocales(context)));
         values.put("GSF.version", Integer.toString(NativeDeviceInfoProvider.getVersionCode(context, GOOGLE_SERVICES_PACKAGE_ID, 0)));
         values.put("Vending.version", Integer.toString(NativeDeviceInfoProvider.getVersionCode(context, GOOGLE_VENDING_PACKAGE_ID, 0)));
+        values.put("Vending.versionString", NativeDeviceInfoProvider.getVendingVersionString(context, ""));
         return values;
     }
 
