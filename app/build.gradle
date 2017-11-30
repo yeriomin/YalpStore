@@ -33,9 +33,9 @@ android {
 }
 
 dependencies {
-    compile 'commons-net:commons-net:3.5'
-    compile 'com.nothome:javaxdelta:2.0.1'
-    debugCompile 'com.github.yeriomin:play-store-api:master-SNAPSHOT'
-    releaseCompile 'com.github.yeriomin:play-store-api:0.29'
-    compile 'eu.chainfire:libsuperuser:1.0.0.201608240809'
+    implementation 'commons-net:commons-net:3.5'
+    implementation 'com.nothome:javaxdelta:2.0.1'
+    debugImplementation 'com.github.yeriomin:play-store-api:master-SNAPSHOT'
+    releaseImplementation 'com.github.yeriomin:play-store-api:0.31'
+    implementation 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }
