@@ -13,6 +13,10 @@ abstract public class TaskWithProgress<T> extends AsyncTask<String, Void, T> {
     protected ProgressDialog progressDialog;
     protected View progressIndicator;
 
+    public View getProgressIndicator() {
+        return progressIndicator;
+    }
+
     public void setProgressIndicator(View progressIndicator) {
         this.progressIndicator = progressIndicator;
     }

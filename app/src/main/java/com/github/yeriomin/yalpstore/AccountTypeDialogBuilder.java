@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import com.github.yeriomin.yalpstore.task.playstore.PlayStoreTask;
+
 import java.io.IOException;
 
 public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
@@ -79,6 +81,12 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
     }
 
     private class RefreshTokenTask extends AppProvidedCredentialsTask {
+
+        @Override
+        public void setCaller(PlayStoreTask caller) {
+            super.setCaller(caller);
+            setProgressIndicator(caller.getProgressIndicator());
+        }
 
         @Override
         protected void payload() throws IOException {
