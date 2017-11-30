@@ -24,7 +24,7 @@
         <provider
             android:name="com.github.yeriomin.yalpstore.FileProvider"
             android:authorities="com.github.yeriomin.yalpstore.fileprovider"
-            android:exported="true"
+            android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
