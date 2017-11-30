@@ -73,6 +73,11 @@ public class PlayStoreApiAuthenticator {
         loginInfo.setEmail(email);
         loginInfo.setTokenDispenserUrl(prefs.getString(PREFERENCE_LAST_USED_TOKEN_DISPENSER,""));
         api = build(loginInfo);
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+            .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
+            .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
+            .commit()
+        ;
     }
 
     public void logout() {
@@ -114,6 +119,7 @@ public class PlayStoreApiAuthenticator {
 
     private GooglePlayAPI build(LoginInfo loginInfo, int retries) throws IOException {
         int tried = 0;
+        tokenDispenserMirrors.reset();
         while (tried < retries) {
             try {
                 com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = getBuilder(loginInfo);
@@ -125,6 +131,11 @@ public class PlayStoreApiAuthenticator {
                 throw new RuntimeException(e);
             } catch (AuthException | TokenDispenserException e) {
                 loginInfo.setTokenDispenserUrl(null);
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+                if (prefs.getBoolean(PREFERENCE_APP_PROVIDED_EMAIL, false)) {
+                    loginInfo.setEmail(null);
+                    prefs.edit().remove(PREFERENCE_GSF_ID).commit();
+                }
                 tried++;
                 if (tried >= retries) {
                     throw e;
