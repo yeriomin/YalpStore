@@ -29,8 +29,7 @@ public class InstalledApkCopier {
             Log.e(InstalledApkCopier.class.getSimpleName(), currentApk + " does not exist");
             return false;
         }
-        copy(currentApk, destination);
-        return true;
+        return copy(currentApk, destination);
     }
 
     static public File getCurrentApk(App app) {
@@ -40,7 +39,7 @@ public class InstalledApkCopier {
         return null;
     }
 
-    static private void copy(File input, File output) {
+    static private boolean copy(File input, File output) {
         InputStream in = null;
         OutputStream out = null;
         File dir = output.getParentFile();
@@ -58,8 +57,10 @@ public class InstalledApkCopier {
             }
 
             out.flush();
+            return true;
         } catch (IOException e) {
             Log.e(InstalledApkCopier.class.getSimpleName(), e.getClass().getName() + " " + e.getMessage());
+            return false;
         } finally {
             Util.closeSilently(in);
             Util.closeSilently(out);
