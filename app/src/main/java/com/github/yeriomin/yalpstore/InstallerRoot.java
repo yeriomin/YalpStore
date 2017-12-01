@@ -23,7 +23,7 @@ public class InstallerRoot extends InstallerBackground {
             @Override
             protected void onPostExecute(Boolean success) {
                 super.onPostExecute(success);
-                context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM));
+                sendBroadcast(app.getPackageName(), true);
                 postInstallationResult(app, success);
             }
         };

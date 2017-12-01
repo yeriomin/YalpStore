@@ -53,7 +53,7 @@ public abstract class InstallerAbstract {
             Log.i(getClass().getSimpleName(), "Installing " + app.getPackageName());
             install(app);
         } else {
-            context.sendBroadcast(new Intent(DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED));
+            sendBroadcast(app.getPackageName(), false);
         }
     }
 
@@ -79,6 +79,16 @@ public abstract class InstallerAbstract {
         if (!background) {
             ContextUtil.toast(context, toastStringId, app.getDisplayName());
         }
+    }
+
+    protected void sendBroadcast(String packageName, boolean success) {
+        Intent intent = new Intent(
+            success
+            ? DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM
+            : DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED
+        );
+        intent.setData(new Uri.Builder().scheme("package").path(packageName).build());
+        context.sendBroadcast(intent);
     }
 
     private AlertDialog getSignatureMismatchDialog(final App app) {

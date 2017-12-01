@@ -35,10 +35,10 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (!TextUtils.equals(packageName, intent.getData().getSchemeSpecificPart())) {
+        if (null == intent.getData() || !TextUtils.equals(packageName, intent.getData().getSchemeSpecificPart())) {
             return;
         }
-        GlobalInstallReceiver.updateDetails(intent);
+        GlobalInstallReceiver.updateDetails(GlobalInstallReceiver.actionIsInstall(intent));
         DetailsActivity activity = activityRef.get();
         if (null == activity || !ContextUtil.isAlive(activity)) {
             return;

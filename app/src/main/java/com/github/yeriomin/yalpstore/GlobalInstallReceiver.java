@@ -18,12 +18,14 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-        if (!expectedAction(action)) {
+        if (!expectedAction(action) || null == intent.getData()) {
             return;
         }
         String packageName = intent.getData().getSchemeSpecificPart();
+        if (null != DetailsActivity.app && packageName.equals(DetailsActivity.app.getPackageName())) {
+            updateDetails(actionIsInstall(intent));
+        }
         Log.i(getClass().getSimpleName(), "Finished installation of " + packageName);
-        updateDetails(intent);
         ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall(intent));
         if (needToRemoveApk(context) && actionIsInstall(intent)) {
             App app = getApp(context, packageName);
@@ -33,28 +35,17 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         }
     }
 
-    static public void updateDetails(Intent intent) {
-        if (null == DetailsActivity.app || !intent.getData().getSchemeSpecificPart().equals(DetailsActivity.app.getPackageName())) {
-            return;
-        }
-        if (actionIsUninstall(intent)) {
-            DetailsActivity.app.getPackageInfo().versionCode = 0;
-            DetailsActivity.app.setInstalled(false);
-        } else if (actionIsInstall(intent)) {
+    static public void updateDetails(boolean installed) {
+        if (installed) {
             DetailsActivity.app.getPackageInfo().versionCode = DetailsActivity.app.getVersionCode();
             DetailsActivity.app.setInstalled(true);
+        } else {
+            DetailsActivity.app.getPackageInfo().versionCode = 0;
+            DetailsActivity.app.setInstalled(false);
         }
     }
 
-    static private boolean actionIsUninstall(Intent intent) {
-        return !TextUtils.isEmpty(intent.getAction())
-            && (intent.getAction().equals(Intent.ACTION_PACKAGE_REMOVED)
-                || intent.getAction().equals(Intent.ACTION_PACKAGE_FULLY_REMOVED)
-            )
-        ;
-    }
-
-    static private boolean actionIsInstall(Intent intent) {
+    static public boolean actionIsInstall(Intent intent) {
         return !TextUtils.isEmpty(intent.getAction())
             && (intent.getAction().equals(Intent.ACTION_PACKAGE_INSTALL)
                 || intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)
