@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class NativeDeviceInfoProvider implements DeviceInfoProvider {
@@ -198,8 +199,16 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     static public List<String> getLocales(Context context) {
+        List<String> rawLocales = new ArrayList<>();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            rawLocales.addAll(Arrays.asList(context.getAssets().getLocales()));
+        } else {
+            for (Locale locale: Locale.getAvailableLocales()) {
+                rawLocales.add(locale.toString());
+            }
+        }
         List<String> locales = new ArrayList<>();
-        for (String locale: context.getAssets().getLocales()) {
+        for (String locale: rawLocales) {
             if (TextUtils.isEmpty(locale)) {
                 continue;
             }
