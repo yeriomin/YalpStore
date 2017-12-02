@@ -257,4 +257,16 @@ Fortfahren?"</string>
 <string name="pref_download_deltas">"Delta-Aktualisierungen"</string>
 <string name="pref_download_deltas_summary_off">"Die gesamte apk wird jedes Mal heruntergeladen"</string>
 <string name="pref_download_deltas_summary_on">"Beim Aktualisieren werden nur Änderungen heruntergeladen"</string>
+<string name="flag_graphic_violence">Gewalt</string>
+<string name="flag_harmful_prompt">Beschreibe den Schaden, der an deinem Gerät oder deinen Daten entstanden ist:</string>
+<string name="flag_harmful_to_device">Schädlich für Gerät oder Daten</string>
+<string name="flag_hateful_content">Hasserfüllter oder beleidigender Inhalt</string>
+<string name="flag_improper_content_rating">Unpassende Einstufung des Inhalts</string>
+<string name="flag_other_concern_prompt">Beanstandung beschreiben</string>
+<string name="flag_other_objection">Andere Beanstandung</string>
+<string name="flag_page_description">Aus welchem Grund hältst du diesen Inhalt oder diese App für unangemessen?</string>
+<string name="flag_pharma_content">Illegales Rezept oder sonstige Arzneimittel</string>
+<string name="flag_sexual_content">Sexueller Inhalt</string>
+<string name="flagging_title">Als unangemessen melden</string>
+<string name="content_flagged">Beanstandung wurde gesendet.</string>
 </resources>

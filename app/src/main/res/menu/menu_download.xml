@@ -39,4 +39,8 @@
         android:id="@+id/action_make_normal"
         android:title="@string/action_make_normal"
         android:visible="false" />
+    <item
+        android:id="@+id/action_flag"
+        android:title="@string/flagging_title"
+        android:visible="false" />
 </menu>

@@ -255,4 +255,16 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="pref_download_deltas">"デルタアップデート"</string>
 <string name="pref_download_deltas_summary_off">"毎回すべての apk をダウンロードします"</string>
 <string name="pref_download_deltas_summary_on">"更新の際、変更のみダウンロードします"</string>
+<string name="flag_graphic_violence">暴力的な画像</string>
+<string name="flag_harmful_prompt">端末やデータへの悪影響についてご説明ください:</string>
+<string name="flag_harmful_to_device">端末やデータに悪影響がある</string>
+<string name="flag_hateful_content">差別的または攻撃的な内容</string>
+<string name="flag_improper_content_rating">レーティングが不適切</string>
+<string name="flag_other_concern_prompt">問題の内容</string>
+<string name="flag_other_objection">その他の問題</string>
+<string name="flag_page_description">このコンテンツまたはアプリが不適切であると考える理由:</string>
+<string name="flag_pharma_content">違法な処方薬または薬物</string>
+<string name="flag_sexual_content">性的なコンテンツ</string>
+<string name="flagging_title">不適切なコンテンツとして報告</string>
+<string name="content_flagged">問題を送信しました。</string>
 </resources>

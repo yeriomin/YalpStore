@@ -259,4 +259,16 @@
 <string name="testing_program_section_opted_out_title">"Γίνε δοκιμαστής της beta"</string>
 <string name="notification_not_privileged">"Δεν έχουν παραχωρηθεί δικαιώματα εγκατάστασης"</string>
 <string name="about_paypal_label">"Δωρεά Paypal:"</string>
+<string name="flag_graphic_violence">Σκληρή βία</string>
+<string name="flag_harmful_prompt">Περιγράψτε τη ζημιά που προκλήθηκε στη συσκευή ή τα δεδομένα σας:</string>
+<string name="flag_harmful_to_device">Επιβλ.για τη συσκ. ή τα δεδομ.</string>
+<string name="flag_hateful_content">Περιεχόμενο μίσους ή βίας</string>
+<string name="flag_improper_content_rating">Αξιολόγ. ακατάλληλου περιεχομ.</string>
+<string name="flag_other_concern_prompt">Περιγράψτε την ένσταση</string>
+<string name="flag_other_objection">Άλλη ένσταση</string>
+<string name="flag_page_description">Ο λόγος για τον οποίο θεωρείτε αυτό το περιεχόμενο ή την εφαρμογή μη αποδεκτά:</string>
+<string name="flag_pharma_content">Παράνομη συνταγή/άλλο φάρμακο</string>
+<string name="flag_sexual_content">Σεξουαλικό περιεχόμενο</string>
+<string name="flagging_title">Επισήμανση ως ακατάλληλου</string>
+<string name="content_flagged">Η ένσταση υποβλήθηκε.</string>
 </resources>

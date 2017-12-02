@@ -263,4 +263,16 @@
 <string name="pref_download_deltas">"增量更新"</string>
 <string name="pref_download_deltas_summary_off">"每次都下载完整的apk"</string>
 <string name="pref_download_deltas_summary_on">"更新时仅下载改动部分"</string>
+<string name="flag_graphic_violence">暴力画面</string>
+<string name="flag_harmful_prompt">描述对您的设备或数据造成的损害：</string>
+<string name="flag_harmful_to_device">对设备或数据有害</string>
+<string name="flag_hateful_content">憎恨或谩骂内容</string>
+<string name="flag_improper_content_rating">内容分级不当</string>
+<string name="flag_other_concern_prompt">描述反对意见</string>
+<string name="flag_other_objection">其他反对意见</string>
+<string name="flag_page_description">您认为此内容或应用令人反感的原因：</string>
+<string name="flag_pharma_content">非法处方或其他药物</string>
+<string name="flag_sexual_content">色情内容</string>
+<string name="flagging_title">举报不当内容</string>
+<string name="content_flagged">已提交反对意见。</string>
 </resources>

@@ -230,4 +230,16 @@
     <string name="testing_program_section_opted_out_message">"Try new features before they're made public. Give your feedback directly to the developer."</string>
     <string name="testing_program_section_opted_out_propagating_message">It can take a few minutes to remove you from the beta program.</string>
     <string name="testing_program_section_opted_out_title">Become a beta tester</string>
+    <string name="flag_graphic_violence">Graphic violence</string>
+    <string name="flag_harmful_prompt">Describe the harm caused to your device or data:</string>
+    <string name="flag_harmful_to_device">Harmful to device or data</string>
+    <string name="flag_hateful_content">Hateful or abusive content</string>
+    <string name="flag_improper_content_rating">Improper content rating</string>
+    <string name="flag_other_concern_prompt">Describe objection</string>
+    <string name="flag_other_objection">Other objection</string>
+    <string name="flag_page_description">The reason you find this content or app objectionable:</string>
+    <string name="flag_pharma_content">Illegal prescription or other drug</string>
+    <string name="flag_sexual_content">Sexual content</string>
+    <string name="flagging_title">Flag as inappropriate</string>
+    <string name="content_flagged">Objection submitted.</string>
 </resources>

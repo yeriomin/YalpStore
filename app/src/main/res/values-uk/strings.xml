@@ -253,4 +253,16 @@ Do it?"</string>
 <string name="testing_program_section_opted_out_title">"Станьте тестувальником бета-версії"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"Пожертва:"</string>
+<string name="flag_graphic_violence">Зображення насильства</string>
+<string name="flag_harmful_prompt">Опишіть, яку шкоду завдано вашому пристрою чи даним:</string>
+<string name="flag_harmful_to_device">Шкодить пристрою або даним</string>
+<string name="flag_hateful_content">Агресивний чи образливий вміст</string>
+<string name="flag_improper_content_rating">Невідповідний рейтинг вмісту</string>
+<string name="flag_other_concern_prompt">Опишіть оскарження</string>
+<string name="flag_other_objection">Інше оскарження</string>
+<string name="flag_page_description">Чому ви вважаєте, що цей вміст або програма неприйнятні:</string>
+<string name="flag_pharma_content">Нелегальні медичні препарати</string>
+<string name="flag_sexual_content">Вміст сексуального характеру</string>
+<string name="flagging_title">Поскаржитися</string>
+<string name="content_flagged">Оскарження подано.</string>
 </resources>

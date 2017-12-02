@@ -252,4 +252,16 @@ Jarraitu?"</string>
 <string name="notification_not_privileged">"Ez da eman instalatzeko baimena"</string>
 <string name="about_paypal_label">"Egin dohaintza:"</string>
 <string name="pref_download_directory">"Deskargen direktorioa"</string>
+<string name="flag_graphic_violence">Indarkeria grafikoa</string>
+<string name="flag_harmful_prompt">Azaldu gailuari edo datuei eragindako kalteak:</string>
+<string name="flag_harmful_to_device">Gailu/datuetarako kaltegarria</string>
+<string name="flag_hateful_content">Eduki higuingarria/iraingarria</string>
+<string name="flag_improper_content_rating">Edukiaren balorazio desegokia</string>
+<string name="flag_other_concern_prompt">Azaldu eragozpena</string>
+<string name="flag_other_objection">Bestelako eragozpenak</string>
+<string name="flag_page_description">Edukiaren edo aplikazioaren kontrako eragozpenak izateko arrazoia:</string>
+<string name="flag_pharma_content">Legez kanpoko errezeta/droga</string>
+<string name="flag_sexual_content">Eduki sexuala</string>
+<string name="flagging_title">Markatu desegoki gisa</string>
+<string name="content_flagged">Eragozpena bidali da.</string>
 </resources>

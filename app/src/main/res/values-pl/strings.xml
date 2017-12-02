@@ -253,4 +253,16 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="pref_download_deltas">"Aktualizacje delta"</string>
 <string name="pref_download_deltas_summary_off">"Pełny plik .apk jest pobierany za każdym razem"</string>
 <string name="pref_download_deltas_summary_on">"Tylko zmiany są pobierane podczas aktualizacji"</string>
+<string name="flag_graphic_violence">Sceny przemocy</string>
+<string name="flag_harmful_prompt">Opisz szkody spowodowane na urządzeniu lub w danych:</string>
+<string name="flag_harmful_to_device">Szkodliwe dla urządzenia lub danych</string>
+<string name="flag_hateful_content">Obrażanie/szerzenie nienawiści</string>
+<string name="flag_improper_content_rating">Nieodpowiednia ocena treści</string>
+<string name="flag_other_concern_prompt">Opisz problem</string>
+<string name="flag_other_objection">Inne zastrzeżenia</string>
+<string name="flag_page_description">Powody, dla których uważasz, że zawartość lub aplikacja są nieodpowiednie:</string>
+<string name="flag_pharma_content">Nielegalna recepta lub inny lek</string>
+<string name="flag_sexual_content">Treści erotyczne</string>
+<string name="flagging_title">Zgłoś nieodpowiednią treść</string>
+<string name="content_flagged">Zastrzeżenia przesłane.</string>
 </resources>

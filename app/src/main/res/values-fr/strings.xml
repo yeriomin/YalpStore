@@ -233,4 +233,16 @@
 <string name="pref_download_deltas">"Mise à jour delta"</string>
 <string name="pref_download_deltas_summary_off">"L'intégralité de l'apk est téléchargée à chaque fois"</string>
 <string name="pref_download_deltas_summary_on">"Seules les modifications sont téléchargées pendant les mises à jour"</string>
+<string name="flag_graphic_violence">Violence explicite</string>
+<string name="flag_harmful_prompt">Décrivez les dommages subis par votre appareil ou vos données :</string>
+<string name="flag_harmful_to_device">Danger pour appareil/données</string>
+<string name="flag_hateful_content">Contenu à caractère haineux ou vulgaire</string>
+<string name="flag_improper_content_rating">Avis inexact sur le contenu</string>
+<string name="flag_other_concern_prompt">Description</string>
+<string name="flag_other_objection">Autre motif</string>
+<string name="flag_page_description">En quoi ce contenu ou cette application sont-ils choquants ?</string>
+<string name="flag_pharma_content">Drogues ou médicaments illégaux</string>
+<string name="flag_sexual_content">Contenu à caractère sexuel</string>
+<string name="flagging_title">Signaler comme inapproprié</string>
+<string name="content_flagged">Demande envoyée</string>
 </resources>

@@ -252,4 +252,16 @@ Pokračovat?"</string>
 <string name="testing_program_section_opted_out_title">"Staňte se testerem beta verze"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"Přispět:"</string>
+<string name="flag_graphic_violence">Explicitní násilí</string>
+<string name="flag_harmful_prompt">Popište poškození způsobené vašemu zařízení nebo datům:</string>
+<string name="flag_harmful_to_device">Škodlivé pro zařízení nebo data</string>
+<string name="flag_hateful_content">Nenávistný nebo obtěžující obsah</string>
+<string name="flag_improper_content_rating">Nesprávné hodnocení obsahu</string>
+<string name="flag_other_concern_prompt">Popište námitku.</string>
+<string name="flag_other_objection">Jiná námitka</string>
+<string name="flag_page_description">Důvod, proč považujete tento obsah nebo tuto aplikaci za nevhodné:</string>
+<string name="flag_pharma_content">Nelegální lék nebo jiná droga</string>
+<string name="flag_sexual_content">Erotický obsah</string>
+<string name="flagging_title">Nahlásit jako nevhodné</string>
+<string name="content_flagged">Námitka byla odeslána.</string>
 </resources>

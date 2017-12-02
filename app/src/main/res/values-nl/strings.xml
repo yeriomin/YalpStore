@@ -258,4 +258,16 @@ Nu doen?"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"De volledige apk wordt bij iedere update gedownload"</string>
 <string name="pref_download_deltas_summary_on">"Alleen de veranderingen aan de app worden gedownload"</string>
+<string name="flag_graphic_violence">Expliciet geweld</string>
+<string name="flag_harmful_prompt">Beschrijf de schade aan je apparaat of gegevens:</string>
+<string name="flag_harmful_to_device">Schadelijk voor apparaat/data</string>
+<string name="flag_hateful_content">Haatdragende of beledigende content</string>
+<string name="flag_improper_content_rating">Onjuiste inhoudscategorie</string>
+<string name="flag_other_concern_prompt">Beschrijving van bezwaar</string>
+<string name="flag_other_objection">Ander bezwaar</string>
+<string name="flag_page_description">De reden waarom je deze content of app aanstootgevend vindt:</string>
+<string name="flag_pharma_content">Illegaal geneesmiddel op recept of andere drugs</string>
+<string name="flag_sexual_content">Pornografische content</string>
+<string name="flagging_title">Markeren als ongepast</string>
+<string name="content_flagged">Bezwaar is verzonden.</string>
 </resources>

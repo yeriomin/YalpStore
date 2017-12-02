@@ -257,4 +257,16 @@ Prosseguir mesmo assim?"</string>
 <string name="pref_download_deltas">"Atualizações Delta"</string>
 <string name="pref_download_deltas_summary_off">"Aplicação completa será transferida sempre"</string>
 <string name="pref_download_deltas_summary_on">"Apenas modificações serão transferidas durante atualizações"</string>
+<string name="flag_graphic_violence">Imagens violentas</string>
+<string name="flag_harmful_prompt">Descreva o dano causado ao dispositivo ou aos dados:</string>
+<string name="flag_harmful_to_device">Prejudicial aos dados/dispositivo</string>
+<string name="flag_hateful_content">Conteúdo ofensivo ou que incita o ódio</string>
+<string name="flag_improper_content_rating">Classif. de conteúdo impróprio</string>
+<string name="flag_other_concern_prompt">Descrever objeção</string>
+<string name="flag_other_objection">Outra objeção</string>
+<string name="flag_page_description">Motivo pelo qual você acredita que este conteúdo ou app é questionável:</string>
+<string name="flag_pharma_content">Receita ilícita/outra droga</string>
+<string name="flag_sexual_content">Conteúdo sexual</string>
+<string name="flagging_title">Sinalizar como impróprio</string>
+<string name="content_flagged">Objeção enviada.</string>
 </resources>

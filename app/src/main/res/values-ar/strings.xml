@@ -248,4 +248,16 @@
 <string name="testing_program_section_opted_out_title">"الانضمام إلى مختبِري الإصدار التجريبي"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"التبرع"</string>
+<string name="flag_graphic_violence">صور عنف</string>
+<string name="flag_harmful_prompt">صف الضرر الذي حدث في جهازك أو بياناتك:</string>
+<string name="flag_harmful_to_device">ضار للجهاز أو البيانات</string>
+<string name="flag_hateful_content">محتوى يحض على الكراهية أو مسيء</string>
+<string name="flag_improper_content_rating">تقييم محتوى غير صحيح</string>
+<string name="flag_other_concern_prompt">وصف الاعتراض</string>
+<string name="flag_other_objection">اعتراض آخر</string>
+<string name="flag_page_description">سبب اعتقادك أن هذا المحتوى أو التطبيق محل اعتراض:</string>
+<string name="flag_pharma_content">وصفة طبية غير قانونية أو عقار مخدر آخر</string>
+<string name="flag_sexual_content">محتوى جنسي</string>
+<string name="flagging_title">الإبلاغ عنه كغير لائق</string>
+<string name="content_flagged">تم إرسال الاعتراض.</string>
 </resources>

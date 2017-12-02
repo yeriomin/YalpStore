@@ -254,4 +254,16 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="testing_program_section_opted_out_title">"Diventa un beta tester"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"Dona:"</string>
+<string name="flag_graphic_violence">Violenza esplicita</string>
+<string name="flag_harmful_prompt">Descrivi il danno causato al dispositivo o ai dati:</string>
+<string name="flag_harmful_to_device">Dannoso per dispositivo o dati</string>
+<string name="flag_hateful_content">Contenuti offensivi o irrispettosi</string>
+<string name="flag_improper_content_rating">Classificazione inappropriata</string>
+<string name="flag_other_concern_prompt">Descrivi obiezione</string>
+<string name="flag_other_objection">Altro motivo</string>
+<string name="flag_page_description">"Motivo per cui ritieni che l'applicazione o i contenuti siano offensivi:"</string>
+<string name="flag_pharma_content">Sostanze illegali o altre droghe</string>
+<string name="flag_sexual_content">Contenuti di natura sessuale</string>
+<string name="flagging_title">Segnala come inappropriato</string>
+<string name="content_flagged">Obiezione inviata.</string>
 </resources>

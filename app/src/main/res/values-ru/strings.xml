@@ -231,4 +231,16 @@
     <string name="testing_program_section_opted_out_message">Пробуйте новые функции до их публикации и отправляйте отзывы разработчику.</string>
     <string name="testing_program_section_opted_out_propagating_message">Удаление из списка участников может занять несколько минут.</string>
     <string name="testing_program_section_opted_out_title">Станьте бета-тестировщиком</string>
+    <string name="flag_graphic_violence">Изображение сцен насилия</string>
+    <string name="flag_harmful_prompt">Опишите повреждение:</string>
+    <string name="flag_harmful_to_device">Повреждение устройства/данных</string>
+    <string name="flag_hateful_content">Проявления нетерпимости и дискриминация</string>
+    <string name="flag_improper_content_rating">Ограничения указаны неверно</string>
+    <string name="flag_other_concern_prompt">Опишите возражение</string>
+    <string name="flag_other_objection">Другие возражения</string>
+    <string name="flag_page_description">Почему вы хотите пожаловаться:</string>
+    <string name="flag_pharma_content">Незаконная продажа лекарств</string>
+    <string name="flag_sexual_content">Содержание сексуального характера</string>
+    <string name="flagging_title">Пожаловаться</string>
+    <string name="content_flagged">Возражение отправлено.</string>
 </resources>

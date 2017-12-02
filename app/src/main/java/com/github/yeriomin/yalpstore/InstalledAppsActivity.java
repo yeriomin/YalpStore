@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.View;
 import android.widget.Button;
 
@@ -47,5 +48,11 @@ public class InstalledAppsActivity extends AppListActivity {
         UpdatableAppBadge appBadge = new UpdatableAppBadge();
         appBadge.setApp(app);
         return appBadge;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.findItem(R.id.action_flag).setVisible(false);
     }
 }

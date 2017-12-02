@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.ContextUtil;
+import com.github.yeriomin.yalpstore.FlagDialogBuilder;
 import com.github.yeriomin.yalpstore.InstalledApkCopier;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.R;
@@ -64,6 +65,7 @@ public class DownloadOptions extends Abstract {
             menu.findItem(R.id.action_make_system).setVisible(!app.isSystem());
             menu.findItem(R.id.action_make_normal).setVisible(app.isSystem());
         }
+        menu.findItem(R.id.action_flag).setVisible(app.isInstalled());
     }
 
     public boolean onContextItemSelected(MenuItem item) {
@@ -89,6 +91,9 @@ public class DownloadOptions extends Abstract {
                 return true;
             case R.id.action_make_normal:
                 checkAndExecute(new ConvertToNormalTask(activity, app));
+                return true;
+            case R.id.action_flag:
+                new FlagDialogBuilder().setActivity(activity).setApp(app).build().show();
                 return true;
             default:
                 return activity.onContextItemSelected(item);

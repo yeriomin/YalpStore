@@ -257,4 +257,16 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="pref_download_deltas">"Actualizaciones Delta"</string>
 <string name="pref_download_deltas_summary_off">"Descarga completa del apk cada vez"</string>
 <string name="pref_download_deltas_summary_on">"Solo los cambios son descargados durante las actualizaciones."</string>
+<string name="flag_graphic_violence">Violencia explícita</string>
+<string name="flag_harmful_prompt">Describe el daño causado en el dispositivo o en los datos:</string>
+<string name="flag_harmful_to_device">Perjudicial para el dispositivo/datos</string>
+<string name="flag_hateful_content">Contenido insultante/incita odio</string>
+<string name="flag_improper_content_rating">Clasificación incorrecta</string>
+<string name="flag_other_concern_prompt">Describir objeción</string>
+<string name="flag_other_objection">Otra objeción</string>
+<string name="flag_page_description">Motivo por el que consideras inadecuado el contenido o la aplicación:</string>
+<string name="flag_pharma_content">Fármacos ilegales/otras drogas</string>
+<string name="flag_sexual_content">Contenido sexual</string>
+<string name="flagging_title">Marcar como inadecuado</string>
+<string name="content_flagged">Se ha enviado una objeción.</string>
 </resources>
