@@ -259,6 +259,16 @@
 <string name="testing_program_section_opted_out_title">"Γίνε δοκιμαστής της beta"</string>
 <string name="notification_not_privileged">"Δεν έχουν παραχωρηθεί δικαιώματα εγκατάστασης"</string>
 <string name="about_paypal_label">"Δωρεά Paypal:"</string>
+<string name="availability_restriction_carrier">Αυτό το αντικείμενο δεν είναι διαθέσιμο στην εταιρεία κινητής τηλεφωνίας σας.</string>
+<string name="availability_restriction_country">Αυτό το στοιχείο δεν είναι διαθέσιμο στη χώρα σας.</string>
+<string name="availability_restriction_country_or_carrier">Αυτό το αντικείμενο δεν είναι διαθέσιμο στη χώρα σας ή στην εταιρεία κινητής τηλεφωνίας σας.</string>
+<string name="availability_restriction_for_managed_account">Ο διαχειριστής σας δεν σας έχει παραχωρήσει πρόσβαση σε αυτό το στοιχείο.</string>
+<string name="availability_restriction_generic">Δεν είναι διαθέσιμο.</string>
+<string name="availability_restriction_hardware">Η συσκευή σας δεν είναι συμβατή με αυτό το στοιχείο.</string>
+<string name="availability_restriction_hardware_app">Η συσκευή σας δεν είναι συμβατή με αυτήν την έκδοση.</string>
+<string name="availability_restriction_hardware_app_ram_generic">Αυτή η εφαρμογή απαιτεί περισσότερη μνήμη RAM από ό,τι είναι διαθέσιμη στη συσκευή σας.</string>
+<string name="availability_restriction_missing_permission">"Ο διαχειριστής σας δεν έχει αποδεχτεί τα δικαιώματα γι' αυτό το στοιχείο."</string>
+<string name="availability_restriction_not_in_group">Δεν ανήκετε στη στοχευμένη ομάδα αυτού του στοιχείου.</string>
 <string name="flag_graphic_violence">Σκληρή βία</string>
 <string name="flag_harmful_prompt">Περιγράψτε τη ζημιά που προκλήθηκε στη συσκευή ή τα δεδομένα σας:</string>
 <string name="flag_harmful_to_device">Επιβλ.για τη συσκ. ή τα δεδομ.</string>

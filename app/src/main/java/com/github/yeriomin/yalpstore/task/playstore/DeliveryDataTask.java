@@ -8,6 +8,7 @@ import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;
@@ -61,6 +62,19 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
             deliveryData = deliveryResponse.getAppDeliveryData();
         } else {
             throw new NotPurchasedException();
+        }
+    }
+
+    protected String getRestrictionString() {
+        switch (app.getRestriction()) {
+            case GooglePlayAPI.AVAILABILITY_NOT_RESTRICTED:
+                return null;
+            case GooglePlayAPI.AVAILABILITY_RESTRICTED_GEO:
+                return context.getString(R.string.availability_restriction_country);
+            case GooglePlayAPI.AVAILABILITY_INCOMPATIBLE_DEVICE_APP:
+                return context.getString(R.string.availability_restriction_hardware_app);
+            default:
+                return context.getString(R.string.availability_restriction_generic);
         }
     }
 

@@ -252,6 +252,16 @@ Pokračovat?"</string>
 <string name="testing_program_section_opted_out_title">"Staňte se testerem beta verze"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"Přispět:"</string>
+<string name="availability_restriction_carrier">Tato položka není u vašeho operátora dostupná.</string>
+<string name="availability_restriction_country">Tato položka není ve vaší zemi dostupná.</string>
+<string name="availability_restriction_country_or_carrier">Tato položka není ve vaší zemi nebo u vašeho operátora dostupná.</string>
+<string name="availability_restriction_for_managed_account">Administrátor vám k této položce neudělil přístup.</string>
+<string name="availability_restriction_generic">Tato položka není dostupná.</string>
+<string name="availability_restriction_hardware">Zařízení s touto položkou není kompatibilní.</string>
+<string name="availability_restriction_hardware_app">Zařízení není kompatibilní s touto verzí.</string>
+<string name="availability_restriction_hardware_app_ram_generic">Tato aplikace vyžaduje víc paměti RAM, než je v zařízení k dispozici.</string>
+<string name="availability_restriction_missing_permission">Administrátor pro tuto položku nepřijal oprávnění.</string>
+<string name="availability_restriction_not_in_group">Nepatříte do cílové skupiny pro tuto položku.</string>
 <string name="flag_graphic_violence">Explicitní násilí</string>
 <string name="flag_harmful_prompt">Popište poškození způsobené vašemu zařízení nebo datům:</string>
 <string name="flag_harmful_to_device">Škodlivé pro zařízení nebo data</string>

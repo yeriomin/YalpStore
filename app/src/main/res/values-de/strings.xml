@@ -12,9 +12,7 @@
 <string name="action_logout">"Abmelden"</string>
 <string name="action_search">"Suchen"</string>
 
-<!-- Fuzzy -->
-<string name="action_updates">"Aktualisierungen
-"</string>
+<string name="action_updates">"Aktualisierungen"</string>
 <string name="action_ignore">"Aktualisierungen ignorieren"</string>
 <string name="action_unignore">"Aktualisierungen nicht ignorieren"</string>
 <string name="action_whitelist">"Whitelist für Aktualisierungen"</string>
@@ -257,6 +255,16 @@ Fortfahren?"</string>
 <string name="pref_download_deltas">"Delta-Aktualisierungen"</string>
 <string name="pref_download_deltas_summary_off">"Die gesamte apk wird jedes Mal heruntergeladen"</string>
 <string name="pref_download_deltas_summary_on">"Beim Aktualisieren werden nur Änderungen heruntergeladen"</string>
+<string name="availability_restriction_carrier">Dieser Artikel ist für deinen Mobilfunkanbieter nicht verfügbar.</string>
+<string name="availability_restriction_country">Dieser Artikel ist in deinem Land nicht verfügbar.</string>
+<string name="availability_restriction_country_or_carrier">Dieser Artikel ist in deinem Land bzw. für deinen Mobilfunkanbieter nicht verfügbar.</string>
+<string name="availability_restriction_for_managed_account">Dein Administrator hat dir keinen Zugriff auf diesen Artikel gewährt.</string>
+<string name="availability_restriction_generic">Dieser Artikel ist nicht verfügbar.</string>
+<string name="availability_restriction_hardware">Dein Gerät ist nicht mit diesem Artikel kompatibel.</string>
+<string name="availability_restriction_hardware_app">Dein Gerät ist nicht mit dieser Version kompatibel.</string>
+<string name="availability_restriction_hardware_app_ram_generic">Für diese App ist mehr RAM erforderlich, als auf deinem Gerät verfügbar ist.</string>
+<string name="availability_restriction_missing_permission">Dein Administrator hat die Berechtigungen für diesen Artikel nicht akzeptiert.</string>
+<string name="availability_restriction_not_in_group">Du gehörst nicht zur Zielgruppe dieses Artikels.</string>
 <string name="flag_graphic_violence">Gewalt</string>
 <string name="flag_harmful_prompt">Beschreibe den Schaden, der an deinem Gerät oder deinen Daten entstanden ist:</string>
 <string name="flag_harmful_to_device">Schädlich für Gerät oder Daten</string>

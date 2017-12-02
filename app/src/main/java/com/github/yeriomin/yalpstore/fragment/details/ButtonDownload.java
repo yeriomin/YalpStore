@@ -163,6 +163,10 @@ public class ButtonDownload extends Button {
             super.onPostExecute(deliveryData);
             if (!success()) {
                 fragment.draw();
+                if (null != getRestrictionString()) {
+                    ContextUtil.toastLong(context, getRestrictionString());
+                    Log.i(getClass().getSimpleName(), "No download link returned, app restriction is " + app.getRestriction());
+                }
             }
         }
     }

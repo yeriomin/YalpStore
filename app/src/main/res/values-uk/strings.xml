@@ -253,6 +253,16 @@ Do it?"</string>
 <string name="testing_program_section_opted_out_title">"Станьте тестувальником бета-версії"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"Пожертва:"</string>
+<string name="availability_restriction_carrier">Ця позиція не доступна для вашого оператора.</string>
+<string name="availability_restriction_country">Ця позиція не доступна у вашій країні.</string>
+<string name="availability_restriction_country_or_carrier">Ця позиція не доступна для вашої країни чи оператора.</string>
+<string name="availability_restriction_for_managed_account">Адміністратор заборонив доступ до цього продукту.</string>
+<string name="availability_restriction_generic">Ця позиція не доступна.</string>
+<string name="availability_restriction_hardware">Ваш пристрій не сумісний із цією позицією.</string>
+<string name="availability_restriction_hardware_app">Ваш пристрій не сумісний із цією версією.</string>
+<string name="availability_restriction_hardware_app_ram_generic">Для цього додатка потрібно більше оперативної пам’яті, ніж доступно на пристрої.</string>
+<string name="availability_restriction_missing_permission">Адміністратор не прийняв дозволи для цього продукту.</string>
+<string name="availability_restriction_not_in_group">Ви не входите в цільову групу для цієї позиції.</string>
 <string name="flag_graphic_violence">Зображення насильства</string>
 <string name="flag_harmful_prompt">Опишіть, яку шкоду завдано вашому пристрою чи даним:</string>
 <string name="flag_harmful_to_device">Шкодить пристрою або даним</string>

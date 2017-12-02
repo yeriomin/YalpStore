@@ -248,6 +248,16 @@
 <string name="testing_program_section_opted_out_title">"الانضمام إلى مختبِري الإصدار التجريبي"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"التبرع"</string>
+<string name="availability_restriction_carrier">لا يتاح هذا العنصر لدى مشغل شبكة الجوال.</string>
+<string name="availability_restriction_country">هذا العنصر غير متاح في بلدك.</string>
+<string name="availability_restriction_country_or_carrier">هذا العنصر غير متوفر في بلدك أو لدى مشغل شبكة الجوال.</string>
+<string name="availability_restriction_for_managed_account">لم يمنحك المشرف حق الدخول إلى هذا العنصر.</string>
+<string name="availability_restriction_generic">هذا العنصر غير متوفر.</string>
+<string name="availability_restriction_hardware">لا يتوافق جهازك مع هذا العنصر.</string>
+<string name="availability_restriction_hardware_app">لا يتوافق جهازك مع هذا الإصدار.</string>
+<string name="availability_restriction_hardware_app_ram_generic">يحتاج هذا التطبيق إلى ذاكرة وصول عشوائي أكبر من الذاكرة المتاحة على جهازك.</string>
+<string name="availability_restriction_missing_permission">لم يقبل المشرف الأذونات الخاصة بهذا العنصر.</string>
+<string name="availability_restriction_not_in_group">أنت لست في المجموعة المستهدفة لهذا العنصر.</string>
 <string name="flag_graphic_violence">صور عنف</string>
 <string name="flag_harmful_prompt">صف الضرر الذي حدث في جهازك أو بياناتك:</string>
 <string name="flag_harmful_to_device">ضار للجهاز أو البيانات</string>

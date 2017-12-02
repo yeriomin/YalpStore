@@ -254,6 +254,16 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="testing_program_section_opted_out_title">"Diventa un beta tester"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"Dona:"</string>
+<string name="availability_restriction_carrier">Questo articolo non è disponibile per il tuo operatore.</string>
+<string name="availability_restriction_country">Questo prodotto non è disponibile nel tuo Paese.</string>
+<string name="availability_restriction_country_or_carrier">Questo articolo non è disponibile nel tuo Paese o per il tuo operatore.</string>
+<string name="availability_restriction_for_managed_account">"L'amministratore non ti ha autorizzato ad accedere a questo articolo."</string>
+<string name="availability_restriction_generic">Questo articolo non è disponibile.</string>
+<string name="availability_restriction_hardware">Il tuo dispositivo non è compatibile con questo articolo.</string>
+<string name="availability_restriction_hardware_app">Il tuo dispositivo non è compatibile con questa versione.</string>
+<string name="availability_restriction_hardware_app_ram_generic">"L'app richiede più RAM di quanta è disponibile sul dispositivo."</string>
+<string name="availability_restriction_missing_permission">"L'amministratore non ha accettato le autorizzazioni per questo articolo."</string>
+<string name="availability_restriction_not_in_group">Non sei nel gruppo target di questo articolo.</string>
 <string name="flag_graphic_violence">Violenza esplicita</string>
 <string name="flag_harmful_prompt">Descrivi il danno causato al dispositivo o ai dati:</string>
 <string name="flag_harmful_to_device">Dannoso per dispositivo o dati</string>

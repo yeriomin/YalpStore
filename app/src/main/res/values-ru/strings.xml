@@ -231,6 +231,16 @@
     <string name="testing_program_section_opted_out_message">Пробуйте новые функции до их публикации и отправляйте отзывы разработчику.</string>
     <string name="testing_program_section_opted_out_propagating_message">Удаление из списка участников может занять несколько минут.</string>
     <string name="testing_program_section_opted_out_title">Станьте бета-тестировщиком</string>
+    <string name="availability_restriction_carrier">Этот продукт недоступен для вашего оператора.</string>
+    <string name="availability_restriction_country">Недоступно в вашей стране.</string>
+    <string name="availability_restriction_country_or_carrier">Этот продукт недоступен в вашей стране или для вашего оператора.</string>
+    <string name="availability_restriction_for_managed_account">Администратор ограничил доступ к этому контенту.</string>
+    <string name="availability_restriction_generic">Недоступно</string>
+    <string name="availability_restriction_hardware">Не поддерживается на вашем устройстве.</string>
+    <string name="availability_restriction_hardware_app">Не поддерживается на вашем устройстве.</string>
+    <string name="availability_restriction_hardware_app_ram_generic">Оперативной памяти вашего устройства недостаточно для этого приложения.</string>
+    <string name="availability_restriction_missing_permission">Администратор не предоставил запрашиваемые разрешения.</string>
+    <string name="availability_restriction_not_in_group">Предназначено для другой целевой группы.</string>
     <string name="flag_graphic_violence">Изображение сцен насилия</string>
     <string name="flag_harmful_prompt">Опишите повреждение:</string>
     <string name="flag_harmful_to_device">Повреждение устройства/данных</string>

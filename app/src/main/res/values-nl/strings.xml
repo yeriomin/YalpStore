@@ -258,6 +258,16 @@ Nu doen?"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"De volledige apk wordt bij iedere update gedownload"</string>
 <string name="pref_download_deltas_summary_on">"Alleen de veranderingen aan de app worden gedownload"</string>
+<string name="availability_restriction_carrier">Dit item is niet beschikbaar bij jouw provider.</string>
+<string name="availability_restriction_country">Dit item is niet beschikbaar in je land.</string>
+<string name="availability_restriction_country_or_carrier">Dit item is niet beschikbaar in jouw land of bij jouw provider.</string>
+<string name="availability_restriction_for_managed_account">Je beheerder heeft je geen toegang gegeven tot dit item.</string>
+<string name="availability_restriction_generic">Dit item is niet beschikbaar.</string>
+<string name="availability_restriction_hardware">Je apparaat is niet compatibel met dit item.</string>
+<string name="availability_restriction_hardware_app">Je apparaat is niet compatibel met deze versie.</string>
+<string name="availability_restriction_hardware_app_ram_generic">Voor deze app is meer RAM vereist dan beschikbaar is op je apparaat.</string>
+<string name="availability_restriction_missing_permission">Je beheerder heeft geen rechten geaccepteerd voor dit item.</string>
+<string name="availability_restriction_not_in_group">Je behoort niet tot de doelgroep voor dit item.</string>
 <string name="flag_graphic_violence">Expliciet geweld</string>
 <string name="flag_harmful_prompt">Beschrijf de schade aan je apparaat of gegevens:</string>
 <string name="flag_harmful_to_device">Schadelijk voor apparaat/data</string>

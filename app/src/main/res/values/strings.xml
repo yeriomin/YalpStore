@@ -230,6 +230,16 @@
     <string name="testing_program_section_opted_out_message">"Try new features before they're made public. Give your feedback directly to the developer."</string>
     <string name="testing_program_section_opted_out_propagating_message">It can take a few minutes to remove you from the beta program.</string>
     <string name="testing_program_section_opted_out_title">Become a beta tester</string>
+    <string name="availability_restriction_carrier">"This item isn't available on your carrier."</string>
+    <string name="availability_restriction_country">"This item isn't available in your country."</string>
+    <string name="availability_restriction_country_or_carrier">"This item isn't available in your country or on your carrier."</string>
+    <string name="availability_restriction_for_managed_account">Your administrator has not given you access to this item.</string>
+    <string name="availability_restriction_generic">"This item isn't available."</string>
+    <string name="availability_restriction_hardware">"Your device isn't compatible with this item."</string>
+    <string name="availability_restriction_hardware_app">"Your device isn't compatible with this version."</string>
+    <string name="availability_restriction_hardware_app_ram_generic">"This app requires more RAM than what's available on your device."</string>
+    <string name="availability_restriction_missing_permission">Your administrator has not accepted permissions for this item.</string>
+    <string name="availability_restriction_not_in_group">"You're not in the targeted group for this item."</string>
     <string name="flag_graphic_violence">Graphic violence</string>
     <string name="flag_harmful_prompt">Describe the harm caused to your device or data:</string>
     <string name="flag_harmful_to_device">Harmful to device or data</string>

@@ -233,6 +233,16 @@
 <string name="pref_download_deltas">"Mise à jour delta"</string>
 <string name="pref_download_deltas_summary_off">"L'intégralité de l'apk est téléchargée à chaque fois"</string>
 <string name="pref_download_deltas_summary_on">"Seules les modifications sont téléchargées pendant les mises à jour"</string>
+<string name="availability_restriction_carrier">"Cet article n'est pas compatible avec votre opérateur."</string>
+<string name="availability_restriction_country">"Cet article n'est pas disponible dans votre pays."</string>
+<string name="availability_restriction_country_or_carrier">"Cet article n'est pas disponible dans votre pays ni compatible avec votre opérateur."</string>
+<string name="availability_restriction_for_managed_account">Votre administrateur ne vous a pas donné accès à cet élément.</string>
+<string name="availability_restriction_generic">"Cet article n'est pas disponible."</string>
+<string name="availability_restriction_hardware">"Votre appareil n'est pas compatible avec cet article."</string>
+<string name="availability_restriction_hardware_app">"Votre appareil n'est pas compatible avec cette version."</string>
+<string name="availability_restriction_hardware_app_ram_generic">Cette application nécessite plus de RAM que la quantité disponible sur votre appareil.</string>
+<string name="availability_restriction_missing_permission">"Votre administrateur n'a pas accepté les autorisations demandées pour cet élément."</string>
+<string name="availability_restriction_not_in_group">Vous ne faites pas partie du groupe cible de cet article.</string>
 <string name="flag_graphic_violence">Violence explicite</string>
 <string name="flag_harmful_prompt">Décrivez les dommages subis par votre appareil ou vos données :</string>
 <string name="flag_harmful_to_device">Danger pour appareil/données</string>

@@ -47,6 +47,7 @@ public class App implements Comparable<App> {
     private boolean testingProgramAvailable;
     private boolean testingProgramOptedIn;
     private String testingProgramEmail;
+    private int restriction;
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -307,6 +308,14 @@ public class App implements Comparable<App> {
 
     public void setTestingProgramEmail(String testingProgramEmail) {
         this.testingProgramEmail = testingProgramEmail;
+    }
+
+    public int getRestriction() {
+        return restriction;
+    }
+
+    public void setRestriction(int restriction) {
+        this.restriction = restriction;
     }
 
     @Override
