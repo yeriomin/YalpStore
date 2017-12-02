@@ -251,6 +251,7 @@
     <string name="flag_page_description">Почему вы хотите пожаловаться:</string>
     <string name="flag_pharma_content">Незаконная продажа лекарств</string>
     <string name="flag_sexual_content">Содержание сексуального характера</string>
+    <string name="flag_impersonation_copycat">Плагиат и присвоение чужого имени</string>
     <string name="flagging_title">Пожаловаться</string>
     <string name="content_flagged">Возражение отправлено.</string>
 </resources>

@@ -35,7 +35,7 @@ public class FlagDialogBuilder {
         reasonLabels[3] = activity.getString(R.string.flag_harmful_to_device);
         reasonLabels[4] = activity.getString(R.string.flag_improper_content_rating);
         reasonLabels[5] = activity.getString(R.string.flag_pharma_content);
-        reasonLabels[6] = activity.getString(R.string.flag_sexual_content);
+        reasonLabels[6] = activity.getString(R.string.flag_impersonation_copycat);
         reasonLabels[7] = activity.getString(R.string.flag_other_objection);
         return this;
     }

@@ -250,6 +250,7 @@
     <string name="flag_page_description">The reason you find this content or app objectionable:</string>
     <string name="flag_pharma_content">Illegal prescription or other drug</string>
     <string name="flag_sexual_content">Sexual content</string>
+    <string name="flag_impersonation_copycat">Copycat or impersonation</string>
     <string name="flagging_title">Flag as inappropriate</string>
     <string name="content_flagged">Objection submitted.</string>
 </resources>
