@@ -258,6 +258,10 @@ Nu doen?"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"De volledige apk wordt bij iedere update gedownload"</string>
 <string name="pref_download_deltas_summary_on">"Alleen de veranderingen aan de app worden gedownload"</string>
+<string name="testing_program_review_dialog_content_hint">Geef feedback over de app</string>
+<string name="delete">Verwijderen</string>
+<string name="done">Gereed</string>
+<string name="submit">Indienen</string>
 <string name="availability_restriction_carrier">Dit item is niet beschikbaar bij jouw provider.</string>
 <string name="availability_restriction_country">Dit item is niet beschikbaar in je land.</string>
 <string name="availability_restriction_country_or_carrier">Dit item is niet beschikbaar in jouw land of bij jouw provider.</string>

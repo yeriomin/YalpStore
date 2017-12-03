@@ -231,6 +231,10 @@
     <string name="testing_program_section_opted_out_message">Пробуйте новые функции до их публикации и отправляйте отзывы разработчику.</string>
     <string name="testing_program_section_opted_out_propagating_message">Удаление из списка участников может занять несколько минут.</string>
     <string name="testing_program_section_opted_out_title">Станьте бета-тестировщиком</string>
+    <string name="testing_program_review_dialog_content_hint">Введите отзыв о приложении</string>
+    <string name="delete">Удалить</string>
+    <string name="submit">Отправить</string>
+    <string name="done">Готово</string>
     <string name="availability_restriction_carrier">Этот продукт недоступен для вашего оператора.</string>
     <string name="availability_restriction_country">Недоступно в вашей стране.</string>
     <string name="availability_restriction_country_or_carrier">Этот продукт недоступен в вашей стране или для вашего оператора.</string>

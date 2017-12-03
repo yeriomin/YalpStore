@@ -255,6 +255,10 @@ Fortfahren?"</string>
 <string name="pref_download_deltas">"Delta-Aktualisierungen"</string>
 <string name="pref_download_deltas_summary_off">"Die gesamte apk wird jedes Mal heruntergeladen"</string>
 <string name="pref_download_deltas_summary_on">"Beim Aktualisieren werden nur Änderungen heruntergeladen"</string>
+<string name="testing_program_review_dialog_content_hint">Feedback zur App eingeben</string>
+<string name="delete">Löschen</string>
+<string name="submit">Senden</string>
+<string name="done">Fertig</string>
 <string name="availability_restriction_carrier">Dieser Artikel ist für deinen Mobilfunkanbieter nicht verfügbar.</string>
 <string name="availability_restriction_country">Dieser Artikel ist in deinem Land nicht verfügbar.</string>
 <string name="availability_restriction_country_or_carrier">Dieser Artikel ist in deinem Land bzw. für deinen Mobilfunkanbieter nicht verfügbar.</string>

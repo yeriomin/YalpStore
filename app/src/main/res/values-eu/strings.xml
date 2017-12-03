@@ -252,6 +252,10 @@ Jarraitu?"</string>
 <string name="notification_not_privileged">"Ez da eman instalatzeko baimena"</string>
 <string name="about_paypal_label">"Egin dohaintza:"</string>
 <string name="pref_download_directory">"Deskargen direktorioa"</string>
+<string name="testing_program_review_dialog_content_hint">Eman iritzia aplikazioari buruz</string>
+<string name="delete">Ezabatu</string>
+<string name="submit">Bidali</string>
+<string name="done">Eginda</string>
 <string name="availability_restriction_carrier">Elementu hau ez dago operadorean eskuragarri.</string>
 <string name="availability_restriction_country">Elementua ez dago zure herrialdean erabilgarri.</string>
 <string name="availability_restriction_country_or_carrier">Elementua ez dago erabilgarri zure herrialdean edo zure operadorearekin.</string>

@@ -259,6 +259,10 @@
 <string name="testing_program_section_opted_out_title">"Γίνε δοκιμαστής της beta"</string>
 <string name="notification_not_privileged">"Δεν έχουν παραχωρηθεί δικαιώματα εγκατάστασης"</string>
 <string name="about_paypal_label">"Δωρεά Paypal:"</string>
+<string name="testing_program_review_dialog_content_hint">Εισάγετε σχόλια σχετικά με την εφαρμογή</string>
+<string name="delete">Διαγραφή</string>
+<string name="submit">Υποβολή</string>
+<string name="done">Τέλος</string>
 <string name="availability_restriction_carrier">Αυτό το αντικείμενο δεν είναι διαθέσιμο στην εταιρεία κινητής τηλεφωνίας σας.</string>
 <string name="availability_restriction_country">Αυτό το στοιχείο δεν είναι διαθέσιμο στη χώρα σας.</string>
 <string name="availability_restriction_country_or_carrier">Αυτό το αντικείμενο δεν είναι διαθέσιμο στη χώρα σας ή στην εταιρεία κινητής τηλεφωνίας σας.</string>

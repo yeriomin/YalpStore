@@ -257,6 +257,10 @@ Prosseguir mesmo assim?"</string>
 <string name="pref_download_deltas">"Atualizações Delta"</string>
 <string name="pref_download_deltas_summary_off">"Aplicação completa será transferida sempre"</string>
 <string name="pref_download_deltas_summary_on">"Apenas modificações serão transferidas durante atualizações"</string>
+<string name="testing_program_review_dialog_content_hint">Insira comentários sobre o app</string>
+<string name="delete">Excluir</string>
+<string name="submit">Enviar</string>
+<string name="done">Concluído</string>
 <string name="availability_restriction_carrier">Este item não está disponível em sua operadora.</string>
 <string name="availability_restriction_country">Este item não está disponível em seu país.</string>
 <string name="availability_restriction_country_or_carrier">Este item não está disponível em seu país ou sua operadora.</string>

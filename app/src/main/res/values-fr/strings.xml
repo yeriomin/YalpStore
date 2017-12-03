@@ -233,6 +233,10 @@
 <string name="pref_download_deltas">"Mise à jour delta"</string>
 <string name="pref_download_deltas_summary_off">"L'intégralité de l'apk est téléchargée à chaque fois"</string>
 <string name="pref_download_deltas_summary_on">"Seules les modifications sont téléchargées pendant les mises à jour"</string>
+<string name="testing_program_review_dialog_content_hint">"Saisir des commentaires à propos de l'application"</string>
+<string name="delete">Supprimer</string>
+<string name="done">OK</string>
+<string name="submit">Envoyer</string>
 <string name="availability_restriction_carrier">"Cet article n'est pas compatible avec votre opérateur."</string>
 <string name="availability_restriction_country">"Cet article n'est pas disponible dans votre pays."</string>
 <string name="availability_restriction_country_or_carrier">"Cet article n'est pas disponible dans votre pays ni compatible avec votre opérateur."</string>

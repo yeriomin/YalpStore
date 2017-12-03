@@ -253,6 +253,10 @@ Do it?"</string>
 <string name="testing_program_section_opted_out_title">"Станьте тестувальником бета-версії"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"Пожертва:"</string>
+<string name="testing_program_review_dialog_content_hint">Залишіть відгук про додаток</string>
+<string name="delete">Видалити</string>
+<string name="done">Готово</string>
+<string name="submit">Надіслати</string>
 <string name="availability_restriction_carrier">Ця позиція не доступна для вашого оператора.</string>
 <string name="availability_restriction_country">Ця позиція не доступна у вашій країні.</string>
 <string name="availability_restriction_country_or_carrier">Ця позиція не доступна для вашої країни чи оператора.</string>

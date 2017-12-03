@@ -63,8 +63,9 @@ public class Review extends Abstract {
     }
 
     private boolean isReviewable(App app) {
-        return app.isInstalled() && !PreferenceManager.getDefaultSharedPreferences(activity)
-            .getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
+        return app.isInstalled()
+            && !app.isTestingProgramOptedIn()
+            && !PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
         ;
     }
 

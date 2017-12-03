@@ -230,6 +230,10 @@
     <string name="testing_program_section_opted_out_message">"Try new features before they're made public. Give your feedback directly to the developer."</string>
     <string name="testing_program_section_opted_out_propagating_message">It can take a few minutes to remove you from the beta program.</string>
     <string name="testing_program_section_opted_out_title">Become a beta tester</string>
+    <string name="testing_program_review_dialog_content_hint">Enter feedback about the app</string>
+    <string name="delete">Delete</string>
+    <string name="submit">Submit</string>
+    <string name="done">Done</string>
     <string name="availability_restriction_carrier">"This item isn't available on your carrier."</string>
     <string name="availability_restriction_country">"This item isn't available in your country."</string>
     <string name="availability_restriction_country_or_carrier">"This item isn't available in your country or on your carrier."</string>

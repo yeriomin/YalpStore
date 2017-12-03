@@ -248,6 +248,10 @@
 <string name="testing_program_section_opted_out_title">"الانضمام إلى مختبِري الإصدار التجريبي"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"التبرع"</string>
+<string name="testing_program_review_dialog_content_hint">إدخال تعليقات حول التطبيق</string>
+<string name="delete">حذف</string>
+<string name="submit">إرسال</string>
+<string name="done">تم</string>
 <string name="availability_restriction_carrier">لا يتاح هذا العنصر لدى مشغل شبكة الجوال.</string>
 <string name="availability_restriction_country">هذا العنصر غير متاح في بلدك.</string>
 <string name="availability_restriction_country_or_carrier">هذا العنصر غير متوفر في بلدك أو لدى مشغل شبكة الجوال.</string>

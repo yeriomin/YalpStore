@@ -253,6 +253,10 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="pref_download_deltas">"Aktualizacje delta"</string>
 <string name="pref_download_deltas_summary_off">"Pełny plik .apk jest pobierany za każdym razem"</string>
 <string name="pref_download_deltas_summary_on">"Tylko zmiany są pobierane podczas aktualizacji"</string>
+<string name="testing_program_review_dialog_content_hint">Napisz opinię o aplikacji</string>
+<string name="delete">Usuń</string>
+<string name="submit">Prześlij</string>
+<string name="done">Gotowe</string>
 <string name="availability_restriction_carrier">Ten element nie jest dostępny u Twojego operatora.</string>
 <string name="availability_restriction_country">Produkt jest niedostępny w Twoim kraju.</string>
 <string name="availability_restriction_country_or_carrier">Ten element nie jest dostępny w Twoim kraju lub sieci operatora.</string>

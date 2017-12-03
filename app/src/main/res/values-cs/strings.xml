@@ -252,6 +252,10 @@ Pokračovat?"</string>
 <string name="testing_program_section_opted_out_title">"Staňte se testerem beta verze"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"Přispět:"</string>
+<string name="testing_program_review_dialog_content_hint">Zadejte zpětnou vazbu k aplikaci</string>
+<string name="delete">Smazat</string>
+<string name="submit">Odeslat</string>
+<string name="done">Hotovo</string>
 <string name="availability_restriction_carrier">Tato položka není u vašeho operátora dostupná.</string>
 <string name="availability_restriction_country">Tato položka není ve vaší zemi dostupná.</string>
 <string name="availability_restriction_country_or_carrier">Tato položka není ve vaší zemi nebo u vašeho operátora dostupná.</string>

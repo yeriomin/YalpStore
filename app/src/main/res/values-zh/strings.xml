@@ -263,6 +263,10 @@
 <string name="pref_download_deltas">"增量更新"</string>
 <string name="pref_download_deltas_summary_off">"每次都下载完整的apk"</string>
 <string name="pref_download_deltas_summary_on">"更新时仅下载改动部分"</string>
+<string name="testing_program_review_dialog_content_hint">输入关于应用的反馈</string>
+<string name="delete">删除</string>
+<string name="submit">提交</string>
+<string name="done">完成</string>
 <string name="availability_restriction_carrier">您的运营商不支持此商品。</string>
 <string name="availability_restriction_country">此商品无法在您所在的国家/地区购买或下载。</string>
 <string name="availability_restriction_country_or_carrier">您所在的国家/地区或运营商不支持该商品。</string>

@@ -1,14 +1,21 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.BetaToggleTask;
+import com.github.yeriomin.yalpstore.task.playstore.PlayStorePayloadTask;
+
+import java.io.IOException;
 
 public class Beta extends Abstract {
 
@@ -36,9 +43,33 @@ public class Beta extends Abstract {
         initExpandableGroup(R.id.beta_header, R.id.beta_container);
         setText(R.id.beta_header, app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_in_title : R.string.testing_program_section_opted_out_title);
         setText(R.id.beta_message, app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_in_message : R.string.testing_program_section_opted_out_message);
-        setText(R.id.beta_button, app.isTestingProgramOptedIn() ? R.string.testing_program_opt_out : R.string.testing_program_opt_in);
+        setText(R.id.beta_subscribe_button, app.isTestingProgramOptedIn() ? R.string.testing_program_opt_out : R.string.testing_program_opt_in);
         setText(R.id.beta_email, app.getTestingProgramEmail());
-        activity.findViewById(R.id.beta_button).setOnClickListener(new BetaOnClickListener((TextView) activity.findViewById(R.id.beta_message), app));
+        activity.findViewById(R.id.beta_feedback).setVisibility(app.isTestingProgramOptedIn() ? View.VISIBLE : View.GONE);
+        activity.findViewById(R.id.beta_subscribe_button).setOnClickListener(new BetaOnClickListener((TextView) activity.findViewById(R.id.beta_message), app));
+        activity.findViewById(R.id.beta_submit_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initBetaTask(new BetaFeedbackSubmitTask()).execute();
+            }
+        });
+        activity.findViewById(R.id.beta_delete_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initBetaTask(new BetaFeedbackDeleteTask()).execute();
+            }
+        });
+        if (null != app.getUserReview() && !TextUtils.isEmpty(app.getUserReview().getComment())) {
+            ((EditText) activity.findViewById(R.id.beta_comment)).setText(app.getUserReview().getComment());
+            activity.findViewById(R.id.beta_delete_button).setVisibility(View.VISIBLE);
+        }
+    }
+
+    private BetaFeedbackTask initBetaTask(BetaFeedbackTask task) {
+        task.setPackageName(app.getPackageName());
+        task.setEditText((EditText) activity.findViewById(R.id.beta_comment));
+        task.setDeleteButton(activity.findViewById(R.id.beta_delete_button));
+        return task;
     }
 
     static class BetaOnClickListener implements View.OnClickListener {
@@ -56,6 +87,63 @@ public class Beta extends Abstract {
             view.setEnabled(false);
             messageView.setText(app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_out_propagating_message : R.string.testing_program_section_opted_in_propagating_message);
             new BetaToggleTask(app).execute();
+        }
+    }
+
+    static abstract private class BetaFeedbackTask extends PlayStorePayloadTask<Void> {
+
+        protected String packageName;
+        protected EditText editText;
+        protected View deleteButton;
+
+        public void setPackageName(String packageName) {
+            this.packageName = packageName;
+        }
+
+        public void setEditText(EditText editText) {
+            this.editText = editText;
+            setContext(editText.getContext());
+        }
+
+        public void setDeleteButton(View deleteButton) {
+            this.deleteButton = deleteButton;
+        }
+    }
+
+    static private class BetaFeedbackSubmitTask extends BetaFeedbackTask {
+
+        @Override
+        protected Void getResult(GooglePlayAPI api, String... arguments) throws IOException {
+            api.betaFeedback(packageName, editText.getText().toString());
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            if (success()) {
+                ContextUtil.toastShort(context, context.getString(R.string.done));
+                deleteButton.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    static private class BetaFeedbackDeleteTask extends BetaFeedbackTask {
+
+        @Override
+        protected Void getResult(GooglePlayAPI api, String... arguments) throws IOException {
+            api.deleteBetaFeedback(packageName);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            if (success()) {
+                editText.setText("");
+                ContextUtil.toastShort(context, context.getString(R.string.done));
+                deleteButton.setVisibility(View.GONE);
+            }
         }
     }
 }

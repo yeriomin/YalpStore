@@ -257,6 +257,10 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="pref_download_deltas">"Actualizaciones Delta"</string>
 <string name="pref_download_deltas_summary_off">"Descarga completa del apk cada vez"</string>
 <string name="pref_download_deltas_summary_on">"Solo los cambios son descargados durante las actualizaciones."</string>
+<string name="testing_program_review_dialog_content_hint">Danos tu opinión sobre la aplicación</string>
+<string name="delete">Eliminar</string>
+<string name="submit">Enviar</string>
+<string name="done">Listo</string>
 <string name="availability_restriction_carrier">Este elemento no está disponible para tu operador.</string>
 <string name="availability_restriction_country">Este elemento no está disponible en tu país.</string>
 <string name="availability_restriction_country_or_carrier">Este elemento no está disponible en tu país o para tu operador.</string>

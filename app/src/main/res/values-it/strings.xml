@@ -254,6 +254,10 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="testing_program_section_opted_out_title">"Diventa un beta tester"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="about_paypal_label">"Dona:"</string>
+<string name="testing_program_review_dialog_content_hint">"Inserisci il feedback sull'app"</string>
+<string name="done">Fine</string>
+<string name="submit">Invia</string>
+<string name="delete">Elimina</string>
 <string name="availability_restriction_carrier">Questo articolo non è disponibile per il tuo operatore.</string>
 <string name="availability_restriction_country">Questo prodotto non è disponibile nel tuo Paese.</string>
 <string name="availability_restriction_country_or_carrier">Questo articolo non è disponibile nel tuo Paese o per il tuo operatore.</string>
