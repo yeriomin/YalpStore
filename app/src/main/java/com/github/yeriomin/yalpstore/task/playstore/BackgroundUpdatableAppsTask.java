@@ -18,6 +18,7 @@ import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
+import com.github.yeriomin.yalpstore.UpdateAllReceiver;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
@@ -49,6 +50,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         int updatesCount = this.updatableApps.size();
         Log.i(this.getClass().getName(), "Found updates for " + updatesCount + " apps");
         if (updatesCount == 0) {
+            context.sendBroadcast(new Intent(UpdateAllReceiver.ACTION_ALL_UPDATES_COMPLETE), null);
             return;
         }
         if (canUpdate()) {
