@@ -58,10 +58,12 @@ public abstract class InstallerAbstract {
     }
 
     protected boolean verify(App app) {
-        if (!new ApkSignatureVerifier(context).match(
-            app.getPackageName(),
-            Paths.getApkPath(context, app.getPackageName(), app.getVersionCode())
-        )) {
+        File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
+        if (!apkPath.exists()) {
+            Log.w(getClass().getSimpleName(), apkPath.getAbsolutePath() + " does not exist");
+            return false;
+        }
+        if (!new ApkSignatureVerifier(context).match(app.getPackageName(), apkPath)) {
             Log.i(getClass().getSimpleName(), "Signature mismatch for " + app.getPackageName());
             ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             if (ContextUtil.isAlive(context)) {
@@ -87,7 +89,7 @@ public abstract class InstallerAbstract {
             ? DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM
             : DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED
         );
-        intent.setData(new Uri.Builder().scheme("package").path(packageName).build());
+        intent.setData(new Uri.Builder().path(packageName).build());
         context.sendBroadcast(intent);
     }
 
