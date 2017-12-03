@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
@@ -84,6 +85,15 @@ public class UpdatableAppsActivity extends AppListActivity {
         UpdatableAppBadge appBadge = new UpdatableAppBadge();
         appBadge.setApp(app);
         return appBadge;
+    }
+
+    @Override
+    public void removeApp(String packageName) {
+        super.removeApp(packageName);
+        if (listItems.isEmpty()) {
+            ((TextView) getListView().getEmptyView()).setText(R.string.list_empty_updates);
+            findViewById(R.id.main_button).setVisibility(View.GONE);
+        }
     }
 
     private ForegroundUpdatableAppsTask getTask() {
