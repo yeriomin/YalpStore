@@ -31,7 +31,7 @@ public class UpdatableAppsTask extends RemoteAppListTask {
 
     @Override
     protected List<App> getResult(GooglePlayAPI api, String... packageNames) throws IOException {
-        api.genericGet(FDFE_URL + "toc", null);
+        api.toc();
         Map<String, App> installedApps = getInstalledApps();
         for (App appFromMarket: getAppsFromPlayStore(api, filterBlacklistedApps(installedApps).keySet())) {
             String packageName = appFromMarket.getPackageName();
