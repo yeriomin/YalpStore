@@ -27,12 +27,6 @@ Veuillez créer un mot de passe dédié à Yalp Store et utilisez-le pour vous c
 Choisissez  « créer un mot de passe » pour être redirigé vers la page de création de mot de passe."</string>
 <string name="dialog_title_logout">"Se déconnecter ?"</string>
 <string name="dialog_message_logout">"Confirmer la déconnexion ?"</string>
-<string name="dialog_title_reviews">"Chargement des avis"</string>
-<string name="dialog_message_reviews">"Chargement des avis, patientez SVP"</string>
-<string name="dialog_title_purchasing_app">"Téléchargement…"</string>
-<string name="dialog_message_purchasing_app">"Téléchargement de l'app démarré, patientez SVP"</string>
-<string name="dialog_title_loading_app_list_search">"Recherche…"</string>
-<string name="dialog_message_loading_app_list_search">"Recherche en cours, veuillez patienter."</string>
 <string name="dialog_account_type_provided_by_user">"Avec mon compte Google"</string>
 <string name="dialog_account_type_predefined">"avec un faux compte Yalp Store"</string>
 <string name="dialog_account_type_title">"Comment souhaitez-vous vous connecter au Google Play Store ?"</string>
