@@ -27,8 +27,7 @@ android {
         }
     }
     lintOptions {
-        warning 'MissingTranslation'
-        disable 'GoogleAppIndexingWarning','GoogleAppIndexingApiWarning','TrulyRandom','BadHostnameVerifier','IconMissingDensityFolder','IconLocation','UnusedAttribute','GetLocales'
+        warning 'MissingTranslation','GetLocales'
     }
 }
 
