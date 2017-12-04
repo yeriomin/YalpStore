@@ -23,6 +23,7 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
         activityRef = new WeakReference<>(activity);
         this.packageName = packageName;
         IntentFilter filter = new IntentFilter();
+        filter.addDataScheme("package");
         filter.addAction(Intent.ACTION_PACKAGE_REMOVED);
         filter.addAction(Intent.ACTION_PACKAGE_FULLY_REMOVED);
         filter.addAction(Intent.ACTION_PACKAGE_INSTALL);

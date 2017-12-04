@@ -89,7 +89,7 @@ public abstract class InstallerAbstract {
             ? DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM
             : DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED
         );
-        intent.setData(new Uri.Builder().path(packageName).build());
+        intent.setData(new Uri.Builder().scheme("package").opaquePart(packageName).build());
         context.sendBroadcast(intent);
     }
 
