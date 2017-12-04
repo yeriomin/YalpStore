@@ -27,12 +27,6 @@
     <string name="dialog_message_two_factor">Похоже, в вашем аккаунте включена двухэтапная аутентификация.\n\nПожалуйста, создайте пароль приложения для Yalp Store и используйте его для входа.\n\nНажмите \"Создать пароль\" для перехода на страницу создания паролей приложений.</string>
     <string name="dialog_title_logout">Разлогиниться?</string>
     <string name="dialog_message_logout">Вы уверены что хотите разлогиниться?</string>
-    <string name="dialog_title_reviews">Получаем отзывы</string>
-    <string name="dialog_message_reviews">Подождите. Получаем отзывы.</string>
-    <string name="dialog_title_purchasing_app">Скачиваем</string>
-    <string name="dialog_message_purchasing_app">Подождите. Запускаем закачку приложения.</string>
-    <string name="dialog_title_loading_app_list_search">Поиск</string>
-    <string name="dialog_message_loading_app_list_search">Подождите. Ищем приложения по вашему запросу.</string>
     <string name="dialog_account_type_provided_by_user">Через мой аккаунт Google</string>
     <string name="dialog_account_type_predefined">Через общий аккаунт Yalp Store</string>
     <string name="dialog_account_type_title">Как логиниться в Google Play Store?</string>

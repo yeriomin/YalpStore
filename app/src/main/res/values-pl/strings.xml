@@ -29,12 +29,6 @@ Proszę o stworzenie dedykowanego hasła aplikacji dla Yalp Store i użycie go d
 Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz mógł utworzyć to hasło."</string>
 <string name="dialog_title_logout">"Wylogować?"</string>
 <string name="dialog_message_logout">"Jesteś pewien, że chcesz się wylogować?"</string>
-<string name="dialog_title_reviews">"Trwa ładowanie recenzji"</string>
-<string name="dialog_message_reviews">"Proszę poczekać. Trwa ładowanie recenzji."</string>
-<string name="dialog_title_purchasing_app">"Pobieranie aplikacji"</string>
-<string name="dialog_message_purchasing_app">"Proszę czekać. Zaczynam pobieranie aplikacji."</string>
-<string name="dialog_title_loading_app_list_search">"Wyszukiwanie"</string>
-<string name="dialog_message_loading_app_list_search">"Proszę czekać. Szukanie aplikacji."</string>
 <string name="dialog_account_type_provided_by_user">"Z moim kontem Google"</string>
 <string name="dialog_account_type_predefined">"Z kontem Yalp (eksperymentalne)"</string>
 <string name="dialog_account_type_title">"W jaki sposób chciałbyś zalogować się do Google Play?"</string>

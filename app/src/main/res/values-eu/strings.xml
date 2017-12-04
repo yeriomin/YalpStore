@@ -27,12 +27,6 @@ Sortu Yalp Store aplikazioarentzako pasahitz bat eta erabili Yalp Storen saioa h
 Sakatu \"Sortu pasahitza\" pasahitza saortzeko orrira joateko."</string>
 <string name="dialog_title_logout">"Amaitu saioa?"</string>
 <string name="dialog_message_logout">"Ziur saioa amaitu nahi duzula?"</string>
-<string name="dialog_title_reviews">"Iruzkinak jasotzen"</string>
-<string name="dialog_message_reviews">"Itxaron. Iruzlkinak jasotzen."</string>
-<string name="dialog_title_purchasing_app">"Aplikazioa deskargatzen"</string>
-<string name="dialog_message_purchasing_app">"Itxaron. Eskatutako aplikazioaren deskarga hasten."</string>
-<string name="dialog_title_loading_app_list_search">"Bilatzen"</string>
-<string name="dialog_message_loading_app_list_search">"Itxaron. Aplikazioak bilatzen."</string>
 <string name="dialog_account_type_provided_by_user">"Nire Google kontuarekin"</string>
 <string name="dialog_account_type_predefined">"Yalp Storek hornitutako kontu faltsu batekin"</string>
 <string name="dialog_account_type_title">"Nola hasi nahi duzu saioa Google Play Storen?"</string>

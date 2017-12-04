@@ -27,12 +27,6 @@
 Натисніть \"Створити пароль\" для переходу до сторінки створення паролів додатку."</string>
 <string name="dialog_title_logout">"Вийти?"</string>
 <string name="dialog_message_logout">"Ви дійсно бажаєте вийти?"</string>
-<string name="dialog_title_reviews">"Отримання відгуків"</string>
-<string name="dialog_message_reviews">"Будь ласка, зачекайте. Отримання відгуків."</string>
-<string name="dialog_title_purchasing_app">"Завантаження додатку"</string>
-<string name="dialog_message_purchasing_app">"Будь ласка, зачекайте. Початок завантаження вказаного додатку."</string>
-<string name="dialog_title_loading_app_list_search">"Пошук"</string>
-<string name="dialog_message_loading_app_list_search">"Будь ласка, зачекайте. Пошук додатків."</string>
 <string name="dialog_account_type_provided_by_user">"З власним обліковим записом Google"</string>
 <string name="dialog_account_type_predefined">"Без облікового запису (експериментально)"</string>
 <string name="dialog_account_type_title">"Як увійти до Google Play Store?"</string>

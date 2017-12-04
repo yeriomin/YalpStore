@@ -27,12 +27,6 @@ Crea una contraseña dedicada pa Yalp Store y úsala p'aniciar sesión n'aplicac
 Calca en «Crear contraseña» pa redirixite a la páxina de creación de contraseñes."</string>
 <string name="dialog_title_logout">"¿Zarrar sesión?"</string>
 <string name="dialog_message_logout">"¿De xuru que quies zarrar sesión?"</string>
-<string name="dialog_title_reviews">"Consiguiendo reseñes"</string>
-<string name="dialog_message_reviews">"Espera mentando se consiguien les reseñes."</string>
-<string name="dialog_title_purchasing_app">"Baxando aplicación"</string>
-<string name="dialog_message_purchasing_app">"Espera mentanto se baxa l'aplicación solicitada."</string>
-<string name="dialog_title_loading_app_list_search">"Guetando"</string>
-<string name="dialog_message_loading_app_list_search">"Espera mentanto se gueten aplicaciones."</string>
 <string name="dialog_account_type_provided_by_user">"Cola mio cuenta de Google"</string>
 <string name="dialog_account_type_predefined">"Con una cuenta falsa de Yalp Store"</string>
 <string name="dialog_account_type_title">"¿Cómo te prestaría aniciar sesión en Google Play Store?"</string>

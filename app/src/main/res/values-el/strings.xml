@@ -27,12 +27,6 @@
 Άγγιξε το «Δημιουργία Συνθηματικού» για να μεταφερθείς στην σελίδα δημιουργίας του συνθηματικού."</string>
 <string name="dialog_title_logout">"Να γίνει αποσύνδεση;"</string>
 <string name="dialog_message_logout">"Σίγουρα θες να αποσυνδεθείς;"</string>
-<string name="dialog_title_reviews">"Λαμβάνονται οι αξιολογήσεις"</string>
-<string name="dialog_message_reviews">"Παρακαλώ, περίμενε. Λαμβάνονται οι αξιολογήσεις."</string>
-<string name="dialog_title_purchasing_app">"Γίνεται λήψη της εφαρμογής"</string>
-<string name="dialog_message_purchasing_app">"Παρακαλώ, περίμενε. Αρχίζει η λήψη της εφαρμογής που ζητήθηκε."</string>
-<string name="dialog_title_loading_app_list_search">"Γίνεται αναζήτηση"</string>
-<string name="dialog_message_loading_app_list_search">"Αναμονή… Αναζήτηση για εφαρμογές."</string>
 <string name="dialog_account_type_provided_by_user">"Με τον δικό μου λογαριασμό της Google"</string>
 <string name="dialog_account_type_predefined">"Με ένα εικονικό λογαριασμό του Yalp Store "</string>
 <string name="dialog_account_type_title">"Πώς θα ήθελες να συνδεθείς στο Google Play Store;"</string>

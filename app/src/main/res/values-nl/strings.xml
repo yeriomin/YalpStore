@@ -27,12 +27,6 @@ Creëer alstublieft een wachtwoord voor Yalp Store en gebruik deze om in te logg
 Tik op 'wachtwoord maken' om te worden doorgestuurd naar de pagina voor het maken van wachtwoorden."</string>
 <string name="dialog_title_logout">"Uitloggen?"</string>
 <string name="dialog_message_logout">"Weet je zeker dat je wilt uitloggen?"</string>
-<string name="dialog_title_reviews">"Recensies krijgen"</string>
-<string name="dialog_message_reviews">"Even geduld aub. Recensies laden."</string>
-<string name="dialog_title_purchasing_app">"Downloading app"</string>
-<string name="dialog_message_purchasing_app">"Even geduld. De download van de app wordt gestart."</string>
-<string name="dialog_title_loading_app_list_search">"Zoeken"</string>
-<string name="dialog_message_loading_app_list_search">"Even geduld. Apps worden gezocht."</string>
 <string name="dialog_account_type_provided_by_user">"Met mijn eigen Google account"</string>
 <string name="dialog_account_type_predefined">"Met een neppe Yalp Store account"</string>
 <string name="dialog_account_type_title">"Hoe wil je inloggen op de Google Play Store?"</string>

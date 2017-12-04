@@ -29,12 +29,6 @@
 点击“创建密码”将被重定向到密码创建页面。"</string>
 <string name="dialog_title_logout">"注销？"</string>
 <string name="dialog_message_logout">"确定要注销吗？"</string>
-<string name="dialog_title_reviews">"获取评论"</string>
-<string name="dialog_message_reviews">"获取评论中，请等待。"</string>
-<string name="dialog_title_purchasing_app">"正在下载应用"</string>
-<string name="dialog_message_purchasing_app">"开始下载所请求应用，请等待。"</string>
-<string name="dialog_title_loading_app_list_search">"查找"</string>
-<string name="dialog_message_loading_app_list_search">"请稍等，正在查找本机应用。"</string>
 <string name="dialog_account_type_provided_by_user">"登陆我自己的谷歌账号"</string>
 <string name="dialog_account_type_predefined">"登陆YALP谷歌账号。"</string>
 <string name="dialog_account_type_title">"您想登录Google Play商店吗？"</string>

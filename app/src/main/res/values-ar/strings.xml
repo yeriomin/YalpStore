@@ -25,12 +25,6 @@
 اضغط \"أنشيء كلمة سر\" ليتم توجيهك لصفحة إنشاء كلمة السر."</string>
 <string name="dialog_title_logout">"سجل خروج؟"</string>
 <string name="dialog_message_logout">"هل أنت متأكد أنك تريد تسجيل الخروج؟"</string>
-<string name="dialog_title_reviews">"جاري الحصول على التعليقات"</string>
-<string name="dialog_message_reviews">"من فضلك انتظر. جاري الحصول على التعليقات."</string>
-<string name="dialog_title_purchasing_app">"جاري تنزيل التطبيق"</string>
-<string name="dialog_message_purchasing_app">"انتظرقليلا. سيبدأ تنزيل التطبيق المطلوب."</string>
-<string name="dialog_title_loading_app_list_search">"جاري البحث"</string>
-<string name="dialog_message_loading_app_list_search">"انتظر قليلا. جاري البحث عن التطبيقات."</string>
 <string name="dialog_account_type_provided_by_user">"باستخدام حسابي الخاص على جوجل"</string>
 <string name="dialog_account_type_predefined">"باستعمال حساب وهمي من Yalp Store"</string>
 <string name="dialog_account_type_title">"هل تود تسجيل الدخول إلى سوق بلاي Google Play Store ؟"</string>

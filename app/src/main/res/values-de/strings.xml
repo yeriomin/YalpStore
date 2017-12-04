@@ -28,12 +28,6 @@ Bitte erstelle ein separates App-Passwort für Yalp Store und melde dich damit h
 Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passwortes zu gelangen."</string>
 <string name="dialog_title_logout">"Abmelden?"</string>
 <string name="dialog_message_logout">"Bist du sicher dass du dich abmelden möchtest?"</string>
-<string name="dialog_title_reviews">"Bewertungen werden geladen"</string>
-<string name="dialog_message_reviews">"Bitte warten. Bewertungen werden geladen."</string>
-<string name="dialog_title_purchasing_app">"App wird heruntergeladen"</string>
-<string name="dialog_message_purchasing_app">"Bitte warten. Starte das Herunterladen der gewählten App."</string>
-<string name="dialog_title_loading_app_list_search">"Suche"</string>
-<string name="dialog_message_loading_app_list_search">"Bitte warten. Apps werden gesucht."</string>
 <string name="dialog_account_type_provided_by_user">"Mit meinem eigenen Google Account"</string>
 <string name="dialog_account_type_predefined">"Mit einem gefälschten Yalp Store account"</string>
 <string name="dialog_account_type_title">"Wie möchtest du dich im Google Play Store anmelden?"</string>

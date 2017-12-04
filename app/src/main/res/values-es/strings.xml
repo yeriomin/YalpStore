@@ -27,12 +27,6 @@ Por favor, crea una contraseña de aplicación para Yalp Store y úsala para ini
 Toca \"Crear contraseña\" para ser redirigido"</string>
 <string name="dialog_title_logout">"¿Cerrar sesión?"</string>
 <string name="dialog_message_logout">"¿De verdad que quieres cerrar sesión?"</string>
-<string name="dialog_title_reviews">"Obteniendo reseñas"</string>
-<string name="dialog_message_reviews">"Por favor espere. Obteniendo reseñas."</string>
-<string name="dialog_title_purchasing_app">"Descargando aplicación"</string>
-<string name="dialog_message_purchasing_app">"Por favor espere. Iniciando descarga de la aplicación solicitada."</string>
-<string name="dialog_title_loading_app_list_search">"Buscando"</string>
-<string name="dialog_message_loading_app_list_search">"Por favor espere, buscando aplicaciones"</string>
 <string name="dialog_account_type_provided_by_user">"Con mi cuenta de Google"</string>
 <string name="dialog_account_type_predefined">"Con una cuenta falsa de Yalp Store"</string>
 <string name="dialog_account_type_title">"¿Cómo te gustaría iniciar sesión en Google Play Store?"</string>

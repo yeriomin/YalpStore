@@ -27,12 +27,6 @@ Crie uma senha de aplicativo dedicada para o Yalp Store e use-a para efetuar log
 Toque em \"Criar senha\" para ser redirecionado para a página de criação de senha."</string>
 <string name="dialog_title_logout">"Sair?"</string>
 <string name="dialog_message_logout">"Tem certeza que deseja sair?"</string>
-<string name="dialog_title_reviews">"Obtendo comentários"</string>
-<string name="dialog_message_reviews">"Por favor, espere. Obtendo comentários."</string>
-<string name="dialog_title_purchasing_app">"Fazendo o download do aplicativo"</string>
-<string name="dialog_message_purchasing_app">"Por favor, espere. Iniciando o download do aplicativo solicitado."</string>
-<string name="dialog_title_loading_app_list_search">"Procurando"</string>
-<string name="dialog_message_loading_app_list_search">"Por favor, espere. Pesquisando aplicativos."</string>
 <string name="dialog_account_type_provided_by_user">"Com a minha conta do Google"</string>
 <string name="dialog_account_type_predefined">"Sem nenhuma  conta (experimental"</string>
 <string name="dialog_account_type_title">"Como você gostaria de fazer login na Google Play Store?"</string>

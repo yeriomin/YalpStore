@@ -27,12 +27,6 @@ Per favore, crea una password dedicata per Yalp Store e usala per accedere da Ya
 Tocca \"Crea password\" per esser reindirizzato alla creazione della password."</string>
 <string name="dialog_title_logout">"Scollego?"</string>
 <string name="dialog_message_logout">"Sei sicuro di voler disconnetterti?"</string>
-<string name="dialog_title_reviews">"Caricamento recensioni"</string>
-<string name="dialog_message_reviews">"Caricamento recensioni. Attendi."</string>
-<string name="dialog_title_purchasing_app">"Scaricamento app"</string>
-<string name="dialog_message_purchasing_app">"Avvio download dell'app richiesta. Attendi."</string>
-<string name="dialog_title_loading_app_list_search">"Ricerca"</string>
-<string name="dialog_message_loading_app_list_search">"Ricerca in corso. Attendi."</string>
 <string name="dialog_account_type_provided_by_user">"Con il mio account Google"</string>
 <string name="dialog_account_type_predefined">"Senza un account (sperimentale)"</string>
 <string name="dialog_account_type_title">"Come vuoi accedere al Google Play Store?"</string>

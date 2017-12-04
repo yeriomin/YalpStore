@@ -27,12 +27,6 @@ Vytvořte prosím heslo pro aplikaci Yalp Store a použijte jej k přihlášení
 Klikněte na \"Vytvořit heslo\" pro přesměrování na stránky pro vytvoření hesla."</string>
 <string name="dialog_title_logout">"Odhlásit se?"</string>
 <string name="dialog_message_logout">"Opravdu se chcete odhlásit?"</string>
-<string name="dialog_title_reviews">"Získávám hodnocení"</string>
-<string name="dialog_message_reviews">"Čekejte prosím. Získávám hodnocení."</string>
-<string name="dialog_title_purchasing_app">"Stahuji aplikaci"</string>
-<string name="dialog_message_purchasing_app">"Čekejte prosím. Zahajuji stahovaní požadované aplikace."</string>
-<string name="dialog_title_loading_app_list_search">"Vyhledávám"</string>
-<string name="dialog_message_loading_app_list_search">"Čekejte prosím. Vyhledávám aplikace."</string>
 <string name="dialog_account_type_provided_by_user">"S mým vlastním Google účtem"</string>
 <string name="dialog_account_type_predefined">"S falešným Yalp Store účtem"</string>
 <string name="dialog_account_type_title">"Jak se chcete přihlásit do obchodu Google Play?"</string>

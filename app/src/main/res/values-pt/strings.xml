@@ -29,12 +29,6 @@ Por favor, cria uma app-password dedicada à Yalp Store e usa-a para fazer login
 Carrega em \"criar password\" para seres redirecionado à página para a criares."</string>
 <string name="dialog_title_logout">"Terminar sessão ?"</string>
 <string name="dialog_message_logout">"Tens a certeza que queres terminar sessão?"</string>
-<string name="dialog_title_reviews">"A carregar críticas"</string>
-<string name="dialog_message_reviews">"Por favor aguarde. A carregar críticas."</string>
-<string name="dialog_title_purchasing_app">"A transferir aplicação"</string>
-<string name="dialog_message_purchasing_app">"Por favor aguarde. A iniciar transferência da aplicação selecionada."</string>
-<string name="dialog_title_loading_app_list_search">"A procurar.."</string>
-<string name="dialog_message_loading_app_list_search">"Por favor aguarde enquanto procuramos aplicações."</string>
 <string name="dialog_account_type_provided_by_user">"Com a minha conta Google"</string>
 <string name="dialog_account_type_predefined">"Com uma conta fornecida pela Yalp Store"</string>
 <string name="dialog_account_type_title">"Como quer iniciar sessão no Google Play Store?"</string>

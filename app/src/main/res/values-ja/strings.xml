@@ -27,12 +27,6 @@ Yalp Store 専用のアプリパスワードを作成して、Yalp Store のロ�
 「パスワードを作成」をタップすると、パスワード作成ページにリダイレクトされます。"</string>
 <string name="dialog_title_logout">"ログアウトしますか?"</string>
 <string name="dialog_message_logout">"ログアウトしてもよろしいですか?"</string>
-<string name="dialog_title_reviews">"レビューの取得"</string>
-<string name="dialog_message_reviews">"しばらくお待ちください。レビューを取得しています"</string>
-<string name="dialog_title_purchasing_app">"アプリのダウンロード中"</string>
-<string name="dialog_message_purchasing_app">"しばらくお待ちください。 リクエストしたアプリのダウンロードを開始しています。"</string>
-<string name="dialog_title_loading_app_list_search">"検索中"</string>
-<string name="dialog_message_loading_app_list_search">"しばらくお待ちください。 アプリの検索中。"</string>
 <string name="dialog_account_type_provided_by_user">"自分の Google アカウントで"</string>
 <string name="dialog_account_type_predefined">"Yalp Store で提供されたアカウントで"</string>
 <string name="dialog_account_type_title">"Google Play ストアにどのようにログインしますか?"</string>

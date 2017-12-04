@@ -43,12 +43,6 @@
     <string name="dialog_message_two_factor">It appears you have enabled 2-Step Verification for your account.\n\nPlease, create a dedicated app password for Yalp Store and use it to log in to the Yalp Store.\n\nTap \"Create password\" to be redirected to password creation page.</string>
     <string name="dialog_title_logout">Log out?</string>
     <string name="dialog_message_logout">Are you sure you want to log out?</string>
-    <string name="dialog_title_reviews">Getting reviews</string>
-    <string name="dialog_message_reviews">Please wait. Getting reviews.</string>
-    <string name="dialog_title_purchasing_app">Downloading app</string>
-    <string name="dialog_message_purchasing_app">Please wait. Starting the download of the requested app.</string>
-    <string name="dialog_title_loading_app_list_search">Searching</string>
-    <string name="dialog_message_loading_app_list_search">Please wait. Searching for apps.</string>
     <string name="dialog_account_type_provided_by_user">With my own Google account</string>
     <string name="dialog_account_type_predefined">With a fake Yalp Store account</string>
     <string name="dialog_account_type_title">How would you like to log in to Google Play Store?</string>
