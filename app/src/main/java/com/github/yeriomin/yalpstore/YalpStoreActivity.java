@@ -10,11 +10,14 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.EditText;
+
+import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_EMAIL;
 
 public abstract class YalpStoreActivity extends Activity {
 
@@ -41,6 +44,9 @@ public abstract class YalpStoreActivity extends Activity {
     protected void onResume() {
         Log.v(getClass().getSimpleName(), "Resuming activity");
         super.onResume();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            invalidateOptionsMenu();
+        }
         if (logout) {
             finish();
         }
@@ -61,6 +67,9 @@ public abstract class YalpStoreActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if (!TextUtils.isEmpty(PreferenceActivity.getString(this, PREFERENCE_EMAIL))) {
+            menu.findItem(R.id.action_logout).setVisible(true);
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
