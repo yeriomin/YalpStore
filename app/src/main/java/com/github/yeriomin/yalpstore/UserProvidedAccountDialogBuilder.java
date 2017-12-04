@@ -85,19 +85,13 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         return editEmail;
     }
 
-    private void addUsedEmail(String email) {
-        Set<String> emailsSet = Util.getStringSet(context, USED_EMAILS_SET);
-        emailsSet.add(email);
-        Util.putStringSet(context, USED_EMAILS_SET, emailsSet);
-    }
-
     private List<String> getUsedEmails() {
         List<String> emails = new ArrayList<>(Util.getStringSet(context, USED_EMAILS_SET));
         Collections.sort(emails);
         return emails;
     }
 
-    private class UserProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
+    private static class UserProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
 
         private String previousEmail;
 
@@ -128,6 +122,12 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
                 exception = e;
             }
             return null;
+        }
+
+        private void addUsedEmail(String email) {
+            Set<String> emailsSet = Util.getStringSet(context, USED_EMAILS_SET);
+            emailsSet.add(email);
+            Util.putStringSet(context, USED_EMAILS_SET, emailsSet);
         }
     }
 }

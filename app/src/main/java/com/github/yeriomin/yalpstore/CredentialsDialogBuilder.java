@@ -33,7 +33,7 @@ abstract public class CredentialsDialogBuilder {
 
     abstract public Dialog show();
 
-    abstract protected class CheckCredentialsTask extends PlayStoreTask<Void> {
+    abstract protected static class CheckCredentialsTask extends PlayStoreTask<Void> {
 
         protected PlayStoreTask caller;
 

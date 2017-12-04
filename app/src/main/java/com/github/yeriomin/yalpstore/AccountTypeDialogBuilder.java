@@ -60,7 +60,7 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
         task.execute();
     }
 
-    abstract private class AppProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
+    abstract private static class AppProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
 
         abstract protected void payload() throws IOException;
 
@@ -80,7 +80,7 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
         }
     }
 
-    private class RefreshTokenTask extends AppProvidedCredentialsTask {
+    private static class RefreshTokenTask extends AppProvidedCredentialsTask {
 
         @Override
         public void setCaller(PlayStoreTask caller) {
@@ -94,7 +94,7 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
         }
     }
 
-    private class LoginTask extends AppProvidedCredentialsTask {
+    private static class LoginTask extends AppProvidedCredentialsTask {
 
         @Override
         protected void payload() throws IOException {
