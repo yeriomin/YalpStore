@@ -103,7 +103,17 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         connection.connect();
 
         int code = 0;
-        boolean isGzip = null != connection.getContentEncoding() && connection.getContentEncoding().contains("gzip");
+        boolean isGzip;
+        try {
+            isGzip = null != connection.getContentEncoding() && connection.getContentEncoding().contains("gzip");
+        } catch (NullPointerException e) {
+            // Happens on api<=8 only, see https://issuetracker.google.com/issues/36926705
+            // The solution is stop using HttpURLConnection entirely...
+            // Luckily, it seems to happen when the token gets stale,
+            // which means it can be fixed by redoing the request with a new token
+            Log.e(getClass().getSimpleName(), "Buggy HttpURLConnection implementation detected");
+            throw new AuthException("Actually this is a NullPointerException thrown by a buggy implementation of HttpURLConnection", 401);
+        }
         try {
             code = connection.getResponseCode();
             Log.i(getClass().getSimpleName(), "HTTP result code " + code);
