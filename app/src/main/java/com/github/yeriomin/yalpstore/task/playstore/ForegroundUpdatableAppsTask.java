@@ -63,7 +63,7 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         super.onPostExecute(result);
         activity.clearApps();
         activity.addApps(updatableApps);
-        if (!noNetwork(getException()) && updatableApps.isEmpty()) {
+        if (success() && updatableApps.isEmpty()) {
             this.errorView.setText(R.string.list_empty_updates);
         }
         toggleUpdateAll(!updatableApps.isEmpty());
