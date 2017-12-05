@@ -16,7 +16,7 @@ android {
         applicationId "com.github.yeriomin.yalpstore"
         minSdkVersion 5
         targetSdkVersion 27
-        versionCode 31
+        versionCode 32
         versionName getVersionName()
     }
     buildTypes {
@@ -35,6 +35,6 @@ dependencies {
     implementation 'commons-net:commons-net:3.5'
     implementation 'com.nothome:javaxdelta:2.0.1'
     debugImplementation 'com.github.yeriomin:play-store-api:master-SNAPSHOT'
-    releaseImplementation 'com.github.yeriomin:play-store-api:0.31'
+    releaseImplementation 'com.github.yeriomin:play-store-api:0.32'
     implementation 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }
