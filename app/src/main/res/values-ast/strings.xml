@@ -54,7 +54,7 @@ Calca en «Crear contraseña» pa redirixite a la páxina de creación de contra
 <string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
 <string name="details_download">"Baxar"</string>
 <string name="details_install">"Instalar"</string>
-<string name="details_downloading">"Baxando..."</string>
+<string name="details_downloading">"Baxando…"</string>
 <string name="details_review_dialog_title">"¿Amestar dalgo más?"</string>
 <string name="details_review_dialog_review_title_hint">"títulu equí"</string>
 <string name="details_review_dialog_review_comment_hint">"comentariu equí"</string>
@@ -128,7 +128,7 @@ Ten en cuenta qu'usar esta aplicación incumple los términos y condiciones de l
 <string name="details_no_ads">"Ensin anuncios"</string>
 <string name="dialog_title_package_id">"Yá esiste un paquete con esti nome"</string>
 <string name="dialog_message_package_id">"Hai un paquete col mesmu nome. ¿Prestaríate dir direutamente a la so páxina de detalles?"</string>
-<string name="details_download_checking">"Comprobando..."</string>
+<string name="details_download_checking">"Comprobando…"</string>
 <string name="details_download_not_available">"Non disponible"</string>
 <string name="manual_download_incompatible">"Google Play considera qu'esta aplicación ye incompatible col to preséu. Esto quier dicir que Google Play Store nun devolvió'l códigu de la versión."</string>
 <string name="manual_download_compatible">"Yá se rellenó'l campu del códigu de versión cola cabera versión compatible de l'aplicación. Si quies una versión anterior, namái introduz un númberu más pequeñu que l'actual. Si'l desendolcador nun desanició l'APK de la versión anterior de la Play Store, podríes ser a aniciar la descarga."</string>
@@ -152,7 +152,7 @@ Ten en cuenta que baxar versiones al debalu nun lo sofita la Play Store de Googl
 <string name="pref_category_installation">"Instalación"</string>
 <string name="pref_category_spoofing">"Suplantación"</string>
 <string name="pref_category_ui">"Interfaz d'usuariu"</string>
-<string name="details_installing">"Instalando..."</string>
+<string name="details_installing">"Instalando…"</string>
 <string name="details_installed">"Instalóse con ésitu"</string>
 <string name="details_install_failure">"Nun pudo instalase"</string>
 <string name="notification_download_complete_new_permissions">"Descarga completada. Solicitáronse permisos nuevos."</string>
@@ -230,7 +230,7 @@ El procesu nun ye perfeutu y ye específicu pa cada preséu, asina que quiciabes
 <string name="bug_report_explanation_crash">"Pues ayudar a iguar esto unviando un informe de fallu al desendolcador. Describi lo que tuviesti tentando de facer cuando'l fallu asocedió y calca Aceutar pa unvialu."</string>
 <string name="bug_report_explanation_bug_report">"Describi'l problema y sé lo más específicu posible, por favor. ¿El problema asocede con un aplicación específica, tol tiempu o dalcuando?¿cómo pue reproducise?"</string>
 <string name="thank_you">"Gracies"</string>
-<string name="list_updating">"Anovando..."</string>
+<string name="list_updating">"Anovando…"</string>
 <string name="error_invalid_device_definition">"Refugóse la definición del preséu."</string>
 <string name="details_video">"Videu"</string>
 <string name="error_could_not_download">"Nun pudo baxase."</string>
