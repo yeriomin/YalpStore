@@ -140,7 +140,7 @@ Isso significa que o código da versão não foi retornado pelo servidor da Goog
 
 Lembre-se de que o download de versões arbitrárias de aplicativos não é compatível com o Google Play Store. Seu sucesso depende de uma suposição afortunada do código da versão. Mesmo se você adivinhar direito e você começa o download para começar, você pode obter um apk incompatível. Muito provavelmente, você está desperdiçando seu tempo!"</string>
 <string name="manual_download_hint_version_code">"Código da versão aqui"</string>
-    <string name="details_uninstall">"Desinstalar"</string>
+<string name="details_uninstall">"Desinstalar"</string>
 <string name="notification_download_starting">"Iniciando o download"</string>
 <string name="notification_download_progress">"%1$s de %2$s baixado"</string>
 <string name="pref_requested_language">"Idioma das solicitações da Play Store"</string>
@@ -177,14 +177,14 @@ Lembre-se de que o download de versões arbitrárias de aplicativos não é comp
 <string name="action_make_system">"Converter para aplicativo de sistema"</string>
 <string name="action_make_normal">"Converter para o aplicativo normal"</string>
 <string name="list_app_system">"Aplicação do sistema"</string>
-    <string name="activity_title_updates_only">"Atualizações"</string>
+<string name="activity_title_updates_only">"Atualizações"</string>
 <string name="activity_title_updates_and_other_apps">"As suas aplicações"</string>
-    <string name="pref_show_system_apps">"Mostrar aplicativos do sistema"</string>
+<string name="pref_show_system_apps">"Mostrar aplicativos do sistema"</string>
 <string name="pref_show_system_apps_summary_off">"Os aplicativos do sistema estão ocultos agora"</string>
 <string name="pref_show_system_apps_summary_on">"Os aplicativos do sistema são exibidos agora"</string>
 <string name="details_system_app_info">"Info do sistema
 "</string>
-    <string name="details_run">"Executar"</string>
+<string name="details_run">"Executar"</string>
 <string name="dialog_title_remounting_system">"Trabalhando com / partição de sistema"</string>
 <string name="dialog_message_remounting_system">"Trabalhando com / partição do sistema. Isso pode levar algum tempo"</string>
 <string name="dialog_title_checking_busybox">"Verificar se a busybox está disponível"</string>
@@ -250,4 +250,34 @@ Fazer?"</string>
 <string name="notification_not_privileged">"Instalar permissão não concedida"</string>
 <string name="about_paypal_label">"Fazer doação:"</string>
 <string name="pref_download_directory">"Diretório do download"</string>
+<string name="pref_download_deltas">"Delta updates"</string>
+<string name="pref_download_deltas_summary_off">"O apk completo é baixado toda vez"</string>
+<string name="pref_download_deltas_summary_on">"Apenas as alterações são baixadas durante as atualizações"</string>
+<string name="testing_program_review_dialog_content_hint">"Envie feedback sobre o aplitivo"</string>
+<string name="delete">"Apagar"</string>
+<string name="submit">"Enviar"</string>
+<string name="done">"Concluído"</string>
+<string name="availability_restriction_carrier">"Este item não está diponível em sua operadora."</string>
+<string name="availability_restriction_country">"Este item não está diponível em seu país."</string>
+<string name="availability_restriction_country_or_carrier">"Este item não está diponível em seu país ou sua operadora."</string>
+<string name="availability_restriction_for_managed_account">"Seu administrador não permitiu seu acesso a este item."</string>
+<string name="availability_restriction_generic">"Este item não está disponível."</string>
+<string name="availability_restriction_hardware">"Seu dispositivo não é compartível com este item."</string>
+<string name="availability_restriction_hardware_app">"Seu dispositivo não é compartível com esta versão."</string>
+<string name="availability_restriction_hardware_app_ram_generic">"Este aplicativo requer mais RAM do que está disponível no seus dispositivo."</string>
+<string name="availability_restriction_missing_permission">"Seu administrdor não aceitou permissões para este item"</string>
+<string name="availability_restriction_not_in_group">"Você não está no grupo indicado para este item."</string>
+<string name="flag_graphic_violence">"Violência gráfica"</string>
+<string name="flag_harmful_prompt">"Descreva o dano causado em seu dispositivo ou dados:"</string>
+<string name="flag_harmful_to_device">"Prejudicial ao dispositivo ou dados"</string>
+<string name="flag_hateful_content">"Conteúdo de ódio ou abusivo"</string>
+<string name="flag_improper_content_rating">"Avaliação de conteúdo impróprio"</string>
+<string name="flag_other_concern_prompt">"Descreva a objeção"</string>
+<string name="flag_other_objection">"Outra objeção"</string>
+<string name="flag_page_description">"Motivo pelo qual você acha este conteúdo ou aplicativo repreensível"</string>
+<string name="flag_pharma_content">"Illegal prescription or other drug"</string>
+<string name="flag_sexual_content">"Conteúdo sexual"</string>
+<string name="flag_impersonation_copycat">"Copycat or impersonation"</string>
+<string name="flagging_title">"Marcar como inapropriado"</string>
+<string name="content_flagged">"Objeção enviada."</string>
 </resources>
