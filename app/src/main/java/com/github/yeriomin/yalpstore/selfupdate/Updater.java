@@ -67,6 +67,7 @@ abstract public class Updater {
         try {
             URLConnection connection = getUrl(versionCode).openConnection();
             if (connection instanceof HttpURLConnection) {
+                ((HttpURLConnection) connection).setInstanceFollowRedirects(false);
                 ((HttpURLConnection) connection).setRequestMethod("HEAD");
                 return ((HttpURLConnection) connection).getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST;
             }
