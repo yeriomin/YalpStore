@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
 
@@ -36,7 +37,8 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (null == intent.getData() || !TextUtils.equals(packageName, intent.getData().getSchemeSpecificPart())) {
+        Uri intentData = intent.getData();
+        if (null == intentData || !TextUtils.equals(packageName, intentData.getSchemeSpecificPart())) {
             return;
         }
         GlobalInstallReceiver.updateDetails(GlobalInstallReceiver.actionIsInstall(intent));
