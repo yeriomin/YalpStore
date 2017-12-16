@@ -15,7 +15,7 @@
         android:title="@string/pref_show_system_apps" />
     <PreferenceCategory android:title="@string/pref_category_updates">
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="PREFERENCE_DOWNLOAD_DELTAS"
             android:summaryOff="@string/pref_download_deltas_summary_off"
             android:summaryOn="@string/pref_download_deltas_summary_on"
