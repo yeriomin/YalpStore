@@ -23,8 +23,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.github.yeriomin.playstoreapi.GooglePlayAPI.FDFE_URL;
-
 public class UpdatableAppsTask extends RemoteAppListTask {
 
     protected List<App> updatableApps = new ArrayList<>();

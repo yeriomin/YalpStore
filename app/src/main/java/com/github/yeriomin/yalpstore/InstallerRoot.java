@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.InstallTask;
