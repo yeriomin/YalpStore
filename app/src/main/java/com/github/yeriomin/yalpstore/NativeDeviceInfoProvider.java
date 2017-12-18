@@ -3,8 +3,6 @@ package com.github.yeriomin.yalpstore;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.FeatureInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.telephony.TelephonyManager;
@@ -26,29 +24,20 @@ import java.util.TimeZone;
 
 public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
-    static public final String GOOGLE_SERVICES_PACKAGE_ID = "com.google.android.gms";
-    static public final String GOOGLE_VENDING_PACKAGE_ID = "com.android.vending";
-
-    static private final int GOOGLE_SERVICES_VERSION_CODE = 10548448;
-    static private final int GOOGLE_VENDING_VERSION_CODE = 80798000;
-    static private final String GOOGLE_VENDING_VERSION_STRING = "7.9.80";
-
     private Context context;
     private String localeString;
     private String networkOperator = "";
     private String simOperator = "";
-    private int vendingVersionCode = GOOGLE_VENDING_VERSION_CODE;
-    private String vendingVersionString = GOOGLE_VENDING_VERSION_STRING;
+    private NativeGsfVersionProvider gsfVersionProvider;
 
     public void setContext(Context context) {
         this.context = context;
+        gsfVersionProvider = new NativeGsfVersionProvider(context);
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         if (null != tm) {
             networkOperator = null != tm.getNetworkOperator() ? tm.getNetworkOperator() : "";
             simOperator = null != tm.getSimOperator() ? tm.getSimOperator() : "";
         }
-        vendingVersionCode = getVendingVersionCode(context);
-        vendingVersionString = getVendingVersionString(context, GOOGLE_VENDING_VERSION_STRING);
     }
 
     public void setLocaleString(String localeString) {
@@ -60,7 +49,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     public int getPlayServicesVersion() {
-        return getGsfVersionCode(context);
+        return gsfVersionProvider.getGsfVersionCode(true);
     }
 
     public String getMccmnc() {
@@ -72,9 +61,9 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     public String getUserAgentString() {
-        return "Android-Finsky/" + vendingVersionString + " ("
+        return "Android-Finsky/" + gsfVersionProvider.getVendingVersionString(true) + " ("
             + "api=3"
-            + ",versionCode=" + vendingVersionCode
+            + ",versionCode=" + gsfVersionProvider.getVendingVersionCode(true)
             + ",sdk=" + Build.VERSION.SDK_INT
             + ",device=" + Build.DEVICE
             + ",hardware=" + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
@@ -129,7 +118,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
             .setClient("android-google")
             .setOtaInstalled(false)
             .setTimestamp(System.currentTimeMillis() / 1000)
-            .setGoogleServices(getGsfVersionCode(context))
+            .setGoogleServices(getPlayServicesVersion())
             .build()
         ;
     }
@@ -223,30 +212,5 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         libraries.addAll(Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames()));
         Collections.sort(libraries);
         return libraries;
-    }
-
-    static public int getVersionCode(Context context, String packageName, int defaultVersionCode) {
-        try {
-            int versionCode = context.getPackageManager().getPackageInfo(packageName, 0).versionCode;
-            return versionCode > defaultVersionCode ? versionCode : defaultVersionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-            return defaultVersionCode;
-        }
-    }
-
-    static public int getGsfVersionCode(Context context) {
-        return getVersionCode(context, GOOGLE_SERVICES_PACKAGE_ID, GOOGLE_SERVICES_VERSION_CODE);
-    }
-
-    static public int getVendingVersionCode(Context context) {
-        return getVersionCode(context, GOOGLE_VENDING_PACKAGE_ID, GOOGLE_VENDING_VERSION_CODE);
-    }
-
-    static public String getVendingVersionString(Context context, String defaultVersionString) {
-        try {
-            return context.getPackageManager().getPackageInfo(GOOGLE_VENDING_PACKAGE_ID, 0).versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            return defaultVersionString;
-        }
     }
 }

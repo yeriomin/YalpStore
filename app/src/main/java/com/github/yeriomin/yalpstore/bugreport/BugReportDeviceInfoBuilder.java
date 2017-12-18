@@ -10,14 +10,12 @@ import android.util.DisplayMetrics;
 
 import com.github.yeriomin.yalpstore.EglExtensionRetriever;
 import com.github.yeriomin.yalpstore.NativeDeviceInfoProvider;
+import com.github.yeriomin.yalpstore.NativeGsfVersionProvider;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TimeZone;
-
-import static com.github.yeriomin.yalpstore.NativeDeviceInfoProvider.GOOGLE_SERVICES_PACKAGE_ID;
-import static com.github.yeriomin.yalpstore.NativeDeviceInfoProvider.GOOGLE_VENDING_PACKAGE_ID;
 
 public class BugReportDeviceInfoBuilder extends BugReportPropertiesBuilder {
 
@@ -101,9 +99,10 @@ public class BugReportDeviceInfoBuilder extends BugReportPropertiesBuilder {
         values.put("SharedLibraries", TextUtils.join(",", NativeDeviceInfoProvider.getSharedLibraries(context)));
         values.put("Features", TextUtils.join(",", NativeDeviceInfoProvider.getFeatures(context)));
         values.put("Locales", TextUtils.join(",", NativeDeviceInfoProvider.getLocales(context)));
-        values.put("GSF.version", Integer.toString(NativeDeviceInfoProvider.getVersionCode(context, GOOGLE_SERVICES_PACKAGE_ID, 0)));
-        values.put("Vending.version", Integer.toString(NativeDeviceInfoProvider.getVersionCode(context, GOOGLE_VENDING_PACKAGE_ID, 0)));
-        values.put("Vending.versionString", NativeDeviceInfoProvider.getVendingVersionString(context, ""));
+        NativeGsfVersionProvider gsfVersionProvider = new NativeGsfVersionProvider(context);
+        values.put("GSF.version", Integer.toString(gsfVersionProvider.getGsfVersionCode(false)));
+        values.put("Vending.version", Integer.toString(gsfVersionProvider.getVendingVersionCode(false)));
+        values.put("Vending.versionString", gsfVersionProvider.getVendingVersionString(false));
         return values;
     }
 
