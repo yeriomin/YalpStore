@@ -57,7 +57,7 @@ public class FlagDialogBuilder {
                 }
             )
             .setAdapter(
-                new ArrayAdapter<>(activity, android.R.layout.select_dialog_singlechoice, reasonLabels),
+                new ArrayAdapter<>(activity, android.R.layout.select_dialog_item, reasonLabels),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         FlagTask task = new FlagTask();
