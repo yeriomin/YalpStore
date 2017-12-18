@@ -71,7 +71,7 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="notification_download_complete_signature_mismatch">"다운로드 완료. 하지만 APK 서명이 일치하지 않습니다."</string>
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s 다운로드 완료. 하지만 APK 서명이 설치된 앱과 일치하지 않습니다. 기존의 앱을 먼저 삭제해야 합니다."</string>
 <string name="notification_updates_available_title">"업데이트 할 앱이 있습니다."</string>
-<string name="notification_updates_available_message">"%1$s 앱의 업데이트가 가능합니다."</string>
+<string name="notification_updates_available_message">"%1$d 앱의 업데이트가 가능합니다."</string>
 <string name="pref_hide_nonfree_apps_summary_off">"유료 앱이 표시됩니다"</string>
 <string name="pref_hide_nonfree_apps_summary_on">"유료 앱을 표시하지 않습니다"</string>
 <string name="pref_hide_nonfree_apps">"유료 앱 숨기기"</string>
