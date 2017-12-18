@@ -275,9 +275,9 @@ Fazer?"</string>
 <string name="flag_other_concern_prompt">"Descreva a objeção"</string>
 <string name="flag_other_objection">"Outra objeção"</string>
 <string name="flag_page_description">"Motivo pelo qual você acha este conteúdo ou aplicativo repreensível"</string>
-<string name="flag_pharma_content">"Illegal prescription or other drug"</string>
+<string name="flag_pharma_content">"Prescrição ilegal ou outra droga"</string>
 <string name="flag_sexual_content">"Conteúdo sexual"</string>
-<string name="flag_impersonation_copycat">"Copycat or impersonation"</string>
+<string name="flag_impersonation_copycat">"Copycat ou representação"</string>
 <string name="flagging_title">"Marcar como inapropriado"</string>
 <string name="content_flagged">"Objeção enviada."</string>
 </resources>
