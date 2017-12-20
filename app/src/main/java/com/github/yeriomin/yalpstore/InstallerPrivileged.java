@@ -113,7 +113,6 @@ public class InstallerPrivileged extends InstallerBackground {
         @Override
         public void packageInstalled(String packageName, int returnCode) throws RemoteException {
             Log.i(getClass().getSimpleName(), "Installation of " + packageName + " complete with code " + returnCode);
-            sendBroadcast(packageName, true);
             Looper.prepare();
             postInstallationResult(app, returnCode > 0);
             if (errors.containsKey(returnCode)) {
