@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -74,5 +75,17 @@ abstract public class EndlessScrollActivity extends AppListActivity {
     @Override
     public void loadApps() {
         prepareTask(getTask()).execute();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean result = super.onCreateOptionsMenu(menu);
+        menu.findItem(R.id.action_filter).setVisible(true);
+        menu.findItem(R.id.filter_apps_with_ads).setVisible(true);
+        menu.findItem(R.id.filter_paid_apps).setVisible(true);
+        menu.findItem(R.id.filter_gsf_dependent_apps).setVisible(true);
+        menu.findItem(R.id.filter_rating).setVisible(true);
+        menu.findItem(R.id.filter_downloads).setVisible(true);
+        return result;
     }
 }

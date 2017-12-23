@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.EditText;
 
+import com.github.yeriomin.yalpstore.fragment.FilterMenu;
+
 import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_EMAIL;
 
 public abstract class YalpStoreActivity extends Activity {
@@ -70,6 +72,7 @@ public abstract class YalpStoreActivity extends Activity {
         if (!TextUtils.isEmpty(PreferenceActivity.getString(this, PREFERENCE_EMAIL))) {
             menu.findItem(R.id.action_logout).setVisible(true);
         }
+        new FilterMenu(this).onCreateOptionsMenu(menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -101,6 +104,15 @@ public abstract class YalpStoreActivity extends Activity {
                 break;
             case R.id.action_bug_report:
                 startActivity(new Intent(this, BugReportActivity.class));
+                break;
+            case R.id.filter_system_apps:
+            case R.id.filter_apps_with_ads:
+            case R.id.filter_paid_apps:
+            case R.id.filter_gsf_dependent_apps:
+            case R.id.filter_category:
+            case R.id.filter_rating:
+            case R.id.filter_downloads:
+                new FilterMenu(this).onOptionsItemSelected(item);
                 break;
         }
         return super.onOptionsItemSelected(item);

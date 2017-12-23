@@ -74,10 +74,7 @@ Lembre-se de que usar este aplicativo viola o Play Store ToS. Seria provavelment
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s baixado. Mas a assinatura do apk não corresponde ao app instalado. Você conseguiu este aplicativo não no Google Play originalmente? Você pode ter que desinstalá-lo primeiro."</string>
 <string name="notification_updates_available_title">"Atualizações de aplicativos disponíveis."</string>
 <string name="notification_updates_available_message">"As atualizações estão disponíveis para %1$d de seus aplicativos"</string>
-<string name="pref_hide_nonfree_apps_summary_off">"Aplicativos pagos são exibidos agora"</string>
-<string name="pref_hide_nonfree_apps_summary_on">"Aplicativos pagos não são exibidos agora"</string>
-<string name="pref_hide_nonfree_apps">"Ocultar aplicativos pagos"</string>
-<string name="pref_auto_install_summary_off">"Os aplicativos são instalados quando o usuário toca na notificação de conclusão"</string>
+    <string name="pref_auto_install_summary_off">"Os aplicativos são instalados quando o usuário toca na notificação de conclusão"</string>
 <string name="pref_auto_install_summary_on">"Os aplicativos são instalados assim que o download for concluído"</string>
 <string name="pref_auto_install">"Instalar apps imediatamente"</string>
 <string name="pref_update_list_white_or_black_black">"Aplicativos selecionados serão ignorados ao verificar atualizações"</string>
@@ -145,15 +142,11 @@ Lembre-se de que o download de versões arbitrárias de aplicativos não é comp
 <string name="notification_download_progress">"%1$s de %2$s baixado"</string>
 <string name="pref_requested_language">"Idioma das solicitações da Play Store"</string>
 <string name="pref_requested_language_default">"Seu idioma padrão"</string>
-<string name="pref_hide_apps_with_ads">"Ocultar aplicativos com anúncios"</string>
-<string name="pref_hide_apps_with_ads_summary_off">"Os aplicativos com anúncios são exibidos agora"</string>
-<string name="pref_hide_apps_with_ads_summary_on">"Os aplicativos com anúncios não são exibidos agora"</string>
-<string name="pref_device_to_pretend_to_be">"Fingir ser um dispositivo diferente"</string>
+    <string name="pref_device_to_pretend_to_be">"Fingir ser um dispositivo diferente"</string>
 <string name="pref_device_to_pretend_to_be_default">"As informações do seu dispositivo original"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Essa alteração será aplicada após o login novamente"</string>
 <string name="pref_category_updates">"Atualizações"</string>
-<string name="pref_category_search">"Filtragem de pesquisa"</string>
-<string name="pref_category_installation">"Instalação"</string>
+    <string name="pref_category_installation">"Instalação"</string>
 <string name="pref_category_spoofing">"Spoofing"</string>
 <string name="pref_category_ui">"Mostrar"</string>
 <string name="details_installing">"Instalando…"</string>
@@ -179,10 +172,7 @@ Lembre-se de que o download de versões arbitrárias de aplicativos não é comp
 <string name="list_app_system">"Aplicação do sistema"</string>
 <string name="activity_title_updates_only">"Atualizações"</string>
 <string name="activity_title_updates_and_other_apps">"As suas aplicações"</string>
-<string name="pref_show_system_apps">"Mostrar aplicativos do sistema"</string>
-<string name="pref_show_system_apps_summary_off">"Os aplicativos do sistema estão ocultos agora"</string>
-<string name="pref_show_system_apps_summary_on">"Os aplicativos do sistema são exibidos agora"</string>
-<string name="details_system_app_info">"Info do sistema
+    <string name="details_system_app_info">"Info do sistema
 "</string>
 <string name="details_run">"Executar"</string>
 <string name="dialog_title_remounting_system">"Trabalhando com / partição de sistema"</string>

@@ -4,8 +4,49 @@
     <item
         android:id="@+id/action_search"
         android:title="@string/action_search"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:icon="@drawable/ic_search" />
+    <item
+        android:id="@+id/action_filter"
+        android:title="@string/action_filter"
+        android:showAsAction="always"
+        android:visible="false"
+        android:icon="@drawable/ic_filter">
+        <menu>
+            <item
+                android:id="@+id/filter_system_apps"
+                android:title="@string/action_filter_system_apps"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_apps_with_ads"
+                android:title="@string/action_filter_apps_with_ads"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_paid_apps"
+                android:title="@string/action_filter_paid_apps"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_gsf_dependent_apps"
+                android:title="@string/action_filter_gsf_dependent_apps"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_category"
+                android:visible="false"
+                android:title="@string/action_filter_category"/>
+            <item
+                android:id="@+id/filter_rating"
+                android:visible="false"
+                android:title="@string/action_filter_rating"/>
+            <item
+                android:id="@+id/filter_downloads"
+                android:visible="false"
+                android:title="@string/action_filter_downloads"/>
+        </menu>
+    </item>
     <item
         android:id="@+id/action_installed_apps"
         android:title="@string/activity_title_updates_and_other_apps"

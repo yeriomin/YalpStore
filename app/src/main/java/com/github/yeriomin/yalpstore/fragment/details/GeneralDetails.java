@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.github.yeriomin.yalpstore.CategoryManager;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.LoadImageTask;
 
@@ -49,7 +50,7 @@ public class GeneralDetails extends Abstract {
 
     private void drawGeneralDetails(App app) {
         activity.findViewById(R.id.general_details).setVisibility(View.VISIBLE);
-        setText(R.id.installs, R.string.details_installs, app.getInstalls());
+        setText(R.id.installs, R.string.details_installs, Util.addSiPrefix(app.getInstalls()));
         if (app.isEarlyAccess()) {
             setText(R.id.rating, R.string.early_access);
         } else {

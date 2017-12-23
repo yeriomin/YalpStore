@@ -17,8 +17,6 @@ class BugReportPreferencesBuilder extends BugReportPropertiesBuilder {
     static private final String[] PREFERENCES = {
         PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL,
         PreferenceActivity.PREFERENCE_AUTO_INSTALL,
-        PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS,
-        PreferenceActivity.PREFERENCE_HIDE_APPS_WITH_ADS,
         PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
         PreferenceActivity.PREFERENCE_UI_THEME,
         PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL,
@@ -29,8 +27,6 @@ class BugReportPreferencesBuilder extends BugReportPropertiesBuilder {
         PreferenceActivity.PREFERENCE_REQUESTED_LANGUAGE,
         PreferenceActivity.PREFERENCE_DEVICE_TO_PRETEND_TO_BE,
         PreferenceActivity.PREFERENCE_INSTALLATION_METHOD,
-        PreferenceActivity.PREFERENCE_UPDATES_ONLY,
-        PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS,
         PreferenceActivity.PREFERENCE_NO_IMAGES,
     };
 

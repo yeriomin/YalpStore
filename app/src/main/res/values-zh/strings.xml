@@ -74,9 +74,6 @@
 <string name="notification_download_complete_signature_mismatch_toast">"已下载%1$s。但是apk签名与安装的应用程序不匹配。您可能必须首先卸载它。"</string>
 <string name="notification_updates_available_title">"应用有可用更新。"</string>
 <string name="notification_updates_available_message">"您的应用的%1$d可用更新。"</string>
-<string name="pref_hide_nonfree_apps_summary_off">"现在显示付费应用程序"</string>
-<string name="pref_hide_nonfree_apps_summary_on">"现在不显示付费应用程序"</string>
-<string name="pref_hide_nonfree_apps">"隐藏付费应用"</string>
 <string name="pref_auto_install_summary_off">"当用户点击完成通知时安装应用程序"</string>
 <string name="pref_auto_install_summary_on">"应用程序在下载完成后立即安装"</string>
 <string name="pref_auto_install">"立即安装应用程序"</string>
@@ -142,14 +139,10 @@
 <string name="notification_download_progress">"%1$s的%2$s已下载"</string>
 <string name="pref_requested_language">"Play商店请求语言"</string>
 <string name="pref_requested_language_default">"您的默认语言"</string>
-<string name="pref_hide_apps_with_ads">"隐藏广告应用"</string>
-<string name="pref_hide_apps_with_ads_summary_off">"现在显示有广告的应用"</string>
-<string name="pref_hide_apps_with_ads_summary_on">"现在不显示带有广告的应用"</string>
 <string name="pref_device_to_pretend_to_be">"设备伪装"</string>
 <string name="pref_device_to_pretend_to_be_default">"您的原始设备信息"</string>
 <string name="pref_device_to_pretend_to_be_toast">"重新登录后，此应用将会更改"</string>
 <string name="pref_category_updates">"升级"</string>
-<string name="pref_category_search">"搜索筛选"</string>
 <string name="pref_category_installation">"安装"</string>
 <string name="pref_category_spoofing">"伪装"</string>
 <string name="pref_category_ui">"显示"</string>
@@ -176,9 +169,6 @@
 <string name="list_app_system">"系统应用"</string>
     <string name="activity_title_updates_only">"更新"</string>
 <string name="activity_title_updates_and_other_apps">"你的应用"</string>
-    <string name="pref_show_system_apps">"展示系统应用"</string>
-<string name="pref_show_system_apps_summary_off">"系统应用已隐藏"</string>
-<string name="pref_show_system_apps_summary_on">"系统应用已展示"</string>
 <string name="details_system_app_info">"系统信息"</string>
     <string name="details_run">"运行"</string>
 <string name="dialog_title_remounting_system">"使用/系统分区"</string>

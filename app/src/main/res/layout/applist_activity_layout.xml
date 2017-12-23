@@ -3,12 +3,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:id="@+id/filter" />
-
     <RelativeLayout
         android:id="@+id/listContainer"
         android:layout_width="match_parent"

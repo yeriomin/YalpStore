@@ -21,7 +21,6 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
 
     private CategoryManager categoryManager;
     private String query;
-    private String categoryId;
 
     public SearchTask(AppListIterator iterator) {
         super(iterator);
@@ -31,14 +30,10 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
         this.query = query;
     }
 
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
     @Override
     public CloneableTask clone() {
         SearchTask task = new SearchTask(iterator);
-        task.setCategoryId(categoryId);
+        task.setFilter(filter);
         task.setQuery(query);
         task.setErrorView(errorView);
         task.setContext(context);
@@ -64,7 +59,7 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
     protected void onPostExecute(List<App> apps) {
         super.onPostExecute(apps);
         if (success()) {
-            CategorySpinnerTask task = new CategorySpinnerTask();
+            BackgroundCategoryTask task = new BackgroundCategoryTask();
             task.setContext(context);
             task.setManager(categoryManager);
             task.execute();
@@ -76,7 +71,7 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
         List<App> apps = new ArrayList<>();
         for (App app: iterator.next()) {
             app.setInstalled(installedPackageNames.contains(app.getPackageName()));
-            if (categoryManager.fits(app.getCategoryId(), categoryId)) {
+            if (categoryManager.fits(app.getCategoryId(), filter.getCategory())) {
                 apps.add(app);
             }
         }

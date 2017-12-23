@@ -1,8 +1,8 @@
 package com.github.yeriomin.yalpstore.task;
 
 import com.github.yeriomin.yalpstore.InstalledAppsActivity;
-import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class ForegroundInstalledAppsTask extends InstalledAppsTask {
         this.activity = activity;
         setContext(activity.getApplicationContext());
         setProgressIndicator(activity.findViewById(R.id.progress));
-        setIncludeSystemApps(PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS));
+        setIncludeSystemApps(new FilterMenu(activity).getFilterPreferences().isSystemApps());
     }
 
     @Override

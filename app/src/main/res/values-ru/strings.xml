@@ -51,6 +51,14 @@
     <string name="dialog_message_spoof_request">У вас есть возможность входа под другими устройствами благодаря отчётам об ошибках, отправленным пользователями. Пожалуйста, поддержите Yalp Store - отправьте параметры вашего устройства разработчику. Для этого просто нажмите OK.</string>
     <string name="action_about">О приложении</string>
     <string name="action_settings">Настройки</string>
+    <string name="action_filter">"Фильтр"</string>
+    <string name="action_filter_system_apps">"Системные приложения"</string>
+    <string name="action_filter_apps_with_ads">"С рекламой"</string>
+    <string name="action_filter_paid_apps">"Платные"</string>
+    <string name="action_filter_gsf_dependent_apps">"Зависимые от GSF"</string>
+    <string name="action_filter_category">"Категория: %1$s"</string>
+    <string name="action_filter_rating">"Рейтинг: %1$s"</string>
+    <string name="action_filter_downloads">"Загрузки: %1$s"</string>
     <string name="action_updates">Обновления</string>
     <string name="action_ignore">Не обновлять</string>
     <string name="action_unignore">Снова обновлять</string>
@@ -134,9 +142,6 @@
     <string name="notification_download_complete_new_permissions_toast">"Загрузка %1$s завершена. Новая версия приложения требует больше разрешений. Проверьте список разрешений."</string>
     <string name="notification_updates_available_title">Есть обновления приложений.</string>
     <string name="notification_updates_available_message">"Для %1$d приложений есть обновления."</string>
-    <string name="pref_hide_nonfree_apps_summary_off">Сейчас платные приложения отображаются</string>
-    <string name="pref_hide_nonfree_apps_summary_on">Сейчас платные приложения не отображаются</string>
-    <string name="pref_hide_nonfree_apps">Прятать платные</string>
     <string name="pref_auto_install_summary_off">Приложения устанавливаются когда вы нажимаете уведомление</string>
     <string name="pref_auto_install_summary_on">Приложения устанавливаются сразу после завершения скачивания</string>
     <string name="pref_auto_install">Устанавливать сразу</string>
@@ -173,11 +178,7 @@
     <string name="pref_device_to_pretend_to_be_default">Информация от вашего устройства</string>
     <string name="pref_device_to_pretend_to_be_toast">Это изменение вступит в силу только после того как вы разлогигитесь</string>
     <string name="pref_device_to_pretend_to_be_notice">"Поместите файл с параметрами устройства в %1$s и он отобразится здесь"</string>
-    <string name="pref_hide_apps_with_ads">Прятать приложения с рекламой</string>
-    <string name="pref_hide_apps_with_ads_summary_off">Сейчас приложения с рекламой отображаются</string>
-    <string name="pref_hide_apps_with_ads_summary_on">Сейчас приложения с рекламой не отображаются</string>
     <string name="pref_category_updates">Обновления</string>
-    <string name="pref_category_search">Фильтрация при поиске</string>
     <string name="pref_category_installation">Установка приложений</string>
     <string name="pref_category_spoofing">Взаимодействие с Play Store</string>
     <string name="pref_category_ui">Интерфейс</string>
@@ -186,9 +187,6 @@
     <string name="pref_installation_method_default">Обычный установочный диалог, без фоновой установки</string>
     <string name="pref_installation_method_root">С использованием root</string>
     <string name="pref_installation_method_privileged">С системными правами</string>
-    <string name="pref_show_system_apps">Системные приложения</string>
-    <string name="pref_show_system_apps_summary_off">Сейчас системные приложения спрятаны</string>
-    <string name="pref_show_system_apps_summary_on">Сейчас системные приложения показываются</string>
     <string name="pref_no_images">Загружать изображения только по Wi-fi</string>
     <string name="pref_no_images_summary_off">Сейчас изображения загружаются всегда</string>
     <string name="pref_no_images_summary_on">Сейчас изображения загружаются только по Wi-fi</string>

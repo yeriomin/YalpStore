@@ -46,4 +46,36 @@
         <item>@string/pref_installation_method_root</item>
         <item>@string/pref_installation_method_privileged</item>
     </string-array>
+    <string-array translatable="false" name="filterRatingValues">
+        <item>0</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4.5</item>
+    </string-array>
+    <string-array name="filterRatingLabels">
+        <item>@string/search_filter</item>
+        <item>>3★</item>
+        <item>>4★</item>
+        <item>>4.5★</item>
+    </string-array>
+    <string-array translatable="false" name="filterDownloadsValues">
+        <item>0</item>
+        <item>100</item>
+        <item>1000</item>
+        <item>10000</item>
+        <item>100000</item>
+        <item>1000000</item>
+        <item>10000000</item>
+        <item>100000000</item>
+    </string-array>
+    <string-array name="filterDownloadsLabels">
+        <item>@string/search_filter</item>
+        <item>>100↓</item>
+        <item>>1K↓</item>
+        <item>>10K↓</item>
+        <item>>100K↓</item>
+        <item>>1M↓</item>
+        <item>>10M↓</item>
+        <item>>100M↓</item>
+    </string-array>
 </resources>

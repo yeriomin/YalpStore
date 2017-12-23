@@ -23,6 +23,9 @@ public class CategoryManager {
         if (null == categoryId) {
             return "";
         }
+        if (categoryId.equals(TOP)) {
+            return context.getString(R.string.search_filter);
+        }
         return translator.getString(categoryId);
     }
 

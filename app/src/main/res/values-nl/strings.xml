@@ -72,10 +72,7 @@ Wees alert dat het gebruik van deze app in gaat tegen het ToS van de Play Store.
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s gedownload. Apk handtekening matcht niet met die van de geïnstalleerde versie. Waarschijnlijk moet u eerst de oude versie deïnstalleren."</string>
 <string name="notification_updates_available_title">"App updates beschikbaar."</string>
 <string name="notification_updates_available_message">"Er zijn updates voor %1$d van je apps."</string>
-<string name="pref_hide_nonfree_apps_summary_off">"Betaalde apps worden getoond"</string>
-<string name="pref_hide_nonfree_apps_summary_on">"Betaalde apps worden niet getoond"</string>
-<string name="pref_hide_nonfree_apps">"Verberg betaalde apps"</string>
-<string name="pref_auto_install_summary_off">"Apps worden geïnstalleerd wanneer de gebruiker de notificatie aantikt"</string>
+    <string name="pref_auto_install_summary_off">"Apps worden geïnstalleerd wanneer de gebruiker de notificatie aantikt"</string>
 <string name="pref_auto_install_summary_on">"Apps worden geïnstalleerd zodra de download voltooid is"</string>
 <string name="pref_auto_install">"Installeerde apps direct"</string>
 <string name="pref_update_list_white_or_black_black">"Gekozen apps worden genegeerd wanneer er op updates wordt gecontroleerd"</string>
@@ -140,18 +137,14 @@ Houd er rekening mee dat het downloaden van willekeurige versies van apps niet o
 <string name="notification_download_progress">"%1$s van de %2$s gedownload"</string>
 <string name="pref_requested_language">"Play Store tonen in:"</string>
 <string name="pref_requested_language_default">"Je standaard taal"</string>
-<string name="pref_hide_apps_with_ads">"Verberg apps met reclames"</string>
-<string name="pref_hide_apps_with_ads_summary_off">"Apps met reclame worden nu getoond"</string>
-<string name="pref_hide_apps_with_ads_summary_on">"Apps met reclame worden nu niet getoond"</string>
 
-<!-- Originele engelse tekst is slecht te vertalen, eerdere vertaling "Doe alsof dit een ander toestel is" is een vage vertaling. -->
+    <!-- Originele engelse tekst is slecht te vertalen, eerdere vertaling "Doe alsof dit een ander toestel is" is een vage vertaling. -->
 <!-- Fuzzy -->
 <string name="pref_device_to_pretend_to_be">"Gebruik apparaat info van"</string>
 <string name="pref_device_to_pretend_to_be_default">"Uw eigen apparaat"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Deze wijziging wordt toegepast wanneer u opnieuw inlogt"</string>
 <string name="pref_category_updates">"Updates"</string>
-<string name="pref_category_search">"Zoek filteren"</string>
-<string name="pref_category_installation">"Installatie"</string>
+    <string name="pref_category_installation">"Installatie"</string>
 <string name="pref_category_spoofing">"Spoofen"</string>
 <string name="pref_category_ui">"Gebruikersinterface"</string>
 <string name="details_installing">"Wordt geïnstalleerd…"</string>
@@ -177,10 +170,7 @@ Houd er rekening mee dat het downloaden van willekeurige versies van apps niet o
 <string name="list_app_system">"Systeem app"</string>
     <string name="activity_title_updates_only">"Updates"</string>
 <string name="activity_title_updates_and_other_apps">"Uw apps"</string>
-    <string name="pref_show_system_apps">"Toon systeem apps"</string>
-<string name="pref_show_system_apps_summary_off">"Systeem apps worden nu verborgen"</string>
-<string name="pref_show_system_apps_summary_on">"Systeem apps worden nu getoond"</string>
-<string name="details_system_app_info">"Systeem info"</string>
+    <string name="details_system_app_info">"Systeem info"</string>
     <string name="details_run">"Start"</string>
 <string name="dialog_title_remounting_system">"Werkt met /system partitie"</string>
 <string name="dialog_message_remounting_system">"Werkt met /system partitie. Dit kan even duren."</string>

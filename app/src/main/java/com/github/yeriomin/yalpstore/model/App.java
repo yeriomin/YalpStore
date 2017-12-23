@@ -23,7 +23,7 @@ public class App implements Comparable<App> {
     private int offerType;
     private String updated;
     private long size;
-    private String installs;
+    private int installs;
     private Rating rating = new Rating();
     private String iconUrl;
     private String videoUrl;
@@ -124,11 +124,11 @@ public class App implements Comparable<App> {
         this.size = size;
     }
 
-    public String getInstalls() {
+    public int getInstalls() {
         return installs;
     }
 
-    public void setInstalls(String installs) {
+    public void setInstalls(int installs) {
         this.installs = installs;
     }
 

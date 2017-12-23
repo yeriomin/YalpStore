@@ -11,6 +11,7 @@ import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.Filter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,10 +19,15 @@ import java.util.List;
 
 abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> {
 
+    protected Filter filter;
     protected AppListIterator iterator;
     protected List<App> apps = new ArrayList<>();
 
     abstract protected AppListIterator initIterator() throws IOException;
+
+    public void setFilter(Filter filter) {
+        this.filter = filter;
+    }
 
     public EndlessScrollTask(AppListIterator iterator) {
         this.iterator = iterator;
@@ -31,8 +37,7 @@ abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> 
     protected List<App> getResult(GooglePlayAPI api, String... arguments) throws IOException {
         if (null == iterator) {
             iterator = initIterator();
-            iterator.setHideAppsWithAds(PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_APPS_WITH_ADS));
-            iterator.setHideNonfreeApps(PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_HIDE_NONFREE_APPS));
+            iterator.setFilter(filter);
         }
         try {
             iterator.setGooglePlayApi(new PlayStoreApiAuthenticator(context).getApi());

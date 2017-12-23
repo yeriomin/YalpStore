@@ -58,12 +58,12 @@ public class AppBuilder {
         return app;
     }
 
-    static private String getInstallsNum(String installsRaw) {
+    static private int getInstallsNum(String installsRaw) {
         Matcher matcher = Pattern.compile("[\\d]+").matcher(installsRaw.replaceAll("[,\\.\\s]+", ""));
         if (matcher.find()) {
-            return Util.addSiPrefix(Util.parseInt(matcher.group(0), 0));
+            return Util.parseInt(matcher.group(0), 0);
         }
-        return null;
+        return 0;
     }
 
     static private void fillAggregateRating(App app, AggregateRating aggregateRating) {

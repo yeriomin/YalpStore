@@ -7,12 +7,6 @@
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:title="@string/pref_download_directory"/>
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="PREFERENCE_SHOW_SYSTEM_APPS"
-        android:summaryOff="@string/pref_show_system_apps_summary_off"
-        android:summaryOn="@string/pref_show_system_apps_summary_on"
-        android:title="@string/pref_show_system_apps" />
     <PreferenceCategory android:title="@string/pref_category_updates">
         <CheckBoxPreference
             android:defaultValue="false"
@@ -54,20 +48,6 @@
             android:persistent="true"
             android:key="PREFERENCE_UPDATE_LIST"
             android:title="@string/pref_update_list_black" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_category_search">
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="PREFERENCE_HIDE_NONFREE_APPS"
-            android:summaryOff="@string/pref_hide_nonfree_apps_summary_off"
-            android:summaryOn="@string/pref_hide_nonfree_apps_summary_on"
-            android:title="@string/pref_hide_nonfree_apps" />
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="PREFERENCE_HIDE_APPS_WITH_ADS"
-            android:summaryOff="@string/pref_hide_apps_with_ads_summary_off"
-            android:summaryOn="@string/pref_hide_apps_with_ads_summary_on"
-            android:title="@string/pref_hide_apps_with_ads" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_installation">
         <CheckBoxPreference

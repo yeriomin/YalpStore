@@ -6,7 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 
+import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
 import com.github.yeriomin.yalpstore.task.playstore.SearchTask;
@@ -48,6 +50,13 @@ public class SearchActivity extends EndlessScrollActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean result = super.onCreateOptionsMenu(menu);
+        menu.findItem(R.id.filter_category).setVisible(true);
+        return result;
+    }
+
     public void setCategoryId(String categoryId) {
         if (!categoryId.equals(this.categoryId)) {
             this.categoryId = categoryId;
@@ -60,7 +69,7 @@ public class SearchActivity extends EndlessScrollActivity {
     protected SearchTask getTask() {
         SearchTask task = new SearchTask(iterator);
         task.setQuery(query);
-        task.setCategoryId(categoryId);
+        task.setFilter(new FilterMenu(this).getFilterPreferences());
         return task;
     }
 

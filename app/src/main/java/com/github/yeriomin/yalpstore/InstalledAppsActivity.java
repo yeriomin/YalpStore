@@ -3,9 +3,11 @@ package com.github.yeriomin.yalpstore;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
+import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.AppListValidityCheckTask;
 import com.github.yeriomin.yalpstore.task.ForegroundInstalledAppsTask;
@@ -34,7 +36,7 @@ public class InstalledAppsActivity extends AppListActivity {
     protected void onResume() {
         super.onResume();
         AppListValidityCheckTask task = new AppListValidityCheckTask(this);
-        task.setIncludeSystemApps(PreferenceActivity.getBoolean(this, PreferenceActivity.PREFERENCE_SHOW_SYSTEM_APPS));
+        task.setIncludeSystemApps(new FilterMenu(this).getFilterPreferences().isSystemApps());
         task.execute();
     }
 
@@ -48,6 +50,14 @@ public class InstalledAppsActivity extends AppListActivity {
         UpdatableAppBadge appBadge = new UpdatableAppBadge();
         appBadge.setApp(app);
         return appBadge;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean result = super.onCreateOptionsMenu(menu);
+        menu.findItem(R.id.action_filter).setVisible(true);
+        menu.findItem(R.id.filter_system_apps).setVisible(true);
+        return result;
     }
 
     @Override

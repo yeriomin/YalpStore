@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.Util;
 
 public class SearchResultAppBadge extends AppBadge {
 
@@ -12,7 +13,7 @@ public class SearchResultAppBadge extends AppBadge {
         line2.clear();
         line3.clear();
         Context c = view.getContext();
-        line2.add(c.getString(R.string.details_installs, app.getInstalls()));
+        line2.add(c.getString(R.string.details_installs, Util.addSiPrefix(app.getInstalls())));
         line2.add(app.isEarlyAccess() ? c.getString(R.string.early_access) : c.getString(R.string.details_rating, app.getRating().getAverage()));
         line2.add(TextUtils.isEmpty(app.getUpdated()) ? c.getString(R.string.list_incompatible) : app.getUpdated());
         line3.add(app.getPrice());
