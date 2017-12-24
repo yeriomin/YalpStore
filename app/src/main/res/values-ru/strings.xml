@@ -18,6 +18,8 @@
     <string name="list_app_depends_on_gsf">зависит от GSF</string>
     <string name="list_app_independent_from_gsf">не зависит от GSF</string>
     <string name="list_app_system">Системное</string>
+    <string name="list_app_blacklisted">В чёрном списке</string>
+    <string name="list_app_whitelisted">В белом списке</string>
     <string name="dialog_title_package_id">Найдено точное соответствие</string>
     <string name="dialog_message_package_id">Найдено приложение с таким идентификатором. Перейти сразу на страницу этого приложения?</string>
     <string name="dialog_title_application_crashed">В Yalp Store произошёл сбой</string>
@@ -194,6 +196,9 @@
     <string name="pref_download_deltas_summary_off">Каждый раз скачивается весь apk</string>
     <string name="pref_download_deltas_summary_on">При обновлении скачиваются только изменения</string>
     <string name="pref_download_directory">Куда сохранять apk</string>
+    <string name="pref_auto_whitelist">Автоматический белый список</string>
+    <string name="pref_auto_whitelist_summary_on">Приложения, установленные Yalp Store, сразу попадают в белый список</string>
+    <string name="pref_auto_whitelist_summary_off">Белый список меняется только вручную</string>
     <string name="download_manager_ERROR_UNKNOWN">Неизвестная ошибка.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Неизвестная ошибка сохранения файла.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">Сетевая ошибка. Попробуйте позднее.</string>

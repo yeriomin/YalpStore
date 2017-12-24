@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DownloadState;
+import com.github.yeriomin.yalpstore.InstallationState;
 import com.github.yeriomin.yalpstore.InstallerFactory;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.R;
@@ -21,6 +22,9 @@ public class ButtonInstall extends Button {
     public void draw() {
         super.draw();
         ((android.widget.Button) button).setText(R.string.details_install);
+        if (InstallationState.isInstalling(app.getPackageName())) {
+            disable(R.string.details_installing);
+        }
     }
 
     @Override

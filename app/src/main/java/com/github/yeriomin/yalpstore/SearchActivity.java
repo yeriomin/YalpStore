@@ -18,7 +18,6 @@ import java.util.regex.Pattern;
 public class SearchActivity extends EndlessScrollActivity {
 
     private String query;
-    private String categoryId = CategoryManager.TOP;
 
     static protected boolean actionIs(Intent intent, String action) {
         return null != intent && null != intent.getAction() && intent.getAction().equals(action);
@@ -38,7 +37,6 @@ public class SearchActivity extends EndlessScrollActivity {
         Log.i(getClass().getSimpleName(), "Searching: " + newQuery);
         if (null != newQuery && !newQuery.equals(this.query)) {
             clearApps();
-            this.categoryId = CategoryManager.TOP;
             this.query = newQuery;
             setTitle(getString(R.string.activity_title_search, query));
             if (looksLikeAPackageId(query)) {
@@ -55,14 +53,6 @@ public class SearchActivity extends EndlessScrollActivity {
         boolean result = super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.filter_category).setVisible(true);
         return result;
-    }
-
-    public void setCategoryId(String categoryId) {
-        if (!categoryId.equals(this.categoryId)) {
-            this.categoryId = categoryId;
-            clearApps();
-            loadApps();
-        }
     }
 
     @Override
@@ -117,9 +107,11 @@ public class SearchActivity extends EndlessScrollActivity {
         @Override
         protected void onPostExecute(App app) {
             super.onPostExecute(app);
-            if (null != app) {
+            if (null != app && ContextUtil.isAlive(activity)) {
                 DetailsActivity.app = app;
                 showPackageIdDialog(app.getPackageName());
+            } else {
+                activity.finish();
             }
         }
 

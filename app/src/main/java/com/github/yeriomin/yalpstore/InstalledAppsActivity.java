@@ -11,6 +11,7 @@ import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.AppListValidityCheckTask;
 import com.github.yeriomin.yalpstore.task.ForegroundInstalledAppsTask;
+import com.github.yeriomin.yalpstore.view.InstalledAppBadge;
 import com.github.yeriomin.yalpstore.view.ListItem;
 import com.github.yeriomin.yalpstore.view.UpdatableAppBadge;
 
@@ -47,7 +48,7 @@ public class InstalledAppsActivity extends AppListActivity {
 
     @Override
     protected ListItem getListItem(App app) {
-        UpdatableAppBadge appBadge = new UpdatableAppBadge();
+        InstalledAppBadge appBadge = new InstalledAppBadge();
         appBadge.setApp(app);
         return appBadge;
     }

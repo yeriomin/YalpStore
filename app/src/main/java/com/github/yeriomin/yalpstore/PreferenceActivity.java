@@ -32,6 +32,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_NO_IMAGES = "PREFERENCE_NO_IMAGES";
     public static final String PREFERENCE_DOWNLOAD_DIRECTORY = "PREFERENCE_DOWNLOAD_DIRECTORY";
     public static final String PREFERENCE_DOWNLOAD_DELTAS = "PREFERENCE_DOWNLOAD_DELTAS";
+    public static final String PREFERENCE_AUTO_WHITELIST = "PREFERENCE_AUTO_WHITELIST";
 
     public static final String INSTALLATION_METHOD_DEFAULT = "default";
     public static final String INSTALLATION_METHOD_ROOT = "root";
@@ -87,6 +88,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         Blacklist blacklistFragment = new Blacklist(this);
         blacklistFragment.setBlackOrWhite((ListPreference) findPreference(PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK));
         blacklistFragment.setAppList((MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST));
+        blacklistFragment.setAutoWhitelist((CheckBoxPreference) findPreference(PREFERENCE_AUTO_WHITELIST));
         blacklistFragment.draw();
     }
 

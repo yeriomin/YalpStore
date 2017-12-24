@@ -22,6 +22,7 @@ public class InstallerDefault extends InstallerAbstract {
 
     @Override
     protected void install(App app) {
+        InstallationState.setSuccess(app.getPackageName());
         context.startActivity(
             InstallerAbstract.getOpenApkIntent(
                 context,

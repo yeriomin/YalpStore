@@ -44,6 +44,13 @@
             android:title="@string/pref_update_list_white_or_black"
             android:entries="@array/blackOrWhiteLabels"
             android:entryValues="@array/blackOrWhiteValues"/>
+        <CheckBoxPreference
+            android:enabled="false"
+            android:defaultValue="false"
+            android:key="PREFERENCE_AUTO_WHITELIST"
+            android:summaryOff="@string/pref_auto_whitelist_summary_off"
+            android:summaryOn="@string/pref_auto_whitelist_summary_on"
+            android:title="@string/pref_auto_whitelist" />
         <com.github.yeriomin.yalpstore.MultiSelectListPreference
             android:persistent="true"
             android:key="PREFERENCE_UPDATE_LIST"

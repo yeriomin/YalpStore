@@ -22,10 +22,22 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             return;
         }
         String packageName = intent.getData().getSchemeSpecificPart();
+        Log.i(getClass().getSimpleName(), "Finished installation of " + packageName);
+        if (TextUtils.isEmpty(packageName)) {
+            return;
+        }
+        BlackWhiteListManager manager = new BlackWhiteListManager(context);
+        if (actionIsInstall(intent)) {
+            if (InstallationState.isInstalled(packageName) && needToAutoWhitelist(context) && !manager.isBlack()) {
+                Log.i(getClass().getSimpleName(), "Whitelisting " + packageName);
+                manager.add(packageName);
+            }
+        } else {
+            manager.remove(packageName);
+        }
         if (null != DetailsActivity.app && packageName.equals(DetailsActivity.app.getPackageName())) {
             updateDetails(actionIsInstall(intent));
         }
-        Log.i(getClass().getSimpleName(), "Finished installation of " + packageName);
         ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall(intent));
         if (needToRemoveApk(context) && actionIsInstall(intent)) {
             App app = getApp(context, packageName);
@@ -68,6 +80,10 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static private boolean needToRemoveApk(Context context) {
         return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DELETE_APK_AFTER_INSTALL);
+    }
+
+    static private boolean needToAutoWhitelist(Context context) {
+        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_WHITELIST);
     }
 
     static private App getApp(Context context, String packageName) {

@@ -57,6 +57,13 @@ abstract public class AppListActivity extends YalpStoreActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         DetailsActivity.app = getAppByListPosition(info.position);
         switch (item.getItemId()) {
+            case R.id.action_ignore:
+            case R.id.action_whitelist:
+            case R.id.action_unignore:
+            case R.id.action_unwhitelist:
+                new DownloadOptions(this, DetailsActivity.app).onContextItemSelected(item);
+                ((ListItem) getListView().getItemAtPosition(info.position)).draw();
+                break;
             case R.id.action_download:
                 new ButtonDownload(this, DetailsActivity.app).checkAndDownload();
                 break;

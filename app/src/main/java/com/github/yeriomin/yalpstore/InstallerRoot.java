@@ -13,6 +13,7 @@ public class InstallerRoot extends InstallerBackground {
 
     @Override
     protected void install(App app) {
+        InstallationState.setInstalling(app.getPackageName());
         getTask(app).execute(Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).toString());
     }
 
@@ -22,6 +23,11 @@ public class InstallerRoot extends InstallerBackground {
             @Override
             protected void onPostExecute(Boolean success) {
                 super.onPostExecute(success);
+                if (success) {
+                    InstallationState.setSuccess(app.getPackageName());
+                } else {
+                    InstallationState.setFailure(app.getPackageName());
+                }
                 sendBroadcast(app.getPackageName(), true);
                 postInstallationResult(app, success);
             }

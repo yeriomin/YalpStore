@@ -84,6 +84,7 @@ public class InstallerPrivileged extends InstallerBackground {
 
     @Override
     protected void install(App app) {
+        InstallationState.setInstalling(app.getPackageName());
         File apkFile = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         if (!apkFile.exists()) {
             Log.e(getClass().getSimpleName(), "Installation requested for apk " + apkFile.getAbsolutePath() + " which does not exist");
@@ -113,9 +114,15 @@ public class InstallerPrivileged extends InstallerBackground {
         @Override
         public void packageInstalled(String packageName, int returnCode) throws RemoteException {
             Log.i(getClass().getSimpleName(), "Installation of " + packageName + " complete with code " + returnCode);
-            sendBroadcast(packageName, returnCode > 0);
+            boolean success = returnCode > 0;
+            if (success) {
+                InstallationState.setSuccess(packageName);
+            } else {
+                InstallationState.setFailure(packageName);
+            }
+            sendBroadcast(packageName, success);
             Looper.prepare();
-            postInstallationResult(app, returnCode > 0);
+            postInstallationResult(app, success);
             if (errors.containsKey(returnCode)) {
                 Log.e(getClass().getSimpleName(), errors.get(returnCode));
             }

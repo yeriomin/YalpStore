@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore.fragment.preference;
 
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 
@@ -17,6 +18,7 @@ public class Blacklist extends Abstract {
 
     private ListPreference blackOrWhite;
     private MultiSelectListPreference appList;
+    private CheckBoxPreference autoWhitelist;
 
     public Blacklist(PreferenceActivity activity) {
         super(activity);
@@ -30,13 +32,17 @@ public class Blacklist extends Abstract {
         this.appList = appList;
     }
 
+    public void setAutoWhitelist(CheckBoxPreference autoWhitelist) {
+        this.autoWhitelist = autoWhitelist;
+    }
+
     @Override
     public void draw() {
         AppListTask task = new AppListTask(appList);
         task.setIncludeSystemApps(true);
         task.execute();
 
-        Preference.OnPreferenceChangeListener listener = new BlackListOnPreferenceChangeListener(appList);
+        Preference.OnPreferenceChangeListener listener = new BlackListOnPreferenceChangeListener(appList, autoWhitelist);
         blackOrWhite.setOnPreferenceChangeListener(listener);
         listener.onPreferenceChange(blackOrWhite, blackOrWhite.getValue());
     }
@@ -44,9 +50,11 @@ public class Blacklist extends Abstract {
     static class BlackListOnPreferenceChangeListener implements Preference.OnPreferenceChangeListener {
 
         private MultiSelectListPreference appList;
+        private CheckBoxPreference autoWhitelist;
 
-        public BlackListOnPreferenceChangeListener(MultiSelectListPreference appList) {
+        public BlackListOnPreferenceChangeListener(MultiSelectListPreference appList, CheckBoxPreference autoWhitelist) {
             this.appList = appList;
+            this.autoWhitelist = autoWhitelist;
         }
 
         @Override
@@ -64,6 +72,7 @@ public class Blacklist extends Abstract {
                     ? R.string.pref_update_list_white_or_black_black
                     : R.string.pref_update_list_white_or_black_white
             ));
+            autoWhitelist.setEnabled(!isBlackList);
             return true;
         }
     }
