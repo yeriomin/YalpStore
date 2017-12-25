@@ -3,12 +3,14 @@ package com.github.yeriomin.yalpstore;
 import android.app.Dialog;
 import android.content.Context;
 import android.preference.PreferenceManager;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.github.yeriomin.playstoreapi.AuthException;
 
@@ -42,16 +44,14 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         final AutoCompleteTextView editEmail = getEmailInput(ad);
         final EditText editPassword = (EditText) ad.findViewById(R.id.password);
 
-        Button buttonExit = (Button) ad.findViewById(R.id.button_exit);
-        buttonExit.setOnClickListener(new View.OnClickListener() {
+        ad.findViewById(R.id.button_exit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 android.os.Process.killProcess(android.os.Process.myPid());
             }
         });
 
-        Button buttonOk = (Button) ad.findViewById(R.id.button_ok);
-        buttonOk.setOnClickListener(new Button.OnClickListener() {
+        ad.findViewById(R.id.button_ok).setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context c = view.getContext();
@@ -63,6 +63,16 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
                 }
                 ad.dismiss();
                 getUserCredentialsTask().execute(email, password);
+            }
+        });
+
+        ad.findViewById(R.id.toggle_password_visibility).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean passwordVisible = !TextUtils.isEmpty((String) v.getTag());
+                v.setTag(passwordVisible ? null : "tag");
+                ((ImageView) v).setImageResource(passwordVisible ? R.drawable.ic_visibility_on : R.drawable.ic_visibility_off);
+                editPassword.setInputType(passwordVisible ? InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
             }
         });
 
