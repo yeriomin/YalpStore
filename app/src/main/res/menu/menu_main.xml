@@ -1,15 +1,14 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".UpdatableAppsActivity">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_search"
         android:title="@string/action_search"
-        android:showAsAction="always"
+        android:actionViewClass="android.widget.SearchView"
+        android:showAsAction="ifRoom"
         android:icon="@drawable/ic_search" />
     <item
         android:id="@+id/action_filter"
         android:title="@string/action_filter"
-        android:showAsAction="always"
+        android:showAsAction="ifRoom"
         android:visible="false"
         android:icon="@drawable/ic_filter">
         <menu>

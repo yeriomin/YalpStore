@@ -1,10 +1,12 @@
 package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.SearchView;
 
 import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 
@@ -71,6 +74,9 @@ public abstract class YalpStoreActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         if (!TextUtils.isEmpty(PreferenceActivity.getString(this, PREFERENCE_EMAIL))) {
             menu.findItem(R.id.action_logout).setVisible(true);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            addQueryTextListener(menu.findItem(R.id.action_search));
         }
         new FilterMenu(this).onCreateOptionsMenu(menu);
         return super.onCreateOptionsMenu(menu);
@@ -153,6 +159,31 @@ public abstract class YalpStoreActivity extends Activity {
                 PERMISSIONS_REQUEST_CODE
             );
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    private void addQueryTextListener(MenuItem searchItem) {
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        if (null != searchManager) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        }
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent i = new Intent(YalpStoreActivity.this, SearchActivity.class);
+                i.setAction(Intent.ACTION_SEARCH);
+                i.putExtra(SearchManager.QUERY, query);
+                startActivity(i);
+                return false;
+            }
+        });
     }
 
     private AlertDialog showLogOutDialog() {
