@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SearchActivity;
 import com.github.yeriomin.yalpstore.SystemRemountDialogBuilder;
@@ -109,8 +110,8 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
     @Override
     protected void onPostExecute(Boolean result) {
         super.onPostExecute(result);
-        if (!result) {
-            Toast.makeText(context.getApplicationContext(), R.string.pref_no_root, Toast.LENGTH_LONG).show();
+        if (!result || !ContextUtil.isAlive(context)) {
+            ContextUtil.toast(context.getApplicationContext(), R.string.pref_no_root);
         } else if (!availableBusybox && !availableCoreutils) {
             showBusyboxDialog();
         } else {
