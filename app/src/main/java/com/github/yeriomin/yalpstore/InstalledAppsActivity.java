@@ -13,7 +13,6 @@ import com.github.yeriomin.yalpstore.task.AppListValidityCheckTask;
 import com.github.yeriomin.yalpstore.task.ForegroundInstalledAppsTask;
 import com.github.yeriomin.yalpstore.view.InstalledAppBadge;
 import com.github.yeriomin.yalpstore.view.ListItem;
-import com.github.yeriomin.yalpstore.view.UpdatableAppBadge;
 
 public class InstalledAppsActivity extends AppListActivity {
 

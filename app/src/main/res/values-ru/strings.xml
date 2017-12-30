@@ -255,4 +255,5 @@
     <string name="flag_impersonation_copycat">Плагиат и присвоение чужого имени</string>
     <string name="flagging_title">Пожаловаться</string>
     <string name="content_flagged">Возражение отправлено.</string>
+    <string name="apps_by">"Приложения от %1$s"</string>
 </resources>

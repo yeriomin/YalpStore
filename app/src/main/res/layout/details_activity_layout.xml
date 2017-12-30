@@ -599,6 +599,18 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/apps_by_same_developer"
+                    android:focusable="true"
+                    android:drawableLeft="@drawable/ic_chevron_right"
+                    android:drawableStart="@drawable/ic_chevron_right"
+                    android:textSize="20sp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="6dip"
+                    android:visibility="gone" />
+
+                <TextView
                     android:id="@+id/to_play_store"
                     android:focusable="true"
                     android:drawableLeft="@drawable/ic_chevron_right"

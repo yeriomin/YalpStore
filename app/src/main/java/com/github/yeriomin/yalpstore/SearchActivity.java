@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 
 public class SearchActivity extends EndlessScrollActivity {
 
+    public static final String PUB_PREFIX = "pub:";
+
     private String query;
 
     static protected boolean actionIs(Intent intent, String action) {
@@ -38,7 +40,7 @@ public class SearchActivity extends EndlessScrollActivity {
         if (null != newQuery && !newQuery.equals(this.query)) {
             clearApps();
             this.query = newQuery;
-            setTitle(getString(R.string.activity_title_search, query));
+            setTitle(getTitleString());
             if (looksLikeAPackageId(query)) {
                 Log.i(getClass().getSimpleName(), query + " looks like a package id");
                 checkPackageId(query);
@@ -61,6 +63,13 @@ public class SearchActivity extends EndlessScrollActivity {
         task.setQuery(query);
         task.setFilter(new FilterMenu(this).getFilterPreferences());
         return task;
+    }
+
+    private String getTitleString() {
+        return query.startsWith(PUB_PREFIX)
+            ? getString(R.string.apps_by, query.substring(PUB_PREFIX.length()))
+            : getString(R.string.activity_title_search, query)
+        ;
     }
 
     private String getQuery(Intent intent) {

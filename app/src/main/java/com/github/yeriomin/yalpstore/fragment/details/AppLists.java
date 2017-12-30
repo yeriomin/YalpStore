@@ -1,5 +1,8 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
+import android.app.SearchManager;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -9,6 +12,7 @@ import android.widget.TextView;
 import com.github.yeriomin.yalpstore.ClusterActivity;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.SearchActivity;
 import com.github.yeriomin.yalpstore.model.App;
 
 public class AppLists extends Abstract {
@@ -20,9 +24,16 @@ public class AppLists extends Abstract {
     @Override
     public void draw() {
         LinearLayout relatedLinksLayout = (LinearLayout) activity.findViewById(R.id.related_links);
+        boolean developerLinkFound = false;
         for (final String label: app.getRelatedLinks().keySet()) {
             relatedLinksLayout.setVisibility(View.VISIBLE);
             relatedLinksLayout.addView(buildLinkView(label, app.getRelatedLinks().get(label)));
+            if (label.contains(app.getDeveloperName())) {
+                developerLinkFound = true;
+            }
+        }
+        if (!developerLinkFound && !TextUtils.isEmpty(app.getDeveloperName())) {
+            addAppsByThisDeveloper();
         }
     }
 
@@ -40,5 +51,21 @@ public class AppLists extends Abstract {
             }
         });
         return linkView;
+    }
+
+    private void addAppsByThisDeveloper() {
+        TextView textView = activity.findViewById(R.id.apps_by_same_developer);
+        textView.setText(activity.getString(R.string.apps_by, app.getDeveloperName()));
+        textView.setVisibility(View.VISIBLE);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, SearchActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setAction(Intent.ACTION_SEARCH);
+                intent.putExtra(SearchManager.QUERY, SearchActivity.PUB_PREFIX + app.getDeveloperName());
+                activity.startActivity(intent);
+            }
+        });
     }
 }

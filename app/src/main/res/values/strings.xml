@@ -254,4 +254,5 @@
     <string name="flag_impersonation_copycat">Copycat or impersonation</string>
     <string name="flagging_title">Flag as inappropriate</string>
     <string name="content_flagged">Objection submitted.</string>
+    <string name="apps_by">Apps by %1$s</string>
 </resources>
