@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
+import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
 
@@ -32,7 +33,9 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
             exception = e;
             responseBody = new byte[0];
         } finally {
-            write(getFileName(url, false, true), getResponseHeaders(connection.getHeaderFields()).getBytes());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+                write(getFileName(url, false, true), getResponseHeaders(connection.getHeaderFields()).getBytes());
+            }
             if (null != exception) {
                 throw exception;
             }
