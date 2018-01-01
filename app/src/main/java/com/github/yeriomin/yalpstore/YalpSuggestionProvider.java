@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
@@ -77,8 +78,12 @@ public class YalpSuggestionProvider extends ContentProvider {
     }
 
     private void fill(MatrixCursor cursor, Uri uri) throws IOException {
+        String query = uri.getLastPathSegment();
+        if (TextUtils.isEmpty(query) || query.equals("search_suggest_query")) {
+            return;
+        }
         int i = 0;
-        for (SearchSuggestEntry entry: new PlayStoreApiAuthenticator(getContext()).getApi().searchSuggest(uri.getLastPathSegment()).getEntryList()) {
+        for (SearchSuggestEntry entry: new PlayStoreApiAuthenticator(getContext()).getApi().searchSuggest(query).getEntryList()) {
             cursor.addRow(constructRow(entry, i++));
         }
     }
