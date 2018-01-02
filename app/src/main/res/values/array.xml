@@ -52,7 +52,7 @@
         <item>4</item>
         <item>4.5</item>
     </string-array>
-    <string-array name="filterRatingLabels">
+    <string-array translatable="false" name="filterRatingLabels">
         <item>@string/search_filter</item>
         <item>>3★</item>
         <item>>4★</item>
@@ -68,7 +68,7 @@
         <item>10000000</item>
         <item>100000000</item>
     </string-array>
-    <string-array name="filterDownloadsLabels">
+    <string-array translatable="false" name="filterDownloadsLabels">
         <item>@string/search_filter</item>
         <item>>100↓</item>
         <item>>1K↓</item>
