@@ -73,7 +73,7 @@ Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più s
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s scaricata. La firma dell\'apk non corrisponde a quella dell\'app installata. E\' stata originariamente scaricata dal Play Store? E\' necessario rimuoverla."</string>
 <string name="notification_updates_available_title">"Aggiornamenti disponibili."</string>
 <string name="notification_updates_available_message">"Aggiornamenti disponibili per %1$d delle tue app."</string>
-    <string name="pref_auto_install_summary_off">"Le app vengono installate quando l'utente tocca la notifica di completamento."</string>
+<string name="pref_auto_install_summary_off">"Le app vengono installate quando l'utente tocca la notifica di completamento."</string>
 <string name="pref_auto_install_summary_on">"Le app vengono installate appena finisce il download"</string>
 <string name="pref_auto_install">"Installa app immediatamente"</string>
 <string name="pref_update_list_white_or_black_black">"Il controllo aggiornamenti ignora le app selezionate"</string>
@@ -138,11 +138,11 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="notification_download_progress">"%1$s di %2$s scaricati"</string>
 <string name="pref_requested_language">"Lingua richiesta al Play Store"</string>
 <string name="pref_requested_language_default">"Lingua predefinita"</string>
-    <string name="pref_device_to_pretend_to_be">"Simula dispositivo differente"</string>
+<string name="pref_device_to_pretend_to_be">"Simula dispositivo differente"</string>
 <string name="pref_device_to_pretend_to_be_default">"Info reali del dispositivo"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Eseguire di nuovo l'accesso per applicare le modifiche"</string>
 <string name="pref_category_updates">"Aggiornamenti"</string>
-    <string name="pref_category_installation">"Installazione"</string>
+<string name="pref_category_installation">"Installazione"</string>
 <string name="pref_category_spoofing">"Mascheramento"</string>
 <string name="pref_category_ui">"Mostra"</string>
 <string name="details_installing">"Installazione…"</string>
@@ -170,7 +170,7 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="list_app_system">"App di sistema"</string>
 <string name="activity_title_updates_only">"Aggiornamenti"</string>
 <string name="activity_title_updates_and_other_apps">"Le tue app"</string>
-    <string name="details_system_app_info">"Info di sistema"</string>
+<string name="details_system_app_info">"Info di sistema"</string>
 <string name="details_run">"Avvia"</string>
 <string name="dialog_title_remounting_system">"Esecuzione su partizione /system"</string>
 <string name="dialog_message_remounting_system">"Esecuzione su partizione /system. Può volerci del tempo."</string>
@@ -267,4 +267,18 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="flag_impersonation_copycat">"imitazione o impersonazione"</string>
 <string name="flagging_title">"Segnala come inappropriato"</string>
 <string name="content_flagged">"Obiezione inviata."</string>
+<string name="list_app_blacklisted">"Blacklisted"</string>
+<string name="list_app_whitelisted">"Whitelisted"</string>
+<string name="action_filter">"Filter"</string>
+<string name="action_filter_system_apps">"System apps"</string>
+<string name="action_filter_apps_with_ads">"Apps with ads"</string>
+<string name="action_filter_paid_apps">"Paid apps"</string>
+<string name="action_filter_gsf_dependent_apps">"GSF dependent apps"</string>
+<string name="action_filter_category">"Category: %1$s"</string>
+<string name="action_filter_rating">"Rating: %1$s"</string>
+<string name="action_filter_downloads">"Downloads: %1$s"</string>
+<string name="pref_auto_whitelist">"Auto whitelist"</string>
+<string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
+<string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
+<string name="apps_by">"Applicazioni di %1$s"</string>
 </resources>
