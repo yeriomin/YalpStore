@@ -74,7 +74,7 @@ Ten en cuenta que Yalp viola los términos de servicio del Play Store. Es probab
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s descargado, pero la firma del APK no coincide con la de la versión instalada. ¿Conseguiste la aplicación desde fuera del Play Store? Puede que tengas que desinstalarla primero."</string>
 <string name="notification_updates_available_title">"Hay actualizaciones disponibles."</string>
 <string name="notification_updates_available_message">"Hay actualizaciones disponibles para %1$d de tus aplicaciones."</string>
-    <string name="pref_auto_install_summary_off">"Las aplicaciones se instalarán cuando se toque la notificación"</string>
+<string name="pref_auto_install_summary_off">"Las aplicaciones se instalarán cuando se toque la notificación"</string>
 <string name="pref_auto_install_summary_on">"Las aplicaciones se instalarán en cuanto termine la descarga"</string>
 <string name="pref_auto_install">"Instalar aplicaciones inmediatamente"</string>
 <string name="pref_update_list_white_or_black_black">"Las aplicaciones seleccionadas se ignorarán cuando se busquen actualizaciones"</string>
@@ -139,11 +139,11 @@ Ten en cuenta que Play Store no está a favor de descargar versiones arbitrarias
 <string name="notification_download_progress">"%1$s de %2$s descargado"</string>
 <string name="pref_requested_language">"Lenguaje que comunicar a Play Store"</string>
 <string name="pref_requested_language_default">"Tu lenguaje por defecto"</string>
-    <string name="pref_device_to_pretend_to_be">"Simular un dispositivo distinto"</string>
+<string name="pref_device_to_pretend_to_be">"Simular un dispositivo distinto"</string>
 <string name="pref_device_to_pretend_to_be_default">"Información original de tu dispositivo"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Este cambio tendrá efecto después de iniciar sesión de nuevo"</string>
 <string name="pref_category_updates">"Actualizaciones"</string>
-    <string name="pref_category_installation">"Instalación"</string>
+<string name="pref_category_installation">"Instalación"</string>
 <string name="pref_category_spoofing">"Simulación"</string>
 <string name="pref_category_ui">"Mostrar"</string>
 <string name="details_installing">"Instalando…"</string>
@@ -169,7 +169,7 @@ Ten en cuenta que Play Store no está a favor de descargar versiones arbitrarias
 <string name="list_app_system">"Aplicación de sistema"</string>
 <string name="activity_title_updates_only">"Actualizaciones"</string>
 <string name="activity_title_updates_and_other_apps">"Tus aplicaciones"</string>
-    <string name="details_system_app_info">"Información de sistema"</string>
+<string name="details_system_app_info">"Información de sistema"</string>
 <string name="details_run">"Ejecutar"</string>
 <string name="dialog_title_remounting_system">"Se está modificando la partición de sistema"</string>
 <string name="dialog_message_remounting_system">"Se está modificando la partición de sistema. Puede tomar algún tiempo."</string>
@@ -268,4 +268,18 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="flag_impersonation_copycat">"Copia o impostor"</string>
 <string name="flagging_title">"Marcar como inadecuado"</string>
 <string name="content_flagged">"Se ha enviado una objeción."</string>
+<string name="list_app_blacklisted">"Blacklisted"</string>
+<string name="list_app_whitelisted">"Whitelisted"</string>
+<string name="action_filter">"Filter"</string>
+<string name="action_filter_system_apps">"System apps"</string>
+<string name="action_filter_apps_with_ads">"Apps with ads"</string>
+<string name="action_filter_paid_apps">"Paid apps"</string>
+<string name="action_filter_gsf_dependent_apps">"GSF dependent apps"</string>
+<string name="action_filter_category">"Category: %1$s"</string>
+<string name="action_filter_rating">"Rating: %1$s"</string>
+<string name="action_filter_downloads">"Downloads: %1$s"</string>
+<string name="pref_auto_whitelist">"Auto whitelist"</string>
+<string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
+<string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
+<string name="apps_by">"Aplicaciones de %1$s"</string>
 </resources>
