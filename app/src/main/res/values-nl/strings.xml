@@ -72,7 +72,7 @@ Wees alert dat het gebruik van deze app in gaat tegen het ToS van de Play Store.
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s gedownload. Apk handtekening matcht niet met die van de geïnstalleerde versie. Waarschijnlijk moet u eerst de oude versie deïnstalleren."</string>
 <string name="notification_updates_available_title">"App updates beschikbaar."</string>
 <string name="notification_updates_available_message">"Er zijn updates voor %1$d van je apps."</string>
-    <string name="pref_auto_install_summary_off">"Apps worden geïnstalleerd wanneer de gebruiker de notificatie aantikt"</string>
+<string name="pref_auto_install_summary_off">"Apps worden geïnstalleerd wanneer de gebruiker de notificatie aantikt"</string>
 <string name="pref_auto_install_summary_on">"Apps worden geïnstalleerd zodra de download voltooid is"</string>
 <string name="pref_auto_install">"Installeerde apps direct"</string>
 <string name="pref_update_list_white_or_black_black">"Gekozen apps worden genegeerd wanneer er op updates wordt gecontroleerd"</string>
@@ -132,19 +132,19 @@ Wees alert dat het gebruik van deze app in gaat tegen het ToS van de Play Store.
 
 Houd er rekening mee dat het downloaden van willekeurige versies van apps niet ondersteund wordt door Google Play Store. Uw succes hangt af van een gelukkige gok van de versiecode. Zelfs als je het goed raad en je krijgt de download dan krijg je misschien een incompatibele apk. Hoogstwaarschijnlijk verspil je je tijd!"</string>
 <string name="manual_download_hint_version_code">"Versie code hier"</string>
-    <string name="details_uninstall">"deïnstalleer"</string>
+<string name="details_uninstall">"deïnstalleer"</string>
 <string name="notification_download_starting">"Download wordt gestart"</string>
 <string name="notification_download_progress">"%1$s van de %2$s gedownload"</string>
 <string name="pref_requested_language">"Play Store tonen in:"</string>
 <string name="pref_requested_language_default">"Je standaard taal"</string>
 
-    <!-- Originele engelse tekst is slecht te vertalen, eerdere vertaling "Doe alsof dit een ander toestel is" is een vage vertaling. -->
+<!-- Originele engelse tekst is slecht te vertalen, eerdere vertaling "Doe alsof dit een ander toestel is" is een vage vertaling. -->
 <!-- Fuzzy -->
 <string name="pref_device_to_pretend_to_be">"Gebruik apparaat info van"</string>
 <string name="pref_device_to_pretend_to_be_default">"Uw eigen apparaat"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Deze wijziging wordt toegepast wanneer u opnieuw inlogt"</string>
 <string name="pref_category_updates">"Updates"</string>
-    <string name="pref_category_installation">"Installatie"</string>
+<string name="pref_category_installation">"Installatie"</string>
 <string name="pref_category_spoofing">"Spoofen"</string>
 <string name="pref_category_ui">"Gebruikersinterface"</string>
 <string name="details_installing">"Wordt geïnstalleerd…"</string>
@@ -168,10 +168,10 @@ Houd er rekening mee dat het downloaden van willekeurige versies van apps niet o
 <string name="action_make_system">"Converteer naar systeem app"</string>
 <string name="action_make_normal">"Concerteer naar normale app"</string>
 <string name="list_app_system">"Systeem app"</string>
-    <string name="activity_title_updates_only">"Updates"</string>
+<string name="activity_title_updates_only">"Updates"</string>
 <string name="activity_title_updates_and_other_apps">"Uw apps"</string>
-    <string name="details_system_app_info">"Systeem info"</string>
-    <string name="details_run">"Start"</string>
+<string name="details_system_app_info">"Systeem info"</string>
+<string name="details_run">"Start"</string>
 <string name="dialog_title_remounting_system">"Werkt met /system partitie"</string>
 <string name="dialog_message_remounting_system">"Werkt met /system partitie. Dit kan even duren."</string>
 <string name="dialog_title_checking_busybox">"Controleren of busybox aanwezig is"</string>
@@ -242,30 +242,45 @@ Nu doen?"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"De volledige apk wordt bij iedere update gedownload"</string>
 <string name="pref_download_deltas_summary_on">"Alleen de veranderingen aan de app worden gedownload"</string>
-<string name="testing_program_review_dialog_content_hint">Geef feedback over de app</string>
-<string name="delete">Verwijderen</string>
-<string name="done">Gereed</string>
-<string name="submit">Indienen</string>
-<string name="availability_restriction_carrier">Dit item is niet beschikbaar bij jouw provider.</string>
-<string name="availability_restriction_country">Dit item is niet beschikbaar in je land.</string>
-<string name="availability_restriction_country_or_carrier">Dit item is niet beschikbaar in jouw land of bij jouw provider.</string>
-<string name="availability_restriction_for_managed_account">Je beheerder heeft je geen toegang gegeven tot dit item.</string>
-<string name="availability_restriction_generic">Dit item is niet beschikbaar.</string>
-<string name="availability_restriction_hardware">Je apparaat is niet compatibel met dit item.</string>
-<string name="availability_restriction_hardware_app">Je apparaat is niet compatibel met deze versie.</string>
-<string name="availability_restriction_hardware_app_ram_generic">Voor deze app is meer RAM vereist dan beschikbaar is op je apparaat.</string>
-<string name="availability_restriction_missing_permission">Je beheerder heeft geen rechten geaccepteerd voor dit item.</string>
-<string name="availability_restriction_not_in_group">Je behoort niet tot de doelgroep voor dit item.</string>
-<string name="flag_graphic_violence">Expliciet geweld</string>
-<string name="flag_harmful_prompt">Beschrijf de schade aan je apparaat of gegevens:</string>
-<string name="flag_harmful_to_device">Schadelijk voor apparaat/data</string>
-<string name="flag_hateful_content">Haatdragende of beledigende content</string>
-<string name="flag_improper_content_rating">Onjuiste inhoudscategorie</string>
-<string name="flag_other_concern_prompt">Beschrijving van bezwaar</string>
-<string name="flag_other_objection">Ander bezwaar</string>
-<string name="flag_page_description">De reden waarom je deze content of app aanstootgevend vindt:</string>
-<string name="flag_pharma_content">Illegaal geneesmiddel op recept of andere drugs</string>
-<string name="flag_sexual_content">Pornografische content</string>
-<string name="flagging_title">Markeren als ongepast</string>
-<string name="content_flagged">Bezwaar is verzonden.</string>
+<string name="testing_program_review_dialog_content_hint">"Geef feedback over de app"</string>
+<string name="delete">"Verwijderen"</string>
+<string name="submit">"Indienen"</string>
+<string name="done">"Gereed"</string>
+<string name="availability_restriction_carrier">"Dit item is niet beschikbaar bij jouw provider."</string>
+<string name="availability_restriction_country">"Dit item is niet beschikbaar in je land."</string>
+<string name="availability_restriction_country_or_carrier">"Dit item is niet beschikbaar in jouw land of bij jouw provider."</string>
+<string name="availability_restriction_for_managed_account">"Je beheerder heeft je geen toegang gegeven tot dit item."</string>
+<string name="availability_restriction_generic">"Dit item is niet beschikbaar."</string>
+<string name="availability_restriction_hardware">"Je apparaat is niet compatibel met dit item."</string>
+<string name="availability_restriction_hardware_app">"Je apparaat is niet compatibel met deze versie."</string>
+<string name="availability_restriction_hardware_app_ram_generic">"Voor deze app is meer RAM vereist dan beschikbaar is op je apparaat."</string>
+<string name="availability_restriction_missing_permission">"Je beheerder heeft geen rechten geaccepteerd voor dit item."</string>
+<string name="availability_restriction_not_in_group">"Je behoort niet tot de doelgroep voor dit item."</string>
+<string name="flag_graphic_violence">"Expliciet geweld"</string>
+<string name="flag_harmful_prompt">"Beschrijf de schade aan je apparaat of gegevens:"</string>
+<string name="flag_harmful_to_device">"Schadelijk voor apparaat/data"</string>
+<string name="flag_hateful_content">"Haatdragende of beledigende content"</string>
+<string name="flag_improper_content_rating">"Onjuiste inhoudscategorie"</string>
+<string name="flag_other_concern_prompt">"Beschrijving van bezwaar"</string>
+<string name="flag_other_objection">"Ander bezwaar"</string>
+<string name="flag_page_description">"De reden waarom je deze content of app aanstootgevend vindt:"</string>
+<string name="flag_pharma_content">"Illegaal geneesmiddel op recept of andere drugs"</string>
+<string name="flag_sexual_content">"Pornografische content"</string>
+<string name="flag_impersonation_copycat">"Copycat or impersonation"</string>
+<string name="flagging_title">"Markeren als ongepast"</string>
+<string name="content_flagged">"Bezwaar is verzonden."</string>
+<string name="list_app_blacklisted">"Blacklisted"</string>
+<string name="list_app_whitelisted">"Whitelisted"</string>
+<string name="action_filter">"Filter"</string>
+<string name="action_filter_system_apps">"System apps"</string>
+<string name="action_filter_apps_with_ads">"Apps with ads"</string>
+<string name="action_filter_paid_apps">"Paid apps"</string>
+<string name="action_filter_gsf_dependent_apps">"GSF dependent apps"</string>
+<string name="action_filter_category">"Category: %1$s"</string>
+<string name="action_filter_rating">"Rating: %1$s"</string>
+<string name="action_filter_downloads">"Downloads: %1$s"</string>
+<string name="pref_auto_whitelist">"Auto whitelist"</string>
+<string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
+<string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
+<string name="apps_by">"Apps van %1$s"</string>
 </resources>
