@@ -72,7 +72,7 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s をダウンロードしましたが、apk の署名がインストール済のアプリと一致しません。 このアプリはGoogle Play から入手したものではありませんか? 先にアンインストールする必要があります。"</string>
 <string name="notification_updates_available_title">"アプリの更新が利用できます。"</string>
 <string name="notification_updates_available_message">"%1$d のアプリの更新が利用できます。"</string>
-    <string name="pref_auto_install_summary_off">"ユーザーが完了通知をタッチすると、アプリがインストールされます"</string>
+<string name="pref_auto_install_summary_off">"ユーザーが完了通知をタッチすると、アプリがインストールされます"</string>
 <string name="pref_auto_install_summary_on">"ダウンロードが完了するとすぐにアプリがインストールされます"</string>
 <string name="pref_auto_install">"すぐにアプリをインストール"</string>
 <string name="pref_update_list_white_or_black_black">"選択したアプリは更新を確認する際に無視されます"</string>
@@ -137,11 +137,11 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="notification_download_progress">"%1$s / %2$s ダウンロード済"</string>
 <string name="pref_requested_language">"Play ストアをリクエストする言語"</string>
 <string name="pref_requested_language_default">"デフォルトの言語"</string>
-    <string name="pref_device_to_pretend_to_be">"別のデバイスのふりをする"</string>
+<string name="pref_device_to_pretend_to_be">"別のデバイスのふりをする"</string>
 <string name="pref_device_to_pretend_to_be_default">"オリジナルのデバイス情報"</string>
 <string name="pref_device_to_pretend_to_be_toast">"この変更は、再ログイン後に適用されます"</string>
 <string name="pref_category_updates">"更新"</string>
-    <string name="pref_category_installation">"インストール"</string>
+<string name="pref_category_installation">"インストール"</string>
 <string name="pref_category_spoofing">"なりすまし"</string>
 <string name="pref_category_ui">"表示"</string>
 <string name="details_installing">"インストール中…"</string>
@@ -167,7 +167,7 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="list_app_system">"システムアプリ"</string>
 <string name="activity_title_updates_only">"更新"</string>
 <string name="activity_title_updates_and_other_apps">"あなたのアプリ"</string>
-    <string name="details_system_app_info">"システム情報"</string>
+<string name="details_system_app_info">"システム情報"</string>
 <string name="details_run">"実行"</string>
 <string name="dialog_title_remounting_system">"/system パーティションで動作"</string>
 <string name="dialog_message_remounting_system">"/system パーティションで動作します。これは時間がかかることがあります。"</string>
@@ -266,4 +266,18 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="flag_impersonation_copycat">"コピーキャットまたは偽装"</string>
 <string name="flagging_title">"不適切なコンテンツとして報告"</string>
 <string name="content_flagged">"問題を送信しました。"</string>
+<string name="list_app_blacklisted">"Blacklisted"</string>
+<string name="list_app_whitelisted">"Whitelisted"</string>
+<string name="action_filter">"Filter"</string>
+<string name="action_filter_system_apps">"System apps"</string>
+<string name="action_filter_apps_with_ads">"Apps with ads"</string>
+<string name="action_filter_paid_apps">"Paid apps"</string>
+<string name="action_filter_gsf_dependent_apps">"GSF dependent apps"</string>
+<string name="action_filter_category">"Category: %1$s"</string>
+<string name="action_filter_rating">"Rating: %1$s"</string>
+<string name="action_filter_downloads">"Downloads: %1$s"</string>
+<string name="pref_auto_whitelist">"Auto whitelist"</string>
+<string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
+<string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
+<string name="apps_by">"%1$s開発のアプリ"</string>
 </resources>
