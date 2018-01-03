@@ -74,7 +74,7 @@
 <string name="notification_download_complete_signature_mismatch_toast">"Λήφθηκε το %1$s . Όμως, η υπογραφή του apk δεν ταιριάζει με αυτή της εγκαταστημένης εφαρμογής. Ίσως, θα πρέπει, πρώτα, να την απεγκαταστήσεις."</string>
 <string name="notification_updates_available_title">"Διαθέσιμες ενημερώσεις εφαρμογών."</string>
 <string name="notification_updates_available_message">"Υπάρχουν διαθέσιμες ενημερώσεις για %1$d από τις εφαρμογές σου."</string>
-    <string name="pref_auto_install_summary_off">"Οι εφαρμογές εγκαθίστανται, όταν ο χρήστης αγγίζει το μήνυμα της ολοκλήρωσης"</string>
+<string name="pref_auto_install_summary_off">"Οι εφαρμογές εγκαθίστανται, όταν ο χρήστης αγγίζει το μήνυμα της ολοκλήρωσης"</string>
 <string name="pref_auto_install_summary_on">"Οι εφαρμογές εγκαθίστανται μόλις ολοκληρωθεί η λήψη"</string>
 <string name="pref_auto_install">"Άμεση εγκατάσταση των εφαρμογών"</string>
 <string name="pref_update_list_white_or_black_black">"Οι επιλεγμένες εφαρμογές θα αγνοούνται, όταν γίνεται έλεγχος για ενημερώσεις"</string>
@@ -143,11 +143,11 @@
 <string name="notification_download_progress">"%1$s/%2$s έχουν ληφθεί"</string>
 <string name="pref_requested_language">"Το Play Store ζητά γλώσσα"</string>
 <string name="pref_requested_language_default">"Η προεπιλεγμένη γλώσσα σου"</string>
-    <string name="pref_device_to_pretend_to_be">"Προσποίηση διαφορετικής συσκευής"</string>
+<string name="pref_device_to_pretend_to_be">"Προσποίηση διαφορετικής συσκευής"</string>
 <string name="pref_device_to_pretend_to_be_default">"Οι γνήσιες πληροφορίες της συσκευής σου"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Αυτή η αλλαγή θα εφαρμοστεί αφού επανασυνδεθείς"</string>
 <string name="pref_category_updates">"Ενημερώσεις"</string>
-    <string name="pref_category_installation">"Εγκατάσταση"</string>
+<string name="pref_category_installation">"Εγκατάσταση"</string>
 <string name="pref_category_spoofing">"Πλαστογράφηση"</string>
 <string name="pref_category_ui">"Διεπαφή του χρήστη"</string>
 <string name="details_installing">"Γίνεται εγκατάσταση"</string>
@@ -173,7 +173,7 @@
 <string name="list_app_system">"Εφαρμογή του συστήματος"</string>
 <string name="activity_title_updates_only">"Ενημερώσεις"</string>
 <string name="activity_title_updates_and_other_apps">"Οι εφαρμογές σου"</string>
-    <string name="details_system_app_info">"Πληροφορίες συστήματος"</string>
+<string name="details_system_app_info">"Πληροφορίες συστήματος"</string>
 <string name="details_run">"Τρέξιμο"</string>
 <string name="dialog_title_remounting_system">"Εργασία με την κατάτμηση /system"</string>
 <string name="dialog_message_remounting_system">"Γίνεται εργασία με την κατάτμηση /system. Αυτό, ίσως, πάρει λίγο χρόνο."</string>
@@ -274,4 +274,18 @@
 <string name="flag_impersonation_copycat">"Απομίμηση ή προσποίηση"</string>
 <string name="flagging_title">"Επισήμανση ως ακατάλληλου"</string>
 <string name="content_flagged">"Η ένσταση υποβλήθηκε."</string>
+<string name="list_app_blacklisted">"Blacklisted"</string>
+<string name="list_app_whitelisted">"Whitelisted"</string>
+<string name="action_filter">"Filter"</string>
+<string name="action_filter_system_apps">"System apps"</string>
+<string name="action_filter_apps_with_ads">"Apps with ads"</string>
+<string name="action_filter_paid_apps">"Paid apps"</string>
+<string name="action_filter_gsf_dependent_apps">"GSF dependent apps"</string>
+<string name="action_filter_category">"Category: %1$s"</string>
+<string name="action_filter_rating">"Rating: %1$s"</string>
+<string name="action_filter_downloads">"Downloads: %1$s"</string>
+<string name="pref_auto_whitelist">"Auto whitelist"</string>
+<string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
+<string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
+<string name="apps_by">"Εφαρμογές από %1$s"</string>
 </resources>
