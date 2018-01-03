@@ -68,7 +68,7 @@
 <string name="notification_download_complete_signature_mismatch_toast">"Téléchargement de %1$s terminé, mais la signature ne correspond pas à l\'application installée. Il faut la désinstaller d\'abord (vous perdrez les donnés de l\'application)."</string>
 <string name="notification_updates_available_title">"Mises à jour disponibles."</string>
 <string name="notification_updates_available_message">"Des mises à jour sont disponibles pour %1$d applications."</string>
-    <string name="pref_auto_install_summary_off">"Installer les applications quand l\'utilisateur la valide"</string>
+<string name="pref_auto_install_summary_off">"Installer les applications quand l\'utilisateur la valide"</string>
 <string name="pref_auto_install_summary_on">"Installer les applications dès la fin du téléchargement"</string>
 <string name="pref_auto_install">"Installer les applications immédiatement"</string>
 <string name="pref_update_list_white_or_black_black">"Les applications choisies seront ignorées lors d\'une mise à jour"</string>
@@ -131,11 +131,11 @@
 <string name="notification_download_progress">"%1$s sur %2$s téléchargé"</string>
 <string name="pref_requested_language">"Le Play Store demande une langue"</string>
 <string name="pref_requested_language_default">"Votre langue préférée"</string>
-    <string name="pref_device_to_pretend_to_be">"Se faire passer pour un autre appareil"</string>
+<string name="pref_device_to_pretend_to_be">"Se faire passer pour un autre appareil"</string>
 <string name="pref_device_to_pretend_to_be_default">"Vos informations d\'origine"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Ce changement sera appliqué après reconnexion"</string>
 <string name="pref_category_updates">"Mises à jour"</string>
-    <string name="pref_category_installation">"Installation"</string>
+<string name="pref_category_installation">"Installation"</string>
 <string name="pref_category_spoofing">"Usurpation"</string>
 <string name="pref_category_ui">"Interface utilisateur"</string>
 <string name="details_installing">"Installation…"</string>
@@ -161,7 +161,7 @@
 <string name="list_app_system">"Application système"</string>
 <string name="activity_title_updates_only">"Mises à jour"</string>
 <string name="activity_title_updates_and_other_apps">"Vos applications"</string>
-    <string name="details_system_app_info">"Informations système"</string>
+<string name="details_system_app_info">"Informations système"</string>
 <string name="details_run">"Lancer"</string>
 <string name="dialog_title_remounting_system">"Opération sur la partition /system"</string>
 <string name="dialog_message_remounting_system">"Opération en cours sur la partition /system. Cela peut prendre du temps."</string>
@@ -244,4 +244,18 @@
 <string name="flag_impersonation_copycat">"Copycat ou imitation"</string>
 <string name="flagging_title">"Signaler comme inapproprié"</string>
 <string name="content_flagged">"Demande envoyée"</string>
+<string name="list_app_blacklisted">"Blacklisted"</string>
+<string name="list_app_whitelisted">"Whitelisted"</string>
+<string name="action_filter">"Filter"</string>
+<string name="action_filter_system_apps">"System apps"</string>
+<string name="action_filter_apps_with_ads">"Apps with ads"</string>
+<string name="action_filter_paid_apps">"Paid apps"</string>
+<string name="action_filter_gsf_dependent_apps">"GSF dependent apps"</string>
+<string name="action_filter_category">"Category: %1$s"</string>
+<string name="action_filter_rating">"Rating: %1$s"</string>
+<string name="action_filter_downloads">"Downloads: %1$s"</string>
+<string name="pref_auto_whitelist">"Auto whitelist"</string>
+<string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
+<string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
+<string name="apps_by">"Applications de %1$s"</string>
 </resources>
