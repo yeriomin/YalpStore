@@ -102,7 +102,7 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
         }
     }
 
-    static protected boolean noNetwork(Throwable e) {
+    static public boolean noNetwork(Throwable e) {
         return e instanceof UnknownHostException
             || e instanceof SSLHandshakeException
             || e instanceof ConnectException

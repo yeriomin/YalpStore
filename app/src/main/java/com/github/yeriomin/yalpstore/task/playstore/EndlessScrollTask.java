@@ -21,7 +21,6 @@ abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> 
 
     protected Filter filter;
     protected AppListIterator iterator;
-    protected List<App> apps = new ArrayList<>();
 
     abstract protected AppListIterator initIterator() throws IOException;
 
@@ -45,14 +44,19 @@ abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> 
             Log.e(getClass().getSimpleName(), "Building an api object from preferences failed");
         }
         if (!iterator.hasNext()) {
-            return apps;
+            return new ArrayList<>();
         }
+        List<App> apps = new ArrayList<>();
         while (iterator.hasNext() && apps.isEmpty()) {
             try {
                 apps.addAll(getNextBatch(iterator));
             } catch (IteratorGooglePlayException e) {
-                if (e.getCause() != null
-                    && e.getCause() instanceof GooglePlayException
+                if (null == e.getCause()) {
+                    continue;
+                }
+                if (noNetwork(e.getCause())) {
+                    throw (IOException) e.getCause();
+                } else if (e.getCause() instanceof GooglePlayException
                     && ((GooglePlayException) e.getCause()).getCode() == 401
                     && PreferenceActivity.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
                 ) {
@@ -72,17 +76,18 @@ abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> 
 
     @Override
     protected void onPostExecute(List<App> apps) {
-        super.onPostExecute(apps);
         EndlessScrollActivity activity = (EndlessScrollActivity) context;
-        if (!success()) {
-            activity.clearApps();
-            return;
+        if (null == apps) {
+            apps = new ArrayList<>();
         }
+        if (!success() && !activity.getListView().getAdapter().isEmpty()) {
+            errorView = null;
+        }
+        super.onPostExecute(apps);
         activity.addApps(apps);
         activity.setIterator(iterator);
-        if (null != errorView && apps.isEmpty()) {
+        if (null != errorView && success() && apps.isEmpty()) {
             errorView.setText(context.getString(R.string.list_empty_search));
         }
-        apps.clear();
     }
 }

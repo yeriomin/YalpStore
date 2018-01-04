@@ -13,6 +13,7 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
 import com.github.yeriomin.playstoreapi.TokenDispenserException;
 import com.github.yeriomin.yalpstore.model.LoginInfo;
+import com.github.yeriomin.yalpstore.task.playstore.PlayStoreTask;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -130,6 +131,9 @@ public class PlayStoreApiAuthenticator {
                 // Impossible, unless there are mistakes, so no need to make it a declared exception
                 throw new RuntimeException(e);
             } catch (AuthException | TokenDispenserException e) {
+                if (PlayStoreTask.noNetwork(e.getCause())) {
+                    throw (IOException) e.getCause();
+                }
                 loginInfo.setTokenDispenserUrl(null);
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
                 if (prefs.getBoolean(PREFERENCE_APP_PROVIDED_EMAIL, false)) {
