@@ -255,4 +255,5 @@
     <string name="flagging_title">Flag as inappropriate</string>
     <string name="content_flagged">Objection submitted.</string>
     <string name="apps_by">Apps by %1$s</string>
+    <string name="pref_message_fallback">Attempt to set a fallback directory (%1$s)?</string>
 </resources>

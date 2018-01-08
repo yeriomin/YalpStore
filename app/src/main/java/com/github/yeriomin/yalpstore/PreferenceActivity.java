@@ -6,6 +6,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.github.yeriomin.yalpstore.fragment.preference.Blacklist;
 import com.github.yeriomin.yalpstore.fragment.preference.CheckUpdates;
@@ -82,6 +83,14 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         drawDevices();
         drawInstallationMethod();
         new DownloadDirectory(this).setPreference((EditTextPreference) findPreference(PREFERENCE_DOWNLOAD_DIRECTORY)).draw();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (!YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
+            Log.i(getClass().getSimpleName(), "User denied the write permission");
+            finish();
+        }
     }
 
     private void drawBlackList() {

@@ -9,6 +9,7 @@ import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
+import com.github.yeriomin.yalpstore.YalpStorePermissionManager;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.selfupdate.UpdaterFactory;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
@@ -80,10 +81,11 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (activity.checkPermission()) {
+                YalpStorePermissionManager permissionManager = new YalpStorePermissionManager(activity);
+                if (permissionManager.checkPermission()) {
                     activity.launchUpdateAll();
                 } else {
-                    activity.requestPermission();
+                    permissionManager.requestPermission();
                 }
             }
         });

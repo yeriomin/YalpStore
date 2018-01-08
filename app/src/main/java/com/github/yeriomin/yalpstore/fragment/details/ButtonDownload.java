@@ -16,6 +16,7 @@ import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import com.github.yeriomin.yalpstore.YalpStorePermissionManager;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.selfupdate.UpdaterFactory;
 import com.github.yeriomin.yalpstore.task.playstore.PurchaseTask;
@@ -52,9 +53,10 @@ public class ButtonDownload extends Button {
     }
 
     public void checkAndDownload() {
+        YalpStorePermissionManager permissionManager = new YalpStorePermissionManager(activity);
         if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
             activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
-        } else if (activity.checkPermission()) {
+        } else if (permissionManager.checkPermission()) {
             Log.i(getClass().getSimpleName(), "Write permission granted");
             download();
             View buttonCancel = activity.findViewById(R.id.cancel);
@@ -62,7 +64,7 @@ public class ButtonDownload extends Button {
                 buttonCancel.setVisibility(View.VISIBLE);
             }
         } else {
-            activity.requestPermission();
+            permissionManager.requestPermission();
         }
     }
 
@@ -88,7 +90,7 @@ public class ButtonDownload extends Button {
                 AndroidAppDeliveryData.newBuilder().setDownloadUrl(UpdaterFactory.get(activity).getUrlString(app.getVersionCode())).build()
             );
         } else {
-            boolean writePermission = activity.checkPermission();
+            boolean writePermission = new YalpStorePermissionManager(activity).checkPermission();
             Log.i(getClass().getSimpleName(), "Write permission granted - " + writePermission);
             if (writePermission && prepareDownloadsDir()) {
                 getPurchaseTask().execute();

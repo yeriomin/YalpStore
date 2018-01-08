@@ -13,10 +13,11 @@ import java.util.Map;
 
 public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
 
+    static private final String DEBUG_DIRECTORY = "yalp-store-debug";
     static private File dumpDirectory;
 
     public DebugHttpClientAdapter() {
-        dumpDirectory = Environment.getExternalStorageDirectory();
+        dumpDirectory = new File(Environment.getExternalStorageDirectory(), DEBUG_DIRECTORY);
     }
 
     @Override

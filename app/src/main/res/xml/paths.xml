@@ -1,4 +1,4 @@
 <paths>
-    <external-path name="apks" path="." />
+    <root-path name="apks" path="." />
     <cache-path name="cache" path="." />
 </paths>

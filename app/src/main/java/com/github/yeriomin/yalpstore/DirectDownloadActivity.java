@@ -19,7 +19,7 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             finish();
             return;
         }
-        if (!checkPermission()) {
+        if (!new YalpStorePermissionManager(this).checkPermission()) {
             startActivity(DetailsActivity.getDetailsIntent(this, packageName));
             finish();
             return;
