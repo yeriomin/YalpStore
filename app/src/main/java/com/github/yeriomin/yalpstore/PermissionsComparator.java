@@ -28,7 +28,12 @@ public class PermissionsComparator {
         }
         Set<String> newPermissions = new HashSet<>(app.getPermissions());
         newPermissions.removeAll(oldPermissions);
-        Log.i(getClass().getSimpleName(), app.getPackageName() + " requests new permissions: " + TextUtils.join(", ", newPermissions));
+        Log.i(
+            getClass().getSimpleName(),
+            newPermissions.isEmpty()
+                ? app.getPackageName() + " requests no new permissions"
+                : app.getPackageName() + " requests new permissions: " + TextUtils.join(", ", newPermissions)
+        );
         return newPermissions.isEmpty();
     }
 
