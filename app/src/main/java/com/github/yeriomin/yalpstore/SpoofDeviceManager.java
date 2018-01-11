@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.BufferedInputStream;
@@ -50,7 +51,7 @@ public class SpoofDeviceManager {
             Log.i(getClass().getSimpleName(), "Loading device info from " + defaultDirectoryFile.getAbsolutePath());
             return getProperties(defaultDirectoryFile);
         } else {
-            Log.i(getClass().getSimpleName(), "Loading device info from " + getApkPath() + "/" + entryName);
+            Log.i(getClass().getSimpleName(), "Loading device info from " + getApkFile() + "/" + entryName);
             JarFile jarFile = getApkAsJar();
             if (null == jarFile || null == jarFile.getEntry(entryName)) {
                 Properties empty = new Properties();
@@ -102,8 +103,11 @@ public class SpoofDeviceManager {
 
     private Map<String, String> getDevicesFromApk() {
         JarFile jarFile = getApkAsJar();
-        Enumeration<JarEntry> entries = jarFile.entries();
         Map<String, String> deviceNames = new HashMap<>();
+        if (null == jarFile) {
+            return deviceNames;
+        }
+        Enumeration<JarEntry> entries = jarFile.entries();
         while (entries.hasMoreElements()) {
             JarEntry entry = entries.nextElement();
             if (!filenameValid(entry.getName())) {
@@ -115,21 +119,27 @@ public class SpoofDeviceManager {
     }
 
     private JarFile getApkAsJar() {
+        File apk = getApkFile();
         try {
-            return new JarFile(getApkPath());
+            if (null != apk && apk.exists()) {
+                return new JarFile(apk);
+            }
         } catch (IOException e) {
             Log.e(getClass().getSimpleName(), "Could not open Yalp Store apk as a jar file: " + e.getMessage());
-            return null;
         }
+        return null;
     }
 
-    private String getApkPath() {
+    private File getApkFile() {
         try {
-            return context.getPackageManager().getApplicationInfo(BuildConfig.APPLICATION_ID, 0).sourceDir;
+            String sourceDir = context.getPackageManager().getApplicationInfo(BuildConfig.APPLICATION_ID, 0).sourceDir;
+            if (!TextUtils.isEmpty(sourceDir)) {
+                return new File(sourceDir);
+            }
         } catch (PackageManager.NameNotFoundException e) {
             // Having a currently running app uninstalled is unlikely
-            return null;
         }
+        return null;
     }
 
     private Map<String, String> getDevicesFromYalpDirectory() {
