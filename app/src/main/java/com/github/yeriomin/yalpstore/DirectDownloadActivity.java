@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -35,7 +36,7 @@ public class DirectDownloadActivity extends YalpStoreActivity {
 
     private String getIntentPackageName() {
         Intent intent = getIntent();
-        if (!intent.hasExtra(Intent.EXTRA_TEXT)) {
+        if (!intent.hasExtra(Intent.EXTRA_TEXT) || TextUtils.isEmpty(intent.getStringExtra(Intent.EXTRA_TEXT))) {
             Log.w(getClass().getSimpleName(), "Intent does not have " + Intent.EXTRA_TEXT);
             return null;
         }
