@@ -85,7 +85,7 @@ public class ButtonDownload extends Button {
 
     public void download() {
         if (app.getPackageName().equals(BuildConfig.APPLICATION_ID)) {
-            new Downloader(button.getContext()).download(
+            new Downloader(activity).download(
                 app,
                 AndroidAppDeliveryData.newBuilder().setDownloadUrl(UpdaterFactory.get(activity).getUrlString(app.getVersionCode())).build()
             );
