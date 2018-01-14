@@ -51,7 +51,10 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 
     @Override
     protected AndroidAppDeliveryData getResult(GooglePlayAPI api, String... arguments) throws IOException {
-        DownloadState.get(app.getPackageName()).setTriggeredBy(triggeredBy);
+        DownloadState state = DownloadState.get(app.getPackageName());
+        if (null != state) {
+            state.setTriggeredBy(triggeredBy);
+        }
         super.getResult(api, arguments);
         if (null != deliveryData) {
             Downloader downloader = new Downloader(context);
