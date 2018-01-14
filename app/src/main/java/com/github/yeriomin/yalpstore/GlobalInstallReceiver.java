@@ -28,7 +28,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         }
         BlackWhiteListManager manager = new BlackWhiteListManager(context);
         if (actionIsInstall(intent)) {
-            if (InstallationState.isInstalled(packageName) && needToAutoWhitelist(context) && !manager.isBlack()) {
+            if (wasInstalled(context, packageName) && needToAutoWhitelist(context) && !manager.isBlack()) {
                 Log.i(getClass().getSimpleName(), "Whitelisting " + packageName);
                 manager.add(packageName);
             }
@@ -95,5 +95,13 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             Log.e(GlobalInstallReceiver.class.getSimpleName(), "Install broadcast received, but package " + packageName + " not found");
         }
         return app;
+    }
+
+    static private boolean wasInstalled(Context context, String packageName) {
+        return InstallationState.isInstalled(packageName)
+            || (PreferenceActivity.getString(context, PreferenceActivity.INSTALLATION_METHOD_DEFAULT).equals(PreferenceActivity.INSTALLATION_METHOD_DEFAULT)
+                && DownloadState.get(packageName).isEverythingFinished()
+            )
+        ;
     }
 }
