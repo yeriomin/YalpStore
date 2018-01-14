@@ -280,4 +280,5 @@ Jarraitu?"</string>
 <string name="pref_auto_whitelist_summary_on">"Yalp-ek instalatutako aplikazioak automatikoki zerrenda zurian sartzen dira"</string>
 <string name="pref_auto_whitelist_summary_off">"Aplikazioak eskuz sartu behar dituzu zerrenda zurian"</string>
 <string name="apps_by">"%1$s garatzailearen aplikazioak"</string>
+<string name="pref_message_fallback">"Ordezko direktorio bat ezartzen saiatu (%1$s)?"</string>
 </resources>
