@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -56,7 +57,11 @@ public class BugReportActivity extends Activity {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            // No home screen?
+        }
     }
 
     private Intent getBugReportIntent(String stackTrace, String message, String identification) {
