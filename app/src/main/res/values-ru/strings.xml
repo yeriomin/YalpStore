@@ -189,6 +189,8 @@
     <string name="pref_installation_method_default">Обычный установочный диалог, без фоновой установки</string>
     <string name="pref_installation_method_root">С использованием root</string>
     <string name="pref_installation_method_privileged">С системными правами</string>
+    <string name="pref_installation_method_fdroid">При помощи привилегированного расширения F-Droid</string>
+    <string name="pref_fdroid_extension_not_found">Привилегированное расширение F-Droid не установлено или не даёт к себе доступ</string>
     <string name="pref_no_images">Загружать изображения только по Wi-fi</string>
     <string name="pref_no_images_summary_off">Сейчас изображения загружаются всегда</string>
     <string name="pref_no_images_summary_on">Сейчас изображения загружаются только по Wi-fi</string>

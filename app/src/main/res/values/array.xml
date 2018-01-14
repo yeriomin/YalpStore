@@ -40,11 +40,13 @@
         <item>default</item>
         <item>root</item>
         <item>privileged</item>
+        <item>fdroid</item>
     </string-array>
     <string-array name="installationMethodLabels">
         <item>@string/pref_installation_method_default</item>
         <item>@string/pref_installation_method_root</item>
         <item>@string/pref_installation_method_privileged</item>
+        <item>@string/pref_installation_method_fdroid</item>
     </string-array>
     <string-array translatable="false" name="filterRatingValues">
         <item>0</item>

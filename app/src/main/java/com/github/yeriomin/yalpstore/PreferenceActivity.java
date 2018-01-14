@@ -38,6 +38,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String INSTALLATION_METHOD_DEFAULT = "default";
     public static final String INSTALLATION_METHOD_ROOT = "root";
     public static final String INSTALLATION_METHOD_PRIVILEGED = "privileged";
+    public static final String INSTALLATION_METHOD_FDROID = "fdroid";
 
     public static final String LIST_WHITE = "white";
     public static final String LIST_BLACK = "black";

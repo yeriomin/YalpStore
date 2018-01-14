@@ -7,6 +7,8 @@ public class InstallerFactory {
     static public InstallerAbstract get(Context context) {
         String userChoice = PreferenceActivity.getString(context, PreferenceActivity.PREFERENCE_INSTALLATION_METHOD);
         switch (userChoice) {
+            case PreferenceActivity.INSTALLATION_METHOD_FDROID:
+                return new InstallerFdroid(context);
             case PreferenceActivity.INSTALLATION_METHOD_PRIVILEGED:
                 return new InstallerPrivileged(context);
             case PreferenceActivity.INSTALLATION_METHOD_ROOT:

@@ -5,9 +5,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
+import com.github.yeriomin.yalpstore.ContextUtil;
+import com.github.yeriomin.yalpstore.InstallerFdroid;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
@@ -27,7 +28,12 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         String oldValue = ((ListPreference) preference).getValue();
         if (null != oldValue && !oldValue.equals(newValue)) {
-            if (PreferenceActivity.INSTALLATION_METHOD_PRIVILEGED.equals(newValue)) {
+            if (PreferenceActivity.INSTALLATION_METHOD_FDROID.equals(newValue)) {
+                if (!InstallerFdroid.isExtensionAvailable(activity)) {
+                    ContextUtil.toast(activity.getApplicationContext(), R.string.pref_fdroid_extension_not_found);
+                    return false;
+                }
+            } else if (PreferenceActivity.INSTALLATION_METHOD_PRIVILEGED.equals(newValue)) {
                 if (!checkPrivileged()) {
                     return false;
                 }
@@ -45,6 +51,9 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
         }
         int summaryId;
         switch (installationMethod) {
+            case PreferenceActivity.INSTALLATION_METHOD_FDROID:
+                summaryId = R.string.pref_installation_method_fdroid;
+                break;
             case PreferenceActivity.INSTALLATION_METHOD_PRIVILEGED:
                 summaryId = R.string.pref_installation_method_privileged;
                 break;
@@ -75,7 +84,7 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
         @Override
         protected void onPostExecute(Void aVoid) {
             if (!available) {
-                Toast.makeText(activity.getApplicationContext(), R.string.pref_not_privileged, Toast.LENGTH_LONG).show();
+                ContextUtil.toast(activity.getApplicationContext(), R.string.pref_not_privileged);
                 return;
             }
             showPrivilegedInstallationDialog();
