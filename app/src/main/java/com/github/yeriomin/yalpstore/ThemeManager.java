@@ -13,6 +13,9 @@ public class ThemeManager {
         switch (theme) {
             default:
             case PreferenceActivity.THEME_NONE:
+                if (isAmazonTv(activity)) {
+                    activity.setTheme(getThemeDark());
+                }
                 break;
             case PreferenceActivity.THEME_LIGHT:
                 activity.setTheme(getThemeLight());
@@ -45,5 +48,9 @@ public class ThemeManager {
         } else {
             return android.R.style.Theme;
         }
+    }
+
+    static private boolean isAmazonTv(Activity activity) {
+        return ((YalpStoreApplication) activity.getApplication()).isTv() && Build.MANUFACTURER.toLowerCase().contains("amazon");
     }
 }
