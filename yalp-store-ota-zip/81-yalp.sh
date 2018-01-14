@@ -8,7 +8,7 @@ list_files() {
 cat <<EOF
 app/${PACKAGE_NAME}.apk
 app/${PACKAGE_NAME}/${PACKAGE_NAME}.apk
-priv-app/${PACKAGE_NAME}
+priv-app/${PACKAGE_NAME}.apk
 priv-app/${PACKAGE_NAME}/${PACKAGE_NAME}.apk
 EOF
 }
