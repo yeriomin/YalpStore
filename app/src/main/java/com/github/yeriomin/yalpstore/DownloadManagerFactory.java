@@ -27,16 +27,10 @@ public class DownloadManagerFactory {
         } catch (Throwable e) {
             Log.w(DownloadManagerFactory.class.getSimpleName(), "Could not check DownloadManager status: " + e.getMessage());
         }
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            return !(state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-                || state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER
-                || state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_UNTIL_USED
-            );
-        } else {
-            return !(state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-                || state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER
-            );
-        }
+        return !(state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+            || state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER
+            || state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_UNTIL_USED
+        );
     }
 
     static private boolean nougatVpn(Context context) {
