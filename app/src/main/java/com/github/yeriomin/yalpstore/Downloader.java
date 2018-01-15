@@ -44,12 +44,8 @@ public class Downloader {
         if (deliveryData.getAdditionalFileCount() > 1) {
             bytesNeeded += deliveryData.getAdditionalFile(1).getSize();
         }
-        try {
-            StatFs stat = new StatFs(storagePath.getPath());
-            return (long) stat.getBlockSize() * (long) stat.getAvailableBlocks() >= bytesNeeded;
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
+        StatFs stat = new StatFs(storagePath.getPath());
+        return (long) stat.getBlockSize() * (long) stat.getAvailableBlocks() >= bytesNeeded;
     }
 
     private void checkAndStartObbDownload(DownloadState state, AndroidAppDeliveryData deliveryData, boolean main) {
