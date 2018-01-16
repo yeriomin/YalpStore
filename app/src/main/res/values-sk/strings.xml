@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="about_developer_email_label">"E-mail vývojára:"</string>
+<string name="about_logged_in">"Ste prihlásený ako:"</string>
+<string name="about_copied_to_clipboard">"Skopírované do schránky"</string>
+<string name="list_line_2_updatable">"Aktualizované %1$s"</string>
+<string name="list_empty_updates">"Žiadna aktualizácia"</string>
+<string name="list_empty_search">"Žiadna aplikácia nenájdená"</string>
+<string name="list_incompatible">"nekompatibilné"</string>
+<string name="action_about">"O aplikácii"</string>
+<string name="action_settings">"Nastavenia"</string>
+<string name="action_logout">"Odhlásiť"</string>
+<string name="action_search">"Vyhľadať"</string>
+<string name="action_updates">"Aktualizácie"</string>
+<string name="action_ignore">"Ignorovať aktualizácie"</string>
+<string name="action_unignore">"Neignorovať aktualizácie"</string>
+<string name="action_whitelist">"Whitelist pre aktualizácie"</string>
+<string name="action_unwhitelist">"Ignorovať aktualizácie"</string>
+<string name="search_title">"Vyhľadať aplikácie"</string>
+<string name="dialog_two_factor_cancel">"Teraz nie"</string>
+<string name="dialog_two_factor_create_password">"Vytvoriť heslo"</string>
+<string name="dialog_title_two_factor">"2-krokové overenie"</string>
+<string name="dialog_message_two_factor">"Zdá sa, že máte povolené 2-krokové overovanie svojho účtu.
+
+Vytvorte si prosím špeciálne heslo pre Yalp Store a použite ho na prihlásenie do Yalp Store.
+
+Stlačením \"Vytvoriť heslo\" budete presmerovaný na stránku vytvorenia hesla."</string>
+<string name="dialog_title_logout">"Odhlásiť?"</string>
+<string name="dialog_message_logout">"Naozaj sa chcete odhlásiť?"</string>
+<string name="dialog_account_type_provided_by_user">"Svojim Google účtom"</string>
+<string name="dialog_account_type_predefined">"\"Falošným\" Yalp Store účtom"</string>
+<string name="dialog_account_type_title">"Ako sa chcete prihlásiť do Google Play Store?"</string>
+<string name="dialog_title_logging_in">"Prihlásenie"</string>
+<string name="dialog_message_logging_in_provided_by_user">"Prihlasovanie so zadanými prihlasovacími údajmi"</string>
+<string name="dialog_message_logging_in_predefined">"Prihlasovanie s Yalp Store prihlasovacími údajmi"</string>
+<string name="error_incorrect_password">"Nesprávny e-mail alebo heslo."</string>
+<string name="error_credentials_empty">"Zadajte prosím prihlasovacie údaje Google účtu."</string>
+<string name="error_no_network">"Žiadne sieťové pripojenie."</string>
+<string name="error_network_other">"Chyba siete: %1$s"</string>
+<string name="error_not_purchased">"Zdá sa, že aplikácia nie je zakúpená.
+Presmerovať na jej Play Store web stránku?"</string>
+<string name="error_downloads_directory_not_writable">"Adresár Sťahovania nemohol byť vytvorený alebo nie je zapisovateľný."</string>
+<string name="error_token_dispenser_problem">"Nebolo možné sa prihlásiť bez účtu. Skúste použiť svoj vlastný účet."</string>
+<string name="details_updated">"Aktualizované %1$s"</string>
+<string name="details_size">"Veľkosť %1$s"</string>
+<string name="details_description">"Popis:"</string>
+<string name="details_changelog">"Novinky:"</string>
+<string name="details_screenshots">"Snímky obrazovky:"</string>
+<string name="details_reviews">"Recenzie:"</string>
+<string name="details_rate_this_app">"Ohodnoťte túto aplikáciu:"</string>
+<string name="details_you_rated_this_app">"Ohodnotili ste túto aplikáciu:"</string>
+<string name="details_permissions">"Povolenia:"</string>
+<string name="details_versionName">"Verzia %1$s"</string>
+<string name="details_versionName_updatable">"Verzia %1$s → %2$s"</string>
+<string name="details_download">"Stiahnuť"</string>
+<string name="details_install">"Inštalovať"</string>
+<string name="details_downloading">"Sťahovanie…"</string>
+<string name="details_review_dialog_title">"Pridať ešte niečo?"</string>
+<string name="details_review_dialog_review_title_hint">"nadpis sem"</string>
+<string name="details_review_dialog_review_comment_hint">"komentár sem"</string>
+<string name="details_review_dialog_fields_optional">"Môžte nechať všetko nevyplnené."</string>
+<string name="details_signature_mismatch">"Nová verzia je podpísaná iným kľúčom ako stará verzia. Pre inštaláciu novej verzie musí byť stará verzia najskôr odinštalovaná. Spravte to prosím a skúste znova. (Majte na pamäti, že odinštalovaním budú vymazané všetky interné dáta aplikácie)"</string>
+<string name="credentials_hint_email">"e-mail sem"</string>
+<string name="credentials_hint_password">"heslo sem"</string>
+<string name="credentials_title">"Prístup ku Google účtu"</string>
+<string name="credentials_message">"Pre fungovanie tejto aplikácie je nutný e-mail a heslo Google účtu.
+
+Zvážte prosím, že používanie tejto aplikácie porušuje zmluvné podmienky Play Store. Bezpečnejšie je pravdepodobne použiť dočasný Google účet, ktorý bol aspoň raz použitý na prihlásenie do Play Store a boli akceptované zmluvné podmienky Play Store."</string>
+<string name="activity_title_search">"Vyhľadáva sa: \"%1$s\""</string>
+<string name="notification_download_complete">"Sťahovanie dokončené. Stlačte pre začatie inštalácie."</string>
+<string name="notification_download_complete_toast">"%1$s stiahnuté. Stlačte tlačidlo inštalácie alebo notifikáciu pre začatie inštalácie."</string>
+<string name="notification_download_complete_signature_mismatch">"Sťahovanie dokončené, ale .apk podpis nesúhlasí."</string>
+<string name="notification_download_complete_signature_mismatch_toast">"%1$s stiahnuté, ale apk podpis nesúhlasí s nainštalovanou aplikáciou. Mali by ste ju najskôr odinštalovať."</string>
+<string name="notification_updates_available_title">"Dostupné aktualizácie aplikácií."</string>
+<string name="notification_updates_available_message">"Aktualizácie sú dostupné pre %1$d vašich aplikácií."</string>
+<string name="pref_auto_install_summary_off">"Aplikácie sú inštalované, keď užívateľ stlačí notifikáciu dokončenia"</string>
+<string name="pref_auto_install_summary_on">"Aplikácie sú inštalované hneď po dokončení sťahovania"</string>
+<string name="pref_auto_install">"Inštalovať aplikácie ihneď"</string>
+<string name="pref_update_list_white_or_black_black">"Vybrané aplikácie sa budú pri kontrole aktualizácií ignorovať"</string>
+<string name="pref_update_list_white_or_black_white">"Kontrolovať pri aktualizácii sa budú len vybrané aplikácie"</string>
+<string name="pref_update_list_white_or_black">"Blacklist alebo Whitelist aplikácií na aktualizáciu"</string>
+<string name="pref_update_list_black">"Zmeniť blacklist aplikácií"</string>
+<string name="pref_update_list_white">"Zmeniť whitelist aplikácií"</string>
+<string name="pref_ui_theme">"Téma"</string>
+<string name="pref_ui_theme_none">"Štandardná"</string>
+<string name="pref_ui_theme_light">"Svetlá"</string>
+<string name="pref_ui_theme_dark">"Tmavá"</string>
+<string name="pref_ui_theme_black">"Čierna"</string>
+<string name="pref_background_update_interval_never">"Iba pri spustení Yalp Store"</string>
+<string name="pref_background_update_interval_hourly">"Každú hodinu"</string>
+<string name="pref_background_update_interval_daily">"Denne"</string>
+<string name="pref_background_update_interval_weekly">"Týždenne"</string>
+<string name="pref_background_update_interval">"Kontrolovať pravidelne aktualizácie"</string>
+<string name="download_manager_ERROR_UNKNOWN">"Neznáma chyba."</string>
+<string name="download_manager_ERROR_FILE_ERROR">"Neznáma chyba úložiska súborov."</string>
+<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Bol prijatý HTTP kód, ktorý správca sťahovania nevie spracovať. Je to chyba servera."</string>
+<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Vyskytla sa chyba prijímania alebo spracovania dát na HTTP úrovni."</string>
+<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Príliš veľa presmerovaní."</string>
+<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Nedostatok miesta v úložisku."</string>
+<string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Nenájdené žiadne externé úložisko. Možno nie je pripojená SD karta."</string>
+<string name="download_manager_ERROR_CANNOT_RESUME">"Vyskytla sa nejaká dočasná chyba, ale sťahovanie nemôžeme obnoviť. Opakujte neskôr."</string>
+<string name="download_manager_ERROR_BLOCKED">"Sťahovanie bolo neúspešné kvôli ovládacím prvkom NetworkPolicyManager v žiadajúcej aplikácii. Skontrolujte svoje nastavenia."</string>
+<string name="search_filter">"Všetky aplikácie"</string>
+<string name="details_category">"Kategória: %1$s"</string>
+<string name="pref_delete_apk_after_install_summary_off">"Teraz sa .apk súbory nevymazávajú po inštalácii"</string>
+<string name="pref_delete_apk_after_install_summary_on">"Teraz sa .apk súbory vymazávajú po inštalácii"</string>
+<string name="pref_delete_apk_after_install">"Vymazať .apk po inštalácii"</string>
+<string name="dialog_title_application_crashed">"Ospravedlňujeme sa, Yalp Store sa nečakane ukončil"</string>
+<string name="details_to_play_store">"Zobraziť v Play Store"</string>
+<string name="action_categories">"Kategórie"</string>
+<string name="list_update_all">"Aktualizovať všetko"</string>
+<string name="notification_installation_complete">"Aktualizácia nainštalovaná."</string>
+<string name="notification_installation_failed">"Neúspešná inštalácia aktualizácie."</string>
+<string name="pref_background_update_install_summary_off">"Dostanete iba notifikáciu"</string>
+<string name="pref_background_update_install_summary_on">"Ak sa nájdu aktualizácie, budú inštalované (root)"</string>
+<string name="pref_background_update_install">"Tiež inštalovať aktualizácie (root)"</string>
+<string name="pref_no_root">"Táto možnosť je dostupná iba na rootovaných zariadeniach"</string>
+<string name="list_app_has_ads">"s reklamami"</string>
+<string name="list_app_no_ads">"bez reklám"</string>
+<string name="list_app_depends_on_gsf">"závisí od GSF"</string>
+<string name="list_app_independent_from_gsf">"nezávisí od GSF"</string>
+<string name="details_depends_on">"Závisí od: %1$s"</string>
+<string name="details_no_dependencies">"nič"</string>
+<string name="details_contains_ads">"Obsahuje reklamy"</string>
+<string name="details_no_ads">"Bez reklám"</string>
+<string name="dialog_title_package_id">"Balíček s týmto názvom existuje"</string>
+<string name="dialog_message_package_id">"Existuje balíček s presne rovnakým názvom. Chcete prejsť priamo na jeho detailnú stránku?"</string>
+<string name="details_download_checking">"Kontrola…"</string>
+<string name="details_download_not_available">"Nedostupné"</string>
+<string name="manual_download_incompatible">"Google Play Store považuje túto aplikáciu za nekompatibilnú s vaším zariadením. To znamená, že Google Play Store server nevrátil kód verzie."</string>
+<string name="manual_download_compatible">"Pole s verziou kódu bolo predvyplnené posledným kompatibilným kódom verzie tejto aplikácie. Ak chcete predchádzajúcu verziu, jednoducho zadajte menšie číslo ako to súčasné. Ak vývojár nevymazal apk predchádzajúcej verzie s Play Store, malo by sa začať sťahovanie."</string>
+<string name="manual_download_warning">"Táto stránka umožňuje ručne vybrať verziu aplikácie na stiahnutie. Kód verzie je číslo identifikujúce verziu aplikácie. Začína sa od 1 a zvyšuje ho vývojár aplikácie vždy pri novej verzii. Play Store umožňuje normálne stiahnuť len posledné apk, kompatibilné s vaším zariadením. Ručným zadaním tohto čísla je možné získať aj inú verziu.
+
+Majte na pamäti, že Google Play Store nepodporuje sťahovanie ľubovoľných verzií aplikácií. Úspech závisí od šťastného uhádnutia kódu verzie. Dokonca ak uhádnete správne a začne sa sťahovanie, môžte získať nekompatibilné apk. Väčšinou aj tak len strácate svoj čas!"</string>
+<string name="manual_download_hint_version_code">"kód verzie sem"</string>
+<string name="details_uninstall">"Odinštalovať"</string>
+<string name="notification_download_starting">"Sťahovanie začalo"</string>
+<string name="notification_download_progress">"%1$s z %2$s stiahnuté"</string>
+<string name="pref_requested_language">"Play Store vyžaduje jazyk"</string>
+<string name="pref_requested_language_default">"Váš predvolený jazyk"</string>
+<string name="pref_device_to_pretend_to_be">"Predstierať ako iné zariadenie"</string>
+<string name="pref_device_to_pretend_to_be_default">"Vaše originálne informácie o zariadení"</string>
+<string name="pref_device_to_pretend_to_be_toast">"Táto zmena sa prejaví až po opätovnom prihlásení"</string>
+<string name="pref_category_updates">"Aktualizácie"</string>
+<string name="pref_category_installation">"Inštalácia"</string>
+<string name="pref_category_spoofing">"Predstieranie"</string>
+<string name="pref_category_ui">"Užívateľské rozhranie"</string>
+<string name="details_installing">"Inštalácia…"</string>
+<string name="details_installed">"Úspešne nainštalované"</string>
+<string name="details_install_failure">"Nebolo možné nainštalovať"</string>
+<string name="notification_download_complete_new_permissions">"Sťahovanie dokončené. Vyžadujú sa nové oprávnenia."</string>
+<string name="notification_download_complete_new_permissions_toast">"%1$s stiahnuté. Nová verzia aplikácie vyžaduje viac oprávnení. Skontrolujte zoznam nových oprávnení."</string>
+<string name="pref_not_privileged">"Dostupné iba ak je Yalp systémová aplikácia"</string>
+<string name="pref_installation_method">"Spôsob inštalácie"</string>
+<string name="pref_installation_method_default">"Štandardný inštalačný dialóg, bez inštalácie na pozadí"</string>
+<string name="pref_installation_method_root">"Použiť root"</string>
+<string name="pref_installation_method_privileged">"Použiť systémové oprávnenia"</string>
+<string name="pref_background_update_download_summary_off">"Dostanete iba notifikáciu"</string>
+<string name="pref_background_update_download_summary_on">"Aktualizácie sú v prípade nájdenia stiahnuté"</string>
+<string name="pref_background_update_download">"Tiež stiahnuť aktualizácie"</string>
+<string name="details_not_available_on_play_store">"Nedostupné v Play Store"</string>
+<string name="action_manual">"Ručné stiahnutie"</string>
+<string name="action_get_local_apk">"Získať lokálny apk súbor"</string>
+<string name="details_saved_in_downloads">"Uložené vo vašom adresári Sťahovania"</string>
+<string name="details_could_not_copy_apk">"Nebolo možné skopírovať apk"</string>
+<string name="action_make_system">"Skonvertovať na systémovú aplikáciu"</string>
+<string name="action_make_normal">"Skonvertovať na normálnu aplikáciu"</string>
+<string name="list_app_system">"Systémová aplikácia"</string>
+<string name="activity_title_updates_only">"Aktualizácie"</string>
+<string name="activity_title_updates_and_other_apps">"Vaše aplikácie"</string>
+<string name="details_system_app_info">"Systémové informácie"</string>
+<string name="details_run">"Spustiť"</string>
+<string name="dialog_title_remounting_system">"Práca so /system partíciou"</string>
+<string name="dialog_message_remounting_system">"Pracuje sa so /system partíciou. Môže to chvíľu trvať."</string>
+<string name="dialog_title_checking_busybox">"Kontrola, či je dostupný busybox"</string>
+<string name="dialog_message_checking_busybox">"Pre prácu so systémovými aplikáciami sa vyžadujú určité systémové nástroje. Kontroluje sa, či sú dostupné."</string>
+<string name="dialog_title_busybox_not_available">"Busybox nie je dostupný"</string>
+<string name="dialog_message_busybox_not_available">"Pre prácu so systémovými aplikáciami sa vyžaduje rootované zariadenie s inštalovaným busybox. Vyhľadať teraz inštalátor busybox?"</string>
+<string name="dialog_title_reboot_required">"Vyžaduje sa reštart"</string>
+<string name="dialog_message_reboot_required">"Zmeny sa prejavia až po reštarte. Reštartovať teraz?"</string>
+<string name="dialog_title_system_app_warning">"Upozornenie!"</string>
+<string name="dialog_message_system_app_warning_to_system">"Zvolili ste konverziu aplikácie na systémovú. Aplikácie väčšinou nepotrebujú byť systémové, aby správne fungovali.
+
+Berte do úvahy, že proces konvertovania Android NEpodporuje a preto to NIE je bezpečné a NEzabezpečuje to správne fungovanie.
+
+Nerobte to len zo zvedavosti. Môže to poškodiť vaše zariadenie. Pred vyskúšaním si zálohujte zariadenie."</string>
+<string name="dialog_message_system_app_warning_to_normal">"Zvolili ste konverziu systémovej aplikácie na normálnu. Systémové aplikácie väčšinou potrebujú ostať systémové, aby správne fungovali.
+
+Berte do úvahy, že proces konvertovania Android NEpodporuje a preto to NIE je bezpečné a NEzabezpečuje to správne fungovanie.
+
+Nerobte to len zo zvedavosti. Môže to poškodiť vaše zariadenie. Pred vyskúšaním si zálohujte zariadenie."</string>
+<string name="list_check_updates">"Skontrolovať aktualizácie"</string>
+<string name="pref_background_update_interval_manually">"Iba ručne"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Naozaj chcete odstrániť túto systémovú aplikáciu? Systémové aplikácie sú nahraté vo vašom zariadení jeho výrobcom a väčšinou sú potrebné, aby zariadenie správne fungovalo.
+
+Berte do úvahy, že odstraňovanie systémových aplikácií Android NEpodporuje a preto to NIE je bezpečné a NEzabezpečuje to správne fungovanie.
+
+Nerobte to len zo zvedavosti. Môže to poškodiť vaše zariadenie. Pred vyskúšaním si zálohujte zariadenie."</string>
+<string name="dialog_title_system_app_self">"Vytvára sa Yalp ako systémová aplikácia"</string>
+<string name="dialog_message_system_app_self">"Pre použitie privilegovaných oprávnení pre možnosť inštalácie aplikácií na pozadí je potrebné Yalp Store vytvoriť ako systémovú aplikáciu.
+
+Tento proces nie je dokonalý a je závislý od výrobcu, nemusí preto fungovať.
+
+Vykonať?"</string>
+<string name="about_website_label">"Web stránka:"</string>
+<string name="details_share">"Zdieľať"</string>
+<string name="details_developer">"Vývojár: %1$s"</string>
+<string name="pref_background_update_wifi_only">"Iba cez Wi-Fi"</string>
+<string name="about_bitcoin_label">"Darovať Bitcoin:"</string>
+<string name="action_bug_report">"Nahlásiť problém"</string>
+<string name="dialog_title_spoof_request">"Požiadavka"</string>
+<string name="dialog_message_spoof_request">"Predstieranie zariadenia je možné vďaka tomu, že užívatelia ako vy odosielate správy o chybách s informáciou o zariadení. Ak chcete, aby definície boli presné a aktuálne, stlačte prosím OK a informácie o vašom zariadení sa pošlú výrobcovi Yalp Store."</string>
+<string name="pref_device_to_pretend_to_be_notice">"Ak vložíte definície zariadení do %1$s, zobrazia sa v tomto zozname"</string>
+<string name="pref_no_images">"Sťahovať obrázky iba cez Wi-Fi"</string>
+<string name="pref_no_images_summary_off">"Obrázky sa teraz vždy sťahujú"</string>
+<string name="pref_no_images_summary_on">"Obrázky sa sťahujú len cez Wi-Fi"</string>
+<string name="bug_report_hint_message">"Detailný popis problému"</string>
+<string name="bug_report_hint_identification">"Váš e-mail/meno/čokoľvek (voliteľné)"</string>
+<string name="bug_report_explanation_content">"Informácie o vašom zariadení, Yalp Store logy a niektoré Yalp Store nastavenia sa automaticky pridajú do správy. Nezbierajú sa žiadne súkromné ani citlivé informácie."</string>
+<string name="bug_report_explanation_crash">"Môžte pomôcť problém opraviť, keď pošlete správu o chybe vývojárovi. Popíšte prosím čo ste skúšali, keď chyba nastala a stlačte OK, čím sa správa odošle."</string>
+<string name="bug_report_explanation_bug_report">"Popíšte prosím problém. Buďte čo najviac konkrétny. Vyskytla sa chyba pri konkrétnej aplikácií? Vyskytuje sa vždy alebo len niekedy? Ako je možné chybu zopakovať?"</string>
+<string name="thank_you">"Ďakujeme"</string>
+<string name="list_updating">"Aktualizácia…"</string>
+<string name="error_invalid_device_definition">"Definícia zariadenia zamietnutá."</string>
+<string name="details_video">"Video"</string>
+<string name="error_could_not_download">"Nebolo možné stiahnuť."</string>
+<string name="first_login_message">"Pre použitie svojho vlastného účtu zvoľte v menu Odhlásiť"</string>
+<string name="early_access">"Prednostný prístup"</string>
+<string name="testing_program_opt_in">"zapojiť sa"</string>
+<string name="testing_program_opt_out">"odísť"</string>
+<string name="testing_program_section_opted_in_message">"Aktualizácie aplikácie budú zahrnovať beta verzie. Ak program beta tejto aplikácie opustíte, už nebudete ďalej dostávať aktualizácie verzie beta."</string>
+<string name="testing_program_section_opted_in_propagating_message">"O niekoľko minút vás pridáme do programu beta. Potom budete môcť svoju aplikáciu aktualizovať na beta verziu (ak je k dispozícii)."</string>
+<string name="testing_program_section_opted_in_title">"Ste beta tester"</string>
+<string name="testing_program_section_opted_out_message">"Skúšajte nové funkcie ešte pred ich zverejnením. Poskytnite spätnú väzbu priamo vývojárovi."</string>
+<string name="testing_program_section_opted_out_propagating_message">"Vaše odstránenie z programu beta môže trvať niekoľko minúť."</string>
+<string name="testing_program_section_opted_out_title">"Staňte sa beta testerom"</string>
+<string name="notification_not_privileged">"Nezískané povolenie na inštaláciu"</string>
+<string name="about_paypal_label">"Darovať cez Paypal:"</string>
+<string name="pref_download_directory">"Adresár Sťahovania"</string>
+<string name="pref_download_deltas">"Delta aktualizácie"</string>
+<string name="pref_download_deltas_summary_off">"Vždy sa sťahuje plný apk súbor"</string>
+<string name="pref_download_deltas_summary_on">"Počas aktualizácií sa sťahujú iba zmeny"</string>
+<string name="testing_program_review_dialog_content_hint">"Zadajte spätnú väzbu týkajúcu sa aplikácie"</string>
+<string name="delete">"Odstrániť"</string>
+<string name="submit">"Odoslať"</string>
+<string name="done">"Hotovo"</string>
+<string name="availability_restriction_carrier">"Táto položka nie je u vášho operátora k dispozícii."</string>
+<string name="availability_restriction_country">"Táto položka nie je vo vašej krajine k dispozícii."</string>
+<string name="availability_restriction_country_or_carrier">"Táto položka nie je vo vašej krajine alebo u vášho operátora k dispozícii."</string>
+<string name="availability_restriction_for_managed_account">"Váš správca vám neudelil prístup k tejto položke."</string>
+<string name="availability_restriction_generic">"Táto položka nie je k dispozícii."</string>
+<string name="availability_restriction_hardware">"Vaše zariadenie nie je s touto položkou kompatibilné."</string>
+<string name="availability_restriction_hardware_app">"Vaše zariadenie nie je kompatibilné s touto verziou."</string>
+<string name="availability_restriction_hardware_app_ram_generic">"Táto aplikácia vyžaduje viac pamäte RAM, ako je k dispozícii vo vašom zariadení."</string>
+<string name="availability_restriction_missing_permission">"Váš správca neschválil povolenia pre túto položku."</string>
+<string name="availability_restriction_not_in_group">"Nepatríte do cieľovej skupiny pre túto položku."</string>
+<string name="flag_graphic_violence">"Explicitné násilie"</string>
+<string name="flag_harmful_prompt">"Popíšte poškodenie, ktoré bolo spôsobené vášmu zariadeniu alebo dátam:"</string>
+<string name="flag_harmful_to_device">"Škodlivé pre zariadenie alebo dáta"</string>
+<string name="flag_hateful_content">"Nenávistný alebo urážlivý obsah"</string>
+<string name="flag_improper_content_rating">"Nesprávne hodnotenie obsahu"</string>
+<string name="flag_other_concern_prompt">"Popíšte námietku"</string>
+<string name="flag_other_objection">"Iná námietka"</string>
+<string name="flag_page_description">"Dôvod, prečo považujete tento obsah alebo túto aplikáciu za nevhodné:"</string>
+<string name="flag_pharma_content">"Nelegálny predpis či iný liek"</string>
+<string name="flag_sexual_content">"Sexuálny obsah"</string>
+<string name="flag_impersonation_copycat">"Kopírovanie alebo napodobovanie"</string>
+<string name="flagging_title">"Nahlásiť ako nevhodné"</string>
+<string name="content_flagged">"Námietka bola odoslaná."</string>
+<string name="list_app_blacklisted">"V blackliste"</string>
+<string name="list_app_whitelisted">"Vo whiteliste"</string>
+<string name="action_filter">"Filter"</string>
+<string name="action_filter_system_apps">"Systémové aplikácie"</string>
+<string name="action_filter_apps_with_ads">"Aplikácie s reklamami"</string>
+<string name="action_filter_paid_apps">"Platené aplikácie"</string>
+<string name="action_filter_gsf_dependent_apps">"GSF závislé aplikácie"</string>
+<string name="action_filter_category">"Kategória: %1$s"</string>
+<string name="action_filter_rating">"Hodnotenie: %1$s"</string>
+<string name="action_filter_downloads">"Stiahnutí: %1$s"</string>
+<string name="pref_auto_whitelist">"Automaticky do whitelistu"</string>
+<string name="pref_auto_whitelist_summary_on">"Aplikácie inštalované cez Yalp Store sú automaticky zaradené do whitelistu"</string>
+<string name="pref_auto_whitelist_summary_off">"Aplikácie treba zaradiť do whitelistu ručne"</string>
+<string name="apps_by">"Aplikácie od autora %1$s"</string>
+<string name="pref_message_fallback">"Pokúsiť sa nastaviť záložný adresár (%1$s)?"</string>
+</resources>
