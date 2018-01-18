@@ -108,7 +108,7 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
             || e instanceof ConnectException
             || e instanceof SocketException
             || e instanceof SocketTimeoutException
-            || (null != e.getCause() && noNetwork(e.getCause()))
+            || (null != e && null != e.getCause() && noNetwork(e.getCause()))
         ;
     }
 }
