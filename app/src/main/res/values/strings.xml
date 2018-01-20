@@ -9,8 +9,10 @@
     <string name="list_empty_updates">No apps need to be updated</string>
     <string name="list_empty_search">No apps found</string>
     <string name="list_incompatible">incompatible</string>
-    <string name="list_check_updates">Check for updates</string>
-    <string name="list_update_all">Update all</string>
+    <string name="list_check_updates">Check update</string>
+    <string name="list_check_updates_txt">My apps and games</string>
+    <string name="list_update_all">Update</string>
+    <string name="list_update_all_txt">Update following apps..</string>
     <string name="list_updating">Updating…</string>
     <string name="list_app_has_ads">has ads</string>
     <string name="list_app_no_ads">no ads</string>

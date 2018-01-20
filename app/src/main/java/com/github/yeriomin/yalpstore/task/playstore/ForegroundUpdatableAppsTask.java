@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
@@ -72,8 +73,11 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
 
     private void toggleUpdateAll(boolean enable) {
         Button button = activity.findViewById(R.id.main_button);
+        TextView textView = activity.findViewById(R.id.main_button_txt);
         button.setText(R.string.list_update_all);
+        textView.setText(R.string.list_update_all_txt);
         button.setVisibility(enable ? View.VISIBLE : View.GONE);
+        textView.setVisibility(enable ? View.VISIBLE : View.GONE);
         if (((YalpStoreApplication) activity.getApplication()).isBackgroundUpdating()) {
             button.setEnabled(false);
             button.setText(R.string.list_updating);

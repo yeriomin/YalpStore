@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class UpdateAllReceiver extends BroadcastReceiver {
 
@@ -46,9 +47,12 @@ public class UpdateAllReceiver extends BroadcastReceiver {
 
     private void enableButton() {
         Button button = activity.findViewById(R.id.main_button);
+        TextView textView = activity.findViewById(R.id.main_button_txt);
         if (null != button) {
             button.setEnabled(true);
+            textView.setEnabled(true);
             button.setText(R.string.list_update_all);
+            textView.setText(R.string.list_update_all_txt);
         }
     }
 

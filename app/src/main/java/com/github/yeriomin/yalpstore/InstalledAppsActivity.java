@@ -6,6 +6,7 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
@@ -21,9 +22,13 @@ public class InstalledAppsActivity extends AppListActivity {
         super.onCreate(savedInstanceState);
         setTitle(R.string.activity_title_updates_and_other_apps);
         Button button = findViewById(R.id.main_button);
+        TextView textView = findViewById(R.id.main_button_txt);
         button.setEnabled(true);
+        textView.setEnabled(true);
         button.setVisibility(View.VISIBLE);
+        textView.setVisibility(View.VISIBLE);
         button.setText(R.string.list_check_updates);
+        textView.setText(R.string.list_check_updates_txt);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
