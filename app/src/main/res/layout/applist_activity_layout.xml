@@ -3,11 +3,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="5dp">
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,9 +16,8 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:text="@string/list_update_all_txt"
-                android:layout_margin="16dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
+                android:layout_margin="15dp"
+                android:textSize="20dp"
                 android:visibility="gone" />
 
             <Button
@@ -40,7 +34,6 @@
                 android:visibility="gone" />
 
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
