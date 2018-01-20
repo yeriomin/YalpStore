@@ -39,7 +39,9 @@ public class ButtonDownload extends Button {
 
     @Override
     public boolean shouldBeVisible() {
-        return (!Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
+        File apk = Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode());
+        return (!apk.exists()
+                || apk.length() != app.getSize()
                 || !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
             )
             && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID))

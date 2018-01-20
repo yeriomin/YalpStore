@@ -12,12 +12,12 @@ import java.io.File;
 
 public class Downloader {
 
+    private Context context;
     private DownloadManagerInterface dm;
-    private File storagePath;
 
     public Downloader(Context context) {
+        this.context = context;
         this.dm = DownloadManagerFactory.get(context);
-        storagePath = Paths.getYalpPath(context);
     }
 
     public void download(App app, AndroidAppDeliveryData deliveryData) {
@@ -27,6 +27,7 @@ public class Downloader {
             ? DownloadManagerInterface.Type.DELTA
             : DownloadManagerInterface.Type.APK
         ;
+        prepare(Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()), deliveryData.getDownloadSize());
         state.setStarted(dm.enqueue(app, deliveryData, type));
         if (deliveryData.getAdditionalFileCount() > 0) {
             checkAndStartObbDownload(state, deliveryData, true);
@@ -44,7 +45,7 @@ public class Downloader {
         if (deliveryData.getAdditionalFileCount() > 1) {
             bytesNeeded += deliveryData.getAdditionalFile(1).getSize();
         }
-        StatFs stat = new StatFs(storagePath.getPath());
+        StatFs stat = new StatFs(Paths.getYalpPath(context).getPath());
         return (long) stat.getBlockSize() * (long) stat.getAvailableBlocks() >= bytesNeeded;
     }
 
@@ -65,7 +66,7 @@ public class Downloader {
     static private void prepare(File file, long expectedSize) {
         Log.i(Downloader.class.getSimpleName(), "file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + expectedSize);
         if (file.exists() && file.length() != expectedSize) {
-            Log.i(Downloader.class.getSimpleName(), "Deleted old obb file: " + file.delete());
+            Log.i(Downloader.class.getSimpleName(), "Deleted old file: " + file.delete());
         }
         file.getParentFile().mkdirs();
     }
