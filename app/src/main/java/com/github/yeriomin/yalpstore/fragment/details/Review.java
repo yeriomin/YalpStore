@@ -47,6 +47,7 @@ public class Review extends Abstract {
                 getTask(true).execute();
             }
         });
+        activity.findViewById(R.id.reviews_card).setVisibility(View.VISIBLE);
         initReviewListControls();
 
         setText(R.id.average_rating, R.string.details_rating, app.getRating().getAverage());

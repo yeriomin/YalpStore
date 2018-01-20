@@ -38,13 +38,13 @@ public abstract class Abstract {
                 boolean isExpanded = viewContainer.getVisibility() == View.VISIBLE;
                 if (isExpanded) {
                     viewContainer.setVisibility(View.GONE);
-                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_expand_more, 0, 0, 0);
+                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_expand_more,0);
                 } else {
                     if (null != l) {
                         l.onClick(v);
                     }
                     viewContainer.setVisibility(View.VISIBLE);
-                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_expand_less, 0, 0, 0);
+                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_expand_less,0);
                 }
             }
         });

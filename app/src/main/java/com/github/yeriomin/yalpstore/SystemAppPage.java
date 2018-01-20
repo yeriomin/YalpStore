@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
@@ -23,7 +24,7 @@ public class SystemAppPage extends Abstract {
         if (!app.isInstalled()) {
             return;
         }
-        TextView systemAppInfo = (TextView) activity.findViewById(R.id.system_app_info);
+        ImageView systemAppInfo = (ImageView) activity.findViewById(R.id.system_app_info);
         systemAppInfo.setVisibility(View.VISIBLE);
         systemAppInfo.setOnClickListener(new View.OnClickListener() {
             @Override

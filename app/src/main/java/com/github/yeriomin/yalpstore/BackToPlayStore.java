@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
@@ -24,7 +25,7 @@ public class BackToPlayStore extends Abstract {
         if (!isPlayStoreInstalled() || !app.isInPlayStore()) {
             return;
         }
-        TextView toPlayStore = (TextView) activity.findViewById(R.id.to_play_store);
+        ImageView toPlayStore = (ImageView) activity.findViewById(R.id.to_play_store);
         toPlayStore.setVisibility(View.VISIBLE);
         toPlayStore.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -45,6 +45,7 @@ public class Beta extends Abstract {
         setText(R.id.beta_message, app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_in_message : R.string.testing_program_section_opted_out_message);
         setText(R.id.beta_subscribe_button, app.isTestingProgramOptedIn() ? R.string.testing_program_opt_out : R.string.testing_program_opt_in);
         setText(R.id.beta_email, app.getTestingProgramEmail());
+        activity.findViewById(R.id.beta_card).setVisibility(View.VISIBLE);
         activity.findViewById(R.id.beta_feedback).setVisibility(app.isTestingProgramOptedIn() ? View.VISIBLE : View.GONE);
         activity.findViewById(R.id.beta_subscribe_button).setOnClickListener(new BetaOnClickListener((TextView) activity.findViewById(R.id.beta_message), app));
         activity.findViewById(R.id.beta_submit_button).setOnClickListener(new View.OnClickListener() {

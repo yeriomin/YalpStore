@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
@@ -18,7 +19,7 @@ public class Share extends Abstract {
 
     @Override
     public void draw() {
-        TextView share = (TextView) activity.findViewById(R.id.share);
+        ImageView share = (ImageView) activity.findViewById(R.id.share);
         share.setOnClickListener(new View.OnClickListener() {
 
             @Override

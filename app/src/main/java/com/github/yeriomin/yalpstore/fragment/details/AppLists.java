@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -54,10 +55,10 @@ public class AppLists extends Abstract {
     }
 
     private void addAppsByThisDeveloper() {
-        TextView textView = activity.findViewById(R.id.apps_by_same_developer);
-        textView.setText(activity.getString(R.string.apps_by, app.getDeveloperName()));
-        textView.setVisibility(View.VISIBLE);
-        textView.setOnClickListener(new View.OnClickListener() {
+        ImageView imageView = activity.findViewById(R.id.apps_by_same_developer);
+        //textView.setText(activity.getString(R.string.apps_by, app.getDeveloperName()));
+        imageView.setVisibility(View.VISIBLE);
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, SearchActivity.class);

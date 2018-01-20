@@ -78,6 +78,7 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         textView.setText(R.string.list_update_all_txt);
         button.setVisibility(enable ? View.VISIBLE : View.GONE);
         textView.setVisibility(enable ? View.VISIBLE : View.GONE);
+        activity.findViewById(R.id.list_card).setVisibility(View.VISIBLE);
         if (((YalpStoreApplication) activity.getApplication()).isBackgroundUpdating()) {
             button.setEnabled(false);
             button.setText(R.string.list_updating);

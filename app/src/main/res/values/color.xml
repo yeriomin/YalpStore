@@ -2,7 +2,16 @@
 <resources>
     <color name="colorPrimary">#ff1976d2</color>
     <color name="colorPrimaryDark">#1565C0</color>
-    <color name="colorAccent">#00E676</color>
+    <color name="colorAccent">#448AFF</color>
     <color name="white">#FFFFFF</color>
-    <color name="button_bg">#448AFF</color>
+    <color name="black">#000000</color>
+    <color name="button_bg">#1565C0</color>
+    <color name="round_bg">#1565C0</color>
+    <color name="changelog_txt">#1565C0</color>
+    <color name="changelog_bg">#E3F2FD</color>
+    <color name="gray">#BDBDBD</color>
+    <color name="darkgray">#616161</color>
+    <color name="colorText">#121212</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#535353</color>
 </resources>

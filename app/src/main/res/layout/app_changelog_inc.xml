@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/changes_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone"
+    android:background="@color/changelog_bg">
+
+    <TextView
+        android:id="@+id/changes_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="25dp"
+        android:text="@string/details_changelog"
+        android:textAllCaps="true"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/changelog_txt"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/changes_upper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="web|email"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:textIsSelectable="true"
+        android:visibility="gone"
+        android:textColor="@color/changelog_txt"
+        android:lineSpacingExtra="5dp"/>
+</LinearLayout>

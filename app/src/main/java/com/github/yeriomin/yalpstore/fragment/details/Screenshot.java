@@ -20,11 +20,9 @@ public class Screenshot extends Abstract {
     @Override
     public void draw() {
         if (app.getScreenshotUrls().size() > 0) {
-            activity.findViewById(R.id.screenshots_header).setVisibility(View.VISIBLE);
             drawGallery();
-            initExpandableGroup(R.id.screenshots_header, R.id.screenshots_container);
         } else {
-            activity.findViewById(R.id.screenshots_header).setVisibility(View.GONE);
+           return;
         }
     }
 
@@ -32,7 +30,7 @@ public class Screenshot extends Abstract {
         Gallery gallery = ((Gallery) activity.findViewById(R.id.screenshots_gallery));
         int screenWidth = activity.getWindowManager().getDefaultDisplay().getWidth();
         gallery.setAdapter(new ImageAdapter(activity, app.getScreenshotUrls(), screenWidth));
-        gallery.setSpacing(10);
+        gallery.setSpacing(15);
         gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

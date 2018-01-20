@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
@@ -23,10 +24,12 @@ public class InstalledAppsActivity extends AppListActivity {
         setTitle(R.string.activity_title_updates_and_other_apps);
         Button button = findViewById(R.id.main_button);
         TextView textView = findViewById(R.id.main_button_txt);
+        CardView cardView = findViewById(R.id.list_card);
         button.setEnabled(true);
         textView.setEnabled(true);
         button.setVisibility(View.VISIBLE);
         textView.setVisibility(View.VISIBLE);
+        cardView.setVisibility(View.VISIBLE);
         button.setText(R.string.list_check_updates);
         textView.setText(R.string.list_check_updates_txt);
         button.setOnClickListener(new View.OnClickListener() {

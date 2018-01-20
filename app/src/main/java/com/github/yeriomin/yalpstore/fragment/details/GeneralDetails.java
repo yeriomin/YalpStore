@@ -49,7 +49,11 @@ public class GeneralDetails extends Abstract {
     }
 
     private void drawGeneralDetails(App app) {
+        activity.findViewById(R.id.general_card).setVisibility(View.VISIBLE);
         activity.findViewById(R.id.general_details).setVisibility(View.VISIBLE);
+        activity.findViewById(R.id.app_detail).setVisibility(View.VISIBLE);
+        activity.findViewById(R.id.divider_top).setVisibility(View.VISIBLE);
+        activity.findViewById(R.id.divider_bottom).setVisibility(View.VISIBLE);
         setText(R.id.installs, R.string.details_installs, Util.addSiPrefix(app.getInstalls()));
         if (app.isEarlyAccess()) {
             setText(R.id.rating, R.string.early_access);
@@ -87,8 +91,8 @@ public class GeneralDetails extends Abstract {
         } else {
             activity.findViewById(R.id.changes_upper).setVisibility(View.VISIBLE);
             setText(R.id.changes_upper, Html.fromHtml(changes).toString());
-            initExpandableGroup(R.id.changes_header, R.id.changes_container);
-            activity.findViewById(R.id.changes_header).performClick();
+            activity.findViewById(R.id.changes_header).setVisibility(View.VISIBLE);
+            activity.findViewById(R.id.changes_container).setVisibility(View.VISIBLE);
         }
     }
 
@@ -168,7 +172,7 @@ public class GeneralDetails extends Abstract {
         }
         setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
         if (!app.isInPlayStore()) {
-            activity.findViewById(R.id.permissions_header).performClick();
+            //activity.findViewById(R.id.permissions_header).performClick();
         }
     }
 }
