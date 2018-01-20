@@ -17,7 +17,7 @@
         android:visibility="gone"
         android:padding="5dp" />
 
-    <ListView
+    <android.support.v7.widget.ListViewCompat
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
