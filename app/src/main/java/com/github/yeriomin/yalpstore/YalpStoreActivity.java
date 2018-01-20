@@ -104,9 +104,6 @@ public abstract class YalpStoreActivity extends Activity {
             case R.id.action_about:
                 startActivity(new Intent(this, AboutActivity.class));
                 break;
-            case R.id.action_bug_report:
-                startActivity(new Intent(this, BugReportActivity.class));
-                break;
             case R.id.filter_system_apps:
             case R.id.filter_apps_with_ads:
             case R.id.filter_paid_apps:

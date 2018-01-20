@@ -22,7 +22,6 @@
     <string name="list_app_whitelisted">В белом списке</string>
     <string name="dialog_title_package_id">Найдено точное соответствие</string>
     <string name="dialog_message_package_id">Найдено приложение с таким идентификатором. Перейти сразу на страницу этого приложения?</string>
-    <string name="dialog_title_application_crashed">В Yalp Store произошёл сбой</string>
     <string name="dialog_two_factor_cancel">Позднее</string>
     <string name="dialog_two_factor_create_password">Создать пароль</string>
     <string name="dialog_title_two_factor">Двухэтапная аутентификация</string>
@@ -73,7 +72,6 @@
     <string name="action_get_local_apk">Установленный apk</string>
     <string name="action_make_system">Сделать системным</string>
     <string name="action_make_normal">Сделать обычным</string>
-    <string name="action_bug_report">Сообщить о проблеме</string>
     <string name="search_filter">Все приложения</string>
     <string name="search_title">Поиск приложений</string>
     <string name="error_incorrect_password">Неверный email или пароль.</string>
@@ -212,11 +210,6 @@
     <string name="manual_download_compatible">В поле номер версии (version code) сейчас самый новый номер. Если вы хотите предыдущую версию, попробуйте уменьшить номер на еденицу. Если разработчик ещё не удалил старую версию из Play Store, начнётся скачивание.</string>
     <string name="manual_download_warning">Здесь вы можете вручную выбрать версию приложения которое вы хотите скачать. Номер версии (version code) это число, уникально идентифицирующее версию приложения. Оно больше еденицы и увеличивается разработчиком каждый раз, когда он выпускает новую версию. Обычно Play Store позволяет скачать только самый новый совместимый с вашим устройством apk. Выбирая вручную номер версии, вы можете получить доступ к другим версиям приложения.\n\nИмейте в виду, что Google Play Store не поддерживает скачивание любых версий кроме последней совместимой. Вы угадываете номер версии. Даже если скачивание запустится, вы можете получить несовместимый apk. Так что скорее всего, вы зря тратите время!</string>
     <string name="manual_download_hint_version_code">номер версии (version code)</string>
-    <string name="bug_report_hint_message">Подробное описание</string>
-    <string name="bug_report_hint_identification">Ваш email или имя (не обязательно)</string>
-    <string name="bug_report_explanation_content">Информация о вашем устройстве, логи и некоторые настройки Yalp Store будут прикреплены к вашему сообщению. Никакой приватной или чувствительной информации отправлено не будет.</string>
-    <string name="bug_report_explanation_crash">Вы можете помочь разработчику исправить эту неприятность, послав ему отчёт об ошибке. Пожалуйста, опишите что вы пытались сделать когда произошла ошибка и нажмите ОК.</string>
-    <string name="bug_report_explanation_bug_report">Пожалуйста, подробно опишите проблему. Может быть проблема происходит с конкретными приложениями? Всегда или иногда? Как разработчик может повторить проблему?</string>
     <string name="thank_you">Спасибо</string>
     <string name="first_login_message">Чтобы использовать свой аккаунт выберите "Разлогиниться" в меню</string>
     <string name="early_access">Бета-версия</string>
@@ -232,16 +225,9 @@
     <string name="delete">Удалить</string>
     <string name="submit">Отправить</string>
     <string name="done">Готово</string>
-    <string name="availability_restriction_carrier">Этот продукт недоступен для вашего оператора.</string>
     <string name="availability_restriction_country">Недоступно в вашей стране.</string>
-    <string name="availability_restriction_country_or_carrier">Этот продукт недоступен в вашей стране или для вашего оператора.</string>
-    <string name="availability_restriction_for_managed_account">Администратор ограничил доступ к этому контенту.</string>
     <string name="availability_restriction_generic">Недоступно</string>
-    <string name="availability_restriction_hardware">Не поддерживается на вашем устройстве.</string>
     <string name="availability_restriction_hardware_app">Не поддерживается на вашем устройстве.</string>
-    <string name="availability_restriction_hardware_app_ram_generic">Оперативной памяти вашего устройства недостаточно для этого приложения.</string>
-    <string name="availability_restriction_missing_permission">Администратор не предоставил запрашиваемые разрешения.</string>
-    <string name="availability_restriction_not_in_group">Предназначено для другой целевой группы.</string>
     <string name="flag_graphic_violence">Изображение сцен насилия</string>
     <string name="flag_harmful_prompt">Опишите повреждение:</string>
     <string name="flag_harmful_to_device">Повреждение устройства/данных</string>

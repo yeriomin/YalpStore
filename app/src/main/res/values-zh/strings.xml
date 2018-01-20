@@ -106,8 +106,7 @@
 <string name="pref_delete_apk_after_install_summary_off">"现在安装后，.apks不会被删除"</string>
 <string name="pref_delete_apk_after_install_summary_on">"现在安装后删除.apks"</string>
 <string name="pref_delete_apk_after_install">"安装后删除.apk"</string>
-<string name="dialog_title_application_crashed">"抱歉，Yalp Store崩溃了。"</string>
-<string name="details_to_play_store">"在Play商店中查看"</string>
+    <string name="details_to_play_store">"在Play商店中查看"</string>
 <string name="action_categories">"分类"</string>
 <string name="list_update_all">"全部更新"</string>
 <string name="notification_installation_complete">"已安装更新。"</string>
@@ -210,8 +209,7 @@
 <string name="about_bitcoin_label">"比特币"</string>
 
 <!-- Fuzzy -->
-<string name="action_bug_report">"反馈"</string>
-<string name="dialog_title_spoof_request">"请求"</string>
+    <string name="dialog_title_spoof_request">"请求"</string>
 
 <!-- Fuzzy -->
 <string name="dialog_message_spoof_request">"因为有了像你这样的用户和设备信息一起提交错误报告，设备欺骗是可能的。如果你想定义精确并且最新，请点击确定并且你的设备信息将被发送给 Yalp Store 开发者。"</string>
@@ -221,12 +219,7 @@
 <string name="pref_no_images">"仅在有 Wi-Fi 时下载图像"</string>
 <string name="pref_no_images_summary_off">"现在一直下载图像"</string>
 <string name="pref_no_images_summary_on">"现在仅在有 Wi-Fi 时下载图像"</string>
-<string name="bug_report_hint_message">"详细问题描述"</string>
-<string name="bug_report_hint_identification">"你的 email/姓名/任何事 (可选)"</string>
-<string name="bug_report_explanation_content">"Yalp Store 记录关于你的设备的信息，并且一些 Yalp Store 首选项将被自动追加到你的消息中。私人或敏感信息不被收集。"</string>
-<string name="bug_report_explanation_crash">"你可以通过给开发者发送一个错误报告帮助修复这个问题。请描述当错误发生时你在做什么，并点击确定来发送它。"</string>
-<string name="bug_report_explanation_bug_report">"请描述问题。如果可能的话尽量具体。这个问题与特定应用一起发生吗？它一直发生或仅是偶尔发生？怎样重现这个问题？"</string>
-<string name="thank_you">"谢谢"</string>
+    <string name="thank_you">"谢谢"</string>
 <string name="list_updating">"更新中…"</string>
 <string name="error_invalid_device_definition">"设备定义被拒绝"</string>
 <string name="details_video">"视频"</string>
@@ -251,17 +244,10 @@
 <string name="delete">"删除"</string>
 <string name="submit">"提交"</string>
 <string name="done">"完成"</string>
-<string name="availability_restriction_carrier">"您的运营商不支持此商品。"</string>
-<string name="availability_restriction_country">"此商品无法在您所在的国家/地区购买或下载。"</string>
-<string name="availability_restriction_country_or_carrier">"您所在的国家/地区或运营商不支持该商品。"</string>
-<string name="availability_restriction_for_managed_account">"您的管理员尚未向您授予此内容的使用权限。"</string>
-<string name="availability_restriction_generic">"此商品无法购买或下载。"</string>
-<string name="availability_restriction_hardware">"您的设备与此商品不兼容。"</string>
-<string name="availability_restriction_hardware_app">"您的设备与此版本不兼容。"</string>
-<string name="availability_restriction_hardware_app_ram_generic">"此应用所需的 RAM 超过您设备的可用 RAM。"</string>
-<string name="availability_restriction_missing_permission">"您的管理员尚未接受此内容的权限。"</string>
-<string name="availability_restriction_not_in_group">"您不属于此商品的目标买家群体。"</string>
-<string name="flag_graphic_violence">"暴力画面"</string>
+    <string name="availability_restriction_country">"此商品无法在您所在的国家/地区购买或下载。"</string>
+    <string name="availability_restriction_generic">"此商品无法购买或下载。"</string>
+    <string name="availability_restriction_hardware_app">"您的设备与此版本不兼容。"</string>
+    <string name="flag_graphic_violence">"暴力画面"</string>
 <string name="flag_harmful_prompt">"描述对您的设备或数据造成的损害："</string>
 <string name="flag_harmful_to_device">"对设备或数据有害"</string>
 <string name="flag_hateful_content">"憎恨或谩骂内容"</string>

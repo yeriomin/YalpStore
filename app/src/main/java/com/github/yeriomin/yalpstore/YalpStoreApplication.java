@@ -66,7 +66,6 @@ public class YalpStoreApplication extends Application {
             }
         }
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
-        Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
         registerDownloadReceiver();
         registerInstallReceiver();
     }
