@@ -3,6 +3,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -66,12 +67,15 @@ public class ImageAdapter extends BaseAdapter {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
             int w = screenWidth;
             int h = screenWidth;
-            if (null != bitmap) {
-                w = Math.min(w, bitmap.getWidth());
-                h = Math.min(h, bitmap.getHeight());
+            Drawable drawable = imageView.getDrawable();
+            if (drawable instanceof BitmapDrawable) {
+                Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                if (null != bitmap) {
+                    w = Math.min(w, bitmap.getWidth());
+                    h = Math.min(h, bitmap.getHeight());
+                }
             }
             imageView.setLayoutParams(new Gallery.LayoutParams(w, h));
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
