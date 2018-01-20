@@ -18,6 +18,7 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
 
     public DebugHttpClientAdapter() {
         dumpDirectory = new File(Environment.getExternalStorageDirectory(), DEBUG_DIRECTORY);
+        dumpDirectory.mkdirs();
     }
 
     @Override
