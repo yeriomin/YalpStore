@@ -14,7 +14,7 @@ import java.util.List;
 
 public class AppListIterator implements Iterator {
 
-    protected Filter filter;
+    protected Filter filter = new Filter();
     protected com.github.yeriomin.playstoreapi.AppListIterator iterator;
 
     public AppListIterator(com.github.yeriomin.playstoreapi.AppListIterator iterator) {

@@ -22,6 +22,7 @@ public class CategoryAppsTask extends EndlessScrollTask implements CloneableTask
     @Override
     public CloneableTask clone() {
         CategoryAppsTask task = new CategoryAppsTask(iterator);
+        task.setFilter(filter);
         task.setCategoryId(categoryId);
         task.setErrorView(errorView);
         task.setContext(context);

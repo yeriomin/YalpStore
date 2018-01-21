@@ -6,7 +6,7 @@ import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 
 import java.io.IOException;
 
-public class ClusterTask extends EndlessScrollTask {
+public class ClusterTask extends EndlessScrollTask implements CloneableTask {
 
     private String clusterUrl;
 
@@ -16,6 +16,17 @@ public class ClusterTask extends EndlessScrollTask {
 
     public void setClusterUrl(String clusterUrl) {
         this.clusterUrl = clusterUrl;
+    }
+
+    @Override
+    public CloneableTask clone() {
+        ClusterTask task = new ClusterTask(iterator);
+        task.setClusterUrl(clusterUrl);
+        task.setFilter(filter);
+        task.setErrorView(errorView);
+        task.setContext(context);
+        task.setProgressIndicator(progressIndicator);
+        return task;
     }
 
     @Override
