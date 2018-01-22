@@ -25,12 +25,29 @@
                 android:padding="5dp"
                 android:visibility="gone" />
             <!--App Video -->
-            <ImageView
+            <RelativeLayout
                 android:id="@+id/app_video"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:src="@color/gray"/>
+                android:layout_height="300dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@color/gray" />
+
+                <ImageView
+                    android:id="@+id/play_button"
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_play"
+                    android:alpha="0.7"/>
+            </RelativeLayout>
+
             <!-- App Icon & Name -->
             <LinearLayout
                 android:id="@+id/main"

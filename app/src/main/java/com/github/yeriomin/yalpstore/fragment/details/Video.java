@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.text.ClipboardManager;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.github.yeriomin.yalpstore.ContextUtil;
@@ -41,10 +42,13 @@ public class Video extends Abstract {
         String vID =getID(app.getVideoUrl());
         String URL="https://img.youtube.com/vi/"+vID+"/maxresdefault.jpg";
 
-        ImageView imageView = activity.findViewById(R.id.app_video);
+        ImageView imageView = activity.findViewById(R.id.thumbnail);
         Picasso.with(activity).load(URL).into(imageView);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+        activity.findViewById(R.id.app_video).setVisibility(View.VISIBLE);
+
+        ImageView play = activity.findViewById(R.id.thumbnail);
+        play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
