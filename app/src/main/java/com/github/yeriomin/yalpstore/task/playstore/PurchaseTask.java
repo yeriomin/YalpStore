@@ -90,7 +90,10 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
     @Override
     protected void onPostExecute(AndroidAppDeliveryData deliveryData) {
         super.onPostExecute(deliveryData);
-        if (getException() instanceof NotPurchasedException) {
+        if (getException() instanceof NotPurchasedException
+            && triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
+            && triggeredBy.equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
+        ) {
             try {
                 getNotPurchasedDialog(context).show();
             } catch (WindowManager.BadTokenException e1) {
