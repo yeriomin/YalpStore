@@ -24,9 +24,17 @@
                 android:indeterminate="true"
                 android:padding="5dp"
                 android:visibility="gone" />
+            <!--App Video -->
+            <ImageView
+                android:id="@+id/app_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@color/gray"/>
             <!-- App Icon & Name -->
             <LinearLayout
                 android:id="@+id/main"
+                android:layout_below="@+id/app_video"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -203,17 +211,6 @@
                         android:spacing="15dp" />
                     <!-- Reviews -->
                     <include layout="@layout/app_reviews_inc"/>
-                    <!-- Video -->
-                    <TextView
-                        android:id="@+id/video"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusable="true"
-                        android:gravity="center_vertical"
-                        android:paddingTop="6dip"
-                        android:text="@string/details_video"
-                        android:textSize="20sp"
-                        android:visibility="gone" />
                     <!-- Permissions -->
                     <include layout="@layout/app_perm_inc"/>
                     <!-- Beta -->

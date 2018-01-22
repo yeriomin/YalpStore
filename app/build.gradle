@@ -42,4 +42,5 @@ dependencies {
     implementation 'com.android.support:gridlayout-v7:25.4.0'
     implementation 'com.android.support:appcompat-v7:25.4.0'
     implementation 'com.android.support:recyclerview-v7:25.4.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }
