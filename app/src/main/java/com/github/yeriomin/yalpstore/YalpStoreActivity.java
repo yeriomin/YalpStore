@@ -138,6 +138,7 @@ public abstract class YalpStoreActivity extends Activity {
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         if (null != searchManager) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+            searchView.setQueryHint(getString(R.string.search_title));
         }
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
