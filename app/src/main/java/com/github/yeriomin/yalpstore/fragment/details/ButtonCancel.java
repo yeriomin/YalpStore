@@ -34,6 +34,7 @@ public class ButtonCancel extends Button {
         button.setVisibility(View.GONE);
         android.widget.Button buttonDownload = activity.findViewById(R.id.download);
         buttonDownload.setText(R.string.details_download);
+        buttonDownload.setVisibility(View.VISIBLE);
         buttonDownload.setEnabled(true);
     }
 }

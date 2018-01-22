@@ -55,18 +55,21 @@ public class ButtonDownload extends Button {
     }
 
     public void checkAndDownload() {
+        button.setVisibility(View.GONE);
+        View buttonCancel = activity.findViewById(R.id.cancel);
         YalpStorePermissionManager permissionManager = new YalpStorePermissionManager(activity);
         if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
             activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
         } else if (permissionManager.checkPermission()) {
             Log.i(getClass().getSimpleName(), "Write permission granted");
             download();
-            View buttonCancel = activity.findViewById(R.id.cancel);
             if (null != buttonCancel) {
                 buttonCancel.setVisibility(View.VISIBLE);
             }
         } else {
             permissionManager.requestPermission();
+            button.setVisibility(View.GONE);
+            buttonCancel.setVisibility(View.VISIBLE);
         }
     }
 
