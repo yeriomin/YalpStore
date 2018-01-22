@@ -17,8 +17,8 @@ public class ButtonCancel extends Button {
     }
 
     @Override
-    protected ImageButton getButton() {
-        return activity.findViewById(R.id.cancel);
+    protected android.widget.Button getButton() {
+        return (android.widget.Button) activity.findViewById(R.id.cancel);
     }
 
     @Override

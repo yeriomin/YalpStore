@@ -99,6 +99,7 @@
     <string name="details_versionName_updatable">"%1$s → %2$s"</string>
     <string name="details_run">Open</string>
     <string name="details_download">Download</string>
+    <string name="details_cancel">Cancel</string>
     <string name="details_install">Install</string>
     <string name="details_uninstall">Uninstall</string>
     <string name="details_downloading">Downloading…</string>

@@ -83,7 +83,7 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
             progressBar.setVisibility(View.GONE);
             progressBar.setProgress(0);
         }
-        ImageButton buttonCancel = activityRef.get().findViewById(R.id.cancel);
+        Button buttonCancel = activityRef.get().findViewById(R.id.cancel);
         if (null != buttonCancel) {
             buttonCancel.setVisibility(View.GONE);
         }

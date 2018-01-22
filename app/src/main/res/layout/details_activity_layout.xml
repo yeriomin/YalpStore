@@ -91,7 +91,7 @@
                     android:id="@+id/uninstall"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
-                    android:layout_weight="5"
+                    android:layout_weight="1"
                     android:maxLines="1"
                     android:visibility="gone"
                     android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -103,7 +103,7 @@
                     android:id="@+id/download"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
-                    android:layout_weight="5"
+                    android:layout_weight="1"
                     android:maxLines="1"
                     android:contentDescription="@string/content_description_download_options"
                     android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -112,21 +112,23 @@
                     android:visibility="gone"
                     android:textColor="@color/white"/>
 
-                <ImageButton
+                <android.support.v7.widget.AppCompatButton
                     android:id="@+id/cancel"
-                    android:layout_width="48dp"
+                    android:layout_width="0dp"
                     android:layout_height="48dp"
-                    android:contentDescription="@string/content_description_cancel_download"
-                    android:scaleType="centerCrop"
+                    android:layout_weight="1"
                     android:visibility="gone"
-                    android:elevation="2dp"
-                    android:src="@drawable/ic_cancel" />
+                    android:maxLines="1"
+                    android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:background="@drawable/button_bg_outine"
+                    android:text="@string/details_cancel"
+                    android:textColor="@color/colorPrimary"/>
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/install"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
-                    android:layout_weight="5"
+                    android:layout_weight="1"
                     android:visibility="gone"
                     android:maxLines="1"
                     android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -138,7 +140,7 @@
                     android:id="@+id/run"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
-                    android:layout_weight="3"
+                    android:layout_weight="1"
                     android:visibility="gone"
                     android:maxLines="1"
                     android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
