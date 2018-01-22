@@ -6,6 +6,7 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="button_bg">#1565C0</color>
+    <color name="button_bg_alt">#009688</color>
     <color name="round_bg">#1565C0</color>
     <color name="changelog_txt">#1565C0</color>
     <color name="changelog_bg">#E3F2FD</color>

@@ -53,7 +53,7 @@
     <string name="dialog_message_two_factor">It appears you have enabled 2-Step Verification for your account.\n\nPlease, create a dedicated app password for Yalp Store and use it to log in to the Yalp Store.\n\nTap \"Create password\" to be redirected to password creation page.</string>
     <string name="dialog_title_logout">Log out?</string>
     <string name="dialog_message_logout">Are you sure you want to log out?</string>
-    <string name="dialog_account_type_provided_by_user">With my own Google account</string>
+    <string name="dialog_account_type_provided_by_user">With your own Google account</string>
     <string name="dialog_account_type_predefined">With a fake Yalp Store account</string>
     <string name="dialog_account_type_title">How would you like to log in to Google Play Store?</string>
     <string name="dialog_title_logging_in">Logging in</string>
@@ -124,10 +124,11 @@
     <string name="details_saved_in_downloads">Saved in your Downloads folder</string>
     <string name="details_could_not_copy_apk">Could not copy apk</string>
     <string name="details_system_app_info">System info</string>
-    <string name="credentials_hint_email">e-mail here</string>
-    <string name="credentials_hint_password">password here</string>
+    <string name="credentials_hint_email">Email or phone</string>
+    <string name="credentials_hint_password">Enter your password</string>
     <string name="credentials_title">Google account access</string>
-    <string name="credentials_message">Google account email and password are required for this app to function.\n\nKeep in mind that using this app violates Play Store ToS. It would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store ToS.</string>
+    <string name="credentials_logo_txt">Sign in</string>
+    <string name="credentials_message">Use your Google account.\n\nKeep in mind that using this app violates Play Store T&amp;C. \nIt would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store T&amp;C.</string>
     <string name="activity_title_updates_only">Updates</string>
     <string name="activity_title_updates_and_other_apps">Your apps</string>
     <string name="activity_title_search">"Searching: \"%1$s\""</string>

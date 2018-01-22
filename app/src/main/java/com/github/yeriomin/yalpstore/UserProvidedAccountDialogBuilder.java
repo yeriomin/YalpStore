@@ -36,7 +36,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
 
     @Override
     public Dialog show() {
-        final Dialog ad = new Dialog(context);
+        final Dialog ad = new Dialog(context,android.R.style.Theme_Material_Light_Dialog_Presentation);
         ad.setContentView(R.layout.credentials_dialog_layout);
         ad.setTitle(context.getString(R.string.credentials_title));
         ad.setCancelable(false);
