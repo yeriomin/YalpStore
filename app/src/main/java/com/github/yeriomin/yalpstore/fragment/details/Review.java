@@ -15,10 +15,9 @@ import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.ReviewStorageIterator;
 import com.github.yeriomin.yalpstore.UserReviewDialogBuilder;
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.model.ImageSource;
-import com.github.yeriomin.yalpstore.task.LoadImageTask;
 import com.github.yeriomin.yalpstore.task.playstore.ReviewDeleteTask;
 import com.github.yeriomin.yalpstore.task.playstore.ReviewLoadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -129,8 +128,8 @@ public class Review extends Abstract {
             review.getTitle()
         ));
         ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
+        Picasso.with(activity).load(review.getUserPhotoUrl()).into((ImageView) reviewLayout.findViewById(R.id.avatar));
         parent.addView(reviewLayout);
-        new LoadImageTask((ImageView) reviewLayout.findViewById(R.id.avatar)).execute(new ImageSource(review.getUserPhotoUrl()));
     }
 
     private void initReviewListControls() {
