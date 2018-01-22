@@ -153,8 +153,9 @@ public class GeneralDetails extends Abstract {
         } else {
             setText(R.id.description, Html.fromHtml(app.getDescription()).toString());
             initExpandableGroup(R.id.description_header, R.id.description_container);
+            activity.findViewById(R.id.more_card).setVisibility(View.VISIBLE);
             if (app.getInstalledVersionCode() == 0 || TextUtils.isEmpty(app.getChanges())) {
-                activity.findViewById(R.id.description_header).performClick();
+                //activity.findViewById(R.id.description_header).performClick();
             }
         }
     }
