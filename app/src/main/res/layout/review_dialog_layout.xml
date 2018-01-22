@@ -39,14 +39,16 @@
             android:text="@android:string/cancel"
             android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/review_dialog_done"
             android:text="@android:string/ok"
             android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 </LinearLayout>
