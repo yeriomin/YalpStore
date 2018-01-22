@@ -20,8 +20,7 @@
                 android:layout_height="@dimen/icon_size"
                 android:layout_margin="5dp"
                 android:src="@drawable/app_downloads"
-                android:tint="@color/colorPrimary"
-                android:background="@drawable/round_bg_outine" />
+                android:background="@drawable/round_bg"/>
 
             <TextView
                 android:id="@+id/installs"
@@ -45,8 +44,7 @@
                 android:layout_height="@dimen/icon_size"
                 android:layout_margin="5dp"
                 android:src="@drawable/app_ratings"
-                android:tint="@color/colorPrimary"
-                android:background="@drawable/round_bg_outine"/>
+                android:background="@drawable/round_bg"/>
 
             <TextView
                 android:id="@+id/rating"
@@ -68,8 +66,7 @@
                 android:layout_height="@dimen/icon_size"
                 android:layout_margin="5dp"
                 android:src="@drawable/app_size"
-                android:tint="@color/colorPrimary"
-                android:background="@drawable/round_bg_outine"/>
+                android:background="@drawable/round_bg"/>
 
             <TextView
                 android:id="@+id/size"
@@ -91,8 +88,7 @@
                 android:layout_height="@dimen/icon_size"
                 android:layout_margin="5dp"
                 android:src="@drawable/app_category"
-                android:tint="@color/colorPrimary"
-                android:background="@drawable/round_bg_outine"/>
+                android:background="@drawable/round_bg"/>
 
             <TextView
                 android:id="@+id/category"
@@ -114,12 +110,11 @@
                 android:layout_height="@dimen/icon_size"
                 android:layout_margin="5dp"
                 android:src="@drawable/app_price"
-                android:tint="@color/colorPrimary"
-                android:background="@drawable/round_bg_outine"/>
+                android:background="@drawable/round_bg"/>
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </RelativeLayout>
