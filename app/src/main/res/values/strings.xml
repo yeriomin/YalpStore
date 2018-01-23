@@ -99,12 +99,13 @@
     <string name="details_versionName_updatable">"%1$s → %2$s"</string>
     <string name="details_run">Open</string>
     <string name="details_download">Download</string>
+    <string name="details_update">Update</string>
     <string name="details_cancel">Cancel</string>
     <string name="details_install">Install</string>
     <string name="details_uninstall">Uninstall</string>
-    <string name="details_downloading">Downloading…</string>
-    <string name="details_installing">Installing…</string>
-    <string name="details_download_checking">Checking…</string>
+    <string name="details_downloading">Downloading</string>
+    <string name="details_installing">Installing</string>
+    <string name="details_download_checking">Checking</string>
     <string name="details_installed">"Installed successfully"</string>
     <string name="details_install_failure">"Could not install"</string>
     <string name="details_download_not_available">Not available</string>

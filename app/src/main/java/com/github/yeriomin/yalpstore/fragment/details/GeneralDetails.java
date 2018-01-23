@@ -142,6 +142,7 @@ public class GeneralDetails extends Abstract {
                 newVersion = app.getVersionCode() + ")";
             }
             textView.setText(activity.getString(R.string.details_versionName_updatable, currentVersion, newVersion));
+            setText(R.id.download,activity.getString(R.string.details_update));
         } catch (PackageManager.NameNotFoundException e) {
             // We've checked for that already
         }
