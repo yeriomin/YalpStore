@@ -20,7 +20,10 @@ public class ButtonRun extends Button {
 
     @Override
     protected android.widget.Button getButton() {
-        return (android.widget.Button) activity.findViewById(R.id.run);
+        if(activity.findViewById(R.id.download).getVisibility()==View.VISIBLE)
+            return null;
+        else
+            return (android.widget.Button) activity.findViewById(R.id.run);
     }
 
     @Override
