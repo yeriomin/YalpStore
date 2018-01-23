@@ -15,15 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ProgressBar
-                android:id="@+id/progress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:indeterminate="true"
-                android:padding="5dp"
-                android:visibility="gone" />
             <!--App Video -->
             <RelativeLayout
                 android:id="@+id/app_video"
@@ -279,6 +270,18 @@
                             android:background="@drawable/round_bg"
                             android:src="@drawable/app_settings"/>
                     </LinearLayout>
+                    
+                    <ProgressBar
+                        android:id="@+id/progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:indeterminate="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:padding="5dp"
+                        android:visibility="gone" />
 
                 </LinearLayout>
         </RelativeLayout>
