@@ -80,12 +80,7 @@ Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania
 <string name="pref_update_list_white_or_black">"Czarna lub biała lista aplikacji do aktualizacji."</string>
 <string name="pref_update_list_black">"Edytuj czarną listę aplikacji"</string>
 <string name="pref_update_list_white">"Edytuj białą listę aplikacji"</string>
-<string name="pref_ui_theme">"Motyw"</string>
-<string name="pref_ui_theme_none">"Domyślny"</string>
-<string name="pref_ui_theme_light">"Jasny"</string>
-<string name="pref_ui_theme_dark">"Ciemny"</string>
-<string name="pref_ui_theme_black">"Nocny"</string>
-<string name="pref_background_update_interval_never">"Tylko przy uruchamianiu Yalp Store"</string>
+    <string name="pref_background_update_interval_never">"Tylko przy uruchamianiu Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"Co godzinę"</string>
 <string name="pref_background_update_interval_daily">"Co dobę"</string>
 <string name="pref_background_update_interval_weekly">"Co tydzień"</string>

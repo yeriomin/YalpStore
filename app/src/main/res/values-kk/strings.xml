@@ -79,12 +79,7 @@ Play Store парақшасына өтесіз бе?"</string>
 <string name="pref_update_list_white_or_black">"Жаңартудың қара/ақ тізімі"</string>
 <string name="pref_update_list_black">"Елемейтін бағдарламалар тізімі"</string>
 <string name="pref_update_list_white">"Жаңартылатын бағдарламалар тізімі"</string>
-<string name="pref_ui_theme">"Дизайн"</string>
-<string name="pref_ui_theme_none">"Əдетті"</string>
-<string name="pref_ui_theme_light">"Жарық"</string>
-<string name="pref_ui_theme_dark">"Қараңғы"</string>
-<string name="pref_ui_theme_black">"Қара"</string>
-<string name="pref_background_update_interval_never">"Тек Yalp Store қосу кезде"</string>
+    <string name="pref_background_update_interval_never">"Тек Yalp Store қосу кезде"</string>
 <string name="pref_background_update_interval_hourly">"Сағатына бір рет"</string>
 <string name="pref_background_update_interval_daily">"Күніне бір рет"</string>
 <string name="pref_background_update_interval_weekly">"Аптасына бір рет"</string>

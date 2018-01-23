@@ -78,12 +78,7 @@ Wees alert dat het gebruik van deze app in gaat tegen het ToS van de Play Store.
 <string name="pref_update_list_white_or_black">"Black of white list van apps voor updates."</string>
 <string name="pref_update_list_black">"Wijzig apps black list"</string>
 <string name="pref_update_list_white">"Wijzig apps white list"</string>
-<string name="pref_ui_theme">"Thema"</string>
-<string name="pref_ui_theme_none">"Standaard"</string>
-<string name="pref_ui_theme_light">"Licht"</string>
-<string name="pref_ui_theme_dark">"Donker"</string>
-<string name="pref_ui_theme_black">"Zwart"</string>
-<string name="pref_background_update_interval_never">"Alleen bij het opstarten van Yalp Store"</string>
+    <string name="pref_background_update_interval_never">"Alleen bij het opstarten van Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"Elk uur"</string>
 <string name="pref_background_update_interval_daily">"Dagelijks"</string>
 <string name="pref_background_update_interval_weekly">"Wekelijks"</string>

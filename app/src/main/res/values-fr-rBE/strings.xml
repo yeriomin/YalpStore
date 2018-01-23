@@ -78,12 +78,7 @@ Utiliser Yalp Store se fait en violation des conditions d'utilisation du Play St
 <string name="pref_update_list_white_or_black">"Liste noire ou liste blanche d'applications à mettre à jour "</string>
 <string name="pref_update_list_black">"Changer la liste noire des applications"</string>
 <string name="pref_update_list_white">"Changer la liste blanche des applications"</string>
-<string name="pref_ui_theme">"Thème"</string>
-<string name="pref_ui_theme_none">"Par défaut"</string>
-<string name="pref_ui_theme_light">"Clair"</string>
-<string name="pref_ui_theme_dark">"Sombre"</string>
-<string name="pref_ui_theme_black">"Noir"</string>
-<string name="pref_background_update_interval_never">"Uniquement au lancement"</string>
+    <string name="pref_background_update_interval_never">"Uniquement au lancement"</string>
 <string name="pref_background_update_interval_hourly">"Chaque heure"</string>
 <string name="pref_background_update_interval_daily">"Chaque jour"</string>
 <string name="pref_background_update_interval_weekly">"Chaque semaine"</string>

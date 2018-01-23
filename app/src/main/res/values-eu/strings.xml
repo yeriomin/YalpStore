@@ -78,12 +78,7 @@ Kontuan izan aplikazio hau erabiltzea Google Play Storeren erabilera baldintzak 
 <string name="pref_update_list_white_or_black">"Sartu eguneratzeko aplikazioak zerrenda beltz ala zurian"</string>
 <string name="pref_update_list_black">"Aldatu aplikazioen zerrenda beltza"</string>
 <string name="pref_update_list_white">"Aldatu aplikazioen zerrenda zuria"</string>
-<string name="pref_ui_theme">"Itxura"</string>
-<string name="pref_ui_theme_none">"Lehenetsia"</string>
-<string name="pref_ui_theme_light">"Argia"</string>
-<string name="pref_ui_theme_dark">"Iluna"</string>
-<string name="pref_ui_theme_black">"Beltza"</string>
-<string name="pref_background_update_interval_never">"Yalp Store abiatzean besterik ez"</string>
+    <string name="pref_background_update_interval_never">"Yalp Store abiatzean besterik ez"</string>
 <string name="pref_background_update_interval_hourly">"Orduro"</string>
 <string name="pref_background_update_interval_daily">"Egunero"</string>
 <string name="pref_background_update_interval_weekly">"Astero"</string>

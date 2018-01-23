@@ -78,12 +78,7 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="pref_update_list_white_or_black">"앱 블랙리스트 또는 화이트리스트"</string>
 <string name="pref_update_list_black">"앱 블랙리스트 설정"</string>
 <string name="pref_update_list_white">"앱 화이트리스트 설정"</string>
-<string name="pref_ui_theme">"테마"</string>
-<string name="pref_ui_theme_none">"기본"</string>
-<string name="pref_ui_theme_light">"밝은 테마"</string>
-<string name="pref_ui_theme_dark">"어두운 테마"</string>
-<string name="pref_ui_theme_black">"검은 테마"</string>
-<string name="pref_background_update_interval_never">"Yalp 스토어 실행 시에만"</string>
+    <string name="pref_background_update_interval_never">"Yalp 스토어 실행 시에만"</string>
 <string name="pref_background_update_interval_hourly">"매 시간마다"</string>
 <string name="pref_background_update_interval_daily">"매일"</string>
 <string name="pref_background_update_interval_weekly">"매주"</string>

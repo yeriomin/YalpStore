@@ -87,12 +87,6 @@
             android:title="@string/pref_device_to_pretend_to_be"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_ui">
-        <ListPreference
-            android:defaultValue="none"
-            android:key="PREFERENCE_UI_THEME"
-            android:title="@string/pref_ui_theme"
-            android:entries="@array/uiThemeLabels"
-            android:entryValues="@array/uiThemeValues"/>
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="PREFERENCE_NO_IMAGES"

@@ -80,12 +80,7 @@
 <string name="pref_update_list_white_or_black">"用于更新的应用程序黑白名单列表"</string>
 <string name="pref_update_list_black">"更改应用程序黑名单"</string>
 <string name="pref_update_list_white">"更改应用程序白名单"</string>
-<string name="pref_ui_theme">"主题"</string>
-<string name="pref_ui_theme_none">"默认"</string>
-<string name="pref_ui_theme_light">"明亮"</string>
-<string name="pref_ui_theme_dark">"夜间"</string>
-<string name="pref_ui_theme_black">"黑暗"</string>
-<string name="pref_background_update_interval_never">"仅在启动 Yalp Store 时"</string>
+    <string name="pref_background_update_interval_never">"仅在启动 Yalp Store 时"</string>
 <string name="pref_background_update_interval_hourly">"每小时"</string>
 <string name="pref_background_update_interval_daily">"每天"</string>
 <string name="pref_background_update_interval_weekly">"每周"</string>

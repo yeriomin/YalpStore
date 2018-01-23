@@ -39,7 +39,6 @@
                     android:src="@color/gray" />
 
                 <ImageView
-                    android:id="@+id/play_button"
                     android:layout_width="@dimen/icon_size"
                     android:layout_height="@dimen/icon_size"
                     android:layout_centerHorizontal="true"
@@ -196,7 +195,6 @@
 
                 <!-- App details -->
                 <LinearLayout
-                    android:id="@+id/sub_main"
                     android:layout_below="@id/divider_top"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

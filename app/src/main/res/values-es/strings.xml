@@ -80,12 +80,7 @@ Ten en cuenta que Yalp viola los términos de servicio del Play Store. Es probab
 <string name="pref_update_list_white_or_black">"Lista negra o blanca de aplicaciones"</string>
 <string name="pref_update_list_black">"Modificar lista negra de aplicaciones"</string>
 <string name="pref_update_list_white">"Modificar lista blanca de aplicaciones"</string>
-<string name="pref_ui_theme">"Tema gráfico"</string>
-<string name="pref_ui_theme_none">"Por defecto"</string>
-<string name="pref_ui_theme_light">"Claro"</string>
-<string name="pref_ui_theme_dark">"Oscuro"</string>
-<string name="pref_ui_theme_black">"Negro"</string>
-<string name="pref_background_update_interval_never">"Solo al abrir Yalp Store"</string>
+    <string name="pref_background_update_interval_never">"Solo al abrir Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"Cada hora"</string>
 <string name="pref_background_update_interval_daily">"Diariamente"</string>
 <string name="pref_background_update_interval_weekly">"Semanalmente"</string>

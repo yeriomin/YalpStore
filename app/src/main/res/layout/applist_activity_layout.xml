@@ -59,7 +59,6 @@
         app:cardElevation="2dp">
 
         <RelativeLayout
-            android:id="@+id/listContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"

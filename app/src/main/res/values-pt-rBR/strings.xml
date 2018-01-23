@@ -80,12 +80,7 @@ Lembre-se de que usar este aplicativo viola o Play Store ToS. Seria provavelment
 <string name="pref_update_list_white_or_black">"Lista preta ou branca de aplicativos para atualização"</string>
 <string name="pref_update_list_black">"Alterar lista negra de apps"</string>
 <string name="pref_update_list_white">"Alterar lista branca de apps"</string>
-<string name="pref_ui_theme">"Tema"</string>
-<string name="pref_ui_theme_none">"Padrão"</string>
-<string name="pref_ui_theme_light">"Light"</string>
-<string name="pref_ui_theme_dark">"Dark"</string>
-<string name="pref_ui_theme_black">"Black"</string>
-<string name="pref_background_update_interval_never">"Somente quando você inicia o Yalp Store"</string>
+    <string name="pref_background_update_interval_never">"Somente quando você inicia o Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"De hora em hora"</string>
 <string name="pref_background_update_interval_daily">"Diariamente"</string>
 <string name="pref_background_update_interval_weekly">"Semanal"</string>

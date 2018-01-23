@@ -20,7 +20,6 @@ import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SpoofDeviceManager;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
-import com.github.yeriomin.yalpstore.bugreport.BugReportService;
 
 import java.util.LinkedHashMap;
 import java.util.Locale;
@@ -109,7 +108,6 @@ public class Device extends List {
             .setPositiveButton(android.R.string.yes, new FinishingOnClickListener(logOut) {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    send();
                     ContextUtil.toastShort(activity.getApplicationContext(), activity.getString(R.string.thank_you));
                     super.onClick(dialogInterface, i);
                 }
@@ -117,13 +115,6 @@ public class Device extends List {
             .setNegativeButton(android.R.string.no, new FinishingOnClickListener(logOut))
             .show()
         ;
-    }
-
-    private void send() {
-        Intent intentBugReport = new Intent(activity.getApplicationContext(), BugReportService.class);
-        intentBugReport.setAction(BugReportService.ACTION_SEND_FTP);
-        intentBugReport.putExtra(BugReportService.INTENT_MESSAGE, activity.getString(R.string.sent_from_device_definition_dialog));
-        activity.startService(intentBugReport);
     }
 
     private AlertDialog showLogOutDialog() {

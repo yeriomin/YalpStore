@@ -78,12 +78,7 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="pref_update_list_white_or_black">"更新するアプリのブラックまたはホワイトリスト"</string>
 <string name="pref_update_list_black">"アプリのブラックリストを変更"</string>
 <string name="pref_update_list_white">"アプリのホワイトリストを変更"</string>
-<string name="pref_ui_theme">"テーマ"</string>
-<string name="pref_ui_theme_none">"デフォルト"</string>
-<string name="pref_ui_theme_light">"ライト"</string>
-<string name="pref_ui_theme_dark">"ダーク"</string>
-<string name="pref_ui_theme_black">"ブラック"</string>
-<string name="pref_background_update_interval_never">"Yalp Store を起動したときのみ"</string>
+    <string name="pref_background_update_interval_never">"Yalp Store を起動したときのみ"</string>
 <string name="pref_background_update_interval_hourly">"毎時"</string>
 <string name="pref_background_update_interval_daily">"毎日"</string>
 <string name="pref_background_update_interval_weekly">"毎週"</string>

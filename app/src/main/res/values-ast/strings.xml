@@ -79,12 +79,7 @@ Ten en cuenta qu'usar esta aplicación incumple los términos y condiciones de l
 <string name="pref_update_list_white_or_black">"Llistáu blancu o prietu d'aplicaciones p'anovar"</string>
 <string name="pref_update_list_black">"Camudar llistáu prietu"</string>
 <string name="pref_update_list_white">"Camudar llistáu blancu"</string>
-<string name="pref_ui_theme">"Tema"</string>
-<string name="pref_ui_theme_none">"Por defeutu"</string>
-<string name="pref_ui_theme_light">"Claru"</string>
-<string name="pref_ui_theme_dark">"Escuru"</string>
-<string name="pref_ui_theme_black">"Prietu"</string>
-<string name="pref_background_update_interval_never">"Namái nel llanzamientu de Yalp Store"</string>
+    <string name="pref_background_update_interval_never">"Namái nel llanzamientu de Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"Cada hora"</string>
 <string name="pref_background_update_interval_daily">"Caldía"</string>
 <string name="pref_background_update_interval_weekly">"Selmanalmente"</string>

@@ -14,7 +14,6 @@ import com.github.yeriomin.yalpstore.fragment.preference.Device;
 import com.github.yeriomin.yalpstore.fragment.preference.DownloadDirectory;
 import com.github.yeriomin.yalpstore.fragment.preference.InstallationMethod;
 import com.github.yeriomin.yalpstore.fragment.preference.Language;
-import com.github.yeriomin.yalpstore.fragment.preference.Theme;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 
@@ -78,7 +77,6 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         addPreferencesFromResource(R.xml.settings);
         drawBlackList();
         drawLanguages();
-        drawTheme();
         drawUpdatesCheck();
         drawDevices();
         drawInstallationMethod();
@@ -99,12 +97,6 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         blacklistFragment.setAppList((MultiSelectListPreference) findPreference(PREFERENCE_UPDATE_LIST));
         blacklistFragment.setAutoWhitelist((CheckBoxPreference) findPreference(PREFERENCE_AUTO_WHITELIST));
         blacklistFragment.draw();
-    }
-
-    private void drawTheme() {
-        Theme themeFragment = new Theme(this);
-        themeFragment.setThemePreference((ListPreference) findPreference(PREFERENCE_UI_THEME));
-        themeFragment.draw();
     }
 
     private void drawUpdatesCheck() {

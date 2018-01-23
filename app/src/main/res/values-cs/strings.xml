@@ -79,12 +79,7 @@ Mějte prosím na paměti, že užití této aplikace je v rozporu s podmínkami
 <string name="pref_update_list_white_or_black">"Blacklist / whitelist aplikací pro aktualizaci"</string>
 <string name="pref_update_list_black">"Změnit blacklist aplikací"</string>
 <string name="pref_update_list_white">"Změnit whitelist aplikací"</string>
-<string name="pref_ui_theme">"Motiv"</string>
-<string name="pref_ui_theme_none">"Výchozí"</string>
-<string name="pref_ui_theme_light">"Světlý"</string>
-<string name="pref_ui_theme_dark">"Tmavý"</string>
-<string name="pref_ui_theme_black">"Černý"</string>
-<string name="pref_background_update_interval_never">"Pouze při spuštění Yalp Store"</string>
+    <string name="pref_background_update_interval_never">"Pouze při spuštění Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"Každou hodinu"</string>
 <string name="pref_background_update_interval_daily">"Každý den"</string>
 <string name="pref_background_update_interval_weekly">"Každý týden"</string>

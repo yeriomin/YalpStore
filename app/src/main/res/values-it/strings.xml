@@ -79,12 +79,7 @@ Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più s
 <string name="pref_update_list_white_or_black">"Lista nera o lista bianca delle app"</string>
 <string name="pref_update_list_black">"Modifica lista nera"</string>
 <string name="pref_update_list_white">"Modifica lista bianca"</string>
-<string name="pref_ui_theme">"Tema"</string>
-<string name="pref_ui_theme_none">"Predefinito"</string>
-<string name="pref_ui_theme_light">"Chiaro"</string>
-<string name="pref_ui_theme_dark">"Scuro"</string>
-<string name="pref_ui_theme_black">"Nero"</string>
-<string name="pref_background_update_interval_never">"Solo all'avvio di Yalp Store"</string>
+    <string name="pref_background_update_interval_never">"Solo all'avvio di Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"Ogni ora"</string>
 <string name="pref_background_update_interval_daily">"Ogni giorno"</string>
 <string name="pref_background_update_interval_weekly">"Ogni settimana"</string>

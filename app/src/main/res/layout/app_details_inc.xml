@@ -100,7 +100,6 @@
 
         <!-- Price -->
         <LinearLayout
-            android:id="@+id/app_price"
             android:layout_toEndOf="@id/app_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

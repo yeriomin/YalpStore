@@ -80,12 +80,7 @@
 <string name="pref_update_list_white_or_black">"Чорний та білий список додатків для оновлення"</string>
 <string name="pref_update_list_black">"Змінити чорний список додатків"</string>
 <string name="pref_update_list_white">"Змінити білий список додатків"</string>
-<string name="pref_ui_theme">"Тема"</string>
-<string name="pref_ui_theme_none">"Типова"</string>
-<string name="pref_ui_theme_light">"Світла"</string>
-<string name="pref_ui_theme_dark">"Темна"</string>
-<string name="pref_ui_theme_black">"Нічна"</string>
-<string name="pref_background_update_interval_never">"Лише під час запуску Yalp Store"</string>
+    <string name="pref_background_update_interval_never">"Лише під час запуску Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"Щогодини"</string>
 <string name="pref_background_update_interval_daily">"Щоденно"</string>
 <string name="pref_background_update_interval_weekly">"Щотижня"</string>

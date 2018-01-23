@@ -77,12 +77,7 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play Store Nutzungsbedin
 <string name="pref_update_list_white_or_black">"Black- oder Whitelist für App-Aktualisierungen verwenden"</string>
 <string name="pref_update_list_black">"App-Blacklist verwalten"</string>
 <string name="pref_update_list_white">"App-Whitelist verwalten"</string>
-<string name="pref_ui_theme">"Design"</string>
-<string name="pref_ui_theme_none">"Standard"</string>
-<string name="pref_ui_theme_light">"Hell"</string>
-<string name="pref_ui_theme_dark">"Dunkel"</string>
-<string name="pref_ui_theme_black">"Schwarz"</string>
-<string name="pref_background_update_interval_never">"Nur wenn Yalp Store aufgerufen wird"</string>
+    <string name="pref_background_update_interval_never">"Nur wenn Yalp Store aufgerufen wird"</string>
 <string name="pref_background_update_interval_hourly">"Stündlich"</string>
 <string name="pref_background_update_interval_daily">"Täglich"</string>
 <string name="pref_background_update_interval_weekly">"Wöchentlich"</string>

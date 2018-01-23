@@ -81,12 +81,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="pref_update_list_white_or_black">"Lista branca/negra de aplicações a atualizar"</string>
 <string name="pref_update_list_black">"Modificar aplicações na lista negra"</string>
 <string name="pref_update_list_white">"Modificar aplicações na lista branca"</string>
-<string name="pref_ui_theme">"Tema"</string>
-<string name="pref_ui_theme_none">"Padrão"</string>
-<string name="pref_ui_theme_light">"Claro"</string>
-<string name="pref_ui_theme_dark">"Escuro"</string>
-<string name="pref_ui_theme_black">"Preto"</string>
-<string name="pref_background_update_interval_never">"Quando abrir a Yalp Store"</string>
+    <string name="pref_background_update_interval_never">"Quando abrir a Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"De hora em hora"</string>
 <string name="pref_background_update_interval_daily">"Diariamente"</string>
 <string name="pref_background_update_interval_weekly">"Semanalmente"</string>
