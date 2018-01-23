@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Yalp Store</string>
+    <string name="app_name" translatable="false">Galaxy</string>
     <string name="about_gsf_id" translatable="false">Google Services Framework ID</string>
     <string name="expansion_file_main" translatable="false">"%1$s - Main expansion"</string>
     <string name="expansion_file_patch" translatable="false">"%1$s - Secondary expansion"</string>
