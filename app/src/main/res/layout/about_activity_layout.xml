@@ -1,117 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="10dip"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lightgray">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+    <android.support.v7.widget.CardView
+        android:id="@+id/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="2dp"
+        app:contentPadding="5dp">
 
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="@string/app_name" />
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/version"
-            android:layout_width="match_parent"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textSize="20sp"
+                android:text="@string/app_name"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextSecondary"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/login_card"
+        android:layout_below="@+id/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="2dp"
+        app:contentPadding="5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="6dip"
-            android:paddingStart="6dip"
-            android:paddingRight="6dip"
-            android:paddingEnd="6dip"
-            android:textSize="18sp" />
+            android:orientation="vertical" >
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textSize="20sp"
+                android:text="@string/about_logged_in"
+                android:textColor="@color/colorPrimary"/>
 
-    <TextView
+            <TextView
+                android:id="@+id/user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextSecondary"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/gsf_card"
+        android:layout_below="@+id/login_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dip"
-        android:textSize="18sp"
-        android:text="@string/about_developer_email_label" />
+        android:layout_height="72dp"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="2dp"
+        app:contentPadding="5dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textSize="20sp"
+                android:text="@string/about_gsf_id"
+                android:textColor="@color/colorPrimary"/>
 
-    <TextView
-        android:id="@+id/developer_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#5555ff"
-        android:textSize="18sp"
-        android:text="@string/about_developer_email" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dip"
-        android:textSize="18sp"
-        android:text="@string/about_website_label" />
-
-    <TextView
-        android:id="@+id/website"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#5555ff"
-        android:textSize="18sp"
-        android:text="@string/about_website" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dip"
-        android:textSize="18sp"
-        android:text="@string/about_paypal_label" />
-
-    <TextView
-        android:id="@+id/paypal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#5555ff"
-        android:textSize="18sp"
-        android:text="@string/about_paypal" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dip"
-        android:textSize="18sp"
-        android:text="@string/about_bitcoin_label" />
-
-    <TextView
-        android:id="@+id/bitcoin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#5555ff"
-        android:textSize="14sp"
-        android:text="@string/about_bitcoin" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dip"
-        android:textSize="18sp"
-        android:text="@string/about_logged_in" />
-
-    <TextView
-        android:id="@+id/user_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dip"
-        android:textSize="18sp"
-        android:text="@string/about_gsf_id" />
-
-    <TextView
-        android:id="@+id/gsf_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp" />
-
-</LinearLayout>
+            <TextView
+                android:id="@+id/gsf_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextSecondary"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

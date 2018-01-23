@@ -11,7 +11,6 @@ public class BugReportService extends IntentService {
     static public final String INTENT_STACKTRACE = "INTENT_STACKTRACE";
 
     static public final String ACTION_SEND_FTP = "ACTION_SEND_FTP";
-    static public final String ACTION_SEND_EMAIL = "ACTION_SEND_EMAIL";
 
     public BugReportService() {
         super("BugReportService");
@@ -23,9 +22,6 @@ public class BugReportService extends IntentService {
         switch (intent.getAction()) {
             case ACTION_SEND_FTP:
                 sender = new BugReportSenderFtp(getApplicationContext());
-                break;
-            case ACTION_SEND_EMAIL:
-                sender = new BugReportSenderEmail(getApplicationContext());
                 break;
             default:
                 Log.e(getClass().getSimpleName(), "Unsupported action: " + intent.getAction());

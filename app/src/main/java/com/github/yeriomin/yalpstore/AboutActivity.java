@@ -11,8 +11,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.yeriomin.yalpstore.bugreport.BugReportSenderEmail;
-
 public class AboutActivity extends YalpStoreActivity {
 
     @Override
@@ -25,21 +23,6 @@ public class AboutActivity extends YalpStoreActivity {
         TextView gsfIdView = (TextView) findViewById(R.id.gsf_id);
         gsfIdView.setText(sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
         gsfIdView.setOnClickListener(new CopyToClipboardListener());
-        findViewById(R.id.developer_email).setOnClickListener(new CopyToClipboardListener() {
-            @Override
-            public void onClick(View v) {
-                super.onClick(v);
-                new BugReportSenderEmail(getApplicationContext()).send();
-            }
-        });
-        findViewById(R.id.website).setOnClickListener(new UriOpeningListener());
-        findViewById(R.id.paypal).setOnClickListener(new UriOpeningListener());
-        findViewById(R.id.bitcoin).setOnClickListener(new UriOpeningListener() {
-            @Override
-            protected String getUri(View v) {
-                return "bitcoin:" + super.getUri(v) + "?label=YalpStore";
-            }
-        });
     }
 
     private class CopyToClipboardListener implements View.OnClickListener {
