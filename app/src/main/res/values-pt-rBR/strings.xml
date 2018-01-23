@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"E-mail do desenvolvedor:"</string>
-<string name="about_logged_in">"Você está logado como:"</string>
+    <string name="about_logged_in">"Você está logado como:"</string>
 <string name="about_copied_to_clipboard">"Copiado para a área de transferência"</string>
 <string name="list_line_2_updatable">"Atualizado em %1$s"</string>
 <string name="list_empty_updates">"Nenhum app precisa ser atualizado"</string>
@@ -46,8 +45,7 @@ Redirecionar para a sua página da Play Store?"</string>
 <string name="details_size">"Apk tamanho %1$s"</string>
 <string name="details_description">"Descrição:"</string>
 <string name="details_changelog">"O que há de novo:"</string>
-<string name="details_screenshots">"Capturas de tela:"</string>
-<string name="details_reviews">"análise"</string>
+    <string name="details_reviews">"análise"</string>
 <string name="details_rate_this_app">"Avalie este aplicativo:"</string>
 <string name="details_you_rated_this_app">"Você avaliou este aplicativo:"</string>
 <string name="details_permissions">"Permissões:"</string>
@@ -106,8 +104,7 @@ Lembre-se de que usar este aplicativo viola o Play Store ToS. Seria provavelment
 <string name="pref_delete_apk_after_install_summary_off">"Agora .apks não são excluídos após a instalação"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Agora, os apks são apagadas após a instalação"</string>
 <string name="pref_delete_apk_after_install">"Excluir .apk após a instalação"</string>
-    <string name="details_to_play_store">"Ver na Play Store"</string>
-<string name="action_categories">"Categorias"</string>
+    <string name="action_categories">"Categorias"</string>
 <string name="list_update_all">"Atualizar tudo"</string>
 <string name="notification_installation_complete">"Atualização instalada"</string>
 <string name="notification_installation_failed">"Instalação da atualização falhou."</string>
@@ -171,9 +168,7 @@ Lembre-se de que o download de versões arbitrárias de aplicativos não é comp
 <string name="list_app_system">"Aplicação do sistema"</string>
 <string name="activity_title_updates_only">"Atualizações"</string>
 <string name="activity_title_updates_and_other_apps">"As suas aplicações"</string>
-    <string name="details_system_app_info">"Info do sistema
-"</string>
-<string name="details_run">"Executar"</string>
+    <string name="details_run">"Executar"</string>
 <string name="dialog_title_remounting_system">"Trabalhando com / partição de sistema"</string>
 <string name="dialog_message_remounting_system">"Trabalhando com / partição do sistema. Isso pode levar algum tempo"</string>
 <string name="dialog_title_checking_busybox">"Verificar se a busybox está disponível"</string>
@@ -204,11 +199,9 @@ Não faça isso por curiosidade. Pode quebrar seu dispositivo. Faça backup do d
 <string name="dialog_message_system_app_self">"O uso de permissões privilegiadas para permitir a instalação em segundo plano de aplicativos exige que o Yap Store seja um aplicativo do sistema.
 O processo é imperfeito e específico do fornecedor, portanto, pode não funcionar.
 Fazer?"</string>
-<string name="about_website_label">"Página web:"</string>
-<string name="details_share">"Compartilhar"</string>
+    <string name="details_share">"Compartilhar"</string>
 <string name="details_developer">"Desenvolvedor: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Somente por Wi-Fi"</string>
-<string name="about_bitcoin_label">"Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"Pedido"</string>
 <string name="dialog_message_spoof_request">"A falsificação de dispositivos é possível porque usuários como você enviam relatórios de erros com as informações do dispositivo. Se desejar que as definições sejam precisas e atualizadas, toque OK e as informações do seu dispositivo serão enviadas para o desenvolvedor da Yalp Store."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Se você colocar definições de dispositivo em %1$s, elas aparecerão nesta lista"</string>
@@ -218,8 +211,7 @@ Fazer?"</string>
     <string name="thank_you">"Obrigado"</string>
 <string name="list_updating">"Atualizando…"</string>
 <string name="error_invalid_device_definition">"Definição do dispositivo rejeitada."</string>
-<string name="details_video">"Vídeo"</string>
-<string name="error_could_not_download">"Could not download."</string>
+    <string name="error_could_not_download">"Could not download."</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 <string name="early_access">"Acesso antecipado"</string>
 <string name="testing_program_opt_in">"Junte-se"</string>
@@ -231,8 +223,7 @@ Fazer?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Pode levar alguns minutos para removê-lo do programa beta."</string>
 <string name="testing_program_section_opted_out_title">"Torne-se um testador beta"</string>
 <string name="notification_not_privileged">"Instalar permissão não concedida"</string>
-<string name="about_paypal_label">"Fazer doação:"</string>
-<string name="pref_download_directory">"Diretório do download"</string>
+    <string name="pref_download_directory">"Diretório do download"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"O apk completo é baixado toda vez"</string>
 <string name="pref_download_deltas_summary_on">"Apenas as alterações são baixadas durante as atualizações"</string>

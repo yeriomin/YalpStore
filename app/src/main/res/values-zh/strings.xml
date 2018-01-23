@@ -2,8 +2,7 @@
 <resources>
 
 <!-- 开发者邮箱 -->
-<string name="about_developer_email_label">"开发者邮箱："</string>
-<string name="about_logged_in">"你已登录为："</string>
+    <string name="about_logged_in">"你已登录为："</string>
 <string name="about_copied_to_clipboard">"复制到剪贴板"</string>
 <string name="list_line_2_updatable">"更新于 %1$s"</string>
 <string name="list_empty_updates">"没有应用需要更新"</string>
@@ -46,8 +45,7 @@
 <string name="details_size">"应用大小 %1$s"</string>
 <string name="details_description">"描述"</string>
 <string name="details_changelog">"新特性"</string>
-<string name="details_screenshots">"截图"</string>
-<string name="details_reviews">"评论"</string>
+    <string name="details_reviews">"评论"</string>
 <string name="details_rate_this_app">"为这个应用软件评分："</string>
 <string name="details_you_rated_this_app">"你已评价这个应用："</string>
 <string name="details_permissions">"权限"</string>
@@ -106,8 +104,7 @@
 <string name="pref_delete_apk_after_install_summary_off">"现在安装后，.apks不会被删除"</string>
 <string name="pref_delete_apk_after_install_summary_on">"现在安装后删除.apks"</string>
 <string name="pref_delete_apk_after_install">"安装后删除.apk"</string>
-    <string name="details_to_play_store">"在Play商店中查看"</string>
-<string name="action_categories">"分类"</string>
+    <string name="action_categories">"分类"</string>
 <string name="list_update_all">"全部更新"</string>
 <string name="notification_installation_complete">"已安装更新。"</string>
 <string name="notification_installation_failed">"更新安装失败。"</string>
@@ -168,8 +165,7 @@
 <string name="list_app_system">"系统应用"</string>
 <string name="activity_title_updates_only">"更新"</string>
 <string name="activity_title_updates_and_other_apps">"你的应用"</string>
-<string name="details_system_app_info">"系统信息"</string>
-<string name="details_run">"运行"</string>
+    <string name="details_run">"运行"</string>
 <string name="dialog_title_remounting_system">"使用/系统分区"</string>
 <string name="dialog_message_remounting_system">"使用/系统分区。这可能需要一些时间。"</string>
 <string name="dialog_title_checking_busybox">"检查busybox是否可用"</string>
@@ -202,13 +198,11 @@
 这个过程是不完善的和供应商特定的，所以它可能不起作用。
 
 做吗"</string>
-<string name="about_website_label">"网址"</string>
-<string name="details_share">"分享"</string>
+    <string name="details_share">"分享"</string>
 <string name="details_developer">"开发者：%1$s"</string>
 <string name="pref_background_update_wifi_only">"仅通过 WLAN"</string>
-<string name="about_bitcoin_label">"比特币"</string>
 
-<!-- Fuzzy -->
+    <!-- Fuzzy -->
     <string name="dialog_title_spoof_request">"请求"</string>
 
 <!-- Fuzzy -->
@@ -222,8 +216,7 @@
     <string name="thank_you">"谢谢"</string>
 <string name="list_updating">"更新中…"</string>
 <string name="error_invalid_device_definition">"设备定义被拒绝"</string>
-<string name="details_video">"视频"</string>
-<string name="error_could_not_download">"无法下载"</string>
+    <string name="error_could_not_download">"无法下载"</string>
 <string name="first_login_message">"要使用您自己的帐户，请选择在菜单中注销"</string>
 <string name="early_access">"抢先体验"</string>
 <string name="testing_program_opt_in">"加入"</string>
@@ -235,8 +228,7 @@
 <string name="testing_program_section_opted_out_propagating_message">"您可能需要等待几分钟才能退出 Beta 版计划。"</string>
 <string name="testing_program_section_opted_out_title">"成为 Beta 版测试人员"</string>
 <string name="notification_not_privileged">"安装权限未授予"</string>
-<string name="about_paypal_label">"捐赠"</string>
-<string name="pref_download_directory">"下载目录"</string>
+    <string name="pref_download_directory">"下载目录"</string>
 <string name="pref_download_deltas">"增量更新"</string>
 <string name="pref_download_deltas_summary_off">"每次都下载完整的apk"</string>
 <string name="pref_download_deltas_summary_on">"更新时仅下载改动部分"</string>

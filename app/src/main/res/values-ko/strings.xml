@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"개발자 이메일:"</string>
-<string name="about_logged_in">"다음으로 로그인되었습니다:"</string>
+    <string name="about_logged_in">"다음으로 로그인되었습니다:"</string>
 <string name="about_copied_to_clipboard">"클립보드에 복사됨"</string>
 <string name="list_line_2_updatable">"%1$s 에 업데이트됨"</string>
 <string name="list_empty_updates">"업데이트 할 앱이 없습니다"</string>
@@ -44,8 +43,7 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="details_size">"APK 크기: %1$s"</string>
 <string name="details_description">"설명:"</string>
 <string name="details_changelog">"변경 사항:"</string>
-<string name="details_screenshots">"스크린샷:"</string>
-<string name="details_reviews">"리뷰:"</string>
+    <string name="details_reviews">"리뷰:"</string>
 <string name="details_rate_this_app">"앱 평가:"</string>
 <string name="details_you_rated_this_app">"평가됨:"</string>
 <string name="details_permissions">"권한:"</string>
@@ -104,8 +102,7 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="pref_delete_apk_after_install_summary_off">"설치 후에 .apk 파일이 삭제되지 않습니다"</string>
 <string name="pref_delete_apk_after_install_summary_on">"설치 후에 .apk 파일이 삭제됩니다"</string>
 <string name="pref_delete_apk_after_install">"설치 후에 .apk 파일 삭제"</string>
-    <string name="details_to_play_store">"Play 스토어에서 확인하기"</string>
-<string name="action_categories">"분류"</string>
+    <string name="action_categories">"분류"</string>
 <string name="list_update_all">"모두 업데이트"</string>
 <string name="notification_installation_complete">"업데이트가 설치되었습니다."</string>
 <string name="notification_installation_failed">"업데이트 설치에 실패했습니다."</string>
@@ -166,8 +163,7 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="list_app_system">"시스템 앱"</string>
 <string name="activity_title_updates_only">"업데이트"</string>
 <string name="activity_title_updates_and_other_apps">"당신의 앱"</string>
-<string name="details_system_app_info">"시스템 정보"</string>
-<string name="details_run">"실행"</string>
+    <string name="details_run">"실행"</string>
 <string name="dialog_title_remounting_system">"/system 파티션에 작업 중"</string>
 <string name="dialog_message_remounting_system">"/system 파티션에 작업 중. 시간이 걸릴 수 있습니다."</string>
 <string name="dialog_title_checking_busybox">"busybox가 사용 가능한지 확인 중"</string>
@@ -200,11 +196,9 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 이 과정은 불완전하며 제조사마다 다르므로 작동하지 않을 가능성이 있습니다.
 
 시도할까요?"</string>
-<string name="about_website_label">"웹사이트:"</string>
-<string name="details_share">"공유"</string>
+    <string name="details_share">"공유"</string>
 <string name="details_developer">"개발자: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Wi-Fi 에서만"</string>
-<string name="about_bitcoin_label">"비트코인 기부:"</string>
     <string name="dialog_title_spoof_request">"요청"</string>
 <string name="dialog_message_spoof_request">"기기 스푸핑(Spoofing)은 사용자들이 오류 보고 등을 위해서 기기 정보를 전송하기 때문에 가능합니다. 만약 이러한 정보를 최신으로 유지하고 정확하게 하는데 도움을 주시겠다면 OK를 눌러 Yalp 스토어 개발자에게 정보를 보내주세요."</string>
 <string name="pref_device_to_pretend_to_be_notice">"기기 정보를 %1$s 에 입력하면 목록에 표시될 것입니다"</string>
@@ -214,8 +208,7 @@ Play 스토어 웹사이트로 이동할까요?"</string>
     <string name="thank_you">"감사합니다"</string>
 <string name="list_updating">"업데이트 중…"</string>
 <string name="error_invalid_device_definition">"기기 정보 거부됨"</string>
-<string name="details_video">"비디오"</string>
-<string name="error_could_not_download">"다운로드 할 수 없습니다."</string>
+    <string name="error_could_not_download">"다운로드 할 수 없습니다."</string>
 <string name="first_login_message">"본인의 계정을 사용하시려면 메뉴에서 로그아웃을 선택하세요"</string>
 <string name="early_access">"사전 체험판"</string>
 <string name="testing_program_opt_in">"참여"</string>
@@ -227,8 +220,7 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"베타 프로그램에서 내가 삭제되는 데 몇 분 정도 걸립니다."</string>
 <string name="testing_program_section_opted_out_title">"베타 테스터 되기"</string>
 <string name="notification_not_privileged">"설치 권한 허가되지 않음"</string>
-<string name="about_paypal_label">"페이팔 기부:"</string>
-<string name="pref_download_directory">"다운로드 위치"</string>
+    <string name="pref_download_directory">"다운로드 위치"</string>
 <string name="pref_download_deltas">"델타 업데이트"</string>
 <string name="pref_download_deltas_summary_off">"전체 APK 파일이 다운로드됩니다"</string>
 <string name="pref_download_deltas_summary_on">"새로 변경된 부분만 다운로드 됩니다"</string>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Əзірлеуші поштасы:"</string>
-<string name="about_logged_in">"Сіздің қазіргі аккаунтыңыз:"</string>
+    <string name="about_logged_in">"Сіздің қазіргі аккаунтыңыз:"</string>
 <string name="about_copied_to_clipboard">"Айырбас буферіне көшірілді"</string>
 <string name="list_line_2_updatable">"%1$s жаңартылды"</string>
 <string name="list_empty_updates">"Жаңартулар жоқ"</string>
@@ -45,8 +44,7 @@ Play Store парақшасына өтесіз бе?"</string>
 <string name="details_size">"%1$s apk өлшемі"</string>
 <string name="details_description">"Сипаттамасы:"</string>
 <string name="details_changelog">"Соңғы нұсқадағы өзгерістер:"</string>
-<string name="details_screenshots">"Скриншоттар:"</string>
-<string name="details_reviews">"Шолулар:"</string>
+    <string name="details_reviews">"Шолулар:"</string>
 <string name="details_rate_this_app">"Бұл бағдарламаны бағалаңыз:"</string>
 <string name="details_you_rated_this_app">"Сіз бұл бағдарламаны бағаладыңыз:"</string>
 <string name="details_permissions">"Рұқсаттар:"</string>
@@ -105,8 +103,7 @@ Play Store парақшасына өтесіз бе?"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Қазір .apk орнатудан кейін жойылмайды"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Қазір .apk орнатудан кейін жойылады"</string>
 <string name="pref_delete_apk_after_install">"Орнатудан кейін .apk өшіру"</string>
-    <string name="details_to_play_store">"Play Store-ге өту"</string>
-<string name="action_categories">"Санаттар"</string>
+    <string name="action_categories">"Санаттар"</string>
 <string name="list_update_all">"Бəрін жаңарту"</string>
 <string name="notification_installation_complete">"Жаңарту орнатылды."</string>
 <string name="notification_installation_failed">"Жаңартуды орнату сәтсіз аяқталды."</string>
@@ -167,8 +164,7 @@ Google Play Store-ден тек соңғы нұсқаны ғана жүктеу�
 <string name="list_app_system">"Жүйелі"</string>
 <string name="activity_title_updates_only">"Жаңартулар"</string>
 <string name="activity_title_updates_and_other_apps">"Сіздің бағдарламаларыңыз"</string>
-<string name="details_system_app_info">"Жүйелі ақпарат"</string>
-<string name="details_run">"Қосу"</string>
+    <string name="details_run">"Қосу"</string>
 <string name="dialog_title_remounting_system">"/system бөлімімен жұмыс істеудеміз"</string>
 <string name="dialog_message_remounting_system">"/system бөлімімен жұмыс істеудеміз. Бұл баяу болуы мүмкін."</string>
 <string name="dialog_title_checking_busybox">"Busybox іздеудеміз"</string>
@@ -204,11 +200,9 @@ Backup жасаңыз."</string>
 Бұл процесс мінсіз емес, және әрбір құрылғы өздігінен болуы мүмкін.
 
 Көреміз бе?"</string>
-<string name="about_website_label">"Жобаның сайты:"</string>
-<string name="details_share">"Бөлісу"</string>
+    <string name="details_share">"Бөлісу"</string>
 <string name="details_developer">"Əзірлеуші: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Тек Wi-Fi арқылы"</string>
-<string name="about_bitcoin_label">"Bitcoin қайырымдылық:"</string>
     <string name="dialog_title_spoof_request">"Сұрау/өтіну"</string>
 <string name="dialog_message_spoof_request">"Пайдаланушылар жіберген қате туралы есептер арқылы басқа құрылғылар арқылы кіру мүмкіндігі бар. Өтінеміз, Yalp Store - құрылғыңыздың параметрлерін әзірлеушіге жіберіңіз. Мұны істеу үшін OK түймешігін басыңыз."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Құрылғы параметрлері бар файлды \"%1$s\" орналастырыңыз, сосын ол мұнда көрсетіледі"</string>
@@ -218,8 +212,7 @@ Backup жасаңыз."</string>
     <string name="thank_you">"Рахмет"</string>
 <string name="list_updating">"Жаңартуда…"</string>
 <string name="error_invalid_device_definition">"Құрылғы параметрлерімен дұрыс емес файл."</string>
-<string name="details_video">"Видео"</string>
-<string name="error_could_not_download">"Жүктеу мүмкін болмады."</string>
+    <string name="error_could_not_download">"Жүктеу мүмкін болмады."</string>
 <string name="first_login_message">"Өзіңіздің аккаунтты пайдалану үшін мәзірден \"Аккаунттан шығу\" таңдаңыз"</string>
 <string name="early_access">"Бета-нұсқа"</string>
 <string name="testing_program_opt_in">"қосылу"</string>
@@ -231,8 +224,7 @@ Backup жасаңыз."</string>
 <string name="testing_program_section_opted_out_propagating_message">"Бета нұсқасын сынау бағдарламасынан шығу бірнеше минутты алуы мүмкін."</string>
 <string name="testing_program_section_opted_out_title">"Бета нұсқасының сынақшысы атаныңыз"</string>
 <string name="notification_not_privileged">"Орнату рұқсаты жоқ"</string>
-<string name="about_paypal_label">"Paypal қайырымдылық:"</string>
-<string name="pref_download_directory">"Apk қайда сақтау қажет"</string>
+    <string name="pref_download_directory">"Apk қайда сақтау қажет"</string>
 <string name="pref_download_deltas">"Дельта жаңартулар"</string>
 <string name="pref_download_deltas_summary_off">"Əр жұктеген сайын бүкіл apk жүктеледі"</string>
 <string name="pref_download_deltas_summary_on">"Жаңарту кезінде тек өзгертулер жүктеледі"</string>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Email do programador:"</string>
-<string name="about_logged_in">"Sessão iniciada como:"</string>
+    <string name="about_logged_in">"Sessão iniciada como:"</string>
 <string name="about_copied_to_clipboard">"Copiado para a área de transferência"</string>
 <string name="list_line_2_updatable">"Atualizado em %1$s"</string>
 <string name="list_empty_updates">"Nenhuma aplicação necessita de ser atualizada"</string>
@@ -47,8 +46,7 @@ Redirecionar para a página no Play Store?"</string>
 <string name="details_size">"Tamanho da aplicação %1$s"</string>
 <string name="details_description">"Descrição:"</string>
 <string name="details_changelog">"O que há de novo?"</string>
-<string name="details_screenshots">"Capturas de ecrã:"</string>
-<string name="details_reviews">"Críticas:"</string>
+    <string name="details_reviews">"Críticas:"</string>
 <string name="details_rate_this_app">"Votar esta app:"</string>
 <string name="details_you_rated_this_app">"Votaste esta app:"</string>
 <string name="details_permissions">"Permissões:"</string>
@@ -107,8 +105,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="pref_delete_apk_after_install_summary_off">"Ficheiros das aplicações não são apagadas após instalação"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Ficheiros das aplicações serão apagadas após instalação"</string>
 <string name="pref_delete_apk_after_install">"Apagar ficheiros das aplicações após instalação"</string>
-    <string name="details_to_play_store">"Ver na Play Store"</string>
-<string name="action_categories">"Categorias"</string>
+    <string name="action_categories">"Categorias"</string>
 <string name="list_update_all">"Atualizar todas"</string>
 <string name="notification_installation_complete">"Atualização instalada."</string>
 <string name="notification_installation_failed">"Instalação da atualização falhou."</string>
@@ -169,8 +166,7 @@ Lembre-se que ao efetuar a transferência de versões arbitrárias de aplicaçõ
 <string name="list_app_system">"Aplicação de sistema"</string>
 <string name="activity_title_updates_only">"Atualizações"</string>
 <string name="activity_title_updates_and_other_apps">"Aplicações"</string>
-<string name="details_system_app_info">"Informação de sistema"</string>
-<string name="details_run">"Abrir"</string>
+    <string name="details_run">"Abrir"</string>
 <string name="dialog_title_remounting_system">"A usar partição de sistema"</string>
 <string name="dialog_message_remounting_system">"A usar partição de sistema. Isto poderá levar algum tempo."</string>
 <string name="dialog_title_checking_busybox">"A verificar se busybox está disponível"</string>
@@ -202,11 +198,9 @@ Não o faça por mera curiosidade. Isto poderá danificar o teu dispositivo. Fa�
 
 O processo é imperfeito e específico do fornecedor, por isso poderá não funcionar.
 Prosseguir mesmo assim?"</string>
-<string name="about_website_label">"Página web:"</string>
-<string name="details_share">"Partilhar"</string>
+    <string name="details_share">"Partilhar"</string>
 <string name="details_developer">"Autor: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Somente por Wi-Fi"</string>
-<string name="about_bitcoin_label">"Doar Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"Pedido"</string>
 <string name="dialog_message_spoof_request">"A falsificação de dispositivos é possível porque utilizadores como você enviam relatórios de erros com as informações do dispositivo. Se desejar que as definições sejam precisas e atualizadas, toque OK e as informações do seu dispositivo serão enviadas para o programador da Yalp Store."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Se colocar definições de dispositivo em %1$s, elas aparecerão nesta lista"</string>
@@ -216,8 +210,7 @@ Prosseguir mesmo assim?"</string>
     <string name="thank_you">"Obrigado"</string>
 <string name="list_updating">"A atualizar…"</string>
 <string name="error_invalid_device_definition">"Definição do dispositivo rejeitada."</string>
-<string name="details_video">"Vídeo"</string>
-<string name="error_could_not_download">"Erro de transferência."</string>
+    <string name="error_could_not_download">"Erro de transferência."</string>
 <string name="first_login_message">"Para usares a tua própria conta, seleciona \"Terminar Sessão\" a partir do menu"</string>
 <string name="early_access">"Antecipado"</string>
 <string name="testing_program_opt_in">"participar"</string>
@@ -229,8 +222,7 @@ Prosseguir mesmo assim?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Pode levar alguns minutos para remover você do programa Beta."</string>
 <string name="testing_program_section_opted_out_title">"Seja um testador Beta"</string>
 <string name="notification_not_privileged">"Permissão para instalar não concedida"</string>
-<string name="about_paypal_label">"Doar:"</string>
-<string name="pref_download_directory">"Diretório Downloads"</string>
+    <string name="pref_download_directory">"Diretório Downloads"</string>
 <string name="pref_download_deltas">"Atualizações Delta"</string>
 <string name="pref_download_deltas_summary_off">"Aplicação completa será transferida sempre"</string>
 <string name="pref_download_deltas_summary_on">"Apenas modificações serão transferidas durante atualizações"</string>

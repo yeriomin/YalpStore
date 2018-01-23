@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Email dello sviluppatore:"</string>
-<string name="about_logged_in">"Accesso effettuato come:"</string>
+    <string name="about_logged_in">"Accesso effettuato come:"</string>
 <string name="about_copied_to_clipboard">"Copiato negli appunti"</string>
 <string name="list_line_2_updatable">"Aggiornata il %1$s"</string>
 <string name="list_empty_updates">"Nessuna app da aggiornare"</string>
@@ -45,8 +44,7 @@ Vado alla relativa pagina sul Play Store?"</string>
 <string name="details_size">"Dimensione apk %1$s"</string>
 <string name="details_description">"Descrizione"</string>
 <string name="details_changelog">"Novità:"</string>
-<string name="details_screenshots">"Schermate"</string>
-<string name="details_reviews">"Recensioni"</string>
+    <string name="details_reviews">"Recensioni"</string>
 <string name="details_rate_this_app">"Vota la app:"</string>
 <string name="details_you_rated_this_app">"Hai votato la app:"</string>
 <string name="details_permissions">"Autorizzazioni"</string>
@@ -105,8 +103,7 @@ Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più s
 <string name="pref_delete_apk_after_install_summary_off">"Gli apk non vengono eliminati dopo l'installazione"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Gli apk vengono eliminati dopo l'installazione"</string>
 <string name="pref_delete_apk_after_install">"Elimina .apk dopo l'installazione"</string>
-    <string name="details_to_play_store">"Vedi nel Play Store"</string>
-<string name="action_categories">"Categorie"</string>
+    <string name="action_categories">"Categorie"</string>
 <string name="list_update_all">"Aggiorna tutto"</string>
 <string name="notification_installation_complete">"Aggiornamento installato"</string>
 <string name="notification_installation_failed">"Installazione aggiornamento fallita."</string>
@@ -169,8 +166,7 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="list_app_system">"App di sistema"</string>
 <string name="activity_title_updates_only">"Aggiornamenti"</string>
 <string name="activity_title_updates_and_other_apps">"Le tue app"</string>
-<string name="details_system_app_info">"Info di sistema"</string>
-<string name="details_run">"Avvia"</string>
+    <string name="details_run">"Avvia"</string>
 <string name="dialog_title_remounting_system">"Esecuzione su partizione /system"</string>
 <string name="dialog_message_remounting_system">"Esecuzione su partizione /system. Può volerci del tempo."</string>
 <string name="dialog_title_checking_busybox">"Verifica disponibilità di busybox"</string>
@@ -201,11 +197,9 @@ Non farlo per curiosità, potrebbe danneggiare il dispositivo. Fai un backup pri
 <string name="dialog_message_system_app_self">"L'uso di permessi privilegiati per installare le app in background richiede che Yalp Store sia una app di sistema.
 
 Il processo non è perfetto o specifico per produttore: potrebbe non funzionare. Lo faccio?"</string>
-<string name="about_website_label">"Sito web:"</string>
-<string name="details_share">"Condividi"</string>
+    <string name="details_share">"Condividi"</string>
 <string name="details_developer">"Sviluppatore: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Solo Wi-Fi"</string>
-<string name="about_bitcoin_label">"Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"Richieste"</string>
 <string name="dialog_message_spoof_request">"La mascheratura del device è possibile perché le persone hanno inserito bug report con le info del dispositivo. Se desideri che le definizioni siano aggiornate e precise, premi OK e le info del dispositivo saranno inviate allo sviluppatore,"</string>
 <string name="pref_device_to_pretend_to_be_notice">"Se inserisci le info del dispositivo in %1$s, appariranno nella lista"</string>
@@ -215,8 +209,7 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
     <string name="thank_you">"Grazie"</string>
 <string name="list_updating">"Aggiornamento…"</string>
 <string name="error_invalid_device_definition">"Info del dispositivo rifiutate"</string>
-<string name="details_video">"Video"</string>
-<string name="error_could_not_download">"Impossibile scaricare"</string>
+    <string name="error_could_not_download">"Impossibile scaricare"</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 <string name="early_access">"In anteprima"</string>
 <string name="testing_program_opt_in">"partecipa"</string>
@@ -228,8 +221,7 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="testing_program_section_opted_out_propagating_message">"Sono necessari alcuni minuti per rimuoverti dal Programma Beta."</string>
 <string name="testing_program_section_opted_out_title">"Diventa un beta tester"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
-<string name="about_paypal_label">"Dona:"</string>
-<string name="pref_download_directory">"Cartella del downlad"</string>
+    <string name="pref_download_directory">"Cartella del downlad"</string>
 <string name="pref_download_deltas">"Aggiornamenti differenziali"</string>
 <string name="pref_download_deltas_summary_off">"Scarica ogni volta  l'intero apk"</string>
 <string name="pref_download_deltas_summary_on">"Scarica solamente le modifiche"</string>

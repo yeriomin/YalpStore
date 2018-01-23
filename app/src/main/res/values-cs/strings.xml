@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Email vývojáře:"</string>
-<string name="about_logged_in">"Nyní jste přihlášen jako:"</string>
+    <string name="about_logged_in">"Nyní jste přihlášen jako:"</string>
 <string name="about_copied_to_clipboard">"Zkopírováno do schránky"</string>
 <string name="list_line_2_updatable">"Aktualizováno %1$s"</string>
 <string name="list_empty_updates">"Žádné aplikace nevyžadují aktualizaci"</string>
@@ -45,8 +44,7 @@ Přesměrovat na její stránku v obchodu Play?"</string>
 <string name="details_size">"Velikost apk %1$s"</string>
 <string name="details_description">"Popis:"</string>
 <string name="details_changelog">"Co je nového:"</string>
-<string name="details_screenshots">"Snímky:"</string>
-<string name="details_reviews">"Hodnocení:"</string>
+    <string name="details_reviews">"Hodnocení:"</string>
 <string name="details_rate_this_app">"Ohodnotit aplikaci:"</string>
 <string name="details_you_rated_this_app">"Ohodnotili jste aplikaci:"</string>
 <string name="details_permissions">"Oprávnění:"</string>
@@ -105,8 +103,7 @@ Mějte prosím na paměti, že užití této aplikace je v rozporu s podmínkami
 <string name="pref_delete_apk_after_install_summary_off">".apk soubory nejsou nyní mazány po instalaci"</string>
 <string name="pref_delete_apk_after_install_summary_on">".apk soubory jsou nyní mazány po instalaci"</string>
 <string name="pref_delete_apk_after_install">"Mazat .apk soubory po instalaci"</string>
-    <string name="details_to_play_store">"Otevřít v obchodě Play"</string>
-<string name="action_categories">"Kategorie"</string>
+    <string name="action_categories">"Kategorie"</string>
 <string name="list_update_all">"Aktualizovat vše"</string>
 <string name="notification_installation_complete">"Aktualizace dokončena."</string>
 <string name="notification_installation_failed">"Instalace aktualizace selhala."</string>
@@ -167,8 +164,7 @@ Mějte na paměti, že stahování starších verzí aplikací není podporován
 <string name="list_app_system">"Systémová aplikace"</string>
 <string name="activity_title_updates_only">"Aktualizace"</string>
 <string name="activity_title_updates_and_other_apps">"Vaše aplikace"</string>
-<string name="details_system_app_info">"Systémové informace"</string>
-<string name="details_run">"Spustit"</string>
+    <string name="details_run">"Spustit"</string>
 <string name="dialog_title_remounting_system">"Pracuji s /system oddílem"</string>
 <string name="dialog_message_remounting_system">"Pracuji s /system oddílem. Toto může chvíli trvat."</string>
 <string name="dialog_title_checking_busybox">"Zjišťuji dostupnost busybox"</string>
@@ -201,11 +197,9 @@ Neprovádějte tento krok pro zajímavost. Tento krok může rozbít vaše zař�
 Tento proces je specifický pro výrobce a není perfektní, proto nemusí fungovat.
 
 Pokračovat?"</string>
-<string name="about_website_label">"Web:"</string>
-<string name="details_share">"Sdílet"</string>
+    <string name="details_share">"Sdílet"</string>
 <string name="details_developer">"Vývojář: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Pouze přes Wi-Fi"</string>
-<string name="about_bitcoin_label">"Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"Prosba"</string>
 <string name="dialog_message_spoof_request">"Spoofing zařízení je možný díky uživatelům jako vy, kteří odesílají oznámení o chybách s informacemi o zařízení. Pokud chcete, aby definice byly přesné a aktuální, klepněte prosím na OK a informace o vašem zařízení budou odeslány vývojáři Yalp Store."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Pokud vložíte definice zařízení do %1$s, objeví se na tomto listu"</string>
@@ -215,8 +209,7 @@ Pokračovat?"</string>
     <string name="thank_you">"Děkuji"</string>
 <string name="list_updating">"Aktualizuji…"</string>
 <string name="error_invalid_device_definition">"Definice zařízení odmítnuta."</string>
-<string name="details_video">"Video"</string>
-<string name="error_could_not_download">"Nelze stáhnout."</string>
+    <string name="error_could_not_download">"Nelze stáhnout."</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 <string name="early_access">"Předběžný přístup"</string>
 <string name="testing_program_opt_in">"zapojit se"</string>
@@ -228,8 +221,7 @@ Pokračovat?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Opuštění programu testování beta verze může chvíli trvat."</string>
 <string name="testing_program_section_opted_out_title">"Staňte se testerem beta verze"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
-<string name="about_paypal_label">"Přispět:"</string>
-<string name="pref_download_directory">"Download directory"</string>
+    <string name="pref_download_directory">"Download directory"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"Full apk is downloaded every time"</string>
 <string name="pref_download_deltas_summary_on">"Only changes are downloaded during updates"</string>

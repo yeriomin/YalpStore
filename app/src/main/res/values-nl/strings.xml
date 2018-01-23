@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"E-mail van ontwikkelaar:"</string>
-<string name="about_logged_in">"U bent ingelogd als:"</string>
+    <string name="about_logged_in">"U bent ingelogd als:"</string>
 <string name="about_copied_to_clipboard">"Gekopieerd naar het klembord"</string>
 <string name="list_line_2_updatable">"Geüpdatet op %1$s"</string>
 <string name="list_empty_updates">"Alle apps zijn up to date"</string>
@@ -44,8 +43,7 @@ Tik op 'wachtwoord maken' om te worden doorgestuurd naar de pagina voor het make
 <string name="details_size">"Apk grootte %1$s"</string>
 <string name="details_description">"Beschrijving:"</string>
 <string name="details_changelog">"Wat is er nieuw:"</string>
-<string name="details_screenshots">"Schermafbeelding:"</string>
-<string name="details_reviews">"Reviews:"</string>
+    <string name="details_reviews">"Reviews:"</string>
 <string name="details_rate_this_app">"Beoordeel deze app:"</string>
 <string name="details_you_rated_this_app">"Jij beoordeelde deze app:"</string>
 <string name="details_permissions">"Permissies:"</string>
@@ -104,8 +102,7 @@ Wees alert dat het gebruik van deze app in gaat tegen het ToS van de Play Store.
 <string name="pref_delete_apk_after_install_summary_off">".apks blijven bewaard na de installatie"</string>
 <string name="pref_delete_apk_after_install_summary_on">".apks worden verwijdert na de installatie"</string>
 <string name="pref_delete_apk_after_install">"Verwijder .apk bestand na installatie"</string>
-    <string name="details_to_play_store">"Toon in Play Store"</string>
-<string name="action_categories">"Categorieën"</string>
+    <string name="action_categories">"Categorieën"</string>
 <string name="list_update_all">"Update alles"</string>
 <string name="notification_installation_complete">"Update geïnstalleerd."</string>
 <string name="notification_installation_failed">"Update installatie mislukt."</string>
@@ -169,8 +166,7 @@ Houd er rekening mee dat het downloaden van willekeurige versies van apps niet o
 <string name="list_app_system">"Systeem app"</string>
 <string name="activity_title_updates_only">"Updates"</string>
 <string name="activity_title_updates_and_other_apps">"Uw apps"</string>
-<string name="details_system_app_info">"Systeem info"</string>
-<string name="details_run">"Start"</string>
+    <string name="details_run">"Start"</string>
 <string name="dialog_title_remounting_system">"Werkt met /system partitie"</string>
 <string name="dialog_message_remounting_system">"Werkt met /system partitie. Dit kan even duren."</string>
 <string name="dialog_title_checking_busybox">"Controleren of busybox aanwezig is"</string>
@@ -203,11 +199,9 @@ Doe het niet uit nieuwsgierigheid. Het kan uw apparaat breken. Maak een back-up 
 Het proces om dit te doen is niet perfect en is leverancier-specifiek, het werkt niet altijd.
 
 Nu doen?"</string>
-<string name="about_website_label">"Website:"</string>
-<string name="details_share">"Deel"</string>
+    <string name="details_share">"Deel"</string>
 <string name="details_developer">"Ontwikkelaar: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Alleen op Wi-Fi"</string>
-<string name="about_bitcoin_label">"Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"Verzoek"</string>
 <string name="dialog_message_spoof_request">"Apparaat spoofen is mogelijk doordat gebruikers zoals u foutrapportages opsturen met apparaat informatie. Als u de definities precies en up-to-date wilt, druk alstublieft op OK. Uw apparaat informatie wordt vervolgens naar de Yalp Store ontwikkelaar gestuurd."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Als u apparaat definities invult in %1$s zullen ze in de lijst verschijnen"</string>
@@ -217,8 +211,7 @@ Nu doen?"</string>
     <string name="thank_you">"Bedankt"</string>
 <string name="list_updating">"Wordt geüpdatet…"</string>
 <string name="error_invalid_device_definition">"Apparaat definitie afgewezen."</string>
-<string name="details_video">"Video"</string>
-<string name="error_could_not_download">"Kon niet downloaden."</string>
+    <string name="error_could_not_download">"Kon niet downloaden."</string>
 <string name="first_login_message">"Om uw eigen account te gebruiken kiest u uitloggen in het menu"</string>
 <string name="early_access">"Vroegtijdige toegang"</string>
 <string name="testing_program_opt_in">"lid worden"</string>
@@ -230,8 +223,7 @@ Nu doen?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Het kan enkele minuten duren voordat je bent verwijderd uit het bètaprogramma."</string>
 <string name="testing_program_section_opted_out_title">"Bètatester worden"</string>
 <string name="notification_not_privileged">"Installatie permissie niet toegezegd"</string>
-<string name="about_paypal_label">"Doneer:"</string>
-<string name="pref_download_directory">"Download locatie"</string>
+    <string name="pref_download_directory">"Download locatie"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"De volledige apk wordt bij iedere update gedownload"</string>
 <string name="pref_download_deltas_summary_on">"Alleen de veranderingen aan de app worden gedownload"</string>

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about_website_label">Сайт проекта:</string>
-    <string name="about_paypal_label">Пожертвования Paypal:</string>
-    <string name="about_bitcoin_label">Пожертвования Bitcoin:</string>
-    <string name="about_developer_email_label">Почта разработчика:</string>
     <string name="about_logged_in">Ваш текущий аккаунт:</string>
     <string name="about_copied_to_clipboard">Скопировано в буфер обмена</string>
     <string name="list_line_2_updatable">"Обновлено %1$s"</string>
@@ -89,7 +85,6 @@
     <string name="details_size">"Размер apk %1$s"</string>
     <string name="details_description">Описание:</string>
     <string name="details_changelog">Изменения в последней версии:</string>
-    <string name="details_screenshots">Скриншоты:</string>
     <string name="details_reviews">Отзывы:</string>
     <string name="details_rate_this_app">Оцените это приложение:</string>
     <string name="details_you_rated_this_app">Вы оценили это приложение:</string>
@@ -110,8 +105,6 @@
     <string name="details_review_dialog_review_title_hint">вкратце</string>
     <string name="details_review_dialog_review_comment_hint">подробнее</string>
     <string name="details_review_dialog_fields_optional">Можно и не заполнять.</string>
-    <string name="details_to_play_store">Перейти в Play Store</string>
-    <string name="details_video">Видео</string>
     <string name="details_share">Поделиться</string>
     <string name="details_signature_mismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте ещё раз. (При удалении приложения все его данные будут потеряны)</string>
     <string name="details_depends_on">"Зависит от: %1$s"</string>
@@ -121,7 +114,6 @@
     <string name="details_not_available_on_play_store">Этого приложения нет в Play Store</string>
     <string name="details_saved_in_downloads">Сохранено в каталог загрузок по-умолчанию</string>
     <string name="details_could_not_copy_apk">Не удалось скопировать apk</string>
-    <string name="details_system_app_info">Системная информация</string>
     <string name="credentials_hint_email">e-mail</string>
     <string name="credentials_hint_password">пароль</string>
     <string name="credentials_title">Вход в аккаунт Google</string>

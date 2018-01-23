@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"courriel du développeur"</string>
-<string name="about_logged_in">"Connecté(e) en tant que :"</string>
+    <string name="about_logged_in">"Connecté(e) en tant que :"</string>
 <string name="about_copied_to_clipboard">"Copié dans le presse-papier"</string>
 <string name="list_line_2_updatable">"Mis à jour le %1$s"</string>
 <string name="list_empty_updates">"Aucune app n'a besoin d'être mise à jour"</string>
@@ -44,8 +43,7 @@ Choisissez  « créer un mot de passe » pour être redirigé vers la page de 
 <string name="details_size">"Taille de l'apk %1$s"</string>
 <string name="details_description">"Description :"</string>
 <string name="details_changelog">"Nouveautés :"</string>
-<string name="details_screenshots">"Captures d'écran"</string>
-<string name="details_reviews">"Avis :"</string>
+    <string name="details_reviews">"Avis :"</string>
 <string name="details_rate_this_app">"Noter cette app :"</string>
 <string name="details_you_rated_this_app">"Votre note :"</string>
 <string name="details_permissions">"Permissions :"</string>
@@ -104,8 +102,7 @@ Utiliser Yalp Store se fait en violation des conditions d'utilisation du Play St
 <string name="pref_delete_apk_after_install_summary_off">"Les .apk ne sont à présent pas supprimés après installation"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Les .apk sont à présent supprimés après installation"</string>
 <string name="pref_delete_apk_after_install">"Supprimer les .apk après installation"</string>
-    <string name="details_to_play_store">"Voir dans le Play Store"</string>
-<string name="action_categories">"Catégories"</string>
+    <string name="action_categories">"Catégories"</string>
 <string name="list_update_all">"Tout mettre à jour"</string>
 <string name="notification_installation_complete">"Mise à jour installée."</string>
 <string name="notification_installation_failed">"La mise à jour a échoué"</string>
@@ -166,7 +163,6 @@ Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, 
 <string name="list_app_system">"Application système"</string>
     <string name="activity_title_updates_only">"Mises à jour"</string>
 <string name="activity_title_updates_and_other_apps">"Vos applications"</string>
-    <string name="details_system_app_info">"Infos système"</string>
     <string name="details_run">"Lancer"</string>
 <string name="dialog_title_remounting_system">"Montage de la partition /system"</string>
 <string name="dialog_message_remounting_system">"Montage  de la partition /system. Veuillez patienter."</string>
@@ -200,11 +196,9 @@ Ne faites cela que si vous savez ce que vous faites, cela pourrait endommager vo
 Le processus dépend du fabricant et peut ne pas fonctionner. 
 
 Poursuivre ?"</string>
-<string name="about_website_label">"Site web:"</string>
-<string name="details_share">"Partager"</string>
+    <string name="details_share">"Partager"</string>
 <string name="details_developer">"Développeur : %1$s"</string>
 <string name="pref_background_update_wifi_only">"Via le Wi-Fi uniquement"</string>
-<string name="about_bitcoin_label">"Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"Demande"</string>
 <string name="dialog_message_spoof_request">"Il est possible de se faire passer pour un autre appareil (spoofing) grâce aux retours des utilisateurs incluant les données de leurs appareils. Si vous voulez des définitions précises et à jour, choisissez OK, ce qui enverra vos informations appareil au développeur de Yalp Store."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Si vous enregistrez les données de l'appareil dans %1$s, elles apparaîtront dans la liste"</string>
@@ -214,8 +208,7 @@ Poursuivre ?"</string>
     <string name="thank_you">"Merci"</string>
 <string name="list_updating">"actualisation…"</string>
 <string name="error_invalid_device_definition">"Caractéristiques de l'appareil refusées"</string>
-<string name="details_video">"Vidéo"</string>
-<string name="error_could_not_download">"Téléchargement impossible"</string>
+    <string name="error_could_not_download">"Téléchargement impossible"</string>
 <string name="first_login_message">"Pour utiliser votre propre compte déconnectez vous en cliquant sur \"Se déconnecter\" dans le menu"</string>
 <string name="early_access">"Accès anticipé"</string>
 <string name="testing_program_opt_in">"rejoindre"</string>
@@ -227,6 +220,5 @@ Poursuivre ?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Votre désinscription du programme bêta peut prendre quelques minutes."</string>
 <string name="testing_program_section_opted_out_title">"Devenir testeur Bêta"</string>
 <string name="notification_not_privileged">"Permission d'installation non accordée"</string>
-<string name="about_paypal_label">"Faire un don"</string>
-<string name="pref_download_directory">"Dossier de téléchargements"</string>
+    <string name="pref_download_directory">"Dossier de téléchargements"</string>
 </resources>

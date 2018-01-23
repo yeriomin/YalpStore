@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"E-Mail des Entwicklers:"</string>
-<string name="about_logged_in">"Du bist eingeloggt als:"</string>
+    <string name="about_logged_in">"Du bist eingeloggt als:"</string>
 <string name="about_copied_to_clipboard">"In die Zwischenablage kopiert"</string>
 <string name="list_line_2_updatable">"Aktualisiert am %1$s"</string>
 <string name="list_empty_updates">"Es müssen keine Apps aktualisiert werden"</string>
@@ -44,8 +43,7 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="details_size">"Apk Größe %1$s"</string>
 <string name="details_description">"Beschreibung:"</string>
 <string name="details_changelog">"Neuigkeiten:"</string>
-<string name="details_screenshots">"Bildschirmfotos:"</string>
-<string name="details_reviews">"Bewertungen:"</string>
+    <string name="details_reviews">"Bewertungen:"</string>
 <string name="details_rate_this_app">"Bewerte diese App:"</string>
 <string name="details_you_rated_this_app">"Du bewertest diese App:"</string>
 <string name="details_permissions">"Berechtigungen:"</string>
@@ -103,8 +101,7 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play Store Nutzungsbedin
 <string name="pref_delete_apk_after_install_summary_off">"apk-Dateien werden nach der Installation behalten"</string>
 <string name="pref_delete_apk_after_install_summary_on">"apk-Dateien werden nach der Installation gelöscht"</string>
 <string name="pref_delete_apk_after_install">"apk-Datei nach der Installation löschen"</string>
-    <string name="details_to_play_store">"Im Play Store ansehen"</string>
-<string name="action_categories">"Kategorien"</string>
+    <string name="action_categories">"Kategorien"</string>
 <string name="list_update_all">"Alle aktualisieren"</string>
 <string name="notification_installation_complete">"Aktualisierung installiert"</string>
 <string name="notification_installation_failed">"Aktualisierung fehlgeschlagen."</string>
@@ -165,8 +162,7 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="list_app_system">"System App"</string>
 <string name="activity_title_updates_only">"Aktualisierungen"</string>
 <string name="activity_title_updates_and_other_apps">"Deine Apps"</string>
-<string name="details_system_app_info">"System info"</string>
-<string name="details_run">"Starten"</string>
+    <string name="details_run">"Starten"</string>
 <string name="dialog_title_remounting_system">"Arbeite auf /system Partition"</string>
 <string name="dialog_message_remounting_system">"Arbeite auf /system Partition. Das könnte länger dauern"</string>
 <string name="dialog_title_checking_busybox">"Überprüfe ob busybox verfügbar ist."</string>
@@ -199,11 +195,9 @@ Fahren Sie nur fort, wenn Sie genau wissen was Sie tun. Das Entfernen von System
 Diese Funktion ist noch in Entwicklung und kann je nach Hersteller unterschiedlich gut funktionieren.
 
 Fortfahren?"</string>
-<string name="about_website_label">"Internetseite:"</string>
-<string name="details_share">"Empfehlen"</string>
+    <string name="details_share">"Empfehlen"</string>
 <string name="details_developer">"Entwickler: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Nur über WLAN"</string>
-<string name="about_bitcoin_label">"Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"Anfrage"</string>
 <string name="dialog_message_spoof_request">"Eine Gerätevortäuschung (Spoofing) ist möglich, da Nutzer wie du Fehlerberichte mit Geräteinformationen einsenden. Wenn du die Beschreibungen so präzise und aktuell wie möglich haben möchtest, drücke OK und deine Geräteinformationen werden zum Yalp Store Entwickler gesendet."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Wenn du eine Gerätebeschreibung in %1$s legst, wird diese in dieser Liste erscheinen."</string>
@@ -213,8 +207,7 @@ Fortfahren?"</string>
     <string name="thank_you">"Danke!"</string>
 <string name="list_updating">"Wird aktualisiert…"</string>
 <string name="error_invalid_device_definition">"Gerätebeschreibung abgelehnt"</string>
-<string name="details_video">"Video"</string>
-<string name="error_could_not_download">"Konnte nicht heruntergeladen werden"</string>
+    <string name="error_could_not_download">"Konnte nicht heruntergeladen werden"</string>
 <string name="first_login_message">"Um dein eigenen Account zu verwenden, wähle Abmelden im Menü."</string>
 <string name="early_access">"Beta"</string>
 <string name="testing_program_opt_in">"Mitmachen"</string>
@@ -226,8 +219,7 @@ Fortfahren?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Bis du aus dem Betaprogramm entfernt wurdest, kann es einige Minuten dauern."</string>
 <string name="testing_program_section_opted_out_title">"Betatester werden"</string>
 <string name="notification_not_privileged">"Berechtigung zum Installieren nicht bewilligt."</string>
-<string name="about_paypal_label">"Spenden:"</string>
-<string name="pref_download_directory">"Download-Ordner"</string>
+    <string name="pref_download_directory">"Download-Ordner"</string>
 <string name="pref_download_deltas">"Delta-Aktualisierungen"</string>
 <string name="pref_download_deltas_summary_off">"Die gesamte apk wird jedes Mal heruntergeladen"</string>
 <string name="pref_download_deltas_summary_on">"Beim Aktualisieren werden nur Änderungen heruntergeladen"</string>

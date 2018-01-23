@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Email du développeur :"</string>
-<string name="about_logged_in">"Vous êtes connecté en tant que :"</string>
+    <string name="about_logged_in">"Vous êtes connecté en tant que :"</string>
 <string name="about_copied_to_clipboard">"Copié dans le presse-papier"</string>
 <string name="list_line_2_updatable">"Mis à jour le %1$s"</string>
 <string name="list_empty_updates">"Aucune application n\'est à mettre à jour"</string>
@@ -40,8 +39,7 @@
 <string name="details_size">"Taille de %1$s "</string>
 <string name="details_description">"Description :"</string>
 <string name="details_changelog">"Nouveautés :"</string>
-<string name="details_screenshots">"Captures d\'écran :"</string>
-<string name="details_reviews">"Avis :"</string>
+    <string name="details_reviews">"Avis :"</string>
 <string name="details_rate_this_app">"Noter cette application :"</string>
 <string name="details_you_rated_this_app">"Vous avez noté cette application :"</string>
 <string name="details_permissions">"Permissions :"</string>
@@ -100,8 +98,7 @@
 <string name="pref_delete_apk_after_install_summary_off">"Les .apk sont maintenant conservés après installation"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Les .apk sont maintenant supprimés après installation"</string>
 <string name="pref_delete_apk_after_install">"Supprimer les .apk après installation"</string>
-    <string name="details_to_play_store">"Voir dans le Play Store"</string>
-<string name="action_categories">"Catégories"</string>
+    <string name="action_categories">"Catégories"</string>
 <string name="list_update_all">"Tout mettre à jour"</string>
 <string name="notification_installation_complete">"Mise à jour installée."</string>
 <string name="notification_installation_failed">"La mise à jour a échoué"</string>
@@ -160,8 +157,7 @@
 <string name="list_app_system">"Application système"</string>
 <string name="activity_title_updates_only">"Mises à jour"</string>
 <string name="activity_title_updates_and_other_apps">"Vos applications"</string>
-<string name="details_system_app_info">"Informations système"</string>
-<string name="details_run">"Lancer"</string>
+    <string name="details_run">"Lancer"</string>
 <string name="dialog_title_remounting_system">"Opération sur la partition /system"</string>
 <string name="dialog_message_remounting_system">"Opération en cours sur la partition /system. Cela peut prendre du temps."</string>
 <string name="dialog_title_checking_busybox">"Vérification de la disponibilité de busybox"</string>
@@ -178,11 +174,9 @@
 <string name="dialog_message_system_app_warning_uninstall">"Êtes vous sûr de vouloir supprimer une application système ? Ces applications ont été installées par le fabricant et sont probablement nécessaires au bon fonctionnement de l\'appareil.  Les supprimer n\'est PAS supporté par Android, et n\'est donc PAS sûr, et PAS garanti de fonctionner.  Ne faites cela que si vous savez ce que vous faites, cela pourrait endommager votre appareil. Faites une sauvegarde avant d\'essayer."</string>
 <string name="dialog_title_system_app_self">"Faire de Yalp une application système"</string>
 <string name="dialog_message_system_app_self">"Faire de Yalp Store une application système afin de permettre l\'installation en arrière-plan des apps.  Le processus est expérimental, dépend des modèles et peut ne pas fonctionner.  Poursuivre ?"</string>
-<string name="about_website_label">"Site web:"</string>
-<string name="details_share">"Partager"</string>
+    <string name="details_share">"Partager"</string>
 <string name="details_developer">"Développeur : %1$s"</string>
 <string name="pref_background_update_wifi_only">"Via le Wi-Fi uniquement"</string>
-<string name="about_bitcoin_label">"Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"Demande"</string>
 <string name="dialog_message_spoof_request">"Il est possible de se faire passer pour un autre appareil (spoofing) grâce aux retours des utilisateurs incluant les données de leurs appareils. Si vous voulez des définitions précises et à jour, choisissez OK, ce qui enverra les informations de votre appareil au développeur de Yalp Store."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Si vous enregistrez les données de l'appareil dans %1$s, elles apparaîtront dans cette liste"</string>
@@ -192,8 +186,7 @@
     <string name="thank_you">"Merci"</string>
 <string name="list_updating">"Mise à jour…"</string>
 <string name="error_invalid_device_definition">"Description du produit rejetée"</string>
-<string name="details_video">"Vidéo"</string>
-<string name="error_could_not_download">"Téléchargement impossible"</string>
+    <string name="error_could_not_download">"Téléchargement impossible"</string>
 <string name="first_login_message">"Pour utiliser votre propre compte cliquez sur \"Se déconnecter\" dans le menu"</string>
 <string name="early_access">"Accès anticipé"</string>
 <string name="testing_program_opt_in">"rejoindre"</string>
@@ -205,8 +198,7 @@
 <string name="testing_program_section_opted_out_propagating_message">"Votre désinscription du programme bêta peut prendre quelques minutes."</string>
 <string name="testing_program_section_opted_out_title">"Devenir testeur bêta"</string>
 <string name="notification_not_privileged">"Permission d'installation non accordée"</string>
-<string name="about_paypal_label">"Faire un don :"</string>
-<string name="pref_download_directory">"Dossier de téléchargements"</string>
+    <string name="pref_download_directory">"Dossier de téléchargements"</string>
 <string name="pref_download_deltas">"Mise à jour delta"</string>
 <string name="pref_download_deltas_summary_off">"L'intégralité de l'apk est téléchargée à chaque fois"</string>
 <string name="pref_download_deltas_summary_on">"Seules les modifications sont téléchargées pendant les mises à jour"</string>

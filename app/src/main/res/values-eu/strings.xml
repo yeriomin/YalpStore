@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Garatzailearen e-mail helbidea:"</string>
-<string name="about_logged_in">"Honela hasi duzu saioa:"</string>
+    <string name="about_logged_in">"Honela hasi duzu saioa:"</string>
 <string name="about_copied_to_clipboard">"Arbelera kopiatuta"</string>
 <string name="list_line_2_updatable">"Eguneratze data: %1$s"</string>
 <string name="list_empty_updates">"Ez dago eguneratu beharreko aplikaziorik"</string>
@@ -44,8 +43,7 @@ Sakatu \"Sortu pasahitza\" pasahitza saortzeko orrira joateko."</string>
 <string name="details_size">"Apk-ren tamaina: %1$s"</string>
 <string name="details_description">"Deskripzioa:"</string>
 <string name="details_changelog">"Zer dago berri:"</string>
-<string name="details_screenshots">"Pantaila-argazkiak:"</string>
-<string name="details_reviews">"Iruzkinak:"</string>
+    <string name="details_reviews">"Iruzkinak:"</string>
 <string name="details_rate_this_app">"Baloratu aplikazio hau:"</string>
 <string name="details_you_rated_this_app">"Aplikazio hau baloratu duzu:"</string>
 <string name="details_permissions">"Baimenak:"</string>
@@ -104,8 +102,7 @@ Kontuan izan aplikazio hau erabiltzea Google Play Storeren erabilera baldintzak 
 <string name="pref_delete_apk_after_install_summary_off">"Oraik .apk fitxategiak ez dira ezabatuko instalatu eta gero"</string>
 <string name="pref_delete_apk_after_install_summary_on">".apk fitxategiak instalazioa eta gero ezabatuko dira"</string>
 <string name="pref_delete_apk_after_install">"Ezabatu .apk instalazioa eta gero"</string>
-    <string name="details_to_play_store">"Ikus Play Store erabiliz"</string>
-<string name="action_categories">"Kategoriak"</string>
+    <string name="action_categories">"Kategoriak"</string>
 <string name="list_update_all">"Eguneratu guztiak"</string>
 <string name="notification_installation_complete">"Eguneraketa instalatuta."</string>
 <string name="notification_installation_failed">"Eguneraketaren instalazioak huts egin du"</string>
@@ -166,8 +163,7 @@ Play Storek ez du bestelako bertsioak deskargatzeko euskarririk. Emaitza bertsio
 <string name="list_app_system">"Sistemako aplikazioa"</string>
 <string name="activity_title_updates_only">"Eguneraketak"</string>
 <string name="activity_title_updates_and_other_apps">"Zure aplikazioak"</string>
-<string name="details_system_app_info">"Sitemaren informazioa"</string>
-<string name="details_run">"Exekutatu"</string>
+    <string name="details_run">"Exekutatu"</string>
 <string name="dialog_title_remounting_system">"/system partizioan lanean"</string>
 <string name="dialog_message_remounting_system">"/system partizioan lanean. Honek denbora bat eraman dezake."</string>
 <string name="dialog_title_checking_busybox">"Busybox erabilgarri dagoen egiaztatzen"</string>
@@ -200,11 +196,9 @@ Ez egin hau probatzearren bakarrik, Gailu apurtu dezakezu. Egin babes-kopia bat 
 Prozesua ez da perfektua eta ekoizleen arabera aldatzen da, agian ez dabil.
 
 Jarraitu?"</string>
-<string name="about_website_label">"Webgunea:"</string>
-<string name="details_share">"Partekatu"</string>
+    <string name="details_share">"Partekatu"</string>
 <string name="details_developer">"Garatzailea: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Wi-Fi bidez bakarrik"</string>
-<string name="about_bitcoin_label">"Egin Bitcoin dohaintza:"</string>
     <string name="dialog_title_spoof_request">"Eskatu"</string>
 <string name="dialog_message_spoof_request">"Gailu itxura-egitea posiblea da zuk bezalako erabiltzaileek errore-txostenak bidaltzen dituztelako gailuaren informazioarekin. Definizioak zehatzak eta egunean izatea nahi baduzu, sakatu Ados eta zure gailuko informazioa Yalp Store garatzaileari bidaliko zaio."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Gailuaren definizioak %1$s(e)n jartzen badituzu zerrenda honetan agertuko dira"</string>
@@ -214,8 +208,7 @@ Jarraitu?"</string>
     <string name="thank_you">"Eskerrik asko"</string>
 <string name="list_updating">"Eguneratzen…"</string>
 <string name="error_invalid_device_definition">"Gailuaren definizioa ukatu da."</string>
-<string name="details_video">"Bideoa"</string>
-<string name="error_could_not_download">"Ezin izan da deskargatu."</string>
+    <string name="error_could_not_download">"Ezin izan da deskargatu."</string>
 <string name="first_login_message">"Zure kontu propioa erabiltzeko itxi saioa menuan"</string>
 <string name="early_access">"Beta sarbidea"</string>
 <string name="testing_program_opt_in">"sartu"</string>
@@ -227,8 +220,7 @@ Jarraitu?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Minutu batzuk behar izan ditzakegu zu beta sarbideko programatik kentzeko."</string>
 <string name="testing_program_section_opted_out_title">"Bihurtu beta-probatzaile"</string>
 <string name="notification_not_privileged">"Ez da eman instalatzeko baimena"</string>
-<string name="about_paypal_label">"Egin dohaintza:"</string>
-<string name="pref_download_directory">"Deskargen direktorioa"</string>
+    <string name="pref_download_directory">"Deskargen direktorioa"</string>
 <string name="pref_download_deltas">"Delta eguneraketak"</string>
 <string name="pref_download_deltas_summary_off">"apk osoa deskargatzen da aldi bakoitzean"</string>
 <string name="pref_download_deltas_summary_on">"Aldaketak besterik ez dira deskargatzen eguneraketetan"</string>

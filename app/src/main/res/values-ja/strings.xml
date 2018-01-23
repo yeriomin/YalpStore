@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"開発者のメール:"</string>
-<string name="about_logged_in">"ログイン:"</string>
+    <string name="about_logged_in">"ログイン:"</string>
 <string name="about_copied_to_clipboard">"クリップボードにコピーしました"</string>
 <string name="list_line_2_updatable">"更新 %1$s"</string>
 <string name="list_empty_updates">"更新が必要なアプリはありません"</string>
@@ -45,8 +44,7 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="details_size">"Apk サイズ %1$s"</string>
 <string name="details_description">"説明:"</string>
 <string name="details_changelog">"新着情報:"</string>
-<string name="details_screenshots">"スクリーンショット:"</string>
-<string name="details_reviews">"レビュー:"</string>
+    <string name="details_reviews">"レビュー:"</string>
 <string name="details_rate_this_app">"このアプリを評価:"</string>
 <string name="details_you_rated_this_app">"あなたのこのアプリの評価:"</string>
 <string name="details_permissions">"アクセス許可:"</string>
@@ -104,8 +102,7 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="pref_delete_apk_after_install_summary_off">"インストール後に .apks は削除されません"</string>
 <string name="pref_delete_apk_after_install_summary_on">"インストール後に .apks は削除されます"</string>
 <string name="pref_delete_apk_after_install">"インストール後に .apk を削除"</string>
-    <string name="details_to_play_store">"Play ストアで表示"</string>
-<string name="action_categories">"カテゴリー"</string>
+    <string name="action_categories">"カテゴリー"</string>
 <string name="list_update_all">"すべて更新"</string>
 <string name="notification_installation_complete">"更新をインストールしました。"</string>
 <string name="notification_installation_failed">"更新のインストールに失敗しました。"</string>
@@ -166,8 +163,7 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="list_app_system">"システムアプリ"</string>
 <string name="activity_title_updates_only">"更新"</string>
 <string name="activity_title_updates_and_other_apps">"あなたのアプリ"</string>
-<string name="details_system_app_info">"システム情報"</string>
-<string name="details_run">"実行"</string>
+    <string name="details_run">"実行"</string>
 <string name="dialog_title_remounting_system">"/system パーティションで動作"</string>
 <string name="dialog_message_remounting_system">"/system パーティションで動作します。これは時間がかかることがあります。"</string>
 <string name="dialog_title_checking_busybox">"buxybox が利用可能かどうか確認しています"</string>
@@ -200,11 +196,9 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 このプロセスは不完全でベンダー固有のものなので、機能しない可能性があります。
 
 行いますか?"</string>
-<string name="about_website_label">"Webｻｲﾄ:"</string>
-<string name="details_share">"共有"</string>
+    <string name="details_share">"共有"</string>
 <string name="details_developer">"開発元: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Wi-Fi のみを使用"</string>
-<string name="about_bitcoin_label">"Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"リクエスト"</string>
 <string name="dialog_message_spoof_request">"デバイスの情報を含むバグレポートを送信するなどで、デバイスのなりすましが可能です。 定義を正確かつ最新にするには、OK をタップして、デバイス情報を Yalp Store 開発者に送信してください。"</string>
 <string name="pref_device_to_pretend_to_be_notice">"デバイス定義を %1$s に入れると、このリストにデバイス定義が表示されます"</string>
@@ -214,8 +208,7 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
     <string name="thank_you">"ありがとうございます"</string>
 <string name="list_updating">"更新中…"</string>
 <string name="error_invalid_device_definition">"デバイス定義が拒否されました。"</string>
-<string name="details_video">"ビデオ"</string>
-<string name="error_could_not_download">"ダウンロードできませんでした。"</string>
+    <string name="error_could_not_download">"ダウンロードできませんでした。"</string>
 <string name="first_login_message">"あなた自身のアカウントを使用するにはメニューのログアウトを選択してください"</string>
 <string name="early_access">"アーリーアクセス"</string>
 <string name="testing_program_opt_in">"登録"</string>
@@ -227,8 +220,7 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="testing_program_section_opted_out_propagating_message">"ベータ版プログラムの登録が解除されるまで数分ほどかかることがあります。"</string>
 <string name="testing_program_section_opted_out_title">"ベータ版を使ってみる"</string>
 <string name="notification_not_privileged">"インストール権限が付与されていません"</string>
-<string name="about_paypal_label">"寄付:"</string>
-<string name="pref_download_directory">"ダウンロードディレクトリー"</string>
+    <string name="pref_download_directory">"ダウンロードディレクトリー"</string>
 <string name="pref_download_deltas">"デルタアップデート"</string>
 <string name="pref_download_deltas_summary_off">"毎回すべての apk をダウンロードします"</string>
 <string name="pref_download_deltas_summary_on">"更新の際、変更のみダウンロードします"</string>

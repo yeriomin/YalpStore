@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Η διεύθυνση ηλεκτρονικού ταχυδρομείου του προγραμματιστή:"</string>
-<string name="about_logged_in">"Έχεις συνδεθεί ως:"</string>
+    <string name="about_logged_in">"Έχεις συνδεθεί ως:"</string>
 <string name="about_copied_to_clipboard">"Αντιγράφτηκε στο πρόχειρο"</string>
 <string name="list_line_2_updatable">"Ενημερώθηκε στις %1$s"</string>
 <string name="list_empty_updates">"Καμία εφαρμογή δεν χρειάζεται ενημέρωση"</string>
@@ -45,8 +44,7 @@
 <string name="details_size">"Μέγεθος του apk %1$s"</string>
 <string name="details_description">"Περιγραφή:"</string>
 <string name="details_changelog">"Τι νέα:"</string>
-<string name="details_screenshots">"Στιγμιότυπα:"</string>
-<string name="details_reviews">"Αξιολογήσεις:"</string>
+    <string name="details_reviews">"Αξιολογήσεις:"</string>
 <string name="details_rate_this_app">"Βαθμολόγησε αυτή την εφαρμογή:"</string>
 <string name="details_you_rated_this_app">"Βαθμολόγησες αυτή την εφαρμογή:"</string>
 <string name="details_permissions">"Δικαιώματα:"</string>
@@ -106,8 +104,7 @@
 <string name="pref_delete_apk_after_install_summary_off">"Τώρα, τα .apk δεν θα διαγράφονται, μετά από την ολοκλήρωση της εγκατάστασης"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Τώρα, τα .apk θα διαγράφονται, μετά από την ολοκλήρωση της εγκατάστασης"</string>
 <string name="pref_delete_apk_after_install">"Διαγραφή των .apk, μετά από την εγκατάσταση"</string>
-    <string name="details_to_play_store">"Προβολή στο Play Store"</string>
-<string name="action_categories">"Κατηγορίες"</string>
+    <string name="action_categories">"Κατηγορίες"</string>
 <string name="list_update_all">"Ενημέρωση όλων"</string>
 <string name="notification_installation_complete">"Η ενημέρωση εγκαταστάθηκε."</string>
 <string name="notification_installation_failed">"Η εγκατάσταση της ενημέρωσης απέτυχε."</string>
@@ -172,8 +169,7 @@
 <string name="list_app_system">"Εφαρμογή του συστήματος"</string>
 <string name="activity_title_updates_only">"Ενημερώσεις"</string>
 <string name="activity_title_updates_and_other_apps">"Οι εφαρμογές σου"</string>
-<string name="details_system_app_info">"Πληροφορίες συστήματος"</string>
-<string name="details_run">"Τρέξιμο"</string>
+    <string name="details_run">"Τρέξιμο"</string>
 <string name="dialog_title_remounting_system">"Εργασία με την κατάτμηση /system"</string>
 <string name="dialog_message_remounting_system">"Γίνεται εργασία με την κατάτμηση /system. Αυτό, ίσως, πάρει λίγο χρόνο."</string>
 <string name="dialog_title_checking_busybox">"Γίνεται έλεγχος για το αν είναι διαθέσιμο το busybox"</string>
@@ -208,11 +204,9 @@
 Η διαδικασία δεν είναι τέλεια, και εξαρτάται από το που έχει γίνει η προμήθεια της όποιας συσκευής. Μπορεί να μην δουλέψει.
 
 Να το κάνουμε;"</string>
-<string name="about_website_label">"Ιστότοπος:"</string>
-<string name="details_share">"Μοιρασιά"</string>
+    <string name="details_share">"Μοιρασιά"</string>
 <string name="details_developer">"Δημιουργός: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Μόνο με Γουάι-Φάι"</string>
-<string name="about_bitcoin_label">"Δωρεά Μπίτκόιν:"</string>
     <string name="dialog_title_spoof_request">"Αίτημα"</string>
 <string name="dialog_message_spoof_request">"Η πλαστογράφηση των συσκευών είναι δυνατή, επειδή χρήστες, όπως εσύ, υποβάλουν αναφορές σφαλμάτων που περιέχουν πληροφορίες της συσκευής. Αν θες οι προσδιορισμοί να είναι ακριβείς και ενημερωμένοι, παρακαλώ, άγγιξε το Εντάξει, και οι πληροφορίες της συσκευής σου θα σταλούν στον προγραμματιστή του Γιαλπ Στορ."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Αν βάλεις τα στοιχεία προσδιορισμού της συσκευής στο %1$s , αυτά θα εμφανίζονται σε αυτό το κατάστιχο"</string>
@@ -222,8 +216,7 @@
     <string name="thank_you">"Σε ευχαριστούμε"</string>
 <string name="list_updating">"Γίνεται ενημέρωση"</string>
 <string name="error_invalid_device_definition">"Ο προσδιορισμός της συσκευής απορρίφθηκε."</string>
-<string name="details_video">"Βίντεο"</string>
-<string name="error_could_not_download">"Δεν μπόρεσε να γίνει η λήψη."</string>
+    <string name="error_could_not_download">"Δεν μπόρεσε να γίνει η λήψη."</string>
 <string name="first_login_message">"Για να χρησιμοποιήσεις τον δικό σου λογαριασμό, επέλεξε την Αποσύνδεση, στο μενού"</string>
 <string name="early_access">"Πρώιμη πρόσβαση"</string>
 <string name="testing_program_opt_in">"συμμετοχή"</string>
@@ -235,8 +228,7 @@
 <string name="testing_program_section_opted_out_propagating_message">"Μπορεί να χρειαστούν μερικά λεπτά για την απομάκρυνσή σου από το πρόγραμμα beta."</string>
 <string name="testing_program_section_opted_out_title">"Γίνε δοκιμαστής της beta"</string>
 <string name="notification_not_privileged">"Δεν έχουν παραχωρηθεί δικαιώματα εγκατάστασης"</string>
-<string name="about_paypal_label">"Δωρεά Paypal:"</string>
-<string name="pref_download_directory">"Κατάλογος λήψεων"</string>
+    <string name="pref_download_directory">"Κατάλογος λήψεων"</string>
 <string name="pref_download_deltas">"Ενημερώσεις Δέλτα"</string>
 <string name="pref_download_deltas_summary_off">"Το πλήρες apk λαμβάνεται την κάθε φορά"</string>
 <string name="pref_download_deltas_summary_on">"Μόνο οι αλλαγές λαμβάνονται κατά τις ενημερώσεις"</string>

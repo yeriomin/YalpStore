@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Email del desarrollador:"</string>
-<string name="about_logged_in">"Has iniciado sesión como:"</string>
+    <string name="about_logged_in">"Has iniciado sesión como:"</string>
 <string name="about_copied_to_clipboard">"Copiado al portapapeles"</string>
 <string name="list_line_2_updatable">"Actualizado el %1$s "</string>
 <string name="list_empty_updates">"No hay actualizaciones"</string>
@@ -46,8 +45,7 @@ Toca \"Crear contraseña\" para ser redirigido"</string>
 <!-- Titles in Spanish can't be finished by any punctuation mark -->
 <string name="details_description">"Descripción"</string>
 <string name="details_changelog">"Novedades"</string>
-<string name="details_screenshots">"Capturas de pantalla"</string>
-<string name="details_reviews">"Reseñas"</string>
+    <string name="details_reviews">"Reseñas"</string>
 <string name="details_rate_this_app">"Valorar esta app"</string>
 <string name="details_you_rated_this_app">"Valoraste esta app:"</string>
 <string name="details_permissions">"Permisos"</string>
@@ -106,8 +104,7 @@ Ten en cuenta que Yalp viola los términos de servicio del Play Store. Es probab
 <string name="pref_delete_apk_after_install_summary_off">"No se borrarán los APKs después de la instalación"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Se borrarán los APKs después de la instalación"</string>
 <string name="pref_delete_apk_after_install">"Borrar APK después de la instalación"</string>
-    <string name="details_to_play_store">"Ver en Play Store"</string>
-<string name="action_categories">"Categorías"</string>
+    <string name="action_categories">"Categorías"</string>
 <string name="list_update_all">"Actualizar todo"</string>
 <string name="notification_installation_complete">"Actualización instalada"</string>
 <string name="notification_installation_failed">"Fallo al instalar actualización."</string>
@@ -168,8 +165,7 @@ Ten en cuenta que Play Store no está a favor de descargar versiones arbitrarias
 <string name="list_app_system">"Aplicación de sistema"</string>
 <string name="activity_title_updates_only">"Actualizaciones"</string>
 <string name="activity_title_updates_and_other_apps">"Tus aplicaciones"</string>
-<string name="details_system_app_info">"Información de sistema"</string>
-<string name="details_run">"Ejecutar"</string>
+    <string name="details_run">"Ejecutar"</string>
 <string name="dialog_title_remounting_system">"Se está modificando la partición de sistema"</string>
 <string name="dialog_message_remounting_system">"Se está modificando la partición de sistema. Puede tomar algún tiempo."</string>
 <string name="dialog_title_checking_busybox">"Comprobando si busybox está disponible"</string>
@@ -202,11 +198,9 @@ No lo hagas solo por curiosidad, podría romper tu dispositivo. Haz una copia de
 El proceso de conversión es imperfecto y específico para cada marca, así que podría no funcionar.
 
 ¿Continuar de todas maneras?"</string>
-<string name="about_website_label">"Sitio web:"</string>
-<string name="details_share">"Compartir"</string>
+    <string name="details_share">"Compartir"</string>
 <string name="details_developer">"Desarrollador: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Solo por Wi-Fi"</string>
-<string name="about_bitcoin_label">"Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"Petición"</string>
 <string name="dialog_message_spoof_request">"La simulación de dispositivos es posible gracias a que usuarios como tú mandan informes de error con información sobre sus dispositivos. Si quieres que los perfiles sean más precisos y estén actualizados, por favor, pulsa OK y el perfil de tu dispositivo se enviará al desarrollador de Yalp Store."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Si pones perfiles de dispositivos en %1$s, aparecerán en esta lista"</string>
@@ -216,8 +210,7 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
     <string name="thank_you">"Gracias"</string>
 <string name="list_updating">"Enviando…"</string>
 <string name="error_invalid_device_definition">"Se rechazó el perfil del dispositivo."</string>
-<string name="details_video">"Vídeo"</string>
-<string name="error_could_not_download">"No se pudo descargar."</string>
+    <string name="error_could_not_download">"No se pudo descargar."</string>
 <string name="first_login_message">"Para usar tu cuenta, selecciona Cerrar sesión en el menú"</string>
 <string name="early_access">"Acceso beta"</string>
 <string name="testing_program_opt_in">"unirse"</string>
@@ -229,8 +222,7 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="testing_program_section_opted_out_propagating_message">"Podemos tardar unos minutos en retirarte del programa Beta."</string>
 <string name="testing_program_section_opted_out_title">"Convertirte en tester Beta"</string>
 <string name="notification_not_privileged">"Permiso de instalación no concedido"</string>
-<string name="about_paypal_label">"Donar:"</string>
-<string name="pref_download_directory">"Carpeta de descargas"</string>
+    <string name="pref_download_directory">"Carpeta de descargas"</string>
 <string name="pref_download_deltas">"Actualizaciones Delta"</string>
 <string name="pref_download_deltas_summary_off">"Descarga completa del apk cada vez"</string>
 <string name="pref_download_deltas_summary_on">"Solo los cambios son descargados durante las actualizaciones."</string>

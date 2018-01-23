@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"E-mail vývojára:"</string>
-<string name="about_logged_in">"Ste prihlásený ako:"</string>
+    <string name="about_logged_in">"Ste prihlásený ako:"</string>
 <string name="about_copied_to_clipboard">"Skopírované do schránky"</string>
 <string name="list_line_2_updatable">"Aktualizované %1$s"</string>
 <string name="list_empty_updates">"Žiadna aktualizácia"</string>
@@ -45,8 +44,7 @@ Presmerovať na jej Play Store web stránku?"</string>
 <string name="details_size">"Veľkosť %1$s"</string>
 <string name="details_description">"Popis:"</string>
 <string name="details_changelog">"Novinky:"</string>
-<string name="details_screenshots">"Snímky obrazovky:"</string>
-<string name="details_reviews">"Recenzie:"</string>
+    <string name="details_reviews">"Recenzie:"</string>
 <string name="details_rate_this_app">"Ohodnoťte túto aplikáciu:"</string>
 <string name="details_you_rated_this_app">"Ohodnotili ste túto aplikáciu:"</string>
 <string name="details_permissions">"Povolenia:"</string>
@@ -105,8 +103,7 @@ Zvážte prosím, že používanie tejto aplikácie porušuje zmluvné podmienky
 <string name="pref_delete_apk_after_install_summary_off">"Teraz sa .apk súbory nevymazávajú po inštalácii"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Teraz sa .apk súbory vymazávajú po inštalácii"</string>
 <string name="pref_delete_apk_after_install">"Vymazať .apk po inštalácii"</string>
-    <string name="details_to_play_store">"Zobraziť v Play Store"</string>
-<string name="action_categories">"Kategórie"</string>
+    <string name="action_categories">"Kategórie"</string>
 <string name="list_update_all">"Aktualizovať všetko"</string>
 <string name="notification_installation_complete">"Aktualizácia nainštalovaná."</string>
 <string name="notification_installation_failed">"Neúspešná inštalácia aktualizácie."</string>
@@ -167,8 +164,7 @@ Majte na pamäti, že Google Play Store nepodporuje sťahovanie ľubovoľných v
 <string name="list_app_system">"Systémová aplikácia"</string>
 <string name="activity_title_updates_only">"Aktualizácie"</string>
 <string name="activity_title_updates_and_other_apps">"Vaše aplikácie"</string>
-<string name="details_system_app_info">"Systémové informácie"</string>
-<string name="details_run">"Spustiť"</string>
+    <string name="details_run">"Spustiť"</string>
 <string name="dialog_title_remounting_system">"Práca so /system partíciou"</string>
 <string name="dialog_message_remounting_system">"Pracuje sa so /system partíciou. Môže to chvíľu trvať."</string>
 <string name="dialog_title_checking_busybox">"Kontrola, či je dostupný busybox"</string>
@@ -201,11 +197,9 @@ Nerobte to len zo zvedavosti. Môže to poškodiť vaše zariadenie. Pred vyskú
 Tento proces nie je dokonalý a je závislý od výrobcu, nemusí preto fungovať.
 
 Vykonať?"</string>
-<string name="about_website_label">"Web stránka:"</string>
-<string name="details_share">"Zdieľať"</string>
+    <string name="details_share">"Zdieľať"</string>
 <string name="details_developer">"Vývojár: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Iba cez Wi-Fi"</string>
-<string name="about_bitcoin_label">"Darovať Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"Požiadavka"</string>
 <string name="dialog_message_spoof_request">"Predstieranie zariadenia je možné vďaka tomu, že užívatelia ako vy odosielate správy o chybách s informáciou o zariadení. Ak chcete, aby definície boli presné a aktuálne, stlačte prosím OK a informácie o vašom zariadení sa pošlú výrobcovi Yalp Store."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Ak vložíte definície zariadení do %1$s, zobrazia sa v tomto zozname"</string>
@@ -215,8 +209,7 @@ Vykonať?"</string>
     <string name="thank_you">"Ďakujeme"</string>
 <string name="list_updating">"Aktualizácia…"</string>
 <string name="error_invalid_device_definition">"Definícia zariadenia zamietnutá."</string>
-<string name="details_video">"Video"</string>
-<string name="error_could_not_download">"Nebolo možné stiahnuť."</string>
+    <string name="error_could_not_download">"Nebolo možné stiahnuť."</string>
 <string name="first_login_message">"Pre použitie svojho vlastného účtu zvoľte v menu Odhlásiť"</string>
 <string name="early_access">"Prednostný prístup"</string>
 <string name="testing_program_opt_in">"zapojiť sa"</string>
@@ -228,8 +221,7 @@ Vykonať?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Vaše odstránenie z programu beta môže trvať niekoľko minúť."</string>
 <string name="testing_program_section_opted_out_title">"Staňte sa beta testerom"</string>
 <string name="notification_not_privileged">"Nezískané povolenie na inštaláciu"</string>
-<string name="about_paypal_label">"Darovať cez Paypal:"</string>
-<string name="pref_download_directory">"Adresár Sťahovania"</string>
+    <string name="pref_download_directory">"Adresár Sťahovania"</string>
 <string name="pref_download_deltas">"Delta aktualizácie"</string>
 <string name="pref_download_deltas_summary_off">"Vždy sa sťahuje plný apk súbor"</string>
 <string name="pref_download_deltas_summary_on">"Počas aktualizácií sa sťahujú iba zmeny"</string>

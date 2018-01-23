@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Corréu del desendolcador:"</string>
-<string name="about_logged_in">"Aniciesti sesión como:"</string>
+    <string name="about_logged_in">"Aniciesti sesión como:"</string>
 <string name="about_copied_to_clipboard">"Copióse al cartafueyu"</string>
 <string name="list_line_2_updatable">"Xubióse'l %1$s"</string>
 <string name="list_empty_updates">"Nun se precisen anovar aplicaciones"</string>
@@ -45,8 +44,7 @@ Calca en «Crear contraseña» pa redirixite a la páxina de creación de contra
 <string name="details_size">"Tamañu d'APK %1$s"</string>
 <string name="details_description">"Descripción:"</string>
 <string name="details_changelog">"Qué hai nuevo:"</string>
-<string name="details_screenshots">"Captures de pantalla:"</string>
-<string name="details_reviews">"Reseñes"</string>
+    <string name="details_reviews">"Reseñes"</string>
 <string name="details_rate_this_app">"Valorar esta aplicación:"</string>
 <string name="details_you_rated_this_app">"Valoresti esta aplicación:"</string>
 <string name="details_permissions">"Permisos:"</string>
@@ -105,8 +103,7 @@ Ten en cuenta qu'usar esta aplicación incumple los términos y condiciones de l
 <string name="pref_delete_apk_after_install_summary_off">"Agora les APK nun se desanicies dempués de la instalación"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Agora les APK desaníciense dempués de la instalación"</string>
 <string name="pref_delete_apk_after_install">"Desaniciar APKs tres la instalación"</string>
-    <string name="details_to_play_store">"Ver na Play Store"</string>
-<string name="action_categories">"Estayes"</string>
+    <string name="action_categories">"Estayes"</string>
 <string name="list_update_all">"Anovar too"</string>
 <string name="notification_installation_complete">"Anovamientu instaláu."</string>
 <string name="notification_installation_failed">"Falló la instalación del anovamientu."</string>
@@ -167,8 +164,7 @@ Ten en cuenta que baxar versiones al debalu nun lo sofita la Play Store de Googl
 <string name="list_app_system">"Aplicación del sistema"</string>
 <string name="activity_title_updates_only">"Anovamientos"</string>
 <string name="activity_title_updates_and_other_apps">"Les tos aplicaciones"</string>
-    <string name="details_system_app_info">"Información del sistema"</string>
-<string name="details_run">"Executar"</string>
+    <string name="details_run">"Executar"</string>
 <string name="dialog_title_remounting_system">"Trabayando cola partición /system"</string>
 <string name="dialog_message_remounting_system">"Trabayando cola partición /system. Esto podría entardar daqué."</string>
 <string name="dialog_title_checking_busybox">"Comprobando si busybox ta disponible"</string>
@@ -201,11 +197,9 @@ Nun lo faigas por curiosidá porque podríes estropiar el preséu. Respalda tolo
 El procesu nun ye perfeutu y ye específicu pa cada preséu, asina que quiciabes nun funcione.
 
 ¿Facelo?"</string>
-<string name="about_website_label">"Sitiu web:"</string>
-<string name="details_share">"Compartir"</string>
+    <string name="details_share">"Compartir"</string>
 <string name="details_developer">"Desendolcador: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Namái na Wi-Fi"</string>
-<string name="about_bitcoin_label">"Donar Bitcoin:"</string>
     <string name="dialog_title_spoof_request">"Solicitar"</string>
 <string name="dialog_message_spoof_request">"La suplantación de preseos ye posible porque usuarios como tu unviaron informes de fallos cola información del preséu. Si quies les definiciones pa ser precisu y tar anováu, calca Aceutar y unviaráse la información del to preséu al desendolcador de Yalp Store."</string>
 <string name="pref_device_to_pretend_to_be_notice">"Si pones les definiciones del preséu en %1$s, van apaecer nesti llistáu"</string>
@@ -215,8 +209,7 @@ El procesu nun ye perfeutu y ye específicu pa cada preséu, asina que quiciabes
     <string name="thank_you">"Gracies"</string>
 <string name="list_updating">"Anovando…"</string>
 <string name="error_invalid_device_definition">"Refugóse la definición del preséu."</string>
-<string name="details_video">"Videu"</string>
-<string name="error_could_not_download">"Nun pudo baxase."</string>
+    <string name="error_could_not_download">"Nun pudo baxase."</string>
 <string name="first_login_message">"Pa usar la to cuenta escueyi Zarrar sesión nel menú"</string>
 <string name="early_access">"Accesu tempranu"</string>
 <string name="testing_program_opt_in">"xunise"</string>
@@ -228,8 +221,7 @@ El procesu nun ye perfeutu y ye específicu pa cada preséu, asina que quiciabes
 <string name="testing_program_section_opted_out_propagating_message">"Pue entardar dellos minutos el quitate del programa beta"</string>
 <string name="testing_program_section_opted_out_title">"Facese probador beta"</string>
 <string name="notification_not_privileged">"Nun se concedió'l permisu d'instalación"</string>
-<string name="about_paypal_label">"Donaciones de PayPal:"</string>
-<string name="pref_download_directory">"Direutoriu de descarga"</string>
+    <string name="pref_download_directory">"Direutoriu de descarga"</string>
 <string name="pref_download_deltas">"Anovamientos delta"</string>
 <string name="pref_download_deltas_summary_off">"Báxase l'APK completa cada vegada"</string>
 <string name="pref_download_deltas_summary_on">"Namái se baxen los cambeos de los anovamientos"</string>
