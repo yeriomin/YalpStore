@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/listContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="6dp">
+    android:padding="6dp"
+    android:background="@color/lightgray">
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:indeterminate="true"
-        android:padding="5dp"
-        android:visibility="gone" />
-
-    <android.support.v7.widget.ListViewCompat
-        android:id="@android:id/list"
+    <TextView
+        android:id="@+id/all_cat"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="All categories"
+        android:layout_margin="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_below="@+id/all_cat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp"
+        app:contentPadding="5dp">
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:indeterminate="true"
+            android:padding="5dp"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.ListViewCompat
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <TextView
             android:id="@+id/empty"
@@ -26,4 +48,6 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    </android.support.v7.widget.CardView>
 </RelativeLayout>

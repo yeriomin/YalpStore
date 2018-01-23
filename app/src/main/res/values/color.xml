@@ -12,6 +12,7 @@
     <color name="changelog_bg">#E3F2FD</color>
     <color name="gray">#BDBDBD</color>
     <color name="darkgray">#616161</color>
+    <color name="lightgray">#EEEEEE</color>
     <color name="colorText">#121212</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#535353</color>
