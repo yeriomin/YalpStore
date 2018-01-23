@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ff1976d2</color>
-    <color name="colorPrimaryDark">#1565C0</color>
-    <color name="colorAccent">#448AFF</color>
+    <color name="colorPrimary">#303F9F</color>
+    <color name="colorPrimaryDark">#283593</color>
+    <color name="colorAccent">#3F51B5</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="button_bg">#1565C0</color>
+    <color name="button_bg">#3F51B5</color>
     <color name="button_bg_alt">#009688</color>
-    <color name="round_bg">#1565C0</color>
-    <color name="changelog_txt">#1565C0</color>
+    <color name="round_bg">#3F51B5</color>
+    <color name="changelog_txt">#3F51B5</color>
     <color name="changelog_bg">#E3F2FD</color>
     <color name="gray">#BDBDBD</color>
     <color name="darkgray">#616161</color>
