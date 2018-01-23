@@ -4,20 +4,12 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.1'
 
-    def getVersionName = { ->
-        def stdout = new ByteArrayOutputStream()
-        exec {
-            commandLine 'git', 'describe', '--tags'
-            standardOutput = stdout
-        }
-        return stdout.toString().trim()
-    }
     defaultConfig {
         applicationId "com.github.yeriomin.yalpstore"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 34
-        versionName getVersionName()
+        versionCode 1
+        versionName 'Beta'
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
