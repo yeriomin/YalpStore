@@ -270,7 +270,7 @@
                             android:background="@drawable/round_bg"
                             android:src="@drawable/app_settings"/>
                     </LinearLayout>
-                    
+
                     <ProgressBar
                         android:id="@+id/progress"
                         android:layout_width="wrap_content"

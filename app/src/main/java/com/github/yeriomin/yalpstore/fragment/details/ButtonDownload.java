@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.BuildConfig;
@@ -34,7 +35,13 @@ public class ButtonDownload extends Button {
 
     @Override
     protected android.widget.Button getButton() {
-        return (android.widget.Button) activity.findViewById(R.id.download);
+        if(app.getPrice()!=null && !app.getPrice().toString().contains("Free"))
+        {
+            Toast.makeText(activity,R.string.warn_app_purchase,Toast.LENGTH_SHORT).show();
+            setText(R.id.download,R.string.details_purchase);
+            return (android.widget.Button) activity.findViewById(R.id.download);}
+        else
+            return (android.widget.Button) activity.findViewById(R.id.download);
     }
 
     @Override

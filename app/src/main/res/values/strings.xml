@@ -94,6 +94,7 @@
     <string name="details_versionName_updatable">"%1$s → %2$s"</string>
     <string name="details_run">Open</string>
     <string name="details_download">Download</string>
+    <string name="details_purchase">Purchase</string>
     <string name="details_update">Update</string>
     <string name="details_cancel">Cancel</string>
     <string name="details_install">Install</string>
@@ -234,4 +235,5 @@
     <string name="content_flagged">Objection submitted.</string>
     <string name="apps_by">Apps by %1$s</string>
     <string name="pref_message_fallback">Attempt to set a fallback directory (%1$s)?</string>
+    <string name="warn_app_purchase">App purchase is not available yet !</string>
 </resources>
