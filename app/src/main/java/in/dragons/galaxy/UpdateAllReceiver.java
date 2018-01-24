@@ -48,8 +48,8 @@ public class UpdateAllReceiver extends BroadcastReceiver {
     }
 
     private void enableButton() {
-        Button button = activity.findViewById(R.id.main_button);
-        TextView textView = activity.findViewById(R.id.main_button_txt);
+        Button button =(Button) activity.findViewById(R.id.main_button);
+        TextView textView = (TextView) activity.findViewById(R.id.main_button_txt);
         if (null != button) {
             button.setEnabled(true);
             textView.setEnabled(true);

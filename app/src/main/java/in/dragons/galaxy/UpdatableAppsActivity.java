@@ -106,7 +106,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     public void launchUpdateAll() {
         ((YalpStoreApplication) getApplicationContext()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
-        Button button = findViewById(R.id.main_button);
+        Button button = (Button) findViewById(R.id.main_button);
         button.setEnabled(false);
         button.setText(R.string.list_updating);
     }

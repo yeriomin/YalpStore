@@ -55,7 +55,7 @@ public class AppLists extends Abstract {
     }
 
     private void addAppsByThisDeveloper() {
-        ImageView imageView = activity.findViewById(R.id.apps_by_same_developer);
+        ImageView imageView = (ImageView) activity.findViewById(R.id.apps_by_same_developer);
         //textView.setText(activity.getString(R.string.apps_by, app.getDeveloperName()));
         imageView.setVisibility(View.VISIBLE);
         imageView.setOnClickListener(new View.OnClickListener() {

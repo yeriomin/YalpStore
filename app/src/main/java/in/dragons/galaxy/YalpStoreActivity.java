@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -22,7 +23,7 @@ import in.dragons.galaxy.fragment.FilterMenu;
 
 import static in.dragons.galaxy.PlayStoreApiAuthenticator.PREFERENCE_EMAIL;
 
-public abstract class YalpStoreActivity extends Activity {
+public abstract class YalpStoreActivity extends AppCompatActivity {
 
     static protected boolean logout = false;
 
@@ -72,7 +73,7 @@ public abstract class YalpStoreActivity extends Activity {
             menu.findItem(R.id.action_logout).setVisible(true);
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            addQueryTextListener(menu.findItem(R.id.action_search));
+            //addQueryTextListener(menu.findItem(R.id.action_search));
         }
         new FilterMenu(this).onCreateOptionsMenu(menu);
         return super.onCreateOptionsMenu(menu);

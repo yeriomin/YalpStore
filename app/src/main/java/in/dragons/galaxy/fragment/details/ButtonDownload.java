@@ -88,7 +88,7 @@ public class ButtonDownload extends Button {
             && !state.isEverythingSuccessful()
         ) {
             disable(R.string.details_downloading);
-            ProgressBar progressBar = activity.findViewById(R.id.download_progress);
+            ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
             if (null != progressBar) {
                 new DownloadProgressBarUpdater(app.getPackageName(), progressBar).execute(PurchaseTask.UPDATE_INTERVAL);
             }
@@ -125,7 +125,7 @@ public class ButtonDownload extends Button {
     private LocalPurchaseTask getPurchaseTask() {
         LocalPurchaseTask purchaseTask = new LocalPurchaseTask();
         purchaseTask.setFragment(this);
-        ProgressBar progressBar = activity.findViewById(R.id.download_progress);
+        ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
         if (null != progressBar) {
             purchaseTask.setDownloadProgressBarUpdater(new DownloadProgressBarUpdater(app.getPackageName(), progressBar));
         }

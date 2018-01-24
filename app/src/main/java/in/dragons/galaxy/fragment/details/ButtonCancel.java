@@ -32,7 +32,7 @@ public class ButtonCancel extends Button {
         intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
         activity.startService(intentCancel);
         button.setVisibility(View.GONE);
-        android.widget.Button buttonDownload = activity.findViewById(R.id.download);
+        android.widget.Button buttonDownload = (android.widget.Button) activity.findViewById(R.id.download);
         buttonDownload.setText(R.string.details_download);
         buttonDownload.setVisibility(View.VISIBLE);
         buttonDownload.setEnabled(true);

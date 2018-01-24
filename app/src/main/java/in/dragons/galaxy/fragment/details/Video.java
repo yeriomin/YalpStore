@@ -42,12 +42,12 @@ public class Video extends Abstract {
         String vID =getID(app.getVideoUrl());
         String URL="https://img.youtube.com/vi/"+vID+"/maxresdefault.jpg";
 
-        ImageView imageView = activity.findViewById(R.id.thumbnail);
+        ImageView imageView = (ImageView) activity.findViewById(R.id.thumbnail);
         Picasso.with(activity).load(URL).into(imageView);
 
         activity.findViewById(R.id.app_video).setVisibility(View.VISIBLE);
 
-        ImageView play = activity.findViewById(R.id.thumbnail);
+        ImageView play = (ImageView) activity.findViewById(R.id.thumbnail);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

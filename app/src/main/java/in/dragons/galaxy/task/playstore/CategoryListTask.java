@@ -26,7 +26,7 @@ public class CategoryListTask extends CategoryTask implements CloneableTask {
     protected void fill() {
         final CategoryListActivity activity = (CategoryListActivity) context;
         final Map<String, String> categories = manager.getCategoriesFromSharedPreferences();
-        ListView list = activity.findViewById(android.R.id.list);
+        ListView list = (ListView) activity.findViewById(android.R.id.list);
         list.setAdapter(getAdapter(categories, android.R.layout.simple_list_item_1));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

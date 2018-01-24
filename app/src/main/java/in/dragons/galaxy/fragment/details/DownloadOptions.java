@@ -32,7 +32,7 @@ public class DownloadOptions extends Abstract {
 
     @Override
     public void draw() {
-        final ImageButton more = activity.findViewById(R.id.icon);
+        final ImageButton more =(ImageButton) activity.findViewById(R.id.icon);
         if (null == more) {
             return;
         }

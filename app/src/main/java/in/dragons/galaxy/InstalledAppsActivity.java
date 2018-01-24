@@ -22,9 +22,9 @@ public class InstalledAppsActivity extends AppListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(R.string.activity_title_updates_and_other_apps);
-        Button button = findViewById(R.id.main_button);
-        TextView textView = findViewById(R.id.main_button_txt);
-        CardView cardView = findViewById(R.id.list_card);
+        Button button =(Button) findViewById(R.id.main_button);
+        TextView textView = (TextView) findViewById(R.id.main_button_txt);
+        CardView cardView = (CardView) findViewById(R.id.list_card);
         button.setEnabled(true);
         textView.setEnabled(true);
         button.setVisibility(View.VISIBLE);

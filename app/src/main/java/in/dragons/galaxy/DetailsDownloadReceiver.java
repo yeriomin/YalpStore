@@ -62,9 +62,9 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
         if (!state.isEverythingSuccessful()) {
             return;
         }
-        Button buttonDownload = activityRef.get().findViewById(R.id.download);
+        Button buttonDownload = (Button) activityRef.get().findViewById(R.id.download);
         buttonDownload.setVisibility(View.GONE);
-        Button buttonInstall = activityRef.get().findViewById(R.id.install);
+        Button buttonInstall = (Button) activityRef.get().findViewById(R.id.install);
         buttonInstall.setVisibility(View.VISIBLE);
         if (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
             && !state.getTriggeredBy().equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
@@ -78,16 +78,16 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
     }
 
     private void cleanup() {
-        ProgressBar progressBar = activityRef.get().findViewById(R.id.download_progress);
+        ProgressBar progressBar = (ProgressBar) activityRef.get().findViewById(R.id.download_progress);
         if (null != progressBar) {
             progressBar.setVisibility(View.GONE);
             progressBar.setProgress(0);
         }
-        Button buttonCancel = activityRef.get().findViewById(R.id.cancel);
+        Button buttonCancel = (Button) activityRef.get().findViewById(R.id.cancel);
         if (null != buttonCancel) {
             buttonCancel.setVisibility(View.GONE);
         }
-        Button buttonDownload = activityRef.get().findViewById(R.id.download);
+        Button buttonDownload = (Button) activityRef.get().findViewById(R.id.download);
         buttonDownload.setText(R.string.details_download);
         buttonDownload.setEnabled(true);
     }

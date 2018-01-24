@@ -72,8 +72,8 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     }
 
     private void toggleUpdateAll(boolean enable) {
-        Button button = activity.findViewById(R.id.main_button);
-        TextView textView = activity.findViewById(R.id.main_button_txt);
+        Button button = (Button) activity.findViewById(R.id.main_button);
+        TextView textView = (TextView) activity.findViewById(R.id.main_button_txt);
         button.setText(R.string.list_update_all);
         textView.setText(R.string.list_update_all_txt);
         button.setVisibility(enable ? View.VISIBLE : View.GONE);
