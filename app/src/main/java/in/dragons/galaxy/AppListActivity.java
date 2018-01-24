@@ -1,6 +1,7 @@
 package in.dragons.galaxy;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -32,6 +33,9 @@ abstract public class AppListActivity extends YalpStoreActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.applist_activity_layout);
+
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
