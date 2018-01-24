@@ -18,7 +18,7 @@
 -dontobfuscate
 -keep public interface android.content.pm.IPackageInstallObserver { *; }
 -keep class android.content.pm.IPackageInstallObserver$Stub { *; }
--keep public class com.github.yeriomin.yalpstore.InstallerPrivileged$* { *; }
+-keep public class in.dragons.galaxy.InstallerPrivileged$* { *; }
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
 -dontwarn sun.misc.Unsafe
 -optimizationpasses 5

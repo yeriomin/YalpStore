@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.github.yeriomin.yalpstore"
+          package="in.dragons.galaxy"
           android:installLocation="internalOnly" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -23,17 +23,17 @@
         android:theme="@style/AppTheme"
         android:supportsRtl="true">
         <provider
-            android:name="com.github.yeriomin.yalpstore.FileProvider"
-            android:authorities="com.github.yeriomin.yalpstore.fileprovider"
+            android:name="in.dragons.galaxy.FileProvider"
+            android:authorities="in.dragons.galaxy.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/paths" />
         </provider>
-        <receiver android:name="com.github.yeriomin.yalpstore.UpdateChecker" />
+        <receiver android:name="in.dragons.galaxy.UpdateChecker" />
         <receiver
-            android:name="com.github.yeriomin.yalpstore.BootReceiver"
+            android:name="in.dragons.galaxy.BootReceiver"
             android:enabled="true"
             android:exported="true" >
             <intent-filter>
@@ -43,7 +43,7 @@
         <provider
             android:exported="false"
             android:name=".YalpSuggestionProvider"
-            android:authorities="com.github.yeriomin.yalpstore.YalpSuggestionProvider"
+            android:authorities="in.dragons.galaxy.YalpSuggestionProvider"
             android:enabled="true" />
         <activity android:name=".DetailsActivity" android:configChanges="keyboardHidden|orientation|screenSize">
             <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
