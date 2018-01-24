@@ -1,0 +1,12 @@
+<resources>
+
+    <style name="Theme_DeviceDefault_Almost">
+        <item name="android:textAppearanceSearchResultTitle">@style/textAppearanceSearchResultTitle</item>
+    </style>
+
+    <style name="textAppearanceSearchResultTitle" parent="android:TextAppearance.SearchResult.Title">
+        <item name="android:textColor">?android:attr/colorForegroundInverse</item>
+        <item name="android:background">?android:attr/colorForeground</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
