@@ -21,8 +21,13 @@ public class Paths {
             return storageRoot;
         }
         for (File file: externalFilesDirs) {
-            if (Environment.isExternalStorageEmulated(file) && !Environment.isExternalStorageRemovable(file)) {
-                return new File(file.getAbsolutePath().replace(FALLBACK_DIRECTORY, ""));
+            try {
+                if (Environment.isExternalStorageEmulated(file) && !Environment.isExternalStorageRemovable(file)) {
+                    return new File(file.getAbsolutePath().replace(FALLBACK_DIRECTORY, ""));
+                }
+            } catch (IllegalArgumentException e) {
+                // The checks throw exceptions if Environment.getStorageVolume(File path) returns null
+                // It would be great to know why
             }
         }
         return storageRoot;
