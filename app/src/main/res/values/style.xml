@@ -8,6 +8,7 @@
         <item name="android:textColor">@color/colorText</item>
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>
         <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
     </style>
 
     <style name="MyToolbarStyle" parent="ThemeOverlay.AppCompat.Dark">
@@ -17,4 +18,11 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:taskOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:taskOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:taskCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:taskCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
 </resources>
