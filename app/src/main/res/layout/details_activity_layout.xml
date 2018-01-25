@@ -288,7 +288,8 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:padding="5dp"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    android:indeterminateTint="@color/colorPrimary"/>
 
             </LinearLayout>
         </RelativeLayout>

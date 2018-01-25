@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Theme-->
     <color name="colorPrimary">#303F9F</color>
     <color name="colorPrimaryDark">#283593</color>
-    <color name="colorAccent">#3F51B5</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--Basic-->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="button_bg">#3F51B5</color>
-    <color name="button_bg_alt">#009688</color>
-    <color name="round_bg">#3F51B5</color>
-    <color name="changelog_txt">#3F51B5</color>
-    <color name="changelog_bg">#E3F2FD</color>
+    <color name="transparent">#0000</color>
     <color name="gray">#BDBDBD</color>
     <color name="darkgray">#616161</color>
     <color name="lightgray">#EEEEEE</color>
+
+    <!--Buttons-->
+    <color name="button_bg">#3F51B5</color>
+    <color name="button_bg_alt">#009688</color>
+    <color name="round_bg">@color/colorPrimary</color>
+
+    <!--Misc-->
+    <color name="changelog_txt">#3F51B5</color>
+    <color name="changelog_bg">#E3F2FD</color>
+
+    <!--Text-->
     <color name="colorText">#121212</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#535353</color>
+    <color name="colorTextInv">#FFFFFF</color>
+    <color name="colorTextPrimaryInv">#F5F5F5</color>
+    <color name="colorTextSecondaryInv">#EEEEEE</color>
+
+    <!--Shades-->
+    <color name="colorShade01">#C5CAE9</color>
+    <color name="colorShade02">#9FA8DA</color>
+    <color name="colorShade03">#7986CB</color>
+    <color name="colorShade04">#5C6BC0</color>
+
+    <!--More Colors-->
+    <color name="colorCyan">#00BCD4</color>
+    <color name="colorRed">#F44336</color>
+    <color name="colorGreen">#4CAF50</color>
+    <color name="colorPurple">#9C27B0</color>
+    <color name="colorOrange">#FF9800</color>
+    <color name="colorTeal">#009688</color>
+
 </resources>

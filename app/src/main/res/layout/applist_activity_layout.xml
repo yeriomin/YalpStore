@@ -82,12 +82,15 @@
                             android:layout_centerVertical="true"
                             android:indeterminate="true"
                             android:padding="5dp"
-                            android:visibility="gone" />
+                            android:visibility="gone"
+                            android:progressDrawable="@drawable/selector"
+                            android:indeterminateTint="@color/colorPrimary"/>
 
                         <android.support.v7.widget.ListViewCompat
                             android:id="@android:id/list"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+                            android:layout_height="match_parent"
+                            android:listSelector="@drawable/selector"/>
 
                         <TextView
                             android:id="@android:id/empty"
