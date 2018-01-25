@@ -77,12 +77,6 @@ public abstract class YalpStoreActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_categories:
-                startActivity(new Intent(this, CategoryListActivity.class));
-                break;
-            case R.id.action_about:
-                startActivity(new Intent(this, AboutActivity.class));
-                break;
             case R.id.filter_system_apps:
             case R.id.filter_apps_with_ads:
             case R.id.filter_paid_apps:

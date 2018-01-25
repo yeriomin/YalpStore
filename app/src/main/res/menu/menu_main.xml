@@ -41,8 +41,4 @@
                 android:title="@string/action_filter_downloads"/>
         </menu>
     </item>
-    <item
-        android:id="@+id/action_categories"
-        android:title="@string/action_categories"
-        android:icon="@drawable/ic_categories" />
 </menu>

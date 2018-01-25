@@ -61,6 +61,9 @@ public class CategoryListActivity extends YalpStoreActivity implements Navigatio
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_categories:
+                startActivity(new Intent(this, CategoryListActivity.class));
+                break;
             case R.id.action_settings:
                 startActivity(new Intent(this, PreferenceActivity.class));
                 break;
