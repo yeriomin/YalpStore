@@ -4,9 +4,11 @@ import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.SearchView;
 
 import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
@@ -54,6 +56,9 @@ public class SearchActivity extends EndlessScrollActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         boolean result = super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.filter_category).setVisible(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            ((SearchView) menu.findItem(R.id.action_search).getActionView()).setQuery(query,false);
+        }
         return result;
     }
 
