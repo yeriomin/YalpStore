@@ -1,6 +1,13 @@
 package in.dragons.galaxy;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -21,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-abstract public class AppListActivity extends YalpStoreActivity {
+abstract public class AppListActivity extends YalpStoreActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     protected ListView listView;
     protected Map<String, ListItem> listItems = new HashMap<>();
@@ -32,10 +39,29 @@ abstract public class AppListActivity extends YalpStoreActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.applist_activity_layout);
+        setContentView(R.layout.activity_main);
 
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!onSearchRequested()) {
+                    showFallbackSearchDialog();
+                }
+            }
+        });
 
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -142,5 +168,25 @@ abstract public class AppListActivity extends YalpStoreActivity {
 
     public ListView getListView() {
         return listView;
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, PreferenceActivity.class));
+                break;
+            case R.id.action_logout:
+                showLogOutDialog();
+                break;
+            case R.id.action_about:
+                startActivity(new Intent(this, AboutActivity.class));
+                break;
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

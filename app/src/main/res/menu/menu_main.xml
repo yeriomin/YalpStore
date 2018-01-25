@@ -1,12 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_search"
-        android:title="@string/action_search"
-        app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_search" />
-    <item
         android:id="@+id/action_filter"
         android:title="@string/action_filter"
         app:showAsAction="ifRoom"
@@ -48,28 +42,7 @@
         </menu>
     </item>
     <item
-        android:id="@+id/action_installed_apps"
-        android:title="@string/activity_title_updates_and_other_apps"
-        android:icon="@drawable/ic_apps" />
-    <item
-        android:id="@+id/action_updates"
-        android:title="@string/action_updates"
-        android:icon="@drawable/ic_refresh" />
-    <item
         android:id="@+id/action_categories"
         android:title="@string/action_categories"
         android:icon="@drawable/ic_categories" />
-    <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:icon="@drawable/ic_settings" />
-    <item
-        android:id="@+id/action_logout"
-        android:title="@string/action_logout"
-        android:icon="@drawable/ic_logout"
-        android:visible="false" />
-    <item
-        android:id="@+id/action_about"
-        android:title="@string/action_about"
-        android:icon="@drawable/ic_about" />
 </menu>

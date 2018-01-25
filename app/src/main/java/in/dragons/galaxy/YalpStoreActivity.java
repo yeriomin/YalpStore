@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -69,12 +70,6 @@ public abstract class YalpStoreActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        if (!TextUtils.isEmpty(PreferenceActivity.getString(this, PREFERENCE_EMAIL))) {
-            menu.findItem(R.id.action_logout).setVisible(true);
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            //addQueryTextListener(menu.findItem(R.id.action_search));
-        }
         new FilterMenu(this).onCreateOptionsMenu(menu);
         return super.onCreateOptionsMenu(menu);
     }
@@ -82,23 +77,6 @@ public abstract class YalpStoreActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                startActivity(new Intent(this, PreferenceActivity.class));
-                break;
-            case R.id.action_logout:
-                showLogOutDialog();
-                break;
-            case R.id.action_search:
-                if (!onSearchRequested()) {
-                    showFallbackSearchDialog();
-                }
-                break;
-            case R.id.action_updates:
-                startActivity(new Intent(this, UpdatableAppsActivity.class));
-                break;
-            case R.id.action_installed_apps:
-                startActivity(new Intent(this, InstalledAppsActivity.class));
-                break;
             case R.id.action_categories:
                 startActivity(new Intent(this, CategoryListActivity.class));
                 break;
@@ -156,7 +134,7 @@ public abstract class YalpStoreActivity extends AppCompatActivity {
         });
     }
 
-    private AlertDialog showLogOutDialog() {
+    AlertDialog showLogOutDialog() {
         return new AlertDialog.Builder(this)
             .setMessage(R.string.dialog_message_logout)
             .setTitle(R.string.dialog_title_logout)
@@ -172,7 +150,7 @@ public abstract class YalpStoreActivity extends AppCompatActivity {
             .show();
     }
 
-    private AlertDialog showFallbackSearchDialog() {
+    AlertDialog showFallbackSearchDialog() {
         final EditText textView = new EditText(this);
         return new AlertDialog.Builder(this)
             .setView(textView)

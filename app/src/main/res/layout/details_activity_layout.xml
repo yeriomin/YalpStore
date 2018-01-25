@@ -5,6 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:theme="@style/MyToolbarStyle"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -172,7 +179,7 @@
                 android:gravity="end"
                 android:layout_marginRight="15dp"/>
 
-                <View
+            <View
                 android:id="@+id/divider_top"
                 android:layout_below="@id/contains_ads"
                 android:layout_width="match_parent"
@@ -184,106 +191,106 @@
                 android:background="@color/gray"
                 android:visibility="gone"/>
 
-                <!-- App details -->
+            <!-- App details -->
+            <LinearLayout
+                android:layout_below="@id/divider_top"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!-- App Details : Type, Size, Rating -->
+                <include layout="@layout/app_details_inc"/>
+                <View
+                    android:id="@+id/divider_bottom"
+                    android:layout_below="@id/main_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@color/gray"
+                    android:visibility="gone"/>
+                <!-- Changelog -->
+                <include layout="@layout/app_changelog_inc"/>
+                <!-- Read More -->
+                <include layout="@layout/app_more_inc"/>
+                <!-- Screenshot -->
+                <Gallery
+                    android:id="@+id/screenshots_gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:spacing="15dp" />
+                <!-- Reviews -->
+                <include layout="@layout/app_reviews_inc"/>
+                <!-- Permissions -->
+                <include layout="@layout/app_perm_inc"/>
+                <!-- Beta -->
+                <include layout="@layout/app_beta_inc"/>
+                <!-- General -->
+                <include layout="@layout/app_gen_inc"/>
+                <!-- Related Apps -->
                 <LinearLayout
-                    android:layout_below="@id/divider_top"
+                    android:id="@+id/related_links"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
-                    <!-- App Details : Type, Size, Rating -->
-                    <include layout="@layout/app_details_inc"/>
-                    <View
-                        android:id="@+id/divider_bottom"
-                        android:layout_below="@id/main_action"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginLeft="15dp"
-                        android:background="@color/gray"
+                    <!-- Playstore link -->
+                    <ImageButton
+                        android:id="@+id/to_play_store"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/round_bg"
+                        android:src="@drawable/app_playstore"/>
+
+                    <!-- App by same dev -->
+                    <ImageButton
+                        android:id="@+id/apps_by_same_developer"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/round_bg"
+                        android:src="@drawable/app_dev"
                         android:visibility="gone"/>
-                    <!-- Changelog -->
-                    <include layout="@layout/app_changelog_inc"/>
-                    <!-- Read More -->
-                    <include layout="@layout/app_more_inc"/>
-                    <!-- Screenshot -->
-                    <Gallery
-                        android:id="@+id/screenshots_gallery"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:spacing="15dp" />
-                    <!-- Reviews -->
-                    <include layout="@layout/app_reviews_inc"/>
-                    <!-- Permissions -->
-                    <include layout="@layout/app_perm_inc"/>
-                    <!-- Beta -->
-                    <include layout="@layout/app_beta_inc"/>
-                    <!-- General -->
-                    <include layout="@layout/app_gen_inc"/>
-                    <!-- Related Apps -->
-                    <LinearLayout
-                        android:id="@+id/related_links"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="visible">
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:gravity="center">
 
-                        <!-- Playstore link -->
-                        <ImageButton
-                            android:id="@+id/to_play_store"
-                            android:layout_width="@dimen/icon_size"
-                            android:layout_height="@dimen/icon_size"
-                            android:background="@drawable/round_bg"
-                            android:src="@drawable/app_playstore"/>
+                    <!-- Share -->
+                    <ImageButton
+                        android:id="@+id/share"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/round_bg"
+                        android:src="@drawable/app_share"/>
 
-                        <!-- App by same dev -->
-                        <ImageButton
-                            android:id="@+id/apps_by_same_developer"
-                            android:layout_width="@dimen/icon_size"
-                            android:layout_height="@dimen/icon_size"
-                            android:background="@drawable/round_bg"
-                            android:src="@drawable/app_dev"
-                            android:visibility="gone"/>
-
-                        <!-- Share -->
-                        <ImageButton
-                            android:id="@+id/share"
-                            android:layout_width="@dimen/icon_size"
-                            android:layout_height="@dimen/icon_size"
-                            android:background="@drawable/round_bg"
-                            android:src="@drawable/app_share"/>
-
-                        <!-- System detail -->
-                        <ImageButton
-                            android:id="@+id/system_app_info"
-                            android:layout_width="@dimen/icon_size"
-                            android:layout_height="@dimen/icon_size"
-                            android:background="@drawable/round_bg"
-                            android:src="@drawable/app_settings"/>
-                    </LinearLayout>
-
-                    <ProgressBar
-                        android:id="@+id/progress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:indeterminate="true"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:padding="5dp"
-                        android:visibility="gone" />
-
+                    <!-- System detail -->
+                    <ImageButton
+                        android:id="@+id/system_app_info"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/round_bg"
+                        android:src="@drawable/app_settings"/>
                 </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:indeterminate="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 

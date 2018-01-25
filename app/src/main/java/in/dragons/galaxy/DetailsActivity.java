@@ -3,6 +3,10 @@ package in.dragons.galaxy;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -24,7 +28,7 @@ import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.CloneableTask;
 import in.dragons.galaxy.task.playstore.DetailsTask;
 
-public class DetailsActivity extends YalpStoreActivity {
+public class DetailsActivity extends YalpStoreActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
@@ -87,8 +91,9 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         onNewIntent(getIntent());
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -132,6 +137,8 @@ public class DetailsActivity extends YalpStoreActivity {
     public void redrawDetails(App app) {
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         new GeneralDetails(this, app).draw();
         new Screenshot(this, app).draw();
         new Review(this, app).draw();
@@ -175,5 +182,24 @@ public class DetailsActivity extends YalpStoreActivity {
                 activity.redrawDetails(app);
             }
         }
+    }
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, PreferenceActivity.class));
+                break;
+            case R.id.action_logout:
+                showLogOutDialog();
+                break;
+            case R.id.action_about:
+                startActivity(new Intent(this, AboutActivity.class));
+                break;
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
