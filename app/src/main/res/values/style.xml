@@ -9,6 +9,7 @@
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>
         <item name="android:textColorSecondary">@color/colorTextSecondary</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="android:indeterminateTint">@color/colorPrimary</item>
     </style>
 
     <style name="MyToolbarStyle" parent="ThemeOverlay.AppCompat.Dark">
