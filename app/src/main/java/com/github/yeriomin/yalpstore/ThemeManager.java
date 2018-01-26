@@ -2,8 +2,10 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.util.TypedValue;
 
 public class ThemeManager {
 
@@ -36,7 +38,7 @@ public class ThemeManager {
         if (isAmazonTv(activity)) {
             getThemeDark();
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return R.style.Theme_DeviceDefault_Almost;
+            return isWindowBackgroundDark(activity) ? getThemeDark() : getThemeLight();
         }
         return 0;
     }
@@ -63,5 +65,15 @@ public class ThemeManager {
 
     static private boolean isAmazonTv(Activity activity) {
         return ((YalpStoreApplication) activity.getApplication()).isTv() && Build.MANUFACTURER.toLowerCase().contains("amazon");
+    }
+
+    static boolean isWindowBackgroundDark(Activity activity) {
+        TypedValue color = new TypedValue();
+        try {
+            activity.getTheme().resolveAttribute(android.R.attr.colorBackground, color, true);
+            return Color.red(color.data) < 128 && Color.green(color.data) < 128 && Color.blue(color.data) < 128;
+        } catch (RuntimeException e) {
+            return false;
+        }
     }
 }
