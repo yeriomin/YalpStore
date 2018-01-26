@@ -38,7 +38,7 @@ public class PlayStoreApiAuthenticator {
         this.context = context;
     }
 
-    public GooglePlayAPI getApi() throws CredentialsEmptyException {
+    public GooglePlayAPI getApi() throws IOException {
         if (api == null) {
             api = buildFromPreferences();
         }
@@ -93,7 +93,7 @@ public class PlayStoreApiAuthenticator {
         api = null;
     }
 
-    private GooglePlayAPI buildFromPreferences() throws CredentialsEmptyException {
+    private GooglePlayAPI buildFromPreferences() throws IOException {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String email = prefs.getString(PREFERENCE_EMAIL, "");
         if (TextUtils.isEmpty(email)) {
@@ -101,13 +101,7 @@ public class PlayStoreApiAuthenticator {
         }
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setEmail(email);
-        try {
-            return build(loginInfo);
-        } catch (CredentialsEmptyException e) {
-            throw e;
-        } catch (IOException e) {
-            throw new RuntimeException("IOException while building api object from preferences: " + e.getMessage(), e);
-        }
+        return build(loginInfo);
     }
 
     private GooglePlayAPI build(LoginInfo loginInfo) throws IOException {
