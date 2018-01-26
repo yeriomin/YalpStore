@@ -125,7 +125,7 @@
     <string name="credentials_message">Use your Google account.\n\nKeep in mind that using this app violates Play Store T&amp;C. \nIt would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store T&amp;C.</string>
     <string name="activity_title_updates_only">Updates</string>
     <string name="activity_title_updates_and_other_apps">Your apps</string>
-    <string name="activity_title_search">"Searching: \"%1$s\""</string>
+    <string name="activity_title_search">"Results for %1$s"</string>
     <string name="notification_installation_complete">Update installed.</string>
     <string name="notification_installation_failed">Update installation failed.</string>
     <string name="notification_not_privileged">Install permission not granted</string>
