@@ -8,8 +8,8 @@ android {
         applicationId "in.dragons.galaxy"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 1
-        versionName 'Beta'
+        versionCode 2
+        versionName 'beta'
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
