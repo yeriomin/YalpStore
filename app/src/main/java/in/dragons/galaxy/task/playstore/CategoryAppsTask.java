@@ -35,7 +35,7 @@ public class CategoryAppsTask extends EndlessScrollTask implements CloneableTask
         return new AppListIterator(new CategoryAppsIterator(
             new PlayStoreApiAuthenticator(context).getApi(),
             categoryId,
-            GooglePlayAPI.SUBCATEGORY.TOP_FREE
+            GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS
         ));
     }
 }
