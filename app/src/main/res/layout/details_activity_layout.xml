@@ -171,9 +171,25 @@
                     android:textColor="@color/white"/>
             </LinearLayout>
 
+            <in.dragons.galaxy.NumberProgressBar
+                android:id="@+id/download_progress"
+                android:layout_below="@+id/main_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:visibility="gone"
+                app:progress_text_color="@color/colorAccent"
+                app:progress_reached_color="@color/colorPrimary"
+                app:progress_unreached_color="@color/lightgray"
+                app:progress_reached_bar_height="2.5dp"
+                app:progress_unreached_bar_height="2dp"
+                app:progress_text_size="12sp"/>
+
             <TextView
                 android:id="@+id/contains_ads"
-                android:layout_below="@id/main_action"
+                android:layout_below="@id/download_progress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -294,16 +310,4 @@
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-
-    <ProgressBar
-        android:id="@+id/download_progress"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:indeterminate="false"
-        android:visibility="gone"
-        style="@android:style/Widget.ProgressBar.Horizontal" />
 </LinearLayout>

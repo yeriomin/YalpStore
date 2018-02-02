@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
@@ -14,6 +13,7 @@ import in.dragons.galaxy.DownloadProgressBarUpdater;
 import in.dragons.galaxy.DownloadState;
 import in.dragons.galaxy.Downloader;
 import in.dragons.galaxy.ManualDownloadActivity;
+import in.dragons.galaxy.NumberProgressBar;
 import in.dragons.galaxy.Paths;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.GalaxyActivity;
@@ -88,7 +88,7 @@ public class ButtonDownload extends Button {
             && !state.isEverythingSuccessful()
         ) {
             disable(R.string.details_downloading);
-            ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
+            NumberProgressBar progressBar = (NumberProgressBar) activity.findViewById(R.id.download_progress);
             if (null != progressBar) {
                 new DownloadProgressBarUpdater(app.getPackageName(), progressBar).execute(PurchaseTask.UPDATE_INTERVAL);
             }
@@ -125,7 +125,7 @@ public class ButtonDownload extends Button {
     private LocalPurchaseTask getPurchaseTask() {
         LocalPurchaseTask purchaseTask = new LocalPurchaseTask();
         purchaseTask.setFragment(this);
-        ProgressBar progressBar = (ProgressBar) activity.findViewById(R.id.download_progress);
+        NumberProgressBar progressBar = (NumberProgressBar) activity.findViewById(R.id.download_progress);
         if (null != progressBar) {
             purchaseTask.setDownloadProgressBarUpdater(new DownloadProgressBarUpdater(app.getPackageName(), progressBar));
         }

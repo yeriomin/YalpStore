@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ProgressBar;
 
 import java.lang.ref.WeakReference;
 
@@ -78,7 +76,7 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
     }
 
     private void cleanup() {
-        ProgressBar progressBar = (ProgressBar) activityRef.get().findViewById(R.id.download_progress);
+        NumberProgressBar progressBar = (NumberProgressBar) activityRef.get().findViewById(R.id.download_progress);
         if (null != progressBar) {
             progressBar.setVisibility(View.GONE);
             progressBar.setProgress(0);
