@@ -30,6 +30,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:tint="@color/white"
         android:backgroundTint="@color/colorAccent"
-        app:srcCompat="@drawable/ic_search"/>
+        app:srcCompat="@drawable/ic_search"
+        app:borderWidth="0dp"/>
 
 </android.support.design.widget.CoordinatorLayout>
