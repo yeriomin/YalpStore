@@ -174,6 +174,12 @@ abstract public class AppListActivity extends GalaxyActivity implements Navigati
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_myapps:
+                startActivity(new Intent(this, InstalledAppsActivity.class));
+                break;
+            case R.id.action_updates:
+                startActivity(new Intent(this, UpdatableAppsActivity.class));
+                break;
             case R.id.action_categories:
                 startActivity(new Intent(this, CategoryListActivity.class));
                 break;
