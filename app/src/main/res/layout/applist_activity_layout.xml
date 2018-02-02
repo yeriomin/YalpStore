@@ -40,9 +40,9 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:text="@string/list_update_all"
-                            android:textColor="@color/button_bg"
+                            android:textColor="@color/white"
                             android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
-                            android:background="@drawable/button_bg_outine"
+                            android:background="@drawable/button_bg"
                             android:visibility="gone" />
 
                     </RelativeLayout>
