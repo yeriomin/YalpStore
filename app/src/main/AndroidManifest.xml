@@ -73,7 +73,7 @@
         <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/activity_title_updates_only">
             <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
-        <activity android:name=".SearchActivity" android:configChanges="keyboardHidden|orientation|screenSize" >
+        <activity android:name=".SearchActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
