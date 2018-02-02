@@ -57,7 +57,7 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
+        if (GalaxyPermissionManager.isGranted(requestCode, permissions, grantResults)) {
             Log.i(getClass().getSimpleName(), "User granted the write permission");
             launchUpdateAll();
         }
@@ -104,7 +104,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     }
 
     public void launchUpdateAll() {
-        ((YalpStoreApplication) getApplicationContext()).setBackgroundUpdating(true);
+        ((GalaxyApplication) getApplicationContext()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
         Button button = (Button) findViewById(R.id.main_button);
         button.setEnabled(false);

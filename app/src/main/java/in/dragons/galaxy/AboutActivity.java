@@ -17,7 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AboutActivity extends YalpStoreActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AboutActivity extends GalaxyActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

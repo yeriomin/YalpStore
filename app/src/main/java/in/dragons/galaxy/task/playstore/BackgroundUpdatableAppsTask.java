@@ -19,7 +19,7 @@ import in.dragons.galaxy.PreferenceActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.UpdatableAppsActivity;
 import in.dragons.galaxy.UpdateAllReceiver;
-import in.dragons.galaxy.YalpStoreApplication;
+import in.dragons.galaxy.GalaxyApplication;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.notification.NotificationManagerWrapper;
 
@@ -81,7 +81,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
 
     private void process(Context context, List<App> apps) {
         boolean canInstallInBackground = PreferenceActivity.canInstallInBackground(context);
-        YalpStoreApplication application = (YalpStoreApplication) context.getApplicationContext();
+        GalaxyApplication application = (GalaxyApplication) context.getApplicationContext();
         application.clearPendingUpdates();
         for (App app: apps) {
             application.addPendingUpdate(app.getPackageName());

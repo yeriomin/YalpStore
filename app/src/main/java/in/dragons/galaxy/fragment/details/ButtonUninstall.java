@@ -5,14 +5,14 @@ import android.net.Uri;
 import android.view.View;
 
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.YalpStoreActivity;
+import in.dragons.galaxy.GalaxyActivity;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.CheckShellTask;
 import in.dragons.galaxy.task.UninstallSystemAppTask;
 
 public class ButtonUninstall extends Button {
 
-    public ButtonUninstall(YalpStoreActivity activity, App app) {
+    public ButtonUninstall(GalaxyActivity activity, App app) {
         super(activity, app);
     }
 

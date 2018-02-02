@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
 
-    static private final String DEBUG_DIRECTORY = "yalp-store-debug";
+    static private final String DEBUG_DIRECTORY = "galaxy-store-debug";
     static private File dumpDirectory;
 
     public DebugHttpClientAdapter() {

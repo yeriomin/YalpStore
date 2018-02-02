@@ -45,7 +45,7 @@ public class Downloader {
         if (deliveryData.getAdditionalFileCount() > 1) {
             bytesNeeded += deliveryData.getAdditionalFile(1).getSize();
         }
-        StatFs stat = new StatFs(Paths.getYalpPath(context).getPath());
+        StatFs stat = new StatFs(Paths.getDownloadPath(context).getPath());
         return (long) stat.getBlockSize() * (long) stat.getAvailableBlocks() >= bytesNeeded;
     }
 

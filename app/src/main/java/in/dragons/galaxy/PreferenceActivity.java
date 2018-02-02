@@ -85,7 +85,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (!YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
+        if (!GalaxyPermissionManager.isGranted(requestCode, permissions, grantResults)) {
             Log.i(getClass().getSimpleName(), "User denied the write permission");
             finish();
         }

@@ -8,13 +8,13 @@ import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
-public class YalpStorePermissionManager {
+public class GalaxyPermissionManager {
 
     private static final int PERMISSIONS_REQUEST_CODE = 384;
 
     private WeakReference<Activity> activityRef = new WeakReference<>(null);
 
-    public YalpStorePermissionManager(Activity activity) {
+    public GalaxyPermissionManager(Activity activity) {
         this.activityRef = new WeakReference<>(activity);
     }
 

@@ -16,8 +16,8 @@ import in.dragons.galaxy.Downloader;
 import in.dragons.galaxy.ManualDownloadActivity;
 import in.dragons.galaxy.Paths;
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.YalpStoreActivity;
-import in.dragons.galaxy.YalpStorePermissionManager;
+import in.dragons.galaxy.GalaxyActivity;
+import in.dragons.galaxy.GalaxyPermissionManager;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.selfupdate.UpdaterFactory;
 import in.dragons.galaxy.task.playstore.PurchaseTask;
@@ -29,7 +29,7 @@ import static in.dragons.galaxy.DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON
 
 public class ButtonDownload extends Button {
 
-    public ButtonDownload(YalpStoreActivity activity, App app) {
+    public ButtonDownload(GalaxyActivity activity, App app) {
         super(activity, app);
     }
 
@@ -64,7 +64,7 @@ public class ButtonDownload extends Button {
     public void checkAndDownload() {
         button.setVisibility(View.GONE);
         View buttonCancel = activity.findViewById(R.id.cancel);
-        YalpStorePermissionManager permissionManager = new YalpStorePermissionManager(activity);
+        GalaxyPermissionManager permissionManager = new GalaxyPermissionManager(activity);
         if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
             activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
         } else if (permissionManager.checkPermission()) {
@@ -102,12 +102,12 @@ public class ButtonDownload extends Button {
                 AndroidAppDeliveryData.newBuilder().setDownloadUrl(UpdaterFactory.get(activity).getUrlString(app.getVersionCode())).build()
             );
         } else {
-            boolean writePermission = new YalpStorePermissionManager(activity).checkPermission();
+            boolean writePermission = new GalaxyPermissionManager(activity).checkPermission();
             Log.i(getClass().getSimpleName(), "Write permission granted - " + writePermission);
             if (writePermission && prepareDownloadsDir()) {
                 getPurchaseTask().execute();
             } else {
-                File dir = Paths.getYalpPath(activity);
+                File dir = Paths.getDownloadPath(activity);
                 Log.i(getClass().getSimpleName(), dir.getAbsolutePath() + " exists=" + dir.exists() + ", isDirectory=" + dir.isDirectory() + ", writable=" + dir.canWrite());
                 ContextUtil.toast(this.activity.getApplicationContext(), R.string.error_downloads_directory_not_writable);
             }
@@ -115,7 +115,7 @@ public class ButtonDownload extends Button {
     }
 
     private boolean prepareDownloadsDir() {
-        File dir = Paths.getYalpPath(activity);
+        File dir = Paths.getDownloadPath(activity);
         if (!dir.exists()) {
             dir.mkdirs();
         }

@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-abstract public class AppListActivity extends YalpStoreActivity implements NavigationView.OnNavigationItemSelectedListener{
+abstract public class AppListActivity extends GalaxyActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     protected ListView listView;
     protected Map<String, ListItem> listItems = new HashMap<>();
@@ -108,7 +108,7 @@ abstract public class AppListActivity extends YalpStoreActivity implements Navig
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
+        if (GalaxyPermissionManager.isGranted(requestCode, permissions, grantResults)) {
             Log.i(getClass().getSimpleName(), "User granted the write permission");
             new ButtonDownload(this, DetailsActivity.app).download();
         }

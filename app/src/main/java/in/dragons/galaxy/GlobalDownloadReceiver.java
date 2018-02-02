@@ -65,7 +65,7 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
         } else {
             Log.i(getClass().getSimpleName(), "Notifying about download completion of " + app.getPackageName());
             notifyDownloadComplete(app);
-            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
+            ((GalaxyApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
         }
     }
 

@@ -24,19 +24,19 @@ import in.dragons.galaxy.fragment.FilterMenu;
 
 import static in.dragons.galaxy.PlayStoreApiAuthenticator.PREFERENCE_EMAIL;
 
-public abstract class YalpStoreActivity extends AppCompatActivity {
+public abstract class GalaxyActivity extends AppCompatActivity {
 
     static protected boolean logout = false;
 
     public static void cascadeFinish() {
-        YalpStoreActivity.logout = true;
+        GalaxyActivity.logout = true;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.v(getClass().getSimpleName(), "Starting activity");
         logout = false;
-        if (((YalpStoreApplication) getApplication()).isTv()) {
+        if (((GalaxyApplication) getApplication()).isTv()) {
             requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
         }
         ThemeManager.setTheme(this);
@@ -119,7 +119,7 @@ public abstract class YalpStoreActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Intent i = new Intent(YalpStoreActivity.this, SearchActivity.class);
+                Intent i = new Intent(GalaxyActivity.this, SearchActivity.class);
                 i.setAction(Intent.ACTION_SEARCH);
                 i.putExtra(SearchManager.QUERY, query);
                 startActivity(i);

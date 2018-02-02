@@ -38,7 +38,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         if (null != DetailsActivity.app && packageName.equals(DetailsActivity.app.getPackageName())) {
             updateDetails(actionIsInstall(intent));
         }
-        ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall(intent));
+        ((GalaxyApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall(intent));
         if (needToRemoveApk(context) && actionIsInstall(intent)) {
             App app = getApp(context, packageName);
             File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());

@@ -3,14 +3,14 @@ package in.dragons.galaxy.fragment.details;
 import android.content.pm.PackageManager;
 import android.view.View;
 
-import in.dragons.galaxy.YalpStoreActivity;
+import in.dragons.galaxy.GalaxyActivity;
 import in.dragons.galaxy.model.App;
 
 public abstract class Button extends Abstract {
 
     protected View button;
 
-    public Button(YalpStoreActivity activity, App app) {
+    public Button(GalaxyActivity activity, App app) {
         super(activity, app);
         this.button = getButton();
     }

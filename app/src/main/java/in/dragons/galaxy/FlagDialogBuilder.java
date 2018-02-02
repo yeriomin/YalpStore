@@ -24,10 +24,10 @@ public class FlagDialogBuilder {
     };
     static private final String[] reasonLabels = new String[8];
 
-    private YalpStoreActivity activity;
+    private GalaxyActivity activity;
     private App app;
 
-    public FlagDialogBuilder setActivity(YalpStoreActivity activity) {
+    public FlagDialogBuilder setActivity(GalaxyActivity activity) {
         this.activity = activity;
         reasonLabels[0] = activity.getString(R.string.flag_sexual_content);
         reasonLabels[1] = activity.getString(R.string.flag_graphic_violence);

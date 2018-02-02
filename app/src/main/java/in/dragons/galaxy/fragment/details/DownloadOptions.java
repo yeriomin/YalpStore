@@ -17,7 +17,7 @@ import in.dragons.galaxy.FlagDialogBuilder;
 import in.dragons.galaxy.InstalledApkCopier;
 import in.dragons.galaxy.ManualDownloadActivity;
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.YalpStoreActivity;
+import in.dragons.galaxy.GalaxyActivity;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.CheckShellTask;
 import in.dragons.galaxy.task.ConvertToNormalTask;
@@ -26,7 +26,7 @@ import in.dragons.galaxy.task.SystemRemountTask;
 
 public class DownloadOptions extends Abstract {
 
-    public DownloadOptions(YalpStoreActivity activity, App app) {
+    public DownloadOptions(GalaxyActivity activity, App app) {
         super(activity, app);
     }
 

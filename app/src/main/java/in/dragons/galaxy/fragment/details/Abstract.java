@@ -5,17 +5,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.YalpStoreActivity;
+import in.dragons.galaxy.GalaxyActivity;
 import in.dragons.galaxy.model.App;
 
 public abstract class Abstract {
 
-    protected YalpStoreActivity activity;
+    protected GalaxyActivity activity;
     protected App app;
 
     abstract public void draw();
 
-    public Abstract(YalpStoreActivity activity, App app) {
+    public Abstract(GalaxyActivity activity, App app) {
         this.activity = activity;
         this.app = app;
     }

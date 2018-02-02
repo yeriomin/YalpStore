@@ -28,7 +28,7 @@ import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.CloneableTask;
 import in.dragons.galaxy.task.playstore.DetailsTask;
 
-public class DetailsActivity extends YalpStoreActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class DetailsActivity extends GalaxyActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
@@ -98,7 +98,7 @@ public class DetailsActivity extends YalpStoreActivity implements NavigationView
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
+        if (GalaxyPermissionManager.isGranted(requestCode, permissions, grantResults)) {
             Log.i(getClass().getSimpleName(), "User granted the write permission");
             if (null == downloadOrInstallFragment && null != app) {
                 downloadOrInstallFragment = new DownloadOrInstall(this, app);

@@ -12,7 +12,7 @@ import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.Paths;
 import in.dragons.galaxy.PreferenceActivity;
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.YalpStorePermissionManager;
+import in.dragons.galaxy.GalaxyPermissionManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,11 +28,11 @@ public class DownloadDirectory extends Abstract {
 
     @Override
     public void draw() {
-        preference.setSummary(Paths.getYalpPath(activity).getAbsolutePath());
+        preference.setSummary(Paths.getDownloadPath(activity).getAbsolutePath());
         preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                YalpStorePermissionManager permissionManager = new YalpStorePermissionManager(activity);
+                GalaxyPermissionManager permissionManager = new GalaxyPermissionManager(activity);
                 if (!permissionManager.checkPermission()) {
                     permissionManager.requestPermission();
                 }

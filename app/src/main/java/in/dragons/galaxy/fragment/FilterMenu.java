@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter;
 import in.dragons.galaxy.CategoryManager;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
-import in.dragons.galaxy.YalpStoreActivity;
+import in.dragons.galaxy.GalaxyActivity;
 import in.dragons.galaxy.model.Filter;
 
 import java.util.HashMap;
@@ -33,9 +33,9 @@ public class FilterMenu {
     static private final Map<Float, String> ratingLabels = new HashMap<>();
     static private final Map<Integer, String> downloadsLabels = new HashMap<>();
 
-    private YalpStoreActivity activity;
+    private GalaxyActivity activity;
 
-    public FilterMenu(YalpStoreActivity activity) {
+    public FilterMenu(GalaxyActivity activity) {
         this.activity = activity;
         String[] ratingValues = activity.getResources().getStringArray(R.array.filterRatingValues);
         for (int i = 0; i < ratingValues.length; i++) {

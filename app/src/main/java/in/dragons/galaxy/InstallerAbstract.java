@@ -65,7 +65,7 @@ public abstract class InstallerAbstract {
         }
         if (!new ApkSignatureVerifier(context).match(app.getPackageName(), apkPath)) {
             Log.i(getClass().getSimpleName(), "Signature mismatch for " + app.getPackageName());
-            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
+            ((GalaxyApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             if (ContextUtil.isAlive(context)) {
                 getSignatureMismatchDialog(app).show();
             } else {

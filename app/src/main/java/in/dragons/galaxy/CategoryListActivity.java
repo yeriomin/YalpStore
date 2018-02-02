@@ -14,7 +14,7 @@ import in.dragons.galaxy.task.playstore.CategoryListTask;
 import in.dragons.galaxy.task.playstore.CategoryTask;
 
 
-public class CategoryListActivity extends YalpStoreActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class CategoryListActivity extends GalaxyActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

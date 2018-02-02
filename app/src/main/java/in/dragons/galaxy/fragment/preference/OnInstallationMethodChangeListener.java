@@ -88,11 +88,11 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
         }
 
         private App getSelf() {
-            PackageInfo yalp = new PackageInfo();
-            yalp.applicationInfo = activity.getApplicationInfo();
-            yalp.packageName = BuildConfig.APPLICATION_ID;
-            yalp.versionCode = BuildConfig.VERSION_CODE;
-            return new App(yalp);
+            PackageInfo Galaxy = new PackageInfo();
+            Galaxy.applicationInfo = activity.getApplicationInfo();
+            Galaxy.packageName = BuildConfig.APPLICATION_ID;
+            Galaxy.versionCode = BuildConfig.VERSION_CODE;
+            return new App(Galaxy);
         }
     }
 }

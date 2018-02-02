@@ -21,7 +21,7 @@ abstract public class InstallerBackground extends InstallerAbstract {
         }
         if (background && !new PermissionsComparator(context).isSame(app)) {
             Log.i(getClass().getSimpleName(), "New permissions for " + app.getPackageName());
-            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
+            ((GalaxyApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             notifyNewPermissions(app);
             return false;
         }

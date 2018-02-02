@@ -33,7 +33,7 @@ public class Paths {
         return storageRoot;
     }
 
-    static public File getYalpPath(Context context) {
+    static public File getDownloadPath(Context context) {
         return new File(
             getStorageRoot(context),
             PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_DOWNLOAD_DIRECTORY, "")
@@ -42,7 +42,7 @@ public class Paths {
 
     static public File getApkPath(Context context, String packageName, int version) {
         String filename = packageName + "." + String.valueOf(version) + ".apk";
-        return new File(getYalpPath(context), filename);
+        return new File(getDownloadPath(context), filename);
     }
 
     static public File getDeltaPath(Context context, String packageName, int version) {

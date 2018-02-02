@@ -19,7 +19,7 @@ import in.dragons.galaxy.PreferenceActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.SpoofDeviceManager;
 import in.dragons.galaxy.Util;
-import in.dragons.galaxy.YalpStoreActivity;
+import in.dragons.galaxy.GalaxyActivity;
 
 import java.util.LinkedHashMap;
 import java.util.Locale;
@@ -129,7 +129,7 @@ public class Device extends List {
 
     private void finishAll() {
         new PlayStoreApiAuthenticator(activity.getApplicationContext()).logout();
-        YalpStoreActivity.cascadeFinish();
+        GalaxyActivity.cascadeFinish();
         activity.finish();
     }
 

@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
-public class DeviceInfoActivity extends YalpStoreActivity {
+public class DeviceInfoActivity extends GalaxyActivity {
 
     public static final String INTENT_DEVICE_NAME = "INTENT_DEVICE_NAME";
 

@@ -9,8 +9,8 @@ import in.dragons.galaxy.BlackWhiteListManager;
 import in.dragons.galaxy.BuildConfig;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.UpdatableAppsActivity;
-import in.dragons.galaxy.YalpStoreApplication;
-import in.dragons.galaxy.YalpStorePermissionManager;
+import in.dragons.galaxy.GalaxyApplication;
+import in.dragons.galaxy.GalaxyPermissionManager;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.selfupdate.UpdaterFactory;
 import in.dragons.galaxy.task.InstalledAppsTask;
@@ -43,13 +43,13 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         }
         int latestVersionCode = UpdaterFactory.get(context).getLatestVersionCode();
         if (latestVersionCode > BuildConfig.VERSION_CODE) {
-            App yalp = InstalledAppsTask.getInstalledApp(context.getPackageManager(), BuildConfig.APPLICATION_ID);
-            if (null == yalp) {
+            App Galaxy = InstalledAppsTask.getInstalledApp(context.getPackageManager(), BuildConfig.APPLICATION_ID);
+            if (null == Galaxy ) {
                 return updatableApps;
             }
-            yalp.setVersionCode(latestVersionCode);
-            yalp.setVersionName("0." + latestVersionCode);
-            updatableApps.add(yalp);
+            Galaxy.setVersionCode(latestVersionCode);
+            Galaxy.setVersionName("0." + latestVersionCode);
+            updatableApps.add(Galaxy);
         }
         return updatableApps;
     }
@@ -79,14 +79,14 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         button.setVisibility(enable ? View.VISIBLE : View.GONE);
         textView.setVisibility(enable ? View.VISIBLE : View.GONE);
         activity.findViewById(R.id.list_card).setVisibility(View.VISIBLE);
-        if (((YalpStoreApplication) activity.getApplication()).isBackgroundUpdating()) {
+        if (((GalaxyApplication) activity.getApplication()).isBackgroundUpdating()) {
             button.setEnabled(false);
             button.setText(R.string.list_updating);
         }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                YalpStorePermissionManager permissionManager = new YalpStorePermissionManager(activity);
+                GalaxyPermissionManager permissionManager = new GalaxyPermissionManager(activity);
                 if (permissionManager.checkPermission()) {
                     activity.launchUpdateAll();
                 } else {

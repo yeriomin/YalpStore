@@ -8,7 +8,7 @@ import android.util.Log;
 import in.dragons.galaxy.DownloadManagerFactory;
 import in.dragons.galaxy.DownloadManagerInterface;
 import in.dragons.galaxy.DownloadState;
-import in.dragons.galaxy.YalpStoreApplication;
+import in.dragons.galaxy.GalaxyApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class CancelDownloadService extends IntentService {
             downloadIds.add(downloadId);
         }
         if (!TextUtils.isEmpty(packageName)) {
-            ((YalpStoreApplication) getApplicationContext()).removePendingUpdate(packageName);
+            ((GalaxyApplication) getApplicationContext()).removePendingUpdate(packageName);
             downloadIds.addAll(DownloadState.get(packageName).getDownloadIds());
         }
         for (long id: downloadIds) {

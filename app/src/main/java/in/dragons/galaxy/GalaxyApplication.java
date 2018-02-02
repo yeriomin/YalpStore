@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class YalpStoreApplication extends Application {
+public class GalaxyApplication extends Application {
 
     private boolean isBackgroundUpdating = false;
     private List<String> pendingUpdates = new ArrayList<>();

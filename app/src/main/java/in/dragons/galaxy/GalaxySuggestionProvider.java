@@ -17,7 +17,7 @@ import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import java.io.File;
 import java.io.IOException;
 
-public class YalpSuggestionProvider extends ContentProvider {
+public class GalaxySuggestionProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {

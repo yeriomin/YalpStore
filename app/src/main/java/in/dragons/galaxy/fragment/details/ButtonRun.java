@@ -9,7 +9,7 @@ import android.view.View;
 
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.YalpStoreApplication;
+import in.dragons.galaxy.GalaxyApplication;
 import in.dragons.galaxy.model.App;
 
 public class ButtonRun extends Button {
@@ -46,7 +46,7 @@ public class ButtonRun extends Button {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private Intent getLaunchIntent() {
         Intent i = activity.getPackageManager().getLaunchIntentForPackage(app.getPackageName());
-        boolean isTv = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ((YalpStoreApplication) activity.getApplication()).isTv();
+        boolean isTv = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ((GalaxyApplication) activity.getApplication()).isTv();
         if (isTv) {
             Intent l = activity.getPackageManager().getLeanbackLaunchIntentForPackage(app.getPackageName());
             if (null != l) {

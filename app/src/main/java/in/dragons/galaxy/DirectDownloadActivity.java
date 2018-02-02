@@ -10,7 +10,7 @@ import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.DetailsTask;
 import in.dragons.galaxy.task.playstore.PurchaseTask;
 
-public class DirectDownloadActivity extends YalpStoreActivity {
+public class DirectDownloadActivity extends GalaxyActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class DirectDownloadActivity extends YalpStoreActivity {
             finish();
             return;
         }
-        if (!new YalpStorePermissionManager(this).checkPermission()) {
+        if (!new GalaxyPermissionManager(this).checkPermission()) {
             startActivity(DetailsActivity.getDetailsIntent(this, packageName));
             finish();
             return;

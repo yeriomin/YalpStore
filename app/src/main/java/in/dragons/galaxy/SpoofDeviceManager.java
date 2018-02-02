@@ -41,12 +41,12 @@ public class SpoofDeviceManager {
             devices = getDevicesFromApk();
             putDevicesToSharedPreferences(devices);
         }
-        devices.putAll(getDevicesFromYalpDirectory());
+        devices.putAll(getDevicesFromDownloadDirectory());
         return devices;
     }
 
     public Properties getProperties(String entryName) {
-        File defaultDirectoryFile = new File(Paths.getYalpPath(context), entryName);
+        File defaultDirectoryFile = new File(Paths.getDownloadPath(context), entryName);
         if (defaultDirectoryFile.exists()) {
             Log.i(getClass().getSimpleName(), "Loading device info from " + defaultDirectoryFile.getAbsolutePath());
             return getProperties(defaultDirectoryFile);
@@ -125,7 +125,7 @@ public class SpoofDeviceManager {
                 return new JarFile(apk);
             }
         } catch (IOException e) {
-            Log.e(getClass().getSimpleName(), "Could not open Yalp Store apk as a jar file: " + e.getMessage());
+            Log.e(getClass().getSimpleName(), "Could not open Galaxy Store apk as a jar file: " + e.getMessage());
         }
         return null;
     }
@@ -142,9 +142,9 @@ public class SpoofDeviceManager {
         return null;
     }
 
-    private Map<String, String> getDevicesFromYalpDirectory() {
+    private Map<String, String> getDevicesFromDownloadDirectory() {
         Map<String, String> deviceNames = new HashMap<>();
-        File defaultDir = Paths.getYalpPath(context);
+        File defaultDir = Paths.getDownloadPath(context);
         if (!defaultDir.exists() || null == defaultDir.listFiles()) {
             return deviceNames;
         }

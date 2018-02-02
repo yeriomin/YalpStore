@@ -51,6 +51,6 @@ public class ThemeManager {
     }
 
     static private boolean isAmazonTv(Activity activity) {
-        return ((YalpStoreApplication) activity.getApplication()).isTv() && Build.MANUFACTURER.toLowerCase().contains("amazon");
+        return ((GalaxyApplication) activity.getApplication()).isTv() && Build.MANUFACTURER.toLowerCase().contains("amazon");
     }
 }
