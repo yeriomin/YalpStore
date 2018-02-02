@@ -26,14 +26,14 @@
             <RelativeLayout
                 android:id="@+id/app_video"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/thumbnail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@color/gray" />
 
                 <ImageView
