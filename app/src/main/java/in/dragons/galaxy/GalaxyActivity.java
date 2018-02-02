@@ -39,7 +39,6 @@ public abstract class GalaxyActivity extends AppCompatActivity {
         if (((GalaxyApplication) getApplication()).isTv()) {
             requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
         }
-        ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
     }
 

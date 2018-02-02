@@ -14,7 +14,6 @@ public class FullscreenImageActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ThemeManager.setTheme(this);
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
