@@ -1,6 +1,9 @@
 package in.dragons.galaxy.task.playstore;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
@@ -56,6 +59,7 @@ public class UpdatableAppsTask extends RemoteAppListTask {
         super.processIOException(e);
         if (noNetwork(e) && context instanceof Activity) {
             ContextUtil.toast(context, R.string.error_no_network);
+            getNotNetworkDialog(context).show();
         }
     }
 
@@ -102,5 +106,13 @@ public class UpdatableAppsTask extends RemoteAppListTask {
             }
         }
         return result;
+    }
+
+    private Dialog getNotNetworkDialog(Context c) {
+        Dialog dialog = new Dialog(c);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_network)
+        ;
+        return dialog;
     }
 }

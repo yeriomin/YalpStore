@@ -70,7 +70,7 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
             ;
         }
         if (null != this.errorView) {
-            this.errorView.setText(message);
+           // this.errorView.setText(message);
         } else {
             ContextUtil.toastLong(this.context, message);
         }
