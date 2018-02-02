@@ -44,7 +44,7 @@ public class GeneralDetails extends Abstract {
         new LoadImageTask((ImageView) activity.findViewById(R.id.icon)).execute(app.getIconInfo());
 
         setText(R.id.displayName, app.getDisplayName());
-        setText(R.id.packageName, app.getPackageName());
+        setText(R.id.packageName,R.string.details_developer, app.getDeveloperName());
         drawVersion((TextView) activity.findViewById(R.id.versionString), app);
     }
 

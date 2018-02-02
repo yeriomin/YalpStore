@@ -81,7 +81,7 @@
     <string name="error_invalid_device_definition">Device definition rejected.</string>
     <string name="error_could_not_download">Could not download.</string>
     <string name="details_category">"%1$s"</string>
-    <string name="details_developer">"Developer : %1$s"</string>
+    <string name="details_developer">"%1$s"</string>
     <string name="details_updated">"Updated : %1$s"</string>
     <string name="details_size">"%1$s"</string>
     <string name="details_description">Read more</string>
