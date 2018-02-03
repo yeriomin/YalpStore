@@ -37,4 +37,5 @@ dependencies {
     implementation 'com.android.support:design:25.4.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
 }

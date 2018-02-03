@@ -239,4 +239,8 @@
     <string name="warn_app_purchase">App purchase is not available yet !</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="header_usr_name">Galaxy</string>
+    <string name="header_usr_email">Logged in with fake account</string>
+    <string name="header_usr_noEmail">Kindly login to use Galaxy</string>
+    <string name="header_usr_noNetwork">Unable to retrieve</string>
 </resources>
