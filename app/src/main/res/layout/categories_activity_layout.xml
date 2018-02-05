@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
@@ -20,28 +19,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:theme="@style/MyToolbarStyle"/>
+            android:theme="@style/MyToolbarStyle" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="6dp"
-            android:background="@color/lightgray">
+            android:background="@color/lightgray"
+            android:padding="6dp">
 
             <TextView
                 android:id="@+id/all_cat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="start"
                 android:text="All categories"
-                android:layout_margin="10dp"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <android.support.v7.widget.CardView
-                android:layout_below="@+id/all_cat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/all_cat"
                 android:layout_margin="5dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="2dp"
@@ -55,22 +54,22 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:indeterminate="true"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:padding="5dp"
-                    android:visibility="gone"
-                    android:indeterminateTint="@color/colorPrimary"/>
+                    android:visibility="gone" />
 
                 <android.support.v7.widget.ListViewCompat
                     android:id="@android:id/list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:listSelector="@drawable/selector"/>
+                    android:listSelector="@drawable/selector" />
 
                 <TextView
                     android:id="@+id/empty"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
             </android.support.v7.widget.CardView>
         </RelativeLayout>
     </LinearLayout>

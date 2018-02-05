@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,7 +29,7 @@ import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.CloneableTask;
 import in.dragons.galaxy.task.playstore.DetailsTask;
 
-public class DetailsActivity extends GalaxyActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class DetailsActivity extends GalaxyActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
@@ -92,8 +93,7 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         onNewIntent(getIntent());
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        onCreateDrawer(savedInstanceState);
     }
 
     @Override
@@ -125,9 +125,9 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
         if (intent.hasExtra(INTENT_PACKAGE_NAME)) {
             return intent.getStringExtra(INTENT_PACKAGE_NAME);
         } else if (intent.getScheme() != null
-            && (intent.getScheme().equals("market")
-            || intent.getScheme().equals("http")
-            || intent.getScheme().equals("https")
+                && (intent.getScheme().equals("market")
+                || intent.getScheme().equals("http")
+                || intent.getScheme().equals("https")
         )) {
             return intent.getData().getQueryParameter("id");
         }
@@ -137,7 +137,8 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
     public void redrawDetails(App app) {
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        redrawDrawer();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         new GeneralDetails(this, app).draw();
         new Screenshot(this, app).draw();
@@ -154,6 +155,21 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
         downloadOrInstallFragment = new DownloadOrInstall(this, app);
         redrawButtons();
         new DownloadOptions(this, app).draw();
+    }
+
+    public void redrawDrawer() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
     }
 
     static class GetAndRedrawDetailsTask extends DetailsTask implements CloneableTask {
@@ -183,10 +199,16 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
             }
         }
     }
-    @SuppressWarnings("StatementWithEmptyBody")
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_myapps:
+                startActivity(new Intent(this, InstalledAppsActivity.class));
+                break;
+            case R.id.action_updates:
+                startActivity(new Intent(this, UpdatableAppsActivity.class));
+                break;
             case R.id.action_categories:
                 startActivity(new Intent(this, CategoryListActivity.class));
                 break;

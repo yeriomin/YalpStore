@@ -17,24 +17,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AboutActivity extends GalaxyActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AboutActivity extends GalaxyActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_activity_layout);
-
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        super.onCreateDrawer(savedInstanceState);
 
         ((TextView) findViewById(R.id.version)).setText(BuildConfig.VERSION_NAME);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -66,28 +55,5 @@ public class AboutActivity extends GalaxyActivity implements NavigationView.OnNa
         protected String getUri(View v) {
             return (String) ((TextView) v).getText();
         }
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_categories:
-                startActivity(new Intent(this, CategoryListActivity.class));
-                break;
-            case R.id.action_settings:
-                startActivity(new Intent(this, PreferenceActivity.class));
-                break;
-            case R.id.action_logout:
-                showLogOutDialog();
-                break;
-            case R.id.action_about:
-                startActivity(new Intent(this, AboutActivity.class));
-                break;
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }

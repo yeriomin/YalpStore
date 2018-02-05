@@ -52,34 +52,10 @@ abstract public class AppListActivity extends GalaxyActivity implements Navigati
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        View header = navigationView.getHeaderView(0);
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Email = sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, "");
-        try {
-            if (Email.contains("yalp"))
-                ((TextView) header.findViewById(R.id.usr_email)).setText(R.string.header_usr_email);
-            else
-                getRawData("http://picasaweb.google.com/data/entry/api/user/" + Email);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        super.onCreateDrawer(savedInstanceState);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View view) {
                 if (!onSearchRequested()) {
                     showFallbackSearchDialog();
@@ -95,54 +71,6 @@ abstract public class AppListActivity extends GalaxyActivity implements Navigati
             }
         });
         registerForContextMenu(getListView());
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    public void getRawData(final String url) throws IOException {
-        new AsyncTask<Void, Void, String>() {
-            @Override
-            protected String doInBackground(Void... voids) {
-                OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder()
-                        .url(url)
-                        .build();
-                try (Response response = client.newCall(request).execute()) {
-                    return response.body().string();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(String result) {
-                if (result!=null && result.contains("atom"))
-                    parseRAW(result);
-                else {
-                    Log.e(this.getClass().getName(), "No network connection");
-                    ((TextView) findViewById(R.id.usr_email)).setText(R.string.header_usr_noNetwork);
-                }
-            }
-
-        }.execute();
-    }
-
-    public void parseRAW(String rawData) {
-        setNavHeaderInfo((NavigationView) findViewById(R.id.nav_view),
-                rawData.substring(rawData.indexOf("<name>") + 6, rawData.indexOf("</name>")),
-                rawData.substring(rawData.indexOf("<gphoto:thumbnail>") + 18, rawData.lastIndexOf("</gphoto:thumbnail>")));
-    }
-
-    public void setNavHeaderInfo(NavigationView navigationView, String Name, String URL) {
-        View header = navigationView.getHeaderView(0);
-        ((TextView) header.findViewById(R.id.usr_name)).setText(Name);
-        ((TextView) header.findViewById(R.id.usr_email)).setText(Email);
-
-        Picasso.with(this)
-                .load(URL)
-                .placeholder(R.drawable.ic_user_placeholder)
-                .transform(new CircleTransform())
-                .into(((ImageView) header.findViewById(R.id.usr_img)));
     }
 
     @Override
@@ -241,35 +169,4 @@ abstract public class AppListActivity extends GalaxyActivity implements Navigati
     public ListView getListView() {
         return listView;
     }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_myapps:
-                startActivity(new Intent(this, InstalledAppsActivity.class));
-                break;
-            case R.id.action_updates:
-                startActivity(new Intent(this, UpdatableAppsActivity.class));
-                break;
-            case R.id.action_categories:
-                startActivity(new Intent(this, CategoryListActivity.class));
-                break;
-            case R.id.action_settings:
-                startActivity(new Intent(this, PreferenceActivity.class));
-                break;
-            case R.id.action_logout:
-                showLogOutDialog();
-                break;
-            case R.id.action_about:
-                startActivity(new Intent(this, AboutActivity.class));
-                break;
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-
 }

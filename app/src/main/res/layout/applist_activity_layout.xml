@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -9,84 +8,84 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main">
 
-            <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lightgray"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/main_button_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:text="@string/list_update_all_txt"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/main_button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/button_bg"
+                android:text="@string/list_update_all"
+                android:textColor="@color/white"
+                android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="2dp"
+            app:contentPadding="5dp">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="6dp"
-                android:background="@color/lightgray">
+                android:layout_weight="1"
+                android:padding="6dip">
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="5dp">
-
-                        <TextView
-                            android:id="@+id/main_button_txt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
-                            android:text="@string/list_update_all_txt"
-                            android:textSize="20dp"
-                            android:visibility="gone"
-                            android:textColor="@color/colorPrimaryDark"/>
-
-                        <android.support.v7.widget.AppCompatButton
-                            android:id="@+id/main_button"
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:text="@string/list_update_all"
-                            android:textColor="@color/white"
-                            android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
-                            android:background="@drawable/button_bg"
-                            android:visibility="gone" />
-
-                    </RelativeLayout>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:contentPadding="5dp"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="2dp">
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/colorPrimary"
+                    android:padding="5dp"
+                    android:progressDrawable="@drawable/selector"
+                    android:visibility="gone" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:padding="6dip" >
+                <android.support.v7.widget.ListViewCompat
+                    android:id="@android:id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:listSelector="@drawable/selector" />
 
-                        <ProgressBar
-                            android:id="@+id/progress"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:indeterminate="true"
-                            android:padding="5dp"
-                            android:visibility="gone"
-                            android:progressDrawable="@drawable/selector"
-                            android:indeterminateTint="@color/colorPrimary"/>
-
-                        <android.support.v7.widget.ListViewCompat
-                            android:id="@android:id/list"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:listSelector="@drawable/selector"/>
-
-                        <TextView
-                            android:id="@android:id/empty"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
-                    </RelativeLayout>
-                </android.support.v7.widget.CardView>
-            </LinearLayout>
+                <TextView
+                    android:id="@android:id/empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

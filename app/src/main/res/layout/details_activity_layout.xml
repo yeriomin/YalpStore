@@ -1,313 +1,333 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="in.dragons.galaxy.AboutActivity"
+    tools:openDrawer="start">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:theme="@style/MyToolbarStyle"/>
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:scrollbars="none">
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:theme="@style/MyToolbarStyle" />
 
-            <!--App Video -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:scrollbars="none">
+
             <RelativeLayout
-                android:id="@+id/app_video"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
+                android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/thumbnail"
+                <!--App Video -->
+                <RelativeLayout
+                    android:id="@+id/app_video"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="centerCrop"
-                    android:src="@color/gray" />
+                    android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_play"
-                    android:alpha="0.7"/>
-            </RelativeLayout>
+                    <ImageView
+                        android:id="@+id/thumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="256dp"
+                        android:scaleType="centerCrop"
+                        android:src="@color/gray" />
 
-            <!-- App Icon & Name -->
-            <LinearLayout
-                android:id="@+id/main"
-                android:layout_below="@+id/app_video"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                    <ImageView
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:alpha="0.7"
+                        android:src="@drawable/ic_play" />
+                </RelativeLayout>
 
-                <ImageButton
-                    android:id="@+id/icon"
-                    android:contentDescription="@string/content_description_app_icon"
-                    android:src="@drawable/ic_placeholder"
-                    android:background="@null"
-                    android:scaleType="fitXY"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:layout_marginRight="6dp"/>
-
+                <!-- App Icon & Name -->
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_gravity="center_vertical"
+                    android:id="@+id/main"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/app_video"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical">
 
-                    <TextView
-                        android:id="@+id/displayName"
-                        android:textSize="18sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"/>
+                    <ImageButton
+                        android:id="@+id/icon"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:layout_marginRight="6dp"
+                        android:background="@null"
+                        android:contentDescription="@string/content_description_app_icon"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_placeholder" />
 
-                    <TextView
-                        android:id="@+id/packageName"
-                        android:textSize="14sp"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:maxLines="1"/>
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/versionString"
-                        android:textSize="14sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="1"/>
+                        <TextView
+                            android:id="@+id/displayName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/packageName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/versionString"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
+                <!-- Action : Download, Update, Uninstall -->
+                <LinearLayout
+                    android:id="@+id/main_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/main"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
-            <!-- Action : Download, Update, Uninstall -->
-            <LinearLayout
-                android:id="@+id/main_action"
-                android:layout_below="@id/main"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:gravity="end"
-                android:orientation="horizontal" >
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/uninstall"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_bg_outine"
+                        android:maxLines="1"
+                        android:text="Uninstall"
+                        android:textColor="@color/button_bg"
+                        android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:visibility="gone" />
 
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/uninstall"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/download"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_bg"
+                        android:contentDescription="@string/content_description_download_options"
+                        android:maxLines="1"
+                        android:text="@string/details_download"
+                        android:textColor="@color/white"
+                        android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:visibility="gone" />
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/cancel"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_bg_outine"
+                        android:maxLines="1"
+                        android:text="@string/details_cancel"
+                        android:textColor="@color/colorPrimary"
+                        android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:visibility="gone" />
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/install"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_bg_outine"
+                        android:maxLines="1"
+                        android:text="@string/details_install"
+                        android:textColor="@color/button_bg"
+                        android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:visibility="gone" />
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/run"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_bg"
+                        android:maxLines="1"
+                        android:text="@string/details_run"
+                        android:textColor="@color/white"
+                        android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <in.dragons.galaxy.NumberProgressBar
+                    android:id="@+id/download_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/main_action"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="5dp"
                     android:visibility="gone"
-                    android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:background="@drawable/button_bg_outine"
-                    android:text="Uninstall"
-                    android:textColor="@color/button_bg"/>
+                    app:progress_reached_bar_height="2.5dp"
+                    app:progress_reached_color="@color/colorPrimary"
+                    app:progress_text_color="@color/colorAccent"
+                    app:progress_text_size="12sp"
+                    app:progress_unreached_bar_height="2dp"
+                    app:progress_unreached_color="@color/lightgray" />
 
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/download"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:contentDescription="@string/content_description_download_options"
-                    android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:background="@drawable/button_bg"
-                    android:text="@string/details_download"
-                    android:visibility="gone"
-                    android:textColor="@color/white"/>
+                <TextView
+                    android:id="@+id/contains_ads"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/download_progress"
+                    android:layout_marginRight="15dp"
+                    android:gravity="end" />
 
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/cancel"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:visibility="gone"
-                    android:maxLines="1"
-                    android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:background="@drawable/button_bg_outine"
-                    android:text="@string/details_cancel"
-                    android:textColor="@color/colorPrimary"/>
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/install"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:visibility="gone"
-                    android:maxLines="1"
-                    android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:background="@drawable/button_bg_outine"
-                    android:text="@string/details_install"
-                    android:textColor="@color/button_bg"/>
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/run"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:visibility="gone"
-                    android:maxLines="1"
-                    android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:background="@drawable/button_bg"
-                    android:text="@string/details_run"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
-
-            <in.dragons.galaxy.NumberProgressBar
-                android:id="@+id/download_progress"
-                android:layout_below="@+id/main_action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:visibility="gone"
-                app:progress_text_color="@color/colorAccent"
-                app:progress_reached_color="@color/colorPrimary"
-                app:progress_unreached_color="@color/lightgray"
-                app:progress_reached_bar_height="2.5dp"
-                app:progress_unreached_bar_height="2dp"
-                app:progress_text_size="12sp"/>
-
-            <TextView
-                android:id="@+id/contains_ads"
-                android:layout_below="@id/download_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:layout_marginRight="15dp"/>
-
-            <View
-                android:id="@+id/divider_top"
-                android:layout_below="@id/contains_ads"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                android:background="@color/gray"
-                android:visibility="gone"/>
-
-            <!-- App details -->
-            <LinearLayout
-                android:layout_below="@id/divider_top"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <!-- App Details : Type, Size, Rating -->
-                <include layout="@layout/app_details_inc"/>
                 <View
-                    android:id="@+id/divider_bottom"
-                    android:layout_below="@id/main_action"
+                    android:id="@+id/divider_top"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/contains_ads"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginRight="15dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
                     android:background="@color/gray"
-                    android:visibility="gone"/>
-                <!-- Changelog -->
-                <include layout="@layout/app_changelog_inc"/>
-                <!-- Read More -->
-                <include layout="@layout/app_more_inc"/>
-                <!-- Screenshot -->
-                <Gallery
-                    android:id="@+id/screenshots_gallery"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:spacing="15dp" />
-                <!-- Reviews -->
-                <include layout="@layout/app_reviews_inc"/>
-                <!-- Permissions -->
-                <include layout="@layout/app_perm_inc"/>
-                <!-- Beta -->
-                <include layout="@layout/app_beta_inc"/>
-                <!-- General -->
-                <include layout="@layout/app_gen_inc"/>
-                <!-- Related Apps -->
-                <LinearLayout
-                    android:id="@+id/related_links"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-                </LinearLayout>
+                    android:visibility="gone" />
+
+                <!-- App details -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:layout_below="@id/divider_top"
+                    android:orientation="vertical">
 
-                    <!-- Playstore link -->
-                    <ImageButton
-                        android:id="@+id/to_play_store"
-                        android:layout_width="@dimen/icon_size"
-                        android:layout_height="@dimen/icon_size"
-                        android:background="@drawable/round_bg"
-                        android:src="@drawable/app_playstore"/>
+                    <!-- App Details : Type, Size, Rating -->
+                    <include layout="@layout/app_details_inc" />
 
-                    <!-- App by same dev -->
-                    <ImageButton
-                        android:id="@+id/apps_by_same_developer"
-                        android:layout_width="@dimen/icon_size"
-                        android:layout_height="@dimen/icon_size"
-                        android:background="@drawable/round_bg"
-                        android:src="@drawable/app_dev"
-                        android:visibility="gone"/>
+                    <View
+                        android:id="@+id/divider_bottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/main_action"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/gray"
+                        android:visibility="gone" />
+                    <!-- Changelog -->
+                    <include layout="@layout/app_changelog_inc" />
+                    <!-- Read More -->
+                    <include layout="@layout/app_more_inc" />
+                    <!-- Screenshot -->
+                    <Gallery
+                        android:id="@+id/screenshots_gallery"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:spacing="15dp" />
+                    <!-- Reviews -->
+                    <include layout="@layout/app_reviews_inc" />
+                    <!-- Permissions -->
+                    <include layout="@layout/app_perm_inc" />
+                    <!-- Beta -->
+                    <include layout="@layout/app_beta_inc" />
+                    <!-- General -->
+                    <include layout="@layout/app_gen_inc" />
+                    <!-- Related Apps -->
+                    <LinearLayout
+                        android:id="@+id/related_links"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible"></LinearLayout>
 
-                    <!-- Share -->
-                    <ImageButton
-                        android:id="@+id/share"
-                        android:layout_width="@dimen/icon_size"
-                        android:layout_height="@dimen/icon_size"
-                        android:background="@drawable/round_bg"
-                        android:src="@drawable/app_share"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                    <!-- System detail -->
-                    <ImageButton
-                        android:id="@+id/system_app_info"
-                        android:layout_width="@dimen/icon_size"
-                        android:layout_height="@dimen/icon_size"
-                        android:background="@drawable/round_bg"
-                        android:src="@drawable/app_settings"/>
+                        <!-- Playstore link -->
+                        <ImageButton
+                            android:id="@+id/to_play_store"
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:background="@drawable/round_bg"
+                            android:src="@drawable/app_playstore" />
+
+                        <!-- App by same dev -->
+                        <ImageButton
+                            android:id="@+id/apps_by_same_developer"
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:background="@drawable/round_bg"
+                            android:src="@drawable/app_dev"
+                            android:visibility="gone" />
+
+                        <!-- Share -->
+                        <ImageButton
+                            android:id="@+id/share"
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:background="@drawable/round_bg"
+                            android:src="@drawable/app_share" />
+
+                        <!-- System detail -->
+                        <ImageButton
+                            android:id="@+id/system_app_info"
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:background="@drawable/round_bg"
+                            android:src="@drawable/app_settings" />
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/colorPrimary"
+                        android:padding="5dp"
+                        android:visibility="gone" />
+
                 </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
 
-                <ProgressBar
-                    android:id="@+id/progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:indeterminate="true"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:padding="5dp"
-                    android:visibility="gone"
-                    android:indeterminateTint="@color/colorPrimary"/>
-
-            </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
-</LinearLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/nav_menu" />
+</android.support.v4.widget.DrawerLayout>
