@@ -20,7 +20,6 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_AUTO_INSTALL = "PREFERENCE_AUTO_INSTALL";
     public static final String PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK = "PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK";
     public static final String PREFERENCE_UPDATE_LIST = "PREFERENCE_UPDATE_LIST";
-    public static final String PREFERENCE_UI_THEME = "PREFERENCE_UI_THEME";
     public static final String PREFERENCE_BACKGROUND_UPDATE_INTERVAL = "PREFERENCE_BACKGROUND_UPDATE_INTERVAL";
     public static final String PREFERENCE_DELETE_APK_AFTER_INSTALL = "PREFERENCE_DELETE_APK_AFTER_INSTALL";
     public static final String PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD = "PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD";
@@ -38,13 +37,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String INSTALLATION_METHOD_ROOT = "root";
     public static final String INSTALLATION_METHOD_PRIVILEGED = "privileged";
 
-    public static final String LIST_WHITE = "white";
     public static final String LIST_BLACK = "black";
-
-    public static final String THEME_NONE = "none";
-    public static final String THEME_LIGHT = "light";
-    public static final String THEME_DARK = "dark";
-    public static final String THEME_BLACK = "black";
 
     static public boolean getBoolean(Context context, String key) {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, false);
@@ -56,24 +49,25 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 
     static public int getUpdateInterval(Context context) {
         return Util.parseInt(
-            PreferenceManager.getDefaultSharedPreferences(context).getString(
-                PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL,
-                "-1"
-            ),
-            -1
+                PreferenceManager.getDefaultSharedPreferences(context).getString(
+                        PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL,
+                        "-1"
+                ),
+                -1
         );
     }
 
     static public boolean canInstallInBackground(Context context) {
         return getString(context, PREFERENCE_INSTALLATION_METHOD).equals(INSTALLATION_METHOD_ROOT)
-            || getString(context, PREFERENCE_INSTALLATION_METHOD).equals(INSTALLATION_METHOD_PRIVILEGED)
-        ;
+                || getString(context, PREFERENCE_INSTALLATION_METHOD).equals(INSTALLATION_METHOD_PRIVILEGED)
+                ;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
+        setContentView(R.layout.preference_activity_layout);
         drawBlackList();
         drawLanguages();
         drawUpdatesCheck();
