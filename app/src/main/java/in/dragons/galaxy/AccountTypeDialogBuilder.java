@@ -33,7 +33,7 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
                     }
                 }
             )
-            .setCancelable(false)
+            .setCancelable(true)
             .create();
         alertDialog.show();
         return alertDialog;
