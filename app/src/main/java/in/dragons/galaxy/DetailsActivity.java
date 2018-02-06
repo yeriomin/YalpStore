@@ -97,7 +97,7 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
         setTheme(sharedPreferences.getBoolean("THEME", true)?R.style.AppTheme:R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
         onNewIntent(getIntent());
-        onCreateDrawer(savedInstanceState);
+        //onCreateDrawer(savedInstanceState);
     }
 
     @Override
