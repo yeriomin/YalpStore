@@ -8,14 +8,13 @@ android {
         applicationId "in.dragons.galaxy"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 3
-        versionName 'beta'
+        versionCode 1
+        versionName '1.0'
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
     buildTypes {
         release {
-            shrinkResources true
-            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

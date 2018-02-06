@@ -26,3 +26,6 @@
 -dontskipnonpubliclibraryclasses
 -renamesourcefileattribute SourceFile
 -keepattributes SourceFile,LineNumberTable
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn javax.annotation.**
