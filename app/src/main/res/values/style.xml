@@ -10,6 +10,7 @@
         <item name="android:textColorSecondary">@color/colorTextSecondary</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
         <item name="android:indeterminateTint">@color/colorPrimary</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
@@ -19,6 +20,7 @@
         <item name="android:colorButtonNormal">@color/button_bg</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
         <item name="android:indeterminateTint">@color/colorPrimary</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
 
     <style name="MyToolbarStyle" parent="ThemeOverlay.AppCompat.Dark">

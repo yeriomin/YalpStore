@@ -190,6 +190,13 @@
     <string name="pref_auto_whitelist">Auto whitelist</string>
     <string name="pref_auto_whitelist_summary_on">Apps installed by Galaxy Store are automatically whitelisted</string>
     <string name="pref_auto_whitelist_summary_off">You need to whitelist apps manually</string>
+    <string name="pref_dark_theme">Enable Light theme</string>
+    <string name="pref_dark_theme_summary_off">Dark theme enabled</string>
+    <string name="pref_dark_theme_summary_on">Light theme enabled</string>
+    <string name="dialog_theme_title">Apply now ?</string>
+    <string name="dialog_theme_msg">Changing theme requires app to restart.</string>
+    <string name="dialog_theme_apply">Apply</string>
+    <string name="dialog_theme_later">Later</string>
     <string name="download_manager_ERROR_UNKNOWN">Unknown error.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unknown file storage error.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">HTTP code was received that download manager can not handle. This is a server error.</string>

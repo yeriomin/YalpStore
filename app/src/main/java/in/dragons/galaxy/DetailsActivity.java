@@ -2,7 +2,9 @@ package in.dragons.galaxy;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -91,6 +93,8 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        setTheme(sharedPreferences.getBoolean("THEME", true)?R.style.AppTheme:R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
         onNewIntent(getIntent());
         onCreateDrawer(savedInstanceState);

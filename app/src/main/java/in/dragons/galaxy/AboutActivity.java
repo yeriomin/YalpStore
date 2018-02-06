@@ -21,12 +21,13 @@ public class AboutActivity extends GalaxyActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        setTheme(sharedPreferences.getBoolean("THEME", true)?R.style.AppTheme:R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_activity_layout);
         super.onCreateDrawer(savedInstanceState);
 
         ((TextView) findViewById(R.id.version)).setText(BuildConfig.VERSION_NAME);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         ((TextView) findViewById(R.id.user_email)).setText(sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, ""));
         TextView gsfIdView = (TextView) findViewById(R.id.gsf_id);
         gsfIdView.setText(sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
