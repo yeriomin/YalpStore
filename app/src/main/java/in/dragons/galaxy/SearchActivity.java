@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -23,6 +26,13 @@ public class SearchActivity extends EndlessScrollActivity {
 
     static protected boolean actionIs(Intent intent, String action) {
         return null != intent && null != intent.getAction() && intent.getAction().equals(action);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        setTheme(sharedPreferences.getBoolean("THEME", true) ? R.style.AppTheme : R.style.AppTheme_Dark);
+        super.onCreate(savedInstanceState);
     }
 
     @Override
