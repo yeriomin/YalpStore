@@ -1,6 +1,9 @@
 package in.dragons.galaxy;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -19,6 +22,14 @@ import java.util.TimerTask;
 public class ManualDownloadActivity extends DetailsActivity {
 
     private int latestVersionCode;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        setTheme(sharedPreferences.getBoolean("THEME", true)?R.style.AppTheme:R.style.AppTheme_Dark);
+        super.onCreate(savedInstanceState);
+        onCreateDrawer(savedInstanceState);
+    }
 
     @Override
     protected void onNewIntent(Intent intent) {
