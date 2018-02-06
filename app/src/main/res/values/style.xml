@@ -12,13 +12,18 @@
         <item name="android:indeterminateTint">@color/colorPrimary</item>
     </style>
 
-    <style name="MyToolbarStyle" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="android:colorBackground">@color/white</item>
-        <item name="android:textColor">@color/colorText</item>
+    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="android:colorButtonNormal">@color/button_bg</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="android:indeterminateTint">@color/colorPrimary</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="MyToolbarStyle" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorBackground">?colorPrimary</item>
+    </style>
 
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
         <item name="android:taskOpenEnterAnimation">@anim/slide_in_right</item>
