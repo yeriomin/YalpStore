@@ -3,7 +3,7 @@
     <!--Theme-->
     <color name="colorPrimary">#303F9F</color>
     <color name="colorPrimaryDark">#283593</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#E91E63</color>
 
     <!--Basic-->
     <color name="white">#FFFFFF</color>
@@ -16,7 +16,7 @@
     <!--Buttons-->
     <color name="button_bg">#3F51B5</color>
     <color name="button_bg_alt">#009688</color>
-    <color name="round_bg">@color/colorPrimary</color>
+    <color name="round_bg">@color/colorAccent</color>
 
     <!--Misc-->
     <color name="changelog_txt">#3F51B5</color>
