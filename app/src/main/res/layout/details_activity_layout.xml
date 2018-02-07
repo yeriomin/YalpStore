@@ -501,10 +501,18 @@
                     android:visibility="gone"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/permissions"
+                    <LinearLayout
+                        android:id="@+id/permissions_container_widgets"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                    <TextView
+                        android:id="@+id/permissions_none"
+                        android:text="@string/no_permissions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 

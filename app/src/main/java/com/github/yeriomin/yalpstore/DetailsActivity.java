@@ -15,6 +15,7 @@ import com.github.yeriomin.yalpstore.fragment.details.Beta;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOptions;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 import com.github.yeriomin.yalpstore.fragment.details.GeneralDetails;
+import com.github.yeriomin.yalpstore.fragment.details.Permissions;
 import com.github.yeriomin.yalpstore.fragment.details.Review;
 import com.github.yeriomin.yalpstore.fragment.details.Screenshot;
 import com.github.yeriomin.yalpstore.fragment.details.Share;
@@ -133,6 +134,7 @@ public class DetailsActivity extends YalpStoreActivity {
         setTitle(app.getDisplayName());
         setContentView(R.layout.details_activity_layout);
         new GeneralDetails(this, app).draw();
+        new Permissions(this, app).draw();
         new Screenshot(this, app).draw();
         new Review(this, app).draw();
         new AppLists(this, app).draw();
