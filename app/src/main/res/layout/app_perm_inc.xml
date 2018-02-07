@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/changes_container"
     android:layout_width="match_parent"
@@ -20,24 +19,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_expand_more"
-            android:text="@string/details_permissions"
             android:gravity="center|start"
-            android:textSize="14sp"
+            android:text="@string/details_permissions"
             android:textAllCaps="true"
-            android:textStyle="bold"/>
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/permissions_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="32dp"
+            android:orientation="vertical"
             android:visibility="gone">
-            <TextView
-                android:id="@+id/permissions"
+
+            <LinearLayout
+                android:id="@+id/permissions_container_widgets"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:typeface="monospace"/>
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/permissions_none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_permissions"
+                android:visibility="gone" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

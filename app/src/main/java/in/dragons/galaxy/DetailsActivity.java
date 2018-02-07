@@ -14,6 +14,8 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 
+import in.dragons.galaxy.fragment.details.Permissions;
+
 import in.dragons.galaxy.fragment.details.AppLists;
 import in.dragons.galaxy.fragment.details.BackToPlayStore;
 import in.dragons.galaxy.fragment.details.Beta;
@@ -140,6 +142,7 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
     public void redrawDetails(App app) {
         setTitle(app.getDisplayName());
         new GeneralDetails(this, app).draw();
+        new Permissions(this, app).draw();
         new Screenshot(this, app).draw();
         new Review(this, app).draw();
         new AppLists(this, app).draw();

@@ -42,7 +42,6 @@ public class GeneralDetails extends Abstract {
             drawDescription(app);
             new GoogleDependency((DetailsActivity) activity, app).draw();
         }
-        drawPermissions(app);
     }
 
     private void drawAppBadge(App app) {
@@ -179,23 +178,6 @@ public class GeneralDetails extends Abstract {
             if (app.getInstalledVersionCode() == 0 || TextUtils.isEmpty(app.getChanges())) {
                 //activity.findViewById(R.id.description_header).performClick();
             }
-        }
-    }
-
-    private void drawPermissions(App app) {
-        initExpandableGroup(R.id.permissions_header, R.id.permissions_container);
-        PackageManager pm = activity.getPackageManager();
-        List<String> localizedPermissions = new ArrayList<>();
-        for (String permissionName : app.getPermissions()) {
-            try {
-                localizedPermissions.add(pm.getPermissionInfo(permissionName, 0).loadLabel(pm).toString());
-            } catch (PackageManager.NameNotFoundException e) {
-                // No human-readable name found for permission
-            }
-        }
-        setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
-        if (!app.isInPlayStore()) {
-            //activity.findViewById(R.id.permissions_header).performClick();
         }
     }
 }

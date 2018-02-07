@@ -263,4 +263,5 @@
     <string name="account_dummy_email">Dummy Email</string>
     <string name="delta_enabled">Delta updates enabled</string>
     <string name="delta_disabled">Delta updates disabled</string>
+    <string name="no_permissions">No permissions are used.</string>
 </resources>
