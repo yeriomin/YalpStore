@@ -24,7 +24,7 @@ PACKAGE_NAME=YalpStore
 echo -n -e 'ui_print Installing ${PACKAGE_NAME} as a privileged app...\n' > /proc/self/fd/$2
 
 APK_FILENAME=${PACKAGE_NAME}.apk
-ADDOND=81-${PACKAGE_NAME}.sh
+ADDOND=81-yalp.sh
 
 cd /tmp
 mkdir ${PACKAGE_NAME}
