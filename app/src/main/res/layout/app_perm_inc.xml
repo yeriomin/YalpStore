@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_expand_more"
             android:text="@string/details_permissions"
-            android:textColor="@color/colorPrimary"
             android:gravity="center|start"
             android:textSize="14sp"
             android:textAllCaps="true"

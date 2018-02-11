@@ -23,7 +23,6 @@
             android:layout_margin="5dp"
             android:drawableEnd="@drawable/ic_expand_more"
             android:visibility="gone"
-            android:textColor="@color/colorPrimary"
             android:gravity="center|start"
             android:textSize="14sp"
             android:textAllCaps="true"

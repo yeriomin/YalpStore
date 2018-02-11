@@ -1,7 +1,10 @@
 package in.dragons.galaxy.fragment.details;
 
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
@@ -89,10 +92,16 @@ public class GeneralDetails extends Abstract {
             activity.findViewById(R.id.changes).setVisibility(View.VISIBLE);
             activity.findViewById(R.id.changes_title).setVisibility(View.VISIBLE);
         } else {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
             activity.findViewById(R.id.changes_upper).setVisibility(View.VISIBLE);
             setText(R.id.changes_upper, Html.fromHtml(changes).toString());
             activity.findViewById(R.id.changes_header).setVisibility(View.VISIBLE);
             activity.findViewById(R.id.changes_container).setVisibility(View.VISIBLE);
+            if(!sharedPreferences.getBoolean("THEME", true)) {
+                ((TextView)activity.findViewById(R.id.changes_upper)).setTextColor(activity.getResources().getColor(R.color.white));
+                ((TextView)activity.findViewById(R.id.changes_header)).setTextColor(activity.getResources().getColor(R.color.white));
+                activity.findViewById(R.id.changes_container).setBackgroundColor(activity.getResources().getColor(R.color.darkgray));
+            }
         }
     }
 

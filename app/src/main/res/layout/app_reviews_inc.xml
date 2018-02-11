@@ -22,7 +22,6 @@
             android:drawableEnd="@drawable/ic_expand_more"
             android:text="@string/details_reviews"
             android:visibility="gone"
-            android:textColor="@color/colorPrimary"
             android:gravity="center|start"
             android:textSize="14sp"
             android:textAllCaps="true"
