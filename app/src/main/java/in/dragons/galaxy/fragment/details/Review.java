@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import in.dragons.galaxy.CircleTransform;
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.R;
@@ -128,7 +129,13 @@ public class Review extends Abstract {
             review.getTitle()
         ));
         ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
-        Picasso.with(activity).load(review.getUserPhotoUrl()).into((ImageView) reviewLayout.findViewById(R.id.avatar));
+        Picasso
+                .with(activity)
+                .load(review.getUserPhotoUrl())
+                .placeholder(R.drawable.ic_user_placeholder)
+                .transform(new CircleTransform())
+                .into((ImageView) reviewLayout.findViewById(R.id.avatar));
+
         parent.addView(reviewLayout);
     }
 
