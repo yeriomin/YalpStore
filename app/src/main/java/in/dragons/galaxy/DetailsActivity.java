@@ -8,8 +8,6 @@ import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -96,8 +94,9 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         setTheme(sharedPreferences.getBoolean("THEME", true)?R.style.AppTheme:R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.details_activity_layout);
         onNewIntent(getIntent());
-        //onCreateDrawer(savedInstanceState);
+        onCreateDrawer(savedInstanceState);
     }
 
     @Override
@@ -140,10 +139,6 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
 
     public void redrawDetails(App app) {
         setTitle(app.getDisplayName());
-        setContentView(R.layout.details_activity_layout);
-        redrawDrawer();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         new GeneralDetails(this, app).draw();
         new Screenshot(this, app).draw();
         new Review(this, app).draw();
@@ -159,21 +154,6 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
         downloadOrInstallFragment = new DownloadOrInstall(this, app);
         redrawButtons();
         new DownloadOptions(this, app).draw();
-    }
-
-    public void redrawDrawer() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        View header = navigationView.getHeaderView(0);
     }
 
     static class GetAndRedrawDetailsTask extends DetailsTask implements CloneableTask {
@@ -201,6 +181,16 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
                 DetailsActivity.app = app;
                 activity.redrawDetails(app);
             }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 
