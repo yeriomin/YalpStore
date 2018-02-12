@@ -18,6 +18,9 @@
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:colorButtonNormal">@color/button_bg</item>
+        <item name="android:textColor">@color/colorTextInv</item>
+        <item name="android:textColorPrimary">@color/colorTextPrimaryInv</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondaryInv</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
         <item name="android:indeterminateTint">@color/colorPrimary</item>
         <item name="android:windowDisablePreview">true</item>
