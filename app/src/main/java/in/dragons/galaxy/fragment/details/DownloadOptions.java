@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import in.dragons.galaxy.BlackWhiteListManager;
 import in.dragons.galaxy.BuildConfig;
@@ -32,7 +32,7 @@ public class DownloadOptions extends Abstract {
 
     @Override
     public void draw() {
-        final ImageButton more =(ImageButton) activity.findViewById(R.id.icon);
+        final ImageView more =(ImageView) activity.findViewById(R.id.icon);
         if (null == more) {
             return;
         }

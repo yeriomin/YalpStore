@@ -21,7 +21,9 @@ public abstract class Abstract {
     }
 
     protected void setText(int viewId, String text) {
-        ((TextView) activity.findViewById(viewId)).setText(text);
+        TextView textView = (TextView) activity.findViewById(viewId);
+        if(null!=textView)
+            textView.setText(text);
     }
 
     protected void setText(int viewId, int stringId, Object... text) {
