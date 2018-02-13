@@ -28,7 +28,6 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:text="@string/list_update_all_txt"
-                android:textColor="@color/colorPrimaryDark"
                 android:textSize="20dp"
                 android:visibility="gone" />
 
