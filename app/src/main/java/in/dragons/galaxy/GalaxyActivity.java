@@ -236,7 +236,7 @@ public abstract class GalaxyActivity extends AppCompatActivity implements Naviga
                     public void onClick(DialogInterface dialogInterface, int i) {
                         new PlayStoreApiAuthenticator(getApplicationContext()).logout();
                         dialogInterface.dismiss();
-                        finishAll();
+                        finish();
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, null)
