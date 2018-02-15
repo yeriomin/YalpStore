@@ -110,6 +110,9 @@
         <activity android:name=".AboutActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_about" >
             <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
         </activity>
+        <activity android:name=".AccountsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_accounts" >
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        </activity>
         <activity android:name=".DeviceInfoActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".InstalledAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>

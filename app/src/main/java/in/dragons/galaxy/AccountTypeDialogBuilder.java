@@ -1,9 +1,12 @@
 package in.dragons.galaxy;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
+import android.widget.Toast;
 
 import in.dragons.galaxy.task.playstore.PlayStoreTask;
 
@@ -39,7 +42,7 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
         return alertDialog;
     }
 
-    private Dialog showCredentialsDialog() {
+    public Dialog showCredentialsDialog() {
         UserProvidedAccountDialogBuilder builder = new UserProvidedAccountDialogBuilder(this.context);
         builder.setCaller(caller);
         return builder.show();

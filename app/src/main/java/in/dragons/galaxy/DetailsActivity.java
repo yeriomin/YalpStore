@@ -209,8 +209,8 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
             case R.id.action_settings:
                 startActivity(new Intent(this, PreferenceActivity.class));
                 break;
-            case R.id.action_logout:
-                showLogOutDialog();
+            case R.id.action_accounts:
+                startActivity(new Intent(this, AccountsActivity.class));
                 break;
             case R.id.action_about:
                 startActivity(new Intent(this, AboutActivity.class));

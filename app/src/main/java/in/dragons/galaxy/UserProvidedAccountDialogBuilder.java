@@ -36,7 +36,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
 
     @Override
     public Dialog show() {
-        final Dialog ad = new Dialog(context,android.R.style.Theme_Material_Light_Dialog_Presentation);
+        final Dialog ad = new Dialog(context);
         ad.setContentView(R.layout.credentials_dialog_layout);
         ad.setTitle(context.getString(R.string.credentials_title));
         ad.setCancelable(false);
@@ -113,11 +113,11 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         @Override
         protected Void doInBackground(String[] params) {
             if (params.length < 2
-                || params[0] == null
-                || params[1] == null
-                || TextUtils.isEmpty(params[0])
-                || TextUtils.isEmpty(params[1])
-            ) {
+                    || params[0] == null
+                    || params[1] == null
+                    || TextUtils.isEmpty(params[0])
+                    || TextUtils.isEmpty(params[1])
+                    ) {
                 exception = new CredentialsEmptyException();
                 return null;
             }

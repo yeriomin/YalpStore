@@ -50,6 +50,7 @@ abstract public class CredentialsDialogBuilder {
             super.onPostExecute(result);
             if (success()) {
                 new FirstLaunchChecker(context).setLoggedIn();
+                android.os.Process.killProcess(android.os.Process.myPid());
                 if (caller instanceof CloneableTask) {
                     Log.i(getClass().getSimpleName(), caller.getClass().getSimpleName() + " is cloneable. Retrying.");
                     ((PlayStoreTask) ((CloneableTask) caller).clone()).execute(new String[] {});

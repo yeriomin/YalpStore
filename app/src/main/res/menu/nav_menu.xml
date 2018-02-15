@@ -19,9 +19,9 @@
             android:icon="@drawable/ic_settings"
             android:title="@string/action_settings" />
         <item
-            android:id="@+id/action_logout"
-            android:icon="@drawable/ic_logout"
-            android:title="@string/action_logout" />
+            android:id="@+id/action_accounts"
+            android:icon="@drawable/ic_account"
+            android:title="@string/action_accounts" />
         <item
             android:id="@+id/action_about"
             android:icon="@drawable/ic_about"

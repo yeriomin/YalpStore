@@ -43,7 +43,8 @@ import okhttp3.Response;
 public abstract class GalaxyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     static protected boolean logout = false;
-    private String Email;
+    protected String Email;
+    protected View header;
 
     public static void cascadeFinish() {
         GalaxyActivity.logout = true;
@@ -236,7 +237,7 @@ public abstract class GalaxyActivity extends AppCompatActivity implements Naviga
                     public void onClick(DialogInterface dialogInterface, int i) {
                         new PlayStoreApiAuthenticator(getApplicationContext()).logout();
                         dialogInterface.dismiss();
-                        finish();
+                        finishAll();
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, null)
@@ -280,8 +281,8 @@ public abstract class GalaxyActivity extends AppCompatActivity implements Naviga
             case R.id.action_settings:
                 startActivity(new Intent(this, PreferenceActivity.class));
                 break;
-            case R.id.action_logout:
-                showLogOutDialog();
+            case R.id.action_accounts:
+                startActivity(new Intent(this, AccountsActivity.class));
                 break;
             case R.id.action_about:
                 startActivity(new Intent(this, AboutActivity.class));
