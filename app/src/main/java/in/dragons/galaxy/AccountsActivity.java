@@ -2,11 +2,13 @@ package in.dragons.galaxy;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.ImageViewCompat;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -18,6 +20,8 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.Properties;
+import java.util.TimeZone;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -28,6 +32,8 @@ public class AccountsActivity extends GalaxyActivity {
     AccountTypeDialogBuilder accountTypeDialogBuilder = new AccountTypeDialogBuilder(this);
 
     SharedPreferences sharedPreferences;
+    String deviceName;
+    ImageView spoofed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +42,16 @@ public class AccountsActivity extends GalaxyActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accounts_layout);
         onCreateDrawer(savedInstanceState);
-        Email = sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, "");
-        drawDevice();
 
+        deviceName = sharedPreferences.getString(PreferenceActivity.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
+
+        spoofed=(ImageView)findViewById(R.id.spoofed_indicator);
+        if(deviceName.contains("device-"))
+            drawSpoofedDevice();
+        else
+            drawDevice();
+
+        Email = sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, "");
         if (Email.contains("yalp.store.user")) {
             drawDummy();
         } else {
@@ -53,21 +66,30 @@ public class AccountsActivity extends GalaxyActivity {
     }
 
     public void drawDevice() {
-        TextView deviceModel = (TextView) findViewById(R.id.device_model);
-        deviceModel.setText(Build.MODEL + " (" + Build.DEVICE + ")");
-        TextView deviceManufacturer = (TextView) findViewById(R.id.device_manufacturer);
-        deviceManufacturer.setText(Build.MANUFACTURER);
-        deviceManufacturer.setAllCaps(true);
-        TextView deviceArch = (TextView) findViewById(R.id.device_architect);
-        deviceArch.setText(Build.BOARD);
-
+        ImageViewCompat.setImageTintList(spoofed, ColorStateList.valueOf((getResources().getColor(R.color.colorGreen))));
+        ((TextView) findViewById(R.id.device_model)).setText(Build.MODEL + " (" + Build.DEVICE + ")");
+        ((TextView) findViewById(R.id.device_manufacturer)).setText("By : "+Build.MANUFACTURER);
+        ((TextView) findViewById(R.id.device_architect)).setText("Board : "+Build.BOARD);
+        ((TextView) findViewById(R.id.device_timezone)).setText("Timezone : "+(CharSequence) TimeZone.getDefault().getDisplayName());
         Display mDisplay = (this).getWindowManager().getDefaultDisplay();
-        TextView deviceResolution = (TextView) findViewById(R.id.device_resolution);
-        deviceResolution.setText(mDisplay.getWidth() + " x " + mDisplay.getHeight());
-        TextView deviceAPI = (TextView) findViewById(R.id.device_api);
-        deviceAPI.setText("API Level " + Build.VERSION.SDK);
-        TextView deviceCPU = (TextView) findViewById(R.id.device_cpu);
-        deviceCPU.setText(Build.CPU_ABI);
+        ((TextView) findViewById(R.id.device_resolution)).setText(mDisplay.getWidth() + " x " + mDisplay.getHeight());
+        ((TextView) findViewById(R.id.device_architect)).setText("Board : "+Build.BOARD);
+        ((TextView) findViewById(R.id.device_api)).setText("API Level " + Build.VERSION.SDK);
+        ((TextView) findViewById(R.id.device_cpu)).setText(Build.CPU_ABI);
+    }
+
+    public void drawSpoofedDevice() {
+        ImageViewCompat.setImageTintList(spoofed, ColorStateList.valueOf((getResources().getColor(R.color.colorRed))));
+        Properties properties = new SpoofDeviceManager(this).getProperties(deviceName);
+        String Model=properties.getProperty("UserReadableName");
+        ((TextView) findViewById(R.id.device_model)).setText(Model.substring(0,Model.indexOf('('))+" ("+properties.getProperty("Build.DEVICE")+")");
+        ((TextView) findViewById(R.id.device_manufacturer)).setText("By : "+properties.getProperty("Build.MANUFACTURER"));
+        ((TextView) findViewById(R.id.device_architect)).setText("Board : "+properties.getProperty("Build.HARDWARE"));
+        ((TextView) findViewById(R.id.device_timezone)).setText("Timezone : "+properties.getProperty("TimeZone"));
+        ((TextView) findViewById(R.id.device_resolution)).setText(properties.getProperty("Screen.Width")+" x "+properties.getProperty("Screen.Height"));
+        ((TextView) findViewById(R.id.device_api)).setText("API Level " + properties.getProperty("Build.VERSION.SDK_INT"));
+        String Platforms=properties.getProperty("Platforms");
+        ((TextView) findViewById(R.id.device_cpu)).setText(Platforms.substring(0,Platforms.indexOf(',')));
     }
 
     public void drawDummy() {
