@@ -93,7 +93,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
                                         .getPackageManager()
                                         .getLaunchIntentForPackage(getBaseContext().getPackageName());
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                finish();
+                                android.os.Process.killProcess(android.os.Process.myPid());
                                 startActivity(intent);
                             }
                         })
