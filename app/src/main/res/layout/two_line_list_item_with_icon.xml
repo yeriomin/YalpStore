@@ -1,60 +1,72 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:gravity="center_vertical"
+    android:orientation="vertical"
     android:padding="6dip">
 
     <LinearLayout
         android:id="@+id/app"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="10">
 
         <ImageView
             android:id="@+id/icon"
-            android:contentDescription="@string/content_description_app_icon"
-            android:src="@drawable/ic_placeholder"
-            android:layout_width="48dip"
+            android:layout_width="0dp"
             android:layout_height="48dip"
+            android:layout_marginEnd="6dip"
             android:layout_marginRight="6dip"
-            android:layout_marginEnd="6dip" />
+            android:layout_weight="2"
+            android:contentDescription="@string/content_description_app_icon"
+            android:src="@drawable/ic_placeholder" />
 
         <LinearLayout
-            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_weight="7"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/text1"
-                android:textSize="14sp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:singleLine="true"
                 android:ellipsize="end"
-                android:gravity="center_vertical" />
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/text2"
-                android:textSize="12sp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
                 android:singleLine="true"
-                android:visibility="gone"
-                android:ellipsize="end" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/text3"
-                android:textSize="10sp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
                 android:singleLine="true"
-                android:visibility="gone"
-                android:ellipsize="end" />
+                android:textSize="10sp"
+                android:visibility="gone" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/menu_3dot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:tint="?android:textColor"
+            android:src="@drawable/ic_3dots" />
 
     </LinearLayout>
 
@@ -64,17 +76,17 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:textSize="16sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/progress"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <ProgressBar
             android:layout_width="wrap_content"
