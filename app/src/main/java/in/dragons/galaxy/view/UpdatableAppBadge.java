@@ -2,6 +2,7 @@ package in.dragons.galaxy.view;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.text.format.Formatter;
 
 import in.dragons.galaxy.R;
 
@@ -14,7 +15,8 @@ public class UpdatableAppBadge extends AppBadge {
         Context c = view.getContext();
         String updated = app.getUpdated();
         if (!TextUtils.isEmpty(updated)) {
-            line2.add(c.getString(R.string.list_line_2_updatable, updated));
+            line2.add(Formatter.formatShortFileSize(c, app.getSize()));
+            line3.add(c.getString(R.string.list_line_2_updatable, updated));
         }
         if (app.isSystem()) {
             line3.add(c.getString(R.string.list_app_system));
