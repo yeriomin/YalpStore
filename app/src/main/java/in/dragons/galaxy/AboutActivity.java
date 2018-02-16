@@ -1,60 +1,95 @@
 package in.dragons.galaxy;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
-import android.text.ClipboardManager;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class AboutActivity extends GalaxyActivity{
+import com.squareup.picasso.Picasso;
 
+public class AboutActivity extends GalaxyActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        setTheme(sharedPreferences.getBoolean("THEME", true)?R.style.AppTheme:R.style.AppTheme_Dark);
+        setTheme(sharedPreferences.getBoolean("THEME", true) ? R.style.AppTheme : R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_activity_layout);
         super.onCreateDrawer(savedInstanceState);
-
-        ((TextView) findViewById(R.id.version)).setText(BuildConfig.VERSION_NAME);
-        ((TextView) findViewById(R.id.user_email)).setText(sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, ""));
-        TextView gsfIdView = (TextView) findViewById(R.id.gsf_id);
-        gsfIdView.setText(sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
-        gsfIdView.setOnClickListener(new CopyToClipboardListener());
-    }
-
-    private class CopyToClipboardListener implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            ((ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE)).setText(((TextView) v).getText());
-            Toast.makeText(v.getContext().getApplicationContext(), R.string.about_copied_to_clipboard, Toast.LENGTH_SHORT).show();
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            ((TextView) findViewById(R.id.app_version)).setText("v " + packageInfo.versionName + "." + packageInfo.versionCode);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         }
+
+        drawActions();
+        drawDevs();
+        drawContributors();
+        drawOpenSource();
     }
 
-    public class UriOpeningListener extends CopyToClipboardListener {
-        @Override
-        public void onClick(View v) {
-            super.onClick(v);
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getUri(v)));
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent);
+    private void drawActions() {
+        ((TextView) findViewById(R.id.github)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse("https://github.com/whyorean/Galaxy"));
+                startActivity(browserIntent);
             }
-        }
+        });
+        ((TextView) findViewById(R.id.xda)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse("https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733"));
+                startActivity(browserIntent);
+            }
+        });
+        ((TextView) findViewById(R.id.telegram)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+                browserIntent.setData(Uri.parse("https://t.me/GalaxyOfficial"));
+                startActivity(browserIntent);
+            }
+        });
+    }
 
-        protected String getUri(View v) {
-            return (String) ((TextView) v).getText();
+    private void drawDevs() {
+        Picasso.with(this)
+                .load("https://avatars2.githubusercontent.com/u/21051221")
+                .placeholder(R.drawable.ic_user_placeholder)
+                .transform(new CircleTransform())
+                .into(((ImageView) findViewById(R.id.dev1_avatar)));
+        Picasso.with(this)
+                .load("https://avatars0.githubusercontent.com/u/554737")
+                .placeholder(R.drawable.ic_user_placeholder)
+                .transform(new CircleTransform())
+                .into(((ImageView) findViewById(R.id.dev2_avatar)));
+    }
+
+    private void drawContributors() {
+        StringBuilder builder = new StringBuilder();
+        for (String s : getResources().getStringArray(R.array.contributors)) {
+            builder.append("◉  ");
+            builder.append(s);
+            builder.append("\n");
         }
+        ((TextView) findViewById(R.id.contributors)).setText(builder.toString().trim());
+    }
+
+    private void drawOpenSource() {
+        StringBuilder builder = new StringBuilder();
+        for (String s : getResources().getStringArray(R.array.opensource)) {
+            builder.append("◉  ");
+            builder.append(s);
+            builder.append("\n");
+        }
+        ((TextView) findViewById(R.id.opensource)).setText(builder.toString().trim());
     }
 }

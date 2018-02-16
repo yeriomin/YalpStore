@@ -38,6 +38,7 @@
 
     <!--More Colors-->
     <color name="colorCyan">#00BCD4</color>
+    <color name="colorBlue">#0088cc</color>
     <color name="colorRed">#F44336</color>
     <color name="colorGreen">#4CAF50</color>
     <color name="colorPurple">#9C27B0</color>

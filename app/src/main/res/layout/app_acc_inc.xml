@@ -32,7 +32,7 @@
                 <ImageView
                     android:id="@+id/device_avatar"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size_big"
                     android:layout_weight="2"
                     android:src="@drawable/ic_device" />
 

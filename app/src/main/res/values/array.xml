@@ -66,4 +66,29 @@
         <item>>10M↓</item>
         <item>>100M↓</item>
     </string-array>
+    <string-array name="contributors">
+        <item>Nick Kountouriotis @SkiesOfAzel</item>
+        <item>Krzysztof Szczepański @MOVZX</item>
+        <item>Fabian @Faerbit</item>
+        <item>waweic</item>
+        <item>justmix4</item>
+        <item>Poussinou</item>
+        <item>Jakub Vynikal @Vynikal</item>
+        <item>Vavun</item>
+        <item>Maykel Moya @mmoya</item>
+        <item>Andrés Hernández @auroszx</item>
+        <item>Jan Gutowski @Switch123456789</item>
+        <item>naofum</item>
+    </string-array>
+    <string-array name="opensource">
+        <item>JavaXDelta</item>
+        <item>Chainfire SuperSU</item>
+        <item>SquareUp Picasso</item>
+        <item>SquareUp OKHTTP</item>
+        <item>Play Store API</item>
+        <item>AOSP CardView</item>
+        <item>AOSP AppCompat</item>
+        <item>AOSP Design</item>
+        <item>Commons-Net</item>
+    </string-array>
 </resources>
