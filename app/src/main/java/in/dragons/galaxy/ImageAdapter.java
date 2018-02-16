@@ -10,10 +10,10 @@ import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
 
+import java.util.List;
+
 import in.dragons.galaxy.model.ImageSource;
 import in.dragons.galaxy.task.LoadImageTask;
-
-import java.util.List;
 
 public class ImageAdapter extends BaseAdapter {
 

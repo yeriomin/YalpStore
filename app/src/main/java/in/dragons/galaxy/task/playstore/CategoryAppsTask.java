@@ -2,10 +2,11 @@ package in.dragons.galaxy.task.playstore;
 
 import com.github.yeriomin.playstoreapi.CategoryAppsIterator;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import in.dragons.galaxy.AppListIterator;
-import in.dragons.galaxy.PlayStoreApiAuthenticator;
 
 import java.io.IOException;
+
+import in.dragons.galaxy.AppListIterator;
+import in.dragons.galaxy.PlayStoreApiAuthenticator;
 
 public class CategoryAppsTask extends EndlessScrollTask implements CloneableTask {
 
@@ -33,9 +34,9 @@ public class CategoryAppsTask extends EndlessScrollTask implements CloneableTask
     @Override
     protected AppListIterator initIterator() throws IOException {
         return new AppListIterator(new CategoryAppsIterator(
-            new PlayStoreApiAuthenticator(context).getApi(),
-            categoryId,
-            GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS
+                new PlayStoreApiAuthenticator(context).getApi(),
+                categoryId,
+                GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS
         ));
     }
 }

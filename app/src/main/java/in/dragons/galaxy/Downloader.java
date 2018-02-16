@@ -6,9 +6,10 @@ import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.AppFileMetadata;
-import in.dragons.galaxy.model.App;
 
 import java.io.File;
+
+import in.dragons.galaxy.model.App;
 
 public class Downloader {
 
@@ -24,9 +25,8 @@ public class Downloader {
         DownloadState state = DownloadState.get(app.getPackageName());
         state.setApp(app);
         DownloadManagerInterface.Type type = shouldDownloadDelta(app, deliveryData)
-            ? DownloadManagerInterface.Type.DELTA
-            : DownloadManagerInterface.Type.APK
-        ;
+                ? DownloadManagerInterface.Type.DELTA
+                : DownloadManagerInterface.Type.APK;
         prepare(Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()), deliveryData.getDownloadSize());
         state.setStarted(dm.enqueue(app, deliveryData, type));
         if (deliveryData.getAdditionalFileCount() > 0) {
@@ -56,9 +56,9 @@ public class Downloader {
         prepare(file, metadata.getSize());
         if (!file.exists()) {
             state.setStarted(dm.enqueue(
-                app,
-                deliveryData,
-                main ? DownloadManagerInterface.Type.OBB_MAIN : DownloadManagerInterface.Type.OBB_PATCH
+                    app,
+                    deliveryData,
+                    main ? DownloadManagerInterface.Type.OBB_MAIN : DownloadManagerInterface.Type.OBB_PATCH
             ));
         }
     }
@@ -74,9 +74,9 @@ public class Downloader {
     static private boolean shouldDownloadDelta(App app, AndroidAppDeliveryData deliveryData) {
         File currentApk = InstalledApkCopier.getCurrentApk(app);
         return app.getVersionCode() > app.getInstalledVersionCode()
-            && deliveryData.hasPatchData()
-            && null != currentApk
-            && currentApk.exists()
-        ;
+                && deliveryData.hasPatchData()
+                && null != currentApk
+                && currentApk.exists()
+                ;
     }
 }

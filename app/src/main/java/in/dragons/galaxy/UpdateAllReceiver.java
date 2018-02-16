@@ -4,9 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v7.widget.CardView;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -41,14 +39,14 @@ public class UpdateAllReceiver extends BroadcastReceiver {
             enableButton();
         } else if (intent.getAction().equals(ACTION_APP_UPDATE_COMPLETE)) {
             processAppUpdate(
-                intent.getStringExtra(EXTRA_PACKAGE_NAME),
-                intent.getBooleanExtra(EXTRA_UPDATE_ACTUALLY_INSTALLED, false)
+                    intent.getStringExtra(EXTRA_PACKAGE_NAME),
+                    intent.getBooleanExtra(EXTRA_UPDATE_ACTUALLY_INSTALLED, false)
             );
         }
     }
 
     private void enableButton() {
-        Button button =(Button) activity.findViewById(R.id.main_button);
+        Button button = (Button) activity.findViewById(R.id.main_button);
         TextView textView = (TextView) activity.findViewById(R.id.main_button_txt);
         if (null != button) {
             button.setEnabled(true);

@@ -22,7 +22,7 @@ public class Screenshot extends Abstract {
         if (app.getScreenshotUrls().size() > 0) {
             drawGallery();
         } else {
-           return;
+            return;
         }
     }
 

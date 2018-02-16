@@ -7,20 +7,21 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.FlagTask;
 
 public class FlagDialogBuilder {
 
-    static private final GooglePlayAPI.ABUSE[] reasonIds = new GooglePlayAPI.ABUSE[] {
-        GooglePlayAPI.ABUSE.SEXUAL_CONTENT,
-        GooglePlayAPI.ABUSE.GRAPHIC_VIOLENCE,
-        GooglePlayAPI.ABUSE.HATEFUL_OR_ABUSIVE_CONTENT,
-        GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA,
-        GooglePlayAPI.ABUSE.IMPROPER_CONTENT_RATING,
-        GooglePlayAPI.ABUSE.ILLEGAL_PRESCRIPTION,
-        GooglePlayAPI.ABUSE.IMPERSONATION,
-        GooglePlayAPI.ABUSE.OTHER,
+    static private final GooglePlayAPI.ABUSE[] reasonIds = new GooglePlayAPI.ABUSE[]{
+            GooglePlayAPI.ABUSE.SEXUAL_CONTENT,
+            GooglePlayAPI.ABUSE.GRAPHIC_VIOLENCE,
+            GooglePlayAPI.ABUSE.HATEFUL_OR_ABUSIVE_CONTENT,
+            GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA,
+            GooglePlayAPI.ABUSE.IMPROPER_CONTENT_RATING,
+            GooglePlayAPI.ABUSE.ILLEGAL_PRESCRIPTION,
+            GooglePlayAPI.ABUSE.IMPERSONATION,
+            GooglePlayAPI.ABUSE.OTHER,
     };
     static private final String[] reasonLabels = new String[8];
 
@@ -47,35 +48,35 @@ public class FlagDialogBuilder {
 
     public AlertDialog build() {
         return new AlertDialog.Builder(activity)
-            .setTitle(R.string.flag_page_description)
-            .setNegativeButton(
-                android.R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                }
-            )
-            .setAdapter(
-                new ArrayAdapter<>(activity, android.R.layout.select_dialog_item, reasonLabels),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        FlagTask task = new FlagTask();
-                        task.setContext(activity);
-                        task.setApp(app);
-                        GooglePlayAPI.ABUSE reason = reasonIds[which];
-                        task.setReason(reason);
-                        if (reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA || reason == GooglePlayAPI.ABUSE.OTHER) {
-                            new ExplanationDialogBuilder().setContext(activity).setTask(task).setReason(reason).build().show();
-                        } else {
-                            task.execute();
+                .setTitle(R.string.flag_page_description)
+                .setNegativeButton(
+                        android.R.string.cancel,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
                         }
-                        dialog.dismiss();
-                    }
-                }
-            )
-            .create()
-        ;
+                )
+                .setAdapter(
+                        new ArrayAdapter<>(activity, android.R.layout.select_dialog_item, reasonLabels),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                FlagTask task = new FlagTask();
+                                task.setContext(activity);
+                                task.setApp(app);
+                                GooglePlayAPI.ABUSE reason = reasonIds[which];
+                                task.setReason(reason);
+                                if (reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA || reason == GooglePlayAPI.ABUSE.OTHER) {
+                                    new ExplanationDialogBuilder().setContext(activity).setTask(task).setReason(reason).build().show();
+                                } else {
+                                    task.execute();
+                                }
+                                dialog.dismiss();
+                            }
+                        }
+                )
+                .create()
+                ;
     }
 
     private static class ExplanationDialogBuilder {
@@ -102,32 +103,32 @@ public class FlagDialogBuilder {
         public AlertDialog build() {
             final EditText editText = new EditText(context);
             return new AlertDialog.Builder(context)
-                .setTitle(reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA
-                    ? R.string.flag_harmful_prompt
-                    : R.string.flag_other_concern_prompt
-                )
-                .setView(editText)
-                .setNegativeButton(
-                    android.R.string.cancel,
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    }
-                )
-                .setPositiveButton(
-                    android.R.string.yes,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            task.setExplanation(editText.getText().toString());
-                            task.execute();
-                            dialog.dismiss();
-                        }
-                    }
-                )
-                .create()
-            ;
+                    .setTitle(reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA
+                            ? R.string.flag_harmful_prompt
+                            : R.string.flag_other_concern_prompt
+                    )
+                    .setView(editText)
+                    .setNegativeButton(
+                            android.R.string.cancel,
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }
+                    )
+                    .setPositiveButton(
+                            android.R.string.yes,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    task.setExplanation(editText.getText().toString());
+                                    task.execute();
+                                    dialog.dismiss();
+                                }
+                            }
+                    )
+                    .create()
+                    ;
         }
     }
 }

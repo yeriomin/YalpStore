@@ -5,6 +5,11 @@ import android.util.Log;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.playstoreapi.IteratorGooglePlayException;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import in.dragons.galaxy.AppListIterator;
 import in.dragons.galaxy.EndlessScrollActivity;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
@@ -12,10 +17,6 @@ import in.dragons.galaxy.PreferenceActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.model.Filter;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> {
 
@@ -57,9 +58,9 @@ abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> 
                 if (noNetwork(e.getCause())) {
                     throw (IOException) e.getCause();
                 } else if (e.getCause() instanceof GooglePlayException
-                    && ((GooglePlayException) e.getCause()).getCode() == 401
-                    && PreferenceActivity.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
-                ) {
+                        && ((GooglePlayException) e.getCause()).getCode() == 401
+                        && PreferenceActivity.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+                        ) {
                     PlayStoreApiAuthenticator authenticator = new PlayStoreApiAuthenticator(context);
                     authenticator.refreshToken();
                     iterator.setGooglePlayApi(authenticator.getApi());

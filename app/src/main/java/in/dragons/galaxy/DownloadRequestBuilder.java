@@ -8,9 +8,10 @@ import android.os.Build;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.HttpCookie;
-import in.dragons.galaxy.model.App;
 
 import java.io.File;
+
+import in.dragons.galaxy.model.App;
 
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public abstract class DownloadRequestBuilder {
@@ -26,7 +27,9 @@ public abstract class DownloadRequestBuilder {
     }
 
     abstract protected File getDestinationFile();
+
     abstract protected String getNotificationTitle();
+
     abstract protected String getDownloadUrl();
 
     public DownloadManager.Request build() {

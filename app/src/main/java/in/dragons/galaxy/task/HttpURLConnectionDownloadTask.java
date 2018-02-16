@@ -8,14 +8,6 @@ import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.util.Log;
 
-import in.dragons.galaxy.DownloadManagerFake;
-import in.dragons.galaxy.DownloadManagerInterface;
-import in.dragons.galaxy.DownloadState;
-import in.dragons.galaxy.R;
-import in.dragons.galaxy.Util;
-import in.dragons.galaxy.notification.CancelDownloadService;
-import in.dragons.galaxy.notification.NotificationManagerWrapper;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -24,6 +16,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import in.dragons.galaxy.DownloadManagerFake;
+import in.dragons.galaxy.DownloadManagerInterface;
+import in.dragons.galaxy.DownloadState;
+import in.dragons.galaxy.R;
+import in.dragons.galaxy.Util;
+import in.dragons.galaxy.notification.CancelDownloadService;
+import in.dragons.galaxy.notification.NotificationManagerWrapper;
 
 public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boolean> {
 
@@ -50,9 +50,9 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     protected void onPreExecute() {
         super.onPreExecute();
         new NotificationManagerWrapper(context).show(
-            new Intent(),
-            getNotificationTitle(),
-            context.getString(R.string.notification_download_starting)
+                new Intent(),
+                getNotificationTitle(),
+                context.getString(R.string.notification_download_starting)
         );
     }
 
@@ -112,18 +112,18 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     private void notifyProgress(long progress, long max) {
         String title = getNotificationTitle();
         new NotificationManagerWrapper(context).show(
-            title,
-            NotificationManagerWrapper.getBuilder(context)
-                .setMessage(context.getString(
-                    R.string.notification_download_progress,
-                    Formatter.formatFileSize(context, progress),
-                    Formatter.formatFileSize(context, max)
-                ))
-                .setTitle(title)
-                .setIntent(new Intent())
-                .setProgress((int) max, (int) progress)
-                .addAction(R.drawable.ic_cancel, android.R.string.cancel, getCancelIntent())
-                .build()
+                title,
+                NotificationManagerWrapper.getBuilder(context)
+                        .setMessage(context.getString(
+                                R.string.notification_download_progress,
+                                Formatter.formatFileSize(context, progress),
+                                Formatter.formatFileSize(context, max)
+                        ))
+                        .setTitle(title)
+                        .setIntent(new Intent())
+                        .setProgress((int) max, (int) progress)
+                        .addAction(R.drawable.ic_cancel, android.R.string.cancel, getCancelIntent())
+                        .build()
         );
     }
 
@@ -138,8 +138,8 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         String displayName = DownloadState.get(downloadId).getApp().getDisplayName();
         if (fileName.endsWith(EXTENSION_OBB)) {
             return context.getString(
-                fileName.startsWith("main") ? R.string.expansion_file_main : R.string.expansion_file_patch,
-                displayName
+                    fileName.startsWith("main") ? R.string.expansion_file_main : R.string.expansion_file_patch,
+                    displayName
             );
         }
         return displayName;

@@ -9,12 +9,12 @@ import android.os.Looper;
 import android.os.RemoteException;
 import android.util.Log;
 
-import in.dragons.galaxy.model.App;
-
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
+
+import in.dragons.galaxy.model.App;
 
 public class InstallerPrivileged extends InstallerBackground {
 
@@ -93,7 +93,7 @@ public class InstallerPrivileged extends InstallerBackground {
             return;
         }
         PackageManager pm = context.getPackageManager();
-        Class<?>[] types = new Class[] {Uri.class, IPackageInstallObserver.class, int.class, String.class};
+        Class<?>[] types = new Class[]{Uri.class, IPackageInstallObserver.class, int.class, String.class};
         try {
             pm.getClass().getMethod("installPackage", types).invoke(pm, Uri.fromFile(apkFile), new InstallObserver(app), INSTALL_REPLACE_EXISTING, BuildConfig.APPLICATION_ID);
         } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {

@@ -5,13 +5,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import in.dragons.galaxy.R;
-import in.dragons.galaxy.model.App;
-import in.dragons.galaxy.task.LoadImageTask;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.WeakHashMap;
+
+import in.dragons.galaxy.R;
+import in.dragons.galaxy.model.App;
+import in.dragons.galaxy.task.LoadImageTask;
 
 public abstract class AppBadge extends ListItem {
 

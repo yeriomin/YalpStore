@@ -19,6 +19,7 @@ public class Util {
 
     private static final String DELIMITER = ",";
     private static final Map<Integer, String> siPrefixes = new HashMap<>();
+
     static {
         siPrefixes.put(0, "");
         siPrefixes.put(3, "K");
@@ -39,15 +40,15 @@ public class Util {
         Map<String, String> sortedByKey = new TreeMap<>(new CaseInsensitiveComparator());
         sortedByKey.putAll(swapKeysValues(unsorted));
         Map<String, String> sorted = new LinkedHashMap<>();
-        for (String value: sortedByKey.keySet()) {
+        for (String value : sortedByKey.keySet()) {
             sorted.put(sortedByKey.get(value), value);
         }
         return sorted;
     }
 
-    static public <K,V> Map<V,K> swapKeysValues(Map<K,V> map) {
-        Map<V,K> swapped = new HashMap<>();
-        for(Map.Entry<K,V> entry : map.entrySet()) {
+    static public <K, V> Map<V, K> swapKeysValues(Map<K, V> map) {
+        Map<V, K> swapped = new HashMap<>();
+        for (Map.Entry<K, V> entry : map.entrySet()) {
             swapped.put(entry.getValue(), entry.getKey());
         }
         return swapped;
@@ -63,8 +64,8 @@ public class Util {
 
     static public Set<String> getStringSet(Context context, String key) {
         return new HashSet<>(Arrays.asList(TextUtils.split(
-            PreferenceManager.getDefaultSharedPreferences(context).getString(key, ""),
-            DELIMITER
+                PreferenceManager.getDefaultSharedPreferences(context).getString(key, ""),
+                DELIMITER
         )));
     }
 
@@ -94,7 +95,7 @@ public class Util {
     static public String addSiPrefix(Integer integer) {
         int tempValue = integer;
         int order = 0;
-        while(tempValue >= 1000.0) {
+        while (tempValue >= 1000.0) {
             tempValue /= 1000.0;
             order += 3;
         }

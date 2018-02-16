@@ -4,15 +4,15 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.widget.TextView;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.SharedPreferencesTranslator;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.DependencyTranslationTask;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class GoogleDependency extends Abstract {
 
@@ -27,7 +27,7 @@ public class GoogleDependency extends Abstract {
     public void draw() {
         Set<String> untranslated = new HashSet<>();
         Set<String> translated = getTranslatedDeps(app);
-        for (String dependency: translated) {
+        for (String dependency : translated) {
             if (app.getDependencies().contains(dependency)) {
                 untranslated.add(dependency);
             }
@@ -40,15 +40,14 @@ public class GoogleDependency extends Abstract {
 
     private void drawDeps(Set<String> dependencies) {
         String depsList = app.getDependencies().isEmpty()
-            ? activity.getString(R.string.details_no_dependencies)
-            : TextUtils.join(", ", dependencies)
-        ;
+                ? activity.getString(R.string.details_no_dependencies)
+                : TextUtils.join(", ", dependencies);
         ((TextView) activity.findViewById(R.id.google_dependencies)).setText(activity.getString(R.string.details_depends_on, depsList));
     }
 
     private Set<String> getTranslatedDeps(App app) {
         Set<String> translated = new HashSet<>();
-        for (String dependency: app.getDependencies()) {
+        for (String dependency : app.getDependencies()) {
             translated.add(translator.getString(dependency));
         }
         return translated;
@@ -63,7 +62,7 @@ public class GoogleDependency extends Abstract {
                 if (!success()) {
                     return;
                 }
-                for (String packageName: translated.keySet()) {
+                for (String packageName : translated.keySet()) {
                     translator.putString(packageName, translated.get(packageName));
                 }
                 drawDeps(getTranslatedDeps(app));

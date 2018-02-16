@@ -31,9 +31,9 @@ abstract public class InstallerBackground extends InstallerAbstract {
 
     protected void postInstallationResult(App app, boolean success) {
         String resultString = context.getString(
-            success
-            ? (wasInstalled ? R.string.notification_installation_complete : R.string.details_installed)
-            : (wasInstalled ? R.string.notification_installation_failed : R.string.details_install_failure)
+                success
+                        ? (wasInstalled ? R.string.notification_installation_complete : R.string.details_installed)
+                        : (wasInstalled ? R.string.notification_installation_failed : R.string.details_install_failure)
         );
         if (background) {
             new NotificationManagerWrapper(context).show(DetailsActivity.getDetailsIntent(context, app.getPackageName()), app.getDisplayName(), resultString);
@@ -45,9 +45,9 @@ abstract public class InstallerBackground extends InstallerAbstract {
 
     private void notifyNewPermissions(App app) {
         notifyAndToast(
-            R.string.notification_download_complete_new_permissions,
-            R.string.notification_download_complete_new_permissions_toast,
-            app
+                R.string.notification_download_complete_new_permissions,
+                R.string.notification_download_complete_new_permissions_toast,
+                app
         );
     }
 }

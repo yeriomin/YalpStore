@@ -2,12 +2,12 @@ package in.dragons.galaxy;
 
 import android.util.Pair;
 
-import in.dragons.galaxy.model.App;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import in.dragons.galaxy.model.App;
 
 public class DownloadState {
 
@@ -57,7 +57,7 @@ public class DownloadState {
 
     public boolean isEverythingFinished() {
         boolean isEverythingFinished = true;
-        for (Long downloadId: status.keySet()) {
+        for (Long downloadId : status.keySet()) {
             if (status.get(downloadId).equals(Status.STARTED)) {
                 isEverythingFinished = false;
                 break;
@@ -68,7 +68,7 @@ public class DownloadState {
 
     public boolean isEverythingSuccessful() {
         boolean isEverythingSuccessful = true;
-        for (Long downloadId: status.keySet()) {
+        for (Long downloadId : status.keySet()) {
             if (!status.get(downloadId).equals(Status.SUCCESSFUL)) {
                 isEverythingSuccessful = false;
                 break;
@@ -101,7 +101,7 @@ public class DownloadState {
 
     public List<Long> getDownloadIds() {
         List<Long> ids = new ArrayList<>();
-        for (Long id: downloadIds.keySet()) {
+        for (Long id : downloadIds.keySet()) {
             if (null != app && null != app.getPackageName() && app.getPackageName().equals(downloadIds.get(id))) {
                 ids.add(id);
             }
@@ -120,7 +120,7 @@ public class DownloadState {
     public Pair<Integer, Integer> getProgress() {
         int complete = 0;
         int total = 0;
-        for (long downloadId: status.keySet()) {
+        for (long downloadId : status.keySet()) {
             Pair<Integer, Integer> current = progress.get(downloadId);
             if (null == current) {
                 continue;

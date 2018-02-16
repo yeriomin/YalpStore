@@ -45,8 +45,8 @@ public class AccountsActivity extends GalaxyActivity {
 
         deviceName = sharedPreferences.getString(PreferenceActivity.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
 
-        spoofed=(ImageView)findViewById(R.id.spoofed_indicator);
-        if(deviceName.contains("device-"))
+        spoofed = (ImageView) findViewById(R.id.spoofed_indicator);
+        if (deviceName.contains("device-"))
             drawSpoofedDevice();
         else
             drawDevice();
@@ -68,12 +68,12 @@ public class AccountsActivity extends GalaxyActivity {
     public void drawDevice() {
         ImageViewCompat.setImageTintList(spoofed, ColorStateList.valueOf((getResources().getColor(R.color.colorGreen))));
         ((TextView) findViewById(R.id.device_model)).setText(Build.MODEL + " (" + Build.DEVICE + ")");
-        ((TextView) findViewById(R.id.device_manufacturer)).setText("By : "+Build.MANUFACTURER);
-        ((TextView) findViewById(R.id.device_architect)).setText("Board : "+Build.BOARD);
-        ((TextView) findViewById(R.id.device_timezone)).setText("Timezone : "+(CharSequence) TimeZone.getDefault().getDisplayName());
+        ((TextView) findViewById(R.id.device_manufacturer)).setText("By : " + Build.MANUFACTURER);
+        ((TextView) findViewById(R.id.device_architect)).setText("Board : " + Build.BOARD);
+        ((TextView) findViewById(R.id.device_timezone)).setText("Timezone : " + (CharSequence) TimeZone.getDefault().getDisplayName());
         Display mDisplay = (this).getWindowManager().getDefaultDisplay();
         ((TextView) findViewById(R.id.device_resolution)).setText(mDisplay.getWidth() + " x " + mDisplay.getHeight());
-        ((TextView) findViewById(R.id.device_architect)).setText("Board : "+Build.BOARD);
+        ((TextView) findViewById(R.id.device_architect)).setText("Board : " + Build.BOARD);
         ((TextView) findViewById(R.id.device_api)).setText("API Level " + Build.VERSION.SDK);
         ((TextView) findViewById(R.id.device_cpu)).setText(Build.CPU_ABI);
     }
@@ -81,15 +81,15 @@ public class AccountsActivity extends GalaxyActivity {
     public void drawSpoofedDevice() {
         ImageViewCompat.setImageTintList(spoofed, ColorStateList.valueOf((getResources().getColor(R.color.colorRed))));
         Properties properties = new SpoofDeviceManager(this).getProperties(deviceName);
-        String Model=properties.getProperty("UserReadableName");
-        ((TextView) findViewById(R.id.device_model)).setText(Model.substring(0,Model.indexOf('('))+" ("+properties.getProperty("Build.DEVICE")+")");
-        ((TextView) findViewById(R.id.device_manufacturer)).setText("By : "+properties.getProperty("Build.MANUFACTURER"));
-        ((TextView) findViewById(R.id.device_architect)).setText("Board : "+properties.getProperty("Build.HARDWARE"));
-        ((TextView) findViewById(R.id.device_timezone)).setText("Timezone : "+properties.getProperty("TimeZone"));
-        ((TextView) findViewById(R.id.device_resolution)).setText(properties.getProperty("Screen.Width")+" x "+properties.getProperty("Screen.Height"));
+        String Model = properties.getProperty("UserReadableName");
+        ((TextView) findViewById(R.id.device_model)).setText(Model.substring(0, Model.indexOf('(')) + " (" + properties.getProperty("Build.DEVICE") + ")");
+        ((TextView) findViewById(R.id.device_manufacturer)).setText("By : " + properties.getProperty("Build.MANUFACTURER"));
+        ((TextView) findViewById(R.id.device_architect)).setText("Board : " + properties.getProperty("Build.HARDWARE"));
+        ((TextView) findViewById(R.id.device_timezone)).setText("Timezone : " + properties.getProperty("TimeZone"));
+        ((TextView) findViewById(R.id.device_resolution)).setText(properties.getProperty("Screen.Width") + " x " + properties.getProperty("Screen.Height"));
         ((TextView) findViewById(R.id.device_api)).setText("API Level " + properties.getProperty("Build.VERSION.SDK_INT"));
-        String Platforms=properties.getProperty("Platforms");
-        ((TextView) findViewById(R.id.device_cpu)).setText(Platforms.substring(0,Platforms.indexOf(',')));
+        String Platforms = properties.getProperty("Platforms");
+        ((TextView) findViewById(R.id.device_cpu)).setText(Platforms.substring(0, Platforms.indexOf(',')));
     }
 
     public void drawDummy() {
@@ -99,7 +99,7 @@ public class AccountsActivity extends GalaxyActivity {
         TextView dummyEmail = (TextView) findViewById(R.id.dummy_email);
         dummyEmail.setText(Email);
         TextView gsfIdView = (TextView) findViewById(R.id.dummy_gsf);
-        gsfIdView.setText("GSF ID : "+sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
+        gsfIdView.setText("GSF ID : " + sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
 
         Button logout = (Button) findViewById(R.id.account_logout);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +123,7 @@ public class AccountsActivity extends GalaxyActivity {
             TextView googleEmail = (TextView) findViewById(R.id.google_email);
             googleEmail.setText(Email);
             TextView gsfIdView = (TextView) findViewById(R.id.google_gsf);
-            gsfIdView.setText("GSF ID : "+sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
+            gsfIdView.setText("GSF ID : " + sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
 
             Button button = (Button) findViewById(R.id.google_logout);
             button.setOnClickListener(new View.OnClickListener() {

@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import java.io.File;
+
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.notification.NotificationManagerWrapper;
-
-import java.io.File;
 
 public class GlobalDownloadReceiver extends DownloadReceiver {
 
@@ -57,8 +57,8 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
             Log.i(getClass().getSimpleName(), "Launching installer for " + app.getPackageName());
             InstallerAbstract installer = InstallerFactory.get(context);
             if (triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
-                && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
-            ) {
+                    && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
+                    ) {
                 installer.setBackground(false);
             }
             installer.verifyAndInstall(app);
@@ -71,9 +71,9 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
 
     private void notifyDownloadComplete(App app) {
         notifyAndToast(
-            R.string.notification_download_complete,
-            R.string.notification_download_complete_toast,
-            app
+                R.string.notification_download_complete,
+                R.string.notification_download_complete_toast,
+                app
         );
     }
 
@@ -81,9 +81,9 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
         File file = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = InstallerAbstract.getOpenApkIntent(context, file);
         notificationManager.show(
-            openApkIntent,
-            app.getDisplayName(),
-            context.getString(notificationStringId)
+                openApkIntent,
+                app.getDisplayName(),
+                context.getString(notificationStringId)
         );
         ContextUtil.toast(context.getApplicationContext(), toastStringId, app.getDisplayName());
     }

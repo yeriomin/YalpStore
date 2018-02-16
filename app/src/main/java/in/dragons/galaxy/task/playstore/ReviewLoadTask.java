@@ -3,12 +3,13 @@ package in.dragons.galaxy.task.playstore;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import in.dragons.galaxy.DetailsActivity;
-import in.dragons.galaxy.ReviewStorageIterator;
-import in.dragons.galaxy.model.Review;
 
 import java.io.IOException;
 import java.util.List;
+
+import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.ReviewStorageIterator;
+import in.dragons.galaxy.model.Review;
 
 public class ReviewLoadTask extends PlayStorePayloadTask<List<Review>> {
 

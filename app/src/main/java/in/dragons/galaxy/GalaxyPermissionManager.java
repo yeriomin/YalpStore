@@ -20,9 +20,9 @@ public class GalaxyPermissionManager {
 
     static public boolean isGranted(int requestCode, String permissions[], int[] grantResults) {
         return requestCode == PERMISSIONS_REQUEST_CODE
-            && grantResults.length > 0
-            && grantResults[0] == PackageManager.PERMISSION_GRANTED
-        ;
+                && grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                ;
     }
 
     public boolean checkPermission() {
@@ -37,8 +37,8 @@ public class GalaxyPermissionManager {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && null != activityRef.get()) {
             Log.i(getClass().getSimpleName(), "Requesting the write permission");
             activityRef.get().requestPermissions(
-                new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
-                PERMISSIONS_REQUEST_CODE
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    PERMISSIONS_REQUEST_CODE
             );
         }
     }

@@ -5,12 +5,13 @@ import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.HttpCookie;
-import in.dragons.galaxy.model.App;
-import in.dragons.galaxy.task.HttpURLConnectionDownloadTask;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
+import in.dragons.galaxy.model.App;
+import in.dragons.galaxy.task.HttpURLConnectionDownloadTask;
 
 public class DownloadManagerFake extends DownloadManagerAbstract {
 

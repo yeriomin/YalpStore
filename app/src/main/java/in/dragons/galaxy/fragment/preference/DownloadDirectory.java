@@ -8,14 +8,14 @@ import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.util.Log;
 
+import java.io.File;
+import java.io.IOException;
+
 import in.dragons.galaxy.ContextUtil;
+import in.dragons.galaxy.GalaxyPermissionManager;
 import in.dragons.galaxy.Paths;
 import in.dragons.galaxy.PreferenceActivity;
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.GalaxyPermissionManager;
-
-import java.io.File;
-import java.io.IOException;
 
 public class DownloadDirectory extends Abstract {
 
@@ -82,27 +82,27 @@ public class DownloadDirectory extends Abstract {
 
             private AlertDialog getFallbackDialog() {
                 return new AlertDialog.Builder(activity)
-                    .setMessage(
-                        activity.getString(R.string.error_downloads_directory_not_writable)
-                            + "\n\n"
-                            + activity.getString(R.string.pref_message_fallback, Paths.FALLBACK_DIRECTORY)
-                    )
-                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            preference.setText(Paths.FALLBACK_DIRECTORY);
-                            preference.getOnPreferenceChangeListener().onPreferenceChange(preference, Paths.FALLBACK_DIRECTORY);
-                            dialog.dismiss();
-                        }
-                    })
-                    .create()
-                ;
+                        .setMessage(
+                                activity.getString(R.string.error_downloads_directory_not_writable)
+                                        + "\n\n"
+                                        + activity.getString(R.string.pref_message_fallback, Paths.FALLBACK_DIRECTORY)
+                        )
+                        .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                preference.setText(Paths.FALLBACK_DIRECTORY);
+                                preference.getOnPreferenceChangeListener().onPreferenceChange(preference, Paths.FALLBACK_DIRECTORY);
+                                dialog.dismiss();
+                            }
+                        })
+                        .create()
+                        ;
             }
         });
     }

@@ -11,7 +11,7 @@ import in.dragons.galaxy.R;
 
 @TargetApi(Build.VERSION_CODES.O)
 class NotificationBuilderO extends NotificationBuilderJellybean {
-    
+
     public NotificationBuilderO(Context context) {
         super(context);
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);

@@ -60,7 +60,7 @@ class ApkSignatureVerifier {
         final String pkgPath = apkFile.getAbsolutePath();
         PackageInfo pkgInfo = pm.getPackageArchiveInfo(pkgPath, PackageManager.GET_SIGNATURES);
         if (null == pkgInfo || null == pkgInfo.signatures) {
-            return new byte[] {};
+            return new byte[]{};
         }
         return signatureToBytes(pkgInfo.signatures);
     }
@@ -72,7 +72,7 @@ class ApkSignatureVerifier {
             PackageInfo pkgInfo = pm.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
             return signatureToBytes(pkgInfo.signatures);
         } catch (PackageManager.NameNotFoundException e) {
-            return new byte[] {};
+            return new byte[]{};
         }
     }
 

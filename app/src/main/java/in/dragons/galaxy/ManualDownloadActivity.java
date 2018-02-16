@@ -12,12 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import in.dragons.galaxy.fragment.details.DownloadOrInstall;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.PurchaseCheckTask;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class ManualDownloadActivity extends DetailsActivity {
 
@@ -26,7 +26,7 @@ public class ManualDownloadActivity extends DetailsActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        setTheme(sharedPreferences.getBoolean("THEME", true)?R.style.AppTheme:R.style.AppTheme_Dark);
+        setTheme(sharedPreferences.getBoolean("THEME", true) ? R.style.AppTheme : R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
         onCreateDrawer(savedInstanceState);
     }
@@ -55,19 +55,19 @@ public class ManualDownloadActivity extends DetailsActivity {
             app.setOfferType(1);
         }
         ((TextView) findViewById(R.id.compatibility)).setText(
-            app.getVersionCode() > 0
-                ? R.string.manual_download_compatible
-                : R.string.manual_download_incompatible
+                app.getVersionCode() > 0
+                        ? R.string.manual_download_compatible
+                        : R.string.manual_download_incompatible
         );
         if (app.getVersionCode() > 0) {
             ((EditText) findViewById(R.id.version_code)).setHint(String.valueOf(latestVersionCode));
         }
         downloadOrInstallFragment = new DownloadOrInstall(this, app);
         ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(
-            app,
-            (Button) findViewById(R.id.download),
-            (Button) findViewById(R.id.install),
-            downloadOrInstallFragment
+                app,
+                (Button) findViewById(R.id.download),
+                (Button) findViewById(R.id.install),
+                downloadOrInstallFragment
         );
         String versionCode = Integer.toString(app.getVersionCode());
         textWatcher.onTextChanged(versionCode, 0, 0, versionCode.length());

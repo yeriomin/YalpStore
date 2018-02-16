@@ -5,13 +5,13 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import in.dragons.galaxy.DownloadManagerFactory;
 import in.dragons.galaxy.DownloadManagerInterface;
 import in.dragons.galaxy.DownloadState;
 import in.dragons.galaxy.GalaxyApplication;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CancelDownloadService extends IntentService {
 
@@ -40,7 +40,7 @@ public class CancelDownloadService extends IntentService {
             ((GalaxyApplication) getApplicationContext()).removePendingUpdate(packageName);
             downloadIds.addAll(DownloadState.get(packageName).getDownloadIds());
         }
-        for (long id: downloadIds) {
+        for (long id : downloadIds) {
             cancel(id);
         }
     }

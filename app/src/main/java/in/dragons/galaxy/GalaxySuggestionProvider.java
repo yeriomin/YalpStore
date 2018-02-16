@@ -31,18 +31,18 @@ public class GalaxySuggestionProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        MatrixCursor cursor = new MatrixCursor(new String[] {
-            BaseColumns._ID,
-            SearchManager.SUGGEST_COLUMN_TEXT_1,
-            SearchManager.SUGGEST_COLUMN_INTENT_DATA,
-            SearchManager.SUGGEST_COLUMN_ICON_1
+        MatrixCursor cursor = new MatrixCursor(new String[]{
+                BaseColumns._ID,
+                SearchManager.SUGGEST_COLUMN_TEXT_1,
+                SearchManager.SUGGEST_COLUMN_INTENT_DATA,
+                SearchManager.SUGGEST_COLUMN_ICON_1
         });
         try {
             fill(cursor, uri);
         } catch (GooglePlayException e) {
             if (e.getCode() == 401
-                && PreferenceActivity.getBoolean(getContext(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
-            ) {
+                    && PreferenceActivity.getBoolean(getContext(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+                    ) {
                 refreshAndRetry(cursor, uri);
             } else {
                 Log.e(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
@@ -83,7 +83,7 @@ public class GalaxySuggestionProvider extends ContentProvider {
             return;
         }
         int i = 0;
-        for (SearchSuggestEntry entry: new PlayStoreApiAuthenticator(getContext()).getApi().searchSuggest(query).getEntryList()) {
+        for (SearchSuggestEntry entry : new PlayStoreApiAuthenticator(getContext()).getApi().searchSuggest(query).getEntryList()) {
             cursor.addRow(constructRow(entry, i++));
         }
     }
@@ -94,10 +94,10 @@ public class GalaxySuggestionProvider extends ContentProvider {
 
     private Object[] constructAppRow(SearchSuggestEntry entry, int id) {
         File file = new BitmapManager(getContext()).downloadAndGetFile(entry.getImageContainer().getImageUrl());
-        return new Object[] { id, entry.getTitle(), entry.getPackageNameContainer().getPackageName(), null != file ? Uri.fromFile(file) : R.drawable.ic_placeholder };
+        return new Object[]{id, entry.getTitle(), entry.getPackageNameContainer().getPackageName(), null != file ? Uri.fromFile(file) : R.drawable.ic_placeholder};
     }
 
     private Object[] constructSuggestionRow(SearchSuggestEntry entry, int id) {
-        return new Object[] { id, entry.getSuggestedQuery(), entry.getSuggestedQuery(), R.drawable.ic_search };
+        return new Object[]{id, entry.getSuggestedQuery(), entry.getSuggestedQuery(), R.drawable.ic_search};
     }
 }

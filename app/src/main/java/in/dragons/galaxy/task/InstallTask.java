@@ -3,11 +3,10 @@ package in.dragons.galaxy.task;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import in.dragons.galaxy.BuildConfig;
-
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
+import in.dragons.galaxy.BuildConfig;
 
 public class InstallTask extends AsyncTask<String, Void, Boolean> {
 
@@ -17,7 +16,7 @@ public class InstallTask extends AsyncTask<String, Void, Boolean> {
         Log.i(getClass().getSimpleName(), "Installing update " + file);
         List<String> lines = Shell.SU.run("pm install -i \"" + BuildConfig.APPLICATION_ID + "\" -r " + file);
         if (null != lines) {
-            for (String line: lines) {
+            for (String line : lines) {
                 Log.i(getClass().getSimpleName(), line);
             }
         }

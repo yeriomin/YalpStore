@@ -46,9 +46,9 @@ public class ContextUtil {
 
     static public boolean isUiThread() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-            ? Looper.getMainLooper().isCurrentThread()
-            : Thread.currentThread() == Looper.getMainLooper().getThread()
-        ;
+                ? Looper.getMainLooper().isCurrentThread()
+                : Thread.currentThread() == Looper.getMainLooper().getThread()
+                ;
     }
 
     static public boolean isAlive(Context context) {

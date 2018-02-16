@@ -7,6 +7,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+
+import java.io.IOException;
+
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
@@ -14,8 +17,6 @@ import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.BetaToggleTask;
 import in.dragons.galaxy.task.playstore.PlayStorePayloadTask;
-
-import java.io.IOException;
 
 public class Beta extends Abstract {
 
@@ -26,18 +27,18 @@ public class Beta extends Abstract {
     @Override
     public void draw() {
         if (PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
-            && app.isTestingProgramAvailable()
-            && app.isTestingProgramOptedIn()
-        ) {
+                && app.isTestingProgramAvailable()
+                && app.isTestingProgramOptedIn()
+                ) {
             // Auto-leave beta program if current account is built-in.
             // The users expect stable to be default.
             new BetaToggleTask(app).execute();
             return;
         }
         if (!app.isInstalled()
-            || !app.isTestingProgramAvailable()
-            || PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
-        ) {
+                || !app.isTestingProgramAvailable()
+                || PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
+                ) {
             return;
         }
         initExpandableGroup(R.id.beta_header, R.id.beta_container);

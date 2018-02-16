@@ -1,7 +1,6 @@
 package in.dragons.galaxy.view;
 
 import android.content.Context;
-import android.text.TextUtils;
 
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;

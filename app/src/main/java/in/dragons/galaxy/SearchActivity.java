@@ -11,12 +11,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 
+import java.util.regex.Pattern;
+
 import in.dragons.galaxy.fragment.FilterMenu;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.DetailsTask;
 import in.dragons.galaxy.task.playstore.SearchTask;
-
-import java.util.regex.Pattern;
 
 public class SearchActivity extends EndlessScrollActivity {
 
@@ -77,18 +77,18 @@ public class SearchActivity extends EndlessScrollActivity {
 
     private String getTitleString() {
         return query.startsWith(PUB_PREFIX)
-            ? getString(R.string.apps_by, query.substring(PUB_PREFIX.length()))
-            : getString(R.string.activity_title_search, query)
-        ;
+                ? getString(R.string.apps_by, query.substring(PUB_PREFIX.length()))
+                : getString(R.string.activity_title_search, query)
+                ;
     }
 
     private String getQuery(Intent intent) {
         if (intent.getScheme() != null
-            && (intent.getScheme().equals("market")
+                && (intent.getScheme().equals("market")
                 || intent.getScheme().equals("http")
                 || intent.getScheme().equals("https")
-            )
-        ) {
+        )
+                ) {
             return intent.getData().getQueryParameter("q");
         }
         if (actionIs(intent, Intent.ACTION_SEARCH)) {
@@ -136,24 +136,24 @@ public class SearchActivity extends EndlessScrollActivity {
 
         private AlertDialog showPackageIdDialog(final String packageId) {
             return new AlertDialog.Builder(activity)
-                .setMessage(R.string.dialog_message_package_id)
-                .setTitle(R.string.dialog_title_package_id)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        activity.startActivity(DetailsActivity.getDetailsIntent(activity, packageId));
-                        dialogInterface.dismiss();
-                        activity.finish();
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        activity.loadApps();
-                    }
-                })
-                .show()
-            ;
+                    .setMessage(R.string.dialog_message_package_id)
+                    .setTitle(R.string.dialog_title_package_id)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            activity.startActivity(DetailsActivity.getDetailsIntent(activity, packageId));
+                            dialogInterface.dismiss();
+                            activity.finish();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            activity.loadApps();
+                        }
+                    })
+                    .show()
+                    ;
         }
     }
 }

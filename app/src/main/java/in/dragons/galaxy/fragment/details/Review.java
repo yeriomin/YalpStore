@@ -9,6 +9,10 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
 import in.dragons.galaxy.CircleTransform;
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
@@ -18,13 +22,10 @@ import in.dragons.galaxy.UserReviewDialogBuilder;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.ReviewDeleteTask;
 import in.dragons.galaxy.task.playstore.ReviewLoadTask;
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 public class Review extends Abstract {
 
-    static private int[] averageStarIds = new int[] { R.id.average_stars1, R.id.average_stars2, R.id.average_stars3, R.id.average_stars4, R.id.average_stars5 };
+    static private int[] averageStarIds = new int[]{R.id.average_stars1, R.id.average_stars2, R.id.average_stars3, R.id.average_stars4, R.id.average_stars5};
 
     private ReviewStorageIterator iterator;
 
@@ -65,9 +66,9 @@ public class Review extends Abstract {
 
     private boolean isReviewable(App app) {
         return app.isInstalled()
-            && !app.isTestingProgramOptedIn()
-            && !PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
-        ;
+                && !app.isTestingProgramOptedIn()
+                && !PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
+                ;
     }
 
     public void fillUserReview(in.dragons.galaxy.model.Review review) {
@@ -105,7 +106,7 @@ public class Review extends Abstract {
         activity.findViewById(R.id.reviews_next).setVisibility(iterator.hasNext() ? View.VISIBLE : View.INVISIBLE);
         LinearLayout listView = (LinearLayout) activity.findViewById(R.id.reviews_list);
         listView.removeAllViews();
-        for (in.dragons.galaxy.model.Review review: reviews) {
+        for (in.dragons.galaxy.model.Review review : reviews) {
             addReviewToList(review, listView);
         }
     }
@@ -124,9 +125,9 @@ public class Review extends Abstract {
         LinearLayout reviewLayout = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.review_list_item, parent, false);
         ((TextView) reviewLayout.findViewById(R.id.author)).setText(review.getUserName());
         ((TextView) reviewLayout.findViewById(R.id.title)).setText(activity.getString(
-            R.string.two_items,
-            activity.getString(R.string.details_rating, (double) review.getRating()),
-            review.getTitle()
+                R.string.two_items,
+                activity.getString(R.string.details_rating, (double) review.getRating()),
+                review.getTitle()
         ));
         ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
         Picasso
@@ -158,14 +159,14 @@ public class Review extends Abstract {
                     return;
                 }
                 new UserReviewDialogBuilder(activity, Review.this, app.getPackageName())
-                    .show(getUpdatedUserReview(app.getUserReview(), (int) rating));
+                        .show(getUpdatedUserReview(app.getUserReview(), (int) rating));
             }
         });
         activity.findViewById(R.id.user_review_edit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new UserReviewDialogBuilder(activity, Review.this, app.getPackageName())
-                    .show(app.getUserReview());
+                        .show(app.getUserReview());
             }
         });
         activity.findViewById(R.id.user_review_delete).setOnClickListener(new View.OnClickListener() {

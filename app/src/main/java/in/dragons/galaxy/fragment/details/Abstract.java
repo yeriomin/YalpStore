@@ -4,8 +4,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import in.dragons.galaxy.R;
 import in.dragons.galaxy.GalaxyActivity;
+import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 
 public abstract class Abstract {
@@ -22,7 +22,7 @@ public abstract class Abstract {
 
     protected void setText(int viewId, String text) {
         TextView textView = (TextView) activity.findViewById(viewId);
-        if(null!=textView)
+        if (null != textView)
             textView.setText(text);
     }
 
@@ -40,13 +40,13 @@ public abstract class Abstract {
                 boolean isExpanded = viewContainer.getVisibility() == View.VISIBLE;
                 if (isExpanded) {
                     viewContainer.setVisibility(View.GONE);
-                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_expand_more,0);
+                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_more, 0);
                 } else {
                     if (null != l) {
                         l.onClick(v);
                     }
                     viewContainer.setVisibility(View.VISIBLE);
-                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_expand_less,0);
+                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_less, 0);
                 }
             }
         });

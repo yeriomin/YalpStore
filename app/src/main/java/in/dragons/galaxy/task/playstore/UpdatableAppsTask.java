@@ -8,13 +8,6 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import in.dragons.galaxy.BlackWhiteListManager;
-import in.dragons.galaxy.ContextUtil;
-import in.dragons.galaxy.PlayStoreApiAuthenticator;
-import in.dragons.galaxy.PreferenceActivity;
-import in.dragons.galaxy.R;
-import in.dragons.galaxy.model.App;
-import in.dragons.galaxy.task.InstalledAppsTask;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,6 +19,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import in.dragons.galaxy.BlackWhiteListManager;
+import in.dragons.galaxy.ContextUtil;
+import in.dragons.galaxy.PlayStoreApiAuthenticator;
+import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.R;
+import in.dragons.galaxy.model.App;
+import in.dragons.galaxy.task.InstalledAppsTask;
+
 public class UpdatableAppsTask extends RemoteAppListTask {
 
     protected List<App> updatableApps = new ArrayList<>();
@@ -34,7 +35,7 @@ public class UpdatableAppsTask extends RemoteAppListTask {
     protected List<App> getResult(GooglePlayAPI api, String... packageNames) throws IOException {
         api.toc();
         Map<String, App> installedApps = getInstalledApps();
-        for (App appFromMarket: getAppsFromPlayStore(api, filterBlacklistedApps(installedApps).keySet())) {
+        for (App appFromMarket : getAppsFromPlayStore(api, filterBlacklistedApps(installedApps).keySet())) {
             String packageName = appFromMarket.getPackageName();
             if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
                 continue;
@@ -84,7 +85,7 @@ public class UpdatableAppsTask extends RemoteAppListTask {
     protected List<App> getAppsFromPlayStore(GooglePlayAPI api, Collection<String> packageNames) throws IOException {
         List<App> appsFromPlayStore = new ArrayList<>();
         boolean builtInAccount = PreferenceActivity.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL);
-        for (App app: getRemoteAppList(api, new ArrayList<>(packageNames))) {
+        for (App app : getRemoteAppList(api, new ArrayList<>(packageNames))) {
             if (!builtInAccount || app.isFree()) {
                 appsFromPlayStore.add(app);
             }
@@ -100,7 +101,7 @@ public class UpdatableAppsTask extends RemoteAppListTask {
             packageNames.retainAll(new BlackWhiteListManager(context).get());
         }
         Map<String, App> result = new HashMap<>();
-        for (App app: apps.values()) {
+        for (App app : apps.values()) {
             if (packageNames.contains(app.getPackageName())) {
                 result.put(app.getPackageName(), app);
             }

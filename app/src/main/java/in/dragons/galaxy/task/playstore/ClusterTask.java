@@ -1,10 +1,11 @@
 package in.dragons.galaxy.task.playstore;
 
 import com.github.yeriomin.playstoreapi.UrlIterator;
-import in.dragons.galaxy.AppListIterator;
-import in.dragons.galaxy.PlayStoreApiAuthenticator;
 
 import java.io.IOException;
+
+import in.dragons.galaxy.AppListIterator;
+import in.dragons.galaxy.PlayStoreApiAuthenticator;
 
 public class ClusterTask extends EndlessScrollTask implements CloneableTask {
 

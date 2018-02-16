@@ -4,11 +4,10 @@ import android.os.AsyncTask;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 
+import eu.chainfire.libsuperuser.Shell;
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.PreferenceActivity;
 import in.dragons.galaxy.R;
-
-import eu.chainfire.libsuperuser.Shell;
 
 public class CheckSuTask extends AsyncTask<Void, Void, Void> {
 

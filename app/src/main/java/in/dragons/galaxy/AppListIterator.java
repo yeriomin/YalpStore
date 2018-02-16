@@ -4,13 +4,14 @@ import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import in.dragons.galaxy.model.App;
-import in.dragons.galaxy.model.AppBuilder;
-import in.dragons.galaxy.model.Filter;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import in.dragons.galaxy.model.App;
+import in.dragons.galaxy.model.AppBuilder;
+import in.dragons.galaxy.model.Filter;
 
 public class AppListIterator implements Iterator {
 
@@ -32,7 +33,7 @@ public class AppListIterator implements Iterator {
     @Override
     public List<App> next() {
         List<App> apps = new ArrayList<>();
-        for (DocV2 details: iterator.next()) {
+        for (DocV2 details : iterator.next()) {
             addApp(apps, AppBuilder.build(details));
         }
         return apps;
@@ -45,11 +46,11 @@ public class AppListIterator implements Iterator {
 
     protected boolean shouldSkip(App app) {
         return (!filter.isPaidApps() && !app.isFree())
-            || (!filter.isAppsWithAds() && app.containsAds())
-            || (!filter.isGsfDependentApps() && !app.getDependencies().isEmpty())
-            || (filter.getRating() > 0 && app.getRating().getAverage() < filter.getRating())
-            || (filter.getDownloads() > 0 && app.getInstalls() < filter.getDownloads())
-        ;
+                || (!filter.isAppsWithAds() && app.containsAds())
+                || (!filter.isGsfDependentApps() && !app.getDependencies().isEmpty())
+                || (filter.getRating() > 0 && app.getRating().getAverage() < filter.getRating())
+                || (filter.getDownloads() > 0 && app.getInstalls() < filter.getDownloads())
+                ;
     }
 
     protected void addApp(List<App> apps, App app) {

@@ -3,9 +3,10 @@ package in.dragons.galaxy;
 import android.content.Context;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
-import in.dragons.galaxy.model.App;
 
 import java.io.File;
+
+import in.dragons.galaxy.model.App;
 
 public class DownloadRequestBuilderObb extends DownloadRequestBuilder {
 
@@ -23,9 +24,9 @@ public class DownloadRequestBuilderObb extends DownloadRequestBuilder {
     @Override
     protected File getDestinationFile() {
         return Paths.getObbPath(
-            app.getPackageName(),
-            deliveryData.getAdditionalFile(main ? 0 : 1).getVersionCode(),
-            main
+                app.getPackageName(),
+                deliveryData.getAdditionalFile(main ? 0 : 1).getVersionCode(),
+                main
         );
     }
 

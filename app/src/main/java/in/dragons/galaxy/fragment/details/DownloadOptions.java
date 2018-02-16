@@ -14,10 +14,10 @@ import in.dragons.galaxy.BlackWhiteListManager;
 import in.dragons.galaxy.BuildConfig;
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.FlagDialogBuilder;
+import in.dragons.galaxy.GalaxyActivity;
 import in.dragons.galaxy.InstalledApkCopier;
 import in.dragons.galaxy.ManualDownloadActivity;
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.GalaxyActivity;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.CheckShellTask;
 import in.dragons.galaxy.task.ConvertToNormalTask;
@@ -32,7 +32,7 @@ public class DownloadOptions extends Abstract {
 
     @Override
     public void draw() {
-        final ImageView more =(ImageView) activity.findViewById(R.id.icon);
+        final ImageView more = (ImageView) activity.findViewById(R.id.icon);
         if (null == more) {
             return;
         }
@@ -108,11 +108,11 @@ public class DownloadOptions extends Abstract {
 
     private boolean isConvertible(App app) {
         return isInstalled(app)
-            && !app.getPackageName().equals(BuildConfig.APPLICATION_ID)
-            && null != app.getPackageInfo().applicationInfo
-            && null != app.getPackageInfo().applicationInfo.sourceDir
-            && !app.getPackageInfo().applicationInfo.sourceDir.endsWith("pkg.apk")
-        ;
+                && !app.getPackageName().equals(BuildConfig.APPLICATION_ID)
+                && null != app.getPackageInfo().applicationInfo
+                && null != app.getPackageInfo().applicationInfo.sourceDir
+                && !app.getPackageInfo().applicationInfo.sourceDir.endsWith("pkg.apk")
+                ;
     }
 
     private boolean isInstalled(App app) {
@@ -136,11 +136,11 @@ public class DownloadOptions extends Abstract {
         @Override
         protected void onPostExecute(Boolean result) {
             ContextUtil.toastLong(
-                activity.getApplicationContext(),
-                activity.getString(result
-                    ? R.string.details_saved_in_downloads
-                    : R.string.details_could_not_copy_apk
-                )
+                    activity.getApplicationContext(),
+                    activity.getString(result
+                            ? R.string.details_saved_in_downloads
+                            : R.string.details_could_not_copy_apk
+                    )
             );
         }
 

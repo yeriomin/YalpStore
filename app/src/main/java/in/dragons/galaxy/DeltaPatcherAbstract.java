@@ -3,9 +3,9 @@ package in.dragons.galaxy;
 import android.content.Context;
 import android.util.Log;
 
-import in.dragons.galaxy.model.App;
-
 import java.io.File;
+
+import in.dragons.galaxy.model.App;
 
 abstract public class DeltaPatcherAbstract {
 

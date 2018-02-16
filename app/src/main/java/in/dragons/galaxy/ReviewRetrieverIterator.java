@@ -3,12 +3,13 @@ package in.dragons.galaxy;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import in.dragons.galaxy.model.Review;
-import in.dragons.galaxy.model.ReviewBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import in.dragons.galaxy.model.Review;
+import in.dragons.galaxy.model.ReviewBuilder;
 
 public class ReviewRetrieverIterator extends ReviewIterator {
 
@@ -39,11 +40,11 @@ public class ReviewRetrieverIterator extends ReviewIterator {
 
     private List<Review> getReviews(String packageId, int offset, int numberOfResults) throws IOException {
         List<Review> reviews = new ArrayList<>();
-        for (com.github.yeriomin.playstoreapi.Review review: new PlayStoreApiAuthenticator(context).getApi().reviews(
-            packageId,
-            GooglePlayAPI.REVIEW_SORT.HELPFUL,
-            offset,
-            numberOfResults
+        for (com.github.yeriomin.playstoreapi.Review review : new PlayStoreApiAuthenticator(context).getApi().reviews(
+                packageId,
+                GooglePlayAPI.REVIEW_SORT.HELPFUL,
+                offset,
+                numberOfResults
         ).getGetResponse().getReviewList()) {
             reviews.add(ReviewBuilder.build(review));
         }

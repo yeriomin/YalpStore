@@ -71,7 +71,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     @Override
     public String buildUrl(String url, Map<String, String> params) {
         Uri.Builder builder = Uri.parse(url).buildUpon();
-        for (String key: params.keySet()) {
+        for (String key : params.keySet()) {
             builder.appendQueryParameter(key, params.get(key));
         }
         return builder.build().toString();
@@ -80,8 +80,8 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     @Override
     public String buildUrlEx(String url, Map<String, List<String>> params) {
         Uri.Builder builder = Uri.parse(url).buildUpon();
-        for (String key: params.keySet()) {
-            for (String value: params.get(key)) {
+        for (String key : params.keySet()) {
+            for (String value : params.get(key)) {
                 builder.appendQueryParameter(key, value);
             }
         }
@@ -93,7 +93,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         connection.setReadTimeout(TIMEOUT);
         connection.setRequestProperty("Accept-Encoding", "gzip");
         connection.addRequestProperty("Cache-Control", "max-age=300");
-        for (String headerName: headers.keySet()) {
+        for (String headerName : headers.keySet()) {
             connection.addRequestProperty(headerName, headers.get(headerName));
         }
         addBody(connection, body);
@@ -194,7 +194,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
 
     static private String buildFormBody(Map<String, String> params) {
         List<String> keyValuePairs = new ArrayList<>();
-        for (String key: params.keySet()) {
+        for (String key : params.keySet()) {
             keyValuePairs.add(urlEncode(key) + "=" + urlEncode(params.get(key)));
         }
         return TextUtils.join("&", keyValuePairs);

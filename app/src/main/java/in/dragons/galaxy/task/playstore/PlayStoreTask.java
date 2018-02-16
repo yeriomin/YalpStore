@@ -5,14 +5,6 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.AuthException;
-import in.dragons.galaxy.AccountTypeDialogBuilder;
-import in.dragons.galaxy.ContextUtil;
-import in.dragons.galaxy.CredentialsEmptyException;
-import in.dragons.galaxy.FirstLaunchChecker;
-import in.dragons.galaxy.PlayStoreApiAuthenticator;
-import in.dragons.galaxy.PreferenceActivity;
-import in.dragons.galaxy.R;
-import in.dragons.galaxy.task.TaskWithProgress;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -21,6 +13,15 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLHandshakeException;
+
+import in.dragons.galaxy.AccountTypeDialogBuilder;
+import in.dragons.galaxy.ContextUtil;
+import in.dragons.galaxy.CredentialsEmptyException;
+import in.dragons.galaxy.FirstLaunchChecker;
+import in.dragons.galaxy.PlayStoreApiAuthenticator;
+import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.R;
+import in.dragons.galaxy.task.TaskWithProgress;
 
 abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
 
@@ -65,12 +66,12 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
             message = this.context.getString(R.string.error_no_network);
         } else {
             message = TextUtils.isEmpty(e.getMessage())
-                ? this.context.getString(R.string.error_network_other, e.getClass().getName())
-                : e.getMessage()
+                    ? this.context.getString(R.string.error_network_other, e.getClass().getName())
+                    : e.getMessage()
             ;
         }
         if (null != this.errorView) {
-           // this.errorView.setText(message);
+            // this.errorView.setText(message);
         } else {
             ContextUtil.toastLong(this.context, message);
         }
@@ -104,11 +105,11 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
 
     static public boolean noNetwork(Throwable e) {
         return e instanceof UnknownHostException
-            || e instanceof SSLHandshakeException
-            || e instanceof ConnectException
-            || e instanceof SocketException
-            || e instanceof SocketTimeoutException
-            || (null != e && null != e.getCause() && noNetwork(e.getCause()))
-        ;
+                || e instanceof SSLHandshakeException
+                || e instanceof ConnectException
+                || e instanceof SocketException
+                || e instanceof SocketTimeoutException
+                || (null != e && null != e.getCause() && noNetwork(e.getCause()))
+                ;
     }
 }

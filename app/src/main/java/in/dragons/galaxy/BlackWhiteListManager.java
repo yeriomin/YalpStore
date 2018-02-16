@@ -19,8 +19,8 @@ public class BlackWhiteListManager {
     public BlackWhiteListManager(Context context) {
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         blackWhiteSet = new HashSet<>(Arrays.asList(TextUtils.split(
-            preferences.getString(PreferenceActivity.PREFERENCE_UPDATE_LIST, ""),
-            DELIMITER
+                preferences.getString(PreferenceActivity.PREFERENCE_UPDATE_LIST, ""),
+                DELIMITER
         )));
         if (blackWhiteSet.size() == 1 && blackWhiteSet.contains("")) {
             blackWhiteSet.clear();
@@ -69,8 +69,8 @@ public class BlackWhiteListManager {
     private void save() {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(
-            PreferenceActivity.PREFERENCE_UPDATE_LIST,
-            TextUtils.join(DELIMITER, blackWhiteSet)
+                PreferenceActivity.PREFERENCE_UPDATE_LIST,
+                TextUtils.join(DELIMITER, blackWhiteSet)
         );
         editor.commit();
     }

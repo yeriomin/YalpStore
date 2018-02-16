@@ -1,14 +1,14 @@
 package in.dragons.galaxy.task;
 
-import in.dragons.galaxy.InstalledAppsActivity;
-import in.dragons.galaxy.R;
-import in.dragons.galaxy.fragment.FilterMenu;
-import in.dragons.galaxy.model.App;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import in.dragons.galaxy.InstalledAppsActivity;
+import in.dragons.galaxy.R;
+import in.dragons.galaxy.fragment.FilterMenu;
+import in.dragons.galaxy.model.App;
 
 public class ForegroundInstalledAppsTask extends InstalledAppsTask {
 

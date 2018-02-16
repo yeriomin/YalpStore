@@ -10,12 +10,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 
+import java.io.File;
+
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.notification.IgnoreUpdatesService;
 import in.dragons.galaxy.notification.NotificationBuilder;
 import in.dragons.galaxy.notification.NotificationManagerWrapper;
-
-import java.io.File;
 
 public abstract class InstallerAbstract {
 
@@ -85,9 +85,9 @@ public abstract class InstallerAbstract {
 
     protected void sendBroadcast(String packageName, boolean success) {
         Intent intent = new Intent(
-            success
-            ? DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM
-            : DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED
+                success
+                        ? DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM
+                        : DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED
         );
         intent.setData(new Uri.Builder().scheme("package").opaquePart(packageName).build());
         context.sendBroadcast(intent);
@@ -96,27 +96,27 @@ public abstract class InstallerAbstract {
     private AlertDialog getSignatureMismatchDialog(final App app) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder
-            .setMessage(R.string.details_signature_mismatch)
-            .setPositiveButton(
-                android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                }
-            )
+                .setMessage(R.string.details_signature_mismatch)
+                .setPositiveButton(
+                        android.R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        }
+                )
         ;
         if (new BlackWhiteListManager(context).isUpdatable(app.getPackageName())) {
             builder.setNegativeButton(
-                R.string.action_ignore,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        context.startService(getIgnoreIntent(app));
-                        dialog.cancel();
+                    R.string.action_ignore,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            context.startService(getIgnoreIntent(app));
+                            dialog.cancel();
+                        }
                     }
-                }
             );
         }
         return builder.create();
@@ -124,9 +124,9 @@ public abstract class InstallerAbstract {
 
     private void notifySignatureMismatch(App app) {
         notifyAndToast(
-            R.string.notification_download_complete_signature_mismatch,
-            R.string.notification_download_complete_signature_mismatch_toast,
-            app
+                R.string.notification_download_complete_signature_mismatch,
+                R.string.notification_download_complete_signature_mismatch_toast,
+                app
         );
     }
 
@@ -134,15 +134,14 @@ public abstract class InstallerAbstract {
         File file = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
         Intent openApkIntent = getOpenApkIntent(context, file);
         NotificationBuilder builder = NotificationManagerWrapper.getBuilder(context)
-            .setIntent(openApkIntent)
-            .setTitle(app.getDisplayName())
-            .setMessage(context.getString(notificationStringId))
-        ;
+                .setIntent(openApkIntent)
+                .setTitle(app.getDisplayName())
+                .setMessage(context.getString(notificationStringId));
         if (new BlackWhiteListManager(context).isUpdatable(app.getPackageName())) {
             builder.addAction(
-                R.drawable.ic_cancel,
-                R.string.action_ignore,
-                PendingIntent.getService(context, 0, getIgnoreIntent(app), PendingIntent.FLAG_UPDATE_CURRENT)
+                    R.drawable.ic_cancel,
+                    R.string.action_ignore,
+                    PendingIntent.getService(context, 0, getIgnoreIntent(app), PendingIntent.FLAG_UPDATE_CURRENT)
             );
         }
         new NotificationManagerWrapper(context).show(app.getDisplayName(), builder.build());

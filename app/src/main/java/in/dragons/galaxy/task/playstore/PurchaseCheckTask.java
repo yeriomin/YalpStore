@@ -4,10 +4,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
-import in.dragons.galaxy.R;
-import in.dragons.galaxy.fragment.details.DownloadOrInstall;
 
 import java.util.Timer;
+
+import in.dragons.galaxy.R;
+import in.dragons.galaxy.fragment.details.DownloadOrInstall;
 
 public class PurchaseCheckTask extends DeliveryDataTask {
 

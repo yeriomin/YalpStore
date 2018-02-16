@@ -9,9 +9,9 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
-import in.dragons.galaxy.model.App;
-
 import java.io.File;
+
+import in.dragons.galaxy.model.App;
 
 public class GlobalInstallReceiver extends BroadcastReceiver {
 
@@ -59,23 +59,23 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static public boolean actionIsInstall(Intent intent) {
         return !TextUtils.isEmpty(intent.getAction())
-            && (intent.getAction().equals(Intent.ACTION_PACKAGE_INSTALL)
+                && (intent.getAction().equals(Intent.ACTION_PACKAGE_INSTALL)
                 || intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)
                 || intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)
                 || intent.getAction().equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
-            )
-        ;
+        )
+                ;
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     static private boolean expectedAction(String action) {
         return action.equals(Intent.ACTION_PACKAGE_INSTALL)
-            || action.equals(Intent.ACTION_PACKAGE_ADDED)
-            || action.equals(Intent.ACTION_PACKAGE_REPLACED)
-            || action.equals(Intent.ACTION_PACKAGE_REMOVED)
-            || action.equals(Intent.ACTION_PACKAGE_FULLY_REMOVED)
-            || action.equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
-        ;
+                || action.equals(Intent.ACTION_PACKAGE_ADDED)
+                || action.equals(Intent.ACTION_PACKAGE_REPLACED)
+                || action.equals(Intent.ACTION_PACKAGE_REMOVED)
+                || action.equals(Intent.ACTION_PACKAGE_FULLY_REMOVED)
+                || action.equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
+                ;
     }
 
     static private boolean needToRemoveApk(Context context) {
@@ -99,9 +99,9 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static private boolean wasInstalled(Context context, String packageName) {
         return InstallationState.isInstalled(packageName)
-            || (PreferenceActivity.getString(context, PreferenceActivity.INSTALLATION_METHOD_DEFAULT).equals(PreferenceActivity.INSTALLATION_METHOD_DEFAULT)
+                || (PreferenceActivity.getString(context, PreferenceActivity.INSTALLATION_METHOD_DEFAULT).equals(PreferenceActivity.INSTALLATION_METHOD_DEFAULT)
                 && DownloadState.get(packageName).isEverythingFinished()
-            )
-        ;
+        )
+                ;
     }
 }

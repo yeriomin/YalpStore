@@ -15,12 +15,12 @@ public class Paths {
         File storageRoot = Environment.getExternalStorageDirectory();
         File[] externalFilesDirs = getExternalFilesDirs(context);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP
-            || externalFilesDirs.length < 2
-            || (Environment.isExternalStorageEmulated(storageRoot) && !Environment.isExternalStorageRemovable(storageRoot))
-        ) {
+                || externalFilesDirs.length < 2
+                || (Environment.isExternalStorageEmulated(storageRoot) && !Environment.isExternalStorageRemovable(storageRoot))
+                ) {
             return storageRoot;
         }
-        for (File file: externalFilesDirs) {
+        for (File file : externalFilesDirs) {
             try {
                 if (Environment.isExternalStorageEmulated(file) && !Environment.isExternalStorageRemovable(file)) {
                     return new File(file.getAbsolutePath().replace(FALLBACK_DIRECTORY, ""));
@@ -35,8 +35,8 @@ public class Paths {
 
     static public File getDownloadPath(Context context) {
         return new File(
-            getStorageRoot(context),
-            PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+                getStorageRoot(context),
+                PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_DOWNLOAD_DIRECTORY, "")
         );
     }
 
@@ -57,8 +57,8 @@ public class Paths {
 
     static private File[] getExternalFilesDirs(Context context) {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
-            ? context.getExternalFilesDirs(null)
-            : new File[] {new File(Environment.getExternalStorageDirectory(), FALLBACK_DIRECTORY)}
-        ;
+                ? context.getExternalFilesDirs(null)
+                : new File[]{new File(Environment.getExternalStorageDirectory(), FALLBACK_DIRECTORY)}
+                ;
     }
 }

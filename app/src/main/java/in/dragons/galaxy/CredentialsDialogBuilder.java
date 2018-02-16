@@ -13,10 +13,11 @@ import android.util.Log;
 import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.playstoreapi.TokenDispenserException;
-import in.dragons.galaxy.task.playstore.CloneableTask;
-import in.dragons.galaxy.task.playstore.PlayStoreTask;
 
 import java.io.IOException;
+
+import in.dragons.galaxy.task.playstore.CloneableTask;
+import in.dragons.galaxy.task.playstore.PlayStoreTask;
 
 abstract public class CredentialsDialogBuilder {
 
@@ -53,7 +54,7 @@ abstract public class CredentialsDialogBuilder {
                 android.os.Process.killProcess(android.os.Process.myPid());
                 if (caller instanceof CloneableTask) {
                     Log.i(getClass().getSimpleName(), caller.getClass().getSimpleName() + " is cloneable. Retrying.");
-                    ((PlayStoreTask) ((CloneableTask) caller).clone()).execute(new String[] {});
+                    ((PlayStoreTask) ((CloneableTask) caller).clone()).execute(new String[]{});
                 }
             }
         }
@@ -62,8 +63,8 @@ abstract public class CredentialsDialogBuilder {
         protected void processException(Throwable e) {
             super.processException(e);
             if ((e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 500)
-                || (e instanceof AuthException && !TextUtils.isEmpty(((AuthException) e).getTwoFactorUrl()))
-            ) {
+                    || (e instanceof AuthException && !TextUtils.isEmpty(((AuthException) e).getTwoFactorUrl()))
+                    ) {
                 return;
             }
             CredentialsDialogBuilder builder = getDialogBuilder();
@@ -101,34 +102,34 @@ abstract public class CredentialsDialogBuilder {
         private AlertDialog getTwoFactorAuthDialog() {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             return builder
-                .setMessage(R.string.dialog_message_two_factor)
-                .setTitle(R.string.dialog_title_two_factor)
-                .setPositiveButton(
-                    R.string.dialog_two_factor_create_password,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent i = new Intent(Intent.ACTION_VIEW);
-                            i.setData(Uri.parse(APP_PASSWORDS_URL));
-                            if (i.resolveActivity(context.getPackageManager()) != null) {
-                                context.startActivity(i);
-                            } else {
-                                Log.e(getClass().getSimpleName(), "No application available to handle http links... very strange");
+                    .setMessage(R.string.dialog_message_two_factor)
+                    .setTitle(R.string.dialog_title_two_factor)
+                    .setPositiveButton(
+                            R.string.dialog_two_factor_create_password,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent i = new Intent(Intent.ACTION_VIEW);
+                                    i.setData(Uri.parse(APP_PASSWORDS_URL));
+                                    if (i.resolveActivity(context.getPackageManager()) != null) {
+                                        context.startActivity(i);
+                                    } else {
+                                        Log.e(getClass().getSimpleName(), "No application available to handle http links... very strange");
+                                    }
+                                    android.os.Process.killProcess(android.os.Process.myPid());
+                                }
                             }
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                        }
-                    }
-                )
-                .setNegativeButton(
-                    R.string.dialog_two_factor_cancel,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            android.os.Process.killProcess(android.os.Process.myPid());
-                        }
-                    }
-                )
-                .create();
+                    )
+                    .setNegativeButton(
+                            R.string.dialog_two_factor_cancel,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    android.os.Process.killProcess(android.os.Process.myPid());
+                                }
+                            }
+                    )
+                    .create();
         }
     }
 }

@@ -2,9 +2,10 @@ package in.dragons.galaxy.task.playstore;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.IteratorGooglePlayException;
-import in.dragons.galaxy.PlayStoreApiAuthenticator;
 
 import java.io.IOException;
+
+import in.dragons.galaxy.PlayStoreApiAuthenticator;
 
 abstract public class PlayStorePayloadTask<T> extends PlayStoreTask<T> {
 

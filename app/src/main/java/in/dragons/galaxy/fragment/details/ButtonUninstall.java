@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
-import in.dragons.galaxy.R;
 import in.dragons.galaxy.GalaxyActivity;
+import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.CheckShellTask;
 import in.dragons.galaxy.task.UninstallSystemAppTask;
@@ -41,10 +41,10 @@ public class ButtonUninstall extends Button {
 
     private boolean isSystemAndReadyForPermanentUninstallation() {
         return app.isSystem()
-            && null != app.getPackageInfo().applicationInfo
-            && null != app.getPackageInfo().applicationInfo.sourceDir
-            && app.getPackageInfo().applicationInfo.sourceDir.startsWith("/system/")
-        ;
+                && null != app.getPackageInfo().applicationInfo
+                && null != app.getPackageInfo().applicationInfo.sourceDir
+                && app.getPackageInfo().applicationInfo.sourceDir.startsWith("/system/")
+                ;
     }
 
     private void askAndUninstall() {

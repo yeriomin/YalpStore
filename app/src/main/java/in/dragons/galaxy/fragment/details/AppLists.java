@@ -26,7 +26,7 @@ public class AppLists extends Abstract {
     public void draw() {
         LinearLayout relatedLinksLayout = (LinearLayout) activity.findViewById(R.id.related_links);
         boolean developerLinkFound = false;
-        for (final String label: app.getRelatedLinks().keySet()) {
+        for (final String label : app.getRelatedLinks().keySet()) {
             relatedLinksLayout.setVisibility(View.VISIBLE);
             relatedLinksLayout.addView(buildLinkView(label, app.getRelatedLinks().get(label)));
             if (label.contains(app.getDeveloperName())) {
@@ -42,8 +42,8 @@ public class AppLists extends Abstract {
         TextView linkView = new TextView(activity);
         linkView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_chevron_right, 0, 0, 0);
         linkView.setText(label);
-        linkView.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
-        linkView.setPadding(0,6,0,0);
+        linkView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        linkView.setPadding(0, 6, 0, 0);
         linkView.setGravity(Gravity.CENTER_VERTICAL);
         linkView.setOnClickListener(new View.OnClickListener() {
             @Override

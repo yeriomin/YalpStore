@@ -7,14 +7,14 @@ import android.net.Uri;
 import android.text.ClipboardManager;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
-import com.squareup.picasso.Picasso;
 
 public class Video extends Abstract {
 
@@ -22,14 +22,13 @@ public class Video extends Abstract {
         super(activity, app);
     }
 
-    private String getID(String URL)
-    {
-        if(URL.contains("/youtu.be/"))
-            URL=URL.substring(URL.lastIndexOf('/')+1,URL.length());
-        else if(URL.contains("feature"))
-            URL=URL.substring(URL.indexOf('=')+1,URL.lastIndexOf('&'));
+    private String getID(String URL) {
+        if (URL.contains("/youtu.be/"))
+            URL = URL.substring(URL.lastIndexOf('/') + 1, URL.length());
+        else if (URL.contains("feature"))
+            URL = URL.substring(URL.indexOf('=') + 1, URL.lastIndexOf('&'));
         else
-            URL=URL.substring(URL.indexOf('=')+1,URL.length());
+            URL = URL.substring(URL.indexOf('=') + 1, URL.length());
         return URL;
     }
 
@@ -39,8 +38,8 @@ public class Video extends Abstract {
             return;
         }
 
-        String vID =getID(app.getVideoUrl());
-        String URL="https://img.youtube.com/vi/"+vID+"/maxresdefault.jpg";
+        String vID = getID(app.getVideoUrl());
+        String URL = "https://img.youtube.com/vi/" + vID + "/maxresdefault.jpg";
 
         ImageView imageView = (ImageView) activity.findViewById(R.id.thumbnail);
         Picasso.with(activity).load(URL).into(imageView);

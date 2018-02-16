@@ -43,15 +43,15 @@ public class SystemRemountDialogBuilder extends AlertDialog.Builder {
             return R.string.dialog_message_system_app_warning_uninstall;
         }
         return primaryTask.getApp().getPackageName().equals(BuildConfig.APPLICATION_ID)
-            ? R.string.dialog_message_system_app_self
-            : R.string.dialog_message_system_app_warning_to_system
-        ;
+                ? R.string.dialog_message_system_app_self
+                : R.string.dialog_message_system_app_warning_to_system
+                ;
     }
 
     private int getTitleId() {
         return primaryTask.getApp().getPackageName().equals(BuildConfig.APPLICATION_ID)
-            ? R.string.dialog_title_system_app_self
-            : R.string.dialog_title_system_app_warning
-        ;
+                ? R.string.dialog_title_system_app_self
+                : R.string.dialog_title_system_app_warning
+                ;
     }
 }

@@ -11,6 +11,9 @@ import android.view.WindowManager;
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+
+import java.io.IOException;
+
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.DownloadManagerInterface;
 import in.dragons.galaxy.DownloadProgressBarUpdater;
@@ -18,8 +21,6 @@ import in.dragons.galaxy.DownloadState;
 import in.dragons.galaxy.Downloader;
 import in.dragons.galaxy.NotPurchasedException;
 import in.dragons.galaxy.R;
-
-import java.io.IOException;
 
 public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 
@@ -91,9 +92,9 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
     protected void onPostExecute(AndroidAppDeliveryData deliveryData) {
         super.onPostExecute(deliveryData);
         if (getException() instanceof NotPurchasedException
-            && triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
-            && triggeredBy.equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
-        ) {
+                && triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
+                && triggeredBy.equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
+                ) {
             try {
                 getNotPurchasedDialog(context).show();
             } catch (WindowManager.BadTokenException e1) {
@@ -125,27 +126,27 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
     private AlertDialog getNotPurchasedDialog(Context c) {
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
         builder
-            .setMessage(R.string.error_not_purchased)
-            .setPositiveButton(
-                android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        i.setData(Uri.parse(URL_PURCHASE + app.getPackageName()));
-                        context.startActivity(i);
-                    }
-                }
-            )
-            .setNegativeButton(
-                android.R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                }
-            )
+                .setMessage(R.string.error_not_purchased)
+                .setPositiveButton(
+                        android.R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent i = new Intent(Intent.ACTION_VIEW);
+                                i.setData(Uri.parse(URL_PURCHASE + app.getPackageName()));
+                                context.startActivity(i);
+                            }
+                        }
+                )
+                .setNegativeButton(
+                        android.R.string.cancel,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        }
+                )
         ;
         return builder.create();
     }

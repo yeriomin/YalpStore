@@ -3,9 +3,10 @@ package in.dragons.galaxy;
 import android.content.Context;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
-import in.dragons.galaxy.model.App;
 
 import java.io.File;
+
+import in.dragons.galaxy.model.App;
 
 public class DownloadRequestBuilderDelta extends DownloadRequestBuilderApk {
 

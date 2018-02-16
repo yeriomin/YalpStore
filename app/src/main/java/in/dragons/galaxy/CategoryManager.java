@@ -31,17 +31,17 @@ public class CategoryManager {
 
     public void save(String parent, Map<String, String> categories) {
         Util.putStringSet(context, parent, categories.keySet());
-        for (String categoryId: categories.keySet()) {
+        for (String categoryId : categories.keySet()) {
             translator.putString(categoryId, categories.get(categoryId));
         }
     }
 
     public boolean fits(String appCategoryId, String chosenCategoryId) {
         return null == chosenCategoryId
-            || chosenCategoryId.equals(TOP)
-            || appCategoryId.equals(chosenCategoryId)
-            || Util.getStringSet(context, chosenCategoryId).contains(appCategoryId)
-        ;
+                || chosenCategoryId.equals(TOP)
+                || appCategoryId.equals(chosenCategoryId)
+                || Util.getStringSet(context, chosenCategoryId).contains(appCategoryId)
+                ;
     }
 
     public boolean categoryListEmpty() {
@@ -57,10 +57,10 @@ public class CategoryManager {
     public Map<String, String> getCategoriesFromSharedPreferences() {
         Map<String, String> categories = new TreeMap<>();
         Set<String> topSet = Util.getStringSet(context, TOP);
-        for (String topCategoryId: topSet) {
+        for (String topCategoryId : topSet) {
             categories.put(topCategoryId, translator.getString(topCategoryId));
             Set<String> subSet = Util.getStringSet(context, topCategoryId);
-            for (String subCategoryId: subSet) {
+            for (String subCategoryId : subSet) {
                 categories.put(subCategoryId, categories.get(topCategoryId) + " - " + translator.getString(subCategoryId));
             }
         }

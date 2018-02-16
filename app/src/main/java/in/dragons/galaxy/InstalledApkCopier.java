@@ -3,14 +3,14 @@ package in.dragons.galaxy;
 import android.content.Context;
 import android.util.Log;
 
-import in.dragons.galaxy.model.App;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
+import in.dragons.galaxy.model.App;
 
 public class InstalledApkCopier {
 

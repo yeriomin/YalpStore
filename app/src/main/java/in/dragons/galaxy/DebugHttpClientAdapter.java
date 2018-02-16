@@ -47,7 +47,7 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
 
     private static String getRequestHeaders(Map<String, String> headers) {
         StringBuilder requestHeaders = new StringBuilder();
-        for (String key: headers.keySet()) {
+        for (String key : headers.keySet()) {
             requestHeaders.append(key).append(": ").append(headers.get(key)).append("\n");
         }
         return requestHeaders.toString();
@@ -58,7 +58,7 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
         if (null == headers) {
             return "";
         }
-        for (String key: headers.keySet()) {
+        for (String key : headers.keySet()) {
             List<String> header = headers.get(key);
             if (null == header || header.isEmpty()) {
                 continue;
@@ -66,7 +66,7 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
             if (TextUtils.isEmpty(key)) {
                 responseHeaders.append(header.get(0)).append("\n");
             } else {
-                for (String duplicate: header) {
+                for (String duplicate : header) {
                     responseHeaders.append(key).append(": ").append(duplicate).append("\n");
                 }
             }
@@ -91,12 +91,12 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
 
     private static String getFileName(String url, boolean request, boolean headers) {
         return new StringBuilder()
-            .append(System.currentTimeMillis())
-            .append(".")
-            .append(request ? "request" : "response")
-            .append(url.replace("&", ".").replace("=", ".").replace("/", ".").replace(":", "."))
-            .append(headers ? ".txt" : ".bin")
-            .toString()
-        ;
+                .append(System.currentTimeMillis())
+                .append(".")
+                .append(request ? "request" : "response")
+                .append(url.replace("&", ".").replace("=", ".").replace("/", ".").replace(":", "."))
+                .append(headers ? ".txt" : ".bin")
+                .toString()
+                ;
     }
 }

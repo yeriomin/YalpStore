@@ -5,7 +5,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.R;

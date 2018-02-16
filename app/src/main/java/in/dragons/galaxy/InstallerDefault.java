@@ -24,10 +24,10 @@ public class InstallerDefault extends InstallerAbstract {
     protected void install(App app) {
         InstallationState.setSuccess(app.getPackageName());
         context.startActivity(
-            InstallerAbstract.getOpenApkIntent(
-                context,
-                Paths.getApkPath(context, app.getPackageName(), app.getVersionCode())
-            )
+                InstallerAbstract.getOpenApkIntent(
+                        context,
+                        Paths.getApkPath(context, app.getPackageName(), app.getVersionCode())
+                )
         );
     }
 }

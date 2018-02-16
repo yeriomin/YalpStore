@@ -38,7 +38,7 @@ public class NetworkState {
         if (cm == null) {
             return false;
         }
-        for (NetworkInfo networkInfo: cm.getAllNetworkInfo()) {
+        for (NetworkInfo networkInfo : cm.getAllNetworkInfo()) {
             if (networkInfo.isConnectedOrConnecting() && networkInfo.getType() == ConnectivityManager.TYPE_VPN) {
                 return true;
             }
@@ -49,8 +49,8 @@ public class NetworkState {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     static private boolean isVpnHoneycomb() {
         try {
-            for (NetworkInterface ni: Collections.list(NetworkInterface.getNetworkInterfaces())) {
-                if (ni.isUp() && (ni.getName().startsWith("tun") || ni.getName().startsWith("ppp")))  {
+            for (NetworkInterface ni : Collections.list(NetworkInterface.getNetworkInterfaces())) {
+                if (ni.isUp() && (ni.getName().startsWith("tun") || ni.getName().startsWith("ppp"))) {
                     Log.i(NetworkState.class.getSimpleName(), "VPN seems to be on: " + ni.getName());
                     return true;
                 }

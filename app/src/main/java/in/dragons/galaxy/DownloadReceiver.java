@@ -34,9 +34,9 @@ abstract public class DownloadReceiver extends BroadcastReceiver {
 
     protected boolean isDelta(App app) {
         return null != app
-            && !Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).exists()
-            && Paths.getDeltaPath(context, app.getPackageName(), app.getVersionCode()).exists()
-        ;
+                && !Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).exists()
+                && Paths.getDeltaPath(context, app.getPackageName(), app.getVersionCode()).exists()
+                ;
     }
 
     static protected boolean actionIs(Intent intent, String action) {

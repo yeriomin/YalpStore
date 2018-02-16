@@ -2,10 +2,10 @@ package in.dragons.galaxy;
 
 import android.content.Context;
 
-import in.dragons.galaxy.model.Review;
-
 import java.util.Iterator;
 import java.util.List;
+
+import in.dragons.galaxy.model.Review;
 
 abstract public class ReviewIterator implements Iterator<List<Review>> {
 

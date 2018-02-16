@@ -4,11 +4,12 @@ import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.ReviewResponse;
+
+import java.io.IOException;
+
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.model.Review;
 import in.dragons.galaxy.model.ReviewBuilder;
-
-import java.io.IOException;
 
 public class ReviewAddTask extends PlayStorePayloadTask<Review> {
 
@@ -31,10 +32,10 @@ public class ReviewAddTask extends PlayStorePayloadTask<Review> {
     @Override
     protected Review getResult(GooglePlayAPI api, String... arguments) throws IOException {
         ReviewResponse response = api.addOrEditReview(
-            packageName,
-            review.getComment(),
-            review.getTitle(),
-            review.getRating()
+                packageName,
+                review.getComment(),
+                review.getTitle(),
+                review.getRating()
         );
         return ReviewBuilder.build(response.getUserReview());
     }

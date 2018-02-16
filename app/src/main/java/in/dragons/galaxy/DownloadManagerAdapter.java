@@ -9,6 +9,7 @@ import android.util.Log;
 import android.util.Pair;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+
 import in.dragons.galaxy.model.App;
 
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
@@ -44,8 +45,8 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
                 throw new RuntimeException("Unknown request type");
         }
         if (DownloadState.get(app.getPackageName()).getTriggeredBy().equals(DownloadState.TriggeredBy.SCHEDULED_UPDATE)
-            && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
-        ) {
+                && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
+                ) {
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
         }
         long downloadId = dm.enqueue(request);
@@ -96,9 +97,8 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
         int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
         int total = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
         int complete = status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS
-            ? total
-            : cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR))
-        ;
+                ? total
+                : cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
         cursor.close();
         return new Pair<>(complete, total);
     }

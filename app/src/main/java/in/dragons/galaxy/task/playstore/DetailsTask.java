@@ -5,6 +5,9 @@ import android.content.pm.PackageManager;
 import com.github.yeriomin.playstoreapi.DetailsResponse;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.GooglePlayException;
+
+import java.io.IOException;
+
 import in.dragons.galaxy.BuildConfig;
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.R;
@@ -12,8 +15,6 @@ import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.model.AppBuilder;
 import in.dragons.galaxy.model.ReviewBuilder;
 import in.dragons.galaxy.selfupdate.UpdaterFactory;
-
-import java.io.IOException;
 
 public class DetailsTask extends PlayStorePayloadTask<App> {
 

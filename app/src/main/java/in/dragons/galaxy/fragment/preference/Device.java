@@ -11,19 +11,20 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
+
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
+
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.DeviceInfoActivity;
+import in.dragons.galaxy.GalaxyActivity;
 import in.dragons.galaxy.OnListPreferenceChangeListener;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.PreferenceActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.SpoofDeviceManager;
 import in.dragons.galaxy.Util;
-import in.dragons.galaxy.GalaxyActivity;
-
-import java.util.LinkedHashMap;
-import java.util.Locale;
-import java.util.Map;
 
 public class Device extends List {
 
@@ -40,9 +41,9 @@ public class Device extends List {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 ContextUtil.toast(
-                    activity.getApplicationContext(),
-                    R.string.pref_device_to_pretend_to_be_notice,
-                    PreferenceManager.getDefaultSharedPreferences(activity).getString(PreferenceActivity.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+                        activity.getApplicationContext(),
+                        R.string.pref_device_to_pretend_to_be_notice,
+                        PreferenceManager.getDefaultSharedPreferences(activity).getString(PreferenceActivity.PREFERENCE_DOWNLOAD_DIRECTORY, "")
                 );
                 ((AlertDialog) listPreference.getDialog()).getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
@@ -82,9 +83,9 @@ public class Device extends List {
         Map<String, String> devices = new SpoofDeviceManager(activity).getDevices();
         devices = Util.sort(devices);
         Util.addToStart(
-            (LinkedHashMap<String, String>) devices,
-            "",
-            activity.getString(R.string.pref_device_to_pretend_to_be_default)
+                (LinkedHashMap<String, String>) devices,
+                "",
+                activity.getString(R.string.pref_device_to_pretend_to_be_default)
         );
         return devices;
     }
@@ -98,33 +99,33 @@ public class Device extends List {
 
     private AlertDialog showRequestDialog(boolean logOut) {
         PreferenceManager.getDefaultSharedPreferences(activity)
-            .edit()
-            .putBoolean(PREFERENCE_DEVICE_DEFINITION_REQUESTED, true)
-            .commit()
+                .edit()
+                .putBoolean(PREFERENCE_DEVICE_DEFINITION_REQUESTED, true)
+                .commit()
         ;
         return new AlertDialog.Builder(activity)
-            .setMessage(R.string.dialog_message_spoof_request)
-            .setTitle(R.string.dialog_title_spoof_request)
-            .setPositiveButton(android.R.string.yes, new FinishingOnClickListener(logOut) {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    ContextUtil.toastShort(activity.getApplicationContext(), activity.getString(R.string.thank_you));
-                    super.onClick(dialogInterface, i);
-                }
-            })
-            .setNegativeButton(android.R.string.no, new FinishingOnClickListener(logOut))
-            .show()
-        ;
+                .setMessage(R.string.dialog_message_spoof_request)
+                .setTitle(R.string.dialog_title_spoof_request)
+                .setPositiveButton(android.R.string.yes, new FinishingOnClickListener(logOut) {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        ContextUtil.toastShort(activity.getApplicationContext(), activity.getString(R.string.thank_you));
+                        super.onClick(dialogInterface, i);
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new FinishingOnClickListener(logOut))
+                .show()
+                ;
     }
 
     private AlertDialog showLogOutDialog() {
         return new AlertDialog.Builder(activity)
-            .setMessage(R.string.pref_device_to_pretend_to_be_toast)
-            .setTitle(R.string.dialog_title_logout)
-            .setPositiveButton(android.R.string.yes, new RequestOnClickListener(activity, true))
-            .setNegativeButton(R.string.dialog_two_factor_cancel, new RequestOnClickListener(activity, false))
-            .show()
-        ;
+                .setMessage(R.string.pref_device_to_pretend_to_be_toast)
+                .setTitle(R.string.dialog_title_logout)
+                .setPositiveButton(android.R.string.yes, new RequestOnClickListener(activity, true))
+                .setNegativeButton(R.string.dialog_two_factor_cancel, new RequestOnClickListener(activity, false))
+                .show()
+                ;
     }
 
     private void finishAll() {

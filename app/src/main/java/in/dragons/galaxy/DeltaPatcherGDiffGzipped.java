@@ -3,13 +3,13 @@ package in.dragons.galaxy;
 import android.content.Context;
 import android.util.Log;
 
-import in.dragons.galaxy.model.App;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.GZIPInputStream;
+
+import in.dragons.galaxy.model.App;
 
 public class DeltaPatcherGDiffGzipped extends DeltaPatcherGDiff {
 

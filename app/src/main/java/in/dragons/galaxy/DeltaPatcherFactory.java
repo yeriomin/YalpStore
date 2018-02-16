@@ -3,12 +3,12 @@ package in.dragons.galaxy;
 import android.content.Context;
 import android.util.Log;
 
-import in.dragons.galaxy.model.App;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.zip.GZIPInputStream;
+
+import in.dragons.galaxy.model.App;
 
 public class DeltaPatcherFactory {
 

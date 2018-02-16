@@ -1,16 +1,13 @@
 package in.dragons.galaxy;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
-import android.widget.Toast;
-
-import in.dragons.galaxy.task.playstore.PlayStoreTask;
 
 import java.io.IOException;
+
+import in.dragons.galaxy.task.playstore.PlayStoreTask;
 
 public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
 
@@ -22,22 +19,22 @@ public class AccountTypeDialogBuilder extends CredentialsDialogBuilder {
     public Dialog show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         final Dialog alertDialog = builder
-            .setTitle(R.string.dialog_account_type_title)
-            .setItems(
-                R.array.accountType,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        if (which == 0) {
-                            showCredentialsDialog();
-                        } else {
-                            logInWithPredefinedAccount();
+                .setTitle(R.string.dialog_account_type_title)
+                .setItems(
+                        R.array.accountType,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                if (which == 0) {
+                                    showCredentialsDialog();
+                                } else {
+                                    logInWithPredefinedAccount();
+                                }
+                            }
                         }
-                    }
-                }
-            )
-            .setCancelable(true)
-            .create();
+                )
+                .setCancelable(true)
+                .create();
         alertDialog.show();
         return alertDialog;
     }

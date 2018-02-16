@@ -34,22 +34,22 @@ public class NativeGsfVersionProvider {
 
     public int getGsfVersionCode(boolean defaultIfNotFound) {
         return defaultIfNotFound && gsfVersionCode < GOOGLE_SERVICES_VERSION_CODE
-            ? GOOGLE_SERVICES_VERSION_CODE
-            : gsfVersionCode
-        ;
+                ? GOOGLE_SERVICES_VERSION_CODE
+                : gsfVersionCode
+                ;
     }
 
     public int getVendingVersionCode(boolean defaultIfNotFound) {
         return defaultIfNotFound && vendingVersionCode < GOOGLE_VENDING_VERSION_CODE
-            ? GOOGLE_VENDING_VERSION_CODE
-            : vendingVersionCode
-        ;
+                ? GOOGLE_VENDING_VERSION_CODE
+                : vendingVersionCode
+                ;
     }
 
     public String getVendingVersionString(boolean defaultIfNotFound) {
         return defaultIfNotFound && vendingVersionCode < GOOGLE_VENDING_VERSION_CODE
-            ? GOOGLE_VENDING_VERSION_STRING
-            : vendingVersionString
-        ;
+                ? GOOGLE_VENDING_VERSION_STRING
+                : vendingVersionString
+                ;
     }
 }

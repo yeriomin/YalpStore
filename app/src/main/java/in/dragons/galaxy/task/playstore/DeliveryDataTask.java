@@ -6,12 +6,13 @@ import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.BuyResponse;
 import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+
+import java.io.IOException;
+
 import in.dragons.galaxy.NotPurchasedException;
 import in.dragons.galaxy.PreferenceActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
-
-import java.io.IOException;
 
 public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryData> {
 
@@ -34,9 +35,9 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
         try {
             BuyResponse buyResponse = api.purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
             if (buyResponse.hasPurchaseStatusResponse()
-                && buyResponse.getPurchaseStatusResponse().hasAppDeliveryData()
-                && buyResponse.getPurchaseStatusResponse().getAppDeliveryData().hasDownloadUrl()
-            ) {
+                    && buyResponse.getPurchaseStatusResponse().hasAppDeliveryData()
+                    && buyResponse.getPurchaseStatusResponse().getAppDeliveryData().hasDownloadUrl()
+                    ) {
                 deliveryData = buyResponse.getPurchaseStatusResponse().getAppDeliveryData();
             }
             if (buyResponse.hasDownloadToken()) {
@@ -49,16 +50,16 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
 
     protected void delivery(GooglePlayAPI api) throws IOException {
         DeliveryResponse deliveryResponse = api.delivery(
-            app.getPackageName(),
-            shouldDownloadDelta() ? app.getInstalledVersionCode() : 0,
-            app.getVersionCode(),
-            app.getOfferType(),
-            GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF,
-            downloadToken
+                app.getPackageName(),
+                shouldDownloadDelta() ? app.getInstalledVersionCode() : 0,
+                app.getVersionCode(),
+                app.getOfferType(),
+                GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF,
+                downloadToken
         );
         if (deliveryResponse.hasAppDeliveryData()
-            && deliveryResponse.getAppDeliveryData().hasDownloadUrl()
-        ) {
+                && deliveryResponse.getAppDeliveryData().hasDownloadUrl()
+                ) {
             deliveryData = deliveryResponse.getAppDeliveryData();
         } else {
             throw new NotPurchasedException();
@@ -80,7 +81,7 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
 
     private boolean shouldDownloadDelta() {
         return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_DELTAS)
-            && app.getInstalledVersionCode() < app.getVersionCode()
-        ;
+                && app.getInstalledVersionCode() < app.getVersionCode()
+                ;
     }
 }

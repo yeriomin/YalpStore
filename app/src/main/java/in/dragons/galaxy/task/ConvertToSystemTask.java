@@ -3,11 +3,11 @@ package in.dragons.galaxy.task;
 import android.content.Context;
 import android.os.Build;
 
-import in.dragons.galaxy.model.App;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import in.dragons.galaxy.model.App;
 
 public class ConvertToSystemTask extends SystemRemountTask {
 

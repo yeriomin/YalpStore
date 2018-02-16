@@ -11,9 +11,9 @@ public class DownloadManagerFactory {
 
     static public DownloadManagerInterface get(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB
-            || !nativeDownloadManagerEnabled(context)
-            || nougatVpn(context)
-        ) {
+                || !nativeDownloadManagerEnabled(context)
+                || nougatVpn(context)
+                ) {
             return new DownloadManagerFake(context);
         } else {
             return new DownloadManagerAdapter(context);
@@ -28,8 +28,8 @@ public class DownloadManagerFactory {
             Log.w(DownloadManagerFactory.class.getSimpleName(), "Could not check DownloadManager status: " + e.getMessage());
         }
         return !(state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-            || state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER
-            || state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_UNTIL_USED
+                || state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER
+                || state == PackageManager.COMPONENT_ENABLED_STATE_DISABLED_UNTIL_USED
         );
     }
 

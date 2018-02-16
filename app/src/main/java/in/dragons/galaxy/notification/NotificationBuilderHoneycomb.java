@@ -39,8 +39,8 @@ class NotificationBuilderHoneycomb extends NotificationBuilder {
     public NotificationBuilderHoneycomb(Context context) {
         super(context);
         builder = new Notification.Builder(context)
-            .setSmallIcon(R.drawable.ic_notification)
-            .setAutoCancel(true)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setAutoCancel(true)
         ;
     }
 }

@@ -7,22 +7,23 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+
+import java.io.File;
+
 import in.dragons.galaxy.BuildConfig;
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.DownloadProgressBarUpdater;
 import in.dragons.galaxy.DownloadState;
 import in.dragons.galaxy.Downloader;
+import in.dragons.galaxy.GalaxyActivity;
+import in.dragons.galaxy.GalaxyPermissionManager;
 import in.dragons.galaxy.ManualDownloadActivity;
 import in.dragons.galaxy.NumberProgressBar;
 import in.dragons.galaxy.Paths;
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.GalaxyActivity;
-import in.dragons.galaxy.GalaxyPermissionManager;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.selfupdate.UpdaterFactory;
 import in.dragons.galaxy.task.playstore.PurchaseTask;
-
-import java.io.File;
 
 import static in.dragons.galaxy.DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
 import static in.dragons.galaxy.DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON;
@@ -35,12 +36,11 @@ public class ButtonDownload extends Button {
 
     @Override
     protected android.widget.Button getButton() {
-        if(app.getPrice()!=null && !app.getPrice().toString().contains("Free"))
-        {
-            Toast.makeText(activity,R.string.warn_app_purchase,Toast.LENGTH_SHORT).show();
-            setText(R.id.download,R.string.details_purchase);
-            return (android.widget.Button) activity.findViewById(R.id.download);}
-        else
+        if (app.getPrice() != null && !app.getPrice().toString().contains("Free")) {
+            Toast.makeText(activity, R.string.warn_app_purchase, Toast.LENGTH_SHORT).show();
+            setText(R.id.download, R.string.details_purchase);
+            return (android.widget.Button) activity.findViewById(R.id.download);
+        } else
             return (android.widget.Button) activity.findViewById(R.id.download);
     }
 
@@ -50,10 +50,10 @@ public class ButtonDownload extends Button {
         return (!apk.exists()
                 || apk.length() != app.getSize()
                 || !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
-            )
-            && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID))
-            && (getInstalledVersionCode() != app.getVersionCode() || activity instanceof ManualDownloadActivity)
-        ;
+        )
+                && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID))
+                && (getInstalledVersionCode() != app.getVersionCode() || activity instanceof ManualDownloadActivity)
+                ;
     }
 
     @Override
@@ -85,8 +85,8 @@ public class ButtonDownload extends Button {
         super.draw();
         DownloadState state = DownloadState.get(app.getPackageName());
         if (Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
-            && !state.isEverythingSuccessful()
-        ) {
+                && !state.isEverythingSuccessful()
+                ) {
             disable(R.string.details_downloading);
             NumberProgressBar progressBar = (NumberProgressBar) activity.findViewById(R.id.download_progress);
             if (null != progressBar) {
@@ -98,8 +98,8 @@ public class ButtonDownload extends Button {
     public void download() {
         if (app.getPackageName().equals(BuildConfig.APPLICATION_ID)) {
             new Downloader(activity).download(
-                app,
-                AndroidAppDeliveryData.newBuilder().setDownloadUrl(UpdaterFactory.get(activity).getUrlString(app.getVersionCode())).build()
+                    app,
+                    AndroidAppDeliveryData.newBuilder().setDownloadUrl(UpdaterFactory.get(activity).getUrlString(app.getVersionCode())).build()
             );
         } else {
             boolean writePermission = new GalaxyPermissionManager(activity).checkPermission();

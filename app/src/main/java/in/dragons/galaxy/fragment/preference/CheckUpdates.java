@@ -95,7 +95,7 @@ public class CheckUpdates extends Abstract {
         }
 
         private boolean isPrivileged() {
-            return  activity.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED;
+            return activity.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED;
         }
     }
 }

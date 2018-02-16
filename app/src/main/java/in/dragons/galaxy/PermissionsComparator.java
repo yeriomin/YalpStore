@@ -6,11 +6,11 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import in.dragons.galaxy.model.App;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import in.dragons.galaxy.model.App;
 
 public class PermissionsComparator {
 
@@ -29,10 +29,10 @@ public class PermissionsComparator {
         Set<String> newPermissions = new HashSet<>(app.getPermissions());
         newPermissions.removeAll(oldPermissions);
         Log.i(
-            getClass().getSimpleName(),
-            newPermissions.isEmpty()
-                ? app.getPackageName() + " requests no new permissions"
-                : app.getPackageName() + " requests new permissions: " + TextUtils.join(", ", newPermissions)
+                getClass().getSimpleName(),
+                newPermissions.isEmpty()
+                        ? app.getPackageName() + " requests no new permissions"
+                        : app.getPackageName() + " requests new permissions: " + TextUtils.join(", ", newPermissions)
         );
         return newPermissions.isEmpty();
     }
@@ -42,9 +42,9 @@ public class PermissionsComparator {
         try {
             PackageInfo pi = pm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
             return new HashSet<>(Arrays.asList(
-                null == pi.requestedPermissions
-                    ? new String[0]
-                    : pi.requestedPermissions
+                    null == pi.requestedPermissions
+                            ? new String[0]
+                            : pi.requestedPermissions
             ));
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(getClass().getSimpleName(), "Package " + packageName + " doesn't seem to be installed");

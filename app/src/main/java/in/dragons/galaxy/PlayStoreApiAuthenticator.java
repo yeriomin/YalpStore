@@ -12,11 +12,12 @@ import com.github.yeriomin.playstoreapi.DeviceInfoProvider;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
 import com.github.yeriomin.playstoreapi.TokenDispenserException;
-import in.dragons.galaxy.model.LoginInfo;
-import in.dragons.galaxy.task.playstore.PlayStoreTask;
 
 import java.io.IOException;
 import java.util.Locale;
+
+import in.dragons.galaxy.model.LoginInfo;
+import in.dragons.galaxy.task.playstore.PlayStoreTask;
 
 public class PlayStoreApiAuthenticator {
 
@@ -49,9 +50,9 @@ public class PlayStoreApiAuthenticator {
         LoginInfo loginInfo = new LoginInfo();
         api = build(loginInfo);
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
-            .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
-            .commit()
+                .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
+                .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
+                .commit()
         ;
     }
 
@@ -72,23 +73,23 @@ public class PlayStoreApiAuthenticator {
         }
         LoginInfo loginInfo = new LoginInfo();
         loginInfo.setEmail(email);
-        loginInfo.setTokenDispenserUrl(prefs.getString(PREFERENCE_LAST_USED_TOKEN_DISPENSER,""));
+        loginInfo.setTokenDispenserUrl(prefs.getString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, ""));
         api = build(loginInfo);
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
-            .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
-            .commit()
+                .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
+                .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
+                .commit()
         ;
     }
 
     public void logout() {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .remove(PREFERENCE_EMAIL)
-            .remove(PREFERENCE_GSF_ID)
-            .remove(PREFERENCE_AUTH_TOKEN)
-            .remove(PREFERENCE_LAST_USED_TOKEN_DISPENSER)
-            .remove(PREFERENCE_APP_PROVIDED_EMAIL)
-            .commit()
+                .remove(PREFERENCE_EMAIL)
+                .remove(PREFERENCE_GSF_ID)
+                .remove(PREFERENCE_AUTH_TOKEN)
+                .remove(PREFERENCE_LAST_USED_TOKEN_DISPENSER)
+                .remove(PREFERENCE_APP_PROVIDED_EMAIL)
+                .commit()
         ;
         api = null;
     }
@@ -147,22 +148,21 @@ public class PlayStoreApiAuthenticator {
     private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
         fill(loginInfo);
         return new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
-            .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
-            .setDeviceInfoProvider(getDeviceInfoProvider())
-            .setLocale(loginInfo.getLocale())
-            .setEmail(loginInfo.getEmail())
-            .setPassword(loginInfo.getPassword())
-            .setGsfId(loginInfo.getGsfId())
-            .setToken(loginInfo.getToken())
-            .setTokenDispenserUrl(loginInfo.getTokenDispenserUrl())
-        ;
+                .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
+                .setDeviceInfoProvider(getDeviceInfoProvider())
+                .setLocale(loginInfo.getLocale())
+                .setEmail(loginInfo.getEmail())
+                .setPassword(loginInfo.getPassword())
+                .setGsfId(loginInfo.getGsfId())
+                .setToken(loginInfo.getToken())
+                .setTokenDispenserUrl(loginInfo.getTokenDispenserUrl())
+                ;
     }
 
     private DeviceInfoProvider getDeviceInfoProvider() {
         DeviceInfoProvider deviceInfoProvider;
         String spoofDevice = PreferenceManager.getDefaultSharedPreferences(context)
-            .getString(PreferenceActivity.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "")
-        ;
+                .getString(PreferenceActivity.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
         if (TextUtils.isEmpty(spoofDevice)) {
             deviceInfoProvider = new NativeDeviceInfoProvider();
             ((NativeDeviceInfoProvider) deviceInfoProvider).setContext(context);
@@ -188,10 +188,10 @@ public class PlayStoreApiAuthenticator {
 
     private void save(LoginInfo loginInfo) {
         PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .putString(PREFERENCE_EMAIL, loginInfo.getEmail())
-            .putString(PREFERENCE_GSF_ID, loginInfo.getGsfId())
-            .putString(PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
-            .commit()
+                .putString(PREFERENCE_EMAIL, loginInfo.getEmail())
+                .putString(PREFERENCE_GSF_ID, loginInfo.getGsfId())
+                .putString(PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
+                .commit()
         ;
     }
 }

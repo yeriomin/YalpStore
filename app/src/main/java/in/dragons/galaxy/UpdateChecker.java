@@ -20,10 +20,10 @@ public class UpdateChecker extends BroadcastReceiver {
         if (interval > 0) {
             Log.i(UpdateChecker.class.getSimpleName(), "Enabling periodic update checks");
             alarmManager.setRepeating(
-                AlarmManager.RTC_WAKEUP,
-                System.currentTimeMillis(),
-                interval,
-                pendingIntent
+                    AlarmManager.RTC_WAKEUP,
+                    System.currentTimeMillis(),
+                    interval,
+                    pendingIntent
             );
         }
     }

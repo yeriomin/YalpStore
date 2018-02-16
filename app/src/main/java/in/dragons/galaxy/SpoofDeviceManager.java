@@ -86,7 +86,7 @@ public class SpoofDeviceManager {
         Set<String> deviceNames = Util.getStringSet(context, DEVICES_LIST_KEY);
         Map<String, String> devices = new HashMap<>();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        for (String name: deviceNames) {
+        for (String name : deviceNames) {
             devices.put(name, prefs.getString(name, ""));
         }
         return devices;
@@ -95,7 +95,7 @@ public class SpoofDeviceManager {
     private void putDevicesToSharedPreferences(Map<String, String> devices) {
         Util.putStringSet(context, DEVICES_LIST_KEY, devices.keySet());
         SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        for (String name: devices.keySet()) {
+        for (String name : devices.keySet()) {
             prefs.putString(name, devices.get(name));
         }
         prefs.commit();
@@ -148,7 +148,7 @@ public class SpoofDeviceManager {
         if (!defaultDir.exists() || null == defaultDir.listFiles()) {
             return deviceNames;
         }
-        for (File file: defaultDir.listFiles()) {
+        for (File file : defaultDir.listFiles()) {
             if (!file.isFile() || !filenameValid(file.getName())) {
                 continue;
             }

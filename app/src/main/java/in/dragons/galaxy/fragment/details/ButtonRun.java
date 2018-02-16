@@ -8,8 +8,8 @@ import android.util.Log;
 import android.view.View;
 
 import in.dragons.galaxy.DetailsActivity;
-import in.dragons.galaxy.R;
 import in.dragons.galaxy.GalaxyApplication;
+import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 
 public class ButtonRun extends Button {
@@ -20,7 +20,7 @@ public class ButtonRun extends Button {
 
     @Override
     protected android.widget.Button getButton() {
-        if(activity.findViewById(R.id.download).getVisibility()==View.VISIBLE)
+        if (activity.findViewById(R.id.download).getVisibility() == View.VISIBLE)
             return null;
         else
             return (android.widget.Button) activity.findViewById(R.id.run);

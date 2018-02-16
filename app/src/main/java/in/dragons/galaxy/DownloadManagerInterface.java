@@ -1,6 +1,7 @@
 package in.dragons.galaxy;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+
 import in.dragons.galaxy.model.App;
 
 public interface DownloadManagerInterface {
@@ -27,8 +28,12 @@ public interface DownloadManagerInterface {
     }
 
     long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type);
+
     boolean finished(long downloadId);
+
     boolean success(long downloadId);
+
     String getError(long downloadId);
+
     void cancel(long downloadId);
 }

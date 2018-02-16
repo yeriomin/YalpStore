@@ -40,7 +40,7 @@ public class IgnoreUpdatesService extends IntentService {
         PackageManager pm = getApplicationContext().getPackageManager();
         try {
             new NotificationManagerWrapper(getApplicationContext()).cancel(
-                pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0)).toString()
+                    pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0)).toString()
             );
         } catch (PackageManager.NameNotFoundException e) {
             // App is not installed

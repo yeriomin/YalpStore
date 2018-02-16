@@ -3,7 +3,6 @@ package in.dragons.galaxy.fragment.details;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
@@ -15,16 +14,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import in.dragons.galaxy.CategoryManager;
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.LoadImageTask;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class GeneralDetails extends Abstract {
 
@@ -47,7 +46,7 @@ public class GeneralDetails extends Abstract {
         new LoadImageTask((ImageView) activity.findViewById(R.id.icon)).execute(app.getIconInfo());
 
         setText(R.id.displayName, app.getDisplayName());
-        setText(R.id.packageName,R.string.details_developer, app.getDeveloperName());
+        setText(R.id.packageName, R.string.details_developer, app.getDeveloperName());
         drawVersion((TextView) activity.findViewById(R.id.versionString), app);
     }
 
@@ -97,9 +96,9 @@ public class GeneralDetails extends Abstract {
             setText(R.id.changes_upper, Html.fromHtml(changes).toString());
             activity.findViewById(R.id.changes_header).setVisibility(View.VISIBLE);
             activity.findViewById(R.id.changes_container).setVisibility(View.VISIBLE);
-            if(!sharedPreferences.getBoolean("THEME", true)) {
-                ((TextView)activity.findViewById(R.id.changes_upper)).setTextColor(activity.getResources().getColor(R.color.white));
-                ((TextView)activity.findViewById(R.id.changes_header)).setTextColor(activity.getResources().getColor(R.color.white));
+            if (!sharedPreferences.getBoolean("THEME", true)) {
+                ((TextView) activity.findViewById(R.id.changes_upper)).setTextColor(activity.getResources().getColor(R.color.white));
+                ((TextView) activity.findViewById(R.id.changes_header)).setTextColor(activity.getResources().getColor(R.color.white));
                 activity.findViewById(R.id.changes_container).setBackgroundColor(activity.getResources().getColor(R.color.darkgray));
             }
         }
@@ -108,7 +107,7 @@ public class GeneralDetails extends Abstract {
     private void drawOfferDetails(App app) {
         List<String> keyList = new ArrayList<>(app.getOfferDetails().keySet());
         Collections.reverse(keyList);
-        for (String key: keyList) {
+        for (String key : keyList) {
             addOfferItem(key, app.getOfferDetails().get(key));
         }
     }
@@ -151,7 +150,7 @@ public class GeneralDetails extends Abstract {
                 newVersion = app.getVersionCode() + ")";
             }
             textView.setText(activity.getString(R.string.details_versionName_updatable, currentVersion, newVersion));
-            setText(R.id.download,activity.getString(R.string.details_update));
+            setText(R.id.download, activity.getString(R.string.details_update));
         } catch (PackageManager.NameNotFoundException e) {
             // We've checked for that already
         }
@@ -174,7 +173,7 @@ public class GeneralDetails extends Abstract {
         initExpandableGroup(R.id.permissions_header, R.id.permissions_container);
         PackageManager pm = activity.getPackageManager();
         List<String> localizedPermissions = new ArrayList<>();
-        for (String permissionName: app.getPermissions()) {
+        for (String permissionName : app.getPermissions()) {
             try {
                 localizedPermissions.add(pm.getPermissionInfo(permissionName, 0).loadLabel(pm).toString());
             } catch (PackageManager.NameNotFoundException e) {

@@ -1,11 +1,12 @@
 package in.dragons.galaxy.task.playstore;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+
+import java.io.IOException;
+
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
-
-import java.io.IOException;
 
 public class FlagTask extends PlayStorePayloadTask<Boolean> implements CloneableTask {
 

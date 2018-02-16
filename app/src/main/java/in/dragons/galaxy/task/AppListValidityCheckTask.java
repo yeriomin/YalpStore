@@ -4,13 +4,13 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.os.AsyncTask;
 
-import in.dragons.galaxy.AppListActivity;
-import in.dragons.galaxy.BlackWhiteListManager;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import in.dragons.galaxy.AppListActivity;
+import in.dragons.galaxy.BlackWhiteListManager;
 
 public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String>> {
 
@@ -41,7 +41,7 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String
         }
         Set<String> removedPackageNames = new HashSet<>(activity.getListedPackageNames());
         removedPackageNames.removeAll(installedPackageNames);
-        for (String packageName: removedPackageNames) {
+        for (String packageName : removedPackageNames) {
             activity.removeApp(packageName);
         }
     }
@@ -58,11 +58,11 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String
             // TODO: There might be a way to avoid this exception, although I doubt it
         }
         BlackWhiteListManager manager = new BlackWhiteListManager(activity);
-        for (PackageInfo reducedPackageInfo: installedPackages) {
+        for (PackageInfo reducedPackageInfo : installedPackages) {
             if (!includeSystemApps
-                && null != reducedPackageInfo.applicationInfo
-                && (reducedPackageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
-            ) {
+                    && null != reducedPackageInfo.applicationInfo
+                    && (reducedPackageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+                    ) {
                 continue;
             }
             if (respectUpdateBlacklist && !manager.isUpdatable(reducedPackageInfo.packageName)) {

@@ -80,7 +80,7 @@ public abstract class GalaxyActivity extends AppCompatActivity implements Naviga
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
     }

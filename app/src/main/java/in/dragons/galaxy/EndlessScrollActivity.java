@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.TextView;
 
+import java.util.List;
+
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.EndlessScrollTask;
 import in.dragons.galaxy.view.ListItem;
 import in.dragons.galaxy.view.ProgressIndicator;
 import in.dragons.galaxy.view.SearchResultAppBadge;
-
-import java.util.List;
 
 abstract public class EndlessScrollActivity extends AppListActivity {
 

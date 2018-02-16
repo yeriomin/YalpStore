@@ -37,13 +37,13 @@ public class DeviceInfoActivity extends GalaxyActivity {
         Properties properties = new SpoofDeviceManager(this).getProperties(deviceName);
         setTitle(properties.getProperty("UserReadableName"));
         List<String> keys = new ArrayList<>();
-        for (Object key: properties.keySet()) {
+        for (Object key : properties.keySet()) {
             keys.add((String) key);
         }
         Collections.sort(keys);
 
         TableLayout table = (TableLayout) findViewById(R.id.device_info);
-        for (String key: keys) {
+        for (String key : keys) {
             addRow(table, key, ((String) properties.get(key)).replace(",", ", "));
         }
     }

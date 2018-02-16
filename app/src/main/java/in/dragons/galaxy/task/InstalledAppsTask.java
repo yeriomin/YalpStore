@@ -3,10 +3,10 @@ package in.dragons.galaxy.task;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-import in.dragons.galaxy.model.App;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import in.dragons.galaxy.model.App;
 
 public class InstalledAppsTask extends TaskWithProgress<Map<String, App>> {
 
@@ -28,7 +28,7 @@ public class InstalledAppsTask extends TaskWithProgress<Map<String, App>> {
 
     static protected Map<String, App> filterSystemApps(Map<String, App> apps) {
         Map<String, App> result = new HashMap<>();
-        for (App app: apps.values()) {
+        for (App app : apps.values()) {
             if (!app.isSystem()) {
                 result.put(app.getPackageName(), app);
             }
@@ -39,11 +39,11 @@ public class InstalledAppsTask extends TaskWithProgress<Map<String, App>> {
     public Map<String, App> getInstalledApps(boolean includeDisabled) {
         Map<String, App> installedApps = new HashMap<>();
         PackageManager pm = context.getPackageManager();
-        for (PackageInfo reducedPackageInfo: pm.getInstalledPackages(0)) {
+        for (PackageInfo reducedPackageInfo : pm.getInstalledPackages(0)) {
             if (!includeDisabled
-                && null != reducedPackageInfo.applicationInfo
-                && !reducedPackageInfo.applicationInfo.enabled
-            ) {
+                    && null != reducedPackageInfo.applicationInfo
+                    && !reducedPackageInfo.applicationInfo.enabled
+                    ) {
                 continue;
             }
             App app = getInstalledApp(pm, reducedPackageInfo.packageName);

@@ -99,7 +99,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
                         })
                         .setNegativeButton(R.string.dialog_theme_later, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                               return;
+                                return;
                             }
                         });
                 builder.show();

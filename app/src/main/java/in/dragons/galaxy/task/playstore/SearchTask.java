@@ -4,16 +4,17 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 
 import com.github.yeriomin.playstoreapi.SearchIterator;
-import in.dragons.galaxy.AppListIterator;
-import in.dragons.galaxy.CategoryManager;
-import in.dragons.galaxy.PlayStoreApiAuthenticator;
-import in.dragons.galaxy.model.App;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import in.dragons.galaxy.AppListIterator;
+import in.dragons.galaxy.CategoryManager;
+import in.dragons.galaxy.PlayStoreApiAuthenticator;
+import in.dragons.galaxy.model.App;
 
 public class SearchTask extends EndlessScrollTask implements CloneableTask {
 
@@ -69,7 +70,7 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
     @Override
     protected List<App> getNextBatch(AppListIterator iterator) {
         List<App> apps = new ArrayList<>();
-        for (App app: iterator.next()) {
+        for (App app : iterator.next()) {
             app.setInstalled(installedPackageNames.contains(app.getPackageName()));
             if (categoryManager.fits(app.getCategoryId(), filter.getCategory())) {
                 apps.add(app);

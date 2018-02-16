@@ -28,8 +28,8 @@ public class EglExtensionRetriever {
         if (egl10.eglGetConfigs(display, null, 0, cf)) {
             EGLConfig[] configs = new EGLConfig[cf[0]];
             if (egl10.eglGetConfigs(display, configs, cf[0], cf)) {
-                int[] a1 = new int[] {EGL10.EGL_WIDTH, EGL10.EGL_PBUFFER_BIT, EGL10.EGL_HEIGHT, EGL10.EGL_PBUFFER_BIT, EGL10.EGL_NONE};
-                int[] a2 = new int[] {12440, EGL10.EGL_PIXMAP_BIT, EGL10.EGL_NONE};
+                int[] a1 = new int[]{EGL10.EGL_WIDTH, EGL10.EGL_PBUFFER_BIT, EGL10.EGL_HEIGHT, EGL10.EGL_PBUFFER_BIT, EGL10.EGL_NONE};
+                int[] a2 = new int[]{12440, EGL10.EGL_PIXMAP_BIT, EGL10.EGL_NONE};
                 int[] a3 = new int[1];
                 for (int i = 0; i < cf[0]; i++) {
                     egl10.eglGetConfigAttrib(display, configs[i], EGL10.EGL_CONFIG_CAVEAT, a3);

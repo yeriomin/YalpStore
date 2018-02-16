@@ -2,7 +2,6 @@ package in.dragons.galaxy.fragment.details;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.ImageButton;
 
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.DownloadState;

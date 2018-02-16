@@ -3,10 +3,10 @@ package in.dragons.galaxy.selfupdate;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
-import in.dragons.galaxy.BuildConfig;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import in.dragons.galaxy.BuildConfig;
 
 public class Signature {
 
@@ -29,7 +29,7 @@ public class Signature {
         }
         currentSignatures = new HashSet<>();
         try {
-            for (android.content.pm.Signature signature: context.getPackageManager().getPackageInfo(BuildConfig.APPLICATION_ID, PackageManager.GET_SIGNATURES).signatures) {
+            for (android.content.pm.Signature signature : context.getPackageManager().getPackageInfo(BuildConfig.APPLICATION_ID, PackageManager.GET_SIGNATURES).signatures) {
                 currentSignatures.add(signature.toCharsString());
             }
         } catch (PackageManager.NameNotFoundException e) {

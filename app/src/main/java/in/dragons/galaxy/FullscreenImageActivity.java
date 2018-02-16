@@ -18,8 +18,8 @@ public class FullscreenImageActivity extends Activity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
         setContentView(R.layout.fullscreen_image_activity_layout);
 
@@ -38,10 +38,10 @@ public class FullscreenImageActivity extends Activity {
 
         Gallery gallery = ((Gallery) findViewById(R.id.gallery));
         gallery.setAdapter(new FullscreenImageAdapter(
-            this,
-            DetailsActivity.app.getScreenshotUrls(),
-            getWindowManager().getDefaultDisplay().getWidth(),
-            getWindowManager().getDefaultDisplay().getHeight()
+                this,
+                DetailsActivity.app.getScreenshotUrls(),
+                getWindowManager().getDefaultDisplay().getWidth(),
+                getWindowManager().getDefaultDisplay().getHeight()
         ));
         gallery.setSelection(intent.getIntExtra(INTENT_SCREENSHOT_NUMBER, 0));
     }

@@ -11,8 +11,6 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import in.dragons.galaxy.OnProgressBarListener;
-
 import static in.dragons.galaxy.NumberProgressBar.ProgressTextVisibility.Invisible;
 import static in.dragons.galaxy.NumberProgressBar.ProgressTextVisibility.Visible;
 
@@ -430,7 +428,7 @@ public class NumberProgressBar extends View {
             setProgress(getProgress() + by);
         }
 
-        if(mListener != null){
+        if (mListener != null) {
             mListener.onProgressChange(getProgress(), getMax());
         }
     }
@@ -501,7 +499,7 @@ public class NumberProgressBar extends View {
         return mIfDrawText;
     }
 
-    public void setOnProgressBarListener(OnProgressBarListener listener){
+    public void setOnProgressBarListener(OnProgressBarListener listener) {
         mListener = listener;
     }
 }

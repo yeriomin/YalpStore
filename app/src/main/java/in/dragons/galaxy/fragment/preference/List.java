@@ -3,10 +3,10 @@ package in.dragons.galaxy.fragment.preference;
 import android.os.AsyncTask;
 import android.preference.ListPreference;
 
+import java.util.Map;
+
 import in.dragons.galaxy.OnListPreferenceChangeListener;
 import in.dragons.galaxy.PreferenceActivity;
-
-import java.util.Map;
 
 public abstract class List extends Abstract {
 
@@ -14,6 +14,7 @@ public abstract class List extends Abstract {
     protected Map<String, String> keyValueMap;
 
     abstract protected Map<String, String> getKeyValueMap();
+
     abstract protected OnListPreferenceChangeListener getOnListPreferenceChangeListener();
 
     public List(PreferenceActivity activity) {

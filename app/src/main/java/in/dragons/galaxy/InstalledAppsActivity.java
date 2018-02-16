@@ -20,7 +20,7 @@ public class InstalledAppsActivity extends AppListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        setTheme(sharedPreferences.getBoolean("THEME", true)?R.style.AppTheme:R.style.AppTheme_Dark);
+        setTheme(sharedPreferences.getBoolean("THEME", true) ? R.style.AppTheme : R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
         ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
         setTitle(R.string.activity_title_updates_and_other_apps);

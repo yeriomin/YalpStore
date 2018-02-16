@@ -9,11 +9,12 @@ import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.Image;
 import com.github.yeriomin.playstoreapi.RelatedLink;
 import com.github.yeriomin.playstoreapi.Unknown25Item;
-import in.dragons.galaxy.Util;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import in.dragons.galaxy.Util;
 
 public class AppBuilder {
 
@@ -80,7 +81,7 @@ public class AppBuilder {
         if (!appDetails.hasDependencies() || appDetails.getDependencies().getDependencyCount() == 0) {
             return;
         }
-        for (Dependency dep: appDetails.getDependencies().getDependencyList()) {
+        for (Dependency dep : appDetails.getDependencies().getDependencyList()) {
             app.getDependencies().add(dep.getPackageName());
         }
     }
@@ -89,7 +90,7 @@ public class AppBuilder {
         if (!details.hasUnknown25() || details.getUnknown25().getItemCount() == 0) {
             return;
         }
-        for (Unknown25Item item: details.getUnknown25().getItemList()) {
+        for (Unknown25Item item : details.getUnknown25().getItemList()) {
             if (!item.hasContainer()) {
                 continue;
             }
@@ -101,7 +102,7 @@ public class AppBuilder {
         if (!details.hasRelatedLinks()) {
             return;
         }
-        for (RelatedLink link: details.getRelatedLinks().getRelatedLinksList()) {
+        for (RelatedLink link : details.getRelatedLinks().getRelatedLinksList()) {
             if (!link.hasLabel() || !link.hasUrl1()) {
                 continue;
             }
@@ -110,7 +111,7 @@ public class AppBuilder {
     }
 
     static private void fillImages(App app, List<Image> images) {
-        for (Image image: images) {
+        for (Image image : images) {
             if (image.getImageType() == IMAGE_ICON) {
                 app.setIconUrl(image.getImageUrl());
             } else if (image.getImageType() == IMAGE_VIDEO) {

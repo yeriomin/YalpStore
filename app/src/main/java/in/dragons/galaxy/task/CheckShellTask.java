@@ -7,17 +7,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 
-import in.dragons.galaxy.ContextUtil;
-import in.dragons.galaxy.R;
-import in.dragons.galaxy.SearchActivity;
-import in.dragons.galaxy.SystemRemountDialogBuilder;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import eu.chainfire.libsuperuser.Shell;
+import in.dragons.galaxy.ContextUtil;
+import in.dragons.galaxy.R;
+import in.dragons.galaxy.SearchActivity;
+import in.dragons.galaxy.SystemRemountDialogBuilder;
 
 public class CheckShellTask extends TaskWithProgress<Boolean> {
 
@@ -32,14 +31,14 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
     static private final String COMMAND_CHOWN = "chown";
     static private final String COMMAND_CHGRP = "chgrp";
     static private final String COMMAND_BUSYBOX = "busybox";
-    static private final String[] COMMANDS = new String[] {
-        COMMAND_MV,
-        COMMAND_RM,
-        COMMAND_MKDIR,
-        COMMAND_CHMOD,
-        COMMAND_CHOWN,
-        COMMAND_CHGRP,
-        COMMAND_BUSYBOX
+    static private final String[] COMMANDS = new String[]{
+            COMMAND_MV,
+            COMMAND_RM,
+            COMMAND_MKDIR,
+            COMMAND_CHMOD,
+            COMMAND_CHOWN,
+            COMMAND_CHGRP,
+            COMMAND_BUSYBOX
     };
 
     private boolean availableCoreutils;
@@ -73,7 +72,7 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
 
     private List<String> getCommands() {
         List<String> commands = new ArrayList<>();
-        for (String command: COMMANDS) {
+        for (String command : COMMANDS) {
             commands.add(command);
             commands.add(COMMAND_ECHO + command + COMMAND_RETURNED + COMMAND_CODE);
         }
@@ -82,12 +81,12 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
 
     private Map<String, Boolean> processOutput(List<String> output) {
         Map<String, Boolean> flags = new HashMap<>();
-        for (String command: COMMANDS) {
+        for (String command : COMMANDS) {
             flags.put(command, false);
         }
-        for (String line: output) {
+        for (String line : output) {
             Log.d(getClass().getSimpleName(), line);
-            for (String command: COMMANDS) {
+            for (String command : COMMANDS) {
                 if (line.contains(command + COMMAND_RETURNED)) {
                     int returnCode = Integer.parseInt(line.substring((command + COMMAND_RETURNED).length()).trim());
                     flags.put(command, returnCode != RETURN_CODE_NOT_FOUND);
@@ -100,8 +99,8 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
     @Override
     protected void onPreExecute() {
         prepareDialog(
-            R.string.dialog_message_checking_busybox,
-            R.string.dialog_title_checking_busybox
+                R.string.dialog_message_checking_busybox,
+                R.string.dialog_title_checking_busybox
         );
         super.onPreExecute();
     }
@@ -121,29 +120,29 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
 
     private void askAndExecute(SystemRemountTask task) {
         new SystemRemountDialogBuilder(context)
-            .setPrimaryTask(task)
-            .show()
+                .setPrimaryTask(task)
+                .show()
         ;
     }
 
     private void showBusyboxDialog() {
         new AlertDialog.Builder(context)
-            .setMessage(R.string.dialog_message_busybox_not_available)
-            .setTitle(R.string.dialog_title_busybox_not_available)
-            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    context.startActivity(getBusyboxSearchIntent());
-                    dialog.dismiss();
-                }
-            })
-            .setNegativeButton(R.string.dialog_two_factor_cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            })
-            .show()
+                .setMessage(R.string.dialog_message_busybox_not_available)
+                .setTitle(R.string.dialog_title_busybox_not_available)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        context.startActivity(getBusyboxSearchIntent());
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton(R.string.dialog_two_factor_cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show()
         ;
     }
 

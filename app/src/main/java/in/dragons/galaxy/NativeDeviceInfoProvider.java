@@ -62,65 +62,65 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
     public String getUserAgentString() {
         return "Android-Finsky/" + gsfVersionProvider.getVendingVersionString(true) + " ("
-            + "api=3"
-            + ",versionCode=" + gsfVersionProvider.getVendingVersionCode(true)
-            + ",sdk=" + Build.VERSION.SDK_INT
-            + ",device=" + Build.DEVICE
-            + ",hardware=" + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
-            + ",product=" + Build.PRODUCT
-            + ",platformVersionRelease=" + Build.VERSION.RELEASE
-            + ",model=" + Build.MODEL
-            + ",buildId=" + Build.ID
-            + ",isWideScreen=" + (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? "1" : "0")
-            + ",supportedAbis=" + TextUtils.join(";", getPlatforms())
-            + ")"
-        ;
+                + "api=3"
+                + ",versionCode=" + gsfVersionProvider.getVendingVersionCode(true)
+                + ",sdk=" + Build.VERSION.SDK_INT
+                + ",device=" + Build.DEVICE
+                + ",hardware=" + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
+                + ",product=" + Build.PRODUCT
+                + ",platformVersionRelease=" + Build.VERSION.RELEASE
+                + ",model=" + Build.MODEL
+                + ",buildId=" + Build.ID
+                + ",isWideScreen=" + (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? "1" : "0")
+                + ",supportedAbis=" + TextUtils.join(";", getPlatforms())
+                + ")"
+                ;
     }
 
     public AndroidCheckinRequest generateAndroidCheckinRequest() {
         return AndroidCheckinRequest
-            .newBuilder()
-            .setId(0)
-            .setCheckin(getCheckinProto())
-            .setLocale(this.localeString)
-            .setTimeZone(TimeZone.getDefault().getID())
-            .setVersion(3)
-            .setDeviceConfiguration(getDeviceConfigurationProto())
-            .setFragment(0)
-            .build()
-        ;
+                .newBuilder()
+                .setId(0)
+                .setCheckin(getCheckinProto())
+                .setLocale(this.localeString)
+                .setTimeZone(TimeZone.getDefault().getID())
+                .setVersion(3)
+                .setDeviceConfiguration(getDeviceConfigurationProto())
+                .setFragment(0)
+                .build()
+                ;
     }
 
     private AndroidCheckinProto getCheckinProto() {
         return AndroidCheckinProto.newBuilder()
-            .setBuild(getBuildProto())
-            .setLastCheckinMsec(0)
-            .setCellOperator(networkOperator)
-            .setSimOperator(simOperator)
-            .setRoaming("mobile-notroaming")
-            .setUserNumber(0)
-            .build()
-        ;
+                .setBuild(getBuildProto())
+                .setLastCheckinMsec(0)
+                .setCellOperator(networkOperator)
+                .setSimOperator(simOperator)
+                .setRoaming("mobile-notroaming")
+                .setUserNumber(0)
+                .build()
+                ;
     }
 
     private AndroidBuildProto getBuildProto() {
         return AndroidBuildProto.newBuilder()
-            .setId(Build.FINGERPRINT)
-            .setProduct(Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
-            .setCarrier(Build.BRAND)
-            .setRadio(Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.RADIO : Build.MODEL)
-            .setBootloader(Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.BOOTLOADER : Build.MODEL)
-            .setDevice(Build.DEVICE)
-            .setSdkVersion(Build.VERSION.SDK_INT)
-            .setModel(Build.MODEL)
-            .setManufacturer(Build.MANUFACTURER)
-            .setBuildProduct(Build.PRODUCT)
-            .setClient("android-google")
-            .setOtaInstalled(false)
-            .setTimestamp(System.currentTimeMillis() / 1000)
-            .setGoogleServices(getPlayServicesVersion())
-            .build()
-        ;
+                .setId(Build.FINGERPRINT)
+                .setProduct(Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
+                .setCarrier(Build.BRAND)
+                .setRadio(Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.RADIO : Build.MODEL)
+                .setBootloader(Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.BOOTLOADER : Build.MODEL)
+                .setDevice(Build.DEVICE)
+                .setSdkVersion(Build.VERSION.SDK_INT)
+                .setModel(Build.MODEL)
+                .setManufacturer(Build.MANUFACTURER)
+                .setBuildProduct(Build.PRODUCT)
+                .setClient("android-google")
+                .setOtaInstalled(false)
+                .setTimestamp(System.currentTimeMillis() / 1000)
+                .setGoogleServices(getPlayServicesVersion())
+                .build()
+                ;
     }
 
     public DeviceConfigurationProto getDeviceConfigurationProto() {
@@ -128,22 +128,22 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         addDisplayMetrics(builder);
         addConfiguration(builder);
         return builder
-            .addAllNativePlatform(getPlatforms())
-            .addAllSystemSharedLibrary(getSharedLibraries(context))
-            .addAllSystemAvailableFeature(getFeatures(context))
-            .addAllSystemSupportedLocale(getLocales(context))
-            .setGlEsVersion(((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getDeviceConfigurationInfo().reqGlEsVersion)
-            .addAllGlExtension(EglExtensionRetriever.getEglExtensions())
-            .build()
-        ;
+                .addAllNativePlatform(getPlatforms())
+                .addAllSystemSharedLibrary(getSharedLibraries(context))
+                .addAllSystemAvailableFeature(getFeatures(context))
+                .addAllSystemSupportedLocale(getLocales(context))
+                .setGlEsVersion(((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getDeviceConfigurationInfo().reqGlEsVersion)
+                .addAllGlExtension(EglExtensionRetriever.getEglExtensions())
+                .build()
+                ;
     }
 
     private DeviceConfigurationProto.Builder addDisplayMetrics(DeviceConfigurationProto.Builder builder) {
         DisplayMetrics metrics = this.context.getResources().getDisplayMetrics();
         builder
-            .setScreenDensity((int) (metrics.density * 160f))
-            .setScreenWidth(metrics.widthPixels)
-            .setScreenHeight(metrics.heightPixels)
+                .setScreenDensity((int) (metrics.density * 160f))
+                .setScreenWidth(metrics.widthPixels)
+                .setScreenHeight(metrics.heightPixels)
         ;
         return builder;
     }
@@ -151,12 +151,12 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     private DeviceConfigurationProto.Builder addConfiguration(DeviceConfigurationProto.Builder builder) {
         Configuration config = this.context.getResources().getConfiguration();
         builder
-            .setTouchScreen(config.touchscreen)
-            .setKeyboard(config.keyboard)
-            .setNavigation(config.navigation)
-            .setScreenLayout(config.screenLayout & 15)
-            .setHasHardKeyboard(config.keyboard == Configuration.KEYBOARD_QWERTY)
-            .setHasFiveWayNavigation(config.navigation == Configuration.NAVIGATIONHIDDEN_YES)
+                .setTouchScreen(config.touchscreen)
+                .setKeyboard(config.keyboard)
+                .setNavigation(config.navigation)
+                .setScreenLayout(config.screenLayout & 15)
+                .setHasHardKeyboard(config.keyboard == Configuration.KEYBOARD_QWERTY)
+                .setHasFiveWayNavigation(config.navigation == Configuration.NAVIGATIONHIDDEN_YES)
         ;
         return builder;
     }
@@ -178,7 +178,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
 
     static public List<String> getFeatures(Context context) {
         List<String> featureStringList = new ArrayList<>();
-        for (FeatureInfo feature: context.getPackageManager().getSystemAvailableFeatures()) {
+        for (FeatureInfo feature : context.getPackageManager().getSystemAvailableFeatures()) {
             if (!TextUtils.isEmpty(feature.name)) {
                 featureStringList.add(feature.name);
             }
@@ -192,12 +192,12 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             rawLocales.addAll(Arrays.asList(context.getAssets().getLocales()));
         } else {
-            for (Locale locale: Locale.getAvailableLocales()) {
+            for (Locale locale : Locale.getAvailableLocales()) {
                 rawLocales.add(locale.toString());
             }
         }
         List<String> locales = new ArrayList<>();
-        for (String locale: rawLocales) {
+        for (String locale : rawLocales) {
             if (TextUtils.isEmpty(locale)) {
                 continue;
             }

@@ -10,8 +10,11 @@ abstract public class NotificationBuilder {
     protected Context context;
 
     abstract public NotificationBuilder setTitle(String title);
+
     abstract public NotificationBuilder setMessage(String message);
+
     abstract public NotificationBuilder setIntent(Intent intent);
+
     abstract public Notification build();
 
     public NotificationBuilder addAction(int iconId, int stringId, PendingIntent pendingIntent) {

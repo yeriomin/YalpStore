@@ -5,18 +5,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import in.dragons.galaxy.BlackWhiteListManager;
-import in.dragons.galaxy.BuildConfig;
-import in.dragons.galaxy.R;
-import in.dragons.galaxy.UpdatableAppsActivity;
-import in.dragons.galaxy.GalaxyApplication;
-import in.dragons.galaxy.GalaxyPermissionManager;
-import in.dragons.galaxy.model.App;
-import in.dragons.galaxy.selfupdate.UpdaterFactory;
-import in.dragons.galaxy.task.InstalledAppsTask;
 
 import java.io.IOException;
 import java.util.List;
+
+import in.dragons.galaxy.BlackWhiteListManager;
+import in.dragons.galaxy.BuildConfig;
+import in.dragons.galaxy.GalaxyApplication;
+import in.dragons.galaxy.GalaxyPermissionManager;
+import in.dragons.galaxy.R;
+import in.dragons.galaxy.UpdatableAppsActivity;
+import in.dragons.galaxy.model.App;
+import in.dragons.galaxy.selfupdate.UpdaterFactory;
+import in.dragons.galaxy.task.InstalledAppsTask;
 
 public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements CloneableTask {
 
@@ -44,7 +45,7 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         int latestVersionCode = UpdaterFactory.get(context).getLatestVersionCode();
         if (latestVersionCode > BuildConfig.VERSION_CODE) {
             App Galaxy = InstalledAppsTask.getInstalledApp(context.getPackageManager(), BuildConfig.APPLICATION_ID);
-            if (null == Galaxy ) {
+            if (null == Galaxy) {
                 return updatableApps;
             }
             Galaxy.setVersionCode(latestVersionCode);

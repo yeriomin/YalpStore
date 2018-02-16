@@ -1,27 +1,19 @@
 package in.dragons.galaxy;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import in.dragons.galaxy.fragment.details.ButtonDownload;
 import in.dragons.galaxy.fragment.details.ButtonUninstall;
@@ -29,23 +21,15 @@ import in.dragons.galaxy.fragment.details.DownloadOptions;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.view.AppBadge;
 import in.dragons.galaxy.view.ListItem;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-abstract public class AppListActivity extends GalaxyActivity implements NavigationView.OnNavigationItemSelectedListener{
+abstract public class AppListActivity extends GalaxyActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     protected ListView listView;
     protected Map<String, ListItem> listItems = new HashMap<>();
     protected String Email;
 
     abstract public void loadApps();
+
     abstract protected ListItem getListItem(App app);
 
     @Override
@@ -142,7 +126,7 @@ abstract public class AppListActivity extends GalaxyActivity implements Navigati
     public void addApps(List<App> appsToAdd, boolean update) {
         AppListAdapter adapter = (AppListAdapter) getListView().getAdapter();
         adapter.setNotifyOnChange(false);
-        for (App app: appsToAdd) {
+        for (App app : appsToAdd) {
             ListItem listItem = getListItem(app);
             listItems.put(app.getPackageName(), listItem);
             adapter.add(listItem);

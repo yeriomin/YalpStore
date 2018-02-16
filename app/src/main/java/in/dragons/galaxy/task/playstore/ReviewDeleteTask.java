@@ -3,10 +3,11 @@ package in.dragons.galaxy.task.playstore;
 import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import in.dragons.galaxy.DetailsActivity;
-import in.dragons.galaxy.fragment.details.Review;
 
 import java.io.IOException;
+
+import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.fragment.details.Review;
 
 public class ReviewDeleteTask extends PlayStorePayloadTask<Void> {
 

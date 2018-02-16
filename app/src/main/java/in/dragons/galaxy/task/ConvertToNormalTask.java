@@ -2,10 +2,10 @@ package in.dragons.galaxy.task;
 
 import android.content.Context;
 
-import in.dragons.galaxy.model.App;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import in.dragons.galaxy.model.App;
 
 public class ConvertToNormalTask extends SystemRemountTask {
 

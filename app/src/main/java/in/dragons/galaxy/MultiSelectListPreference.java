@@ -32,7 +32,7 @@ public class MultiSelectListPreference extends DialogPreference {
         super(context, attrs);
 
         final TypedArray a = context.obtainStyledAttributes(
-            attrs, R.styleable.MultiSelectListPreference);
+                attrs, R.styleable.MultiSelectListPreference);
 
         final int n = a.getIndexCount();
 
@@ -67,7 +67,7 @@ public class MultiSelectListPreference extends DialogPreference {
      * second item in this array will be saved to the preference.
      *
      * @param entryValues The array to be used as values to save for the
-     *            preference.
+     *                    preference.
      */
     public void setEntryValues(CharSequence[] entryValues) {
         mEntryValues = entryValues;
@@ -96,8 +96,8 @@ public class MultiSelectListPreference extends DialogPreference {
 
         if (mEntries == null || mEntryValues == null) {
             throw new IllegalStateException(
-                "MultiSelectListPreference requires an entries array and "
-                    + "an entryValues array.");
+                    "MultiSelectListPreference requires an entries array and "
+                            + "an entryValues array.");
         }
 
         if (mNewValues == null) {
@@ -108,18 +108,18 @@ public class MultiSelectListPreference extends DialogPreference {
 
         final boolean[] checkedItems = getSelectedItems(mNewValues);
         builder.setMultiChoiceItems(mEntries, checkedItems,
-            new DialogInterface.OnMultiChoiceClickListener() {
-                public void onClick(DialogInterface dialog, int which,
-                                    boolean isChecked) {
-                    if (isChecked) {
-                        mPreferenceChanged |= mNewValues
-                            .add(mEntryValues[which].toString());
-                    } else {
-                        mPreferenceChanged |= mNewValues
-                            .remove(mEntryValues[which].toString());
+                new DialogInterface.OnMultiChoiceClickListener() {
+                    public void onClick(DialogInterface dialog, int which,
+                                        boolean isChecked) {
+                        if (isChecked) {
+                            mPreferenceChanged |= mNewValues
+                                    .add(mEntryValues[which].toString());
+                        } else {
+                            mPreferenceChanged |= mNewValues
+                                    .remove(mEntryValues[which].toString());
+                        }
                     }
-                }
-            });
+                });
     }
 
     private boolean[] getSelectedItems(final Set<String> values) {
@@ -166,7 +166,7 @@ public class MultiSelectListPreference extends DialogPreference {
     @Override
     protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
         setValues(restoreValue ? getPersistedStringSetCompat(mValues)
-            : (Set<String>) defaultValue);
+                : (Set<String>) defaultValue);
     }
 
     @Override
@@ -184,7 +184,7 @@ public class MultiSelectListPreference extends DialogPreference {
         if (state instanceof SavedState) {
             final SavedState myState = (SavedState) state;
             if (myState.values != null) {
-                mValues =  myState.values;
+                mValues = myState.values;
             }
             if (myState.newValues != null) {
                 mNewValues = myState.newValues;

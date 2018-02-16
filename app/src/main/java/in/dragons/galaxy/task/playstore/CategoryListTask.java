@@ -4,11 +4,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import in.dragons.galaxy.CategoryAppsActivity;
-import in.dragons.galaxy.CategoryListActivity;
-
 import java.util.ArrayList;
 import java.util.Map;
+
+import in.dragons.galaxy.CategoryAppsActivity;
+import in.dragons.galaxy.CategoryListActivity;
 
 public class CategoryListTask extends CategoryTask implements CloneableTask {
 

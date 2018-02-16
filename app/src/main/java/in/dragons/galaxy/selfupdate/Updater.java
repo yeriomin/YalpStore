@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import in.dragons.galaxy.BuildConfig;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -13,11 +11,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import in.dragons.galaxy.BuildConfig;
+
 abstract public class Updater {
 
     static private final String CACHED_VERSION_CODE = "CACHED_VERSION_CODE";
     static private final String CACHED_VERSION_CODE_CHECKED_AT = "CACHED_VERSION_CODE_CHECKED_AT";
-    static private final long CACHED_VERSION_CODE_VALID_FOR = 60*60;
+    static private final long CACHED_VERSION_CODE_VALID_FOR = 60 * 60;
 
     protected Context context;
 
@@ -42,9 +42,9 @@ abstract public class Updater {
     private int getCachedVersionCode() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return (System.currentTimeMillis() - preferences.getLong(CACHED_VERSION_CODE_CHECKED_AT, 0)) > CACHED_VERSION_CODE_VALID_FOR
-            ? 0
-            : preferences.getInt(CACHED_VERSION_CODE, 0)
-        ;
+                ? 0
+                : preferences.getInt(CACHED_VERSION_CODE, 0)
+                ;
     }
 
     private void cacheVersionCode(int versionCode) {

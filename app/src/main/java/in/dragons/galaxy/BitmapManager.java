@@ -24,7 +24,7 @@ import javax.net.ssl.X509TrustManager;
 
 public class BitmapManager {
 
-    static private final long VALID_MILLIS = 1000*60*60*24*7;
+    static private final long VALID_MILLIS = 1000 * 60 * 60 * 24 * 7;
     static private LruCache<String, Bitmap> memoryCache;
 
     private File baseDir;
@@ -102,9 +102,9 @@ public class BitmapManager {
 
     static private boolean isStoredAndValid(File cached) {
         return cached.exists()
-            && cached.lastModified() + VALID_MILLIS > System.currentTimeMillis()
-            && cached.length() > 0
-        ;
+                && cached.lastModified() + VALID_MILLIS > System.currentTimeMillis()
+                && cached.length() > 0
+                ;
     }
 
     static private Bitmap getCachedBitmapFromDisk(File cached) {

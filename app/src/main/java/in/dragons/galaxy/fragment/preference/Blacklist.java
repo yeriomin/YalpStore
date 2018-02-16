@@ -4,15 +4,15 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import in.dragons.galaxy.MultiSelectListPreference;
 import in.dragons.galaxy.PreferenceActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.InstalledAppsTask;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Blacklist extends Abstract {
 
@@ -62,15 +62,15 @@ public class Blacklist extends Abstract {
             String value = (String) newValue;
             boolean isBlackList = null != value && value.equals(PreferenceActivity.LIST_BLACK);
             appList.setTitle(appList.getContext().getString(
-                isBlackList
-                    ? R.string.pref_update_list_black
-                    : R.string.pref_update_list_white
+                    isBlackList
+                            ? R.string.pref_update_list_black
+                            : R.string.pref_update_list_white
             ));
             appList.setDialogTitle(appList.getTitle());
             preference.setSummary(appList.getContext().getString(
-                isBlackList
-                    ? R.string.pref_update_list_white_or_black_black
-                    : R.string.pref_update_list_white_or_black_white
+                    isBlackList
+                            ? R.string.pref_update_list_white_or_black_black
+                            : R.string.pref_update_list_white_or_black_white
             ));
             autoWhitelist.setEnabled(!isBlackList);
             return true;
@@ -104,7 +104,7 @@ public class Blacklist extends Abstract {
         protected Map<String, App> doInBackground(String... strings) {
             Map<String, App> installedApps = super.doInBackground(strings);
             Map<String, String> appNames = new HashMap<>();
-            for (String packageName: installedApps.keySet()) {
+            for (String packageName : installedApps.keySet()) {
                 appNames.put(packageName, installedApps.get(packageName).getDisplayName());
             }
             this.appNames = Util.sort(appNames);

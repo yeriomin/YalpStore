@@ -10,7 +10,8 @@ abstract public class ScrollEdgeListener implements ListView.OnScrollListener {
     abstract protected void loadMore();
 
     @Override
-    public void onScrollStateChanged(AbsListView view, int scrollState) {}
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+    }
 
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {

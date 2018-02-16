@@ -5,9 +5,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
-import in.dragons.galaxy.R;
-
 import java.lang.reflect.Method;
+
+import in.dragons.galaxy.R;
 
 class NotificationBuilderLegacy extends NotificationBuilder {
 

@@ -3,7 +3,6 @@ package in.dragons.galaxy.fragment.details;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.R;
@@ -11,7 +10,7 @@ import in.dragons.galaxy.model.App;
 
 public class Share extends Abstract {
 
-    static private String PLAYSTORE_LINK_PREFIX= "https://play.google.com/store/apps/details?id=";
+    static private String PLAYSTORE_LINK_PREFIX = "https://play.google.com/store/apps/details?id=";
 
     public Share(DetailsActivity activity, App app) {
         super(activity, app);

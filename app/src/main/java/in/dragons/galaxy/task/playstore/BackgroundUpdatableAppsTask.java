@@ -8,9 +8,12 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
 
+import java.util.List;
+
 import in.dragons.galaxy.DownloadManagerAdapter;
 import in.dragons.galaxy.DownloadManagerFactory;
 import in.dragons.galaxy.DownloadState;
+import in.dragons.galaxy.GalaxyApplication;
 import in.dragons.galaxy.InstallerAbstract;
 import in.dragons.galaxy.InstallerFactory;
 import in.dragons.galaxy.NetworkState;
@@ -19,11 +22,8 @@ import in.dragons.galaxy.PreferenceActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.UpdatableAppsActivity;
 import in.dragons.galaxy.UpdateAllReceiver;
-import in.dragons.galaxy.GalaxyApplication;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.notification.NotificationManagerWrapper;
-
-import java.util.List;
 
 public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements CloneableTask {
 
@@ -70,20 +70,20 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
             return false;
         }
         return forceUpdate ||
-            (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
-                && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
-                    || !PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
-                    || !NetworkState.isMetered(context)
+                (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
+                        && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
+                        || !PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
+                        || !NetworkState.isMetered(context)
                 )
-            )
-        ;
+                )
+                ;
     }
 
     private void process(Context context, List<App> apps) {
         boolean canInstallInBackground = PreferenceActivity.canInstallInBackground(context);
         GalaxyApplication application = (GalaxyApplication) context.getApplicationContext();
         application.clearPendingUpdates();
-        for (App app: apps) {
+        for (App app : apps) {
             application.addPendingUpdate(app.getPackageName());
             if (!Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).exists()) {
                 download(context, app);
@@ -110,8 +110,8 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         task.setApp(app);
         task.setContext(context);
         task.setTriggeredBy(context instanceof Activity
-            ? DownloadState.TriggeredBy.UPDATE_ALL_BUTTON
-            : DownloadState.TriggeredBy.SCHEDULED_UPDATE
+                ? DownloadState.TriggeredBy.UPDATE_ALL_BUTTON
+                : DownloadState.TriggeredBy.SCHEDULED_UPDATE
         );
         return task;
     }
@@ -120,17 +120,17 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         Intent i = new Intent(context, UpdatableAppsActivity.class);
         i.setAction(Intent.ACTION_VIEW);
         new NotificationManagerWrapper(context).show(
-            i,
-            context.getString(R.string.notification_updates_available_title),
-            context.getString(R.string.notification_updates_available_message, updatesCount)
+                i,
+                context.getString(R.string.notification_updates_available_title),
+                context.getString(R.string.notification_updates_available_message, updatesCount)
         );
     }
 
     private void notifyDownloadedAlready(App app) {
         new NotificationManagerWrapper(context).show(
-            InstallerAbstract.getOpenApkIntent(context, Paths.getApkPath(context, app.getPackageName(), app.getVersionCode())),
-            app.getDisplayName(),
-            context.getString(R.string.notification_download_complete)
+                InstallerAbstract.getOpenApkIntent(context, Paths.getApkPath(context, app.getPackageName(), app.getVersionCode())),
+                app.getDisplayName(),
+                context.getString(R.string.notification_download_complete)
         );
     }
 }

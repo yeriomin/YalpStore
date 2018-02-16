@@ -1,9 +1,10 @@
 package in.dragons.galaxy.task.playstore;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import in.dragons.galaxy.model.App;
 
 import java.io.IOException;
+
+import in.dragons.galaxy.model.App;
 
 public class BetaToggleTask extends PlayStorePayloadTask<Void> {
 

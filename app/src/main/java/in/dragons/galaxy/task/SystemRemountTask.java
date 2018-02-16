@@ -5,13 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
 
-import in.dragons.galaxy.R;
-import in.dragons.galaxy.model.App;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
+import in.dragons.galaxy.R;
+import in.dragons.galaxy.model.App;
 
 public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
 
@@ -39,8 +38,8 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
     @Override
     protected void onPreExecute() {
         prepareDialog(
-            R.string.dialog_message_remounting_system,
-            R.string.dialog_title_remounting_system
+                R.string.dialog_message_remounting_system,
+                R.string.dialog_title_remounting_system
         );
         super.onPreExecute();
     }
@@ -58,7 +57,7 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
     protected void onPostExecute(List<String> output) {
         super.onPostExecute(output);
         if (null != output) {
-            for (String outputLine: output) {
+            for (String outputLine : output) {
                 Log.i(getClass().getSimpleName(), outputLine);
             }
         }
@@ -71,22 +70,22 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
 
     private void showRebootDialog() {
         new AlertDialog.Builder(context)
-            .setMessage(R.string.dialog_message_reboot_required)
-            .setTitle(R.string.dialog_title_reboot_required)
-            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    new RebootTask().execute();
-                    dialog.dismiss();
-                }
-            })
-            .setNegativeButton(R.string.dialog_two_factor_cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            })
-            .show()
+                .setMessage(R.string.dialog_message_reboot_required)
+                .setTitle(R.string.dialog_title_reboot_required)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        new RebootTask().execute();
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton(R.string.dialog_two_factor_cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show()
         ;
     }
 }
