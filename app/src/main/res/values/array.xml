@@ -42,9 +42,9 @@
     </string-array>
     <string-array translatable="false" name="filterRatingLabels">
         <item>@string/search_filter</item>
-        <item>>3★</item>
-        <item>>4★</item>
-        <item>>4.5★</item>
+        <item> > 3 ★★☆☆☆</item>
+        <item> > 4 ★★★☆☆</item>
+        <item> > 4.5 ★★★★☆</item>
     </string-array>
     <string-array translatable="false" name="filterDownloadsValues">
         <item>0</item>
@@ -58,13 +58,13 @@
     </string-array>
     <string-array translatable="false" name="filterDownloadsLabels">
         <item>@string/search_filter</item>
-        <item>>100↓</item>
-        <item>>1K↓</item>
-        <item>>10K↓</item>
-        <item>>100K↓</item>
-        <item>>1M↓</item>
-        <item>>10M↓</item>
-        <item>>100M↓</item>
+        <item> > 100 ↓</item>
+        <item> > 1 K ↓</item>
+        <item> > 10 K ↓</item>
+        <item> > 100 K ↓</item>
+        <item> > 1 Million ↓</item>
+        <item> > 10 Million ↓</item>
+        <item> > 100 Million ↓</item>
     </string-array>
     <string-array name="contributors">
         <item>Nick Kountouriotis @SkiesOfAzel</item>
