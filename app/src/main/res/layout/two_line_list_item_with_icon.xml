@@ -3,12 +3,14 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    android:padding="6dip">
+    android:paddingTop="6dp">
 
     <LinearLayout
         android:id="@+id/app"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:weightSum="10">
@@ -16,9 +18,9 @@
         <ImageView
             android:id="@+id/icon"
             android:layout_width="0dp"
-            android:layout_height="48dip"
-            android:layout_marginEnd="6dip"
-            android:layout_marginRight="6dip"
+            android:layout_height="@dimen/icon_size_med"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
             android:layout_weight="2"
             android:contentDescription="@string/content_description_app_icon"
             android:src="@drawable/ic_placeholder" />
@@ -37,7 +39,7 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -67,8 +69,15 @@
             android:layout_weight="1"
             android:tint="?android:textColor"
             android:src="@drawable/ic_3dots" />
-
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="bottom"
+        android:background="?colorPrimary" />
 
     <LinearLayout
         android:id="@+id/separator"
