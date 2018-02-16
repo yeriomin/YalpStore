@@ -40,8 +40,8 @@
     <string name="action_accounts">Accounts</string>
     <string name="action_search">Search</string>
     <string name="action_updates">Updates</string>
-    <string name="action_ignore">Ignore updates</string>
-    <string name="action_unignore">Unignore updates</string>
+    <string name="action_ignore">Add to blacklist</string>
+    <string name="action_unignore">Remove from blacklist</string>
     <string name="action_whitelist">Whitelist for updates</string>
     <string name="action_unwhitelist">Ignore updates</string>
     <string name="action_categories">Categories</string>
@@ -60,7 +60,7 @@
     <string name="dialog_title_logout">Log out?</string>
     <string name="dialog_message_logout">Are you sure you want to log out?</string>
     <string name="dialog_account_type_provided_by_user">With your own Google account</string>
-    <string name="dialog_account_type_predefined">With a fake Galaxy Store account</string>
+    <string name="dialog_account_type_predefined">With a dummy Galaxy Store account</string>
     <string name="dialog_account_type_title">How would you like to log in to Google Play Store?</string>
     <string name="dialog_title_logging_in">Logging in</string>
     <string name="dialog_message_logging_in_provided_by_user">Trying to log in with the credentials you provided</string>
@@ -256,7 +256,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="header_usr_name">Galaxy</string>
-    <string name="header_usr_email">Logged in with fake account</string>
+    <string name="header_usr_email">Logged in with dummy account</string>
     <string name="header_usr_noEmail">Kindly login to use Galaxy</string>
     <string name="header_usr_noNetwork">Unable to retrieve</string>
     <string name="account_dummy_name">Dummy Account</string>
