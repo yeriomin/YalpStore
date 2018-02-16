@@ -5,12 +5,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.WeakHashMap;
 
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
+import in.dragons.galaxy.model.ImageSource;
 import in.dragons.galaxy.task.LoadImageTask;
 
 public abstract class AppBadge extends ListItem {
@@ -43,18 +46,16 @@ public abstract class AppBadge extends ListItem {
     }
 
     private void drawIcon(ImageView imageView) {
-        String tag = (String) imageView.getTag();
-        if (!TextUtils.isEmpty(tag) && tag.equals(app.getPackageName())) {
-            return;
+        ImageSource imageSource = app.getIconInfo();
+        if (null != imageSource.getApplicationInfo()) {
+            imageView.setImageDrawable(imageView.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
+        } else {
+            Picasso
+                    .with(view.getContext())
+                    .load(imageSource.getUrl())
+                    .placeholder(R.drawable.ic_placeholder)
+                    .into(imageView);
         }
-        imageView.setTag(app.getPackageName());
-        LoadImageTask task = new LoadImageTask(imageView);
-        LoadImageTask previousTask = tasks.get(imageView.hashCode());
-        if (null != previousTask) {
-            previousTask.cancel(true);
-        }
-        tasks.put(imageView.hashCode(), task);
-        task.execute(app.getIconInfo());
     }
 
     protected void setText(int viewId, String text) {

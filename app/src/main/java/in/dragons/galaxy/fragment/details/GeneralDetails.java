@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,6 +25,7 @@ import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
 import in.dragons.galaxy.model.App;
+import in.dragons.galaxy.model.ImageSource;
 import in.dragons.galaxy.task.LoadImageTask;
 
 public class GeneralDetails extends Abstract {
@@ -43,7 +46,17 @@ public class GeneralDetails extends Abstract {
     }
 
     private void drawAppBadge(App app) {
-        new LoadImageTask((ImageView) activity.findViewById(R.id.icon)).execute(app.getIconInfo());
+        ImageView imageView = (ImageView) activity.findViewById(R.id.icon);
+        ImageSource imageSource = app.getIconInfo();
+        if (null != imageSource.getApplicationInfo()) {
+            imageView.setImageDrawable(imageView.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
+        } else {
+            Picasso
+                    .with(activity)
+                    .load(imageSource.getUrl())
+                    .placeholder(R.drawable.ic_placeholder)
+                    .into(imageView);
+        }
 
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, R.string.details_developer, app.getDeveloperName());
