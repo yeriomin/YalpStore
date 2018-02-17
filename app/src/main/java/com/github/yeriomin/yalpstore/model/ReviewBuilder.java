@@ -9,6 +9,7 @@ public class ReviewBuilder {
         review.setRating(reviewProto.getStarRating());
         review.setUserName(reviewProto.getAuthor2().getName());
         review.setUserPhotoUrl(reviewProto.getAuthor2().getUrls().getUrl());
+        review.setGooglePlusUrl(reviewProto.getAuthor2().getGooglePlusUrl());
         return review;
     }
 }

@@ -1,12 +1,11 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.view.IntentOnClickListener;
 
 public class Share extends Abstract {
 
@@ -18,16 +17,14 @@ public class Share extends Abstract {
 
     @Override
     public void draw() {
-        TextView share = (TextView) activity.findViewById(R.id.share);
-        share.setOnClickListener(new View.OnClickListener() {
-
+        activity.findViewById(R.id.share).setOnClickListener(new IntentOnClickListener(activity) {
             @Override
-            public void onClick(View v) {
+            protected Intent buildIntent() {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");
                 i.putExtra(Intent.EXTRA_SUBJECT, app.getDisplayName());
                 i.putExtra(Intent.EXTRA_TEXT, PLAYSTORE_LINK_PREFIX + app.getPackageName());
-                activity.startActivity(Intent.createChooser(i, activity.getString(R.string.details_share)));
+                return Intent.createChooser(i, activity.getString(R.string.details_share));
             }
         });
     }

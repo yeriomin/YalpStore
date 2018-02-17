@@ -8,6 +8,7 @@ public class Review {
 
     private String userName;
     private String userPhotoUrl;
+    private String googlePlusUrl;
 
     public String getComment() {
         return comment;
@@ -47,5 +48,13 @@ public class Review {
 
     public void setUserPhotoUrl(String userPhotoUrl) {
         this.userPhotoUrl = userPhotoUrl;
+    }
+
+    public String getGooglePlusUrl() {
+        return googlePlusUrl;
+    }
+
+    public void setGooglePlusUrl(String googlePlusUrl) {
+        this.googlePlusUrl = googlePlusUrl;
     }
 }

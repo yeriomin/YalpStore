@@ -19,6 +19,7 @@ import com.github.yeriomin.yalpstore.model.ImageSource;
 import com.github.yeriomin.yalpstore.task.LoadImageTask;
 import com.github.yeriomin.yalpstore.task.playstore.ReviewDeleteTask;
 import com.github.yeriomin.yalpstore.task.playstore.ReviewLoadTask;
+import com.github.yeriomin.yalpstore.view.UriOnClickListener;
 
 import java.util.List;
 
@@ -128,6 +129,7 @@ public class Review extends Abstract {
             review.getTitle()
         ));
         ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
+        reviewLayout.setOnClickListener(new UriOnClickListener(activity, review.getGooglePlusUrl()));
         parent.addView(reviewLayout);
         new LoadImageTask((ImageView) reviewLayout.findViewById(R.id.avatar)).execute(new ImageSource(review.getUserPhotoUrl()));
     }

@@ -1,8 +1,6 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,6 +8,7 @@ import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.PurchaseTask;
+import com.github.yeriomin.yalpstore.view.UriOnClickListener;
 
 public class BackToPlayStore extends Abstract {
 
@@ -26,14 +25,7 @@ public class BackToPlayStore extends Abstract {
         }
         TextView toPlayStore = (TextView) activity.findViewById(R.id.to_play_store);
         toPlayStore.setVisibility(View.VISIBLE);
-        toPlayStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(PurchaseTask.URL_PURCHASE + app.getPackageName()));
-                activity.startActivity(i);
-            }
-        });
+        toPlayStore.setOnClickListener(new UriOnClickListener(activity, PurchaseTask.URL_PURCHASE + app.getPackageName()));
     }
 
     private boolean isPlayStoreInstalled() {
