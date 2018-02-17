@@ -97,25 +97,13 @@ public class Device extends List {
         return deviceInfoProvider.isValid();
     }
 
-    private AlertDialog showRequestDialog(boolean logOut) {
+    private boolean showRequestDialog(boolean logOut) {
         PreferenceManager.getDefaultSharedPreferences(activity)
                 .edit()
                 .putBoolean(PREFERENCE_DEVICE_DEFINITION_REQUESTED, true)
                 .commit()
         ;
-        return new AlertDialog.Builder(activity)
-                .setMessage(R.string.dialog_message_spoof_request)
-                .setTitle(R.string.dialog_title_spoof_request)
-                .setPositiveButton(android.R.string.yes, new FinishingOnClickListener(logOut) {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        ContextUtil.toastShort(activity.getApplicationContext(), activity.getString(R.string.thank_you));
-                        super.onClick(dialogInterface, i);
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new FinishingOnClickListener(logOut))
-                .show()
-                ;
+        return true;
     }
 
     private AlertDialog showLogOutDialog() {
