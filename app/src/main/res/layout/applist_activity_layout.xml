@@ -72,7 +72,10 @@
                     android:id="@android:id/list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:listSelector="@drawable/selector" />
+                    android:listSelector="@drawable/selector"
+                    android:scrollingCache="true"
+                    android:animationCache="true"
+                    android:drawingCacheQuality="auto"/>
 
                 <TextView
                     android:id="@android:id/empty"
