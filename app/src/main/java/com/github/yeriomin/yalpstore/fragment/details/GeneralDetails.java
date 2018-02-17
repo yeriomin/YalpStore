@@ -40,7 +40,7 @@ public class GeneralDetails extends Abstract {
     }
 
     private void drawAppBadge(App app) {
-        new LoadImageTask((ImageView) activity.findViewById(R.id.icon)).execute(app.getIconInfo());
+        new LoadImageTask((ImageView) activity.findViewById(R.id.icon)).setPlaceholder(false).execute(app.getIconInfo());
 
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, app.getPackageName());

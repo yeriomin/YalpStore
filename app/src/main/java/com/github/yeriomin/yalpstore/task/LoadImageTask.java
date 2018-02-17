@@ -18,6 +18,7 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
     protected ImageView imageView;
     private Drawable drawable;
     private String tag;
+    private boolean placeholder = true;
 
     public LoadImageTask() {
 
@@ -33,9 +34,16 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
         return this;
     }
 
+    public LoadImageTask setPlaceholder(boolean placeholder) {
+        this.placeholder = placeholder;
+        return this;
+    }
+
     @Override
     protected void onPreExecute() {
-        imageView.setImageDrawable(imageView.getContext().getResources().getDrawable(R.drawable.ic_placeholder));
+        if (placeholder) {
+            imageView.setImageDrawable(imageView.getContext().getResources().getDrawable(R.drawable.ic_placeholder));
+        }
     }
 
     @Override
