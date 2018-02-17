@@ -15,10 +15,6 @@ public class ImageSource {
         setUrl(url);
     }
 
-    public ImageSource(ApplicationInfo applicationInfo) {
-        setApplicationInfo(applicationInfo);
-    }
-
     public void setUrl(String url) {
         this.url = url;
     }
