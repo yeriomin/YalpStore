@@ -27,13 +27,9 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             return;
         }
         BlackWhiteListManager manager = new BlackWhiteListManager(context);
-        if (actionIsInstall(intent)) {
-            if (wasInstalled(context, packageName) && needToAutoWhitelist(context) && !manager.isBlack()) {
-                Log.i(getClass().getSimpleName(), "Whitelisting " + packageName);
-                manager.add(packageName);
-            }
-        } else {
-            manager.remove(packageName);
+        if (actionIsInstall(intent) && wasInstalled(context, packageName) && needToAutoWhitelist(context) && !manager.isBlack()) {
+            Log.i(getClass().getSimpleName(), "Whitelisting " + packageName);
+            manager.add(packageName);
         }
         if (null != DetailsActivity.app && packageName.equals(DetailsActivity.app.getPackageName())) {
             updateDetails(actionIsInstall(intent));
