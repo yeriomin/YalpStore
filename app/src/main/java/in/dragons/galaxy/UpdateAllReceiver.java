@@ -27,6 +27,7 @@ public class UpdateAllReceiver extends BroadcastReceiver {
         if (!((GalaxyApplication) activity.getApplication()).isBackgroundUpdating()) {
             enableButton();
         }
+        activity.unregisterReceiver(this);
     }
 
     @Override
