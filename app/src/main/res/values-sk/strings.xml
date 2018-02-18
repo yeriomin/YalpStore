@@ -282,4 +282,5 @@ Vykonať?"</string>
 <string name="pref_auto_whitelist_summary_off">"Aplikácie treba zaradiť do whitelistu ručne"</string>
 <string name="apps_by">"Aplikácie od autora %1$s"</string>
 <string name="pref_message_fallback">"Pokúsiť sa nastaviť záložný adresár (%1$s)?"</string>
+<string name="no_permissions">"Nepoužívajú sa žiadne povolenia."</string>
 </resources>
