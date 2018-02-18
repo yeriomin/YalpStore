@@ -62,7 +62,8 @@ public class ButtonDownload extends Button {
     }
 
     public void checkAndDownload() {
-        button.setVisibility(View.GONE);
+        View buttonDownload = activity.findViewById(R.id.download);
+        if(null!=buttonDownload)buttonDownload.setVisibility(View.GONE);
         View buttonCancel = activity.findViewById(R.id.cancel);
         GalaxyPermissionManager permissionManager = new GalaxyPermissionManager(activity);
         if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
