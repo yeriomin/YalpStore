@@ -3,7 +3,7 @@
 <string name="about_developer_email_label">"Email del desarrollador:"</string>
 <string name="about_logged_in">"Has iniciado sesión como:"</string>
 <string name="about_copied_to_clipboard">"Copiado al portapapeles"</string>
-<string name="list_line_2_updatable">"Actualizado el %1$s "</string>
+<string name="list_line_2_updatable">"Actualizado el %1$s"</string>
 <string name="list_empty_updates">"No hay actualizaciones"</string>
 <string name="list_empty_search">"No se encontraron aplicaciones"</string>
 <string name="list_incompatible">"incompatible"</string>
@@ -26,7 +26,7 @@ Por favor, crea una contraseña de aplicación para Yalp Store y úsala para ini
 
 Toca \"Crear contraseña\" para ser redirigido"</string>
 <string name="dialog_title_logout">"¿Cerrar sesión?"</string>
-<string name="dialog_message_logout">"¿De verdad que quieres cerrar sesión?"</string>
+<string name="dialog_message_logout">"¿De verdad quieres cerrar la sesión?"</string>
 <string name="dialog_account_type_provided_by_user">"Con mi cuenta de Google"</string>
 <string name="dialog_account_type_predefined">"Con una cuenta falsa de Yalp Store"</string>
 <string name="dialog_account_type_title">"¿Cómo te gustaría iniciar sesión en Google Play Store?"</string>
@@ -77,11 +77,11 @@ Ten en cuenta que Yalp viola los términos de servicio del Play Store. Es probab
 <string name="pref_auto_install_summary_off">"Las aplicaciones se instalarán cuando se toque la notificación"</string>
 <string name="pref_auto_install_summary_on">"Las aplicaciones se instalarán en cuanto termine la descarga"</string>
 <string name="pref_auto_install">"Instalar aplicaciones inmediatamente"</string>
-<string name="pref_update_list_white_or_black_black">"Las aplicaciones seleccionadas se ignorarán cuando se busquen actualizaciones"</string>
-<string name="pref_update_list_white_or_black_white">"Solo se buscarán actualizaciones para las aplicaciones escogidas"</string>
-<string name="pref_update_list_white_or_black">"Lista negra o blanca de aplicaciones"</string>
-<string name="pref_update_list_black">"Modificar lista negra de aplicaciones"</string>
-<string name="pref_update_list_white">"Modificar lista blanca de aplicaciones"</string>
+<string name="pref_update_list_white_or_black_black">"Se ignorarán las actualizaciones para las aplicaciones elegidas, pero se buscarán para el resto"</string>
+<string name="pref_update_list_white_or_black_white">"Solo se buscarán actualizaciones para las aplicaciones elegidas"</string>
+<string name="pref_update_list_white_or_black">"Lista negra o blanca de actualizaciones"</string>
+<string name="pref_update_list_black">"Modificar lista negra de actualizaciones"</string>
+<string name="pref_update_list_white">"Modificar lista blanca de actualizaciones"</string>
 <string name="pref_ui_theme">"Tema gráfico"</string>
 <string name="pref_ui_theme_none">"Por defecto"</string>
 <string name="pref_ui_theme_light">"Claro"</string>
@@ -103,8 +103,8 @@ Ten en cuenta que Yalp viola los términos de servicio del Play Store. Es probab
 <string name="download_manager_ERROR_BLOCKED">"La desacarga falló debido a interferencia por parte de NetworkPolicyManager. Comprueba los ajustes."</string>
 <string name="search_filter">"Todas las apps"</string>
 <string name="details_category">"Categoría: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"No se borrarán los APKs después de la instalación"</string>
-<string name="pref_delete_apk_after_install_summary_on">"Se borrarán los APKs después de la instalación"</string>
+<string name="pref_delete_apk_after_install_summary_off">"No se borrarán los archivos APK después de la instalación"</string>
+<string name="pref_delete_apk_after_install_summary_on">"Se borrarán los archivos APK después de la instalación"</string>
 <string name="pref_delete_apk_after_install">"Borrar APK después de la instalación"</string>
 <string name="dialog_title_application_crashed">"Lo sentimos, Yalp Store se ha detenido"</string>
 <string name="details_to_play_store">"Ver en Play Store"</string>
@@ -113,8 +113,8 @@ Ten en cuenta que Yalp viola los términos de servicio del Play Store. Es probab
 <string name="notification_installation_complete">"Actualización instalada"</string>
 <string name="notification_installation_failed">"Fallo al instalar actualización."</string>
 <string name="pref_background_update_install_summary_off">"Solo se mostrará una notificación"</string>
-<string name="pref_background_update_install_summary_on">"Se instalan las actualizaciones si se encuentran (permiso de administración)"</string>
-<string name="pref_background_update_install">"También instalar las actualizaciones (permiso de administración)"</string>
+<string name="pref_background_update_install_summary_on">"Se instalarán las actualizaciones cuando haya (permiso de administración)"</string>
+<string name="pref_background_update_install">"Instalar automáticamente (permiso de administración)"</string>
 <string name="pref_no_root">"Esta opción solo está disponible en dispositivos con permisos de administración"</string>
 <string name="list_app_has_ads">"contiene anuncios"</string>
 <string name="list_app_no_ads">"sin anuncios"</string>
@@ -157,8 +157,8 @@ Ten en cuenta que Play Store no está a favor de descargar versiones arbitrarias
 <string name="pref_installation_method_root">"Usar permisos de administración"</string>
 <string name="pref_installation_method_privileged">"Usar permisos de sistema"</string>
 <string name="pref_background_update_download_summary_off">"Solo se mostrará una notificación"</string>
-<string name="pref_background_update_download_summary_on">"Se descargarán las actualizaciones si se encuentran"</string>
-<string name="pref_background_update_download">"Descargar también las actualizaciones"</string>
+<string name="pref_background_update_download_summary_on">"Se descargarán las actualizaciones cuando haya"</string>
+<string name="pref_background_update_download">"Descargar las actualizaciones"</string>
 <string name="details_not_available_on_play_store">"No disponible en Play Store"</string>
 <string name="action_manual">"Descarga manual"</string>
 <string name="action_get_local_apk">"Obtener APK local"</string>
@@ -238,9 +238,9 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="notification_not_privileged">"Permiso de instalación no concedido"</string>
 <string name="about_paypal_label">"Donar:"</string>
 <string name="pref_download_directory">"Carpeta de descargas"</string>
-<string name="pref_download_deltas">"Actualizaciones Delta"</string>
-<string name="pref_download_deltas_summary_off">"Descarga completa del apk cada vez"</string>
-<string name="pref_download_deltas_summary_on">"Solo los cambios son descargados durante las actualizaciones."</string>
+<string name="pref_download_deltas">"Actualizaciones diferenciales"</string>
+<string name="pref_download_deltas_summary_off">"Se descargarán los APK completos cada vez"</string>
+<string name="pref_download_deltas_summary_on">"Solo los cambios se descargarán durante las actualizaciones"</string>
 <string name="testing_program_review_dialog_content_hint">"Danos tu opinión sobre la aplicación"</string>
 <string name="delete">"Eliminar"</string>
 <string name="submit">"Enviar"</string>
@@ -268,18 +268,20 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="flag_impersonation_copycat">"Copia o impostor"</string>
 <string name="flagging_title">"Marcar como inadecuado"</string>
 <string name="content_flagged">"Se ha enviado una objeción."</string>
-<string name="list_app_blacklisted">"Blacklisted"</string>
-<string name="list_app_whitelisted">"Whitelisted"</string>
-<string name="action_filter">"Filter"</string>
-<string name="action_filter_system_apps">"System apps"</string>
-<string name="action_filter_apps_with_ads">"Apps with ads"</string>
-<string name="action_filter_paid_apps">"Paid apps"</string>
-<string name="action_filter_gsf_dependent_apps">"GSF dependent apps"</string>
-<string name="action_filter_category">"Category: %1$s"</string>
-<string name="action_filter_rating">"Rating: %1$s"</string>
-<string name="action_filter_downloads">"Downloads: %1$s"</string>
-<string name="pref_auto_whitelist">"Auto whitelist"</string>
-<string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
-<string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
+<string name="list_app_blacklisted">"Lista negra"</string>
+<string name="list_app_whitelisted">"Lista blanca"</string>
+<string name="action_filter">"Filtrar"</string>
+<string name="action_filter_system_apps">"Aplis del sistema"</string>
+<string name="action_filter_apps_with_ads">"Aplis con anuncios"</string>
+<string name="action_filter_paid_apps">"Aplis de pago"</string>
+<string name="action_filter_gsf_dependent_apps">"Aplis que dependen de GSF"</string>
+<string name="action_filter_category">"Categoría: %1$s"</string>
+<string name="action_filter_rating">"Clasificación:  %1$s"</string>
+<string name="action_filter_downloads">"Descargas:  %1$s"</string>
+<string name="pref_auto_whitelist">"Añadir a la lista blanca"</string>
+<string name="pref_auto_whitelist_summary_on">"Las aplicaciones instaladas con Yalp Store se añadirán automáticamente a la lista blanca"</string>
+<string name="pref_auto_whitelist_summary_off">"Tienes que añadir manualmente las aplicaciones a la lista blanca"</string>
 <string name="apps_by">"Aplicaciones de %1$s"</string>
+<string name="pref_message_fallback">"¿Intentar establecer otra carpeta (%1$s) como segunda opción?"</string>
+<string name="no_permissions">"No se usan permisos."</string>
 </resources>
