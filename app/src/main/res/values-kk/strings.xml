@@ -285,4 +285,5 @@ Backup жасаңыз."</string>
 <string name="pref_auto_whitelist_summary_off">"Ақ тізім тек қолмен өзгертіледі"</string>
 <string name="apps_by">"%1$s қолданбалары"</string>
 <string name="pref_message_fallback">"Сақтық көшірме каталогын пайдаланасыз ба (%1$s)?"</string>
+<string name="no_permissions">"No permissions are used."</string>
 </resources>
