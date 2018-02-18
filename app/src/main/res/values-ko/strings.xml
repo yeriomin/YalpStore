@@ -280,4 +280,6 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
 <string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
 <string name="apps_by">"%1$s의 애플리케이션"</string>
+<string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
+<string name="no_permissions">"사용된 권한이 없습니다."</string>
 </resources>
