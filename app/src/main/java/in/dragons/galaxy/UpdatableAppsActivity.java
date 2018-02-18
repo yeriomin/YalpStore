@@ -112,9 +112,9 @@ public class UpdatableAppsActivity extends AppListActivity {
     public void launchUpdateAll() {
         ((GalaxyApplication) getApplicationContext()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
-        Button button = (Button) findViewById(R.id.main_button);
-        button.setEnabled(false);
-        button.setText(R.string.list_updating);
+        findViewById(R.id.main_button).setVisibility(View.GONE);
+        Button button = (Button) findViewById(R.id.update_cancel);
+        button.setVisibility(View.VISIBLE);
     }
 }
 

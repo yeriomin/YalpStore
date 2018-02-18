@@ -1,5 +1,7 @@
 package in.dragons.galaxy.task.playstore;
 
+import android.app.DownloadManager;
+import android.database.Cursor;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,7 +13,6 @@ import java.util.List;
 
 import in.dragons.galaxy.BlackWhiteListManager;
 import in.dragons.galaxy.BuildConfig;
-import in.dragons.galaxy.GalaxyApplication;
 import in.dragons.galaxy.GalaxyPermissionManager;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.UpdatableAppsActivity;
@@ -19,9 +20,15 @@ import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.selfupdate.UpdaterFactory;
 import in.dragons.galaxy.task.InstalledAppsTask;
 
+import static android.content.Context.DOWNLOAD_SERVICE;
+
 public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements CloneableTask {
 
     private UpdatableAppsActivity activity;
+    private Button update, cancel;
+    private TextView textView;
+    private DownloadManager.Query query;
+    private DownloadManager dm;
 
     public ForegroundUpdatableAppsTask(UpdatableAppsActivity activity) {
         this.activity = activity;
@@ -73,25 +80,41 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     }
 
     private void toggleUpdateAll(boolean enable) {
-        Button button = (Button) activity.findViewById(R.id.main_button);
-        TextView textView = (TextView) activity.findViewById(R.id.main_button_txt);
-        button.setText(R.string.list_update_all);
-        textView.setText(R.string.list_update_all_txt);
-        button.setVisibility(enable ? View.VISIBLE : View.GONE);
-        textView.setVisibility(enable ? View.VISIBLE : View.GONE);
-        if (((GalaxyApplication) activity.getApplication()).isBackgroundUpdating()) {
-            button.setEnabled(false);
-            button.setText(R.string.list_updating);
-        }
-        button.setOnClickListener(new View.OnClickListener() {
+        update = (Button) activity.findViewById(R.id.main_button);
+        cancel = (Button) activity.findViewById(R.id.update_cancel);
+        textView = (TextView) activity.findViewById(R.id.main_button_txt);
+
+        update.setVisibility(View.VISIBLE);
+        textView.setVisibility(View.VISIBLE);
+
+        update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GalaxyPermissionManager permissionManager = new GalaxyPermissionManager(activity);
                 if (permissionManager.checkPermission()) {
                     activity.launchUpdateAll();
+                    update.setVisibility(View.GONE);
+                    cancel.setVisibility(View.VISIBLE);
+                    textView.setText(R.string.list_updating);
                 } else {
                     permissionManager.requestPermission();
                 }
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                query = new DownloadManager.Query();
+                query.setFilterByStatus(DownloadManager.STATUS_PENDING | DownloadManager.STATUS_RUNNING);
+                dm = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
+                Cursor c = dm.query(query);
+                while (c.moveToNext() == true) {
+                    dm.remove(c.getLong(c.getColumnIndex(DownloadManager.COLUMN_ID)));
+                }
+                update.setVisibility(View.VISIBLE);
+                cancel.setVisibility(View.GONE);
+                textView.setText(R.string.list_update_all_txt);
             }
         });
     }
