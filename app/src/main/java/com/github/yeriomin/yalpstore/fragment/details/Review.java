@@ -20,6 +20,7 @@ import com.github.yeriomin.yalpstore.task.LoadImageTask;
 import com.github.yeriomin.yalpstore.task.playstore.ReviewDeleteTask;
 import com.github.yeriomin.yalpstore.task.playstore.ReviewLoadTask;
 import com.github.yeriomin.yalpstore.view.UriOnClickListener;
+import com.github.yeriomin.yalpstore.widget.ExpansionPanel;
 
 import java.util.List;
 
@@ -42,7 +43,9 @@ public class Review extends Abstract {
             return;
         }
 
-        initExpandableGroup(R.id.reviews_header, R.id.reviews_container, new View.OnClickListener() {
+        ExpansionPanel reviewsPanel = activity.findViewById(R.id.reviews_panel);
+        reviewsPanel.setVisibility(View.VISIBLE);
+        reviewsPanel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getTask(true).execute();

@@ -6,4 +6,13 @@
         <attr name="android:entryValues" />
     </declare-styleable>
 
+    <declare-styleable name="ExpansionPanel">
+        <attr name="headerText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="Badge">
+        <attr name="icon" format="reference" />
+        <attr name="label" format="string" />
+    </declare-styleable>
+   
 </resources>

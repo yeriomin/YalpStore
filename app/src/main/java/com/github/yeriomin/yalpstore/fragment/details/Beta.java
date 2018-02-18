@@ -14,6 +14,7 @@ import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.BetaToggleTask;
 import com.github.yeriomin.yalpstore.task.playstore.PlayStorePayloadTask;
+import com.github.yeriomin.yalpstore.widget.ExpansionPanel;
 
 import java.io.IOException;
 
@@ -40,8 +41,7 @@ public class Beta extends Abstract {
         ) {
             return;
         }
-        initExpandableGroup(R.id.beta_header, R.id.beta_container);
-        setText(R.id.beta_header, app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_in_title : R.string.testing_program_section_opted_out_title);
+        ((ExpansionPanel) activity.findViewById(R.id.beta_panel)).setHeaderText(app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_in_title : R.string.testing_program_section_opted_out_title);
         setText(R.id.beta_message, app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_in_message : R.string.testing_program_section_opted_out_message);
         setText(R.id.beta_subscribe_button, app.isTestingProgramOptedIn() ? R.string.testing_program_opt_out : R.string.testing_program_opt_in);
         setText(R.id.beta_email, app.getTestingProgramEmail());

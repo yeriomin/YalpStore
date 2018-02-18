@@ -10,7 +10,6 @@ import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
-import com.github.yeriomin.yalpstore.model.ReviewBuilder;
 import com.github.yeriomin.yalpstore.selfupdate.UpdaterFactory;
 
 import java.io.IOException;
@@ -33,10 +32,7 @@ public class DetailsTask extends PlayStorePayloadTask<App> {
     @Override
     protected App getResult(GooglePlayAPI api, String... arguments) throws IOException {
         DetailsResponse response = api.details(packageName);
-        App app = AppBuilder.build(response.getDocV2());
-        if (response.hasUserReview()) {
-            app.setUserReview(ReviewBuilder.build(response.getUserReview()));
-        }
+        App app = AppBuilder.build(response);
         PackageManager pm = context.getPackageManager();
         try {
             app.getPackageInfo().applicationInfo = pm.getApplicationInfo(packageName, 0);

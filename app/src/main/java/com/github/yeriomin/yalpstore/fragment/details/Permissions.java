@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.widget.ExpansionPanel;
 import com.github.yeriomin.yalpstore.widget.PermissionGroup;
 
 import java.util.ArrayList;
@@ -23,14 +24,15 @@ public class Permissions extends Abstract {
 
     @Override
     public void draw() {
-        initExpandableGroup(R.id.permissions_header, R.id.permissions_container, new View.OnClickListener() {
+        ExpansionPanel permissionsPanel = activity.findViewById(R.id.permissions_panel);
+        permissionsPanel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addPermissionWidgets();
             }
         });
         if (!app.isInPlayStore()) {
-            activity.findViewById(R.id.permissions_header).performClick();
+            permissionsPanel.toggle();
         }
     }
 

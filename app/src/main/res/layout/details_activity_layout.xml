@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipToPadding="false" >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="6dip" >
+        android:layout_weight="1" >
 
         <ProgressBar
             android:id="@+id/progress"
@@ -27,11 +29,12 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" >
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
                     android:gravity="center_vertical">
 
                     <ImageView
@@ -75,141 +78,126 @@
 
                 <LinearLayout
                     android:id="@+id/general_details"
+                    android:padding="5dp"
                     android:visibility="gone"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/category"
-                        android:paddingTop="6dip"
+                    <LinearLayout
+                        android:id="@+id/badges"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="6dp">
 
-                    <TextView
-                        android:id="@+id/developer"
-                        android:paddingTop="6dip"
+                        <com.github.yeriomin.yalpstore.widget.Badge
+                            android:id="@+id/downloads_badge"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:icon="@drawable/ic_download"/>
+
+                        <com.github.yeriomin.yalpstore.widget.Badge
+                            android:id="@+id/rating_badge"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:icon="@drawable/ic_star"/>
+
+                        <com.github.yeriomin.yalpstore.widget.Badge
+                            android:id="@+id/size_badge"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:icon="@drawable/ic_storage"/>
+
+                        <com.github.yeriomin.yalpstore.widget.Badge
+                            android:id="@+id/category_badge"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="16dp"
+                        android:paddingStart="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingEnd="16dp">
 
-                    <TableLayout
-                        android:paddingTop="6dip"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TableRow
+                        <TextView
+                            android:id="@+id/updated"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content" />
 
-                            <TextView
-                                android:id="@+id/installs"
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                            <TextView
-                                android:id="@+id/rating"
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </TableRow>
-
-                        <TableRow
+                        <TextView
+                            android:id="@+id/developer"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"/>
 
-                            <TextView
-                                android:id="@+id/updated"
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                            <TextView
-                                android:id="@+id/size"
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                        </TableRow>
-
-                        <TableRow
+                        <TextView
+                            android:id="@+id/price_and_ads"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content" />
 
-                            <TextView
-                                android:id="@+id/price"
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/google_dependencies"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
 
-                            <TextView
-                                android:id="@+id/contains_ads"
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                        </TableRow>
-
-                    </TableLayout>
-
-                    <TextView
-                        android:id="@+id/google_dependencies"
-                        android:paddingTop="6dip"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/changes_header"
+                    android:id="@+id/video"
                     android:focusable="true"
-                    android:visibility="gone"
-                    android:drawableLeft="@drawable/ic_expand_more"
-                    android:drawableStart="@drawable/ic_expand_more"
-                    android:textSize="20sp"
-                    android:text="@string/details_changelog"
+                    android:drawableLeft="@drawable/ic_video"
+                    android:drawableStart="@drawable/ic_video"
+                    android:drawablePadding="6dp"
+                    android:paddingLeft="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="18sp"
+                    android:text="@string/details_video"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="6dip" />
+                    android:layout_height="48dp"
+                    android:visibility="gone" />
 
-                <LinearLayout
-                    android:id="@+id/changes_container"
+                <com.github.yeriomin.yalpstore.widget.ExpansionPanel
+                    app:headerText="@string/details_changelog"
+                    android:id="@+id/changes_panel"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_margin="4dp"
+                    android:elevation="2dp"
+                    android:background="?android:colorBackground">
 
                     <TextView
                         android:id="@+id/changes_upper"
                         android:textIsSelectable="true"
-                        android:visibility="gone"
                         android:autoLink="web|email"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="6dip" />
+                        android:layout_height="wrap_content" />
 
-                </LinearLayout>
+                </com.github.yeriomin.yalpstore.widget.ExpansionPanel>
 
-                <TextView
-                    android:id="@+id/description_header"
-                    android:focusable="true"
-                    android:visibility="gone"
-                    android:drawableLeft="@drawable/ic_expand_more"
-                    android:drawableStart="@drawable/ic_expand_more"
-                    android:textSize="20sp"
-                    android:text="@string/details_description"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="6dip" />
-
-                <LinearLayout
-                    android:id="@+id/description_container"
+                <com.github.yeriomin.yalpstore.widget.ExpansionPanel
+                    app:headerText="@string/details_description"
+                    android:id="@+id/description_panel"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_margin="4dp"
+                    android:elevation="2dp"
+                    android:background="?android:colorBackground">
 
                     <TextView
                         android:id="@+id/description"
@@ -228,7 +216,7 @@
                         android:paddingTop="10dip"  />
 
                     <TextView
-                        android:id="@+id/changes"
+                        android:id="@+id/changes_in_details"
                         android:textIsSelectable="true"
                         android:autoLink="web|email"
                         android:visibility="gone"
@@ -242,27 +230,17 @@
                         android:orientation="vertical"
                         android:paddingTop="10dip" />
 
-                </LinearLayout>
+                </com.github.yeriomin.yalpstore.widget.ExpansionPanel>
 
-                <TextView
-                    android:id="@+id/reviews_header"
-                    android:focusable="true"
+                <com.github.yeriomin.yalpstore.widget.ExpansionPanel
+                    app:headerText="@string/details_reviews"
+                    android:id="@+id/reviews_panel"
                     android:visibility="gone"
-                    android:drawableLeft="@drawable/ic_expand_more"
-                    android:drawableStart="@drawable/ic_expand_more"
-                    android:textSize="20sp"
-                    android:gravity="center_vertical"
-                    android:text="@string/details_reviews"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="6dip" />
-
-                <LinearLayout
-                    android:id="@+id/reviews_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical" >
+                    android:layout_margin="4dp"
+                    android:elevation="2dp"
+                    android:background="?android:colorBackground">
 
                     <FrameLayout
                         android:id="@+id/user_review_container"
@@ -439,40 +417,17 @@
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </com.github.yeriomin.yalpstore.widget.ExpansionPanel>
 
-                <TextView
-                    android:id="@+id/video"
-                    android:focusable="true"
-                    android:drawableLeft="@drawable/ic_chevron_right"
-                    android:drawableStart="@drawable/ic_chevron_right"
-                    android:textSize="20sp"
-                    android:text="@string/details_video"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="6dip"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/screenshots_header"
-                    android:focusable="true"
+                <com.github.yeriomin.yalpstore.widget.ExpansionPanel
+                    app:headerText="@string/details_screenshots"
+                    android:id="@+id/screenshots_panel"
                     android:visibility="gone"
-                    android:drawableLeft="@drawable/ic_expand_more"
-                    android:drawableStart="@drawable/ic_expand_more"
-                    android:textSize="20sp"
-                    android:gravity="center_vertical"
-                    android:text="@string/details_screenshots"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="6dip" />
-
-                <LinearLayout
-                    android:id="@+id/screenshots_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:layout_margin="4dp"
+                    android:elevation="2dp"
+                    android:background="?android:colorBackground">
 
                     <Gallery
                         android:id="@+id/screenshots_gallery"
@@ -480,26 +435,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
-                </LinearLayout>
+                </com.github.yeriomin.yalpstore.widget.ExpansionPanel>
 
-                <TextView
-                    android:id="@+id/permissions_header"
-                    android:drawableLeft="@drawable/ic_expand_more"
-                    android:drawableStart="@drawable/ic_expand_more"
-                    android:textSize="20sp"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:text="@string/details_permissions"
+                <com.github.yeriomin.yalpstore.widget.ExpansionPanel
+                    app:headerText="@string/details_permissions"
+                    android:id="@+id/permissions_panel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="6dip"  />
-
-                <LinearLayout
-                    android:id="@+id/permissions_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:layout_margin="4dp"
+                    android:elevation="2dp"
+                    android:background="?android:colorBackground">
 
                     <LinearLayout
                         android:id="@+id/permissions_container_widgets"
@@ -514,26 +459,16 @@
                         android:layout_height="wrap_content"
                         android:visibility="gone" />
 
-                </LinearLayout>
+                </com.github.yeriomin.yalpstore.widget.ExpansionPanel>
 
-                <TextView
-                    android:id="@+id/beta_header"
-                    android:focusable="true"
-                    android:visibility="gone"
-                    android:drawableLeft="@drawable/ic_expand_more"
-                    android:drawableStart="@drawable/ic_expand_more"
-                    android:textSize="20sp"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="6dip"  />
-
-                <LinearLayout
-                    android:id="@+id/beta_container"
+                <com.github.yeriomin.yalpstore.widget.ExpansionPanel
+                    android:id="@+id/beta_panel"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_margin="4dp"
+                    android:elevation="2dp"
+                    android:background="?android:colorBackground">
 
                     <TextView
                         android:id="@+id/beta_message"
@@ -595,7 +530,7 @@
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </com.github.yeriomin.yalpstore.widget.ExpansionPanel>
 
                 <LinearLayout
                     android:id="@+id/related_links"
@@ -609,51 +544,68 @@
                 <TextView
                     android:id="@+id/apps_by_same_developer"
                     android:focusable="true"
-                    android:drawableLeft="@drawable/ic_chevron_right"
-                    android:drawableStart="@drawable/ic_chevron_right"
-                    android:textSize="20sp"
+                    android:drawableLeft="@drawable/ic_link"
+                    android:drawableStart="@drawable/ic_link"
+                    android:drawablePadding="6dp"
+                    android:paddingLeft="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="18sp"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="6dip"
+                    android:layout_height="48dp"
                     android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/to_play_store"
                     android:focusable="true"
-                    android:drawableLeft="@drawable/ic_chevron_right"
-                    android:drawableStart="@drawable/ic_chevron_right"
-                    android:textSize="20sp"
+                    android:drawableLeft="@drawable/ic_google_play"
+                    android:drawableStart="@drawable/ic_google_play"
+                    android:drawablePadding="6dp"
+                    android:paddingLeft="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="18sp"
                     android:text="@string/details_to_play_store"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="6dip"
+                    android:layout_height="48dp"
                     android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/share"
                     android:focusable="true"
-                    android:drawableLeft="@drawable/ic_chevron_right"
-                    android:drawableStart="@drawable/ic_chevron_right"
-                    android:textSize="20sp"
+                    android:drawableLeft="@drawable/ic_share"
+                    android:drawableStart="@drawable/ic_share"
+                    android:drawablePadding="6dp"
+                    android:paddingLeft="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="18sp"
                     android:text="@string/details_share"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="6dip" />
+                    android:layout_height="48dp" />
 
                 <TextView
                     android:id="@+id/system_app_info"
                     android:focusable="true"
-                    android:drawableLeft="@drawable/ic_chevron_right"
-                    android:drawableStart="@drawable/ic_chevron_right"
-                    android:textSize="20sp"
+                    android:drawableLeft="@drawable/ic_settings"
+                    android:drawableStart="@drawable/ic_settings"
+                    android:drawablePadding="6dp"
+                    android:drawableTint="?android:textColorSecondary"
+                    android:paddingLeft="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="18sp"
                     android:text="@string/details_system_app_info"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="6dip"
+                    android:layout_height="48dp"
                     android:visibility="gone" />
 
             </LinearLayout>

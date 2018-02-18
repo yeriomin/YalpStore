@@ -17,6 +17,7 @@ import java.util.TreeMap;
 
 public class Util {
 
+    private static float DP_PX_RATIO = 0.0f;
     private static final String DELIMITER = ",";
     private static final Map<Integer, String> siPrefixes = new HashMap<>();
     static {
@@ -99,5 +100,12 @@ public class Util {
             order += 3;
         }
         return tempValue + siPrefixes.get(order);
+    }
+
+    static public int getPx(Context context, int dp) {
+        if (DP_PX_RATIO == 0.0f) {
+            DP_PX_RATIO = context.getResources().getDisplayMetrics().density;
+        }
+        return (int) (dp * DP_PX_RATIO);
     }
 }

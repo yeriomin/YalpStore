@@ -19,17 +19,14 @@ public class Screenshot extends Abstract {
 
     @Override
     public void draw() {
+        activity.findViewById(R.id.screenshots_panel).setVisibility(app.getScreenshotUrls().size() > 0 ? View.VISIBLE : View.GONE);
         if (app.getScreenshotUrls().size() > 0) {
-            activity.findViewById(R.id.screenshots_header).setVisibility(View.VISIBLE);
             drawGallery();
-            initExpandableGroup(R.id.screenshots_header, R.id.screenshots_container);
-        } else {
-            activity.findViewById(R.id.screenshots_header).setVisibility(View.GONE);
         }
     }
 
     private void drawGallery() {
-        Gallery gallery = ((Gallery) activity.findViewById(R.id.screenshots_gallery));
+        Gallery gallery = activity.findViewById(R.id.screenshots_gallery);
         int screenWidth = activity.getWindowManager().getDefaultDisplay().getWidth();
         gallery.setAdapter(new ImageAdapter(activity, app.getScreenshotUrls(), screenWidth));
         gallery.setSpacing(10);
