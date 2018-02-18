@@ -43,6 +43,13 @@ public abstract class AppBadge extends ListItem {
         setText(R.id.text3, TextUtils.join(", ", line3));
 
         drawIcon((ImageView) view.findViewById(R.id.icon));
+
+        if(app.isTestingProgramOptedIn())
+            view.findViewById(R.id.beta_user).setVisibility(View.VISIBLE);
+        if(app.isTestingProgramAvailable())
+            view.findViewById(R.id.beta_avail).setVisibility(View.VISIBLE);
+        if(app.isEarlyAccess())
+            view.findViewById(R.id.early_access).setVisibility(View.VISIBLE);
     }
 
     private void drawIcon(ImageView imageView) {

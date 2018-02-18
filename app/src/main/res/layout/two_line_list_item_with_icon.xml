@@ -9,10 +9,10 @@
         android:id="@+id/app"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
         android:weightSum="10">
 
         <ImageView
@@ -60,6 +60,43 @@
                 android:textSize="10sp"
                 android:visibility="gone" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <ImageView
+                    android:id="@+id/beta_user"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_dot"
+                    android:tint="@color/colorCyan"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/beta_avail"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_dot"
+                    android:tint="@color/colorOrange"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/early_access"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_dot"
+                    android:tint="@color/colorRed"
+                    android:visibility="gone" />
+            </LinearLayout>
         </LinearLayout>
 
         <ImageView
@@ -67,16 +104,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:tint="?android:textColor"
-            android:src="@drawable/ic_3dots" />
+            android:src="@drawable/ic_3dots"
+            android:tint="?android:textColor" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1.5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:layout_gravity="bottom"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:background="?colorPrimary" />
 
     <LinearLayout
