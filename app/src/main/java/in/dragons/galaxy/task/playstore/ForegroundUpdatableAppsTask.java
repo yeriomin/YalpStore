@@ -76,6 +76,8 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         if (success() && updatableApps.isEmpty()) {
             this.errorView.setText(R.string.list_empty_updates);
         }
+        textView = (TextView) activity.findViewById(R.id.main_button_txt);
+        textView.setText("Update(s) available : "+updatableApps.size());
         toggleUpdateAll(!updatableApps.isEmpty());
     }
 
@@ -114,7 +116,7 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
                 }
                 update.setVisibility(View.VISIBLE);
                 cancel.setVisibility(View.GONE);
-                textView.setText(R.string.list_update_all_txt);
+                textView.setText("Update(s) available : "+updatableApps.size());
             }
         });
     }
