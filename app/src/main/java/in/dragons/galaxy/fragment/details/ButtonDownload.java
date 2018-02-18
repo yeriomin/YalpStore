@@ -88,7 +88,6 @@ public class ButtonDownload extends Button {
         if (Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
                 && !state.isEverythingSuccessful()
                 ) {
-            disable(R.string.details_downloading);
             NumberProgressBar progressBar = (NumberProgressBar) activity.findViewById(R.id.download_progress);
             if (null != progressBar) {
                 new DownloadProgressBarUpdater(app.getPackageName(), progressBar).execute(PurchaseTask.UPDATE_INTERVAL);
@@ -147,10 +146,10 @@ public class ButtonDownload extends Button {
 
     static class LocalPurchaseTask extends PurchaseTask {
 
-        private ButtonDownload fragment;
+        private ButtonDownload buttonDownload;
 
         public LocalPurchaseTask setFragment(ButtonDownload fragment) {
-            this.fragment = fragment;
+            this.buttonDownload = fragment;
             return this;
         }
 
@@ -163,21 +162,20 @@ public class ButtonDownload extends Button {
             task.setErrorView(errorView);
             task.setContext(context);
             task.setProgressIndicator(progressIndicator);
-            task.setFragment(fragment);
+            task.setFragment(buttonDownload);
             return task;
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            fragment.disable(R.string.details_downloading);
         }
 
         @Override
         protected void onPostExecute(AndroidAppDeliveryData deliveryData) {
             super.onPostExecute(deliveryData);
             if (!success()) {
-                fragment.draw();
+                buttonDownload.draw();
                 if (null != getRestrictionString()) {
                     ContextUtil.toastLong(context, getRestrictionString());
                     Log.i(getClass().getSimpleName(), "No download link returned, app restriction is " + app.getRestriction());

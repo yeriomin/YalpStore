@@ -38,6 +38,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         task.setRespectUpdateBlacklist(true);
         task.setIncludeSystemApps(true);
         task.execute();
+        loadApps();
     }
 
     @Override

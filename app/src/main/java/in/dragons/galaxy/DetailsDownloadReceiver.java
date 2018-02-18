@@ -86,7 +86,6 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
             buttonCancel.setVisibility(View.GONE);
         }
         Button buttonDownload = (Button) activityRef.get().findViewById(R.id.download);
-        buttonDownload.setText(R.string.details_download);
         buttonDownload.setEnabled(true);
     }
 }
