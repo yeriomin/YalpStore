@@ -9,7 +9,6 @@
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>
         <item name="android:textColorSecondary">@color/colorTextSecondary</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
-        <item name="android:indeterminateTint">@color/colorPrimary</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
 
@@ -22,7 +21,6 @@
         <item name="android:textColorPrimary">@color/colorTextPrimaryInv</item>
         <item name="android:textColorSecondary">@color/colorTextSecondaryInv</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
-        <item name="android:indeterminateTint">@color/colorPrimary</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
 

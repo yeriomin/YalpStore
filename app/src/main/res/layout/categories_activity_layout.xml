@@ -51,8 +51,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
+                    android:layout_gravity="center"
                     android:indeterminate="true"
-                    android:indeterminateTint="@color/colorPrimary"
                     android:padding="5dp"
                     android:visibility="gone" />
 
@@ -60,10 +60,10 @@
                     android:id="@android:id/list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:listSelector="@drawable/selector"
-                    android:scrollingCache="true"
                     android:animationCache="true"
-                    android:drawingCacheQuality="auto"/>
+                    android:drawingCacheQuality="auto"
+                    android:listSelector="@drawable/selector"
+                    android:scrollingCache="true" />
 
                 <TextView
                     android:id="@+id/empty"

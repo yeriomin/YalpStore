@@ -104,7 +104,8 @@ public class UpdatableAppsActivity extends AppListActivity {
     private ForegroundUpdatableAppsTask getTask() {
         ForegroundUpdatableAppsTask task = new ForegroundUpdatableAppsTask(this);
         task.setErrorView((TextView) getListView().getEmptyView());
-        task.setProgressIndicator(findViewById(R.id.progress));
+        if(listItems.isEmpty())
+            task.setProgressIndicator(findViewById(R.id.progress));
         return task;
     }
 

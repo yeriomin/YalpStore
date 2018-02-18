@@ -311,7 +311,6 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:indeterminate="true"
-                        android:indeterminateTint="@color/colorPrimary"
                         android:padding="5dp"
                         android:visibility="gone" />
 

@@ -63,7 +63,6 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:indeterminate="true"
-                    android:indeterminateTint="@color/colorPrimary"
                     android:padding="5dp"
                     android:progressDrawable="@drawable/selector"
                     android:visibility="gone" />
