@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         android:weightSum="10">
 
         <ImageView
@@ -39,7 +39,7 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -104,40 +104,22 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_gravity="top"
             android:src="@drawable/ic_3dots"
             android:tint="?android:textColor" />
     </LinearLayout>
 
-    <View
+    <!--View
         android:layout_width="match_parent"
         android:layout_height="1.5dp"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
-        android:background="?colorPrimary" />
-
-    <LinearLayout
-        android:id="@+id/separator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/progress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:background="?colorPrimary" /-->
 
         <ProgressBar
+            android:id="@+id/progress"
             android:layout_width="wrap_content"
+            android:layout_gravity="center"
             android:layout_height="wrap_content" />
-
-    </LinearLayout>
 
 </LinearLayout>

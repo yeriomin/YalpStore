@@ -74,20 +74,24 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         activity.clearApps();
         activity.addApps(updatableApps);
         if (success() && updatableApps.isEmpty()) {
-            this.errorView.setText(R.string.list_empty_updates);
+            activity.findViewById(R.id.unicorn).setVisibility(View.VISIBLE);
+            activity.findViewById(R.id.update_card).setVisibility(View.GONE);
         }
-        textView = (TextView) activity.findViewById(R.id.main_button_txt);
-        textView.setText("Update(s) available : "+updatableApps.size());
+        textView = (TextView) activity.findViewById(R.id.updates_txt);
+        textView.setText("Update(s) available : " + updatableApps.size());
         toggleUpdateAll(!updatableApps.isEmpty());
     }
 
     private void toggleUpdateAll(boolean enable) {
-        update = (Button) activity.findViewById(R.id.main_button);
+        update = (Button) activity.findViewById(R.id.update_all);
         cancel = (Button) activity.findViewById(R.id.update_cancel);
-        textView = (TextView) activity.findViewById(R.id.main_button_txt);
+        textView = (TextView) activity.findViewById(R.id.updates_txt);
 
-        update.setVisibility(View.VISIBLE);
-        textView.setVisibility(View.VISIBLE);
+        if (enable) {
+            activity.findViewById(R.id.update_card).setVisibility(View.VISIBLE);
+            update.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.VISIBLE);
+        }
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +120,7 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
                 }
                 update.setVisibility(View.VISIBLE);
                 cancel.setVisibility(View.GONE);
-                textView.setText("Update(s) available : "+updatableApps.size());
+                textView.setText("Update(s) available : " + updatableApps.size());
             }
         });
     }

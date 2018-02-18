@@ -13,7 +13,8 @@ public class SearchResultAppBadge extends AppBadge {
         line3.clear();
         Context c = view.getContext();
         line2.add(c.getString(R.string.details_size, Util.addSiPrefix((int) app.getSize())));
-        line2.add(app.isEarlyAccess() ? c.getString(R.string.early_access) : c.getString(R.string.details_rating, app.getRating().getAverage()));
+        if(!app.isEarlyAccess())
+            line2.add(c.getString(R.string.details_rating, (app.getRating().getAverage()))+" ★");
         line3.add(app.getPrice());
         line3.add(c.getString(app.containsAds() ? R.string.list_app_has_ads : R.string.list_app_no_ads));
         super.draw();

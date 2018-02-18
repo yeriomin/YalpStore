@@ -13,38 +13,57 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <!--Update Actions-->
+        <android.support.v7.widget.CardView
+            android:id="@+id/update_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:weightSum="2">
-
-            <TextView
-                android:id="@+id/main_button_txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="@string/list_update_all_txt"
-                android:textSize="20sp"
-                android:visibility="gone" />
+            android:layout_marginBottom="-3dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="2dp"
+            app:contentPadding="10dp">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:id="@+id/updates_header"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:weightSum="2">
+                android:layout_gravity="start"
+                android:orientation="vertical"
+                android:padding="5dp">
 
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/main_button"
+                <TextView
+                    android:id="@+id/updates_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/list_update_all_txt"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/updates_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/update_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end">
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/update_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_bg"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:background="@drawable/button_bg"
                     android:text="@string/list_update_all"
                     android:textColor="@color/white"
                     android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -61,47 +80,65 @@
                     android:visibility="gone" />
 
             </LinearLayout>
-        </LinearLayout>
+        </android.support.v7.widget.CardView>
 
+        <!--ListView-->
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
             app:cardCornerRadius="2dp"
             app:cardElevation="2dp">
 
-            <RelativeLayout
+            <!-- Unicorn -->
+            <LinearLayout
+                android:id="@+id/unicorn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ProgressBar
-                    android:id="@+id/progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:indeterminate="true"
-                    android:padding="5dp"
-                    android:progressDrawable="@drawable/selector"
-                    android:visibility="gone" />
-
-                <android.support.v7.widget.ListViewCompat
-                    android:id="@android:id/list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:animationCache="true"
-                    android:drawingCacheQuality="auto"
-                    android:listSelector="@drawable/selector"
-                    android:scrollingCache="true" />
+                <ImageView
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:src="@drawable/ic_galaxy_alt" />
 
                 <TextView
-                    android:id="@android:id/empty"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-            </RelativeLayout>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/list_empty_updates"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@android:id/list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animationCache="true"
+                android:drawingCacheQuality="auto"
+                android:scrollingCache="true" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:padding="5dp"
+                android:visibility="gone" />
         </android.support.v7.widget.CardView>
+
+        <!--Empty TextView-->
+        <TextView
+            android:id="@android:id/empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

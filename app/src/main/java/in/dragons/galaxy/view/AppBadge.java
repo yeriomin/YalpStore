@@ -34,13 +34,12 @@ public abstract class AppBadge extends ListItem {
 
     @Override
     public void draw() {
-        view.findViewById(R.id.separator).setVisibility(View.GONE);
         view.findViewById(R.id.progress).setVisibility(View.GONE);
         view.findViewById(R.id.app).setVisibility(View.VISIBLE);
 
         ((TextView) view.findViewById(R.id.text1)).setText(app.getDisplayName());
-        setText(R.id.text2, TextUtils.join(", ", line2));
-        setText(R.id.text3, TextUtils.join(", ", line3));
+        setText(R.id.text2, TextUtils.join(" • ", line2));
+        setText(R.id.text3, TextUtils.join(" • ", line3));
 
         drawIcon((ImageView) view.findViewById(R.id.icon));
 

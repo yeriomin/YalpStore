@@ -96,8 +96,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     public void removeApp(String packageName) {
         super.removeApp(packageName);
         if (listItems.isEmpty()) {
-            ((TextView) getListView().getEmptyView()).setText(R.string.list_empty_updates);
-            findViewById(R.id.main_button).setVisibility(View.GONE);
+            findViewById(R.id.unicorn).setVisibility(View.VISIBLE);
         }
     }
 
@@ -112,7 +111,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     public void launchUpdateAll() {
         ((GalaxyApplication) getApplicationContext()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
-        findViewById(R.id.main_button).setVisibility(View.GONE);
+        findViewById(R.id.update_all).setVisibility(View.GONE);
         Button button = (Button) findViewById(R.id.update_cancel);
         button.setVisibility(View.VISIBLE);
     }

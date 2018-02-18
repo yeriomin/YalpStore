@@ -22,9 +22,9 @@ public class Util {
 
     static {
         siPrefixes.put(0, "");
-        siPrefixes.put(3, "K");
-        siPrefixes.put(6, "M");
-        siPrefixes.put(9, "G");
+        siPrefixes.put(3, " KB");
+        siPrefixes.put(6, " MB");
+        siPrefixes.put(9, " GB");
     }
 
     static public Map<String, String> sort(Map<String, String> unsorted) {
