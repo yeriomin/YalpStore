@@ -261,4 +261,6 @@
     <string name="header_usr_noNetwork">Unable to retrieve</string>
     <string name="account_dummy_name">Dummy Account</string>
     <string name="account_dummy_email">Dummy Email</string>
+    <string name="delta_enabled">Delta updates enabled</string>
+    <string name="delta_disabled">Delta updates disabled</string>
 </resources>

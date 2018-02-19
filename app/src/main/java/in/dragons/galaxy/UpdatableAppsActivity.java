@@ -28,6 +28,10 @@ public class UpdatableAppsActivity extends AppListActivity {
         super.onCreate(savedInstanceState);
         setTitle(getString(R.string.activity_title_updates_only));
         onNewIntent(getIntent());
+
+        TextView delta = (TextView) findViewById(R.id.updates_setting);
+        delta.setText(sharedPreferences.getBoolean("PREFERENCE_DOWNLOAD_DELTAS", true) ? R.string.delta_enabled : R.string.delta_disabled);
+        delta.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -103,7 +107,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     private ForegroundUpdatableAppsTask getTask() {
         ForegroundUpdatableAppsTask task = new ForegroundUpdatableAppsTask(this);
         task.setErrorView((TextView) getListView().getEmptyView());
-        if(listItems.isEmpty())
+        if (listItems.isEmpty())
             task.setProgressIndicator(findViewById(R.id.progress));
         return task;
     }
