@@ -59,10 +59,6 @@ public class CategoryManager {
         Set<String> topSet = Util.getStringSet(context, TOP);
         for (String topCategoryId : topSet) {
             categories.put(topCategoryId, translator.getString(topCategoryId));
-            Set<String> subSet = Util.getStringSet(context, topCategoryId);
-            for (String subCategoryId : subSet) {
-                categories.put(subCategoryId, categories.get(topCategoryId) + " - " + translator.getString(subCategoryId));
-            }
         }
         return Util.sort(categories);
     }

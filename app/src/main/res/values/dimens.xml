@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="icon_size">64dp</dimen>
+    <dimen name="icon_size_cat_top">78dp</dimen>
     <dimen name="icon_size_big">72dp</dimen>
     <dimen name="icon_size_med">48dp</dimen>
+    <dimen name="icon_size_cat">36dp</dimen>
     <dimen name="icon_size_small">24dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>

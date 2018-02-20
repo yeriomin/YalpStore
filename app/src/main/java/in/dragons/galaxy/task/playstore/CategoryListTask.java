@@ -1,14 +1,13 @@
 package in.dragons.galaxy.task.playstore;
 
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.Map;
 
-import in.dragons.galaxy.CategoryAppsActivity;
+import in.dragons.galaxy.AllCategoriesAdapter;
 import in.dragons.galaxy.CategoryListActivity;
+import in.dragons.galaxy.R;
 
 public class CategoryListTask extends CategoryTask implements CloneableTask {
 
@@ -26,13 +25,23 @@ public class CategoryListTask extends CategoryTask implements CloneableTask {
     protected void fill() {
         final CategoryListActivity activity = (CategoryListActivity) context;
         final Map<String, String> categories = manager.getCategoriesFromSharedPreferences();
-        ListView list = (ListView) activity.findViewById(android.R.id.list);
-        list.setAdapter(getAdapter(categories, android.R.layout.simple_list_item_1));
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        RecyclerView recyclerView = (RecyclerView) activity.findViewById(R.id.all_cat_view);
+        RecyclerView.LayoutManager rlm = new LinearLayoutManager(activity);
+        recyclerView.setLayoutManager(rlm);
+        RecyclerView.Adapter rva = new AllCategoriesAdapter(activity, manager.getCategoriesFromSharedPreferences());
+        recyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false) {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                CategoryAppsActivity.start(activity, new ArrayList<>(categories.keySet()).get(position));
+            public boolean canScrollHorizontally() {
+                return false;
+            }
+
+            @Override
+            public boolean canScrollVertically() {
+                return false;
             }
         });
+        recyclerView.setAdapter(rva);
+        activity.setupTopCategories();
     }
 }

@@ -45,6 +45,8 @@
     <string name="action_whitelist">Whitelist for updates</string>
     <string name="action_unwhitelist">Ignore updates</string>
     <string name="action_categories">Categories</string>
+    <string name="all_categories">All categories</string>
+    <string name="top_categories">Top categories</string>
     <string name="action_manual">Manual download</string>
     <string name="action_get_local_apk">Get local apk</string>
     <string name="action_make_system">Convert to system app</string>

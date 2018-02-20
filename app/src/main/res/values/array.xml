@@ -91,4 +91,13 @@
         <item>AOSP Design</item>
         <item>Commons-Net</item>
     </string-array>
+    <string-array name="topCategories">
+        <item>PHOTOGRAPHY</item>
+        <item>MUSIC_AND_AUDIO</item>
+        <item>ENTERTAINMENT</item>
+        <item>SHOPPING</item>
+        <item>PERSONALIZATION</item>
+        <item>SOCIAL</item>
+        <item>COMMUNICATION</item>
+    </string-array>
 </resources>
