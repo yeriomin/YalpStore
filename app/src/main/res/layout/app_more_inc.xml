@@ -13,44 +13,45 @@
         android:layout_margin="5dp"
         android:visibility="gone"
         app:cardCornerRadius="2dp"
-        app:cardElevation="2dp">
+        app:cardElevation="2dp"
+        app:contentPadding="5dp">
 
         <TextView
             android:id="@+id/description_header"
-            android:text="@string/details_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginStart="10dp"
             android:drawableEnd="@drawable/ic_expand_more"
-            android:visibility="gone"
             android:gravity="center|start"
-            android:textSize="14sp"
+            android:text="@string/details_description"
             android:textAllCaps="true"
-            android:textStyle="bold"/>
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/description_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="32dp"
+            android:orientation="vertical"
             android:visibility="gone">
 
             <TextView
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autoLink="web|email"
                 android:layout_margin="10dp"
-                android:paddingTop="6dip"/>
+                android:autoLink="web|email"
+                android:paddingTop="6dip" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/changelog_bg">
+                android:layout_marginTop="10dp"
+                android:background="@color/changelog_bg"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/changes_title"
@@ -59,30 +60,30 @@
                     android:layout_margin="10dp"
                     android:text="@string/details_changelog"
                     android:textAllCaps="true"
+                    android:textColor="@color/changelog_txt"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:textColor="@color/changelog_txt"
-                    android:visibility="gone"  />
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/changes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autoLink="web|email"
                     android:layout_margin="10dp"
-                    android:textIsSelectable="true"
-                    android:visibility="gone"
+                    android:autoLink="web|email"
+                    android:lineSpacingExtra="5dp"
                     android:textColor="@color/changelog_txt"
-                    android:lineSpacingExtra="5dp"/>
+                    android:textIsSelectable="true"
+                    android:visibility="gone" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/offer_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:orientation="vertical" />
 
-    </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

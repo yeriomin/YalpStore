@@ -19,6 +19,7 @@
             android:id="@+id/reviews_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:drawableEnd="@drawable/ic_expand_more"
             android:text="@string/details_reviews"
             android:visibility="gone"

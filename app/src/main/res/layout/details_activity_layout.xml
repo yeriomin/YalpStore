@@ -5,25 +5,35 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="in.dragons.galaxy.AboutActivity"
     tools:openDrawer="start">
 
-    <LinearLayout
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:fitsSystemWindows="true">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:theme="@style/MyToolbarStyle" />
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <ScrollView
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:theme="@style/MyToolbarStyle"
+                app:layout_scrollFlags="scroll|enterAlways" />
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none">
+            android:scrollbars="none"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -67,7 +77,7 @@
                         android:id="@+id/icon"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
-                        android:layout_marginRight="6dp"
+                        android:layout_marginEnd="6dp"
                         android:background="@null"
                         android:contentDescription="@string/content_description_app_icon"
                         android:scaleType="fitXY"
@@ -112,9 +122,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
-                    android:weightSum="3"
                     android:gravity="end"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
                     <android.support.v7.widget.AppCompatButton
                         android:id="@+id/uninstall"
@@ -123,7 +133,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/button_bg_outine"
                         android:maxLines="1"
-                        android:text="Uninstall"
+                        android:text="@string/details_uninstall"
                         android:textColor="@color/button_bg"
                         android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
                         android:visibility="gone" />
@@ -199,7 +209,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/download_progress"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
                     android:gravity="end" />
 
                 <View
@@ -228,7 +238,6 @@
                         android:id="@+id/divider_bottom"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_below="@id/main_action"
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
@@ -260,7 +269,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:visibility="visible"></LinearLayout>
+                        android:visibility="visible"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -306,8 +315,6 @@
                         android:id="@+id/progress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:indeterminate="true"
@@ -316,8 +323,8 @@
 
                 </LinearLayout>
             </RelativeLayout>
-        </ScrollView>
-    </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
