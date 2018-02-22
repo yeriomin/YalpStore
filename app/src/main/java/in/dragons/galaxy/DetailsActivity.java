@@ -5,16 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
-
-import in.dragons.galaxy.fragment.details.Permissions;
 
 import in.dragons.galaxy.fragment.details.AppLists;
 import in.dragons.galaxy.fragment.details.BackToPlayStore;
@@ -22,6 +17,7 @@ import in.dragons.galaxy.fragment.details.Beta;
 import in.dragons.galaxy.fragment.details.DownloadOptions;
 import in.dragons.galaxy.fragment.details.DownloadOrInstall;
 import in.dragons.galaxy.fragment.details.GeneralDetails;
+import in.dragons.galaxy.fragment.details.Permissions;
 import in.dragons.galaxy.fragment.details.Review;
 import in.dragons.galaxy.fragment.details.Screenshot;
 import in.dragons.galaxy.fragment.details.Share;
@@ -31,7 +27,7 @@ import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.CloneableTask;
 import in.dragons.galaxy.task.playstore.DetailsTask;
 
-public class DetailsActivity extends GalaxyActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DetailsActivity extends GalaxyActivity {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
@@ -185,43 +181,5 @@ public class DetailsActivity extends GalaxyActivity implements NavigationView.On
                 activity.redrawDetails(app);
             }
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_myapps:
-                startActivity(new Intent(this, InstalledAppsActivity.class));
-                break;
-            case R.id.action_updates:
-                startActivity(new Intent(this, UpdatableAppsActivity.class));
-                break;
-            case R.id.action_categories:
-                startActivity(new Intent(this, CategoryListActivity.class));
-                break;
-            case R.id.action_settings:
-                startActivity(new Intent(this, PreferenceActivity.class));
-                break;
-            case R.id.action_accounts:
-                startActivity(new Intent(this, AccountsActivity.class));
-                break;
-            case R.id.action_about:
-                startActivity(new Intent(this, AboutActivity.class));
-                break;
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }

@@ -1,7 +1,6 @@
 package in.dragons.galaxy;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.SearchManager;
@@ -10,7 +9,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -25,37 +23,29 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SearchView;
-import android.widget.TextView;
 
+import com.percolate.caffeine.PhoneUtils;
+import com.percolate.caffeine.ToastUtils;
+import com.percolate.caffeine.ViewUtils;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-
 import in.dragons.galaxy.fragment.FilterMenu;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public abstract class GalaxyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     static protected boolean logout = false;
     protected String Email;
-    protected View header;
+    private NavigationView navigationView;
 
     public static void cascadeFinish() {
         GalaxyActivity.logout = true;
     }
 
     protected void onCreateDrawer(Bundle savedInstanceState) {
-        Log.v(getClass().getSimpleName(), "Starting activity");
         logout = false;
-        if (((GalaxyApplication) getApplication()).isTv()) {
-            requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
-        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,53 +56,45 @@ public abstract class GalaxyActivity extends AppCompatActivity implements Naviga
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        View header = navigationView.getHeaderView(0);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Email = sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, "");
-        try {
-            if (Email.contains("yalp"))
-                ((TextView) header.findViewById(R.id.usr_email)).setText(R.string.header_usr_email);
-            else
-                getRawData("http://picasaweb.google.com/data/entry/api/user/" + Email);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        getUser();
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-
     }
 
-    @SuppressLint("StaticFieldLeak")
-    public void getRawData(final String url) throws IOException {
-        new AsyncTask<Void, Void, String>() {
-            @Override
-            protected String doInBackground(Void... voids) {
-                OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder()
-                        .url(url)
-                        .build();
-                try (Response response = client.newCall(request).execute()) {
-                    return response.body().string();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(String result) {
-                if (result != null && result.contains("atom"))
+    public void getUser() {
+        View header = navigationView.getHeaderView(0);
+        if (isValidEmail(Email) && isConnected())
+            new GoogleAccountInfo(Email) {
+                @Override
+                public void onPostExecute(String result) {
                     parseRAW(result);
-                else {
-                    Log.e(this.getClass().getName(), "No network connection");
-                    //((TextView) findViewById(R.id.usr_email)).setText(R.string.header_usr_noNetwork);
                 }
-            }
+            }.execute();
+        else if (isDummyEmail())
+            ViewUtils.setText(header, R.id.usr_email, getResources().getString(R.string.header_usr_email));
+    }
 
-        }.execute();
+    public boolean isConnected() {
+        return PhoneUtils.isNetworkAvailable(this);
+    }
+
+    public boolean isValidEmail(String Email) {
+        return !(Email.isEmpty() || isDummyEmail());
+    }
+
+    public boolean isDummyEmail() {
+        return (Email.contains("yalp.store.user"));
+    }
+
+    public void notifyConnected() {
+        if (!isConnected())
+            ToastUtils.quickToast(this, getResources().getString(R.string.error_no_network), true);
     }
 
     public void parseRAW(String rawData) {
@@ -122,15 +104,14 @@ public abstract class GalaxyActivity extends AppCompatActivity implements Naviga
     }
 
     public void setNavHeaderInfo(NavigationView navigationView, String Name, String URL) {
-        View header = navigationView.getHeaderView(0);
-        ((TextView) header.findViewById(R.id.usr_name)).setText(Name);
-        ((TextView) header.findViewById(R.id.usr_email)).setText(Email);
+        ViewUtils.setText(this, R.id.usr_name, Name);
+        ViewUtils.setText(this, R.id.usr_email, Email);
 
         Picasso.with(this)
                 .load(URL)
                 .placeholder(R.drawable.ic_user_placeholder)
                 .transform(new CircleTransform())
-                .into(((ImageView) header.findViewById(R.id.usr_img)));
+                .into((ImageView) ViewUtils.findViewById(this, R.id.usr_img));
     }
 
     @Override
