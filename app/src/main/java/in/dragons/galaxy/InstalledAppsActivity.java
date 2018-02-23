@@ -1,9 +1,6 @@
 package in.dragons.galaxy;
 
-import android.app.ActivityOptions;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
@@ -19,10 +16,7 @@ public class InstalledAppsActivity extends AppListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        setTheme(sharedPreferences.getBoolean("THEME", true) ? R.style.AppTheme : R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
-        ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
         setTitle(R.string.activity_title_updates_and_other_apps);
     }
 

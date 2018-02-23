@@ -4,6 +4,9 @@
     <string name="about_opensource">Open source libaries</string>
     <string name="about_contributors">Contributors</string>
     <string name="about_devs">Developers</string>
+    <string name="about_github">GitHub</string>
+    <string name="about_xda">Dev Thread</string>
+    <string name="about_telegram">Telegram</string>
     <string name="about_copied_to_clipboard">Copied to clipboard</string>
     <string name="list_line_2_updatable">"Updated on %1$s"</string>
     <string name="list_empty_updates">No apps need to be updated</string>
@@ -36,6 +39,8 @@
     <string name="action_login">Log in</string>
     <string name="action_usedummy">Use Dummy</string>
     <string name="action_usegoogle">Use Google</string>
+    <string name="acc_dummy">Login using Dummy Account</string>
+    <string name="acc_google">Login using Google Account</string>
     <string name="action_switch">Switch Dummy</string>
     <string name="action_accounts">Accounts</string>
     <string name="action_search">Search</string>

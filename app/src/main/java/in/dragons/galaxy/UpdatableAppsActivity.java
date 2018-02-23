@@ -24,7 +24,6 @@ public class UpdatableAppsActivity extends AppListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        setTheme(sharedPreferences.getBoolean("THEME", true) ? R.style.AppTheme : R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
         setTitle(getString(R.string.activity_title_updates_only));
         onNewIntent(getIntent());

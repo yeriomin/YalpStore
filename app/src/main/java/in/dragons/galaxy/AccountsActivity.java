@@ -1,15 +1,14 @@
 package in.dragons.galaxy;
 
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.ImageViewCompat;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,18 +21,17 @@ import java.util.TimeZone;
 public class AccountsActivity extends GalaxyActivity {
 
     AccountTypeDialogBuilder accountTypeDialogBuilder = new AccountTypeDialogBuilder(this);
-
-    SharedPreferences sharedPreferences;
     String deviceName;
     ImageView spoofed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        setTheme(sharedPreferences.getBoolean("THEME", true) ? R.style.AppTheme : R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.accounts_layout);
-        onCreateDrawer(savedInstanceState);
+
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame);
+        getLayoutInflater().inflate(R.layout.app_acc_inc, contentFrameLayout);
+
+        notifyConnected(this);
 
         deviceName = sharedPreferences.getString(PreferenceActivity.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
 
@@ -45,15 +43,10 @@ public class AccountsActivity extends GalaxyActivity {
             drawDevice();
 
         if (isValidEmail(Email) && isConnected()) {
-            new GoogleAccountInfo(Email) {
-                @Override
-                public void onPostExecute(String result) {
-                    parseRAW(result);
-                }
-            }.execute();
             drawGoogle();
         } else if (isDummyEmail())
             drawDummy();
+
         setFab();
     }
 
@@ -116,8 +109,13 @@ public class AccountsActivity extends GalaxyActivity {
             ((LinearLayout) findViewById(R.id.google_container)).setVisibility(View.VISIBLE);
             ((LinearLayout) findViewById(R.id.google_action)).setVisibility(View.VISIBLE);
             ((LinearLayout) findViewById(R.id.no_google)).setVisibility(View.GONE);
+
+            TextView googleName = (TextView) findViewById(R.id.google_name);
+            googleName.setText(sharedPreferences.getString("GOOGLE_NAME", ""));
+
             TextView googleEmail = (TextView) findViewById(R.id.google_email);
             googleEmail.setText(Email);
+
             TextView gsfIdView = (TextView) findViewById(R.id.google_gsf);
             gsfIdView.setText("GSF ID : " + sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
 
@@ -127,6 +125,8 @@ public class AccountsActivity extends GalaxyActivity {
                     showLogOutDialog();
                 }
             });
+
+            loadAvatar(sharedPreferences.getString("GOOGLE_URL", ""));
         }
     }
 
@@ -147,11 +147,9 @@ public class AccountsActivity extends GalaxyActivity {
         });
     }
 
-    public void parseRAW(String rawData) {
-        TextView googleName = (TextView) findViewById(R.id.google_name);
-        googleName.setText(rawData.substring(rawData.indexOf("<name>") + 6, rawData.indexOf("</name>")));
+    public void loadAvatar(String Url) {
         Picasso.with(this)
-                .load(rawData.substring(rawData.indexOf("<gphoto:thumbnail>") + 18, rawData.lastIndexOf("</gphoto:thumbnail>")))
+                .load(Url)
                 .placeholder(R.drawable.ic_user_placeholder)
                 .transform(new CircleTransform())
                 .into(((ImageView) findViewById(R.id.google_avatar)));

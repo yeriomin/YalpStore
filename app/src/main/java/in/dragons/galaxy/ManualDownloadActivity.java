@@ -26,9 +26,7 @@ public class ManualDownloadActivity extends DetailsActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        setTheme(sharedPreferences.getBoolean("THEME", true) ? R.style.AppTheme : R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
-        onCreateDrawer(savedInstanceState);
     }
 
     @Override

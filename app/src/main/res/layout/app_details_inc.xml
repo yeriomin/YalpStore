@@ -1,121 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <!-- App Details : Type, Size, Rating -->
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/app_detail"
-        android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/app_detail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:gravity="center"
+    android:visibility="gone">
+
+    <!-- Downloads -->
+    <LinearLayout
+        android:id="@+id/app_downloads"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:visibility="gone">
+        android:orientation="vertical">
 
-        <!-- Downloads -->
-        <LinearLayout
-            android:id="@+id/app_downloads"
+        <ImageButton
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_margin="5dp"
+            android:background="@drawable/round_bg"
+            android:src="@drawable/app_downloads" />
+
+        <TextView
+            android:id="@+id/installs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="clip_horizontal" />
+    </LinearLayout>
 
-            <ImageButton
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:layout_margin="5dp"
-                android:src="@drawable/app_downloads"
-                android:background="@drawable/round_bg"/>
+    <!-- Ratings -->
+    <LinearLayout
+        android:id="@+id/app_ratings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/app_downloads"
+        android:gravity="center"
+        android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/installs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:gravity="clip_horizontal"/>
-        </LinearLayout>
+        <ImageButton
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_margin="5dp"
+            android:background="@drawable/round_bg"
+            android:src="@drawable/app_ratings" />
 
-        <!-- Ratings -->
-        <LinearLayout
-            android:id="@+id/app_ratings"
-            android:layout_toEndOf="@id/app_downloads"
+        <TextView
+            android:id="@+id/rating"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-            <ImageButton
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:layout_margin="5dp"
-                android:src="@drawable/app_ratings"
-                android:background="@drawable/round_bg"/>
+    <!-- Size -->
+    <LinearLayout
+        android:id="@+id/app_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/app_ratings"
+        android:gravity="center"
+        android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+        <ImageButton
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_margin="5dp"
+            android:background="@drawable/round_bg"
+            android:src="@drawable/app_size" />
 
-        <!-- Size -->
-        <LinearLayout
-            android:id="@+id/app_size"
-            android:layout_toEndOf="@id/app_ratings"
+        <TextView
+            android:id="@+id/size"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-            <ImageButton
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:layout_margin="5dp"
-                android:src="@drawable/app_size"
-                android:background="@drawable/round_bg"/>
+    <!-- Category -->
+    <LinearLayout
+        android:id="@+id/app_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/app_size"
+        android:gravity="center"
+        android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+        <ImageButton
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_margin="5dp"
+            android:background="@drawable/round_bg"
+            android:src="@drawable/app_category" />
 
-        <!-- Category -->
-        <LinearLayout
-            android:id="@+id/app_category"
-            android:layout_toEndOf="@id/app_size"
+        <TextView
+            android:id="@+id/category"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-            <ImageButton
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:layout_margin="5dp"
-                android:src="@drawable/app_category"
-                android:background="@drawable/round_bg"/>
+    <!-- Price -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/app_category"
+        android:gravity="center"
+        android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+        <ImageButton
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_margin="5dp"
+            android:background="@drawable/round_bg"
+            android:src="@drawable/app_price" />
 
-        <!-- Price -->
-        <LinearLayout
-            android:layout_toEndOf="@id/app_category"
+        <TextView
+            android:id="@+id/price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageButton
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:layout_margin="5dp"
-                android:src="@drawable/app_price"
-                android:background="@drawable/round_bg"/>
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-    </RelativeLayout>
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

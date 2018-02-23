@@ -14,7 +14,6 @@ import in.dragons.galaxy.BuildConfig;
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.DownloadProgressBarUpdater;
 import in.dragons.galaxy.DownloadState;
-import in.dragons.galaxy.Downloader;
 import in.dragons.galaxy.GalaxyActivity;
 import in.dragons.galaxy.GalaxyPermissionManager;
 import in.dragons.galaxy.ManualDownloadActivity;
@@ -22,7 +21,6 @@ import in.dragons.galaxy.NumberProgressBar;
 import in.dragons.galaxy.Paths;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
-import in.dragons.galaxy.selfupdate.UpdaterFactory;
 import in.dragons.galaxy.task.playstore.PurchaseTask;
 
 import static in.dragons.galaxy.DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
@@ -63,7 +61,7 @@ public class ButtonDownload extends Button {
 
     public void checkAndDownload() {
         View buttonDownload = activity.findViewById(R.id.download);
-        if(null!=buttonDownload)buttonDownload.setVisibility(View.GONE);
+        if (null != buttonDownload) buttonDownload.setVisibility(View.GONE);
         View buttonCancel = activity.findViewById(R.id.cancel);
         GalaxyPermissionManager permissionManager = new GalaxyPermissionManager(activity);
         if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
@@ -96,21 +94,14 @@ public class ButtonDownload extends Button {
     }
 
     public void download() {
-        if (app.getPackageName().equals(BuildConfig.APPLICATION_ID)) {
-            new Downloader(activity).download(
-                    app,
-                    AndroidAppDeliveryData.newBuilder().setDownloadUrl(UpdaterFactory.get(activity).getUrlString(app.getVersionCode())).build()
-            );
+        boolean writePermission = new GalaxyPermissionManager(activity).checkPermission();
+        Log.i(getClass().getSimpleName(), "Write permission granted - " + writePermission);
+        if (writePermission && prepareDownloadsDir()) {
+            getPurchaseTask().execute();
         } else {
-            boolean writePermission = new GalaxyPermissionManager(activity).checkPermission();
-            Log.i(getClass().getSimpleName(), "Write permission granted - " + writePermission);
-            if (writePermission && prepareDownloadsDir()) {
-                getPurchaseTask().execute();
-            } else {
-                File dir = Paths.getDownloadPath(activity);
-                Log.i(getClass().getSimpleName(), dir.getAbsolutePath() + " exists=" + dir.exists() + ", isDirectory=" + dir.isDirectory() + ", writable=" + dir.canWrite());
-                ContextUtil.toast(this.activity.getApplicationContext(), R.string.error_downloads_directory_not_writable);
-            }
+            File dir = Paths.getDownloadPath(activity);
+            Log.i(getClass().getSimpleName(), dir.getAbsolutePath() + " exists=" + dir.exists() + ", isDirectory=" + dir.isDirectory() + ", writable=" + dir.canWrite());
+            ContextUtil.toast(this.activity.getApplicationContext(), R.string.error_downloads_directory_not_writable);
         }
     }
 
@@ -132,7 +123,6 @@ public class ButtonDownload extends Button {
         purchaseTask.setApp(app);
         purchaseTask.setContext(activity);
         purchaseTask.setTriggeredBy(activity instanceof ManualDownloadActivity ? MANUAL_DOWNLOAD_BUTTON : DOWNLOAD_BUTTON);
-        purchaseTask.setProgressIndicator(activity.findViewById(R.id.progress));
         return purchaseTask;
     }
 

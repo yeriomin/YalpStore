@@ -26,7 +26,6 @@ import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.model.ImageSource;
-import in.dragons.galaxy.task.LoadImageTask;
 
 public class GeneralDetails extends Abstract {
 
@@ -111,7 +110,7 @@ public class GeneralDetails extends Abstract {
             if (!sharedPreferences.getBoolean("THEME", true)) {
                 ((TextView) activity.findViewById(R.id.changes_upper)).setTextColor(activity.getResources().getColor(R.color.white));
                 ((TextView) activity.findViewById(R.id.changes_header)).setTextColor(activity.getResources().getColor(R.color.white));
-                activity.findViewById(R.id.changes_container).setBackgroundColor(activity.getResources().getColor(R.color.darkgray));
+                activity.findViewById(R.id.changes_container).setBackgroundColor(activity.getResources().getColor(R.color.darkGray));
             }
         }
     }

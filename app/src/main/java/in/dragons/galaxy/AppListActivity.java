@@ -2,13 +2,15 @@ package in.dragons.galaxy;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ListView;
+
+import com.percolate.caffeine.ViewUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +24,7 @@ import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.view.AppBadge;
 import in.dragons.galaxy.view.ListItem;
 
-abstract public class AppListActivity extends GalaxyActivity implements NavigationView.OnNavigationItemSelectedListener {
+abstract public class AppListActivity extends GalaxyActivity {
 
     protected ListView listView;
     protected Map<String, ListItem> listItems = new HashMap<>();
@@ -35,8 +37,8 @@ abstract public class AppListActivity extends GalaxyActivity implements Navigati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        super.onCreateDrawer(savedInstanceState);
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame); //Remember this is the FrameLayout area within your activity_main.xml
+        getLayoutInflater().inflate(R.layout.applist_activity_layout, contentFrameLayout);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +48,8 @@ abstract public class AppListActivity extends GalaxyActivity implements Navigati
                 }
             }
         });
+
+        onContentChange();
 
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -98,11 +102,11 @@ abstract public class AppListActivity extends GalaxyActivity implements Navigati
         }
     }
 
-    @Override
-    public void onContentChanged() {
-        super.onContentChanged();
+
+    public void onContentChange() {
         View emptyView = findViewById(android.R.id.empty);
-        listView = (ListView) findViewById(android.R.id.list);
+        listView = ViewUtils.findViewById(this, android.R.id.list);
+        listView.setNestedScrollingEnabled(true);
         if (emptyView != null) {
             listView.setEmptyView(emptyView);
         }

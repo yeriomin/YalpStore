@@ -24,14 +24,12 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
             R.drawable.ic_communication
     };
 
-    private View view;
-    private ViewHolder viewHolder;
     private SharedPreferencesTranslator translator;
 
     public TopCategoriesAdapter(Context context, String[] topCategories) {
         this.categories = topCategories;
         this.context = context;
-        translator = new SharedPreferencesTranslator(PreferenceManager.getDefaultSharedPreferences(context));
+        this.translator = new SharedPreferencesTranslator(PreferenceManager.getDefaultSharedPreferences(context));
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -47,8 +45,8 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
 
     @Override
     public TopCategoriesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(context).inflate(R.layout.top_cat_item, parent, false);
-        viewHolder = new ViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.top_cat_item, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
@@ -21,106 +21,100 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:drawableEnd="@drawable/ic_expand_more"
-            android:text="@string/details_reviews"
-            android:visibility="gone"
             android:gravity="center|start"
-            android:textSize="14sp"
+            android:text="@string/details_reviews"
             android:textAllCaps="true"
-            android:textStyle="bold"/>
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
 
-         <LinearLayout
-             android:id="@+id/reviews_container"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:orientation="vertical"
-             android:layout_marginTop="32dp"
-             android:visibility="gone">
+        <LinearLayout
+            android:id="@+id/reviews_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-             <FrameLayout
+            <FrameLayout
                 android:id="@+id/user_review_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:padding="6dip">
 
-                 <LinearLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
-                     <LinearLayout
+                    <TextView
+                        android:id="@+id/rate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:orientation="vertical">
+                        android:text="@string/details_rate_this_app"
+                        android:textSize="18sp" />
 
-                        <TextView
-                            android:id="@+id/rate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/details_rate_this_app"
-                            android:textSize="18sp" />
-
-                        <RatingBar
-                            android:id="@+id/user_stars"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:numStars="5"
-                            android:stepSize="1" />
-                     </LinearLayout>
-
-                     <LinearLayout
-                         android:id="@+id/user_review_edit_delete"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:layout_gravity="end"
-                         android:orientation="horizontal"
-                         android:visibility="gone">
-
-                         <ImageView
-                             android:id="@+id/user_review_edit"
-                             android:layout_width="@dimen/icon_size_small"
-                             android:layout_height="@dimen/icon_size_small"
-                             android:contentDescription="@string/content_description_review_edit"
-                             android:src="@drawable/ic_edit"
-                             android:tint="@color/darkgray"/>
-
-                         <ImageView
-                             android:id="@+id/user_review_delete"
-                             android:layout_width="@dimen/icon_size_small"
-                             android:layout_height="@dimen/icon_size_small"
-                             android:contentDescription="@string/content_description_review_delete"
-                             android:src="@drawable/ic_delete"
-                             android:tint="@color/darkgray"/>
-                     </LinearLayout>
-
-                     <LinearLayout
-                        android:id="@+id/user_review"
+                    <RatingBar
+                        android:id="@+id/user_stars"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="vertical"
-                        android:visibility="gone">
+                        android:layout_marginTop="10dp"
+                        android:numStars="5"
+                        android:stepSize="1" />
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/user_title"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
+                <LinearLayout
+                    android:id="@+id/user_review_edit_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
-                        <TextView
-                            android:id="@+id/user_comment"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="12sp" />
-                     </LinearLayout>
-                 </LinearLayout>
-             </FrameLayout>
+                    <ImageView
+                        android:id="@+id/user_review_edit"
+                        android:layout_width="@dimen/icon_size_small"
+                        android:layout_height="@dimen/icon_size_small"
+                        android:contentDescription="@string/content_description_review_edit"
+                        android:src="@drawable/ic_edit"
+                        android:tint="@color/darkGray" />
 
-             <LinearLayout
+                    <ImageView
+                        android:id="@+id/user_review_delete"
+                        android:layout_width="@dimen/icon_size_small"
+                        android:layout_height="@dimen/icon_size_small"
+                        android:contentDescription="@string/content_description_review_delete"
+                        android:src="@drawable/ic_delete"
+                        android:tint="@color/darkGray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/user_review"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/user_title"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/user_comment"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -133,40 +127,40 @@
                     android:padding="10dp"
                     android:textSize="40sp" />
 
-                    <LinearLayout
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/average_stars5"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+                        android:layout_height="wrap_content" />
 
-                        <TextView
-                            android:id="@+id/average_stars5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/average_stars4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
-                        <TextView
-                            android:id="@+id/average_stars4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/average_stars3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
-                        <TextView
-                            android:id="@+id/average_stars3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/average_stars2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
-                        <TextView
-                            android:id="@+id/average_stars2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/average_stars1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/average_stars1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-             </LinearLayout>
-
-             <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -190,16 +184,16 @@
                     android:layout_weight="1"
                     android:orientation="vertical" />
 
-                    <ImageButton
-                        android:id="@+id/reviews_next"
-                        android:layout_width="24dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:background="#0000"
-                        android:contentDescription="@string/content_description_review_next_page"
-                        android:src="@drawable/ic_chevron_right" />
-             </LinearLayout>
-         </LinearLayout>
+                <ImageButton
+                    android:id="@+id/reviews_next"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="#0000"
+                    android:contentDescription="@string/content_description_review_next_page"
+                    android:src="@drawable/ic_chevron_right" />
+            </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>
 

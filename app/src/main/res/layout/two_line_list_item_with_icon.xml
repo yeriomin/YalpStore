@@ -3,6 +3,7 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="vertical"
+    android:paddingBottom="6dp"
     android:paddingTop="6dp">
 
     <LinearLayout
@@ -20,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/icon_size_med"
             android:layout_marginEnd="6dp"
-            android:layout_marginRight="6dp"
+            android:layout_marginStart="3dp"
             android:layout_weight="2"
             android:contentDescription="@string/content_description_app_icon"
             android:src="@drawable/ic_placeholder" />
@@ -57,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:visibility="gone" />
 
             <LinearLayout
@@ -103,23 +104,16 @@
             android:id="@+id/menu_3dot"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="top"
+            android:layout_weight="1"
             android:src="@drawable/ic_3dots"
             android:tint="?android:textColor" />
     </LinearLayout>
 
-    <!--View
-        android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="5dp"
-        android:background="?colorPrimary" /-->
-
-        <ProgressBar
-            android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content" />
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
 </LinearLayout>

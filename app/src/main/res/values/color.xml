@@ -10,8 +10,8 @@
     <color name="black">#000000</color>
     <color name="transparent">#0000</color>
     <color name="gray">#BDBDBD</color>
-    <color name="darkgray">#616161</color>
-    <color name="lightgray">#EEEEEE</color>
+    <color name="darkGray">#616161</color>
+    <color name="lightGray">#EEEEEE</color>
 
     <!--Buttons-->
     <color name="button_bg">#3F51B5</color>

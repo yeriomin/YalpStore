@@ -2,43 +2,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_filter"
+        android:icon="@drawable/ic_filter"
         android:title="@string/action_filter"
-        app:showAsAction="ifRoom"
         android:visible="false"
-        android:icon="@drawable/ic_filter">
+        app:showAsAction="ifRoom">
         <menu>
             <item
                 android:id="@+id/filter_system_apps"
+                android:checkable="true"
                 android:title="@string/action_filter_system_apps"
-                android:visible="false"
-                android:checkable="true"/>
+                android:visible="false" />
             <item
                 android:id="@+id/filter_apps_with_ads"
+                android:checkable="true"
                 android:title="@string/action_filter_apps_with_ads"
-                android:visible="false"
-                android:checkable="true"/>
+                android:visible="false" />
             <item
                 android:id="@+id/filter_paid_apps"
+                android:checkable="true"
                 android:title="@string/action_filter_paid_apps"
-                android:visible="false"
-                android:checkable="true"/>
+                android:visible="false" />
             <item
                 android:id="@+id/filter_gsf_dependent_apps"
+                android:checkable="true"
                 android:title="@string/action_filter_gsf_dependent_apps"
-                android:visible="false"
-                android:checkable="true"/>
+                android:visible="false" />
             <item
                 android:id="@+id/filter_category"
-                android:visible="false"
-                android:title="@string/action_filter_category"/>
+                android:title="@string/action_filter_category"
+                android:visible="false" />
             <item
                 android:id="@+id/filter_rating"
-                android:visible="false"
-                android:title="@string/action_filter_rating"/>
+                android:title="@string/action_filter_rating"
+                android:visible="false" />
             <item
                 android:id="@+id/filter_downloads"
-                android:visible="false"
-                android:title="@string/action_filter_downloads"/>
+                android:title="@string/action_filter_downloads"
+                android:visible="false" />
         </menu>
     </item>
 </menu>

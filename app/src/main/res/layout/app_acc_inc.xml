@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center">
+    android:layout_height="match_parent"
+    android:fadeScrollbars="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="5dp"
-        android:weightSum="8">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="2dp"
+        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
             android:id="@+id/device_card"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="2"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="2dp"
-            app:contentPadding="2dp">
+            android:layout_height="@dimen/card_height"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,7 +37,7 @@
                     android:id="@+id/device_detail_container"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_weight="5.5"
                     android:orientation="vertical">
 
@@ -63,12 +60,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14sp" />
+
                     <TextView
                         android:id="@+id/device_timezone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14sp" />
                 </LinearLayout>
+
                 <ImageView
                     android:id="@+id/spoofed_indicator"
                     android:layout_width="0dp"
@@ -99,8 +98,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/ic_api"
                     android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/ic_api"
                     android:drawableTint="?android:textColor" />
 
                 <TextView
@@ -108,8 +107,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/ic_cpu"
                     android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/ic_cpu"
                     android:drawableTint="?android:textColor" />
 
             </LinearLayout>
@@ -119,12 +118,8 @@
         <android.support.v7.widget.CardView
             android:id="@+id/user_dummy_card"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="3"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="2dp"
-            app:contentPadding="2dp">
+            android:layout_height="@dimen/card_height"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:id="@+id/no_dummy"
@@ -144,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="Login using Dummy Account" />
+                    android:text="@string/acc_dummy" />
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/dummy_login"
@@ -176,7 +171,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_weight="5.5"
                     android:orientation="vertical">
 
@@ -247,11 +242,8 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="2dp"
-            app:contentPadding="2dp">
+            android:layout_height="@dimen/card_height"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:id="@+id/no_google"
@@ -271,7 +263,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="Login using Google Account" />
+                    android:text="@string/acc_google" />
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/google_login"
@@ -302,7 +294,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_weight="5.5"
                     android:orientation="vertical">
 
@@ -357,8 +349,6 @@
                     android:theme="@style/Widget.AppCompat.Button.Borderless.Colored" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
+
     </LinearLayout>
-</RelativeLayout>
-
-
-
+</android.support.v4.widget.NestedScrollView>

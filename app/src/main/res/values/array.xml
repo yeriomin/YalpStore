@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array translatable="false" name="blackOrWhiteValues">
+    <string-array name="blackOrWhiteValues" translatable="false">
         <item>black</item>
         <item>white</item>
     </string-array>
@@ -8,7 +8,7 @@
         <item>@string/pref_update_list_white_or_black_black</item>
         <item>@string/pref_update_list_white_or_black_white</item>
     </string-array>
-    <string-array translatable="false" name="updateIntervalValues">
+    <string-array name="updateIntervalValues" translatable="false">
         <item>-1</item>
         <item>3600000</item>
         <item>86400000</item>
@@ -24,7 +24,7 @@
         <item>@string/dialog_account_type_provided_by_user</item>
         <item>@string/dialog_account_type_predefined</item>
     </string-array>
-    <string-array translatable="false" name="installationMethodValues">
+    <string-array name="installationMethodValues" translatable="false">
         <item>default</item>
         <item>root</item>
         <item>privileged</item>
@@ -34,19 +34,19 @@
         <item>@string/pref_installation_method_root</item>
         <item>@string/pref_installation_method_privileged</item>
     </string-array>
-    <string-array translatable="false" name="filterRatingValues">
+    <string-array name="filterRatingValues" translatable="false">
         <item>0</item>
         <item>3</item>
         <item>4</item>
         <item>4.5</item>
     </string-array>
-    <string-array translatable="false" name="filterRatingLabels">
+    <string-array name="filterRatingLabels" translatable="false">
         <item>@string/search_filter</item>
         <item> > 3 ★★☆☆☆</item>
         <item> > 4 ★★★☆☆</item>
         <item> > 4.5 ★★★★☆</item>
     </string-array>
-    <string-array translatable="false" name="filterDownloadsValues">
+    <string-array name="filterDownloadsValues" translatable="false">
         <item>0</item>
         <item>100</item>
         <item>1000</item>
@@ -56,7 +56,7 @@
         <item>10000000</item>
         <item>100000000</item>
     </string-array>
-    <string-array translatable="false" name="filterDownloadsLabels">
+    <string-array name="filterDownloadsLabels" translatable="false">
         <item>@string/search_filter</item>
         <item> > 100 ↓</item>
         <item> > 1 K ↓</item>

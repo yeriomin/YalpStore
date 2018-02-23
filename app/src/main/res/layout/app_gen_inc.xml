@@ -15,38 +15,28 @@
         app:cardElevation="2dp"
         app:contentPadding="5dp">
 
-         <!--TextView
-            android:id="@+id/beta_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_expand_more"
-            android:visibility="gone"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center|start"
-            android:textSize="14sp"
-            android:textAllCaps="true"
-            android:textStyle="bold"/-->
-
         <LinearLayout
             android:id="@+id/general_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="visible"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/developer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/updated"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/google_dependencies"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

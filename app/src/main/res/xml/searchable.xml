@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:hint="@string/search_title"
     android:label="@string/app_name"
     android:searchSuggestAuthority="in.dragons.galaxy.GalaxySuggestionProvider"
-    android:searchSuggestIntentAction="android.intent.action.VIEW"
-    android:hint="@string/search_title" />
+    android:searchSuggestIntentAction="android.intent.action.VIEW" />

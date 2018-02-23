@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.WeakHashMap;
 
+import in.dragons.galaxy.NetworkState;
+import in.dragons.galaxy.PreferenceActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.model.ImageSource;
@@ -53,9 +55,9 @@ public abstract class AppBadge extends ListItem {
 
     private void drawIcon(ImageView imageView) {
         ImageSource imageSource = app.getIconInfo();
-        if (null != imageSource.getApplicationInfo()) {
+        if (null != imageSource.getApplicationInfo() && !noImages()) {
             imageView.setImageDrawable(imageView.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
-        } else {
+        } else if(!noImages()) {
             Picasso
                     .with(view.getContext())
                     .load(imageSource.getUrl())
@@ -72,5 +74,9 @@ public abstract class AppBadge extends ListItem {
         } else {
             textView.setVisibility(View.GONE);
         }
+    }
+
+    private boolean noImages() {
+        return NetworkState.isMetered(view.getContext()) && PreferenceActivity.getBoolean(view.getContext(), PreferenceActivity.PREFERENCE_NO_IMAGES);
     }
 }

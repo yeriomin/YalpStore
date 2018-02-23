@@ -1,44 +1,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:gravity="top"
-    android:padding="6dip" >
+    android:orientation="vertical"
+    android:padding="6dip">
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_gravity="center_vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/avatar"
-            android:contentDescription="@string/content_description_review_author_avatar"
             android:layout_width="48dip"
             android:layout_height="48dip"
-            android:layout_marginRight="6dip"
-            android:layout_marginEnd="6dip" />
+            android:layout_marginEnd="6dip"
+            android:layout_marginStart="6dip"
+            android:contentDescription="@string/content_description_review_author_avatar" />
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/author"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/title"
-                android:textSize="14sp"
-                android:textStyle="bold"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -46,8 +46,8 @@
 
     <TextView
         android:id="@+id/comment"
-        android:textSize="12sp"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="12sp" />
 
 </LinearLayout>

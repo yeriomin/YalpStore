@@ -27,6 +27,4 @@
             android:icon="@drawable/ic_about"
             android:title="@string/action_about" />
     </group>
-
-
 </menu>

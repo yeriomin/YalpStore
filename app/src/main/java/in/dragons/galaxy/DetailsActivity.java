@@ -2,14 +2,13 @@ package in.dragons.galaxy;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import in.dragons.galaxy.fragment.details.AppLists;
 import in.dragons.galaxy.fragment.details.BackToPlayStore;
@@ -89,12 +88,10 @@ public class DetailsActivity extends GalaxyActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        setTheme(sharedPreferences.getBoolean("THEME", true) ? R.style.AppTheme : R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.details_activity_layout);
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame);
+        getLayoutInflater().inflate(R.layout.details_activity_layout, contentFrameLayout);
         onNewIntent(getIntent());
-        onCreateDrawer(savedInstanceState);
     }
 
     @Override

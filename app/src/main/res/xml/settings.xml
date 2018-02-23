@@ -6,7 +6,7 @@
         android:key="PREFERENCE_DOWNLOAD_DIRECTORY"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="@string/pref_download_directory"/>
+        android:title="@string/pref_download_directory" />
     <PreferenceCategory android:title="@string/pref_category_updates">
         <CheckBoxPreference
             android:defaultValue="false"
@@ -16,10 +16,10 @@
             android:title="@string/pref_download_deltas" />
         <ListPreference
             android:defaultValue="-1"
-            android:key="PREFERENCE_BACKGROUND_UPDATE_INTERVAL"
-            android:title="@string/pref_background_update_interval"
             android:entries="@array/updateIntervalLabels"
-            android:entryValues="@array/updateIntervalValues" />
+            android:entryValues="@array/updateIntervalValues"
+            android:key="PREFERENCE_BACKGROUND_UPDATE_INTERVAL"
+            android:title="@string/pref_background_update_interval" />
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD"
@@ -27,33 +27,33 @@
             android:summaryOn="@string/pref_background_update_download_summary_on"
             android:title="@string/pref_background_update_download" />
         <CheckBoxPreference
-            android:dependency="PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD"
             android:defaultValue="true"
+            android:dependency="PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD"
             android:key="PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY"
             android:title="@string/pref_background_update_wifi_only" />
         <CheckBoxPreference
-            android:dependency="PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD"
             android:defaultValue="false"
+            android:dependency="PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD"
             android:key="PREFERENCE_BACKGROUND_UPDATE_INSTALL"
             android:summaryOff="@string/pref_background_update_install_summary_off"
             android:summaryOn="@string/pref_background_update_install_summary_on"
             android:title="@string/pref_background_update_install" />
         <ListPreference
             android:defaultValue="black"
-            android:key="PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK"
-            android:title="@string/pref_update_list_white_or_black"
             android:entries="@array/blackOrWhiteLabels"
-            android:entryValues="@array/blackOrWhiteValues"/>
+            android:entryValues="@array/blackOrWhiteValues"
+            android:key="PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK"
+            android:title="@string/pref_update_list_white_or_black" />
         <CheckBoxPreference
-            android:enabled="false"
             android:defaultValue="false"
+            android:enabled="false"
             android:key="PREFERENCE_AUTO_WHITELIST"
             android:summaryOff="@string/pref_auto_whitelist_summary_off"
             android:summaryOn="@string/pref_auto_whitelist_summary_on"
             android:title="@string/pref_auto_whitelist" />
         <in.dragons.galaxy.MultiSelectListPreference
-            android:persistent="true"
             android:key="PREFERENCE_UPDATE_LIST"
+            android:persistent="true"
             android:title="@string/pref_update_list_black" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_installation">
@@ -71,28 +71,28 @@
             android:title="@string/pref_delete_apk_after_install" />
         <ListPreference
             android:defaultValue="default"
-            android:key="PREFERENCE_INSTALLATION_METHOD"
-            android:title="@string/pref_installation_method"
             android:entries="@array/installationMethodLabels"
-            android:entryValues="@array/installationMethodValues"/>
+            android:entryValues="@array/installationMethodValues"
+            android:key="PREFERENCE_INSTALLATION_METHOD"
+            android:title="@string/pref_installation_method" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_spoofing">
         <ListPreference
             android:defaultValue=""
             android:key="PREFERENCE_REQUESTED_LANGUAGE"
-            android:title="@string/pref_requested_language"/>
+            android:title="@string/pref_requested_language" />
         <ListPreference
             android:defaultValue=""
             android:key="PREFERENCE_DEVICE_TO_PRETEND_TO_BE"
-            android:title="@string/pref_device_to_pretend_to_be"/>
+            android:title="@string/pref_device_to_pretend_to_be" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_ui">
         <SwitchPreference
-            android:key="THEME"
-            android:title="@string/pref_dark_theme"
             android:defaultValue="true"
+            android:key="THEME"
             android:summaryOff="@string/pref_dark_theme_summary_off"
-            android:summaryOn="@string/pref_dark_theme_summary_on" />
+            android:summaryOn="@string/pref_dark_theme_summary_on"
+            android:title="@string/pref_dark_theme" />
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="PREFERENCE_NO_IMAGES"

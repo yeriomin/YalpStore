@@ -8,13 +8,11 @@ import com.github.yeriomin.playstoreapi.GooglePlayException;
 
 import java.io.IOException;
 
-import in.dragons.galaxy.BuildConfig;
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.model.AppBuilder;
 import in.dragons.galaxy.model.ReviewBuilder;
-import in.dragons.galaxy.selfupdate.UpdaterFactory;
 
 public class DetailsTask extends PlayStorePayloadTask<App> {
 
@@ -51,21 +49,6 @@ public class DetailsTask extends PlayStorePayloadTask<App> {
 
     @Override
     protected App doInBackground(String... arguments) {
-        return packageName.equals(BuildConfig.APPLICATION_ID) ? getSelf() : super.doInBackground(arguments);
-    }
-
-    private App getSelf() {
-        App app = new App();
-        PackageManager pm = context.getPackageManager();
-        try {
-            app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
-            app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
-        } catch (PackageManager.NameNotFoundException e) {
-            // App is not installed
-        }
-        int latestVersionCode = UpdaterFactory.get(context).getLatestVersionCode();
-        app.setVersionCode(latestVersionCode);
-        app.setVersionName("0." + latestVersionCode);
-        return app;
+        return super.doInBackground(arguments);
     }
 }

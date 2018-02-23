@@ -29,7 +29,7 @@
             android:text="@string/header_usr_name"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/white"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/usr_email"
@@ -39,6 +39,6 @@
             android:text="@string/header_usr_noEmail"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
     </LinearLayout>
 </LinearLayout>
