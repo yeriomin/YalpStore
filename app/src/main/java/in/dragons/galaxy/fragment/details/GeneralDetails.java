@@ -107,11 +107,6 @@ public class GeneralDetails extends Abstract {
             setText(R.id.changes_upper, Html.fromHtml(changes).toString());
             activity.findViewById(R.id.changes_header).setVisibility(View.VISIBLE);
             activity.findViewById(R.id.changes_container).setVisibility(View.VISIBLE);
-            if (!sharedPreferences.getBoolean("THEME", true)) {
-                ((TextView) activity.findViewById(R.id.changes_upper)).setTextColor(activity.getResources().getColor(R.color.white));
-                ((TextView) activity.findViewById(R.id.changes_header)).setTextColor(activity.getResources().getColor(R.color.white));
-                activity.findViewById(R.id.changes_container).setBackgroundColor(activity.getResources().getColor(R.color.darkGray));
-            }
         }
     }
 

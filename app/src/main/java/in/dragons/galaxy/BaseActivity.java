@@ -11,18 +11,18 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
+import com.afollestad.aesthetic.AestheticActivity;
 import com.percolate.caffeine.PhoneUtils;
 import com.percolate.caffeine.ToastUtils;
 import com.percolate.caffeine.ViewUtils;
 import com.squareup.picasso.Picasso;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AestheticActivity {
 
     static protected boolean logout = false;
 

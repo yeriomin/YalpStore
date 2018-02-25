@@ -125,6 +125,7 @@
 
         <service android:enabled="true" android:name=".notification.CancelDownloadService" />
         <service android:enabled="true" android:name=".notification.IgnoreUpdatesService" />
+        <activity android:name=".ThemesActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_themes" />
     </application>
 
 </manifest>

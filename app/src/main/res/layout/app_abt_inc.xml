@@ -81,7 +81,6 @@
                         android:clickable="true"
                         android:drawablePadding="5dp"
                         android:drawableStart="@drawable/ic_github"
-                        android:drawableTint="?android:textColor"
                         android:focusable="true"
                         android:text="@string/about_github" />
 
@@ -158,7 +157,6 @@
                             android:layout_height="wrap_content"
                             android:drawablePadding="5dp"
                             android:drawableStart="@drawable/ic_email"
-                            android:drawableTint="?android:textColor"
                             android:text="@string/dev_mail1" />
 
                         <TextView
@@ -166,7 +164,6 @@
                             android:layout_height="wrap_content"
                             android:drawablePadding="5dp"
                             android:drawableStart="@drawable/ic_map_marker"
-                            android:drawableTint="?android:textColor"
                             android:text="@string/dev_country1" />
                     </LinearLayout>
                 </LinearLayout>
@@ -206,7 +203,6 @@
                             android:layout_height="wrap_content"
                             android:drawablePadding="5dp"
                             android:drawableStart="@drawable/ic_email"
-                            android:drawableTint="?android:textColor"
                             android:text="@string/dev_mail2" />
 
                         <TextView
@@ -214,7 +210,6 @@
                             android:layout_height="wrap_content"
                             android:drawablePadding="5dp"
                             android:drawableStart="@drawable/ic_map_marker"
-                            android:drawableTint="?android:textColor"
                             android:text="@string/dev_country2" />
                     </LinearLayout>
                 </LinearLayout>

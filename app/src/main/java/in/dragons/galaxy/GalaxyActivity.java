@@ -3,6 +3,7 @@ package in.dragons.galaxy;
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -16,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.afollestad.aesthetic.Aesthetic;
+import com.afollestad.aesthetic.NavigationViewMode;
 import com.percolate.caffeine.ViewUtils;
 
 import in.dragons.galaxy.fragment.FilterMenu;
@@ -23,9 +26,9 @@ import in.dragons.galaxy.fragment.FilterMenu;
 public abstract class GalaxyActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private NavigationView navigationView;
-    Toolbar toolbar;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
+    Toolbar toolbar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,20 @@ public abstract class GalaxyActivity extends BaseActivity implements NavigationV
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if (Aesthetic.isFirstTime()) {
+            Aesthetic.get()
+                    .activityTheme(R.style.AppTheme)
+                    .textColorPrimaryRes(R.color.colorTextPrimary)
+                    .textColorSecondaryRes(R.color.colorTextSecondary)
+                    .colorPrimaryRes(R.color.colorPrimary)
+                    .colorAccentRes(R.color.colorAccent)
+                    .colorStatusBarAuto()
+                    .colorNavigationBarAuto()
+                    .textColorPrimary(Color.BLACK)
+                    .navigationViewMode(NavigationViewMode.SELECTED_ACCENT)
+                    .apply();
+        }
 
         getUser();
 
@@ -152,6 +169,9 @@ public abstract class GalaxyActivity extends BaseActivity implements NavigationV
                 break;
             case R.id.action_accounts:
                 startActivity(new Intent(this, AccountsActivity.class));
+                break;
+            case R.id.action_themes:
+                startActivity(new Intent(this, ThemesActivity.class));
                 break;
             case R.id.action_about:
                 startActivity(new Intent(this, AboutActivity.class));

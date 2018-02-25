@@ -16,7 +16,7 @@
         android:minHeight="24dp"
         android:minWidth="24dp"
         android:scaleType="fitCenter"
-        android:tint="@color/colorAccent" />
+        android:tint="?colorAccent" />
 
     <LinearLayout
         android:id="@+id/permission_labels"

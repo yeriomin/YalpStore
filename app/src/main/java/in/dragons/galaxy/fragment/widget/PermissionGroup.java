@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.afollestad.aesthetic.Aesthetic;
+
 import in.dragons.galaxy.R;
 
 import java.util.ArrayList;
@@ -73,6 +75,11 @@ public class PermissionGroup extends LinearLayout {
     private void init() {
         inflate(getContext(), R.layout.permission_group_widget_layout, this);
         pm = getContext().getPackageManager();
+
+        Aesthetic.get()
+                .colorAccent()
+                .take(1)
+                .subscribe(((ImageView)findViewById(R.id.permission_group_icon))::setColorFilter);
     }
 
     private void addPermissionLabel(LinearLayout permissionLabelsView, String label, String description) {

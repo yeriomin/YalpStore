@@ -87,12 +87,6 @@
             android:title="@string/pref_device_to_pretend_to_be" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_ui">
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="THEME"
-            android:summaryOff="@string/pref_dark_theme_summary_off"
-            android:summaryOn="@string/pref_dark_theme_summary_on"
-            android:title="@string/pref_dark_theme" />
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="PREFERENCE_NO_IMAGES"

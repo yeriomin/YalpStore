@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Theme-->
+
+    <!--DefaultTheme-->
     <color name="colorPrimary">#303F9F</color>
     <color name="colorPrimaryDark">#283593</color>
     <color name="colorAccent">#E91E63</color>
@@ -14,9 +15,8 @@
     <color name="lightGray">#EEEEEE</color>
 
     <!--Buttons-->
-    <color name="button_bg">#3F51B5</color>
-    <color name="button_bg_alt">#009688</color>
-    <color name="round_bg">@color/colorAccent</color>
+    <color name="button_bg">#009688</color>
+    <color name="round_bg">#e91e63</color>
 
     <!--Misc-->
     <color name="changelog_txt">#3F51B5</color>
@@ -26,9 +26,20 @@
     <color name="colorText">#121212</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#535353</color>
-    <color name="colorTextInv">#FFFFFF</color>
-    <color name="colorTextPrimaryInv">#F5F5F5</color>
-    <color name="colorTextSecondaryInv">#EEEEEE</color>
+
+    <color name="colorTextDark">#FFFFFF</color>
+    <color name="colorTextPrimaryDark">#F5F5F5</color>
+    <color name="colorTextSecondaryDark">#EEEEEE</color>
+
+    <!--Background-->
+    <color name="colorBackground">#F5F5F5</color>
+    <color name="colorBackgroundCard">#FFFFFF</color>
+
+    <color name="colorBackgroundDark">#303030</color>
+    <color name="colorBackgroundCardDark">#424242</color>
+
+    <color name="colorBackgroundBlack">#000000</color>
+    <color name="colorBackgroundCardBlack">#000000</color>
 
     <!--Shades-->
     <color name="colorShade01">#C5CAE9</color>
@@ -44,5 +55,4 @@
     <color name="colorPurple">#9C27B0</color>
     <color name="colorOrange">#FF9800</color>
     <color name="colorTeal">#009688</color>
-
 </resources>

@@ -3,7 +3,6 @@
     android:id="@+id/changes_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/changelog_bg"
     android:orientation="vertical"
     android:visibility="gone">
 
@@ -15,7 +14,7 @@
         android:layout_marginTop="5dp"
         android:text="@string/details_changelog"
         android:textAllCaps="true"
-        android:textColor="@color/changelog_txt"
+        android:textIsSelectable="true"
         android:textSize="14sp"
         android:textStyle="bold"
         android:visibility="gone" />
@@ -30,7 +29,6 @@
         android:layout_marginTop="10dp"
         android:autoLink="web|email"
         android:lineSpacingExtra="5dp"
-        android:textColor="@color/changelog_txt"
         android:textIsSelectable="true"
         android:visibility="gone" />
 </LinearLayout>

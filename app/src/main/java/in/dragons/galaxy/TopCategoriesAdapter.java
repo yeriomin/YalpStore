@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afollestad.aesthetic.Aesthetic;
+
 public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdapter.ViewHolder> {
 
     private Context context;
@@ -40,6 +42,13 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
             super(v);
             topLabel = (TextView) v.findViewById(R.id.top_cat_name);
             topImage = (ImageView) v.findViewById(R.id.top_cat_img);
+
+            Aesthetic.get()
+                    .colorAccent()
+                    .take(1)
+                    .subscribe(color -> {
+                        topImage.setColorFilter(color);
+                    });
         }
     }
 

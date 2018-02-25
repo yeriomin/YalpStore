@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/app_detail"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:layout_marginTop="10dp"
-    android:gravity="center"
-    android:visibility="gone">
+    android:orientation="horizontal"
+    android:visibility="gone"
+    android:weightSum="5">
 
     <!-- Downloads -->
     <LinearLayout
-        android:id="@+id/app_downloads"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -32,10 +31,9 @@
 
     <!-- Ratings -->
     <LinearLayout
-        android:id="@+id/app_ratings"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/app_downloads"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -54,10 +52,9 @@
 
     <!-- Size -->
     <LinearLayout
-        android:id="@+id/app_size"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/app_ratings"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -76,10 +73,9 @@
 
     <!-- Category -->
     <LinearLayout
-        android:id="@+id/app_category"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/app_size"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -98,9 +94,9 @@
 
     <!-- Price -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/app_category"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -116,4 +112,4 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

@@ -104,8 +104,6 @@
                 android:background="@drawable/button_bg_outine"
                 android:maxLines="1"
                 android:text="@string/details_uninstall"
-                android:textColor="@color/button_bg"
-                android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:visibility="gone" />
 
             <android.support.v7.widget.AppCompatButton
@@ -117,8 +115,6 @@
                 android:contentDescription="@string/content_description_download_options"
                 android:maxLines="1"
                 android:text="@string/details_download"
-                android:textColor="@color/white"
-                android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:visibility="gone" />
 
             <android.support.v7.widget.AppCompatButton
@@ -129,8 +125,6 @@
                 android:background="@drawable/button_bg_outine"
                 android:maxLines="1"
                 android:text="@string/details_cancel"
-                android:textColor="@color/colorPrimary"
-                android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:visibility="gone" />
 
             <android.support.v7.widget.AppCompatButton
@@ -141,8 +135,6 @@
                 android:background="@drawable/button_bg_outine"
                 android:maxLines="1"
                 android:text="@string/details_install"
-                android:textColor="@color/button_bg"
-                android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:visibility="gone" />
 
             <android.support.v7.widget.AppCompatButton
@@ -153,8 +145,6 @@
                 android:background="@drawable/button_bg"
                 android:maxLines="1"
                 android:text="@string/details_run"
-                android:textColor="@color/white"
-                android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:visibility="gone" />
         </LinearLayout>
 

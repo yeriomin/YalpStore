@@ -106,8 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_weight="1"
-            android:src="@drawable/ic_3dots"
-            android:tint="?android:textColor" />
+            android:src="@drawable/ic_3dots" />
     </LinearLayout>
 
     <ProgressBar

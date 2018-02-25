@@ -90,8 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawableLeft="@drawable/ic_resolution"
-                    android:drawablePadding="5dp"
-                    android:drawableTint="?android:textColor" />
+                    android:drawablePadding="5dp" />
 
                 <TextView
                     android:id="@+id/device_api"
@@ -99,8 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawablePadding="5dp"
-                    android:drawableStart="@drawable/ic_api"
-                    android:drawableTint="?android:textColor" />
+                    android:drawableStart="@drawable/ic_api" />
 
                 <TextView
                     android:id="@+id/device_cpu"
@@ -108,8 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawablePadding="5dp"
-                    android:drawableStart="@drawable/ic_cpu"
-                    android:drawableTint="?android:textColor" />
+                    android:drawableStart="@drawable/ic_cpu" />
 
             </LinearLayout>
 

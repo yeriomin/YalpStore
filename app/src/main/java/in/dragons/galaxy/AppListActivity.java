@@ -41,6 +41,7 @@ abstract public class AppListActivity extends GalaxyActivity {
         getLayoutInflater().inflate(R.layout.applist_activity_layout, contentFrameLayout);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setVisibility(View.VISIBLE);
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if (!onSearchRequested()) {
