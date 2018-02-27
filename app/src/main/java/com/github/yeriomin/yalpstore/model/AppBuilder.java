@@ -59,6 +59,7 @@ public class AppBuilder {
         app.setInPlayStore(true);
         app.setEarlyAccess(appDetails.hasEarlyAccessInfo());
         app.setTestingProgramAvailable(appDetails.hasTestingProgramInfo());
+        app.setAd(details.getDetailsUrl().contains("nocache_isad=1"));
         if (app.isTestingProgramAvailable()) {
             app.setTestingProgramOptedIn(appDetails.getTestingProgramInfo().hasSubscribed() && appDetails.getTestingProgramInfo().getSubscribed());
             app.setTestingProgramEmail(appDetails.getTestingProgramInfo().getTestingProgramEmail());

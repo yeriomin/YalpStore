@@ -44,7 +44,8 @@ public class AppListIterator implements Iterator {
     }
 
     protected boolean shouldSkip(App app) {
-        return (!filter.isPaidApps() && !app.isFree())
+        return app.isAd()
+            || (!filter.isPaidApps() && !app.isFree())
             || (!filter.isAppsWithAds() && app.containsAds())
             || (!filter.isGsfDependentApps() && !app.getDependencies().isEmpty())
             || (filter.getRating() > 0 && app.getRating().getAverage() < filter.getRating())

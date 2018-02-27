@@ -35,6 +35,7 @@ public class App implements Comparable<App> {
     private Set<String> permissions = new HashSet<>();
     private boolean isInstalled;
     private boolean isFree;
+    private boolean isAd;
     private List<String> screenshotUrls = new ArrayList<>();
     private Review userReview;
     private String categoryId;
@@ -230,6 +231,14 @@ public class App implements Comparable<App> {
 
     public void setFree(boolean free) {
         isFree = free;
+    }
+
+    public boolean isAd() {
+        return isAd;
+    }
+
+    public void setAd(boolean ad) {
+        isAd = ad;
     }
 
     public List<String> getScreenshotUrls() {
