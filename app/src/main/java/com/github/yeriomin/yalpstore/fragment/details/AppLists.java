@@ -26,6 +26,7 @@ public class AppLists extends Abstract {
     public void draw() {
         LinearLayout relatedLinksLayout = activity.findViewById(R.id.related_links);
         boolean developerLinkFound = false;
+        relatedLinksLayout.removeAllViews();
         for (final String label: app.getRelatedLinks().keySet()) {
             relatedLinksLayout.setVisibility(View.VISIBLE);
             relatedLinksLayout.addView(buildLinkView(label, app.getRelatedLinks().get(label)));
