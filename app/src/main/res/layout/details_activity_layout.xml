@@ -19,11 +19,11 @@
             <ImageView
                 android:id="@+id/thumbnail"
                 android:layout_width="match_parent"
-                android:layout_height="256dp"
-                android:scaleType="centerCrop"
+                android:layout_height="225dp"
                 android:src="@color/gray" />
 
             <ImageView
+                android:id="@+id/vid_play"
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
                 android:layout_centerHorizontal="true"
