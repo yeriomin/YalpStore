@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.http.HttpResponseCache;
 import android.os.Build;
@@ -98,6 +99,9 @@ public class YalpStoreApplication extends Application {
             return false;
         }
         int uiMode = getResources().getConfiguration().uiMode;
-        return (uiMode & Configuration.UI_MODE_TYPE_MASK) == Configuration.UI_MODE_TYPE_TELEVISION;
+        return (uiMode & Configuration.UI_MODE_TYPE_MASK) == Configuration.UI_MODE_TYPE_TELEVISION
+            || getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEVISION)
+            || getPackageManager().hasSystemFeature(PackageManager.FEATURE_LEANBACK)
+        ;
     }
 }
