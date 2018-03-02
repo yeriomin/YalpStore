@@ -40,7 +40,9 @@ public abstract class Button extends Abstract {
         if (null == button) {
             return;
         }
-        ((android.widget.Button) button).setText(stringId);
+        if (button instanceof android.widget.Button) {
+            ((android.widget.Button) button).setText(stringId);
+        }
         button.setEnabled(false);
     }
 

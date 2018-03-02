@@ -17,7 +17,7 @@ public class ButtonCancel extends Button {
     }
 
     @Override
-    protected ImageButton getButton() {
+    protected View getButton() {
         return activity.findViewById(R.id.cancel);
     }
 
@@ -32,8 +32,10 @@ public class ButtonCancel extends Button {
         intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
         activity.startService(intentCancel);
         button.setVisibility(View.GONE);
-        android.widget.Button buttonDownload = activity.findViewById(R.id.download);
-        buttonDownload.setText(R.string.details_download);
+        View buttonDownload = activity.findViewById(R.id.download);
+        if (buttonDownload instanceof android.widget.Button) {
+            ((android.widget.Button) buttonDownload).setText(R.string.details_download);
+        }
         buttonDownload.setEnabled(true);
     }
 }

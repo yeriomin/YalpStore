@@ -23,7 +23,7 @@ public class BackToPlayStore extends Abstract {
         if (!isPlayStoreInstalled() || !app.isInPlayStore()) {
             return;
         }
-        TextView toPlayStore = (TextView) activity.findViewById(R.id.to_play_store);
+        TextView toPlayStore = activity.findViewById(R.id.to_play_store);
         toPlayStore.setVisibility(View.VISIBLE);
         toPlayStore.setOnClickListener(new UriOnClickListener(activity, PurchaseTask.URL_PURCHASE + app.getPackageName()));
     }

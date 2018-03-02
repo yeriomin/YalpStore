@@ -19,8 +19,8 @@ public class ButtonRun extends Button {
     }
 
     @Override
-    protected android.widget.Button getButton() {
-        return (android.widget.Button) activity.findViewById(R.id.run);
+    protected View getButton() {
+        return activity.findViewById(R.id.run);
     }
 
     @Override

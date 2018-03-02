@@ -33,8 +33,8 @@ public class ButtonDownload extends Button {
     }
 
     @Override
-    protected android.widget.Button getButton() {
-        return (android.widget.Button) activity.findViewById(R.id.download);
+    protected View getButton() {
+        return activity.findViewById(R.id.download);
     }
 
     @Override

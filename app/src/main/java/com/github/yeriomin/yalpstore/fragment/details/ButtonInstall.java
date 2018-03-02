@@ -21,15 +21,17 @@ public class ButtonInstall extends Button {
     @Override
     public void draw() {
         super.draw();
-        ((android.widget.Button) button).setText(R.string.details_install);
+        if (button instanceof android.widget.Button) {
+            ((android.widget.Button) button).setText(R.string.details_install);
+        }
         if (InstallationState.isInstalling(app.getPackageName())) {
             disable(R.string.details_installing);
         }
     }
 
     @Override
-    protected android.widget.Button getButton() {
-        return (android.widget.Button) activity.findViewById(R.id.install);
+    protected View getButton() {
+        return activity.findViewById(R.id.install);
     }
 
     @Override
