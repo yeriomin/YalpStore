@@ -1,15 +1,12 @@
 package in.dragons.galaxy.fragment.details;
 
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import android.widget.TextView;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import in.dragons.galaxy.DetailsActivity;
-import in.dragons.galaxy.R;
 import in.dragons.galaxy.SharedPreferencesTranslator;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.DependencyTranslationTask;
@@ -32,17 +29,10 @@ public class GoogleDependency extends Abstract {
                 untranslated.add(dependency);
             }
         }
-        drawDeps(translated);
+
         if (untranslated.size() > 0) {
             getTranslations(untranslated);
         }
-    }
-
-    private void drawDeps(Set<String> dependencies) {
-        String depsList = app.getDependencies().isEmpty()
-                ? activity.getString(R.string.details_no_dependencies)
-                : TextUtils.join(", ", dependencies);
-        ((TextView) activity.findViewById(R.id.google_dependencies)).setText(activity.getString(R.string.details_depends_on, depsList));
     }
 
     private Set<String> getTranslatedDeps(App app) {
@@ -65,7 +55,6 @@ public class GoogleDependency extends Abstract {
                 for (String packageName : translated.keySet()) {
                     translator.putString(packageName, translated.get(packageName));
                 }
-                drawDeps(getTranslatedDeps(app));
             }
         };
         task.setContext(activity);

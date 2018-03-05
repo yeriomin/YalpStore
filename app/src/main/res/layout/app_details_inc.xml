@@ -3,6 +3,8 @@
     android:id="@+id/app_detail"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="10dp"
     android:orientation="horizontal"
     android:visibility="gone"
     android:weightSum="5">
@@ -15,17 +17,23 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <ImageButton
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:layout_margin="5dp"
-            android:background="@drawable/round_bg"
-            android:src="@drawable/app_downloads" />
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_med"
+                android:layout_height="@dimen/icon_size_med"
+                android:background="?colorAccent"
+                android:padding="10dp"
+                android:src="@drawable/app_downloads" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
 
         <TextView
             android:id="@+id/installs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:gravity="clip_horizontal" />
     </LinearLayout>
 
@@ -37,17 +45,23 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <ImageButton
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:layout_margin="5dp"
-            android:background="@drawable/round_bg"
-            android:src="@drawable/app_ratings" />
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_med"
+                android:layout_height="@dimen/icon_size_med"
+                android:background="?colorAccent"
+                android:padding="10dp"
+                android:src="@drawable/app_ratings" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
 
         <TextView
             android:id="@+id/rating"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 
     <!-- Size -->
@@ -58,17 +72,23 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <ImageButton
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:layout_margin="5dp"
-            android:background="@drawable/round_bg"
-            android:src="@drawable/app_size" />
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_med"
+                android:layout_height="@dimen/icon_size_med"
+                android:background="?colorAccent"
+                android:padding="10dp"
+                android:src="@drawable/app_size" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
 
         <TextView
             android:id="@+id/size"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 
     <!-- Category -->
@@ -79,17 +99,23 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <ImageButton
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:layout_margin="5dp"
-            android:background="@drawable/round_bg"
-            android:src="@drawable/app_category" />
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_med"
+                android:layout_height="@dimen/icon_size_med"
+                android:background="?colorAccent"
+                android:padding="10dp"
+                android:src="@drawable/app_category" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
 
         <TextView
             android:id="@+id/category"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 
     <!-- Price -->
@@ -100,16 +126,23 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <ImageButton
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:layout_margin="5dp"
-            android:background="@drawable/round_bg"
-            android:src="@drawable/app_price" />
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_med"
+                android:layout_height="@dimen/icon_size_med"
+                android:background="?colorAccent"
+                android:padding="10dp"
+                android:src="@drawable/app_price" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
 
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" />
     </LinearLayout>
+
 </LinearLayout>

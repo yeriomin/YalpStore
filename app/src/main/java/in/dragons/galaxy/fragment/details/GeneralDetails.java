@@ -1,9 +1,7 @@
 package in.dragons.galaxy.fragment.details;
 
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.Formatter;
@@ -39,7 +37,6 @@ public class GeneralDetails extends Abstract {
         if (app.isInPlayStore()) {
             drawGeneralDetails(app);
             drawDescription(app);
-            new GoogleDependency((DetailsActivity) activity, app).draw();
         }
     }
 
@@ -62,25 +59,25 @@ public class GeneralDetails extends Abstract {
     }
 
     private void drawGeneralDetails(App app) {
-        activity.findViewById(R.id.general_card).setVisibility(View.VISIBLE);
-        activity.findViewById(R.id.general_details).setVisibility(View.VISIBLE);
         activity.findViewById(R.id.app_detail).setVisibility(View.VISIBLE);
-        activity.findViewById(R.id.divider_top).setVisibility(View.VISIBLE);
-        activity.findViewById(R.id.divider_bottom).setVisibility(View.VISIBLE);
+
         setText(R.id.installs, R.string.details_installs, Util.addSiPrefix(app.getInstalls()));
         if (app.isEarlyAccess()) {
             setText(R.id.rating, R.string.early_access);
         } else {
             setText(R.id.rating, R.string.details_rating, app.getRating().getAverage());
         }
+
         setText(R.id.updated, R.string.details_updated, app.getUpdated());
         setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(activity, app.getSize()));
         setText(R.id.category, R.string.details_category, new CategoryManager(activity).getCategoryName(app.getCategoryId()));
         setText(R.id.developer, R.string.details_developer, app.getDeveloperName());
         setText(R.id.price, app.getPrice());
         setText(R.id.contains_ads, app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
+
         drawOfferDetails(app);
         drawChanges(app);
+
         if (app.getVersionCode() == 0) {
             activity.findViewById(R.id.updated).setVisibility(View.GONE);
             activity.findViewById(R.id.size).setVisibility(View.GONE);
@@ -90,22 +87,15 @@ public class GeneralDetails extends Abstract {
     private void drawChanges(App app) {
         String changes = app.getChanges();
         if (TextUtils.isEmpty(changes)) {
-            activity.findViewById(R.id.changes).setVisibility(View.GONE);
-            activity.findViewById(R.id.changes_title).setVisibility(View.GONE);
-            activity.findViewById(R.id.changes_header).setVisibility(View.GONE);
+            activity.findViewById(R.id.more_changes_container).setVisibility(View.GONE);
             activity.findViewById(R.id.changes_container).setVisibility(View.GONE);
-            activity.findViewById(R.id.changes_upper).setVisibility(View.GONE);
             return;
         }
         if (app.getInstalledVersionCode() == 0) {
             setText(R.id.changes, Html.fromHtml(changes).toString());
-            activity.findViewById(R.id.changes).setVisibility(View.VISIBLE);
-            activity.findViewById(R.id.changes_title).setVisibility(View.VISIBLE);
+            activity.findViewById(R.id.more_changes_container).setVisibility(View.VISIBLE);
         } else {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
-            activity.findViewById(R.id.changes_upper).setVisibility(View.VISIBLE);
             setText(R.id.changes_upper, Html.fromHtml(changes).toString());
-            activity.findViewById(R.id.changes_header).setVisibility(View.VISIBLE);
             activity.findViewById(R.id.changes_container).setVisibility(View.VISIBLE);
         }
     }

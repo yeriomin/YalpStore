@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/related_links"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <!-- PlayStore link -->
+            <ImageView
+                android:id="@+id/to_play_store"
+                android:layout_width="@dimen/icon_size_med"
+                android:layout_height="@dimen/icon_size_med"
+                android:background="?colorAccent"
+                android:padding="10dp"
+                android:src="@drawable/app_playstore"
+                android:visibility="gone" />
+
+        </com.github.florent37.shapeofview.shapes.CircleView>
+
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <!-- App by same dev -->
+            <ImageView
+                android:id="@+id/apps_by_same_developer"
+                android:layout_width="@dimen/icon_size_med"
+                android:layout_height="@dimen/icon_size_med"
+                android:background="?colorAccent"
+                android:padding="10dp"
+                android:src="@drawable/app_dev"
+                android:visibility="gone" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
+
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <!-- Share -->
+            <ImageButton
+                android:id="@+id/share"
+                android:layout_width="@dimen/icon_size_med"
+                android:layout_height="@dimen/icon_size_med"
+                android:background="?colorAccent"
+                android:padding="10dp"
+                android:src="@drawable/app_share" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
+
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <!-- System detail -->
+            <ImageButton
+                android:id="@+id/system_app_info"
+                android:layout_width="@dimen/icon_size_med"
+                android:layout_height="@dimen/icon_size_med"
+                android:background="?colorAccent"
+                android:padding="10dp"
+                android:src="@drawable/app_settings" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_action"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:gravity="end"
+    android:orientation="horizontal"
+    android:weightSum="3">
+
+    <Button
+        android:id="@+id/uninstall"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:maxLines="1"
+        android:text="@string/details_uninstall"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/download"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:maxLines="1"
+        android:text="@string/details_download"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:maxLines="1"
+        android:text="@string/details_cancel"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/install"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:maxLines="1"
+        android:text="@string/details_install"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/run"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:maxLines="1"
+        android:text="@string/details_run"
+        android:visibility="gone" />
+</LinearLayout>

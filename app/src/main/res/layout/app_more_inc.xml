@@ -1,20 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/changes_container"
+    android:id="@+id/more_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:visibility="gone"
+    app:cardUseCompatPadding="true">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/more_card"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:visibility="gone"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="2dp"
-        app:contentPadding="5dp">
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/description_header"
@@ -33,7 +29,6 @@
             android:id="@+id/description_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:orientation="vertical"
             android:visibility="gone">
 
@@ -46,12 +41,13 @@
                 android:paddingTop="6dip" />
 
             <LinearLayout
+                android:id="@+id/more_changes_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/changelog_bg"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/changes_title"
@@ -60,10 +56,8 @@
                     android:layout_margin="10dp"
                     android:text="@string/details_changelog"
                     android:textAllCaps="true"
-                    android:textColor="@color/changelog_txt"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/changes"
@@ -72,9 +66,7 @@
                     android:layout_margin="10dp"
                     android:autoLink="web|email"
                     android:lineSpacingExtra="5dp"
-                    android:textColor="@color/changelog_txt"
-                    android:textIsSelectable="true"
-                    android:visibility="gone" />
+                    android:textIsSelectable="true" />
             </LinearLayout>
 
             <LinearLayout
@@ -83,7 +75,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="vertical" />
-
         </LinearLayout>
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

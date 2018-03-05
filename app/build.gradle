@@ -43,4 +43,5 @@ dependencies {
     implementation 'com.github.percolate:caffeine:0.4.7'
     implementation 'com.afollestad:aesthetic:0.4.6'
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
+    implementation 'com.github.florent37:shapeofview:1.0.6'
 }

@@ -5,9 +5,10 @@
     android:scrollbars="none"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <!--App Video -->
         <RelativeLayout
@@ -33,177 +34,60 @@
         </RelativeLayout>
 
         <!-- App Icon & Name -->
-        <LinearLayout
+        <android.support.v7.widget.CardView
             android:id="@+id/main"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/app_video"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center_vertical">
-
-            <ImageButton
-                android:id="@+id/icon"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:layout_marginEnd="6dp"
-                android:background="@null"
-                android:contentDescription="@string/content_description_app_icon"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_placeholder" />
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <!-- App Info : Icon, Name, Developer, Version -->
+                <include layout="@layout/app_info_inc" />
+
+                <!-- Action : Download, Update, Uninstall -->
+                <include layout="@layout/app_actions_inc" />
+
+                <in.dragons.galaxy.NumberProgressBar
+                    android:id="@+id/download_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/main_action"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    app:progress_reached_bar_height="2.5dp"
+                    app:progress_reached_color="@color/colorPrimary"
+                    app:progress_text_color="@color/colorAccent"
+                    app:progress_text_size="12sp"
+                    app:progress_unreached_bar_height="2dp"
+                    app:progress_unreached_color="@color/lightGray" />
 
                 <TextView
-                    android:id="@+id/displayName"
+                    android:id="@+id/contains_ads"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:layout_below="@id/download_progress"
+                    android:layout_marginEnd="15dp"
+                    android:gravity="end" />
 
-                <TextView
-                    android:id="@+id/packageName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/versionString"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:textSize="14sp" />
+                <!-- App Details : Type, Size, Rating -->
+                <include layout="@layout/app_details_inc" />
 
             </LinearLayout>
-
-        </LinearLayout>
-        <!-- Action : Download, Update, Uninstall -->
-        <LinearLayout
-            android:id="@+id/main_action"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/main"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:gravity="end"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/uninstall"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_bg_outine"
-                android:maxLines="1"
-                android:text="@string/details_uninstall"
-                android:visibility="gone" />
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/download"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_bg"
-                android:contentDescription="@string/content_description_download_options"
-                android:maxLines="1"
-                android:text="@string/details_download"
-                android:visibility="gone" />
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/cancel"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_bg_outine"
-                android:maxLines="1"
-                android:text="@string/details_cancel"
-                android:visibility="gone" />
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/install"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_bg_outine"
-                android:maxLines="1"
-                android:text="@string/details_install"
-                android:visibility="gone" />
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/run"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_bg"
-                android:maxLines="1"
-                android:text="@string/details_run"
-                android:visibility="gone" />
-        </LinearLayout>
-
-        <in.dragons.galaxy.NumberProgressBar
-            android:id="@+id/download_progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/main_action"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="5dp"
-            android:visibility="gone"
-            app:progress_reached_bar_height="2.5dp"
-            app:progress_reached_color="@color/colorPrimary"
-            app:progress_text_color="@color/colorAccent"
-            app:progress_text_size="12sp"
-            app:progress_unreached_bar_height="2dp"
-            app:progress_unreached_color="@color/lightGray" />
-
-        <TextView
-            android:id="@+id/contains_ads"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/download_progress"
-            android:layout_marginEnd="15dp"
-            android:gravity="end" />
-
-        <View
-            android:id="@+id/divider_top"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/contains_ads"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/gray"
-            android:visibility="gone" />
+        </android.support.v7.widget.CardView>
 
         <!-- App details -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/divider_top"
             android:orientation="vertical">
 
-            <!-- App Details : Type, Size, Rating -->
-            <include layout="@layout/app_details_inc" />
-
-            <View
-                android:id="@+id/divider_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/gray"
-                android:visibility="gone" />
             <!-- Changelog -->
             <include layout="@layout/app_changelog_inc" />
             <!-- Read More -->
@@ -213,7 +97,6 @@
                 android:id="@+id/screenshots_gallery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:spacing="15dp" />
             <!-- Reviews -->
             <include layout="@layout/app_reviews_inc" />
@@ -221,55 +104,8 @@
             <include layout="@layout/app_perm_inc" />
             <!-- Beta -->
             <include layout="@layout/app_beta_inc" />
-            <!-- General -->
-            <include layout="@layout/app_gen_inc" />
-            <!-- Related Apps -->
-            <LinearLayout
-                android:id="@+id/related_links"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="visible" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <!-- Playstore link -->
-                <ImageButton
-                    android:id="@+id/to_play_store"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:background="@drawable/round_bg"
-                    android:src="@drawable/app_playstore" />
-
-                <!-- App by same dev -->
-                <ImageButton
-                    android:id="@+id/apps_by_same_developer"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:background="@drawable/round_bg"
-                    android:src="@drawable/app_dev"
-                    android:visibility="gone" />
-
-                <!-- Share -->
-                <ImageButton
-                    android:id="@+id/share"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:background="@drawable/round_bg"
-                    android:src="@drawable/app_share" />
-
-                <!-- System detail -->
-                <ImageButton
-                    android:id="@+id/system_app_info"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:background="@drawable/round_bg"
-                    android:src="@drawable/app_settings" />
-            </LinearLayout>
+            <!-- Bottom Actions -->
+            <include layout="@layout/app_bottom_actions_inc" />
 
             <ProgressBar
                 android:id="@+id/progress"
@@ -282,5 +118,5 @@
                 android:visibility="gone" />
 
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

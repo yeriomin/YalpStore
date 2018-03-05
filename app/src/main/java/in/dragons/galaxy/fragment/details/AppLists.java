@@ -45,28 +45,19 @@ public class AppLists extends Abstract {
         linkView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
         linkView.setPadding(0, 6, 0, 0);
         linkView.setGravity(Gravity.CENTER_VERTICAL);
-        linkView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ClusterActivity.start(activity, url, label);
-            }
-        });
+        linkView.setOnClickListener(v -> ClusterActivity.start(activity, url, label));
         return linkView;
     }
 
     private void addAppsByThisDeveloper() {
         ImageView imageView = (ImageView) activity.findViewById(R.id.apps_by_same_developer);
-        //textView.setText(activity.getString(R.string.apps_by, app.getDeveloperName()));
         imageView.setVisibility(View.VISIBLE);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(activity, SearchActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setAction(Intent.ACTION_SEARCH);
-                intent.putExtra(SearchManager.QUERY, SearchActivity.PUB_PREFIX + app.getDeveloperName());
-                activity.startActivity(intent);
-            }
+        imageView.setOnClickListener(v -> {
+            Intent intent = new Intent(activity, SearchActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setAction(Intent.ACTION_SEARCH);
+            intent.putExtra(SearchManager.QUERY, SearchActivity.PUB_PREFIX + app.getDeveloperName());
+            activity.startActivity(intent);
         });
     }
 }

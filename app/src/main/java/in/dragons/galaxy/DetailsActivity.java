@@ -43,6 +43,28 @@ public class DetailsActivity extends GalaxyActivity {
     }
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame);
+        getLayoutInflater().inflate(R.layout.details_activity_layout, contentFrameLayout);
+        onNewIntent(getIntent());
+    }
+
+    @Override
+    protected void onPause() {
+        if (null != downloadOrInstallFragment) {
+            downloadOrInstallFragment.unregisterReceivers();
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        redrawButtons();
+        super.onResume();
+    }
+
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
@@ -64,47 +86,11 @@ public class DetailsActivity extends GalaxyActivity {
         task.execute();
     }
 
-    @Override
-    protected void onPause() {
-        if (null != downloadOrInstallFragment) {
-            downloadOrInstallFragment.unregisterReceivers();
-        }
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        redrawButtons();
-        super.onResume();
-    }
-
     private void redrawButtons() {
         if (null != downloadOrInstallFragment) {
             downloadOrInstallFragment.unregisterReceivers();
             downloadOrInstallFragment.registerReceivers();
             downloadOrInstallFragment.draw();
-        }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame);
-        getLayoutInflater().inflate(R.layout.details_activity_layout, contentFrameLayout);
-        onNewIntent(getIntent());
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (GalaxyPermissionManager.isGranted(requestCode, permissions, grantResults)) {
-            Log.i(getClass().getSimpleName(), "User granted the write permission");
-            if (null == downloadOrInstallFragment && null != app) {
-                downloadOrInstallFragment = new DownloadOrInstall(this, app);
-                redrawButtons();
-            }
-            if (null != downloadOrInstallFragment) {
-                downloadOrInstallFragment.download();
-            }
         }
     }
 
