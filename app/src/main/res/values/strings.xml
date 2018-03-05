@@ -274,13 +274,16 @@
     <string name="themes">Themes</string>
     <string name="action_themes">Customize</string>
     <string name="theme_select">Select</string>
+    <string name="theme_restart">Restart</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_black">Black</string>
     <string name="theme_base">Select Theme</string>
-    <string name="theme_base_des">Base application theme</string>
+    <string name="theme_base_des">Choose between following Base application theme</string>
     <string name="theme_primary">Primary Color</string>
     <string name="theme_primary_des">A darker shade PrimaryDark is auto generated</string>
     <string name="theme_accent">Accent Color</string>
-    <string name="theme_accent_des">The accent theme color</string>
+    <string name="theme_accent_des">Accent color applies to most UI elements, Buttons, Switches, Checkboxes, Image Tint, FAB etc</string>
+    <string name="theme_restart_txt">Restart UI</string>
+    <string name="theme_restart_des">Application needs to be restarted in order to apply accent color globally</string>
 </resources>

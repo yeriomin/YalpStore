@@ -24,6 +24,7 @@ public class ThemesActivity extends GalaxyActivity implements ColorChooserDialog
         setupSelection();
         setupTheme();
         setupFab();
+        setupReload();
     }
 
     private ColorChooserDialog chooserPrimary() {
@@ -60,6 +61,17 @@ public class ThemesActivity extends GalaxyActivity implements ColorChooserDialog
                         .colorStatusBarAuto()
                         .colorNavigationBarAuto()
                         .apply();
+            }
+        });
+    }
+
+    private void setupReload() {
+        TextView themeRestart = (TextView) findViewById(R.id.themeRestart);
+
+        themeRestart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.os.Process.killProcess(android.os.Process.myPid());
             }
         });
     }
