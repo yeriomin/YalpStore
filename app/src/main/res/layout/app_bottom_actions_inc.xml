@@ -16,45 +16,83 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+        <!-- Similar link -->
         <com.github.florent37.shapeofview.shapes.CircleView
+            android:id="@+id/apps_similar_cnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:visibility="gone">
 
-            <!-- PlayStore link -->
             <ImageView
-                android:id="@+id/to_play_store"
+                android:id="@+id/apps_similar"
                 android:layout_width="@dimen/icon_size_med"
                 android:layout_height="@dimen/icon_size_med"
                 android:background="?colorAccent"
                 android:padding="10dp"
-                android:src="@drawable/app_playstore"
-                android:visibility="gone" />
+                android:src="@drawable/app_similar" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
+
+        <!-- Recommended link -->
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:id="@+id/apps_recommended_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/apps_recommended"
+                android:layout_width="@dimen/icon_size_med"
+                android:layout_height="@dimen/icon_size_med"
+                android:background="?colorAccent"
+                android:padding="10dp"
+                android:src="@drawable/app_recommended" />
 
         </com.github.florent37.shapeofview.shapes.CircleView>
 
+        <!-- App by same dev -->
         <com.github.florent37.shapeofview.shapes.CircleView
+            android:id="@+id/apps_by_same_developer_cnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:visibility="gone">
 
-            <!-- App by same dev -->
             <ImageView
                 android:id="@+id/apps_by_same_developer"
                 android:layout_width="@dimen/icon_size_med"
                 android:layout_height="@dimen/icon_size_med"
                 android:background="?colorAccent"
                 android:padding="10dp"
-                android:src="@drawable/app_dev"
-                android:visibility="gone" />
+                android:src="@drawable/app_dev" />
         </com.github.florent37.shapeofview.shapes.CircleView>
 
+        <!-- PlayStore link -->
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:id="@+id/to_play_store_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/to_play_store"
+                android:layout_width="@dimen/icon_size_med"
+                android:layout_height="@dimen/icon_size_med"
+                android:background="?colorAccent"
+                android:padding="10dp"
+                android:src="@drawable/app_playstore" />
+
+        </com.github.florent37.shapeofview.shapes.CircleView>
+
+        <!-- Share -->
         <com.github.florent37.shapeofview.shapes.CircleView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp">
 
-            <!-- Share -->
+
             <ImageButton
                 android:id="@+id/share"
                 android:layout_width="@dimen/icon_size_med"
@@ -64,12 +102,12 @@
                 android:src="@drawable/app_share" />
         </com.github.florent37.shapeofview.shapes.CircleView>
 
+        <!-- System detail -->
         <com.github.florent37.shapeofview.shapes.CircleView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp">
 
-            <!-- System detail -->
             <ImageButton
                 android:id="@+id/system_app_info"
                 android:layout_width="@dimen/icon_size_med"

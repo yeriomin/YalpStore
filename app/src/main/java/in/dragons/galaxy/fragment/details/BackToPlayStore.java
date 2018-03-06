@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.percolate.caffeine.ViewUtils;
+
 import in.dragons.galaxy.DetailsActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
@@ -24,6 +26,7 @@ public class BackToPlayStore extends Abstract {
         if (!isPlayStoreInstalled() || !app.isInPlayStore()) {
             return;
         }
+        ViewUtils.findViewById(activity,R.id.to_play_store_cnt).setVisibility(View.VISIBLE);
         ImageView toPlayStore = (ImageView) activity.findViewById(R.id.to_play_store);
         toPlayStore.setVisibility(View.VISIBLE);
         toPlayStore.setOnClickListener(new View.OnClickListener() {

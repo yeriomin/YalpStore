@@ -2,13 +2,10 @@ package in.dragons.galaxy.fragment.details;
 
 import android.app.SearchManager;
 import android.content.Intent;
-import android.text.TextUtils;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+
+import com.percolate.caffeine.ViewUtils;
 
 import in.dragons.galaxy.ClusterActivity;
 import in.dragons.galaxy.DetailsActivity;
@@ -18,38 +15,44 @@ import in.dragons.galaxy.model.App;
 
 public class AppLists extends Abstract {
 
+    static private final String SIMILAR_APPS_KEY = "Similar apps";
+    static private final String RECOMMENDED_APPS_KEY = "You might also";
+
     public AppLists(DetailsActivity activity, App app) {
         super(activity, app);
     }
 
     @Override
     public void draw() {
-        LinearLayout relatedLinksLayout = (LinearLayout) activity.findViewById(R.id.related_links);
-        boolean developerLinkFound = false;
         for (final String label : app.getRelatedLinks().keySet()) {
-            relatedLinksLayout.setVisibility(View.VISIBLE);
-            relatedLinksLayout.addView(buildLinkView(label, app.getRelatedLinks().get(label)));
             if (label.contains(app.getDeveloperName())) {
-                developerLinkFound = true;
+                addAppsByThisDeveloper();
             }
-        }
-        if (!developerLinkFound && !TextUtils.isEmpty(app.getDeveloperName())) {
-            addAppsByThisDeveloper();
+
+            if (label.contains(SIMILAR_APPS_KEY)) {
+                addAppsSimilar(app.getRelatedLinks().get(label), label);
+            }
+
+            if (label.contains(RECOMMENDED_APPS_KEY)) {
+                addAppsRecommended(app.getRelatedLinks().get(label), label);
+            }
         }
     }
 
-    private TextView buildLinkView(final String label, final String url) {
-        TextView linkView = new TextView(activity);
-        linkView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_chevron_right, 0, 0, 0);
-        linkView.setText(label);
-        linkView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-        linkView.setPadding(0, 6, 0, 0);
-        linkView.setGravity(Gravity.CENTER_VERTICAL);
-        linkView.setOnClickListener(v -> ClusterActivity.start(activity, url, label));
-        return linkView;
+    private void addAppsSimilar(String URL, String Label) {
+        ViewUtils.findViewById(activity, R.id.apps_recommended_cnt).setVisibility(View.VISIBLE);
+        ImageView imageView = (ImageView) activity.findViewById(R.id.apps_similar);
+        imageView.setOnClickListener(v -> ClusterActivity.start(activity, URL, Label));
+    }
+
+    private void addAppsRecommended(String URL, String Label) {
+        ViewUtils.findViewById(activity, R.id.apps_similar_cnt).setVisibility(View.VISIBLE);
+        ImageView imageView = (ImageView) activity.findViewById(R.id.apps_recommended);
+        imageView.setOnClickListener(v -> ClusterActivity.start(activity, URL, Label));
     }
 
     private void addAppsByThisDeveloper() {
+        ViewUtils.findViewById(activity, R.id.apps_by_same_developer_cnt).setVisibility(View.VISIBLE);
         ImageView imageView = (ImageView) activity.findViewById(R.id.apps_by_same_developer);
         imageView.setVisibility(View.VISIBLE);
         imageView.setOnClickListener(v -> {
