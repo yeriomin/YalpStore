@@ -11,339 +11,303 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="2dp"
         android:layout_marginStart="2dp"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/device_card"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/card_height"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="5dp"
-                android:weightSum="8">
-
-                <ImageView
-                    android:id="@+id/device_avatar"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/icon_size_big"
-                    android:layout_weight="2"
-                    android:src="@drawable/ic_device" />
-
-                <LinearLayout
-                    android:id="@+id/device_detail_container"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="5.5"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/device_model"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/device_manufacturer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/device_architect"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/device_timezone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/spoofed_indicator"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/icon_size_small"
-                    android:layout_weight=".5"
-                    android:src="@drawable/ic_checked" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:orientation="horizontal"
-                android:padding="5dp"
-                android:weightSum="3">
-
-                <TextView
-                    android:id="@+id/device_resolution"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableLeft="@drawable/ic_resolution"
-                    android:drawablePadding="5dp" />
-
-                <TextView
-                    android:id="@+id/device_api"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawablePadding="5dp"
-                    android:drawableStart="@drawable/ic_api" />
-
-                <TextView
-                    android:id="@+id/device_cpu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawablePadding="5dp"
-                    android:drawableStart="@drawable/ic_cpu" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
+        android:orientation="vertical"
+        android:weightSum="2">
 
         <android.support.v7.widget.CardView
             android:id="@+id/user_dummy_card"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/card_height"
+            android:layout_height="wrap_content"
+            app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:id="@+id/no_dummy"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="5dp">
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:src="@drawable/ic_dummy_avatar" />
-
-                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="@string/acc_dummy" />
+                    android:layout_height="96dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/header_acc" />
 
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/dummy_login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:tint="@color/white"
-                    app:borderWidth="0dp"
-                    app:srcCompat="@drawable/ic_logout" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:src="@drawable/ic_dummy_avatar" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="@string/acc_dummy" />
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/dummy_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_logout"
+                        app:useCompatPadding="true" />
+                </LinearLayout>
+
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/dummy_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="5dp"
-                android:visibility="gone"
-                android:weightSum="8">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <ImageView
-                    android:id="@+id/dummy_avatar"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/icon_size_big"
-                    android:layout_weight="2"
-                    android:src="@drawable/ic_user_placeholder" />
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/header_acc" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="5.5"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="8">
 
-                    <TextView
-                        android:id="@+id/dummy_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/account_dummy_name"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/dummy_avatar"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/icon_size_big"
+                        android:layout_weight="2"
+                        android:src="@drawable/ic_user_placeholder" />
 
-                    <TextView
-                        android:id="@+id/dummy_email"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/account_dummy_email"
-                        android:textSize="16sp" />
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="5.5"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/dummy_gsf"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/dummy_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/account_dummy_name"
+                            android:textColor="@color/colorText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/dummy_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/account_dummy_email"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/dummy_gsf"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/colorTextSecondary"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/dummy_ind"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/icon_size_small"
+                        android:layout_weight=".5"
+                        android:src="@drawable/ic_checked"
+                        android:tint="@color/colorGreen" />
+
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/icon_size_small"
-                    android:layout_weight=".5"
-                    android:src="@drawable/ic_checked"
-                    android:tint="@color/colorGreen" />
-            </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:text="@string/acc_dummy_detail"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
 
-            <LinearLayout
-                android:id="@+id/dummy_action"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:gravity="end"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                android:weightSum="9">
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/account_switch"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/dummy_action"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:background="@drawable/button_bg"
-                    android:maxLines="1"
-                    android:text="@string/action_switch"
-                    android:textColor="@color/white"
-                    android:theme="@style/Widget.AppCompat.Button.Borderless.Colored" />
+                    android:gravity="end"
+                    android:orientation="horizontal">
 
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/account_logout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:background="@drawable/button_bg"
-                    android:text="@string/action_logout"
-                    android:textColor="@color/white"
-                    android:theme="@style/Widget.AppCompat.Button.Borderless.Colored" />
+                    <Button
+                        android:id="@+id/account_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="@string/action_switch" />
+
+                    <Button
+                        android:id="@+id/account_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/action_logout" />
+                </LinearLayout>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/card_height"
+            android:layout_height="wrap_content"
+            app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:id="@+id/no_google"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="5dp">
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:src="@drawable/ic_google" />
-
-                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="@string/acc_google" />
+                    android:layout_height="96dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/header_acc" />
 
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/google_login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:tint="@color/white"
-                    app:borderWidth="0dp"
-                    app:srcCompat="@drawable/ic_logout" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:src="@drawable/ic_google" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="@string/acc_google" />
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/google_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_logout"
+                        app:useCompatPadding="true" />
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/google_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <ImageView
-                    android:id="@+id/google_avatar"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/icon_size_big"
-                    android:layout_weight="2"
-                    android:src="@drawable/ic_user_placeholder" />
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/header_acc" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="5.5"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/google_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/account_dummy_name"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/google_avatar"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/icon_size_big"
+                        android:layout_weight="2"
+                        android:src="@drawable/ic_user_placeholder" />
 
-                    <TextView
-                        android:id="@+id/google_email"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp" />
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="5.5"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/google_gsf"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/google_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/account_dummy_name"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/google_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/google_gsf"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/google_ind"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/icon_size_small"
+                        android:layout_weight=".5"
+                        android:src="@drawable/ic_checked"
+                        android:tint="@color/colorGreen" />
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/icon_size_small"
-                    android:layout_weight=".5"
-                    android:src="@drawable/ic_checked"
-                    android:tint="@color/colorGreen" />
-            </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="?android:colorBackground"
+                    android:padding="10dp"
+                    android:text="@string/acc_google_detail"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
 
-            <LinearLayout
-                android:id="@+id/google_action"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:gravity="end"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                android:weightSum="9">
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/google_logout"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/google_action"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:background="@drawable/button_bg"
-                    android:text="@string/action_logout"
-                    android:textColor="@color/white"
-                    android:theme="@style/Widget.AppCompat.Button.Borderless.Colored" />
+                    android:layout_gravity="bottom"
+                    android:gravity="end"
+                    android:orientation="horizontal"
+                    android:weightSum="9">
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/google_logout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:background="@drawable/button_bg"
+                        android:text="@string/action_logout"
+                        android:textColor="@color/white"
+                        android:theme="@style/Widget.AppCompat.Button.Borderless.Colored" />
+                </LinearLayout>
+
             </LinearLayout>
         </android.support.v7.widget.CardView>
 

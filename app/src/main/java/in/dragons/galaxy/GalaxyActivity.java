@@ -167,6 +167,9 @@ public abstract class GalaxyActivity extends BaseActivity implements NavigationV
             case R.id.action_settings:
                 startActivity(new Intent(this, PreferenceActivity.class));
                 break;
+            case R.id.action_spoofed:
+                startActivity(new Intent(this, DeviceActivity.class));
+                break;
             case R.id.action_accounts:
                 startActivity(new Intent(this, AccountsActivity.class));
                 break;
