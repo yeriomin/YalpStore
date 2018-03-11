@@ -14,9 +14,6 @@ allprojects {
     repositories {
         maven { url 'https://jitpack.io' }
         jcenter()
+        google()
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }

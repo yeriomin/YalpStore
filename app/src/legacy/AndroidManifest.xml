@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          tools:node="merge"
+          package="com.github.yeriomin.yalpstore" >
+
+    <application>
+        <activity android:name=".SearchActivity">
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:name=".DetailsActivity">
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        </activity>
+        <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance">
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        </activity>
+        <activity android:name=".CategoryListActivity" android:launchMode="singleInstance">
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        </activity>
+        <activity android:name=".CategoryAppsActivity" android:launchMode="singleInstance">
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        </activity>
+        <activity android:name=".ClusterActivity" android:launchMode="singleInstance">
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        </activity>
+        <activity android:name=".ManualDownloadActivity" android:launchMode="singleInstance">
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        </activity>
+        <activity android:name=".AboutActivity" android:launchMode="singleInstance">
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        </activity>
+        <activity android:name=".InstalledAppsActivity" android:launchMode="singleInstance">
+            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        </activity>
+    </application>
+
+</manifest>

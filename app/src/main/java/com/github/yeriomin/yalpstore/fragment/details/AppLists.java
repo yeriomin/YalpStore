@@ -13,6 +13,7 @@ import com.github.yeriomin.yalpstore.ClusterActivity;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SearchActivity;
+import com.github.yeriomin.yalpstore.SearchActivityAbstract;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -67,7 +68,7 @@ public class AppLists extends Abstract {
                 Intent intent = new Intent(activity, SearchActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setAction(Intent.ACTION_SEARCH);
-                intent.putExtra(SearchManager.QUERY, SearchActivity.PUB_PREFIX + app.getDeveloperName());
+                intent.putExtra(SearchManager.QUERY, SearchActivityAbstract.PUB_PREFIX + app.getDeveloperName());
                 activity.startActivity(intent);
             }
         });

@@ -1,0 +1,88 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:title="@string/action_search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:actionLayout="@layout/search_view_layout"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:icon="@drawable/ic_search" />
+    <item
+        android:id="@+id/action_filter"
+        android:title="@string/action_filter"
+        android:visible="false"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_filter">
+        <menu>
+            <item
+                android:id="@+id/filter_system_apps"
+                android:title="@string/action_filter_system_apps"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_apps_with_ads"
+                android:title="@string/action_filter_apps_with_ads"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_paid_apps"
+                android:title="@string/action_filter_paid_apps"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_gsf_dependent_apps"
+                android:title="@string/action_filter_gsf_dependent_apps"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_category"
+                android:visible="false"
+                android:title="@string/action_filter_category"/>
+            <item
+                android:id="@+id/filter_rating"
+                android:visible="false"
+                android:title="@string/action_filter_rating"/>
+            <item
+                android:id="@+id/filter_downloads"
+                android:visible="false"
+                android:title="@string/action_filter_downloads"/>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/action_ignore"
+        android:title="@string/action_ignore"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_unignore"
+        android:title="@string/action_unignore"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_unwhitelist"
+        android:title="@string/action_unwhitelist"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_whitelist"
+        android:title="@string/action_whitelist"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_manual"
+        android:title="@string/action_manual"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_get_local_apk"
+        android:title="@string/action_get_local_apk"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_make_system"
+        android:title="@string/action_make_system"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_make_normal"
+        android:title="@string/action_make_normal"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_flag"
+        android:title="@string/flagging_title"
+        android:visible="false" />
+</menu>

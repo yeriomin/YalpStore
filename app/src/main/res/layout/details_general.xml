@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/general_details"
+    android:padding="5dp"
+    android:background="?android:colorBackground"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/badges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp">
+
+        <com.github.yeriomin.yalpstore.widget.Badge
+            android:id="@+id/downloads_badge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:icon="@drawable/ic_download"/>
+
+        <com.github.yeriomin.yalpstore.widget.Badge
+            android:id="@+id/rating_badge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:icon="@drawable/ic_star"/>
+
+        <com.github.yeriomin.yalpstore.widget.Badge
+            android:id="@+id/size_badge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:icon="@drawable/ic_storage"/>
+
+        <com.github.yeriomin.yalpstore.widget.Badge
+            android:id="@+id/category_badge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/updated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp" />
+
+    <TextView
+        android:id="@+id/developer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp" />
+
+    <TextView
+        android:id="@+id/price_and_ads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp" />
+
+    <TextView
+        android:id="@+id/google_dependencies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp" />
+
+</LinearLayout>

@@ -20,7 +20,6 @@ import com.github.yeriomin.yalpstore.task.LoadImageTask;
 import com.github.yeriomin.yalpstore.task.playstore.ReviewDeleteTask;
 import com.github.yeriomin.yalpstore.task.playstore.ReviewLoadTask;
 import com.github.yeriomin.yalpstore.view.UriOnClickListener;
-import com.github.yeriomin.yalpstore.widget.ExpansionPanel;
 
 import java.util.List;
 
@@ -43,27 +42,26 @@ public class Review extends Abstract {
             return;
         }
 
-        ExpansionPanel reviewsPanel = activity.findViewById(R.id.reviews_panel);
-        reviewsPanel.setVisibility(View.VISIBLE);
-        reviewsPanel.setOnClickListener(new View.OnClickListener() {
+        activity.findViewById(R.id.reviews_panel).setVisibility(View.VISIBLE);
+        activity.findViewById(R.id.reviews_panel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getTask(true).execute();
+                initReviewListControls();
+
+                setText(R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
+                for (int starNum = 1; starNum <= 5; starNum++) {
+                    setText(averageStarIds[starNum - 1], R.string.details_rating_specific, starNum, app.getRating().getStars(starNum));
+                }
+
+                activity.findViewById(R.id.user_review_container).setVisibility(isReviewable(app) ? View.VISIBLE : View.GONE);
+                com.github.yeriomin.yalpstore.model.Review review = app.getUserReview();
+                initUserReviewControls(app);
+                if (null != review) {
+                    fillUserReview(review);
+                }
             }
         });
-        initReviewListControls();
-
-        setText(R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
-        for (int starNum = 1; starNum <= 5; starNum++) {
-            setText(averageStarIds[starNum - 1], R.string.details_rating_specific, starNum, app.getRating().getStars(starNum));
-        }
-
-        activity.findViewById(R.id.user_review_container).setVisibility(isReviewable(app) ? View.VISIBLE : View.GONE);
-        com.github.yeriomin.yalpstore.model.Review review = app.getUserReview();
-        initUserReviewControls(app);
-        if (null != review) {
-            fillUserReview(review);
-        }
     }
 
     private boolean isReviewable(App app) {

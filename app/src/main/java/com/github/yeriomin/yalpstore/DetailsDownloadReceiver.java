@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
 import java.lang.ref.WeakReference;
@@ -62,33 +61,37 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
         if (!state.isEverythingSuccessful()) {
             return;
         }
-        Button buttonDownload = activityRef.get().findViewById(R.id.download);
+        View buttonDownload = activityRef.get().findViewById(R.id.download);
         buttonDownload.setVisibility(View.GONE);
-        Button buttonInstall = activityRef.get().findViewById(R.id.install);
+        View buttonInstall = activityRef.get().findViewById(R.id.install);
         buttonInstall.setVisibility(View.VISIBLE);
-        if (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
+        boolean installing = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
             && !state.getTriggeredBy().equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
-        ) {
-            buttonInstall.setEnabled(false);
-            buttonInstall.setText(R.string.details_installing);
-        } else {
-            buttonInstall.setEnabled(true);
-            buttonInstall.setText(R.string.details_install);
-        }
+        ;
+        toggle(R.id.install, installing ? R.string.details_installing : R.string.details_install, !installing);
     }
 
     private void cleanup() {
         ProgressBar progressBar = activityRef.get().findViewById(R.id.download_progress);
         if (null != progressBar) {
-            progressBar.setVisibility(View.GONE);
+            progressBar.setVisibility(View.INVISIBLE);
             progressBar.setProgress(0);
         }
-        ImageButton buttonCancel = activityRef.get().findViewById(R.id.cancel);
+        View buttonCancel = activityRef.get().findViewById(R.id.cancel);
         if (null != buttonCancel) {
             buttonCancel.setVisibility(View.GONE);
         }
-        Button buttonDownload = activityRef.get().findViewById(R.id.download);
-        buttonDownload.setText(R.string.details_download);
-        buttonDownload.setEnabled(true);
+        toggle(R.id.download, R.string.details_download, true);
+    }
+
+    private void toggle(int buttonId, int stringResId, boolean enable) {
+        View button = activityRef.get().findViewById(buttonId);
+        if (null == button) {
+            return;
+        }
+        button.setEnabled(enable);
+        if (button instanceof Button) {
+            ((Button) button).setText(stringResId);
+        }
     }
 }

@@ -22,6 +22,11 @@ import static android.net.ConnectivityManager.TYPE_WIMAX;
 
 public class NetworkState {
 
+    static public boolean isNetworkAvailable(Context context) {
+        NetworkInfo activeNetworkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     static public boolean isVpn(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return isVpnLollipop(context);

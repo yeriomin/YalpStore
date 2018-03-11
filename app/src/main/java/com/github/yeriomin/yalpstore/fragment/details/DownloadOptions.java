@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.view.ViewStub;
 
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.BuildConfig;
@@ -32,8 +32,8 @@ public class DownloadOptions extends Abstract {
 
     @Override
     public void draw() {
-        final ImageButton more = activity.findViewById(R.id.more);
-        if (null == more) {
+        final View more = activity.findViewById(R.id.more);
+        if (null == more || more instanceof ViewStub) {
             return;
         }
         activity.registerForContextMenu(more);
@@ -48,24 +48,35 @@ public class DownloadOptions extends Abstract {
     public void inflate(Menu menu) {
         MenuInflater inflater = activity.getMenuInflater();
         inflater.inflate(R.menu.menu_download, menu);
-        if (!isInstalled(app)) {
-            return;
+        if (isInstalled(app)) {
+            onCreateOptionsMenu(menu);
         }
-        menu.findItem(R.id.action_get_local_apk).setVisible(true);
+    }
+
+    public void onCreateOptionsMenu(Menu menu) {
+        show(menu, R.id.action_manual, true);
+        show(menu, R.id.action_get_local_apk, app.isInstalled());
         BlackWhiteListManager manager = new BlackWhiteListManager(activity);
         boolean isContained = manager.contains(app.getPackageName());
         if (manager.isBlack()) {
-            menu.findItem(R.id.action_unignore).setVisible(isContained);
-            menu.findItem(R.id.action_ignore).setVisible(!isContained);
+            show(menu, R.id.action_unignore, isContained);
+            show(menu, R.id.action_ignore, !isContained);
         } else {
-            menu.findItem(R.id.action_unwhitelist).setVisible(isContained);
-            menu.findItem(R.id.action_whitelist).setVisible(!isContained);
+            show(menu, R.id.action_unwhitelist, isContained);
+            show(menu, R.id.action_whitelist, !isContained);
         }
         if (isConvertible(app)) {
-            menu.findItem(R.id.action_make_system).setVisible(!app.isSystem());
-            menu.findItem(R.id.action_make_normal).setVisible(app.isSystem());
+            show(menu, R.id.action_make_system, !app.isSystem());
+            show(menu, R.id.action_make_normal, app.isSystem());
         }
-        menu.findItem(R.id.action_flag).setVisible(app.isInstalled());
+        show(menu, R.id.action_flag, app.isInPlayStore());
+    }
+
+    private void show(Menu menu, int itemId, boolean show) {
+        MenuItem item = menu.findItem(itemId);
+        if (null != item) {
+            item.setVisible(show);
+        }
     }
 
     public boolean onContextItemSelected(MenuItem item) {
@@ -95,9 +106,8 @@ public class DownloadOptions extends Abstract {
             case R.id.action_flag:
                 new FlagDialogBuilder().setActivity(activity).setApp(app).build().show();
                 return true;
-            default:
-                return activity.onContextItemSelected(item);
         }
+        return false;
     }
 
     private void checkAndExecute(SystemRemountTask primaryTask) {

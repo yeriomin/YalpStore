@@ -4,11 +4,9 @@ import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
-import android.widget.SearchView;
 
 import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
@@ -17,11 +15,11 @@ import com.github.yeriomin.yalpstore.task.playstore.SearchTask;
 
 import java.util.regex.Pattern;
 
-public class SearchActivity extends EndlessScrollActivity {
+abstract public class SearchActivityAbstract extends EndlessScrollActivity {
 
     public static final String PUB_PREFIX = "pub:";
 
-    private String query;
+    protected String query;
 
     static protected boolean actionIs(Intent intent, String action) {
         return null != intent && null != intent.getAction() && intent.getAction().equals(action);
@@ -56,9 +54,6 @@ public class SearchActivity extends EndlessScrollActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         boolean result = super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.filter_category).setVisible(true);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            ((SearchView) menu.findItem(R.id.action_search).getActionView()).setQuery(query,false);
-        }
         return result;
     }
 
@@ -112,9 +107,9 @@ public class SearchActivity extends EndlessScrollActivity {
 
     static private class CheckPackageIdTask extends DetailsTask {
 
-        private SearchActivity activity;
+        private SearchActivityAbstract activity;
 
-        public CheckPackageIdTask(SearchActivity activity) {
+        public CheckPackageIdTask(SearchActivityAbstract activity) {
             this.activity = activity;
         }
 

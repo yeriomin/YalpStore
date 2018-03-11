@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="YalpStoreThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">#357ec7</item>
+    </style>
+    <style name="YalpStoreThemeDark" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorAccent">#357ec7</item>
+    </style>
+</resources>

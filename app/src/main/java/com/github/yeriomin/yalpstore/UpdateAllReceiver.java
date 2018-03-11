@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import android.widget.Button;
+import android.view.View;
+
+import com.github.yeriomin.yalpstore.view.UpdatableAppsButtonAdapter;
 
 public class UpdateAllReceiver extends BroadcastReceiver {
 
@@ -45,10 +47,9 @@ public class UpdateAllReceiver extends BroadcastReceiver {
     }
 
     private void enableButton() {
-        Button button = activity.findViewById(R.id.main_button);
+        View button = activity.findViewById(R.id.main_button);
         if (null != button) {
-            button.setEnabled(true);
-            button.setText(R.string.list_update_all);
+            new UpdatableAppsButtonAdapter(button).setReady();
         }
     }
 

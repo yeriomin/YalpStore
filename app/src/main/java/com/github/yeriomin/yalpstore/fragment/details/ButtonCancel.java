@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.ImageButton;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DownloadState;

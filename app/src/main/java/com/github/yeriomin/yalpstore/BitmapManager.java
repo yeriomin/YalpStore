@@ -12,15 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.X509TrustManager;
 
 public class BitmapManager {
 
@@ -31,22 +22,6 @@ public class BitmapManager {
     private boolean noImages;
 
     static {
-        HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
-
-            @Override
-            public boolean verify(String hostname, SSLSession session) {
-                return true;
-            }
-        });
-        try {
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, new X509TrustManager[]{new NullX509TrustManager()}, new SecureRandom());
-            HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
-        } catch (NoSuchAlgorithmException e) {
-            // Impossible
-        } catch (KeyManagementException e) {
-            // Impossible
-        }
         final int cacheSize = (int) (Runtime.getRuntime().maxMemory() / 1024 / 8);
         memoryCache = new LruCache<String, Bitmap>(cacheSize) {
             @Override
@@ -139,11 +114,12 @@ public class BitmapManager {
     }
 
     static private Bitmap downloadBitmap(String url, boolean fullSize) {
+        InputStream input = null;
         try {
             HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
             connection.connect();
             connection.setConnectTimeout(3000);
-            InputStream input = connection.getInputStream();
+            input = connection.getInputStream();
 
             BitmapFactory.Options options = new BitmapFactory.Options();
             if (!fullSize) {
@@ -154,6 +130,8 @@ public class BitmapManager {
             return BitmapFactory.decodeStream(input, null, options);
         } catch (IOException e) {
             Log.e(BitmapManager.class.getSimpleName(), "Could not get icon from " + url + " " + e.getMessage());
+        } finally {
+            Util.closeSilently(input);
         }
         return null;
     }

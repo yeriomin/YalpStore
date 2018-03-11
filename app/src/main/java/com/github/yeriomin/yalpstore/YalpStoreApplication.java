@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+//import com.frogermcs.androiddevmetrics.AndroidDevMetrics;
+
 public class YalpStoreApplication extends Application {
 
     private boolean isBackgroundUpdating = false;
@@ -59,6 +61,9 @@ public class YalpStoreApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+//        if (BuildConfig.DEBUG) {
+//            AndroidDevMetrics.initWith(this);
+//        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             try {
                 HttpResponseCache.install(new File(getCacheDir(), "http"), 5 * 1024 * 1024);

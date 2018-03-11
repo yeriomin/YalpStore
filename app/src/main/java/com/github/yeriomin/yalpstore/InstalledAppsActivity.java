@@ -1,17 +1,16 @@
 package com.github.yeriomin.yalpstore;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 
 import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.AppListValidityCheckTask;
 import com.github.yeriomin.yalpstore.task.ForegroundInstalledAppsTask;
 import com.github.yeriomin.yalpstore.view.InstalledAppBadge;
+import com.github.yeriomin.yalpstore.view.InstalledAppsMainButtonAdapter;
 import com.github.yeriomin.yalpstore.view.ListItem;
 
 public class InstalledAppsActivity extends AppListActivity {
@@ -20,16 +19,7 @@ public class InstalledAppsActivity extends AppListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(R.string.activity_title_updates_and_other_apps);
-        Button button = findViewById(R.id.main_button);
-        button.setEnabled(true);
-        button.setVisibility(View.VISIBLE);
-        button.setText(R.string.list_check_updates);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), UpdatableAppsActivity.class));
-            }
-        });
+        new InstalledAppsMainButtonAdapter(findViewById(R.id.main_button)).init();
     }
 
     @Override

@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -14,6 +13,7 @@ import com.github.yeriomin.yalpstore.task.AppListValidityCheckTask;
 import com.github.yeriomin.yalpstore.task.playstore.ForegroundUpdatableAppsTask;
 import com.github.yeriomin.yalpstore.view.ListItem;
 import com.github.yeriomin.yalpstore.view.UpdatableAppBadge;
+import com.github.yeriomin.yalpstore.view.UpdatableAppsButtonAdapter;
 
 public class UpdatableAppsActivity extends AppListActivity {
 
@@ -106,9 +106,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     public void launchUpdateAll() {
         ((YalpStoreApplication) getApplicationContext()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
-        Button button = findViewById(R.id.main_button);
-        button.setEnabled(false);
-        button.setText(R.string.list_updating);
+        new UpdatableAppsButtonAdapter(findViewById(R.id.main_button)).setUpdating();
     }
 }
 

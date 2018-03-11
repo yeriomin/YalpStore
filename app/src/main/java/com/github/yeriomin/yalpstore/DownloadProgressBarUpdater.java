@@ -30,7 +30,7 @@ public class DownloadProgressBarUpdater extends RepeatingTask {
         }
         DownloadState state = DownloadState.get(packageName);
         if (null == state || state.isEverythingFinished()) {
-            progressBar.setVisibility(View.GONE);
+            progressBar.setVisibility(View.INVISIBLE);
             progressBar.setIndeterminate(true);
             return;
         }

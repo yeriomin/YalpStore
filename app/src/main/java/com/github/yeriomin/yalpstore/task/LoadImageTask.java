@@ -4,7 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.text.TextUtils;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 
 import com.github.yeriomin.yalpstore.BitmapManager;
@@ -19,6 +22,7 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
     private Drawable drawable;
     private String tag;
     private boolean placeholder = true;
+    private int fadeInMillis = 0;
 
     public LoadImageTask() {
 
@@ -39,6 +43,11 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
         return this;
     }
 
+    public LoadImageTask setFadeInMillis(int fadeInMillis) {
+        this.fadeInMillis = fadeInMillis;
+        return this;
+    }
+
     @Override
     protected void onPreExecute() {
         if (placeholder) {
@@ -52,7 +61,13 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
             return;
         }
         if (null != drawable) {
+            if (fadeInMillis > 0) {
+                fadeOut();
+            }
             imageView.setImageDrawable(drawable);
+            if (fadeInMillis > 0) {
+                fadeIn();
+            }
         }
     }
 
@@ -68,6 +83,28 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
             }
         }
         return null;
+    }
+
+    private void fadeIn() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            imageView.animate().setDuration(fadeInMillis).withLayer().alpha(1.0f);
+        } else {
+            Animation a = new AlphaAnimation(0.0f, 1.0f);
+            a.setDuration(fadeInMillis);
+            imageView.startAnimation(a);
+        }
+    }
+
+    private void fadeOut() {
+        if (!placeholder) {
+            imageView.setAlpha(0.0f);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            imageView.animate().alpha(0.0f).setDuration(fadeInMillis).withLayer();
+        } else {
+            Animation a = new AlphaAnimation(1.0f, 0.0f);
+            a.setDuration(fadeInMillis);
+            imageView.startAnimation(a);
+        }
     }
 
     private boolean noImages() {

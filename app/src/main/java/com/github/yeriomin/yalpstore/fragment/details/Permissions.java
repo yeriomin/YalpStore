@@ -24,7 +24,8 @@ public class Permissions extends Abstract {
 
     @Override
     public void draw() {
-        ExpansionPanel permissionsPanel = activity.findViewById(R.id.permissions_panel);
+        View permissionsPanel = activity.findViewById(R.id.permissions_panel);
+        permissionsPanel.setVisibility(View.VISIBLE);
         permissionsPanel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,7 +33,7 @@ public class Permissions extends Abstract {
             }
         });
         if (!app.isInPlayStore()) {
-            permissionsPanel.toggle();
+            ((ExpansionPanel) activity.findViewById(R.id.permissions_panel)).toggle();
         }
     }
 

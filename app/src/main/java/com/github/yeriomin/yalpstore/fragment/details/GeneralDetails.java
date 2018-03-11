@@ -4,7 +4,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.Html;
 import android.text.TextUtils;
-import android.text.format.Formatter;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.View;
@@ -100,11 +99,11 @@ public class GeneralDetails extends Abstract {
         }
         TextView itemView = new TextView(activity);
         try {
-            itemView.setAutoLinkMask(Linkify.ALL);
-            itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
+            itemView.setAutoLinkMask(Linkify.EMAIL_ADDRESSES | Linkify.WEB_URLS);
         } catch (RuntimeException e) {
             Log.w(getClass().getSimpleName(), "System WebView missing: " + e.getMessage());
             itemView.setAutoLinkMask(0);
+        } finally {
             itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
         }
         ((LinearLayout) activity.findViewById(R.id.offer_details)).addView(itemView);
@@ -155,7 +154,7 @@ public class GeneralDetails extends Abstract {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(1);
         ((Badge) activity.findViewById(R.id.rating_badge)).setLabel(app.isEarlyAccess() ? activity.getString(R.string.early_access) : df.format(app.getRating().getAverage()));
-        ((Badge) activity.findViewById(R.id.size_badge)).setLabel(Formatter.formatShortFileSize(activity, app.getSize()));
+        ((Badge) activity.findViewById(R.id.size_badge)).setLabel(Util.readableFileSize(app.getSize()));
         Badge categoryBadge = activity.findViewById(R.id.category_badge);
         categoryBadge.setLabel(new CategoryManager(activity).getCategoryName(app.getCategoryId()));
         categoryBadge.setOnClickListener(new View.OnClickListener() {

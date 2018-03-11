@@ -7,9 +7,18 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.TypedValue;
 
-public class ThemeManager {
+abstract public class ThemeManagerAbstract {
 
-    static public void setTheme(Activity activity) {
+    protected Activity activity;
+
+    abstract protected int getThemeLight();
+    abstract protected int getThemeDark();
+
+    public ThemeManagerAbstract(Activity activity) {
+        this.activity = activity;
+    }
+
+    public void setTheme() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
         String theme = prefs.getString(PreferenceActivity.PREFERENCE_UI_THEME, PreferenceActivity.THEME_NONE);
         int themeId = getThemeId(theme, activity);
@@ -21,7 +30,7 @@ public class ThemeManager {
         }
     }
 
-    static private int getThemeId(String theme, Activity activity) {
+    private int getThemeId(String theme, Activity activity) {
         switch (theme) {
             default:
             case PreferenceActivity.THEME_NONE:
@@ -34,33 +43,13 @@ public class ThemeManager {
         }
     }
 
-    static private int getThemeDefault(Activity activity) {
+    private int getThemeDefault(Activity activity) {
         if (isAmazonTv(activity)) {
             getThemeDark();
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return isWindowBackgroundDark(activity) ? getThemeDark() : getThemeLight();
         }
         return 0;
-    }
-
-    static private int getThemeLight() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return android.R.style.Theme_Material_Light;
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            return android.R.style.Theme_Holo_Light;
-        } else {
-            return android.R.style.Theme_Light;
-        }
-    }
-
-    static private int getThemeDark() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return android.R.style.Theme_Material;
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            return android.R.style.Theme_Holo;
-        } else {
-            return android.R.style.Theme;
-        }
     }
 
     static private boolean isAmazonTv(Activity activity) {

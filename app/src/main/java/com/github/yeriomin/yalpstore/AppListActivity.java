@@ -33,13 +33,8 @@ abstract public class AppListActivity extends YalpStoreActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.applist_activity_layout);
 
-        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DetailsActivity.app = getAppByListPosition(position);
-                startActivity(DetailsActivity.getDetailsIntent(AppListActivity.this, DetailsActivity.app.getPackageName()));
-            }
-        });
+        onContentChanged();
+        getListView().setOnItemClickListener(new OnAppClickListener(this));
         registerForContextMenu(getListView());
     }
 
@@ -88,7 +83,10 @@ abstract public class AppListActivity extends YalpStoreActivity {
     public void onContentChanged() {
         super.onContentChanged();
         View emptyView = findViewById(android.R.id.empty);
-        listView = (ListView) findViewById(android.R.id.list);
+        listView = findViewById(android.R.id.list);
+        if (null == listView) {
+            return;
+        }
         if (emptyView != null) {
             listView.setEmptyView(emptyView);
         }
@@ -97,7 +95,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
         }
     }
 
-    protected App getAppByListPosition(int position) {
+    public App getAppByListPosition(int position) {
         ListItem listItem = (ListItem) getListView().getItemAtPosition(position);
         if (null == listItem || !(listItem instanceof AppBadge)) {
             return null;

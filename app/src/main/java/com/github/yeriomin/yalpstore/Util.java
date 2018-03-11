@@ -6,6 +6,7 @@ import android.text.TextUtils;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -100,6 +101,13 @@ public class Util {
             order += 3;
         }
         return tempValue + siPrefixes.get(order);
+    }
+
+    static public String readableFileSize(long size) {
+        if(size <= 0) return "0";
+        final String[] units = new String[] { "B", "kB", "MB", "GB", "TB" };
+        int digitGroups = (int) (Math.log10(size)/Math.log10(1024));
+        return new DecimalFormat("#,##0.#").format(size/Math.pow(1024, digitGroups)) + " " + units[digitGroups];
     }
 
     static public int getPx(Context context, int dp) {

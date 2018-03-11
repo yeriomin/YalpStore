@@ -1,18 +1,14 @@
 package com.github.yeriomin.yalpstore.task.playstore;
 
-import android.view.View;
-import android.widget.Button;
-
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
-import com.github.yeriomin.yalpstore.YalpStoreApplication;
-import com.github.yeriomin.yalpstore.YalpStorePermissionManager;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.selfupdate.UpdaterFactory;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
+import com.github.yeriomin.yalpstore.view.UpdatableAppsButtonAdapter;
 
 import java.io.IOException;
 import java.util.List;
@@ -67,27 +63,12 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         if (success() && updatableApps.isEmpty()) {
             this.errorView.setText(R.string.list_empty_updates);
         }
-        toggleUpdateAll(!updatableApps.isEmpty());
-    }
-
-    private void toggleUpdateAll(boolean enable) {
-        Button button = activity.findViewById(R.id.main_button);
-        button.setText(R.string.list_update_all);
-        button.setVisibility(enable ? View.VISIBLE : View.GONE);
-        if (((YalpStoreApplication) activity.getApplication()).isBackgroundUpdating()) {
-            button.setEnabled(false);
-            button.setText(R.string.list_updating);
+        UpdatableAppsButtonAdapter buttonAdapter = new UpdatableAppsButtonAdapter(activity.findViewById(R.id.main_button));
+        buttonAdapter.init(activity);
+        if (updatableApps.isEmpty()) {
+            buttonAdapter.hide();
+        } else {
+            buttonAdapter.show();
         }
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                YalpStorePermissionManager permissionManager = new YalpStorePermissionManager(activity);
-                if (permissionManager.checkPermission()) {
-                    activity.launchUpdateAll();
-                } else {
-                    permissionManager.requestPermission();
-                }
-            }
-        });
     }
 }
