@@ -1,132 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="in.dragons.galaxy"
-          android:installLocation="internalOnly" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="in.dragons.galaxy"
+    android:installLocation="internalOnly">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <uses-permission android:name="android.permission.INSTALL_PACKAGES" tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.INSTALL_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
 
-    <uses-feature android:name="android.software.leanback" android:required="false" />
-    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
 
     <application
         android:name=".GalaxyApplication"
+        android:banner="@mipmap/ic_launcher"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:banner="@mipmap/ic_launcher"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:supportsRtl="true">
+        android:allowBackup="true"
+        android:fullBackupContent="true">
         <provider
             android:name="in.dragons.galaxy.FileProvider"
             android:authorities="in.dragons.galaxy.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/paths" />
         </provider>
+
         <receiver android:name="in.dragons.galaxy.UpdateChecker" />
         <receiver
             android:name="in.dragons.galaxy.BootReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
         <provider
-            android:exported="false"
             android:name=".GalaxySuggestionProvider"
             android:authorities="in.dragons.galaxy.GalaxySuggestionProvider"
-            android:enabled="true" />
-        <activity android:name=".DetailsActivity" android:configChanges="keyboardHidden|orientation|screenSize">
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name=".DetailsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchActivity" />
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="market" android:host="details" />
+
+                <data
+                    android:host="details"
+                    android:scheme="market" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="http" />
                 <data android:scheme="https" />
                 <data android:host="play.google.com" />
                 <data android:path="/store/apps/details" />
             </intent-filter>
         </activity>
-        <activity android:name=".DirectDownloadActivity" android:theme="@android:style/Theme.NoDisplay">
-            <intent-filter >
-                <action android:name="android.intent.action.SEND"/>
+        <activity
+            android:name=".DirectDownloadActivity"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/activity_title_updates_only">
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        <activity
+            android:name=".UpdatableAppsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_title_updates_only"
+            android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchActivity" />
         </activity>
-        <activity android:name=".SearchActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
+        <activity
+            android:name=".SearchActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="market" android:host="search" />
+
+                <data
+                    android:host="search"
+                    android:scheme="market" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="http" />
                 <data android:scheme="https" />
                 <data android:host="play.google.com" />
                 <data android:path="/store/search" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".PreferenceActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_settings" />
-        <activity android:name=".CategoryListActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        <activity
+            android:name=".PreferenceActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/action_settings" />
+        <activity
+            android:name=".CategoryListActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleInstance">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchActivity" />
         </activity>
-        <activity android:name=".CategoryAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        <activity
+            android:name=".CategoryAppsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchActivity" />
         </activity>
         <activity android:name=".FullscreenImageActivity" />
-        <activity android:name=".ClusterActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        <activity
+            android:name=".ClusterActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleInstance">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchActivity" />
         </activity>
-        <activity android:name=".ManualDownloadActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_manual" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        <activity
+            android:name=".ManualDownloadActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/action_manual"
+            android:launchMode="singleInstance">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchActivity" />
         </activity>
-        <activity android:name=".AboutActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_about" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        <activity
+            android:name=".AboutActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/action_about"
+            android:launchMode="singleInstance">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchActivity" />
         </activity>
-        <activity android:name=".AccountsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_accounts" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        <activity
+            android:name=".AccountsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/action_accounts"
+            android:launchMode="singleInstance">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchActivity" />
         </activity>
-        <activity android:name=".DeviceInfoActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name=".InstalledAppsActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize">
+        <activity
+            android:name=".DeviceInfoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".InstalledAppsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleInstance"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchActivity" />
         </activity>
 
-        <service android:enabled="true" android:name=".notification.CancelDownloadService" />
-        <service android:enabled="true" android:name=".notification.IgnoreUpdatesService" />
-        <activity android:name=".ThemesActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_themes" />
-        <activity android:name=".DeviceActivity" android:launchMode="singleInstance" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_spoofed" />
+        <service
+            android:name=".notification.CancelDownloadService"
+            android:enabled="true" />
+        <service
+            android:name=".notification.IgnoreUpdatesService"
+            android:enabled="true" />
+
+        <activity
+            android:name=".ThemesActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/action_themes"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".DeviceActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/action_spoofed"
+            android:launchMode="singleInstance" />
     </application>
 
 </manifest>
