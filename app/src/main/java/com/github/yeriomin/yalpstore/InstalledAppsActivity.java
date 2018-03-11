@@ -8,6 +8,7 @@ import android.view.View;
 import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.AppListValidityCheckTask;
+import com.github.yeriomin.yalpstore.task.BitmapCacheCleanupTask;
 import com.github.yeriomin.yalpstore.task.ForegroundInstalledAppsTask;
 import com.github.yeriomin.yalpstore.view.InstalledAppBadge;
 import com.github.yeriomin.yalpstore.view.InstalledAppsMainButtonAdapter;
@@ -20,6 +21,7 @@ public class InstalledAppsActivity extends AppListActivity {
         super.onCreate(savedInstanceState);
         setTitle(R.string.activity_title_updates_and_other_apps);
         new InstalledAppsMainButtonAdapter(findViewById(R.id.main_button)).init();
+        new BitmapCacheCleanupTask(this.getApplicationContext()).execute();
     }
 
     @Override

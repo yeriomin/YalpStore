@@ -15,7 +15,7 @@ import java.net.URL;
 
 public class BitmapManager {
 
-    static private final long VALID_MILLIS = 1000*60*60*24*7;
+    static public final long VALID_MILLIS = 1000*60*60*24*7;
     static private LruCache<String, Bitmap> memoryCache;
 
     private File baseDir;
