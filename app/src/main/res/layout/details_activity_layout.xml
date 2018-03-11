@@ -102,6 +102,8 @@
             <include layout="@layout/app_reviews_inc" />
             <!-- Permissions -->
             <include layout="@layout/app_perm_inc" />
+            <!--General -->
+            <include layout="@layout/app_gen_inc" />
             <!-- Beta -->
             <include layout="@layout/app_beta_inc" />
             <!-- Bottom Actions -->

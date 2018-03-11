@@ -60,7 +60,7 @@ public class GeneralDetails extends Abstract {
 
     private void drawGeneralDetails(App app) {
         activity.findViewById(R.id.app_detail).setVisibility(View.VISIBLE);
-
+        activity.findViewById(R.id.general_card).setVisibility(View.VISIBLE);
         setText(R.id.installs, R.string.details_installs, Util.addDiPrefix(app.getInstalls()));
         if (app.isEarlyAccess()) {
             setText(R.id.rating, R.string.early_access);
