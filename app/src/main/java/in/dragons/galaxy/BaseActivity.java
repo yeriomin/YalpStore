@@ -117,7 +117,7 @@ public abstract class BaseActivity extends AestheticActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         new PlayStoreApiAuthenticator(getApplicationContext()).logout();
                         dialogInterface.dismiss();
-                        finish();
+                        finishAll();
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, null)
