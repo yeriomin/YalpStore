@@ -19,12 +19,20 @@ public class Util {
 
     private static final String DELIMITER = ",";
     private static final Map<Integer, String> siPrefixes = new HashMap<>();
+    private static final Map<Integer, String> diPrefixes = new HashMap<>();
 
     static {
         siPrefixes.put(0, "");
         siPrefixes.put(3, " KB");
         siPrefixes.put(6, " MB");
         siPrefixes.put(9, " GB");
+    }
+
+    static {
+        diPrefixes.put(0, "");
+        diPrefixes.put(3, " K");
+        diPrefixes.put(6, " M");
+        diPrefixes.put(9, " B");
     }
 
     static public Map<String, String> sort(Map<String, String> unsorted) {
@@ -100,5 +108,15 @@ public class Util {
             order += 3;
         }
         return tempValue + siPrefixes.get(order);
+    }
+
+    static public String addDiPrefix(Integer integer) {
+        int tempValue = integer;
+        int order = 0;
+        while (tempValue >= 1000.0) {
+            tempValue /= 1000.0;
+            order += 3;
+        }
+        return tempValue + diPrefixes.get(order);
     }
 }
