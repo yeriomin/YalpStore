@@ -26,6 +26,8 @@ public abstract class BaseActivity extends AestheticActivity {
 
     static protected boolean logout = false;
 
+    protected String UNKNOWN = "Unknown user.";
+
     protected String Email, Name, Url;
     protected SharedPreferences sharedPreferences;
 
@@ -62,13 +64,19 @@ public abstract class BaseActivity extends AestheticActivity {
     }
 
     protected void parseRAW(String rawData) {
-        Name = rawData.substring(rawData.indexOf("<name>") + 6, rawData.indexOf("</name>"));
-        Url = rawData.substring(rawData.indexOf("<gphoto:thumbnail>") + 18, rawData.lastIndexOf("</gphoto:thumbnail>"));
+        if (rawData.contains(UNKNOWN)) {
+            Name = Email;
+            Url = "I dont fucking care";
+        } else {
+            Name = rawData.substring(rawData.indexOf("<name>") + 6, rawData.indexOf("</name>"));
+            Url = rawData.substring(rawData.indexOf("<gphoto:thumbnail>") + 18, rawData.lastIndexOf("</gphoto:thumbnail>"));
+        }
 
         PreferenceManager.getDefaultSharedPreferences(this).edit().putString("GOOGLE_NAME", Name).apply();
         PreferenceManager.getDefaultSharedPreferences(this).edit().putString("GOOGLE_URL", Url).apply();
 
         setNavHeaderInfo((NavigationView) findViewById(R.id.nav_view), Name, Url);
+
     }
 
     protected void setNavHeaderInfo(NavigationView navigationView, String Name, String URL) {

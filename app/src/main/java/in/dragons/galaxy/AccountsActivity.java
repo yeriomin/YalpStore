@@ -88,11 +88,11 @@ public class AccountsActivity extends GalaxyActivity {
     }
 
     public void loadAvatar(String Url) {
-        Picasso.with(this)
-                .load(Url)
-                .placeholder(R.drawable.ic_user_placeholder)
-                .transform(new CircleTransform())
-                .into(((ImageView) findViewById(R.id.google_avatar)));
+            Picasso.with(this)
+                    .load(Url)
+                    .placeholder(R.drawable.ic_user_placeholder)
+                    .transform(new CircleTransform())
+                    .into(((ImageView) findViewById(R.id.google_avatar)));
     }
 
     protected void setText(int viewId, String text) {
