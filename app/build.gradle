@@ -8,7 +8,7 @@ android {
         applicationId "in.dragons.galaxy"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 3
+        versionCode 4
         versionName '1.0'
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
