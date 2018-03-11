@@ -24,9 +24,8 @@ public class Permissions extends Abstract {
 
     @Override
     public void draw() {
-        View permissionsPanel = activity.findViewById(R.id.permissions_panel);
-        permissionsPanel.setVisibility(View.VISIBLE);
-        permissionsPanel.setOnClickListener(new View.OnClickListener() {
+        activity.findViewById(R.id.permissions_panel).setVisibility(View.VISIBLE);
+        activity.findViewById(R.id.permissions_panel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addPermissionWidgets();
