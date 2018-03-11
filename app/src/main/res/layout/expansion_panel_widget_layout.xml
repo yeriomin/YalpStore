@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:drawableEnd="@drawable/ic_expand_more"
         android:drawableRight="@drawable/ic_expand_more"
         android:focusable="true"
@@ -19,9 +18,10 @@
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0px"
         android:orientation="vertical"
         android:paddingBottom="16dp"
-        android:visibility="gone"/>
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"/>
 
-</LinearLayout>
+</merge>

@@ -1,20 +1,26 @@
 package com.github.yeriomin.yalpstore.widget;
 
+import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.Util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExpansionPanel extends LinearLayout {
+
+    private static final int ANIMATION_DURATION = 100;
 
     private CharSequence headerText;
     private boolean isCreated = false;
@@ -97,15 +103,15 @@ public class ExpansionPanel extends LinearLayout {
             headerView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    boolean isExpanded = containerView.getVisibility() == View.VISIBLE;
+                    boolean isExpanded = containerView.getHeight() > 0;
                     if (isExpanded) {
-                        containerView.setVisibility(View.GONE);
+                        collapse(containerView);
                         headerView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_more, 0);
                     } else {
                         if (null != onClickListener) {
                             onClickListener.onClick(v);
                         }
-                        containerView.setVisibility(View.VISIBLE);
+                        expand(containerView);
                         headerView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_less, 0);
                     }
                 }
@@ -126,5 +132,42 @@ public class ExpansionPanel extends LinearLayout {
         } finally {
             typedArray.recycle();
         }
+    }
+
+    private void expand(View v) {
+        containerView.measure(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        int targetHeight = containerView.getMeasuredHeight() + Util.getPx(v.getContext(), 16);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            animate(v, ANIMATION_DURATION, targetHeight);
+        } else {
+            v.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        }
+    }
+
+    private void collapse(View v) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            animate(v, ANIMATION_DURATION, 0);
+        } else {
+            v.getLayoutParams().height = 0;
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    private void animate(final View v, int duration, final int targetHeight) {
+        v.setVisibility(View.VISIBLE);
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(v.getHeight(), targetHeight);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                v.getLayoutParams().height = (int) animation.getAnimatedValue();
+                v.requestLayout();
+                if (v.getLayoutParams().height == targetHeight && targetHeight > 0) {
+                    v.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                }
+            }
+        });
+        valueAnimator.setInterpolator(new DecelerateInterpolator());
+        valueAnimator.setDuration(duration);
+        valueAnimator.start();
     }
 }
