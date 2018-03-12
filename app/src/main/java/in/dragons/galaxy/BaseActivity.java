@@ -11,10 +11,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
-import android.view.MenuItem;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.SearchView;
 
 import com.afollestad.aesthetic.AestheticActivity;
 import com.percolate.caffeine.PhoneUtils;
@@ -91,12 +92,11 @@ public abstract class BaseActivity extends AestheticActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    protected void addQueryTextListener(MenuItem searchItem) {
-        SearchView searchView = (SearchView) searchItem.getActionView();
+    protected void addQueryTextListener(SearchView searchView) {
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         if (null != searchManager) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-            searchView.setQueryHint(getString(R.string.search_title));
+            searchView.setLayoutParams(new Toolbar.LayoutParams(Gravity.RIGHT));
         }
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 

@@ -1,7 +1,6 @@
 package in.dragons.galaxy;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -39,16 +38,6 @@ abstract public class AppListActivity extends GalaxyActivity {
         super.onCreate(savedInstanceState);
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame); //Remember this is the FrameLayout area within your activity_main.xml
         getLayoutInflater().inflate(R.layout.applist_activity_layout, contentFrameLayout);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setVisibility(View.VISIBLE);
-        fab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if (!onSearchRequested()) {
-                    showFallbackSearchDialog();
-                }
-            }
-        });
 
         onContentChange();
 

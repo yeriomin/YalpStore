@@ -16,13 +16,23 @@
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|enterAlways" />
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <android.support.v7.widget.SearchView
+                    android:id="@+id/search_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:closeIcon="@drawable/ic_close"
+                    app:searchHintIcon="@drawable/ic_search"
+                    app:searchIcon="@drawable/ic_search" />
+
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
 
         <FrameLayout
@@ -46,8 +56,8 @@
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="?android:colorBackground"
         android:layout_gravity="start"
+        android:background="?android:colorBackground"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/nav_menu" />

@@ -11,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -29,6 +30,7 @@ public abstract class GalaxyActivity extends BaseActivity implements NavigationV
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
+    SearchView mSearchView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,9 @@ public abstract class GalaxyActivity extends BaseActivity implements NavigationV
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mSearchView = (SearchView) findViewById(R.id.search_toolbar);
+        addQueryTextListener(mSearchView);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(

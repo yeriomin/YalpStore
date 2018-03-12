@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
         <item name="android:windowDisablePreview">true</item>
+        <item name="android:editTextColor">@color/lightGray</item>
+        <item name="android:textColorHint">@color/lightGray</item>
+        <item name="android:textCursorDrawable">@color/lightGray</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
@@ -24,4 +28,5 @@
         <item name="android:taskCloseEnterAnimation">@anim/slide_in_left</item>
         <item name="android:taskCloseExitAnimation">@anim/slide_out_right</item>
     </style>
+
 </resources>
