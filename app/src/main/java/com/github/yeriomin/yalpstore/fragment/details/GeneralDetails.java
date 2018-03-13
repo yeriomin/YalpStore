@@ -38,6 +38,10 @@ public class GeneralDetails extends Abstract {
     public void draw() {
         drawAppBadge(app);
         if (app.isInPlayStore()) {
+            if (!TextUtils.isEmpty(app.getShortDescription())) {
+                activity.findViewById(R.id.short_description).setVisibility(View.VISIBLE);
+                setText(R.id.short_description, app.getShortDescription());
+            }
             drawGeneralDetails(app);
             drawDescription(app);
             new GoogleDependency((DetailsActivity) activity, app).draw();

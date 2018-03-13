@@ -32,6 +32,7 @@ public class App implements Comparable<App> {
     private String changes;
     private String developerName;
     private String description;
+    private String shortDescription;
     private Set<String> permissions = new HashSet<>();
     private boolean isInstalled;
     private boolean isFree;
@@ -204,6 +205,14 @@ public class App implements Comparable<App> {
 
     public Set<String> getPermissions() {
         return permissions;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
     public void setPermissions(Collection<String> permissions) {

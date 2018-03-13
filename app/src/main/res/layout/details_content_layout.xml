@@ -54,6 +54,15 @@
 
     <include layout="@layout/details_button_bar"/>
 
+    <TextView
+        android:id="@+id/short_description"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
     <ViewStub
         android:id="@+id/general_details"
         android:inflatedId="@+id/general_details"
