@@ -17,4 +17,10 @@ class NotificationBuilderJellybean extends NotificationBuilderIcs {
     public NotificationBuilderJellybean(Context context) {
         super(context);
     }
+
+    @Override
+    public NotificationBuilder setTitle(String title) {
+        builder.setPriority(title.hashCode());
+        return super.setTitle(title);
+    }
 }

@@ -113,6 +113,7 @@
 
         <service android:enabled="true" android:name=".notification.CancelDownloadService" />
         <service android:enabled="true" android:name=".notification.IgnoreUpdatesService" />
+        <service android:enabled="true" android:name=".notification.DownloadChecksumService"/>
         <service android:enabled="true" android:name=".bugreport.BugReportService" />
     </application>
 

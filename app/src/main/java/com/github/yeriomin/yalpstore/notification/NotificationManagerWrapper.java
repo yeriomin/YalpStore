@@ -16,10 +16,10 @@ public class NotificationManagerWrapper {
             return new NotificationBuilderO(context);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             return new NotificationBuilderJellybean(context);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            return new NotificationBuilderHoneycomb(context);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             return new NotificationBuilderIcs(context);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            return new NotificationBuilderHoneycomb(context);
         } else {
             return new NotificationBuilderLegacy(context);
         }

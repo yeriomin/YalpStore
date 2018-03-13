@@ -5,7 +5,11 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import java.io.Closeable;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -115,5 +119,28 @@ public class Util {
             DP_PX_RATIO = context.getResources().getDisplayMetrics().density;
         }
         return (int) (dp * DP_PX_RATIO);
+    }
+
+    static public byte[] getFileChecksum(File file) {
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            return null;
+        }
+        FileInputStream inputStream = null;
+        try {
+            byte[] buffer = new byte[2048];
+            int bytesRead;
+            inputStream = new FileInputStream(file);
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                md.update(buffer, 0, bytesRead);
+            }
+        } catch (IOException e) {
+            return null;
+        } finally {
+            closeSilently(inputStream);
+        }
+        return md.digest();
     }
 }

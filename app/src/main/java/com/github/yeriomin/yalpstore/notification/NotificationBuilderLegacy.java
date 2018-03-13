@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
 
 class NotificationBuilderLegacy extends NotificationBuilder {
 
+    private boolean ongoing;
     private String title;
     private String message;
     private Intent intent;
@@ -41,10 +42,20 @@ class NotificationBuilderLegacy extends NotificationBuilder {
             Method m = notification.getClass().getMethod("setLatestEventInfo", Context.class, CharSequence.class, CharSequence.class, PendingIntent.class);
             m.invoke(notification, context, title, message, getPendingIntent(intent));
             notification.flags |= Notification.FLAG_AUTO_CANCEL;
+            if (ongoing) {
+                notification.flags |= Notification.FLAG_ONGOING_EVENT;
+                notification.flags |= Notification.FLAG_ONLY_ALERT_ONCE;
+            }
         } catch (Exception e) {
             // do nothing
         }
         return notification;
+    }
+
+    @Override
+    public NotificationBuilder setProgress(int max, int progress) {
+        ongoing = true;
+        return super.setProgress(max, progress);
     }
 
     public NotificationBuilderLegacy(Context context) {

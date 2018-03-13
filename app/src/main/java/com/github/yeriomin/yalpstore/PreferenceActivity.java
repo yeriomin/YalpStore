@@ -1,18 +1,21 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.github.yeriomin.yalpstore.fragment.preference.Blacklist;
 import com.github.yeriomin.yalpstore.fragment.preference.CheckUpdates;
 import com.github.yeriomin.yalpstore.fragment.preference.Device;
 import com.github.yeriomin.yalpstore.fragment.preference.DownloadDirectory;
 import com.github.yeriomin.yalpstore.fragment.preference.InstallationMethod;
+import com.github.yeriomin.yalpstore.fragment.preference.InternalStorage;
 import com.github.yeriomin.yalpstore.fragment.preference.Language;
 import com.github.yeriomin.yalpstore.fragment.preference.Theme;
 
@@ -34,6 +37,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public static final String PREFERENCE_DOWNLOAD_DIRECTORY = "PREFERENCE_DOWNLOAD_DIRECTORY";
     public static final String PREFERENCE_DOWNLOAD_DELTAS = "PREFERENCE_DOWNLOAD_DELTAS";
     public static final String PREFERENCE_AUTO_WHITELIST = "PREFERENCE_AUTO_WHITELIST";
+    public static final String PREFERENCE_DOWNLOAD_INTERNAL_STORAGE = "PREFERENCE_DOWNLOAD_INTERNAL_STORAGE";
 
     public static final String INSTALLATION_METHOD_DEFAULT = "default";
     public static final String INSTALLATION_METHOD_ROOT = "root";
@@ -55,16 +59,6 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         return PreferenceManager.getDefaultSharedPreferences(context).getString(key, "");
     }
 
-    static public int getUpdateInterval(Context context) {
-        return Util.parseInt(
-            PreferenceManager.getDefaultSharedPreferences(context).getString(
-                PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL,
-                "-1"
-            ),
-            -1
-        );
-    }
-
     static public boolean canInstallInBackground(Context context) {
         return getString(context, PREFERENCE_INSTALLATION_METHOD).equals(INSTALLATION_METHOD_ROOT)
             || getString(context, PREFERENCE_INSTALLATION_METHOD).equals(INSTALLATION_METHOD_PRIVILEGED)
@@ -74,6 +68,13 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         new ThemeManager(this).setTheme();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().clearFlags(
+                WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS
+                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION
+            );
+        }
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
         drawBlackList();
@@ -83,6 +84,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         drawDevices();
         drawInstallationMethod();
         new DownloadDirectory(this).setPreference((EditTextPreference) findPreference(PREFERENCE_DOWNLOAD_DIRECTORY)).draw();
+        new InternalStorage(this).setPreference((CheckBoxPreference) findPreference(PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)).draw();
     }
 
     @Override

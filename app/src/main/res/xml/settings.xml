@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="PREFERENCE_DOWNLOAD_INTERNAL_STORAGE"
+        android:disableDependentsState="true"
+        android:summaryOff="@string/pref_download_internal_storage_summary_off"
+        android:summaryOn="@string/pref_download_internal_storage_summary_on"
+        android:title="@string/pref_download_internal_storage" />
     <EditTextPreference
         android:defaultValue="Download"
+        android:dependency="PREFERENCE_DOWNLOAD_INTERNAL_STORAGE"
         android:key="PREFERENCE_DOWNLOAD_DIRECTORY"
         android:selectAllOnFocus="true"
         android:singleLine="true"
@@ -59,12 +67,14 @@
     <PreferenceCategory android:title="@string/pref_category_installation">
         <CheckBoxPreference
             android:defaultValue="false"
+            android:dependency="PREFERENCE_DOWNLOAD_INTERNAL_STORAGE"
             android:key="PREFERENCE_AUTO_INSTALL"
             android:summaryOff="@string/pref_auto_install_summary_off"
             android:summaryOn="@string/pref_auto_install_summary_on"
             android:title="@string/pref_auto_install" />
         <CheckBoxPreference
             android:defaultValue="true"
+            android:dependency="PREFERENCE_DOWNLOAD_INTERNAL_STORAGE"
             android:key="PREFERENCE_DELETE_APK_AFTER_INSTALL"
             android:summaryOff="@string/pref_delete_apk_after_install_summary_off"
             android:summaryOn="@string/pref_delete_apk_after_install_summary_on"

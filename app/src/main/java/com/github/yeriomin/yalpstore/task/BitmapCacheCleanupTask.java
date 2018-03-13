@@ -1,37 +1,26 @@
 package com.github.yeriomin.yalpstore.task;
 
 import android.content.Context;
-import android.os.AsyncTask;
 
 import com.github.yeriomin.yalpstore.BitmapManager;
 
 import java.io.File;
-import java.lang.ref.WeakReference;
 
-public class BitmapCacheCleanupTask extends AsyncTask<Void, Void, Void> {
-
-    private WeakReference<Context> contextRef = new WeakReference<>(null);
+public class BitmapCacheCleanupTask extends CleanupTask {
 
     public BitmapCacheCleanupTask(Context context) {
-        this.contextRef = new WeakReference<>(context);
+        super(context);
     }
 
     @Override
-    protected Void doInBackground(Void... voids) {
-        if (null == contextRef.get()) {
-            return null;
-        }
-        for (File file: contextRef.get().getCacheDir().listFiles()) {
-            if (isStale(file)) {
-                file.delete();
-            }
-        }
-        return null;
-    }
-
-    private boolean isStale(File file) {
+    protected boolean shouldDelete(File file) {
         return file.getName().endsWith(".png")
             && file.lastModified() + BitmapManager.VALID_MILLIS < System.currentTimeMillis()
         ;
+    }
+
+    @Override
+    protected File[] getFiles() {
+        return contextRef.get().getCacheDir().listFiles();
     }
 }

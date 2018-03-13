@@ -75,7 +75,9 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
     }
 
     static private boolean needToRemoveApk(Context context) {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DELETE_APK_AFTER_INSTALL);
+        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DELETE_APK_AFTER_INSTALL)
+            || PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+        ;
     }
 
     static private boolean needToAutoWhitelist(Context context) {

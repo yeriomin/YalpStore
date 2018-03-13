@@ -13,6 +13,7 @@ public class DownloadManagerFactory {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB
             || !nativeDownloadManagerEnabled(context)
             || nougatVpn(context)
+            || PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
         ) {
             return new DownloadManagerFake(context);
         } else {

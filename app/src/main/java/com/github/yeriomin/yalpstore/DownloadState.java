@@ -32,6 +32,7 @@ public class DownloadState {
     private TriggeredBy triggeredBy = TriggeredBy.DOWNLOAD_BUTTON;
     private Map<Long, Pair<Integer, Integer>> progress = new HashMap<>();
     private Map<Long, Status> status = new HashMap<>();
+    private byte[] apkChecksum;
 
     static public DownloadState get(String packageName) {
         if (!state.containsKey(packageName)) {
@@ -80,6 +81,14 @@ public class DownloadState {
     public void setStarted(long downloadId) {
         status.put(downloadId, Status.STARTED);
         downloadIds.put(downloadId, app.getPackageName());
+    }
+
+    public byte[] getApkChecksum() {
+        return apkChecksum;
+    }
+
+    public void setApkChecksum(byte[] apkChecksum) {
+        this.apkChecksum = apkChecksum;
     }
 
     public void setFinished(long downloadId) {

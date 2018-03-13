@@ -43,4 +43,13 @@ class NotificationBuilderHoneycomb extends NotificationBuilder {
             .setAutoCancel(true)
         ;
     }
+
+    @Override
+    public NotificationBuilder setProgress(int max, int progress) {
+        builder
+            .setOngoing(true)
+            .setOnlyAlertOnce(true)
+        ;
+        return super.setProgress(max, progress);
+    }
 }

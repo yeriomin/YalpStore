@@ -10,6 +10,7 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.AppListValidityCheckTask;
 import com.github.yeriomin.yalpstore.task.BitmapCacheCleanupTask;
 import com.github.yeriomin.yalpstore.task.ForegroundInstalledAppsTask;
+import com.github.yeriomin.yalpstore.task.OldApkCleanupTask;
 import com.github.yeriomin.yalpstore.view.InstalledAppBadge;
 import com.github.yeriomin.yalpstore.view.InstalledAppsMainButtonAdapter;
 import com.github.yeriomin.yalpstore.view.ListItem;
@@ -22,6 +23,7 @@ public class InstalledAppsActivity extends AppListActivity {
         setTitle(R.string.activity_title_updates_and_other_apps);
         new InstalledAppsMainButtonAdapter(findViewById(R.id.main_button)).init();
         new BitmapCacheCleanupTask(this.getApplicationContext()).execute();
+        new OldApkCleanupTask(this.getApplicationContext()).execute();
     }
 
     @Override
