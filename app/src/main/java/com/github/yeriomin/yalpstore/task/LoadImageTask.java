@@ -61,6 +61,9 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
             return;
         }
         if (null != drawable) {
+            if (sameAsLoaded()) {
+                return;
+            }
             if (fadeInMillis > 0) {
                 fadeOut();
             }
@@ -109,5 +112,13 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
 
     private boolean noImages() {
         return NetworkState.isMetered(imageView.getContext()) && PreferenceActivity.getBoolean(imageView.getContext(), PreferenceActivity.PREFERENCE_NO_IMAGES);
+    }
+
+    private boolean sameAsLoaded() {
+        return drawable instanceof BitmapDrawable
+            && imageView.getDrawable() instanceof BitmapDrawable
+            && ((BitmapDrawable) imageView.getDrawable()).getBitmap() != null
+            && ((BitmapDrawable) imageView.getDrawable()).getBitmap().sameAs(((BitmapDrawable) drawable).getBitmap())
+        ;
     }
 }
