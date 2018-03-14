@@ -143,4 +143,10 @@ public class DownloadState {
     public void setProgress(long downloadId, int complete, int total) {
         progress.put(downloadId, new Pair<>(complete, total));
     }
+
+    public void reset() {
+        progress = new HashMap<>();
+        status = new HashMap<>();
+        apkChecksum = null;
+    }
 }
