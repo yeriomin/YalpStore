@@ -35,7 +35,7 @@ public class Background extends Abstract {
             collapsingToolbarLayout.getLayoutParams().height = BACKGROUND_IMAGE_HEIGHT;
             background.getLayoutParams().height = BACKGROUND_IMAGE_HEIGHT;
             background.setVisibility(View.VISIBLE);
-            if (null == ((ImageView) background).getDrawable() && null != app.getPageBackgroundImage()) {
+            if (null != app.getPageBackgroundImage()) {
                 new LoadImageTask((ImageView) background).setPlaceholder(false).setFadeInMillis(500).execute(app.getPageBackgroundImage());
             }
         }
