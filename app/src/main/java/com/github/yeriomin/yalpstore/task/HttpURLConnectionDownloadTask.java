@@ -40,7 +40,6 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
 
     public void setContext(Context context) {
         this.context = context;
-        notificationBuilder = NotificationManagerWrapper.getBuilder(context).setIntent(new Intent());
     }
 
     public void setTargetFile(File targetFile) {
@@ -122,15 +121,19 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
 
     private void notifyProgress(long progress, long max) {
         String title = getNotificationTitle();
+        if (null == notificationBuilder) {
+            notificationBuilder = NotificationManagerWrapper.getBuilder(context)
+                .setTitle(title)
+                .setIntent(new Intent())
+                .addAction(R.drawable.ic_cancel, android.R.string.cancel, getCancelIntent())
+            ;
+        }
         notificationBuilder
             .setMessage(context.getString(
                 R.string.notification_download_progress,
                 Formatter.formatFileSize(context, progress),
                 Formatter.formatFileSize(context, max)
             ))
-            .setTitle(title)
-            .setIntent(new Intent())
-            .addAction(R.drawable.ic_cancel, android.R.string.cancel, getCancelIntent())
             .setProgress((int) max, (int) progress)
         ;
         new NotificationManagerWrapper(context).show(
