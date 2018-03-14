@@ -26,7 +26,7 @@ public class UpdatableAppsButtonAdapterAbstract extends ButtonAdapter {
         });
         if (((YalpStoreApplication) activity.getApplication()).isBackgroundUpdating()) {
             setUpdating();
-        } else {
+        } else if (!activity.getListedPackageNames().isEmpty()) {
             setReady();
         }
         return this;

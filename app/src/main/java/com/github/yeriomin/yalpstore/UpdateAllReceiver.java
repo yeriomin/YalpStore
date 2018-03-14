@@ -25,9 +25,7 @@ public class UpdateAllReceiver extends BroadcastReceiver {
         filter.addAction(ACTION_ALL_UPDATES_COMPLETE);
         filter.addAction(ACTION_APP_UPDATE_COMPLETE);
         activity.registerReceiver(this, filter);
-        if (!((YalpStoreApplication) activity.getApplication()).isBackgroundUpdating()) {
-            enableButton();
-        }
+        initButton();
     }
 
     @Override
@@ -37,7 +35,7 @@ public class UpdateAllReceiver extends BroadcastReceiver {
         }
         if (intent.getAction().equals(ACTION_ALL_UPDATES_COMPLETE)) {
             ((YalpStoreApplication) activity.getApplication()).setBackgroundUpdating(false);
-            enableButton();
+            initButton();
         } else if (intent.getAction().equals(ACTION_APP_UPDATE_COMPLETE)) {
             processAppUpdate(
                 intent.getStringExtra(EXTRA_PACKAGE_NAME),
@@ -46,10 +44,10 @@ public class UpdateAllReceiver extends BroadcastReceiver {
         }
     }
 
-    private void enableButton() {
+    private void initButton() {
         View button = activity.findViewById(R.id.main_button);
         if (null != button) {
-            new UpdatableAppsButtonAdapter(button).setReady();
+            new UpdatableAppsButtonAdapter(button).init(activity);
         }
     }
 
