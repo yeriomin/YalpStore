@@ -53,7 +53,7 @@ public class UpdateAllReceiver extends BroadcastReceiver {
             button.setEnabled(true);
             textView.setEnabled(true);
             button.setText(R.string.list_update_all);
-            textView.setText(R.string.list_update_all_txt);
+            textView.setText(R.string.list_update_chk_txt);
         }
     }
 

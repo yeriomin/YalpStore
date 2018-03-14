@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.percolate.caffeine.ViewUtils;
 
 import java.io.IOException;
 import java.util.List;
@@ -65,8 +66,8 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
             activity.findViewById(R.id.unicorn).setVisibility(View.VISIBLE);
             activity.findViewById(R.id.update_card).setVisibility(View.GONE);
         }
-        textView = (TextView) activity.findViewById(R.id.updates_txt);
-        textView.setText("Update(s) available : " + updatableApps.size());
+
+        setText(R.id.updates_txt,R.string.list_update_all_txt,updatableApps.size());
         toggleUpdateAll(!updatableApps.isEmpty());
     }
 
@@ -108,8 +109,18 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
                 }
                 update.setVisibility(View.VISIBLE);
                 cancel.setVisibility(View.GONE);
-                textView.setText("Update(s) available : " + updatableApps.size());
+                setText(R.id.updates_txt,R.string.list_update_all_txt,updatableApps.size());
             }
         });
+    }
+
+    protected void setText(int viewId, String text) {
+        TextView textView = ViewUtils.findViewById(activity, viewId);
+        if (null != textView)
+            textView.setText(text);
+    }
+
+    protected void setText(int viewId, int stringId, Object... text) {
+        setText(viewId, activity.getString(stringId, text));
     }
 }

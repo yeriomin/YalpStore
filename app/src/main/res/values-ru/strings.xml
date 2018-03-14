@@ -15,6 +15,7 @@
     <string name="list_check_updates_txt">Мои приложения и игры</string>
     <string name="list_update_all">Обновить</string>
     <string name="list_update_all_txt">Доступные обновления</string>
+    <string name="list_update_chk_txt">Проверка обновлений</string>
     <string name="list_updating">обновление…</string>
     <string name="list_app_has_ads">есть реклама</string>
     <string name="list_app_no_ads">нет рекламы</string>
