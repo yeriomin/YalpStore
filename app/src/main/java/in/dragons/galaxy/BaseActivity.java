@@ -65,7 +65,7 @@ public abstract class BaseActivity extends AestheticActivity {
     }
 
     protected void parseRAW(String rawData) {
-        if (rawData.contains(UNKNOWN)) {
+        if (rawData != null && rawData.contains(UNKNOWN)) {
             Name = Email;
             Url = "I dont fucking care";
         } else {
@@ -77,18 +77,18 @@ public abstract class BaseActivity extends AestheticActivity {
         PreferenceManager.getDefaultSharedPreferences(this).edit().putString("GOOGLE_URL", Url).apply();
 
         setNavHeaderInfo((NavigationView) findViewById(R.id.nav_view), Name, Url);
-
     }
 
     protected void setNavHeaderInfo(NavigationView navigationView, String Name, String URL) {
-        ViewUtils.setText(this, R.id.usr_name, Name);
-        ViewUtils.setText(this, R.id.usr_email, Email);
+        ViewUtils.setText(navigationView.getHeaderView(0), R.id.usr_name, Name);
+        ViewUtils.setText(navigationView.getHeaderView(0), R.id.usr_email, Email);
 
-        Picasso.with(this)
-                .load(URL)
-                .placeholder(R.drawable.ic_user_placeholder)
-                .transform(new CircleTransform())
-                .into((ImageView) ViewUtils.findViewById(this, R.id.usr_img));
+        if (!URL.isEmpty() && URL != null)
+            Picasso.with(this)
+                    .load(URL)
+                    .placeholder(R.drawable.ic_user_placeholder)
+                    .transform(new CircleTransform())
+                    .into((ImageView) navigationView.getHeaderView(0).findViewById(R.id.usr_img));
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
