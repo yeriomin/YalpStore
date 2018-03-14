@@ -1,6 +1,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -15,7 +16,7 @@ import java.io.OutputStream;
 public class InstalledApkCopier {
 
     static public boolean copy(Context context, App app) {
-        File destination = Paths.getApkPath(context, app.getPackageName(), app.getInstalledVersionCode());
+        File destination = getDestination(context, app);
         if (destination.exists()) {
             Log.i(InstalledApkCopier.class.getSimpleName(), destination.toString() + " exists");
             return true;
@@ -65,5 +66,15 @@ public class InstalledApkCopier {
             Util.closeSilently(in);
             Util.closeSilently(out);
         }
+    }
+
+    static private File getDestination(Context context, App app) {
+        return new File(
+            new File(
+                Paths.getStorageRoot(context),
+                PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+            ),
+            app.getPackageName() + "." + String.valueOf(app.getInstalledVersionCode()) + ".apk"
+        );
     }
 }
