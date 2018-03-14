@@ -182,7 +182,7 @@
     <string name="pref_device_to_pretend_to_be">Притворяться другим устройством</string>
     <string name="pref_device_to_pretend_to_be_default">Оригинальная информация об устройстве</string>
     <string name="pref_device_to_pretend_to_be_toast">Изменения вступят в силу после повторного входа в аккаунт</string>
-    <string name="pref_device_to_pretend_to_be_notice">"Если вы поместите описание устройств в% 1 $ s, они появятся в этом списке"</string>
+    <string name="pref_device_to_pretend_to_be_notice">"Если вы поместите описание устройств в %1$s, они появятся в этом списке"</string>
     <string name="pref_category_updates">Обновления</string>
     <string name="pref_category_installation">Установка</string>
     <string name="pref_category_spoofing">Имитация</string>
