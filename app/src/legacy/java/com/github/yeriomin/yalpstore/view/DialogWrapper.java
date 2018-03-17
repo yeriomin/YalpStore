@@ -1,15 +1,17 @@
 package com.github.yeriomin.yalpstore.view;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.View;
-
-import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import android.widget.ListAdapter;
 
 public class DialogWrapper extends DialogWrapperAbstract {
 
-    AlertDialog.Builder builder;
-    AlertDialog dialog;
+    protected AlertDialog.Builder builder;
+    protected AlertDialog dialog;
 
     public DialogWrapper(Activity activity) {
         super(activity);
