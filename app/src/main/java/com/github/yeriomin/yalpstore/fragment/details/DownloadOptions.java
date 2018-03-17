@@ -13,7 +13,7 @@ import android.view.ViewStub;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.ContextUtil;
-import com.github.yeriomin.yalpstore.FlagDialogBuilder;
+import com.github.yeriomin.yalpstore.view.FlagDialogBuilder;
 import com.github.yeriomin.yalpstore.InstalledApkCopier;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.R;

@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore.task;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 
@@ -11,8 +12,8 @@ import java.util.List;
 
 public class ConvertToSystemTask extends SystemRemountTask {
 
-    public ConvertToSystemTask(Context context, App app) {
-        super(context, app);
+    public ConvertToSystemTask(Activity activity, App app) {
+        super(activity, app);
     }
 
     @Override

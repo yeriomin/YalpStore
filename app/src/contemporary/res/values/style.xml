@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="YalpStoreThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorAccent">#357ec7</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:dialogTheme">@style/YalpStoreDialogStyleLight</item>
+        <item name="android:alertDialogTheme">@style/YalpStoreAlertDialogStyleLight</item>
+    </style>
+    <style name="YalpStoreDialogStyleLight" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/color_accent</item>
+    </style>
+    <style name="YalpStoreAlertDialogStyleLight" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/color_accent</item>
     </style>
     <style name="YalpStoreThemeDark" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorAccent">#357ec7</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:dialogTheme">@style/YalpStoreDialogStyleDark</item>
+        <item name="android:alertDialogTheme">@style/YalpStoreAlertDialogStyleDark</item>
+    </style>
+    <style name="YalpStoreDialogStyleDark" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">@color/color_accent</item>
+    </style>
+    <style name="YalpStoreAlertDialogStyleDark" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorAccent">@color/color_accent</item>
     </style>
 </resources>

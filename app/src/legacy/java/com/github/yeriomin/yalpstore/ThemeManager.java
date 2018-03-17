@@ -1,13 +1,8 @@
 package com.github.yeriomin.yalpstore;
 
-import android.app.Activity;
 import android.os.Build;
 
 public class ThemeManager extends ThemeManagerAbstract {
-
-    public ThemeManager(Activity activity) {
-        super(activity);
-    }
 
     protected int getThemeLight() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

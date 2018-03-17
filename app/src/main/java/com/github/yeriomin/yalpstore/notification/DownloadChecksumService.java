@@ -2,17 +2,14 @@ package com.github.yeriomin.yalpstore.notification;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.InstallerDefault;
-import com.github.yeriomin.yalpstore.InstallerFactory;
 
 import java.io.File;
-import java.security.MessageDigest;
 
 public class DownloadChecksumService extends IntentService {
 

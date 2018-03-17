@@ -124,7 +124,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public void setContentView(int layoutResID) {
-        new ThemeManager(this).setTheme();
+        new ThemeManager().setTheme(this);
         super.setContentView(wrapperLayoutResId);
         ViewGroup container = findViewById(R.id.specific_layout_container);
         View specificLayout = getLayoutInflater().inflate(layoutResID, container, false);

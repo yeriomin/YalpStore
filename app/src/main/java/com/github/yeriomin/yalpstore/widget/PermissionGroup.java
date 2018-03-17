@@ -1,7 +1,7 @@
 package com.github.yeriomin.yalpstore.widget;
 
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionGroupInfo;
@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.view.DialogWrapper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -105,7 +106,7 @@ public class PermissionGroup extends LinearLayout {
         return new OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(getContext())
+                new DialogWrapper((Activity) getContext())
                     .setIcon(getPermissionGroupIcon(permissionGroupInfo))
                     .setTitle((title.equals(permissionGroupInfo.name) || title.equals(permissionGroupInfo.packageName)) ? "" : title)
                     .setMessage(message)

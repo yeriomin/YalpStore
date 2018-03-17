@@ -3,5 +3,5 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <corners android:radius="3dp" />
-    <stroke android:width="2dp" android:color="#357ec7" />
+    <stroke android:width="2dp" android:color="@color/color_accent" />
 </shape>

@@ -1,6 +1,6 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.view;
 
-import android.app.Dialog;
+import android.app.Activity;
 import android.content.Context;
 import android.preference.PreferenceManager;
 import android.text.InputType;
@@ -12,16 +12,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.github.yeriomin.playstoreapi.AuthException;
+import com.github.yeriomin.yalpstore.ContextUtil;
+import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.Util;
+import com.github.yeriomin.yalpstore.task.playstore.UserProvidedCredentialsTask;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
 
-    static private final String USED_EMAILS_SET = "USED_EMAILS_SET";
+    static public final String USED_EMAILS_SET = "USED_EMAILS_SET";
 
     private String previousEmail = "";
 
@@ -30,15 +33,15 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         return this;
     }
 
-    public UserProvidedAccountDialogBuilder(Context context) {
-        super(context);
+    public UserProvidedAccountDialogBuilder(Activity activity) {
+        super(activity);
     }
 
     @Override
-    public Dialog show() {
-        final Dialog ad = new Dialog(context);
-        ad.setContentView(R.layout.credentials_dialog_layout);
-        ad.setTitle(context.getString(R.string.credentials_title));
+    public DialogWrapperAbstract show() {
+        final DialogWrapperAbstract ad = new DialogWrapper(activity);
+        ad.setLayout(R.layout.credentials_dialog_layout);
+        ad.setTitle(R.string.credentials_title);
         ad.setCancelable(false);
 
         final AutoCompleteTextView editEmail = getEmailInput(ad);
@@ -83,61 +86,21 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
     private UserProvidedCredentialsTask getUserCredentialsTask() {
         UserProvidedCredentialsTask task = new UserProvidedCredentialsTask();
         task.setCaller(caller);
-        task.setContext(context);
+        task.setContext(activity);
         task.prepareDialog(R.string.dialog_message_logging_in_provided_by_user, R.string.dialog_title_logging_in);
         return task;
     }
 
-    private AutoCompleteTextView getEmailInput(Dialog ad) {
+    private AutoCompleteTextView getEmailInput(DialogWrapperAbstract ad) {
         AutoCompleteTextView editEmail = (AutoCompleteTextView) ad.findViewById(R.id.email);
-        editEmail.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_dropdown_item_1line, getUsedEmails()));
-        editEmail.setText(PreferenceManager.getDefaultSharedPreferences(context).getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, this.previousEmail));
+        editEmail.setAdapter(new ArrayAdapter<>(activity, android.R.layout.simple_dropdown_item_1line, getUsedEmails()));
+        editEmail.setText(PreferenceManager.getDefaultSharedPreferences(activity).getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, this.previousEmail));
         return editEmail;
     }
 
     private List<String> getUsedEmails() {
-        List<String> emails = new ArrayList<>(Util.getStringSet(context, USED_EMAILS_SET));
+        List<String> emails = new ArrayList<>(Util.getStringSet(activity, USED_EMAILS_SET));
         Collections.sort(emails);
         return emails;
-    }
-
-    private static class UserProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
-
-        private String previousEmail;
-
-        @Override
-        protected CredentialsDialogBuilder getDialogBuilder() {
-            return new UserProvidedAccountDialogBuilder(context).setPreviousEmail(previousEmail);
-        }
-
-        @Override
-        protected Void doInBackground(String[] params) {
-            if (params.length < 2
-                || params[0] == null
-                || params[1] == null
-                || TextUtils.isEmpty(params[0])
-                || TextUtils.isEmpty(params[1])
-            ) {
-                exception = new CredentialsEmptyException();
-                return null;
-            }
-            previousEmail = params[0];
-            try {
-                new PlayStoreApiAuthenticator(context).login(params[0], params[1]);
-                addUsedEmail(params[0]);
-            } catch (Throwable e) {
-                if (e instanceof AuthException && null != ((AuthException) e).getTwoFactorUrl()) {
-                    addUsedEmail(params[0]);
-                }
-                exception = e;
-            }
-            return null;
-        }
-
-        private void addUsedEmail(String email) {
-            Set<String> emailsSet = Util.getStringSet(context, USED_EMAILS_SET);
-            emailsSet.add(email);
-            Util.putStringSet(context, USED_EMAILS_SET, emailsSet);
-        }
     }
 }

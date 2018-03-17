@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore.task;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -9,8 +10,8 @@ import java.util.List;
 
 public class UninstallSystemAppTask extends SystemRemountTask {
 
-    public UninstallSystemAppTask(Context context, App app) {
-        super(context, app);
+    public UninstallSystemAppTask(Activity activity, App app) {
+        super(activity, app);
     }
 
     @Override

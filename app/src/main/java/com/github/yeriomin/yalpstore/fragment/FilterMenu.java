@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore.fragment;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +14,8 @@ import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.model.Filter;
+import com.github.yeriomin.yalpstore.view.DialogWrapper;
+import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -122,7 +123,7 @@ public class FilterMenu {
         }
     }
 
-    private AlertDialog getCategoryDialog() {
+    private DialogWrapperAbstract getCategoryDialog() {
         final Map<String, String> categories = new CategoryManager(activity).getCategoriesFromSharedPreferences();
         Util.addToStart((LinkedHashMap<String, String>) categories, CategoryManager.TOP, activity.getString(R.string.search_filter));
         return getDialog(
@@ -140,7 +141,7 @@ public class FilterMenu {
         );
     }
 
-    private AlertDialog getRatingDialog() {
+    private DialogWrapperAbstract getRatingDialog() {
         return getDialog(
             activity.getResources().getStringArray(R.array.filterRatingLabels),
             new ConfirmOnClickListener() {
@@ -156,7 +157,7 @@ public class FilterMenu {
         );
     }
 
-    private AlertDialog getDownloadsDialog() {
+    private DialogWrapperAbstract getDownloadsDialog() {
         return getDialog(
             activity.getResources().getStringArray(R.array.filterDownloadsLabels),
             new ConfirmOnClickListener() {
@@ -172,8 +173,8 @@ public class FilterMenu {
         );
     }
 
-    private AlertDialog getDialog(String[] labels, ConfirmOnClickListener listener) {
-        return new AlertDialog.Builder(activity)
+    private DialogWrapperAbstract getDialog(String[] labels, ConfirmOnClickListener listener) {
+        return new DialogWrapper(activity)
             .setAdapter(
                 new ArrayAdapter<>(activity, android.R.layout.select_dialog_item, labels),
                 listener

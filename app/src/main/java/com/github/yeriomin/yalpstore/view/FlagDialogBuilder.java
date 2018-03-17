@@ -1,12 +1,13 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.view;
 
-import android.app.AlertDialog;
-import android.content.Context;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.FlagTask;
 
@@ -45,8 +46,8 @@ public class FlagDialogBuilder {
         return this;
     }
 
-    public AlertDialog build() {
-        return new AlertDialog.Builder(activity)
+    public DialogWrapperAbstract build() {
+        return new DialogWrapper(activity)
             .setTitle(R.string.flag_page_description)
             .setNegativeButton(
                 android.R.string.cancel,
@@ -66,7 +67,7 @@ public class FlagDialogBuilder {
                         GooglePlayAPI.ABUSE reason = reasonIds[which];
                         task.setReason(reason);
                         if (reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA || reason == GooglePlayAPI.ABUSE.OTHER) {
-                            new ExplanationDialogBuilder().setContext(activity).setTask(task).setReason(reason).build().show();
+                            new ExplanationDialogBuilder().setActivity(activity).setTask(task).setReason(reason).build().show();
                         } else {
                             task.execute();
                         }
@@ -80,12 +81,12 @@ public class FlagDialogBuilder {
 
     private static class ExplanationDialogBuilder {
 
-        private Context context;
+        private Activity activity;
         private FlagTask task;
         private GooglePlayAPI.ABUSE reason;
 
-        public ExplanationDialogBuilder setContext(Context context) {
-            this.context = context;
+        public ExplanationDialogBuilder setActivity(Activity activity) {
+            this.activity = activity;
             return this;
         }
 
@@ -99,9 +100,9 @@ public class FlagDialogBuilder {
             return this;
         }
 
-        public AlertDialog build() {
-            final EditText editText = new EditText(context);
-            return new AlertDialog.Builder(context)
+        public DialogWrapperAbstract build() {
+            final EditText editText = new EditText(activity);
+            return new DialogWrapper(activity)
                 .setTitle(reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA
                     ? R.string.flag_harmful_prompt
                     : R.string.flag_other_concern_prompt

@@ -21,6 +21,8 @@ import com.github.yeriomin.yalpstore.SpoofDeviceManager;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.bugreport.BugReportService;
+import com.github.yeriomin.yalpstore.view.DialogWrapper;
+import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
 
 import java.util.LinkedHashMap;
 import java.util.Locale;
@@ -97,13 +99,13 @@ public class Device extends List {
         return deviceInfoProvider.isValid();
     }
 
-    private AlertDialog showRequestDialog(boolean logOut) {
+    private DialogWrapperAbstract showRequestDialog(boolean logOut) {
         PreferenceManager.getDefaultSharedPreferences(activity)
             .edit()
             .putBoolean(PREFERENCE_DEVICE_DEFINITION_REQUESTED, true)
             .commit()
         ;
-        return new AlertDialog.Builder(activity)
+        return new DialogWrapper(activity)
             .setMessage(R.string.dialog_message_spoof_request)
             .setTitle(R.string.dialog_title_spoof_request)
             .setPositiveButton(android.R.string.yes, new FinishingOnClickListener(logOut) {
@@ -126,8 +128,8 @@ public class Device extends List {
         activity.startService(intentBugReport);
     }
 
-    private AlertDialog showLogOutDialog() {
-        return new AlertDialog.Builder(activity)
+    private DialogWrapperAbstract showLogOutDialog() {
+        return new DialogWrapper(activity)
             .setMessage(R.string.pref_device_to_pretend_to_be_toast)
             .setTitle(R.string.dialog_title_logout)
             .setPositiveButton(android.R.string.yes, new RequestOnClickListener(activity, true))

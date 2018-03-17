@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.ContextUtil;
+import com.github.yeriomin.yalpstore.ThemeManager;
 
 abstract public class TaskWithProgress<T> extends AsyncTask<String, Void, T> {
 
@@ -26,7 +27,7 @@ abstract public class TaskWithProgress<T> extends AsyncTask<String, Void, T> {
     }
 
     public void prepareDialog(int messageId, int titleId) {
-        ProgressDialog dialog = new ProgressDialog(context);
+        ProgressDialog dialog = new ProgressDialog(context, new ThemeManager().getThemeId(context));
         dialog.setTitle(context.getString(titleId));
         dialog.setMessage(context.getString(messageId));
         dialog.setIndeterminate(true);

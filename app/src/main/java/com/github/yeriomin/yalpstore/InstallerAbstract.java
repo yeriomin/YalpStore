@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,6 +14,8 @@ import com.github.yeriomin.yalpstore.notification.DownloadChecksumService;
 import com.github.yeriomin.yalpstore.notification.IgnoreUpdatesService;
 import com.github.yeriomin.yalpstore.notification.NotificationBuilder;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
+import com.github.yeriomin.yalpstore.view.DialogWrapper;
+import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
 
 import java.io.File;
 import java.security.MessageDigest;
@@ -129,8 +130,8 @@ public abstract class InstallerAbstract {
         context.sendBroadcast(intent);
     }
 
-    private AlertDialog getSignatureMismatchDialog(final App app) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    private DialogWrapperAbstract getSignatureMismatchDialog(final App app) {
+        DialogWrapperAbstract builder = new DialogWrapper((Activity) context);
         builder
             .setMessage(R.string.details_signature_mismatch)
             .setPositiveButton(

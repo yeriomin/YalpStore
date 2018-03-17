@@ -1,19 +1,20 @@
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.view;
 
-import android.app.AlertDialog;
-import android.content.Context;
+import android.app.Activity;
 import android.content.DialogInterface;
 
+import com.github.yeriomin.yalpstore.BuildConfig;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.task.ConvertToNormalTask;
 import com.github.yeriomin.yalpstore.task.SystemRemountTask;
 import com.github.yeriomin.yalpstore.task.UninstallSystemAppTask;
 
-public class SystemRemountDialogBuilder extends AlertDialog.Builder {
+public class SystemRemountDialogBuilder extends DialogWrapper {
 
     private SystemRemountTask primaryTask;
 
-    public SystemRemountDialogBuilder(Context context) {
-        super(context);
+    public SystemRemountDialogBuilder(Activity activity) {
+        super(activity);
         setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

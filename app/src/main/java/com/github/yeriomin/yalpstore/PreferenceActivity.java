@@ -67,7 +67,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        new ThemeManager(this).setTheme();
+        new ThemeManager().setTheme(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().clearFlags(
                 WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS

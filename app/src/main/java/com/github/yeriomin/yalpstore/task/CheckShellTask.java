@@ -1,8 +1,7 @@
 package com.github.yeriomin.yalpstore.task;
 
-import android.app.AlertDialog;
+import android.app.Activity;
 import android.app.SearchManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
@@ -10,7 +9,8 @@ import android.util.Log;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SearchActivity;
-import com.github.yeriomin.yalpstore.SystemRemountDialogBuilder;
+import com.github.yeriomin.yalpstore.view.DialogWrapper;
+import com.github.yeriomin.yalpstore.view.SystemRemountDialogBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,7 +46,7 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
     private boolean availableBusybox;
     private SystemRemountTask primaryTask;
 
-    public CheckShellTask(Context context) {
+    public CheckShellTask(Activity context) {
         setContext(context);
     }
 
@@ -120,14 +120,14 @@ public class CheckShellTask extends TaskWithProgress<Boolean> {
     }
 
     private void askAndExecute(SystemRemountTask task) {
-        new SystemRemountDialogBuilder(context)
+        new SystemRemountDialogBuilder((Activity) context)
             .setPrimaryTask(task)
             .show()
         ;
     }
 
     private void showBusyboxDialog() {
-        new AlertDialog.Builder(context)
+        new DialogWrapper((Activity) context)
             .setMessage(R.string.dialog_message_busybox_not_available)
             .setTitle(R.string.dialog_title_busybox_not_available)
             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

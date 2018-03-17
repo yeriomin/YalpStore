@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
@@ -14,6 +13,8 @@ import android.view.Window;
 import android.widget.EditText;
 
 import com.github.yeriomin.yalpstore.fragment.FilterMenu;
+import com.github.yeriomin.yalpstore.view.DialogWrapper;
+import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
 
 public abstract class YalpStoreActivity extends BaseActivity {
 
@@ -30,7 +31,7 @@ public abstract class YalpStoreActivity extends BaseActivity {
         if (((YalpStoreApplication) getApplication()).isTv()) {
             requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
         }
-        new ThemeManager(this).setTheme();
+        new ThemeManager().setTheme(this);
         super.onCreate(savedInstanceState);
     }
 
@@ -121,8 +122,8 @@ public abstract class YalpStoreActivity extends BaseActivity {
         }
     }
 
-    private AlertDialog showLogOutDialog() {
-        return new AlertDialog.Builder(this)
+    private DialogWrapperAbstract showLogOutDialog() {
+        return new DialogWrapper(this)
             .setMessage(R.string.dialog_message_logout)
             .setTitle(R.string.dialog_title_logout)
             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -134,12 +135,13 @@ public abstract class YalpStoreActivity extends BaseActivity {
                 }
             })
             .setNegativeButton(android.R.string.cancel, null)
-            .show();
+            .show()
+        ;
     }
 
-    private AlertDialog showFallbackSearchDialog() {
+    private DialogWrapperAbstract showFallbackSearchDialog() {
         final EditText textView = new EditText(this);
-        return new AlertDialog.Builder(this)
+        return new DialogWrapper(this)
             .setView(textView)
             .setPositiveButton(android.R.string.search_go, new DialogInterface.OnClickListener() {
                 @Override
@@ -151,7 +153,8 @@ public abstract class YalpStoreActivity extends BaseActivity {
                 }
             })
             .setNegativeButton(android.R.string.cancel, null)
-            .show();
+            .show()
+        ;
     }
 
     protected void finishAll() {

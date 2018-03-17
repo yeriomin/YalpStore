@@ -1,12 +1,12 @@
 package com.github.yeriomin.yalpstore.task;
 
-import android.app.AlertDialog;
-import android.content.Context;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.view.DialogWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
 
     abstract protected List<String> getCommands();
 
-    public SystemRemountTask(Context context, App app) {
+    public SystemRemountTask(Activity context, App app) {
         this.context = context;
         this.app = app;
     }
@@ -70,7 +70,7 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
     }
 
     private void showRebootDialog() {
-        new AlertDialog.Builder(context)
+        new DialogWrapper((Activity) context)
             .setMessage(R.string.dialog_message_reboot_required)
             .setTitle(R.string.dialog_title_reboot_required)
             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {

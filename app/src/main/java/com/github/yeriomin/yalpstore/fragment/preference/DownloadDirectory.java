@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore.fragment.preference;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.preference.EditTextPreference;
@@ -13,6 +12,8 @@ import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStorePermissionManager;
+import com.github.yeriomin.yalpstore.view.DialogWrapper;
+import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
 
 import java.io.File;
 import java.io.IOException;
@@ -80,8 +81,8 @@ public class DownloadDirectory extends Abstract {
                 }
             }
 
-            private AlertDialog getFallbackDialog() {
-                return new AlertDialog.Builder(activity)
+            private DialogWrapperAbstract getFallbackDialog() {
+                return new DialogWrapper(activity)
                     .setMessage(
                         activity.getString(R.string.error_downloads_directory_not_writable)
                             + "\n\n"

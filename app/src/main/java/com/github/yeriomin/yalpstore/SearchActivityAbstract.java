@@ -1,6 +1,5 @@
 package com.github.yeriomin.yalpstore;
 
-import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +11,8 @@ import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
 import com.github.yeriomin.yalpstore.task.playstore.SearchTask;
+import com.github.yeriomin.yalpstore.view.DialogWrapper;
+import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
 
 import java.util.regex.Pattern;
 
@@ -124,8 +125,8 @@ abstract public class SearchActivityAbstract extends EndlessScrollActivity {
             }
         }
 
-        private AlertDialog showPackageIdDialog(final String packageId) {
-            return new AlertDialog.Builder(activity)
+        private DialogWrapperAbstract showPackageIdDialog(final String packageId) {
+            return new DialogWrapper(activity)
                 .setMessage(R.string.dialog_message_package_id)
                 .setTitle(R.string.dialog_title_package_id)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
