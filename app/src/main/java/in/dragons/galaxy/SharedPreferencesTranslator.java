@@ -18,7 +18,7 @@ public class SharedPreferencesTranslator {
     }
 
     public void putString(String id, String value) {
-        prefs.edit().putString(getFullId(id), value).commit();
+        prefs.edit().putString(getFullId(id), value).apply();
     }
 
     static private String getFullId(String partId) {

@@ -10,16 +10,18 @@ import android.text.TextUtils;
 
 import java.lang.ref.WeakReference;
 
+import in.dragons.galaxy.activities.GalaxyActivity;
+
 public class DetailsInstallReceiver extends BroadcastReceiver {
 
     static public final String ACTION_PACKAGE_REPLACED_NON_SYSTEM = "ACTION_PACKAGE_REPLACED_NON_SYSTEM";
     static public final String ACTION_PACKAGE_INSTALLATION_FAILED = "ACTION_PACKAGE_INSTALLATION_FAILED";
 
-    private WeakReference<DetailsActivity> activityRef = new WeakReference<>(null);
+    private WeakReference<GalaxyActivity> activityRef = new WeakReference<>(null);
     private String packageName;
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    public DetailsInstallReceiver(DetailsActivity activity, String packageName) {
+    public DetailsInstallReceiver(GalaxyActivity activity, String packageName) {
         activityRef = new WeakReference<>(activity);
         this.packageName = packageName;
         IntentFilter filter = new IntentFilter();
@@ -40,10 +42,10 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
             return;
         }
         GlobalInstallReceiver.updateDetails(GlobalInstallReceiver.actionIsInstall(intent));
-        DetailsActivity activity = activityRef.get();
+        GalaxyActivity activity = activityRef.get();
         if (null == activity || !ContextUtil.isAlive(activity)) {
             return;
         }
-        activity.redrawDetails(DetailsActivity.app);
+        activity.redrawDetails(GalaxyActivity.app);
     }
 }

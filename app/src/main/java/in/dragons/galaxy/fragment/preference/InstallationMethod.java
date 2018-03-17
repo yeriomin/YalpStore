@@ -3,13 +3,13 @@ package in.dragons.galaxy.fragment.preference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 
 public class InstallationMethod extends Abstract {
 
     private ListPreference installationMethod;
 
-    public InstallationMethod(PreferenceActivity activity) {
+    public InstallationMethod(PreferenceFragment activity) {
         super(activity);
     }
 

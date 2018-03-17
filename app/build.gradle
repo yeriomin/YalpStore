@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.1'
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "in.dragons.galaxy"
@@ -20,7 +20,9 @@ android {
         }
     }
     lintOptions {
+        checkReleaseBuilds false
         warning 'MissingTranslation', 'GetLocales', 'VectorDrawableCompat'
+        abortOnError false
     }
     compileOptions {
         targetCompatibility 1.8
@@ -31,17 +33,21 @@ android {
 dependencies {
     implementation 'commons-net:commons-net:3.6'
     implementation 'com.nothome:javaxdelta:2.0.1'
-    implementation 'com.github.yeriomin:play-store-api:0.32'
+    implementation 'com.github.yeriomin:play-store-api:0.36'
     implementation 'eu.chainfire:libsuperuser:1.0.0.+'
-    implementation 'com.android.support:cardview-v7:27.0.2'
-    implementation 'com.android.support:appcompat-v7:27.0.2'
-    implementation 'com.android.support:design:27.0.2'
-    implementation 'com.android.support:recyclerview-v7:27.0.2'
+    implementation 'com.android.support:cardview-v7:27.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:recyclerview-v7:27.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.squareup.okhttp3:okhttp:3.9.1'
     implementation 'com.github.percolate:caffeine:0.4.7'
-    implementation 'com.afollestad:aesthetic:0.4.6'
+    implementation 'com.afollestad:aesthetic:0.4.7'
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
     implementation 'com.github.florent37:shapeofview:1.0.6'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

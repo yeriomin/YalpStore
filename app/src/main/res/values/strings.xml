@@ -13,7 +13,6 @@
     <string name="list_empty_search">No apps found</string>
     <string name="list_incompatible">incompatible</string>
     <string name="list_check_updates">Check update</string>
-    <string name="list_check_updates_txt">My apps and games</string>
     <string name="list_update_all">Update All</string>
     <string name="list_update_all_txt">Update(s) available : %1$s"</string>
     <string name="list_update_chk_txt">Checking for updates..</string>
@@ -36,7 +35,7 @@
     <string name="action_filter_category">"Category: %1$s"</string>
     <string name="action_filter_rating">"Rating: %1$s"</string>
     <string name="action_filter_downloads">"Downloads: %1$s"</string>
-    <string name="action_apps">"My apps &amp; games"</string>
+    <string name="action_apps">"My apps"</string>
     <string name="action_logout">Log out</string>
     <string name="action_login">Log in</string>
     <string name="action_usedummy">Use Dummy</string>
@@ -143,7 +142,6 @@
     <string name="credentials_logo_txt">Sign in</string>
     <string name="credentials_message">Use your Google account.\n\nKeep in mind that using this app violates Play Store T&amp;C. \nIt would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store T&amp;C.</string>
     <string name="activity_title_updates_only">Updates</string>
-    <string name="activity_title_updates_and_other_apps">"My apps &amp; games"</string>
     <string name="activity_title_search">"Results for %1$s"</string>
     <string name="notification_installation_complete">Update installed.</string>
     <string name="notification_installation_failed">Update installation failed.</string>
@@ -230,6 +228,7 @@
     <string name="manual_download_hint_version_code">version code here</string>
     <string name="thank_you">Thank you</string>
     <string name="first_login_message">To use your own account choose "Log out" in the menu</string>
+    <string name="token_refresh">Token Expired, Retrying !</string>
     <string name="early_access">Early access</string>
     <string name="testing_program_opt_in">join</string>
     <string name="testing_program_opt_out">leave</string>

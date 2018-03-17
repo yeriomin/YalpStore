@@ -16,7 +16,7 @@ import in.dragons.galaxy.BlackWhiteListManager;
 import in.dragons.galaxy.BuildConfig;
 import in.dragons.galaxy.GalaxyPermissionManager;
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.UpdatableAppsActivity;
+import in.dragons.galaxy.activities.UpdatableAppsActivity;
 import in.dragons.galaxy.model.App;
 
 import static android.content.Context.DOWNLOAD_SERVICE;

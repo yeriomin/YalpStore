@@ -7,10 +7,10 @@ import android.widget.ImageView;
 
 import com.percolate.caffeine.ViewUtils;
 
-import in.dragons.galaxy.ClusterActivity;
-import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.activities.ClusterActivity;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.SearchActivity;
+import in.dragons.galaxy.activities.SearchActivity;
 import in.dragons.galaxy.model.App;
 
 public class AppLists extends Abstract {

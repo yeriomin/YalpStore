@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import in.dragons.galaxy.MultiSelectListPreference;
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
 import in.dragons.galaxy.model.App;
@@ -20,7 +20,7 @@ public class Blacklist extends Abstract {
     private MultiSelectListPreference appList;
     private CheckBoxPreference autoWhitelist;
 
-    public Blacklist(PreferenceActivity activity) {
+    public Blacklist(PreferenceFragment activity) {
         super(activity);
     }
 
@@ -60,7 +60,7 @@ public class Blacklist extends Abstract {
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             String value = (String) newValue;
-            boolean isBlackList = null != value && value.equals(PreferenceActivity.LIST_BLACK);
+            boolean isBlackList = null != value && value.equals(PreferenceFragment.LIST_BLACK);
             appList.setTitle(appList.getContext().getString(
                     isBlackList
                             ? R.string.pref_update_list_black

@@ -7,7 +7,7 @@ import com.github.yeriomin.playstoreapi.ReviewResponse;
 
 import java.io.IOException;
 
-import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.model.Review;
 import in.dragons.galaxy.model.ReviewBuilder;
 

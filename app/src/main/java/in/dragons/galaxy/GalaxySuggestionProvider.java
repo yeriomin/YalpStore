@@ -17,6 +17,8 @@ import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 import java.io.File;
 import java.io.IOException;
 
+import in.dragons.galaxy.fragment.PreferenceFragment;
+
 public class GalaxySuggestionProvider extends ContentProvider {
 
     @Override
@@ -41,7 +43,7 @@ public class GalaxySuggestionProvider extends ContentProvider {
             fill(cursor, uri);
         } catch (GooglePlayException e) {
             if (e.getCode() == 401
-                    && PreferenceActivity.getBoolean(getContext(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+                    && PreferenceFragment.getBoolean(getContext(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
                     ) {
                 refreshAndRetry(cursor, uri);
             } else {

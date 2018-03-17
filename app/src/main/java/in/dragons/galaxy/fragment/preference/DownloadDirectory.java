@@ -14,7 +14,7 @@ import java.io.IOException;
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.GalaxyPermissionManager;
 import in.dragons.galaxy.Paths;
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.R;
 
 public class DownloadDirectory extends Abstract {
@@ -28,11 +28,11 @@ public class DownloadDirectory extends Abstract {
 
     @Override
     public void draw() {
-        preference.setSummary(Paths.getDownloadPath(activity).getAbsolutePath());
+        preference.setSummary(Paths.getDownloadPath(activity.getActivity()).getAbsolutePath());
         preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                GalaxyPermissionManager permissionManager = new GalaxyPermissionManager(activity);
+                GalaxyPermissionManager permissionManager = new GalaxyPermissionManager(activity.getActivity());
                 if (!permissionManager.checkPermission()) {
                     permissionManager.requestPermission();
                 }
@@ -45,14 +45,14 @@ public class DownloadDirectory extends Abstract {
                 String newValue = (String) o;
                 boolean result = checkNewValue(newValue);
                 if (!result) {
-                    if (ContextUtil.isAlive(activity) && !((EditTextPreference) preference).getText().equals(Paths.FALLBACK_DIRECTORY)) {
+                    if (ContextUtil.isAlive(activity.getActivity()) && !((EditTextPreference) preference).getText().equals(Paths.FALLBACK_DIRECTORY)) {
                         getFallbackDialog().show();
                     } else {
-                        ContextUtil.toast(activity, R.string.error_downloads_directory_not_writable);
+                        ContextUtil.toast(activity.getActivity(), R.string.error_downloads_directory_not_writable);
                     }
                 } else {
                     try {
-                        preference.setSummary(new File(Paths.getStorageRoot(activity), newValue).getCanonicalPath());
+                        preference.setSummary(new File(Paths.getStorageRoot(activity.getActivity()), newValue).getCanonicalPath());
                     } catch (IOException e) {
                         Log.i(getClass().getName(), "checkNewValue returned true, but drawing the path \"" + newValue + "\" in the summary failed... strange");
                         return false;
@@ -63,7 +63,7 @@ public class DownloadDirectory extends Abstract {
 
             private boolean checkNewValue(String newValue) {
                 try {
-                    File storageRoot = Paths.getStorageRoot(activity);
+                    File storageRoot = Paths.getStorageRoot(activity.getActivity());
                     File newDir = new File(storageRoot, newValue).getCanonicalFile();
                     if (!newDir.getCanonicalPath().startsWith(storageRoot.getCanonicalPath())) {
                         return false;
@@ -71,7 +71,7 @@ public class DownloadDirectory extends Abstract {
                     if (newDir.exists()) {
                         return newDir.canWrite();
                     }
-                    if (activity.checkCallingOrSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    if (activity.getActivity().checkCallingOrSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                         return newDir.mkdirs();
                     }
                     return true;
@@ -81,7 +81,7 @@ public class DownloadDirectory extends Abstract {
             }
 
             private AlertDialog getFallbackDialog() {
-                return new AlertDialog.Builder(activity)
+                return new AlertDialog.Builder(activity.getActivity())
                         .setMessage(
                                 activity.getString(R.string.error_downloads_directory_not_writable)
                                         + "\n\n"
@@ -107,7 +107,7 @@ public class DownloadDirectory extends Abstract {
         });
     }
 
-    public DownloadDirectory(PreferenceActivity activity) {
+    public DownloadDirectory(PreferenceFragment activity) {
         super(activity);
     }
 }

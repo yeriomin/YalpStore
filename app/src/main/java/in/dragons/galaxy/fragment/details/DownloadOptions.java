@@ -1,5 +1,6 @@
 package in.dragons.galaxy.fragment.details;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -7,16 +8,17 @@ import android.os.AsyncTask;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
+
+import com.percolate.caffeine.ViewUtils;
 
 import in.dragons.galaxy.BlackWhiteListManager;
 import in.dragons.galaxy.BuildConfig;
 import in.dragons.galaxy.ContextUtil;
-import in.dragons.galaxy.FlagDialogBuilder;
-import in.dragons.galaxy.GalaxyActivity;
+import in.dragons.galaxy.builders.FlagDialogBuilder;
+import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.InstalledApkCopier;
-import in.dragons.galaxy.ManualDownloadActivity;
+import in.dragons.galaxy.activities.ManualDownloadActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.CheckShellTask;
@@ -32,17 +34,12 @@ public class DownloadOptions extends Abstract {
 
     @Override
     public void draw() {
-        final ImageView more = (ImageView) activity.findViewById(R.id.icon);
+        final ImageView more = ViewUtils.findViewById(activity, R.id.icon);
         if (null == more) {
             return;
         }
         activity.registerForContextMenu(more);
-        more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                more.showContextMenu();
-            }
-        });
+        more.setOnClickListener(v -> more.showContextMenu());
     }
 
     public void inflate(Menu menu) {
@@ -126,10 +123,11 @@ public class DownloadOptions extends Abstract {
 
     static class CopyTask extends AsyncTask<App, Void, Boolean> {
 
+        @SuppressLint("StaticFieldLeak")
         private Activity activity;
         private App app;
 
-        public CopyTask(Activity activity) {
+        CopyTask(Activity activity) {
             this.activity = activity;
         }
 

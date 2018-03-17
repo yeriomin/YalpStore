@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import in.dragons.galaxy.ContextUtil;
-import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 
@@ -51,15 +51,12 @@ public class Video extends Abstract {
         activity.findViewById(R.id.app_video).setVisibility(View.VISIBLE);
 
         ImageView play = (ImageView) activity.findViewById(R.id.vid_play);
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app.getVideoUrl())));
-                } catch (ActivityNotFoundException e) {
-                    ((ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE)).setText(app.getVideoUrl());
-                    ContextUtil.toast(v.getContext().getApplicationContext(), R.string.about_copied_to_clipboard);
-                }
+        play.setOnClickListener(v -> {
+            try {
+                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app.getVideoUrl())));
+            } catch (ActivityNotFoundException e) {
+                ((ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE)).setText(app.getVideoUrl());
+                ContextUtil.toast(v.getContext().getApplicationContext(), R.string.about_copied_to_clipboard);
             }
         });
     }

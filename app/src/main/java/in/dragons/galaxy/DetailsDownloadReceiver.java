@@ -8,12 +8,19 @@ import android.widget.Button;
 
 import java.lang.ref.WeakReference;
 
+import in.dragons.galaxy.activities.GalaxyActivity;
+import in.dragons.galaxy.downloader.DownloadManagerFactory;
+import in.dragons.galaxy.downloader.DownloadManagerInterface;
+import in.dragons.galaxy.downloader.DownloadReceiver;
+import in.dragons.galaxy.downloader.DownloadState;
+import in.dragons.galaxy.fragment.PreferenceFragment;
+
 public class DetailsDownloadReceiver extends DownloadReceiver {
 
-    private WeakReference<DetailsActivity> activityRef = new WeakReference<>(null);
+    private WeakReference<GalaxyActivity> activityRef = new WeakReference<>(null);
     private String packageName;
 
-    public DetailsDownloadReceiver(DetailsActivity activity, String packageName) {
+    public DetailsDownloadReceiver(GalaxyActivity activity, String packageName) {
         activityRef = new WeakReference<>(activity);
         this.packageName = packageName;
         IntentFilter filter = new IntentFilter();
@@ -26,7 +33,7 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-        DetailsActivity activity = activityRef.get();
+       GalaxyActivity activity = activityRef.get();
         if (null == activity || !ContextUtil.isAlive(activity)) {
             return;
         }
@@ -64,7 +71,7 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
         buttonDownload.setVisibility(View.GONE);
         Button buttonInstall = (Button) activityRef.get().findViewById(R.id.install);
         buttonInstall.setVisibility(View.VISIBLE);
-        if (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
+        if (PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_AUTO_INSTALL)
                 && !state.getTriggeredBy().equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
                 ) {
             buttonInstall.setEnabled(false);

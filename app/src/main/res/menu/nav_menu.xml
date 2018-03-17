@@ -2,30 +2,20 @@
     <group android:id="@+id/group1">
         <item
             android:id="@+id/action_myapps"
-            android:icon="@drawable/ic_apps"
+            android:icon="@drawable/ic_home"
             android:title="@string/action_apps" />
-        <item
-            android:id="@+id/action_updates"
-            android:icon="@drawable/ic_update"
-            android:title="@string/action_updates" />
     </group>
     <group android:id="@+id/group2">
         <item
-            android:id="@+id/action_categories"
-            android:icon="@drawable/ic_categories"
-            android:title="@string/action_categories" />
+            android:id="@+id/action_accounts"
+            android:icon="@drawable/ic_account"
+            android:title="@string/action_accounts" />
+        <item
+            android:id="@+id/action_spoofed"
+            android:icon="@drawable/app_dev"
+            android:title="@string/action_spoofed" />
     </group>
     <group android:id="@+id/group3">
-    <item
-        android:id="@+id/action_accounts"
-        android:icon="@drawable/ic_account"
-        android:title="@string/action_accounts" />
-    <item
-        android:id="@+id/action_spoofed"
-        android:icon="@drawable/app_dev"
-        android:title="@string/action_spoofed" />
-    </group>
-    <group android:id="@+id/group4">
         <item
             android:id="@+id/action_themes"
             android:icon="@drawable/ic_theme"

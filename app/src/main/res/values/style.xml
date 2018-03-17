@@ -7,19 +7,15 @@
         <item name="android:editTextColor">@color/lightGray</item>
         <item name="android:textColorHint">@color/lightGray</item>
         <item name="android:textCursorDrawable">@color/lightGray</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
         <item name="android:windowDisablePreview">true</item>
-    </style>
-
-    <style name="AppTheme.Black" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:colorBackground">@color/colorBackgroundBlack</item>
-    </style>
-
-    <style name="MyToolbarStyle" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="android:colorBackground">?colorPrimary</item>
     </style>
 
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">

@@ -6,7 +6,7 @@ import android.preference.ListPreference;
 import java.util.Map;
 
 import in.dragons.galaxy.OnListPreferenceChangeListener;
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 
 public abstract class List extends Abstract {
 
@@ -17,7 +17,7 @@ public abstract class List extends Abstract {
 
     abstract protected OnListPreferenceChangeListener getOnListPreferenceChangeListener();
 
-    public List(PreferenceActivity activity) {
+    public List(PreferenceFragment activity) {
         super(activity);
     }
 

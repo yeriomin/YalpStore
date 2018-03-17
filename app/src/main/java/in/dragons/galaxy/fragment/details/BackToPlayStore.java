@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import com.percolate.caffeine.ViewUtils;
 
-import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.PurchaseTask;

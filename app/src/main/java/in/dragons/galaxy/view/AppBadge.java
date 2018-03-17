@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.WeakHashMap;
 
 import in.dragons.galaxy.NetworkState;
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.model.ImageSource;
@@ -77,6 +77,6 @@ public abstract class AppBadge extends ListItem {
     }
 
     private boolean noImages() {
-        return NetworkState.isMetered(view.getContext()) && PreferenceActivity.getBoolean(view.getContext(), PreferenceActivity.PREFERENCE_NO_IMAGES);
+        return NetworkState.isMetered(view.getContext()) && PreferenceFragment.getBoolean(view.getContext(), PreferenceFragment.PREFERENCE_NO_IMAGES);
     }
 }

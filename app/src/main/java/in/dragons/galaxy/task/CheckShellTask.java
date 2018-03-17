@@ -15,8 +15,8 @@ import java.util.Map;
 import eu.chainfire.libsuperuser.Shell;
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.SearchActivity;
-import in.dragons.galaxy.SystemRemountDialogBuilder;
+import in.dragons.galaxy.activities.SearchActivity;
+import in.dragons.galaxy.builders.SystemRemountDialogBuilder;
 
 public class CheckShellTask extends TaskWithProgress<Boolean> {
 

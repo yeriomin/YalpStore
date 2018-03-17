@@ -3,15 +3,17 @@ package in.dragons.galaxy.fragment.details;
 import android.content.Intent;
 import android.view.View;
 
-import in.dragons.galaxy.DetailsActivity;
-import in.dragons.galaxy.DownloadState;
+import com.percolate.caffeine.ViewUtils;
+
+import in.dragons.galaxy.downloader.DownloadState;
+import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.notification.CancelDownloadService;
 
 public class ButtonCancel extends Button {
 
-    public ButtonCancel(DetailsActivity activity, App app) {
+    ButtonCancel(GalaxyActivity activity, App app) {
         super(activity, app);
     }
 
@@ -31,7 +33,7 @@ public class ButtonCancel extends Button {
         intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
         activity.startService(intentCancel);
         button.setVisibility(View.GONE);
-        android.widget.Button buttonDownload = (android.widget.Button) activity.findViewById(R.id.download);
+        android.widget.Button buttonDownload = ViewUtils.findViewById(activity, R.id.download);
         buttonDownload.setVisibility(View.VISIBLE);
         buttonDownload.setEnabled(true);
     }

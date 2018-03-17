@@ -3,7 +3,7 @@ package in.dragons.galaxy.fragment.details;
 import android.content.pm.PackageManager;
 import android.view.View;
 
-import in.dragons.galaxy.GalaxyActivity;
+import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.model.App;
 
 public abstract class Button extends Abstract {
@@ -28,15 +28,10 @@ public abstract class Button extends Abstract {
         }
         button.setEnabled(true);
         button.setVisibility(shouldBeVisible() ? View.VISIBLE : View.GONE);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onButtonClick(v);
-            }
-        });
+        button.setOnClickListener(this::onButtonClick);
     }
 
-    protected void disable(int stringId) {
+    void disable(int stringId) {
         if (null == button) {
             return;
         }

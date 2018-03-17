@@ -1,14 +1,14 @@
 package in.dragons.galaxy.fragment.preference;
 
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 
 public abstract class Abstract {
 
-    protected PreferenceActivity activity;
+    protected PreferenceFragment activity;
 
     abstract public void draw();
 
-    public Abstract(PreferenceActivity activity) {
+    public Abstract(PreferenceFragment activity) {
         this.activity = activity;
     }
 }

@@ -7,7 +7,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 
 import in.dragons.galaxy.BuildConfig;
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.UpdateChecker;
 import in.dragons.galaxy.Util;
@@ -19,7 +19,7 @@ public class CheckUpdates extends Abstract {
     private CheckBoxPreference alsoInstall;
     private CheckBoxPreference alsoDownload;
 
-    public CheckUpdates(PreferenceActivity activity) {
+    public CheckUpdates(PreferenceFragment activity) {
         super(activity);
     }
 
@@ -42,7 +42,7 @@ public class CheckUpdates extends Abstract {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 int interval = Util.parseInt((String) newValue, 0);
-                UpdateChecker.enable(activity, interval);
+                UpdateChecker.enable(activity.getActivity(), interval);
                 preference.setSummary(activity.getString(getUpdateSummaryStringId((String) newValue)));
                 alsoDownload.setEnabled(interval > 0);
                 alsoInstall.setEnabled(interval > 0);
@@ -95,7 +95,7 @@ public class CheckUpdates extends Abstract {
         }
 
         private boolean isPrivileged() {
-            return activity.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED;
+            return activity.getActivity().getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED;
         }
     }
 }

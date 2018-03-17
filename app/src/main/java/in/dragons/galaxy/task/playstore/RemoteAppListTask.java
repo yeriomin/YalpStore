@@ -19,7 +19,7 @@ public class RemoteAppListTask extends PlayStorePayloadTask<List<App>> {
         return getRemoteAppList(api, Arrays.asList(packageNames));
     }
 
-    protected List<App> getRemoteAppList(GooglePlayAPI api, List<String> packageNames) throws IOException {
+    private List<App> getRemoteAppList(GooglePlayAPI api, List<String> packageNames) throws IOException {
         List<App> apps = new ArrayList<>();
         for (BulkDetailsEntry details : api.bulkDetails(packageNames).getEntryList()) {
             if (!details.hasDoc()) {

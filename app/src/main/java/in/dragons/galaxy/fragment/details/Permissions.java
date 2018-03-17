@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import in.dragons.galaxy.GalaxyActivity;
+import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.fragment.widget.PermissionGroup;
 import in.dragons.galaxy.model.App;

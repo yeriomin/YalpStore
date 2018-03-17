@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,8 +13,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import in.dragons.galaxy.activities.AppListActivity;
 import in.dragons.galaxy.CategoryManager;
-import in.dragons.galaxy.GalaxyActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
 import in.dragons.galaxy.model.Filter;
@@ -33,9 +32,9 @@ public class FilterMenu {
     static private final Map<Float, String> ratingLabels = new HashMap<>();
     static private final Map<Integer, String> downloadsLabels = new HashMap<>();
 
-    private GalaxyActivity activity;
+    private AppListActivity activity;
 
-    public FilterMenu(GalaxyActivity activity) {
+    public FilterMenu(AppListActivity activity) {
         this.activity = activity;
         String[] ratingValues = activity.getResources().getStringArray(R.array.filterRatingValues);
         for (int i = 0; i < ratingValues.length; i++) {
@@ -80,7 +79,7 @@ public class FilterMenu {
         ));
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public void onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.filter_system_apps:
                 putBoolean(FILTER_SYSTEM_APPS, !item.isChecked());
@@ -104,22 +103,17 @@ public class FilterMenu {
                 getDownloadsDialog().show();
                 break;
         }
-        return true;
     }
 
     private void putBoolean(String key, boolean value) {
-        PreferenceManager.getDefaultSharedPreferences(activity).edit().putBoolean(key, value).commit();
+        PreferenceManager.getDefaultSharedPreferences(activity).edit().putBoolean(key, value).apply();
         restartActivity();
     }
 
     private void restartActivity() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            activity.recreate();
-        } else {
-            Intent intent = activity.getIntent();
-            activity.finish();
-            activity.startActivity(intent);
-        }
+        Intent intent = activity.getIntent();
+        activity.finish();
+        activity.startActivity(intent);
     }
 
     private AlertDialog getCategoryDialog() {
@@ -133,7 +127,7 @@ public class FilterMenu {
                         PreferenceManager.getDefaultSharedPreferences(activity).edit().putString(
                                 FILTER_CATEGORY,
                                 categories.keySet().toArray(new String[categories.size()])[which]
-                        ).commit();
+                        ).apply();
                         super.onClick(dialog, which);
                     }
                 }
@@ -149,7 +143,7 @@ public class FilterMenu {
                         PreferenceManager.getDefaultSharedPreferences(activity).edit().putFloat(
                                 FILTER_RATING,
                                 Float.parseFloat(activity.getResources().getStringArray(R.array.filterRatingValues)[which])
-                        ).commit();
+                        ).apply();
                         super.onClick(dialog, which);
                     }
                 }
@@ -165,7 +159,7 @@ public class FilterMenu {
                         PreferenceManager.getDefaultSharedPreferences(activity).edit().putInt(
                                 FILTER_DOWNLOADS,
                                 Integer.parseInt(activity.getResources().getStringArray(R.array.filterDownloadsValues)[which])
-                        ).commit();
+                        ).apply();
                         super.onClick(dialog, which);
                     }
                 }
@@ -174,19 +168,14 @@ public class FilterMenu {
 
     private AlertDialog getDialog(String[] labels, ConfirmOnClickListener listener) {
         return new AlertDialog.Builder(activity)
-                .setAdapter(
-                        new ArrayAdapter<>(activity, android.R.layout.select_dialog_item, labels),
-                        listener
-                )
-                .create()
-                ;
+                .setAdapter(new ArrayAdapter<>(activity, android.R.layout.select_dialog_item, labels), listener).create();
     }
 
     private class ConfirmOnClickListener implements DialogInterface.OnClickListener {
-
         public void onClick(DialogInterface dialog, int which) {
             dialog.dismiss();
             restartActivity();
         }
     }
+
 }

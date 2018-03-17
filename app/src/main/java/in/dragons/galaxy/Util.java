@@ -54,7 +54,7 @@ public class Util {
         return sorted;
     }
 
-    static public <K, V> Map<V, K> swapKeysValues(Map<K, V> map) {
+    private static <K, V> Map<V, K> swapKeysValues(Map<K, V> map) {
         Map<V, K> swapped = new HashMap<>();
         for (Map.Entry<K, V> entry : map.entrySet()) {
             swapped.put(entry.getValue(), entry.getKey());
@@ -78,7 +78,7 @@ public class Util {
     }
 
     static public void putStringSet(Context context, String key, Set<String> set) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putString(key, TextUtils.join(DELIMITER, set)).commit();
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putString(key, TextUtils.join(DELIMITER, set)).apply();
     }
 
     static public int parseInt(String intAsString, int defaultValue) {

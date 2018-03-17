@@ -3,6 +3,7 @@ package in.dragons.galaxy;
 import android.content.Context;
 import android.util.Log;
 
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.notification.NotificationManagerWrapper;
 

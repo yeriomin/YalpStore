@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import in.dragons.galaxy.BitmapManager;
 import in.dragons.galaxy.NetworkState;
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.ImageSource;
 
@@ -63,6 +63,6 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
     }
 
     private boolean noImages() {
-        return NetworkState.isMetered(imageView.getContext()) && PreferenceActivity.getBoolean(imageView.getContext(), PreferenceActivity.PREFERENCE_NO_IMAGES);
+        return NetworkState.isMetered(imageView.getContext()) && PreferenceFragment.getBoolean(imageView.getContext(), PreferenceFragment.PREFERENCE_NO_IMAGES);
     }
 }

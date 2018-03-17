@@ -10,7 +10,7 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import java.io.IOException;
 
 import in.dragons.galaxy.NotPurchasedException;
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 
@@ -80,7 +80,7 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
     }
 
     private boolean shouldDownloadDelta() {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_DELTAS)
+        return PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_DOWNLOAD_DELTAS)
                 && app.getInstalledVersionCode() < app.getVersionCode()
                 ;
     }

@@ -1,12 +1,10 @@
 package in.dragons.galaxy;
 
-import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.net.http.HttpResponseCache;
-import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.preference.PreferenceManager;
@@ -16,6 +14,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import in.dragons.galaxy.downloader.DownloadManagerInterface;
 
 public class GalaxyApplication extends Application {
 
@@ -58,13 +58,12 @@ public class GalaxyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            try {
-                HttpResponseCache.install(new File(getCacheDir(), "http"), 5 * 1024 * 1024);
-            } catch (IOException e) {
-                Log.e(getClass().getSimpleName(), "Could not register cache " + e.getMessage());
-            }
+        try {
+            HttpResponseCache.install(new File(getCacheDir(), "http"), 5 * 1024 * 1024);
+        } catch (IOException e) {
+            Log.e(getClass().getSimpleName(), "Could not register cache " + e.getMessage());
         }
+
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         registerDownloadReceiver();
         registerInstallReceiver();
@@ -79,7 +78,6 @@ public class GalaxyApplication extends Application {
         registerReceiver(new GlobalDownloadReceiver(), filter, null, new Handler(handlerThread.getLooper()));
     }
 
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void registerInstallReceiver() {
         IntentFilter filter = new IntentFilter();
         filter.addDataScheme("package");
@@ -93,9 +91,6 @@ public class GalaxyApplication extends Application {
     }
 
     public boolean isTv() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO) {
-            return false;
-        }
         int uiMode = getResources().getConfiguration().uiMode;
         return (uiMode & Configuration.UI_MODE_TYPE_MASK) == Configuration.UI_MODE_TYPE_TELEVISION;
     }

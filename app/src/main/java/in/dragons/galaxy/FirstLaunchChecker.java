@@ -21,7 +21,7 @@ public class FirstLaunchChecker {
     public void setLoggedIn() {
         prefs.edit()
                 .putBoolean(FIRST_LOGIN, false)
-                .commit()
+                .apply()
         ;
     }
 }

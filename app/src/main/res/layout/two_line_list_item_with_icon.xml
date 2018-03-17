@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+        android:padding="5dp"
         android:weightSum="10">
 
         <ImageView
@@ -21,7 +20,6 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/icon_size_med"
             android:layout_marginEnd="6dp"
-            android:layout_marginStart="3dp"
             android:layout_weight="2"
             android:contentDescription="@string/content_description_app_icon"
             android:src="@drawable/ic_placeholder" />
@@ -104,7 +102,7 @@
             android:id="@+id/menu_3dot"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:src="@drawable/ic_3dots" />
     </LinearLayout>

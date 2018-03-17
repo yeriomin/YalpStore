@@ -11,6 +11,9 @@ import android.util.Log;
 
 import java.io.File;
 
+import in.dragons.galaxy.activities.DetailsActivity;
+import in.dragons.galaxy.downloader.DownloadState;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.model.App;
 
 public class GlobalInstallReceiver extends BroadcastReceiver {
@@ -75,11 +78,11 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
     }
 
     static private boolean needToRemoveApk(Context context) {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DELETE_APK_AFTER_INSTALL);
+        return PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_DELETE_APK_AFTER_INSTALL);
     }
 
     static private boolean needToAutoWhitelist(Context context) {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_WHITELIST);
+        return PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_AUTO_WHITELIST);
     }
 
     static private App getApp(Context context, String packageName) {
@@ -95,7 +98,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static private boolean wasInstalled(Context context, String packageName) {
         return InstallationState.isInstalled(packageName)
-                || (PreferenceActivity.getString(context, PreferenceActivity.INSTALLATION_METHOD_DEFAULT).equals(PreferenceActivity.INSTALLATION_METHOD_DEFAULT)
+                || (PreferenceFragment.getString(context, PreferenceFragment.INSTALLATION_METHOD_DEFAULT).equals(PreferenceFragment.INSTALLATION_METHOD_DEFAULT)
                 && DownloadState.get(packageName).isEverythingFinished()
         )
                 ;

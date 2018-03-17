@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import in.dragons.galaxy.fragment.PreferenceFragment;
+
 public class BootReceiver extends BroadcastReceiver {
 
     @Override
@@ -11,6 +13,6 @@ public class BootReceiver extends BroadcastReceiver {
         if (!Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             return;
         }
-        UpdateChecker.enable(context.getApplicationContext(), PreferenceActivity.getUpdateInterval(context));
+        UpdateChecker.enable(context.getApplicationContext(), PreferenceFragment.getUpdateInterval(context));
     }
 }

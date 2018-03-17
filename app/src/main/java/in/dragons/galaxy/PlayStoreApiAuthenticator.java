@@ -16,6 +16,9 @@ import com.github.yeriomin.playstoreapi.TokenDispenserException;
 import java.io.IOException;
 import java.util.Locale;
 
+import in.dragons.galaxy.adapters.DebugHttpClientAdapter;
+import in.dragons.galaxy.adapters.NativeHttpClientAdapter;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.model.LoginInfo;
 import in.dragons.galaxy.task.playstore.PlayStoreTask;
 
@@ -162,7 +165,7 @@ public class PlayStoreApiAuthenticator {
     private DeviceInfoProvider getDeviceInfoProvider() {
         DeviceInfoProvider deviceInfoProvider;
         String spoofDevice = PreferenceManager.getDefaultSharedPreferences(context)
-                .getString(PreferenceActivity.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
+                .getString(PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
         if (TextUtils.isEmpty(spoofDevice)) {
             deviceInfoProvider = new NativeDeviceInfoProvider();
             ((NativeDeviceInfoProvider) deviceInfoProvider).setContext(context);
@@ -177,7 +180,7 @@ public class PlayStoreApiAuthenticator {
 
     private void fill(LoginInfo loginInfo) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String locale = prefs.getString(PreferenceActivity.PREFERENCE_REQUESTED_LANGUAGE, "");
+        String locale = prefs.getString(PreferenceFragment.PREFERENCE_REQUESTED_LANGUAGE, "");
         loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale));
         loginInfo.setGsfId(prefs.getString(PREFERENCE_GSF_ID, ""));
         loginInfo.setToken(prefs.getString(PREFERENCE_AUTH_TOKEN, ""));

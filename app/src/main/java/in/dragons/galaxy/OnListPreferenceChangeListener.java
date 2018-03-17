@@ -7,8 +7,8 @@ import java.util.Map;
 
 public abstract class OnListPreferenceChangeListener implements Preference.OnPreferenceChangeListener {
 
-    protected Map<String, String> keyValueMap;
-    protected String defaultLabel;
+    private Map<String, String> keyValueMap;
+    private String defaultLabel;
 
     public void setKeyValueMap(Map<String, String> keyValueMap) {
         this.keyValueMap = keyValueMap;

@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 

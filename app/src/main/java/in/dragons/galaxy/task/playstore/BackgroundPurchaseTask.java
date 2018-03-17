@@ -2,7 +2,7 @@ package in.dragons.galaxy.task.playstore;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 
-import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.notification.NotificationManagerWrapper;
 

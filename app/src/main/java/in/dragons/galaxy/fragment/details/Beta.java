@@ -11,7 +11,7 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import java.io.IOException;
 
 import in.dragons.galaxy.ContextUtil;
-import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;

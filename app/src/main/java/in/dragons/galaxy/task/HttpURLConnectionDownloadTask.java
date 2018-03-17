@@ -17,9 +17,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import in.dragons.galaxy.DownloadManagerFake;
-import in.dragons.galaxy.DownloadManagerInterface;
-import in.dragons.galaxy.DownloadState;
+import in.dragons.galaxy.downloader.DownloadManagerFake;
+import in.dragons.galaxy.downloader.DownloadManagerInterface;
+import in.dragons.galaxy.downloader.DownloadState;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
 import in.dragons.galaxy.notification.CancelDownloadService;

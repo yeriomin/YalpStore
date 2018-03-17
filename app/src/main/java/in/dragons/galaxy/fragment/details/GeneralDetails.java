@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 
 import in.dragons.galaxy.CategoryManager;
-import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
 import in.dragons.galaxy.model.App;

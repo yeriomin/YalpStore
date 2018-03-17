@@ -14,11 +14,11 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import in.dragons.galaxy.CircleTransform;
-import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.ReviewStorageIterator;
-import in.dragons.galaxy.UserReviewDialogBuilder;
+import in.dragons.galaxy.builders.UserReviewDialogBuilder;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.ReviewDeleteTask;
 import in.dragons.galaxy.task.playstore.ReviewLoadTask;

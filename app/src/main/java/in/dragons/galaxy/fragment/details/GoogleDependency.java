@@ -1,12 +1,13 @@
 package in.dragons.galaxy.fragment.details;
 
+import android.annotation.SuppressLint;
 import android.preference.PreferenceManager;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import in.dragons.galaxy.DetailsActivity;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.SharedPreferencesTranslator;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.DependencyTranslationTask;
@@ -44,6 +45,7 @@ public class GoogleDependency extends Abstract {
     }
 
     private void getTranslations(Set<String> untranslated) {
+        @SuppressLint("StaticFieldLeak")
         DependencyTranslationTask task = new DependencyTranslationTask() {
 
             @Override

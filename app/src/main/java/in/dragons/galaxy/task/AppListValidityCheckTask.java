@@ -9,12 +9,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import in.dragons.galaxy.AppListActivity;
 import in.dragons.galaxy.BlackWhiteListManager;
+import in.dragons.galaxy.activities.GalaxyActivity;
 
 public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String>> {
 
-    private AppListActivity activity;
+    private GalaxyActivity activity;
     protected boolean includeSystemApps = false;
     protected boolean respectUpdateBlacklist = false;
 
@@ -26,7 +26,7 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String
         this.respectUpdateBlacklist = respectUpdateBlacklist;
     }
 
-    public AppListValidityCheckTask(AppListActivity activity) {
+    public AppListValidityCheckTask(GalaxyActivity activity) {
         this.activity = activity;
     }
 
@@ -36,7 +36,7 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String
         Set<String> newPackageNames = new HashSet<>(installedPackageNames);
         newPackageNames.removeAll(activity.getListedPackageNames());
         if (!respectUpdateBlacklist && newPackageNames.size() > 0) {
-            activity.loadApps();
+            activity.loadInstalledApps();
             return;
         }
         Set<String> removedPackageNames = new HashSet<>(activity.getListedPackageNames());

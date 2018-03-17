@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Gallery;
 
-import in.dragons.galaxy.DetailsActivity;
-import in.dragons.galaxy.FullscreenImageActivity;
-import in.dragons.galaxy.ImageAdapter;
+import in.dragons.galaxy.activities.DetailsActivity;
+import in.dragons.galaxy.activities.FullscreenImageActivity;
+import in.dragons.galaxy.adapters.ImageAdapter;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.model.App;
 

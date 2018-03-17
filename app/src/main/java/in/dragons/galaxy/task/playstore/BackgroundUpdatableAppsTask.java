@@ -10,17 +10,17 @@ import android.util.Log;
 
 import java.util.List;
 
-import in.dragons.galaxy.DownloadManagerAdapter;
-import in.dragons.galaxy.DownloadManagerFactory;
-import in.dragons.galaxy.DownloadState;
+import in.dragons.galaxy.downloader.DownloadManagerAdapter;
+import in.dragons.galaxy.downloader.DownloadManagerFactory;
+import in.dragons.galaxy.downloader.DownloadState;
 import in.dragons.galaxy.GalaxyApplication;
 import in.dragons.galaxy.InstallerAbstract;
 import in.dragons.galaxy.InstallerFactory;
 import in.dragons.galaxy.NetworkState;
 import in.dragons.galaxy.Paths;
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.UpdatableAppsActivity;
+import in.dragons.galaxy.activities.UpdatableAppsActivity;
 import in.dragons.galaxy.UpdateAllReceiver;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.notification.NotificationManagerWrapper;
@@ -70,9 +70,9 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
             return false;
         }
         return forceUpdate ||
-                (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
+                (PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
                         && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
-                        || !PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
+                        || !PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
                         || !NetworkState.isMetered(context)
                 )
                 )
@@ -80,7 +80,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     }
 
     private void process(Context context, List<App> apps) {
-        boolean canInstallInBackground = PreferenceActivity.canInstallInBackground(context);
+        boolean canInstallInBackground = PreferenceFragment.canInstallInBackground(context);
         GalaxyApplication application = (GalaxyApplication) context.getApplicationContext();
         application.clearPendingUpdates();
         for (App app : apps) {

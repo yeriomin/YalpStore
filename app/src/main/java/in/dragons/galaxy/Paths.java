@@ -7,6 +7,8 @@ import android.preference.PreferenceManager;
 
 import java.io.File;
 
+import in.dragons.galaxy.fragment.PreferenceFragment;
+
 public class Paths {
 
     static public final String FALLBACK_DIRECTORY = "Android/data/" + BuildConfig.APPLICATION_ID + "/files";
@@ -36,7 +38,7 @@ public class Paths {
     static public File getDownloadPath(Context context) {
         return new File(
                 getStorageRoot(context),
-                PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+                PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceFragment.PREFERENCE_DOWNLOAD_DIRECTORY, "")
         );
     }
 

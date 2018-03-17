@@ -14,12 +14,12 @@ import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLHandshakeException;
 
-import in.dragons.galaxy.AccountTypeDialogBuilder;
+import in.dragons.galaxy.builders.AccountTypeDialogBuilder;
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.CredentialsEmptyException;
 import in.dragons.galaxy.FirstLaunchChecker;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.task.TaskWithProgress;
 
@@ -84,11 +84,11 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
             Log.i(getClass().getSimpleName(), "Credentials empty");
             if (new FirstLaunchChecker(context).isFirstLogin() && ContextUtil.isAlive(context)) {
                 Log.i(getClass().getSimpleName(), "First launch, so using built-in account");
-                builder.logInWithPredefinedAccount();
+                //builder.logInWithPredefinedAccount();
                 ContextUtil.toast(context, R.string.first_login_message);
                 return;
             }
-        } else if (e.getCode() == 401 && PreferenceActivity.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
+        } else if (e.getCode() == 401 && PreferenceFragment.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
             Log.i(getClass().getSimpleName(), "Token is stale");
             builder.refreshToken();
             return;
@@ -97,7 +97,7 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
             new PlayStoreApiAuthenticator(context).logout();
         }
         if (ContextUtil.isAlive(context)) {
-            builder.show();
+            //builder.show();
         } else {
             Log.e(getClass().getSimpleName(), "AuthException happened and the provided context is not ui capable");
         }

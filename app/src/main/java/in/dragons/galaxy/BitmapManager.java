@@ -22,6 +22,8 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
+import in.dragons.galaxy.fragment.PreferenceFragment;
+
 public class BitmapManager {
 
     static private final long VALID_MILLIS = 1000 * 60 * 60 * 24 * 7;
@@ -58,7 +60,7 @@ public class BitmapManager {
 
     public BitmapManager(Context context) {
         baseDir = context.getCacheDir();
-        noImages = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_NO_IMAGES) && NetworkState.isMetered(context);
+        noImages = PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_NO_IMAGES) && NetworkState.isMetered(context);
     }
 
     public Bitmap getBitmap(String url, boolean fullSize) {

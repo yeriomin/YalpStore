@@ -6,6 +6,11 @@ import android.util.Log;
 
 import java.io.File;
 
+import in.dragons.galaxy.downloader.DownloadManagerFactory;
+import in.dragons.galaxy.downloader.DownloadManagerInterface;
+import in.dragons.galaxy.downloader.DownloadReceiver;
+import in.dragons.galaxy.downloader.DownloadState;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.notification.NotificationManagerWrapper;
 
@@ -57,7 +62,7 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
             Log.i(getClass().getSimpleName(), "Launching installer for " + app.getPackageName());
             InstallerAbstract installer = InstallerFactory.get(context);
             if (triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
-                    && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
+                    && PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_AUTO_INSTALL)
                     ) {
                 installer.setBackground(false);
             }
@@ -91,11 +96,11 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
     private boolean shouldInstall(DownloadState.TriggeredBy triggeredBy) {
         switch (triggeredBy) {
             case DOWNLOAD_BUTTON:
-                return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL);
+                return PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_AUTO_INSTALL);
             case UPDATE_ALL_BUTTON:
-                return PreferenceActivity.canInstallInBackground(context);
+                return PreferenceFragment.canInstallInBackground(context);
             case SCHEDULED_UPDATE:
-                return PreferenceActivity.canInstallInBackground(context) && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
+                return PreferenceFragment.canInstallInBackground(context) && PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
             case MANUAL_DOWNLOAD_BUTTON:
             default:
                 return false;

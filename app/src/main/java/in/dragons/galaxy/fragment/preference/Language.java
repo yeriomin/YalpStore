@@ -10,13 +10,13 @@ import java.util.Map;
 
 import in.dragons.galaxy.OnListPreferenceChangeListener;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
-import in.dragons.galaxy.PreferenceActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
 
 public class Language extends List {
 
-    public Language(PreferenceActivity activity) {
+    public Language(PreferenceFragment activity) {
         super(activity);
     }
 
@@ -27,7 +27,7 @@ public class Language extends List {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 boolean result = super.onPreferenceChange(preference, newValue);
                 try {
-                    new PlayStoreApiAuthenticator(activity).getApi().setLocale(new Locale((String) newValue));
+                    new PlayStoreApiAuthenticator(activity.getActivity()).getApi().setLocale(new Locale((String) newValue));
                 } catch (IOException e) {
                     // Should be impossible to get to preferences with incorrect credentials
                 }

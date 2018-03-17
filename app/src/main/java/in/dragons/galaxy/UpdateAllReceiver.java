@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import in.dragons.galaxy.activities.GalaxyActivity;
+
 public class UpdateAllReceiver extends BroadcastReceiver {
 
     static public final String ACTION_ALL_UPDATES_COMPLETE = "ACTION_ALL_UPDATES_COMPLETE";
@@ -16,9 +18,9 @@ public class UpdateAllReceiver extends BroadcastReceiver {
     static public final String EXTRA_PACKAGE_NAME = "EXTRA_PACKAGE_NAME";
     static public final String EXTRA_UPDATE_ACTUALLY_INSTALLED = "EXTRA_UPDATE_ACTUALLY_INSTALLED";
 
-    private UpdatableAppsActivity activity;
+    private GalaxyActivity activity;
 
-    public UpdateAllReceiver(UpdatableAppsActivity activity) {
+    public UpdateAllReceiver(GalaxyActivity activity) {
         this.activity = activity;
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_ALL_UPDATES_COMPLETE);

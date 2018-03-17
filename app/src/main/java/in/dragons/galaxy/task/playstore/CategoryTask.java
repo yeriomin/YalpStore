@@ -2,6 +2,7 @@ package in.dragons.galaxy.task.playstore;
 
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import com.github.yeriomin.playstoreapi.BrowseLink;
@@ -19,8 +20,6 @@ abstract public class CategoryTask extends PlayStorePayloadTask<Void> {
 
     protected CategoryManager manager;
 
-    abstract protected void fill();
-
     public void setManager(CategoryManager manager) {
         this.manager = manager;
     }
@@ -29,7 +28,7 @@ abstract public class CategoryTask extends PlayStorePayloadTask<Void> {
     protected void onPostExecute(Void result) {
         super.onPostExecute(result);
         if (success()) {
-            fill();
+            Log.i(getClass().getSimpleName(), "Categories List Fetched");
         }
     }
 

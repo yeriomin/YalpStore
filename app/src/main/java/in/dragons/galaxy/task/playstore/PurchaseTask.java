@@ -15,10 +15,10 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import java.io.IOException;
 
 import in.dragons.galaxy.ContextUtil;
-import in.dragons.galaxy.DownloadManagerInterface;
-import in.dragons.galaxy.DownloadProgressBarUpdater;
-import in.dragons.galaxy.DownloadState;
-import in.dragons.galaxy.Downloader;
+import in.dragons.galaxy.downloader.DownloadManagerInterface;
+import in.dragons.galaxy.downloader.DownloadProgressBarUpdater;
+import in.dragons.galaxy.downloader.DownloadState;
+import in.dragons.galaxy.downloader.Downloader;
 import in.dragons.galaxy.NotPurchasedException;
 import in.dragons.galaxy.R;
 

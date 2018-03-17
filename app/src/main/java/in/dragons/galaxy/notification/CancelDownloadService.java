@@ -8,9 +8,9 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.dragons.galaxy.DownloadManagerFactory;
-import in.dragons.galaxy.DownloadManagerInterface;
-import in.dragons.galaxy.DownloadState;
+import in.dragons.galaxy.downloader.DownloadManagerFactory;
+import in.dragons.galaxy.downloader.DownloadManagerInterface;
+import in.dragons.galaxy.downloader.DownloadState;
 import in.dragons.galaxy.GalaxyApplication;
 
 public class CancelDownloadService extends IntentService {
