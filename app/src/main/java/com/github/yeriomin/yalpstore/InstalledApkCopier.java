@@ -72,7 +72,7 @@ public class InstalledApkCopier {
         return new File(
             new File(
                 Paths.getStorageRoot(context),
-                PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+                PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY, "")
             ),
             app.getPackageName() + "." + String.valueOf(app.getInstalledVersionCode()) + ".apk"
         );

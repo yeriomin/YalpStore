@@ -23,4 +23,14 @@ public class ThemeManager extends ThemeManagerAbstract {
             return android.R.style.Theme;
         }
     }
+
+    @Override
+    protected int getDialogThemeLight() {
+        return 0;
+    }
+
+    @Override
+    protected int getDialogThemeDark() {
+        return 0;
+    }
 }

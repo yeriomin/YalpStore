@@ -34,11 +34,11 @@ public class Paths {
     }
 
     static public File getYalpPath(Context context) {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+        return PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
             ? context.getFilesDir()
             : new File(
                 getStorageRoot(context),
-                PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+                PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY, "")
             )
         ;
     }

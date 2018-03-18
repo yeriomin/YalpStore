@@ -1,8 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
 
 import java.io.Closeable;
 import java.io.File;
@@ -11,19 +9,15 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 public class Util {
 
     private static float DP_PX_RATIO = 0.0f;
-    private static final String DELIMITER = ",";
     private static final Map<Integer, String> siPrefixes = new HashMap<>();
     static {
         siPrefixes.put(0, "");
@@ -65,17 +59,6 @@ public class Util {
         map.put(key, value);
         map.putAll(clonedMap);
         return map;
-    }
-
-    static public Set<String> getStringSet(Context context, String key) {
-        return new HashSet<>(Arrays.asList(TextUtils.split(
-            PreferenceManager.getDefaultSharedPreferences(context).getString(key, ""),
-            DELIMITER
-        )));
-    }
-
-    static public void putStringSet(Context context, String key, Set<String> set) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putString(key, TextUtils.join(DELIMITER, set)).commit();
     }
 
     static public int parseInt(String intAsString, int defaultValue) {

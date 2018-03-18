@@ -18,7 +18,7 @@ public class BootReceiver extends BroadcastReceiver {
     static private int getUpdateInterval(Context context) {
         return Util.parseInt(
             PreferenceManager.getDefaultSharedPreferences(context).getString(
-                PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL,
+                PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_INTERVAL,
                 "-1"
             ),
             -1

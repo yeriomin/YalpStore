@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
+import android.util.LruCache;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,7 +34,7 @@ public class BitmapManager {
 
     public BitmapManager(Context context) {
         baseDir = context.getCacheDir();
-        noImages = PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_NO_IMAGES) && NetworkState.isMetered(context);
+        noImages = PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_NO_IMAGES) && NetworkState.isMetered(context);
     }
 
     public Bitmap getBitmap(String url, boolean fullSize) {

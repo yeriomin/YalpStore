@@ -10,7 +10,6 @@ import com.github.yeriomin.yalpstore.DownloadManagerInterface;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
-import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.ArrayList;
 import java.util.List;

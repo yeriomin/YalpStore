@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.text.TextUtils;
 
 import com.github.yeriomin.playstoreapi.AuthException;
-import com.github.yeriomin.yalpstore.view.CredentialsDialogBuilder;
 import com.github.yeriomin.yalpstore.CredentialsEmptyException;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
+import com.github.yeriomin.yalpstore.view.CredentialsDialogBuilder;
 import com.github.yeriomin.yalpstore.view.UserProvidedAccountDialogBuilder;
-import com.github.yeriomin.yalpstore.Util;
 
 import java.util.Set;
 
@@ -46,8 +46,8 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
     }
 
     private void addUsedEmail(String email) {
-        Set<String> emailsSet = Util.getStringSet(context, UserProvidedAccountDialogBuilder.USED_EMAILS_SET);
+        Set<String> emailsSet = PreferenceUtil.getStringSet(context, UserProvidedAccountDialogBuilder.USED_EMAILS_SET);
         emailsSet.add(email);
-        Util.putStringSet(context, UserProvidedAccountDialogBuilder.USED_EMAILS_SET, emailsSet);
+        PreferenceUtil.putStringSet(context, UserProvidedAccountDialogBuilder.USED_EMAILS_SET, emailsSet);
     }
 }

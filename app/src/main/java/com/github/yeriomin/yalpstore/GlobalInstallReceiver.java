@@ -75,13 +75,13 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
     }
 
     static private boolean needToRemoveApk(Context context) {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DELETE_APK_AFTER_INSTALL)
-            || PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+        return PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DELETE_APK_AFTER_INSTALL)
+            || PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
         ;
     }
 
     static private boolean needToAutoWhitelist(Context context) {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_WHITELIST);
+        return PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_AUTO_WHITELIST);
     }
 
     static private App getApp(Context context, String packageName) {
@@ -97,7 +97,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static private boolean wasInstalled(Context context, String packageName) {
         return InstallationState.isInstalled(packageName)
-            || (PreferenceActivity.getString(context, PreferenceActivity.INSTALLATION_METHOD_DEFAULT).equals(PreferenceActivity.INSTALLATION_METHOD_DEFAULT)
+            || (PreferenceUtil.getString(context, PreferenceUtil.INSTALLATION_METHOD_DEFAULT).equals(PreferenceUtil.INSTALLATION_METHOD_DEFAULT)
                 && DownloadState.get(packageName).isEverythingFinished()
             )
         ;

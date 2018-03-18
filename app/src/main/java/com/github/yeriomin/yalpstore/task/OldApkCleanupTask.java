@@ -2,8 +2,6 @@ package com.github.yeriomin.yalpstore.task;
 
 import android.content.Context;
 
-import com.github.yeriomin.yalpstore.BitmapManager;
-
 import java.io.File;
 
 public class OldApkCleanupTask extends CleanupTask {

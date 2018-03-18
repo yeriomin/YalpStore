@@ -8,7 +8,7 @@ import com.github.yeriomin.playstoreapi.IteratorGooglePlayException;
 import com.github.yeriomin.yalpstore.AppListIterator;
 import com.github.yeriomin.yalpstore.EndlessScrollActivity;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
-import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.Filter;
@@ -58,7 +58,7 @@ abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> 
                     throw (IOException) e.getCause();
                 } else if (e.getCause() instanceof GooglePlayException
                     && ((GooglePlayException) e.getCause()).getCode() == 401
-                    && PreferenceActivity.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+                    && PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
                 ) {
                     PlayStoreApiAuthenticator authenticator = new PlayStoreApiAuthenticator(context);
                     authenticator.refreshToken();

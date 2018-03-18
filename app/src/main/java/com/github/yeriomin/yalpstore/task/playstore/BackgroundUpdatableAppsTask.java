@@ -15,7 +15,7 @@ import com.github.yeriomin.yalpstore.InstallerAbstract;
 import com.github.yeriomin.yalpstore.InstallerFactory;
 import com.github.yeriomin.yalpstore.NetworkState;
 import com.github.yeriomin.yalpstore.Paths;
-import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
 import com.github.yeriomin.yalpstore.UpdateAllReceiver;
@@ -71,9 +71,9 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
             return false;
         }
         return forceUpdate ||
-            (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
+            (PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
                 && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
-                    || !PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
+                    || !PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
                     || !NetworkState.isMetered(context)
                 )
             )
@@ -81,14 +81,14 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     }
 
     private void process(Context context, List<App> apps) {
-        boolean canInstallInBackground = PreferenceActivity.canInstallInBackground(context);
+        boolean canInstallInBackground = PreferenceUtil.canInstallInBackground(context);
         YalpStoreApplication application = (YalpStoreApplication) context.getApplicationContext();
         application.clearPendingUpdates();
         for (App app: apps) {
             application.addPendingUpdate(app.getPackageName());
             File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
             if (!apkPath.exists()
-                || (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+                || (PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
                     && (null == DownloadState.get(app.getPackageName()) || null == DownloadState.get(app.getPackageName()).getApkChecksum())
                 )
             ) {

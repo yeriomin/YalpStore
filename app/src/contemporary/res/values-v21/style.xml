@@ -30,6 +30,9 @@
         <item name="android:dialogTheme">@style/YalpStoreDialogStyleDark</item>
         <item name="android:alertDialogTheme">@style/YalpStoreAlertDialogStyleDark</item>
     </style>
+    <style name="YalpStoreThemeBlack" parent="YalpStoreThemeDark">
+        <item name="android:background">@android:color/black</item>
+    </style>
     <style name="YalpStoreDialogStyleDark" parent="Theme.AppCompat.Dialog">
         <item name="colorAccent">#357ec7</item>
     </style>

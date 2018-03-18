@@ -3,8 +3,6 @@ package com.github.yeriomin.yalpstore.task;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.github.yeriomin.yalpstore.BitmapManager;
-
 import java.io.File;
 import java.lang.ref.WeakReference;
 

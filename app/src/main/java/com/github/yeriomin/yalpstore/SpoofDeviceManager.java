@@ -83,7 +83,7 @@ public class SpoofDeviceManager {
     }
 
     private Map<String, String> getDevicesFromSharedPreferences() {
-        Set<String> deviceNames = Util.getStringSet(context, DEVICES_LIST_KEY);
+        Set<String> deviceNames = PreferenceUtil.getStringSet(context, DEVICES_LIST_KEY);
         Map<String, String> devices = new HashMap<>();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         for (String name: deviceNames) {
@@ -93,7 +93,7 @@ public class SpoofDeviceManager {
     }
 
     private void putDevicesToSharedPreferences(Map<String, String> devices) {
-        Util.putStringSet(context, DEVICES_LIST_KEY, devices.keySet());
+        PreferenceUtil.putStringSet(context, DEVICES_LIST_KEY, devices.keySet());
         SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
         for (String name: devices.keySet()) {
             prefs.putString(name, devices.get(name));

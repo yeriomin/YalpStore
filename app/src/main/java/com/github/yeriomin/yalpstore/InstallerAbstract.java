@@ -26,7 +26,7 @@ public abstract class InstallerAbstract {
     protected boolean background;
 
     static public Intent getCheckAndOpenApkIntent(Context context, App app) {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+        return PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
             ? getDownloadChecksumServiceIntent(context, app)
             : getOpenApkIntent(context, app)
         ;
@@ -92,7 +92,7 @@ public abstract class InstallerAbstract {
             }
             return false;
         }
-        if (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)) {
+        if (PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)) {
             byte[] downloadedFileChecksum = DownloadState.get(app.getPackageName()).getApkChecksum();
             byte[] existingFileChecksum = Util.getFileChecksum(apkPath);
             if (null == downloadedFileChecksum

@@ -175,11 +175,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                 }
             }
         );
-        String email = PreferenceActivity.getString(this, PREFERENCE_EMAIL);
+        String email = PreferenceUtil.getString(this, PREFERENCE_EMAIL);
         ((TextView) navigationView.getHeaderView(0).findViewById(R.id.username)).setText(email.split("@")[0]);
         if (!TextUtils.isEmpty(email)) {
             navigationView.getMenu().findItem(R.id.action_logout).setVisible(true);
-            if (!PreferenceActivity.getBoolean(this, PREFERENCE_APP_PROVIDED_EMAIL)) {
+            if (!PreferenceUtil.getBoolean(this, PREFERENCE_APP_PROVIDED_EMAIL)) {
                 new AvatarTask(email, (ImageView) navigationView.getHeaderView(0).findViewById(R.id.avatar)).setFadeInMillis(200).execute();
             }
         }

@@ -6,14 +6,14 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.AuthException;
-import com.github.yeriomin.yalpstore.view.AccountTypeDialogBuilder;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.CredentialsEmptyException;
 import com.github.yeriomin.yalpstore.FirstLaunchChecker;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
-import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.task.TaskWithProgress;
+import com.github.yeriomin.yalpstore.view.AccountTypeDialogBuilder;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -86,7 +86,7 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
                 ContextUtil.toast(context, R.string.first_login_message);
                 return;
             }
-        } else if (e.getCode() == 401 && PreferenceActivity.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
+        } else if (e.getCode() == 401 && PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
             Log.i(getClass().getSimpleName(), "Token is stale");
             refreshToken();
             return;

@@ -13,7 +13,6 @@ import android.view.ViewStub;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.ContextUtil;
-import com.github.yeriomin.yalpstore.view.FlagDialogBuilder;
 import com.github.yeriomin.yalpstore.InstalledApkCopier;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.R;
@@ -23,6 +22,7 @@ import com.github.yeriomin.yalpstore.task.CheckShellTask;
 import com.github.yeriomin.yalpstore.task.ConvertToNormalTask;
 import com.github.yeriomin.yalpstore.task.ConvertToSystemTask;
 import com.github.yeriomin.yalpstore.task.SystemRemountTask;
+import com.github.yeriomin.yalpstore.view.FlagDialogBuilder;
 
 public class DownloadOptions extends Abstract {
 

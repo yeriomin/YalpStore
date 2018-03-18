@@ -1,4 +1,4 @@
-package com.github.yeriomin.yalpstore;
+package android.preference;
 
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -9,6 +9,9 @@ import android.os.Parcelable;
 import android.preference.DialogPreference;
 import android.preference.Preference;
 import android.util.AttributeSet;
+
+import com.github.yeriomin.yalpstore.BlackWhiteListManager;
+import com.github.yeriomin.yalpstore.R;
 
 import java.util.Collections;
 import java.util.HashSet;

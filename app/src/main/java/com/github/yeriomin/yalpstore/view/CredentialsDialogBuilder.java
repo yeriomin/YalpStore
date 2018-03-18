@@ -3,7 +3,6 @@ package com.github.yeriomin.yalpstore.view;
 import android.app.Activity;
 
 import com.github.yeriomin.yalpstore.task.playstore.PlayStoreTask;
-import com.github.yeriomin.yalpstore.view.DialogWrapper;
 
 abstract public class CredentialsDialogBuilder extends DialogWrapper {
 

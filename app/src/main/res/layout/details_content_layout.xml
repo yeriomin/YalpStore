@@ -10,7 +10,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:background="?android:colorBackground"
         android:gravity="center_vertical">
 
         <ImageView

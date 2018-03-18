@@ -8,7 +8,7 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
-import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
@@ -79,7 +79,7 @@ public class UpdatableAppsTask extends RemoteAppListTask {
 
     protected List<App> getAppsFromPlayStore(GooglePlayAPI api, Collection<String> packageNames) throws IOException {
         List<App> appsFromPlayStore = new ArrayList<>();
-        boolean builtInAccount = PreferenceActivity.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL);
+        boolean builtInAccount = PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL);
         for (App app: getRemoteAppList(api, new ArrayList<>(packageNames))) {
             if (!builtInAccount || app.isFree()) {
                 appsFromPlayStore.add(app);
@@ -90,7 +90,7 @@ public class UpdatableAppsTask extends RemoteAppListTask {
 
     private Map<String, App> filterBlacklistedApps(Map<String, App> apps) {
         Set<String> packageNames = new HashSet<>(apps.keySet());
-        if (PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceActivity.LIST_BLACK).equals(PreferenceActivity.LIST_BLACK)) {
+        if (PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceUtil.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceUtil.LIST_BLACK).equals(PreferenceUtil.LIST_BLACK)) {
             packageNames.removeAll(new BlackWhiteListManager(context).get());
         } else {
             packageNames.retainAll(new BlackWhiteListManager(context).get());

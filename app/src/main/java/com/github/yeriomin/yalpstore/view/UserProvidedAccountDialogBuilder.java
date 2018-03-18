@@ -14,8 +14,8 @@ import android.widget.ImageView;
 
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
-import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.task.playstore.UserProvidedCredentialsTask;
 
 import java.util.ArrayList;
@@ -99,7 +99,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
     }
 
     private List<String> getUsedEmails() {
-        List<String> emails = new ArrayList<>(Util.getStringSet(activity, USED_EMAILS_SET));
+        List<String> emails = new ArrayList<>(PreferenceUtil.getStringSet(activity, USED_EMAILS_SET));
         Collections.sort(emails);
         return emails;
     }

@@ -2,10 +2,11 @@ package com.github.yeriomin.yalpstore.fragment.preference;
 
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
+import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
 
-import com.github.yeriomin.yalpstore.MultiSelectListPreference;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.model.App;
@@ -60,7 +61,7 @@ public class Blacklist extends Abstract {
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
             String value = (String) newValue;
-            boolean isBlackList = null != value && value.equals(PreferenceActivity.LIST_BLACK);
+            boolean isBlackList = null != value && value.equals(PreferenceUtil.LIST_BLACK);
             appList.setTitle(appList.getContext().getString(
                 isBlackList
                     ? R.string.pref_update_list_black

@@ -4,6 +4,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 
 import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 
 public class Theme extends Abstract {
@@ -37,16 +38,16 @@ public class Theme extends Abstract {
         }
         int summaryId;
         switch (theme) {
-            case PreferenceActivity.THEME_LIGHT:
+            case PreferenceUtil.THEME_LIGHT:
                 summaryId = R.string.pref_ui_theme_light;
                 break;
-            case PreferenceActivity.THEME_DARK:
+            case PreferenceUtil.THEME_DARK:
                 summaryId = R.string.pref_ui_theme_dark;
                 break;
-            case PreferenceActivity.THEME_BLACK:
+            case PreferenceUtil.THEME_BLACK:
                 summaryId = R.string.pref_ui_theme_black;
                 break;
-            case PreferenceActivity.THEME_NONE:
+            case PreferenceUtil.THEME_NONE:
             default:
                 summaryId = R.string.pref_ui_theme_none;
                 break;

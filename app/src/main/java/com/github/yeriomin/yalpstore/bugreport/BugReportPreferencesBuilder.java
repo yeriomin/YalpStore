@@ -4,7 +4,7 @@ import android.content.Context;
 import android.preference.PreferenceManager;
 
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
-import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -16,19 +16,19 @@ class BugReportPreferencesBuilder extends BugReportPropertiesBuilder {
 
     static private final String[] PREFERENCES = {
         PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL,
-        PreferenceActivity.PREFERENCE_AUTO_INSTALL,
-        PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
-        PreferenceActivity.PREFERENCE_UI_THEME,
-        PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INTERVAL,
-        PreferenceActivity.PREFERENCE_DELETE_APK_AFTER_INSTALL,
-        PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD,
-        PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY,
-        PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL,
-        PreferenceActivity.PREFERENCE_REQUESTED_LANGUAGE,
-        PreferenceActivity.PREFERENCE_DEVICE_TO_PRETEND_TO_BE,
-        PreferenceActivity.PREFERENCE_INSTALLATION_METHOD,
-        PreferenceActivity.PREFERENCE_NO_IMAGES,
-        PreferenceActivity.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE,
+        PreferenceUtil.PREFERENCE_AUTO_INSTALL,
+        PreferenceUtil.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
+        PreferenceUtil.PREFERENCE_UI_THEME,
+        PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_INTERVAL,
+        PreferenceUtil.PREFERENCE_DELETE_APK_AFTER_INSTALL,
+        PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD,
+        PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY,
+        PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_INSTALL,
+        PreferenceUtil.PREFERENCE_REQUESTED_LANGUAGE,
+        PreferenceUtil.PREFERENCE_DEVICE_TO_PRETEND_TO_BE,
+        PreferenceUtil.PREFERENCE_INSTALLATION_METHOD,
+        PreferenceUtil.PREFERENCE_NO_IMAGES,
+        PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE,
     };
 
     public BugReportPreferencesBuilder(Context context) {

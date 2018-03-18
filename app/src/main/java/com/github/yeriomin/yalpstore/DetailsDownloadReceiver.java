@@ -66,8 +66,8 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
         View buttonInstall = activityRef.get().findViewById(R.id.install);
         buttonInstall.setVisibility(View.VISIBLE);
         boolean installing = !state.getTriggeredBy().equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
-            && (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
-                || PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+            && (PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_AUTO_INSTALL)
+                || PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
             )
         ;
         toggle(R.id.install, installing ? R.string.details_installing : R.string.details_install, !installing);

@@ -5,12 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.notification.DownloadChecksumService;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
-
-import java.io.File;
-
-import static com.github.yeriomin.yalpstore.notification.DownloadChecksumService.PACKAGE_NAME;
 
 public class GlobalDownloadReceiver extends DownloadReceiver {
 
@@ -60,8 +55,8 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
             Log.i(getClass().getSimpleName(), "Launching installer for " + app.getPackageName());
             InstallerAbstract installer = InstallerFactory.get(context);
             if (triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
-                && (PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
-                    || PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+                && (PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_AUTO_INSTALL)
+                    || PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
                 )
             ) {
                 installer.setBackground(false);
@@ -94,13 +89,13 @@ public class GlobalDownloadReceiver extends DownloadReceiver {
     private boolean shouldInstall(DownloadState.TriggeredBy triggeredBy) {
         switch (triggeredBy) {
             case DOWNLOAD_BUTTON:
-                return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_AUTO_INSTALL)
-                    || PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+                return PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_AUTO_INSTALL)
+                    || PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
                 ;
             case UPDATE_ALL_BUTTON:
-                return PreferenceActivity.canInstallInBackground(context);
+                return PreferenceUtil.canInstallInBackground(context);
             case SCHEDULED_UPDATE:
-                return PreferenceActivity.canInstallInBackground(context) && PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
+                return PreferenceUtil.canInstallInBackground(context) && PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_INSTALL);
             case MANUAL_DOWNLOAD_BUTTON:
             default:
                 return false;

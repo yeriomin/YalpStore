@@ -3,25 +3,17 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 
 public class BlackWhiteListManager {
-
-    static private final String DELIMITER = ",";
 
     private SharedPreferences preferences;
     private Set<String> blackWhiteSet;
 
     public BlackWhiteListManager(Context context) {
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        blackWhiteSet = new HashSet<>(Arrays.asList(TextUtils.split(
-            preferences.getString(PreferenceActivity.PREFERENCE_UPDATE_LIST, ""),
-            DELIMITER
-        )));
+        blackWhiteSet = PreferenceUtil.getStringSet(context, PreferenceUtil.PREFERENCE_UPDATE_LIST);
         if (blackWhiteSet.size() == 1 && blackWhiteSet.contains("")) {
             blackWhiteSet.clear();
         }
@@ -43,7 +35,7 @@ public class BlackWhiteListManager {
     }
 
     public boolean isBlack() {
-        return preferences.getString(PreferenceActivity.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceActivity.LIST_BLACK).equals(PreferenceActivity.LIST_BLACK);
+        return preferences.getString(PreferenceUtil.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceUtil.LIST_BLACK).equals(PreferenceUtil.LIST_BLACK);
     }
 
     public boolean isUpdatable(String packageName) {
@@ -67,11 +59,6 @@ public class BlackWhiteListManager {
     }
 
     private void save() {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(
-            PreferenceActivity.PREFERENCE_UPDATE_LIST,
-            TextUtils.join(DELIMITER, blackWhiteSet)
-        );
-        editor.commit();
+        PreferenceUtil.putStringSet(preferences, PreferenceUtil.PREFERENCE_UPDATE_LIST, blackWhiteSet);
     }
 }

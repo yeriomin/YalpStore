@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.CheckShellTask;
@@ -27,11 +28,11 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         String oldValue = ((ListPreference) preference).getValue();
         if (null != oldValue && !oldValue.equals(newValue)) {
-            if (PreferenceActivity.INSTALLATION_METHOD_PRIVILEGED.equals(newValue)) {
+            if (PreferenceUtil.INSTALLATION_METHOD_PRIVILEGED.equals(newValue)) {
                 if (!checkPrivileged()) {
                     return false;
                 }
-            } else if (PreferenceActivity.INSTALLATION_METHOD_ROOT.equals(newValue)) {
+            } else if (PreferenceUtil.INSTALLATION_METHOD_ROOT.equals(newValue)) {
                 new CheckSuTask(activity).execute();
             }
         }
@@ -45,10 +46,10 @@ class OnInstallationMethodChangeListener implements Preference.OnPreferenceChang
         }
         int summaryId;
         switch (installationMethod) {
-            case PreferenceActivity.INSTALLATION_METHOD_PRIVILEGED:
+            case PreferenceUtil.INSTALLATION_METHOD_PRIVILEGED:
                 summaryId = R.string.pref_installation_method_privileged;
                 break;
-            case PreferenceActivity.INSTALLATION_METHOD_ROOT:
+            case PreferenceUtil.INSTALLATION_METHOD_ROOT:
                 summaryId = R.string.pref_installation_method_root;
                 break;
             default:

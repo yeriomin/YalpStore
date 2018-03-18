@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore.task;
 
 import android.app.Activity;
-import android.content.Context;
 
 import com.github.yeriomin.yalpstore.model.App;
 

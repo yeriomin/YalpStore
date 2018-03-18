@@ -16,6 +16,7 @@ import com.github.yeriomin.yalpstore.DeviceInfoActivity;
 import com.github.yeriomin.yalpstore.OnListPreferenceChangeListener;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SpoofDeviceManager;
 import com.github.yeriomin.yalpstore.Util;
@@ -45,7 +46,7 @@ public class Device extends List {
                 ContextUtil.toast(
                     activity.getApplicationContext(),
                     R.string.pref_device_to_pretend_to_be_notice,
-                    PreferenceManager.getDefaultSharedPreferences(activity).getString(PreferenceActivity.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+                    PreferenceManager.getDefaultSharedPreferences(activity).getString(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY, "")
                 );
                 ((AlertDialog) listPreference.getDialog()).getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
@@ -150,7 +151,7 @@ public class Device extends List {
         private boolean askedAlready;
 
         public RequestOnClickListener(Activity activity, boolean logOut) {
-            askedAlready = PreferenceActivity.getBoolean(activity, PREFERENCE_DEVICE_DEFINITION_REQUESTED);
+            askedAlready = PreferenceUtil.getBoolean(activity, PREFERENCE_DEVICE_DEFINITION_REQUESTED);
             this.logOut = logOut;
         }
 

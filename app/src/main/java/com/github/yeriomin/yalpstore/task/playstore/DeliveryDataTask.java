@@ -7,7 +7,7 @@ import com.github.yeriomin.playstoreapi.BuyResponse;
 import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
-import com.github.yeriomin.yalpstore.PreferenceActivity;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -79,7 +79,7 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
     }
 
     private boolean shouldDownloadDelta() {
-        return PreferenceActivity.getBoolean(context, PreferenceActivity.PREFERENCE_DOWNLOAD_DELTAS)
+        return PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_DELTAS)
             && app.getInstalledVersionCode() < app.getVersionCode()
         ;
     }

@@ -20,7 +20,7 @@ public abstract class BaseActivity extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             addQueryTextListener(menu.findItem(R.id.action_search));
         }
-        if (!TextUtils.isEmpty(PreferenceActivity.getString(this, PREFERENCE_EMAIL))) {
+        if (!TextUtils.isEmpty(PreferenceUtil.getString(this, PREFERENCE_EMAIL))) {
             menu.findItem(R.id.action_logout).setVisible(true);
         }
         return super.onCreateOptionsMenu(menu);
