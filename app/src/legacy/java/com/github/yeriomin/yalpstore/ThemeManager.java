@@ -25,6 +25,11 @@ public class ThemeManager extends ThemeManagerAbstract {
     }
 
     @Override
+    protected int getThemeBlack() {
+        return getThemeDark();
+    }
+
+    @Override
     protected int getDialogThemeLight() {
         return 0;
     }
