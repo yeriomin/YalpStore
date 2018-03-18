@@ -23,7 +23,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.task.AvatarTask;
+import com.github.yeriomin.yalpstore.task.playstore.UserProfileTask;
 
 import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL;
 import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_EMAIL;
@@ -180,7 +180,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(email)) {
             navigationView.getMenu().findItem(R.id.action_logout).setVisible(true);
             if (!PreferenceUtil.getBoolean(this, PREFERENCE_APP_PROVIDED_EMAIL)) {
-                new AvatarTask(email, (ImageView) navigationView.getHeaderView(0).findViewById(R.id.avatar)).setFadeInMillis(200).execute();
+                new UserProfileTask((ImageView) navigationView.getHeaderView(0).findViewById(R.id.avatar)).execute();
             }
         }
     }

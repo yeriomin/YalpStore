@@ -9,7 +9,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_margin="16dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/ic_placeholder"/>
 
     <TextView
         android:id="@+id/username"
