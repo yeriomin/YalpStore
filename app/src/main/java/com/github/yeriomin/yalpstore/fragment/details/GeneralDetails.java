@@ -92,6 +92,7 @@ public class GeneralDetails extends Abstract {
     private void drawOfferDetails(App app) {
         List<String> keyList = new ArrayList<>(app.getOfferDetails().keySet());
         Collections.reverse(keyList);
+        ((LinearLayout) activity.findViewById(R.id.offer_details)).removeAllViews();
         for (String key: keyList) {
             addOfferItem(key, app.getOfferDetails().get(key));
         }
