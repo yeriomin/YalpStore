@@ -12,6 +12,7 @@ public class DialogWrapper extends DialogWrapperAbstract {
 
     protected AlertDialog.Builder builder;
     protected AlertDialog dialog;
+    protected View view;
 
     public DialogWrapper(Activity activity) {
         super(activity);
@@ -62,26 +63,23 @@ public class DialogWrapper extends DialogWrapperAbstract {
 
     @Override
     public DialogWrapperAbstract setView(View view) {
+        this.view = view;
         builder.setView(view);
         return this;
     }
 
     @Override
     public DialogWrapperAbstract setLayout(int layoutResId) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder.setView(layoutResId);
-        } else {
-            builder.setView(activity.getLayoutInflater().inflate(layoutResId, null));
-        }
+        setView(activity.getLayoutInflater().inflate(layoutResId, null));
         return this;
     }
 
     @Override
     public View findViewById(int viewId) {
-        if (null == dialog) {
-            create();
+        if (null == view) {
+            return null;
         }
-        return dialog.findViewById(viewId);
+        return view.findViewById(viewId);
     }
 
     @Override

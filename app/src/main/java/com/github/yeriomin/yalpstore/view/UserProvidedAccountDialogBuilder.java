@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -16,6 +17,7 @@ import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.task.playstore.UserProvidedCredentialsTask;
 
 import java.util.ArrayList;
@@ -47,25 +49,24 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         final AutoCompleteTextView editEmail = getEmailInput(ad);
         final EditText editPassword = (EditText) ad.findViewById(R.id.password);
 
-        ad.findViewById(R.id.button_exit).setOnClickListener(new View.OnClickListener() {
+        ad.setPositiveButton(android.R.string.ok, new OnClickListener() {
             @Override
-            public void onClick(View v) {
-                android.os.Process.killProcess(android.os.Process.myPid());
-            }
-        });
-
-        ad.findViewById(R.id.button_ok).setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context c = view.getContext();
+            public void onClick(DialogInterface dialog, int which) {
                 String email = editEmail.getText().toString();
                 String password = editPassword.getText().toString();
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    ContextUtil.toast(c.getApplicationContext(), R.string.error_credentials_empty);
+                    ContextUtil.toast(activity, R.string.error_credentials_empty);
                     return;
                 }
                 ad.dismiss();
                 getUserCredentialsTask().execute(email, password);
+            }
+        });
+        ad.setNegativeButton(android.R.string.cancel, new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                YalpStoreActivity.cascadeFinish();
+                activity.finish();
             }
         });
 
