@@ -29,7 +29,7 @@ Stlačením \"Vytvoriť heslo\" budete presmerovaný na stránku vytvorenia hesl
 <string name="dialog_message_logout">"Naozaj sa chcete odhlásiť?"</string>
 <string name="dialog_account_type_provided_by_user">"Svojim Google účtom"</string>
 <string name="dialog_account_type_predefined">"\"Falošným\" Yalp Store účtom"</string>
-<string name="dialog_account_type_title">"Ako sa chcete prihlásiť do Google Play Store?"</string>
+<string name="dialog_account_type_title">"Ako sa chcete prihlásiť do Obchodu Google Play?"</string>
 <string name="dialog_title_logging_in">"Prihlásenie"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Prihlasovanie so zadanými prihlasovacími údajmi"</string>
 <string name="dialog_message_logging_in_predefined">"Prihlasovanie s Yalp Store prihlasovacími údajmi"</string>
@@ -38,7 +38,7 @@ Stlačením \"Vytvoriť heslo\" budete presmerovaný na stránku vytvorenia hesl
 <string name="error_no_network">"Žiadne sieťové pripojenie."</string>
 <string name="error_network_other">"Chyba siete: %1$s"</string>
 <string name="error_not_purchased">"Zdá sa, že aplikácia nie je zakúpená.
-Presmerovať na jej Play Store web stránku?"</string>
+Presmerovať na jej Obchod Play web stránku?"</string>
 <string name="error_downloads_directory_not_writable">"Adresár Sťahovania nemohol byť vytvorený alebo nie je zapisovateľný."</string>
 <string name="error_token_dispenser_problem">"Nebolo možné sa prihlásiť bez účtu. Skúste použiť svoj vlastný účet."</string>
 <string name="details_updated">"Aktualizované %1$s"</string>
@@ -59,18 +59,18 @@ Presmerovať na jej Play Store web stránku?"</string>
 <string name="details_review_dialog_review_title_hint">"nadpis sem"</string>
 <string name="details_review_dialog_review_comment_hint">"komentár sem"</string>
 <string name="details_review_dialog_fields_optional">"Môžte nechať všetko nevyplnené."</string>
-<string name="details_signature_mismatch">"Nová verzia je podpísaná iným kľúčom ako stará verzia. Pre inštaláciu novej verzie musí byť stará verzia najskôr odinštalovaná. Spravte to prosím a skúste znova. (Majte na pamäti, že odinštalovaním budú vymazané všetky interné dáta aplikácie)"</string>
+<string name="details_signature_mismatch">"Nová verzia je podpísaná iným kľúčom ako stará verzia. Pre inštaláciu novej verzie musí byť stará verzia najprv odinštalovaná. Spravte to prosím a skúste znova. (Majte na pamäti, že odinštalovaním budú vymazané všetky interné dáta aplikácie)"</string>
 <string name="credentials_hint_email">"e-mail sem"</string>
 <string name="credentials_hint_password">"heslo sem"</string>
 <string name="credentials_title">"Prístup ku Google účtu"</string>
 <string name="credentials_message">"Pre fungovanie tejto aplikácie je nutný e-mail a heslo Google účtu.
 
-Zvážte prosím, že používanie tejto aplikácie porušuje zmluvné podmienky Play Store. Bezpečnejšie je pravdepodobne použiť dočasný Google účet, ktorý bol aspoň raz použitý na prihlásenie do Play Store a boli akceptované zmluvné podmienky Play Store."</string>
+Zvážte prosím, že používanie tejto aplikácie porušuje zmluvné podmienky Obchodu Play. Bezpečnejšie je pravdepodobne použiť dočasný Google účet, ktorý bol aspoň raz použitý na prihlásenie do Obchodu Play a boli akceptované zmluvné podmienky Obchodu Play."</string>
 <string name="activity_title_search">"Vyhľadáva sa: \"%1$s\""</string>
 <string name="notification_download_complete">"Sťahovanie dokončené. Stlačte pre začatie inštalácie."</string>
 <string name="notification_download_complete_toast">"%1$s stiahnuté. Stlačte tlačidlo inštalácie alebo notifikáciu pre začatie inštalácie."</string>
 <string name="notification_download_complete_signature_mismatch">"Sťahovanie dokončené, ale .apk podpis nesúhlasí."</string>
-<string name="notification_download_complete_signature_mismatch_toast">"%1$s stiahnuté, ale apk podpis nesúhlasí s nainštalovanou aplikáciou. Mali by ste ju najskôr odinštalovať."</string>
+<string name="notification_download_complete_signature_mismatch_toast">"%1$s stiahnuté, ale apk podpis nesúhlasí s nainštalovanou aplikáciou. Mali by ste ju najprv odinštalovať."</string>
 <string name="notification_updates_available_title">"Dostupné aktualizácie aplikácií."</string>
 <string name="notification_updates_available_message">"Aktualizácie sú dostupné pre %1$d vašich aplikácií."</string>
 <string name="pref_auto_install_summary_off">"Aplikácie sú inštalované, keď užívateľ stlačí notifikáciu dokončenia"</string>
@@ -106,7 +106,7 @@ Zvážte prosím, že používanie tejto aplikácie porušuje zmluvné podmienky
 <string name="pref_delete_apk_after_install_summary_on">"Teraz sa .apk súbory vymazávajú po inštalácii"</string>
 <string name="pref_delete_apk_after_install">"Vymazať .apk po inštalácii"</string>
 <string name="dialog_title_application_crashed">"Ospravedlňujeme sa, Yalp Store sa nečakane ukončil"</string>
-<string name="details_to_play_store">"Zobraziť v Play Store"</string>
+<string name="details_to_play_store">"Zobraziť v Obchode Play"</string>
 <string name="action_categories">"Kategórie"</string>
 <string name="list_update_all">"Aktualizovať všetko"</string>
 <string name="notification_installation_complete">"Aktualizácia nainštalovaná."</string>
@@ -127,16 +127,16 @@ Zvážte prosím, že používanie tejto aplikácie porušuje zmluvné podmienky
 <string name="dialog_message_package_id">"Existuje balíček s presne rovnakým názvom. Chcete prejsť priamo na jeho detailnú stránku?"</string>
 <string name="details_download_checking">"Kontrola…"</string>
 <string name="details_download_not_available">"Nedostupné"</string>
-<string name="manual_download_incompatible">"Google Play Store považuje túto aplikáciu za nekompatibilnú s vaším zariadením. To znamená, že Google Play Store server nevrátil kód verzie."</string>
-<string name="manual_download_compatible">"Pole s verziou kódu bolo predvyplnené posledným kompatibilným kódom verzie tejto aplikácie. Ak chcete predchádzajúcu verziu, jednoducho zadajte menšie číslo ako to súčasné. Ak vývojár nevymazal apk predchádzajúcej verzie s Play Store, malo by sa začať sťahovanie."</string>
-<string name="manual_download_warning">"Táto stránka umožňuje ručne vybrať verziu aplikácie na stiahnutie. Kód verzie je číslo identifikujúce verziu aplikácie. Začína sa od 1 a zvyšuje ho vývojár aplikácie vždy pri novej verzii. Play Store umožňuje normálne stiahnuť len posledné apk, kompatibilné s vaším zariadením. Ručným zadaním tohto čísla je možné získať aj inú verziu.
+<string name="manual_download_incompatible">"Obchod Google Play považuje túto aplikáciu za nekompatibilnú s vaším zariadením. To znamená, že server Obchodu Google Play nevrátil kód verzie."</string>
+<string name="manual_download_compatible">"Pole s verziou kódu bolo predvyplnené posledným kompatibilným kódom verzie tejto aplikácie. Ak chcete predchádzajúcu verziu, jednoducho zadajte menšie číslo ako to súčasné. Ak vývojár nevymazal apk predchádzajúcej verzie z Obchodu Play, malo by sa začať sťahovanie."</string>
+<string name="manual_download_warning">"Táto stránka umožňuje ručne vybrať verziu aplikácie na stiahnutie. Kód verzie je číslo identifikujúce verziu aplikácie. Začína sa od 1 a zvyšuje ho vývojár aplikácie vždy pri novej verzii. Obchod Play umožňuje normálne stiahnuť len posledné apk, kompatibilné s vaším zariadením. Ručným zadaním tohto čísla je možné získať aj inú verziu.
 
-Majte na pamäti, že Google Play Store nepodporuje sťahovanie ľubovoľných verzií aplikácií. Úspech závisí od šťastného uhádnutia kódu verzie. Dokonca ak uhádnete správne a začne sa sťahovanie, môžte získať nekompatibilné apk. Väčšinou aj tak len strácate svoj čas!"</string>
+Majte na pamäti, že Obchod Google Play nepodporuje sťahovanie ľubovoľných verzií aplikácií. Úspech závisí od šťastného uhádnutia kódu verzie. Dokonca ak aj uhádnete správne a začne sa sťahovanie, môžte získať nekompatibilné apk. Väčšinou aj tak len strácate svoj čas!"</string>
 <string name="manual_download_hint_version_code">"kód verzie sem"</string>
 <string name="details_uninstall">"Odinštalovať"</string>
 <string name="notification_download_starting">"Sťahovanie začalo"</string>
 <string name="notification_download_progress">"%1$s z %2$s stiahnuté"</string>
-<string name="pref_requested_language">"Play Store vyžaduje jazyk"</string>
+<string name="pref_requested_language">"Obchod Play vyžaduje jazyk"</string>
 <string name="pref_requested_language_default">"Váš predvolený jazyk"</string>
 <string name="pref_device_to_pretend_to_be">"Predstierať ako iné zariadenie"</string>
 <string name="pref_device_to_pretend_to_be_default">"Vaše originálne informácie o zariadení"</string>
@@ -158,7 +158,7 @@ Majte na pamäti, že Google Play Store nepodporuje sťahovanie ľubovoľných v
 <string name="pref_background_update_download_summary_off">"Dostanete iba notifikáciu"</string>
 <string name="pref_background_update_download_summary_on">"Aktualizácie sú v prípade nájdenia stiahnuté"</string>
 <string name="pref_background_update_download">"Tiež stiahnuť aktualizácie"</string>
-<string name="details_not_available_on_play_store">"Nedostupné v Play Store"</string>
+<string name="details_not_available_on_play_store">"Nedostupné v Obchode Play"</string>
 <string name="action_manual">"Ručné stiahnutie"</string>
 <string name="action_get_local_apk">"Získať lokálny apk súbor"</string>
 <string name="details_saved_in_downloads">"Uložené vo vašom adresári Sťahovania"</string>
@@ -183,19 +183,19 @@ Majte na pamäti, že Google Play Store nepodporuje sťahovanie ľubovoľných v
 
 Berte do úvahy, že proces konvertovania Android NEpodporuje a preto to NIE je bezpečné a NEzabezpečuje to správne fungovanie.
 
-Nerobte to len zo zvedavosti. Môže to poškodiť vaše zariadenie. Pred vyskúšaním si zálohujte zariadenie."</string>
+Nerobte to len zo zvedavosti. Môže to poškodiť vaše zariadenie. Pred vyskúšaním si zariadenie zálohujte."</string>
 <string name="dialog_message_system_app_warning_to_normal">"Zvolili ste konverziu systémovej aplikácie na normálnu. Systémové aplikácie väčšinou potrebujú ostať systémové, aby správne fungovali.
 
 Berte do úvahy, že proces konvertovania Android NEpodporuje a preto to NIE je bezpečné a NEzabezpečuje to správne fungovanie.
 
-Nerobte to len zo zvedavosti. Môže to poškodiť vaše zariadenie. Pred vyskúšaním si zálohujte zariadenie."</string>
+Nerobte to len zo zvedavosti. Môže to poškodiť vaše zariadenie. Pred vyskúšaním si zariadenie zálohujte."</string>
 <string name="list_check_updates">"Skontrolovať aktualizácie"</string>
 <string name="pref_background_update_interval_manually">"Iba ručne"</string>
 <string name="dialog_message_system_app_warning_uninstall">"Naozaj chcete odstrániť túto systémovú aplikáciu? Systémové aplikácie sú nahraté vo vašom zariadení jeho výrobcom a väčšinou sú potrebné, aby zariadenie správne fungovalo.
 
 Berte do úvahy, že odstraňovanie systémových aplikácií Android NEpodporuje a preto to NIE je bezpečné a NEzabezpečuje to správne fungovanie.
 
-Nerobte to len zo zvedavosti. Môže to poškodiť vaše zariadenie. Pred vyskúšaním si zálohujte zariadenie."</string>
+Nerobte to len zo zvedavosti. Môže to poškodiť vaše zariadenie. Pred vyskúšaním si zariadenie zálohujte."</string>
 <string name="dialog_title_system_app_self">"Vytvára sa Yalp ako systémová aplikácia"</string>
 <string name="dialog_message_system_app_self">"Pre použitie privilegovaných oprávnení pre možnosť inštalácie aplikácií na pozadí je potrebné Yalp Store vytvoriť ako systémovú aplikáciu.
 
@@ -218,7 +218,7 @@ Vykonať?"</string>
 <string name="bug_report_hint_identification">"Váš e-mail/meno/čokoľvek (voliteľné)"</string>
 <string name="bug_report_explanation_content">"Informácie o vašom zariadení, Yalp Store logy a niektoré Yalp Store nastavenia sa automaticky pridajú do správy. Nezbierajú sa žiadne súkromné ani citlivé informácie."</string>
 <string name="bug_report_explanation_crash">"Môžte pomôcť problém opraviť, keď pošlete správu o chybe vývojárovi. Popíšte prosím čo ste skúšali, keď chyba nastala a stlačte OK, čím sa správa odošle."</string>
-<string name="bug_report_explanation_bug_report">"Popíšte prosím problém. Buďte čo najviac konkrétny. Vyskytla sa chyba pri konkrétnej aplikácií? Vyskytuje sa vždy alebo len niekedy? Ako je možné chybu zopakovať?"</string>
+<string name="bug_report_explanation_bug_report">"Popíšte prosím problém. Buďte čo najviac konkrétny. Vyskytla sa chyba pri konkrétnej aplikácií? Vyskytuje sa vždy alebo len niekedy? Akým spôsobom je možné chybu zopakovať?"</string>
 <string name="thank_you">"Ďakujeme"</string>
 <string name="list_updating">"Aktualizácia…"</string>
 <string name="error_invalid_device_definition">"Definícia zariadenia zamietnutá."</string>
@@ -235,7 +235,8 @@ Vykonať?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Vaše odstránenie z programu beta môže trvať niekoľko minúť."</string>
 <string name="testing_program_section_opted_out_title">"Staňte sa beta testerom"</string>
 <string name="notification_not_privileged">"Nezískané povolenie na inštaláciu"</string>
-    <string name="pref_download_directory">"Adresár Sťahovania"</string>
+<string name="about_paypal_label">"Darovať cez Paypal:"</string>
+<string name="pref_download_directory">"Adresár Sťahovania"</string>
 <string name="pref_download_deltas">"Delta aktualizácie"</string>
 <string name="pref_download_deltas_summary_off">"Vždy sa sťahuje plný apk súbor"</string>
 <string name="pref_download_deltas_summary_on">"Počas aktualizácií sa sťahujú iba zmeny"</string>
@@ -282,4 +283,9 @@ Vykonať?"</string>
 <string name="apps_by">"Aplikácie od autora %1$s"</string>
 <string name="pref_message_fallback">"Pokúsiť sa nastaviť záložný adresár (%1$s)?"</string>
 <string name="no_permissions">"Nepoužívajú sa žiadne povolenia."</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
