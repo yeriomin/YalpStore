@@ -234,7 +234,8 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="testing_program_section_opted_out_propagating_message">"ベータ版プログラムの登録が解除されるまで数分ほどかかることがあります。"</string>
 <string name="testing_program_section_opted_out_title">"ベータ版を使ってみる"</string>
 <string name="notification_not_privileged">"インストール権限が付与されていません"</string>
-    <string name="pref_download_directory">"ダウンロードディレクトリー"</string>
+<string name="about_paypal_label">"寄付:"</string>
+<string name="pref_download_directory">"ダウンロードディレクトリー"</string>
 <string name="pref_download_deltas">"デルタアップデート"</string>
 <string name="pref_download_deltas_summary_off">"毎回すべての apk をダウンロードします"</string>
 <string name="pref_download_deltas_summary_on">"更新の際、変更のみダウンロードします"</string>
@@ -281,4 +282,9 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="apps_by">"%1$s開発のアプリ"</string>
 <string name="pref_message_fallback">"フォールバックディレクトリ (%1$s) に設定しますか?"</string>
 <string name="no_permissions">"使用される権限はありません。"</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
