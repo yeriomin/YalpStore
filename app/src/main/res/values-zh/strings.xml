@@ -242,7 +242,8 @@
 <string name="testing_program_section_opted_out_propagating_message">"您可能需要等待几分钟才能退出 Beta 版计划。"</string>
 <string name="testing_program_section_opted_out_title">"成为 Beta 版测试人员"</string>
 <string name="notification_not_privileged">"安装权限未授予"</string>
-    <string name="pref_download_directory">"下载目录"</string>
+<string name="about_paypal_label">"捐赠"</string>
+<string name="pref_download_directory">"下载目录"</string>
 <string name="pref_download_deltas">"增量更新"</string>
 <string name="pref_download_deltas_summary_off">"每次都下载完整的apk"</string>
 <string name="pref_download_deltas_summary_on">"更新时仅下载改动部分"</string>
@@ -289,4 +290,9 @@
 <string name="apps_by">"%1$s发布的应用"</string>
 <string name="pref_message_fallback">"尝试设置一个备用目录 (%1$s)?"</string>
 <string name="no_permissions">"未使用任何权限。"</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
