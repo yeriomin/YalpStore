@@ -52,6 +52,10 @@ When the GSF id is ready, your email and password (if you provided them) are use
 >
 >A: Yalp already **has** a mini download manager. It is used as a fallback when system DownloadManager is disabled or unavailable for any other reason. You can force Yalp to use the fallback download manager like this: Settings -> Apps -> Show system -> Download Manager -> Disable. I'm not setting the fallback as default because it is very minimalisic and is never going to be as well-tested and feature-rich as the system DownloadManager.
 
+>Q: Some apps are not getting the latest release available on Play Store. What do I do?
+>
+>A: For different reasons the app developer might choose not to release his app for all users at the same time. This is called a [staged rollout](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en). Be patient, the update will come.
+
 >Q: I would like to spoof device X. Can you add its definition to Yalp Store?
 >
 >A: There is an extended library of devices [here](https://github.com/yeriomin/play-store-api/find/alldevices). If you found your device, put it into your downloads directory and it will appear in Yalp Store spoof device list. Note that the files are named by device codenames which might not be the same as the names with which the devices are sold, for example codename of Nexus 5X is bullhead. Also, the device definitions are simple text files, so if you know *exactly* what you need to spoof, you can just edit them by hand.
