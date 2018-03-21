@@ -235,7 +235,8 @@ Pokračovat?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Opuštění programu testování beta verze může chvíli trvat."</string>
 <string name="testing_program_section_opted_out_title">"Staňte se testerem beta verze"</string>
 <string name="notification_not_privileged">"Instalační povolení není uděleno"</string>
-    <string name="pref_download_directory">"Adresář Stahování"</string>
+<string name="about_paypal_label">"Přispět přes Paypal:"</string>
+<string name="pref_download_directory">"Adresář Stahování"</string>
 <string name="pref_download_deltas">"Delta aktualizace"</string>
 <string name="pref_download_deltas_summary_off">"Stahuje se vždy plné apk"</string>
 <string name="pref_download_deltas_summary_on">"Při aktualizacích se stahují pouze změny"</string>
@@ -276,10 +277,15 @@ Pokračovat?"</string>
 <string name="action_filter_category">"Kategorie: %1$s"</string>
 <string name="action_filter_rating">"Hodnocení: %1$s"</string>
 <string name="action_filter_downloads">"Stáhnutí: %1$s"</string>
-<string name="pref_auto_whitelist">"Auto whitelist"</string>
-<string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
-<string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
+<string name="pref_auto_whitelist">"Automatický whitelist"</string>
+<string name="pref_auto_whitelist_summary_on">"Aplikace instalované přes Yalp Store jsou automaticky zařazeny do whitelist seznamu."</string>
+<string name="pref_auto_whitelist_summary_off">"Aplikace musíte zařadit do whitelist seznamu ručně."</string>
 <string name="apps_by">"Aplikace od vydavatele %1$s"</string>
 <string name="pref_message_fallback">"Pokusit se o nastavení záložního adresáře (%1$s)?"</string>
 <string name="no_permissions">"Žádná oprávnění nejsou použita."</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
