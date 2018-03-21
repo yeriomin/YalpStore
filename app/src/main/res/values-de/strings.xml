@@ -150,7 +150,7 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="notification_download_complete_new_permissions_toast">"%1$s wurde heruntergeladen. Die neue Version der App fordert mehr Berechtigungen ein. Bitte überprüfe die neue Berechtigungsliste."</string>
 <string name="pref_not_privileged">"Nur verfügbar, wenn Yalp als System-App installiert ist"</string>
 <string name="pref_installation_method">"Installationsmethode"</string>
-<string name="pref_installation_method_default">"Standartmäßiger Installationsdialog, keine Installationen im Hintergrund"</string>
+<string name="pref_installation_method_default">"Standardmäßiger Installationsdialog, keine Installationen im Hintergrund"</string>
 <string name="pref_installation_method_root">"Nutze Root-Rechte"</string>
 <string name="pref_installation_method_privileged">"Nutze System-Rechte"</string>
 <string name="pref_background_update_download_summary_off">"Du erhälst nur eine Benachrichtigung"</string>
@@ -233,7 +233,8 @@ Fortfahren?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Bis du aus dem Betaprogramm entfernt wurdest, kann es einige Minuten dauern."</string>
 <string name="testing_program_section_opted_out_title">"Betatester werden"</string>
 <string name="notification_not_privileged">"Berechtigung zum Installieren nicht bewilligt."</string>
-    <string name="pref_download_directory">"Download-Ordner"</string>
+<string name="about_paypal_label">"Via PayPal spenden:"</string>
+<string name="pref_download_directory">"Download-Ordner"</string>
 <string name="pref_download_deltas">"Delta-Aktualisierungen"</string>
 <string name="pref_download_deltas_summary_off">"Die gesamte apk wird jedes Mal heruntergeladen"</string>
 <string name="pref_download_deltas_summary_on">"Beim Aktualisieren werden nur Änderungen heruntergeladen"</string>
@@ -280,4 +281,9 @@ Fortfahren?"</string>
 <string name="apps_by">"Apps von %1$s"</string>
 <string name="pref_message_fallback">"Versuche ein Rückfall-Verzeichnis festzulegen (%1$s)?"</string>
 <string name="no_permissions">"Es werden keine Berechtigungen verwendet."</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
