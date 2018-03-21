@@ -232,7 +232,8 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="testing_program_section_opted_out_propagating_message">"Opuszczanie programu testów beta może potrwać kilka minut."</string>
 <string name="testing_program_section_opted_out_title">"Zostań betatesterem"</string>
 <string name="notification_not_privileged">"Uprawnienia do instalacji nie zostały przyznane"</string>
-    <string name="pref_download_directory">"Katalog pobrań"</string>
+<string name="about_paypal_label">"Dotacja:"</string>
+<string name="pref_download_directory">"Katalog pobrań"</string>
 <string name="pref_download_deltas">"Aktualizacje delta"</string>
 <string name="pref_download_deltas_summary_off">"Pełny plik .apk jest pobierany za każdym razem"</string>
 <string name="pref_download_deltas_summary_on">"Tylko zmiany są pobierane podczas aktualizacji"</string>
@@ -279,4 +280,9 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="apps_by">"Aplikacje od %1$s"</string>
 <string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
 <string name="no_permissions">"Brak wymaganych uprawnień."</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
