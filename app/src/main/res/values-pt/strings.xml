@@ -3,8 +3,8 @@
 <string name="about_developer_email_label">"Email do programador:"</string>
 <string name="about_logged_in">"Sessão iniciada como:"</string>
 <string name="about_copied_to_clipboard">"Copiado para a área de transferência"</string>
-<string name="list_line_2_updatable">"Atualizado em %1$s"</string>
-<string name="list_empty_updates">"Nenhuma aplicação necessita de ser atualizada"</string>
+<string name="list_line_2_updatable">"Atualizado a %1$s"</string>
+<string name="list_empty_updates">"Nenhuma aplicação necessita de atualizações"</string>
 <string name="list_empty_search">"Nenhuma aplicação encontrada"</string>
 <string name="list_incompatible">"Incompatível"</string>
 <string name="action_about">"Sobre"</string>
@@ -140,7 +140,7 @@ Lembre-se que ao efetuar a transferência de versões arbitrárias de aplicaçõ
 <string name="notification_download_progress">"%1$s of %2$s transferido"</string>
 <string name="pref_requested_language">"Idioma da Play Store"</string>
 <string name="pref_requested_language_default">"Idioma predefinido"</string>
-<string name="pref_device_to_pretend_to_be">"Simular um dispositivo diferente"</string>
+<string name="pref_device_to_pretend_to_be">"Simular ser um dispositivo diferente"</string>
 <string name="pref_device_to_pretend_to_be_default">"Informação original do dispositivo"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Esta modificação será aplicada após iniciar sessão novamente"</string>
 <string name="pref_category_updates">"Atualizações"</string>
@@ -236,7 +236,8 @@ Prosseguir mesmo assim?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Pode levar alguns minutos para remover você do programa Beta."</string>
 <string name="testing_program_section_opted_out_title">"Seja um testador Beta"</string>
 <string name="notification_not_privileged">"Permissão para instalar não concedida"</string>
-    <string name="pref_download_directory">"Diretório Downloads"</string>
+<string name="about_paypal_label">"Doar:"</string>
+<string name="pref_download_directory">"Diretório Downloads"</string>
 <string name="pref_download_deltas">"Atualizações Delta"</string>
 <string name="pref_download_deltas_summary_off">"Aplicação completa será transferida sempre"</string>
 <string name="pref_download_deltas_summary_on">"Apenas modificações serão transferidas durante atualizações"</string>
@@ -283,4 +284,9 @@ Prosseguir mesmo assim?"</string>
 <string name="apps_by">"Apps do %1$s"</string>
 <string name="pref_message_fallback">"Tentar definir um diretório de retorno (%1$s)?"</string>
 <string name="no_permissions">"Não utiliza permissões."</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
