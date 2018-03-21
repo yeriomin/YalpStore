@@ -236,7 +236,8 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="testing_program_section_opted_out_propagating_message">"Podemos tardar unos minutos en retirarte del programa Beta."</string>
 <string name="testing_program_section_opted_out_title">"Convertirte en tester Beta"</string>
 <string name="notification_not_privileged">"Permiso de instalación no concedido"</string>
-    <string name="pref_download_directory">"Carpeta de descargas"</string>
+<string name="about_paypal_label">"Donar:"</string>
+<string name="pref_download_directory">"Carpeta de descargas"</string>
 <string name="pref_download_deltas">"Actualizaciones diferenciales"</string>
 <string name="pref_download_deltas_summary_off">"Se descargarán los APK completos cada vez"</string>
 <string name="pref_download_deltas_summary_on">"Solo los cambios se descargarán durante las actualizaciones"</string>
@@ -283,4 +284,9 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="apps_by">"Aplicaciones de %1$s"</string>
 <string name="pref_message_fallback">"¿Intentar establecer otra carpeta (%1$s) como segunda opción?"</string>
 <string name="no_permissions">"No se usan permisos."</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
