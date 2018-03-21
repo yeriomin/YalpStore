@@ -4,8 +4,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:paddingLeft="15dip"
-    android:paddingRight="15dip"
-    android:paddingBottom="15dip" >
+    android:paddingRight="15dip" >
 
     <TextView
         android:text="@string/details_review_dialog_fields_optional"
