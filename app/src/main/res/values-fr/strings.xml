@@ -63,9 +63,9 @@
 <string name="credentials_message">"Cette application a besoin d\'un compte Google pour fonctionner.  Utiliser Yalp Store se fait en violation des conditions d\'utilisation du Play Store. Il est recommandé d\'utiliser un compte Google jetable, qui a été utilisé au moins une fois avec le Play Store, et qui a accepté ses conditions d\'utilisation."</string>
 <string name="activity_title_search">"Recherche de \"%1$s\" "</string>
 <string name="notification_download_complete">"Téléchargement terminé. Touchez pour installer."</string>
-<string name="notification_download_complete_toast">"Téléchargement de %1$s terminé. Touchez le bouton d\'installation ou la ntofication pour installer."</string>
+<string name="notification_download_complete_toast">"Téléchargement de %1$s terminé. Touchez le bouton d\'installation ou la notification pour installer."</string>
 <string name="notification_download_complete_signature_mismatch">"Téléchargement terminé, mais la signature ne correspond pas à l\'application."</string>
-<string name="notification_download_complete_signature_mismatch_toast">"Téléchargement de %1$s terminé, mais la signature ne correspond pas à l\'application installée. Il faut la désinstaller d\'abord (vous perdrez les donnés de l\'application)."</string>
+<string name="notification_download_complete_signature_mismatch_toast">"Téléchargement de %1$s terminé, mais la signature ne correspond pas à l\'application installée. Il faut la désinstaller d\'abord (vous perdrez les données de l\'application)."</string>
 <string name="notification_updates_available_title">"Mises à jour disponibles."</string>
 <string name="notification_updates_available_message">"Des mises à jour sont disponibles pour %1$d applications."</string>
 <string name="pref_auto_install_summary_off">"Installer les applications quand l\'utilisateur la valide"</string>
@@ -212,7 +212,8 @@
 <string name="testing_program_section_opted_out_propagating_message">"Votre désinscription du programme bêta peut prendre quelques minutes."</string>
 <string name="testing_program_section_opted_out_title">"Devenir testeur bêta"</string>
 <string name="notification_not_privileged">"Permission d'installation non accordée"</string>
-    <string name="pref_download_directory">"Dossier de téléchargements"</string>
+<string name="about_paypal_label">"Faire un don :"</string>
+<string name="pref_download_directory">"Dossier de téléchargements"</string>
 <string name="pref_download_deltas">"Mise à jour delta"</string>
 <string name="pref_download_deltas_summary_off">"L'intégralité de l'apk est téléchargée à chaque fois"</string>
 <string name="pref_download_deltas_summary_on">"Seules les modifications sont téléchargées pendant les mises à jour"</string>
@@ -246,7 +247,7 @@
 <string name="list_app_blacklisted">"Sur liste noire"</string>
 <string name="list_app_whitelisted">"Sur liste blanche"</string>
 <string name="action_filter">"Filtrer"</string>
-<string name="action_filter_system_apps">"Applis Système"</string>
+<string name="action_filter_system_apps">"Applis système"</string>
 <string name="action_filter_apps_with_ads">"Applis avec pubs"</string>
 <string name="action_filter_paid_apps">"Applis payantes"</string>
 <string name="action_filter_gsf_dependent_apps">"Applis dépendant de GSF"</string>
@@ -259,4 +260,9 @@
 <string name="apps_by">"Applications de %1$s"</string>
 <string name="pref_message_fallback">"Essayer de définir un répertoire de secours (%1$s) ?"</string>
 <string name="no_permissions">"Aucune autorisation n\'est utilisée."</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
