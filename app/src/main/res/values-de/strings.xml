@@ -233,8 +233,7 @@ Fortfahren?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Bis du aus dem Betaprogramm entfernt wurdest, kann es einige Minuten dauern."</string>
 <string name="testing_program_section_opted_out_title">"Betatester werden"</string>
 <string name="notification_not_privileged">"Berechtigung zum Installieren nicht bewilligt."</string>
-<string name="about_paypal_label">"Via PayPal spenden:"</string>
-<string name="pref_download_directory">"Download-Ordner"</string>
+    <string name="pref_download_directory">"Download-Ordner"</string>
 <string name="pref_download_deltas">"Delta-Aktualisierungen"</string>
 <string name="pref_download_deltas_summary_off">"Die gesamte apk wird jedes Mal heruntergeladen"</string>
 <string name="pref_download_deltas_summary_on">"Beim Aktualisieren werden nur Änderungen heruntergeladen"</string>

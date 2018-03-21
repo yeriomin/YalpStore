@@ -238,8 +238,7 @@ Fazer?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Pode levar alguns minutos para removê-lo do programa beta."</string>
 <string name="testing_program_section_opted_out_title">"Torne-se um testador beta"</string>
 <string name="notification_not_privileged">"Instalar permissão não concedida"</string>
-<string name="about_paypal_label">"Fazer doação:"</string>
-<string name="pref_download_directory">"Diretório do download"</string>
+    <string name="pref_download_directory">"Diretório do download"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"O apk completo é baixado toda vez"</string>
 <string name="pref_download_deltas_summary_on">"Apenas as alterações são baixadas durante as atualizações"</string>

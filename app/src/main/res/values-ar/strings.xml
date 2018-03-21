@@ -231,8 +231,7 @@
 <string name="testing_program_section_opted_out_propagating_message">"قد تستغرق إزالتك من البرنامج التجريبي بضع دقائق."</string>
 <string name="testing_program_section_opted_out_title">"الانضمام إلى مختبِري الإصدار التجريبي"</string>
 <string name="notification_not_privileged">"Install permission not granted"</string>
-<string name="about_paypal_label">"التبرع"</string>
-<string name="pref_download_directory">"مجلد التنزيل"</string>
+    <string name="pref_download_directory">"مجلد التنزيل"</string>
 <string name="pref_download_deltas">"تحذيث جزئي"</string>
 <string name="pref_download_deltas_summary_off">"تحميل ملف apk  كامل في كل مرة"</string>
 <string name="pref_download_deltas_summary_on">"يتم تحميل مجرد التغييرات الاخيرة للتحديث"</string>

@@ -33,7 +33,7 @@ public class AboutActivity extends YalpStoreActivity {
             }
         });
         findViewById(R.id.website).setOnClickListener(new UriOpeningListener());
-        findViewById(R.id.paypal).setOnClickListener(new UriOpeningListener());
+        findViewById(R.id.librepay).setOnClickListener(new UriOpeningListener());
         findViewById(R.id.bitcoin).setOnClickListener(new UriOpeningListener() {
             @Override
             protected String getUri(View v) {

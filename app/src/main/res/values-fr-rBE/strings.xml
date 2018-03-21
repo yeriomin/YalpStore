@@ -234,8 +234,7 @@ Poursuivre ?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Votre désinscription du programme bêta peut prendre quelques minutes."</string>
 <string name="testing_program_section_opted_out_title">"Devenir testeur Bêta"</string>
 <string name="notification_not_privileged">"Permission d'installation non accordée"</string>
-<string name="about_paypal_label">"Faire un don"</string>
-<string name="pref_download_directory">"Dossier de téléchargements"</string>
+    <string name="pref_download_directory">"Dossier de téléchargements"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"Full apk is downloaded every time"</string>
 <string name="pref_download_deltas_summary_on">"Only changes are downloaded during updates"</string>

@@ -235,8 +235,7 @@ El procesu nun ye perfeutu y ye específicu pa cada preséu, asina que quiciabes
 <string name="testing_program_section_opted_out_propagating_message">"Pue entardar dellos minutos el quitate del programa beta"</string>
 <string name="testing_program_section_opted_out_title">"Facese probador beta"</string>
 <string name="notification_not_privileged">"Nun se concedió'l permisu d'instalación"</string>
-<string name="about_paypal_label">"Donaciones de PayPal:"</string>
-<string name="pref_download_directory">"Direutoriu de descarga"</string>
+    <string name="pref_download_directory">"Direutoriu de descarga"</string>
 <string name="pref_download_deltas">"Anovamientos delta"</string>
 <string name="pref_download_deltas_summary_off">"Báxase l'APK completa cada vegada"</string>
 <string name="pref_download_deltas_summary_on">"Namái se baxen los cambeos de los anovamientos"</string>

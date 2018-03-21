@@ -236,8 +236,7 @@ Do it?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Вилучення з програми бета-тестування може тривати кілька хвилин."</string>
 <string name="testing_program_section_opted_out_title">"Станьте тестувальником бета-версії"</string>
 <string name="notification_not_privileged">"Немає дозволу на встановлення"</string>
-<string name="about_paypal_label">"Пожертва:"</string>
-<string name="pref_download_directory">"Куди зберігати apk"</string>
+    <string name="pref_download_directory">"Куди зберігати apk"</string>
 <string name="pref_download_deltas">"Дельта оновлення"</string>
 <string name="pref_download_deltas_summary_off">"Кожного разу завантажується весь apk"</string>
 <string name="pref_download_deltas_summary_on">"При оновлені завантажуються лише зміни"</string>

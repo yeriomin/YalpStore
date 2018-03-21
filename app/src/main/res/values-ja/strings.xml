@@ -234,8 +234,7 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="testing_program_section_opted_out_propagating_message">"ベータ版プログラムの登録が解除されるまで数分ほどかかることがあります。"</string>
 <string name="testing_program_section_opted_out_title">"ベータ版を使ってみる"</string>
 <string name="notification_not_privileged">"インストール権限が付与されていません"</string>
-<string name="about_paypal_label">"寄付:"</string>
-<string name="pref_download_directory">"ダウンロードディレクトリー"</string>
+    <string name="pref_download_directory">"ダウンロードディレクトリー"</string>
 <string name="pref_download_deltas">"デルタアップデート"</string>
 <string name="pref_download_deltas_summary_off">"毎回すべての apk をダウンロードします"</string>
 <string name="pref_download_deltas_summary_on">"更新の際、変更のみダウンロードします"</string>

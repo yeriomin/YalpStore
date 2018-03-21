@@ -237,8 +237,7 @@ Nu doen?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Het kan enkele minuten duren voordat je bent verwijderd uit het bètaprogramma."</string>
 <string name="testing_program_section_opted_out_title">"Bètatester worden"</string>
 <string name="notification_not_privileged">"Installatie permissie niet toegezegd"</string>
-<string name="about_paypal_label">"Doneer:"</string>
-<string name="pref_download_directory">"Download locatie"</string>
+    <string name="pref_download_directory">"Download locatie"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"De volledige apk wordt bij iedere update gedownload"</string>
 <string name="pref_download_deltas_summary_on">"Alleen de veranderingen aan de app worden gedownload"</string>

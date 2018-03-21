@@ -234,8 +234,7 @@ Jarraitu?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Minutu batzuk behar izan ditzakegu zu beta sarbideko programatik kentzeko."</string>
 <string name="testing_program_section_opted_out_title">"Bihurtu beta-probatzaile"</string>
 <string name="notification_not_privileged">"Ez da eman instalatzeko baimena"</string>
-<string name="about_paypal_label">"Egin dohaintza:"</string>
-<string name="pref_download_directory">"Deskargen direktorioa"</string>
+    <string name="pref_download_directory">"Deskargen direktorioa"</string>
 <string name="pref_download_deltas">"Delta eguneraketak"</string>
 <string name="pref_download_deltas_summary_off">"apk osoa deskargatzen da aldi bakoitzean"</string>
 <string name="pref_download_deltas_summary_on">"Aldaketak besterik ez dira deskargatzen eguneraketetan"</string>

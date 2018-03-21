@@ -235,8 +235,7 @@ Vykonať?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Vaše odstránenie z programu beta môže trvať niekoľko minúť."</string>
 <string name="testing_program_section_opted_out_title">"Staňte sa beta testerom"</string>
 <string name="notification_not_privileged">"Nezískané povolenie na inštaláciu"</string>
-<string name="about_paypal_label">"Darovať cez Paypal:"</string>
-<string name="pref_download_directory">"Adresár Sťahovania"</string>
+    <string name="pref_download_directory">"Adresár Sťahovania"</string>
 <string name="pref_download_deltas">"Delta aktualizácie"</string>
 <string name="pref_download_deltas_summary_off">"Vždy sa sťahuje plný apk súbor"</string>
 <string name="pref_download_deltas_summary_on">"Počas aktualizácií sa sťahujú iba zmeny"</string>

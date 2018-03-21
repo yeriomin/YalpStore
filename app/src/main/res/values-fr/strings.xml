@@ -212,8 +212,7 @@
 <string name="testing_program_section_opted_out_propagating_message">"Votre désinscription du programme bêta peut prendre quelques minutes."</string>
 <string name="testing_program_section_opted_out_title">"Devenir testeur bêta"</string>
 <string name="notification_not_privileged">"Permission d'installation non accordée"</string>
-<string name="about_paypal_label">"Faire un don :"</string>
-<string name="pref_download_directory">"Dossier de téléchargements"</string>
+    <string name="pref_download_directory">"Dossier de téléchargements"</string>
 <string name="pref_download_deltas">"Mise à jour delta"</string>
 <string name="pref_download_deltas_summary_off">"L'intégralité de l'apk est téléchargée à chaque fois"</string>
 <string name="pref_download_deltas_summary_on">"Seules les modifications sont téléchargées pendant les mises à jour"</string>
