@@ -37,7 +37,7 @@ abstract public class EndlessScrollActivity extends AppListActivity {
     }
 
     @Override
-    protected ListItem getListItem(App app) {
+    protected ListItem buildListItem(App app) {
         SearchResultAppBadge appBadge = new SearchResultAppBadge();
         appBadge.setApp(app);
         return appBadge;

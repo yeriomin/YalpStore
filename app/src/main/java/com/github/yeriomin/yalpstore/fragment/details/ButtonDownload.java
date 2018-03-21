@@ -4,12 +4,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.ContextUtil;
-import com.github.yeriomin.yalpstore.DownloadProgressBarUpdater;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
@@ -78,10 +76,6 @@ public class ButtonDownload extends Button {
             && !state.isEverythingSuccessful()
         ) {
             disable(R.string.details_downloading);
-            ProgressBar progressBar = activity.findViewById(R.id.download_progress);
-            if (null != progressBar) {
-                new DownloadProgressBarUpdater(app.getPackageName(), progressBar).execute(PurchaseTask.UPDATE_INTERVAL);
-            }
         }
     }
 
@@ -93,12 +87,9 @@ public class ButtonDownload extends Button {
             );
         } else {
             boolean writePermission = new YalpStorePermissionManager(activity).checkPermission();
-            Log.i(getClass().getSimpleName(), "Write permission granted - " + writePermission);
             if (writePermission && prepareDownloadsDir()) {
                 getPurchaseTask().execute();
             } else {
-                File dir = Paths.getYalpPath(activity);
-                Log.i(getClass().getSimpleName(), dir.getAbsolutePath() + " exists=" + dir.exists() + ", isDirectory=" + dir.isDirectory() + ", writable=" + dir.canWrite());
                 ContextUtil.toast(this.activity.getApplicationContext(), R.string.error_downloads_directory_not_writable);
             }
         }
@@ -115,10 +106,6 @@ public class ButtonDownload extends Button {
     private LocalPurchaseTask getPurchaseTask() {
         LocalPurchaseTask purchaseTask = new LocalPurchaseTask();
         purchaseTask.setFragment(this);
-        ProgressBar progressBar = activity.findViewById(R.id.download_progress);
-        if (null != progressBar) {
-            purchaseTask.setDownloadProgressBarUpdater(new DownloadProgressBarUpdater(app.getPackageName(), progressBar));
-        }
         purchaseTask.setApp(app);
         purchaseTask.setContext(activity);
         purchaseTask.setTriggeredBy(activity instanceof ManualDownloadActivity ? MANUAL_DOWNLOAD_BUTTON : DOWNLOAD_BUTTON);
@@ -146,7 +133,6 @@ public class ButtonDownload extends Button {
         @Override
         public LocalPurchaseTask clone() {
             LocalPurchaseTask task = new LocalPurchaseTask();
-            task.setDownloadProgressBarUpdater(progressBarUpdater);
             task.setTriggeredBy(triggeredBy);
             task.setApp(app);
             task.setErrorView(errorView);

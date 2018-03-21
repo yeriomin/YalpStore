@@ -49,6 +49,7 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
         }
         long downloadId = dm.enqueue(request);
+        Log.i(getClass().getSimpleName(), "Download id " + downloadId);
         new DownloadManagerProgressUpdater(downloadId, this).execute(PROGRESS_INTERVAL);
         return downloadId;
     }

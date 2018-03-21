@@ -146,7 +146,9 @@ public class DownloadState {
 
     public void reset() {
         progress = new HashMap<>();
-        status = new HashMap<>();
+        for (Long downloadId: status.keySet()) {
+            setCancelled(downloadId);
+        }
         apkChecksum = null;
     }
 }

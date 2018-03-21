@@ -13,13 +13,13 @@ import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.ReviewStorageIterator;
-import com.github.yeriomin.yalpstore.view.UserReviewDialogBuilder;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.ImageSource;
 import com.github.yeriomin.yalpstore.task.LoadImageTask;
 import com.github.yeriomin.yalpstore.task.playstore.ReviewDeleteTask;
 import com.github.yeriomin.yalpstore.task.playstore.ReviewLoadTask;
 import com.github.yeriomin.yalpstore.view.UriOnClickListener;
+import com.github.yeriomin.yalpstore.view.UserReviewDialogBuilder;
 
 import java.util.List;
 

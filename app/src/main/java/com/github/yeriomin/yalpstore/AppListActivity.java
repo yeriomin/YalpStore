@@ -1,7 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,9 +23,14 @@ abstract public class AppListActivity extends YalpStoreActivity {
 
     protected ListView listView;
     protected Map<String, ListItem> listItems = new HashMap<>();
+    protected AppListDownloadReceiver appListDownloadReceiver;
 
     abstract public void loadApps();
-    abstract protected ListItem getListItem(App app);
+    abstract protected ListItem buildListItem(App app);
+
+    public ListItem getListItem(String packageName) {
+        return listItems.get(packageName);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,18 @@ abstract public class AppListActivity extends YalpStoreActivity {
         onContentChanged();
         getListView().setOnItemClickListener(new OnAppClickListener(this));
         registerForContextMenu(getListView());
+    }
+
+    @Override
+    protected void onPause() {
+        unregisterReceiver(appListDownloadReceiver);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        appListDownloadReceiver = new AppListDownloadReceiver(this);
+        super.onResume();
     }
 
     @Override
@@ -74,7 +90,6 @@ abstract public class AppListActivity extends YalpStoreActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
-            Log.i(getClass().getSimpleName(), "User granted the write permission");
             new ButtonDownload(this, DetailsActivity.app).download();
         }
     }
@@ -111,7 +126,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
         AppListAdapter adapter = (AppListAdapter) getListView().getAdapter();
         adapter.setNotifyOnChange(false);
         for (App app: appsToAdd) {
-            ListItem listItem = getListItem(app);
+            ListItem listItem = buildListItem(app);
             listItems.put(app.getPackageName(), listItem);
             adapter.add(listItem);
         }

@@ -1,8 +1,6 @@
 package com.github.yeriomin.yalpstore.view;
 
 import android.content.DialogInterface;
-import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 
 import com.github.yeriomin.yalpstore.R;

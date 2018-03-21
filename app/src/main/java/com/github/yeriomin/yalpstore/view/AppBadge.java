@@ -1,13 +1,24 @@
 package com.github.yeriomin.yalpstore.view;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.ListItemDownloadProgressUpdater;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import com.github.yeriomin.yalpstore.fragment.details.ButtonCancel;
+import com.github.yeriomin.yalpstore.fragment.details.ButtonDownload;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
 import com.github.yeriomin.yalpstore.task.LoadImageTask;
+import com.github.yeriomin.yalpstore.task.playstore.PurchaseTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +42,7 @@ public abstract class AppBadge extends ListItem {
 
     @Override
     public void draw() {
-        view.findViewById(R.id.separator).setVisibility(View.GONE);
+        view.findViewById(R.id.more).setVisibility(View.GONE);
         view.findViewById(R.id.progress).setVisibility(View.GONE);
         view.findViewById(R.id.app).setVisibility(View.VISIBLE);
 
@@ -40,6 +51,7 @@ public abstract class AppBadge extends ListItem {
         setText(R.id.text3, TextUtils.join(", ", line3));
 
         drawIcon((ImageView) view.findViewById(R.id.icon));
+        redrawMoreButton();
     }
 
     private void drawIcon(ImageView imageView) {
@@ -58,12 +70,68 @@ public abstract class AppBadge extends ListItem {
     }
 
     protected void setText(int viewId, String text) {
-        TextView textView = (TextView) view.findViewById(viewId);
+        TextView textView = view.findViewById(viewId);
         if (!TextUtils.isEmpty(text)) {
             textView.setText(text);
             textView.setVisibility(View.VISIBLE);
         } else {
             textView.setVisibility(View.GONE);
         }
+    }
+
+    public void redrawMoreButton() {
+        final ButtonDownload buttonDownload = new ButtonDownload((YalpStoreActivity) view.getContext(), app);
+        if (new ButtonCancel((YalpStoreActivity) view.getContext(), app).shouldBeVisible()) {
+            enableCancelButton();
+            new ListItemDownloadProgressUpdater(app.getPackageName(), AppBadge.this).execute(PurchaseTask.UPDATE_INTERVAL);
+        } else if (buttonDownload.shouldBeVisible()) {
+            enableMoreButton(
+                R.drawable.ic_download,
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DetailsActivity.app = app;
+                        buttonDownload.checkAndDownload();
+                        enableCancelButton();
+                    }
+                }
+            );
+        } else {
+            hideMoreButton();
+        }
+    }
+
+    public void hideMoreButton() {
+        view.findViewById(R.id.more).setVisibility(View.GONE);
+        ((TextView) view.findViewById(R.id.more_progress)).setText("");
+    }
+
+    public void setProgress(int progress, int max) {
+        view.findViewById(R.id.more).setVisibility(View.VISIBLE);
+        enableCancelButton();
+        ((TextView) view.findViewById(R.id.more_progress)).setText(((int) (((float) progress/max)*100)) + "%");
+    }
+
+    protected void enableMoreButton(int drawableResId, View.OnClickListener listener) {
+        LinearLayout more = view.findViewById(R.id.more);
+        more.setVisibility(View.VISIBLE);
+        more.setOnClickListener(listener);
+        ((ImageView) more.findViewById(R.id.more_image)).setImageResource(drawableResId);
+    }
+
+    protected void enableCancelButton() {
+        enableMoreButton(
+            R.drawable.ic_cancel,
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    view.getContext().startService(
+                        new Intent(view.getContext().getApplicationContext(), CancelDownloadService.class)
+                            .putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName())
+                    );
+                    redrawMoreButton();
+                }
+            }
+        );
     }
 }

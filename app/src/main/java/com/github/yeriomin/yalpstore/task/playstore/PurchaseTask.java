@@ -12,11 +12,13 @@ import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.DownloadManagerInterface;
-import com.github.yeriomin.yalpstore.DownloadProgressBarUpdater;
+import com.github.yeriomin.yalpstore.DownloadProgressUpdater;
+import com.github.yeriomin.yalpstore.DownloadProgressUpdaterFactory;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.view.DialogWrapper;
 import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
 
@@ -28,12 +30,10 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
     static public final long UPDATE_INTERVAL = 300;
 
     protected DownloadState.TriggeredBy triggeredBy = DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
-    protected DownloadProgressBarUpdater progressBarUpdater;
 
     @Override
     public CloneableTask clone() {
         PurchaseTask task = new PurchaseTask();
-        task.setDownloadProgressBarUpdater(progressBarUpdater);
         task.setTriggeredBy(triggeredBy);
         task.setApp(app);
         task.setErrorView(errorView);
@@ -44,10 +44,6 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 
     public void setTriggeredBy(DownloadState.TriggeredBy triggeredBy) {
         this.triggeredBy = triggeredBy;
-    }
-
-    public void setDownloadProgressBarUpdater(DownloadProgressBarUpdater progressBarUpdater) {
-        this.progressBarUpdater = progressBarUpdater;
     }
 
     @Override
@@ -62,8 +58,11 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
             try {
                 if (downloader.enoughSpace(deliveryData)) {
                     downloader.download(app, deliveryData);
-                    if (null != progressBarUpdater) {
-                        progressBarUpdater.execute(UPDATE_INTERVAL);
+                    if (context instanceof YalpStoreActivity) {
+                        DownloadProgressUpdater progressUpdater = DownloadProgressUpdaterFactory.get((YalpStoreActivity) context, app.getPackageName());
+                        if (null != progressUpdater) {
+                            progressUpdater.execute(UPDATE_INTERVAL);
+                        }
                     }
                 } else {
                     context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));

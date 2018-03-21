@@ -29,6 +29,7 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
         Log.i(getClass().getSimpleName(), "Downloading " + type.name() + " for " + app.getPackageName());
         String url = getUrl(deliveryData, type);
         long downloadId = url.hashCode();
+        Log.i(getClass().getSimpleName(), "Download id " + downloadId);
         statuses.put(downloadId, DownloadManagerInterface.IN_PROGRESS);
         DownloadState.get(app.getPackageName()).setStarted(downloadId);
 

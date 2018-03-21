@@ -95,7 +95,6 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
-            Log.i(getClass().getSimpleName(), "User granted the write permission");
             if (null == downloadOrInstallFragment && null != app) {
                 downloadOrInstallFragment = new DownloadOrInstall(this, app);
                 redrawButtons();

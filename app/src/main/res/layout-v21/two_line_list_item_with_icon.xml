@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
 
     <LinearLayout
         android:id="@+id/app"
@@ -72,13 +72,13 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="end"
-            android:tint="#808080" />
+            android:tint="?android:textColorSecondary" />
 
         <TextView
             android:id="@+id/more_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom" />
+            android:layout_gravity="end" />
 
     </LinearLayout>
 

@@ -3,15 +3,15 @@ package com.github.yeriomin.yalpstore.fragment.details;
 import android.content.Intent;
 import android.view.View;
 
-import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
 
 public class ButtonCancel extends Button {
 
-    public ButtonCancel(DetailsActivity activity, App app) {
+    public ButtonCancel(YalpStoreActivity activity, App app) {
         super(activity, app);
     }
 
@@ -21,7 +21,7 @@ public class ButtonCancel extends Button {
     }
 
     @Override
-    protected boolean shouldBeVisible() {
+    public boolean shouldBeVisible() {
         return !DownloadState.get(app.getPackageName()).isEverythingFinished();
     }
 

@@ -40,7 +40,7 @@ public class InstalledAppsActivity extends AppListActivity {
     }
 
     @Override
-    protected ListItem getListItem(App app) {
+    protected ListItem buildListItem(App app) {
         InstalledAppBadge appBadge = new InstalledAppBadge();
         appBadge.setApp(app);
         return appBadge;

@@ -2,7 +2,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -58,7 +57,6 @@ public class UpdatableAppsActivity extends AppListActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
-            Log.i(getClass().getSimpleName(), "User granted the write permission");
             launchUpdateAll();
         }
     }
@@ -81,7 +79,7 @@ public class UpdatableAppsActivity extends AppListActivity {
     }
 
     @Override
-    protected ListItem getListItem(App app) {
+    protected ListItem buildListItem(App app) {
         UpdatableAppBadge appBadge = new UpdatableAppBadge();
         appBadge.setApp(app);
         return appBadge;

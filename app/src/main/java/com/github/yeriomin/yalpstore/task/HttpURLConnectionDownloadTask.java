@@ -62,7 +62,6 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
 
     @Override
     protected void onPostExecute(Boolean result) {
-        super.onPostExecute(result);
         new NotificationManagerWrapper(context).cancel(getNotificationTitle());
         Intent intent = new Intent();
         intent.setAction((null != result && result) ? DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE : DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED);
@@ -82,7 +81,6 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
 
     @Override
     protected void onCancelled() {
-        super.onCancelled();
         Log.i(getClass().getSimpleName(), "Cancelled download " + downloadId);
         targetFile.delete();
         onPostExecute(false);
@@ -201,7 +199,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
             if (lastProgressUpdate + PROGRESS_INTERVAL < System.currentTimeMillis()) {
                 lastProgressUpdate = System.currentTimeMillis();
                 if (DownloadState.get(downloadId).isCancelled(downloadId)) {
-                    cancel(false);
+                    cancel(true);
                     return null;
                 } else {
                     publishProgress(totalBytesRead, fileSize);
