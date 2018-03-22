@@ -6,13 +6,17 @@ import android.os.AsyncTask;
 
 import com.github.yeriomin.yalpstore.AppListActivity;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
+import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.view.AppBadge;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
-public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String>> {
+public class AppListValidityCheckTask extends AsyncTask<String, Void, Map<String, Integer>> {
 
     private AppListActivity activity;
     protected boolean includeSystemApps = false;
@@ -31,24 +35,44 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String
     }
 
     @Override
-    protected void onPostExecute(Set<String> installedPackageNames) {
+    protected void onPostExecute(Map<String, Integer> installedPackageNames) {
         super.onPostExecute(installedPackageNames);
-        Set<String> newPackageNames = new HashSet<>(installedPackageNames);
+        Set<String> newPackageNames = new HashSet<>(installedPackageNames.keySet());
         newPackageNames.removeAll(activity.getListedPackageNames());
         if (!respectUpdateBlacklist && newPackageNames.size() > 0) {
             activity.loadApps();
             return;
         }
-        Set<String> removedPackageNames = new HashSet<>(activity.getListedPackageNames());
-        removedPackageNames.removeAll(installedPackageNames);
-        for (String packageName: removedPackageNames) {
+        Set<String> packagesToRemove = new HashSet<>();
+        packagesToRemove.addAll(getRemovedPackageNames(installedPackageNames.keySet()));
+        packagesToRemove.addAll(getUpdatedPackageNames(installedPackageNames));
+        for (String packageName: packagesToRemove) {
             activity.removeApp(packageName);
         }
     }
 
+    private Set<String> getRemovedPackageNames(Set<String> installedPackageNames) {
+        Set<String> removedPackageNames = new HashSet<>(activity.getListedPackageNames());
+        removedPackageNames.removeAll(installedPackageNames);
+        return removedPackageNames;
+    }
+
+    private Set<String> getUpdatedPackageNames(Map<String, Integer> installedPackages) {
+        Set<String> updatedPackageNames = new HashSet<>();
+        for (String packageName: installedPackages.keySet()) {
+            if (null != activity.getListItem(packageName)) {
+                App app = ((AppBadge) activity.getListItem(packageName)).getApp();
+                if (app.getVersionCode() == installedPackages.get(packageName)) {
+                    updatedPackageNames.add(packageName);
+                }
+            }
+        }
+        return updatedPackageNames;
+    }
+
     @Override
-    protected Set<String> doInBackground(String... strings) {
-        Set<String> installedApps = new HashSet<>();
+    protected Map<String, Integer> doInBackground(String... strings) {
+        Map<String, Integer> installedApps = new HashMap<>();
         List<PackageInfo> installedPackages = new ArrayList<>();
         try {
             installedPackages.addAll(activity.getPackageManager().getInstalledPackages(0));
@@ -68,7 +92,7 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String
             if (respectUpdateBlacklist && !manager.isUpdatable(reducedPackageInfo.packageName)) {
                 continue;
             }
-            installedApps.add(reducedPackageInfo.packageName);
+            installedApps.put(reducedPackageInfo.packageName, reducedPackageInfo.versionCode);
         }
         return installedApps;
     }
