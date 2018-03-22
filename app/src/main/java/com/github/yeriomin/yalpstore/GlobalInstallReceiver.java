@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.io.File;
 
@@ -26,20 +27,25 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         if (TextUtils.isEmpty(packageName)) {
             return;
         }
+        boolean actionIsInstall = actionIsInstall(intent);
+        if (null != DetailsActivity.app && packageName.equals(DetailsActivity.app.getPackageName())) {
+            updateDetails(actionIsInstall);
+        }
+        ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall);
+        if (!actionIsInstall) {
+            return;
+        }
         BlackWhiteListManager manager = new BlackWhiteListManager(context);
-        if (actionIsInstall(intent) && wasInstalled(context, packageName) && needToAutoWhitelist(context) && !manager.isBlack()) {
+        if (wasInstalled(context, packageName) && needToAutoWhitelist(context) && !manager.isBlack()) {
             Log.i(getClass().getSimpleName(), "Whitelisting " + packageName);
             manager.add(packageName);
         }
-        if (null != DetailsActivity.app && packageName.equals(DetailsActivity.app.getPackageName())) {
-            updateDetails(actionIsInstall(intent));
+        App app = getApp(context, packageName);
+        if (needToRemoveApk(context)) {
+            removeApk(context, app);
         }
-        ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall(intent));
-        if (needToRemoveApk(context) && actionIsInstall(intent)) {
-            App app = getApp(context, packageName);
-            File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
-            boolean deleted = apkPath.delete();
-            Log.i(getClass().getSimpleName(), "Removed " + apkPath + " successfully: " + deleted);
+        if (installationMethodIsDefault(context)) {
+            new NotificationManagerWrapper(context).cancel(app.getDisplayName());
         }
     }
 
@@ -89,6 +95,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         PackageManager pm = context.getPackageManager();
         try {
             app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA));
+            app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(GlobalInstallReceiver.class.getSimpleName(), "Install broadcast received, but package " + packageName + " not found");
         }
@@ -97,9 +104,19 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static private boolean wasInstalled(Context context, String packageName) {
         return InstallationState.isInstalled(packageName)
-            || (PreferenceUtil.getString(context, PreferenceUtil.INSTALLATION_METHOD_DEFAULT).equals(PreferenceUtil.INSTALLATION_METHOD_DEFAULT)
+            || (installationMethodIsDefault(context)
                 && DownloadState.get(packageName).isEverythingFinished()
             )
         ;
+    }
+
+    static private void removeApk(Context context, App app) {
+        File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
+        boolean deleted = apkPath.delete();
+        Log.i(GlobalInstallReceiver.class.getSimpleName(), "Removed " + apkPath + " successfully: " + deleted);
+    }
+
+    static boolean installationMethodIsDefault(Context context) {
+        return PreferenceUtil.getString(context, PreferenceUtil.INSTALLATION_METHOD_DEFAULT).equals(PreferenceUtil.INSTALLATION_METHOD_DEFAULT);
     }
 }
