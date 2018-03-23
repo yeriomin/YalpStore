@@ -236,7 +236,6 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="testing_program_section_opted_out_propagating_message">"Podemos tardar unos minutos en retirarte del programa Beta."</string>
 <string name="testing_program_section_opted_out_title">"Convertirte en tester Beta"</string>
 <string name="notification_not_privileged">"Permiso de instalación no concedido"</string>
-<string name="about_paypal_label">"Donar:"</string>
 <string name="pref_download_directory">"Carpeta de descargas"</string>
 <string name="pref_download_deltas">"Actualizaciones diferenciales"</string>
 <string name="pref_download_deltas_summary_off">"Se descargarán los APK completos cada vez"</string>

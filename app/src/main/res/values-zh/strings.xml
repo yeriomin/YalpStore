@@ -242,7 +242,6 @@
 <string name="testing_program_section_opted_out_propagating_message">"您可能需要等待几分钟才能退出 Beta 版计划。"</string>
 <string name="testing_program_section_opted_out_title">"成为 Beta 版测试人员"</string>
 <string name="notification_not_privileged">"安装权限未授予"</string>
-<string name="about_paypal_label">"捐赠"</string>
 <string name="pref_download_directory">"下载目录"</string>
 <string name="pref_download_deltas">"增量更新"</string>
 <string name="pref_download_deltas_summary_off">"每次都下载完整的apk"</string>

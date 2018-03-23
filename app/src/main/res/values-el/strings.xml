@@ -242,7 +242,6 @@
 <string name="testing_program_section_opted_out_propagating_message">"Μπορεί να χρειαστούν μερικά λεπτά για την απομάκρυνσή σου από το πρόγραμμα beta."</string>
 <string name="testing_program_section_opted_out_title">"Γίνε δοκιμαστής της beta"</string>
 <string name="notification_not_privileged">"Δεν έχουν παραχωρηθεί δικαιώματα εγκατάστασης"</string>
-<string name="about_paypal_label">"Δωρεά με Πέυπάλ:"</string>
 <string name="pref_download_directory">"Κατάλογος λήψεων"</string>
 <string name="pref_download_deltas">"Ενημερώσεις Δέλτα"</string>
 <string name="pref_download_deltas_summary_off">"Το πλήρες apk λαμβάνεται την κάθε φορά"</string>

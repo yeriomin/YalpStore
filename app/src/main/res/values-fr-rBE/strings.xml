@@ -234,7 +234,7 @@ Poursuivre ?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Votre désinscription du programme bêta peut prendre quelques minutes."</string>
 <string name="testing_program_section_opted_out_title">"Devenir testeur Bêta"</string>
 <string name="notification_not_privileged">"Permission d'installation non accordée"</string>
-    <string name="pref_download_directory">"Dossier de téléchargements"</string>
+<string name="pref_download_directory">"Dossier de téléchargements"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"Full apk is downloaded every time"</string>
 <string name="pref_download_deltas_summary_on">"Only changes are downloaded during updates"</string>
@@ -281,4 +281,9 @@ Poursuivre ?"</string>
 <string name="apps_by">"Apps by %1$s"</string>
 <string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
 <string name="no_permissions">"No permissions are used."</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>

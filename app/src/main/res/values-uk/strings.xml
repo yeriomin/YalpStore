@@ -236,7 +236,7 @@ Do it?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Вилучення з програми бета-тестування може тривати кілька хвилин."</string>
 <string name="testing_program_section_opted_out_title">"Станьте тестувальником бета-версії"</string>
 <string name="notification_not_privileged">"Немає дозволу на встановлення"</string>
-    <string name="pref_download_directory">"Куди зберігати apk"</string>
+<string name="pref_download_directory">"Куди зберігати apk"</string>
 <string name="pref_download_deltas">"Дельта оновлення"</string>
 <string name="pref_download_deltas_summary_off">"Кожного разу завантажується весь apk"</string>
 <string name="pref_download_deltas_summary_on">"При оновлені завантажуються лише зміни"</string>
@@ -283,4 +283,9 @@ Do it?"</string>
 <string name="apps_by">"Програми від: %1$s"</string>
 <string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
 <string name="no_permissions">"Не потребує дозволів."</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
