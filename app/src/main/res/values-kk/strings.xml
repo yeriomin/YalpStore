@@ -238,7 +238,7 @@ Backup жасаңыз."</string>
 <string name="testing_program_section_opted_out_propagating_message">"Бета нұсқасын сынау бағдарламасынан шығу бірнеше минутты алуы мүмкін."</string>
 <string name="testing_program_section_opted_out_title">"Бета нұсқасының сынақшысы атаныңыз"</string>
 <string name="notification_not_privileged">"Орнату рұқсаты жоқ"</string>
-    <string name="pref_download_directory">"Apk қайда сақтау қажет"</string>
+<string name="pref_download_directory">"Apk қайда сақтау қажет"</string>
 <string name="pref_download_deltas">"Дельта жаңартулар"</string>
 <string name="pref_download_deltas_summary_off">"Əр жұктеген сайын бүкіл apk жүктеледі"</string>
 <string name="pref_download_deltas_summary_on">"Жаңарту кезінде тек өзгертулер жүктеледі"</string>
@@ -285,4 +285,9 @@ Backup жасаңыз."</string>
 <string name="apps_by">"%1$s қолданбалары"</string>
 <string name="pref_message_fallback">"Сақтық көшірме каталогын пайдаланасыз ба (%1$s)?"</string>
 <string name="no_permissions">"No permissions are used."</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
