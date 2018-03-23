@@ -236,7 +236,6 @@ Prosseguir mesmo assim?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Pode levar alguns minutos para remover você do programa Beta."</string>
 <string name="testing_program_section_opted_out_title">"Seja um testador Beta"</string>
 <string name="notification_not_privileged">"Permissão para instalar não concedida"</string>
-<string name="about_paypal_label">"Doar:"</string>
 <string name="pref_download_directory">"Diretório Downloads"</string>
 <string name="pref_download_deltas">"Atualizações Delta"</string>
 <string name="pref_download_deltas_summary_off">"Aplicação completa será transferida sempre"</string>
