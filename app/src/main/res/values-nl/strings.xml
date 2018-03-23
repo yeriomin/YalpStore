@@ -237,7 +237,7 @@ Nu doen?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Het kan enkele minuten duren voordat je bent verwijderd uit het bètaprogramma."</string>
 <string name="testing_program_section_opted_out_title">"Bètatester worden"</string>
 <string name="notification_not_privileged">"Installatie permissie niet toegezegd"</string>
-    <string name="pref_download_directory">"Download locatie"</string>
+<string name="pref_download_directory">"Download locatie"</string>
 <string name="pref_download_deltas">"Delta updates"</string>
 <string name="pref_download_deltas_summary_off">"De volledige apk wordt bij iedere update gedownload"</string>
 <string name="pref_download_deltas_summary_on">"Alleen de veranderingen aan de app worden gedownload"</string>
@@ -284,4 +284,9 @@ Nu doen?"</string>
 <string name="apps_by">"Apps van %1$s"</string>
 <string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
 <string name="no_permissions">"Geen machtigingen in gebruik."</string>
+<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 </resources>
