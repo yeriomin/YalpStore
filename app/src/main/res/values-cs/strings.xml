@@ -235,7 +235,6 @@ Pokračovat?"</string>
 <string name="testing_program_section_opted_out_propagating_message">"Opuštění programu testování beta verze může chvíli trvat."</string>
 <string name="testing_program_section_opted_out_title">"Staňte se testerem beta verze"</string>
 <string name="notification_not_privileged">"Instalační povolení není uděleno"</string>
-<string name="about_paypal_label">"Přispět přes Paypal:"</string>
 <string name="pref_download_directory">"Adresář Stahování"</string>
 <string name="pref_download_deltas">"Delta aktualizace"</string>
 <string name="pref_download_deltas_summary_off">"Stahuje se vždy plné apk"</string>
@@ -283,9 +282,9 @@ Pokračovat?"</string>
 <string name="apps_by">"Aplikace od vydavatele %1$s"</string>
 <string name="pref_message_fallback">"Pokusit se o nastavení záložního adresáře (%1$s)?"</string>
 <string name="no_permissions">"Žádná oprávnění nejsou použita."</string>
-<string name="about_librepay_label">"Donate Librepay:"</string>
-<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
-<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="about_librepay_label">"Darovat přes Librepay:"</string>
+<string name="notification_file_verification_failed">"Soubor je pravděpodobně poškozený. Zkuste ho znovu stáhnout."</string>
+<string name="pref_download_internal_storage">"Stahovat do interního úložiště"</string>
+<string name="pref_download_internal_storage_summary_on">"Bezpečnější, ale apk soubory jsou uživateli nepřístupné"</string>
+<string name="pref_download_internal_storage_summary_off">"Apk soubory jsou stahovány do uvedeného adresáře na externí úložiště"</string>
 </resources>
