@@ -2,6 +2,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
@@ -38,5 +39,9 @@ public class YalpStorePermissionManager {
                 PERMISSIONS_REQUEST_CODE
             );
         }
+    }
+
+    public static boolean hasInstallPermission(Context context) {
+        return context.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) == PackageManager.PERMISSION_GRANTED;
     }
 }

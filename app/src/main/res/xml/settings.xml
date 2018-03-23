@@ -80,7 +80,7 @@
             android:summaryOn="@string/pref_delete_apk_after_install_summary_on"
             android:title="@string/pref_delete_apk_after_install" />
         <ListPreference
-            android:defaultValue="default"
+            android:defaultValue=""
             android:key="PREFERENCE_INSTALLATION_METHOD"
             android:title="@string/pref_installation_method"
             android:entries="@array/installationMethodLabels"

@@ -1,5 +1,6 @@
 package com.github.yeriomin.yalpstore;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -80,6 +81,15 @@ public class PreferenceUtil {
             editor.putStringSet(key, set).apply();
         } else {
             editor.putString(key, TextUtils.join(DELIMITER, set)).commit();
+        }
+    }
+
+    static public void prefillInstallationMethod(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        if (TextUtils.isEmpty(preferences.getString(PreferenceUtil.PREFERENCE_INSTALLATION_METHOD, ""))
+            && YalpStorePermissionManager.hasInstallPermission(context)
+        ) {
+            preferences.edit().putString(PreferenceUtil.PREFERENCE_INSTALLATION_METHOD, PreferenceUtil.INSTALLATION_METHOD_PRIVILEGED).commit();
         }
     }
 }

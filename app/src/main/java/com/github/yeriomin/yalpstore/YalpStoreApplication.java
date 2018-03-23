@@ -66,6 +66,7 @@ public class YalpStoreApplication extends Application {
                 Log.e(getClass().getSimpleName(), "Could not register cache " + e.getMessage());
             }
         }
+        PreferenceUtil.prefillInstallationMethod(this);
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
         registerDownloadReceiver();

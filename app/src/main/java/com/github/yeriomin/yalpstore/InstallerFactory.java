@@ -12,8 +12,12 @@ public class InstallerFactory {
             case PreferenceUtil.INSTALLATION_METHOD_ROOT:
                 return new InstallerRoot(context);
             case PreferenceUtil.INSTALLATION_METHOD_DEFAULT:
-            default:
                 return new InstallerDefault(context);
+            default:
+                return YalpStorePermissionManager.hasInstallPermission(context)
+                    ? new InstallerPrivileged(context)
+                    : new InstallerDefault(context)
+                ;
         }
     }
 }
