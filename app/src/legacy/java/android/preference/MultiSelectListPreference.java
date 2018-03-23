@@ -1,9 +1,11 @@
 package android.preference;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
@@ -24,6 +26,7 @@ import java.util.Set;
  * set will contain one or more values from the
  * {@link #setEntryValues(CharSequence[])} array.
  */
+@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
 public class MultiSelectListPreference extends DialogPreference {
     private CharSequence[] mEntries;
     private CharSequence[] mEntryValues;

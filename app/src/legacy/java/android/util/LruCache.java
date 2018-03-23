@@ -15,6 +15,9 @@
  */
 package android.util;
 
+import android.annotation.TargetApi;
+import android.os.Build;
+
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -25,6 +28,7 @@ import java.util.Map;
  * framework's implementation. See the framework SDK documentation for a class
  * overview.
  */
+@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
 public class LruCache<K, V> {
     private final LinkedHashMap<K, V> map;
     /** Size of this cache in units. Not necessarily the number of elements. */

@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.text.TextUtils;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
@@ -100,7 +101,7 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
 
     private void fadeOut() {
         if (!placeholder) {
-            imageView.setAlpha(0.0f);
+            imageView.setVisibility(View.INVISIBLE);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             imageView.animate().alpha(0.0f).setDuration(fadeInMillis).withLayer();
         } else {
@@ -115,7 +116,8 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
     }
 
     private boolean sameAsLoaded() {
-        return drawable instanceof BitmapDrawable
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1
+            && drawable instanceof BitmapDrawable
             && imageView.getDrawable() instanceof BitmapDrawable
             && ((BitmapDrawable) imageView.getDrawable()).getBitmap() != null
             && ((BitmapDrawable) imageView.getDrawable()).getBitmap().sameAs(((BitmapDrawable) drawable).getBitmap())
