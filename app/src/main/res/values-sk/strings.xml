@@ -283,9 +283,9 @@ Vykonať?"</string>
 <string name="apps_by">"Aplikácie od autora %1$s"</string>
 <string name="pref_message_fallback">"Pokúsiť sa nastaviť záložný adresár (%1$s)?"</string>
 <string name="no_permissions">"Nepoužívajú sa žiadne povolenia."</string>
-<string name="about_librepay_label">"Donate Librepay:"</string>
-<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
-<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="about_librepay_label">"Darovať cez Librepay:"</string>
+<string name="notification_file_verification_failed">"Súbor je pravdepodobne poškodený. Skúste ho znova stiahnuť."</string>
+<string name="pref_download_internal_storage">"Sťahovať do interného úložiska"</string>
+<string name="pref_download_internal_storage_summary_on">"Bezpečnejšie, ale apk súbory nie sú dostupné užívateľovi"</string>
+<string name="pref_download_internal_storage_summary_off">"Apk súbory sa sťahujú do uvedeného adresára v externom úložisku"</string>
 </resources>
