@@ -150,7 +150,7 @@
 <string name="pref_category_installation">"Εγκατάσταση"</string>
 <string name="pref_category_spoofing">"Πλαστογράφηση"</string>
 <string name="pref_category_ui">"Διεπαφή του χρήστη"</string>
-<string name="details_installing">"Γίνεται εγκατάσταση..."</string>
+<string name="details_installing">"Γίνεται εγκατάσταση…"</string>
 <string name="details_installed">"Εγκαταστάθηκε επιτυχώς"</string>
 <string name="details_install_failure">"Δεν μπόρεσε να γίνει εγκατάσταση"</string>
 <string name="notification_download_complete_new_permissions">"Ολοκληρώθηκε η λήψη. Αίτηση νέων δικαιωμάτων."</string>
@@ -227,7 +227,7 @@
 <string name="bug_report_explanation_crash">"Μπορείς να βοηθήσεις στο να το διορθώσουμε αυτό, στέλνοντας μία αναφορά δυσλειτουργίας στον προγραμματιστή. Παρακαλώ, περιέγραψε αυτό που προσπαθούσες να κάνεις, όταν συνέβη το σφάλμα, και άγγιξε στο Εντάξει, για να το στείλεις."</string>
 <string name="bug_report_explanation_bug_report">"Παρακαλώ περιέγραψε το πρόβλημα. Δώσε όσο γίνεται περισσότερες λεπτομέρειες. Μήπως το πρόβλημα συμβαίνει με κάποια συγκεκριμένη εφαρμογή; Μήπως συμβαίνει πάντοτε, ή μήπως μόνο μερικές φορές; Πώς μπορεί να αναπαραχθεί;"</string>
 <string name="thank_you">"Σε ευχαριστούμε"</string>
-<string name="list_updating">"Γίνεται ενημέρωση..."</string>
+<string name="list_updating">"Γίνεται ενημέρωση…"</string>
 <string name="error_invalid_device_definition">"Ο προσδιορισμός της συσκευής απορρίφθηκε."</string>
 <string name="details_video">"Βίντεο"</string>
 <string name="error_could_not_download">"Δεν μπόρεσε να γίνει η λήψη."</string>

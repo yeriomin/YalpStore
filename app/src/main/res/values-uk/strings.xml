@@ -221,7 +221,7 @@ Do it?"</string>
 <string name="bug_report_explanation_crash">"You can help fix this by sending a bug report to the developer. Please describe what you were trying to do when the error occurred and tap OK to send it."</string>
 <string name="bug_report_explanation_bug_report">"Please describe the issue. Be specific if possible. Does the problem occur with a specific app? Does it happen all the time or only sometimes? How can it be reproduced?"</string>
 <string name="thank_you">"Дякую"</string>
-<string name="list_updating">"Оновлюємо..."</string>
+<string name="list_updating">"Оновлюємо…"</string>
 <string name="error_invalid_device_definition">"Некоректний файл з параметрами пристрою."</string>
 <string name="details_video">"Відео"</string>
 <string name="error_could_not_download">"Не вдалося завантажити"</string>
