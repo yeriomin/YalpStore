@@ -1,8 +1,10 @@
 package com.github.yeriomin.yalpstore;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.util.Log;
 import android.util.LruCache;
 
@@ -14,6 +16,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
 public class BitmapManager {
 
     static public final long VALID_MILLIS = 1000*60*60*24*7;
