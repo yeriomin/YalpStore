@@ -12,8 +12,10 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
+        android:backgroundTint="@color/colorAccent"
         android:maxLines="1"
         android:text="@string/details_uninstall"
+        android:textColor="@color/white"
         android:visibility="gone" />
 
     <Button
@@ -21,8 +23,10 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
+        android:backgroundTint="@color/colorAccent"
         android:maxLines="1"
         android:text="@string/details_download"
+        android:textColor="@color/white"
         android:visibility="gone" />
 
     <Button
@@ -30,8 +34,10 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
+        android:backgroundTint="@color/colorAccent"
         android:maxLines="1"
         android:text="@string/details_cancel"
+        android:textColor="@color/white"
         android:visibility="gone" />
 
     <Button
@@ -39,8 +45,10 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
+        android:backgroundTint="@color/colorAccent"
         android:maxLines="1"
         android:text="@string/details_install"
+        android:textColor="@color/white"
         android:visibility="gone" />
 
     <Button
@@ -48,7 +56,9 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
+        android:backgroundTint="@color/colorAccent"
         android:maxLines="1"
         android:text="@string/details_run"
+        android:textColor="@color/white"
         android:visibility="gone" />
 </LinearLayout>

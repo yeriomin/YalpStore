@@ -2,9 +2,9 @@
 <resources>
 
     <!--DefaultTheme-->
-    <color name="colorPrimary">#303F9F</color>
-    <color name="colorPrimaryDark">#283593</color>
-    <color name="colorAccent">#5E97F6</color>
+    <color name="colorPrimary">#2f2f2f</color>
+    <color name="colorPrimaryDark">#242424</color>
+    <color name="colorAccent">#4285F4</color>
 
     <!--Basic-->
     <color name="white">#FFFFFF</color>
@@ -16,7 +16,7 @@
 
     <!--Buttons-->
     <color name="button_bg">#009688</color>
-    <color name="round_bg">#e91e63</color>
+    <color name="round_bg">@color/colorShade03</color>
 
     <!--Misc-->
     <color name="changelog_txt">#3F51B5</color>
@@ -42,10 +42,10 @@
     <color name="colorBackgroundCardBlack">#000000</color>
 
     <!--Shades-->
-    <color name="colorShade01">#C5CAE9</color>
-    <color name="colorShade02">#9FA8DA</color>
-    <color name="colorShade03">#7986CB</color>
-    <color name="colorShade04">#5C6BC0</color>
+    <color name="colorShade01">#3367D6</color>
+    <color name="colorShade02">#4285F4</color>
+    <color name="colorShade03">#5E97F6</color>
+    <color name="colorShade04">#4285F4</color>
 
     <!--More Colors-->
     <color name="colorCyan">#00BCD4</color>

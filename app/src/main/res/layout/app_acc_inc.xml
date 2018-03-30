@@ -57,6 +57,7 @@
                         android:id="@+id/dummy_login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:tint="@color/white"
                         app:srcCompat="@drawable/ic_logout"
                         app:useCompatPadding="true" />
                 </LinearLayout>
@@ -153,7 +154,9 @@
                         android:id="@+id/account_logout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/action_logout" />
+                        android:background="@color/colorAccent"
+                        android:text="@string/action_logout"
+                        android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -203,6 +206,7 @@
                         android:id="@+id/google_login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:tint="@color/white"
                         app:srcCompat="@drawable/ic_logout"
                         app:useCompatPadding="true" />
                 </LinearLayout>
@@ -299,10 +303,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:background="@drawable/button_bg"
+                        android:background="@color/colorAccent"
                         android:text="@string/action_logout"
-                        android:textColor="@color/white"
-                        android:theme="@style/Widget.AppCompat.Button.Borderless.Colored" />
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
             </LinearLayout>

@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="end">
 
-                    <android.support.v7.widget.AppCompatButton
+                    <Button
                         android:id="@+id/update_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -65,17 +65,17 @@
                         android:paddingRight="10dp"
                         android:text="@string/list_update_all"
                         android:textColor="@color/white"
-                        android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:backgroundTint="@color/colorAccent"
                         android:visibility="gone" />
 
-                    <android.support.v7.widget.AppCompatButton
+                    <Button
                         android:id="@+id/update_cancel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/button_bg"
                         android:text="@string/details_cancel"
                         android:textColor="@color/white"
-                        android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:backgroundTint="@color/colorAccent"
                         android:visibility="gone" />
 
                     <ProgressBar

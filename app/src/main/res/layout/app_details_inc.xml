@@ -24,7 +24,7 @@
             <ImageView
                 android:layout_width="@dimen/icon_size_med"
                 android:layout_height="@dimen/icon_size_med"
-                android:background="?colorAccent"
+                android:background="?android:attr/colorAccent"
                 android:padding="10dp"
                 android:src="@drawable/app_downloads" />
         </com.github.florent37.shapeofview.shapes.CircleView>
@@ -52,7 +52,7 @@
             <ImageView
                 android:layout_width="@dimen/icon_size_med"
                 android:layout_height="@dimen/icon_size_med"
-                android:background="?colorAccent"
+                android:background="?android:attr/colorAccent"
                 android:padding="10dp"
                 android:src="@drawable/app_ratings" />
         </com.github.florent37.shapeofview.shapes.CircleView>
@@ -79,7 +79,7 @@
             <ImageView
                 android:layout_width="@dimen/icon_size_med"
                 android:layout_height="@dimen/icon_size_med"
-                android:background="?colorAccent"
+                android:background="?android:attr/colorAccent"
                 android:padding="10dp"
                 android:src="@drawable/app_size" />
         </com.github.florent37.shapeofview.shapes.CircleView>
@@ -106,7 +106,7 @@
             <ImageView
                 android:layout_width="@dimen/icon_size_med"
                 android:layout_height="@dimen/icon_size_med"
-                android:background="?colorAccent"
+                android:background="?android:attr/colorAccent"
                 android:padding="10dp"
                 android:src="@drawable/app_category" />
         </com.github.florent37.shapeofview.shapes.CircleView>
@@ -133,7 +133,7 @@
             <ImageView
                 android:layout_width="@dimen/icon_size_med"
                 android:layout_height="@dimen/icon_size_med"
-                android:background="?colorAccent"
+                android:background="?android:attr/colorAccent"
                 android:padding="10dp"
                 android:src="@drawable/app_price" />
         </com.github.florent37.shapeofview.shapes.CircleView>

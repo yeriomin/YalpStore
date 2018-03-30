@@ -16,12 +16,15 @@
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" >
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:layout_scrollFlags="scroll|enterAlways">
 
                 <android.support.v7.widget.SearchView
@@ -38,6 +41,8 @@
                 android:id="@+id/sliding_tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:tabMode="fixed" />
 
         </android.support.design.widget.AppBarLayout>
@@ -63,6 +68,7 @@
             android:layout_margin="@dimen/fab_margin"
             android:visibility="gone"
             app:borderWidth="0dp"
+            android:tint="@color/white"
             app:srcCompat="@drawable/ic_reload" />
     </android.support.design.widget.CoordinatorLayout>
 

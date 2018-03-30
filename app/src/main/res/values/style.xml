@@ -7,6 +7,8 @@
         <item name="android:editTextColor">@color/lightGray</item>
         <item name="android:textColorHint">@color/lightGray</item>
         <item name="android:textCursorDrawable">@color/lightGray</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:colorAccent">@color/colorAccent</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
