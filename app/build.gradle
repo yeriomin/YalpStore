@@ -43,8 +43,6 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.squareup.okhttp3:okhttp:3.9.1'
     implementation 'com.github.percolate:caffeine:0.4.7'
-    implementation 'com.afollestad:aesthetic:0.4.7'
-    implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
     implementation 'com.github.florent37:shapeofview:1.0.6'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'

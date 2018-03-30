@@ -61,7 +61,14 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         v = inflater.inflate(R.layout.app_updatable_inc, container, false);
 
         swipeRefreshLayout = ViewUtils.findViewById(v, R.id.swipe_refresh_layout);
-        swipeRefreshLayout.setOnRefreshListener(this::loadUpdatableApps);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            if (isLoggedIn())
+                loadUpdatableApps();
+            else {
+                LoginFirst();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         setupListView(v, R.layout.two_line_list_item_with_icon);
         setupDelta();

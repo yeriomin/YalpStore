@@ -9,38 +9,28 @@ import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.NavigationView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.afollestad.aesthetic.Aesthetic;
-import com.afollestad.aesthetic.AestheticActivity;
-import com.afollestad.aesthetic.NavigationViewMode;
-import com.afollestad.aesthetic.TabLayoutBgMode;
-import com.afollestad.aesthetic.TabLayoutIndicatorMode;
 import com.percolate.caffeine.PhoneUtils;
 import com.percolate.caffeine.ToastUtils;
-import com.percolate.caffeine.ViewUtils;
-import com.squareup.picasso.Picasso;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import in.dragons.galaxy.CircleTransform;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
-import in.dragons.galaxy.R;
 import in.dragons.galaxy.adapters.AppListAdapter;
 import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.view.AppBadge;
 import in.dragons.galaxy.view.ListItem;
 
-public abstract class BaseActivity extends AestheticActivity {
+public abstract class BaseActivity extends RxAppCompatActivity {
 
     static protected boolean logout = false;
     static protected boolean firstLogin = true;
@@ -64,21 +54,6 @@ public abstract class BaseActivity extends AestheticActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (Aesthetic.isFirstTime()) {
-            Aesthetic.get()
-                    .activityTheme(R.style.AppTheme)
-                    .textColorPrimaryRes(R.color.colorTextPrimary)
-                    .textColorSecondaryRes(R.color.colorTextSecondary)
-                    .colorPrimaryRes(R.color.colorPrimary)
-                    .colorAccentRes(R.color.colorAccent)
-                    .colorStatusBarAuto()
-                    .colorNavigationBarAuto()
-                    .navigationViewMode(NavigationViewMode.SELECTED_ACCENT)
-                    .tabLayoutBackgroundMode(TabLayoutBgMode.PRIMARY)
-                    .tabLayoutIndicatorMode(TabLayoutIndicatorMode.ACCENT)
-                    .apply();
-        }
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 

@@ -48,7 +48,14 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         setupListView(v, R.layout.two_line_list_item_with_icon);
 
         swipeRefreshLayout = ViewUtils.findViewById(v, R.id.swipe_refresh_layout);
-        swipeRefreshLayout.setOnRefreshListener(this::loadMarketApps);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            if (isLoggedIn())
+                loadMarketApps();
+            else {
+                LoginFirst();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         getListView().setOnItemClickListener((parent, view, position, id) -> {
             grabDetails(position);

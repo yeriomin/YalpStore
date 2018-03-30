@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.afollestad.aesthetic.Aesthetic;
 import com.percolate.caffeine.ViewUtils;
 
 import in.dragons.galaxy.R;
@@ -48,11 +47,6 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
             super(v);
             topLabel = ViewUtils.findViewById(v, R.id.top_cat_name);
             topImage = ViewUtils.findViewById(v, R.id.top_cat_img);
-
-            Aesthetic.get()
-                    .colorAccent()
-                    .take(1)
-                    .subscribe(color -> topImage.setColorFilter(color));
         }
     }
 

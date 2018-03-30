@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.afollestad.aesthetic.Aesthetic;
 import com.percolate.caffeine.ViewUtils;
 
 import java.util.ArrayList;
@@ -90,12 +89,7 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
     @Override
     public AllCategoriesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.all_cat_item, parent, false);
-        viewHolder = new ViewHolder(view);
-        Aesthetic.get()
-                .colorAccent()
-                .take(1)
-                .subscribe(color -> viewHolder.topImage.setColorFilter(color));
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override

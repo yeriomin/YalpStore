@@ -173,9 +173,6 @@
             android:name=".activities.AccountsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
-            android:name=".activities.ThemesActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
             android:name=".activities.PreferenceActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity

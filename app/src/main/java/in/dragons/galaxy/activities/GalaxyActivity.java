@@ -198,9 +198,6 @@ public class GalaxyActivity extends BaseActivity implements
             case R.id.action_spoofed:
                 startActivity(new Intent(this, SpoofActivity.class));
                 break;
-            case R.id.action_themes:
-                startActivity(new Intent(this, ThemesActivity.class));
-                break;
             case R.id.action_about:
                 startActivity(new Intent(this, AboutActivity.class));
                 break;
