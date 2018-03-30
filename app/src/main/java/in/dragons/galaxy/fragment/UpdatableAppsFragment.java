@@ -125,6 +125,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     @Override
     public void onStop() {
         super.onStop();
+        swipeRefreshLayout.setRefreshing(false);
         if (loadApps != null && !loadApps.isDisposed())
             loadApps.dispose();
     }
@@ -132,16 +133,6 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     @Override
     protected void clearApps() {
         ((AppListAdapter) getListView().getAdapter()).clear();
-    }
-
-    @Override
-    protected void setProgress() {
-        ViewUtils.findViewById(this.v, R.id.progress).setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    protected void removeProgress() {
-        ViewUtils.findViewById(v, R.id.progress).setVisibility(View.GONE);
     }
 
     public void launchUpdateAll() {

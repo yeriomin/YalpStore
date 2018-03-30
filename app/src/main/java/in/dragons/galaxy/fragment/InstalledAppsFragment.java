@@ -97,21 +97,11 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     @Override
     public void onStop() {
         super.onStop();
+        swipeRefreshLayout.setRefreshing(false);
         if (loadApps != null && !loadApps.isDisposed())
             loadApps.dispose();
     }
-
-    @Override
-    protected void setProgress() {
-        ProgressBar progress = ViewUtils.findViewById(this.v, R.id.progress);
-        progress.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    protected void removeProgress() {
-        ViewUtils.findViewById(v, R.id.progress).setVisibility(View.GONE);
-    }
-
+    
     public static InstalledAppsFragment newInstance() {
         return new InstalledAppsFragment();
     }
