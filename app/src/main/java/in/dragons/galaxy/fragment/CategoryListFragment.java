@@ -46,7 +46,17 @@ public class CategoryListFragment extends UtilFragment {
         RecyclerView.LayoutManager rlm = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(rlm);
         RecyclerView.Adapter rva = new TopCategoriesAdapter(this.getActivity(), getResources().getStringArray(R.array.topCategories));
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false){
+            @Override
+            public boolean canScrollHorizontally() {
+                return true;
+            }
+
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
         recyclerView.setAdapter(rva);
         ViewUtils.findViewById(v, R.id.cat_container).setVisibility(View.VISIBLE);
     }
