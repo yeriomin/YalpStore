@@ -41,6 +41,12 @@ abstract public class EndlessScrollActivity extends AppListActivity {
     }
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     protected ListItem getListItem(App app) {
         SearchResultAppBadge appBadge = new SearchResultAppBadge();
         appBadge.setApp(app);
