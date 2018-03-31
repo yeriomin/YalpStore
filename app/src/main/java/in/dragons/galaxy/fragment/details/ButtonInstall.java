@@ -4,12 +4,12 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.view.View;
 
-import in.dragons.galaxy.downloader.DownloadState;
-import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.InstallationState;
 import in.dragons.galaxy.InstallerFactory;
 import in.dragons.galaxy.Paths;
 import in.dragons.galaxy.R;
+import in.dragons.galaxy.activities.GalaxyActivity;
+import in.dragons.galaxy.downloader.DownloadState;
 import in.dragons.galaxy.model.App;
 
 public class ButtonInstall extends Button {
@@ -40,7 +40,12 @@ public class ButtonInstall extends Button {
     }
 
     @Override
-    protected void onButtonClick(View v) {
+    protected Boolean getMisc() {
+        return false;
+    }
+
+    @Override
+    protected void onButtonClick(View v, Boolean isMisc) {
         disable(R.string.details_installing);
         ((NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE)).cancel(app.getDisplayName().hashCode());
         InstallerFactory.get(activity).verifyAndInstall(app);

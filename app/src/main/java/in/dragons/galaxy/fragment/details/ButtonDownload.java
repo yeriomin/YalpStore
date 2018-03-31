@@ -2,6 +2,7 @@ package in.dragons.galaxy.fragment.details;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -13,14 +14,14 @@ import java.io.File;
 
 import in.dragons.galaxy.BuildConfig;
 import in.dragons.galaxy.ContextUtil;
-import in.dragons.galaxy.downloader.DownloadProgressBarUpdater;
-import in.dragons.galaxy.downloader.DownloadState;
-import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.GalaxyPermissionManager;
-import in.dragons.galaxy.activities.ManualDownloadActivity;
 import in.dragons.galaxy.NumberProgressBar;
 import in.dragons.galaxy.Paths;
 import in.dragons.galaxy.R;
+import in.dragons.galaxy.activities.GalaxyActivity;
+import in.dragons.galaxy.activities.ManualDownloadActivity;
+import in.dragons.galaxy.downloader.DownloadProgressBarUpdater;
+import in.dragons.galaxy.downloader.DownloadState;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.PurchaseTask;
 
@@ -29,18 +30,25 @@ import static in.dragons.galaxy.downloader.DownloadState.TriggeredBy.MANUAL_DOWN
 
 public class ButtonDownload extends Button {
 
+    private NumberProgressBar progressBar;
+
     public ButtonDownload(GalaxyActivity activity, App app) {
         super(activity, app);
     }
 
     @Override
     protected android.widget.Button getButton() {
-        if (app.getPrice() != null && !app.getPrice().contains("Free")) {
-            Toast.makeText(activity, R.string.warn_app_purchase, Toast.LENGTH_SHORT).show();
+        if (app.getPrice() != null && !app.isFree()) {
             setText(R.id.download, R.string.details_purchase);
             return (android.widget.Button) activity.findViewById(R.id.download);
         } else
             return (android.widget.Button) activity.findViewById(R.id.download);
+    }
+
+    @Override
+    protected Boolean getMisc()
+    {
+        return app.getPrice() != null && !app.isFree();
     }
 
     @Override
@@ -56,8 +64,12 @@ public class ButtonDownload extends Button {
     }
 
     @Override
-    protected void onButtonClick(View v) {
-        checkAndDownload();
+    protected void onButtonClick(View v, Boolean isPaid) {
+        if (isPaid) {
+            Toast.makeText(activity, R.string.warn_app_purchase, Toast.LENGTH_SHORT).show();
+            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + app.getPackageName())));
+        } else
+            checkAndDownload();
     }
 
     public void checkAndDownload() {
@@ -87,7 +99,7 @@ public class ButtonDownload extends Button {
         if (Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
                 && !state.isEverythingSuccessful()
                 ) {
-            NumberProgressBar progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
+            progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
             if (null != progressBar) {
                 new DownloadProgressBarUpdater(app.getPackageName(), progressBar).execute(PurchaseTask.UPDATE_INTERVAL);
             }
@@ -117,7 +129,7 @@ public class ButtonDownload extends Button {
     private LocalPurchaseTask getPurchaseTask() {
         LocalPurchaseTask purchaseTask = new LocalPurchaseTask();
         purchaseTask.setFragment(this);
-        NumberProgressBar progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
+        progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
         if (null != progressBar) {
             purchaseTask.setDownloadProgressBarUpdater(new DownloadProgressBarUpdater(app.getPackageName(), progressBar));
         }

@@ -27,7 +27,12 @@ public class ButtonUninstall extends Button {
     }
 
     @Override
-    protected void onButtonClick(View v) {
+    protected Boolean getMisc() {
+        return false;
+    }
+
+    @Override
+    protected void onButtonClick(View v,Boolean isMisc) {
         uninstall();
     }
 

@@ -260,7 +260,7 @@
     <string name="content_flagged">Objection submitted.</string>
     <string name="apps_by">Apps by %1$s</string>
     <string name="pref_message_fallback">Attempt to set a fallback directory (%1$s)?</string>
-    <string name="warn_app_purchase">App purchase is not available yet !</string>
+    <string name="warn_app_purchase">App purchase is not available yet, redirecting to PlayStore Web</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="header_usr_name">Galaxy</string>

@@ -32,7 +32,12 @@ public class ButtonRun extends Button {
     }
 
     @Override
-    protected void onButtonClick(View v) {
+    protected Boolean getMisc() {
+        return false;
+    }
+
+    @Override
+    protected void onButtonClick(View v, Boolean isMisc) {
         Intent i = getLaunchIntent();
         if (null != i) {
             try {
