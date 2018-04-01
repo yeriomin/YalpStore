@@ -26,7 +26,10 @@ import in.dragons.galaxy.UpdateAllReceiver;
 import in.dragons.galaxy.UpdateChecker;
 import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.adapters.AppListAdapter;
+import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.ForegroundUpdatableAppsTaskHelper;
+import in.dragons.galaxy.view.ListItem;
+import in.dragons.galaxy.view.UpdatableAppBadge;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -134,6 +137,13 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     @Override
     protected void clearApps() {
         ((AppListAdapter) getListView().getAdapter()).clear();
+    }
+
+    @Override
+    protected ListItem getListItem(App app) {
+        UpdatableAppBadge appBadge = new UpdatableAppBadge();
+        appBadge.setApp(app);
+        return appBadge;
     }
 
     public void launchUpdateAll() {

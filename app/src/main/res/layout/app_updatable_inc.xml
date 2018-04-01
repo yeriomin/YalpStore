@@ -18,11 +18,8 @@
                 android:id="@+id/update_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                app:cardCornerRadius="2dp"
-                app:cardElevation="1dp"
+                android:layout_marginBottom="5dp"
+                app:cardElevation="2dp"
                 app:contentPadding="10dp">
 
                 <LinearLayout
@@ -38,7 +35,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/list_update_all_txt"
+                        android:text="@string/list_update_chk_txt"
                         android:textSize="18sp" />
 
                     <TextView
@@ -61,11 +58,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/button_bg"
+                        android:backgroundTint="@color/colorAccent"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:text="@string/list_update_all"
                         android:textColor="@color/white"
-                        android:backgroundTint="@color/colorAccent"
                         android:visibility="gone" />
 
                     <Button
@@ -73,9 +70,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/button_bg"
+                        android:backgroundTint="@color/colorAccent"
                         android:text="@string/details_cancel"
                         android:textColor="@color/white"
-                        android:backgroundTint="@color/colorAccent"
                         android:visibility="gone" />
 
                     <ProgressBar
@@ -94,7 +91,6 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
                 app:cardCornerRadius="2dp"
                 app:cardElevation="2dp">
 
@@ -125,8 +121,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/list_empty_updates"
                     android:drawableBottom="@drawable/ic_galaxy_alt"
+                    android:text="@string/list_empty_updates"
                     android:textSize="16sp" />
             </LinearLayout>
 
