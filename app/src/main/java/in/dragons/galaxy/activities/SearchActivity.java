@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.percolate.caffeine.ViewUtils;
@@ -39,6 +40,8 @@ public class SearchActivity extends EndlessScrollActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ViewUtils.findViewById(this, R.id.category_tabs).setVisibility(View.GONE);
     }
 
     @Override
