@@ -6,7 +6,7 @@
     android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -81,8 +81,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:indeterminate="true"
             android:padding="5dp"
             android:visibility="gone" />
-    </LinearLayout>
+    </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>
