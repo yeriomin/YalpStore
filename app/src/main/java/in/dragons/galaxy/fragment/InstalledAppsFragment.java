@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.percolate.caffeine.ViewUtils;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.Collections;
 
@@ -85,7 +86,7 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         loadApps = Observable.fromCallable(() -> getInstalledApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(bindToLifecycle())
+                .compose(bindUntilEvent(FragmentEvent.STOP))
                 .subscribe((appList) -> {
                     clearApps();
                     Collections.sort(appList);

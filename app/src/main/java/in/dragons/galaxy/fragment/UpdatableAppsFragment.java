@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.percolate.caffeine.ToastUtils;
 import com.percolate.caffeine.ViewUtils;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.Collections;
 
@@ -97,7 +98,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         loadApps = Observable.fromCallable(() -> getUpdatableApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(bindToLifecycle())
+                .compose(bindUntilEvent(FragmentEvent.STOP))
                 .subscribe((appList) -> {
                     clearApps();
                     Collections.sort(appList);
