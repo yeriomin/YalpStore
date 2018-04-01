@@ -62,7 +62,7 @@ public class CategoryAppsActivity extends EndlessScrollActivity {
             categoryId = newCategoryId;
             setTitle(new CategoryManager(this).getCategoryName(categoryId));
             clearApps();
-            loadApps();
+            loadApps(subCategory);
         }
     }
 

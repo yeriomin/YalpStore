@@ -299,4 +299,8 @@
 
     <string name="acc_dummy_detail">You are currently logged in via a dummy account, your previous App Purchases, Beta programs and App Reviews wont be available.</string>
     <string name="acc_google_detail">"You are logged in via you Google Account, your previous App Purchases, Beta programs and Reviews will be available."</string>
+
+    <string name="category_topFree">Top Free</string>
+    <string name="category_topGrossing">Top Grossing</string>
+    <string name="category_trending">Trending</string>
 </resources>

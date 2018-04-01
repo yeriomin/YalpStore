@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+
 import in.dragons.galaxy.BlackWhiteListManager;
 import in.dragons.galaxy.GalaxyApplication;
 import in.dragons.galaxy.GalaxyPermissionManager;
@@ -48,7 +50,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         task.setRespectUpdateBlacklist(true);
         task.setIncludeSystemApps(true);
         task.execute();
-        loadApps();
+        //loadApps();
     }
 
     @Override
@@ -62,12 +64,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         super.onNewIntent(intent);
 
         setIntent(intent);
-        loadApps();
-    }
-
-    @Override
-    public void loadApps() {
-        getTask().execute();
+        //loadApps();
     }
 
     @Override

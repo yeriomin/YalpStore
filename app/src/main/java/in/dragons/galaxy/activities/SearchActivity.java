@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.percolate.caffeine.ViewUtils;
 
 import java.util.regex.Pattern;
@@ -60,7 +61,7 @@ public class SearchActivity extends EndlessScrollActivity {
                 Log.i(getClass().getSimpleName(), query + " looks like a package id");
                 checkPackageId(query);
             } else {
-                loadApps();
+                loadApps(subCategory);
             }
         }
     }
@@ -148,7 +149,7 @@ public class SearchActivity extends EndlessScrollActivity {
                         dialogInterface.dismiss();
                         activity.finish();
                     })
-                    .setNegativeButton(android.R.string.no, (dialog, which) -> activity.loadApps())
+                    .setNegativeButton(android.R.string.no, (dialog, which) -> activity.loadApps(GooglePlayAPI.SUBCATEGORY.TOP_FREE))
                     .show()
                     ;
         }

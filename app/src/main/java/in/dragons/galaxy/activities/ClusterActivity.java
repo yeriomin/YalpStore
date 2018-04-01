@@ -36,7 +36,7 @@ public class ClusterActivity extends EndlessScrollActivity {
         setTitle(intent.getStringExtra(ClusterActivity.INTENT_TITLE));
         clusterUrl = intent.getStringExtra(ClusterActivity.INTENT_URL);
         clearApps();
-        loadApps();
+        loadApps(subCategory);
     }
 
     @Override

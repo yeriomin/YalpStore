@@ -23,7 +23,7 @@ public abstract class Button extends Abstract {
 
     abstract protected boolean shouldBeVisible();
 
-    abstract protected void onButtonClick(View v, Boolean isPaid);
+    abstract protected void onButtonClick(View v, Boolean isMisc);
 
     @Override
     public void draw() {

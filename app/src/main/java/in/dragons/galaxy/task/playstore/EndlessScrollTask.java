@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.dragons.galaxy.AppListIterator;
-import in.dragons.galaxy.activities.EndlessScrollActivity;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
-import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.R;
+import in.dragons.galaxy.activities.EndlessScrollActivity;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.model.Filter;
 
@@ -24,6 +24,8 @@ abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> 
     protected AppListIterator iterator;
 
     abstract protected AppListIterator initIterator() throws IOException;
+
+    abstract public void setSubCategory(GooglePlayAPI.SUBCATEGORY subCategory);
 
     public void setFilter(Filter filter) {
         this.filter = filter;

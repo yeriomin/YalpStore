@@ -8,9 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.percolate.caffeine.ViewUtils;
 
 import java.util.HashMap;
@@ -18,9 +18,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import in.dragons.galaxy.adapters.AppListAdapter;
 import in.dragons.galaxy.GalaxyPermissionManager;
 import in.dragons.galaxy.R;
+import in.dragons.galaxy.adapters.AppListAdapter;
 import in.dragons.galaxy.fragment.FilterMenu;
 import in.dragons.galaxy.fragment.details.ButtonDownload;
 import in.dragons.galaxy.fragment.details.ButtonUninstall;
@@ -34,24 +34,11 @@ abstract public class AppListActivity extends GalaxyActivity {
     protected ListView listView;
     protected Map<String, ListItem> listItems = new HashMap<>();
 
-    abstract protected void loadApps();
     abstract protected ListItem getListItem(App app);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.helper_activity);
-
-        FrameLayout contentFrameLayout = ViewUtils.findViewById(this, R.id.content_frame);
-        getLayoutInflater().inflate(R.layout.app_endless_inc, contentFrameLayout);
-
-        setupListView();
-
-        getListView().setOnItemClickListener((parent, view, position, id) -> {
-            DetailsActivity.app = getAppByListPosition(position);
-            startActivity(DetailsActivity.getDetailsIntent(AppListActivity.this, DetailsActivity.app.getPackageName()));
-        });
-        registerForContextMenu(getListView());
     }
 
     @Override

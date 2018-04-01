@@ -11,9 +11,14 @@ import in.dragons.galaxy.PlayStoreApiAuthenticator;
 public class CategoryAppsTask extends EndlessScrollTask implements CloneableTask {
 
     private String categoryId;
+    private GooglePlayAPI.SUBCATEGORY subCategory;
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public void setSubCategory(GooglePlayAPI.SUBCATEGORY subCategory) {
+        this.subCategory = subCategory;
     }
 
     public CategoryAppsTask(AppListIterator iterator) {
@@ -36,7 +41,6 @@ public class CategoryAppsTask extends EndlessScrollTask implements CloneableTask
         return new AppListIterator(new CategoryAppsIterator(
                 new PlayStoreApiAuthenticator(context).getApi(),
                 categoryId,
-                GooglePlayAPI.SUBCATEGORY.MOVERS_SHAKERS
-        ));
+                subCategory));
     }
 }

@@ -3,6 +3,7 @@ package in.dragons.galaxy.task.playstore;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.SearchIterator;
 
 import java.io.IOException;
@@ -45,6 +46,11 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
     @Override
     protected AppListIterator initIterator() throws IOException {
         return new AppListIterator(new SearchIterator(new PlayStoreApiAuthenticator(context).getApi(), query));
+    }
+
+    @Override
+    public void setSubCategory(GooglePlayAPI.SUBCATEGORY subCategory) {
+
     }
 
     @Override

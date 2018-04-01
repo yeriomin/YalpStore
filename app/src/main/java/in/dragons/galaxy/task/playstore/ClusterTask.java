@@ -1,5 +1,6 @@
 package in.dragons.galaxy.task.playstore;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.UrlIterator;
 
 import java.io.IOException;
@@ -33,5 +34,10 @@ public class ClusterTask extends EndlessScrollTask implements CloneableTask {
     @Override
     protected AppListIterator initIterator() throws IOException {
         return new AppListIterator(new UrlIterator(new PlayStoreApiAuthenticator(context).getApi(), clusterUrl));
+    }
+
+    @Override
+    public void setSubCategory(GooglePlayAPI.SUBCATEGORY subCategory) {
+
     }
 }
