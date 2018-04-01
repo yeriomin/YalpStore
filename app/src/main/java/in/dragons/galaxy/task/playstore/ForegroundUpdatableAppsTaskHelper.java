@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.percolate.caffeine.ToastUtils;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -184,8 +185,9 @@ public abstract class ForegroundUpdatableAppsTaskHelper extends AppListFragment 
             Log.i(getClass().getSimpleName(), "Token is stale");
             refreshMyToken();
         } else {
-            ContextUtil.toast(this.getActivity(), R.string.error_incorrect_password);
-            new PlayStoreApiAuthenticator(this.getActivity()).logout();
+            ToastUtils.quickToast(getActivity(),e.getMessage());
+            //ContextUtil.toast(this.getActivity(), R.string.error_incorrect_password);
+            //new PlayStoreApiAuthenticator(this.getActivity()).logout();
         }
     }
 

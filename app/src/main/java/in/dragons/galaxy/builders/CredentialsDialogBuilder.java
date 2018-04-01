@@ -1,6 +1,5 @@
 package in.dragons.galaxy.builders;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -67,17 +66,11 @@ abstract public class CredentialsDialogBuilder {
         @Override
         protected void processException(Throwable e) {
             super.processException(e);
-            if ((e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 500)
-                    || (e instanceof AuthException && !TextUtils.isEmpty(((AuthException) e).getTwoFactorUrl()))
-                    ) {
+            if ((e instanceof GooglePlayException
+                    && ((GooglePlayException) e).getCode() == 500)
+                    || (e instanceof AuthException
+                    && !TextUtils.isEmpty(((AuthException) e).getTwoFactorUrl()))) {
                 return;
-            }
-            CredentialsDialogBuilder builder = getDialogBuilder();
-            if (null != caller) {
-                builder.setCaller(caller);
-            }
-            if (ContextUtil.isAlive(context)) {
-                builder.show();
             }
         }
 
@@ -87,7 +80,7 @@ abstract public class CredentialsDialogBuilder {
             if (e instanceof TokenDispenserException) {
                 ContextUtil.toast(context, R.string.error_token_dispenser_problem);
             } else if (e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 500) {
-                PreferenceManager.getDefaultSharedPreferences(context).edit().putString(PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1").commit();
+                PreferenceManager.getDefaultSharedPreferences(context).edit().putString(PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1").apply();
                 ContextUtil.toast(context, R.string.error_invalid_device_definition);
                 context.startActivity(new Intent(context, PreferenceFragment.class));
             }
@@ -127,12 +120,7 @@ abstract public class CredentialsDialogBuilder {
                     )
                     .setNegativeButton(
                             R.string.dialog_two_factor_cancel,
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    android.os.Process.killProcess(android.os.Process.myPid());
-                                }
-                            }
+                            (dialog, which) -> android.os.Process.killProcess(android.os.Process.myPid())
                     )
                     .create();
         }

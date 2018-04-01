@@ -9,7 +9,7 @@
             <shape
                 android:shape="rectangle">
                 <corners android:radius="3dp" />
-                <stroke android:width="3px" android:color="@color/button_bg"/>
+                <stroke android:width="3px" android:color="@color/colorAccent"/>
             </shape>
         </item>
     </ripple>

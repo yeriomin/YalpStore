@@ -13,7 +13,7 @@ public class GoogleAccountInfo extends AsyncTask<Void, Void, String> {
     private String URL;
 
     protected GoogleAccountInfo(String URL) {
-        this.URL = "http://picasaweb.google.com/data/entry/api/user/" +URL;
+        this.URL = "http://picasaweb.google.com/data/entry/api/user/" + URL;
     }
 
     @Override

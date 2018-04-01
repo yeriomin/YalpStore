@@ -14,9 +14,9 @@ import android.widget.TextView;
 import java.util.Properties;
 import java.util.TimeZone;
 
-import in.dragons.galaxy.builders.AccountTypeDialogBuilder;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.SpoofDeviceManager;
+import in.dragons.galaxy.builders.AccountTypeDialogBuilder;
 import in.dragons.galaxy.fragment.PreferenceFragment;
 
 public class DeviceActivity extends GalaxyActivity {
@@ -33,7 +33,7 @@ public class DeviceActivity extends GalaxyActivity {
         FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame);
         getLayoutInflater().inflate(R.layout.app_device_inc, contentFrameLayout);
 
-        deviceName = sharedPreferences.getString(PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
+        deviceName = PreferenceFragment.getString(this, PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE);
         spoofed = (ImageView) findViewById(R.id.spoofed_indicator);
         mDisplay = (this).getWindowManager().getDefaultDisplay();
 
@@ -70,8 +70,8 @@ public class DeviceActivity extends GalaxyActivity {
         setText(R.id.device_manufacturer, R.string.device_manufacturer, properties.getProperty("Build.MANUFACTURER"));
         setText(R.id.device_architect, R.string.device_board, properties.getProperty("Build.HARDWARE"));
         setText(R.id.device_timezone, R.string.device_timezone, properties.getProperty("TimeZone"));
-        setText(R.id.device_resolution, R.string.device_res, properties.getProperty("Screen.Width"),properties.getProperty("Screen.Height"));
-        setText(R.id.device_api, R.string.device_api,properties.getProperty("Build.VERSION.SDK_INT"));
+        setText(R.id.device_resolution, R.string.device_res, properties.getProperty("Screen.Width"), properties.getProperty("Screen.Height"));
+        setText(R.id.device_api, R.string.device_api, properties.getProperty("Build.VERSION.SDK_INT"));
         String Platforms = properties.getProperty("Platforms");
         setText(R.id.device_cpu, R.string.device_cpu, Platforms.substring(0, Platforms.indexOf(',')));
     }

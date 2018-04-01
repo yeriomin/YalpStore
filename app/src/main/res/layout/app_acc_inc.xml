@@ -154,7 +154,7 @@
                         android:id="@+id/account_logout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorAccent"
+                        android:background="@drawable/button_bg"
                         android:text="@string/action_logout"
                         android:textColor="@color/white" />
                 </LinearLayout>
@@ -298,12 +298,12 @@
                     android:padding="5dp"
                     android:weightSum="9">
 
-                    <android.support.v7.widget.AppCompatButton
+                    <Button
                         android:id="@+id/google_logout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:background="@color/colorAccent"
+                        android:background="@drawable/button_bg"
                         android:text="@string/action_logout"
                         android:textColor="@color/white" />
                 </LinearLayout>

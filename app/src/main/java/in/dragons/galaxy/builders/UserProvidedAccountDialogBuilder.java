@@ -5,10 +5,8 @@ import android.content.Context;
 import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -50,36 +48,25 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
         final AutoCompleteTextView editEmail = getEmailInput(ad);
         final EditText editPassword = (EditText) ad.findViewById(R.id.password);
 
-        ad.findViewById(R.id.button_exit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.os.Process.killProcess(android.os.Process.myPid());
+        ad.findViewById(R.id.button_exit).setOnClickListener(v -> ad.dismiss());
+
+        ad.findViewById(R.id.button_ok).setOnClickListener(view -> {
+            Context c = view.getContext();
+            String email = editEmail.getText().toString();
+            String password = editPassword.getText().toString();
+            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                ContextUtil.toast(c.getApplicationContext(), R.string.error_credentials_empty);
+                return;
             }
+            ad.dismiss();
+            getUserCredentialsTask().execute(email, password);
         });
 
-        ad.findViewById(R.id.button_ok).setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context c = view.getContext();
-                String email = editEmail.getText().toString();
-                String password = editPassword.getText().toString();
-                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    ContextUtil.toast(c.getApplicationContext(), R.string.error_credentials_empty);
-                    return;
-                }
-                ad.dismiss();
-                getUserCredentialsTask().execute(email, password);
-            }
-        });
-
-        ad.findViewById(R.id.toggle_password_visibility).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean passwordVisible = !TextUtils.isEmpty((String) v.getTag());
-                v.setTag(passwordVisible ? null : "tag");
-                ((ImageView) v).setImageResource(passwordVisible ? R.drawable.ic_visibility_on : R.drawable.ic_visibility_off);
-                editPassword.setInputType(passwordVisible ? InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
-            }
+        ad.findViewById(R.id.toggle_password_visibility).setOnClickListener(v -> {
+            boolean passwordVisible = !TextUtils.isEmpty((String) v.getTag());
+            v.setTag(passwordVisible ? null : "tag");
+            ((ImageView) v).setImageResource(passwordVisible ? R.drawable.ic_visibility_on : R.drawable.ic_visibility_off);
+            editPassword.setInputType(passwordVisible ? InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
         });
 
         ad.show();
@@ -144,14 +131,6 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
             Set<String> emailsSet = Util.getStringSet(context, USED_EMAILS_SET);
             emailsSet.add(email);
             Util.putStringSet(context, USED_EMAILS_SET, emailsSet);
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-            PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("LOGGED_IN", true).apply();
-            PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("GOOGLE_ACC", true).apply();
-            PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("DUMMY_ACC", false).apply();
         }
     }
 }

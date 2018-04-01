@@ -1,8 +1,8 @@
 package in.dragons.galaxy.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.github.yeriomin.playstoreapi.AuthException;
+import com.percolate.caffeine.PhoneUtils;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import java.io.IOException;
@@ -24,6 +25,7 @@ import java.util.Set;
 
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.CredentialsEmptyException;
+import in.dragons.galaxy.GoogleAccountInfo;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
@@ -37,6 +39,7 @@ public abstract class UtilFragment extends RxFragment {
 
     protected PlayStoreTask playStoreTask;
     static private final String USED_EMAILS_SET = "USED_EMAILS_SET";
+
 
     private AutoCompleteTextView getEmailInput(Dialog ad) {
         AutoCompleteTextView editEmail = (AutoCompleteTextView) ad.findViewById(R.id.email);
@@ -68,13 +71,13 @@ public abstract class UtilFragment extends RxFragment {
     }
 
     public Dialog logInWithGoogleAccount() {
-        final Dialog ad = new Dialog(getActivity());
+        Dialog ad = new Dialog(getActivity());
         ad.setContentView(R.layout.credentials_dialog_layout);
         ad.setTitle(getActivity().getString(R.string.credentials_title));
         ad.setCancelable(false);
 
-        final AutoCompleteTextView editEmail = getEmailInput(ad);
-        final EditText editPassword = (EditText) ad.findViewById(R.id.password);
+        AutoCompleteTextView editEmail = getEmailInput(ad);
+        EditText editPassword = (EditText) ad.findViewById(R.id.password);
 
         editEmail.setText("");
 
@@ -90,7 +93,6 @@ public abstract class UtilFragment extends RxFragment {
             ad.dismiss();
             getUserCredentialsTask().execute(email, password);
         });
-
         ad.findViewById(R.id.toggle_password_visibility).setOnClickListener(v -> {
             boolean passwordVisible = !TextUtils.isEmpty((String) v.getTag());
             v.setTag(passwordVisible ? null : "tag");
@@ -106,16 +108,8 @@ public abstract class UtilFragment extends RxFragment {
         return new AlertDialog.Builder(getActivity())
                 .setTitle("Logged Out ?")
                 .setMessage(R.string.header_usr_noEmail)
-                .setPositiveButton("Login", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(new Intent(getActivity(), AccountsActivity.class));
-                    }
-                })
-                .setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    }
+                .setPositiveButton("Login", (dialogInterface, i) -> startActivity(new Intent(getActivity(), AccountsActivity.class)))
+                .setNegativeButton("Dismiss", (dialogInterface, i) -> {
                 })
                 .show();
     }
@@ -128,7 +122,8 @@ public abstract class UtilFragment extends RxFragment {
         return task;
     }
 
-    private static class LoginTask extends AccountTypeDialogBuilder.AppProvidedCredentialsTask {
+    @SuppressLint("StaticFieldLeak")
+    private class LoginTask extends AccountTypeDialogBuilder.AppProvidedCredentialsTask {
 
         @Override
         protected void payload() throws IOException {
@@ -141,6 +136,9 @@ public abstract class UtilFragment extends RxFragment {
             PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("LOGGED_IN", true).apply();
             PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("DUMMY_ACC", true).apply();
             PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("GOOGLE_ACC", false).apply();
+
+            AccountsActivity accountsActivity = (AccountsActivity) getActivity();
+            accountsActivity.userChanged();
         }
     }
 
@@ -163,9 +161,13 @@ public abstract class UtilFragment extends RxFragment {
         }
     }
 
-    private static class UserProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
+    @SuppressLint("StaticFieldLeak")
+    private class UserProvidedCredentialsTask extends CredentialsDialogBuilder.CheckCredentialsTask {
 
         private String previousEmail;
+        private String UNKNOWN = "Unknown user.";
+        private String PICASAWEB = "picasaweb";
+        private String Email, Name, Url;
 
         @Override
         protected CredentialsDialogBuilder getDialogBuilder() {
@@ -205,10 +207,46 @@ public abstract class UtilFragment extends RxFragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("LOGGED_IN", true).apply();
-            PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("GOOGLE_ACC", true).apply();
-            PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("DUMMY_ACC", false).apply();
+            if (success()) {
+                PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("LOGGED_IN", true).apply();
+                PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("GOOGLE_ACC", true).apply();
+                PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("DUMMY_ACC", false).apply();
+                setUser();
+            }
         }
+
+        @SuppressLint("StaticFieldLeak")
+        private void setUser() {
+            Email = PreferenceFragment.getString(context, PlayStoreApiAuthenticator.PREFERENCE_EMAIL);
+            new GoogleAccountInfo(Email) {
+                @Override
+                public void onPostExecute(String result) {
+                    parseRAW(result);
+                }
+            }.execute();
+        }
+
+        private void parseRAW(String rawData) {
+            if (rawData.contains(PICASAWEB) && !rawData.contains(UNKNOWN)) {
+                Name = rawData.substring(rawData.indexOf("<name>") + 6, rawData.indexOf("</name>"));
+                Url = rawData.substring(rawData.indexOf("<gphoto:thumbnail>") + 18, rawData.lastIndexOf("</gphoto:thumbnail>"));
+            } else {
+                Name = Email;
+                Url = "I dont fucking care";
+            }
+
+            PreferenceManager.getDefaultSharedPreferences(context).edit().putString("GOOGLE_NAME", Name).apply();
+            PreferenceManager.getDefaultSharedPreferences(context).edit().putString("GOOGLE_URL", Url).apply();
+
+            AccountsActivity accountsActivity = (AccountsActivity) getActivity();
+            accountsActivity.userChanged();
+        }
+    }
+
+    protected void checkOut() {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putBoolean("LOGGED_IN", false).apply();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("GOOGLE_NAME", "").apply();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("GOOGLE_URL", "").apply();
     }
 
     protected boolean isLoggedIn() {
@@ -221,5 +259,9 @@ public abstract class UtilFragment extends RxFragment {
 
     protected boolean isGoogle() {
         return PreferenceFragment.getBoolean(getActivity(), "GOOGLE_ACC");
+    }
+
+    protected boolean isConnected() {
+        return PhoneUtils.isNetworkAvailable(this.getActivity());
     }
 }

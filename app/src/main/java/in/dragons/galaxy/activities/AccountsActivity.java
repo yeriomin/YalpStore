@@ -23,7 +23,6 @@ public class AccountsActivity extends GalaxyActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new AccountsFragment())
-                .addToBackStack(null)
                 .commit();
     }
 
@@ -37,5 +36,12 @@ public class AccountsActivity extends GalaxyActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    public void userChanged() {
+        this.getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content_frame, new AccountsFragment())
+                .commit();
     }
 }

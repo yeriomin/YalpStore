@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.percolate.caffeine.PhoneUtils;
 import com.percolate.caffeine.ViewUtils;
 import com.squareup.picasso.Picasso;
 
@@ -49,7 +48,7 @@ public class AccountsFragment extends UtilFragment {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         Email = sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, "");
 
-        if (isLoggedIn() && isGoogle() && isConnected()) {
+        if (isLoggedIn() && isGoogle()) {
             drawGoogle();
         } else if (isLoggedIn() && isDummy())
             drawDummy();
@@ -69,7 +68,9 @@ public class AccountsFragment extends UtilFragment {
         TextView dummyEmail = ViewUtils.findViewById(v, R.id.dummy_email);
         dummyEmail.setText(Email);
 
-        setText(R.id.dummy_gsf, R.string.device_gsfID, sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
+        setText(R.id.dummy_gsf, R.string.device_gsfID,
+                PreferenceFragment.getString(getActivity(),
+                        PlayStoreApiAuthenticator.PREFERENCE_GSF_ID));
 
         Button logout = ViewUtils.findViewById(v, R.id.account_logout);
         logout.setOnClickListener(v -> showLogOutDialog());
@@ -85,12 +86,14 @@ public class AccountsFragment extends UtilFragment {
         ViewUtils.setText(v, R.id.google_name, sharedPreferences.getString("GOOGLE_NAME", ""));
         ViewUtils.setText(v, R.id.google_email, Email);
 
-        setText(R.id.google_gsf, R.string.device_gsfID, sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
+        setText(R.id.google_gsf, R.string.device_gsfID,
+                PreferenceFragment.getString(getActivity(), PlayStoreApiAuthenticator.PREFERENCE_GSF_ID));
 
         Button button = ViewUtils.findViewById(v, R.id.google_logout);
         button.setOnClickListener(v -> showLogOutDialog());
 
-        //loadAvatar(sharedPreferences.getString("GOOGLE_URL", ""));
+        if (isConnected())
+            loadAvatar(PreferenceFragment.getString(getActivity(), "GOOGLE_URL"));
     }
 
     public void setFab() {
@@ -124,16 +127,12 @@ public class AccountsFragment extends UtilFragment {
                 .setMessage(R.string.dialog_message_logout)
                 .setTitle(R.string.dialog_title_logout)
                 .setPositiveButton(android.R.string.yes, (dialogInterface, i) -> {
-                    PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putBoolean("LOGGED_IN", false).apply();
+                    checkOut();
                     new PlayStoreApiAuthenticator(getActivity().getApplicationContext()).logout();
                     dialogInterface.dismiss();
                     getActivity().finish();
                 })
                 .setNegativeButton(android.R.string.cancel, null)
                 .show();
-    }
-
-    protected boolean isConnected() {
-        return PhoneUtils.isNetworkAvailable(this.getActivity());
     }
 }

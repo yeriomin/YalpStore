@@ -41,9 +41,6 @@ public abstract class BaseActivity extends RxAppCompatActivity {
 
     abstract public void loadInstalledApps();
 
-    protected String Email, Name, Url;
-    protected SharedPreferences sharedPreferences;
-
     protected ListView listView;
     protected Map<String, ListItem> listItems = new HashMap<>();
 
@@ -55,10 +52,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
         logout = false;
-        Email = sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, "");
     }
 
     protected boolean isConnected() {

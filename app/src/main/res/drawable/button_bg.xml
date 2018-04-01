@@ -4,10 +4,10 @@
     android:insetRight="4dp"
     android:insetTop="8dp"
     android:insetBottom="8dp">
-    <ripple android:color="@color/colorAccent">
+    <ripple android:color="@color/colorPrimary">
         <item>
             <shape android:shape="rectangle"
-                android:tint="@color/button_bg">
+                android:tint="@color/colorAccent">
                 <corners android:radius="3dp" />
                 <solid android:color="@color/white" />
             </shape>

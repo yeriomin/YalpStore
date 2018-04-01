@@ -16,9 +16,12 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.percolate.caffeine.ViewUtils;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,10 +31,12 @@ import java.util.Set;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.dragons.galaxy.AppListIterator;
+import in.dragons.galaxy.CircleTransform;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.adapters.AppListAdapter;
 import in.dragons.galaxy.adapters.ViewPagerAdapter;
+import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.view.ListItem;
 import in.dragons.galaxy.view.ProgressIndicator;
@@ -70,7 +75,18 @@ public class GalaxyActivity extends BaseActivity implements
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close);
+                R.string.navigation_drawer_close) {
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                if (isLoggedIn())
+                    setUser();
+                else
+                    resetUser();
+            }
+        };
+
 
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -81,20 +97,39 @@ public class GalaxyActivity extends BaseActivity implements
         viewPager.setOffscreenPageLimit(3);
         slidingTabs.setupWithViewPager(viewPager);
 
-        if (isLoggedIn())
-            setUser();
-
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
     }
 
     public void setUser() {
         View header = navView.getHeaderView(0);
-        if (isGoogle() && isConnected())
+        if (isGoogle()) {
+            ViewUtils.setText(header, R.id.usr_email, PreferenceFragment
+                    .getString(this, PlayStoreApiAuthenticator.PREFERENCE_EMAIL));
+            ViewUtils.setText(header, R.id.usr_name,
+                    PreferenceFragment.getString(this, "GOOGLE_NAME"));
+            Picasso.with(this)
+                    .load(PreferenceFragment.getString(this, "GOOGLE_URL"))
+                    .placeholder(R.drawable.ic_user_placeholder)
+                    .transform(new CircleTransform())
+                    .into(((ImageView) header.findViewById(R.id.usr_img)));
+        } else if (isDummy()) {
+            ((TextView) header.findViewById(R.id.usr_name)).setText(R.string.header_usr_name);
             ViewUtils.setText(header, R.id.usr_email,
-                    sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, ""));
-        else if (isDummy())
-            ViewUtils.setText(header, R.id.usr_email, getResources().getString(R.string.header_usr_email));
+                    getResources().getString(R.string.header_usr_email));
+            ((ImageView) header.findViewById(R.id.usr_img))
+                    .setImageDrawable(getResources()
+                            .getDrawable(R.drawable.ic_dummy_avatar));
+        }
+    }
+
+    public void resetUser() {
+        View header = navView.getHeaderView(0);
+        ((TextView) header.findViewById(R.id.usr_name)).setText(R.string.header_usr_name);
+        ((TextView) header.findViewById(R.id.usr_email)).setText(R.string.header_usr_noEmail);
+        ((ImageView) header.findViewById(R.id.usr_img))
+                .setImageDrawable(getResources()
+                        .getDrawable(R.drawable.ic_user_placeholder));
     }
 
     @Override
