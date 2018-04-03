@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.SearchFragment">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/google_sans_bold"
+        android:text="@string/action_search_title"
+        android:textSize="22sp" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        app:cardBackgroundColor="?android:attr/colorAccent"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:id="@+id/search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <android.support.v7.widget.SearchView
+                android:id="@+id/search_apps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:closeIcon="@null"
+                app:divider="@null"
+                app:queryHint="Search Apps"
+                app:searchHintIcon="@null"
+                app:searchIcon="@drawable/ic_search" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

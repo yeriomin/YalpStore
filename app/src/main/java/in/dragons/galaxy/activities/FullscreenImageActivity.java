@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Gallery;
 
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.adapters.FullscreenImageAdapter;
+import it.sephiroth.android.library.widget.HListView;
 
 public class FullscreenImageActivity extends Activity {
 
@@ -39,7 +39,7 @@ public class FullscreenImageActivity extends Activity {
             return;
         }
 
-        Gallery gallery = ((Gallery) findViewById(R.id.gallery));
+        HListView gallery = findViewById(R.id.gallery);
         gallery.setAdapter(new FullscreenImageAdapter(
                 this,
                 DetailsActivity.app.getScreenshotUrls(),

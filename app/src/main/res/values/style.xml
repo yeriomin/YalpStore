@@ -11,6 +11,7 @@
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:colorAccent">@color/colorAccent</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
@@ -24,5 +25,6 @@
         <item name="android:taskCloseEnterAnimation">@anim/slide_in_left</item>
         <item name="android:taskCloseExitAnimation">@anim/slide_out_right</item>
     </style>
+
 
 </resources>

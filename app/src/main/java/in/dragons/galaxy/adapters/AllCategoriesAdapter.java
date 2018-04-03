@@ -63,7 +63,6 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
             R.drawable.ic_weather,
     };
 
-    private ViewHolder viewHolder;
     private SharedPreferencesTranslator translator;
 
     public AllCategoriesAdapter(Context context, Map<String, String> categories) {

@@ -41,8 +41,6 @@ public class DeviceActivity extends GalaxyActivity {
             drawSpoofedDevice();
         else
             drawDevice();
-
-        setFab();
     }
 
     public boolean isSpoofed() {
@@ -74,17 +72,6 @@ public class DeviceActivity extends GalaxyActivity {
         setText(R.id.device_api, R.string.device_api, properties.getProperty("Build.VERSION.SDK_INT"));
         String Platforms = properties.getProperty("Platforms");
         setText(R.id.device_cpu, R.string.device_cpu, Platforms.substring(0, Platforms.indexOf(',')));
-    }
-
-    public void setFab() {
-        FloatingActionButton changeDevice = (FloatingActionButton) findViewById(R.id.fab);
-        changeDevice.setVisibility(View.VISIBLE);
-        changeDevice.setImageResource(R.drawable.app_dev);
-        changeDevice.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //
-            }
-        });
     }
 
     protected void setText(int viewId, String text) {

@@ -1,13 +1,9 @@
 package in.dragons.galaxy.fragment;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.ImageViewCompat;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -21,8 +17,6 @@ import java.util.TimeZone;
 
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.SpoofDeviceManager;
-import in.dragons.galaxy.fragment.PreferenceFragment;
-import in.dragons.galaxy.fragment.UtilFragment;
 
 public class SpoofFragment extends UtilFragment {
 
@@ -30,7 +24,6 @@ public class SpoofFragment extends UtilFragment {
     private ImageView spoofed;
     private Display mDisplay;
     private View v;
-    private SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,8 +41,7 @@ public class SpoofFragment extends UtilFragment {
 
         v = inflater.inflate(R.layout.app_device_inc, container, false);
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
-        deviceName = sharedPreferences.getString(PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "");
+        deviceName = PreferenceFragment.getString(getActivity(), PreferenceFragment.PREFERENCE_DEVICE_TO_PRETEND_TO_BE);
         spoofed = (ImageView) v.findViewById(R.id.spoofed_indicator);
         mDisplay = (this).getActivity().getWindowManager().getDefaultDisplay();
 
@@ -57,9 +49,6 @@ public class SpoofFragment extends UtilFragment {
             drawSpoofedDevice();
         else
             drawDevice();
-
-        setFab();
-
         return v;
     }
 
@@ -94,15 +83,6 @@ public class SpoofFragment extends UtilFragment {
         setText(R.id.device_cpu, R.string.device_cpu, Platforms.substring(0, Platforms.indexOf(',')));
     }
 
-
-    public void setFab() {
-        FloatingActionButton changeDevice = (FloatingActionButton) getActivity().findViewById(R.id.fab);
-        changeDevice.setVisibility(View.VISIBLE);
-        changeDevice.setImageResource(R.drawable.app_dev);
-        changeDevice.setOnClickListener(view -> {
-            //
-        });
-    }
 
     protected void setText(int viewId, String text) {
         TextView textView = (TextView) v.findViewById(viewId);

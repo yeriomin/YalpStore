@@ -7,7 +7,8 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/top_cat_img_bg"
@@ -28,6 +29,7 @@
         android:id="@+id/top_cat_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textSize="12sp" />
+        android:background="@drawable/top_category_bg"
+        android:fontFamily="@font/google_sans_bold"
+        android:textSize="18sp" />
 </LinearLayout>

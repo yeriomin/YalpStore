@@ -4,24 +4,12 @@ import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.percolate.caffeine.ViewUtils;
-import com.squareup.picasso.Picasso;
+import com.vlstr.fluentappbar.FluentAppBar;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,32 +19,20 @@ import java.util.Set;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.dragons.galaxy.AppListIterator;
-import in.dragons.galaxy.CircleTransform;
-import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.adapters.AppListAdapter;
 import in.dragons.galaxy.adapters.ViewPagerAdapter;
-import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.view.ListItem;
 import in.dragons.galaxy.view.ProgressIndicator;
 import in.dragons.galaxy.view.SearchResultAppBadge;
 
-public class GalaxyActivity extends BaseActivity implements
-        NavigationView.OnNavigationItemSelectedListener {
+public class GalaxyActivity extends BaseActivity implements View.OnClickListener {
 
-    @BindView(R.id.search_toolbar)
-    SearchView searchToolbar;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.sliding_tabs)
-    TabLayout slidingTabs;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
-    @BindView(R.id.nav_view)
-    NavigationView navView;
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
+    @BindView(R.id.bottom_bar)
+    FluentAppBar bottm_bar;
 
     protected Map<String, ListItem> listItems = new HashMap<>();
     protected AppListIterator iterator;
@@ -69,67 +45,14 @@ public class GalaxyActivity extends BaseActivity implements
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
-        addQueryTextListener(searchToolbar);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close) {
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                if (isLoggedIn())
-                    setUser();
-                else
-                    resetUser();
-            }
-        };
-
-
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navView.setNavigationItemSelectedListener(this);
-
+        bottm_bar.setNavigationMenu(R.menu.main_menu, this);
+        bottm_bar.setSecondaryMenu(R.menu.nav_menu, this);
+        bottm_bar.setBlurRadius(10);
         viewPager.setAdapter(new ViewPagerAdapter(this, getSupportFragmentManager()));
         viewPager.setOffscreenPageLimit(3);
-        slidingTabs.setupWithViewPager(viewPager);
 
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-    }
-
-    public void setUser() {
-        View header = navView.getHeaderView(0);
-        if (isGoogle()) {
-            ViewUtils.setText(header, R.id.usr_email, PreferenceFragment
-                    .getString(this, PlayStoreApiAuthenticator.PREFERENCE_EMAIL));
-            ViewUtils.setText(header, R.id.usr_name,
-                    PreferenceFragment.getString(this, "GOOGLE_NAME"));
-            Picasso.with(this)
-                    .load(PreferenceFragment.getString(this, "GOOGLE_URL"))
-                    .placeholder(R.drawable.ic_user_placeholder)
-                    .transform(new CircleTransform())
-                    .into(((ImageView) header.findViewById(R.id.usr_img)));
-        } else if (isDummy()) {
-            ((TextView) header.findViewById(R.id.usr_name)).setText(R.string.header_usr_name);
-            ViewUtils.setText(header, R.id.usr_email,
-                    getResources().getString(R.string.header_usr_email));
-            ((ImageView) header.findViewById(R.id.usr_img))
-                    .setImageDrawable(getResources()
-                            .getDrawable(R.drawable.ic_dummy_avatar));
-        }
-    }
-
-    public void resetUser() {
-        View header = navView.getHeaderView(0);
-        ((TextView) header.findViewById(R.id.usr_name)).setText(R.string.header_usr_name);
-        ((TextView) header.findViewById(R.id.usr_email)).setText(R.string.header_usr_noEmail);
-        ((ImageView) header.findViewById(R.id.usr_img))
-                .setImageDrawable(getResources()
-                        .getDrawable(R.drawable.ic_user_placeholder));
     }
 
     @Override
@@ -149,11 +72,7 @@ public class GalaxyActivity extends BaseActivity implements
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        super.onBackPressed();
     }
 
     @Override
@@ -218,28 +137,29 @@ public class GalaxyActivity extends BaseActivity implements
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.action_myapps:
-                startActivity(new Intent(this, GalaxyActivity.class));
+    public void onClick(View v) {
+        switch ((int) v.getTag()) {
+            case R.id.action_home:
+                viewPager.setCurrentItem(0, true);
                 break;
-            case R.id.action_settings:
-                startActivity(new Intent(this, PreferenceActivity.class));
+            case R.id.action_updates:
+                viewPager.setCurrentItem(1, true);
+                break;
+            case R.id.action_categories:
+                viewPager.setCurrentItem(2, true);
+                break;
+            case R.id.action_search:
+                viewPager.setCurrentItem(3, true);
                 break;
             case R.id.action_accounts:
-                startActivity(new Intent(this, AccountsActivity.class));
-                break;
-            case R.id.action_spoofed:
-                startActivity(new Intent(this, SpoofActivity.class));
+                startActivity(new Intent(getApplicationContext(), AccountsActivity.class));
                 break;
             case R.id.action_about:
-                startActivity(new Intent(this, AboutActivity.class));
+                startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+                break;
+            case R.id.action_settings:
+                startActivity(new Intent(getApplicationContext(), PreferenceActivity.class));
                 break;
         }
-
-        drawerLayout = ViewUtils.findViewById(this, R.id.drawer_layout);
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
     }
 }

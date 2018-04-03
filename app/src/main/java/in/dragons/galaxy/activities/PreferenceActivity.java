@@ -19,13 +19,10 @@ public class PreferenceActivity extends GalaxyActivity {
         Toolbar toolbar = ViewUtils.findViewById(this, R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new PreferenceFragment())
-                .addToBackStack(null)
-                .commit();
+                .commitAllowingStateLoss();
     }
 
     @Override

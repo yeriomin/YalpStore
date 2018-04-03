@@ -1,32 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:id="@+id/group1">
-        <item
-            android:id="@+id/action_myapps"
-            android:icon="@drawable/ic_home"
-            android:title="@string/action_apps" />
-    </group>
-    <group android:id="@+id/group2">
         <item
             android:id="@+id/action_accounts"
             android:icon="@drawable/ic_account"
             android:title="@string/action_accounts" />
         <item
-            android:id="@+id/action_spoofed"
-            android:icon="@drawable/app_dev"
-            android:title="@string/action_spoofed" />
-    </group>
-    <group android:id="@+id/group3">
-        <item
-            android:id="@+id/action_themes"
-            android:icon="@drawable/ic_theme"
-            android:title="@string/action_themes" />
+            android:id="@+id/action_about"
+            android:icon="@drawable/ic_about"
+            android:title="@string/action_about" />
         <item
             android:id="@+id/action_settings"
             android:icon="@drawable/ic_settings"
             android:title="@string/action_settings" />
-        <item
-            android:id="@+id/action_about"
-            android:icon="@drawable/ic_about"
-            android:title="@string/action_about" />
-    </group>
 </menu>

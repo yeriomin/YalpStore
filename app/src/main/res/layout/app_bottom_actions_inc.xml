@@ -65,7 +65,8 @@
                 android:layout_height="@dimen/icon_size_med"
                 android:background="?colorAccent"
                 android:padding="10dp"
-                android:src="@drawable/app_dev" />
+                android:src="@drawable/app_dev"
+                android:tint="@color/white" />
         </com.github.florent37.shapeofview.shapes.CircleView>
 
         <!-- PlayStore link -->

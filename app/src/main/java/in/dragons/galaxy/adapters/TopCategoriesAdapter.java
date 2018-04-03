@@ -61,9 +61,7 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.topLabel.setText(translator.getString(categories[position]));
         holder.topImage.setImageDrawable(context.getResources().getDrawable(categoriesImg[holder.getAdapterPosition()]));
-        holder.topImage.setOnClickListener(v -> {
-            CategoryAppsActivity.start(context, categories[holder.getAdapterPosition()]);
-        });
+        holder.topLabel.setOnClickListener(v -> CategoryAppsActivity.start(context, categories[holder.getAdapterPosition()]));
     }
 
     @Override

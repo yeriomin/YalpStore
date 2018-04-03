@@ -1,37 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/changes_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:visibility="gone"
-    app:cardUseCompatPadding="true">
+    android:background="@color/semiTransparentAccent"
+    android:orientation="vertical"
+    android:padding="7dp"
+    android:visibility="gone">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/changes_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/google_sans_bold"
+        android:gravity="center|start"
+        android:text="@string/details_changelog"
+        android:textAllCaps="true"
+        android:textColor="?android:attr/colorAccent"
+        android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/changes_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:gravity="center|start"
-            android:text="@string/details_changelog"
-            android:textAllCaps="true"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/changes_upper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:autoLink="web|email"
+        android:fontFamily="@font/google_sans"
+        android:lineSpacingExtra="5dp"
+        android:textColor="?android:attr/colorAccent"
+        android:textIsSelectable="true" />
 
-        <TextView
-            android:id="@+id/changes_upper"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:autoLink="web|email"
-            android:lineSpacingExtra="5dp"
-            android:textIsSelectable="true" />
-    </LinearLayout>
-
-</android.support.v7.widget.CardView>
+</LinearLayout>

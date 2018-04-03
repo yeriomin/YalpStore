@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/top_cat"
@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
+                android:fontFamily="@font/google_sans"
                 android:gravity="start"
                 android:text="@string/top_categories"
                 android:textSize="15sp"
@@ -31,7 +32,7 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/top_cat_view"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
@@ -46,6 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:fontFamily="@font/google_sans"
                     android:gravity="start"
                     android:text="@string/all_categories"
                     android:textSize="15sp"
@@ -80,9 +82,9 @@
             android:id="@+id/progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_gravity="center"
             android:indeterminate="true"
             android:padding="5dp"
             android:visibility="gone" />

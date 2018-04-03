@@ -10,12 +10,13 @@
         android:layout_width="@dimen/icon_size_cat"
         android:layout_height="@dimen/icon_size_cat"
         android:padding="2dp"
-        android:src="@drawable/ic_placeholder" />
+        android:src="@android:color/transparent" />
 
     <TextView
         android:id="@+id/top_cat_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="10dp" />
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/google_sans" />
 </LinearLayout>

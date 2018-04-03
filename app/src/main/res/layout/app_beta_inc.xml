@@ -20,8 +20,8 @@
             android:layout_marginStart="10dp"
             android:drawableEnd="@drawable/ic_expand_more"
             android:gravity="center|start"
-            android:textAllCaps="true"
             android:text="@string/details_description"
+            android:textAllCaps="true"
             android:textSize="14sp"
             android:textStyle="bold"
             android:visibility="gone" />

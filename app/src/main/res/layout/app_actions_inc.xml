@@ -9,56 +9,61 @@
 
     <Button
         android:id="@+id/uninstall"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="36dp"
         android:layout_weight="1"
-        android:backgroundTint="@color/colorAccent"
+        android:background="@drawable/button_login"
         android:maxLines="1"
         android:text="@string/details_uninstall"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/colorAccent"
         android:visibility="gone" />
 
     <Button
         android:id="@+id/download"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="36dp"
         android:layout_weight="1"
-        android:backgroundTint="@color/colorAccent"
+        android:background="@drawable/button_login"
         android:maxLines="1"
         android:text="@string/details_download"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/colorAccent"
         android:visibility="gone" />
 
     <Button
         android:id="@+id/cancel"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="36dp"
         android:layout_weight="1"
-        android:backgroundTint="@color/colorAccent"
+        android:background="@drawable/button_login"
         android:maxLines="1"
         android:text="@string/details_cancel"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/colorAccent"
         android:visibility="gone" />
 
     <Button
         android:id="@+id/install"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="36dp"
         android:layout_weight="1"
-        android:backgroundTint="@color/colorAccent"
+        android:background="@drawable/button_login"
         android:maxLines="1"
         android:text="@string/details_install"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/colorAccent"
         android:visibility="gone" />
 
     <Button
         android:id="@+id/run"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="36dp"
         android:layout_weight="1"
-        android:backgroundTint="@color/colorAccent"
+        android:background="@drawable/button_login"
         android:maxLines="1"
         android:text="@string/details_run"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/colorAccent"
         android:visibility="gone" />
 </LinearLayout>

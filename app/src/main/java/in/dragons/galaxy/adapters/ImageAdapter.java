@@ -6,14 +6,18 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import java.util.List;
 
 import in.dragons.galaxy.model.ImageSource;
 import in.dragons.galaxy.task.LoadImageTask;
+import it.sephiroth.android.library.widget.AbsHListView;
+import it.sephiroth.android.library.widget.HListView;
 
 public class ImageAdapter extends BaseAdapter {
 
@@ -70,18 +74,18 @@ public class ImageAdapter extends BaseAdapter {
             int w = screenWidth;
             int h = screenWidth;
             Drawable drawable = imageView.getDrawable();
+            Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
             if (drawable instanceof BitmapDrawable) {
-                Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
                 if (null != bitmap) {
                     w = Math.min(w, bitmap.getWidth());
                     h = Math.min(h, bitmap.getHeight());
                 }
             }
-            imageView.setLayoutParams(new Gallery.LayoutParams(w, h));
+            imageView.setLayoutParams(new AbsHListView.LayoutParams(w, h));
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            if (imageView.getParent() instanceof Gallery) {
-                Gallery gallery = (Gallery) imageView.getParent();
-                gallery.setMinimumHeight(Math.max(gallery.getMeasuredHeight(), h));
+            if (imageView.getParent() instanceof AbsListView) {
+                HListView gallery = (HListView) imageView.getParent();
+                gallery.setMinimumHeight(bitmap.getHeight());
             }
         }
     }

@@ -5,10 +5,10 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <Gallery
+    <it.sephiroth.android.library.widget.HListView
         android:id="@+id/gallery"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:spacing="10dp" />l
+        android:divider="@null" />
 </LinearLayout>

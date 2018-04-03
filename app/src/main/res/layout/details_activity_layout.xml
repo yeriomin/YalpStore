@@ -62,7 +62,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     app:progress_reached_bar_height="2.5dp"
-                    app:progress_reached_color="@color/colorPrimary"
+                    app:progress_reached_color="@color/colorAccent"
                     app:progress_text_color="@color/colorAccent"
                     app:progress_text_size="12sp"
                     app:progress_unreached_bar_height="2dp"
@@ -93,11 +93,11 @@
             <!-- Read More -->
             <include layout="@layout/app_more_inc" />
             <!-- Screenshot -->
-            <Gallery
+            <it.sephiroth.android.library.widget.HListView
                 android:id="@+id/screenshots_gallery"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spacing="15dp" />
+                android:layout_height="170dp"
+                android:divider="@null" />
             <!-- Reviews -->
             <include layout="@layout/app_reviews_inc" />
             <!-- Permissions -->

@@ -1,12 +1,12 @@
 package in.dragons.galaxy.adapters;
 
 import android.content.Context;
-import android.widget.Gallery;
 import android.widget.ImageView;
 
 import java.util.List;
 
 import in.dragons.galaxy.task.LoadImageTask;
+import it.sephiroth.android.library.widget.AbsHListView;
 
 public class FullscreenImageAdapter extends ImageAdapter {
 
@@ -34,7 +34,7 @@ public class FullscreenImageAdapter extends ImageAdapter {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            imageView.setLayoutParams(new Gallery.LayoutParams(screenWidth, screenHeight));
+            imageView.setLayoutParams(new AbsHListView.LayoutParams(screenWidth, screenHeight));
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         }
     }
