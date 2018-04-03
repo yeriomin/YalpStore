@@ -22,10 +22,10 @@ package com.github.yeriomin.yalpstore.bugreport;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
-import com.github.yeriomin.yalpstore.FileProvider;
 import com.github.yeriomin.yalpstore.R;
 
 import java.io.File;

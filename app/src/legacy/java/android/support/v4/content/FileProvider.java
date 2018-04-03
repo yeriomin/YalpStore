@@ -1,4 +1,4 @@
-package com.github.yeriomin.yalpstore;
+package android.support.v4.content;
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *
