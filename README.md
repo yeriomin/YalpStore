@@ -72,6 +72,13 @@ When the GSF id is ready, your email and password (if you provided them) are use
 >
 >A: Yes. Software like Yalp Store, Google Play Crawler and Raccoon has been used for years and it seems to be safe. Never heard of any real cases of accounts being disabled.
 
-Yalp Store is derived from the following projects:
-* https://github.com/Akdeniz/google-play-crawler
-* [Raccoon](http://raccoon.onyxbits.de) ([source](https://github.com/onyxbits/raccoon4/))
+## License
+
+Yalp Store is Free Software: You can use, study share and improve it at your will. Specifically you can redistribute and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.
+
+## Dependencies
+
+* [play-store-api](https://github.com/yeriomin/play-store-api) - Google Play Store API wrapper library
+* [Apache Commons Net](https://commons.apache.org/proper/commons-net/) - used to send bug reports
+* [libsuperuser](https://github.com/Chainfire/libsuperuser) - used to work with root
+* [javaxdelta](https://sourceforge.net/projects/xdelta/) - used to work with delta updates
