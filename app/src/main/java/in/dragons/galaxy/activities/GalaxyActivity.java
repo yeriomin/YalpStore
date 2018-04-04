@@ -49,7 +49,7 @@ public class GalaxyActivity extends BaseActivity implements View.OnClickListener
         bottm_bar.setSecondaryMenu(R.menu.nav_menu, this);
         bottm_bar.setBlurRadius(10);
         viewPager.setAdapter(new ViewPagerAdapter(this, getSupportFragmentManager()));
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(1);
 
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
