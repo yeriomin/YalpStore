@@ -41,7 +41,7 @@ public class Paths {
         }
         for (File file: externalFilesDirs) {
             try {
-                if (Environment.isExternalStorageEmulated(file) && !Environment.isExternalStorageRemovable(file)) {
+                if (null != file && Environment.isExternalStorageEmulated(file) && !Environment.isExternalStorageRemovable(file)) {
                     return new File(file.getAbsolutePath().replace(FALLBACK_DIRECTORY, ""));
                 }
             } catch (IllegalArgumentException e) {
