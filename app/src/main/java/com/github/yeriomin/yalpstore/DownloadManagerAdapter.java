@@ -23,6 +23,7 @@ import android.annotation.TargetApi;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDiskIOException;
 import android.os.Build;
 import android.util.Log;
 import android.util.Pair;
@@ -124,7 +125,14 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
     }
 
     private Cursor getCursor(long downloadId) {
-        Cursor cursor = dm.query(new DownloadManager.Query().setFilterById(downloadId));
+        Cursor cursor = null;
+        try {
+            cursor = dm.query(new DownloadManager.Query().setFilterById(downloadId));
+        } catch (SQLiteDiskIOException e) {
+            // android.app.DownloadManager might not be working with sqlite in a thread-safe manner...
+            // Very rare and doesn't seem to be Yalp's problem, so lets just silence it
+            // It is not a problem if download progress is not updated once ot twice per download
+        }
         if (null == cursor) {
             return null;
         }
