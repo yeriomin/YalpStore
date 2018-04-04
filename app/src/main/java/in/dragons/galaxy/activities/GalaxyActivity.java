@@ -9,7 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ListView;
 
-import com.vlstr.fluentappbar.FluentAppBar;
+import in.dragons.custom.CustomAppBar;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +32,7 @@ public class GalaxyActivity extends BaseActivity implements View.OnClickListener
     @BindView(R.id.view_pager)
     ViewPager viewPager;
     @BindView(R.id.bottom_bar)
-    FluentAppBar bottm_bar;
+    CustomAppBar bottm_bar;
 
     protected Map<String, ListItem> listItems = new HashMap<>();
     protected AppListIterator iterator;

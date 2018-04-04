@@ -29,4 +29,20 @@
     <declare-styleable name="Themes">
         <attr name="numberProgressBarStyle" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="CustomAppBar">
+               
+        <attr name="background_colour" format="color" />
+               
+        <attr name="foreground_colour" format="color" />
+        <attr name="app_bar_type" format="enum">
+            <enum name="DISABLE_BLUR" value="0" />
+            <enum name="ON_EXPANDED" value="50" />
+            <enum name="FULL_BLUR" value="100" />
+        </attr>
+           
+    </declare-styleable>
+    <declare-styleable name="BlurView">
+        <attr name="blurOverlayColor" format="color" />
+    </declare-styleable>
 </resources>
