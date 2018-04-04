@@ -188,7 +188,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
 
         try {
             return copyStream(in, out, fileSize);
-        } catch (IOException e) {
+        } catch (IOException | IllegalStateException e) {
             Log.e(getClass().getSimpleName(), "Could not read: " + e.getMessage());
             DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_HTTP_DATA_ERROR);
             Util.closeSilently(out);
