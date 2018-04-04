@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DownloadState {
 
@@ -44,13 +45,13 @@ public class DownloadState {
         CANCELLED,
     }
 
-    static private Map<String, DownloadState> state = new HashMap<>();
-    static private Map<Long, String> downloadIds = new HashMap<>();
+    static private Map<String, DownloadState> state = new ConcurrentHashMap<>();
+    static private Map<Long, String> downloadIds = new ConcurrentHashMap<>();
 
     private App app;
     private TriggeredBy triggeredBy = TriggeredBy.DOWNLOAD_BUTTON;
-    private Map<Long, Pair<Integer, Integer>> progress = new HashMap<>();
-    private Map<Long, Status> status = new HashMap<>();
+    private Map<Long, Pair<Integer, Integer>> progress = new ConcurrentHashMap<>();
+    private Map<Long, Status> status = new ConcurrentHashMap<>();
     private byte[] apkChecksum;
 
     static public DownloadState get(String packageName) {
