@@ -19,6 +19,8 @@
 
 package com.github.yeriomin.yalpstore.fragment.preference;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -45,7 +47,7 @@ public class AllPreferences extends Abstract {
         super(activity);
     }
 
-
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void drawBlackList() {
         Blacklist blacklistFragment = new Blacklist(activity);
         blacklistFragment.setBlackOrWhite((ListPreference) activity.findPreference(PreferenceUtil.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK));
