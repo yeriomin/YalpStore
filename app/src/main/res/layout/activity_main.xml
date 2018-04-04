@@ -24,8 +24,5 @@
         android:elevation="5dp"
         app:app_bar_type="DISABLE_BLUR"
         app:background_colour="#F5F5F5"
-        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
-
-    </in.dragons.custom.CustomAppBar>
-
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior" />
 </android.support.design.widget.CoordinatorLayout>

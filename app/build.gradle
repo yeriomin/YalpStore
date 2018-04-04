@@ -42,6 +42,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support:palette-v7:27.1.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.squareup.okhttp3:okhttp:3.9.1'
     implementation 'com.github.percolate:caffeine:0.4.7'
