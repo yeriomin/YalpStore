@@ -22,6 +22,8 @@ package com.github.yeriomin.yalpstore;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.github.yeriomin.yalpstore.model.App;
+
 class OnAppClickListener implements AdapterView.OnItemClickListener {
 
     private AppListActivity activity;
@@ -32,7 +34,11 @@ class OnAppClickListener implements AdapterView.OnItemClickListener {
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        DetailsActivity.app = activity.getAppByListPosition(position);
+        App app =  activity.getAppByListPosition(position);
+        if (null == app) {
+            return;
+        }
+        DetailsActivity.app = app;
         activity.startActivity(DetailsActivity.getDetailsIntent(activity, DetailsActivity.app.getPackageName()));
     }
 }
