@@ -1,10 +1,7 @@
 package in.dragons.galaxy.fragment;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,12 +28,12 @@ public class HomeFragment extends UtilFragment {
             return view;
         }
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        open_community = view.findViewById(R.id.open_community);
+        /*open_community = view.findViewById(R.id.open_community);
         open_community.setOnClickListener(v -> {
             Uri uri = Uri.parse("https://t.me/GalaxyOfficial");
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
-        });
+        });*/
         return view;
     }
 

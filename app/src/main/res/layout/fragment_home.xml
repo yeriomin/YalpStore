@@ -76,10 +76,10 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/google_sans_bold"
-                android:text="@string/category_featuredApps"
-                android:textSize="22sp" />
+                android:text="@string/category_freeApps"
+                android:textSize="18sp" />
 
-            <in.dragons.galaxy.view.FeaturedApps
+            <in.dragons.galaxy.view.TopFreeApps
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="2dp" />
@@ -91,15 +91,15 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/google_sans_bold"
-                android:text="@string/category_featuredGames"
-                android:textSize="22sp" />
+                android:text="@string/category_freeGames"
+                android:textSize="18sp" />
 
-            <in.dragons.galaxy.view.FeaturedGames
+            <in.dragons.galaxy.view.TopFreeGames
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="2dp" />
 
-            <android.support.v7.widget.CardView
+            <!--android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
@@ -135,15 +135,7 @@
                         android:textColor="@color/white"
                         android:textSize="14sp" />
                 </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:alpha="0.6"
-                android:src="@color/cardview_dark_background" />
+            </android.support.v7.widget.CardView-->
 
             <TextView
                 android:id="@+id/textView2"
@@ -153,13 +145,73 @@
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/google_sans_bold"
                 android:text="@string/category_communityApps"
-                android:textSize="22sp" />
+                android:textSize="18sp" />
 
             <in.dragons.galaxy.view.CommunityBasedApps
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/category_topMusicVideo"
+                android:textSize="18sp" />
+
+            <in.dragons.galaxy.view.MusicVideoApps
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/category_trendingGames"
+                android:textSize="18sp" />
+
+            <in.dragons.galaxy.view.TopTrendingGames
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/category_topUtility"
+                android:textSize="18sp" />
+
+            <in.dragons.galaxy.view.TopUtilityApps
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/category_fdroidApps"
+                android:textSize="18sp" />
+
+            <in.dragons.galaxy.view.FdroidApps
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginTop="2dp" />
 
         </LinearLayout>

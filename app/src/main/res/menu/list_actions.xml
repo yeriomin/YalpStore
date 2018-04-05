@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/app_install"
+        android:title="@string/details_install" />
+    <item
+        android:id="@+id/app_wishlist"
+        android:title="@string/details_wishList" />
+</menu>

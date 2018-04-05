@@ -18,32 +18,23 @@ import java.util.List;
 
 import in.dragons.galaxy.adapters.FeaturedAdapter;
 
-public class FeaturedApps extends RecyclerView {
+public class CustomRecycler extends RecyclerView {
 
-    public FeaturedApps(Context context) {
+    public CustomRecycler(Context context) {
         super(context);
-        init(context, null, 0);
     }
 
-    public FeaturedApps(Context context, AttributeSet attrs) {
+    public CustomRecycler(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context, attrs, 0);
     }
 
-    public FeaturedApps(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CustomRecycler(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs, defStyleAttr);
     }
 
-    private void init(Context context, AttributeSet attrs, int defStyleAttr) {
-        setHorizontalScrollBarEnabled(true);
-        JsonParser(context);
-    }
-
-    private void JsonParser(Context context) {
+    public void JsonParser(Context context, String JSON_PATH) {
         RequestQueue mRequestQueue = Volley.newRequestQueue(context);
         List<FeaturedAdapter.FeaturedHolder> FeaturedAppsHolder = new ArrayList<>();
-        String JSON_PATH = "https://raw.githubusercontent.com/GalaxyStore/MetaData/master/featured_apps.json";
         JsonArrayRequest req = new JsonArrayRequest(JSON_PATH,
                 response -> {
                     try {
@@ -51,10 +42,12 @@ public class FeaturedApps extends RecyclerView {
                             JSONObject inst = (JSONObject) response.get(i);
                             FeaturedAdapter adapter = new FeaturedAdapter(FeaturedAppsHolder, context);
                             FeaturedAdapter.FeaturedHolder apps = new FeaturedAdapter
-                                    .FeaturedHolder(inst.getString("app_name"),
-                                    inst.getString("app_packagename"),
-                                    inst.getString("app_by"),
-                                    inst.getString("app_icon"));
+                                    .FeaturedHolder(inst.getString("title"),
+                                    inst.getString("id"),
+                                    inst.getString("developer"),
+                                    inst.getString("icon"),
+                                    inst.getDouble("rating"),
+                                    inst.getString("price"));
                             FeaturedAppsHolder.add(apps);
                             setAdapter(adapter);
                             setLayoutManager(new LinearLayoutManager(context,
@@ -67,5 +60,4 @@ public class FeaturedApps extends RecyclerView {
                 }, error -> Log.w("JSON_ERROR", "Error: " + error.getMessage()));
         mRequestQueue.add(req);
     }
-
 }

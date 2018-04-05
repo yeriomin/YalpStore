@@ -120,6 +120,7 @@
     <string name="details_update">Update</string>
     <string name="details_cancel">Cancel</string>
     <string name="details_install">Install</string>
+    <string name="details_wishList">Add to wishlist</string>
     <string name="details_uninstall">Uninstall</string>
     <string name="details_downloading">Downloading</string>
     <string name="details_installing">Installing</string>
@@ -307,8 +308,12 @@
     <string name="category_topFree">Top Free</string>
     <string name="category_topGrossing">Top Grossing</string>
     <string name="category_trending">Trending</string>
-    <string name="category_featuredApps">Featured Apps</string>
-    <string name="category_featuredGames">Featured Games</string>
+    <string name="category_freeApps">Free Apps</string>
+    <string name="category_freeGames">Free Games</string>
+    <string name="category_topMusicVideo">Music &amp; Video</string>
+    <string name="category_trendingGames">Trending Games</string>
+    <string name="category_fdroidApps">Apps on FDroid</string>
+    <string name="category_topUtility">Tools &amp; Utilities</string>
     <string name="category_communityApps">Based on Galaxy Community</string>
     <string name="community_suggestion">You have any app or game which you like, and u want to share with us? Submit it to our Community.</string>
 </resources>
