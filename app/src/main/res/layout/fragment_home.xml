@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|enterAlways">
+            app:layout_scrollFlags="scroll|enterAlways|snap">
 
             <TextView
                 android:id="@+id/account_name"
@@ -106,8 +106,11 @@
                 app:cardCornerRadius="10dp">
 
                 <RelativeLayout
+                    android:id="@+id/open_community"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true">
 
                     <ImageView
                         android:id="@+id/imageView2"

@@ -1,11 +1,15 @@
 package in.dragons.galaxy.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -15,6 +19,7 @@ import in.dragons.galaxy.R;
 
 public class HomeFragment extends UtilFragment {
 
+    private RelativeLayout open_community;
     private View view;
 
     @Override
@@ -25,8 +30,13 @@ public class HomeFragment extends UtilFragment {
                 ((ViewGroup) view.getParent()).removeView(view);
             return view;
         }
-
         view = inflater.inflate(R.layout.fragment_home, container, false);
+        open_community = view.findViewById(R.id.open_community);
+        open_community.setOnClickListener(v -> {
+            Uri uri = Uri.parse("https://t.me/GalaxyOfficial");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        });
         return view;
     }
 
