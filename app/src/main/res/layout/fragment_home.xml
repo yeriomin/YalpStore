@@ -14,7 +14,22 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="8dp"
             app:layout_scrollFlags="scroll|enterAlways|snap">
+
+
+            <TextView
+                android:id="@+id/main_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/action_welcome"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/account_name"
@@ -32,24 +47,10 @@
                 android:layout_height="64dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginBottom="20dp"
-                android:layout_marginEnd="23dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/avatar_ring"
                 app:srcCompat="@drawable/ic_dummy_avatar" />
 
-            <TextView
-                android:id="@+id/main_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="23dp"
-                android:layout_marginTop="22dp"
-                android:fontFamily="@font/google_sans_bold"
-                android:text="@string/action_welcome"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="22sp" />
         </RelativeLayout>
 
     </android.support.design.widget.AppBarLayout>
