@@ -1,6 +1,9 @@
-/app/src/main/java/com/github/yeriomin/yalpstore/FileProvider.java
+/app/src/legacy/java/android/support/v4/content/FileProvider.java
+/app/src/legacy/java/android/util/LruCache.java
+/app/src/legacy/java/android/preference/MultiSelectListPreference.java
 /app/src/main/java/com/github/yeriomin/yalpstore/EglExtensionRetriever.java
 /app/src/main/java/com/github/yeriomin/yalpstore/model/App.java
 /app/src/main/java/com/github/yeriomin/yalpstore/model/LoginInfo.java
 /app/src/main/java/com/github/yeriomin/yalpstore/model/AppBuilder.java
 /app/src/main/java/com/github/yeriomin/yalpstore/model/Filter.java
+/app/src/main/java/com/github/yeriomin/yalpstore/model/Review.java
