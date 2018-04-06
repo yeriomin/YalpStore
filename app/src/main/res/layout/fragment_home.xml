@@ -15,8 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="8dp"
-            app:layout_scrollFlags="scroll|enterAlways|snap">
-
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <TextView
                 android:id="@+id/main_title"
@@ -55,12 +54,11 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <in.dragons.galaxy.view.CustomNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
 
         <LinearLayout
             android:id="@+id/top_sections"
@@ -82,7 +80,8 @@
             <in.dragons.galaxy.view.TopFreeApps
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="2dp"
+                android:nestedScrollingEnabled="false" />
 
             <TextView
                 android:id="@+id/textView"
@@ -97,7 +96,8 @@
             <in.dragons.galaxy.view.TopFreeGames
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="2dp"
+                android:nestedScrollingEnabled="false" />
 
             <!--android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -152,7 +152,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="2dp"
+                android:nestedScrollingEnabled="false" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -167,7 +168,8 @@
             <in.dragons.galaxy.view.MusicVideoApps
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="2dp"
+                android:nestedScrollingEnabled="false" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -182,7 +184,8 @@
             <in.dragons.galaxy.view.TopTrendingGames
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="2dp"
+                android:nestedScrollingEnabled="false" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -197,7 +200,8 @@
             <in.dragons.galaxy.view.TopUtilityApps
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="2dp"
+                android:nestedScrollingEnabled="false" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -212,10 +216,11 @@
             <in.dragons.galaxy.view.FdroidApps
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="2dp"
+                android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </in.dragons.galaxy.view.CustomNestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
