@@ -281,9 +281,9 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="apps_by">"%1$s開発のアプリ"</string>
 <string name="pref_message_fallback">"フォールバックディレクトリ (%1$s) に設定しますか?"</string>
 <string name="no_permissions">"使用される権限はありません。"</string>
-<string name="about_librepay_label">"Donate Librepay:"</string>
-<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
-<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="about_librepay_label">"Librepayで寄付:"</string>
+<string name="notification_file_verification_failed">"ファイルが壊れているようです。 もう一度ダウンロードしてみてください。"</string>
+<string name="pref_download_internal_storage">"内部ストレージにダウンロード"</string>
+<string name="pref_download_internal_storage_summary_on">"より安全ですが、apk にユーザーがアクセスできません"</string>
+<string name="pref_download_internal_storage_summary_off">"apk は、下に表示された外部ストレージのパスにダウンロードされます"</string>
 </resources>
