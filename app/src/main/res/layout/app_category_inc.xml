@@ -9,7 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/appbar_bar_height">
 
         <LinearLayout
             android:id="@+id/cat_container"
@@ -57,15 +58,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/all_cat"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true"
                     app:contentPadding="5dp">
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/all_cat_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
                         app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
                     <TextView
