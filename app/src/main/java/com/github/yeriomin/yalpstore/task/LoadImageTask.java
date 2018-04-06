@@ -109,7 +109,9 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
     }
 
     private void fadeIn() {
+        imageView.setVisibility(View.VISIBLE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            imageView.setAlpha(0.0f);
             imageView.animate().setDuration(fadeInMillis).withLayer().alpha(1.0f);
         } else {
             Animation a = new AlphaAnimation(0.0f, 1.0f);
