@@ -45,4 +45,11 @@
     <declare-styleable name="BlurView">
         <attr name="blurOverlayColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="MoreAppsCard">
+        <attr name="CardTitle" format="string" />
+        <attr name="AppsCategory" format="string" />
+        <attr name="JsonName" format="string" />
+    </declare-styleable>
+
 </resources>

@@ -114,6 +114,7 @@
     <string name="details_permissions">App permissions</string>
     <string name="details_versionName">"%1$s"</string>
     <string name="details_versionName_updatable">"%1$s → %2$s"</string>
+    <string name="details_more">More</string>
     <string name="details_run">Open</string>
     <string name="details_download">Download</string>
     <string name="details_purchase">Purchase</string>
