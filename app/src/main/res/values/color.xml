@@ -42,10 +42,10 @@
     <color name="colorBackgroundCardBlack">#000000</color>
 
     <!--Shades-->
-    <color name="colorShade01">#3367D6</color>
-    <color name="colorShade02">#3367D6</color>
-    <color name="colorShade03">#3367D6</color>
-    <color name="colorShade04">#3367D6</color>
+    <color name="colorShade01">@color/colorRed</color>
+    <color name="colorShade02">@color/colorGreen</color>
+    <color name="colorShade03">@color/colorOrange</color>
+    <color name="colorShade04">@color/colorBlue</color>
 
     <!--More Colors-->
     <color name="colorCyan">#00BCD4</color>
