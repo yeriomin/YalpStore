@@ -33,7 +33,7 @@ When the GSF id is ready, your email and password (if you provided them) are use
 
 ## Screenshots
 
-<img alt="Updates page" src="screenshots/updates.png" width="30%" hspace="5" /><img alt="Details page" src="screenshots/details.png" width="30%" hspace="5" /><img alt="Search page" src="screenshots/search.png" width="30%" hspace="5" />
+<img alt="Updates page" src="fastlane/metadata/android/en-US/phoneScreenshots/updates.png" width="30%" hspace="5" /><img alt="Details page" src="fastlane/metadata/android/en-US/phoneScreenshots/details.png" width="30%" hspace="5" /><img alt="Search page" src="fastlane/metadata/android/en-US/phoneScreenshots/search.png" width="30%" hspace="5" />
 
 ## FAQ
 >Q: What about buying apps, books, music, movies? Is it going to be implemented at some point?
