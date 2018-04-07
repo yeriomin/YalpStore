@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.Format;
 import java.util.List;
 
 import in.dragons.galaxy.R;
@@ -31,7 +32,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
     private Context context;
 
     class MyViewHolderInst extends RecyclerView.ViewHolder {
-        TextView title, developer;
+        TextView title, developer, ratingText;
         ImageView icon, menu3dot;
         LinearLayout card;
         RatingBar ratingBar;
@@ -43,6 +44,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
             icon = view.findViewById(R.id.featured_image);
             card = view.findViewById(R.id.background);
             ratingBar = view.findViewById(R.id.ratingBar);
+            ratingText = view.findViewById(R.id.ratingText);
             menu3dot = view.findViewById(R.id.menu_3dot);
         }
     }
@@ -66,6 +68,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
         holder.title.setText(featuredHolder.title);
         holder.developer.setText(featuredHolder.developer);
         holder.ratingBar.setRating((float) featuredHolder.rating);
+        holder.ratingText.setText(String.format("%.1f",featuredHolder.rating));
 
         holder.card.setOnClickListener(v -> context
                 .startActivity(DetailsActivity.getDetailsIntent(context, featuredHolder.id)));

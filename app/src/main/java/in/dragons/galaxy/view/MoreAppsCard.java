@@ -81,7 +81,10 @@ public class MoreAppsCard extends RelativeLayout {
                             MApps_Adapter.MAppsHolder apps = new MApps_Adapter.MAppsHolder(
                                     inst.getString("title"),
                                     inst.getString("id"),
-                                    inst.getString("icon"));
+                                    inst.getString("developer"),
+                                    inst.getString("icon"),
+                                    inst.getDouble("rating"),
+                                    inst.getString("price"));
                             MApps_Adapter.add(apps);
                             apps_recycler.setAdapter(adapter);
                             apps_recycler.setLayoutManager(new LinearLayoutManager(context,
