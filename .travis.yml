@@ -14,6 +14,8 @@ before_install:
   - yes | sdkmanager "platforms;android-27"
 install:
   - sudo apt-get update && sudo apt-get --assume-yes install zip
+  - git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+  - git fetch --unshallow --tags
 env:
   global:
   - secure: FQeZo97VDMs0jneEeHJYJ5pKGr49s4O3QnCqv6D972KvuvZRXila4rIP/dodVXHlamOaQ9HJt5N/BK/Jk37Kwy795s/dNq49yetZ3Fay+YsI1Wb2WbKLMqc6iiOwwQJKcRTpBG44ycEWntLTpo8sQVoAsHvM/81D8+2MSGt6Eo4q5zVef/QQlCW1OOiUKq6gibzELqt+0NwoJmnc33snWFCr3mTVBmbq0qUx1VDVuXK4b8vaTp1XYVYH5FfZdDz2KP8eM+WhoZH8BoDvpnFFx8vzC4uDkFe1q/tAd6mO8aB6qHUbJMa3CJ8rPE0CHJczdmvFlaz+tm1Vz0KcxYk7HIcm5S4sM5iFwrRV+EE5Ztipj2n2yw9JEL3WtTe4mIuZ40Dl6iqy+MOmP/kZXOhhHbXPuhkG/sWNY3LfkyIl5cU0qet8oM48qskS8S7uWHQ/e/pgcpiPjqOL/FBLo1aHuqq7sXvO8F7yqTeE/hEwKCEADsK8R1vqoup9exCIW93Od1IyDKkIaFXXNsu1q7/WdtnA4AscfoqW+LvcpGdM/rMIy3QlfiECAO7c3Kok6GD/dctb9pmFI02vHJlJnWi9mNPJOQEWcsBIl2swmD2v8MmUL2ncdYcgB8N32pCztuKW8w04dzfdFDCWBB6oBB21WN/TJStGBA/6JpY0G8IxuiI=
@@ -25,19 +27,19 @@ before_deploy:
   - cd app/build/outputs/apk/legacy/release/
   - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $TRAVIS_BUILD_DIR/yeriomin-keystore.jks -storepass $storepass -keypass $keypass app-legacy-release-unsigned.apk AndroidKey
   - jarsigner -verify app-legacy-release-unsigned.apk
-  - "$ANDROID_HOME/build-tools/27.0.3/zipalign -v 4 app-legacy-release-unsigned.apk $APK_NAME"
-  - "cp $APK_NAME $TRAVIS_BUILD_DIR/yalp-store-ota-zip/YalpStore.apk"
-  - "cp $APK_NAME $TRAVIS_BUILD_DIR"
-  - "cd $TRAVIS_BUILD_DIR/yalp-store-ota-zip"
-  - "zip -r $TRAVIS_BUILD_DIR/$OTA_NAME *"
-  - "cd $TRAVIS_BUILD_DIR"
+  - $ANDROID_HOME/build-tools/27.0.3/zipalign -v 4 app-legacy-release-unsigned.apk $APK_NAME
+  - cp $APK_NAME $TRAVIS_BUILD_DIR/yalp-store-ota-zip/YalpStore.apk
+  - cp $APK_NAME $TRAVIS_BUILD_DIR
+  - cd $TRAVIS_BUILD_DIR/yalp-store-ota-zip
+  - zip -r $TRAVIS_BUILD_DIR/$OTA_NAME *
+  - cd $TRAVIS_BUILD_DIR
 deploy:
   provider: releases
   api_key:
     secure: mJRRKJLGtbEc5s6VKq4bqbDRLn6mpjJ2e+9IjtMJUT+WuxtjEx2aCvHLVSmG0gJGwvbBhyVShkqIQYSu0NNx98O7n8ePy9cxRWmsuhbwAdMNLG3MuT+HFVR2VVbRh4aZvUgFKbbob1B4P1WC2+6+C1i/m42jz0XnNCVpwCfevEhYxeGtbSOWDSguDeAs/YYb3kpVSNvUKRdTEMYY1zETuhmt5AoPSBfkraffo/m6YPy7Kt0nZkFjjqA5yObF1JDROQBdj/U9qV651X8c9hQfaH/n0yIbPrPGnkAliCW0IBw42ifVsH2pQcPMUzJ/ZPJtKcQMOR6h7lO6iYpbCZUw3tgHXBNYSGtNzVNC3oOwg0Or0rSkcMz4wdRDktietxxTsvOhObrJubglY2q58d6ejZvf37ronCsDzkaB8TNNSSLCADP7hvFhAFfHQsC1WzVQa3orJAyjc981LNX4BGdc68vXIzfkEkJpOFmTWoQiHXbrB0gtpzJGKrclc5DQ9IQHmqU1/iMZf+3vasGNwsA9Ro6k98/HrhKTC+oh9ygI5oNjMhgZ3JcJO3r9xEhmsKNuI9jkeEs4WhN4CLyp6ZgnqgLbdGF0LjbTx2z4Emi3oyAVXB+VV3JshRljXsAvMNYFV3eqLKK9ZYIHnWvxP+cgzvZnAc4vV1Hx55VjhjcqqFc=
   file:
-    - "$OTA_NAME"
-    - "$APK_NAME"
+    - $OTA_NAME
+    - $APK_NAME
   skip_cleanup: true
   on:
     all_branches: true
