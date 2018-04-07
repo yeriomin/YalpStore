@@ -4,6 +4,7 @@
     android:layout_width="250dp"
     android:layout_height="wrap_content"
     app:cardCornerRadius="5dp"
+    android:elevation="2dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
