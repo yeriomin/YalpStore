@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -15,7 +16,6 @@ import android.widget.ImageView;
 
 import com.github.yeriomin.playstoreapi.AuthException;
 import com.percolate.caffeine.PhoneUtils;
-import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ import in.dragons.galaxy.builders.CredentialsDialogBuilder;
 import in.dragons.galaxy.builders.UserProvidedAccountDialogBuilder;
 import in.dragons.galaxy.task.playstore.PlayStoreTask;
 
-public abstract class UtilFragment extends RxFragment {
+public abstract class UtilFragment extends Fragment {
 
     protected PlayStoreTask playStoreTask;
     static private final String USED_EMAILS_SET = "USED_EMAILS_SET";

@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.percolate.caffeine.ToastUtils;
 import com.percolate.caffeine.ViewUtils;
-import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.Collections;
 
@@ -101,19 +100,20 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         loadApps = Observable.fromCallable(() -> getUpdatableApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(bindUntilEvent(FragmentEvent.STOP))
                 .subscribe((appList) -> {
-                    clearApps();
-                    Collections.sort(appList);
-                    addApps(appList);
+                    if (v != null) {
+                        clearApps();
+                        Collections.sort(appList);
+                        addApps(appList);
 
-                    swipeRefreshLayout.setRefreshing(false);
+                        swipeRefreshLayout.setRefreshing(false);
 
-                    if (success() && appList.isEmpty())
-                        ViewUtils.findViewById(v, R.id.unicorn).setVisibility(View.VISIBLE);
-                    else {
-                        setText(R.id.updates_txt, R.string.list_update_all_txt, appList.size());
-                        setupButtons();
+                        if (success() && appList.isEmpty())
+                            ViewUtils.findViewById(v, R.id.unicorn).setVisibility(View.VISIBLE);
+                        else {
+                            setText(R.id.updates_txt, R.string.list_update_all_txt, appList.size());
+                            setupButtons();
+                        }
                     }
                 }, this::processException);
     }
@@ -130,8 +130,6 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     public void onStop() {
         super.onStop();
         swipeRefreshLayout.setRefreshing(false);
-        if (loadApps != null && !loadApps.isDisposed())
-            loadApps.dispose();
     }
 
     @Override

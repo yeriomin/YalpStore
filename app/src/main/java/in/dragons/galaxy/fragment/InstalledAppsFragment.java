@@ -6,10 +6,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import com.percolate.caffeine.ViewUtils;
-import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.Collections;
 
@@ -86,12 +84,13 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         loadApps = Observable.fromCallable(() -> getInstalledApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(bindUntilEvent(FragmentEvent.STOP))
                 .subscribe((appList) -> {
-                    clearApps();
-                    Collections.sort(appList);
-                    addApps(appList);
-                    swipeRefreshLayout.setRefreshing(false);
+                    if (v != null) {
+                        clearApps();
+                        Collections.sort(appList);
+                        addApps(appList);
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
                 }, this::processException);
     }
 
@@ -99,10 +98,8 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     public void onStop() {
         super.onStop();
         swipeRefreshLayout.setRefreshing(false);
-        if (loadApps != null && !loadApps.isDisposed())
-            loadApps.dispose();
     }
-    
+
     public static InstalledAppsFragment newInstance() {
         return new InstalledAppsFragment();
     }

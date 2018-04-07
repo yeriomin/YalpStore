@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -16,7 +17,6 @@ import android.widget.ListView;
 
 import com.percolate.caffeine.PhoneUtils;
 import com.percolate.caffeine.ToastUtils;
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +30,7 @@ import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.view.AppBadge;
 import in.dragons.galaxy.view.ListItem;
 
-public abstract class BaseActivity extends RxAppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     static protected boolean logout = false;
     static protected boolean firstLogin = true;

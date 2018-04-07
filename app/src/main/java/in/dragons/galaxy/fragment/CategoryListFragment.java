@@ -69,8 +69,6 @@ public class CategoryListFragment extends CategoryListTaskHelper {
     @Override
     public void onStop() {
         super.onStop();
-        if (loadApps != null && !loadApps.isDisposed())
-            loadApps.dispose();
     }
 
     protected void setupTopCategories() {
@@ -120,12 +118,13 @@ public class CategoryListFragment extends CategoryListTaskHelper {
         loadApps = Observable.fromCallable(() -> getResult(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), manager))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(bindToLifecycle())
                 .subscribe((result) -> {
                     if (result) {
-                        ViewUtils.findViewById(v, R.id.progress).setVisibility(View.GONE);
-                        setupTopCategories();
-                        setupAllCategories();
+                        if (v != null) {
+                            ViewUtils.findViewById(v, R.id.progress).setVisibility(View.GONE);
+                            setupTopCategories();
+                            setupAllCategories();
+                        }
                     }
                 }, this::processException);
     }
