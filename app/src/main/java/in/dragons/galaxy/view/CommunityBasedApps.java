@@ -5,6 +5,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
@@ -16,9 +18,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.dragons.galaxy.R;
 import in.dragons.galaxy.adapters.CommunityBasedAppsAdapter;
 
-public class CommunityBasedApps extends RecyclerView {
+public class CommunityBasedApps extends RelativeLayout {
+
+    private RecyclerView cbased_recycler;
 
     public CommunityBasedApps(Context context) {
         super(context);
@@ -36,26 +41,31 @@ public class CommunityBasedApps extends RecyclerView {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
+        View view = inflate(context, R.layout.community_based_card, this);
+        cbased_recycler = view.findViewById(R.id.cbased_recycler);
         JsonParser(context);
     }
 
     private void JsonParser(Context context) {
-        RequestQueue mRequestQueue = Volley.newRequestQueue(context);
         List<CommunityBasedAppsAdapter.FeaturedHolder> FeaturedAppsHolder = new ArrayList<>();
+        RequestQueue mRequestQueue = Volley.newRequestQueue(context);
         String JSON_PATH = "https://raw.githubusercontent.com/GalaxyStore/MetaData/master/community_apps.json";
         JsonArrayRequest req = new JsonArrayRequest(JSON_PATH,
                 response -> {
                     try {
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject inst = (JSONObject) response.get(i);
-                            CommunityBasedAppsAdapter adapter = new CommunityBasedAppsAdapter(FeaturedAppsHolder, context);
+                            CommunityBasedAppsAdapter adapter = new CommunityBasedAppsAdapter(FeaturedAppsHolder);
                             CommunityBasedAppsAdapter.FeaturedHolder apps = new CommunityBasedAppsAdapter.FeaturedHolder(
-                                    inst.getString("app_name"),
-                                    inst.getString("app_packagename"),
-                                    inst.getString("app_icon"));
+                                    inst.getString("title"),
+                                    inst.getString("id"),
+                                    inst.getString("developer"),
+                                    inst.getString("icon"),
+                                    inst.getDouble("rating"),
+                                    inst.getString("price"));
                             FeaturedAppsHolder.add(apps);
-                            setAdapter(adapter);
-                            setLayoutManager(new GridLayoutManager(context, 3));
+                            cbased_recycler.setAdapter(adapter);
+                            cbased_recycler.setLayoutManager(new GridLayoutManager(context, 3));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -64,6 +74,4 @@ public class CommunityBasedApps extends RecyclerView {
                 }, error -> Log.w("JSON_ERROR", "Error: " + error.getMessage()));
         mRequestQueue.add(req);
     }
-
-
 }

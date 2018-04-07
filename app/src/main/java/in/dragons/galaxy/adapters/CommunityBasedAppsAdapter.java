@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,12 +19,10 @@ import in.dragons.galaxy.activities.DetailsActivity;
 
 public class CommunityBasedAppsAdapter extends RecyclerView.Adapter<CommunityBasedAppsAdapter.MyViewHolderInst> {
 
-    String pkg;
     private List<FeaturedHolder> FeaturedAppsH;
-    private Context context;
 
     class MyViewHolderInst extends RecyclerView.ViewHolder {
-        TextView cbased_name, cbased_price;
+        TextView cbased_name;
         ImageView cbased_image;
         RelativeLayout cbased_layout;
 
@@ -33,35 +30,34 @@ public class CommunityBasedAppsAdapter extends RecyclerView.Adapter<CommunityBas
             super(view);
             cbased_name = view.findViewById(R.id.cbased_name);
             cbased_image = view.findViewById(R.id.cbased_image);
-            cbased_price = view.findViewById(R.id.cbased_price);
             cbased_layout = view.findViewById(R.id.cbased_layout);
         }
     }
 
 
-    public CommunityBasedAppsAdapter(List<FeaturedHolder> FeaturedAppsH, Context context) {
+    public CommunityBasedAppsAdapter(List<FeaturedHolder> FeaturedAppsH) {
         this.FeaturedAppsH = FeaturedAppsH;
-        this.context = context;
     }
 
     @NonNull
     @Override
     public MyViewHolderInst onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.comunity_based_adapter, parent, false);
+                .inflate(R.layout.community_based_item, parent, false);
         return new MyViewHolderInst(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolderInst holder, int position) {
-        final FeaturedHolder featuredHolder = FeaturedAppsH.get(position);
-        holder.cbased_name.setText(featuredHolder.cbased_name);
+        Context context = holder.itemView.getContext();
+        FeaturedHolder featuredHolder = FeaturedAppsH.get(position);
+        holder.cbased_name.setText(featuredHolder.title);
         holder.cbased_layout.setOnClickListener(v -> {
-            context.startActivity(DetailsActivity.getDetailsIntent(context, featuredHolder.cbased_packagename));
+            context.startActivity(DetailsActivity.getDetailsIntent(context, featuredHolder.id));
         });
         Picasso.with(context)
-                .load(featuredHolder.cbased_appicon)
-                .placeholder(R.drawable.ic_placeholder)
+                .load(featuredHolder.icon)
+                .placeholder(android.R.color.transparent)
                 .into(holder.cbased_image);
     }
 
@@ -71,14 +67,21 @@ public class CommunityBasedAppsAdapter extends RecyclerView.Adapter<CommunityBas
     }
 
     public static class FeaturedHolder {
-        String cbased_name;
-        String cbased_packagename;
-        String cbased_appicon;
+        String title;
+        String id;
+        String developer;
+        String icon;
+        double rating;
+        String price;
 
-        public FeaturedHolder(String name, String pkg, String app_icon) {
-            this.cbased_name = name;
-            this.cbased_packagename = pkg;
-            this.cbased_appicon = app_icon;
+        public FeaturedHolder(String title, String id, String developer, String icon,
+                              double rating, String price) {
+            this.title = title;
+            this.id = id;
+            this.developer = developer;
+            this.icon = icon;
+            this.rating = rating;
+            this.price = price;
         }
 
     }
