@@ -42,11 +42,11 @@
 
             <ImageView
                 android:id="@+id/account_avatar"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="5dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"
                 android:background="@drawable/avatar_ring"
                 app:srcCompat="@drawable/ic_dummy_avatar" />
 

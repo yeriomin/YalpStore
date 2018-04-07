@@ -14,6 +14,10 @@
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
+    <style name="LoginTheme" parent="AppTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
         <item name="android:windowDisablePreview">true</item>

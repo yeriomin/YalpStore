@@ -181,6 +181,9 @@
         <activity
             android:name=".activities.AboutActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:theme="@style/LoginTheme" />
 
         <provider
             android:name="in.dragons.galaxy.FileProvider"

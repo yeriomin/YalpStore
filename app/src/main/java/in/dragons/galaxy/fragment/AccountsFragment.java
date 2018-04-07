@@ -1,6 +1,7 @@
 package in.dragons.galaxy.fragment;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import in.dragons.galaxy.CircleTransform;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.R;
+import in.dragons.galaxy.activities.LoginActivity;
 
 public class AccountsFragment extends UtilFragment {
 
@@ -52,7 +54,6 @@ public class AccountsFragment extends UtilFragment {
             drawGoogle();
         } else if (isLoggedIn() && isDummy())
             drawDummy();
-
         setFab();
 
         return v;

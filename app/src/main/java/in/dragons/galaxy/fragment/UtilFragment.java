@@ -30,6 +30,7 @@ import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
 import in.dragons.galaxy.activities.AccountsActivity;
+import in.dragons.galaxy.activities.LoginActivity;
 import in.dragons.galaxy.builders.AccountTypeDialogBuilder;
 import in.dragons.galaxy.builders.CredentialsDialogBuilder;
 import in.dragons.galaxy.builders.UserProvidedAccountDialogBuilder;
@@ -108,9 +109,8 @@ public abstract class UtilFragment extends Fragment {
         return new AlertDialog.Builder(getActivity())
                 .setTitle("Logged Out ?")
                 .setMessage(R.string.header_usr_noEmail)
-                .setPositiveButton("Login", (dialogInterface, i) -> startActivity(new Intent(getActivity(), AccountsActivity.class)))
-                .setNegativeButton("Dismiss", (dialogInterface, i) -> {
-                })
+                .setPositiveButton("Login", (dialogInterface, i) -> startActivity(new Intent(getActivity(), LoginActivity.class)))
+                .setCancelable(false)
                 .show();
     }
 

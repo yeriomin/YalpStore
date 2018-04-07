@@ -53,9 +53,7 @@ public class CategoryListFragment extends CategoryListTaskHelper {
                 setupAllCategories();
                 setupTopCategories();
             }
-        } else
-            LoginFirst();
-
+        }
         return v;
     }
 

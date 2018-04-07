@@ -53,6 +53,9 @@ public class GalaxyActivity extends BaseActivity implements View.OnClickListener
 
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        if (!isLoggedIn()) {
+            startActivity(new Intent(this, LoginActivity.class));
+        }
     }
 
     @Override

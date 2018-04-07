@@ -14,4 +14,9 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
+
+    <style name="LoginTheme" parent="AppTheme">
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
 </resources>
