@@ -53,6 +53,7 @@
     <string name="action_accounts">Accounts</string>
     <string name="action_search">Search</string>
     <string name="action_search_title">Search Apps &amp; Games</string>
+    <string name="action_search_history">Your Search History</string>
     <string name="action_updates">Updates</string>
     <string name="action_ignore">Add to blacklist</string>
     <string name="action_unignore">Remove from blacklist</string>

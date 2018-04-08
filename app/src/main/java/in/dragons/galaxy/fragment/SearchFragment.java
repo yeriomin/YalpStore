@@ -7,29 +7,42 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import in.dragons.galaxy.R;
-import in.dragons.galaxy.activities.SearchActivity;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
 
-public class SearchFragment extends Fragment {
+import in.dragons.galaxy.R;
+import in.dragons.galaxy.RecyclerItemTouchHelper;
+import in.dragons.galaxy.activities.SearchActivity;
+import in.dragons.galaxy.adapters.SearchHistoryAdapter;
+
+public class SearchFragment extends Fragment implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
     SearchView searchToolbar;
-
-    public SearchFragment() {
-    }
-
+    ArrayList<String> listHistory = new ArrayList<>();
+    Set<String> setHistory = new HashSet<>();
+    RecyclerView recyclerView;
+    View view;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_search, container, false);
         searchToolbar = view.findViewById(R.id.search_apps);
         RelativeLayout search_layout = view.findViewById(R.id.search_layout);
         search_layout.setOnClickListener(v -> {
@@ -39,7 +52,15 @@ public class SearchFragment extends Fragment {
             searchToolbar.setQuery("", false);
         });
         addQueryTextListener(searchToolbar);
+        recyclerView = view.findViewById(R.id.searchHistory);
+        setupSearchHistory();
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setupSearchHistory();
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -83,10 +104,79 @@ public class SearchFragment extends Fragment {
     }
 
     protected void setQuery(String query) {
+        addHistory(query);
         Intent i = new Intent(getContext(), SearchActivity.class);
         i.setAction(Intent.ACTION_SEARCH);
         i.putExtra(SearchManager.QUERY, query);
         startActivity(i);
     }
 
+    public void addHistory(String query) {
+        String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+        String datedQuery = query + ":" + date;
+
+        listHistory.add(datedQuery);
+
+        setHistory.clear();
+        setHistory.addAll(listHistory);
+
+        PreferenceManager.getDefaultSharedPreferences(getActivity())
+                .edit()
+                .putStringSet("SEARCH_HISTORY", setHistory)
+                .apply();
+    }
+
+    private void setupSearchHistory() {
+        listHistory = getSharedValue();
+
+        if (listHistory.isEmpty()) {
+            recyclerView.setVisibility(View.GONE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setAdapter(new SearchHistoryAdapter(listHistory));
+            new ItemTouchHelper(
+                    new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this))
+                    .attachToRecyclerView(recyclerView);
+        }
+    }
+
+
+    public void updateHistory() {
+        setHistory.clear();
+        setHistory.addAll(listHistory);
+
+        PreferenceManager.getDefaultSharedPreferences(getActivity())
+                .edit()
+                .putStringSet("SEARCH_HISTORY", setHistory)
+                .apply();
+
+        setupSearchHistory();
+    }
+
+    private ArrayList<String> getSharedValue() {
+        Set<String> set = PreferenceManager
+                .getDefaultSharedPreferences(getActivity())
+                .getStringSet("SEARCH_HISTORY", null);
+
+        if (set != null) {
+            listHistory.clear();
+            listHistory.addAll(set);
+        }
+        return listHistory;
+    }
+
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+        if (viewHolder instanceof SearchHistoryAdapter.MyViewHolder) {
+            String query = listHistory.get(viewHolder.getAdapterPosition());
+            for (int j = listHistory.size() - 1; j >= 0; j--) {
+                if (listHistory.get(j).contains(query)) {
+                    listHistory.remove(j);
+                    updateHistory();
+                }
+            }
+        }
+    }
 }
