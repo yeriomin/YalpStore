@@ -3,313 +3,161 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fadeScrollbars="true"
+    android:fillViewport="true"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="2">
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/google_sans_bold"
+            android:gravity="center"
+            android:text="@string/acc_title"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="20sp" />
 
         <android.support.v7.widget.CardView
-            android:id="@+id/user_dummy_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            app:cardPreventCornerOverlap="true"
+            android:id="@+id/cardUser"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:layout_margin="10dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="5dp"
+            app:cardPreventCornerOverlap="false"
+            app:contentPadding="15dp"
             app:cardUseCompatPadding="true">
 
-            <LinearLayout
-                android:id="@+id/no_dummy"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="96dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/header_acc" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="@dimen/icon_size"
-                        android:layout_height="@dimen/icon_size"
-                        android:src="@drawable/ic_dummy_avatar" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="@string/acc_dummy" />
-
-                    <android.support.design.widget.FloatingActionButton
-                        android:id="@+id/dummy_login"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:tint="@color/white"
-                        app:srcCompat="@drawable/ic_logout"
-                        app:useCompatPadding="true" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/dummy_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="96dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/header_acc" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:weightSum="8">
-
-                    <ImageView
-                        android:id="@+id/dummy_avatar"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/icon_size_big"
-                        android:layout_weight="2"
-                        android:src="@drawable/ic_user_placeholder" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_weight="5.5"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/dummy_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/account_dummy_name"
-                            android:textColor="@color/colorText"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/dummy_email"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/account_dummy_email"
-                            android:textColor="@color/colorTextSecondary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/dummy_gsf"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:textColor="@color/colorTextSecondary"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/dummy_ind"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/icon_size_small"
-                        android:layout_weight=".5"
-                        android:src="@drawable/ic_checked"
-                        android:tint="@color/colorGreen" />
-
-                </LinearLayout>
+                    android:id="@+id/accounts_Avatar"
+                    android:layout_width="76dp"
+                    android:layout_height="76dp"
+                    android:layout_margin="10dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:srcCompat="@drawable/ic_user_placeholder" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="@string/acc_dummy_detail"
-                    android:textSize="14sp"
-                    android:textStyle="italic" />
-
-                <LinearLayout
-                    android:id="@+id/dummy_action"
+                    android:id="@+id/account_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@+id/accounts_Avatar"
+                    android:fontFamily="@font/google_sans_bold"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
-                    <Button
-                        android:id="@+id/account_logout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/button_bg"
-                        android:text="@string/action_logout"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/account_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/account_name"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@+id/accounts_Avatar"
+                    android:fontFamily="@font/google_sans"
+                    android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/account_gsf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/account_email"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_toEndOf="@+id/accounts_Avatar"
+                    android:fontFamily="@font/google_sans"
+                    android:textColor="@color/darkGray"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/acc_warn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/account_gsf"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/google_sans_italic"
+                    android:textSize="14sp"/>
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="end"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/no_google"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <Button
+                android:id="@+id/btn_refresh"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="@drawable/button_login"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="@string/action_refresh"
+                android:textColor="?android:attr/colorAccent"
+                android:visibility="gone" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="96dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/header_acc" />
+            <Button
+                android:id="@+id/btn_switch"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/button_login"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="@string/action_switch_dummy"
+                android:textColor="?android:attr/colorAccent"
+                android:visibility="gone" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="5dp">
+            <Button
+                android:id="@+id/btn_switchG"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/button_login"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="@string/action_switch_google"
+                android:textColor="?android:attr/colorAccent"
+                android:visibility="gone" />
 
-                    <ImageView
-                        android:layout_width="@dimen/icon_size"
-                        android:layout_height="@dimen/icon_size"
-                        android:src="@drawable/ic_google" />
+            <Button
+                android:id="@+id/btn_logout"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/button_uninstall"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:text="@string/action_logout"
+                android:textColor="@color/colorRed" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="@string/acc_google" />
-
-                    <android.support.design.widget.FloatingActionButton
-                        android:id="@+id/google_login"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:tint="@color/white"
-                        app:srcCompat="@drawable/ic_logout"
-                        app:useCompatPadding="true" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/google_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="96dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/header_acc" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:id="@+id/google_avatar"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/icon_size_big"
-                        android:layout_weight="2"
-                        android:src="@drawable/ic_user_placeholder" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_weight="5.5"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/google_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/account_dummy_name"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/google_email"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/google_gsf"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/google_ind"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/icon_size_small"
-                        android:layout_weight=".5"
-                        android:src="@drawable/ic_checked"
-                        android:tint="@color/colorGreen" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="?android:colorBackground"
-                    android:padding="10dp"
-                    android:text="@string/acc_google_detail"
-                    android:textSize="14sp"
-                    android:textStyle="italic" />
-
-                <LinearLayout
-                    android:id="@+id/google_action"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:gravity="end"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:weightSum="9">
-
-                    <Button
-                        android:id="@+id/google_logout"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:background="@drawable/button_bg"
-                        android:text="@string/action_logout"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
+        </LinearLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

@@ -1,37 +1,24 @@
 package in.dragons.galaxy.activities;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.preference.PreferenceManager;
-import android.support.v4.widget.ImageViewCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.AuthException;
-import com.percolate.caffeine.PhoneUtils;
 import com.percolate.caffeine.ViewUtils;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
-import in.dragons.galaxy.CircleTransform;
 import in.dragons.galaxy.ContextUtil;
 import in.dragons.galaxy.CredentialsEmptyException;
 import in.dragons.galaxy.GoogleAccountInfo;
@@ -42,14 +29,10 @@ import in.dragons.galaxy.builders.AccountTypeDialogBuilder;
 import in.dragons.galaxy.builders.CredentialsDialogBuilder;
 import in.dragons.galaxy.builders.UserProvidedAccountDialogBuilder;
 import in.dragons.galaxy.fragment.PreferenceFragment;
-import in.dragons.galaxy.fragment.UtilFragment;
 import in.dragons.galaxy.task.playstore.PlayStoreTask;
 
-import static java.lang.Thread.sleep;
+public class LoginActivity extends GalaxyActivity {
 
-public class LoginActivity extends AppCompatActivity {
-
-    private SharedPreferences sharedPreferences;
     protected PlayStoreTask playStoreTask;
     private AutoCompleteTextView editEmail;
     private String Email;
@@ -67,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void init() {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Email = sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, "");
         Button login_anonymous = findViewById(R.id.btn_ok_anm);
         editEmail = findViewById(R.id.emailg);
@@ -181,8 +164,9 @@ public class LoginActivity extends AppCompatActivity {
                 Url = "I dont fucking care";
             }
 
-            PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("GOOGLE_NAME", Name).commit();
-            PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("GOOGLE_URL", Url).commit();
+            PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("GOOGLE_NAME", Name).apply();
+            PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("GOOGLE_URL", Url).apply();
+
             if (!Url.isEmpty()) {
                 finish();
             }
@@ -205,27 +189,5 @@ public class LoginActivity extends AppCompatActivity {
             PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("GOOGLE_ACC", false).apply();
             LoginActivity.this.finish();
         }
-    }
-
-    protected void setText(int viewId, String text) {
-        TextView textView = ViewUtils.findViewById(this, viewId);
-        if (null != textView)
-            textView.setText(text);
-    }
-
-    protected void setText(int viewId, int stringId, Object... text) {
-        setText(viewId, this.getString(stringId, text));
-    }
-
-    protected boolean isGoogle() {
-        return PreferenceFragment.getBoolean(this, "GOOGLE_ACC");
-    }
-
-    protected boolean isLoggedIn() {
-        return PreferenceFragment.getBoolean(this, "LOGGED_IN");
-    }
-
-    protected boolean isConnected() {
-        return PhoneUtils.isNetworkAvailable(this);
     }
 }

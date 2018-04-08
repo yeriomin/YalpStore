@@ -3,12 +3,9 @@ package in.dragons.galaxy.fragment;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.widget.ImageViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,67 +47,78 @@ public class AccountsFragment extends UtilFragment {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         Email = sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, "");
 
-        if (isLoggedIn() && isGoogle()) {
+        if (isLoggedIn() && isGoogle())
             drawGoogle();
-        } else if (isLoggedIn() && isDummy())
+        else if (isLoggedIn() && isDummy())
             drawDummy();
-        setFab();
 
+        drawButtons();
         return v;
     }
 
     public void drawDummy() {
-        ViewUtils.findViewById(v, R.id.dummy_container).setVisibility(View.VISIBLE);
-        ViewUtils.findViewById(v, R.id.no_dummy).setVisibility(View.GONE);
-
-        ImageViewCompat.setImageTintList(ViewUtils.findViewById(v, R.id.dummy_ind),
-                ColorStateList.valueOf((getResources().getColor(R.color.colorRed))));
-
-        TextView dummyEmail = ViewUtils.findViewById(v, R.id.dummy_email);
+        TextView dummyEmail = ViewUtils.findViewById(v, R.id.account_email);
         dummyEmail.setText(Email);
-
-        setText(R.id.dummy_gsf, R.string.device_gsfID,
+        setAvatar(R.drawable.ic_dummy_avatar);
+        setText(R.id.account_gsf, R.string.device_gsfID,
                 PreferenceFragment.getString(getActivity(),
                         PlayStoreApiAuthenticator.PREFERENCE_GSF_ID));
-
-        Button logout = ViewUtils.findViewById(v, R.id.account_logout);
-        logout.setOnClickListener(v -> showLogOutDialog());
+        setText(R.id.account_name, "Dummy Account");
     }
 
     public void drawGoogle() {
-        ViewUtils.findViewById(v, R.id.google_container).setVisibility(View.VISIBLE);
-        ViewUtils.findViewById(v, R.id.no_google).setVisibility(View.GONE);
+        ViewUtils.setText(v, R.id.account_name, sharedPreferences.getString("GOOGLE_NAME", ""));
+        ViewUtils.setText(v, R.id.account_email, Email);
 
-        ImageViewCompat.setImageTintList(ViewUtils.findViewById(v, R.id.google_ind),
-                ColorStateList.valueOf((getResources().getColor(R.color.colorGreen))));
-
-        ViewUtils.setText(v, R.id.google_name, sharedPreferences.getString("GOOGLE_NAME", ""));
-        ViewUtils.setText(v, R.id.google_email, Email);
-
-        setText(R.id.google_gsf, R.string.device_gsfID,
-                PreferenceFragment.getString(getActivity(), PlayStoreApiAuthenticator.PREFERENCE_GSF_ID));
-
-        Button button = ViewUtils.findViewById(v, R.id.google_logout);
-        button.setOnClickListener(v -> showLogOutDialog());
+        setText(R.id.account_gsf, R.string.device_gsfID,
+                PreferenceFragment.getString(getActivity(),
+                        PlayStoreApiAuthenticator.PREFERENCE_GSF_ID));
 
         if (isConnected())
             loadAvatar(PreferenceFragment.getString(getActivity(), "GOOGLE_URL"));
     }
 
-    public void setFab() {
-        FloatingActionButton dummyFab = ViewUtils.findViewById(v, R.id.dummy_login);
-        dummyFab.setOnClickListener(v -> logInWithPredefinedAccount());
+    public void drawButtons() {
+        Button logout = ViewUtils.findViewById(v, R.id.btn_logout);
+        Button switchDummy = ViewUtils.findViewById(v, R.id.btn_switch);
+        Button switchGoogle = ViewUtils.findViewById(v, R.id.btn_switchG);
+        Button refreshToken = ViewUtils.findViewById(v, R.id.btn_refresh);
+        TextView accWarn = ViewUtils.findViewById(v,R.id.acc_warn);
 
-        FloatingActionButton googleFab = ViewUtils.findViewById(v, R.id.google_login);
-        googleFab.setOnClickListener(view -> logInWithGoogleAccount());
+        if (isDummy()) {
+            switchDummy.setVisibility(View.VISIBLE);
+            refreshToken.setVisibility(View.VISIBLE);
+            accWarn.setText(R.string.acc_dummy_detail);
+        }
+
+        if (isGoogle()) {
+            switchGoogle.setVisibility(View.VISIBLE);
+            accWarn.setText(R.string.acc_google_detail);
+        }
+
+        logout.setOnClickListener(view -> {
+            showLogOutDialog();
+        });
+
+        switchGoogle.setOnClickListener(view -> {
+            switchGoogle();
+        });
+
+        switchDummy.setOnClickListener(view -> switchDummy());
+        refreshToken.setOnClickListener(view -> refreshMyToken());
+    }
+
+    public void setAvatar(int avatar) {
+        ImageView avatar_view = v.findViewById(R.id.accounts_Avatar);
+        avatar_view.setImageResource(avatar);
     }
 
     public void loadAvatar(String Url) {
         Picasso.with(getActivity())
                 .load(Url)
-                .placeholder(R.drawable.ic_user_placeholder)
+                .placeholder(R.drawable.ic_dummy_avatar)
                 .transform(new CircleTransform())
-                .into(((ImageView) v.findViewById(R.id.google_avatar)));
+                .into(((ImageView) v.findViewById(R.id.accounts_Avatar)));
     }
 
     protected void setText(int viewId, String text) {
@@ -132,6 +140,7 @@ public class AccountsFragment extends UtilFragment {
                     new PlayStoreApiAuthenticator(getActivity().getApplicationContext()).logout();
                     dialogInterface.dismiss();
                     getActivity().finish();
+                    startActivity(new Intent(getContext(), LoginActivity.class));
                 })
                 .setNegativeButton(android.R.string.cancel, null)
                 .show();

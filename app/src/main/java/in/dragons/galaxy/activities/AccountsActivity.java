@@ -2,6 +2,7 @@ package in.dragons.galaxy.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.percolate.caffeine.ViewUtils;
 

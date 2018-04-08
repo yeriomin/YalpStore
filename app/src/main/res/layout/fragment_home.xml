@@ -48,6 +48,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/avatar_ring"
+                android:clickable="true"
                 app:srcCompat="@drawable/ic_dummy_avatar" />
 
         </RelativeLayout>
@@ -122,18 +123,18 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="2dp"
                 android:nestedScrollingEnabled="false"
-                app:CardTitle="@string/category_topMusicVideo"
                 app:AppsCategory="MUSIC_AND_AUDIO"
-                app:JsonName="top_media"/>
+                app:CardTitle="@string/category_topMusicVideo"
+                app:JsonName="top_media" />
 
             <in.dragons.galaxy.view.MoreAppsCard
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="2dp"
                 android:nestedScrollingEnabled="false"
-                app:CardTitle="@string/category_topUtility"
                 app:AppsCategory="TOOLS"
-                app:JsonName="top_tools"/>
+                app:CardTitle="@string/category_topUtility"
+                app:JsonName="top_tools" />
 
             <TextView
                 android:id="@+id/textView7"

@@ -1,5 +1,6 @@
 package in.dragons.galaxy.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -13,10 +14,10 @@ import com.squareup.picasso.Picasso;
 
 import in.dragons.galaxy.CircleTransform;
 import in.dragons.galaxy.R;
+import in.dragons.galaxy.activities.AccountsActivity;
 
 public class HomeFragment extends UtilFragment {
 
-    private RelativeLayout open_community;
     private View view;
 
     @Override
@@ -28,12 +29,18 @@ public class HomeFragment extends UtilFragment {
             return view;
         }
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        /*open_community = view.findViewById(R.id.open_community);
+        /*RelativeLayout open_community = view.findViewById(R.id.open_community);
         open_community.setOnClickListener(v -> {
             Uri uri = Uri.parse("https://t.me/GalaxyOfficial");
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         });*/
+        ImageView account_avatar =  view.findViewById(R.id.account_avatar);
+        account_avatar.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), AccountsActivity.class);
+            intent.putExtra("account_profile_animate", true);
+            startActivity(intent);
+        });
         return view;
     }
 

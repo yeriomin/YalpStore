@@ -49,7 +49,8 @@
     <string name="acc_dummy_name">Anonymous</string>
     <string name="acc_dummy">Login as Anonymous</string>
     <string name="acc_google">Login with Google</string>
-    <string name="action_switch">Switch Dummy</string>
+    <string name="action_switch_dummy">Switch Dummy</string>
+    <string name="action_switch_google">Switch Google</string>
     <string name="action_accounts">Accounts</string>
     <string name="action_search">Search</string>
     <string name="action_search_title">Search Apps &amp; Games</string>
@@ -80,7 +81,9 @@
     <string name="dialog_account_type_predefined">With a dummy Galaxy Store account</string>
     <string name="dialog_account_type_title">How would you like to log in to Google Play Store?</string>
     <string name="dialog_title_logging_in">Logging in</string>
+    <string name="dialog_title_switching">Switching Dummy</string>
     <string name="dialog_message_logging_in_provided_by_user">Trying to log in with the credentials you provided</string>
+    <string name="dialog_message_switching_in_predefined">Trying to switch between dummy accounts</string>
     <string name="dialog_message_logging_in_predefined">Trying to log in with credentials provided by Galaxy Store</string>
     <string name="dialog_title_remounting_system">Working with /system partition</string>
     <string name="dialog_message_remounting_system">"Working with /system partition. This might take some time."</string>
@@ -151,7 +154,7 @@
     <string name="credentials_hint_password">Enter your password</string>
     <string name="credentials_title">Google account access</string>
     <string name="credentials_logo_txt">Sign in</string>
-    <string name="credentials_message">Use your Google account.\n\nKeep in mind that using this app violates Play Store T&amp;C. \nIt would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store T&amp;C.</string>
+    <string name="credentials_message">Keep in mind that using this app violates Play Store T&amp;C. \nIt would probably be safer to use a throwaway Google account which has logged in to Play Store at least once and has accepted Play Store T&amp;C.</string>
     <string name="activity_title_updates_only">Updates</string>
     <string name="activity_title_search">"Results for %1$s"</string>
     <string name="notification_installation_complete">Update installed.</string>
@@ -240,6 +243,9 @@
     <string name="thank_you">Thank you</string>
     <string name="first_login_message">To use your own account choose "Log out" in the menu</string>
     <string name="token_refresh">Token Expired, Retrying !</string>
+    <string name="action_refresh">Refresh Token</string>
+    <string name="dialog_refresh_token_title">Refresh Token</string>
+    <string name="dialog_refresh_token_msg">Requesting new Token from dispenser</string>
     <string name="early_access">Early access</string>
     <string name="testing_program_opt_in">join</string>
     <string name="testing_program_opt_out">leave</string>
@@ -308,8 +314,9 @@
     <string name="device_cpu">"%1$s"</string>
     <string name="device_gsfID">"GSF ID : %1$s"</string>
 
-    <string name="acc_dummy_detail">You are currently logged in via a dummy account, your previous App Purchases, Beta programs and App Reviews wont be available.</string>
-    <string name="acc_google_detail">"You are logged in via you Google Account, your previous App Purchases, Beta programs and Reviews will be available."</string>
+    <string name="acc_title">Your Account Details</string>
+    <string name="acc_dummy_detail">You are currently logged in via a dummy account, your App Purchases, Beta programs and App Reviews will not be available.</string>
+    <string name="acc_google_detail">You are currently logged in via a Google Account, your previous App Purchases, Beta programs and Reviews will be available.</string>
 
     <string name="category_appFree">Free</string>
     <string name="category_appPaid">Paid</string>

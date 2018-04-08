@@ -60,15 +60,21 @@ public abstract class UtilFragment extends Fragment {
         RefreshTokenTask task = new RefreshTokenTask();
         task.setCaller(playStoreTask);
         task.setContext(this.getActivity());
+        task.prepareDialog(R.string.dialog_refresh_token_msg, R.string.dialog_refresh_token_title);
         task.execute();
     }
 
-    public void logInWithPredefinedAccount() {
+    public void switchDummy() {
         LoginTask task = new LoginTask();
         task.setCaller(playStoreTask);
         task.setContext(getActivity());
-        task.prepareDialog(R.string.dialog_message_logging_in_predefined, R.string.dialog_title_logging_in);
+        task.prepareDialog(R.string.dialog_message_switching_in_predefined, R.string.dialog_title_switching);
         task.execute();
+    }
+
+    public void switchGoogle() {
+        new PlayStoreApiAuthenticator(getActivity()).logout();
+        logInWithGoogleAccount();
     }
 
     public Dialog logInWithGoogleAccount() {
@@ -158,6 +164,7 @@ public abstract class UtilFragment extends Fragment {
         protected void onPostExecute(Void result) {
             InstalledAppsFragment.newInstance();
             UpdatableAppsFragment.newInstance();
+            progressDialog.cancel();
         }
     }
 
