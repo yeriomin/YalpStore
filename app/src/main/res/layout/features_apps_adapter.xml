@@ -22,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/featured_image"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 app:srcCompat="@drawable/ic_placeholder" />
@@ -80,8 +80,8 @@
                 android:id="@+id/ratingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/google_sans"
                 android:layout_centerVertical="true"
+                android:fontFamily="@font/google_sans"
                 android:textColor="@color/white" />
 
             <RatingBar
@@ -90,9 +90,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
                 android:layout_toEndOf="@id/ratingText"
                 android:isIndicator="true"
-                android:layout_marginStart="5dp"
                 android:max="1"
                 android:numStars="1"
                 android:scaleX=".8"
