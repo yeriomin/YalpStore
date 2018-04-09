@@ -1,90 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/appbar_bar_height"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".fragment.SearchFragment">
 
-    <TextView
-        android:id="@+id/textView3"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/google_sans_bold"
-        android:text="@string/action_search_title"
-        android:textSize="22sp" />
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
-        app:cardBackgroundColor="?android:attr/colorAccent"
-        app:cardCornerRadius="5dp">
-
-        <RelativeLayout
-            android:id="@+id/search_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true">
-
-            <android.support.v7.widget.SearchView
-                android:id="@+id/search_apps"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:closeIcon="@null"
-                app:divider="@null"
-                app:queryHint="Search Apps"
-                app:searchHintIcon="@null"
-                app:searchIcon="@drawable/ic_search" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/google_sans_bold"
-        android:text="@string/action_search_history"
-        android:textSize="22sp" />
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/searchcard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="14dp"
-        android:elevation="5dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/searchHistory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false" />
+        android:layout_marginBottom="@dimen/appbar_bar_height"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/emptyView"
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="96dp"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/google_sans_bold"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="@string/list_empty_query"
-            android:textSize="18sp"
-            android:visibility="gone" />
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+            android:text="@string/action_search_title"
+            android:textSize="22sp" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            app:cardBackgroundColor="?android:attr/colorAccent"
+            app:cardCornerRadius="5dp">
+
+            <RelativeLayout
+                android:id="@+id/search_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground"
+                android:nestedScrollingEnabled="false"
+                android:clickable="true"
+                android:focusable="true">
+
+                <android.support.v7.widget.SearchView
+                    android:id="@+id/search_apps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:closeIcon="@null"
+                    app:divider="@null"
+                    app:queryHint="Search Apps"
+                    app:searchHintIcon="@null"
+                    app:searchIcon="@drawable/ic_search" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/google_sans_bold"
+            android:text="@string/action_search_history"
+            android:textSize="22sp" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/searchcard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            android:elevation="5dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/searchHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+            <TextView
+                android:id="@+id/emptyView"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/google_sans"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="@string/list_empty_query"
+                android:textSize="18sp" />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
