@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/appbar_bar_height"
     android:orientation="vertical"
     tools:context=".fragment.SearchFragment">
 
@@ -73,5 +74,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false" />
+
+        <TextView
+            android:id="@+id/emptyView"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/google_sans_bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/list_empty_query"
+            android:textSize="18sp"
+            android:visibility="gone" />
     </android.support.v7.widget.CardView>
 </LinearLayout>

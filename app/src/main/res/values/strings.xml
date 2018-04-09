@@ -11,6 +11,7 @@
     <string name="list_line_2_updatable">"Updated on %1$s"</string>
     <string name="list_empty_updates">No apps need to be updated</string>
     <string name="list_empty_search">No apps found</string>
+    <string name="list_empty_query">No recent searches</string>
     <string name="list_incompatible">incompatible</string>
     <string name="list_check_updates">Check update</string>
     <string name="list_update_all">Update All</string>

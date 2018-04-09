@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,12 +39,16 @@ public class SearchFragment extends Fragment implements RecyclerItemTouchHelper.
     ArrayList<String> listHistory = new ArrayList<>();
     Set<String> setHistory = new HashSet<>();
     RecyclerView recyclerView;
+    TextView emptyView;
     View view;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_search, container, false);
         searchToolbar = view.findViewById(R.id.search_apps);
+        recyclerView = view.findViewById(R.id.searchHistory);
+        emptyView = view.findViewById(R.id.emptyView);
+
         RelativeLayout search_layout = view.findViewById(R.id.search_layout);
         search_layout.setOnClickListener(v -> {
             searchToolbar.setFocusable(true);
@@ -52,8 +57,6 @@ public class SearchFragment extends Fragment implements RecyclerItemTouchHelper.
             searchToolbar.setQuery("", false);
         });
         addQueryTextListener(searchToolbar);
-        recyclerView = view.findViewById(R.id.searchHistory);
-        setupSearchHistory();
         return view;
     }
 
@@ -131,8 +134,10 @@ public class SearchFragment extends Fragment implements RecyclerItemTouchHelper.
 
         if (listHistory.isEmpty()) {
             recyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
         } else {
             recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
             recyclerView.setAdapter(new SearchHistoryAdapter(listHistory));
@@ -141,7 +146,6 @@ public class SearchFragment extends Fragment implements RecyclerItemTouchHelper.
                     .attachToRecyclerView(recyclerView);
         }
     }
-
 
     public void updateHistory() {
         setHistory.clear();

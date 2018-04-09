@@ -60,7 +60,6 @@ public abstract class UtilFragment extends Fragment {
         RefreshTokenTask task = new RefreshTokenTask();
         task.setCaller(playStoreTask);
         task.setContext(this.getActivity());
-        task.prepareDialog(R.string.dialog_refresh_token_msg, R.string.dialog_refresh_token_title);
         task.execute();
     }
 
@@ -164,7 +163,6 @@ public abstract class UtilFragment extends Fragment {
         protected void onPostExecute(Void result) {
             InstalledAppsFragment.newInstance();
             UpdatableAppsFragment.newInstance();
-            progressDialog.cancel();
         }
     }
 
