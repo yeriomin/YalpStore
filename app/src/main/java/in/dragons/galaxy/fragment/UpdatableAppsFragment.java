@@ -87,6 +87,8 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         super.onResume();
         if (isLoggedIn() && updatableApps.isEmpty())
             loadUpdatableApps();
+        else if (!updatableApps.isEmpty())
+            setText(R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
         else if (!isLoggedIn())
             ToastUtils.quickToast(getActivity(), "You need to Login First", true);
         else {
