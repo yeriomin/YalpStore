@@ -19,7 +19,6 @@
 
 package com.github.yeriomin.yalpstore;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -81,13 +80,21 @@ public class PreferenceUtil {
     static public Set<String> getStringSet(Context context, String key) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            return preferences.getStringSet(key, new HashSet<String>());
+            try {
+                return preferences.getStringSet(key, new HashSet<String>());
+            } catch (ClassCastException e) {
+                return getStringSetCompat(preferences, key);
+            }
         } else {
-            return new HashSet<>(Arrays.asList(TextUtils.split(
-                preferences.getString(key, ""),
-                DELIMITER
-            )));
+            return getStringSetCompat(preferences, key);
         }
+    }
+
+    static public Set<String> getStringSetCompat(SharedPreferences preferences, String key) {
+        return new HashSet<>(Arrays.asList(TextUtils.split(
+            preferences.getString(key, ""),
+            DELIMITER
+        )));
     }
 
     static public void putStringSet(Context context, String key, Set<String> set) {

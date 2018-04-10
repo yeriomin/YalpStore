@@ -19,6 +19,8 @@
 -keep public interface android.content.pm.IPackageInstallObserver { *; }
 -keep class android.content.pm.IPackageInstallObserver$Stub { *; }
 -keep public class android.preference.MultiSelectListPreference { *; }
+-keep public class android.support.v4.content.FileProvider { *; }
+-keep public class android.util.LruCache { *; }
 -keep public class com.github.yeriomin.yalpstore.InstallerPrivileged$* { *; }
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
 -dontwarn sun.misc.Unsafe

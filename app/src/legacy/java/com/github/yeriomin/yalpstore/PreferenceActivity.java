@@ -29,6 +29,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
     public void onCreate(Bundle savedInstanceState) {
         new ThemeManager().setTheme(this);
         super.onCreate(savedInstanceState);
+        PreferenceUtil.putStringSet(this, PreferenceUtil.PREFERENCE_UPDATE_LIST, PreferenceUtil.getStringSet(this, PreferenceUtil.PREFERENCE_UPDATE_LIST));
         addPreferencesFromResource(R.xml.settings);
         new AllPreferences(this).draw();
     }
