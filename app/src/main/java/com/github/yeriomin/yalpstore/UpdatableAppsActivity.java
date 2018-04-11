@@ -83,14 +83,9 @@ public class UpdatableAppsActivity extends AppListActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        if (item.getItemId() == R.id.action_ignore || item.getItemId() == R.id.action_unwhitelist) {
+        if (item.getItemId() == R.id.action_ignore) {
             String packageName = getAppByListPosition(info.position).getPackageName();
-            BlackWhiteListManager manager = new BlackWhiteListManager(this);
-            if (item.getItemId() == R.id.action_ignore) {
-                manager.add(packageName);
-            } else {
-                manager.remove(packageName);
-            }
+            new BlackWhiteListManager(this).add(packageName);
             removeApp(packageName);
             return true;
         }

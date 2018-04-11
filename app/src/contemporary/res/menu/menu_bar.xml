@@ -52,19 +52,13 @@
     <item
         android:id="@+id/action_ignore"
         android:title="@string/action_ignore"
-        android:visible="false" />
-    <item
-        android:id="@+id/action_unignore"
-        android:title="@string/action_unignore"
-        android:visible="false" />
-    <item
-        android:id="@+id/action_unwhitelist"
-        android:title="@string/action_unwhitelist"
-        android:visible="false" />
+        android:visible="false"
+        android:checkable="true" />
     <item
         android:id="@+id/action_whitelist"
         android:title="@string/action_whitelist"
-        android:visible="false" />
+        android:visible="false"
+        android:checkable="true" />
     <item
         android:id="@+id/action_manual"
         android:title="@string/action_manual"

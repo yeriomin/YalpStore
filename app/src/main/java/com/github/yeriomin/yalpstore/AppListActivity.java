@@ -89,8 +89,6 @@ abstract public class AppListActivity extends YalpStoreActivity {
         switch (item.getItemId()) {
             case R.id.action_ignore:
             case R.id.action_whitelist:
-            case R.id.action_unignore:
-            case R.id.action_unwhitelist:
                 new DownloadOptions(this, DetailsActivity.app).onContextItemSelected(item);
                 ((ListItem) getListView().getItemAtPosition(info.position)).draw();
                 break;

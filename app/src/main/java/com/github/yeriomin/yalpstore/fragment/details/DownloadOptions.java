@@ -78,17 +78,24 @@ public class DownloadOptions extends Abstract {
         BlackWhiteListManager manager = new BlackWhiteListManager(activity);
         boolean isContained = manager.contains(app.getPackageName());
         if (manager.isBlack()) {
-            show(menu, R.id.action_unignore, isContained);
-            show(menu, R.id.action_ignore, !isContained);
+            show(menu, R.id.action_ignore, true);
         } else {
-            show(menu, R.id.action_unwhitelist, isContained);
-            show(menu, R.id.action_whitelist, !isContained);
+            show(menu, R.id.action_whitelist, true);
         }
+        setChecked(menu, R.id.action_ignore, isContained);
+        setChecked(menu, R.id.action_whitelist, isContained);
         if (isConvertible(app)) {
             show(menu, R.id.action_make_system, !app.isSystem());
             show(menu, R.id.action_make_normal, app.isSystem());
         }
         show(menu, R.id.action_flag, app.isInPlayStore());
+    }
+
+    private void setChecked(Menu menu, int itemId, boolean checked) {
+        MenuItem item = menu.findItem(itemId);
+        if (null != item) {
+            item.setChecked(checked);
+        }
     }
 
     private void show(Menu menu, int itemId, boolean show) {
@@ -102,13 +109,13 @@ public class DownloadOptions extends Abstract {
         switch (item.getItemId()) {
             case R.id.action_ignore:
             case R.id.action_whitelist:
-                new BlackWhiteListManager(activity).add(app.getPackageName());
-                draw();
-                return true;
-            case R.id.action_unignore:
-            case R.id.action_unwhitelist:
-                new BlackWhiteListManager(activity).remove(app.getPackageName());
-                draw();
+                BlackWhiteListManager manager = new BlackWhiteListManager(activity);
+                if (item.isChecked()) {
+                    manager.remove(app.getPackageName());
+                } else {
+                    manager.add(app.getPackageName());
+                }
+                item.setChecked(!item.isChecked());
                 return true;
             case R.id.action_manual:
                 activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
