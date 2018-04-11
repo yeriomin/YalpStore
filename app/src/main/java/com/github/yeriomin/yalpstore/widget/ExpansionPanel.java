@@ -49,7 +49,7 @@ public class ExpansionPanel extends LinearLayout {
     private OnClickListener onClickListener;
 
     public void setHeaderText(int resourceId, String... args) {
-        setHeaderText(getContext().getString(resourceId, args));
+        setHeaderText(getContext().getString(resourceId, (Object[]) args));
     }
 
     public void setHeaderText(CharSequence headerText) {
