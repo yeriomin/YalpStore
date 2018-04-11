@@ -39,6 +39,7 @@ import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.ImageSource;
 import com.github.yeriomin.yalpstore.task.LoadImageTask;
+import com.github.yeriomin.yalpstore.task.playstore.DetailsCategoryTask;
 import com.github.yeriomin.yalpstore.widget.Badge;
 import com.github.yeriomin.yalpstore.widget.ExpansionPanel;
 
@@ -179,18 +180,39 @@ public class GeneralDetails extends Abstract {
         df.setMaximumFractionDigits(1);
         ((Badge) activity.findViewById(R.id.rating_badge)).setLabel(app.isEarlyAccess() ? activity.getString(R.string.early_access) : df.format(app.getRating().getAverage()));
         ((Badge) activity.findViewById(R.id.size_badge)).setLabel(Util.readableFileSize(app.getSize()));
+        drawCategoryBadge();
+    }
+
+    private void drawCategoryBadge() {
         Badge categoryBadge = activity.findViewById(R.id.category_badge);
-        categoryBadge.setLabel(new CategoryManager(activity).getCategoryName(app.getCategoryId()));
+        new LoadImageTask(categoryBadge.getIconView()).setPlaceholder(false).execute(new ImageSource(app.getCategoryIconUrl()));
+        CategoryManager manager = new CategoryManager(activity);
+        String categoryId = app.getCategoryId();
+        String categoryLabel = manager.getCategoryName(categoryId);
+        if (categoryLabel.equals(categoryId)) {
+            getCategoryTask(manager, categoryId).execute();
+        } else {
+            categoryBadge.setLabel(categoryLabel);
+        }
+        categoryBadge.setLabel(categoryLabel);
         categoryBadge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CategoryAppsActivity.start(activity, app.getCategoryId());
             }
         });
-        new LoadImageTask(categoryBadge.getIconView()).setPlaceholder(false).execute(new ImageSource(app.getCategoryIconUrl()));
         ViewGroup.LayoutParams iconParams = categoryBadge.getIconView().getLayoutParams();
         int categoryIconSize = Util.getPx(activity, 64);
         iconParams.width = categoryIconSize;
         iconParams.height = categoryIconSize;
+    }
+
+    private DetailsCategoryTask getCategoryTask(CategoryManager manager, String categoryId) {
+        DetailsCategoryTask task = new DetailsCategoryTask();
+        task.setCategoryId(categoryId);
+        task.setCategoryView((Badge) activity.findViewById(R.id.category_badge));
+        task.setManager(manager);
+        task.setContext(activity);
+        return task;
     }
 }
