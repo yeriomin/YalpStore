@@ -68,6 +68,33 @@
             android:orientation="vertical"
             android:paddingBottom="@dimen/appbar_bar_height">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <in.dragons.galaxy.view.TagView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    app:DualTagName0="Games"
+                    app:DualTagName1="Featured"
+                    app:TagStyle="Duo">
+
+                </in.dragons.galaxy.view.TagView>
+
+                <in.dragons.galaxy.view.TagView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    app:MonoTagName="Alpha"
+                    app:TagStyle="Mono">
+
+                </in.dragons.galaxy.view.TagView>
+
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"

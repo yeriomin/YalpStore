@@ -176,6 +176,7 @@
             android:background="@drawable/edit_text_login"
             android:fontFamily="@font/google_sans_bold"
             android:text="@string/action_or"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
