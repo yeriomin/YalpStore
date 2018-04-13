@@ -68,7 +68,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
             if (isLoggedIn())
                 loadUpdatableApps();
             else {
-                LoginFirst();
+                //LoginFirst();
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
