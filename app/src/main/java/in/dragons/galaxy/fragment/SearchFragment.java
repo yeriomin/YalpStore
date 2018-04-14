@@ -140,7 +140,7 @@ public class SearchFragment extends Fragment implements RecyclerItemTouchHelper.
             emptyView.setVisibility(View.GONE);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(new SearchHistoryAdapter(listHistory));
+            recyclerView.setAdapter(new SearchHistoryAdapter(listHistory,getActivity()));
             new ItemTouchHelper(
                     new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this))
                     .attachToRecyclerView(recyclerView);

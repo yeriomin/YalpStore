@@ -1,5 +1,8 @@
 package in.dragons.galaxy.adapters;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,28 +19,16 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import in.dragons.galaxy.R;
+import in.dragons.galaxy.activities.SearchActivity;
 
 public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.MyViewHolder> {
 
     private ArrayList<String> queryHistory;
+    private Context c;
 
-    public SearchHistoryAdapter(ArrayList<String> queryHistory) {
+    public SearchHistoryAdapter(ArrayList<String> queryHistory, Context c) {
         this.queryHistory = queryHistory;
-    }
-
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView query;
-        TextView time;
-        RelativeLayout viewBackground;
-        public RelativeLayout viewForeground;
-
-        MyViewHolder(View view) {
-            super(view);
-            query = view.findViewById(R.id.query);
-            time = view.findViewById(R.id.queryTime);
-            viewBackground = view.findViewById(R.id.view_background);
-            viewForeground = view.findViewById(R.id.view_foreground);
-        }
+        this.c = c;
     }
 
     @NonNull
@@ -45,13 +36,18 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.history_item, parent, false);
-
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         setQuery(holder.query, holder.time, queryHistory.get(position));
+        holder.viewForeground.setOnClickListener(v -> {
+            Intent i = new Intent(c.getApplicationContext(), SearchActivity.class);
+            i.setAction(Intent.ACTION_SEARCH);
+            i.putExtra(SearchManager.QUERY, holder.query.getText());
+            c.startActivity(i);
+        });
     }
 
     @Override
@@ -60,7 +56,6 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
     }
 
     private void setQuery(TextView name, TextView time, String datedQuery) {
-
         String[] temp = datedQuery.split(":");
         name.setText(temp[0]);
         time.setText(getDiffString((int) getDiff(temp[1])));
@@ -85,5 +80,20 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
         else if (diff > 1)
             return diff + " days before";
         return "";
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public RelativeLayout viewForeground;
+        RelativeLayout viewBackground;
+        TextView query;
+        TextView time;
+
+        MyViewHolder(View view) {
+            super(view);
+            query = view.findViewById(R.id.query);
+            time = view.findViewById(R.id.queryTime);
+            viewBackground = view.findViewById(R.id.view_background);
+            viewForeground = view.findViewById(R.id.view_foreground);
+        }
     }
 }

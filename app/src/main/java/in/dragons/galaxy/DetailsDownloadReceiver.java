@@ -33,7 +33,7 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-       GalaxyActivity activity = activityRef.get();
+        GalaxyActivity activity = activityRef.get();
         if (null == activity || !ContextUtil.isAlive(activity)) {
             return;
         }
