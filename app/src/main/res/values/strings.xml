@@ -39,11 +39,15 @@
     <string name="action_filter_downloads">"Downloads: %1$s"</string>
     <string name="action_welcome">Welcome,</string>
     <string name="action_welcome_msg">Welcome to Aurora</string>
+    <string name="action_acc_txt">Aurora Accounts</string>
     <string name="action_apps">"My apps"</string>
     <string name="action_logout">Log out</string>
+    <string name="action_remove">Remove</string>
     <string name="action_login">Login</string>
     <string name="action_ok">OK</string>
     <string name="action_or">OR</string>
+    <string name="action_acc_switch">Tap to switch</string>
+    <string name="action_acc_add">Add Google Account</string>
     <string name="action_select">Select an account to login</string>
     <string name="action_usedummy">Use Dummy</string>
     <string name="action_usegoogle">Use Google</string>
@@ -290,8 +294,8 @@
     <string name="header_usr_email">Logged in with dummy account</string>
     <string name="header_usr_noEmail">Kindly login to use Galaxy</string>
     <string name="header_usr_noNetwork">Unable to retrieve</string>
-    <string name="account_dummy_name">Dummy Account</string>
-    <string name="account_dummy_email">Dummy Email</string>
+    <string name="account_dummy_name">Anonymous</string>
+    <string name="account_dummy_email">anonymous@anonymous</string>
     <string name="delta_enabled">Delta updates enabled</string>
     <string name="delta_disabled">Delta updates disabled</string>
     <string name="no_permissions">No permissions are used.</string>

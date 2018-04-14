@@ -165,13 +165,15 @@
 
         <activity
             android:name=".activities.DetailsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@style/LoginTheme" />
         <activity
             android:name=".activities.FullscreenImageActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale" />
         <activity
             android:name=".activities.AccountsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@style/LoginTheme" />
         <activity
             android:name=".activities.PreferenceActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale" />

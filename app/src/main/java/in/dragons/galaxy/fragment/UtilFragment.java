@@ -9,13 +9,17 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.AuthException;
 import com.percolate.caffeine.PhoneUtils;
+import com.percolate.caffeine.ViewUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,9 +42,60 @@ import in.dragons.galaxy.task.playstore.PlayStoreTask;
 
 public abstract class UtilFragment extends Fragment {
 
-    protected PlayStoreTask playStoreTask;
     static private final String USED_EMAILS_SET = "USED_EMAILS_SET";
+    protected PlayStoreTask playStoreTask;
 
+    protected boolean isLoggedIn() {
+        return PreferenceFragment.getBoolean(getActivity(), "LOGGED_IN");
+    }
+
+    protected boolean isDummy() {
+        return PreferenceFragment.getBoolean(getActivity(), "DUMMY_ACC");
+    }
+
+    protected boolean isGoogle() {
+        return PreferenceFragment.getBoolean(getActivity(), "GOOGLE_ACC");
+    }
+
+    protected boolean isConnected(Context c) {
+        return PhoneUtils.isNetworkAvailable(c);
+    }
+
+    protected void checkOut() {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putBoolean("LOGGED_IN", false).apply();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("GOOGLE_NAME", "").apply();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("GOOGLE_URL", "").apply();
+    }
+
+    protected void hide(View v, int viewID) {
+        ViewUtils.findViewById(v, viewID).setVisibility(View.GONE);
+    }
+
+    protected void show(View v, int viewID) {
+        ViewUtils.findViewById(v, viewID).setVisibility(View.VISIBLE);
+    }
+
+    protected void setText(View v, int viewId, String text) {
+        TextView textView = ViewUtils.findViewById(v, viewId);
+        if (null != textView)
+            textView.setText(text);
+    }
+
+    protected void setText(View v, int viewId, int stringId, Object... text) {
+        setText(v, viewId, v.getResources().getString(stringId, text));
+    }
+
+    protected void setGooglePrefs(String email, String password) {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putBoolean("SEC_ACCOUNT", true).apply();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("GOOGLE_EMAIL", email).apply();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("GOOGLE_PASSWORD", password).apply();
+    }
+
+    protected void removeGooglePrefs() {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putBoolean("SEC_ACCOUNT", false).apply();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("GOOGLE_EMAIL", "").apply();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("GOOGLE_PASSWORD", "").apply();
+    }
 
     private AutoCompleteTextView getEmailInput(Dialog ad) {
         AutoCompleteTextView editEmail = (AutoCompleteTextView) ad.findViewById(R.id.email);
@@ -76,14 +131,21 @@ public abstract class UtilFragment extends Fragment {
         logInWithGoogleAccount();
     }
 
-    public Dialog logInWithGoogleAccount() {
+    public void withSavedGoogle() {
+        String email = PreferenceFragment.getString(getActivity(), "GOOGLE_EMAIL");
+        String password = PreferenceFragment.getString(getActivity(), "GOOGLE_PASSWORD");
+        getUserCredentialsTask().execute(email, password);
+    }
+
+    public void logInWithGoogleAccount() {
         Dialog ad = new Dialog(getActivity());
         ad.setContentView(R.layout.credentials_dialog_layout);
         ad.setTitle(getActivity().getString(R.string.credentials_title));
         ad.setCancelable(false);
 
         AutoCompleteTextView editEmail = getEmailInput(ad);
-        EditText editPassword = (EditText) ad.findViewById(R.id.password);
+        EditText editPassword = ad.findViewById(R.id.password);
+        final CheckBox checkBox = ad.findViewById(R.id.checkboxSave);
 
         editEmail.setText("");
 
@@ -97,6 +159,10 @@ public abstract class UtilFragment extends Fragment {
                 return;
             }
             ad.dismiss();
+
+            if (checkBox.isChecked()) {
+                setGooglePrefs(email, password);
+            }
             getUserCredentialsTask().execute(email, password);
         });
         ad.findViewById(R.id.toggle_password_visibility).setOnClickListener(v -> {
@@ -107,11 +173,10 @@ public abstract class UtilFragment extends Fragment {
         });
 
         ad.show();
-        return ad;
     }
 
-    protected AlertDialog LoginFirst() {
-        return new AlertDialog.Builder(getActivity())
+    protected void LoginFirst() {
+        new AlertDialog.Builder(getActivity())
                 .setTitle("Logged Out ?")
                 .setMessage(R.string.header_usr_noEmail)
                 .setPositiveButton("Login", (dialogInterface, i) -> startActivity(new Intent(getActivity(), LoginActivity.class)))
@@ -125,6 +190,25 @@ public abstract class UtilFragment extends Fragment {
         task.setContext(getActivity());
         task.prepareDialog(R.string.dialog_message_logging_in_provided_by_user, R.string.dialog_title_logging_in);
         return task;
+    }
+
+    private static class RefreshTokenTask extends AccountTypeDialogBuilder.AppProvidedCredentialsTask {
+
+        @Override
+        public void setCaller(PlayStoreTask caller) {
+            super.setCaller(caller);
+        }
+
+        @Override
+        protected void payload() throws IOException {
+            new PlayStoreApiAuthenticator(context).refreshToken();
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            InstalledAppsFragment.newInstance();
+            UpdatableAppsFragment.newInstance();
+        }
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -144,25 +228,6 @@ public abstract class UtilFragment extends Fragment {
 
             AccountsActivity accountsActivity = (AccountsActivity) getActivity();
             accountsActivity.userChanged();
-        }
-    }
-
-    private static class RefreshTokenTask extends AccountTypeDialogBuilder.AppProvidedCredentialsTask {
-
-        @Override
-        public void setCaller(PlayStoreTask caller) {
-            super.setCaller(caller);
-        }
-
-        @Override
-        protected void payload() throws IOException {
-            new PlayStoreApiAuthenticator(context).refreshToken();
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            InstalledAppsFragment.newInstance();
-            UpdatableAppsFragment.newInstance();
         }
     }
 
@@ -246,27 +311,5 @@ public abstract class UtilFragment extends Fragment {
             AccountsActivity accountsActivity = (AccountsActivity) getActivity();
             accountsActivity.userChanged();
         }
-    }
-
-    protected void checkOut() {
-        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putBoolean("LOGGED_IN", false).apply();
-        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("GOOGLE_NAME", "").apply();
-        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("GOOGLE_URL", "").apply();
-    }
-
-    protected boolean isLoggedIn() {
-        return PreferenceFragment.getBoolean(getActivity(), "LOGGED_IN");
-    }
-
-    protected boolean isDummy() {
-        return PreferenceFragment.getBoolean(getActivity(), "DUMMY_ACC");
-    }
-
-    protected boolean isGoogle() {
-        return PreferenceFragment.getBoolean(getActivity(), "GOOGLE_ACC");
-    }
-
-    protected boolean isConnected() {
-        return PhoneUtils.isNetworkAvailable(this.getActivity());
     }
 }

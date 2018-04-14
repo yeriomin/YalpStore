@@ -2,7 +2,6 @@ package in.dragons.galaxy.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.InputType;
@@ -10,11 +9,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.github.yeriomin.playstoreapi.AuthException;
-import com.percolate.caffeine.ViewUtils;
 
 import java.io.IOException;
 import java.util.Set;
@@ -34,13 +33,16 @@ import in.dragons.galaxy.task.playstore.PlayStoreTask;
 public class LoginActivity extends GalaxyActivity {
 
     protected PlayStoreTask playStoreTask;
-    private AutoCompleteTextView editEmail;
     private String Email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+
         if (isConnected()) {
             init();
         }
@@ -50,10 +52,12 @@ public class LoginActivity extends GalaxyActivity {
     }
 
     private void init() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Email = sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, "");
         Button login_anonymous = findViewById(R.id.btn_ok_anm);
-        editEmail = findViewById(R.id.emailg);
+        CheckBox checkBox = findViewById(R.id.checkboxSave);
+        EditText editPassword = findViewById(R.id.passwordg);
+        Button login_google = findViewById(R.id.button_okg);
+        AutoCompleteTextView editEmail = findViewById(R.id.emailg);
+
         login_anonymous.setOnClickListener(v -> {
             LoginTask task = new LoginTask();
             task.setCaller(playStoreTask);
@@ -61,8 +65,6 @@ public class LoginActivity extends GalaxyActivity {
             task.prepareDialog(R.string.dialog_message_logging_in_predefined, R.string.dialog_title_logging_in);
             task.execute();
         });
-        EditText editPassword = findViewById(R.id.passwordg);
-        Button login_google = findViewById(R.id.button_okg);
         login_google.setOnClickListener(view -> {
             Context c = view.getContext();
             String email = editEmail.getText().toString();
@@ -70,6 +72,11 @@ public class LoginActivity extends GalaxyActivity {
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                 ContextUtil.toast(c.getApplicationContext(), R.string.error_credentials_empty);
                 return;
+            }
+            if (checkBox.isChecked()) {
+                PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("SEC_ACCOUNT", true).apply();
+                PreferenceManager.getDefaultSharedPreferences(this).edit().putString("GOOGLE_EMAIL", email).apply();
+                PreferenceManager.getDefaultSharedPreferences(this).edit().putString("GOOGLE_PASSWORD", password).apply();
             }
             getUserCredentialsTask().execute(email, password);
         });

@@ -19,7 +19,7 @@
 
     <style name="LoginTheme" parent="AppTheme">
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@color/transparent</item>
     </style>
     <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/google_sans</item>
