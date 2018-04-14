@@ -40,12 +40,7 @@ public class ButtonInstall extends Button {
     }
 
     @Override
-    protected Boolean getMisc() {
-        return false;
-    }
-
-    @Override
-    protected void onButtonClick(View v, Boolean isMisc) {
+    protected void onButtonClick(View v) {
         disable(R.string.details_installing);
         ((NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE)).cancel(app.getDisplayName().hashCode());
         InstallerFactory.get(activity).verifyAndInstall(app);

@@ -13,12 +13,12 @@ public abstract class Abstract {
     protected GalaxyActivity activity;
     protected App app;
 
-    abstract public void draw();
-
     public Abstract(GalaxyActivity activity, App app) {
         this.activity = activity;
         this.app = app;
     }
+
+    abstract public void draw();
 
     protected void setText(int viewId, String text) {
         TextView textView = (TextView) activity.findViewById(viewId);

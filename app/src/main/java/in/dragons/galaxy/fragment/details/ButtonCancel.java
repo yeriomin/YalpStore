@@ -24,17 +24,12 @@ public class ButtonCancel extends Button {
     }
 
     @Override
-    protected Boolean getMisc() {
-        return false;
-    }
-
-    @Override
     protected boolean shouldBeVisible() {
         return !DownloadState.get(app.getPackageName()).isEverythingFinished();
     }
 
     @Override
-    protected void onButtonClick(View button, Boolean isMisc) {
+    protected void onButtonClick(View button) {
         Intent intentCancel = new Intent(activity.getApplicationContext(), CancelDownloadService.class);
         intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
         activity.startService(intentCancel);

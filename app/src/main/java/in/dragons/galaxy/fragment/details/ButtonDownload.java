@@ -40,15 +40,19 @@ public class ButtonDownload extends Button {
     protected android.widget.Button getButton() {
         if (app.getPrice() != null && !app.isFree()) {
             setText(R.id.download, R.string.details_purchase);
+            setToPlayStore();
             return (android.widget.Button) activity.findViewById(R.id.download);
         } else
             return (android.widget.Button) activity.findViewById(R.id.download);
     }
 
-    @Override
-    protected Boolean getMisc()
-    {
-        return app.getPrice() != null && !app.isFree();
+    private void setToPlayStore() {
+        android.widget.Button toPlayStore = activity.findViewById(R.id.showInPlayStore);
+        toPlayStore.setVisibility(View.VISIBLE);
+        toPlayStore.setOnClickListener(v -> {
+            Toast.makeText(activity, R.string.warn_app_purchase, Toast.LENGTH_SHORT).show();
+            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + app.getPackageName())));
+        });
     }
 
     @Override
@@ -64,12 +68,8 @@ public class ButtonDownload extends Button {
     }
 
     @Override
-    protected void onButtonClick(View v, Boolean isPaid) {
-        if (isPaid) {
-            Toast.makeText(activity, R.string.warn_app_purchase, Toast.LENGTH_SHORT).show();
-            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + app.getPackageName())));
-        } else
-            checkAndDownload();
+    protected void onButtonClick(View v) {
+        checkAndDownload();
     }
 
     public void checkAndDownload() {

@@ -9,21 +9,17 @@ import in.dragons.galaxy.model.App;
 public abstract class Button extends Abstract {
 
     protected View button;
-    protected Boolean isMisc;
 
     public Button(GalaxyActivity activity, App app) {
         super(activity, app);
         this.button = getButton();
-        this.isMisc = getMisc();
     }
 
     abstract protected View getButton();
 
-    abstract protected Boolean getMisc();
-
     abstract protected boolean shouldBeVisible();
 
-    abstract protected void onButtonClick(View v, Boolean isMisc);
+    abstract protected void onButtonClick(View v);
 
     @Override
     public void draw() {
@@ -32,7 +28,7 @@ public abstract class Button extends Abstract {
         }
         button.setEnabled(true);
         button.setVisibility(shouldBeVisible() ? View.VISIBLE : View.GONE);
-        button.setOnClickListener(view -> onButtonClick(view, isMisc));
+        button.setOnClickListener(view -> onButtonClick(view));
     }
 
     void disable(int stringId) {

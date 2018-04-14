@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
-import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.R;
+import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.CheckShellTask;
 import in.dragons.galaxy.task.UninstallSystemAppTask;
@@ -27,12 +27,7 @@ public class ButtonUninstall extends Button {
     }
 
     @Override
-    protected Boolean getMisc() {
-        return false;
-    }
-
-    @Override
-    protected void onButtonClick(View v,Boolean isMisc) {
+    protected void onButtonClick(View v) {
         uninstall();
     }
 

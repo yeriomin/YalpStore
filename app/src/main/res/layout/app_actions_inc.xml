@@ -23,6 +23,22 @@
         android:visibility="gone" />
 
     <Button
+        android:id="@+id/showInPlayStore"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:fontFamily="@font/google_sans"
+        android:layout_weight="1"
+        android:background="@drawable/button_positive"
+        android:padding="5dp"
+        android:maxLines="1"
+        android:text="@string/details_playstore"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/colorGreen"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <Button
         android:id="@+id/download"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"

@@ -133,6 +133,7 @@
     <string name="details_more">More</string>
     <string name="details_run">Open</string>
     <string name="details_download">Get</string>
+    <string name="details_playstore">Play Store</string>
     <string name="details_purchase">Purchase</string>
     <string name="details_update">Update</string>
     <string name="details_cancel">Cancel</string>
