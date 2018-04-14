@@ -9,8 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ListView;
 
-import in.dragons.custom.CustomAppBar;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +16,7 @@ import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import in.dragons.custom.CustomAppBar;
 import in.dragons.galaxy.AppListIterator;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.adapters.AppListAdapter;
@@ -29,16 +28,15 @@ import in.dragons.galaxy.view.SearchResultAppBadge;
 
 public class GalaxyActivity extends BaseActivity implements View.OnClickListener {
 
+    static public App app;
+    protected Map<String, ListItem> listItems = new HashMap<>();
+    protected AppListIterator iterator;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
     @BindView(R.id.bottom_bar)
     CustomAppBar bottm_bar;
 
-    protected Map<String, ListItem> listItems = new HashMap<>();
-    protected AppListIterator iterator;
-
-    static public App app;
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

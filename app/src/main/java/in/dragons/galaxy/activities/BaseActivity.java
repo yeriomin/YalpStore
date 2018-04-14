@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import in.dragons.galaxy.LocaleManager;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.adapters.AppListAdapter;
 import in.dragons.galaxy.fragment.PreferenceFragment;
@@ -46,6 +47,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public static void cascadeFinish() {
         BaseActivity.logout = true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleManager.setLocale(base));
     }
 
     @Override

@@ -1,6 +1,7 @@
 package in.dragons.galaxy.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
@@ -14,9 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import in.dragons.galaxy.GalaxyPermissionManager;
+import in.dragons.galaxy.LocaleManager;
 import in.dragons.galaxy.MultiSelectListPreference;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.Util;
+import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.fragment.preference.Blacklist;
 import in.dragons.galaxy.fragment.preference.CheckUpdates;
 import in.dragons.galaxy.fragment.preference.Device;
@@ -83,6 +86,7 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         addPreferencesFromResource(R.xml.settings);
+        setupLanguage(getActivity());
         drawBlackList();
         drawLanguages();
         drawUpdatesCheck();
@@ -131,5 +135,23 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         InstallationMethod installationMethodFragment = new InstallationMethod(this);
         installationMethodFragment.setInstallationMethodPreference((ListPreference) findPreference(PREFERENCE_INSTALLATION_METHOD));
         installationMethodFragment.draw();
+    }
+
+    private void setupLanguage(Context c) {
+        ListPreference language_preference = (ListPreference) this.findPreference("language_preference");
+        language_preference.setSummary(language_preference.getEntry());
+
+        language_preference.setOnPreferenceChangeListener((preference, newValue) -> {
+            LocaleManager.setNewLocale(c, (String) newValue);
+            getPreferenceManager().getSharedPreferences().edit().putString("language_preference", (String) newValue).apply();
+            restartHome();
+            this.getActivity().finish();
+            return false;
+        });
+    }
+
+    private void restartHome() {
+        Intent i = new Intent(this.getActivity(), GalaxyActivity.class);
+        startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 }

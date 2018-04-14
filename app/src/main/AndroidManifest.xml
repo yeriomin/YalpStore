@@ -43,7 +43,7 @@
         </activity>
         <activity
             android:name=".activities.SearchActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -77,7 +77,7 @@
 
         <activity
             android:name=".activities.CategoryListActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:launchMode="singleInstance">
             <meta-data
                 android:name="android.app.default_searchable"
@@ -85,7 +85,7 @@
         </activity>
         <activity
             android:name=".activities.CategoryAppsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustPan">
             <meta-data
@@ -102,7 +102,7 @@
         </activity>
         <activity
             android:name=".activities.ManualDownloadActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:label="@string/action_manual"
             android:launchMode="singleInstance">
             <meta-data
@@ -111,16 +111,16 @@
         </activity>
         <activity
             android:name=".activities.DeviceInfoActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:launchMode="singleInstance" />
         <activity
             android:name=".activities.DeviceActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:label="@string/action_spoofed"
             android:launchMode="singleInstance" />
         <activity
             android:name=".activities.GalaxyActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -165,24 +165,25 @@
 
         <activity
             android:name=".activities.DetailsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
         <activity
             android:name=".activities.FullscreenImageActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
         <activity
             android:name=".activities.AccountsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
         <activity
             android:name=".activities.PreferenceActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
         <activity
             android:name=".activities.SpoofActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
         <activity
             android:name=".activities.AboutActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
         <activity
             android:name=".activities.LoginActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:theme="@style/LoginTheme" />
 
         <provider

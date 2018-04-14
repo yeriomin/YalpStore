@@ -7,6 +7,13 @@
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:title="@string/pref_download_directory" />
+    <PreferenceCategory android:title="@string/pref_app_language_cat">
+        <ListPreference
+            android:key="language_preference"
+            android:title="@string/pref_app_language"
+            android:entries="@array/language"
+            android:entryValues="@array/languageAlias"/>
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_updates">
         <CheckBoxPreference
             android:defaultValue="false"

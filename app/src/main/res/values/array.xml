@@ -100,4 +100,16 @@
         <item>SOCIAL</item>
         <item>COMMUNICATION</item>
     </string-array>
+    <string-array name="language">
+        <item>العربية</item>
+        <item>English</item>
+        <item>Русский</item>
+        <item>Українська</item>
+    </string-array>
+    <string-array name="languageAlias">
+        <item>"ar"</item>
+        <item>"en"</item>
+        <item>"ru"</item>
+        <item>"uk"</item>
+    </string-array>
 </resources>
