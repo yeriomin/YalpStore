@@ -56,6 +56,8 @@ public class AppBuilder {
         }
         fillImages(app, details.getImageList());
         fillDependencies(app, appDetails);
+        app.setLabeledRating(details.getRelatedLinks().getRated().getLabel());
+        app.setRatingURL(details.getRelatedLinks().getRated().getImage().getImageUrl());
         return app;
     }
 

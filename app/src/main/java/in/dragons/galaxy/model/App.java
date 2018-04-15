@@ -27,6 +27,7 @@ public class App implements Comparable<App> {
     private Rating rating = new Rating();
     private String iconUrl;
     private String videoUrl;
+    private String ratingURL;
     private String changes;
     private String developerName;
     private String description;
@@ -49,6 +50,8 @@ public class App implements Comparable<App> {
     private String testingProgramEmail;
     private int restriction;
 
+    private String labeledRating;
+
     public App() {
         this.packageInfo = new PackageInfo();
     }
@@ -62,6 +65,22 @@ public class App implements Comparable<App> {
         if (null != packageInfo.requestedPermissions) {
             this.setPermissions(Arrays.asList(packageInfo.requestedPermissions));
         }
+    }
+
+    public String getLabeledRating() {
+        return labeledRating;
+    }
+
+    public void setLabeledRating(String labeledRating) {
+        this.labeledRating = labeledRating;
+    }
+
+    public String getRatingURL() {
+        return ratingURL;
+    }
+
+    public void setRatingURL(String ratingURL) {
+        this.ratingURL = ratingURL;
     }
 
     public PackageInfo getPackageInfo() {
