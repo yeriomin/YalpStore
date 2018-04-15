@@ -13,8 +13,8 @@
 <string name="action_search">"بحث"</string>
 <string name="action_updates">"تحديثات"</string>
 <string name="action_ignore">"تجاهل التحديثات"</string>
-    <string name="action_whitelist">"القائمة البيضاء للتحديثات"</string>
-    <string name="search_title">"ابحث عن تطبيقات"</string>
+<string name="action_whitelist">"القائمة البيضاء للتحديثات"</string>
+<string name="search_title">"ابحث عن تطبيقات"</string>
 <string name="dialog_two_factor_cancel">"ليس الآن"</string>
 <string name="dialog_two_factor_create_password">"أنشيء كلمة سر"</string>
 <string name="dialog_title_two_factor">"التحقق بخطوتين"</string>
@@ -37,7 +37,7 @@
 <string name="error_downloads_directory_not_writable">"مجلد التنزيلات Downloads لا يمكن إنشاؤه أو غير قابل للكتابة."</string>
 <string name="error_token_dispenser_problem">"لا يمكن الدخول بدون حساب. جرب استعمال حسابك."</string>
 <string name="details_updated">"تم التحديث %1$s"</string>
-    <string name="details_description">"الوصف:"</string>
+<string name="details_description">"الوصف:"</string>
 <string name="details_changelog">"ما الجديد:"</string>
 <string name="details_screenshots">"لقطات شاشة:"</string>
 <string name="details_reviews">"تعلقيات:"</string>
@@ -94,7 +94,7 @@
 <string name="download_manager_ERROR_CANNOT_RESUME">"حدثت بعض الأخطاء العارضة لكن لا يمكننا استكمال التنزيل. حاول لاحقا."</string>
 <string name="download_manager_ERROR_BLOCKED">"فشل التنزيل بسبب سياسة إدارة الشبكة. تأكد من إعداداتك."</string>
 <string name="search_filter">"كل التطبيقات"</string>
-    <string name="pref_delete_apk_after_install_summary_off">"الآن لن يتم حذف ملفات .apk بعد التثبيت"</string>
+<string name="pref_delete_apk_after_install_summary_off">"الآن لن يتم حذف ملفات .apk بعد التثبيت"</string>
 <string name="pref_delete_apk_after_install_summary_on">"الآن سيتم حذف ملفات .apk بعد التثبيت"</string>
 <string name="pref_delete_apk_after_install">"احذف ملفات .apk بعد التثبيت"</string>
 <string name="dialog_title_application_crashed">"معذرة. توقف Yalp Store عن العمل"</string>
@@ -279,4 +279,11 @@
 <string name="pref_download_internal_storage">"Download to internal storage"</string>
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
 <string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="pref_use_tor">"إستخدم شبكة تور (Tor)"</string>
+<string name="pref_use_tor_summary">"إجبار حركة التحميل من خلال تور لزيادة الخصوصية. تطبيق أوربوت مطلوب"</string>
+<string name="pref_category_proxy">"خدمة الوكيل (البروكسي)"</string>
+<string name="pref_proxy_enable">"Enable proxy"</string>
+<string name="pref_proxy_type">"Proxy type"</string>
+<string name="pref_proxy_host">"Proxy host"</string>
+<string name="pref_proxy_port">"Proxy port"</string>
 </resources>
