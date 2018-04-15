@@ -13,8 +13,8 @@
 <string name="action_search">"Αναζήτηση"</string>
 <string name="action_updates">"Ενημερώσεις"</string>
 <string name="action_ignore">"Αγνόηση των ενημερώσεων"</string>
-    <string name="action_whitelist">"Λευκό κατάστιχο για τις ενημερώσεις"</string>
-    <string name="search_title">"Αναζήτηση για εφαρμογές"</string>
+<string name="action_whitelist">"Λευκό κατάστιχο για τις ενημερώσεις"</string>
+<string name="search_title">"Αναζήτηση για εφαρμογές"</string>
 <string name="dialog_two_factor_cancel">"Όχι τώρα"</string>
 <string name="dialog_two_factor_create_password">"Δημιουργία συνθηματικού"</string>
 <string name="dialog_title_two_factor">"Πιστοποίηση 2-Βημάτων"</string>
@@ -40,7 +40,7 @@
 <string name="error_downloads_directory_not_writable">"Αδυναμία δημιουργίας του κατάλογου λήψεων, ή αυτός δεν είναι εγγράψιμος."</string>
 <string name="error_token_dispenser_problem">"Αδυναμία σύνδεσης χωρίς λογαριασμό. Ξαναπροσπάθησε, χρησιμοποιώντας τον δικό σου λογαριασμό."</string>
 <string name="details_updated">"Ενημερώθηκε %1$s"</string>
-    <string name="details_description">"Περιγραφή:"</string>
+<string name="details_description">"Περιγραφή:"</string>
 <string name="details_changelog">"Τι νέα:"</string>
 <string name="details_screenshots">"Στιγμιότυπα:"</string>
 <string name="details_reviews">"Αξιολογήσεις:"</string>
@@ -99,7 +99,7 @@
 <string name="download_manager_ERROR_CANNOT_RESUME">"Κάποιο, πιθανά παροδικό, σφάλμα παρουσιάστηκε, και δεν μπορεί να συνεχιστεί η λήψη. Ξαναπροσπάθησε αργότερα."</string>
 <string name="download_manager_ERROR_BLOCKED">"Αποτυχία της λήψης, λόγω ελέγχων του NetworkPolicyManager, πάνω στην ζητούμενη εφαρμογή. Έλεγξε τις ρυθμίσεις σου."</string>
 <string name="search_filter">"Όλες οι εφαρμογές"</string>
-    <string name="pref_delete_apk_after_install_summary_off">"Τώρα, τα .apk δεν θα διαγράφονται, μετά από την ολοκλήρωση της εγκατάστασης"</string>
+<string name="pref_delete_apk_after_install_summary_off">"Τώρα, τα .apk δεν θα διαγράφονται, μετά από την ολοκλήρωση της εγκατάστασης"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Τώρα, τα .apk θα διαγράφονται, μετά από την ολοκλήρωση της εγκατάστασης"</string>
 <string name="pref_delete_apk_after_install">"Διαγραφή των .apk, μετά από την εγκατάσταση"</string>
 <string name="dialog_title_application_crashed">"Δυστυχώς το Yalp Store κατέρρευσε"</string>
@@ -290,4 +290,11 @@
 <string name="pref_download_internal_storage">"Download to internal storage"</string>
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
 <string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="pref_use_tor">"Χρήση Tor"</string>
+<string name="pref_use_tor_summary">"Αναγκαστική λήψη μέσω του δικτύου Tor για αυξημένη ιδιωτικότητα. Απαιτείται εγκατάσταση του Orbot"</string>
+<string name="pref_category_proxy">"Διακομιστής μεσολάβησης (Proxy)"</string>
+<string name="pref_proxy_enable">"Enable proxy"</string>
+<string name="pref_proxy_type">"Proxy type"</string>
+<string name="pref_proxy_host">"Proxy host"</string>
+<string name="pref_proxy_port">"Proxy port"</string>
 </resources>
