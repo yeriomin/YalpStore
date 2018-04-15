@@ -13,8 +13,8 @@
 <string name="action_search">"Recherche"</string>
 <string name="action_updates">"Mises à jour"</string>
 <string name="action_ignore">"Ignorer les mises à jour"</string>
-    <string name="action_whitelist">"Liste blanche pour les mises à jour"</string>
-    <string name="search_title">"Rechercher des applications"</string>
+<string name="action_whitelist">"Liste blanche pour les mises à jour"</string>
+<string name="search_title">"Rechercher des applications"</string>
 <string name="dialog_two_factor_cancel">"Pas maintenant"</string>
 <string name="dialog_two_factor_create_password">"Créer un mot de passe"</string>
 <string name="dialog_title_two_factor">"Vérification en deux étapes"</string>
@@ -35,7 +35,7 @@
 <string name="error_downloads_directory_not_writable">"Le dossier des téléchargement n\'a pas pu être créé ou n\'a pas d\'accès en écriture"</string>
 <string name="error_token_dispenser_problem">"Impossible de se connecter sans compte. Essayez avec le vôtre."</string>
 <string name="details_updated">"Mis à jour : %1$s"</string>
-    <string name="details_description">"Description :"</string>
+<string name="details_description">"Description :"</string>
 <string name="details_changelog">"Nouveautés :"</string>
 <string name="details_screenshots">"Captures d\'écran :"</string>
 <string name="details_reviews">"Avis :"</string>
@@ -93,7 +93,7 @@
 <string name="download_manager_ERROR_CANNOT_RESUME">"Impossible de reprendre le téléchargement. Veuillez réessayer plus tard."</string>
 <string name="download_manager_ERROR_BLOCKED">"Téléchargement impossible. Vérifiez vos réglages réseau."</string>
 <string name="search_filter">"Toutes les applications"</string>
-    <string name="pref_delete_apk_after_install_summary_off">"Les .apk sont maintenant conservés après installation"</string>
+<string name="pref_delete_apk_after_install_summary_off">"Les .apk sont maintenant conservés après installation"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Les .apk sont maintenant supprimés après installation"</string>
 <string name="pref_delete_apk_after_install">"Supprimer les .apk après installation"</string>
 <string name="dialog_title_application_crashed">"Désolé, Yalp Store a planté"</string>
@@ -256,8 +256,15 @@
 <string name="pref_message_fallback">"Essayer de définir un répertoire de secours (%1$s) ?"</string>
 <string name="no_permissions">"Aucune autorisation n\'est utilisée."</string>
 <string name="about_librepay_label">"Donate Librepay:"</string>
-<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="notification_file_verification_failed">"Le fichier semble corrompu. Veuillez le télécharger de nouveau."</string>
+<string name="pref_download_internal_storage">"Télécharger vers le stockage interne"</string>
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
 <string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="pref_use_tor">"Utiliser Tor"</string>
+<string name="pref_use_tor_summary">"Télécharger anonymement grâce à Tor. Requiert Orbot"</string>
+<string name="pref_category_proxy">"Proxy"</string>
+<string name="pref_proxy_enable">"Enable proxy"</string>
+<string name="pref_proxy_type">"Proxy type"</string>
+<string name="pref_proxy_host">"Proxy host"</string>
+<string name="pref_proxy_port">"Proxy port"</string>
 </resources>
