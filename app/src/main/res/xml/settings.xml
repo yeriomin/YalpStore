@@ -94,7 +94,4 @@
             android:summaryOn="@string/pref_no_images_summary_on"
             android:title="@string/pref_no_images" />
     </PreferenceCategory>
-    <PreferenceCategory >
-        <ListPreference/>
-    </PreferenceCategory>
 </PreferenceScreen>

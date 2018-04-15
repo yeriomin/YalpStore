@@ -36,11 +36,6 @@ public class SearchActivity extends EndlessScrollActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Toolbar toolbar = ViewUtils.findViewById(this, R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         ViewUtils.findViewById(this, R.id.category_tabs).setVisibility(View.GONE);
     }
 

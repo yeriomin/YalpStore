@@ -3,12 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <in.dragons.galaxy.view.AdaptiveToolbar
+        android:id="@+id/d_adtb2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ToolbarStyle="Details" />
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         app:cardCornerRadius="2dp"
-        app:cardElevation="2dp">
+        app:cardElevation="2dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,4 +55,5 @@
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </android.support.v7.widget.CardView>
+
 </android.support.design.widget.CoordinatorLayout>

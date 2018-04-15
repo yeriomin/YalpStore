@@ -1,6 +1,7 @@
 package in.dragons.custom;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.MenuRes;

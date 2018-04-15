@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.view.Menu;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
@@ -18,6 +19,7 @@ import in.dragons.galaxy.ScrollEdgeListener;
 import in.dragons.galaxy.adapters.AppListAdapter;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.EndlessScrollTask;
+import in.dragons.galaxy.view.AdaptiveToolbar;
 import in.dragons.galaxy.view.ListItem;
 import in.dragons.galaxy.view.ProgressIndicator;
 import in.dragons.galaxy.view.SearchResultAppBadge;
@@ -37,11 +39,13 @@ abstract public class EndlessScrollActivity extends AppListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.helper_activity);
-
-        FrameLayout contentFrameLayout = ViewUtils.findViewById(this, R.id.content_frame);
-        getLayoutInflater().inflate(R.layout.app_endless_inc, contentFrameLayout);
-
+        setContentView(R.layout.app_endless_inc);
+        AdaptiveToolbar dadtb = findViewById(R.id.d_adtb2);
+        if (dadtb.getAction_icon().getContentDescription().toString().equals("details")) {
+            dadtb.getAction_icon().setOnClickListener(v -> {
+                finish();
+            });
+        }
         //Defaults to TOP_FREE
         subCategory = GooglePlayAPI.SUBCATEGORY.TOP_FREE;
 

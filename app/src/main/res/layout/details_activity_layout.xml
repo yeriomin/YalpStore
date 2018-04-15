@@ -1,124 +1,293 @@
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:background="@android:color/transparent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="18dp">
 
-        <!--App Video -->
         <RelativeLayout
-            android:id="@+id/app_video"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/thumbnail"
-                android:layout_width="match_parent"
-                android:layout_height="225dp"
-                android:src="@color/gray" />
-
-            <ImageView
-                android:id="@+id/vid_play"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:alpha="0.7"
-                android:src="@drawable/ic_play" />
-        </RelativeLayout>
-
-        <!-- App Icon & Name -->
-        <android.support.v7.widget.CardView
-            android:id="@+id/main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_finish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
 
-                <!-- App Info : Icon, Name, Developer, Version -->
-                <include layout="@layout/app_info_inc" />
+                android:layout_marginEnd="8dp"
+                android:clickable="true"
+                app:backgroundTint="@color/white"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/ic_chevron_left" />
 
-                <!-- Action : Download, Update, Uninstall -->
-                <include layout="@layout/app_actions_inc" />
-
-                <in.dragons.galaxy.NumberProgressBar
-                    android:id="@+id/download_progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/main_action"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="5dp"
-                    android:visibility="gone"
-                    app:progress_reached_bar_height="2.5dp"
-                    app:progress_reached_color="@color/colorAccent"
-                    app:progress_text_color="@color/colorAccent"
-                    app:progress_text_size="12sp"
-                    app:progress_unreached_bar_height="2dp"
-                    app:progress_unreached_color="@color/lightGray" />
-
-                <TextView
-                    android:id="@+id/contains_ads"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/download_progress"
-                    android:layout_marginEnd="15dp"
-                    android:gravity="end" />
-
-                <!-- App Details : Type, Size, Rating -->
-                <include layout="@layout/app_details_inc" />
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <!-- App details -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <!-- Changelog -->
-            <include layout="@layout/app_changelog_inc" />
-            <!-- Read More -->
-            <include layout="@layout/app_more_inc" />
-            <!-- Screenshot -->
-            <it.sephiroth.android.library.widget.HListView
-                android:id="@+id/screenshots_gallery"
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:divider="@null" />
-            <!-- Reviews -->
-            <include layout="@layout/app_reviews_inc" />
-            <!-- Permissions -->
-            <include layout="@layout/app_perm_inc" />
-            <!--General -->
-            <include layout="@layout/app_gen_inc" />
-            <!-- Beta -->
-            <include layout="@layout/app_beta_inc" />
-            <!-- Bottom Actions -->
-            <include layout="@layout/app_bottom_actions_inc" />
-
-            <ProgressBar
-                android:id="@+id/progress"
+            <TextView
+                android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:indeterminate="true"
-                android:padding="5dp"
-                android:visibility="gone" />
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"
+                android:layout_toEndOf="@+id/fab_finish"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="Back" />
+        </RelativeLayout>
 
+    </android.support.v7.widget.CardView>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--App Video -->
+
+            <RelativeLayout
+                android:id="@+id/app_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@color/gray"
+                    app:srcCompat="@drawable/featured_games_default_gradient" />
+
+                <ImageView
+                    android:id="@+id/vid_play"
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:alpha="0.5"
+                    android:src="@drawable/ic_play"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="150dp"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/main"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <!-- App Info : Icon, Name, Developer, Version -->
+                            <include layout="@layout/app_info_inc" />
+
+                            <!-- Action : Download, Update, Uninstall -->
+                            <include layout="@layout/app_actions_inc" />
+
+                            <in.dragons.galaxy.NumberProgressBar
+                                android:id="@+id/download_progress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/main_action"
+                                android:layout_margin="15dp"
+                                android:visibility="gone"
+                                app:progress_reached_bar_height="2.5dp"
+                                app:progress_reached_color="@color/colorAccent"
+                                app:progress_text_color="@color/colorAccent"
+                                app:progress_text_size="12sp"
+                                app:progress_unreached_bar_height="2dp"
+                                app:progress_unreached_color="@color/lightGray" />
+
+                            <TextView
+                                android:id="@+id/contains_ads"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/download_progress"
+                                android:layout_gravity="end"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginTop="4dp"
+                                android:gravity="end" />
+
+                            <HorizontalScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="6dp"
+                                    android:alpha="0.7"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/d_app_info"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_weight="1"
+                                        android:clickable="true"
+                                        android:fontFamily="@font/google_sans_bold"
+                                        android:text="App Info"
+                                        android:textColor="?android:attr/textColorPrimary"
+                                        android:textSize="14sp" />
+
+                                    <TextView
+                                        android:id="@+id/d_reviews"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_weight="1"
+                                        android:clickable="true"
+                                        android:fontFamily="@font/google_sans_bold"
+                                        android:text="Reviews"
+                                        android:textSize="14sp" />
+
+                                    <TextView
+                                        android:id="@+id/d_additional_info"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:clickable="true"
+                                        android:fontFamily="@font/google_sans_bold"
+                                        android:text="Additional Information"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+                            </HorizontalScrollView>
+
+                            <!-- App Details : Type, Size, Rating -->
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <LinearLayout
+                        android:id="@+id/app_info_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:cardCornerRadius="8dp"
+                            app:cardUseCompatPadding="true">
+
+                            <include
+                                layout="@layout/app_details_inc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginTop="8dp" />
+                        </android.support.v7.widget.CardView>
+
+                        <include
+                            layout="@layout/app_changelog_inc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <it.sephiroth.android.library.widget.HListView
+                            android:id="@+id/screenshots_gallery"
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:layout_marginTop="7dp"
+                            android:divider="@null" />
+
+                        <View
+                            android:id="@+id/divider2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="7dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <include
+                            layout="@layout/app_more_inc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <!-- Changelog -->
+                    <!-- Read More -->
+                    <!-- Screenshot -->
+                    <!-- Reviews -->
+                    <!-- Permissions -->
+
+                    <LinearLayout
+                        android:id="@+id/reviews_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <include
+                            layout="@layout/app_reviews_inc"
+                            android:layout_width="match_parent" />
+                    </LinearLayout>
+
+                    <!--General -->
+
+                    <LinearLayout
+                        android:id="@+id/additional_info_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <include
+                            layout="@layout/app_beta_inc"
+                            android:layout_width="match_parent" />
+
+                        <include
+                            layout="@layout/app_perm_inc"
+                            android:layout_width="match_parent"
+                            android:visibility="gone" />
+
+                        <include
+                            layout="@layout/app_gen_inc"
+                            android:layout_width="match_parent" />
+
+                        <include
+                            layout="@layout/app_bottom_actions_inc"
+                            android:layout_width="match_parent" />
+                    </LinearLayout>
+
+                    <!-- Beta -->
+
+                    <!-- Bottom Actions -->
+
+                    <ProgressBar
+                        android:id="@+id/progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:indeterminate="true"
+                        android:padding="5dp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- App Icon & Name -->
+
+            <!-- App details -->
         </LinearLayout>
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

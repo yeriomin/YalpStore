@@ -3,11 +3,17 @@ package in.dragons.galaxy.fragment.details;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.support.v7.graphics.Palette;
 import android.text.ClipboardManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -41,13 +47,24 @@ public class Video extends Abstract {
         String vID = getID(app.getVideoUrl());
         String URL = "https://img.youtube.com/vi/" + vID + "/hqdefault.jpg";
 
-        ImageView imageView = (ImageView) activity.findViewById(R.id.thumbnail);
+        ImageView icon = activity.findViewById(R.id.icon);
+        ImageView imageView = activity.findViewById(R.id.thumbnail);
+
+        ImageView blank = new ImageView(activity);
+
+        Picasso.with(activity).load("https://img.youtube.com/vi/afj914/hqdefault.jpg").into(blank);
+
         Picasso.with(activity)
                 .load(URL)
                 .fit()
+                .placeholder(android.R.color.transparent)
                 .centerCrop()
                 .into(imageView);
-
+        if (imageView.getDrawable() == blank.getDrawable()) {
+            Bitmap bitmap = ((BitmapDrawable) icon.getDrawable()).getBitmap();
+            if (bitmap != null)
+                getPalette(bitmap, activity.findViewById(R.id.thumbnail));
+        }
         activity.findViewById(R.id.app_video).setVisibility(View.VISIBLE);
 
         ImageView play = (ImageView) activity.findViewById(R.id.vid_play);
@@ -60,4 +77,15 @@ public class Video extends Abstract {
             }
         });
     }
+
+    private void getPalette(Bitmap bitmap, ImageView card) {
+        Palette.from(bitmap)
+                .generate(palette -> {
+                    Palette.Swatch mySwatch = palette.getDarkVibrantSwatch();
+                    if (mySwatch != null) {
+                        card.setBackgroundColor(mySwatch.getRgb());
+                    }
+                });
+    }
+
 }

@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/top_category_bg"
-    android:backgroundTint="?attr/colorPrimaryDark">
+    android:backgroundTint="?attr/colorAccent">
 
     <TextView
         android:id="@+id/tag_mono_txt"
@@ -12,6 +12,6 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:fontFamily="@font/google_sans"
-        android:padding="4dp"
+        android:padding="2dp"
         android:textColor="?attr/colorAccent" />
 </RelativeLayout>

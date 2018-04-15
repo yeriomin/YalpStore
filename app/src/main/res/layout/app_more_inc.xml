@@ -1,80 +1,31 @@
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/more_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:visibility="gone"
-    app:cardUseCompatPadding="true">
+    android:background="@color/semiTransparentAccent"
+    android:orientation="vertical"
+    android:visibility="gone">
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:fontFamily="@font/google_sans_bold"
+        android:text="Read More"
+        android:textAllCaps="true"
+        android:textColor="?android:attr/colorAccent"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/d_moreinf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp">
-
-        <TextView
-            android:id="@+id/description_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:drawableEnd="@drawable/ic_expand_more"
-            android:gravity="center|start"
-            android:text="@string/details_description"
-            android:textAllCaps="true"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:visibility="gone" />
-
-        <LinearLayout
-            android:id="@+id/description_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:autoLink="web|email"
-                android:paddingTop="6dip" />
-
-            <LinearLayout
-                android:id="@+id/more_changes_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/changes_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="@string/details_changelog"
-                    android:textAllCaps="true"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/changes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:autoLink="web|email"
-                    android:lineSpacingExtra="5dp"
-                    android:textIsSelectable="true" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/offer_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="vertical" />
-        </LinearLayout>
-    </LinearLayout>
-</android.support.v7.widget.CardView>
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/google_sans"
+        android:text="TextView"
+        android:textColor="?attr/colorAccent"
+        android:textSize="13sp" />
+</LinearLayout>

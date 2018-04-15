@@ -26,8 +26,8 @@ public class MApps_Adapter extends RecyclerView.Adapter<MApps_Adapter.MyViewHold
     private Context context;
 
     class MyViewHolderInst extends RecyclerView.ViewHolder {
-        TextView mapps_name, ratingText, price;
-        ImageView mapps_image, menu3dot;
+        TextView mapps_name, ratingText;
+        ImageView mapps_image;
         RelativeLayout mapps_layout;
         RatingBar ratingBar;
 
@@ -38,8 +38,6 @@ public class MApps_Adapter extends RecyclerView.Adapter<MApps_Adapter.MyViewHold
             mapps_layout = view.findViewById(R.id.m_apps_layout);
             ratingBar = view.findViewById(R.id.ratingBar);
             ratingText = view.findViewById(R.id.ratingText);
-            price = view.findViewById(R.id.app_price);
-            menu3dot = view.findViewById(R.id.menu_3dot);
         }
     }
 
@@ -62,29 +60,12 @@ public class MApps_Adapter extends RecyclerView.Adapter<MApps_Adapter.MyViewHold
         holder.mapps_name.setText(mappsholder.title);
         holder.ratingBar.setRating((float) mappsholder.rating);
         holder.ratingText.setText(String.format("%.1f", mappsholder.rating));
-        holder.price.setText(mappsholder.price.isEmpty() ? R.string.category_appFree : R.string.category_appPaid);
         holder.mapps_layout.setOnClickListener(v ->
                 context.startActivity(DetailsActivity.getDetailsIntent(context, mappsholder.id)));
         Picasso.with(context)
                 .load(mappsholder.icon)
                 .placeholder(android.R.color.transparent)
                 .into(holder.mapps_image);
-
-        holder.menu3dot.setOnClickListener(this::showPopup);
-    }
-
-    private void showPopup(View v) {
-        PopupMenu popup = new PopupMenu(context, v, Gravity.CENTER);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.list_actions, popup.getMenu());
-        popup.setOnMenuItemClickListener(menuItem -> {
-            switch (menuItem.getItemId()) {
-                case R.id.app_install:
-                case R.id.app_wishlist:
-            }
-            return false;
-        });
-        popup.show();
     }
 
     @Override
@@ -98,16 +79,14 @@ public class MApps_Adapter extends RecyclerView.Adapter<MApps_Adapter.MyViewHold
         String developer;
         String icon;
         double rating;
-        String price;
 
         public MAppsHolder(String title, String id, String developer, String icon,
-                           double rating, String price) {
+                           double rating) {
             this.title = title;
             this.id = id;
             this.developer = developer;
             this.icon = icon;
             this.rating = rating;
-            this.price = price;
         }
     }
 }

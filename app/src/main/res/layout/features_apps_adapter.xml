@@ -1,113 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="225dp"
-    android:layout_height="wrap_content"
+    android:layout_width="300dp"
+    android:layout_height="200dp"
     android:elevation="2dp"
     app:cardCornerRadius="5dp"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/featured_games_default_gradient"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:background="@drawable/featured_games_default_gradient">
+
+        <ImageView
+            android:id="@+id/icongone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="40dp"
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_placeholder" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-            <ImageView
-                android:id="@+id/featured_image"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                app:srcCompat="@drawable/ic_placeholder" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ratingText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/google_sans"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:id="@+id/menu_3dot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="end"
+                    android:src="@drawable/ic_3dots"
+                    android:tint="@color/white" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/featured_name"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/google_sans_bold"
-                android:gravity="center"
-                android:maxLines="3"
+                android:gravity="bottom"
+                android:singleLine="true"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/app_by"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/google_sans"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/app_price"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/google_sans"
+                    android:gravity="end"
+                    android:lines="1"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
         </LinearLayout>
+    </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/app_by"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/google_sans"
-                android:gravity="center_vertical"
-                android:lines="1"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/app_price"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/google_sans"
-                android:gravity="end"
-                android:lines="1"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/ratingText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/google_sans"
-                android:textColor="@color/white" />
-
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="5dp"
-                android:layout_toEndOf="@id/ratingText"
-                android:isIndicator="true"
-                android:max="1"
-                android:numStars="1"
-                android:scaleX=".8"
-                android:scaleY=".8"
-                android:theme="@style/RatingBar" />
-
-            <ImageView
-                android:id="@+id/menu_3dot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="end"
-                android:src="@drawable/ic_3dots"
-                android:tint="@color/white" />
-        </RelativeLayout>
-    </LinearLayout>
 </android.support.v7.widget.CardView>

@@ -62,4 +62,11 @@
         <attr name="DualTagName1" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="AdaptiveToolbar">
+        <attr name="ToolbarStyle" format="enum" >
+            <enum name="Home" value="0" />
+            <enum name="Details" value="1" />
+        </attr>
+    </declare-styleable>
+
 </resources>

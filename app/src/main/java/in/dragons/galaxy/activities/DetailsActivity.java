@@ -29,6 +29,7 @@ import in.dragons.galaxy.fragment.details.Video;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.CloneableTask;
 import in.dragons.galaxy.task.playstore.DetailsTask;
+import in.dragons.galaxy.view.AdaptiveToolbar;
 
 public class DetailsActivity extends GalaxyActivity {
 
@@ -48,17 +49,10 @@ public class DetailsActivity extends GalaxyActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.LoginTheme);
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.helper_activity);
-
-        Toolbar toolbar = ViewUtils.findViewById(this, R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.content_frame);
-        getLayoutInflater().inflate(R.layout.details_activity_layout, contentFrameLayout);
+        setContentView(R.layout.details_activity_layout);
+        findViewById(R.id.fab_finish).setOnClickListener(v -> finish());
         onNewIntent(getIntent());
     }
 
@@ -73,6 +67,8 @@ public class DetailsActivity extends GalaxyActivity {
     @Override
     protected void onResume() {
         redrawButtons();
+        if (app != null)
+        redrawDetails(app);
         super.onResume();
     }
 

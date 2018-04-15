@@ -65,7 +65,7 @@ public class CommunityBasedApps extends RelativeLayout {
                                     inst.getString("price"));
                             FeaturedAppsHolder.add(apps);
                             cbased_recycler.setAdapter(adapter);
-                            cbased_recycler.setLayoutManager(new GridLayoutManager(context, 3));
+                            cbased_recycler.setLayoutManager(new GridLayoutManager(context, 4));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

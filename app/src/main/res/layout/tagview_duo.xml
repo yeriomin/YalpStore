@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/top_category_bg"
-    android:backgroundTint="?attr/colorPrimaryDark"
+    android:backgroundTint="?attr/colorAccent"
     android:clickable="true"
     android:orientation="horizontal">
 
@@ -12,9 +12,9 @@
         android:id="@+id/tag_dual_txt0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
         android:clickable="true"
         android:fontFamily="@font/google_sans"
         android:textColor="?attr/colorAccent" />
@@ -26,15 +26,15 @@
         android:layout_marginEnd="12dp"
         android:layout_marginStart="12dp"
         android:alpha="0.6"
-        android:background="?attr/colorPrimaryDark" />
+        android:background="?attr/colorAccent" />
 
     <TextView
         android:id="@+id/tag_dual_txt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="2dp"
         android:clickable="true"
         android:fontFamily="@font/google_sans"
         android:textColor="?attr/colorAccent" />

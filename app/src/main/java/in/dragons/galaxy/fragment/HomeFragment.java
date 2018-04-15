@@ -15,10 +15,12 @@ import com.squareup.picasso.Picasso;
 import in.dragons.galaxy.CircleTransform;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.activities.AccountsActivity;
+import in.dragons.galaxy.view.AdaptiveToolbar;
 
 public class HomeFragment extends UtilFragment {
 
     private View view;
+    AdaptiveToolbar adtb;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -35,8 +37,8 @@ public class HomeFragment extends UtilFragment {
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         });*/
-        ImageView account_avatar =  view.findViewById(R.id.account_avatar);
-        account_avatar.setOnClickListener(v -> {
+        adtb = view.findViewById(R.id.adtb);
+        adtb.getAvatar_icon().setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), AccountsActivity.class);
             intent.putExtra("account_profile_animate", true);
             startActivity(intent);
@@ -57,26 +59,18 @@ public class HomeFragment extends UtilFragment {
 
     protected void setUser() {
         if (isGoogle()) {
-            ((TextView) view.findViewById(R.id.account_name))
-                    .setText(PreferenceFragment.getString(getActivity(), "GOOGLE_NAME"));
-
             Picasso.with(getActivity())
                     .load(PreferenceFragment.getString(getActivity(), "GOOGLE_URL"))
                     .placeholder(R.drawable.ic_user_placeholder)
                     .transform(new CircleTransform())
-                    .into(((ImageView) view.findViewById(R.id.account_avatar)));
+                    .into(adtb.getAvatar_icon());
         } else {
-            ((TextView) view.findViewById(R.id.account_name)).setText(R.string.acc_dummy_name);
-            ((ImageView) view.findViewById(R.id.account_avatar))
-                    .setImageDrawable(getResources()
-                            .getDrawable(R.drawable.ic_dummy_avatar));
+            (adtb.getAvatar_icon()).setImageDrawable(getResources()
+                    .getDrawable(R.drawable.ic_dummy_avatar));
         }
     }
-
     protected void resetUser() {
-        ((TextView) view.findViewById(R.id.account_name)).setText(R.string.header_usr_noEmail);
-        ((ImageView) view.findViewById(R.id.account_avatar))
-                .setImageDrawable(getResources()
+        (adtb.getAvatar_icon()).setImageDrawable(getResources()
                         .getDrawable(R.drawable.ic_user_placeholder));
     }
 }

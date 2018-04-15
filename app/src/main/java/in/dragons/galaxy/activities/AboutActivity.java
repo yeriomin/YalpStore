@@ -16,12 +16,6 @@ public class AboutActivity extends GalaxyActivity {
 
         setContentView(R.layout.helper_activity);
 
-        Toolbar toolbar = ViewUtils.findViewById(this, R.id.toolbar);
-
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new AboutFragment())

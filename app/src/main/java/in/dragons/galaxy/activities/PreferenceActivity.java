@@ -7,6 +7,7 @@ import com.percolate.caffeine.ViewUtils;
 
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.fragment.PreferenceFragment;
+import in.dragons.galaxy.view.AdaptiveToolbar;
 
 
 public class PreferenceActivity extends GalaxyActivity {
@@ -16,9 +17,12 @@ public class PreferenceActivity extends GalaxyActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.helper_activity);
-        Toolbar toolbar = ViewUtils.findViewById(this, R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        AdaptiveToolbar dadtb = findViewById(R.id.d_adtb);
+        if (dadtb.getAction_icon().getContentDescription().toString().equals("details")) {
+            dadtb.getAction_icon().setOnClickListener(v -> {
+                finish();
+            });
+        }
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new PreferenceFragment())

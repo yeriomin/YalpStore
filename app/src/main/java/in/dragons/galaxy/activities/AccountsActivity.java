@@ -8,6 +8,7 @@ import com.percolate.caffeine.ViewUtils;
 
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.fragment.AccountsFragment;
+import in.dragons.galaxy.view.AdaptiveToolbar;
 
 public class AccountsActivity extends GalaxyActivity {
 
@@ -16,11 +17,15 @@ public class AccountsActivity extends GalaxyActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.helper_activity);
-        Toolbar toolbar = ViewUtils.findViewById(this, R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        AdaptiveToolbar dadtb = findViewById(R.id.d_adtb);
+        if (dadtb.getAction_icon().getContentDescription().toString().equals("details")) {
+            dadtb.getAction_icon().setOnClickListener(v -> {
+                finish();
+            });
+        }
+        dadtb.getTitle0().setText("Accounts");
+        dadtb.getTitle1().setVisibility(View.GONE);
+        dadtb.getDownload_section().setVisibility(View.GONE);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new AccountsFragment())

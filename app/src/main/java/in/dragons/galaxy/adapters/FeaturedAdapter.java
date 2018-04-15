@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -34,18 +35,16 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
     class MyViewHolderInst extends RecyclerView.ViewHolder {
         TextView title, developer, ratingText;
         ImageView icon, menu3dot;
-        LinearLayout card;
-        RatingBar ratingBar;
+        RelativeLayout card;
 
         MyViewHolderInst(View view) {
             super(view);
             title = view.findViewById(R.id.featured_name);
             developer = view.findViewById(R.id.app_by);
-            icon = view.findViewById(R.id.featured_image);
             card = view.findViewById(R.id.background);
-            ratingBar = view.findViewById(R.id.ratingBar);
             ratingText = view.findViewById(R.id.ratingText);
             menu3dot = view.findViewById(R.id.menu_3dot);
+            icon = view.findViewById(R.id.icongone);
         }
     }
 
@@ -67,7 +66,6 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
         final FeaturedHolder featuredHolder = FeaturedAppsH.get(position);
         holder.title.setText(featuredHolder.title);
         holder.developer.setText(featuredHolder.developer);
-        holder.ratingBar.setRating((float) featuredHolder.rating);
         holder.ratingText.setText(String.format("%.1f",featuredHolder.rating));
 
         holder.card.setOnClickListener(v -> context
@@ -94,7 +92,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
         holder.menu3dot.setOnClickListener(this::showPopup);
     }
 
-    private void getPalette(Bitmap bitmap, LinearLayout card, TextView developer) {
+    private void getPalette(Bitmap bitmap, RelativeLayout card, TextView developer) {
         Palette.from(bitmap)
                 .generate(palette -> {
                     Palette.Swatch mySwatch = palette.getDarkVibrantSwatch();

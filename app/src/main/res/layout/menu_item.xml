@@ -21,5 +21,6 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="15dp"
         android:layout_weight="9"
+        android:fontFamily="@font/google_sans"
         android:textSize="@dimen/appbar_secondary_menu_text_size" />
 </LinearLayout>
