@@ -97,6 +97,9 @@ public abstract class AppBadge extends ListItem {
     }
 
     public void redrawMoreButton() {
+        if (null == view) {
+            return;
+        }
         final ButtonDownload buttonDownload = new ButtonDownload((YalpStoreActivity) view.getContext(), app);
         if (new ButtonCancel((YalpStoreActivity) view.getContext(), app).shouldBeVisible()) {
             enableCancelButton();
