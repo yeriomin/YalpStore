@@ -3,8 +3,8 @@ package in.dragons.galaxy.downloader;
 import android.content.Context;
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
-import com.github.yeriomin.playstoreapi.HttpCookie;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.HttpCookie;
 
 import java.io.File;
 import java.util.HashMap;

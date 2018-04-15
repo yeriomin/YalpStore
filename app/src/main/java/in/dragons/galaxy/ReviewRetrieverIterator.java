@@ -2,7 +2,7 @@ package in.dragons.galaxy;
 
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class ReviewRetrieverIterator extends ReviewIterator {
 
     private List<Review> getReviews(String packageId, int offset, int numberOfResults) throws IOException {
         List<Review> reviews = new ArrayList<>();
-        for (com.github.yeriomin.playstoreapi.Review review : new PlayStoreApiAuthenticator(context).getApi().reviews(
+        for (com.dragons.aurora.playstoreapiv2.Review review : new PlayStoreApiAuthenticator(context).getApi().reviews(
                 packageId,
                 GooglePlayAPI.REVIEW_SORT.HELPFUL,
                 offset,

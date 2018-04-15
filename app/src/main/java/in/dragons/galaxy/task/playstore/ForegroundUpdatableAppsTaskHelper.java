@@ -6,9 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.github.yeriomin.playstoreapi.AuthException;
-import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.AuthException;
+import com.dragons.aurora.playstoreapiv2.BulkDetailsEntry;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.percolate.caffeine.ToastUtils;
 
 import java.io.IOException;

@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.github.yeriomin.playstoreapi.AuthException;
+import com.dragons.aurora.playstoreapiv2.AuthException;
 
 import java.io.IOException;
 import java.net.ConnectException;

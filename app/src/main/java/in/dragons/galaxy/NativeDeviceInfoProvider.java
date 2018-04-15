@@ -9,11 +9,11 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 
-import com.github.yeriomin.playstoreapi.AndroidBuildProto;
-import com.github.yeriomin.playstoreapi.AndroidCheckinProto;
-import com.github.yeriomin.playstoreapi.AndroidCheckinRequest;
-import com.github.yeriomin.playstoreapi.DeviceConfigurationProto;
-import com.github.yeriomin.playstoreapi.DeviceInfoProvider;
+import com.dragons.aurora.playstoreapiv2.AndroidBuildProto;
+import com.dragons.aurora.playstoreapiv2.AndroidCheckinProto;
+import com.dragons.aurora.playstoreapiv2.AndroidCheckinRequest;
+import com.dragons.aurora.playstoreapiv2.DeviceConfigurationProto;
+import com.dragons.aurora.playstoreapiv2.DeviceInfoProvider;
 
 import java.util.ArrayList;
 import java.util.Arrays;

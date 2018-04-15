@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.StatFs;
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
-import com.github.yeriomin.playstoreapi.AppFileMetadata;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.AppFileMetadata;
 
 import java.io.File;
 

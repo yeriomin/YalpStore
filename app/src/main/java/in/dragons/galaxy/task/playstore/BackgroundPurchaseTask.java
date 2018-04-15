@@ -1,6 +1,6 @@
 package in.dragons.galaxy.task.playstore;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 
 import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.R;

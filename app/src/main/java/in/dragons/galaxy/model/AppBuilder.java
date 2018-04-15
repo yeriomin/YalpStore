@@ -2,13 +2,13 @@ package in.dragons.galaxy.model;
 
 import android.text.TextUtils;
 
-import com.github.yeriomin.playstoreapi.AggregateRating;
-import com.github.yeriomin.playstoreapi.AppDetails;
-import com.github.yeriomin.playstoreapi.Dependency;
-import com.github.yeriomin.playstoreapi.DocV2;
-import com.github.yeriomin.playstoreapi.Image;
-import com.github.yeriomin.playstoreapi.RelatedLink;
-import com.github.yeriomin.playstoreapi.Unknown25Item;
+import com.dragons.aurora.playstoreapiv2.AggregateRating;
+import com.dragons.aurora.playstoreapiv2.AppDetails;
+import com.dragons.aurora.playstoreapiv2.Dependency;
+import com.dragons.aurora.playstoreapiv2.DocV2;
+import com.dragons.aurora.playstoreapiv2.Image;
+import com.dragons.aurora.playstoreapiv2.RelatedLink;
+import com.dragons.aurora.playstoreapiv2.Unknown25Item;
 
 import java.util.List;
 import java.util.regex.Matcher;

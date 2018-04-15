@@ -2,7 +2,7 @@ package in.dragons.galaxy.model;
 
 public class ReviewBuilder {
 
-    public static Review build(com.github.yeriomin.playstoreapi.Review reviewProto) {
+    public static Review build(com.dragons.aurora.playstoreapiv2.Review reviewProto) {
         Review review = new Review();
         review.setComment(reviewProto.getComment());
         review.setTitle(reviewProto.getTitle());

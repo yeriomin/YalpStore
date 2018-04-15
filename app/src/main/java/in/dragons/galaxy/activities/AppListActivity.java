@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.percolate.caffeine.ViewUtils;
 
 import java.util.HashMap;

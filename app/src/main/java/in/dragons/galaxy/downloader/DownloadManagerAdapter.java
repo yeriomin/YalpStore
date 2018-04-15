@@ -8,7 +8,7 @@ import android.os.Build;
 import android.util.Log;
 import android.util.Pair;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 
 import in.dragons.galaxy.fragment.PreferenceFragment;
 import in.dragons.galaxy.model.App;

@@ -8,7 +8,7 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
-import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
+import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
 
 import java.util.LinkedHashMap;
 import java.util.Locale;

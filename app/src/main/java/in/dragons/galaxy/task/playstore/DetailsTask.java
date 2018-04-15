@@ -2,9 +2,9 @@ package in.dragons.galaxy.task.playstore;
 
 import android.content.pm.PackageManager;
 
-import com.github.yeriomin.playstoreapi.DetailsResponse;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.GooglePlayException;
+import com.dragons.aurora.playstoreapiv2.DetailsResponse;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 
 import java.io.IOException;
 

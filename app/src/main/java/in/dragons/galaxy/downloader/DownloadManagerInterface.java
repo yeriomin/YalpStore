@@ -1,6 +1,6 @@
 package in.dragons.galaxy.downloader;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 
 import in.dragons.galaxy.model.App;
 

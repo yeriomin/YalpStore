@@ -1,7 +1,7 @@
 package in.dragons.galaxy.task.playstore;
 
-import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.BulkDetailsEntry;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;

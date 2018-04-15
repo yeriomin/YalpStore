@@ -3,7 +3,7 @@ package in.dragons.galaxy.task.playstore;
 import android.view.View;
 import android.widget.Button;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 
 import java.util.Timer;
 

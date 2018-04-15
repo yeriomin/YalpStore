@@ -2,8 +2,8 @@ package in.dragons.galaxy;
 
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.DocV2;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.DocV2;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,9 +16,9 @@ import in.dragons.galaxy.model.Filter;
 public class AppListIterator implements Iterator {
 
     protected Filter filter = new Filter();
-    protected com.github.yeriomin.playstoreapi.AppListIterator iterator;
+    protected com.dragons.aurora.playstoreapiv2.AppListIterator iterator;
 
-    public AppListIterator(com.github.yeriomin.playstoreapi.AppListIterator iterator) {
+    public AppListIterator(com.dragons.aurora.playstoreapiv2.AppListIterator iterator) {
         this.iterator = iterator;
     }
 

@@ -11,7 +11,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.github.yeriomin.playstoreapi.AuthException;
+import com.dragons.aurora.playstoreapiv2.AuthException;
 
 import java.util.ArrayList;
 import java.util.Collections;

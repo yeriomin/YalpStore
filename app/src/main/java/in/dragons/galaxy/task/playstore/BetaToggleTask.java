@@ -1,6 +1,6 @@
 package in.dragons.galaxy.task.playstore;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 

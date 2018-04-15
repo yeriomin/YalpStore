@@ -5,9 +5,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
-import com.github.yeriomin.playstoreapi.BrowseLink;
-import com.github.yeriomin.playstoreapi.BrowseResponse;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.BrowseLink;
+import com.dragons.aurora.playstoreapiv2.BrowseResponse;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;

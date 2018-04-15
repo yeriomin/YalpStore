@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.yeriomin.playstoreapi.AuthException;
+import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.percolate.caffeine.PhoneUtils;
 import com.percolate.caffeine.ViewUtils;
 

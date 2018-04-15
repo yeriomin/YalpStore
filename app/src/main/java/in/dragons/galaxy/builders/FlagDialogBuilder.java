@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.R;

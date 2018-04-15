@@ -6,12 +6,12 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.ApiBuilderException;
-import com.github.yeriomin.playstoreapi.AuthException;
-import com.github.yeriomin.playstoreapi.DeviceInfoProvider;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
-import com.github.yeriomin.playstoreapi.TokenDispenserException;
+import com.dragons.aurora.playstoreapiv2.ApiBuilderException;
+import com.dragons.aurora.playstoreapiv2.AuthException;
+import com.dragons.aurora.playstoreapiv2.DeviceInfoProvider;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
+import com.dragons.aurora.playstoreapiv2.TokenDispenserException;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -121,7 +121,7 @@ public class PlayStoreApiAuthenticator {
         tokenDispenserMirrors.reset();
         while (tried < retries) {
             try {
-                com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = getBuilder(loginInfo);
+                com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder builder = getBuilder(loginInfo);
                 GooglePlayAPI api = builder.build();
                 loginInfo.setEmail(builder.getEmail());
                 return api;
@@ -148,9 +148,9 @@ public class PlayStoreApiAuthenticator {
         return null;
     }
 
-    private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
+    private com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
         fill(loginInfo);
-        return new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
+        return new com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder()
                 .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
                 .setDeviceInfoProvider(getDeviceInfoProvider())
                 .setLocale(loginInfo.getLocale())

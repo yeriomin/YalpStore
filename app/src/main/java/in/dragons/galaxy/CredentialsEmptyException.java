@@ -1,6 +1,6 @@
 package in.dragons.galaxy;
 
-import com.github.yeriomin.playstoreapi.AuthException;
+import com.dragons.aurora.playstoreapiv2.AuthException;
 
 public class CredentialsEmptyException extends AuthException {
 

@@ -10,9 +10,9 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.AuthException;
-import com.github.yeriomin.playstoreapi.GooglePlayException;
-import com.github.yeriomin.playstoreapi.TokenDispenserException;
+import com.dragons.aurora.playstoreapiv2.AuthException;
+import com.dragons.aurora.playstoreapiv2.GooglePlayException;
+import com.dragons.aurora.playstoreapiv2.TokenDispenserException;
 
 import java.io.IOException;
 

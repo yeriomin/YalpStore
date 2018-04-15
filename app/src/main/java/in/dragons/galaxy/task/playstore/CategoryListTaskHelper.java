@@ -3,9 +3,9 @@ package in.dragons.galaxy.task.playstore;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.github.yeriomin.playstoreapi.BrowseLink;
-import com.github.yeriomin.playstoreapi.BrowseResponse;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.BrowseLink;
+import com.dragons.aurora.playstoreapiv2.BrowseResponse;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 import java.util.HashMap;

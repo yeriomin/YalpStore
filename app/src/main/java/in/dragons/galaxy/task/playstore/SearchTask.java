@@ -3,8 +3,8 @@ package in.dragons.galaxy.task.playstore;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.SearchIterator;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.SearchIterator;
 
 import java.io.IOException;
 import java.util.ArrayList;
