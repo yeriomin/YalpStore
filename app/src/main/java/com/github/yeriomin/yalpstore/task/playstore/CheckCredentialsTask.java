@@ -75,11 +75,11 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
         ) {
             return;
         }
-        CredentialsDialogBuilder builder = getDialogBuilder();
-        if (null != caller) {
-            builder.setCaller(caller);
-        }
         if (ContextUtil.isAlive(context)) {
+            CredentialsDialogBuilder builder = getDialogBuilder();
+            if (null != caller) {
+                builder.setCaller(caller);
+            }
             builder.show();
         }
     }
