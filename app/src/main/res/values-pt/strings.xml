@@ -15,10 +15,8 @@
 <!-- is this the button on the top right menu ? -->
 <string name="action_updates">"Atualizar"</string>
 <string name="action_ignore">"Ignorar atualizações"</string>
-<string name="action_unignore">"Não ignorar atualizações"</string>
-<string name="action_whitelist">"Lista branca de atualizações"</string>
-<string name="action_unwhitelist">"Ignorar atualizações"</string>
-<string name="search_title">"Procurar aplicações"</string>
+    <string name="action_whitelist">"Lista branca de atualizações"</string>
+    <string name="search_title">"Procurar aplicações"</string>
 <string name="dialog_two_factor_cancel">"Mais tarde"</string>
 <string name="dialog_two_factor_create_password">"Criar palavra-passe"</string>
 <string name="dialog_title_two_factor">"Verificação de 2-passos"</string>
@@ -44,8 +42,7 @@ Redirecionar para a página no Play Store?"</string>
 <string name="error_downloads_directory_not_writable">"Pasta Transferências não foi encontrada ou não temos permissões para escrever."</string>
 <string name="error_token_dispenser_problem">"Não foi possível iniciar sessão sem conta. Tenta usar a tua própria conta."</string>
 <string name="details_updated">"Atualizado %1$s"</string>
-<string name="details_size">"Tamanho da aplicação %1$s"</string>
-<string name="details_description">"Descrição:"</string>
+    <string name="details_description">"Descrição:"</string>
 <string name="details_changelog">"O que há de novo?"</string>
 <string name="details_screenshots">"Capturas de ecrã:"</string>
 <string name="details_reviews">"Críticas:"</string>
@@ -103,8 +100,7 @@ Mantém em mente que ao usares esta aplicação, estás a violar os termos e con
 <string name="download_manager_ERROR_CANNOT_RESUME">"Ocorreu algum erro transitório, mas não podemos resumir a transferência. Tente novamente mais tarde."</string>
 <string name="download_manager_ERROR_BLOCKED">"A transferência falhou devido à NetworkPolicyManager controlar a aplicação solicitante. Verifica as tuas definições."</string>
 <string name="search_filter">"Todas as aplicações"</string>
-<string name="details_category">"Category: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Ficheiros das aplicações não são apagadas após instalação"</string>
+    <string name="pref_delete_apk_after_install_summary_off">"Ficheiros das aplicações não são apagadas após instalação"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Ficheiros das aplicações serão apagadas após instalação"</string>
 <string name="pref_delete_apk_after_install">"Apagar ficheiros das aplicações após instalação"</string>
 <string name="dialog_title_application_crashed">"Desculpa, a Yalp Store deixou de funcionar"</string>

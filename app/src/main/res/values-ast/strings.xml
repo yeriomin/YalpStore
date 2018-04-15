@@ -13,10 +13,8 @@
 <string name="action_search">"Guetar"</string>
 <string name="action_updates">"Anovamientos"</string>
 <string name="action_ignore">"Inorar anovamientos"</string>
-<string name="action_unignore">"Nun inorar anovamientos"</string>
-<string name="action_whitelist">"Llistáu blancu p'anovamientos"</string>
-<string name="action_unwhitelist">"Inorar anovamientos"</string>
-<string name="search_title">"Guetar aplicaciones"</string>
+    <string name="action_whitelist">"Llistáu blancu p'anovamientos"</string>
+    <string name="search_title">"Guetar aplicaciones"</string>
 <string name="dialog_two_factor_cancel">"Agora non"</string>
 <string name="dialog_two_factor_create_password">"Crear contraseña"</string>
 <string name="dialog_title_two_factor">"Verificación en 2 pasos"</string>
@@ -42,8 +40,7 @@ Calca en «Crear contraseña» pa redirixite a la páxina de creación de contra
 <string name="error_downloads_directory_not_writable">"Nun pudo crease o nun ye escribible'l direutoriu Descargues."</string>
 <string name="error_token_dispenser_problem">"Nun pudo aniciase sesión ensin una cuenta. Tenta d'usar una de to."</string>
 <string name="details_updated">"Anovóse %1$s"</string>
-<string name="details_size">"Tamañu d'APK %1$s"</string>
-<string name="details_description">"Descripción:"</string>
+    <string name="details_description">"Descripción:"</string>
 <string name="details_changelog">"Qué hai nuevo:"</string>
 <string name="details_screenshots">"Captures de pantalla:"</string>
 <string name="details_reviews">"Reseñes"</string>
@@ -101,8 +98,7 @@ Ten en cuenta qu'usar esta aplicación incumple los términos y condiciones de l
 <string name="download_manager_ERROR_CANNOT_RESUME">"Ye posible qu'asocediere un fallu pasaxeru pero nun podemos siguir la descarga. Volvi tentalo más sero."</string>
 <string name="download_manager_ERROR_BLOCKED">"Falló la descarga porque NetworkPolicyManager controla l'aplicación solicitante. Comprueba los tos axustes."</string>
 <string name="search_filter">"Toles aplicaciones"</string>
-<string name="details_category">"Estaya: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Agora les APK nun se desanicies dempués de la instalación"</string>
+    <string name="pref_delete_apk_after_install_summary_off">"Agora les APK nun se desanicies dempués de la instalación"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Agora les APK desaníciense dempués de la instalación"</string>
 <string name="pref_delete_apk_after_install">"Desaniciar APKs tres la instalación"</string>
 <string name="dialog_title_application_crashed">"Perdón, Yalp Store cascó"</string>

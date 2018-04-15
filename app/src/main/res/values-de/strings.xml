@@ -13,10 +13,8 @@
 <string name="action_search">"Suchen"</string>
 <string name="action_updates">"Aktualisierungen"</string>
 <string name="action_ignore">"Aktualisierungen ignorieren"</string>
-<string name="action_unignore">"Aktualisierungen nicht ignorieren"</string>
-<string name="action_whitelist">"Whitelist für Aktualisierungen"</string>
-<string name="action_unwhitelist">"Ignoriere Aktualisierungen"</string>
-<string name="search_title">"Suche nach Apps"</string>
+    <string name="action_whitelist">"Whitelist für Aktualisierungen"</string>
+    <string name="search_title">"Suche nach Apps"</string>
 <string name="dialog_two_factor_cancel">"Jetzt nicht"</string>
 <string name="dialog_two_factor_create_password">"Passwort erstellen"</string>
 <string name="dialog_title_two_factor">"Zwei-Faktor-Authentifizierung"</string>
@@ -41,8 +39,7 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="error_downloads_directory_not_writable">"Download-Ordner konnte nicht erstellt werden oder ist nicht beschreibbar."</string>
 <string name="error_token_dispenser_problem">"Authentifizierung ohne Account fehlgeschlagen. Versuche deinen eigenen Account zu benutzen."</string>
 <string name="details_updated">"Aktualisiert am %1$s"</string>
-<string name="details_size">"Apk-Größe %1$s"</string>
-<string name="details_description">"Beschreibung:"</string>
+    <string name="details_description">"Beschreibung:"</string>
 <string name="details_changelog">"Neuigkeiten:"</string>
 <string name="details_screenshots">"Bildschirmfotos:"</string>
 <string name="details_reviews">"Bewertungen:"</string>
@@ -99,8 +96,7 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play-Store-Nutzungsbedin
 <string name="download_manager_ERROR_CANNOT_RESUME">"Es trat ein möglicherweise vorübergehender Fehler auf, der Download kann nicht fortgesetzt werden. Versuche es später noch einmal!"</string>
 <string name="download_manager_ERROR_BLOCKED">"Das Herunterladen ist fehlgeschlagen weil der Netzwerk-Richtlinien-Manager die Kontrolle über die anfordernde App hat. Überprüfe deine Einstellungen."</string>
 <string name="search_filter">"Alle Apps"</string>
-<string name="details_category">"Kategorie: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"apk-Dateien werden nach der Installation behalten"</string>
+    <string name="pref_delete_apk_after_install_summary_off">"apk-Dateien werden nach der Installation behalten"</string>
 <string name="pref_delete_apk_after_install_summary_on">"apk-Dateien werden nach der Installation gelöscht"</string>
 <string name="pref_delete_apk_after_install">"apk-Datei nach der Installation löschen"</string>
 <string name="dialog_title_application_crashed">"Entschuldigung, Yalp Store ist abgestürtzt"</string>

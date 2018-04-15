@@ -33,9 +33,7 @@
     <string name="action_search">Search</string>
     <string name="action_updates">Updates</string>
     <string name="action_ignore">Ignore updates</string>
-    <string name="action_unignore">Unignore updates</string>
     <string name="action_whitelist">Whitelist for updates</string>
-    <string name="action_unwhitelist">Ignore updates</string>
     <string name="action_categories">Categories</string>
     <string name="action_manual">Manual download</string>
     <string name="action_get_local_apk">Get local apk</string>
@@ -84,10 +82,8 @@
     <string name="error_token_dispenser_problem">Could not log in without an account. Try using your own account.</string>
     <string name="error_invalid_device_definition">Device definition rejected.</string>
     <string name="error_could_not_download">Could not download.</string>
-    <string name="details_category">"Category: %1$s"</string>
     <string name="details_developer">"Developer: %1$s"</string>
     <string name="details_updated">"Updated %1$s"</string>
-    <string name="details_size">"Apk size %1$s"</string>
     <string name="details_description">Description:</string>
     <string name="details_changelog">What\'s new:</string>
     <string name="details_screenshots">Screenshots:</string>

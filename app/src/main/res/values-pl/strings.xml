@@ -13,10 +13,8 @@
 <string name="action_search">"Szukaj"</string>
 <string name="action_updates">"Aktualizacje"</string>
 <string name="action_ignore">"Ignoruj aktualizacje"</string>
-<string name="action_unignore">"Przywróć aktualizacje"</string>
-<string name="action_whitelist">"Biała lista aktualizacji"</string>
-<string name="action_unwhitelist">"Ignoruj aktualizacje"</string>
-<string name="search_title">"Szukaj aktualizacji"</string>
+    <string name="action_whitelist">"Biała lista aktualizacji"</string>
+    <string name="search_title">"Szukaj aktualizacji"</string>
 <string name="dialog_two_factor_cancel">"Nie teraz"</string>
 <string name="dialog_two_factor_create_password">"Utwórz hasło"</string>
 <string name="dialog_title_two_factor">"Weryfikacja dwuetapowa"</string>
@@ -43,8 +41,7 @@ Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz 
 <string name="error_downloads_directory_not_writable">"Katalog pobrań nie może zostać utworzony lub nie ma do niego dostępu."</string>
 <string name="error_token_dispenser_problem">"Nie można zalogować się bez konta. Spróbuj użyć swojego lub innego konta."</string>
 <string name="details_updated">"Zaktualizowano %1$s"</string>
-<string name="details_size">"Rozmiar aplikacji %1$s"</string>
-<string name="details_description">"Opis:"</string>
+    <string name="details_description">"Opis:"</string>
 <string name="details_changelog">"Co nowego:"</string>
 <string name="details_screenshots">"Zrzuty ekranu:"</string>
 <string name="details_reviews">"Recenzje:"</string>
@@ -102,8 +99,7 @@ Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania
 <string name="download_manager_ERROR_CANNOT_RESUME">"Wystąpił pewien błąd przejściowy i nie możemy wznowić pobierania. Spróbuj ponownie później."</string>
 <string name="download_manager_ERROR_BLOCKED">"Pobieranie nie powiodło się z powodu kontroli NetworkPolicyManager nad żądaniem aplikacji. Sprawdź swoje ustawienia."</string>
 <string name="search_filter">"Wszystkie aplikacje"</string>
-<string name="details_category">"Kategoria: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Pliki .apk nie będą teraz usuwane po instalacji"</string>
+    <string name="pref_delete_apk_after_install_summary_off">"Pliki .apk nie będą teraz usuwane po instalacji"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Pliki .apk są teraz usuwane po instalacji"</string>
 <string name="pref_delete_apk_after_install">"Usuwaj pliki .apk po instalacji"</string>
 <string name="dialog_title_application_crashed">"Niestety Yalp Store uległ awarii. "</string>

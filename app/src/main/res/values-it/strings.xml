@@ -13,10 +13,8 @@
 <string name="action_search">"Cerca"</string>
 <string name="action_updates">"Aggiorna"</string>
 <string name="action_ignore">"Ignora aggiornamenti"</string>
-<string name="action_unignore">"Mostra aggiornamenti"</string>
-<string name="action_whitelist">"Lista bianca degli aggiornamenti"</string>
-<string name="action_unwhitelist">"Ignora aggiornamenti"</string>
-<string name="search_title">"Cerca applicazioni"</string>
+    <string name="action_whitelist">"Lista bianca degli aggiornamenti"</string>
+    <string name="search_title">"Cerca applicazioni"</string>
 <string name="dialog_two_factor_cancel">"Non ora"</string>
 <string name="dialog_two_factor_create_password">"Crea password"</string>
 <string name="dialog_title_two_factor">"Verifica in 2 passaggi"</string>
@@ -42,8 +40,7 @@ Vado alla relativa pagina sul Play Store?"</string>
 <string name="error_downloads_directory_not_writable">"La cartella di download non può esser creata o scritta."</string>
 <string name="error_token_dispenser_problem">"Impossibile accedere. Prova ad usare il tuo account."</string>
 <string name="details_updated">"Aggiornata %1$s"</string>
-<string name="details_size">"Dimensione apk %1$s"</string>
-<string name="details_description">"Descrizione"</string>
+    <string name="details_description">"Descrizione"</string>
 <string name="details_changelog">"Novità:"</string>
 <string name="details_screenshots">"Schermate"</string>
 <string name="details_reviews">"Recensioni"</string>
@@ -101,8 +98,7 @@ Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più s
 <string name="download_manager_ERROR_CANNOT_RESUME">"Impossibile riprendere il download a causa di un errore temporaneo. Prova più tardi."</string>
 <string name="download_manager_ERROR_BLOCKED">"Download fallito perché NetworkPolicyManager controlla le richieste delle applicazioni. Verifica le impostazioni"</string>
 <string name="search_filter">"Tutte le app"</string>
-<string name="details_category">"Categoria: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Gli apk non vengono eliminati dopo l'installazione"</string>
+    <string name="pref_delete_apk_after_install_summary_off">"Gli apk non vengono eliminati dopo l'installazione"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Gli apk vengono eliminati dopo l'installazione"</string>
 <string name="pref_delete_apk_after_install">"Elimina .apk dopo l'installazione"</string>
 <string name="dialog_title_application_crashed">"Yalp Store è stato chiuso"</string>

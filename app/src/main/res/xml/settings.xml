@@ -96,7 +96,7 @@
             android:key="PREFERENCE_DEVICE_TO_PRETEND_TO_BE"
             android:title="@string/pref_device_to_pretend_to_be"/>
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/proxy" >
+    <PreferenceCategory android:title="@string/pref_category_proxy" >
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="PREFERENCE_USE_TOR"

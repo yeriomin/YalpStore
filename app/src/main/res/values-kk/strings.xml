@@ -13,10 +13,8 @@
 <string name="action_search">"Іздеу"</string>
 <string name="action_updates">"Жаңартулар"</string>
 <string name="action_ignore">"Жаңартпау"</string>
-<string name="action_unignore">"Қайтадан жаңарту"</string>
-<string name="action_whitelist">"Жаңарту"</string>
-<string name="action_unwhitelist">"Жаңартпау"</string>
-<string name="search_title">"Бағдарламалар іздеу"</string>
+    <string name="action_whitelist">"Жаңарту"</string>
+    <string name="search_title">"Бағдарламалар іздеу"</string>
 <string name="dialog_two_factor_cancel">"Кейінірек"</string>
 <string name="dialog_two_factor_create_password">"Құпиясөз құру"</string>
 <string name="dialog_title_two_factor">"Екіқадамды тексеру"</string>
@@ -42,8 +40,7 @@ Play Store парақшасына өтесіз бе?"</string>
 <string name="error_downloads_directory_not_writable">"Жүктеп алу каталогы жазу үшін қол жетімді емес."</string>
 <string name="error_token_dispenser_problem">"Аккаунтсыз қосыла алмады. Google аккаунт арқылы қосылып көріңіз."</string>
 <string name="details_updated">"%1$s жаңартылды"</string>
-<string name="details_size">"%1$s apk өлшемі"</string>
-<string name="details_description">"Сипаттамасы:"</string>
+    <string name="details_description">"Сипаттамасы:"</string>
 <string name="details_changelog">"Соңғы нұсқадағы өзгерістер:"</string>
 <string name="details_screenshots">"Скриншоттар:"</string>
 <string name="details_reviews">"Шолулар:"</string>
@@ -101,8 +98,7 @@ Play Store парақшасына өтесіз бе?"</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Желі қатесі. Кейінірек қайталап көріңіз."</string>
 <string name="download_manager_ERROR_BLOCKED">"NetworkPolicyManager қауіпсіздік параметрлері үшін жүктеу үзілді."</string>
 <string name="search_filter">"Барлық бағдарламалар"</string>
-<string name="details_category">"Санат: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Қазір .apk орнатудан кейін жойылмайды"</string>
+    <string name="pref_delete_apk_after_install_summary_off">"Қазір .apk орнатудан кейін жойылмайды"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Қазір .apk орнатудан кейін жойылады"</string>
 <string name="pref_delete_apk_after_install">"Орнатудан кейін .apk өшіру"</string>
 <string name="dialog_title_application_crashed">"Yalp Store-да ақау пайда болды"</string>

@@ -13,10 +13,8 @@
 <string name="action_search">"Пошук"</string>
 <string name="action_updates">"Оновлення"</string>
 <string name="action_ignore">"Ігнорувати оновлення"</string>
-<string name="action_unignore">"Не ігнорувати оновлення"</string>
-<string name="action_whitelist">"Білий список для оновлень"</string>
-<string name="action_unwhitelist">"Ігнорувати оновлення"</string>
-<string name="search_title">"Пошук додатків"</string>
+    <string name="action_whitelist">"Білий список для оновлень"</string>
+    <string name="search_title">"Пошук додатків"</string>
 <string name="dialog_two_factor_cancel">"Не зараз"</string>
 <string name="dialog_two_factor_create_password">"Створити пароль"</string>
 <string name="dialog_title_two_factor">"Дво-факторна верифікація"</string>
@@ -42,8 +40,7 @@
 <string name="error_downloads_directory_not_writable">"Тека для завантаження не може бути створена, або не має прав на запис."</string>
 <string name="error_token_dispenser_problem">"Не вдалося увійти без облікового запису. Спроба зайти через наш запис."</string>
 <string name="details_updated">"Оновлено %1$s"</string>
-<string name="details_size">"Розмір apk %1$s"</string>
-<string name="details_description">"Опис:"</string>
+    <string name="details_description">"Опис:"</string>
 <string name="details_changelog">"Що нового:"</string>
 <string name="details_screenshots">"Знімки екрану:"</string>
 <string name="details_reviews">"Відгуки:"</string>
@@ -102,8 +99,7 @@
 <string name="download_manager_ERROR_CANNOT_RESUME">"Виникла якась тимчасова помилка, але ми не можемо відновити завантаження. Спробуйте пізніше."</string>
 <string name="download_manager_ERROR_BLOCKED">"Помилка завантаження через роботу NetworkPolicyManager. Перевірте налаштування."</string>
 <string name="search_filter">"Всі додатки"</string>
-<string name="details_category">"Категорія: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Зараз apk не вилучатимуться після встановлення"</string>
+    <string name="pref_delete_apk_after_install_summary_off">"Зараз apk не вилучатимуться після встановлення"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Зараз apk вилучатимуться після встановлення "</string>
 <string name="pref_delete_apk_after_install">"Видалити .apk після втановлення"</string>
 <string name="dialog_title_application_crashed">"Вибачте, Yalp Store зазнав краху"</string>

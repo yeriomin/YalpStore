@@ -13,10 +13,8 @@
 <string name="action_search">"Vyhľadať"</string>
 <string name="action_updates">"Aktualizácie"</string>
 <string name="action_ignore">"Ignorovať aktualizácie"</string>
-<string name="action_unignore">"Neignorovať aktualizácie"</string>
-<string name="action_whitelist">"Whitelist pre aktualizácie"</string>
-<string name="action_unwhitelist">"Ignorovať aktualizácie"</string>
-<string name="search_title">"Vyhľadať aplikácie"</string>
+    <string name="action_whitelist">"Whitelist pre aktualizácie"</string>
+    <string name="search_title">"Vyhľadať aplikácie"</string>
 <string name="dialog_two_factor_cancel">"Teraz nie"</string>
 <string name="dialog_two_factor_create_password">"Vytvoriť heslo"</string>
 <string name="dialog_title_two_factor">"2-krokové overenie"</string>
@@ -42,8 +40,7 @@ Presmerovať na jej Obchod Play web stránku?"</string>
 <string name="error_downloads_directory_not_writable">"Adresár Sťahovania nemohol byť vytvorený alebo nie je zapisovateľný."</string>
 <string name="error_token_dispenser_problem">"Nebolo možné sa prihlásiť bez účtu. Skúste použiť svoj vlastný účet."</string>
 <string name="details_updated">"Aktualizované %1$s"</string>
-<string name="details_size">"Veľkosť %1$s"</string>
-<string name="details_description">"Popis:"</string>
+    <string name="details_description">"Popis:"</string>
 <string name="details_changelog">"Novinky:"</string>
 <string name="details_screenshots">"Snímky obrazovky:"</string>
 <string name="details_reviews">"Recenzie:"</string>
@@ -101,8 +98,7 @@ Zvážte prosím, že používanie tejto aplikácie porušuje zmluvné podmienky
 <string name="download_manager_ERROR_CANNOT_RESUME">"Vyskytla sa nejaká dočasná chyba, ale sťahovanie nemôžeme obnoviť. Opakujte neskôr."</string>
 <string name="download_manager_ERROR_BLOCKED">"Sťahovanie bolo neúspešné kvôli ovládacím prvkom NetworkPolicyManager v žiadajúcej aplikácii. Skontrolujte svoje nastavenia."</string>
 <string name="search_filter">"Všetky aplikácie"</string>
-<string name="details_category">"Kategória: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Teraz sa .apk súbory nevymazávajú po inštalácii"</string>
+    <string name="pref_delete_apk_after_install_summary_off">"Teraz sa .apk súbory nevymazávajú po inštalácii"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Teraz sa .apk súbory vymazávajú po inštalácii"</string>
 <string name="pref_delete_apk_after_install">"Vymazať .apk po inštalácii"</string>
 <string name="dialog_title_application_crashed">"Ospravedlňujeme sa, Yalp Store sa nečakane ukončil"</string>

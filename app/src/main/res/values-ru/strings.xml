@@ -63,9 +63,7 @@
     <string name="action_filter_downloads">"Загрузки: %1$s"</string>
     <string name="action_updates">Обновления</string>
     <string name="action_ignore">Не обновлять</string>
-    <string name="action_unignore">Снова обновлять</string>
     <string name="action_whitelist">Обновлять</string>
-    <string name="action_unwhitelist">Не обновлять</string>
     <string name="action_logout">Разлогиниться</string>
     <string name="action_search">Поиск</string>
     <string name="action_categories">Категории</string>
@@ -85,10 +83,8 @@
     <string name="error_token_dispenser_problem">Подключиться без аккаунта не удалось. Попробуйте подключиться через ваш Google аккаунт.</string>
     <string name="error_invalid_device_definition">Некорректный файл с параметрами устройства.</string>
     <string name="error_could_not_download">Не удалось скачать.</string>
-    <string name="details_category">"Категория: %1$s"</string>
     <string name="details_developer">"Разработчик: %1$s"</string>
     <string name="details_updated">"Обновлено %1$s"</string>
-    <string name="details_size">"Размер apk %1$s"</string>
     <string name="details_description">Описание:</string>
     <string name="details_changelog">Изменения в последней версии:</string>
     <string name="details_screenshots">Скриншоты:</string>

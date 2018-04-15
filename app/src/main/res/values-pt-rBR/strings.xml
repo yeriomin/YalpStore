@@ -13,10 +13,8 @@
 <string name="action_search">"buscar"</string>
 <string name="action_updates">"Atualizações"</string>
 <string name="action_ignore">"Ignorar atualizações"</string>
-<string name="action_unignore">"Desativar atualizações"</string>
-<string name="action_whitelist">"Lista branca Para atualizações"</string>
-<string name="action_unwhitelist">"Ignorar atualizações"</string>
-<string name="search_title">"Pesquisar aplicações"</string>
+    <string name="action_whitelist">"Lista branca Para atualizações"</string>
+    <string name="search_title">"Pesquisar aplicações"</string>
 <string name="dialog_two_factor_cancel">"Agora não"</string>
 <string name="dialog_two_factor_create_password">"Criar senha"</string>
 <string name="dialog_title_two_factor">"Verificação em dois passos"</string>
@@ -43,8 +41,7 @@ Redirecionar para a sua página da Play Store?"</string>
 <string name="error_downloads_directory_not_writable">"O Diretório de Downloads não pôde ser criado ou não é gravável."</string>
 <string name="error_token_dispenser_problem">"Não foi possível fazer login sem uma conta. Tente usar sua própria conta."</string>
 <string name="details_updated">"Atualizado %1$s"</string>
-<string name="details_size">"Apk tamanho %1$s"</string>
-<string name="details_description">"Descrição:"</string>
+    <string name="details_description">"Descrição:"</string>
 <string name="details_changelog">"O que há de novo:"</string>
 <string name="details_screenshots">"Capturas de tela:"</string>
 <string name="details_reviews">"análise"</string>
@@ -102,8 +99,7 @@ Lembre-se de que usar este aplicativo viola o Play Store ToS. Seria provavelment
 <string name="download_manager_ERROR_CANNOT_RESUME">"Ocorreu algum erro transitório, mas não podemos retomar o download. Tente novamente mais tarde."</string>
 <string name="download_manager_ERROR_BLOCKED">"O download falhou devido aos controles do Network Policy Manager no aplicativo solicitante. Verifique suas configurações."</string>
 <string name="search_filter">"Todos os aplicativos"</string>
-<string name="details_category">"Categoria: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Agora .apks não são excluídos após a instalação"</string>
+    <string name="pref_delete_apk_after_install_summary_off">"Agora .apks não são excluídos após a instalação"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Agora, os apks são apagadas após a instalação"</string>
 <string name="pref_delete_apk_after_install">"Excluir .apk após a instalação"</string>
 <string name="dialog_title_application_crashed">"Desculpe, o Yelp Store falhou"</string>

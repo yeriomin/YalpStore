@@ -13,10 +13,8 @@
 <string name="action_search">"Bilatu"</string>
 <string name="action_updates">"Eguneraketak"</string>
 <string name="action_ignore">"Ezikusi eguneraketak"</string>
-<string name="action_unignore">"Berriro begiratu eguneraketak"</string>
-<string name="action_whitelist">"Eguneraketen zerrenda zuria"</string>
-<string name="action_unwhitelist">"Ezikuzi eguneraketak"</string>
-<string name="search_title">"Bilatu aplikazioak"</string>
+    <string name="action_whitelist">"Eguneraketen zerrenda zuria"</string>
+    <string name="search_title">"Bilatu aplikazioak"</string>
 <string name="dialog_two_factor_cancel">"Orain ez"</string>
 <string name="dialog_two_factor_create_password">"Sortu pasahitza"</string>
 <string name="dialog_title_two_factor">"2 urratsetako egiaztaketa"</string>
@@ -41,8 +39,7 @@ Sakatu \"Sortu pasahitza\" pasahitza saortzeko orrira joateko."</string>
 <string name="error_downloads_directory_not_writable">"Ezin izan da deskargen direktorioa sortu edo ezin da bertan idatzi."</string>
 <string name="error_token_dispenser_problem">"Ezin izan da saioa hasi konturik gabe. Saiatu zure kontua erabiltzen."</string>
 <string name="details_updated">"Eguneratze-data: %1$s"</string>
-<string name="details_size">"Apk-ren tamaina: %1$s"</string>
-<string name="details_description">"Deskripzioa:"</string>
+    <string name="details_description">"Deskripzioa:"</string>
 <string name="details_changelog">"Zer dago berri:"</string>
 <string name="details_screenshots">"Pantaila-argazkiak:"</string>
 <string name="details_reviews">"Iruzkinak:"</string>
@@ -100,8 +97,7 @@ Kontuan izan aplikazio hau erabiltzea Google Play Storeren erabilera baldintzak 
 <string name="download_manager_ERROR_CANNOT_RESUME">"Errore bat gertatu da, litekeena behin behinekoa, baina ezin dugu deskarga berrabiatu. Saiatu geroago."</string>
 <string name="download_manager_ERROR_BLOCKED">"Deskargak huts egin du eskaera egin duen aplikazioaren NetworkPolicyManager kontrolak direla eta. Egiaztatu zure ezarpenak."</string>
 <string name="search_filter">"Aplikazio guztiak"</string>
-<string name="details_category">"Kategoria: %1$s"</string>
-<string name="pref_delete_apk_after_install_summary_off">"Oraik .apk fitxategiak ez dira ezabatuko instalatu eta gero"</string>
+    <string name="pref_delete_apk_after_install_summary_off">"Oraik .apk fitxategiak ez dira ezabatuko instalatu eta gero"</string>
 <string name="pref_delete_apk_after_install_summary_on">".apk fitxategiak instalazioa eta gero ezabatuko dira"</string>
 <string name="pref_delete_apk_after_install">"Ezabatu .apk instalazioa eta gero"</string>
 <string name="dialog_title_application_crashed">"Yalp Store kraskatu da"</string>
