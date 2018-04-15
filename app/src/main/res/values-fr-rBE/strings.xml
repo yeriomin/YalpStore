@@ -13,8 +13,8 @@
 <string name="action_search">"Rechercher"</string>
 <string name="action_updates">"Mises à jour"</string>
 <string name="action_ignore">"Ignorer les mises à jour"</string>
-    <string name="action_whitelist">"Liste blanche de mises à jour"</string>
-    <string name="search_title">"Rechercher des apps"</string>
+<string name="action_whitelist">"Liste blanche de mises à jour"</string>
+<string name="search_title">"Rechercher des apps"</string>
 <string name="dialog_two_factor_cancel">"Pas maintenant"</string>
 <string name="dialog_two_factor_create_password">"Créer un mot de passe"</string>
 <string name="dialog_title_two_factor">"Vérification en 2 étapes"</string>
@@ -39,7 +39,7 @@ Choisissez  « créer un mot de passe » pour être redirigé vers la page de 
 <string name="error_downloads_directory_not_writable">"Le dossier de téléchargement n'a pas été créé ou n'est pas accessible en écriture."</string>
 <string name="error_token_dispenser_problem">"Impossible de se connecter sans compte. Essayez avec votre propre compte."</string>
 <string name="details_updated">"%1$s mis à jour"</string>
-    <string name="details_description">"Description :"</string>
+<string name="details_description">"Description :"</string>
 <string name="details_changelog">"Nouveautés :"</string>
 <string name="details_screenshots">"Captures d'écran"</string>
 <string name="details_reviews">"Avis :"</string>
@@ -97,7 +97,7 @@ Utiliser Yalp Store se fait en violation des conditions d'utilisation du Play St
 <string name="download_manager_ERROR_CANNOT_RESUME">"Aucun espace de stockage externe trouvé. La carte SD est-elle montée ? "</string>
 <string name="download_manager_ERROR_BLOCKED">"Téléchargement impossible. Veuillez vérifier les autorisations réseau de NetworkPolicyManager."</string>
 <string name="search_filter">"Toutes les apps"</string>
-    <string name="pref_delete_apk_after_install_summary_off">"Les .apk ne sont à présent pas supprimés après installation"</string>
+<string name="pref_delete_apk_after_install_summary_off">"Les .apk ne sont à présent pas supprimés après installation"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Les .apk sont à présent supprimés après installation"</string>
 <string name="pref_delete_apk_after_install">"Supprimer les .apk après installation"</string>
 <string name="dialog_title_application_crashed">"Désolé, Yalp Store a planté"</string>
@@ -282,4 +282,11 @@ Poursuivre ?"</string>
 <string name="pref_download_internal_storage">"Download to internal storage"</string>
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
 <string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="pref_use_tor">"Use Tor"</string>
+<string name="pref_use_tor_summary">"Force download traffic through Tor for increased privacy. Requires Orbot"</string>
+<string name="pref_category_proxy">"Proxy"</string>
+<string name="pref_proxy_enable">"Enable proxy"</string>
+<string name="pref_proxy_type">"Proxy type"</string>
+<string name="pref_proxy_host">"Proxy host"</string>
+<string name="pref_proxy_port">"Proxy port"</string>
 </resources>
