@@ -48,7 +48,7 @@ abstract class ForegroundDownloadReceiver extends DownloadReceiver {
         if (null == activity || !ContextUtil.isAlive(activity)) {
             return;
         }
-        if (null == state) {
+        if (null != state) {
             if (actionIs(intent, DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED)) {
                 cleanup();
             } else if (DownloadManagerFactory.get(context).success(downloadId)) {
