@@ -43,8 +43,10 @@ public class AppListAdapter extends ArrayAdapter<ListItem> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = null == convertView ? inflater.inflate(resourceId, parent, false) : convertView;
         ListItem listItem = getItem(position);
-        listItem.setView(view);
-        listItem.draw();
+        if (null != listItem && null != view) {
+            listItem.setView(view);
+            listItem.draw();
+        }
         return view;
     }
 }
