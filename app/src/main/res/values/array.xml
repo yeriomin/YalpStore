@@ -78,4 +78,8 @@
         <item>>10M↓</item>
         <item>>100M↓</item>
     </string-array>
+    <string-array translatable="false" name="proxyTypeValues">
+        <item>HTTP</item>
+        <item>SOCKS</item>
+    </string-array>
 </resources>

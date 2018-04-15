@@ -23,6 +23,7 @@ import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.http.HttpResponseCache;
@@ -34,13 +35,20 @@ import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.List;
+
+import info.guardianproject.netcipher.NetCipher;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
+
+import static com.github.yeriomin.yalpstore.PreferenceUtil.PREFERENCE_USE_TOR;
 
 public class YalpStoreApplication extends Application {
 
     private boolean isBackgroundUpdating = false;
     private List<String> pendingUpdates = new ArrayList<>();
+    private ProxyOnChangeListener listener;
 
     public boolean isBackgroundUpdating() {
         return isBackgroundUpdating;
@@ -87,6 +95,7 @@ public class YalpStoreApplication extends Application {
         }
         PreferenceUtil.prefillInstallationMethod(this);
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
+        initNetcipher();
         Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
         registerDownloadReceiver();
         registerInstallReceiver();
@@ -114,6 +123,20 @@ public class YalpStoreApplication extends Application {
         registerReceiver(new GlobalInstallReceiver(), filter);
     }
 
+    public void initNetcipher() {
+        listener = new ProxyOnChangeListener(this);
+        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(listener);
+        Proxy proxy = PreferenceUtil.getProxy(this);
+        if (PreferenceUtil.getBoolean(this, PREFERENCE_USE_TOR)) {
+            OrbotHelper.requestStartTor(this);
+            NetCipher.useTor();
+        } else if (null != proxy) {
+            NetCipher.setProxy(proxy);
+        } else {
+            NetCipher.clearProxy();
+        }
+    }
+
     public boolean isTv() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.FROYO) {
             return false;
@@ -123,5 +146,26 @@ public class YalpStoreApplication extends Application {
             || getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEVISION)
             || getPackageManager().hasSystemFeature(PackageManager.FEATURE_LEANBACK)
         ;
+    }
+
+    private static class ProxyOnChangeListener implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+        YalpStoreApplication application;
+
+        public ProxyOnChangeListener(YalpStoreApplication application) {
+            this.application = application;
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            if (key.equals(PreferenceUtil.PREFERENCE_ENABLE_PROXY)
+                || key.equals(PreferenceUtil.PREFERENCE_PROXY_TYPE)
+                || key.equals(PreferenceUtil.PREFERENCE_PROXY_HOST)
+                || key.equals(PreferenceUtil.PREFERENCE_PROXY_PORT)
+                || key.equals(PreferenceUtil.PREFERENCE_USE_TOR)
+                ) {
+                application.initNetcipher();
+            }
+        }
     }
 }

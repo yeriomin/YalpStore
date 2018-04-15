@@ -19,6 +19,7 @@
 
 package com.github.yeriomin.yalpstore;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
@@ -36,13 +37,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
+
+import info.guardianproject.netcipher.NetCipher;
+import info.guardianproject.netcipher.client.StrongConnectionBuilder;
 
 public class NativeHttpClientAdapter extends HttpClientAdapter {
 
@@ -54,16 +57,24 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         }
     }
 
+    protected StrongConnectionBuilder builder;
+
+    public NativeHttpClientAdapter(Context context) {
+        try {
+            builder = StrongConnectionBuilder.forMaxSecurity(context);
+        } catch (Exception e) {
+            Log.e(getClass().getSimpleName(), "Could build connection: " + e.getMessage());
+        }
+    }
+
     @Override
     public byte[] get(String url, Map<String, String> params, Map<String, String> headers) throws IOException {
-        HttpURLConnection connection = (HttpURLConnection) new URL(buildUrl(url, params)).openConnection();
-        return request(connection, null, headers);
+        return request(getHttpURLConnection(buildUrl(url, params)), null, headers);
     }
 
     @Override
     public byte[] getEx(String url, Map<String, List<String>> params, Map<String, String> headers) throws IOException {
-        HttpURLConnection connection = (HttpURLConnection) new URL(buildUrlEx(url, params)).openConnection();
-        return request(connection, null, headers);
+        return request(getHttpURLConnection(buildUrlEx(url, params)), null, headers);
     }
 
     @Override
@@ -82,7 +93,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         if (!headers.containsKey("Content-Type")) {
             headers.put("Content-Type", "application/x-protobuf");
         }
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        HttpURLConnection connection = getHttpURLConnection(url);
         connection.setRequestMethod("POST");
         return request(connection, body, headers);
     }
@@ -105,6 +116,10 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
             }
         }
         return builder.build().toString();
+    }
+
+    protected HttpURLConnection getHttpURLConnection(String url) throws IOException {
+        return NetCipher.getHttpURLConnection(url);
     }
 
     protected byte[] request(HttpURLConnection connection, byte[] body, Map<String, String> headers) throws IOException {

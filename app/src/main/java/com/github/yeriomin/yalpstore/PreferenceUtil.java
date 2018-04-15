@@ -25,6 +25,8 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -48,6 +50,11 @@ public class PreferenceUtil {
     public static final String PREFERENCE_DOWNLOAD_DELTAS = "PREFERENCE_DOWNLOAD_DELTAS";
     public static final String PREFERENCE_AUTO_WHITELIST = "PREFERENCE_AUTO_WHITELIST";
     public static final String PREFERENCE_DOWNLOAD_INTERNAL_STORAGE = "PREFERENCE_DOWNLOAD_INTERNAL_STORAGE";
+    public static final String PREFERENCE_USE_TOR = "PREFERENCE_USE_TOR";
+    public static final String PREFERENCE_ENABLE_PROXY = "PREFERENCE_ENABLE_PROXY";
+    public static final String PREFERENCE_PROXY_TYPE = "PREFERENCE_PROXY_TYPE";
+    public static final String PREFERENCE_PROXY_HOST = "PREFERENCE_PROXY_HOST";
+    public static final String PREFERENCE_PROXY_PORT = "PREFERENCE_PROXY_PORT";
 
     public static final String INSTALLATION_METHOD_DEFAULT = "default";
     public static final String INSTALLATION_METHOD_ROOT = "root";
@@ -60,6 +67,9 @@ public class PreferenceUtil {
     public static final String THEME_LIGHT = "light";
     public static final String THEME_DARK = "dark";
     public static final String THEME_BLACK = "black";
+
+    public static final String PROXY_HTTP = "PROXY_HTTP";
+    public static final String PROXY_SOCKS = "PROXY_SOCKS";
 
     private static final String DELIMITER = ",";
 
@@ -117,5 +127,19 @@ public class PreferenceUtil {
         ) {
             preferences.edit().putString(PreferenceUtil.PREFERENCE_INSTALLATION_METHOD, PreferenceUtil.INSTALLATION_METHOD_PRIVILEGED).commit();
         }
+    }
+
+    static public Proxy getProxy(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        if (!prefs.getBoolean(PREFERENCE_ENABLE_PROXY, false)) {
+            return null;
+        }
+        return new Proxy(
+            prefs.getString(PREFERENCE_PROXY_TYPE, PROXY_HTTP).equals(PROXY_HTTP) ? Proxy.Type.HTTP : Proxy.Type.SOCKS,
+            new InetSocketAddress(
+                prefs.getString(PREFERENCE_PROXY_HOST, "127.0.0.1"),
+                Util.parseInt(prefs.getString(PREFERENCE_PROXY_PORT, "8118"), 8118)
+            )
+        );
     }
 }

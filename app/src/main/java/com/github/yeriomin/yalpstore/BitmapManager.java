@@ -33,7 +33,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
+
+import info.guardianproject.netcipher.NetCipher;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
 public class BitmapManager {
@@ -139,7 +140,7 @@ public class BitmapManager {
     static private Bitmap downloadBitmap(String url, boolean fullSize) {
         InputStream input = null;
         try {
-            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+            HttpURLConnection connection = NetCipher.getHttpURLConnection(url);
             connection.connect();
             connection.setConnectTimeout(3000);
             input = connection.getInputStream();

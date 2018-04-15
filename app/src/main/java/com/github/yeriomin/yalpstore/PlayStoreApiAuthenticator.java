@@ -166,7 +166,7 @@ public class PlayStoreApiAuthenticator {
     private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
         fill(loginInfo);
         return new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
-            .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
+            .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter(context) : new NativeHttpClientAdapter(context))
             .setDeviceInfoProvider(getDeviceInfoProvider())
             .setLocale(loginInfo.getLocale())
             .setEmail(loginInfo.getEmail())

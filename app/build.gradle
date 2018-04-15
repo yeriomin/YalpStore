@@ -45,6 +45,7 @@ android {
 }
 
 dependencies {
+    implementation 'info.guardianproject.netcipher:netcipher:2.0.0-alpha1'
     contemporaryImplementation 'com.android.support:design:27.1.1'
     contemporaryImplementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'commons-net:commons-net:3.5'

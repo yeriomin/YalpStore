@@ -26,11 +26,11 @@ import android.preference.PreferenceManager;
 import com.github.yeriomin.yalpstore.BuildConfig;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
+
+import info.guardianproject.netcipher.NetCipher;
 
 abstract public class Updater {
 
@@ -84,15 +84,14 @@ abstract public class Updater {
 
     private boolean isAvailable(int versionCode) {
         try {
-            URLConnection connection = getUrl(versionCode).openConnection();
-            if (connection instanceof HttpURLConnection) {
-                ((HttpURLConnection) connection).setInstanceFollowRedirects(false);
-                ((HttpURLConnection) connection).setRequestMethod("HEAD");
-                return ((HttpURLConnection) connection).getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST;
+            URL url = getUrl(versionCode);
+            if (null == url) {
+                return false;
             }
-            InputStream in = connection.getInputStream();
-            in.close();
-            return true;
+            HttpURLConnection connection = NetCipher.getHttpURLConnection(url);
+            connection.setInstanceFollowRedirects(false);
+            connection.setRequestMethod("HEAD");
+            return connection.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST;
         } catch (IOException x) {
             return false;
         }

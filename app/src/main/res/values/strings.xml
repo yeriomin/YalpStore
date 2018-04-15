@@ -202,6 +202,13 @@
     <string name="pref_download_internal_storage">Download to internal storage</string>
     <string name="pref_download_internal_storage_summary_on">More secure, but the apks are not user accessible</string>
     <string name="pref_download_internal_storage_summary_off">Apks are downloaded to the external storage path provided below</string>
+    <string name="pref_use_tor">Use Tor</string>
+    <string name="pref_use_tor_summary">Force download traffic through Tor for increased privacy. Requires Orbot</string>
+    <string name="pref_category_proxy">Proxy</string>
+    <string name="pref_proxy_enable">Enable proxy</string>
+    <string name="pref_proxy_type">Proxy type</string>
+    <string name="pref_proxy_host">Proxy host</string>
+    <string name="pref_proxy_port">Proxy port</string>
     <string name="download_manager_ERROR_UNKNOWN">Unknown error.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unknown file storage error.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">HTTP code was received that download manager can not handle. This is a server error.</string>

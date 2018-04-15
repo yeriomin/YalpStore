@@ -33,6 +33,8 @@ public class DownloadManagerFactory {
             || !nativeDownloadManagerEnabled(context)
             || nougatVpn(context)
             || PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+            || PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_USE_TOR)
+            || PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_ENABLE_PROXY)
         ) {
             return new DownloadManagerFake(context);
         } else {

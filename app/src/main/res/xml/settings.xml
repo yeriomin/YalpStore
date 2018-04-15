@@ -96,6 +96,37 @@
             android:key="PREFERENCE_DEVICE_TO_PRETEND_TO_BE"
             android:title="@string/pref_device_to_pretend_to_be"/>
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/proxy" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="PREFERENCE_USE_TOR"
+            android:disableDependentsState="true"
+            android:summary="@string/pref_use_tor_summary"
+            android:title="@string/pref_use_tor" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="PREFERENCE_ENABLE_PROXY"
+            android:title="@string/pref_proxy_enable"
+            android:dependency="PREFERENCE_USE_TOR" />
+        <ListPreference
+            android:defaultValue="HTTP"
+            android:key="PREFERENCE_PROXY_TYPE"
+            android:title="@string/pref_proxy_type"
+            android:dependency="PREFERENCE_ENABLE_PROXY"
+            android:entries="@array/proxyTypeValues"
+            android:entryValues="@array/proxyTypeValues" />
+        <EditTextPreference
+            android:defaultValue="127.0.0.1"
+            android:key="PREFERENCE_PROXY_HOST"
+            android:title="@string/pref_proxy_host"
+            android:dependency="PREFERENCE_ENABLE_PROXY" />
+        <EditTextPreference
+            android:inputType="number"
+            android:defaultValue="8118"
+            android:key="PREFERENCE_PROXY_PORT"
+            android:title="@string/pref_proxy_port"
+            android:dependency="PREFERENCE_ENABLE_PROXY" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_ui">
         <ListPreference
             android:defaultValue="none"

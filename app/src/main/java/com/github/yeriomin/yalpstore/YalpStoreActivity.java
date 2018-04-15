@@ -35,6 +35,10 @@ import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.view.DialogWrapper;
 import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
 
+import info.guardianproject.netcipher.proxy.OrbotHelper;
+
+import static com.github.yeriomin.yalpstore.PreferenceUtil.PREFERENCE_USE_TOR;
+
 public abstract class YalpStoreActivity extends BaseActivity {
 
     static protected boolean logout = false;
@@ -60,6 +64,9 @@ public abstract class YalpStoreActivity extends BaseActivity {
         super.onResume();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             invalidateOptionsMenu();
+        }
+        if (PreferenceUtil.getBoolean(this, PREFERENCE_USE_TOR)) {
+            OrbotHelper.requestStartTor(this);
         }
         if (logout) {
             finish();

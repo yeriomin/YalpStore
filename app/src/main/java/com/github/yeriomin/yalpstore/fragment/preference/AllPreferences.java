@@ -41,6 +41,7 @@ public class AllPreferences extends Abstract {
         drawInstallationMethod();
         new DownloadDirectory(activity).setPreference((EditTextPreference) activity.findPreference(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY)).draw();
         new InternalStorage(activity).setPreference((CheckBoxPreference) activity.findPreference(PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)).draw();
+        new Proxy(activity).draw();
     }
 
     public AllPreferences(PreferenceActivity activity) {
