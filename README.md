@@ -50,7 +50,7 @@ When the GSF id is ready, your email and password (if you provided them) are use
 
 >Q: I cannot download files! Downloads start but do not progress or stop midway. / I'm having error 495. / I don't like Android built-in DownloadManager. Is Yalp going to have its own download manager?
 >
->A: Yalp already **has** a mini download manager. It is used as a fallback when system DownloadManager is disabled or unavailable for any other reason. You can force Yalp to use the fallback download manager like this: Settings -> Apps -> Show system -> Download Manager -> Disable. I'm not setting the fallback as default because it is very minimalisic and is never going to be as well-tested and feature-rich as the system DownloadManager.
+>A: Yalp already **has** a mini download manager. It is used as a fallback when system DownloadManager is disabled or unavailable for any other reason. You can force Yalp to use the fallback download manager like this: Settings -> Apps -> Show system -> Download Manager -> Disable. Setting download location to internal storage also turns the fallback on. I'm not setting the fallback as default because it is very minimalisic and is never going to be as well-tested and feature-rich as the system DownloadManager.
 
 >Q: Some apps are not getting the latest release available on Play Store. What do I do?
 >
