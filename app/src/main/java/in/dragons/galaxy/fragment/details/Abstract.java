@@ -4,8 +4,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.R;
+import in.dragons.galaxy.activities.GalaxyActivity;
 import in.dragons.galaxy.model.App;
 
 public abstract class Abstract {

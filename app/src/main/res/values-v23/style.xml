@@ -13,10 +13,19 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+        <item name="android:buttonStyle">@style/RobotoButtonStyle</item>
     </style>
 
     <style name="LoginTheme" parent="AppTheme">
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowTranslucentStatus">true</item>
+    </style>
+    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/google_sans</item>
+    </style>
+
+    <style name="RobotoButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/google_sans</item>
     </style>
 </resources>

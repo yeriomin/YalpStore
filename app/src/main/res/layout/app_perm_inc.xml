@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardPreventCornerOverlap="false"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -16,19 +19,22 @@
             android:id="@+id/permissions_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:drawableEnd="@drawable/ic_expand_more"
-            android:gravity="center|start"
+            android:fontFamily="@font/google_sans_bold"
             android:text="@string/details_permissions"
+            android:gravity="center|start"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:textColor="?android:attr/colorAccent"
             android:textAllCaps="true"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textSize="14sp" />
 
         <LinearLayout
             android:id="@+id/permissions_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
             android:orientation="vertical"
             android:visibility="gone">
 
@@ -42,6 +48,8 @@
                 android:id="@+id/permissions_none"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/google_sans_bold"
+                android:textSize="16sp"
                 android:text="@string/no_permissions"
                 android:visibility="gone" />
         </LinearLayout>

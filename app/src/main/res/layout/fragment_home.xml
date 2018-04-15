@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true"
+        android:background="?android:attr/colorPrimary"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -29,9 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="2dp"
-                android:nestedScrollingEnabled="false" >
-
-            </in.dragons.galaxy.view.TopFreeApps>
+                android:nestedScrollingEnabled="false" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -96,6 +95,21 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="2dp"
                 android:nestedScrollingEnabled="false" />
+
+            <in.dragons.galaxy.view.TopFreeGames
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:nestedScrollingEnabled="false" />
+
+            <in.dragons.galaxy.view.MoreAppsCard
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:nestedScrollingEnabled="false"
+                app:AppsCategory="TOOLS"
+                app:CardTitle="@string/category_fdroidApps"
+                app:JsonName="fdroid_apps" />
 
         </LinearLayout>
 

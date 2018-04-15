@@ -113,11 +113,11 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:background="@drawable/button_login"
+                android:background="@drawable/button_positive"
                 android:paddingEnd="15dp"
                 android:paddingStart="15dp"
                 android:text="@string/action_refresh"
-                android:textColor="?android:attr/colorAccent"
+                android:textColor="@color/white"
                 android:visibility="gone" />
 
             <Button
@@ -126,11 +126,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:layout_marginStart="5dp"
-                android:background="@drawable/button_login"
+                android:background="@drawable/button_positive"
                 android:paddingEnd="15dp"
                 android:paddingStart="15dp"
                 android:text="@string/action_switch_dummy"
-                android:textColor="?android:attr/colorAccent"
+                android:textColor="@color/white"
                 android:visibility="gone" />
 
             <Button
@@ -139,11 +139,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:layout_marginStart="5dp"
-                android:background="@drawable/button_login"
+                android:background="@drawable/button_positive"
                 android:paddingEnd="15dp"
                 android:paddingStart="15dp"
                 android:text="@string/action_switch_google"
-                android:textColor="?android:attr/colorAccent"
+                android:textColor="@color/white"
                 android:visibility="gone" />
 
             <Button
@@ -152,11 +152,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:layout_marginStart="5dp"
-                android:background="@drawable/button_uninstall"
+                android:background="@drawable/button_negative"
                 android:paddingEnd="15dp"
                 android:paddingStart="15dp"
                 android:text="@string/action_logout"
-                android:textColor="@color/colorRed" />
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </LinearLayout>

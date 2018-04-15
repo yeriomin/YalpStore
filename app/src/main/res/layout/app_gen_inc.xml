@@ -3,15 +3,9 @@
     android:id="@+id/general_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:visibility="gone">
-
-    <LinearLayout
-        android:id="@+id/general_details"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp"
-        android:visibility="visible">
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    android:visibility="visible">
 
         <TextView
             android:layout_width="match_parent"
@@ -48,6 +42,5 @@
                 android:layout_marginStart="10dp" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 
 

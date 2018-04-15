@@ -31,8 +31,8 @@ public class Util {
     static {
         diPrefixes.put(0, "");
         diPrefixes.put(3, " K");
-        diPrefixes.put(6, " M");
-        diPrefixes.put(9, " B");
+        diPrefixes.put(6, " Million");
+        diPrefixes.put(9, " Billion");
     }
 
     static public Map<String, String> sort(Map<String, String> unsorted) {

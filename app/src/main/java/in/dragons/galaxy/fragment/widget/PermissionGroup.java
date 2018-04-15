@@ -11,7 +11,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -54,7 +53,9 @@ public class PermissionGroup extends LinearLayout {
 
     public void setPermissionGroupInfo(final PermissionGroupInfo permissionGroupInfo) {
         this.permissionGroupInfo = permissionGroupInfo;
-        ((ImageView) findViewById(R.id.permission_group_icon)).setImageDrawable(getPermissionGroupIcon(permissionGroupInfo));
+        ImageView imageView = (ImageView) findViewById(R.id.permission_group_icon);
+        imageView.setImageDrawable(getPermissionGroupIcon(permissionGroupInfo));
+        imageView.setColorFilter(android.R.attr.colorForeground);
     }
 
     public void addPermission(PermissionInfo permissionInfo) {
@@ -102,16 +103,10 @@ public class PermissionGroup extends LinearLayout {
         }
         CharSequence label = null == permissionGroupInfo ? "" : permissionGroupInfo.loadLabel(pm);
         final String title = TextUtils.isEmpty(label) ? "" : label.toString();
-        return new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(getContext())
-                        .setIcon(getPermissionGroupIcon(permissionGroupInfo))
-                        .setTitle((title.equals(permissionGroupInfo.name) || title.equals(permissionGroupInfo.packageName)) ? "" : title)
-                        .setMessage(message)
-                        .show()
-                ;
-            }
-        };
+        return v -> new AlertDialog.Builder(getContext())
+                .setIcon(getPermissionGroupIcon(permissionGroupInfo))
+                .setTitle((title.equals(permissionGroupInfo.name) || title.equals(permissionGroupInfo.packageName)) ? "" : title)
+                .setMessage(message)
+                .show();
     }
 }

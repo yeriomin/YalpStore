@@ -4,6 +4,9 @@
     android:id="@+id/beta_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardPreventCornerOverlap="false"
     android:visibility="gone"
     app:cardUseCompatPadding="true">
 
@@ -11,97 +14,116 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/beta_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:drawableEnd="@drawable/ic_expand_more"
+            android:fontFamily="@font/google_sans_bold"
             android:gravity="center|start"
-            android:text="@string/details_description"
+            android:textColor="?android:attr/colorAccent"
             android:textAllCaps="true"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:visibility="gone" />
+            android:textSize="14sp" />
 
         <LinearLayout
             android:id="@+id/beta_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/beta_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/google_sans" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/beta_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:layout_gravity="center_vertical|start"
+                    android:fontFamily="@font/google_sans"
+                    android:gravity="start"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/beta_subscribe_button"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:background="@drawable/button_positive"
+                    android:fontFamily="@font/google_sans"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/beta_feedback"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/beta_message"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/beta_comment"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/google_sans"
+                    android:hint="@string/testing_program_review_dialog_content_hint"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textColorHint="?android:attr/textColorSecondary" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="end"
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/beta_subscribe_button"
+                        android:id="@+id/beta_submit_button"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end" />
+                        android:layout_height="32dp"
+                        android:background="@drawable/button_positive"
+                        android:fontFamily="@font/google_sans"
+                        android:maxLines="1"
+                        android:padding="5dp"
+                        android:textSize="12sp"
+                        android:text="@string/submit" />
 
-                    <TextView
-                        android:id="@+id/beta_email"
+                    <Button
+                        android:id="@+id/beta_delete_button"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|start"
-                        android:autoLink="email"
-                        android:gravity="center_vertical|end"
-                        android:textAlignment="textEnd" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/beta_feedback"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/beta_comment"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/testing_program_review_dialog_content_hint" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/beta_submit_button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/submit" />
-
-                        <Button
-                            android:id="@+id/beta_delete_button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/delete"
-                            android:visibility="gone" />
-
-                    </LinearLayout>
+                        android:layout_height="32dp"
+                        android:background="@drawable/button_negative"
+                        android:fontFamily="@font/google_sans"
+                        android:maxLines="1"
+                        android:padding="5dp"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:text="@string/delete"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
+
     </LinearLayout>
 </android.support.v7.widget.CardView>
 

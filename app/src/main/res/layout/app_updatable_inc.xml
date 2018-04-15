@@ -48,24 +48,30 @@
 
                 <Button
                     android:id="@+id/update_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/button_bg"
-                    android:backgroundTint="@color/colorAccent"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="100dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/button_positive"
+                    android:fontFamily="@font/google_sans"
+                    android:maxLines="1"
+                    android:padding="5dp"
                     android:text="@string/list_update_all"
                     android:textColor="@color/white"
+                    android:textSize="12sp"
                     android:visibility="gone" />
 
                 <Button
                     android:id="@+id/update_cancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/button_bg"
-                    android:backgroundTint="@color/colorAccent"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="100dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/button_negative"
+                    android:fontFamily="@font/google_sans"
+                    android:maxLines="1"
+                    android:padding="5dp"
                     android:text="@string/details_cancel"
                     android:textColor="@color/white"
+                    android:textSize="12sp"
                     android:visibility="gone" />
 
             </LinearLayout>
@@ -112,7 +118,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableBottom="@drawable/ic_galaxy_alt"
                     android:text="@string/list_empty_updates"
                     android:textSize="16sp" />
             </LinearLayout>

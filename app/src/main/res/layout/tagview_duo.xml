@@ -6,6 +6,7 @@
     android:background="@drawable/top_category_bg"
     android:backgroundTint="?attr/colorAccent"
     android:clickable="true"
+    android:focusable="true"
     android:orientation="horizontal">
 
     <TextView
@@ -16,6 +17,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
         android:clickable="true"
+        android:focusable="true"
         android:fontFamily="@font/google_sans"
         android:textColor="?attr/colorAccent" />
 
@@ -36,6 +38,7 @@
         android:layout_marginEnd="2dp"
         android:layout_marginTop="2dp"
         android:clickable="true"
+        android:focusable="true"
         android:fontFamily="@font/google_sans"
         android:textColor="?attr/colorAccent" />
 

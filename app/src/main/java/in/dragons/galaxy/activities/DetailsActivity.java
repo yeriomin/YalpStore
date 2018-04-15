@@ -3,15 +3,11 @@ package in.dragons.galaxy.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
-
-import com.percolate.caffeine.ViewUtils;
 
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.fragment.details.AppLists;
@@ -29,7 +25,6 @@ import in.dragons.galaxy.fragment.details.Video;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.CloneableTask;
 import in.dragons.galaxy.task.playstore.DetailsTask;
-import in.dragons.galaxy.view.AdaptiveToolbar;
 
 public class DetailsActivity extends GalaxyActivity {
 

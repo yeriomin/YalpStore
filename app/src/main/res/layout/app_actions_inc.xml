@@ -5,65 +5,80 @@
     android:layout_marginTop="10dp"
     android:gravity="end"
     android:orientation="horizontal"
-    android:weightSum="3">
+    android:weightSum="4">
 
     <Button
         android:id="@+id/uninstall"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="36dp"
+        android:layout_height="32dp"
         android:layout_weight="1"
-        android:background="@drawable/button_uninstall"
+        android:fontFamily="@font/google_sans"
+        android:background="@drawable/button_negative"
+        android:padding="5dp"
         android:maxLines="1"
         android:text="@string/details_uninstall"
-        android:textColor="@color/colorRed"
+        android:textColor="@color/white"
+        android:textSize="12sp"
         android:visibility="gone" />
 
     <Button
         android:id="@+id/download"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="36dp"
+        android:layout_height="32dp"
+        android:fontFamily="@font/google_sans"
         android:layout_weight="1"
-        android:background="@drawable/button_login"
+        android:background="@drawable/button_positive"
+        android:padding="5dp"
         android:maxLines="1"
         android:text="@string/details_download"
-        android:textColor="?android:attr/colorAccent"
+        android:textColor="@color/white"
+        android:textSize="12sp"
         android:visibility="gone" />
 
     <Button
         android:id="@+id/cancel"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="36dp"
+        android:layout_height="32dp"
+        android:fontFamily="@font/google_sans"
         android:layout_weight="1"
-        android:background="@drawable/button_login"
+        android:background="@drawable/button_negative"
+        android:padding="5dp"
         android:maxLines="1"
         android:text="@string/details_cancel"
-        android:textColor="?android:attr/colorAccent"
+        android:textColor="@color/white"
+        android:textSize="12sp"
         android:visibility="gone" />
 
     <Button
         android:id="@+id/install"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="36dp"
+        android:layout_height="32dp"
+        android:fontFamily="@font/google_sans"
         android:layout_weight="1"
-        android:background="@drawable/button_login"
+        android:background="@drawable/button_positive"
+        android:padding="5dp"
         android:maxLines="1"
         android:text="@string/details_install"
-        android:textColor="?android:attr/colorAccent"
+        android:textColor="@color/white"
+        android:textSize="12sp"
         android:visibility="gone" />
 
     <Button
         android:id="@+id/run"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="36dp"
+        android:layout_height="32dp"
+        android:fontFamily="@font/google_sans"
         android:layout_weight="1"
-        android:background="@drawable/button_login"
+        android:background="@drawable/button_positive"
+        android:padding="5dp"
         android:maxLines="1"
         android:text="@string/details_run"
-        android:textColor="?android:attr/colorAccent"
+        android:textColor="@color/white"
+        android:textSize="12sp"
         android:visibility="gone" />
 </LinearLayout>

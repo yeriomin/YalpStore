@@ -10,6 +10,7 @@
         android:id="@+id/tag_mono_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:focusable="true"
         android:clickable="true"
         android:fontFamily="@font/google_sans"
         android:padding="2dp"

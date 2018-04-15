@@ -8,9 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
-import android.widget.Gallery;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import java.util.List;
 
@@ -82,6 +80,7 @@ public class ImageAdapter extends BaseAdapter {
                 }
             }
             imageView.setLayoutParams(new AbsHListView.LayoutParams(w, h));
+            imageView.setPadding(8, 5, 8, 5);
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             if (imageView.getParent() instanceof AbsListView) {
                 HListView gallery = (HListView) imageView.getParent();

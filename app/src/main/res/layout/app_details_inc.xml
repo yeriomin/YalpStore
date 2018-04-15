@@ -1,155 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/app_detail"
+    android:padding="5dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
-    android:layout_marginTop="5dp"
-    android:gravity="center_horizontal"
-    android:orientation="horizontal"
-    android:visibility="visible"
-    android:weightSum="5">
+    android:layout_height="wrap_content">
 
-    <!-- Downloads -->
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/outline_bg"
         android:gravity="center"
-        android:orientation="vertical">
-
-        <com.github.florent37.shapeofview.shapes.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="@dimen/icon_size_med"
-                android:layout_height="@dimen/icon_size_med"
-                android:background="?android:attr/colorAccent"
-                android:padding="10dp"
-                android:src="@drawable/app_downloads" />
-        </com.github.florent37.shapeofview.shapes.CircleView>
-
-        <TextView
-            android:id="@+id/installs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="clip_horizontal"
-            android:singleLine="true" />
-    </LinearLayout>
-
-    <!-- Ratings -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <com.github.florent37.shapeofview.shapes.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="@dimen/icon_size_med"
-                android:layout_height="@dimen/icon_size_med"
-                android:background="?android:attr/colorAccent"
-                android:padding="10dp"
-                android:src="@drawable/app_ratings" />
-        </com.github.florent37.shapeofview.shapes.CircleView>
+        android:orientation="horizontal"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp">
 
         <TextView
             android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/google_sans_bold"
             android:singleLine="true" />
-    </LinearLayout>
 
-    <!-- Size -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <com.github.florent37.shapeofview.shapes.CircleView
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:isIndicator="true"
+            android:max="1"
+            android:numStars="1"
+            android:scaleX=".8"
+            android:scaleY=".8" />
 
-            <ImageView
-                android:layout_width="@dimen/icon_size_med"
-                android:layout_height="@dimen/icon_size_med"
-                android:background="?android:attr/colorAccent"
-                android:padding="10dp"
-                android:src="@drawable/app_size" />
-        </com.github.florent37.shapeofview.shapes.CircleView>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
+
+        <TextView
+            android:id="@+id/installs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/google_sans_bold"
+            android:gravity="clip_horizontal"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
 
         <TextView
             android:id="@+id/size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/google_sans_bold"
             android:singleLine="true" />
-    </LinearLayout>
 
-    <!-- Category -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <com.github.florent37.shapeofview.shapes.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="@dimen/icon_size_med"
-                android:layout_height="@dimen/icon_size_med"
-                android:background="?android:attr/colorAccent"
-                android:padding="10dp"
-                android:src="@drawable/app_category" />
-        </com.github.florent37.shapeofview.shapes.CircleView>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
 
         <TextView
             android:id="@+id/category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/google_sans_bold"
             android:singleLine="true" />
-    </LinearLayout>
 
-    <!-- Price -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <com.github.florent37.shapeofview.shapes.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="@dimen/icon_size_med"
-                android:layout_height="@dimen/icon_size_med"
-                android:background="?android:attr/colorAccent"
-                android:padding="10dp"
-                android:src="@drawable/app_price" />
-        </com.github.florent37.shapeofview.shapes.CircleView>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
 
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/google_sans_bold"
             android:singleLine="true" />
-    </LinearLayout>
 
+    </LinearLayout>
 </LinearLayout>

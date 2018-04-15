@@ -154,7 +154,8 @@
             android:layout_below="@+id/password_layout_extg"
             android:layout_marginEnd="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_login"
+            android:textColor="@color/white"
+            android:background="@drawable/button_positive"
             android:text="@string/action_login" />
 
         <ImageView
@@ -202,7 +203,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/textView4"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/button_uninstall"
+            android:background="@drawable/button_negative"
             android:text="@android:string/ok" />
     </RelativeLayout>
 </LinearLayout>

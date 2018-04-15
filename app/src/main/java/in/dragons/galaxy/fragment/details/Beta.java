@@ -11,9 +11,9 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import java.io.IOException;
 
 import in.dragons.galaxy.ContextUtil;
-import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.R;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.BetaToggleTask;
 import in.dragons.galaxy.task.playstore.PlayStorePayloadTask;
@@ -26,44 +26,56 @@ public class Beta extends Abstract {
 
     @Override
     public void draw() {
-        if (PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
+        if (PreferenceManager
+                .getDefaultSharedPreferences(activity)
+                .getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
                 && app.isTestingProgramAvailable()
-                && app.isTestingProgramOptedIn()
-                ) {
+                && app.isTestingProgramOptedIn()) {
             // Auto-leave beta program if current account is built-in.
             // The users expect stable to be default.
             new BetaToggleTask(app).execute();
             return;
         }
-        if (!app.isInstalled()
-                || !app.isTestingProgramAvailable()
-                || PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
-                ) {
-            return;
-        }
-        initExpandableGroup(R.id.beta_header, R.id.beta_container);
-        setText(R.id.beta_header, app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_in_title : R.string.testing_program_section_opted_out_title);
-        setText(R.id.beta_message, app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_in_message : R.string.testing_program_section_opted_out_message);
-        setText(R.id.beta_subscribe_button, app.isTestingProgramOptedIn() ? R.string.testing_program_opt_out : R.string.testing_program_opt_in);
-        setText(R.id.beta_email, app.getTestingProgramEmail());
-        activity.findViewById(R.id.beta_card).setVisibility(View.VISIBLE);
-        activity.findViewById(R.id.beta_feedback).setVisibility(app.isTestingProgramOptedIn() ? View.VISIBLE : View.GONE);
-        activity.findViewById(R.id.beta_subscribe_button).setOnClickListener(new BetaOnClickListener((TextView) activity.findViewById(R.id.beta_message), app));
-        activity.findViewById(R.id.beta_submit_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initBetaTask(new BetaFeedbackSubmitTask()).execute();
+
+        if (app.isInstalled() || app.isTestingProgramAvailable()
+                || !PreferenceManager
+                .getDefaultSharedPreferences(activity)
+                .getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)) {
+
+            setText(R.id.beta_header, app.isTestingProgramOptedIn()
+                    ? R.string.testing_program_section_opted_in_title
+                    : R.string.testing_program_section_opted_out_title);
+
+            setText(R.id.beta_message, app.isTestingProgramOptedIn()
+                    ? R.string.testing_program_section_opted_in_message
+                    : R.string.testing_program_section_opted_out_message);
+
+            setText(R.id.beta_subscribe_button, app.isTestingProgramOptedIn()
+                    ? R.string.testing_program_opt_out
+                    : R.string.testing_program_opt_in);
+
+            setText(R.id.beta_email, app.getTestingProgramEmail());
+
+            activity.findViewById(R.id.beta_card).setVisibility(View.VISIBLE);
+
+            activity.findViewById(R.id.beta_feedback).setVisibility(app.isTestingProgramOptedIn()
+                    ? View.VISIBLE
+                    : View.GONE);
+
+            activity.findViewById(R.id.beta_subscribe_button)
+                    .setOnClickListener(new BetaOnClickListener(activity.findViewById(R.id.beta_message), app));
+
+            activity.findViewById(R.id.beta_submit_button)
+                    .setOnClickListener(v -> initBetaTask(new BetaFeedbackSubmitTask()).execute());
+            activity.findViewById(R.id.beta_delete_button)
+                    .setOnClickListener(v -> initBetaTask(new BetaFeedbackDeleteTask()).execute());
+
+            if (null != app.getUserReview()
+                    && !TextUtils.isEmpty(app.getUserReview().getComment())) {
+                ((EditText) activity.findViewById(R.id.beta_comment))
+                        .setText(app.getUserReview().getComment());
+                activity.findViewById(R.id.beta_delete_button).setVisibility(View.VISIBLE);
             }
-        });
-        activity.findViewById(R.id.beta_delete_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initBetaTask(new BetaFeedbackDeleteTask()).execute();
-            }
-        });
-        if (null != app.getUserReview() && !TextUtils.isEmpty(app.getUserReview().getComment())) {
-            ((EditText) activity.findViewById(R.id.beta_comment)).setText(app.getUserReview().getComment());
-            activity.findViewById(R.id.beta_delete_button).setVisibility(View.VISIBLE);
         }
     }
 
@@ -87,7 +99,10 @@ public class Beta extends Abstract {
         @Override
         public void onClick(View view) {
             view.setEnabled(false);
-            messageView.setText(app.isTestingProgramOptedIn() ? R.string.testing_program_section_opted_out_propagating_message : R.string.testing_program_section_opted_in_propagating_message);
+            messageView.setText(app.isTestingProgramOptedIn()
+                    ? R.string.testing_program_section_opted_out_propagating_message
+                    : R.string.testing_program_section_opted_in_propagating_message);
+
             new BetaToggleTask(app).execute();
         }
     }

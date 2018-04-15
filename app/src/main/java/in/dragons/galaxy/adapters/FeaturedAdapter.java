@@ -16,13 +16,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RatingBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 import java.text.Format;
 import java.util.List;
+import java.util.Locale;
 
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.activities.DetailsActivity;
@@ -35,16 +35,18 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
     class MyViewHolderInst extends RecyclerView.ViewHolder {
         TextView title, developer, ratingText;
         ImageView icon, menu3dot;
-        RelativeLayout card;
+        LinearLayout card;
+        RatingBar ratingBar;
 
         MyViewHolderInst(View view) {
             super(view);
             title = view.findViewById(R.id.featured_name);
             developer = view.findViewById(R.id.app_by);
+            icon = view.findViewById(R.id.featured_image);
             card = view.findViewById(R.id.background);
+            ratingBar = view.findViewById(R.id.ratingBar);
             ratingText = view.findViewById(R.id.ratingText);
             menu3dot = view.findViewById(R.id.menu_3dot);
-            icon = view.findViewById(R.id.icongone);
         }
     }
 
@@ -66,7 +68,8 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
         final FeaturedHolder featuredHolder = FeaturedAppsH.get(position);
         holder.title.setText(featuredHolder.title);
         holder.developer.setText(featuredHolder.developer);
-        holder.ratingText.setText(String.format("%.1f",featuredHolder.rating));
+        holder.ratingBar.setRating((float) featuredHolder.rating);
+        holder.ratingText.setText(String.format(Locale.getDefault(),"%.1f",featuredHolder.rating));
 
         holder.card.setOnClickListener(v -> context
                 .startActivity(DetailsActivity.getDetailsIntent(context, featuredHolder.id)));
@@ -92,7 +95,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
         holder.menu3dot.setOnClickListener(this::showPopup);
     }
 
-    private void getPalette(Bitmap bitmap, RelativeLayout card, TextView developer) {
+    private void getPalette(Bitmap bitmap, LinearLayout card, TextView developer) {
         Palette.from(bitmap)
                 .generate(palette -> {
                     Palette.Swatch mySwatch = palette.getDarkVibrantSwatch();

@@ -111,6 +111,9 @@
     <string name="error_token_dispenser_problem">Could not log in without an account. Try using your own account.</string>
     <string name="error_invalid_device_definition">Device definition rejected.</string>
     <string name="error_could_not_download">Could not download.</string>
+    <string name="details_appInfo">App Info</string>
+    <string name="details_appReview">Reviews</string>
+    <string name="details_appExtras">Additional Information</string>
     <string name="details_category">"%1$s"</string>
     <string name="details_developer">"%1$s"</string>
     <string name="details_updated">"Updated : %1$s"</string>
@@ -118,14 +121,14 @@
     <string name="details_description">Read more</string>
     <string name="details_changelog">Changelog</string>
     <string name="details_reviews">Reviews</string>
-    <string name="details_rate_this_app">Rate this app:</string>
+    <string name="details_rate_this_app">Rate this app</string>
     <string name="details_you_rated_this_app">You rated this app:</string>
     <string name="details_permissions">App permissions</string>
     <string name="details_versionName">"%1$s"</string>
     <string name="details_versionName_updatable">"%1$s → %2$s"</string>
     <string name="details_more">More</string>
     <string name="details_run">Open</string>
-    <string name="details_download">Download</string>
+    <string name="details_download">Get</string>
     <string name="details_purchase">Purchase</string>
     <string name="details_update">Update</string>
     <string name="details_cancel">Cancel</string>

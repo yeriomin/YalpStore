@@ -3,32 +3,17 @@
     android:id="@+id/changes_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/semiTransparentAccent"
+    android:background="@drawable/outline_bg"
     android:orientation="vertical"
-    android:padding="7dp"
     android:visibility="gone">
-
-    <TextView
-        android:id="@+id/changes_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:fontFamily="@font/google_sans_bold"
-        android:gravity="center|start"
-        android:text="@string/details_changelog"
-        android:textAllCaps="true"
-        android:textColor="?android:attr/colorAccent"
-        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/changes_upper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="10dp"
         android:autoLink="web|email"
         android:fontFamily="@font/google_sans"
         android:lineSpacingExtra="5dp"
-        android:textColor="?android:attr/colorAccent"
         android:textIsSelectable="true" />
-
 </LinearLayout>

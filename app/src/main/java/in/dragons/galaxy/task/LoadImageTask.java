@@ -35,7 +35,7 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
 
     @Override
     protected void onPreExecute() {
-        imageView.setImageDrawable(imageView.getContext().getResources().getDrawable(R.drawable.ic_placeholder));
+        imageView.setImageDrawable(imageView.getContext().getResources().getDrawable(R.color.transparent));
     }
 
     @Override

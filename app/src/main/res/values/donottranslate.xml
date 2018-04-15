@@ -14,7 +14,7 @@
     <string name="content_description_cancel_download" translatable="false">"Cancel download"</string>
     <string name="details_installs" translatable="false">"%1$s"</string>
     <string name="details_rating" translatable="false">"%1$.1f"</string>
-    <string name="details_rating_specific" translatable="false">"%1$d★ %2$d"</string>
+    <string name="details_rating_specific" translatable="false">"%1$d  ★  %2$d"</string>
     <string name="dev_name1" translatable="false">"Rahul Patel"</string>
     <string name="dev_mail1" translatable="false">"whyorean@gmail.com"</string>
     <string name="dev_country1" translatable="false">"Bangalore, India"</string>

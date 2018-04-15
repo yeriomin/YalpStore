@@ -1,6 +1,7 @@
 package in.dragons.galaxy.fragment.details;
 
 import android.preference.PreferenceManager;
+import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,10 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import in.dragons.galaxy.CircleTransform;
-import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.PlayStoreApiAuthenticator;
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.ReviewStorageIterator;
+import in.dragons.galaxy.activities.DetailsActivity;
 import in.dragons.galaxy.builders.UserReviewDialogBuilder;
 import in.dragons.galaxy.model.App;
 import in.dragons.galaxy.task.playstore.ReviewDeleteTask;
@@ -38,17 +39,11 @@ public class Review extends Abstract {
 
     @Override
     public void draw() {
-        if (!app.isInPlayStore() || app.isEarlyAccess()) {
+        if (!app.isInPlayStore() || app.isEarlyAccess())
             return;
-        }
+        else
+            getTask(true).execute();
 
-        initExpandableGroup(R.id.reviews_header, R.id.reviews_container, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getTask(true).execute();
-            }
-        });
-        activity.findViewById(R.id.reviews_card).setVisibility(View.VISIBLE);
         initReviewListControls();
 
         setText(R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
@@ -141,42 +136,27 @@ public class Review extends Abstract {
     }
 
     private void initReviewListControls() {
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getTask(v.getId() == R.id.reviews_next).execute();
-            }
-        };
+        View.OnClickListener listener = v -> getTask(v.getId() == R.id.reviews_next).execute();
         activity.findViewById(R.id.reviews_previous).setOnClickListener(listener);
         activity.findViewById(R.id.reviews_next).setOnClickListener(listener);
     }
 
     private void initUserReviewControls(final App app) {
-        ((RatingBar) activity.findViewById(R.id.user_stars)).setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                if (!fromUser) {
-                    return;
-                }
-                new UserReviewDialogBuilder(activity, Review.this, app.getPackageName())
-                        .show(getUpdatedUserReview(app.getUserReview(), (int) rating));
+        ((RatingBar) activity.findViewById(R.id.user_stars)).setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
+            if (!fromUser) {
+                return;
             }
+            new UserReviewDialogBuilder(activity, Review.this, app.getPackageName())
+                    .show(getUpdatedUserReview(app.getUserReview(), (int) rating));
         });
-        activity.findViewById(R.id.user_review_edit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        activity.findViewById(R.id.user_review_edit).setOnClickListener(v ->
                 new UserReviewDialogBuilder(activity, Review.this, app.getPackageName())
-                        .show(app.getUserReview());
-            }
-        });
-        activity.findViewById(R.id.user_review_delete).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ReviewDeleteTask task = new ReviewDeleteTask();
-                task.setFragment(Review.this);
-                task.setContext(v.getContext());
-                task.execute(app.getPackageName());
-            }
+                        .show(app.getUserReview()));
+        activity.findViewById(R.id.user_review_delete).setOnClickListener(v -> {
+            ReviewDeleteTask task = new ReviewDeleteTask();
+            task.setFragment(Review.this);
+            task.setContext(v.getContext());
+            task.execute(app.getPackageName());
         });
     }
 

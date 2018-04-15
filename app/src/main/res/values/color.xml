@@ -55,5 +55,6 @@
     <color name="colorPurple">#9C27B0</color>
     <color name="colorOrange">#FF9800</color>
     <color name="colorTeal">#009688</color>
+    <color name="colorGold">#FFBF00</color>
     <color name="semiTransparentAccent">#344285f4</color>
 </resources>
