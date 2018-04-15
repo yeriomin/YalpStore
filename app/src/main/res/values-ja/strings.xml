@@ -13,8 +13,8 @@
 <string name="action_search">"検索"</string>
 <string name="action_updates">"更新"</string>
 <string name="action_ignore">"更新を無視"</string>
-    <string name="action_whitelist">"更新のホワイトリスト"</string>
-    <string name="search_title">"アプリケーションの検索"</string>
+<string name="action_whitelist">"更新のホワイトリスト"</string>
+<string name="search_title">"アプリケーションの検索"</string>
 <string name="dialog_two_factor_cancel">"後で"</string>
 <string name="dialog_two_factor_create_password">"パスワードを作成"</string>
 <string name="dialog_title_two_factor">"2段階認証"</string>
@@ -40,7 +40,7 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="error_downloads_directory_not_writable">"ダウンロードディレクトリーを作成できなかったか、書き込み可能ではありません。"</string>
 <string name="error_token_dispenser_problem">"アカウントなしでログインできませんでした。 自分のアカウントを使ってみてください。"</string>
 <string name="details_updated">"更新しました %1$s"</string>
-    <string name="details_description">"説明:"</string>
+<string name="details_description">"説明:"</string>
 <string name="details_changelog">"新着情報:"</string>
 <string name="details_screenshots">"スクリーンショット:"</string>
 <string name="details_reviews">"レビュー:"</string>
@@ -97,7 +97,7 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"一時的なエラーが発生した可能性がありますが、ダウンロードを再開することはできません。 後で再試行してください。"</string>
 <string name="download_manager_ERROR_BLOCKED">"アプリケーションの要求時に NetworkPolicyManager コントロールのため、ダウンロードに失敗しました。 設定を確認してください。"</string>
 <string name="search_filter">"すべてのアプリ"</string>
-    <string name="pref_delete_apk_after_install_summary_off">"インストール後に .apks は削除されません"</string>
+<string name="pref_delete_apk_after_install_summary_off">"インストール後に .apks は削除されません"</string>
 <string name="pref_delete_apk_after_install_summary_on">"インストール後に .apks は削除されます"</string>
 <string name="pref_delete_apk_after_install">"インストール後に .apk を削除"</string>
 <string name="dialog_title_application_crashed">"申し訳ありません。Yalp Store がクラッシュしました"</string>
@@ -282,4 +282,11 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="pref_download_internal_storage">"内部ストレージにダウンロード"</string>
 <string name="pref_download_internal_storage_summary_on">"より安全ですが、apk にユーザーがアクセスできません"</string>
 <string name="pref_download_internal_storage_summary_off">"apk は、下に表示された外部ストレージのパスにダウンロードされます"</string>
+<string name="pref_use_tor">"Torを使用する"</string>
+<string name="pref_use_tor_summary">"強制的にTorを経由した通信でダウンロードして、プライバシーを高めます。Orbotが必要です"</string>
+<string name="pref_category_proxy">"プロキシ"</string>
+<string name="pref_proxy_enable">"Enable proxy"</string>
+<string name="pref_proxy_type">"Proxy type"</string>
+<string name="pref_proxy_host">"Proxy host"</string>
+<string name="pref_proxy_port">"Proxy port"</string>
 </resources>
