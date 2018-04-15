@@ -13,8 +13,8 @@
 <string name="action_search">"Hledat"</string>
 <string name="action_updates">"Aktualizace"</string>
 <string name="action_ignore">"Ignorovat aktualizace"</string>
-    <string name="action_whitelist">"Whitelistovat pro aktualizace"</string>
-    <string name="search_title">"Hledat aplikaci"</string>
+<string name="action_whitelist">"Whitelistovat pro aktualizace"</string>
+<string name="search_title">"Hledat aplikaci"</string>
 <string name="dialog_two_factor_cancel">"Nyní ne"</string>
 <string name="dialog_two_factor_create_password">"Vytvořit heslo"</string>
 <string name="dialog_title_two_factor">"Dvoufázové ověření"</string>
@@ -40,7 +40,7 @@ Přesměrovat na její stránku v obchodu Play?"</string>
 <string name="error_downloads_directory_not_writable">"Složka stahování nemohla být vytvořena nebo je pouze pro čtení."</string>
 <string name="error_token_dispenser_problem">"Nelze se přihlásit uvedeným účtem. Zkuste použít svůj účet."</string>
 <string name="details_updated">"Aktualizováno %1$s"</string>
-    <string name="details_description">"Popis:"</string>
+<string name="details_description">"Popis:"</string>
 <string name="details_changelog">"Co je nového:"</string>
 <string name="details_screenshots">"Snímky:"</string>
 <string name="details_reviews">"Hodnocení:"</string>
@@ -98,7 +98,7 @@ Mějte prosím na paměti, že užití této aplikace je v rozporu s podmínkami
 <string name="download_manager_ERROR_CANNOT_RESUME">"Vyskytla se jistá pravděpodobně dočasná chyba, ale není možné pokračovat ve stahování. Zkuste to prosím později."</string>
 <string name="download_manager_ERROR_BLOCKED">"Stahování selhalo, jelikož NetworkPolicyManager spravuje žádající aplikaci. Zkontrolujte své nastavení."</string>
 <string name="search_filter">"Všechny aplikace"</string>
-    <string name="pref_delete_apk_after_install_summary_off">".apk soubory nejsou nyní mazány po instalaci"</string>
+<string name="pref_delete_apk_after_install_summary_off">".apk soubory nejsou nyní mazány po instalaci"</string>
 <string name="pref_delete_apk_after_install_summary_on">".apk soubory jsou nyní mazány po instalaci"</string>
 <string name="pref_delete_apk_after_install">"Mazat .apk soubory po instalaci"</string>
 <string name="dialog_title_application_crashed">"Omlouváme se, Yalp Store spadl"</string>
@@ -283,4 +283,11 @@ Pokračovat?"</string>
 <string name="pref_download_internal_storage">"Stahovat do interního úložiště"</string>
 <string name="pref_download_internal_storage_summary_on">"Bezpečnější, ale apk soubory jsou uživateli nepřístupné"</string>
 <string name="pref_download_internal_storage_summary_off">"Apk soubory jsou stahovány do uvedeného adresáře na externí úložiště"</string>
+<string name="pref_use_tor">"Použít Tor"</string>
+<string name="pref_use_tor_summary">"Vynutit stahování přes Tor pro zlepšení ochrany soukromí. Vyžaduje aplikaci Orbot"</string>
+<string name="pref_category_proxy">"Proxy"</string>
+<string name="pref_proxy_enable">"Enable proxy"</string>
+<string name="pref_proxy_type">"Proxy type"</string>
+<string name="pref_proxy_host">"Proxy host"</string>
+<string name="pref_proxy_port">"Proxy port"</string>
 </resources>
