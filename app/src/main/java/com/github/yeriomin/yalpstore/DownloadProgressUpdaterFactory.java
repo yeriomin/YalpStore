@@ -39,6 +39,10 @@ public class DownloadProgressUpdaterFactory {
     }
 
     static private DownloadProgressUpdater get(AppListActivity activity, String packageName) {
-        return new ListItemDownloadProgressUpdater(packageName, (AppBadge) activity.getListItem(packageName));
+        AppBadge appBadge = (AppBadge) activity.getListItem(packageName);
+        if (null == appBadge) {
+            return null;
+        }
+        return new ListItemDownloadProgressUpdater(packageName, appBadge);
     }
 }
