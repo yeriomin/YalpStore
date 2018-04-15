@@ -13,8 +13,8 @@
 <string name="action_search">"Buscar"</string>
 <string name="action_updates">"Actualizaciones"</string>
 <string name="action_ignore">"Ignorar actualizaciones"</string>
-    <string name="action_whitelist">"Lista blanca de actualizaciones"</string>
-    <string name="search_title">"Buscar aplicaciones"</string>
+<string name="action_whitelist">"Lista blanca de actualizaciones"</string>
+<string name="search_title">"Buscar aplicaciones"</string>
 <string name="dialog_two_factor_cancel">"Ahora no"</string>
 <string name="dialog_two_factor_create_password">"Crear contraseña"</string>
 <string name="dialog_title_two_factor">"Autenticación en dos pasos"</string>
@@ -40,7 +40,7 @@ Toca \"Crear contraseña\" para ser redirigido"</string>
 <string name="error_token_dispenser_problem">"No se pudo iniciar sesión sin una cuenta, inténtalo de nuevo usando tu propia cuenta."</string>
 <string name="details_updated">"Actualizado %1$s"</string>
 
-    <!-- Titles in Spanish can't be finished by any punctuation mark -->
+<!-- Titles in Spanish can't be finished by any punctuation mark -->
 <string name="details_description">"Descripción"</string>
 <string name="details_changelog">"Novedades"</string>
 <string name="details_screenshots">"Capturas de pantalla"</string>
@@ -99,7 +99,7 @@ Ten en cuenta que Yalp viola los términos de servicio del Play Store. Es probab
 <string name="download_manager_ERROR_CANNOT_RESUME">"Un error temporal ocurrió durante la descarga, pero no podemos reanudarla. Inténtalo de nuevo más tarde."</string>
 <string name="download_manager_ERROR_BLOCKED">"La desacarga falló debido a interferencia por parte de NetworkPolicyManager. Comprueba los ajustes."</string>
 <string name="search_filter">"Todas las apps"</string>
-    <string name="pref_delete_apk_after_install_summary_off">"No se borrarán los archivos APK después de la instalación"</string>
+<string name="pref_delete_apk_after_install_summary_off">"No se borrarán los archivos APK después de la instalación"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Se borrarán los archivos APK después de la instalación"</string>
 <string name="pref_delete_apk_after_install">"Borrar APK después de la instalación"</string>
 <string name="dialog_title_application_crashed">"Lo sentimos, Yalp Store se ha detenido"</string>
@@ -284,4 +284,11 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="pref_download_internal_storage">"Download to internal storage"</string>
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
 <string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="pref_use_tor">"Usar Tor"</string>
+<string name="pref_use_tor_summary">"Forzar el tráfico de descarga a través de Tor para mejorar la privacidad. Requiere Orbot"</string>
+<string name="pref_category_proxy">"Proxy"</string>
+<string name="pref_proxy_enable">"Enable proxy"</string>
+<string name="pref_proxy_type">"Proxy type"</string>
+<string name="pref_proxy_host">"Proxy host"</string>
+<string name="pref_proxy_port">"Proxy port"</string>
 </resources>
