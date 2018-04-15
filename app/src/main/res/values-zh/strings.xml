@@ -15,8 +15,8 @@
 <string name="action_search">"搜索"</string>
 <string name="action_updates">"更新"</string>
 <string name="action_ignore">"忽略更新"</string>
-    <string name="action_whitelist">"应用白名单"</string>
-    <string name="search_title">"搜索应用程序"</string>
+<string name="action_whitelist">"应用白名单"</string>
+<string name="search_title">"搜索应用程序"</string>
 <string name="dialog_two_factor_cancel">"不是现在"</string>
 <string name="dialog_two_factor_create_password">"创建密码"</string>
 <string name="dialog_title_two_factor">"两步验证"</string>
@@ -41,7 +41,7 @@
 <string name="error_downloads_directory_not_writable">"无法创建下载目录或其属性只读。"</string>
 <string name="error_token_dispenser_problem">"无法登录不存在的帐户，尝试使用YALP帐户。"</string>
 <string name="details_updated">"更新 %1$s"</string>
-    <string name="details_description">"描述"</string>
+<string name="details_description">"描述"</string>
 <string name="details_changelog">"新特性"</string>
 <string name="details_screenshots">"截图"</string>
 <string name="details_reviews">"评论"</string>
@@ -99,7 +99,7 @@
 <string name="download_manager_ERROR_CANNOT_RESUME">"有些可能会出现暂时性错误，但我们无法恢复下载。请稍后再试。"</string>
 <string name="download_manager_ERROR_BLOCKED">"由于无法请求应用程序上的NetworkPolicyManager控件，下载失败。检查您的设置。"</string>
 <string name="search_filter">"所有应用"</string>
-    <string name="pref_delete_apk_after_install_summary_off">"现在安装后，.apks不会被删除"</string>
+<string name="pref_delete_apk_after_install_summary_off">"现在安装后，.apks不会被删除"</string>
 <string name="pref_delete_apk_after_install_summary_on">"现在安装后删除.apks"</string>
 <string name="pref_delete_apk_after_install">"安装后删除.apk"</string>
 <string name="dialog_title_application_crashed">"抱歉，Yalp Store崩溃了。"</string>
@@ -290,4 +290,11 @@
 <string name="pref_download_internal_storage">"Download to internal storage"</string>
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
 <string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="pref_use_tor">"使用 Tor"</string>
+<string name="pref_use_tor_summary">"强制下载流量通过 Tor 以增强隐私保障。需要 Orbot"</string>
+<string name="pref_category_proxy">"代理"</string>
+<string name="pref_proxy_enable">"Enable proxy"</string>
+<string name="pref_proxy_type">"Proxy type"</string>
+<string name="pref_proxy_host">"Proxy host"</string>
+<string name="pref_proxy_port">"Proxy port"</string>
 </resources>
