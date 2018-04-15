@@ -97,6 +97,9 @@ public abstract class AppBadge extends ListItem {
     }
 
     public void redrawMoreButton() {
+        if (null == view) {
+            return;
+        }
         final ButtonDownload buttonDownload = new ButtonDownload((YalpStoreActivity) view.getContext(), app);
         if (new ButtonCancel((YalpStoreActivity) view.getContext(), app).shouldBeVisible()) {
             enableCancelButton();
@@ -119,11 +122,17 @@ public abstract class AppBadge extends ListItem {
     }
 
     public void hideMoreButton() {
+        if (null == view) {
+            return;
+        }
         view.findViewById(R.id.more).setVisibility(View.GONE);
         ((TextView) view.findViewById(R.id.more_progress)).setText("");
     }
 
     public void setProgress(int progress, int max) {
+        if (null == view) {
+            return;
+        }
         view.findViewById(R.id.more).setVisibility(View.VISIBLE);
         enableCancelButton();
         ((TextView) view.findViewById(R.id.more_progress)).setText(((int) (((float) progress/max)*100)) + "%");
