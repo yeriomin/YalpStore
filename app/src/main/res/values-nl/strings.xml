@@ -13,8 +13,8 @@
 <string name="action_search">"Zoek"</string>
 <string name="action_updates">"Updates"</string>
 <string name="action_ignore">"Negeer updates"</string>
-    <string name="action_whitelist">"Whitelist voor updates"</string>
-    <string name="search_title">"Zoek applicaties"</string>
+<string name="action_whitelist">"Whitelist voor updates"</string>
+<string name="search_title">"Zoek applicaties"</string>
 <string name="dialog_two_factor_cancel">"Niet nu"</string>
 <string name="dialog_two_factor_create_password">"Maak wachtwoord"</string>
 <string name="dialog_title_two_factor">"2-stap verificatie"</string>
@@ -39,7 +39,7 @@ Tik op 'wachtwoord maken' om te worden doorgestuurd naar de pagina voor het make
 <string name="error_downloads_directory_not_writable">"De downloads map kon niet worden gecreëerd of is niet toegestaan."</string>
 <string name="error_token_dispenser_problem">"Kon niet inloggen zonder account. Probeer uw eigen account."</string>
 <string name="details_updated">"Geüpdatet %1$s"</string>
-    <string name="details_description">"Beschrijving:"</string>
+<string name="details_description">"Beschrijving:"</string>
 <string name="details_changelog">"Wat is er nieuw:"</string>
 <string name="details_screenshots">"Schermafbeelding:"</string>
 <string name="details_reviews">"Reviews:"</string>
@@ -97,7 +97,7 @@ Wees alert dat het gebruik van deze app in gaat tegen het ToS van de Play Store.
 <string name="download_manager_ERROR_CANNOT_RESUME">"Er is mogelijk een overlopende fout opgetreden, maar we kunnen de download niet hervatten. Probeer het later opnieuw."</string>
 <string name="download_manager_ERROR_BLOCKED">"De download is mislukt door restricites van NetworkPolicyManager. Check uw instellingen."</string>
 <string name="search_filter">"Alle apps"</string>
-    <string name="pref_delete_apk_after_install_summary_off">".apks blijven bewaard na de installatie"</string>
+<string name="pref_delete_apk_after_install_summary_off">".apks blijven bewaard na de installatie"</string>
 <string name="pref_delete_apk_after_install_summary_on">".apks worden verwijdert na de installatie"</string>
 <string name="pref_delete_apk_after_install">"Verwijder .apk bestand na installatie"</string>
 <string name="dialog_title_application_crashed">"Excuses, Yalp Store is gecrashed"</string>
@@ -285,4 +285,11 @@ Nu doen?"</string>
 <string name="pref_download_internal_storage">"Download to internal storage"</string>
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
 <string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="pref_use_tor">"Tor gebruiken"</string>
+<string name="pref_use_tor_summary">"Dwing downloadverkeer door Tor heen voor betere privacy. Vereist Orbot"</string>
+<string name="pref_category_proxy">"Proxy"</string>
+<string name="pref_proxy_enable">"Enable proxy"</string>
+<string name="pref_proxy_type">"Proxy type"</string>
+<string name="pref_proxy_host">"Proxy host"</string>
+<string name="pref_proxy_port">"Proxy port"</string>
 </resources>
