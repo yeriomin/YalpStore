@@ -51,6 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:theme="@style/RatingBarReviews"
                         android:numStars="5"
                         android:stepSize="1" />
                 </LinearLayout>
@@ -61,12 +62,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:orientation="horizontal"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/user_review_edit"
                         android:layout_width="@dimen/icon_size_small"
                         android:layout_height="@dimen/icon_size_small"
+                        android:alpha="0.6"
+                        android:scaleY=".8"
+                        android:scaleX=".8"
                         android:background="?android:attr/selectableItemBackground"
                         android:contentDescription="@string/content_description_review_edit"
                         android:src="@drawable/ic_circle_edit" />
@@ -76,9 +80,10 @@
                         android:layout_width="@dimen/icon_size_small"
                         android:layout_height="@dimen/icon_size_small"
                         android:alpha="0.6"
+                        android:scaleY=".8"
+                        android:scaleX=".8"
                         android:background="?android:attr/selectableItemBackground"
                         android:contentDescription="@string/content_description_review_delete"
-                        android:visibility="gone"
                         android:src="@drawable/ic_delete" />
                 </LinearLayout>
 
@@ -94,14 +99,14 @@
                         android:id="@+id/user_title"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/google_sans_bold"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/user_comment"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
             </LinearLayout>

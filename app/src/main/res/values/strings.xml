@@ -126,7 +126,7 @@
     <string name="details_changelog">Changelog</string>
     <string name="details_reviews">Reviews</string>
     <string name="details_rate_this_app">Rate this app</string>
-    <string name="details_you_rated_this_app">You rated this app:</string>
+    <string name="details_you_rated_this_app">Your rating</string>
     <string name="details_permissions">App permissions</string>
     <string name="details_versionName">"%1$s"</string>
     <string name="details_versionName_updatable">"%1$s → %2$s"</string>

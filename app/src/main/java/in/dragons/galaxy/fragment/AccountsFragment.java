@@ -43,6 +43,9 @@ public class AccountsFragment extends UtilFragment {
         v = inflater.inflate(R.layout.app_acc_inc, container, false);
         getActivity().setTitle(R.string.action_accounts);
 
+        ImageView toolbar_back = v.findViewById(R.id.toolbar_back);
+        toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
+
         myEmail = PreferenceFragment.getString(getActivity(), PlayStoreApiAuthenticator.PREFERENCE_EMAIL);
         isSecAvailable = PreferenceFragment.getBoolean(getActivity(), "SEC_ACCOUNT");
 

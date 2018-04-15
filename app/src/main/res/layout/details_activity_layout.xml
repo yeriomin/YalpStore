@@ -4,41 +4,19 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="wrap_content"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_finish"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:borderWidth="0dp"
         android:layout_marginTop="32dp"
-        android:visibility="gone"
-        app:cardCornerRadius="18dp">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab_finish"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:clickable="true"
-                app:backgroundTint="@color/white"
-                app:fabSize="mini"
-                android:focusable="true"
-                app:srcCompat="@drawable/ic_chevron_left" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="12dp"
-                android:layout_toEndOf="@+id/fab_finish"
-                android:fontFamily="@font/google_sans_bold"
-                android:text="Back" />
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
+        android:layout_marginStart="10dp"
+        app:backgroundTint="@color/white"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_chevron_left" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -60,8 +38,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="-90dp"
                 android:orientation="vertical">
 
@@ -69,8 +47,8 @@
                     android:id="@+id/main"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:cardCornerRadius="8dp"
                     android:elevation="5dp"
+                    app:cardCornerRadius="8dp"
                     app:cardUseCompatPadding="true">
 
                     <LinearLayout
@@ -102,12 +80,12 @@
                             android:id="@+id/contains_ads"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:fontFamily="@font/google_sans"
                             android:layout_gravity="end"
-                            android:textSize="12sp"
+                            android:layout_marginEnd="5dp"
                             android:layout_marginTop="4dp"
-                            android:gravity="end" />
+                            android:fontFamily="@font/google_sans"
+                            android:gravity="end"
+                            android:textSize="12sp" />
 
                         <HorizontalScrollView
                             android:layout_width="match_parent"
@@ -173,24 +151,24 @@
                         layout="@layout/app_details_inc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"/>
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp" />
 
                     <!-- Changelog -->
                     <include
                         layout="@layout/app_changelog_inc"
-                        android:layout_margin="5dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp" />
 
                     <!-- Screenshot -->
                     <it.sephiroth.android.library.widget.HListView
                         android:id="@+id/screenshots_gallery"
                         android:layout_width="match_parent"
-                        android:nestedScrollingEnabled="false"
                         android:layout_height="180dp"
-                        android:padding="5dp"
-                        android:divider="@color/transparent" />
+                        android:divider="@color/transparent"
+                        android:nestedScrollingEnabled="false"
+                        android:padding="5dp" />
 
                     <!-- Read More -->
                     <include
