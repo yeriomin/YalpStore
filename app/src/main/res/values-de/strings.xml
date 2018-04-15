@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="about_developer_email_label">"E-Mail des Entwicklers:"</string>
-<string name="about_logged_in">"Du bist eingeloggt als:"</string>
-<string name="about_copied_to_clipboard">"In die Zwischenablage kopiert"</string>
+<string name="about_logged_in">"Du bist angemeldet als:"</string>
+<string name="about_copied_to_clipboard">"In der Zwischenablage kopiert"</string>
 <string name="list_line_2_updatable">"Aktualisiert am %1$s"</string>
-<string name="list_empty_updates">"Es müssen keine Apps aktualisiert werden"</string>
+<string name="list_empty_updates">"Keine Apps müssen aktualisiert werden"</string>
 <string name="list_empty_search">"Keine Apps gefunden"</string>
 <string name="list_incompatible">"Inkompatibel"</string>
 <string name="action_about">"Über"</string>
@@ -13,8 +13,8 @@
 <string name="action_search">"Suchen"</string>
 <string name="action_updates">"Aktualisierungen"</string>
 <string name="action_ignore">"Aktualisierungen ignorieren"</string>
-    <string name="action_whitelist">"Whitelist für Aktualisierungen"</string>
-    <string name="search_title">"Suche nach Apps"</string>
+<string name="action_whitelist">"Whitelist für Aktualisierungen"</string>
+<string name="search_title">"Suche nach Apps"</string>
 <string name="dialog_two_factor_cancel">"Jetzt nicht"</string>
 <string name="dialog_two_factor_create_password">"Passwort erstellen"</string>
 <string name="dialog_title_two_factor">"Zwei-Faktor-Authentifizierung"</string>
@@ -39,12 +39,12 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="error_downloads_directory_not_writable">"Download-Ordner konnte nicht erstellt werden oder ist nicht beschreibbar."</string>
 <string name="error_token_dispenser_problem">"Authentifizierung ohne Account fehlgeschlagen. Versuche deinen eigenen Account zu benutzen."</string>
 <string name="details_updated">"Aktualisiert am %1$s"</string>
-    <string name="details_description">"Beschreibung:"</string>
+<string name="details_description">"Beschreibung:"</string>
 <string name="details_changelog">"Neuigkeiten:"</string>
 <string name="details_screenshots">"Bildschirmfotos:"</string>
 <string name="details_reviews">"Bewertungen:"</string>
 <string name="details_rate_this_app">"Bewerte diese App:"</string>
-<string name="details_you_rated_this_app">"Du bewertest diese App:"</string>
+<string name="details_you_rated_this_app">"Du bewertetest diese App:"</string>
 <string name="details_permissions">"Berechtigungen:"</string>
 <string name="details_versionName">"Version %1$s"</string>
 <string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
@@ -67,7 +67,7 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play-Store-Nutzungsbedin
 <string name="notification_download_complete_signature_mismatch">"Herunterladen abgeschlossen. Die Signatur der APK-Datei stimmt jedoch nicht überein."</string>
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s heruntergeladen. Die APK-Signatur stimmt jedoch nicht mit der installierten App überein. Eventuell musst du diese zuerst deinstallieren."</string>
 <string name="notification_updates_available_title">"App-Aktualisierungen verfügbar."</string>
-<string name="notification_updates_available_message">"Es sind %1$d Aktualisierungen für deine Apps verfügbar."</string>
+<string name="notification_updates_available_message">"Es gibt %1$d Aktualisierungen für deine Apps."</string>
 <string name="pref_auto_install_summary_off">"Apps werden installiert, sobald die Abschluss-Benachrichtigung angetippt wird"</string>
 <string name="pref_auto_install_summary_on">"Apps werden installiert, sobald der Download abgeschlossen ist"</string>
 <string name="pref_auto_install">"Apps sofort installieren"</string>
@@ -96,7 +96,7 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play-Store-Nutzungsbedin
 <string name="download_manager_ERROR_CANNOT_RESUME">"Es trat ein möglicherweise vorübergehender Fehler auf, der Download kann nicht fortgesetzt werden. Versuche es später noch einmal!"</string>
 <string name="download_manager_ERROR_BLOCKED">"Das Herunterladen ist fehlgeschlagen weil der Netzwerk-Richtlinien-Manager die Kontrolle über die anfordernde App hat. Überprüfe deine Einstellungen."</string>
 <string name="search_filter">"Alle Apps"</string>
-    <string name="pref_delete_apk_after_install_summary_off">"apk-Dateien werden nach der Installation behalten"</string>
+<string name="pref_delete_apk_after_install_summary_off">"apk-Dateien werden nach der Installation behalten"</string>
 <string name="pref_delete_apk_after_install_summary_on">"apk-Dateien werden nach der Installation gelöscht"</string>
 <string name="pref_delete_apk_after_install">"apk-Datei nach der Installation löschen"</string>
 <string name="dialog_title_application_crashed">"Entschuldigung, Yalp Store ist abgestürtzt"</string>
@@ -276,9 +276,16 @@ Fortfahren?"</string>
 <string name="apps_by">"Apps von %1$s"</string>
 <string name="pref_message_fallback">"Versuche ein Rückfall-Verzeichnis festzulegen (%1$s)?"</string>
 <string name="no_permissions">"Es werden keine Berechtigungen verwendet."</string>
-<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="about_librepay_label">"Spenden mit Liberapay:"</string>
 <string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage">"Zum Interner Speicher herunterladen"</string>
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
 <string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="pref_use_tor">"Tor verwenden"</string>
+<string name="pref_use_tor_summary">"Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt"</string>
+<string name="pref_category_proxy">"Vermittlungsserver"</string>
+<string name="pref_proxy_enable">"Enable proxy"</string>
+<string name="pref_proxy_type">"Proxy type"</string>
+<string name="pref_proxy_host">"Proxy host"</string>
+<string name="pref_proxy_port">"Proxy port"</string>
 </resources>
