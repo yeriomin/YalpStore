@@ -34,8 +34,8 @@ public class AboutFragment extends UtilFragment {
                 ((ViewGroup) v.getParent()).removeView(v);
             return v;
         }
-
         v = inflater.inflate(R.layout.app_abt_inc, container, false);
+
         getActivity().setTitle(R.string.action_about);
 
         drawVersion();

@@ -10,10 +10,9 @@
     <TextView
         android:id="@+id/changes_upper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:autoLink="web|email"
         android:fontFamily="@font/google_sans"
-        android:lineSpacingExtra="5dp"
         android:textIsSelectable="true" />
 </LinearLayout>

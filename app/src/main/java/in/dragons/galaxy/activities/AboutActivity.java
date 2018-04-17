@@ -7,6 +7,7 @@ import com.percolate.caffeine.ViewUtils;
 
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.fragment.AboutFragment;
+import in.dragons.galaxy.view.AdaptiveToolbar;
 
 public class AboutActivity extends GalaxyActivity {
 
@@ -15,6 +16,9 @@ public class AboutActivity extends GalaxyActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.helper_activity);
+
+        AdaptiveToolbar dadtb = findViewById(R.id.d_adtb);
+        dadtb.getAvatar_icon().setOnClickListener((v -> this.onBackPressed()));
 
         getSupportFragmentManager()
                 .beginTransaction()

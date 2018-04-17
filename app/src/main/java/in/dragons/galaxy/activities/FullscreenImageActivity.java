@@ -3,13 +3,21 @@ package in.dragons.galaxy.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import in.dragons.galaxy.R;
-import in.dragons.galaxy.adapters.FullscreenImageAdapter;
+import in.dragons.galaxy.adapters.BigScreenshotsAdapter;
+import in.dragons.galaxy.adapters.SmallScreenshotsAdapter;
 import it.sephiroth.android.library.widget.HListView;
+
+import static in.dragons.galaxy.activities.DetailsActivity.app;
 
 public class FullscreenImageActivity extends Activity {
 
@@ -33,20 +41,20 @@ public class FullscreenImageActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
-        if (null == DetailsActivity.app) {
+        if (null == app) {
             Log.w(getClass().getSimpleName(), "No app stored");
             finish();
             return;
         }
-
-        HListView gallery = findViewById(R.id.gallery);
-        gallery.setAdapter(new FullscreenImageAdapter(
-                this,
-                DetailsActivity.app.getScreenshotUrls(),
-                getWindowManager().getDefaultDisplay().getWidth(),
-                getWindowManager().getDefaultDisplay().getHeight()
-        ));
-        gallery.setSelection(intent.getIntExtra(INTENT_SCREENSHOT_NUMBER, 0));
+        List<BigScreenshotsAdapter.Holder> BSAdapter = new ArrayList<>();
+        RecyclerView gallery = this.findViewById(R.id.gallery);
+        BigScreenshotsAdapter adapter = new BigScreenshotsAdapter(BSAdapter, this);
+        for (int i = 0; i < app.getScreenshotUrls().size(); i++)
+        BSAdapter.add(new BigScreenshotsAdapter.Holder(app.getScreenshotUrls()));
+        gallery.setAdapter(adapter);
+        gallery.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        gallery.scrollToPosition(intent.getIntExtra(INTENT_SCREENSHOT_NUMBER, 0));
+        adapter.notifyDataSetChanged();
     }
 
 }

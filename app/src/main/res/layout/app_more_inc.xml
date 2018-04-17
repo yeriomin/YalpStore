@@ -11,7 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="12dp"
         android:layout_marginTop="25dp"
+        android:clickable="true"
         android:fontFamily="@font/google_sans_bold"
         android:text="@string/details_description"
         android:textSize="16sp" />

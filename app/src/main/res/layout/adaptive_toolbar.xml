@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/adtoolbar_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
-    app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways|snap">
+    app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways|snap"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/adtb_head"
@@ -79,44 +80,4 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:cardBackgroundColor="#eeeeee"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <SearchView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:queryHint="Search Apps &amp; Games" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:cardBackgroundColor="#eeeeee"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="1dp">
-
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:padding="4dp" />
-        </android.support.v7.widget.CardView>
-    </RelativeLayout>
-
-</RelativeLayout>
+</LinearLayout>

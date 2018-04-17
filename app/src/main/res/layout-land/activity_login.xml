@@ -169,6 +169,7 @@
                     android:layout_marginEnd="24dp"
                     android:background="@drawable/button_positive"
                     android:text="@string/action_login"
+                    android:textColor="@color/white"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -218,6 +219,7 @@
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/button_negative"
                 android:text="@string/action_ok"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>

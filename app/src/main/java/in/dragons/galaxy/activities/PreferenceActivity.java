@@ -20,7 +20,7 @@ public class PreferenceActivity extends GalaxyActivity {
         AdaptiveToolbar dadtb = findViewById(R.id.d_adtb);
         if (dadtb.getAction_icon().getContentDescription().toString().equals("details")) {
             dadtb.getAction_icon().setOnClickListener(v -> {
-                finish();
+                this.onBackPressed();
             });
         }
         getFragmentManager()

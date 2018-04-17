@@ -9,12 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="32dp"
         android:clickable="true"
         android:focusable="true"
-        app:borderWidth="0dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="10dp"
         app:backgroundTint="@color/white"
+        app:borderWidth="0dp"
         app:fabSize="mini"
         app:srcCompat="@drawable/ic_chevron_left" />
 
@@ -162,13 +162,11 @@
                         android:layout_margin="5dp" />
 
                     <!-- Screenshot -->
-                    <it.sephiroth.android.library.widget.HListView
+                    <android.support.v7.widget.RecyclerView
                         android:id="@+id/screenshots_gallery"
                         android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:divider="@color/transparent"
-                        android:nestedScrollingEnabled="false"
-                        android:padding="5dp" />
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp" />
 
                     <!-- Read More -->
                     <include

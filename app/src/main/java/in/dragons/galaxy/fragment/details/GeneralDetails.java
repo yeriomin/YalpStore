@@ -138,7 +138,10 @@ public class GeneralDetails extends Abstract {
         setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(activity, app.getSize()));
         setText(R.id.category, R.string.details_category, new CategoryManager(activity).getCategoryName(app.getCategoryId()));
         setText(R.id.developer, R.string.details_developer, app.getDeveloperName());
-        setText(R.id.price, app.getPrice());
+        if (app.getPrice().isEmpty())
+            setText(R.id.price, R.string.category_appFree);
+        else
+            setText(R.id.price, app.getPrice());
         setText(R.id.contains_ads, app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
 
         drawOfferDetails(app);
@@ -184,8 +187,8 @@ public class GeneralDetails extends Abstract {
                 else
                     changelogLayout.setVisibility(View.GONE);
             });
-
         } else {
+            readMore.setVisibility(View.GONE);
             setText(R.id.changes_upper, Html.fromHtml(changes).toString());
             activity.findViewById(R.id.changes_container).setVisibility(View.VISIBLE);
         }

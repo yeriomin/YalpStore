@@ -1,23 +1,48 @@
 package in.dragons.galaxy.view;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
+import android.database.Cursor;
+import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.annotation.ColorInt;
 import android.support.design.widget.AppBarLayout;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
+
 import in.dragons.galaxy.R;
+import in.dragons.galaxy.RecyclerItemTouchHelper;
+import in.dragons.galaxy.activities.GalaxyActivity;
+import in.dragons.galaxy.activities.SearchActivity;
+import in.dragons.galaxy.adapters.SearchHistoryAdapter;
+import in.dragons.galaxy.fragment.details.Abstract;
 
 public class AdaptiveToolbar extends AppBarLayout {
 
     static int style;
     View root;
-    RelativeLayout adtoolbarlayout;
+    LinearLayout adtoolbarlayout;
     ImageView action_icon;
     ImageButton avatar_icon, download_section;
     TextView title0, title1;
