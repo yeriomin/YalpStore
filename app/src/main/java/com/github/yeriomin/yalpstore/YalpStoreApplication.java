@@ -163,8 +163,12 @@ public class YalpStoreApplication extends Application {
                 || key.equals(PreferenceUtil.PREFERENCE_PROXY_HOST)
                 || key.equals(PreferenceUtil.PREFERENCE_PROXY_PORT)
                 || key.equals(PreferenceUtil.PREFERENCE_USE_TOR)
-                ) {
-                application.initNetcipher();
+            ) {
+                try {
+                    application.initNetcipher();
+                } catch (RuntimeException e) {
+                    ContextUtil.toastLong(application, e.getMessage());
+                }
             }
         }
     }
