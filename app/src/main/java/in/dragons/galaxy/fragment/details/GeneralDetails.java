@@ -4,8 +4,11 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.graphics.Palette;
 import android.text.Html;
@@ -58,9 +61,8 @@ public class GeneralDetails extends Abstract {
         ImageSource imageSource = app.getIconInfo();
         if (null != imageSource.getApplicationInfo()) {
             imageView.setImageDrawable(imageView.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
-            Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-            if (bitmap != null)
-                getPalette(bitmap);
+            Bitmap bitmap = getBitmapFromDrawable(imageView.getDrawable());
+            getPalette(bitmap);
         } else {
             Picasso
                     .with(activity)
@@ -84,6 +86,18 @@ public class GeneralDetails extends Abstract {
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, R.string.details_developer, app.getDeveloperName());
         drawVersion(activity.findViewById(R.id.versionString), app);
+    }
+
+    @NonNull
+    private Bitmap getBitmapFromDrawable(@NonNull Drawable drawable) {
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        }
+        final Bitmap bmp = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        final Canvas canvas = new Canvas(bmp);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+        return bmp;
     }
 
     private void getPalette(Bitmap bitmap) {
