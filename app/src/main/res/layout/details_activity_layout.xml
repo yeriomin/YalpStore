@@ -18,7 +18,7 @@
         app:fabSize="mini"
         app:srcCompat="@drawable/ic_chevron_left" />
 
-    <android.support.v4.widget.NestedScrollView
+    <in.dragons.galaxy.view.CustomNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
@@ -251,6 +251,6 @@
 
         </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </in.dragons.galaxy.view.CustomNestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
