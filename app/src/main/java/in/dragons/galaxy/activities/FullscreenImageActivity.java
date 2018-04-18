@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,8 +16,6 @@ import java.util.List;
 
 import in.dragons.galaxy.R;
 import in.dragons.galaxy.adapters.BigScreenshotsAdapter;
-import in.dragons.galaxy.adapters.SmallScreenshotsAdapter;
-import it.sephiroth.android.library.widget.HListView;
 
 import static in.dragons.galaxy.activities.DetailsActivity.app;
 
@@ -48,6 +48,8 @@ public class FullscreenImageActivity extends Activity {
         }
         List<BigScreenshotsAdapter.Holder> BSAdapter = new ArrayList<>();
         RecyclerView gallery = this.findViewById(R.id.gallery);
+        SnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(gallery);
         BigScreenshotsAdapter adapter = new BigScreenshotsAdapter(BSAdapter, this);
         for (int i = 0; i < app.getScreenshotUrls().size(); i++)
         BSAdapter.add(new BigScreenshotsAdapter.Holder(app.getScreenshotUrls()));
