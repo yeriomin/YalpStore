@@ -277,16 +277,16 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="apps_by">"%1$s의 애플리케이션"</string>
 <string name="pref_message_fallback">"Fallback 디렉토리를 (%1$s)로 지정을 시도하시겠습니까?"</string>
 <string name="no_permissions">"사용된 권한이 없습니다."</string>
-<string name="about_librepay_label">"Donate Librepay:"</string>
-<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
-<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+<string name="about_librepay_label">"Librepay로 기부:"</string>
+<string name="notification_file_verification_failed">"파일이 손상된 것 같습니다. 다시 시도하세요."</string>
+<string name="pref_download_internal_storage">"내장 메모리에 다운로드"</string>
+<string name="pref_download_internal_storage_summary_on">"더 안전하지만 사용자가 APK 파일에 직접 접근할 수 없습니다."</string>
+<string name="pref_download_internal_storage_summary_off">"APK 파일이 아래에 지정된 외부 저장소에 다운로드됩니다."</string>
 <string name="pref_use_tor">"Tor 사용"</string>
 <string name="pref_use_tor_summary">"향상된 개인정보 보호를 위해 Tor를 통한 다운로드 트래픽을 강제합니다. Orbot이 필요합니다"</string>
 <string name="pref_category_proxy">"프록시"</string>
-<string name="pref_proxy_enable">"Enable proxy"</string>
-<string name="pref_proxy_type">"Proxy type"</string>
-<string name="pref_proxy_host">"Proxy host"</string>
-<string name="pref_proxy_port">"Proxy port"</string>
+<string name="pref_proxy_enable">"프록시 활성화"</string>
+<string name="pref_proxy_type">"프록시 타입"</string>
+<string name="pref_proxy_host">"프록시 호스트"</string>
+<string name="pref_proxy_port">"프록시 포트"</string>
 </resources>
