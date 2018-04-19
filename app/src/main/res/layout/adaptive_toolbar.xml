@@ -68,15 +68,27 @@
                 android:background="?android:attr/selectableItemBackground"
                 app:srcCompat="@drawable/ic_dummy_avatar" />
 
-            <ImageButton
-                android:id="@+id/download_section"
+            <RelativeLayout
+                android:id="@+id/dwn_container"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_weight="1"
-                android:background="?android:attr/selectableItemBackground"
-                android:padding="8dp"
-                android:tint="?android:attr/textColorPrimary"
-                app:srcCompat="@drawable/app_downloads" />
+                android:layout_weight="1">
+
+                <include
+                    layout="@layout/updates_bubble"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/download_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:padding="8dp"
+                    android:tint="?android:attr/textColorPrimary"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/app_downloads" />
+            </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
 

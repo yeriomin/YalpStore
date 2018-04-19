@@ -35,6 +35,7 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
     ViewPager viewPager;
     @BindView(R.id.bottom_bar)
     CustomAppBar bottm_bar;
+    static int static_pos = -9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +54,20 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
     }
 
+    public static void setPosition(int item) {
+        static_pos = item;
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         invalidateOptionsMenu();
         if (logout) {
             finish();
+        }
+        if (static_pos != -9) {
+            viewPager.setCurrentItem(static_pos, true);
+            static_pos = -9;
         }
     }
 

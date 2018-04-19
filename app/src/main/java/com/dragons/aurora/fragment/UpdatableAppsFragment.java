@@ -43,6 +43,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     private View v;
     private Disposable loadApps;
     private SwipeRefreshLayout swipeRefreshLayout;
+    public static int updates = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,7 +79,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
 
         getListView().setOnItemClickListener((parent, view, position, id) -> grabDetails(position));
         registerForContextMenu(getListView());
-
+        updateInteger();
         return v;
     }
 
@@ -94,6 +95,14 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         else {
             new UpdateAllReceiver((AuroraActivity) getActivity());
             checkAppListValidity();
+        }
+        updateInteger();
+    }
+
+    public void updateInteger() {
+        updates = updatableApps.size();
+        if (updatableApps.size() >= 99){
+            updates = 99;
         }
     }
 

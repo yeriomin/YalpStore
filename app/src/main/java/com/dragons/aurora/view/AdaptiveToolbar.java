@@ -1,21 +1,10 @@
 package com.dragons.aurora.view;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
-import android.database.Cursor;
-import android.os.Build;
-import android.preference.PreferenceManager;
 import android.support.annotation.ColorInt;
 import android.support.design.widget.AppBarLayout;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
@@ -24,19 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-
 import com.dragons.aurora.R;
-import com.dragons.aurora.RecyclerItemTouchHelper;
 import com.dragons.aurora.activities.AuroraActivity;
-import com.dragons.aurora.activities.SearchActivity;
-import com.dragons.aurora.adapters.SearchHistoryAdapter;
-import com.dragons.aurora.fragment.details.Abstract;
+import com.dragons.aurora.fragment.UpdatableAppsFragment;
 
 public class AdaptiveToolbar extends AppBarLayout {
 
@@ -45,7 +24,8 @@ public class AdaptiveToolbar extends AppBarLayout {
     LinearLayout adtoolbarlayout;
     ImageView action_icon;
     ImageButton avatar_icon, download_section;
-    TextView title0, title1;
+    RelativeLayout bubble_layout, download_container;
+    TextView title0, title1, updates_counter;
 
 
     public AdaptiveToolbar(Context context) {
@@ -70,14 +50,17 @@ public class AdaptiveToolbar extends AppBarLayout {
         action_icon = root.findViewById(R.id.action_icon);
         avatar_icon = root.findViewById(R.id.account_avatar);
         download_section = root.findViewById(R.id.download_section);
+        download_container = root.findViewById(R.id.dwn_container);
         title0 = root.findViewById(R.id.app_title0);
         title1 = root.findViewById(R.id.app_title1);
+        bubble_layout = root.findViewById(R.id.updates_bubble);
+        updates_counter = root.findViewById(R.id.updates_counter);
         switch (getStyle()) {
             case 0:
                 homeToolbar(context);
                 break;
             case 1:
-                detailsToolbar();
+                detailsToolbar(context);
                 break;
         }
     }
@@ -86,6 +69,7 @@ public class AdaptiveToolbar extends AppBarLayout {
         if (avatar_icon.getVisibility() != VISIBLE) {
             avatar_icon.setVisibility(VISIBLE);
         }
+        download_container.setVisibility(GONE);
         action_icon.setImageResource(R.mipmap.ic_launcher);
         action_icon.setPadding(0,0,0,0);
         action_icon.setContentDescription("home");
@@ -93,12 +77,22 @@ public class AdaptiveToolbar extends AppBarLayout {
         title0.setText("Aurora");
         title1.setText("Store");
         title1.setVisibility(VISIBLE);
-        download_section.setVisibility(VISIBLE);
     }
 
-    private void detailsToolbar() {
+    private void detailsToolbar(Context context) {
         if (avatar_icon.getVisibility() != GONE) {
             avatar_icon.setVisibility(GONE);
+        }
+        download_container.setVisibility(VISIBLE);
+        download_section.setOnClickListener((v -> {
+            context.startActivity(new Intent(context, AuroraActivity.class));
+            AuroraActivity.setPosition(1);
+        }));
+        if (UpdatableAppsFragment.updates > 0) {
+            bubble_layout.setVisibility(VISIBLE);
+            updates_counter.setText(String.valueOf(UpdatableAppsFragment.updates));
+        } else {
+            bubble_layout.setVisibility(GONE);
         }
         action_icon.setImageResource(R.drawable.ic_chevron_left);
         action_icon.setPadding(6,6,6,6);
