@@ -2,21 +2,15 @@
 <resources>
     <string name="about_app">Aurora це альтернатива Play Store з відкритим кодом, дозволяє скачувати програми з Play Store. Aurora дозволяє оновлювати встановлені програми, шукати нові.</string>
     <string name="about_contributors">Учасники проекту</string>
-    <string name="about_copied_to_clipboard">Скопійовано в буфер</string>
     <string name="about_devs">Розробники</string>
     <string name="about_github">GitHub</string>
-    <string name="about_logged_in">Ви зайшли як</string>
     <string name="about_opensource">Бібліотеки з відкритим кодом</string>
     <string name="about_xda">Тема</string>
     <string name="acc_dummy">Вхід з фейкового аккаунту</string>
-    <string name="acc_dummy_detail">Ви увійшли з фейкового аккаунту. Ваші попередні покупки, участі в програмах бета-тестування і оцінки програм будуть недоступні.</string>
     <string name="acc_google">Вхід з аккаунт Google</string>
-    <string name="acc_google_detail">Ви увійшли з аккаунт Google. Ваші попередні покупки, участі в програмах бета-тестування і оцінки програм будуть недоступні.</string>
     <string name="account_dummy_email">Фейковая пошта</string>
-    <string name="account_dummy_name">Фейковий аккаунт</string>
     <string name="action_about">Про програму</string>
     <string name="action_accounts">Аккаунти</string>
-    <string name="action_apps">Мої програми та ігри</string>
     <string name="action_categories">Категорії</string>
     <string name="action_filter">Фільтри</string>
     <string name="action_filter_apps_with_ads">Програми з рекламою</string>
@@ -33,19 +27,13 @@
     <string name="action_make_normal">Зробити призначеним для користувача додатком</string>
     <string name="action_make_system">Зробити системним додатком</string>
     <string name="action_manual">Завантаження вручну</string>
-    <string name="action_search">Пошук</string>
     <string name="action_settings">Налаштування</string>
     <string name="action_spoofed">Пристрій</string>
-    <string name="action_switch">Переключитися на інший</string>
-    <string name="action_themes">Оформлення</string>
     <string name="action_unignore">Застосовувати оновлення</string>
     <string name="action_unwhitelist">Ігнорувати оновлення</string>
     <string name="action_updates">Оновлення</string>
-    <string name="action_usedummy">Використовувати Фейковий</string>
-    <string name="action_usegoogle">Використовувати Google</string>
     <string name="action_whitelist">Білий список для оновлення</string>
     <string name="activity_title_search">Результати %1$s</string>
-    <string name="activity_title_updates_and_other_apps">Мої програми та ігри</string>
     <string name="activity_title_updates_only">Оновлення</string>
     <string name="all_categories">Усі категорії</string>
     <string name="apps_by">Прогоами %1$s</string>
@@ -65,21 +53,17 @@
     <string name="delta_disabled">Дельта оновлення вимкнуті</string>
     <string name="delta_enabled">Дельта оновления увімкнені</string>
     <string name="details_cancel">Відміна</string>
-    <string name="details_changelog">Зміни</string>
     <string name="details_contains_ads">Містить рекламу</string>
     <string name="details_could_not_copy_apk">Не вдалось скопіювати apk</string>
-    <string name="details_depends_on">Залежить від : %1$s</string>
     <string name="details_description">Читати далі</string>
     <string name="details_download">Завантажити</string>
     <string name="details_download_checking">Перевірка</string>
     <string name="details_download_not_available">Недоступно</string>
-    <string name="details_downloading">Завантажуєтся</string>
     <string name="details_install">Встановити</string>
     <string name="details_install_failure">Не вдалося встановити</string>
     <string name="details_installed">Успішно встановлено</string>
     <string name="details_installing">Встановлюєтся</string>
     <string name="details_no_ads">Немає реклами</string>
-    <string name="details_no_dependencies">Нічого</string>
     <string name="details_not_available_on_play_store">Недоступно в Play Store</string>
     <string name="details_permissions">Дозволи програми</string>
     <string name="details_purchase">Купити</string>
@@ -88,7 +72,6 @@
     <string name="details_review_dialog_review_comment_hint">Комментарій</string>
     <string name="details_review_dialog_review_title_hint">Заголовок</string>
     <string name="details_review_dialog_title">Добавити ще щось?</string>
-    <string name="details_reviews">Відгуки</string>
     <string name="details_run">Відкрити</string>
     <string name="details_saved_in_downloads">Збережено в папку завантажень</string>
     <string name="details_share">Поділитися</string>
@@ -111,7 +94,6 @@
     <string name="dialog_message_package_id">Вже є додаток з таким іменем. Бажаєте перейти до властивостей програми?</string>
     <string name="dialog_message_reboot_required">Зміни вступлять в силу після перезавантаження. Перезавантажити зараз?</string>
     <string name="dialog_message_remounting_system">Працюємо з розділом / system. Це може зайняти деякий час.</string>
-    <string name="dialog_message_spoof_request">Підміна інформації про пристрій можлива, оскільки користувачі, відправляють звіти про помилки з інформацією про пристрій.</string>
     <string name="dialog_message_system_app_self">"Використання привілейованих дозволів дозволяє використовувати фонову установку додатків і вимагає, щоб Aurora був системним додатком.
 
 Даний процес недосконалий і специфічний для виробника пристрою, тому він може не спрацювати.
@@ -137,10 +119,6 @@
 Будь ласка, створіть спеціальний пароль і використовуйте його для входу в Aurora Store.
 
 Натисніть Створити пароль \" щоб перейти на сторінку створення пароля."</string>
-    <string name="dialog_theme_apply">Застосувати</string>
-    <string name="dialog_theme_later">Пізніше</string>
-    <string name="dialog_theme_msg">Для застосування теми потрібно перезапуск програми.</string>
-    <string name="dialog_theme_title">Застосувати?</string>
     <string name="dialog_title_busybox_not_available">Busybox недоступен</string>
     <string name="dialog_title_checking_busybox">Перевірка наявність busybox</string>
     <string name="dialog_title_logging_in">Вхід</string>
@@ -148,7 +126,6 @@
     <string name="dialog_title_package_id">Програма з цим іменем пакета існує</string>
     <string name="dialog_title_reboot_required">Потрібне перезавантаження</string>
     <string name="dialog_title_remounting_system">Робота з розділом /system</string>
-    <string name="dialog_title_spoof_request">Запит</string>
     <string name="dialog_title_system_app_self">Переміщення Aurora в систему</string>
     <string name="dialog_title_system_app_warning">Увага!</string>
     <string name="dialog_title_two_factor">Двухфакторна аутентифікація</string>
@@ -188,10 +165,8 @@
     <string name="flag_pharma_content">Незаконний рецепт або інший препарат</string>
     <string name="flag_sexual_content">Еротичний контент</string>
     <string name="flagging_title">Повідомити про невідповідний</string>
-    <string name="header_usr_email">Фейковий аккаунт</string>
     <string name="header_usr_name">Aurora</string>
     <string name="header_usr_noEmail">Увійдіть, щоб використовувати Aurora</string>
-    <string name="header_usr_noNetwork">Неможливо отримати</string>
     <string name="list_app_blacklisted">У чорному списку</string>
     <string name="list_app_depends_on_gsf">залежить від GSF</string>
     <string name="list_app_has_ads">є реклама</string>
@@ -199,11 +174,8 @@
     <string name="list_app_no_ads">немає реклами</string>
     <string name="list_app_system">Системний додаток</string>
     <string name="list_app_whitelisted">У білому списку</string>
-    <string name="list_check_updates">Перевірити оновлення</string>
-    <string name="list_check_updates_txt">Мої програми та ігри</string>
     <string name="list_empty_search">Додатки не знайдені</string>
     <string name="list_empty_updates">Немає оновлень для додатків</string>
-    <string name="list_incompatible">несумісне</string>
     <string name="list_line_2_updatable">Оновлено %1$s</string>
     <string name="list_update_all">Оновити</string>
     <string name="list_update_all_txt">Доступні оновлення</string>
@@ -212,8 +184,6 @@
     <string name="manual_download_hint_version_code">Код версії</string>
     <string name="manual_download_incompatible">Google Play Store вважає це додаток несумісним з вашим пристроєм. Це означає, що сервер Google Play Store не повернув код версії додатка.</string>
     <string name="manual_download_warning">На цій сторінці ви можете вручну вибрати версію програми для завантаження. Код версії - це номер, який визначає версію програми. Він починається з 1 і збільшується розробником програми кожен раз, коли появляється нова версія. Зазвичай Play Store дозволяє завантажувати тільки останню версію програми, сумісну з вашим пристроєм. Шляхом ручного введення номера зможете отримати і інші версії. N майте на увазі, що завантаження довільних версій програми не підтримується в Google Play Store. Успіх залежить від вдало підібраного версії коду версії. Навіть якщо вам пощастить і почнеться завантаження, ви можете отримати несумісний apk. Швидше за все ви витрачаєте свій час!</string>
-    <string name="navigation_drawer_close">Закрити навігаційну панель</string>
-    <string name="navigation_drawer_open">Відкрити навігаційну панель</string>
     <string name="no_permissions">Дозволи не використовуються.</string>
     <string name="notification_download_complete">Завантаження закінчено. Торкніться для встановлення.</string>
     <string name="notification_download_complete_new_permissions">Завантаження закінчено. Запрошений новий дозвіл.</string>
@@ -252,9 +222,6 @@
     <string name="pref_category_spoofing">Імітація</string>
     <string name="pref_category_ui">Інтерфейс користувача</string>
     <string name="pref_category_updates">Оновлення</string>
-    <string name="pref_dark_theme">Увімкнути світлу тему</string>
-    <string name="pref_dark_theme_summary_off">Використовується темна тема</string>
-    <string name="pref_dark_theme_summary_on">Використовується світла тема</string>
     <string name="pref_delete_apk_after_install">Видалення .apk після установки</string>
     <string name="pref_delete_apk_after_install_summary_off">Зараз .apk файли НЕ видаляються після установки</string>
     <string name="pref_delete_apk_after_install_summary_on">Зараз .apk файли видаляються після установки</string>
@@ -295,21 +262,6 @@
     <string name="testing_program_section_opted_out_message">Спробуйте нові функції до того, як вони стануть загальнодоступними. Надсилайте ваш відгук безпосередньо розробнику.</string>
     <string name="testing_program_section_opted_out_propagating_message">Вихід з програми бета тестування може зайняти кілька хвилин</string>
     <string name="testing_program_section_opted_out_title">Стати бета тестером</string>
-    <string name="thank_you">Дякую</string>
-    <string name="theme_accent">Кольор </string>
-    <string name="theme_accent_des">Колір  застосовується до більшості елементів інтерфейсу програми таким, як кнопки, перемикачі, прапори, типи зображень, плаваючі кнопки і тд.</string>
-    <string name="theme_base">Обрати тему</string>
-    <string name="theme_base_des">Обрати одну з базових тем додатку</string>
-    <string name="theme_black">Чорна</string>
-    <string name="theme_dark">Темна</string>
-    <string name="theme_light">Світла</string>
-    <string name="theme_primary">Основний колір</string>
-    <string name="theme_primary_des">Темний відтінок основного кольору генерується автоматично</string>
-    <string name="theme_restart">Перезапустити</string>
-    <string name="theme_restart_des">Інтерфейс програми потрібно перезапустити, щоб зміни кольору застосувалися глобально</string>
-    <string name="theme_restart_txt">Перезапустити інтерефейс</string>
-    <string name="theme_select">Обрати</string>
-    <string name="themes">Теми</string>
     <string name="top_categories">Популярні категорії</string>
     <string name="warn_app_purchase">Купівля додатків поки недоступна!</string>
 </resources>

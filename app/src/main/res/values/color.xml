@@ -15,31 +15,13 @@
     <color name="lightGray">#EEEEEE</color>
 
     <!--Buttons-->
-    <color name="button_bg">#009688</color>
-    <color name="round_bg">@color/colorShade03</color>
 
     <!--Misc-->
-    <color name="changelog_txt">#3F51B5</color>
-    <color name="changelog_bg">#E3F2FD</color>
 
     <!--Text-->
-    <color name="colorText">#121212</color>
-    <color name="colorTextPrimary">#212121</color>
-    <color name="colorTextSecondary">#535353</color>
-
-    <color name="colorTextDark">#FFFFFF</color>
-    <color name="colorTextPrimaryDark">#F5F5F5</color>
-    <color name="colorTextSecondaryDark">#EEEEEE</color>
 
     <!--Background-->
-    <color name="colorBackground">#F5F5F5</color>
     <color name="colorBackgroundCard">#FFFFFF</color>
-
-    <color name="colorBackgroundDark">#303030</color>
-    <color name="colorBackgroundCardDark">#424242</color>
-
-    <color name="colorBackgroundBlack">#000000</color>
-    <color name="colorBackgroundCardBlack">#000000</color>
 
     <!--Shades-->
     <color name="colorShade01">@color/colorRed</color>
@@ -52,9 +34,6 @@
     <color name="colorBlue">#0088cc</color>
     <color name="colorRed">#F44336</color>
     <color name="colorGreen">#4CAF50</color>
-    <color name="colorPurple">#9C27B0</color>
     <color name="colorOrange">#FF9800</color>
-    <color name="colorTeal">#009688</color>
     <color name="colorGold">#FFBF00</color>
-    <color name="semiTransparentAccent">#344285f4</color>
 </resources>

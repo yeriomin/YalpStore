@@ -19,11 +19,6 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
-    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
-        <item name="android:windowDisablePreview">true</item>
-    </style>
-
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
         <item name="android:taskOpenEnterAnimation">@anim/slide_in_right</item>
         <item name="android:taskOpenExitAnimation">@anim/slide_out_left</item>

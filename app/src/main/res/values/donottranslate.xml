@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name" translatable="false">Aurora</string>
-    <string name="about_gsf_id" translatable="false">Google Services Framework ID</string>
     <string name="expansion_file_main" translatable="false">"%1$s - Main expansion"</string>
     <string name="expansion_file_patch" translatable="false">"%1$s - Secondary expansion"</string>
     <string name="two_items" translatable="false">"%1$s %2$s"</string>
-    <string name="content_description_download_options" translatable="false">"Download options"</string>
     <string name="content_description_review_author_avatar" translatable="false">"Review author avatar"</string>
     <string name="content_description_review_edit" translatable="false">"Edit your review"</string>
     <string name="content_description_review_delete" translatable="false">"Delete your review"</string>

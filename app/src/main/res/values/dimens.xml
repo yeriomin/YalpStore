@@ -6,16 +6,10 @@
     <dimen name="icon_size_med">48dp</dimen>
     <dimen name="icon_size_cat">36dp</dimen>
     <dimen name="icon_size_small">24dp</dimen>
-    <dimen name="listview_height">80dp</dimen>
-    <dimen name="card_height">220dp</dimen>
     <dimen name="card_height_small">100dp</dimen>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
-    <dimen name="nav_header_height">176dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="toolbar_height">80dp</dimen>
 

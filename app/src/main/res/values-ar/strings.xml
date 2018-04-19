@@ -1,5 +1,4 @@
 <resources>
-    <string name="about_logged_in">أنت مسجل دخولك بأسم</string>
     <string name="about_app">جالكسي هو بديل مفتوح المصدر لمتجر Play ، حيث يتيح لك تنزيل التطبيقات من متجر Play. و يمكنه البحث عن تحديثات للتطبيقات المثبتة ويتيح لك البحث عن تطبيقات أخرى</string>
     <string name="about_opensource">مكتبات مفتوحة المصدر</string>
     <string name="about_contributors">المساهمون</string>
@@ -7,13 +6,9 @@
     <string name="about_github">GitHub</string>
     <string name="about_xda">موقع صفحة التطبيق</string>
     <string name="about_telegram">تيلجرام</string>
-    <string name="about_copied_to_clipboard">نسخ إلى الحافظة</string>
     <string name="list_line_2_updatable">"تحديث في %1$s"</string>
     <string name="list_empty_updates">لاتوجد تطبيقات بحاجة الى تحديث</string>
     <string name="list_empty_search">لم يتم العثور على تطبيقات</string>
-    <string name="list_incompatible">غير متوافق</string>
-    <string name="list_check_updates">تفقد التحديثات</string>
-    <string name="list_check_updates_txt">تطبيقاتي وألعابي</string>
     <string name="list_update_all">تحديث الكل</string>
     <string name="list_update_all_txt">التحديثات المتوفرة</string>
     <string name="list_updating">تحديث …</string>
@@ -35,16 +30,11 @@
     <string name="action_filter_category">"الفئة: %1$s"</string>
     <string name="action_filter_rating">"التقييم: %1$s"</string>
     <string name="action_filter_downloads">"التنزيلات: %1$s"</string>
-    <string name="action_apps">"تطبيقاتي وألعابي"</string>
     <string name="action_logout">تسجيل الخروج</string>
     <string name="action_login">تسجيل الدخول</string>
-    <string name="action_usedummy">استخدام الوهمي</string>
-    <string name="action_usegoogle">استخدام قوقل</string>
     <string name="acc_dummy">تسجيل الدخول باستخدام حساب وهمي</string>
     <string name="acc_google">تسجيل الدخول باستخدام حساب Google</string>
-    <string name="action_switch">تبديل الوهمي</string>
     <string name="action_accounts">الحسابات</string>
-    <string name="action_search">بحث</string>
     <string name="action_updates">تحديثات</string>
     <string name="action_ignore">أضف إلى القائمة السوداء</string>
     <string name="action_unignore">إزالة من القائمة السوداء</string>
@@ -107,8 +97,6 @@
  العملية غير كاملة ومحددة البائعين ، لذلك قد لا تعمل.\n
  \n
  افعلها؟</string>
-    <string name="dialog_title_spoof_request">طلب</string>
-    <string name="dialog_message_spoof_request">من المحتمل أن تكون محاكاة الجهاز مفعلة نظرا لأن المستخدمين مثلك يريدون إرسال تقارير الأخطاء تحتوي على معلومات الجهاز. إذا كنت تريد أن تكون التعريفات دقيقة ومحدثة ، فالرجاء النقر فوق موافق وسيتم إرسال معلومات جهازك إلى مطور متجر Aurora.</string>
     <string name="error_incorrect_password">بريد أو كلمة مرورغير صحيحة.</string>
     <string name="error_credentials_empty">الرجاء تقديم بيانات اعتماد حساب google ، من فضلك.</string>
     <string name="error_no_network">لا يوجد اتصال أنترنت.</string>
@@ -124,8 +112,6 @@
     <string name="details_updated">"تم تحديث : %1$s"</string>
     <string name="details_size">"%1$s"</string>
     <string name="details_description">اقرأ أكثر</string>
-    <string name="details_changelog">التغييرات</string>
-    <string name="details_reviews">التعليقات</string>
     <string name="details_rate_this_app">قيم هذا التطبيق:</string>
     <string name="details_you_rated_this_app">لقد قيّمت هذا التطبيق:</string>
     <string name="details_permissions">صلاحيات التطبيق</string>
@@ -138,7 +124,6 @@
     <string name="details_cancel">إلغاء</string>
     <string name="details_install">تثبيت</string>
     <string name="details_uninstall">الغاء التثبيت</string>
-    <string name="details_downloading">جارى التنزيل</string>
     <string name="details_installing">يثبت</string>
     <string name="details_download_checking">فحص</string>
     <string name="details_installed">"تم التثبيت بنجاح"</string>
@@ -150,8 +135,6 @@
     <string name="details_review_dialog_fields_optional">يمكنك ترك كل الخانات فارغة.</string>
     <string name="details_share">مشاركة</string>
     <string name="details_signature_mismatch">تم توقيع الإصدار الجديد مع مفتاح مختلف عن القديم. لتثبيت الإصدار الجديد ، يجب إلغاء تثبيت الإصدار القديم أولاً. يرجى القيام بذلك والمحاولة مرة أخرى. (لاحظ أن إلغاء التثبيت سوف يمحو أي بيانات داخلية يخزنها التطبيق)</string>
-    <string name="details_depends_on">"يعتمد على : %1$s"</string>
-    <string name="details_no_dependencies">لاشيء</string>
     <string name="details_contains_ads">يحتوي على إعلانات</string>
     <string name="details_no_ads">لا إعلانات</string>
     <string name="details_not_available_on_play_store">غير متوفر على متجر Play</string>
@@ -166,7 +149,6 @@
  ضع في اعتبارك أن استخدام هذا التطبيق ينتهك شروط واتفاقيات متجر Play .\n
  قد يكون من الأفضل استخدام حساب Google لست بحاجته لتسجيل الدخول إلى متجر Play مرة واحدة على الأقل وقد قبلت شروط واتفاقيات متجر Play.</string>
     <string name="activity_title_updates_only">التحديثات</string>
-    <string name="activity_title_updates_and_other_apps">"تطبيقاتي وألعابي"</string>
     <string name="activity_title_search">"النتائج لـ %1$s"</string>
     <string name="notification_installation_complete">التحديث مثبت.</string>
     <string name="notification_installation_failed">فشل تحديث التثبيت.</string>
@@ -231,13 +213,6 @@
     <string name="pref_auto_whitelist">القائمة البيضاء التلقائية</string>
     <string name="pref_auto_whitelist_summary_on">يتم وضع التطبيقات المثبتة بواسطة Aurora Store تلقائيًا في القائمة البيضاء</string>
     <string name="pref_auto_whitelist_summary_off">تحتاج إلى إضافة التطبيقات إلى القائمة البيضاء يدويًا</string>
-    <string name="pref_dark_theme">تفعيل الثيم المضيء</string>
-    <string name="pref_dark_theme_summary_off">الثيم الداكن مفعل</string>
-    <string name="pref_dark_theme_summary_on">الثيم المضيء مفعل</string>
-    <string name="dialog_theme_title">تطبيق الآن ؟</string>
-    <string name="dialog_theme_msg">يتطلب تغيير السمة إعادة تشغيل التطبيق.</string>
-    <string name="dialog_theme_apply">تطبيق</string>
-    <string name="dialog_theme_later">في وقت لاحق</string>
     <string name="download_manager_ERROR_UNKNOWN">خطأ غير معروف.</string>
     <string name="download_manager_ERROR_FILE_ERROR">خطأ غير معروف في تخزين الملفات.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">تم استلام كود HTTP الذي لا يستطيع مدير التنزيل التعامل معه. هذا خطأ في الخادم.</string>
@@ -253,7 +228,6 @@
  \n
  ضع في اعتبارك أن تنزيل إصدارات عشوائية من التطبيقات لا يدعمه متجر Google Play. يعتمد نجاحك على تخمين محظوظ لرمز الإصدار. حتى إذا كنت على حق ، وتحصل على التنزيل للبدء ، فقد تحصل على ملف apk غير متوافق. على الأرجح ، أنت تضيع وقتك!</string>
     <string name="manual_download_hint_version_code">رمز الإصدار هنا</string>
-    <string name="thank_you">شكرا</string>
     <string name="first_login_message">لاستخدام حسابك الخاص ، اختر \"تسجيل الخروج\" في القائمة</string>
     <string name="early_access">الوصول المبكر</string>
     <string name="testing_program_opt_in">انضم</string>
@@ -287,32 +261,12 @@
     <string name="apps_by">التطبيق بواسطة %1$s</string>
     <string name="pref_message_fallback">محاولة تعيين دليل احتياطي (%1$s)?</string>
     <string name="warn_app_purchase">شراء التطبيق غير متوفر حتى الآن!</string>
-    <string name="navigation_drawer_open">افتح درج التنقل</string>
-    <string name="navigation_drawer_close">اغلق درج التنقل</string>
     <string name="header_usr_name">Aurora</string>
-    <string name="header_usr_email">تسجيل الدخول باستخدام حساب وهمي</string>
     <string name="header_usr_noEmail">يرجى تسجيل الدخول لاستخدام Aurora</string>
-    <string name="header_usr_noNetwork">غير قادر على استرداد</string>
-    <string name="account_dummy_name">حساب وهمي</string>
     <string name="account_dummy_email">البريد الإلكتروني الوهمي</string>
     <string name="delta_enabled">تم تفعيل تحديثات دلتا</string>
     <string name="delta_disabled">تم تعطيل تحديثات دلتا</string>
     <string name="no_permissions">لم يتم استخدام أي أذونات.</string>
-    <string name="themes">الثيمات</string>
-    <string name="action_themes">تخصيص</string>
-    <string name="theme_select">تحديد</string>
-    <string name="theme_restart">إعادة تشغيل</string>
-    <string name="theme_light">مضيء</string>
-    <string name="theme_dark">مظلم</string>
-    <string name="theme_black">ليل</string>
-    <string name="theme_base">اختر السمة</string>
-    <string name="theme_base_des">اختر من بين السمات المتاحة سمة التطبيق الأساسي</string>
-    <string name="theme_primary">اللون الأساسي</string>
-    <string name="theme_primary_des">يتم تفعيل الظل مع الثيم الليلي بشكل تلقائي</string>
-    <string name="theme_accent">اللون الثانوي</string>
-    <string name="theme_accent_des">ينطبق اللون الثانوي على معظم عناصر واجهة المستخدم ، الأزرار ، المفاتيح ، مربعات الاختيار ، ألوان الصورة ، FAB الخ</string>
-    <string name="theme_restart_txt">إعادة تشغيل واجهة المستخدم</string>
-    <string name="theme_restart_des">يجب إعادة تشغيل التطبيق من أجل تطبيق اللون الثانوي بشكل كامل</string>
 
     <string name="device_model">"%1$s ( %2$s )"</string>
     <string name="device_manufacturer">"بواسطة : %1$s"</string>
@@ -323,6 +277,4 @@
     <string name="device_cpu">"%1$s"</string>
     <string name="device_gsfID">"GSF ID : %1$s"</string>
 
-    <string name="acc_dummy_detail">يتم تسجيل دخولك حاليًا عبر حساب وهمي ، ولن تكون عمليات الشراء السابقة للتطبيقات والبرامج التجريبية ومراجعات التطبيقات متاحة</string>
-    <string name="acc_google_detail">"لقد قمت بتسجيل الدخول عبر حساب Google الخاص بك ، وستتوفر عمليات الشراء السابقة للتطبيقات والبرامج التجريبية والمراجعات."</string>
 </resources>
