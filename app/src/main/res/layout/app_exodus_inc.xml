@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/exodus_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/outline_bg"
+    android:orientation="vertical"
+    android:padding="4dp"
+    android:visibility="gone">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:id="@+id/privacy_ico"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_security"
+            android:tint="@color/colorGreen" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/privacy_ico"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/exodus_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/exodus_title"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/exodus_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/exodus_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/viewMore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/exodus_viewMore"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="5dp"
+        android:fontFamily="@font/google_sans_bold"
+        android:gravity="end"
+        android:text="@string/exodus_powered"
+        android:textSize="12sp" />
+</LinearLayout>

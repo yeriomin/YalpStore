@@ -15,6 +15,7 @@ import com.dragons.aurora.fragment.details.BackToPlayStore;
 import com.dragons.aurora.fragment.details.Beta;
 import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.fragment.details.DownloadOrInstall;
+import com.dragons.aurora.fragment.details.ExodusPrivacy;
 import com.dragons.aurora.fragment.details.GeneralDetails;
 import com.dragons.aurora.fragment.details.Permissions;
 import com.dragons.aurora.fragment.details.Review;
@@ -148,6 +149,7 @@ public class DetailsActivity extends AuroraActivity {
         new SystemAppPage(this, app).draw();
         new Video(this, app).draw();
         new Beta(this, app).draw();
+        new ExodusPrivacy(this, app).draw();
         if (null != downloadOrInstallFragment) {
             downloadOrInstallFragment.unregisterReceivers();
         }

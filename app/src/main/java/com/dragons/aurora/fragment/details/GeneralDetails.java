@@ -117,6 +117,8 @@ public class GeneralDetails extends Abstract {
         paintTextView(color, R.id.beta_header);
         paintTextView(color, R.id.permissions_header);
         paintTextView(color, R.id.readMore);
+        paintTextView(color,R.id.exodus_title);
+        paintImageView(color,R.id.privacy_ico);
     }
 
     private void paintButton(int color, int buttonId) {
@@ -135,6 +137,12 @@ public class GeneralDetails extends Abstract {
         TextView textView = activity.findViewById(textViewId);
         if (textView != null)
             textView.setTextColor(color);
+    }
+
+    private void paintImageView(int color, int imageViewId) {
+        ImageView imageView = activity.findViewById(imageViewId);
+        if (imageView != null)
+            imageView.setColorFilter(color);
     }
 
     private void drawGeneralDetails(App app) {

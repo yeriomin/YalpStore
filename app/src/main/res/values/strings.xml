@@ -342,4 +342,12 @@
     <string name="category_topUtility">Tools &amp; Utilities</string>
     <string name="category_communityApps">Based on Aurora Community</string>
     <string name="community_suggestion">You have any app or game which you like, and u want to share with us? Submit it to our Community.</string>
+
+    <string name="exodus_title">Aurora Protect</string>
+    <string name="exodus_powered">Powered by Exodus</string>
+    <string name="exodus_safe">Safe to use</string>
+    <string name="exodus_unsafe">Unsafe to use</string>
+    <string name="exodus_noTracker">Contains no trackers</string>
+    <string name="exodus_hasTracker">Contains %1$s trackers</string>
+    <string name="exodus_viewMore">View Details</string>
 </resources>

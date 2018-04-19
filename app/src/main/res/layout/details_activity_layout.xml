@@ -168,6 +168,13 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp" />
 
+                    <!-- Exodus -->
+                    <include
+                        layout="@layout/app_exodus_inc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp" />
+
                     <!-- Read More -->
                     <include
                         layout="@layout/app_more_inc"
