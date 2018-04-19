@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<in.dragons.custom.BlurView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.dragons.custom.BlurView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/blurview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -29,4 +29,4 @@
             android:layout_height="wrap_content"
             android:paddingStart="15dp" />
     </LinearLayout>
-</in.dragons.custom.BlurView>
+</com.dragons.custom.BlurView>

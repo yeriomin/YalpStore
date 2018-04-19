@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Galaxy</string>
+    <string name="app_name" translatable="false">Aurora</string>
     <string name="about_gsf_id" translatable="false">Google Services Framework ID</string>
     <string name="expansion_file_main" translatable="false">"%1$s - Main expansion"</string>
     <string name="expansion_file_patch" translatable="false">"%1$s - Secondary expansion"</string>
@@ -26,7 +26,7 @@
     <string name="dev_country3">Bacau, Romania</string>
     <string name="dev1_imgURL">"https://avatars2.githubusercontent.com/u/21051221"</string>
     <string name="dev2_imgURL">"https://avatars0.githubusercontent.com/u/554737"</string>
-    <string name="linkGit">"https://github.com/whyorean/Galaxy"</string>
+    <string name="linkGit">"https://github.com/whyorean/Aurora"</string>
     <string name="linkXDA">"https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733"</string>
-    <string name="linkTelegram">"https://t.me/GalaxyOfficial"</string>
+    <string name="linkTelegram">"https://t.me/AuroraOfficial"</string>
 </resources>

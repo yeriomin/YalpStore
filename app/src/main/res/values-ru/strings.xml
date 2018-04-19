@@ -1,6 +1,6 @@
 <resources>
     <string name="about_logged_in">Вы вошли как</string>
-    <string name="about_app">Galaxy это альтернатива Play Store с открытым исходным кодом, позволяющая загружать приложения из Play Store. Galaxy позволяет обновлять установленные приложения, искать и скачаивать новые.</string>
+    <string name="about_app">Aurora это альтернатива Play Store с открытым исходным кодом, позволяющая загружать приложения из Play Store. Aurora позволяет обновлять установленные приложения, искать и скачаивать новые.</string>
     <string name="about_opensource">Библиотеки с открытым исходным кодом</string>
     <string name="about_contributors">Участники проекта</string>
     <string name="about_devs">Разработчики</string>
@@ -64,15 +64,15 @@
     <string name="dialog_two_factor_cancel">Не сейчас</string>
     <string name="dialog_two_factor_create_password">Создать пароль</string>
     <string name="dialog_title_two_factor">Двухфакторная аутентификация</string>
-    <string name="dialog_message_two_factor">Похоже вы включили двухфакторную аутентификацию для своего аккаунта.\n\nПожалуйста, создайте специальный пароль и используйте его для входа в Galaxy Store.\n\nНажмите \"Создать пароль\" чтобы перейти на страницу создания пароля.</string>
+    <string name="dialog_message_two_factor">Похоже вы включили двухфакторную аутентификацию для своего аккаунта.\n\nПожалуйста, создайте специальный пароль и используйте его для входа в Aurora Store.\n\nНажмите \"Создать пароль\" чтобы перейти на страницу создания пароля.</string>
     <string name="dialog_title_logout">Выйти?</string>
     <string name="dialog_message_logout">Вы уверены, что хотите выйти?</string>
     <string name="dialog_account_type_provided_by_user">Войти в свой аккаунт Google</string>
-    <string name="dialog_account_type_predefined">Войти в аккаунт Galaxy Store</string>
+    <string name="dialog_account_type_predefined">Войти в аккаунт Aurora Store</string>
     <string name="dialog_account_type_title">Как вы хотите войти в Google Play Store?</string>
     <string name="dialog_title_logging_in">Вход</string>
     <string name="dialog_message_logging_in_provided_by_user">Попытка входа с введёнными учетными данными</string>
-    <string name="dialog_message_logging_in_predefined">Попытка входа с учетными данными Galaxy Store</string>
+    <string name="dialog_message_logging_in_predefined">Попытка входа с учетными данными Aurora Store</string>
     <string name="dialog_title_remounting_system">Работа с разделом /system</string>
     <string name="dialog_message_remounting_system">"Работаем с разделом /system. Это может занять некоторое время."</string>
     <string name="dialog_title_checking_busybox">Проверка наличие busybox</string>
@@ -85,10 +85,10 @@
     <string name="dialog_message_system_app_warning_to_system">Вы собираетесь сделать приложение системным. Большинству приложений не требуется быть системными для работы.\n\nИмейте в виду, что процесс преобразования в системное приложение НЕ поддерживается ОС Android и поэтому НЕ безопасен и можен НЕ сработать.\n\nНе делайте это из любопытства. Это может сломать ваше устройство. Сделайте бэкап перед началом.</string>
     <string name="dialog_message_system_app_warning_to_normal">Вы собираетесь сделать приложение пользовательским. Большинству системных приложений требуется быть системными для работы.\n\nИмейте в виду, что процесс преобразования в пользовательское приложение НЕ поддерживается ОС Android и поэтому НЕ безопасен и можен НЕ сработать.\n\nНе делайте это из любопытства. Это может сломать ваше устройство. Сделайте бэкап перед началом.</string>
     <string name="dialog_message_system_app_warning_uninstall">Вы уверены, что хотите удалить это системное приложение? Системные приложения установлены поставщиком устройства и, скорее всего, необходимы для его нормальной работы.\n\nИмейте в виду, что удаление системных приложений НЕ поддерживается ОС Android и поэтому НЕ безопасно и можен НЕ сработать.\n\nНе делайте это из любопытства. Это может сломать ваше устройство. Сделайте бэкап перед началом.</string>
-    <string name="dialog_title_system_app_self">Перемещение Galaxy в систему</string>
-    <string name="dialog_message_system_app_self">Использование привилегированных разрешений позволяет использовать фоновую установку приложений и требует, чтобы Galaxy был системным приложением.\n\nДанный процесс несовершенен и специфичен для производителя устройства, поэтому он может не сработать.\n\nПродолжить?</string>
+    <string name="dialog_title_system_app_self">Перемещение Aurora в систему</string>
+    <string name="dialog_message_system_app_self">Использование привилегированных разрешений позволяет использовать фоновую установку приложений и требует, чтобы Aurora был системным приложением.\n\nДанный процесс несовершенен и специфичен для производителя устройства, поэтому он может не сработать.\n\nПродолжить?</string>
     <string name="dialog_title_spoof_request">Запрос</string>
-    <string name="dialog_message_spoof_request">Подмена информации об устройстве возможна, поскольку пользователи, отправляют отчеты об ошибках с информацией об устройстве. Если вы хотите, чтобы данные были точными и актуальными, нажмите «ОК», и информация о вашем устройстве будет отправлена разработчику Galaxy Store.</string>
+    <string name="dialog_message_spoof_request">Подмена информации об устройстве возможна, поскольку пользователи, отправляют отчеты об ошибках с информацией об устройстве. Если вы хотите, чтобы данные были точными и актуальными, нажмите «ОК», и информация о вашем устройстве будет отправлена разработчику Aurora Store.</string>
     <string name="error_incorrect_password">Неверный email или пароль.</string>
     <string name="error_credentials_empty">Предоставьте, пожалуйста, данные учетной записи google.</string>
     <string name="error_no_network">Нет соединения.</string>
@@ -164,7 +164,7 @@
     <string name="pref_update_list_black">Изменить чёрный список приложений</string>
     <string name="pref_update_list_white">Изменить белый список приложений</string>
     <string name="pref_background_update_interval_manually">Вручную</string>
-    <string name="pref_background_update_interval_never">При запуске Galaxy Store</string>
+    <string name="pref_background_update_interval_never">При запуске Aurora Store</string>
     <string name="pref_background_update_interval_hourly">Ежечасно</string>
     <string name="pref_background_update_interval_daily">Еженедневно</string>
     <string name="pref_background_update_interval_weekly">Еженедельно</string>
@@ -187,7 +187,7 @@
     <string name="pref_category_installation">Установка</string>
     <string name="pref_category_spoofing">Имитация</string>
     <string name="pref_category_ui">Интерфейс пользователя</string>
-    <string name="pref_not_privileged">Доступно только если Galaxy установлен в систему</string>
+    <string name="pref_not_privileged">Доступно только если Aurora установлен в систему</string>
     <string name="pref_installation_method">Метод установки</string>
     <string name="pref_installation_method_default">Стандартный диалог установки, фоновая установка недоступна</string>
     <string name="pref_installation_method_root">С использованием root</string>
@@ -200,7 +200,7 @@
     <string name="pref_download_deltas_summary_on">Сейчас загружаются только изменения</string>
     <string name="pref_download_directory">Папка для загрузок</string>
     <string name="pref_auto_whitelist">Автоматический белый список</string>
-    <string name="pref_auto_whitelist_summary_on">Приложения установленные при помощи Galaxy Store автоматически попадают в белый список</string>
+    <string name="pref_auto_whitelist_summary_on">Приложения установленные при помощи Aurora Store автоматически попадают в белый список</string>
     <string name="pref_auto_whitelist_summary_off">Вам нужно вручную внести приложения в белый список</string>
     <string name="pref_dark_theme">Включить светлую тему</string>
     <string name="pref_dark_theme_summary_off">Используется тёмная тема</string>
@@ -258,9 +258,9 @@
     <string name="warn_app_purchase">Покупка приложений пока недоступна !</string>
     <string name="navigation_drawer_open">Открыть навигационную панель</string>
     <string name="navigation_drawer_close">Закрыть навигационную панель</string>
-    <string name="header_usr_name">Galaxy</string>
+    <string name="header_usr_name">Aurora</string>
     <string name="header_usr_email">Фейковый аккаунт</string>
-    <string name="header_usr_noEmail">Войдите, чтобы использовать Galaxy</string>
+    <string name="header_usr_noEmail">Войдите, чтобы использовать Aurora</string>
     <string name="header_usr_noNetwork">Невозможно извлечь</string>
     <string name="account_dummy_name">Фейковый аккант</string>
     <string name="account_dummy_email">Фейковая почта</string>

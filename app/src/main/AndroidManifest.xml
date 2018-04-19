@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="in.dragons.galaxy"
+    package="com.dragons.aurora"
     android:installLocation="internalOnly">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -22,7 +22,7 @@
         android:required="false" />
 
     <application
-        android:name=".GalaxyApplication"
+        android:name=".AuroraApplication"
         android:allowBackup="true"
         android:banner="@mipmap/ic_launcher"
         android:fullBackupContent="true"
@@ -119,7 +119,7 @@
             android:label="@string/action_spoofed"
             android:launchMode="singleInstance" />
         <activity
-            android:name=".activities.GalaxyActivity"
+            android:name=".activities.AuroraActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustPan">
@@ -160,7 +160,7 @@
 
             <meta-data
                 android:name="android.app.default_searchable"
-                android:value=".GalaxyActivity" />
+                android:value=".AuroraActivity" />
         </activity>
 
         <activity
@@ -189,8 +189,8 @@
             android:theme="@style/LoginTheme" />
 
         <provider
-            android:name="in.dragons.galaxy.FileProvider"
-            android:authorities="in.dragons.galaxy.fileprovider"
+            android:name="com.dragons.aurora.FileProvider"
+            android:authorities="com.dragons.aurora.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -198,14 +198,14 @@
                 android:resource="@xml/paths" />
         </provider>
         <provider
-            android:name=".GalaxySuggestionProvider"
-            android:authorities="in.dragons.galaxy.GalaxySuggestionProvider"
+            android:name=".AuroraSuggestionProvider"
+            android:authorities="com.dragons.aurora.AuroraSuggestionProvider"
             android:enabled="true"
             android:exported="false" />
 
-        <receiver android:name="in.dragons.galaxy.UpdateChecker" />
+        <receiver android:name="com.dragons.aurora.UpdateChecker" />
         <receiver
-            android:name="in.dragons.galaxy.BootReceiver"
+            android:name="com.dragons.aurora.BootReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

@@ -34,7 +34,7 @@
             android:layout_toEndOf="@+id/action_icon"
             android:fontFamily="@font/google_sans_bold"
             android:gravity="center"
-            android:text="Galaxy"
+            android:text="Aurora"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="17sp" />
 

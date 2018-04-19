@@ -66,17 +66,17 @@
     <string name="dialog_title_two_factor">التحقق بخطوتين</string>
     <string name="dialog_message_two_factor">يبدو أنك قمت بتمكين التحقق بخطوتين لحسابك.\n
  \n
- من فضلك ، أنشئ كلمة مرور مخصصة للتطبيق لـ Galaxy Store واستخدمها لتسجيل الدخول إلى متجر Galaxy.\n
+ من فضلك ، أنشئ كلمة مرور مخصصة للتطبيق لـ Aurora Store واستخدمها لتسجيل الدخول إلى متجر Aurora.\n
  \n
  انقر فوق \"إنشاء كلمة المرور\" ليتم إعادة توجيهك إلى صفحة إنشاء كلمة المرور.</string>
     <string name="dialog_title_logout">تسجيل الخروج؟</string>
     <string name="dialog_message_logout">هل أنت متأكد أنك تريد تسجيل الخروج؟</string>
     <string name="dialog_account_type_provided_by_user">بـ حساب Google الخاص بك</string>
-    <string name="dialog_account_type_predefined">بـ حساب متجر Galaxy وهمي</string>
+    <string name="dialog_account_type_predefined">بـ حساب متجر Aurora وهمي</string>
     <string name="dialog_account_type_title">كيف تريد تسجيل الدخول إلى متجر Google Play؟</string>
     <string name="dialog_title_logging_in">تسجيل الدخول</string>
     <string name="dialog_message_logging_in_provided_by_user">محاولة تسجيل الدخول باستخدام بيانات الاعتماد التي قدمتها</string>
-    <string name="dialog_message_logging_in_predefined">محاولة تسجيل الدخول باستخدام بيانات الاعتماد التي يوفرها متجر Galaxy</string>
+    <string name="dialog_message_logging_in_predefined">محاولة تسجيل الدخول باستخدام بيانات الاعتماد التي يوفرها متجر Aurora</string>
     <string name="dialog_title_remounting_system">العمل مع / قسم النظام</string>
     <string name="dialog_message_remounting_system">"العمل مع قسم / النظام. قد يستغرق هذا بعض الوقت."</string>
     <string name="dialog_title_checking_busybox">التحقق مما اذا كان busybox متاح</string>
@@ -101,14 +101,14 @@
  ضع في اعتبارك أن إزالة تطبيقات النظام غير مدعومة من قبل نظام التشغيل Android وبالتالي فهي غير آمنة وغير مضمونة للعمل.\n
  \n
  لا تفعل ذلك بدافع الفضول. قد يتعطل جهازك. قم بعمل نسخ احتياطي لجهازك قبل المحاولة.</string>
-    <string name="dialog_title_system_app_self">جعل Galaxy تطبيق النظام</string>
-    <string name="dialog_message_system_app_self">يتطلب استخدام الأذونات المميزة للسماح بتثبيت التطبيقات في الخلفية جعل تطبيق Galaxy تطبيقًا للنظام.\n
+    <string name="dialog_title_system_app_self">جعل Aurora تطبيق النظام</string>
+    <string name="dialog_message_system_app_self">يتطلب استخدام الأذونات المميزة للسماح بتثبيت التطبيقات في الخلفية جعل تطبيق Aurora تطبيقًا للنظام.\n
  \n
  العملية غير كاملة ومحددة البائعين ، لذلك قد لا تعمل.\n
  \n
  افعلها؟</string>
     <string name="dialog_title_spoof_request">طلب</string>
-    <string name="dialog_message_spoof_request">من المحتمل أن تكون محاكاة الجهاز مفعلة نظرا لأن المستخدمين مثلك يريدون إرسال تقارير الأخطاء تحتوي على معلومات الجهاز. إذا كنت تريد أن تكون التعريفات دقيقة ومحدثة ، فالرجاء النقر فوق موافق وسيتم إرسال معلومات جهازك إلى مطور متجر Galaxy.</string>
+    <string name="dialog_message_spoof_request">من المحتمل أن تكون محاكاة الجهاز مفعلة نظرا لأن المستخدمين مثلك يريدون إرسال تقارير الأخطاء تحتوي على معلومات الجهاز. إذا كنت تريد أن تكون التعريفات دقيقة ومحدثة ، فالرجاء النقر فوق موافق وسيتم إرسال معلومات جهازك إلى مطور متجر Aurora.</string>
     <string name="error_incorrect_password">بريد أو كلمة مرورغير صحيحة.</string>
     <string name="error_credentials_empty">الرجاء تقديم بيانات اعتماد حساب google ، من فضلك.</string>
     <string name="error_no_network">لا يوجد اتصال أنترنت.</string>
@@ -193,7 +193,7 @@
     <string name="pref_update_list_black">تغيير التطبيقات القائمة السوداء</string>
     <string name="pref_update_list_white">تغيير التطبيقات القائمة البيضاء</string>
     <string name="pref_background_update_interval_manually">يدويا فقط</string>
-    <string name="pref_background_update_interval_never">فقط عند تشغيل متجر Galaxy</string>
+    <string name="pref_background_update_interval_never">فقط عند تشغيل متجر Aurora</string>
     <string name="pref_background_update_interval_hourly">مرة كل ساعة</string>
     <string name="pref_background_update_interval_daily">يوميا</string>
     <string name="pref_background_update_interval_weekly">اسبوعي</string>
@@ -216,7 +216,7 @@
     <string name="pref_category_installation">التثبيت</string>
     <string name="pref_category_spoofing">محاكاة</string>
     <string name="pref_category_ui">واجهة المستخدم</string>
-    <string name="pref_not_privileged">متوفر فقط إذا كان Galaxy تطبيقًا للنظام</string>
+    <string name="pref_not_privileged">متوفر فقط إذا كان Aurora تطبيقًا للنظام</string>
     <string name="pref_installation_method">طريقة التثبيت</string>
     <string name="pref_installation_method_default">مربع حوار التثبيت الافتراضي ، بدون تثبيتات الخلفية</string>
     <string name="pref_installation_method_root">يستخدم الروت</string>
@@ -229,7 +229,7 @@
     <string name="pref_download_deltas_summary_on">يتم تنزيل التغييرات فقط أثناء التحديثات</string>
     <string name="pref_download_directory">مسار التحميل</string>
     <string name="pref_auto_whitelist">القائمة البيضاء التلقائية</string>
-    <string name="pref_auto_whitelist_summary_on">يتم وضع التطبيقات المثبتة بواسطة Galaxy Store تلقائيًا في القائمة البيضاء</string>
+    <string name="pref_auto_whitelist_summary_on">يتم وضع التطبيقات المثبتة بواسطة Aurora Store تلقائيًا في القائمة البيضاء</string>
     <string name="pref_auto_whitelist_summary_off">تحتاج إلى إضافة التطبيقات إلى القائمة البيضاء يدويًا</string>
     <string name="pref_dark_theme">تفعيل الثيم المضيء</string>
     <string name="pref_dark_theme_summary_off">الثيم الداكن مفعل</string>
@@ -289,9 +289,9 @@
     <string name="warn_app_purchase">شراء التطبيق غير متوفر حتى الآن!</string>
     <string name="navigation_drawer_open">افتح درج التنقل</string>
     <string name="navigation_drawer_close">اغلق درج التنقل</string>
-    <string name="header_usr_name">Galaxy</string>
+    <string name="header_usr_name">Aurora</string>
     <string name="header_usr_email">تسجيل الدخول باستخدام حساب وهمي</string>
-    <string name="header_usr_noEmail">يرجى تسجيل الدخول لاستخدام Galaxy</string>
+    <string name="header_usr_noEmail">يرجى تسجيل الدخول لاستخدام Aurora</string>
     <string name="header_usr_noNetwork">غير قادر على استرداد</string>
     <string name="account_dummy_name">حساب وهمي</string>
     <string name="account_dummy_email">البريد الإلكتروني الوهمي</string>

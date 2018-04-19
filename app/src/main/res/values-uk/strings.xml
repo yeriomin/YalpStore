@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about_app">Galaxy це альтернатива Play Store з відкритим кодом, дозволяє скачувати програми з Play Store. Galaxy дозволяє оновлювати встановлені програми, шукати нові.</string>
+    <string name="about_app">Aurora це альтернатива Play Store з відкритим кодом, дозволяє скачувати програми з Play Store. Aurora дозволяє оновлювати встановлені програми, шукати нові.</string>
     <string name="about_contributors">Учасники проекту</string>
     <string name="about_copied_to_clipboard">Скопійовано в буфер</string>
     <string name="about_devs">Розробники</string>
@@ -100,19 +100,19 @@
     <string name="device_board">Плата : %1$s</string>
     <string name="device_manufacturer">Виробник : %1$s</string>
     <string name="device_timezone">Часовий пояс : %1$s</string>
-    <string name="dialog_account_type_predefined">Увійти з аккаунту Galaxy Store</string>
+    <string name="dialog_account_type_predefined">Увійти з аккаунту Aurora Store</string>
     <string name="dialog_account_type_provided_by_user">Увійти в свій аккаунт Google</string>
     <string name="dialog_account_type_title">Як ви хочете увійти в Google Play Store?</string>
     <string name="dialog_message_busybox_not_available">Необхідний пристрій з рут-правами і встановленим busybox. Знайти установник busybox?</string>
     <string name="dialog_message_checking_busybox">Для роботи з системними додатками потрібні певні системні інструменти. .</string>
-    <string name="dialog_message_logging_in_predefined">Спроба входу з обліковими даними Galaxy Store</string>
+    <string name="dialog_message_logging_in_predefined">Спроба входу з обліковими даними Aurora Store</string>
     <string name="dialog_message_logging_in_provided_by_user">Спроба входу з введеними обліковими даними</string>
     <string name="dialog_message_logout">Ви впевнені, що хочете вийти?</string>
     <string name="dialog_message_package_id">Вже є додаток з таким іменем. Бажаєте перейти до властивостей програми?</string>
     <string name="dialog_message_reboot_required">Зміни вступлять в силу після перезавантаження. Перезавантажити зараз?</string>
     <string name="dialog_message_remounting_system">Працюємо з розділом / system. Це може зайняти деякий час.</string>
     <string name="dialog_message_spoof_request">Підміна інформації про пристрій можлива, оскільки користувачі, відправляють звіти про помилки з інформацією про пристрій.</string>
-    <string name="dialog_message_system_app_self">"Використання привілейованих дозволів дозволяє використовувати фонову установку додатків і вимагає, щоб Galaxy був системним додатком.
+    <string name="dialog_message_system_app_self">"Використання привілейованих дозволів дозволяє використовувати фонову установку додатків і вимагає, щоб Aurora був системним додатком.
 
 Даний процес недосконалий і специфічний для виробника пристрою, тому він може не спрацювати.
 
@@ -134,7 +134,7 @@
 Не робіть це з цікавості. Це може зламати ваш пристрій. Зробіть бекап перед початком."</string>
     <string name="dialog_message_two_factor">"Схоже ви включили двухфакторную аутентифікацію для свого облікового запису.
 
-Будь ласка, створіть спеціальний пароль і використовуйте його для входу в Galaxy Store.
+Будь ласка, створіть спеціальний пароль і використовуйте його для входу в Aurora Store.
 
 Натисніть Створити пароль \" щоб перейти на сторінку створення пароля."</string>
     <string name="dialog_theme_apply">Застосувати</string>
@@ -149,7 +149,7 @@
     <string name="dialog_title_reboot_required">Потрібне перезавантаження</string>
     <string name="dialog_title_remounting_system">Робота з розділом /system</string>
     <string name="dialog_title_spoof_request">Запит</string>
-    <string name="dialog_title_system_app_self">Переміщення Galaxy в систему</string>
+    <string name="dialog_title_system_app_self">Переміщення Aurora в систему</string>
     <string name="dialog_title_system_app_warning">Увага!</string>
     <string name="dialog_title_two_factor">Двухфакторна аутентифікація</string>
     <string name="dialog_two_factor_cancel">Не зараз</string>
@@ -189,8 +189,8 @@
     <string name="flag_sexual_content">Еротичний контент</string>
     <string name="flagging_title">Повідомити про невідповідний</string>
     <string name="header_usr_email">Фейковий аккаунт</string>
-    <string name="header_usr_name">Galaxy</string>
-    <string name="header_usr_noEmail">Увійдіть, щоб використовувати Galaxy</string>
+    <string name="header_usr_name">Aurora</string>
+    <string name="header_usr_noEmail">Увійдіть, щоб використовувати Aurora</string>
     <string name="header_usr_noNetwork">Неможливо отримати</string>
     <string name="list_app_blacklisted">У чорному списку</string>
     <string name="list_app_depends_on_gsf">залежить від GSF</string>
@@ -234,7 +234,7 @@
     <string name="pref_auto_install_summary_on">Додатки встановлюються відразу після завантаження</string>
     <string name="pref_auto_whitelist">Автоматичний білий список</string>
     <string name="pref_auto_whitelist_summary_off">Вам потрібно власноруч внести додатки в білий список</string>
-    <string name="pref_auto_whitelist_summary_on">Додатки встановлені за допомогою Galaxy Store автоматично потрапляють в білий список</string>
+    <string name="pref_auto_whitelist_summary_on">Додатки встановлені за допомогою Aurora Store автоматично потрапляють в білий список</string>
     <string name="pref_background_update_download">Завантаження оновлень</string>
     <string name="pref_background_update_download_summary_off">Тільки повідомлення</string>
     <string name="pref_background_update_download_summary_on">Оновлення встановлюються автоматично</string>
@@ -245,7 +245,7 @@
     <string name="pref_background_update_interval_daily">Кожен день</string>
     <string name="pref_background_update_interval_hourly">Кожну годину</string>
     <string name="pref_background_update_interval_manually">Власноруч</string>
-    <string name="pref_background_update_interval_never">При запуску Galaxy Store</string>
+    <string name="pref_background_update_interval_never">При запуску Aurora Store</string>
     <string name="pref_background_update_interval_weekly">Кожну неділю</string>
     <string name="pref_background_update_wifi_only">Тільки по Wi-Fi</string>
     <string name="pref_category_installation">Встаноалення</string>
@@ -275,7 +275,7 @@
     <string name="pref_no_images_summary_off">Зараз зображення завантажуються завжди</string>
     <string name="pref_no_images_summary_on">Зараз зображення завантажуються тільки по Wi-Fi</string>
     <string name="pref_no_root">Ця опція доступна лише для усройств з root-правами.</string>
-    <string name="pref_not_privileged">Доступно тільки якщо Galaxy встановлений в систему</string>
+    <string name="pref_not_privileged">Доступно тільки якщо Aurora встановлений в систему</string>
     <string name="pref_requested_language">Мова запитів в Play Store</string>
     <string name="pref_requested_language_default">Головна мова</string>
     <string name="pref_update_list_black">Змінити чорний список додатків</string>

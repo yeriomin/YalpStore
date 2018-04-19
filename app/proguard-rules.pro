@@ -18,7 +18,7 @@
 -dontobfuscate
 -keep public interface android.content.pm.IPackageInstallObserver { *; }
 -keep class android.content.pm.IPackageInstallObserver$Stub { *; }
--keep public class in.dragons.galaxy.InstallerPrivileged$* { *; }
+-keep public class com.dragons.aurora.InstallerPrivileged$* { *; }
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
 -dontwarn sun.misc.Unsafe
 -optimizationpasses 5

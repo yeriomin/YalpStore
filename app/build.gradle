@@ -5,7 +5,7 @@ android {
     buildToolsVersion '27.0.3'
 
     defaultConfig {
-        applicationId "in.dragons.galaxy"
+        applicationId "com.dragons.aurora"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 4
