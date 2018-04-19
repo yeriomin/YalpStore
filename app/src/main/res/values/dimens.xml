@@ -14,7 +14,7 @@
     <dimen name="toolbar_height">80dp</dimen>
 
     <!-- Appbar dimensions -->
-    <dimen name="appbar_bar_height">52dp</dimen>
+    <dimen name="appbar_bar_height">62dp</dimen>
     <dimen name="appbar_bar_elevation">24dp</dimen>
 
     <dimen name="appbar_icon_padding">15dp</dimen>
