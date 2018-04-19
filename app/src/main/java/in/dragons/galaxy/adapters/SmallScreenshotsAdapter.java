@@ -51,7 +51,7 @@ public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreensho
         String url = ssholder.url.get(position);
         Picasso.with(context)
                 .load(url)
-                .placeholder(android.R.color.transparent)
+                .placeholder(R.drawable.screenshot_bg)
                 .into(holder.ss_image);
         holder.ss_image.setOnClickListener(v -> {
             Intent intent = new Intent(context, FullscreenImageActivity.class);
