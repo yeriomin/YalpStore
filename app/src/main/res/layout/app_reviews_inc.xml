@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:orientation="vertical"
     android:padding="5dp"
     android:visibility="visible">
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <LinearLayout
@@ -28,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:animateLayoutChanges="true"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="6dip">
@@ -51,9 +54,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:theme="@style/RatingBarReviews"
                         android:numStars="5"
-                        android:stepSize="1" />
+                        android:stepSize="1"
+                        android:theme="@style/RatingBarReviews" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -69,10 +72,10 @@
                         android:layout_width="@dimen/icon_size_small"
                         android:layout_height="@dimen/icon_size_small"
                         android:alpha="0.6"
-                        android:scaleY=".8"
-                        android:scaleX=".8"
                         android:background="?android:attr/selectableItemBackground"
                         android:contentDescription="@string/content_description_review_edit"
+                        android:scaleX=".8"
+                        android:scaleY=".8"
                         android:src="@drawable/ic_circle_edit" />
 
                     <ImageView
@@ -80,10 +83,10 @@
                         android:layout_width="@dimen/icon_size_small"
                         android:layout_height="@dimen/icon_size_small"
                         android:alpha="0.6"
-                        android:scaleY=".8"
-                        android:scaleX=".8"
                         android:background="?android:attr/selectableItemBackground"
                         android:contentDescription="@string/content_description_review_delete"
+                        android:scaleX=".8"
+                        android:scaleY=".8"
                         android:src="@drawable/ic_delete" />
                 </LinearLayout>
 
@@ -115,10 +118,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_marginTop="10dp"
-                android:weightSum="2"
-                android:orientation="horizontal">
+                android:animateLayoutChanges="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -132,9 +136,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:clickable="false"
+                        android:max="1"
                         android:numStars="1"
                         android:rating="1"
-                        android:max="1"
                         android:theme="@style/RatingBarReviews" />
 
                     <TextView
@@ -188,8 +192,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="15dp"
+                android:animateLayoutChanges="true"
+                android:orientation="horizontal"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp">
 

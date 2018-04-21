@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
+    android:visibility="gone"
     app:cardCornerRadius="8dp"
     app:cardPreventCornerOverlap="false"
-    android:visibility="gone"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -22,8 +23,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/google_sans_bold"
             android:gravity="center|start"
-            android:textColor="?android:attr/colorAccent"
             android:textAllCaps="true"
+            android:textColor="?android:attr/colorAccent"
             android:textSize="14sp" />
 
         <LinearLayout
@@ -31,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <TextView
@@ -50,10 +52,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:textColor="?android:attr/textColorPrimary"
                     android:layout_gravity="center_vertical|start"
                     android:fontFamily="@font/google_sans"
                     android:gravity="start"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:textSize="16sp" />
 
                 <Button
@@ -61,11 +63,11 @@
                     style="@style/Widget.AppCompat.Button.Borderless.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
+                    android:layout_alignParentEnd="true"
                     android:background="@drawable/button_positive"
                     android:fontFamily="@font/google_sans"
                     android:maxLines="1"
                     android:padding="5dp"
-                    android:layout_alignParentEnd="true"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -75,6 +77,7 @@
                 android:id="@+id/beta_feedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
                 android:orientation="vertical">
 
                 <EditText
@@ -90,6 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
+                    android:animateLayoutChanges="true"
                     android:orientation="horizontal">
 
                     <Button
@@ -101,8 +105,8 @@
                         android:fontFamily="@font/google_sans"
                         android:maxLines="1"
                         android:padding="5dp"
-                        android:textSize="12sp"
-                        android:text="@string/submit" />
+                        android:text="@string/submit"
+                        android:textSize="12sp" />
 
                     <Button
                         android:id="@+id/beta_delete_button"
@@ -113,9 +117,9 @@
                         android:fontFamily="@font/google_sans"
                         android:maxLines="1"
                         android:padding="5dp"
+                        android:text="@string/delete"
                         android:textColor="@color/white"
                         android:textSize="12sp"
-                        android:text="@string/delete"
                         android:visibility="gone" />
 
                 </LinearLayout>

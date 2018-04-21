@@ -3,22 +3,22 @@ package com.dragons.aurora.fragment.details;
 import android.annotation.SuppressLint;
 import android.preference.PreferenceManager;
 
+import com.dragons.aurora.SharedPreferencesTranslator;
+import com.dragons.aurora.fragment.DetailsFragment;
+import com.dragons.aurora.model.App;
+import com.dragons.aurora.task.playstore.DependencyTranslationTask;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.dragons.aurora.activities.DetailsActivity;
-import com.dragons.aurora.SharedPreferencesTranslator;
-import com.dragons.aurora.model.App;
-import com.dragons.aurora.task.playstore.DependencyTranslationTask;
-
-public class GoogleDependency extends Abstract {
+public class GoogleDependency extends AbstractHelper {
 
     private SharedPreferencesTranslator translator;
 
-    public GoogleDependency(DetailsActivity activity, App app) {
-        super(activity, app);
-        translator = new SharedPreferencesTranslator(PreferenceManager.getDefaultSharedPreferences(activity));
+    public GoogleDependency(DetailsFragment fragment, App app) {
+        super(fragment, app);
+        translator = new SharedPreferencesTranslator(PreferenceManager.getDefaultSharedPreferences(fragment.getActivity()));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class GoogleDependency extends Abstract {
                 }
             }
         };
-        task.setContext(activity);
+        task.setContext(fragment.getActivity());
         task.execute(untranslated.toArray(new String[untranslated.size()]));
     }
 }

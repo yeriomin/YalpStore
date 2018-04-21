@@ -50,7 +50,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         task.setRespectUpdateBlacklist(true);
         task.setIncludeSystemApps(true);
         task.execute();
-        //loadApps();
+        //fetchDetails();
     }
 
     @Override
@@ -64,7 +64,7 @@ public class UpdatableAppsActivity extends AppListActivity {
         super.onNewIntent(intent);
 
         setIntent(intent);
-        //loadApps();
+        //fetchDetails();
     }
 
     @Override

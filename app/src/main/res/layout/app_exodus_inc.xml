@@ -2,6 +2,7 @@
     android:id="@+id/exodus_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
     android:background="@drawable/outline_bg"
     android:orientation="vertical"
     android:padding="4dp"
@@ -54,10 +55,10 @@
                 android:id="@+id/viewMore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/exodus_viewMore"
+                android:layout_marginTop="5dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_marginTop="5dp"
+                android:text="@string/exodus_viewMore"
                 android:textSize="12sp" />
         </LinearLayout>
 

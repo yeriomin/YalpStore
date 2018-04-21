@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.percolate.caffeine.ViewUtils;
 
 import com.dragons.aurora.activities.DetailsActivity;
@@ -13,12 +14,12 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.PurchaseTask;
 
-public class BackToPlayStore extends Abstract {
+public class BackToPlayStore extends AbstractHelper {
 
     static private final String PLAY_STORE_PACKAGE_NAME = "com.android.vending";
 
-    public BackToPlayStore(DetailsActivity activity, App app) {
-        super(activity, app);
+    public BackToPlayStore(DetailsFragment fragment, App app) {
+        super(fragment, app);
     }
 
     @Override
@@ -26,22 +27,22 @@ public class BackToPlayStore extends Abstract {
         if (!isPlayStoreInstalled() || !app.isInPlayStore()) {
             return;
         }
-        ViewUtils.findViewById(activity,R.id.to_play_store_cnt).setVisibility(View.VISIBLE);
-        ImageView toPlayStore = (ImageView) activity.findViewById(R.id.to_play_store);
+        ViewUtils.findViewById(fragment.getActivity(),R.id.to_play_store_cnt).setVisibility(View.VISIBLE);
+        ImageView toPlayStore = (ImageView) fragment.getActivity().findViewById(R.id.to_play_store);
         toPlayStore.setVisibility(View.VISIBLE);
         toPlayStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(PurchaseTask.URL_PURCHASE + app.getPackageName()));
-                activity.startActivity(i);
+                fragment.getActivity().startActivity(i);
             }
         });
     }
 
     private boolean isPlayStoreInstalled() {
         try {
-            return null != activity.getPackageManager().getPackageInfo(PLAY_STORE_PACKAGE_NAME, 0);
+            return null != fragment.getActivity().getPackageManager().getPackageInfo(PLAY_STORE_PACKAGE_NAME, 0);
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }

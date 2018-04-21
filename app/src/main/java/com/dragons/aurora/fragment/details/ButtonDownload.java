@@ -5,17 +5,12 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
-import com.percolate.caffeine.ViewUtils;
-
-import java.io.File;
-
+import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.ContextUtil;
-import com.dragons.aurora.AuroraPermissionManager;
-import com.dragons.aurora.NumberProgressBar;
 import com.dragons.aurora.Paths;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
@@ -23,14 +18,18 @@ import com.dragons.aurora.activities.ManualDownloadActivity;
 import com.dragons.aurora.downloader.DownloadProgressBarUpdater;
 import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.task.playstore.PurchaseTask;
+import com.percolate.caffeine.ViewUtils;
+
+import java.io.File;
 
 import static com.dragons.aurora.downloader.DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
 import static com.dragons.aurora.downloader.DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON;
 
 public class ButtonDownload extends Button {
 
-    private NumberProgressBar progressBar;
+    private ProgressBar progressBar;
 
     public ButtonDownload(AuroraActivity activity, App app) {
         super(activity, app);
@@ -98,13 +97,13 @@ public class ButtonDownload extends Button {
         DownloadState state = DownloadState.get(app.getPackageName());
         if (Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
                 && !state.isEverythingSuccessful()
-                ) {
+                    ){
             progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
-            if (null != progressBar) {
-                new DownloadProgressBarUpdater(app.getPackageName(), progressBar).execute(PurchaseTask.UPDATE_INTERVAL);
+                if (null != progressBar) {
+                    new DownloadProgressBarUpdater(app.getPackageName(), progressBar).execute(PurchaseTask.UPDATE_INTERVAL);
+                }
             }
         }
-    }
 
     public void download() {
         boolean writePermission = new AuroraPermissionManager(activity).checkPermission();

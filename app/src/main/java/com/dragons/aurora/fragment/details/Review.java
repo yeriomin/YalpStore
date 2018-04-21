@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -24,17 +25,17 @@ import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.ReviewDeleteTask;
 import com.dragons.aurora.task.playstore.ReviewLoadTask;
 
-public class Review extends Abstract {
+public class Review extends AbstractHelper {
 
     static private int[] averageStarIds = new int[]{R.id.average_stars1, R.id.average_stars2, R.id.average_stars3, R.id.average_stars4, R.id.average_stars5};
 
     private ReviewStorageIterator iterator;
 
-    public Review(DetailsActivity activity, App app) {
-        super(activity, app);
+    public Review(DetailsFragment fragment, App app) {
+        super(fragment, app);
         iterator = new ReviewStorageIterator();
         iterator.setPackageName(app.getPackageName());
-        iterator.setContext(activity);
+        iterator.setContext(fragment.getActivity());
     }
 
     @Override
@@ -51,7 +52,7 @@ public class Review extends Abstract {
             setText(averageStarIds[starNum - 1], R.string.details_rating_specific, starNum, app.getRating().getStars(starNum));
         }
 
-        activity.findViewById(R.id.user_review_container).setVisibility(isReviewable(app) ? View.VISIBLE : View.GONE);
+        fragment.getActivity().findViewById(R.id.user_review_container).setVisibility(isReviewable(app) ? View.VISIBLE : View.GONE);
         com.dragons.aurora.model.Review review = app.getUserReview();
         initUserReviewControls(app);
         if (null != review) {
@@ -62,28 +63,28 @@ public class Review extends Abstract {
     private boolean isReviewable(App app) {
         return app.isInstalled()
                 && !app.isTestingProgramOptedIn()
-                && !PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
+                && !PreferenceManager.getDefaultSharedPreferences(fragment.getActivity()).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
                 ;
     }
 
     public void fillUserReview(com.dragons.aurora.model.Review review) {
         clearUserReview();
         app.setUserReview(review);
-        ((RatingBar) activity.findViewById(R.id.user_stars)).setRating(review.getRating());
+        ((RatingBar) fragment.getActivity().findViewById(R.id.user_stars)).setRating(review.getRating());
         setTextOrHide(R.id.user_comment, review.getComment());
         setTextOrHide(R.id.user_title, review.getTitle());
         setText(R.id.rate, R.string.details_you_rated_this_app);
-        activity.findViewById(R.id.user_review_edit_delete).setVisibility(View.VISIBLE);
-        activity.findViewById(R.id.user_review).setVisibility(View.VISIBLE);
+        fragment.getActivity().findViewById(R.id.user_review_edit_delete).setVisibility(View.VISIBLE);
+        fragment.getActivity().findViewById(R.id.user_review).setVisibility(View.VISIBLE);
     }
 
     public void clearUserReview() {
-        ((RatingBar) activity.findViewById(R.id.user_stars)).setRating(0);
+        ((RatingBar) fragment.getActivity().findViewById(R.id.user_stars)).setRating(0);
         setText(R.id.user_title, "");
         setText(R.id.user_comment, "");
         setText(R.id.rate, R.string.details_rate_this_app);
-        activity.findViewById(R.id.user_review_edit_delete).setVisibility(View.GONE);
-        activity.findViewById(R.id.user_review).setVisibility(View.GONE);
+        fragment.getActivity().findViewById(R.id.user_review_edit_delete).setVisibility(View.GONE);
+        fragment.getActivity().findViewById(R.id.user_review).setVisibility(View.GONE);
     }
 
     private com.dragons.aurora.model.Review getUpdatedUserReview(com.dragons.aurora.model.Review oldReview, int stars) {
@@ -97,9 +98,9 @@ public class Review extends Abstract {
     }
 
     public void showReviews(List<com.dragons.aurora.model.Review> reviews) {
-        activity.findViewById(R.id.reviews_previous).setVisibility(iterator.hasPrevious() ? View.VISIBLE : View.INVISIBLE);
-        activity.findViewById(R.id.reviews_next).setVisibility(iterator.hasNext() ? View.VISIBLE : View.INVISIBLE);
-        LinearLayout listView = (LinearLayout) activity.findViewById(R.id.reviews_list);
+        fragment.getActivity().findViewById(R.id.reviews_previous).setVisibility(iterator.hasPrevious() ? View.VISIBLE : View.INVISIBLE);
+        fragment.getActivity().findViewById(R.id.reviews_next).setVisibility(iterator.hasNext() ? View.VISIBLE : View.INVISIBLE);
+        LinearLayout listView = (LinearLayout) fragment.getActivity().findViewById(R.id.reviews_list);
         listView.removeAllViews();
         for (com.dragons.aurora.model.Review review : reviews) {
             addReviewToList(review, listView);
@@ -111,22 +112,22 @@ public class Review extends Abstract {
         task.setIterator(iterator);
         task.setFragment(this);
         task.setNext(next);
-        task.setContext(activity);
-        task.setProgressIndicator(activity.findViewById(R.id.progress));
+        task.setContext(fragment.getActivity());
+        task.setProgressIndicator(fragment.getActivity().findViewById(R.id.progress));
         return task;
     }
 
     private void addReviewToList(com.dragons.aurora.model.Review review, ViewGroup parent) {
-        LinearLayout reviewLayout = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.review_list_item, parent, false);
+        LinearLayout reviewLayout = (LinearLayout) fragment.getActivity().getLayoutInflater().inflate(R.layout.review_list_item, parent, false);
         ((TextView) reviewLayout.findViewById(R.id.author)).setText(review.getUserName());
-        ((TextView) reviewLayout.findViewById(R.id.title)).setText(activity.getString(
+        ((TextView) reviewLayout.findViewById(R.id.title)).setText(fragment.getActivity().getString(
                 R.string.two_items,
-                activity.getString(R.string.details_rating, (double) review.getRating()),
+                fragment.getActivity().getString(R.string.details_rating, (double) review.getRating()),
                 review.getTitle()
         ));
         ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
         Picasso
-                .with(activity)
+                .with(fragment.getActivity())
                 .load(review.getUserPhotoUrl())
                 .placeholder(R.drawable.ic_user_placeholder)
                 .transform(new CircleTransform())
@@ -137,22 +138,22 @@ public class Review extends Abstract {
 
     private void initReviewListControls() {
         View.OnClickListener listener = v -> getTask(v.getId() == R.id.reviews_next).execute();
-        activity.findViewById(R.id.reviews_previous).setOnClickListener(listener);
-        activity.findViewById(R.id.reviews_next).setOnClickListener(listener);
+        fragment.getActivity().findViewById(R.id.reviews_previous).setOnClickListener(listener);
+        fragment.getActivity().findViewById(R.id.reviews_next).setOnClickListener(listener);
     }
 
     private void initUserReviewControls(final App app) {
-        ((RatingBar) activity.findViewById(R.id.user_stars)).setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
+        ((RatingBar) fragment.getActivity().findViewById(R.id.user_stars)).setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
             if (!fromUser) {
                 return;
             }
-            new UserReviewDialogBuilder(activity, Review.this, app.getPackageName())
+            new UserReviewDialogBuilder(fragment.getActivity(), Review.this, app.getPackageName())
                     .show(getUpdatedUserReview(app.getUserReview(), (int) rating));
         });
-        activity.findViewById(R.id.user_review_edit).setOnClickListener(v ->
-                new UserReviewDialogBuilder(activity, Review.this, app.getPackageName())
+        fragment.getActivity().findViewById(R.id.user_review_edit).setOnClickListener(v ->
+                new UserReviewDialogBuilder(fragment.getActivity(), Review.this, app.getPackageName())
                         .show(app.getUserReview()));
-        activity.findViewById(R.id.user_review_delete).setOnClickListener(v -> {
+        fragment.getActivity().findViewById(R.id.user_review_delete).setOnClickListener(v -> {
             ReviewDeleteTask task = new ReviewDeleteTask();
             task.setFragment(Review.this);
             task.setContext(v.getContext());
@@ -161,7 +162,7 @@ public class Review extends Abstract {
     }
 
     private void setTextOrHide(int viewId, String text) {
-        TextView textView = (TextView) activity.findViewById(viewId);
+        TextView textView = (TextView) fragment.getActivity().findViewById(viewId);
         if (!TextUtils.isEmpty(text)) {
             textView.setText(text);
             textView.setVisibility(View.VISIBLE);

@@ -24,6 +24,7 @@ import com.dragons.aurora.task.playstore.PurchaseCheckTask;
 public class ManualDownloadActivity extends DetailsActivity {
 
     private int latestVersionCode;
+    private DownloadOrInstall downloadOrInstallFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

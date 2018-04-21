@@ -10,12 +10,13 @@ import android.widget.ImageView;
 
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 
-public class SystemAppPage extends Abstract {
+public class SystemAppPage extends AbstractHelper {
 
-    public SystemAppPage(DetailsActivity activity, App app) {
-        super(activity, app);
+    public SystemAppPage(DetailsFragment fragment, App app) {
+        super(fragment, app);
     }
 
     @Override
@@ -23,19 +24,14 @@ public class SystemAppPage extends Abstract {
         if (!app.isInstalled()) {
             return;
         }
-        ImageView systemAppInfo = (ImageView) activity.findViewById(R.id.system_app_info);
+        ImageView systemAppInfo = (ImageView) fragment.getActivity().findViewById(R.id.system_app_info);
         systemAppInfo.setVisibility(View.VISIBLE);
-        systemAppInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity();
-            }
-        });
+        systemAppInfo.setOnClickListener(v -> startActivity());
     }
 
     private void startActivity() {
         try {
-            activity.startActivity(getIntent());
+            fragment.getActivity().startActivity(getIntent());
         } catch (ActivityNotFoundException e) {
             Log.w(getClass().getSimpleName(), "Could not find system app activity");
         }

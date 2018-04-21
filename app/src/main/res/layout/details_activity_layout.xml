@@ -41,6 +41,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="-90dp"
+                android:animateLayoutChanges="true"
                 android:orientation="vertical">
 
                 <android.support.v7.widget.CardView
@@ -55,6 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:animateLayoutChanges="true"
                         android:padding="5dp">
 
                         <!-- App Info : Icon, Name, Developer, Version -->
@@ -63,29 +65,37 @@
                         <!-- Action : Download, Update, Uninstall -->
                         <include layout="@layout/app_actions_inc" />
 
-                        <com.dragons.aurora.NumberProgressBar
-                            android:id="@+id/download_progress"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="15dp"
-                            android:visibility="gone"
-                            app:progress_reached_bar_height="2.5dp"
-                            app:progress_reached_color="@color/colorAccent"
-                            app:progress_text_color="@color/colorAccent"
-                            app:progress_text_size="12sp"
-                            app:progress_unreached_bar_height="2dp"
-                            app:progress_unreached_color="@color/lightGray" />
-
-                        <TextView
-                            android:id="@+id/contains_ads"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginTop="4dp"
-                            android:fontFamily="@font/google_sans"
+                            android:layout_margin="5dp"
+                            android:orientation="horizontal"
                             android:gravity="end"
-                            android:textSize="12sp" />
+                            android:animateLayoutChanges="true"
+                            android:weightSum="6">
+
+                            <ProgressBar
+                                android:id="@+id/download_progress"
+                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:layout_gravity="center"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="5.5"
+                                android:indeterminate="false"
+                                android:progressBackgroundTint="@color/gray"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/contains_ads"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:gravity="end"
+                                android:fontFamily="@font/google_sans"
+                                android:textSize="12sp" />
+                        </LinearLayout>
 
                         <HorizontalScrollView
                             android:layout_width="match_parent"
@@ -144,6 +154,7 @@
                     android:id="@+id/app_info_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:animateLayoutChanges="true"
                     android:orientation="vertical">
 
                     <!-- App Details -->
@@ -188,6 +199,7 @@
                     android:id="@+id/reviews_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:animateLayoutChanges="true"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -199,6 +211,7 @@
                     android:id="@+id/additional_info_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:animateLayoutChanges="true"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -255,7 +268,6 @@
                     android:visibility="gone" />
 
             </LinearLayout>
-
         </LinearLayout>
 
     </com.dragons.aurora.view.CustomNestedScrollView>

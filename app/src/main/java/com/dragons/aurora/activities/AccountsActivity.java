@@ -12,7 +12,7 @@ public class AccountsActivity extends AuroraActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.accounts_activity);
+        setContentView(R.layout.helper_activity_alt);
 
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE

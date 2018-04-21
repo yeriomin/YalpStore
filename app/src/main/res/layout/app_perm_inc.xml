@@ -12,6 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
         android:orientation="vertical"
         android:padding="5dp">
 
@@ -19,14 +20,15 @@
             android:id="@+id/permissions_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
             android:drawableEnd="@drawable/ic_expand_more"
             android:fontFamily="@font/google_sans_bold"
-            android:text="@string/details_permissions"
             android:gravity="center|start"
             android:paddingEnd="5dp"
             android:paddingStart="5dp"
-            android:textColor="?android:attr/colorAccent"
+            android:text="@string/details_permissions"
             android:textAllCaps="true"
+            android:textColor="?android:attr/colorAccent"
             android:textSize="14sp" />
 
         <LinearLayout
@@ -34,8 +36,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:padding="5dp"
+            android:animateLayoutChanges="true"
             android:orientation="vertical"
+            android:padding="5dp"
             android:visibility="gone">
 
             <LinearLayout
@@ -49,8 +52,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/google_sans_bold"
-                android:textSize="16sp"
                 android:text="@string/no_permissions"
+                android:textSize="16sp"
                 android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>

@@ -9,31 +9,30 @@ import java.util.List;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.adapters.SmallScreenshotsAdapter;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 
-public class Screenshot extends Abstract {
+public class Screenshot extends AbstractHelper {
 
-    public Screenshot(DetailsActivity activity, App app) {
-        super(activity, app);
+    public Screenshot(DetailsFragment fragment, App app) {
+        super(fragment, app);
     }
 
     @Override
     public void draw() {
         if (app.getScreenshotUrls().size() > 0) {
             drawGallery();
-        } else {
-            return;
         }
     }
 
     private void drawGallery() {
         List<SmallScreenshotsAdapter.Holder> SSAdapter = new ArrayList<>();
-        RecyclerView gallery = activity.findViewById(R.id.screenshots_gallery);
+        RecyclerView gallery = fragment.getActivity().findViewById(R.id.screenshots_gallery);
         gallery.setNestedScrollingEnabled(false);
-        SmallScreenshotsAdapter adapter = new SmallScreenshotsAdapter(SSAdapter, activity);
+        SmallScreenshotsAdapter adapter = new SmallScreenshotsAdapter(SSAdapter, fragment.getActivity());
         for (int i = 0; i < app.getScreenshotUrls().size(); i++)
         SSAdapter.add(new SmallScreenshotsAdapter.Holder(app.getScreenshotUrls()));
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(fragment.getActivity(), LinearLayoutManager.HORIZONTAL, false);
         gallery.setAdapter(adapter);
         gallery.setLayoutManager(layoutManager);
     }

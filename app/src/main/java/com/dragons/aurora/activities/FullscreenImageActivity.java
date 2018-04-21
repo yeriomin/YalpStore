@@ -1,8 +1,8 @@
 package com.dragons.aurora.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
@@ -11,15 +11,15 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.BigScreenshotsAdapter;
 
-import static com.dragons.aurora.activities.DetailsActivity.app;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FullscreenImageActivity extends Activity {
+import static com.dragons.aurora.fragment.DetailsFragment.app;
+
+public class FullscreenImageActivity extends AppCompatActivity {
 
     static public final String INTENT_SCREENSHOT_NUMBER = "INTENT_SCREENSHOT_NUMBER";
 
@@ -46,6 +46,7 @@ public class FullscreenImageActivity extends Activity {
             finish();
             return;
         }
+
         List<BigScreenshotsAdapter.Holder> BSAdapter = new ArrayList<>();
         RecyclerView gallery = this.findViewById(R.id.gallery);
         SnapHelper snapHelper = new PagerSnapHelper();
@@ -58,5 +59,4 @@ public class FullscreenImageActivity extends Activity {
         gallery.scrollToPosition(intent.getIntExtra(INTENT_SCREENSHOT_NUMBER, 0));
         adapter.notifyDataSetChanged();
     }
-
 }

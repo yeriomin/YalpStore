@@ -2,18 +2,18 @@ package com.dragons.aurora.downloader;
 
 import android.util.Pair;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import java.lang.ref.WeakReference;
 
-import com.dragons.aurora.NumberProgressBar;
 import com.dragons.aurora.task.RepeatingTask;
 
 public class DownloadProgressBarUpdater extends RepeatingTask {
 
     private String packageName;
-    private WeakReference<NumberProgressBar> progressBarRef = new WeakReference<>(null);
+    private WeakReference<ProgressBar> progressBarRef = new WeakReference<>(null);
 
-    public DownloadProgressBarUpdater(String packageName, NumberProgressBar progressBar) {
+    public DownloadProgressBarUpdater(String packageName, ProgressBar progressBar) {
         this.packageName = packageName;
         progressBarRef = new WeakReference<>(progressBar);
     }
@@ -26,16 +26,18 @@ public class DownloadProgressBarUpdater extends RepeatingTask {
 
     @Override
     protected void payload() {
-        NumberProgressBar progressBar = progressBarRef.get();
+        ProgressBar progressBar = progressBarRef.get();
         if (null == progressBar) {
             return;
         }
         DownloadState state = DownloadState.get(packageName);
         if (null == state || state.isEverythingFinished()) {
             progressBar.setVisibility(View.GONE);
+            progressBar.setIndeterminate(true);
             return;
         }
         Pair<Integer, Integer> progress = state.getProgress();
+        progressBar.setIndeterminate(false);
         progressBar.setVisibility(View.VISIBLE);
         progressBar.setProgress(progress.first);
         progressBar.setMax(progress.second);

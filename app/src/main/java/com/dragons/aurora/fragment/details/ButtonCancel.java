@@ -2,10 +2,10 @@ package com.dragons.aurora.fragment.details;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.percolate.caffeine.ViewUtils;
 
-import com.dragons.aurora.NumberProgressBar;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.downloader.DownloadState;
@@ -36,11 +36,11 @@ public class ButtonCancel extends Button {
         button.setVisibility(View.GONE);
 
         android.widget.Button buttonDownload = ViewUtils.findViewById(activity, R.id.download);
-        NumberProgressBar numberProgressBar = ViewUtils.findViewById(activity, R.id.download_progress);
+        ProgressBar progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
 
         buttonDownload.setVisibility(View.VISIBLE);
         buttonDownload.setEnabled(true);
-        numberProgressBar.setProgress(0);
-        numberProgressBar.setVisibility(View.GONE);
+        progressBar.setProgress(0);
+        progressBar.setVisibility(View.GONE);
     }
 }

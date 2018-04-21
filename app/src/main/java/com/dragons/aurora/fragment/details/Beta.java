@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
@@ -18,16 +19,16 @@ import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.BetaToggleTask;
 import com.dragons.aurora.task.playstore.PlayStorePayloadTask;
 
-public class Beta extends Abstract {
+public class Beta extends AbstractHelper {
 
-    public Beta(DetailsActivity activity, App app) {
-        super(activity, app);
+    public Beta(DetailsFragment fragment, App app) {
+        super(fragment, app);
     }
 
     @Override
     public void draw() {
         if (PreferenceManager
-                .getDefaultSharedPreferences(activity)
+                .getDefaultSharedPreferences(fragment.getActivity())
                 .getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
                 && app.isTestingProgramAvailable()
                 && app.isTestingProgramOptedIn()) {
@@ -39,7 +40,7 @@ public class Beta extends Abstract {
 
         if (app.isInstalled() || app.isTestingProgramAvailable()
                 || !PreferenceManager
-                .getDefaultSharedPreferences(activity)
+                .getDefaultSharedPreferences(fragment.getActivity())
                 .getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)) {
 
             setText(R.id.beta_header, app.isTestingProgramOptedIn()
@@ -56,33 +57,33 @@ public class Beta extends Abstract {
 
             setText(R.id.beta_email, app.getTestingProgramEmail());
 
-            activity.findViewById(R.id.beta_card).setVisibility(View.VISIBLE);
+            fragment.getActivity().findViewById(R.id.beta_card).setVisibility(View.VISIBLE);
 
-            activity.findViewById(R.id.beta_feedback).setVisibility(app.isTestingProgramOptedIn()
+            fragment.getActivity().findViewById(R.id.beta_feedback).setVisibility(app.isTestingProgramOptedIn()
                     ? View.VISIBLE
                     : View.GONE);
 
-            activity.findViewById(R.id.beta_subscribe_button)
-                    .setOnClickListener(new BetaOnClickListener(activity.findViewById(R.id.beta_message), app));
+            fragment.getActivity().findViewById(R.id.beta_subscribe_button)
+                    .setOnClickListener(new BetaOnClickListener(fragment.getActivity().findViewById(R.id.beta_message), app));
 
-            activity.findViewById(R.id.beta_submit_button)
+            fragment.getActivity().findViewById(R.id.beta_submit_button)
                     .setOnClickListener(v -> initBetaTask(new BetaFeedbackSubmitTask()).execute());
-            activity.findViewById(R.id.beta_delete_button)
+            fragment.getActivity().findViewById(R.id.beta_delete_button)
                     .setOnClickListener(v -> initBetaTask(new BetaFeedbackDeleteTask()).execute());
 
             if (null != app.getUserReview()
                     && !TextUtils.isEmpty(app.getUserReview().getComment())) {
-                ((EditText) activity.findViewById(R.id.beta_comment))
+                ((EditText) fragment.getActivity().findViewById(R.id.beta_comment))
                         .setText(app.getUserReview().getComment());
-                activity.findViewById(R.id.beta_delete_button).setVisibility(View.VISIBLE);
+                fragment.getActivity().findViewById(R.id.beta_delete_button).setVisibility(View.VISIBLE);
             }
         }
     }
 
     private BetaFeedbackTask initBetaTask(BetaFeedbackTask task) {
         task.setPackageName(app.getPackageName());
-        task.setEditText((EditText) activity.findViewById(R.id.beta_comment));
-        task.setDeleteButton(activity.findViewById(R.id.beta_delete_button));
+        task.setEditText((EditText) fragment.getActivity().findViewById(R.id.beta_comment));
+        task.setDeleteButton(fragment.getActivity().findViewById(R.id.beta_delete_button));
         return task;
     }
 

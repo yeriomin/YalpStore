@@ -13,6 +13,7 @@ import java.io.File;
 
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.downloader.DownloadState;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 
@@ -48,11 +49,11 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static public void updateDetails(boolean installed) {
         if (installed) {
-            DetailsActivity.app.getPackageInfo().versionCode = DetailsActivity.app.getVersionCode();
-            DetailsActivity.app.setInstalled(true);
+            DetailsFragment.app.getPackageInfo().versionCode = DetailsFragment.app.getVersionCode();
+            DetailsFragment.app.setInstalled(true);
         } else {
-            DetailsActivity.app.getPackageInfo().versionCode = 0;
-            DetailsActivity.app.setInstalled(false);
+            DetailsFragment.app.getPackageInfo().versionCode = 0;
+            DetailsFragment.app.setInstalled(false);
         }
     }
 

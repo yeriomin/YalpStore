@@ -5,35 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.ContextMenu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.fragment.details.AppLists;
-import com.dragons.aurora.fragment.details.BackToPlayStore;
-import com.dragons.aurora.fragment.details.Beta;
-import com.dragons.aurora.fragment.details.DownloadOptions;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.fragment.details.DownloadOrInstall;
-import com.dragons.aurora.fragment.details.ExodusPrivacy;
-import com.dragons.aurora.fragment.details.GeneralDetails;
-import com.dragons.aurora.fragment.details.Permissions;
-import com.dragons.aurora.fragment.details.Review;
-import com.dragons.aurora.fragment.details.Screenshot;
-import com.dragons.aurora.fragment.details.Share;
-import com.dragons.aurora.fragment.details.SystemAppPage;
-import com.dragons.aurora.fragment.details.Video;
 import com.dragons.aurora.model.App;
-import com.dragons.aurora.task.playstore.CloneableTask;
-import com.dragons.aurora.task.playstore.DetailsTask;
 
 public class DetailsActivity extends AuroraActivity {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
-
-    static public App app;
-
-    protected DownloadOrInstall downloadOrInstallFragment;
 
     static public Intent getDetailsIntent(Context context, String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
@@ -45,30 +26,12 @@ public class DetailsActivity extends AuroraActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.LoginTheme);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.details_activity_layout);
+        setContentView(R.layout.helper_activity_alt);
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        findViewById(R.id.fab_finish).setOnClickListener(v -> finish());
         onNewIntent(getIntent());
-    }
-
-    @Override
-    protected void onPause() {
-        if (null != downloadOrInstallFragment) {
-            downloadOrInstallFragment.unregisterReceivers();
-        }
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        redrawButtons();
-        if (app != null)
-        redrawDetails(app);
-        super.onResume();
     }
 
     @Override
@@ -99,29 +62,7 @@ public class DetailsActivity extends AuroraActivity {
             redrawDetails(DetailsActivity.app);
         }
 
-        GetAndRedrawDetailsTask task = new GetAndRedrawDetailsTask(this);
-        task.setPackageName(packageName);
-        task.setProgressIndicator(findViewById(R.id.progress));
-        task.execute();
-    }
-
-    private void redrawButtons() {
-        if (null != downloadOrInstallFragment) {
-            downloadOrInstallFragment.unregisterReceivers();
-            downloadOrInstallFragment.registerReceivers();
-            downloadOrInstallFragment.draw();
-        }
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        new DownloadOptions(this, app).inflate(menu);
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        return new DownloadOptions(this, app).onContextItemSelected(item);
+        grabDetails(packageName);
     }
 
     private String getIntentPackageName(Intent intent) {
@@ -137,52 +78,11 @@ public class DetailsActivity extends AuroraActivity {
         return null;
     }
 
-    public void redrawDetails(App app) {
-        setTitle(app.getDisplayName());
-        new GeneralDetails(this, app).draw();
-        new Permissions(this, app).draw();
-        new Screenshot(this, app).draw();
-        new Review(this, app).draw();
-        new AppLists(this, app).draw();
-        new BackToPlayStore(this, app).draw();
-        new Share(this, app).draw();
-        new SystemAppPage(this, app).draw();
-        new Video(this, app).draw();
-        new Beta(this, app).draw();
-        new ExodusPrivacy(this, app).draw();
-        if (null != downloadOrInstallFragment) {
-            downloadOrInstallFragment.unregisterReceivers();
-        }
-        downloadOrInstallFragment = new DownloadOrInstall(this, app);
-        redrawButtons();
-        new DownloadOptions(this, app).draw();
-    }
-
-    static class GetAndRedrawDetailsTask extends DetailsTask implements CloneableTask {
-
-        private DetailsActivity activity;
-
-        GetAndRedrawDetailsTask(DetailsActivity activity) {
-            this.activity = activity;
-            setContext(activity);
-        }
-
-        @Override
-        public CloneableTask clone() {
-            GetAndRedrawDetailsTask task = new GetAndRedrawDetailsTask(activity);
-            task.setErrorView(errorView);
-            task.setPackageName(packageName);
-            task.setProgressIndicator(progressIndicator);
-            return task;
-        }
-
-        @Override
-        protected void onPostExecute(App app) {
-            super.onPostExecute(app);
-            if (app != null) {
-                DetailsActivity.app = app;
-                activity.redrawDetails(app);
-            }
-        }
+    protected void grabDetails(String packageName) {
+        DetailsFragment detailsFragment = new DetailsFragment();
+        Bundle arguments = new Bundle();
+        arguments.putString("PackageName", packageName);
+        detailsFragment.setArguments(arguments);
+        getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_frame, detailsFragment).commit();
     }
 }

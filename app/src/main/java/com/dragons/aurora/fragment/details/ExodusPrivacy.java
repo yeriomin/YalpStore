@@ -15,7 +15,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.AuroraActivity;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.percolate.caffeine.ViewUtils;
 
@@ -25,15 +25,15 @@ import org.json.JSONObject;
 
 import static com.android.volley.VolleyLog.TAG;
 
-public class ExodusPrivacy extends Abstract {
+public class ExodusPrivacy extends AbstractHelper {
 
-    public ExodusPrivacy(AuroraActivity activity, App app) {
-        super(activity, app);
+    public ExodusPrivacy(DetailsFragment fragment, App app) {
+        super(fragment, app);
     }
 
     @Override
     public void draw() {
-        getExodusReport(activity, "https://reports.exodus-privacy.eu.org/api/search/" + app.getPackageName());
+        getExodusReport(fragment.getActivity(), "https://reports.exodus-privacy.eu.org/api/search/" + app.getPackageName());
     }
 
     private void getExodusReport(Context context, String EXODUS_PATH) {
@@ -56,16 +56,18 @@ public class ExodusPrivacy extends Abstract {
     }
 
     private void drawExodus(JSONArray appTrackers, String appId) {
-        ViewUtils.findViewById(activity, R.id.exodus_card).setVisibility(View.VISIBLE);
-        if (appTrackers.length() > 0) {
-            setText(R.id.exodus_description, R.string.exodus_hasTracker, appTrackers.length());
-        } else {
-            setText(R.id.exodus_description, R.string.exodus_noTracker);
-        }
+        if (fragment.getActivity() != null) {
+            ViewUtils.findViewById(fragment.getActivity(), R.id.exodus_card).setVisibility(View.VISIBLE);
+            if (appTrackers.length() > 0) {
+                setText(R.id.exodus_description, R.string.exodus_hasTracker, appTrackers.length());
+            } else {
+                setText(R.id.exodus_description, R.string.exodus_noTracker);
+            }
 
-        TextView viewMore = activity.findViewById(R.id.viewMore);
-        viewMore.setPaintFlags(viewMore.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        viewMore.setOnClickListener(click -> activity.startActivity(new Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://reports.exodus-privacy.eu.org/reports/" + appId + "/"))));
+            TextView viewMore = fragment.getActivity().findViewById(R.id.viewMore);
+            viewMore.setPaintFlags(viewMore.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            viewMore.setOnClickListener(click -> fragment.getActivity().startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://reports.exodus-privacy.eu.org/reports/" + appId + "/"))));
+        }
     }
 }

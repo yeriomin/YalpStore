@@ -22,6 +22,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dragons.aurora.CategoryManager;
+import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
+import com.dragons.aurora.fragment.DetailsFragment;
+import com.dragons.aurora.model.App;
+import com.dragons.aurora.model.ImageSource;
 import com.percolate.caffeine.ViewUtils;
 import com.squareup.picasso.Picasso;
 
@@ -29,21 +35,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.dragons.aurora.CategoryManager;
-import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
-import com.dragons.aurora.activities.DetailsActivity;
-import com.dragons.aurora.model.App;
-import com.dragons.aurora.model.ImageSource;
-
-public class GeneralDetails extends Abstract {
+public class GeneralDetails extends AbstractHelper {
 
     private TextView appInfo;
     private TextView appReviews;
     private TextView appExtras;
 
-    public GeneralDetails(DetailsActivity activity, App app) {
-        super(activity, app);
+    public GeneralDetails(DetailsFragment fragment, App app) {
+        super(fragment, app);
     }
 
     @Override
@@ -56,8 +55,8 @@ public class GeneralDetails extends Abstract {
     }
 
     private void drawAppBadge(App app) {
-        ImageView imageView = activity.findViewById(R.id.icon);
-        RelativeLayout relativeLayout = activity.findViewById(R.id.details_header);
+        ImageView imageView = fragment.getActivity().findViewById(R.id.icon);
+        RelativeLayout relativeLayout = fragment.getActivity().findViewById(R.id.details_header);
         ImageSource imageSource = app.getIconInfo();
         if (null != imageSource.getApplicationInfo()) {
             imageView.setImageDrawable(imageView.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
@@ -65,7 +64,7 @@ public class GeneralDetails extends Abstract {
             getPalette(bitmap);
         } else {
             Picasso
-                    .with(activity)
+                    .with(fragment.getActivity())
                     .load(imageSource.getUrl())
                     .placeholder(R.color.transparent)
                     .into(imageView, new com.squareup.picasso.Callback() {
@@ -85,7 +84,7 @@ public class GeneralDetails extends Abstract {
 
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, R.string.details_developer, app.getDeveloperName());
-        drawVersion(activity.findViewById(R.id.versionString), app);
+        drawVersion(fragment.getActivity().findViewById(R.id.versionString), app);
     }
 
     @NonNull
@@ -122,32 +121,32 @@ public class GeneralDetails extends Abstract {
     }
 
     private void paintButton(int color, int buttonId) {
-        android.widget.Button button = activity.findViewById(buttonId);
+        android.widget.Button button = fragment.getActivity().findViewById(buttonId);
         if (button != null)
             ViewCompat.setBackgroundTintList(button, ColorStateList.valueOf(color));
     }
 
     private void paintRLayout(int color, int layoutId) {
-        RelativeLayout relativeLayout = activity.findViewById(layoutId);
+        RelativeLayout relativeLayout = fragment.getActivity().findViewById(layoutId);
         if (relativeLayout != null)
             relativeLayout.setBackgroundColor(color);
     }
 
     private void paintTextView(int color, int textViewId) {
-        TextView textView = activity.findViewById(textViewId);
+        TextView textView = fragment.getActivity().findViewById(textViewId);
         if (textView != null)
             textView.setTextColor(color);
     }
 
     private void paintImageView(int color, int imageViewId) {
-        ImageView imageView = activity.findViewById(imageViewId);
+        ImageView imageView = fragment.getActivity().findViewById(imageViewId);
         if (imageView != null)
             imageView.setColorFilter(color);
     }
 
     private void drawGeneralDetails(App app) {
-        activity.findViewById(R.id.app_detail).setVisibility(View.VISIBLE);
-        activity.findViewById(R.id.general_card).setVisibility(View.VISIBLE);
+        fragment.getActivity().findViewById(R.id.app_detail).setVisibility(View.VISIBLE);
+        fragment.getActivity().findViewById(R.id.general_card).setVisibility(View.VISIBLE);
 
         if (app.isEarlyAccess()) {
             setText(R.id.rating, R.string.early_access);
@@ -157,8 +156,8 @@ public class GeneralDetails extends Abstract {
 
         setText(R.id.installs, R.string.details_installs, Util.addDiPrefix(app.getInstalls()));
         setText(R.id.updated, R.string.details_updated, app.getUpdated());
-        setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(activity, app.getSize()));
-        setText(R.id.category, R.string.details_category, new CategoryManager(activity).getCategoryName(app.getCategoryId()));
+        setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(fragment.getActivity(), app.getSize()));
+        setText(R.id.category, R.string.details_category, new CategoryManager(fragment.getActivity()).getCategoryName(app.getCategoryId()));
         setText(R.id.developer, R.string.details_developer, app.getDeveloperName());
         if (app.getPrice().isEmpty())
             setText(R.id.price, R.string.category_appFree);
@@ -170,13 +169,13 @@ public class GeneralDetails extends Abstract {
         drawChanges(app);
 
         if (app.getVersionCode() == 0) {
-            activity.findViewById(R.id.updated).setVisibility(View.GONE);
-            activity.findViewById(R.id.size).setVisibility(View.GONE);
+            fragment.getActivity().findViewById(R.id.updated).setVisibility(View.GONE);
+            fragment.getActivity().findViewById(R.id.size).setVisibility(View.GONE);
         }
 
-        appInfo = activity.findViewById(R.id.d_app_info);
-        appReviews = activity.findViewById(R.id.d_reviews);
-        appExtras = activity.findViewById(R.id.d_additional_info);
+        appInfo = fragment.getActivity().findViewById(R.id.d_app_info);
+        appReviews = fragment.getActivity().findViewById(R.id.d_reviews);
+        appExtras = fragment.getActivity().findViewById(R.id.d_additional_info);
 
         appInfo.setOnClickListener(v -> {
             textViewHopper(appInfo, appReviews, appExtras);
@@ -194,10 +193,10 @@ public class GeneralDetails extends Abstract {
 
     private void drawChanges(App app) {
         String changes = app.getChanges();
-        TextView readMore = activity.findViewById(R.id.readMore);
-        LinearLayout changelogLayout = activity.findViewById(R.id.changelog_container);
+        TextView readMore = fragment.getActivity().findViewById(R.id.readMore);
+        LinearLayout changelogLayout = fragment.getActivity().findViewById(R.id.changelog_container);
         if (TextUtils.isEmpty(changes)) {
-            activity.findViewById(R.id.changes_container).setVisibility(View.GONE);
+            fragment.getActivity().findViewById(R.id.changes_container).setVisibility(View.GONE);
             return;
         }
         if (app.getInstalledVersionCode() == 0) {
@@ -212,7 +211,7 @@ public class GeneralDetails extends Abstract {
         } else {
             readMore.setVisibility(View.GONE);
             setText(R.id.changes_upper, Html.fromHtml(changes).toString());
-            activity.findViewById(R.id.changes_container).setVisibility(View.VISIBLE);
+            fragment.getActivity().findViewById(R.id.changes_container).setVisibility(View.VISIBLE);
         }
     }
 
@@ -228,14 +227,14 @@ public class GeneralDetails extends Abstract {
         if (null == value) {
             return;
         }
-        TextView itemView = new TextView(activity);
+        TextView itemView = new TextView(fragment.getActivity());
         try {
             itemView.setAutoLinkMask(Linkify.ALL);
-            itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
+            itemView.setText(fragment.getActivity().getString(R.string.two_items, key, Html.fromHtml(value)));
         } catch (RuntimeException e) {
             Log.w(getClass().getSimpleName(), "System WebView missing: " + e.getMessage());
             itemView.setAutoLinkMask(0);
-            itemView.setText(activity.getString(R.string.two_items, key, Html.fromHtml(value)));
+            itemView.setText(fragment.getActivity().getString(R.string.two_items, key, Html.fromHtml(value)));
         }
     }
 
@@ -244,13 +243,13 @@ public class GeneralDetails extends Abstract {
         if (TextUtils.isEmpty(versionName)) {
             return;
         }
-        textView.setText(activity.getString(R.string.details_versionName, versionName));
+        textView.setText(fragment.getActivity().getString(R.string.details_versionName, versionName));
         textView.setVisibility(View.VISIBLE);
         if (!app.isInstalled()) {
             return;
         }
         try {
-            PackageInfo info = activity.getPackageManager().getPackageInfo(app.getPackageName(), 0);
+            PackageInfo info = fragment.getActivity().getPackageManager().getPackageInfo(app.getPackageName(), 0);
             String currentVersion = info.versionName;
             if (info.versionCode == app.getVersionCode() || null == currentVersion) {
                 return;
@@ -260,8 +259,8 @@ public class GeneralDetails extends Abstract {
                 currentVersion += " (" + info.versionCode;
                 newVersion = app.getVersionCode() + ")";
             }
-            textView.setText(activity.getString(R.string.details_versionName_updatable, currentVersion, newVersion));
-            setText(R.id.download, activity.getString(R.string.details_update));
+            textView.setText(fragment.getActivity().getString(R.string.details_versionName_updatable, currentVersion, newVersion));
+            setText(R.id.download, fragment.getActivity().getString(R.string.details_update));
         } catch (PackageManager.NameNotFoundException e) {
             // We've checked for that already
         }
@@ -269,9 +268,9 @@ public class GeneralDetails extends Abstract {
 
     private void drawDescription(App app) {
         if (TextUtils.isEmpty(app.getDescription())) {
-            activity.findViewById(R.id.more_card).setVisibility(View.GONE);
+            fragment.getActivity().findViewById(R.id.more_card).setVisibility(View.GONE);
         } else {
-            activity.findViewById(R.id.more_card).setVisibility(View.VISIBLE);
+            fragment.getActivity().findViewById(R.id.more_card).setVisibility(View.VISIBLE);
             setText(R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
         }
     }
@@ -284,8 +283,8 @@ public class GeneralDetails extends Abstract {
     }
 
     private void contentViewHopper(int viewA, int viewB, int viewC) {
-        ViewUtils.findViewById(activity, viewA).setVisibility(View.VISIBLE);
-        ViewUtils.findViewById(activity, viewB).setVisibility(View.GONE);
-        ViewUtils.findViewById(activity, viewC).setVisibility(View.GONE);
+        ViewUtils.findViewById(fragment.getActivity(), viewA).setVisibility(View.VISIBLE);
+        ViewUtils.findViewById(fragment.getActivity(), viewB).setVisibility(View.GONE);
+        ViewUtils.findViewById(fragment.getActivity(), viewC).setVisibility(View.GONE);
     }
 }

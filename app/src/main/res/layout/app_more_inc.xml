@@ -2,6 +2,7 @@
     android:id="@+id/more_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
     android:background="?attr/selectableItemBackground"
     android:orientation="vertical"
     android:visibility="gone">
@@ -14,6 +15,7 @@
         android:layout_marginBottom="12dp"
         android:layout_marginTop="25dp"
         android:clickable="true"
+        android:focusable="true"
         android:fontFamily="@font/google_sans_bold"
         android:text="@string/details_description"
         android:textSize="16sp" />
@@ -23,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:animateLayoutChanges="true"
         android:background="@drawable/outline_bg"
         android:visibility="gone">
 
