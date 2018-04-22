@@ -19,6 +19,9 @@
 -keep public interface android.content.pm.IPackageInstallObserver { *; }
 -keep class android.content.pm.IPackageInstallObserver$Stub { *; }
 -keep public class com.dragons.aurora.InstallerPrivileged$* { *; }
+-keep public class com.google.protobuf.ExtensionRegistryLite { *; }
+-keep public class com.google.protobuf.ExtensionRegistry { *; }
+-keep final class com.google.protobuf.ExtensionRegistryFactory { *; }
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
 -dontwarn sun.misc.Unsafe
 -optimizationpasses 5
