@@ -11,7 +11,7 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="5dp"
         app:cardCornerRadius="2dp"
         app:cardElevation="2dp"
@@ -54,6 +54,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
     </android.support.v7.widget.CardView>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -4,11 +4,10 @@
     android:id="@+id/beta_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
+    android:layout_margin="5dp"
     android:visibility="gone"
     app:cardCornerRadius="8dp"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="true">
+    app:cardPreventCornerOverlap="false">
 
     <LinearLayout
         android:layout_width="match_parent"

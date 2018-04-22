@@ -1,12 +1,17 @@
 package com.dragons.aurora.fragment.details;
 
+import android.content.Context;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.DetailsFragment;
+import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
+import com.percolate.caffeine.PhoneUtils;
+import com.percolate.caffeine.ViewUtils;
 
 public abstract class AbstractHelper {
 
@@ -47,5 +52,45 @@ public abstract class AbstractHelper {
                 ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_less, 0);
             }
         });
+    }
+
+    protected boolean isLoggedIn() {
+        return PreferenceFragment.getBoolean(fragment.getActivity(), "LOGGED_IN");
+    }
+
+    protected boolean isDummy() {
+        return PreferenceFragment.getBoolean(fragment.getActivity(), "DUMMY_ACC");
+    }
+
+    protected boolean isGoogle() {
+        return PreferenceFragment.getBoolean(fragment.getActivity(), "GOOGLE_ACC");
+    }
+
+    protected boolean isConnected(Context c) {
+        return PhoneUtils.isNetworkAvailable(c);
+    }
+
+    protected void checkOut() {
+        PreferenceManager.getDefaultSharedPreferences(fragment.getActivity()).edit().putBoolean("LOGGED_IN", false).apply();
+        PreferenceManager.getDefaultSharedPreferences(fragment.getActivity()).edit().putString("GOOGLE_NAME", "").apply();
+        PreferenceManager.getDefaultSharedPreferences(fragment.getActivity()).edit().putString("GOOGLE_URL", "").apply();
+    }
+
+    protected void hide(View v, int viewID) {
+        ViewUtils.findViewById(v, viewID).setVisibility(View.GONE);
+    }
+
+    protected void show(View v, int viewID) {
+        ViewUtils.findViewById(v, viewID).setVisibility(View.VISIBLE);
+    }
+
+    protected void setText(View v, int viewId, String text) {
+        TextView textView = ViewUtils.findViewById(v, viewId);
+        if (null != textView)
+            textView.setText(text);
+    }
+
+    protected void setText(View v, int viewId, int stringId, Object... text) {
+        setText(v, viewId, v.getResources().getString(stringId, text));
     }
 }

@@ -106,7 +106,7 @@
     <string name="details_size">"%1$s"</string>
     <string name="details_uninstall">Uninstall</string>
     <string name="details_update">Update</string>
-    <string name="details_updated">"Updated : %1$s"</string>
+    <string name="details_updated">"%1$s"</string>
     <string name="details_versionName">"%1$s"</string>
     <string name="details_versionName_updatable">"%1$s → %2$s"</string>
     <string name="details_wishList">Add to wishlist</string>
@@ -190,9 +190,9 @@
     <string name="header_usr_name">Aurora</string>
     <string name="header_usr_noEmail">Kindly login to use Aurora</string>
     <string name="list_app_blacklisted">Blacklisted</string>
-    <string name="list_app_depends_on_gsf">depends on GSF</string>
+    <string name="list_app_depends_on_gsf">GSF dependent</string>
     <string name="list_app_has_ads">has ads</string>
-    <string name="list_app_independent_from_gsf">not GSF dependent</string>
+    <string name="list_app_independent_from_gsf">GSF independent</string>
     <string name="list_app_no_ads">no ads</string>
     <string name="list_app_system">System app</string>
     <string name="list_app_whitelisted">Whitelisted</string>

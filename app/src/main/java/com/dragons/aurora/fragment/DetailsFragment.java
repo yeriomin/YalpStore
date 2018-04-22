@@ -1,6 +1,5 @@
 package com.dragons.aurora.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.ContextMenu;
@@ -41,13 +40,9 @@ public class DetailsFragment extends ForegroundDetailsAppsTaskHelper {
     protected String packageName;
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.details_activity_layout, container, false);
+        v.findViewById(R.id.fab_finish).setOnClickListener(v -> getActivity().finish());
         return v;
     }
 
@@ -80,10 +75,9 @@ public class DetailsFragment extends ForegroundDetailsAppsTaskHelper {
         Observable.fromCallable(() -> getResult(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), packageName))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((result) -> {
-
-                    DetailsFragment.app = result;
-                    this.redrawDetails(result);
+                .subscribe(app -> {
+                    DetailsFragment.app = app;
+                    this.redrawDetails(app);
 
                 }, this::processException);
     }
@@ -110,16 +104,17 @@ public class DetailsFragment extends ForegroundDetailsAppsTaskHelper {
         new Share(this, app).draw();
         new SystemAppPage(this, app).draw();
         new Video(this, app).draw();
-        new Beta(this, app).draw();
+
+        if (isGoogle())
+            new Beta(this, app).draw();
 
         if (null != downloadOrInstallFragment) {
             downloadOrInstallFragment.unregisterReceivers();
         }
+
         downloadOrInstallFragment = new DownloadOrInstall((AuroraActivity) this.getActivity(), app);
         redrawButtons();
         new DownloadOptions((AuroraActivity) this.getActivity(), app).draw();
-
-        getActivity().setTitle(app.getDisplayName());
     }
 
     private void redrawButtons() {

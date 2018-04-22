@@ -28,7 +28,7 @@ public abstract class Button extends Abstract {
         }
         button.setEnabled(true);
         button.setVisibility(shouldBeVisible() ? View.VISIBLE : View.GONE);
-        button.setOnClickListener(view -> onButtonClick(view));
+        button.setOnClickListener(this::onButtonClick);
     }
 
     void disable(int stringId) {

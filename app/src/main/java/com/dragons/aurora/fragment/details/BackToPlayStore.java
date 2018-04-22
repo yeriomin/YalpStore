@@ -30,13 +30,10 @@ public class BackToPlayStore extends AbstractHelper {
         ViewUtils.findViewById(fragment.getActivity(),R.id.to_play_store_cnt).setVisibility(View.VISIBLE);
         ImageView toPlayStore = (ImageView) fragment.getActivity().findViewById(R.id.to_play_store);
         toPlayStore.setVisibility(View.VISIBLE);
-        toPlayStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(PurchaseTask.URL_PURCHASE + app.getPackageName()));
-                fragment.getActivity().startActivity(i);
-            }
+        toPlayStore.setOnClickListener(v -> {
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(PurchaseTask.URL_PURCHASE + app.getPackageName()));
+            fragment.getActivity().startActivity(i);
         });
     }
 

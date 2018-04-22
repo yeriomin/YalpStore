@@ -2,23 +2,20 @@
     android:id="@+id/more_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     android:animateLayoutChanges="true"
     android:background="?attr/selectableItemBackground"
     android:orientation="vertical"
     android:visibility="gone">
 
-    <TextView
-        android:id="@+id/readMore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/showLessMore"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="12dp"
-        android:layout_marginTop="25dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/google_sans_bold"
-        android:text="@string/details_description"
-        android:textSize="16sp" />
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_expand_more"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/changelog_container"

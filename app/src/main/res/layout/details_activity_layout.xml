@@ -8,13 +8,11 @@
         android:id="@+id/fab_finish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="32dp"
         android:clickable="true"
         android:focusable="true"
         app:backgroundTint="@color/white"
-        app:borderWidth="0dp"
         app:fabSize="mini"
         app:srcCompat="@drawable/ic_chevron_left" />
 
@@ -27,6 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -44,19 +43,20 @@
                 android:animateLayoutChanges="true"
                 android:orientation="vertical">
 
+                <!-- App Header -->
                 <android.support.v7.widget.CardView
-                    android:id="@+id/main"
+                    android:id="@+id/mainCard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:elevation="5dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardUseCompatPadding="true">
+                    android:visibility="gone"
+                    app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:animateLayoutChanges="true"
                         android:padding="5dp">
 
                         <!-- App Info : Icon, Name, Developer, Version -->
@@ -69,9 +69,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:orientation="horizontal"
-                            android:gravity="end"
                             android:animateLayoutChanges="true"
+                            android:gravity="end"
+                            android:orientation="horizontal"
                             android:weightSum="6">
 
                             <ProgressBar
@@ -92,8 +92,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
-                                android:gravity="end"
                                 android:fontFamily="@font/google_sans"
+                                android:gravity="end"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
@@ -158,21 +158,10 @@
                     android:orientation="vertical">
 
                     <!-- App Details -->
-                    <include
-                        layout="@layout/app_details_inc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp" />
+                    <include layout="@layout/app_details_inc" />
 
                     <!-- Changelog -->
-                    <include
-                        layout="@layout/app_changelog_inc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp" />
+                    <include layout="@layout/app_changelog_inc" />
 
                     <!-- Screenshot -->
                     <android.support.v7.widget.RecyclerView
@@ -182,17 +171,10 @@
                         android:layout_margin="5dp" />
 
                     <!-- Exodus -->
-                    <include
-                        layout="@layout/app_exodus_inc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp" />
+                    <include layout="@layout/app_exodus_inc" />
 
                     <!-- Read More -->
-                    <include
-                        layout="@layout/app_more_inc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                    <include layout="@layout/app_more_inc" />
 
                 </LinearLayout>
 
@@ -217,17 +199,19 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
+                    <!--General -->
+                    <include layout="@layout/app_gen_inc" />
+
                     <!-- App Video -->
                     <android.support.v7.widget.CardView
                         android:id="@+id/app_video"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:elevation="0dp"
+                        android:layout_margin="5dp"
+                        android:elevation="5dp"
                         android:visibility="gone"
                         app:cardCornerRadius="8dp"
-                        app:cardPreventCornerOverlap="false"
-                        app:cardUseCompatPadding="true">
+                        app:cardPreventCornerOverlap="false">
 
                         <ImageView
                             android:id="@+id/thumbnail"
@@ -252,26 +236,22 @@
                     <!-- Permissions -->
                     <include layout="@layout/app_perm_inc" />
 
-                    <!--General -->
-                    <include layout="@layout/app_gen_inc" />
-
                     <!-- Bottom Actions -->
                     <include layout="@layout/app_bottom_actions_inc" />
                 </LinearLayout>
 
-                <ProgressBar
-                    android:id="@+id/progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:indeterminate="true"
-                    android:padding="5dp"
-                    android:visibility="gone" />
-
             </LinearLayout>
+
         </LinearLayout>
 
     </com.dragons.aurora.view.CustomNestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:padding="5dp" />
 
 </android.support.design.widget.CoordinatorLayout>

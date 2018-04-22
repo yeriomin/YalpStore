@@ -1,10 +1,7 @@
 package com.dragons.aurora.task.playstore;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.view.View;
-import android.widget.TextView;
 
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
@@ -19,20 +16,7 @@ import java.io.IOException;
 
 public abstract class ForegroundDetailsAppsTaskHelper extends ForegroundUpdatableAppsTaskHelper {
 
-    protected Throwable exception;
-    protected TextView errorView;
-
     protected Context context;
-    protected ProgressDialog progressDialog;
-    protected View progressIndicator;
-
-    public View getProgressIndicator() {
-        return progressIndicator;
-    }
-
-    public void setProgressIndicator(View progressIndicator) {
-        this.progressIndicator = progressIndicator;
-    }
 
     public void setContext(Context context) {
         this.context = context;

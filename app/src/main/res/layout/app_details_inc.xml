@@ -1,112 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/app_detail"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     android:background="@drawable/outline_bg"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:visibility="gone"
+    android:scrollbars="none">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" />
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp">
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/rating"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/google_sans_bold"
+            android:singleLine="true" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp">
+            android:layout_marginStart="5dp"
+            android:isIndicator="true"
+            android:max="1"
+            android:numStars="1"
+            android:scaleX=".8"
+            android:scaleY=".8" />
 
-            <TextView
-                android:id="@+id/rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:fontFamily="@font/google_sans_bold"
-                android:singleLine="true" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
 
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:isIndicator="true"
-                android:max="1"
-                android:numStars="1"
-                android:scaleX=".8"
-                android:scaleY=".8" />
+        <TextView
+            android:id="@+id/installs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/google_sans_bold"
+            android:gravity="clip_horizontal"
+            android:singleLine="true" />
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:background="@color/gray" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
 
-            <TextView
-                android:id="@+id/installs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:fontFamily="@font/google_sans_bold"
-                android:gravity="clip_horizontal"
-                android:singleLine="true" />
+        <TextView
+            android:id="@+id/size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/google_sans_bold"
+            android:singleLine="true" />
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:background="@color/gray" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
 
-            <TextView
-                android:id="@+id/size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:fontFamily="@font/google_sans_bold"
-                android:singleLine="true" />
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/google_sans_bold"
+            android:singleLine="true" />
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:background="@color/gray" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
 
-            <TextView
-                android:id="@+id/category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:fontFamily="@font/google_sans_bold"
-                android:singleLine="true" />
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/google_sans_bold"
+            android:singleLine="true" />
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:background="@color/gray" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:fontFamily="@font/google_sans_bold"
-                android:singleLine="true" />
-
-        </LinearLayout>
-    </HorizontalScrollView>
-
-</LinearLayout>
+</HorizontalScrollView>

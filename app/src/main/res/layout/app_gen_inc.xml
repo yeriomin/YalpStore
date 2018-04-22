@@ -1,46 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/general_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/outline_bg"
     android:orientation="vertical"
-    android:visibility="visible">
+    android:padding="5dp"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="5dp"
+            android:alpha="0.7"
+            android:src="@drawable/ic_update" />
 
         <TextView
+            android:id="@+id/updated"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:gravity="center|start"
-            android:text="General"
-            android:textAllCaps="true"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/google_sans_bold" />
 
-        <LinearLayout
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:alpha="0.7"
+            android:src="@drawable/ic_google_play" />
+
+
+        <TextView
+            android:id="@+id/google_dependencies"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/google_sans_bold" />
 
-            <TextView
-                android:id="@+id/developer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
 
-            <TextView
-                android:id="@+id/updated"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp" />
+        <ImageView
+            android:id="@+id/ratingLabelImg"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:padding="1dp"
+            android:alpha="0.7"
+            android:src="@drawable/ic_audience" />
 
-            <TextView
-                android:id="@+id/google_dependencies"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/app_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/google_sans_bold" />
     </LinearLayout>
+
+</HorizontalScrollView>
 
 

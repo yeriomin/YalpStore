@@ -9,8 +9,6 @@ import android.view.View;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.DetailsFragment;
-import com.dragons.aurora.fragment.details.DownloadOrInstall;
-import com.dragons.aurora.model.App;
 
 public class DetailsActivity extends AuroraActivity {
 
@@ -38,12 +36,6 @@ public class DetailsActivity extends AuroraActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 
     @Override

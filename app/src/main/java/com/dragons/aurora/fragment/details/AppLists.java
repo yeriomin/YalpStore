@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.dragons.aurora.fragment.DetailsFragment;
-import com.percolate.caffeine.ViewUtils;
-
-import com.dragons.aurora.activities.ClusterActivity;
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.R;
+import com.dragons.aurora.activities.ClusterActivity;
 import com.dragons.aurora.activities.SearchActivity;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
+import com.percolate.caffeine.ViewUtils;
 
 public class AppLists extends AbstractHelper {
 
