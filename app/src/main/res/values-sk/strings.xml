@@ -286,8 +286,8 @@ Vykonať?"</string>
 <string name="pref_use_tor">"Použiť Tor"</string>
 <string name="pref_use_tor_summary">"Vyžadovať preberanie cez Tor pre zabezpečenie súkromia"</string>
 <string name="pref_category_proxy">"Proxy"</string>
-<string name="pref_proxy_enable">"Enable proxy"</string>
-<string name="pref_proxy_type">"Proxy type"</string>
-<string name="pref_proxy_host">"Proxy host"</string>
-<string name="pref_proxy_port">"Proxy port"</string>
+<string name="pref_proxy_enable">"Povoliť proxy"</string>
+<string name="pref_proxy_type">"Typ proxy"</string>
+<string name="pref_proxy_host">"Adresa proxy"</string>
+<string name="pref_proxy_port">"Port proxy"</string>
 </resources>
