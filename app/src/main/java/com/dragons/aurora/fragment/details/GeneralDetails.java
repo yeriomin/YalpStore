@@ -166,7 +166,7 @@ public class GeneralDetails extends AbstractHelper {
         setText(R.id.updated, R.string.details_updated, app.getUpdated());
         setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(fragment.getActivity(), app.getSize()));
         setText(R.id.category, R.string.details_category, new CategoryManager(fragment.getActivity()).getCategoryName(app.getCategoryId()));
-        setText(R.id.app_rating, app.getLabeledRating());
+
         setText(R.id.google_dependencies, app.getDependencies().isEmpty()
                 ? R.string.list_app_independent_from_gsf
                 : R.string.list_app_depends_on_gsf);

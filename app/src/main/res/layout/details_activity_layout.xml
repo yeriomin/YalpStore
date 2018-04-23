@@ -65,6 +65,7 @@
                         <!-- Action : Download, Update, Uninstall -->
                         <include layout="@layout/app_actions_inc" />
 
+                        <!-- Download ProgressBar & Ads -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -97,56 +98,77 @@
                                 android:textSize="12sp" />
                         </LinearLayout>
 
-                        <HorizontalScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                        <!-- Tabs & App Rating -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_margin="6dp"
-                                android:alpha=".8"
-                                android:orientation="horizontal">
+                            <HorizontalScrollView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="9">
 
-                                <TextView
-                                    android:id="@+id/d_app_info"
+                                <LinearLayout
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="8dp"
-                                    android:layout_weight="1"
-                                    android:clickable="true"
-                                    android:focusable="true"
-                                    android:fontFamily="@font/google_sans_bold"
-                                    android:text="@string/details_appInfo"
-                                    android:textColor="?android:attr/textColorPrimary"
-                                    android:textSize="14sp" />
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="6dp"
+                                    android:alpha=".8"
+                                    android:orientation="horizontal">
 
-                                <TextView
-                                    android:id="@+id/d_reviews"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="8dp"
-                                    android:layout_weight="1"
-                                    android:clickable="true"
-                                    android:focusable="true"
-                                    android:fontFamily="@font/google_sans_bold"
-                                    android:text="@string/details_appReview"
-                                    android:textSize="14sp" />
+                                    <TextView
+                                        android:id="@+id/d_app_info"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_weight="1"
+                                        android:clickable="true"
+                                        android:focusable="true"
+                                        android:fontFamily="@font/google_sans_bold"
+                                        android:text="@string/details_appInfo"
+                                        android:textColor="?android:attr/textColorPrimary"
+                                        android:textSize="14sp" />
 
-                                <TextView
-                                    android:id="@+id/d_additional_info"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:clickable="true"
-                                    android:focusable="true"
-                                    android:fontFamily="@font/google_sans_bold"
-                                    android:text="@string/details_appExtras"
-                                    android:textSize="14sp" />
-                            </LinearLayout>
-                        </HorizontalScrollView>
+                                    <TextView
+                                        android:id="@+id/d_reviews"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="8dp"
+                                        android:layout_weight="1"
+                                        android:clickable="true"
+                                        android:focusable="true"
+                                        android:fontFamily="@font/google_sans_bold"
+                                        android:text="@string/details_appReview"
+                                        android:textSize="14sp" />
+
+                                    <TextView
+                                        android:id="@+id/d_additional_info"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:clickable="true"
+                                        android:focusable="true"
+                                        android:fontFamily="@font/google_sans_bold"
+                                        android:text="@string/details_appExtras"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+
+                            </HorizontalScrollView>
+
+                            <ImageView
+                                android:id="@+id/ratingLabelImg"
+                                android:layout_width="0dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:alpha="0.7"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_audience" />
+                        </LinearLayout>
 
                     </LinearLayout>
+
                 </android.support.v7.widget.CardView>
 
                 <!-- App Info -->

@@ -13,44 +13,42 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="horizontal"
         android:paddingEnd="10dp"
         android:paddingStart="10dp">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:alpha="0.7"
+            android:src="@drawable/ic_star" />
 
         <TextView
             android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/google_sans_bold"
             android:singleLine="true" />
-
-        <RatingBar
-            android:id="@+id/ratingBar"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="5dp"
-            android:isIndicator="true"
-            android:max="1"
-            android:numStars="1"
-            android:scaleX=".8"
-            android:scaleY=".8" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="28dp"
-            android:layout_gravity="center_vertical"
             android:layout_margin="8dp"
             android:background="@color/gray" />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:alpha="0.7"
+            android:src="@drawable/ic_download" />
 
         <TextView
             android:id="@+id/installs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/google_sans_bold"
             android:gravity="clip_horizontal"
             android:singleLine="true" />
@@ -58,48 +56,43 @@
         <View
             android:layout_width="1dp"
             android:layout_height="28dp"
-            android:layout_gravity="center_vertical"
             android:layout_margin="8dp"
             android:background="@color/gray" />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:padding="2dp"
+            android:alpha="0.7"
+            android:src="@drawable/ic_size" />
 
         <TextView
             android:id="@+id/size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/google_sans_bold"
             android:singleLine="true" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="28dp"
-            android:layout_gravity="center_vertical"
             android:layout_margin="8dp"
             android:background="@color/gray" />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:alpha="0.7"
+            android:src="@drawable/ic_categories" />
 
         <TextView
             android:id="@+id/category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/google_sans_bold"
             android:singleLine="true" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="28dp"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="8dp"
-            android:background="@color/gray" />
-
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:fontFamily="@font/google_sans_bold"
-            android:singleLine="true" />
-
     </LinearLayout>
 
 </HorizontalScrollView>

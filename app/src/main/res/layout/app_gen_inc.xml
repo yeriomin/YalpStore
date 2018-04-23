@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/general_card"
     android:layout_width="match_parent"
@@ -8,18 +7,20 @@
     android:background="@drawable/outline_bg"
     android:orientation="vertical"
     android:padding="5dp"
-    android:scrollbars="none">
+    android:scrollbars="none"
+    android:visibility="gone">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp">
 
         <ImageView
             android:layout_width="18dp"
             android:layout_height="18dp"
-            android:layout_marginStart="5dp"
             android:alpha="0.7"
             android:src="@drawable/ic_update" />
 
@@ -27,7 +28,7 @@
             android:id="@+id/updated"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/google_sans_bold" />
 
         <View
@@ -48,7 +49,7 @@
             android:id="@+id/google_dependencies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/google_sans_bold" />
 
         <View
@@ -58,20 +59,27 @@
             android:layout_margin="8dp"
             android:background="@color/gray" />
 
-        <ImageView
-            android:id="@+id/ratingLabelImg"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:padding="1dp"
-            android:alpha="0.7"
-            android:src="@drawable/ic_audience" />
-
         <TextView
             android:id="@+id/app_rating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
+            android:visibility="gone"
             android:fontFamily="@font/google_sans_bold" />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:alpha="0.7"
+            android:src="@drawable/ic_tag" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/google_sans_bold" />
+
     </LinearLayout>
 
 </HorizontalScrollView>
