@@ -19,13 +19,12 @@
 
 package com.github.yeriomin.yalpstore.task.playstore;
 
-import android.net.Uri;
 import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 
-import com.github.yeriomin.playstoreapi.BrowseLink;
-import com.github.yeriomin.playstoreapi.BrowseResponse;
+import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.github.yeriomin.playstoreapi.ListResponse;
 import com.github.yeriomin.yalpstore.CategoryManager;
 
 import java.io.IOException;
@@ -61,10 +60,10 @@ abstract public class CategoryTask extends PlayStorePayloadTask<Void> {
 
     @Override
     protected Void getResult(GooglePlayAPI api, String... arguments) throws IOException {
-        Map<String, String> topCategories = buildCategoryMap(api.categories());
+        Map<String, String> topCategories = buildCategoryMap(api.categoriesList());
         manager.save(CategoryManager.TOP, topCategories);
         for (String categoryId: topCategories.keySet()) {
-            manager.save(categoryId, buildCategoryMap(api.categories(categoryId)));
+            manager.save(categoryId, buildCategoryMap(api.categoriesList(categoryId)));
         }
         return null;
     }
@@ -77,14 +76,25 @@ abstract public class CategoryTask extends PlayStorePayloadTask<Void> {
         );
     }
 
-    private Map<String, String> buildCategoryMap(BrowseResponse response) {
+    private Map<String, String> buildCategoryMap(ListResponse response) {
         Map<String, String> categories = new HashMap<>();
-        for (BrowseLink category: response.getCategoryContainer().getCategoryList()) {
-            String categoryId = Uri.parse(category.getDataUrl()).getQueryParameter("cat");
-            if (TextUtils.isEmpty(categoryId)) {
+        for (DocV2 categoryCluster: response.getDoc(0).getChildList()) {
+            if (!categoryCluster.getBackendDocid().equals("category_list_cluster")) {
                 continue;
             }
-            categories.put(categoryId, category.getName());
+            for (DocV2 category: categoryCluster.getChildList()) {
+                if (!category.hasUnknownCategoryContainer()
+                    || !category.getUnknownCategoryContainer().hasCategoryIdContainer()
+                    || !category.getUnknownCategoryContainer().getCategoryIdContainer().hasCategoryId()
+                ) {
+                    continue;
+                }
+                String categoryId = category.getUnknownCategoryContainer().getCategoryIdContainer().getCategoryId();
+                if (TextUtils.isEmpty(categoryId)) {
+                    continue;
+                }
+                categories.put(categoryId, category.getTitle());
+            }
         }
         return categories;
     }
