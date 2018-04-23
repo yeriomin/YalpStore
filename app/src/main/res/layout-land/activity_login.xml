@@ -179,11 +179,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/password_layout_extg"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/edit_text_login"
+                android:layout_marginTop="25dp"
                 android:fontFamily="@font/google_sans_bold"
                 android:text="@string/action_or"
-                android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <ImageView
@@ -192,7 +190,7 @@
                 android:layout_height="36dp"
                 android:layout_below="@+id/or_txt"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="25dp"
                 app:srcCompat="@drawable/ic_dummy_avatar" />
 
             <TextView
