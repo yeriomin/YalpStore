@@ -1,17 +1,20 @@
 package com.dragons.aurora.task.playstore;
 
+import com.dragons.aurora.AppListIterator;
+import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 
-import com.dragons.aurora.AppListIterator;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
-
 public class CategoryAppsTask extends EndlessScrollTask implements CloneableTask {
 
     private String categoryId;
     private GooglePlayAPI.SUBCATEGORY subCategory;
+
+    public CategoryAppsTask(AppListIterator iterator) {
+        super(iterator);
+    }
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
@@ -19,10 +22,6 @@ public class CategoryAppsTask extends EndlessScrollTask implements CloneableTask
 
     public void setSubCategory(GooglePlayAPI.SUBCATEGORY subCategory) {
         this.subCategory = subCategory;
-    }
-
-    public CategoryAppsTask(AppListIterator iterator) {
-        super(iterator);
     }
 
     @Override

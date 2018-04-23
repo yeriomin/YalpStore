@@ -1,8 +1,8 @@
 package com.dragons.aurora.task.playstore;
 
-import java.util.Map;
-
 import com.dragons.aurora.activities.CategoryListActivity;
+
+import java.util.Map;
 
 public class CategoryListTask extends CategoryTask implements CloneableTask {
 
