@@ -40,6 +40,9 @@
     <string name="action_make_system">Convert to system app</string>
     <string name="action_make_normal">Convert to normal app</string>
     <string name="action_bug_report">Report an issue</string>
+    <string name="action_wishlist">Wishlist</string>
+    <string name="action_wishlist_add">Add to wishlist</string>
+    <string name="action_wishlist_remove">Remove from wishlist</string>
     <string name="search_filter">All apps</string>
     <string name="search_title">Search applications</string>
     <string name="dialog_title_package_id">Package with this name exists</string>

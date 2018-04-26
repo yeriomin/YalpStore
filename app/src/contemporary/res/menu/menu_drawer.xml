@@ -12,6 +12,10 @@
             android:id="@+id/action_categories"
             android:title="@string/action_categories"
             android:icon="@drawable/ic_categories" />
+        <item
+            android:id="@+id/action_wishlist"
+            android:title="@string/action_wishlist"
+            android:icon="@drawable/ic_wishlist_tick" />
     </group>
     <item
         android:id="@+id/action_settings"

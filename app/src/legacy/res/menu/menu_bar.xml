@@ -59,6 +59,10 @@
         android:title="@string/action_categories"
         android:icon="@drawable/ic_categories" />
     <item
+        android:id="@+id/action_wishlist"
+        android:title="@string/action_wishlist"
+        android:icon="@drawable/ic_wishlist_tick" />
+    <item
         android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:icon="@drawable/ic_settings" />

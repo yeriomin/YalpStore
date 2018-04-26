@@ -50,6 +50,14 @@
     </item>
 
     <item
+        android:id="@+id/action_wishlist_add"
+        android:title="@string/action_wishlist_add"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_wishlist_remove"
+        android:title="@string/action_wishlist_remove"
+        android:visible="false" />
+    <item
         android:id="@+id/action_ignore"
         android:title="@string/action_ignore"
         android:visible="false"

@@ -8,8 +8,6 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.preference.DialogPreference;
-import android.preference.Preference;
 import android.util.AttributeSet;
 
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;

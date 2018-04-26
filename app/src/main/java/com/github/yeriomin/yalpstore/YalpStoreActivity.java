@@ -121,6 +121,9 @@ public abstract class YalpStoreActivity extends BaseActivity {
             case R.id.action_bug_report:
                 startActivity(new Intent(this, BugReportActivity.class));
                 break;
+            case R.id.action_wishlist:
+                startActivity(new Intent(this, WishlistActivity.class));
+                break;
             case R.id.filter_system_apps:
             case R.id.filter_apps_with_ads:
             case R.id.filter_paid_apps:

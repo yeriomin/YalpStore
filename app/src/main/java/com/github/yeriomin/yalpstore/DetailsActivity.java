@@ -42,6 +42,7 @@ import com.github.yeriomin.yalpstore.fragment.details.Screenshot;
 import com.github.yeriomin.yalpstore.fragment.details.Share;
 import com.github.yeriomin.yalpstore.fragment.details.SystemAppPage;
 import com.github.yeriomin.yalpstore.fragment.details.Video;
+import com.github.yeriomin.yalpstore.fragment.details.Wishlist;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.CloneableTask;
 import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
@@ -166,6 +167,7 @@ public class DetailsActivity extends YalpStoreActivity {
         setTitle(app.getDisplayName());
         new Background(this, app).draw();
         new GeneralDetails(this, app).draw();
+        new Wishlist(this, app).draw();
         new Permissions(this, app).draw();
         new Screenshot(this, app).draw();
         new Review(this, app).draw();

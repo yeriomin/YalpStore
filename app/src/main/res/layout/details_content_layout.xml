@@ -6,50 +6,64 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:id="@+id/icon"
-            android:contentDescription="@string/content_description_app_icon"
-            android:transitionName="@string/details_transition_view_name"
-            android:layout_width="64dip"
-            android:layout_height="64dip"
-            android:layout_marginRight="6dip"
-            android:layout_marginEnd="6dip"
-            android:layout_gravity="top" />
+        android:layout_height="wrap_content" >
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="center_vertical">
 
-            <TextView
-                android:id="@+id/displayName"
-                android:textSize="18sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/icon"
+                android:contentDescription="@string/content_description_app_icon"
+                android:transitionName="@string/details_transition_view_name"
+                android:layout_width="64dip"
+                android:layout_height="64dip"
+                android:layout_marginRight="6dip"
+                android:layout_marginEnd="6dip"
+                android:layout_gravity="top" />
 
-            <TextView
-                android:id="@+id/packageName"
-                android:textSize="14sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/versionString"
-                android:textSize="14sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/displayName"
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/packageName"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/versionString"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/wishlist"
+            android:visibility="gone"
+            android:layout_width="24dip"
+            android:layout_height="24dip"
+            android:layout_margin="6dip"
+            android:layout_gravity="top|right|end" />
+
+    </FrameLayout>
 
     <include layout="@layout/details_button_bar"/>
 

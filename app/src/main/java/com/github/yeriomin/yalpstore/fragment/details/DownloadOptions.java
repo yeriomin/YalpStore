@@ -33,6 +33,7 @@ import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.InstalledApkCopier;
+import com.github.yeriomin.yalpstore.LocalWishlist;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
@@ -41,6 +42,7 @@ import com.github.yeriomin.yalpstore.task.CheckShellTask;
 import com.github.yeriomin.yalpstore.task.ConvertToNormalTask;
 import com.github.yeriomin.yalpstore.task.ConvertToSystemTask;
 import com.github.yeriomin.yalpstore.task.SystemRemountTask;
+import com.github.yeriomin.yalpstore.task.playstore.WishlistToggleTask;
 import com.github.yeriomin.yalpstore.view.FlagDialogBuilder;
 
 public class DownloadOptions extends Abstract {
@@ -89,6 +91,11 @@ public class DownloadOptions extends Abstract {
             show(menu, R.id.action_make_normal, app.isSystem());
         }
         show(menu, R.id.action_flag, app.isInPlayStore());
+        if (!app.isInstalled()) {
+            LocalWishlist localWishlist = new LocalWishlist(activity);
+            show(menu, R.id.action_wishlist_add, !localWishlist.contains(app.getPackageName()));
+            show(menu, R.id.action_wishlist_remove, localWishlist.contains(app.getPackageName()));
+        }
     }
 
     private void setChecked(Menu menu, int itemId, boolean checked) {
@@ -131,6 +138,13 @@ public class DownloadOptions extends Abstract {
                 return true;
             case R.id.action_flag:
                 new FlagDialogBuilder().setActivity(activity).setApp(app).build().show();
+                return true;
+            case R.id.action_wishlist_add:
+            case R.id.action_wishlist_remove:
+                WishlistToggleTask task = new WishlistToggleTask();
+                task.setContext(activity);
+                task.setPackageName(app.getPackageName());
+                task.execute();
                 return true;
         }
         return false;
