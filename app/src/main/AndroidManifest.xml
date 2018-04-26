@@ -33,8 +33,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".activities.DirectDownloadActivity"
-            android:theme="@android:style/Theme.NoDisplay">
+            android:name=".activities.DirectDownloadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -166,7 +165,18 @@
         <activity
             android:name=".activities.DetailsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:theme="@style/LoginTheme" />
+            android:theme="@style/LoginTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="search"
+                    android:scheme="market" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.FullscreenImageActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale" />
