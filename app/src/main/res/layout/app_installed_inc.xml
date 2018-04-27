@@ -4,40 +4,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="?android:attr/colorBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:padding="5dp"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
+
+            <TextView
+                android:id="@+id/myApps_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/list_installed_title"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/google_sans"
+                android:text="@string/list_installed_summary"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingBottom="@dimen/appbar_bar_height"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!--ListView-->
-        <android.support.v7.widget.CardView
+        <ListView
+            android:id="@android:id/list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="2dp">
+            android:layout_height="wrap_content"
+            android:animationCache="true"
+            android:drawingCacheQuality="auto"
+            android:scrollingCache="true" />
 
-            <ListView
-                android:id="@android:id/list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:animationCache="true"
-                android:drawingCacheQuality="auto"
-                android:scrollingCache="true" />
-
-            <ProgressBar
-                android:id="@+id/progress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:indeterminate="true"
-                android:padding="5dp"
-                android:visibility="gone" />
-        </android.support.v7.widget.CardView>
-
-        <!--Empty TextView-->
         <TextView
             android:id="@android:id/empty"
             android:layout_width="match_parent"
@@ -45,4 +62,5 @@
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </android.support.v4.widget.SwipeRefreshLayout>
+
 </android.support.design.widget.CoordinatorLayout>

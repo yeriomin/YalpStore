@@ -26,6 +26,7 @@
     <string name="action_filter_system_apps">System apps</string>
     <string name="action_get_local_apk">Get local apk</string>
     <string name="action_home">Home</string>
+    <string name="action_myApps">My Apps</string>
     <string name="action_ignore">Add to blacklist</string>
     <string name="action_login">Login</string>
     <string name="action_logout">Log out</string>
@@ -199,6 +200,8 @@
     <string name="list_empty_query">No recent searches</string>
     <string name="list_empty_search">No apps found</string>
     <string name="list_empty_updates">No apps need to be updated</string>
+    <string name="list_installed_title">My Apps &amp; Games</string>
+    <string name="list_installed_summary">All Installed and System Apps from PlayStore</string>
     <string name="list_line_2_updatable">"Updated on %1$s"</string>
     <string name="list_update_all">Update All</string>
     <string name="list_update_all_txt">Update(s) available : %1$s"</string>
@@ -276,7 +279,7 @@
     <string name="pref_update_list_white_or_black_black">Chosen apps are going to be ignored when checking for updates</string>
     <string name="pref_update_list_white_or_black_white">Only the chosen apps will be checked for updates</string>
     <string name="search_filter">All apps</string>
-    <string name="search_title">Search applications</string>
+    <string name="search_title">Search</string>
     <string name="submit">Submit</string>
     <string name="testing_program_opt_in">join</string>
     <string name="testing_program_opt_out">leave</string>

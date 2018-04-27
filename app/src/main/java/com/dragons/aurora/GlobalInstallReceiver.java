@@ -35,7 +35,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             Log.i(getClass().getSimpleName(), "Whitelisting " + packageName);
             manager.add(packageName);
         }
-        if (null != DetailsActivity.app && packageName.equals(DetailsActivity.app.getPackageName())) {
+        if (null != DetailsFragment.app && packageName.equals(DetailsFragment.app.getPackageName())) {
             updateDetails(actionIsInstall(intent));
         }
         ((AuroraApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall(intent));

@@ -11,23 +11,19 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/nav_items_recycler"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_margin="4dp"
             android:gravity="center"
             android:orientation="horizontal" />
-
-        <View
-            android:id="@+id/appbar_divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="15dp"
-            android:background="@android:color/darker_gray"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/secondary_menu_items_recyler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="15dp" />
+            android:layout_margin="8dp"
+            android:background="@drawable/outline_bg"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp" />
     </LinearLayout>
 </com.dragons.custom.BlurView>

@@ -39,6 +39,35 @@ public class CustomAppBar extends NestedScrollView {
 
     private MenuSecondaryItemsAdapter menuSecondaryItemsAdapter;
     private MenuNavigationItemsAdapter menuNavigationItemsAdapter;
+    private OnClickListener onMoreClickListener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            } else {
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+        }
+    };
+    private BottomSheetBehavior.BottomSheetCallback bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
+        @Override
+        public void onStateChanged(@NonNull View bottomSheet, int newState) {
+            if (customAppBarType == ON_EXPANDED) {
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                    handleShowBlur();
+                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                    BlurView blurView = (BlurView) findViewById(R.id.blurview);
+                    blurView.setBlurEnabled(false);
+                    setBackgroundColor(backgroundColour);
+                }
+            }
+        }
+
+        @Override
+        public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+        }
+    };
 
     public CustomAppBar(Context context) {
         super(context);
@@ -60,6 +89,10 @@ public class CustomAppBar extends NestedScrollView {
         init();
     }
 
+    ///// ********************************************** /////
+    ///// *********    PUBLIC APIS/METHODS    ********** /////
+    ///// ********************************************** /////
+
     private void init() {
         setClipToPadding(true);
         setBackgroundColor(backgroundColour);
@@ -80,9 +113,6 @@ public class CustomAppBar extends NestedScrollView {
         bottomSheetBehavior.setHideable(false);
         bottomSheetBehavior.setBottomSheetCallback(bottomSheetCallback);
 
-        View moreIcon = findViewWithTag(MORE_ICON_TAG);
-        moreIcon.setOnClickListener(onMoreClickListener);
-
         if (customAppBarType == FULL_BLUR) {
             handleShowBlur();
         }
@@ -91,10 +121,6 @@ public class CustomAppBar extends NestedScrollView {
             keepRipple = false;
         }
     }
-
-    ///// ********************************************** /////
-    ///// *********    PUBLIC APIS/METHODS    ********** /////
-    ///// ********************************************** /////
 
     public void setNavigationMenu(@MenuRes int menuRes, OnClickListener onClickListener) {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.nav_items_recycler);
@@ -160,12 +186,12 @@ public class CustomAppBar extends NestedScrollView {
         menuSecondaryItemsAdapter.setKeepRipple(keepRipple);
     }
 
-    public void setBlurRadius(int blurRadius) {
-        this.blurRadius = blurRadius;
-    }
-
     public int getBlurRadius() {
         return blurRadius;
+    }
+
+    public void setBlurRadius(int blurRadius) {
+        this.blurRadius = blurRadius;
     }
 
     public int getBackgroundAlpha() {
@@ -185,6 +211,10 @@ public class CustomAppBar extends NestedScrollView {
         }, 500);
     }
 
+    ///// ********************************************** /////
+    ///// *********    END OF APIS/METHODS    ********** /////
+    ///// ********************************************** /////
+
     public void collapseWithoutDelay() {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
@@ -192,42 +222,6 @@ public class CustomAppBar extends NestedScrollView {
     public void expand() {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
-
-    ///// ********************************************** /////
-    ///// *********    END OF APIS/METHODS    ********** /////
-    ///// ********************************************** /////
-
-
-    private OnClickListener onMoreClickListener = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-            if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            } else {
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-            }
-        }
-    };
-
-    private BottomSheetBehavior.BottomSheetCallback bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
-        @Override
-        public void onStateChanged(@NonNull View bottomSheet, int newState) {
-            if (customAppBarType == ON_EXPANDED) {
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-                    handleShowBlur();
-                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                    BlurView blurView = (BlurView) findViewById(R.id.blurview);
-                    blurView.setBlurEnabled(false);
-                    setBackgroundColor(backgroundColour);
-                }
-            }
-        }
-
-        @Override
-        public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-        }
-    };
 
     private void handleShowBlur() {
         setBackground(null);

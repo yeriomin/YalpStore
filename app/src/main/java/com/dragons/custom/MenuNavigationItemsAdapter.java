@@ -1,10 +1,9 @@
 package com.dragons.custom;
 
 import android.content.Context;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.MenuRes;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -13,16 +12,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dragons.aurora.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dragons.aurora.R;
-
 import static com.dragons.custom.CustomAppBar.MORE_ICON_TAG;
-
-/**
- * Created by Valentin on 14/06/2017.
- */
 
 class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItemsAdapter.MenuNavItem> {
 
@@ -34,7 +29,7 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
     private List<MenuEntry> navItems;
 
     MenuNavigationItemsAdapter(Context context, @MenuRes int menuRes, View.OnClickListener onClickListener,
-                                      @ColorInt int foregroundColour) {
+                               @ColorInt int foregroundColour) {
         this.context = context;
         this.onClickListener = onClickListener;
         this.foregroundColour = foregroundColour;
@@ -43,15 +38,16 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
         populateNavigationItems(menuRes);
     }
 
+    @NonNull
     @Override
-    public MenuNavItem onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MenuNavItem onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_nav_item, parent, false);
         v.getLayoutParams().width = parent.getMeasuredWidth() / navItems.size();
         return new MenuNavItem(v);
     }
 
     @Override
-    public void onBindViewHolder(MenuNavItem holder, int position) {
+    public void onBindViewHolder(@NonNull MenuNavItem holder, int position) {
         MenuEntry item = navItems.get(position);
         holder.label.setText(item.getTitle());
         holder.label.setTextColor(foregroundColour);
@@ -88,13 +84,13 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
         }
     }
 
-    private void populateNavigationItems(int menuRes){
+    private void populateNavigationItems(int menuRes) {
         MenuParserHelper.parseMenu(context, menuRes, navItems);
-        Drawable moreIcon = context.getResources().getDrawable(R.drawable.more);
-        navItems.add(new MenuEntry("", moreIcon, 0));
+        //Drawable moreIcon = context.getResources().getDrawable(R.drawable.more);
+        //navItems.add(new MenuEntry("", moreIcon, 0));
     }
 
-    private void setupMoreIcon(MenuNavItem menuNavItem){
+    private void setupMoreIcon(MenuNavItem menuNavItem) {
         menuNavItem.itemView.setFocusable(false);
         menuNavItem.itemView.setFocusableInTouchMode(false);
         menuNavItem.itemView.setBackground(null);
@@ -103,12 +99,12 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
         menuNavItem.itemView.setTag(MORE_ICON_TAG);
     }
 
-    class MenuNavItem extends RecyclerView.ViewHolder{
+    class MenuNavItem extends RecyclerView.ViewHolder {
 
         ImageView icon;
         TextView label;
 
-        MenuNavItem(View itemView){
+        MenuNavItem(View itemView) {
             super(itemView);
             icon = (ImageView) itemView.findViewById(R.id.nav_item_icon);
             label = (TextView) itemView.findViewById(R.id.nav_item_label);

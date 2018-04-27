@@ -4,7 +4,9 @@
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
     android:orientation="horizontal"
-    android:padding="5dp">
+    android:paddingEnd="5dp"
+    android:paddingStart="5dp"
+    android:paddingTop="5dp">
 
 
     <ImageView
@@ -19,8 +21,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
         android:layout_weight="9"
         android:fontFamily="@font/google_sans"
         android:textSize="@dimen/appbar_secondary_menu_text_size" />
+
 </LinearLayout>

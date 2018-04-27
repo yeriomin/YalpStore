@@ -149,14 +149,17 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
             case R.id.action_home:
                 viewPager.setCurrentItem(0, true);
                 break;
-            case R.id.action_updates:
+            case R.id.action_myapps:
                 viewPager.setCurrentItem(1, true);
                 break;
-            case R.id.action_categories:
+            case R.id.action_updates:
                 viewPager.setCurrentItem(2, true);
                 break;
-            case R.id.action_search:
+            case R.id.action_categories:
                 viewPager.setCurrentItem(3, true);
+                break;
+            case R.id.action_search:
+                viewPager.setCurrentItem(4, true);
                 break;
             case R.id.action_accounts:
                 startActivity(new Intent(getApplicationContext(), AccountsActivity.class));

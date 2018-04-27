@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.CategoryListFragment;
 import com.dragons.aurora.fragment.HomeFragment;
+import com.dragons.aurora.fragment.InstalledAppsFragment;
 import com.dragons.aurora.fragment.SearchFragment;
 import com.dragons.aurora.fragment.UpdatableAppsFragment;
 
@@ -25,10 +26,12 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return new HomeFragment();
             case 1:
-                return new UpdatableAppsFragment();
+                return new InstalledAppsFragment();
             case 2:
-                return new CategoryListFragment();
+                return new UpdatableAppsFragment();
             case 3:
+                return new CategoryListFragment();
+            case 4:
                 return new SearchFragment();
             default:
                 return null;
@@ -37,7 +40,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -46,10 +49,12 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return mContext.getString(R.string.action_home);
             case 1:
-                return mContext.getString(R.string.action_updates);
+                return mContext.getString(R.string.action_myApps);
             case 2:
-                return mContext.getString(R.string.action_categories);
+                return mContext.getString(R.string.action_updates);
             case 3:
+                return mContext.getString(R.string.action_categories);
+            case 4:
                 return mContext.getString(R.string.search_title);
             default:
                 return null;
