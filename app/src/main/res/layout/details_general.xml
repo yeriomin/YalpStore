@@ -45,6 +45,15 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/price_and_ads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp" />
+
+    <TextView
         android:id="@+id/updated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,15 +64,6 @@
 
     <TextView
         android:id="@+id/developer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingStart="16dp"
-        android:paddingRight="16dp"
-        android:paddingEnd="16dp" />
-
-    <TextView
-        android:id="@+id/price_and_ads"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="16dp"
