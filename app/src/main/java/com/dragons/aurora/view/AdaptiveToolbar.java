@@ -22,8 +22,8 @@ public class AdaptiveToolbar extends AppBarLayout {
     static int style;
     View root;
     LinearLayout adtoolbarlayout;
-    ImageView action_icon;
-    ImageButton avatar_icon, download_section;
+    ImageView action_icon, avatar_icon;
+    ImageButton download_section;
     RelativeLayout bubble_layout, download_container;
     TextView title0, title1, updates_counter;
 
@@ -36,6 +36,14 @@ public class AdaptiveToolbar extends AppBarLayout {
     public AdaptiveToolbar(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
+    }
+
+    @ColorInt
+    public static int getColorAttr(Context context, int attr) {
+        TypedArray ta = context.obtainStyledAttributes(new int[]{attr});
+        @ColorInt int colorAccent = ta.getColor(0, 0);
+        ta.recycle();
+        return colorAccent;
     }
 
     private void init(Context context, AttributeSet attrs) {
@@ -71,7 +79,7 @@ public class AdaptiveToolbar extends AppBarLayout {
         }
         download_container.setVisibility(GONE);
         action_icon.setImageResource(R.mipmap.ic_launcher);
-        action_icon.setPadding(0,0,0,0);
+        action_icon.setPadding(0, 0, 0, 0);
         action_icon.setContentDescription("home");
         setBackgroundColor(getColorAttr(context, android.R.attr.colorPrimary));
         title0.setText("Aurora");
@@ -95,7 +103,7 @@ public class AdaptiveToolbar extends AppBarLayout {
             bubble_layout.setVisibility(GONE);
         }
         action_icon.setImageResource(R.drawable.ic_chevron_left);
-        action_icon.setPadding(6,6,6,6);
+        action_icon.setPadding(6, 6, 6, 6);
         action_icon.setContentDescription("details");
         setBackgroundColor(getResources().getColor(android.R.color.transparent));
     }
@@ -116,23 +124,15 @@ public class AdaptiveToolbar extends AppBarLayout {
         return action_icon;
     }
 
-    public ImageButton getAvatar_icon() {
+    public ImageView getAvatar_icon() {
         return avatar_icon;
-    }
-
-    public void setStyle(int style) {
-        AdaptiveToolbar.style = style;
     }
 
     public int getStyle() {
         return style;
     }
 
-    @ColorInt
-    public static int getColorAttr(Context context, int attr) {
-        TypedArray ta = context.obtainStyledAttributes(new int[]{attr});
-        @ColorInt int colorAccent = ta.getColor(0, 0);
-        ta.recycle();
-        return colorAccent;
+    public void setStyle(int style) {
+        AdaptiveToolbar.style = style;
     }
 }
