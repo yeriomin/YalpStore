@@ -44,7 +44,7 @@ public class Wishlist extends Abstract {
         if (app.isInstalled()) {
             return;
         }
-        new LocalWishlistUpdateTask(activity, app.getPackageName()).execute();
+        new DetailsWishlistUpdateTask(activity, app.getPackageName()).execute();
         ImageView wishlistButton = activity.findViewById(R.id.wishlist);
         initWishlistButton(wishlistButton, activity, app.getPackageName());
         wishlistButton.setOnLongClickListener(new View.OnLongClickListener() {
@@ -62,16 +62,16 @@ public class Wishlist extends Abstract {
             @Override
             public void onClick(View v) {
                 v.setOnClickListener(null);
-                LocalWishlistToggleTask task = new LocalWishlistToggleTask(activity);
+                DetailsWishlistToggleTask task = new DetailsWishlistToggleTask(activity);
                 task.setPackageName(packageName);
                 task.execute();
             }
         });
     }
 
-    static private class LocalWishlistToggleTask extends WishlistToggleTask {
+    static private class DetailsWishlistToggleTask extends WishlistToggleTask {
 
-        public LocalWishlistToggleTask(YalpStoreActivity activity) {
+        public DetailsWishlistToggleTask(YalpStoreActivity activity) {
             setContext(activity);
         }
 
@@ -85,11 +85,11 @@ public class Wishlist extends Abstract {
         }
     }
 
-    static private class LocalWishlistUpdateTask extends WishlistUpdateTask {
+    static private class DetailsWishlistUpdateTask extends WishlistUpdateTask {
 
         private String packageName;
 
-        public LocalWishlistUpdateTask(YalpStoreActivity activity, String packageName) {
+        public DetailsWishlistUpdateTask(YalpStoreActivity activity, String packageName) {
             this.packageName = packageName;
             setContext(activity);
         }

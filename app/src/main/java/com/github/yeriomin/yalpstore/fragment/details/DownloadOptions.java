@@ -69,33 +69,32 @@ public class DownloadOptions extends Abstract {
     public void inflate(Menu menu) {
         MenuInflater inflater = activity.getMenuInflater();
         inflater.inflate(R.menu.menu_download, menu);
-        if (isInstalled(app)) {
-            onCreateOptionsMenu(menu);
-        }
+        onCreateOptionsMenu(menu);
     }
 
     public void onCreateOptionsMenu(Menu menu) {
-        show(menu, R.id.action_manual, true);
-        show(menu, R.id.action_get_local_apk, app.isInstalled());
-        BlackWhiteListManager manager = new BlackWhiteListManager(activity);
-        boolean isContained = manager.contains(app.getPackageName());
-        if (manager.isBlack()) {
-            show(menu, R.id.action_ignore, true);
-        } else {
-            show(menu, R.id.action_whitelist, true);
-        }
-        setChecked(menu, R.id.action_ignore, isContained);
-        setChecked(menu, R.id.action_whitelist, isContained);
-        if (isConvertible(app)) {
-            show(menu, R.id.action_make_system, !app.isSystem());
-            show(menu, R.id.action_make_normal, app.isSystem());
-        }
-        show(menu, R.id.action_flag, app.isInPlayStore());
         if (!app.isInstalled()) {
             LocalWishlist localWishlist = new LocalWishlist(activity);
             show(menu, R.id.action_wishlist_add, !localWishlist.contains(app.getPackageName()));
             show(menu, R.id.action_wishlist_remove, localWishlist.contains(app.getPackageName()));
+        } else {
+            BlackWhiteListManager manager = new BlackWhiteListManager(activity);
+            boolean isContained = manager.contains(app.getPackageName());
+            if (manager.isBlack()) {
+                show(menu, R.id.action_ignore, true);
+            } else {
+                show(menu, R.id.action_whitelist, true);
+            }
+            setChecked(menu, R.id.action_ignore, isContained);
+            setChecked(menu, R.id.action_whitelist, isContained);
+            if (isConvertible(app)) {
+                show(menu, R.id.action_make_system, !app.isSystem());
+                show(menu, R.id.action_make_normal, app.isSystem());
+            }
+            show(menu, R.id.action_flag, app.isInPlayStore());
         }
+        show(menu, R.id.action_manual, true);
+        show(menu, R.id.action_get_local_apk, app.isInstalled());
     }
 
     private void setChecked(Menu menu, int itemId, boolean checked) {

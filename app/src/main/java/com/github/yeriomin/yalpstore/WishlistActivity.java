@@ -21,13 +21,19 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
+import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.AppBuilder;
 import com.github.yeriomin.yalpstore.task.playstore.CloneableTask;
 import com.github.yeriomin.yalpstore.task.playstore.WishlistUpdateTask;
 import com.github.yeriomin.yalpstore.view.ListItem;
 import com.github.yeriomin.yalpstore.view.SearchResultAppBadge;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class WishlistActivity extends AppListActivity {
@@ -50,6 +56,7 @@ public class WishlistActivity extends AppListActivity {
     public void loadApps() {
         WishlistAppsTask task = new WishlistAppsTask(this);
         task.setProgressIndicator(findViewById(R.id.progress));
+        task.setErrorView((TextView) getListView().getEmptyView());
         task.execute();
     }
 
@@ -62,16 +69,13 @@ public class WishlistActivity extends AppListActivity {
 
     private static class WishlistAppsTask extends WishlistUpdateTask {
 
-        private WishlistActivity activity;
-
         public WishlistAppsTask(WishlistActivity activity) {
-            this.activity = activity;
             setContext(activity);
         }
 
         @Override
         public CloneableTask clone() {
-            WishlistAppsTask task = new WishlistAppsTask(activity);
+            WishlistAppsTask task = new WishlistAppsTask((WishlistActivity) context);
             task.setErrorView(errorView);
             task.setProgressIndicator(progressIndicator);
             task.setContext(context);
@@ -79,11 +83,29 @@ public class WishlistActivity extends AppListActivity {
         }
 
         @Override
+        protected List<String> getResult(GooglePlayAPI api, String... arguments) throws IOException {
+            List<String> result = super.getResult(api, arguments);
+
+            if (!result.isEmpty()
+                && apps.isEmpty()
+                && PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+            ) {
+                for (BulkDetailsEntry details: api.bulkDetails(Arrays.asList(new LocalWishlist(context).get())).getEntryList()) {
+                    if (!details.hasDoc()) {
+                        continue;
+                    }
+                    apps.add(AppBuilder.build(details.getDoc()));
+                }
+            }
+            return result;
+        }
+
+        @Override
         protected void onPostExecute(List<String> result) {
             super.onPostExecute(result);
-            activity.clearApps();
-            activity.addApps(apps);
-            if (apps.isEmpty()) {
+            ((WishlistActivity) context).clearApps();
+            ((WishlistActivity) context).addApps(apps);
+            if (success() && apps.isEmpty()) {
                 errorView.setText(R.string.list_empty_search);
             }
         }

@@ -22,12 +22,15 @@ package com.github.yeriomin.yalpstore.task.playstore;
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.LocalWishlist;
+import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -51,14 +54,19 @@ public class WishlistUpdateTask extends PlayStorePayloadTask<List<String>> imple
         installedAppsTask.setContext(context);
         installedAppsTask.setIncludeSystemApps(true);
         Set<String> installedPackageNames = installedAppsTask.getInstalledApps(false).keySet();
-        for (DocV2 doc: api.getWishlistApps().getDoc(0).getChild(0).getChildList()) {
-            App app = AppBuilder.build(doc);
-            if (installedPackageNames.contains(app.getPackageName())) {
-                continue;
+        if (PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
+            packageNames.addAll(Arrays.asList(new LocalWishlist(context).get()));
+        } else {
+            for (DocV2 doc: api.getWishlistApps().getDoc(0).getChild(0).getChildList()) {
+                App app = AppBuilder.build(doc);
+                if (installedPackageNames.contains(app.getPackageName())) {
+                    continue;
+                }
+                apps.add(app);
+                packageNames.add(app.getPackageName());
             }
-            apps.add(app);
-            packageNames.add(app.getPackageName());
         }
+        packageNames.removeAll(installedPackageNames);
         return packageNames;
     }
 
