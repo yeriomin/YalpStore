@@ -5,17 +5,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import com.percolate.caffeine.ViewUtils;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.activities.AuroraActivity;
+import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.adapters.AppListAdapter;
 import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.fragment.details.ButtonUninstall;
@@ -24,6 +17,11 @@ import com.dragons.aurora.model.App;
 import com.dragons.aurora.view.AppBadge;
 import com.dragons.aurora.view.InstalledAppBadge;
 import com.dragons.aurora.view.ListItem;
+import com.percolate.caffeine.ViewUtils;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 abstract public class AppListFragment extends UtilFragment {
 
@@ -122,37 +120,7 @@ abstract public class AppListFragment extends UtilFragment {
         ((AppListAdapter) getListView().getAdapter()).clear();
     }
 
-    protected void setProgress() {
-        ViewUtils.findViewById(this.getActivity(), R.id.progress).setVisibility(View.VISIBLE);
-    }
-
-    protected void removeProgress() {
-        ViewUtils.findViewById(this.getActivity(), R.id.progress).setVisibility(View.GONE);
-    }
-
     protected ListView getListView() {
         return listView;
-    }
-
-    protected void setText(int viewId, String text) {
-        TextView textView = ViewUtils.findViewById(this.getActivity(), viewId);
-        if (null != textView)
-            textView.setText(text);
-    }
-
-    protected void setText(int viewId, int stringId, Object... text) {
-        setText(viewId, this.getString(stringId, text));
-    }
-
-    protected boolean isLoggedIn() {
-        return PreferenceFragment.getBoolean(getActivity(), "LOGGED_IN");
-    }
-
-    protected boolean isDummy() {
-        return PreferenceFragment.getBoolean(getActivity(), "DUMMY_ACC");
-    }
-
-    protected boolean isGoogle() {
-        return PreferenceFragment.getBoolean(getActivity(), "GOOGLE_ACC");
     }
 }

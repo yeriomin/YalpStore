@@ -8,27 +8,29 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.percolate.caffeine.ToastUtils;
-import com.percolate.caffeine.ViewUtils;
-
-import java.util.Collections;
-
 import com.dragons.aurora.AuroraApplication;
+import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.UpdateAllReceiver;
 import com.dragons.aurora.UpdateChecker;
 import com.dragons.aurora.activities.AuroraActivity;
-import com.dragons.aurora.adapters.AppListAdapter;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.ForegroundUpdatableAppsTaskHelper;
 import com.dragons.aurora.view.ListItem;
 import com.dragons.aurora.view.UpdatableAppBadge;
+import com.percolate.caffeine.ToastUtils;
+import com.percolate.caffeine.ViewUtils;
+
+import java.util.Collections;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -38,12 +40,17 @@ import static android.content.Context.DOWNLOAD_SERVICE;
 
 public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
 
+    public static int updates = 0;
     private DownloadManager.Query query;
     private DownloadManager dm;
     private View v;
     private Disposable loadApps;
     private SwipeRefreshLayout swipeRefreshLayout;
-    public static int updates = 0;
+    private UpdateAllReceiver updateAllReceiver;
+
+    public static UpdatableAppsFragment newInstance() {
+        return new UpdatableAppsFragment();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,12 +73,11 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
 
         swipeRefreshLayout = ViewUtils.findViewById(v, R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            if (isLoggedIn())
+            if (isLoggedIn()) {
+                clearApps();
                 loadUpdatableApps();
-            else {
-                //LoginFirst();
+            } else
                 swipeRefreshLayout.setRefreshing(false);
-            }
         });
 
         setupListView(v, R.layout.two_line_list_item_with_icon);
@@ -86,10 +92,11 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     @Override
     public void onResume() {
         super.onResume();
+        updateAllReceiver = new UpdateAllReceiver((AuroraActivity) getActivity());
         if (isLoggedIn() && updatableApps.isEmpty())
             loadUpdatableApps();
         else if (!updatableApps.isEmpty())
-            setText(R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
+            setText(v, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
         else if (!isLoggedIn())
             ToastUtils.quickToast(getActivity(), "You need to Login First", true);
         else {
@@ -99,53 +106,19 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         updateInteger();
     }
 
-    public void updateInteger() {
-        updates = updatableApps.size();
-        if (updatableApps.size() >= 99){
-            updates = 99;
-        }
-    }
-
-    public void loadUpdatableApps() {
-        swipeRefreshLayout.setRefreshing(true);
-        loadApps = Observable.fromCallable(() -> getUpdatableApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi()))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((appList) -> {
-                    if (v != null) {
-                        clearApps();
-                        Collections.sort(appList);
-                        addApps(appList);
-
-                        swipeRefreshLayout.setRefreshing(false);
-
-                        if (success() && appList.isEmpty())
-                            ViewUtils.findViewById(v, R.id.unicorn).setVisibility(View.VISIBLE);
-                        else {
-                            setText(R.id.updates_txt, R.string.list_update_all_txt, appList.size());
-                            setupButtons();
-                        }
-                    }
-                }, this::processException);
-    }
-
     @Override
     public void removeApp(String packageName) {
         super.removeApp(packageName);
         if (updatableApps.isEmpty()) {
-            v.findViewById(R.id.unicorn).setVisibility(View.VISIBLE);
+            show(v, R.id.unicorn);
         }
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        ((AuroraActivity) getActivity()).unregisterReceiver(updateAllReceiver);
         swipeRefreshLayout.setRefreshing(false);
-    }
-
-    @Override
-    protected void clearApps() {
-        ((AppListAdapter) getListView().getAdapter()).clear();
     }
 
     @Override
@@ -155,11 +128,28 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         return appBadge;
     }
 
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        if (item.getItemId() == R.id.action_ignore || item.getItemId() == R.id.action_unwhitelist) {
+            String packageName = getAppByListPosition(info.position).getPackageName();
+            BlackWhiteListManager manager = new BlackWhiteListManager(this.getActivity());
+            if (item.getItemId() == R.id.action_ignore) {
+                manager.add(packageName);
+            } else {
+                manager.remove(packageName);
+            }
+            removeApp(packageName);
+            return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
     public void launchUpdateAll() {
         ((AuroraApplication) getActivity().getApplicationContext()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(UpdatableAppsFragment.this.getActivity(), getActivity().getIntent());
-        ViewUtils.findViewById(v, R.id.update_all).setVisibility(View.GONE);
-        ViewUtils.findViewById(v, R.id.update_cancel).setVisibility(View.VISIBLE);
+        hide(v, R.id.update_all);
+        show(v, R.id.update_cancel);
     }
 
     public void setupButtons() {
@@ -186,7 +176,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
             }
             update.setVisibility(View.VISIBLE);
             cancel.setVisibility(View.GONE);
-            setText(R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
+            setText(v, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
         });
     }
 
@@ -197,7 +187,34 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         delta.setVisibility(View.VISIBLE);
     }
 
-    public static UpdatableAppsFragment newInstance() {
-        return new UpdatableAppsFragment();
+    public void updateInteger() {
+        updates = updatableApps.size();
+        if (updatableApps.size() >= 99) {
+            updates = 99;
+        }
     }
+
+    public void loadUpdatableApps() {
+        swipeRefreshLayout.setRefreshing(true);
+        loadApps = Observable.fromCallable(() -> getUpdatableApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi()))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((appList) -> {
+                    if (v != null) {
+                        clearApps();
+                        Collections.sort(appList);
+                        addApps(appList);
+
+                        swipeRefreshLayout.setRefreshing(false);
+
+                        if (success() && appList.isEmpty())
+                            show(v, R.id.unicorn);
+                        else {
+                            setText(v, R.id.updates_txt, R.string.list_update_all_txt, appList.size());
+                            setupButtons();
+                        }
+                    }
+                }, this::processException);
+    }
+
 }
