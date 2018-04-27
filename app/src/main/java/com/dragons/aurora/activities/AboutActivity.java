@@ -18,7 +18,7 @@ public class AboutActivity extends AuroraActivity {
         setContentView(R.layout.helper_activity);
 
         AdaptiveToolbar dadtb = findViewById(R.id.d_adtb);
-        dadtb.getAvatar_icon().setOnClickListener((v -> this.onBackPressed()));
+        dadtb.getAction_icon().setOnClickListener((v -> this.onBackPressed()));
 
         getSupportFragmentManager()
                 .beginTransaction()
