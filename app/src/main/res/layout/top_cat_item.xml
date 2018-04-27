@@ -30,6 +30,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/top_category_bg"
-        android:fontFamily="@font/google_sans_bold"
+        android:backgroundTint="?android:attr/colorForeground"
+        android:fontFamily="@font/google_sans"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="18sp" />
 </LinearLayout>

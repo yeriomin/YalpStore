@@ -28,6 +28,7 @@
                 android:fontFamily="@font/google_sans"
                 android:gravity="start"
                 android:text="@string/top_categories"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -51,6 +52,7 @@
                     android:fontFamily="@font/google_sans"
                     android:gravity="start"
                     android:text="@string/all_categories"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 

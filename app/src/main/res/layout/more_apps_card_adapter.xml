@@ -10,10 +10,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:textAllCaps="false"
         android:fontFamily="@font/google_sans_bold"
         android:singleLine="true"
         android:text="@string/details_more"
-        android:textColor="?android:attr/colorAccent" />
+        android:textColor="?android:attr/textColorSecondary" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/m_apps_recycler"
