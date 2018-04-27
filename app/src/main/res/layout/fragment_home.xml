@@ -15,8 +15,8 @@
     <com.dragons.aurora.view.CustomNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true"
         android:background="?android:attr/colorPrimary"
+        android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -78,24 +78,6 @@
                 app:CardTitle="@string/category_topUtility"
                 app:JsonName="top_tools" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/google_sans_bold"
-                android:text="@string/category_communityApps"
-                android:textSize="18sp" />
-
-            <com.dragons.aurora.view.CommunityBasedApps
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="4dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
-                android:nestedScrollingEnabled="false" />
-
             <com.dragons.aurora.view.TopFreeGames
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -110,6 +92,24 @@
                 app:AppsCategory="TOOLS"
                 app:CardTitle="@string/category_fdroidApps"
                 app:JsonName="fdroid_apps" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/category_communityApps"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="16sp" />
+
+            <com.dragons.aurora.view.CommunityBasedApps
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="6dp"
+                android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
 
