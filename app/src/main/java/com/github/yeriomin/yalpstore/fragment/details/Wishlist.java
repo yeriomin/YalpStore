@@ -19,7 +19,6 @@
 
 package com.github.yeriomin.yalpstore.fragment.details;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,7 +31,6 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.WishlistToggleTask;
 import com.github.yeriomin.yalpstore.task.playstore.WishlistUpdateTask;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class Wishlist extends Abstract {
@@ -73,41 +71,34 @@ public class Wishlist extends Abstract {
 
     static private class LocalWishlistToggleTask extends WishlistToggleTask {
 
-        private WeakReference<YalpStoreActivity> activityRef;
-
         public LocalWishlistToggleTask(YalpStoreActivity activity) {
-            this.activityRef = new WeakReference<>(activity);
+            setContext(activity);
         }
 
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
-            if (null == activityRef.get()) {
-                return;
-            }
-            ImageView wishlistButton = activityRef.get().findViewById(R.id.wishlist);
+            YalpStoreActivity activity = (YalpStoreActivity) context;
+            ImageView wishlistButton = activity.findViewById(R.id.wishlist);
             wishlistButton.setImageResource(new LocalWishlist(context).contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
-            initWishlistButton(wishlistButton, activityRef.get(), packageName);
+            initWishlistButton(wishlistButton, activity, packageName);
         }
     }
 
     static private class LocalWishlistUpdateTask extends WishlistUpdateTask {
 
-        private WeakReference<YalpStoreActivity> activityRef;
         private String packageName;
 
         public LocalWishlistUpdateTask(YalpStoreActivity activity, String packageName) {
-            this.activityRef = new WeakReference<>(activity);
             this.packageName = packageName;
+            setContext(activity);
         }
 
         @Override
         protected void onPostExecute(List<String> result) {
             super.onPostExecute(result);
-            if (null == activityRef.get()) {
-                return;
-            }
-            ((ImageView) activityRef.get().findViewById(R.id.wishlist)).setImageResource(new LocalWishlist(context).contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
+            ((ImageView) ((YalpStoreActivity) context).findViewById(R.id.wishlist))
+                .setImageResource(new LocalWishlist(context).contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
         }
     }
 }
