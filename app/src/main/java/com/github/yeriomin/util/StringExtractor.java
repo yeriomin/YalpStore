@@ -105,22 +105,22 @@ public class StringExtractor {
         Set<String> processedStrings = new HashSet<>();
         try {
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(to);
+            Node resources = doc.getElementsByTagName("resources").item(0);
             NodeList nodeList = doc.getElementsByTagName("string");
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Element stringNode = (Element) nodeList.item(i);
                 String stringName = stringNode.getAttribute("name");
                 String stringContent = stringNode.getTextContent();
                 if (englishStrings.containsKey(stringName) && englishStrings.get(stringName).equals(stringContent)) {
-                    doc.removeChild(stringNode);
+//                    resources.removeChild(stringNode);
                 } else if (strings.containsKey(stringName)) {
                     if (strings.get(stringName).equals(stringContent)) {
                         processedStrings.add(stringName);
                     } else {
-                        doc.removeChild(stringNode);
+                        resources.removeChild(stringNode);
                     }
                 }
             }
-            Node resources = doc.getElementsByTagName("resources").item(0);
             for (String name: strings.keySet()) {
                 if (processedStrings.contains(name)) {
                     continue;
@@ -159,6 +159,7 @@ public class StringExtractor {
             aTransformer.setOutputProperty(OutputKeys.INDENT, "yes");
             aTransformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             aTransformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "0");
+            aTransformer.setOutputProperty("http://www.oracle.com/xml/is-standalone", "yes");
             doc.setXmlStandalone(true);
             Source src = new DOMSource(doc);
             Result dest = new StreamResult(file);
