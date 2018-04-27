@@ -99,16 +99,14 @@
                         </LinearLayout>
 
                         <!-- Tabs & App Rating -->
-                        <LinearLayout
+                        <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="10">
+                            android:orientation="horizontal">
 
                             <HorizontalScrollView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="9">
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
@@ -158,14 +156,16 @@
 
                             <ImageView
                                 android:id="@+id/ratingLabelImg"
-                                android:layout_width="0dp"
+                                android:layout_width="18dp"
                                 android:layout_height="18dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
                                 android:layout_gravity="center"
-                                android:layout_weight="1"
                                 android:alpha="0.7"
+                                android:layout_marginEnd="5dp"
                                 android:padding="2dp"
                                 android:src="@drawable/ic_audience" />
-                        </LinearLayout>
+                        </RelativeLayout>
 
                     </LinearLayout>
 
