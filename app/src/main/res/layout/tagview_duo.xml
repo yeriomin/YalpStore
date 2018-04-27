@@ -4,9 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/top_category_bg"
-    android:backgroundTint="?attr/colorAccent"
-    android:clickable="true"
-    android:focusable="true"
+    android:backgroundTint="?android:attr/colorForeground"
     android:orientation="horizontal">
 
     <TextView
@@ -16,10 +14,8 @@
         android:layout_marginBottom="2dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
-        android:clickable="true"
-        android:focusable="true"
         android:fontFamily="@font/google_sans"
-        android:textColor="?attr/colorAccent" />
+        android:textColor="?android:attr/textColorPrimary" />
 
     <ImageView
         android:id="@+id/divider"
@@ -27,8 +23,8 @@
         android:layout_height="match_parent"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="12dp"
-        android:alpha="0.6"
-        android:background="?attr/colorAccent" />
+        android:alpha="0.8"
+        android:background="?android:attr/colorForeground" />
 
     <TextView
         android:id="@+id/tag_dual_txt1"
@@ -37,9 +33,7 @@
         android:layout_marginBottom="2dp"
         android:layout_marginEnd="2dp"
         android:layout_marginTop="2dp"
-        android:clickable="true"
-        android:focusable="true"
         android:fontFamily="@font/google_sans"
-        android:textColor="?attr/colorAccent" />
+        android:textColor="?android:attr/textColorPrimary" />
 
 </LinearLayout>

@@ -32,33 +32,65 @@
                 android:layout_marginTop="2dp"
                 android:nestedScrollingEnabled="false" />
 
-            <LinearLayout
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="12dp"
                 android:layout_marginTop="12dp"
-                android:orientation="horizontal">
+                android:nestedScrollingEnabled="false"
+                android:scrollbars="none">
 
-                <com.dragons.aurora.view.TagView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="6dp"
-                    app:DualTagName0="Games"
-                    app:DualTagName1="Featured"
-                    app:TagStyle="Duo">
+                    android:orientation="horizontal">
 
-                </com.dragons.aurora.view.TagView>
+                    <com.dragons.aurora.view.TagView
+                        android:id="@+id/tag_gamesAction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        app:DualTagName0="Games"
+                        app:DualTagName1="Action"
+                        app:TagStyle="Duo" />
 
-                <com.dragons.aurora.view.TagView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    app:MonoTagName="Alpha"
-                    app:TagStyle="Mono">
+                    <com.dragons.aurora.view.TagView
+                        android:id="@+id/tag_family"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        app:MonoTagName="Family"
+                        app:TagStyle="Mono" />
 
-                </com.dragons.aurora.view.TagView>
+                    <com.dragons.aurora.view.TagView
+                        android:id="@+id/tag_gamesRacing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        app:DualTagName0="Games"
+                        app:DualTagName1="Racing"
+                        app:TagStyle="Duo" />
 
-            </LinearLayout>
+                    <com.dragons.aurora.view.TagView
+                        android:id="@+id/tag_travel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        app:MonoTagName="Travel"
+                        app:TagStyle="Mono" />
+
+                    <com.dragons.aurora.view.TagView
+                        android:id="@+id/tag_social"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        app:MonoTagName="Social"
+                        app:TagStyle="Mono" />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
 
             <com.dragons.aurora.view.MoreAppsCard
                 android:layout_width="match_parent"

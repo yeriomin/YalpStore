@@ -33,7 +33,7 @@ import com.dragons.aurora.RecyclerItemTouchHelper;
 import com.dragons.aurora.activities.SearchActivity;
 import com.dragons.aurora.adapters.SearchHistoryAdapter;
 
-public class SearchFragment extends Fragment implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
+public class SearchFragment extends UtilFragment implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
     SearchView searchToolbar;
     ArrayList<String> listHistory = new ArrayList<>();

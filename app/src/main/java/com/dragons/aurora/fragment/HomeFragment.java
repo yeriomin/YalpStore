@@ -6,21 +6,19 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AccountsActivity;
+import com.dragons.aurora.activities.CategoryAppsActivity;
 import com.dragons.aurora.view.AdaptiveToolbar;
+import com.dragons.aurora.view.TagView;
+import com.squareup.picasso.Picasso;
 
 public class HomeFragment extends UtilFragment {
 
-    private View view;
     AdaptiveToolbar adtb;
+    private View view;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -31,18 +29,16 @@ public class HomeFragment extends UtilFragment {
             return view;
         }
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        /*RelativeLayout open_community = view.findViewById(R.id.open_community);
-        open_community.setOnClickListener(v -> {
-            Uri uri = Uri.parse("https://t.me/AuroraOfficial");
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
-        });*/
+
         adtb = view.findViewById(R.id.adtb);
         adtb.getAvatar_icon().setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), AccountsActivity.class);
             intent.putExtra("account_profile_animate", true);
             startActivity(intent);
         });
+
+        initTags();
+
         return view;
     }
 
@@ -69,8 +65,23 @@ public class HomeFragment extends UtilFragment {
                     .getDrawable(R.drawable.ic_dummy_avatar));
         }
     }
+
     protected void resetUser() {
         (adtb.getAvatar_icon()).setImageDrawable(getResources()
-                        .getDrawable(R.drawable.ic_user_placeholder));
+                .getDrawable(R.drawable.ic_user_placeholder));
+    }
+
+    protected void initTags()
+    {
+        setupTag(view,R.id.tag_gamesAction,"GAME_ACTION");
+        setupTag(view,R.id.tag_family,"FAMILY");
+        setupTag(view,R.id.tag_gamesRacing,"GAME_RACING");
+        setupTag(view,R.id.tag_travel,"TRAVEL_AND_LOCAL");
+        setupTag(view,R.id.tag_social,"SOCIAL");
+    }
+
+    protected void setupTag(View v, int viewID, String Category) {
+        TagView tagView = v.findViewById(viewID);
+        tagView.setOnClickListener(click -> CategoryAppsActivity.start(v.getContext(), Category));
     }
 }
