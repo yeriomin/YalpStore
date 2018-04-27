@@ -35,7 +35,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/google_sans_bold"
-                android:gravity="center"
+                android:gravity="center|start"
                 android:maxLines="3"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
