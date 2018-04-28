@@ -1,25 +1,23 @@
 package com.dragons.aurora.fragment.details;
 
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.dragons.aurora.fragment.DetailsFragment;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-
-import java.io.IOException;
-
 import com.dragons.aurora.ContextUtil;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.task.playstore.BetaToggleTask;
 import com.dragons.aurora.task.playstore.PlayStorePayloadTask;
 
+import java.io.IOException;
+
 public class Beta extends AbstractHelper {
+
+    private EditText editText;
 
     public Beta(DetailsFragment fragment, App app) {
         super(fragment, app);
@@ -27,72 +25,66 @@ public class Beta extends AbstractHelper {
 
     @Override
     public void draw() {
-        if (PreferenceManager
-                .getDefaultSharedPreferences(fragment.getActivity())
-                .getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
-                && app.isTestingProgramAvailable()
-                && app.isTestingProgramOptedIn()) {
-            // Auto-leave beta program if current account is built-in.
-            // The users expect stable to be default.
+        if (isDummy() && app.isTestingProgramAvailable() && app.isTestingProgramOptedIn()) {
             new BetaToggleTask(app).execute();
             return;
         }
+        if (!app.isInstalled() || !app.isTestingProgramAvailable() || isDummy()) {
+            return;
+        }
 
-        if (app.isInstalled() || app.isTestingProgramAvailable()
-                || !PreferenceManager
-                .getDefaultSharedPreferences(fragment.getActivity())
-                .getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)) {
+        setText(R.id.beta_header, app.isTestingProgramOptedIn()
+                ? R.string.testing_program_section_opted_in_title
+                : R.string.testing_program_section_opted_out_title);
 
-            setText(R.id.beta_header, app.isTestingProgramOptedIn()
-                    ? R.string.testing_program_section_opted_in_title
-                    : R.string.testing_program_section_opted_out_title);
+        setText(R.id.beta_message, app.isTestingProgramOptedIn()
+                ? R.string.testing_program_section_opted_in_message
+                : R.string.testing_program_section_opted_out_message);
 
-            setText(R.id.beta_message, app.isTestingProgramOptedIn()
-                    ? R.string.testing_program_section_opted_in_message
-                    : R.string.testing_program_section_opted_out_message);
+        setText(R.id.beta_subscribe_button, app.isTestingProgramOptedIn()
+                ? R.string.testing_program_opt_out
+                : R.string.testing_program_opt_in);
 
-            setText(R.id.beta_subscribe_button, app.isTestingProgramOptedIn()
-                    ? R.string.testing_program_opt_out
-                    : R.string.testing_program_opt_in);
+        setText(R.id.beta_email, app.getTestingProgramEmail());
 
-            setText(R.id.beta_email, app.getTestingProgramEmail());
+        editText = fragment.getActivity().findViewById(R.id.beta_comment);
 
-            fragment.getActivity().findViewById(R.id.beta_card).setVisibility(View.VISIBLE);
+        fragment.getActivity().findViewById(R.id.beta_card).setVisibility(View.VISIBLE);
 
-            fragment.getActivity().findViewById(R.id.beta_feedback).setVisibility(app.isTestingProgramOptedIn()
-                    ? View.VISIBLE
-                    : View.GONE);
+        fragment.getActivity().findViewById(R.id.beta_feedback)
+                .setVisibility(app.isTestingProgramOptedIn()
+                        ? View.VISIBLE
+                        : View.GONE);
 
-            fragment.getActivity().findViewById(R.id.beta_subscribe_button)
-                    .setOnClickListener(new BetaOnClickListener(fragment.getActivity().findViewById(R.id.beta_message), app));
+        fragment.getActivity().findViewById(R.id.beta_subscribe_button)
+                .setOnClickListener(new BetaOnClickListener(fragment
+                        .getActivity().findViewById(R.id.beta_message), app));
 
-            fragment.getActivity().findViewById(R.id.beta_submit_button)
-                    .setOnClickListener(v -> initBetaTask(new BetaFeedbackSubmitTask()).execute());
-            fragment.getActivity().findViewById(R.id.beta_delete_button)
-                    .setOnClickListener(v -> initBetaTask(new BetaFeedbackDeleteTask()).execute());
+        fragment.getActivity().findViewById(R.id.beta_submit_button)
+                .setOnClickListener(v -> initBetaTask(new BetaFeedbackSubmitTask()).execute());
 
-            if (null != app.getUserReview()
-                    && !TextUtils.isEmpty(app.getUserReview().getComment())) {
-                ((EditText) fragment.getActivity().findViewById(R.id.beta_comment))
-                        .setText(app.getUserReview().getComment());
-                fragment.getActivity().findViewById(R.id.beta_delete_button).setVisibility(View.VISIBLE);
-            }
+        fragment.getActivity().findViewById(R.id.beta_delete_button)
+                .setOnClickListener(v -> initBetaTask(new BetaFeedbackDeleteTask()).execute());
+
+        if (null != app.getUserReview() && !TextUtils.isEmpty(app.getUserReview().getComment())) {
+            editText.setText(app.getUserReview().getComment());
+            show(fragment.getView(), R.id.beta_delete_button);
         }
     }
 
     private BetaFeedbackTask initBetaTask(BetaFeedbackTask task) {
         task.setPackageName(app.getPackageName());
-        task.setEditText((EditText) fragment.getActivity().findViewById(R.id.beta_comment));
+        task.setEditText(editText);
         task.setDeleteButton(fragment.getActivity().findViewById(R.id.beta_delete_button));
         return task;
     }
 
-    static class BetaOnClickListener implements View.OnClickListener {
+    static private class BetaOnClickListener implements View.OnClickListener {
 
         private TextView messageView;
         private App app;
 
-        public BetaOnClickListener(TextView messageView, App app) {
+        private BetaOnClickListener(TextView messageView, App app) {
             this.messageView = messageView;
             this.app = app;
         }
@@ -118,12 +110,12 @@ public class Beta extends AbstractHelper {
             this.packageName = packageName;
         }
 
-        public void setEditText(EditText editText) {
+        private void setEditText(EditText editText) {
             this.editText = editText;
             setContext(editText.getContext());
         }
 
-        public void setDeleteButton(View deleteButton) {
+        private void setDeleteButton(View deleteButton) {
             this.deleteButton = deleteButton;
         }
     }
@@ -143,6 +135,7 @@ public class Beta extends AbstractHelper {
                 ContextUtil.toastShort(context, context.getString(R.string.done));
                 deleteButton.setVisibility(View.VISIBLE);
             }
+            deleteButton.setVisibility(View.VISIBLE);
         }
     }
 
@@ -164,4 +157,5 @@ public class Beta extends AbstractHelper {
             }
         }
     }
+
 }

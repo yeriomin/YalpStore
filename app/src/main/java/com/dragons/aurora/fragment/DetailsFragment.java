@@ -104,9 +104,7 @@ public class DetailsFragment extends ForegroundDetailsAppsTaskHelper {
         new Share(this, app).draw();
         new SystemAppPage(this, app).draw();
         new Video(this, app).draw();
-
-        if (isGoogle())
-            new Beta(this, app).draw();
+        new Beta(this, app).draw();
 
         if (null != downloadOrInstallFragment) {
             downloadOrInstallFragment.unregisterReceivers();
