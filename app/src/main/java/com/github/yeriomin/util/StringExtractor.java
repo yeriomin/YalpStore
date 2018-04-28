@@ -31,6 +31,9 @@ public class StringExtractor {
     final static private Map<String, String> stringNames = new HashMap<>();
 
     static {
+        stringNames.put("menu_wishlist", "action_wishlist");
+        stringNames.put("label_wishlist_add_action", "action_wishlist_add");
+        stringNames.put("label_wishlist_remove_action", "action_wishlist_remove");
     }
 
     private Map<String, String> englishStrings = new HashMap<>();
@@ -111,8 +114,8 @@ public class StringExtractor {
                 Element stringNode = (Element) nodeList.item(i);
                 String stringName = stringNode.getAttribute("name");
                 String stringContent = stringNode.getTextContent();
-                if (englishStrings.containsKey(stringName) && englishStrings.get(stringName).equals(stringContent)) {
-//                    resources.removeChild(stringNode);
+                if (englishStrings.containsKey(stringName) && (englishStrings.get(stringName).equals(stringContent) || stringContent.equals("\"" + englishStrings.get(stringName) + "\""))) {
+                    resources.removeChild(stringNode);
                 } else if (strings.containsKey(stringName)) {
                     if (strings.get(stringName).equals(stringContent)) {
                         processedStrings.add(stringName);
