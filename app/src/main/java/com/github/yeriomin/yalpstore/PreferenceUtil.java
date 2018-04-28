@@ -114,7 +114,7 @@ public class PreferenceUtil {
     static public void putStringSet(SharedPreferences preferences, String key, Set<String> set) {
         SharedPreferences.Editor editor = preferences.edit();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            editor.putStringSet(key, set).apply();
+            editor.putStringSet(key, set).commit();
         } else {
             editor.putString(key, TextUtils.join(DELIMITER, set)).commit();
         }
