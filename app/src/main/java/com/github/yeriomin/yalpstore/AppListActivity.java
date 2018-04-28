@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.fragment.details.ButtonDownload;
 import com.github.yeriomin.yalpstore.fragment.details.ButtonUninstall;
@@ -155,6 +156,9 @@ abstract public class AppListActivity extends YalpStoreActivity {
     public void removeApp(String packageName) {
         ((AppListAdapter) getListView().getAdapter()).remove(listItems.get(packageName));
         listItems.remove(packageName);
+        if (listItems.isEmpty()) {
+            ((TextView) getListView().getEmptyView()).setText(R.string.list_empty_search);
+        }
     }
 
     public Set<String> getListedPackageNames() {
