@@ -139,6 +139,9 @@ public abstract class AppBadge extends ListItem {
     }
 
     protected void enableMoreButton(int drawableResId, View.OnClickListener listener) {
+        if (null == view) {
+            return;
+        }
         LinearLayout more = view.findViewById(R.id.more);
         more.setVisibility(View.VISIBLE);
         more.setOnClickListener(listener);
@@ -146,6 +149,9 @@ public abstract class AppBadge extends ListItem {
     }
 
     protected void enableCancelButton() {
+        if (null == view) {
+            return;
+        }
         enableMoreButton(
             R.drawable.ic_cancel,
             new View.OnClickListener() {
