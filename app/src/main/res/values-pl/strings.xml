@@ -273,18 +273,21 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="pref_auto_whitelist_summary_on">"Aplikacje instalowane przez Yalp Store automatycznie pojawiają się na białej liście"</string>
 <string name="pref_auto_whitelist_summary_off">"Musisz dodawać aplikacje na białą listę ręcznie"</string>
 <string name="apps_by">"Aplikacje od %1$s"</string>
-<string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
+
 <string name="no_permissions">"Brak wymaganych uprawnień."</string>
-<string name="about_librepay_label">"Donate Librepay:"</string>
+
 <string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
+
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+
 <string name="pref_use_tor">"Użyj Tora"</string>
 <string name="pref_use_tor_summary">"Wymuś pobieranie przez Tora aby zwiększyć prywatność, wymagany Orbot"</string>
-<string name="pref_category_proxy">"Proxy"</string>
+
 <string name="pref_proxy_enable">"Enable proxy"</string>
-<string name="pref_proxy_type">"Proxy type"</string>
+
 <string name="pref_proxy_host">"Proxy host"</string>
-<string name="pref_proxy_port">"Proxy port"</string>
+
+<string name="action_wishlist_remove">Usuń z listy życzeń</string>
+<string name="action_wishlist_add">Dodaj do listy życzeń</string>
+<string name="action_wishlist">Lista życzeń</string>
 </resources>

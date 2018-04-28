@@ -206,16 +206,16 @@ Do it?"</string>
 <string name="about_bitcoin_label">"Bitcoin:"</string>
 <string name="action_bug_report">"Сповістити про проблему"</string>
 <string name="dialog_title_spoof_request">"Прохання"</string>
-<string name="dialog_message_spoof_request">"Device spoofing is possible because users such as you submit bug reports with device information. If you want the definitions to be precise and up-to-date, please tap OK and your device information will be sent to the Yalp Store developer."</string>
+
 <string name="pref_device_to_pretend_to_be_notice">"If you put device definitions into %1$s they will appear in this list"</string>
 <string name="pref_no_images">"Завантажувати зображення лише по Wi-Fi"</string>
 <string name="pref_no_images_summary_off">"Зараз зображення завантажуються завжди"</string>
 <string name="pref_no_images_summary_on">"Зараз зображення завантажуються лише по Wi-Fi"</string>
 <string name="bug_report_hint_message">"Детальний опис"</string>
 <string name="bug_report_hint_identification">"Ваш пошта чи ім'я (не обов'язково)"</string>
-<string name="bug_report_explanation_content">"Info about your device, Yalp Store logs and some of Yalp Store preferences will be automatically added to your message. No private or sensitive information is collected."</string>
+
 <string name="bug_report_explanation_crash">"You can help fix this by sending a bug report to the developer. Please describe what you were trying to do when the error occurred and tap OK to send it."</string>
-<string name="bug_report_explanation_bug_report">"Please describe the issue. Be specific if possible. Does the problem occur with a specific app? Does it happen all the time or only sometimes? How can it be reproduced?"</string>
+
 <string name="thank_you">"Дякую"</string>
 <string name="list_updating">"Оновлюємо…"</string>
 <string name="error_invalid_device_definition">"Некоректний файл з параметрами пристрою."</string>
@@ -260,7 +260,7 @@ Do it?"</string>
 <string name="flag_page_description">"Чому ви вважаєте, що цей вміст або програма неприйнятні:"</string>
 <string name="flag_pharma_content">"Нелегальні медичні препарати"</string>
 <string name="flag_sexual_content">"Вміст сексуального характеру"</string>
-<string name="flag_impersonation_copycat">"Copycat or impersonation"</string>
+
 <string name="flagging_title">"Поскаржитися"</string>
 <string name="content_flagged">"Оскарження подано."</string>
 <string name="list_app_blacklisted">"В чорному списку"</string>
@@ -277,18 +277,21 @@ Do it?"</string>
 <string name="pref_auto_whitelist_summary_on">"Додатки, встановлені через Yalp Store, одразу потрапляють до білого списку"</string>
 <string name="pref_auto_whitelist_summary_off">"Білий список змінюється лише вручну"</string>
 <string name="apps_by">"Програми від: %1$s"</string>
-<string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
+
 <string name="no_permissions">"Не потребує дозволів."</string>
-<string name="about_librepay_label">"Donate Librepay:"</string>
+
 <string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
+
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+
 <string name="pref_use_tor">"Використовувати Tor"</string>
 <string name="pref_use_tor_summary">"Примусове завантаження трафіку через мережу Tor для підвищення конфіденційності. Потрібен Orbot"</string>
 <string name="pref_category_proxy">"Проксі"</string>
-<string name="pref_proxy_enable">"Enable proxy"</string>
+
 <string name="pref_proxy_type">"Proxy type"</string>
-<string name="pref_proxy_host">"Proxy host"</string>
+
 <string name="pref_proxy_port">"Proxy port"</string>
+<string name="action_wishlist_remove">Вилучити зі списку бажань</string>
+<string name="action_wishlist_add">Додати в список бажань</string>
+<string name="action_wishlist">Список бажань</string>
 </resources>

@@ -6,7 +6,7 @@
 <string name="list_line_2_updatable">"Mis à jour le %1$s"</string>
 <string name="list_empty_updates">"Aucune application n\'est à mettre à jour"</string>
 <string name="list_empty_search">"Aucune application trouvée"</string>
-<string name="list_incompatible">"incompatible"</string>
+
 <string name="action_about">"À propos"</string>
 <string name="action_settings">"Paramètres"</string>
 <string name="action_logout">"Se déconnecter"</string>
@@ -131,7 +131,7 @@
 <string name="pref_device_to_pretend_to_be_default">"Vos informations d\'origine"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Ce changement sera appliqué après reconnexion"</string>
 <string name="pref_category_updates">"Mises à jour"</string>
-<string name="pref_category_installation">"Installation"</string>
+
 <string name="pref_category_spoofing">"Usurpation"</string>
 <string name="pref_category_ui">"Interface utilisateur"</string>
 <string name="details_installing">"Installation…"</string>
@@ -255,16 +255,19 @@
 <string name="apps_by">"Applications de %1$s"</string>
 <string name="pref_message_fallback">"Essayer de définir un répertoire de secours (%1$s) ?"</string>
 <string name="no_permissions">"Aucune autorisation n\'est utilisée."</string>
-<string name="about_librepay_label">"Donate Librepay:"</string>
+
 <string name="notification_file_verification_failed">"Le fichier semble corrompu. Veuillez le télécharger de nouveau."</string>
 <string name="pref_download_internal_storage">"Télécharger vers le stockage interne"</string>
-<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+
 <string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 <string name="pref_use_tor">"Utiliser Tor"</string>
 <string name="pref_use_tor_summary">"Télécharger anonymement grâce à Tor. Requiert Orbot"</string>
-<string name="pref_category_proxy">"Proxy"</string>
+
 <string name="pref_proxy_enable">"Enable proxy"</string>
-<string name="pref_proxy_type">"Proxy type"</string>
+
 <string name="pref_proxy_host">"Proxy host"</string>
-<string name="pref_proxy_port">"Proxy port"</string>
+
+<string name="action_wishlist_remove">Supprimer de liste de souhaits</string>
+<string name="action_wishlist_add">Ajouter à la liste de souhaits</string>
+<string name="action_wishlist">Liste de souhaits</string>
 </resources>

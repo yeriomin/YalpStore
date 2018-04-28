@@ -265,4 +265,7 @@
     <string name="apps_by">"Приложения от %1$s"</string>
     <string name="pref_message_fallback">Использовать резервную директорию (%1$s)?</string>
     <string name="no_permissions">Разрешений не требуется.</string>
+<string name="action_wishlist_remove">Удалить из списка желаний</string>
+<string name="action_wishlist_add">Добавить в список желаний</string>
+<string name="action_wishlist">Список желаний</string>
 </resources>

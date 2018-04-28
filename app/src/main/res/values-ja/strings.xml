@@ -285,8 +285,11 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="pref_use_tor">"Torを使用する"</string>
 <string name="pref_use_tor_summary">"強制的にTorを経由した通信でダウンロードして、プライバシーを高めます。Orbotが必要です"</string>
 <string name="pref_category_proxy">"プロキシ"</string>
-<string name="pref_proxy_enable">"Enable proxy"</string>
+
 <string name="pref_proxy_type">"Proxy type"</string>
-<string name="pref_proxy_host">"Proxy host"</string>
+
 <string name="pref_proxy_port">"Proxy port"</string>
+<string name="action_wishlist_remove">ほしいものリストから削除</string>
+<string name="action_wishlist_add">ほしいものリストに追加</string>
+<string name="action_wishlist">ほしいものリスト</string>
 </resources>

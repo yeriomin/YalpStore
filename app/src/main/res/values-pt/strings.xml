@@ -310,9 +310,12 @@
 <string name="pref_download_internal_storage_summary_off">"Os ficheiros apk serão colocados no caminho indicado abaixo"</string>
 <string name="pref_use_tor">"Utilizar Tor"</string>
 <string name="pref_use_tor_summary">"Descarregar aplicações através da rede Tor para manter a privacidade. Requer Orbot."</string>
-<string name="pref_category_proxy">"Proxy"</string>
+
 <string name="pref_proxy_enable">"Ativar proxy"</string>
 <string name="pref_proxy_type">"Tipo de proxy"</string>
 <string name="pref_proxy_host">"Servidor proxy"</string>
 <string name="pref_proxy_port">"Porta do proxy"</string>
+<string name="action_wishlist_remove">Remover da lista de desejos</string>
+<string name="action_wishlist_add">Adicionar à lista de desejos</string>
+<string name="action_wishlist">Lista de desejos</string>
 </resources>

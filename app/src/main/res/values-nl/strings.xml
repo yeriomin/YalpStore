@@ -11,7 +11,7 @@
 <string name="action_settings">"Instellingen"</string>
 <string name="action_logout">"Uitloggen"</string>
 <string name="action_search">"Zoek"</string>
-<string name="action_updates">"Updates"</string>
+
 <string name="action_ignore">"Negeer updates"</string>
 <string name="action_whitelist">"Whitelist voor updates"</string>
 <string name="search_title">"Zoek applicaties"</string>
@@ -42,13 +42,13 @@ Tik op 'wachtwoord maken' om te worden doorgestuurd naar de pagina voor het make
 <string name="details_description">"Beschrijving:"</string>
 <string name="details_changelog">"Wat is er nieuw:"</string>
 <string name="details_screenshots">"Schermafbeelding:"</string>
-<string name="details_reviews">"Reviews:"</string>
+
 <string name="details_rate_this_app">"Beoordeel deze app:"</string>
 <string name="details_you_rated_this_app">"Jij beoordeelde deze app:"</string>
 <string name="details_permissions">"Permissies:"</string>
 <string name="details_versionName">"Versie %1$s"</string>
 <string name="details_versionName_updatable">"Versie %1$s → %2$s"</string>
-<string name="details_download">"Download"</string>
+
 <string name="details_install">"Installeren"</string>
 <string name="details_downloading">"Aan het downloaden…"</string>
 <string name="details_review_dialog_title">"Nog iets toe te voegen?"</string>
@@ -139,7 +139,7 @@ Houd er rekening mee dat het downloaden van willekeurige versies van apps niet o
 <string name="pref_device_to_pretend_to_be">"Gebruik apparaat info van"</string>
 <string name="pref_device_to_pretend_to_be_default">"Uw eigen apparaat"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Deze wijziging wordt toegepast wanneer u opnieuw inlogt"</string>
-<string name="pref_category_updates">"Updates"</string>
+
 <string name="pref_category_installation">"Installatie"</string>
 <string name="pref_category_spoofing">"Spoofen"</string>
 <string name="pref_category_ui">"Gebruikersinterface"</string>
@@ -164,7 +164,7 @@ Houd er rekening mee dat het downloaden van willekeurige versies van apps niet o
 <string name="action_make_system">"Converteer naar systeem app"</string>
 <string name="action_make_normal">"Concerteer naar normale app"</string>
 <string name="list_app_system">"Systeem app"</string>
-<string name="activity_title_updates_only">"Updates"</string>
+
 <string name="activity_title_updates_and_other_apps">"Uw apps"</string>
 <string name="details_system_app_info">"Systeem info"</string>
 <string name="details_run">"Start"</string>
@@ -200,7 +200,7 @@ Doe het niet uit nieuwsgierigheid. Het kan uw apparaat breken. Maak een back-up 
 Het proces om dit te doen is niet perfect en is leverancier-specifiek, het werkt niet altijd.
 
 Nu doen?"</string>
-<string name="about_website_label">"Website:"</string>
+
 <string name="details_share">"Deel"</string>
 <string name="details_developer">"Ontwikkelaar: %1$s"</string>
 <string name="pref_background_update_wifi_only">"Alleen op Wi-Fi"</string>
@@ -220,7 +220,7 @@ Nu doen?"</string>
 <string name="thank_you">"Bedankt"</string>
 <string name="list_updating">"Wordt geüpdatet…"</string>
 <string name="error_invalid_device_definition">"Apparaat definitie afgewezen."</string>
-<string name="details_video">"Video"</string>
+
 <string name="error_could_not_download">"Kon niet downloaden."</string>
 <string name="first_login_message">"Om uw eigen account te gebruiken kiest u uitloggen in het menu"</string>
 <string name="early_access">"Vroegtijdige toegang"</string>
@@ -234,7 +234,7 @@ Nu doen?"</string>
 <string name="testing_program_section_opted_out_title">"Bètatester worden"</string>
 <string name="notification_not_privileged">"Installatie permissie niet toegezegd"</string>
 <string name="pref_download_directory">"Download locatie"</string>
-<string name="pref_download_deltas">"Delta updates"</string>
+
 <string name="pref_download_deltas_summary_off">"De volledige apk wordt bij iedere update gedownload"</string>
 <string name="pref_download_deltas_summary_on">"Alleen de veranderingen aan de app worden gedownload"</string>
 <string name="testing_program_review_dialog_content_hint">"Geef feedback over de app"</string>
@@ -261,35 +261,38 @@ Nu doen?"</string>
 <string name="flag_page_description">"De reden waarom je deze content of app aanstootgevend vindt:"</string>
 <string name="flag_pharma_content">"Illegaal geneesmiddel op recept of andere drugs"</string>
 <string name="flag_sexual_content">"Pornografische content"</string>
-<string name="flag_impersonation_copycat">"Copycat or impersonation"</string>
+
 <string name="flagging_title">"Markeren als ongepast"</string>
 <string name="content_flagged">"Bezwaar is verzonden."</string>
-<string name="list_app_blacklisted">"Blacklisted"</string>
+
 <string name="list_app_whitelisted">"Whitelisted"</string>
-<string name="action_filter">"Filter"</string>
+
 <string name="action_filter_system_apps">"System apps"</string>
-<string name="action_filter_apps_with_ads">"Apps with ads"</string>
+
 <string name="action_filter_paid_apps">"Paid apps"</string>
-<string name="action_filter_gsf_dependent_apps">"GSF dependent apps"</string>
+
 <string name="action_filter_category">"Category: %1$s"</string>
-<string name="action_filter_rating">"Rating: %1$s"</string>
+
 <string name="action_filter_downloads">"Downloads: %1$s"</string>
-<string name="pref_auto_whitelist">"Auto whitelist"</string>
+
 <string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
-<string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
+
 <string name="apps_by">"Apps van %1$s"</string>
-<string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
+
 <string name="no_permissions">"Geen machtigingen in gebruik."</string>
-<string name="about_librepay_label">"Donate Librepay:"</string>
+
 <string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
+
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+
 <string name="pref_use_tor">"Tor gebruiken"</string>
 <string name="pref_use_tor_summary">"Dwing downloadverkeer door Tor heen voor betere privacy. Vereist Orbot"</string>
-<string name="pref_category_proxy">"Proxy"</string>
+
 <string name="pref_proxy_enable">"Enable proxy"</string>
-<string name="pref_proxy_type">"Proxy type"</string>
+
 <string name="pref_proxy_host">"Proxy host"</string>
-<string name="pref_proxy_port">"Proxy port"</string>
+
+<string name="action_wishlist_remove">Verwijderen uit verlanglijstje</string>
+<string name="action_wishlist_add">Toevoegen aan verlanglijstje</string>
+<string name="action_wishlist">Verlanglijstje</string>
 </resources>

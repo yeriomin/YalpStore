@@ -297,4 +297,7 @@
 <string name="pref_proxy_type">"Μορφή μεσολαβητή"</string>
 <string name="pref_proxy_host">"Οικοδεσπότης μεσολαβητή"</string>
 <string name="pref_proxy_port">"Θύρα μεσολαβητή"</string>
+<string name="action_wishlist_remove">Κατάργηση από λίστα επιθυμιών</string>
+<string name="action_wishlist_add">Προσθήκη στη λίστα επιθυμητών</string>
+<string name="action_wishlist">Λίστα επιθυμιών</string>
 </resources>

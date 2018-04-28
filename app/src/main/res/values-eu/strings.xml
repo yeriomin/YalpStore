@@ -289,4 +289,7 @@ Jarraitu?"</string>
 <string name="pref_proxy_type">"Proxy mota"</string>
 <string name="pref_proxy_host">"Proxyaren ostalaria"</string>
 <string name="pref_proxy_port">"Proxyaren ataka"</string>
+<string name="action_wishlist_remove">Kendu nahien zerrendatik</string>
+<string name="action_wishlist_add">Gehitu nahien zerrendan</string>
+<string name="action_wishlist">Nahien zerrenda</string>
 </resources>
