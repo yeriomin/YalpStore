@@ -31,9 +31,82 @@ public class StringExtractor {
     final static private Map<String, String> stringNames = new HashMap<>();
 
     static {
-        stringNames.put("menu_wishlist", "action_wishlist");
-        stringNames.put("label_wishlist_add_action", "action_wishlist_add");
-        stringNames.put("label_wishlist_remove_action", "action_wishlist_remove");
+
+        // Play Store
+        stringNames.put("apps_by", "apps_by"); // Apps by %1$s
+        stringNames.put("availability_restriction_carrier", "availability_restriction_carrier"); // "This item isn't available on your carrier."
+        stringNames.put("availability_restriction_country", "availability_restriction_country"); // "This item isn't available in your country."
+        stringNames.put("availability_restriction_country_or_carrier", "availability_restriction_country_or_carrier"); // "This item isn't available in your country or on your carrier."
+        stringNames.put("availability_restriction_for_managed_account", "availability_restriction_for_managed_account"); // Your administrator has not given you access to this item.
+        stringNames.put("availability_restriction_generic", "availability_restriction_generic"); // "This item isn't available."
+        stringNames.put("availability_restriction_hardware", "availability_restriction_hardware"); // "Your device isn't compatible with this item."
+        stringNames.put("availability_restriction_hardware_app", "availability_restriction_hardware_app"); // "Your device isn't compatible with this version."
+        stringNames.put("availability_restriction_hardware_app_ram_generic", "availability_restriction_hardware_app_ram_generic"); // "This app requires more RAM than what's available on your device."
+        stringNames.put("availability_restriction_missing_permission", "availability_restriction_missing_permission"); // Your administrator has not accepted permissions for this item.
+        stringNames.put("availability_restriction_not_in_group", "availability_restriction_not_in_group"); // "You're not in the targeted group for this item."
+        stringNames.put("check_for_updates", "list_check_updates"); // Check for updates
+        stringNames.put("content_flagged", "content_flagged"); // Objection submitted.
+        stringNames.put("delete_review", "delete"); // Delete
+        stringNames.put("done", "done"); // Done
+        stringNames.put("download", "details_download"); // Download
+        stringNames.put("download_in_progress", "details_downloading"); // Downloading…
+        stringNames.put("download_settings_value_wifi_only", "pref_background_update_wifi_only"); // On Wi-Fi only
+        stringNames.put("early_access", "early_access"); // Early access
+        stringNames.put("flag_graphic_violence", "flag_graphic_violence"); // Graphic violence
+        stringNames.put("flag_harmful_prompt", "flag_harmful_prompt"); // Describe the harm caused to your device or data:
+        stringNames.put("flag_harmful_to_device", "flag_harmful_to_device"); // Harmful to device or data
+        stringNames.put("flag_hateful_content", "flag_hateful_content"); // Hateful or abusive content
+        stringNames.put("flag_improper_content_rating", "flag_improper_content_rating"); // Improper content rating
+        stringNames.put("flag_other_concern_prompt", "flag_other_concern_prompt"); // Describe objection
+        stringNames.put("flag_other_objection", "flag_other_objection"); // Other objection
+        stringNames.put("flag_page_description", "flag_page_description"); // The reason you find this content or app objectionable:
+        stringNames.put("flag_pharma_content", "flag_pharma_content"); // Illegal prescription or other drug
+        stringNames.put("flag_sexual_content", "flag_sexual_content"); // Sexual content
+        stringNames.put("flagging_title", "flagging_title"); // Flag as inappropriate
+        stringNames.put("install", "details_install"); // Install
+        stringNames.put("installing", "details_installing"); // Installing…
+        stringNames.put("label_wishlist_add_action", "action_wishlist_add"); // Add to wishlist
+        stringNames.put("label_wishlist_remove_action", "action_wishlist_remove"); // Remove from wishlist
+        stringNames.put("menu_wishlist", "action_wishlist"); // Wishlist
+        stringNames.put("my_apps_tab_updates", "action_updates"); // Updates
+        stringNames.put("my_apps_tab_updates", "pref_category_updates"); // Updates
+        stringNames.put("my_apps_tab_updates", "activity_title_updates_only"); // Updates
+        stringNames.put("not_now", "dialog_two_factor_cancel"); // Not now
+        stringNames.put("search_menu_title", "action_search"); // Search
+        stringNames.put("settings", "action_settings"); // Settings
+        stringNames.put("settings_about_header", "action_about"); // About
+        stringNames.put("setup_wizard_select_all_apps", "search_filter"); // All apps
+        stringNames.put("share", "details_share"); // Share
+        stringNames.put("submit", "submit"); // Submit
+        stringNames.put("testing_program_opt_in", "testing_program_opt_in"); // join
+        stringNames.put("testing_program_opt_out", "testing_program_opt_out"); // leave
+        stringNames.put("testing_program_review_dialog_content_hint", "testing_program_review_dialog_content_hint"); // Enter feedback about the app
+        stringNames.put("testing_program_section_opted_in_message", "testing_program_section_opted_in_message"); // "App updates will include beta versions. If you leave this app's beta program, you will no longer get beta updates."
+        stringNames.put("testing_program_section_opted_in_propagating_message", "testing_program_section_opted_in_propagating_message"); // "In a few minutes, you'll be added to the beta program. You can then update to the beta version of this app, if available."
+        stringNames.put("testing_program_section_opted_in_title", "testing_program_section_opted_in_title"); // "You're a beta tester"
+        stringNames.put("testing_program_section_opted_out_message", "testing_program_section_opted_out_message"); // "Try new features before they're made public. Give your feedback directly to the developer."
+        stringNames.put("testing_program_section_opted_out_propagating_message", "testing_program_section_opted_out_propagating_message"); // It can take a few minutes to remove you from the beta program.
+        stringNames.put("testing_program_section_opted_out_title", "testing_program_section_opted_out_title"); // Become a beta tester
+        stringNames.put("uninstall", "details_uninstall"); // Uninstall
+        stringNames.put("update_all", "list_update_all"); // Update all
+        stringNames.put("updating", "list_updating"); // Updating…
+
+        // F-Droid
+        stringNames.put("app_version_x_installed", "details_versionName"); // Version %1$s
+        stringNames.put("menu_settings", "action_settings"); // Settings
+        stringNames.put("menu_launch", "details_run"); // Run
+        stringNames.put("menu_video", "details_video"); // Video
+        stringNames.put("main_menu__categories", "action_categories"); // Categories
+        stringNames.put("useTor", "pref_use_tor"); // Use Tor
+        stringNames.put("useTorSummary", "pref_use_tor_summary"); // Force download traffic through Tor for increased privacy. Requires Orbot
+        stringNames.put("proxy", "pref_category_proxy"); // Proxy
+        stringNames.put("no_permissions", "no_permissions"); // No permissions are used.
+        stringNames.put("theme", "pref_ui_theme"); // Theme
+        stringNames.put("interval_1h", "pref_background_update_interval_hourly"); // Hourly
+        stringNames.put("interval_1d", "pref_background_update_interval_daily"); // Daily
+        stringNames.put("interval_1w", "pref_background_update_interval_weekly"); // Weekly
+        stringNames.put("theme_light", "pref_ui_theme_light"); // Light
+        stringNames.put("theme_dark", "pref_ui_theme_dark"); // Dark
     }
 
     private Map<String, String> englishStrings = new HashMap<>();
@@ -114,10 +187,10 @@ public class StringExtractor {
                 Element stringNode = (Element) nodeList.item(i);
                 String stringName = stringNode.getAttribute("name");
                 String stringContent = stringNode.getTextContent();
-                if (englishStrings.containsKey(stringName) && (englishStrings.get(stringName).equals(stringContent) || stringContent.equals("\"" + englishStrings.get(stringName) + "\""))) {
+                if (englishStrings.containsKey(stringName) && (englishStrings.get(stringName).equals(stringContent) || englishStrings.get(stringName).equals("\"" + stringContent + "\"") || stringContent.equals("\"" + englishStrings.get(stringName) + "\""))) {
                     resources.removeChild(stringNode);
                 } else if (strings.containsKey(stringName)) {
-                    if (strings.get(stringName).equals(stringContent)) {
+                    if (strings.get(stringName).equals(stringContent) || strings.get(stringName).equals("\"" + stringContent + "\"") || stringContent.equals("\"" + strings.get(stringName) + "\"")) {
                         processedStrings.add(stringName);
                     } else {
                         resources.removeChild(stringNode);
