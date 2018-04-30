@@ -7,9 +7,9 @@
     <RelativeLayout
         android:id="@+id/view_background"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:padding="5dp"
-        android:background="@color/colorRed">
+        android:layout_height="50dp"
+        android:background="@color/colorRed"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/delete_icon"
@@ -36,21 +36,20 @@
     <RelativeLayout
         android:id="@+id/view_foreground"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/white"
-        android:paddingEnd="15dp"
-        android:paddingStart="15dp"
-        android:paddingTop="10dp">
+        android:layout_height="50dp"
+        android:background="?android:attr/colorPrimary"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp">
 
         <ImageView
             android:id="@+id/searchIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
             android:layout_marginStart="2dp"
-            android:src="@drawable/ic_search"
-            android:tint="@color/darkGray" />
+            android:src="@drawable/ic_search" />
 
         <TextView
             android:id="@+id/query"
@@ -59,11 +58,10 @@
             android:layout_toEndOf="@id/searchIcon"
             android:ellipsize="end"
             android:fontFamily="@font/google_sans"
-
             android:maxLines="1"
             android:paddingEnd="10dp"
             android:paddingStart="10dp"
-            android:text="Insta"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="14sp" />
 
         <TextView
@@ -78,7 +76,7 @@
             android:maxLines="1"
             android:paddingEnd="10dp"
             android:paddingStart="10dp"
-            android:text="Today"
+            android:textColor="?android:attr/textColorSecondary"
             android:textSize="12sp" />
     </RelativeLayout>
 </FrameLayout>

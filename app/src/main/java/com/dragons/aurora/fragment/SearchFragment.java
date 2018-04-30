@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,17 +20,17 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dragons.aurora.R;
+import com.dragons.aurora.RecyclerItemTouchHelper;
+import com.dragons.aurora.activities.SearchActivity;
+import com.dragons.aurora.adapters.SearchHistoryAdapter;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
-
-import com.dragons.aurora.R;
-import com.dragons.aurora.RecyclerItemTouchHelper;
-import com.dragons.aurora.activities.SearchActivity;
-import com.dragons.aurora.adapters.SearchHistoryAdapter;
 
 public class SearchFragment extends UtilFragment implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
@@ -48,6 +47,9 @@ public class SearchFragment extends UtilFragment implements RecyclerItemTouchHel
         searchToolbar = view.findViewById(R.id.search_apps);
         recyclerView = view.findViewById(R.id.searchHistory);
         emptyView = view.findViewById(R.id.emptyView);
+
+        TextView clearAll = view.findViewById(R.id.clearAll);
+        clearAll.setOnClickListener(v -> clearAll());
 
         RelativeLayout search_layout = view.findViewById(R.id.search_layout);
         search_layout.setOnClickListener(v -> {
@@ -140,7 +142,7 @@ public class SearchFragment extends UtilFragment implements RecyclerItemTouchHel
             emptyView.setVisibility(View.GONE);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(new SearchHistoryAdapter(listHistory,getActivity()));
+            recyclerView.setAdapter(new SearchHistoryAdapter(listHistory, getActivity()));
             new ItemTouchHelper(
                     new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this))
                     .attachToRecyclerView(recyclerView);
@@ -169,6 +171,15 @@ public class SearchFragment extends UtilFragment implements RecyclerItemTouchHel
             listHistory.addAll(set);
         }
         return listHistory;
+    }
+
+    private void clearAll() {
+        setHistory.clear();
+        PreferenceManager.getDefaultSharedPreferences(getActivity())
+                .edit()
+                .putStringSet("SEARCH_HISTORY", setHistory)
+                .apply();
+        setupSearchHistory();
     }
 
     @Override
