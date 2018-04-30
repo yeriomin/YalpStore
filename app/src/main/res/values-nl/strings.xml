@@ -265,34 +265,35 @@ Nu doen?"</string>
 <string name="flagging_title">"Markeren als ongepast"</string>
 <string name="content_flagged">"Bezwaar is verzonden."</string>
 
-<string name="list_app_whitelisted">"Whitelisted"</string>
 
-<string name="action_filter_system_apps">"System apps"</string>
 
-<string name="action_filter_paid_apps">"Paid apps"</string>
 
-<string name="action_filter_category">"Category: %1$s"</string>
 
-<string name="action_filter_downloads">"Downloads: %1$s"</string>
 
-<string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
+
+
+
+
+
+
 
 <string name="apps_by">"Apps van %1$s"</string>
 
 <string name="no_permissions">"Geen machtigingen in gebruik."</string>
 
-<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
 
-<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+
+
 
 <string name="pref_use_tor">"Tor gebruiken"</string>
 <string name="pref_use_tor_summary">"Dwing downloadverkeer door Tor heen voor betere privacy. Vereist Orbot"</string>
 
-<string name="pref_proxy_enable">"Enable proxy"</string>
 
-<string name="pref_proxy_host">"Proxy host"</string>
+
+
 
 <string name="action_wishlist_remove">Verwijderen uit verlanglijstje</string>
 <string name="action_wishlist_add">Toevoegen aan verlanglijstje</string>
 <string name="action_wishlist">Verlanglijstje</string>
+<string name="details_download">"Downloaden"</string>
 </resources>

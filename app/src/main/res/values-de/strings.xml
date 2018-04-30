@@ -47,7 +47,7 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="details_you_rated_this_app">"Du bewertetest diese App:"</string>
 <string name="details_permissions">"Berechtigungen:"</string>
 
-<string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
+
 <string name="details_download">"Herunterladen"</string>
 <string name="details_install">"Installieren"</string>
 <string name="details_downloading">"Herunterladen…"</string>
@@ -280,15 +280,16 @@ Fortfahren?"</string>
 
 <string name="pref_download_internal_storage">"Zum Interner Speicher herunterladen"</string>
 
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+
 <string name="pref_use_tor">"Tor verwenden"</string>
 <string name="pref_use_tor_summary">"Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt"</string>
 <string name="pref_category_proxy">"Vermittlungsserver"</string>
 
-<string name="pref_proxy_type">"Proxy type"</string>
 
-<string name="pref_proxy_port">"Proxy port"</string>
+
+
 <string name="action_wishlist_remove">Von Wunschliste entfernen</string>
 <string name="action_wishlist_add">Auf die Wunschliste</string>
 <string name="action_wishlist">Wunschliste</string>
+<string name="details_video">"Film"</string>
 </resources>

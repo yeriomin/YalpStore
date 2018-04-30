@@ -280,16 +280,16 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="pref_message_fallback">"¿Intentar establecer otra carpeta (%1$s) como segunda opción?"</string>
 <string name="no_permissions">"No se usan permisos."</string>
 
-<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
 
-<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+
+
 
 <string name="pref_use_tor">"Usar Tor"</string>
 <string name="pref_use_tor_summary">"Forzar el tráfico de descarga a través de Tor para mejorar la privacidad. Requiere Orbot"</string>
 
-<string name="pref_proxy_enable">"Enable proxy"</string>
 
-<string name="pref_proxy_host">"Proxy host"</string>
+
+
 
 <string name="action_wishlist_remove">Quitar de la lista de deseos</string>
 <string name="action_wishlist_add">Añadir a lista de deseos</string>

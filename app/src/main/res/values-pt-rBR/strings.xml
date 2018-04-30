@@ -81,9 +81,9 @@ Lembre-se de que usar este aplicativo viola o Play Store ToS. Seria provavelment
 <string name="pref_update_list_white">"Alterar lista branca de apps"</string>
 <string name="pref_ui_theme">"Tema"</string>
 <string name="pref_ui_theme_none">"Padrão"</string>
-<string name="pref_ui_theme_light">"Light"</string>
-<string name="pref_ui_theme_dark">"Dark"</string>
-<string name="pref_ui_theme_black">"Black"</string>
+
+
+
 <string name="pref_background_update_interval_never">"Somente quando você inicia o Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"De hora em hora"</string>
 <string name="pref_background_update_interval_daily">"Diariamente"</string>
@@ -143,7 +143,7 @@ Lembre-se de que o download de versões arbitrárias de aplicativos não é comp
 <string name="pref_device_to_pretend_to_be_toast">"Essa alteração será aplicada após o login novamente"</string>
 <string name="pref_category_updates">"Atualizações"</string>
 <string name="pref_category_installation">"Instalação"</string>
-<string name="pref_category_spoofing">"Spoofing"</string>
+
 <string name="pref_category_ui">"Mostrar"</string>
 <string name="details_installing">"Instalando…"</string>
 <string name="details_installed">"Instalado com êxito"</string>
@@ -222,7 +222,7 @@ Fazer?"</string>
 <string name="list_updating">"Atualizando…"</string>
 <string name="error_invalid_device_definition">"Definição do dispositivo rejeitada."</string>
 <string name="details_video">"Vídeo"</string>
-<string name="error_could_not_download">"Could not download."</string>
+
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 <string name="early_access">"Acesso antecipado"</string>
 <string name="testing_program_opt_in">"Junte-se"</string>
@@ -235,7 +235,7 @@ Fazer?"</string>
 <string name="testing_program_section_opted_out_title">"Torne-se um testador beta"</string>
 <string name="notification_not_privileged">"Instalar permissão não concedida"</string>
 <string name="pref_download_directory">"Diretório do download"</string>
-<string name="pref_download_deltas">"Delta updates"</string>
+
 <string name="pref_download_deltas_summary_off">"O apk completo é baixado toda vez"</string>
 <string name="pref_download_deltas_summary_on">"Apenas as alterações são baixadas durante as atualizações"</string>
 <string name="testing_program_review_dialog_content_hint">"Envie feedback sobre o aplicativo"</string>
@@ -274,7 +274,7 @@ Fazer?"</string>
 <string name="action_filter_gsf_dependent_apps">"Aplicativos dependentes do GSF"</string>
 <string name="action_filter_category">"Categoria: %1$s"</string>
 <string name="action_filter_rating">"Avaliação: %1$s"</string>
-<string name="action_filter_downloads">"Downloads: %1$s"</string>
+
 <string name="pref_auto_whitelist">"Lista automática"</string>
 <string name="pref_auto_whitelist_summary_on">"As aplicações instaladas pela Yalp Store são automaticamente incluídas na lista branca"</string>
 <string name="pref_auto_whitelist_summary_off">"Você precisa fazer uma lista branca de aplicativos manualmente"</string>
@@ -282,15 +282,17 @@ Fazer?"</string>
 <string name="pref_message_fallback">"Tentativa de definir um diretório de retorno (%1$s)?"</string>
 <string name="no_permissions">"Nenhuma permissão utilizada."</string>
 <string name="about_librepay_label">"Donate Librepay:"</string>
-<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
-<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+
+
+
+
 <string name="pref_use_tor">"Usar o Tor"</string>
 <string name="pref_use_tor_summary">"Forçar tráfego de download através do Tor para maior privacidade. Exige Orbot"</string>
-<string name="pref_category_proxy">"Proxy"</string>
-<string name="pref_proxy_enable">"Enable proxy"</string>
-<string name="pref_proxy_type">"Proxy type"</string>
-<string name="pref_proxy_host">"Proxy host"</string>
-<string name="pref_proxy_port">"Proxy port"</string>
+
+
+
+
+
+<string name="pref_ui_theme_dark">"Escuro"</string>
+<string name="pref_ui_theme_light">"Claro"</string>
 </resources>

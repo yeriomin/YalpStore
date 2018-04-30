@@ -56,7 +56,7 @@
 <string name="details_versionName_updatable">"Versão %1$s → %2$s"</string>
 <string name="details_download">"Descarga"</string>
 <string name="details_install">"Instalar"</string>
-<string name="details_downloading">"A descarregar..."</string>
+<string name="details_downloading">"A descarregar…"</string>
 <string name="details_review_dialog_title">"Algo mais para dizer?"</string>
 <string name="details_review_dialog_review_title_hint">"título"</string>
 <string name="details_review_dialog_review_comment_hint">"comentário"</string>
@@ -150,7 +150,7 @@
 <string name="pref_category_installation">"Instalação"</string>
 <string name="pref_category_spoofing">"Disfarce"</string>
 <string name="pref_category_ui">"Interface"</string>
-<string name="details_installing">"A instalar..."</string>
+<string name="details_installing">"A instalar…"</string>
 <string name="details_installed">"Instalada com sucesso"</string>
 <string name="details_install_failure">"Instalação não efetuada"</string>
 <string name="notification_download_complete_new_permissions">"Descarga completa. Novas permissões  detetadas."</string>

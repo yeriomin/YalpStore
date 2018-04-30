@@ -279,16 +279,16 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="pref_message_fallback">"Tento d'impostare una cartella di fallback (%1$s)?"</string>
 <string name="no_permissions">"Nessuna autorizzazione viene usata."</string>
 
-<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
 
-<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+
+
 
 <string name="pref_use_tor">"Usa Tor"</string>
 <string name="pref_use_tor_summary">"Forza lo scaricamento attraverso Tor per aumentare la privacy. Richiede Orbot"</string>
 
-<string name="pref_proxy_enable">"Enable proxy"</string>
 
-<string name="pref_proxy_host">"Proxy host"</string>
+
+
 
 <string name="action_wishlist_remove">Rimuovi dalla lista desideri</string>
 <string name="action_wishlist_add">Aggiungi alla lista desideri</string>

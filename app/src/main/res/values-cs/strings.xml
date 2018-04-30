@@ -263,7 +263,7 @@ Pokračovat?"</string>
 <string name="flagging_title">"Nahlásit jako nevhodné"</string>
 <string name="content_flagged">"Námitka byla odeslána."</string>
 
-<string name="list_app_whitelisted">"Whitelisted"</string>
+
 <string name="action_filter">"Filtr"</string>
 <string name="action_filter_system_apps">"Systémové aplikace"</string>
 <string name="action_filter_apps_with_ads">"Aplikace s reklamami"</string>
@@ -286,9 +286,9 @@ Pokračovat?"</string>
 <string name="pref_use_tor">"Použít Tor"</string>
 <string name="pref_use_tor_summary">"Vynutit stahování přes Tor pro zlepšení ochrany soukromí. Vyžaduje aplikaci Orbot"</string>
 
-<string name="pref_proxy_enable">"Enable proxy"</string>
 
-<string name="pref_proxy_host">"Proxy host"</string>
+
+
 
 <string name="action_wishlist_remove">Odebrat ze seznamu přání</string>
 <string name="action_wishlist_add">Přidat do seznamu přání</string>

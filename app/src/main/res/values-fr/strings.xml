@@ -259,13 +259,13 @@
 <string name="notification_file_verification_failed">"Le fichier semble corrompu. Veuillez le télécharger de nouveau."</string>
 <string name="pref_download_internal_storage">"Télécharger vers le stockage interne"</string>
 
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+
 <string name="pref_use_tor">"Utiliser Tor"</string>
 <string name="pref_use_tor_summary">"Télécharger anonymement grâce à Tor. Requiert Orbot"</string>
 
-<string name="pref_proxy_enable">"Enable proxy"</string>
 
-<string name="pref_proxy_host">"Proxy host"</string>
+
+
 
 <string name="action_wishlist_remove">Supprimer de liste de souhaits</string>
 <string name="action_wishlist_add">Ajouter à la liste de souhaits</string>

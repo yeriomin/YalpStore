@@ -6,7 +6,7 @@
 <string name="list_line_2_updatable">"Xubióse'l %1$s"</string>
 <string name="list_empty_updates">"Nun se precisen anovar aplicaciones"</string>
 <string name="list_empty_search">"Nun s'alcontraron aplicaciones"</string>
-<string name="list_incompatible">"incompatible"</string>
+
 <string name="action_about">"Tocante a"</string>
 <string name="action_settings">"Axustes"</string>
 <string name="action_logout">"Zarrar sesión"</string>
@@ -48,7 +48,7 @@ Calca en «Crear contraseña» pa redirixite a la páxina de creación de contra
 <string name="details_you_rated_this_app">"Valoresti esta aplicación:"</string>
 <string name="details_permissions">"Permisos:"</string>
 <string name="details_versionName">"Versión %1$s"</string>
-<string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
+
 <string name="details_download">"Baxar"</string>
 <string name="details_install">"Instalar"</string>
 <string name="details_downloading">"Baxando…"</string>
@@ -235,4 +235,7 @@ El procesu nun ye perfeutu y ye específicu pa cada preséu, asina que quiciabes
 <string name="pref_download_deltas">"Anovamientos delta"</string>
 <string name="pref_download_deltas_summary_off">"Báxase l'APK completa cada vegada"</string>
 <string name="pref_download_deltas_summary_on">"Namái se baxen los cambeos de los anovamientos"</string>
+<string name="pref_use_tor_summary">"Forciar el tráficu de descarga per Tor pa mayor intimidá. Rique Orbot"</string>
+<string name="pref_use_tor">"Usar Tor"</string>
+<string name="no_permissions">"Nun s\'usaron permisos."</string>
 </resources>

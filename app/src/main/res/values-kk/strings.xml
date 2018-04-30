@@ -283,15 +283,15 @@ Backup жасаңыз."</string>
 
 <string name="about_librepay_label">"Donate Librepay:"</string>
 
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
 
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 
-<string name="pref_use_tor_summary">"Force download traffic through Tor for increased privacy. Requires Orbot"</string>
 
-<string name="pref_proxy_enable">"Enable proxy"</string>
 
-<string name="pref_proxy_host">"Proxy host"</string>
+
+
+
+
+
 
 <string name="action_wishlist_remove">Қалайтын заттар тізімінен жою</string>
 <string name="action_wishlist_add">Қалайтын заттар тізіміне қосу</string>
