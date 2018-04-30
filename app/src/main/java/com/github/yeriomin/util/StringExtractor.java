@@ -127,11 +127,12 @@ public class StringExtractor {
     private void extract(File fromRoot) {
         englishStrings = getEnglishStrings();
         for (File valuesDir: fromRoot.listFiles()) {
-            if (!valuesDir.isDirectory() || !valuesDir.getName().startsWith(VALUES_DIR_PREFIX)) {
+            File stringsFile = new File(valuesDir, "strings.xml");
+            if (!valuesDir.isDirectory() || !valuesDir.getName().startsWith(VALUES_DIR_PREFIX) || !stringsFile.exists()) {
                 continue;
             }
             System.out.println("Processing " + valuesDir.getName());
-            Map<String, String> wantedStrings = getStrings(new File(valuesDir, "strings.xml"));
+            Map<String, String> wantedStrings = getStrings(stringsFile);
             if (!wantedStrings.isEmpty()) {
                 File localFile = getLocalFile(valuesDir.getName().substring(VALUES_DIR_PREFIX.length()));
                 if (!localFile.exists()) {
@@ -146,16 +147,20 @@ public class StringExtractor {
         Map<String, String> wantedStrings = new HashMap<>();
         try {
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(from);
-            NodeList nodeList = doc.getElementsByTagName("string");
+            NodeList nodeList = doc.getElementsByTagName("resources").item(0).getChildNodes();
             for (int i = 0; i < nodeList.getLength(); i++) {
-                Element stringNode = (Element) nodeList.item(i);
-                String stringName = stringNode.getAttribute("name");
+                Node stringNode = nodeList.item(i);
+                if (!(stringNode instanceof Element) || !((Element) stringNode).getTagName().equals("string")) {
+                    continue;
+                }
+                String stringName = ((Element) stringNode).getAttribute("name");
                 if (!stringNames.keySet().contains(stringName)) {
                     continue;
                 }
-                wantedStrings.put(stringNames.get(stringName), stringNode.getTextContent());
+                String stringContent = stringNode.getTextContent();
+                wantedStrings.put(stringNames.get(stringName), stringContent.startsWith("\"") ? stringContent : ("\"" + stringContent + "\""));
             }
-        } catch (ParserConfigurationException | IOException |SAXException e) {
+        } catch (ParserConfigurationException | IOException | SAXException e) {
             System.out.println("Could not read xml document from " + from + ": " + e.getMessage());
         }
         return wantedStrings;
@@ -166,51 +171,52 @@ public class StringExtractor {
         File from = new File("src\\main\\res\\values\\strings.xml");
         try {
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(from);
-            NodeList nodeList = doc.getElementsByTagName("string");
+            NodeList nodeList = doc.getElementsByTagName("resources").item(0).getChildNodes();
             for (int i = 0; i < nodeList.getLength(); i++) {
-                Element stringNode = (Element) nodeList.item(i);
-                wantedStrings.put(stringNode.getAttribute("name"), stringNode.getTextContent());
+                Node stringNode = nodeList.item(i);
+                if (!(stringNode instanceof Element) || !((Element) stringNode).getTagName().equals("string")) {
+                    continue;
+                }
+                wantedStrings.put(((Element) stringNode).getAttribute("name"), stringNode.getTextContent());
             }
-        } catch (ParserConfigurationException | IOException |SAXException e) {
+        } catch (ParserConfigurationException | IOException | SAXException e) {
             System.out.println("Could not read xml document from " + from + ": " + e.getMessage());
         }
         return wantedStrings;
     }
 
-    private void putStrings(Map<String, String> strings, File to) {
-        Set<String> processedStrings = new HashSet<>();
+    private void putStrings(Map<String, String> wantedStrings, File to) {
+        Set<String> existingStrings = new HashSet<>();
         try {
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(to);
             Node resources = doc.getElementsByTagName("resources").item(0);
-            NodeList nodeList = doc.getElementsByTagName("string");
+            NodeList nodeList = resources.getChildNodes();
             for (int i = 0; i < nodeList.getLength(); i++) {
-                Element stringNode = (Element) nodeList.item(i);
-                String stringName = stringNode.getAttribute("name");
-                String stringContent = stringNode.getTextContent();
-                if (englishStrings.containsKey(stringName) && (englishStrings.get(stringName).equals(stringContent) || englishStrings.get(stringName).equals("\"" + stringContent + "\"") || stringContent.equals("\"" + englishStrings.get(stringName) + "\""))) {
-                    resources.removeChild(stringNode);
-                } else if (strings.containsKey(stringName)) {
-                    if (strings.get(stringName).equals(stringContent) || strings.get(stringName).equals("\"" + stringContent + "\"") || stringContent.equals("\"" + strings.get(stringName) + "\"")) {
-                        processedStrings.add(stringName);
-                    } else {
-                        resources.removeChild(stringNode);
-                    }
-                }
-            }
-            for (String name: strings.keySet()) {
-                if (processedStrings.contains(name)) {
+                Node stringNode = nodeList.item(i);
+                if (!(stringNode instanceof Element) || !((Element) stringNode).getTagName().equals("string")) {
                     continue;
                 }
+                String stringName = ((Element) stringNode).getAttribute("name");
+                String stringContent = stringNode.getTextContent();
+                existingStrings.add(stringName);
+                if (sameAsEnglish(stringName, stringContent)) {
+                    resources.removeChild(stringNode);
+                }
+            }
+            for (String name: wantedStrings.keySet()) {
+                if (existingStrings.contains(name) || sameAsEnglish(name, wantedStrings.get(name))) {
+                    continue;
+                }
+                existingStrings.add(name);
                 Element stringNode = doc.createElement("string");
                 stringNode.setAttribute("name", name);
-                stringNode.setTextContent(strings.get(name));
+                stringNode.setTextContent(wantedStrings.get(name));
                 resources.appendChild(stringNode);
             }
             writeXml(doc, to);
         } catch (ParserConfigurationException | IOException |SAXException e) {
             System.out.println("Could not read xml document from " + to + ": " + e.getMessage());
         }
-
     }
 
     private void create(File localFile) {
@@ -247,5 +253,19 @@ public class StringExtractor {
 
     private File getLocalFile(String locale) {
         return new File("src\\main\\res\\values-" + locale + "\\strings.xml");
+    }
+
+    private boolean sameAsEnglish(String key, String value) {
+        String englishValue = englishStrings.get(key);
+        return isEmpty(value)
+            || isEmpty(englishValue)
+            || englishValue.equals(value)
+            || englishValue.equals("\"" + value + "\"")
+            || value.equals("\"" + englishValue + "\"")
+            ;
+    }
+
+    private static boolean isEmpty(String str) {
+        return str == null || str.length() == 0;
     }
 }
