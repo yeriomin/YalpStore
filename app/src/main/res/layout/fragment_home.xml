@@ -15,7 +15,7 @@
     <com.dragons.aurora.view.CustomNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/colorPrimary"
+        android:background="?android:attr/colorBackground"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
