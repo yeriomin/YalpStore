@@ -56,7 +56,7 @@
 <string name="details_versionName_updatable">"Versão %1$s → %2$s"</string>
 <string name="details_download">"Descarga"</string>
 <string name="details_install">"Instalar"</string>
-<string name="details_downloading">"A descarregar…"</string>
+<string name="details_downloading">"A descarregar..."</string>
 <string name="details_review_dialog_title">"Algo mais para dizer?"</string>
 <string name="details_review_dialog_review_title_hint">"título"</string>
 <string name="details_review_dialog_review_comment_hint">"comentário"</string>
@@ -150,7 +150,7 @@
 <string name="pref_category_installation">"Instalação"</string>
 <string name="pref_category_spoofing">"Disfarce"</string>
 <string name="pref_category_ui">"Interface"</string>
-<string name="details_installing">"A instalar…"</string>
+<string name="details_installing">"A instalar..."</string>
 <string name="details_installed">"Instalada com sucesso"</string>
 <string name="details_install_failure">"Instalação não efetuada"</string>
 <string name="notification_download_complete_new_permissions">"Descarga completa. Novas permissões  detetadas."</string>
@@ -310,12 +310,12 @@
 <string name="pref_download_internal_storage_summary_off">"Os ficheiros apk serão colocados no caminho indicado abaixo"</string>
 <string name="pref_use_tor">"Utilizar Tor"</string>
 <string name="pref_use_tor_summary">"Descarregar aplicações através da rede Tor para manter a privacidade. Requer Orbot."</string>
-
+<string name="pref_category_proxy">"Proxy"</string>
 <string name="pref_proxy_enable">"Ativar proxy"</string>
 <string name="pref_proxy_type">"Tipo de proxy"</string>
 <string name="pref_proxy_host">"Servidor proxy"</string>
 <string name="pref_proxy_port">"Porta do proxy"</string>
-<string name="action_wishlist_remove">Remover da lista de desejos</string>
-<string name="action_wishlist_add">Adicionar à lista de desejos</string>
-<string name="action_wishlist">Lista de desejos</string>
+<string name="action_wishlist_remove">"Remover da lista de desejos"</string>
+<string name="action_wishlist_add">"Adicionar à lista de desejos"</string>
+<string name="action_wishlist">"Lista de desejos"</string>
 </resources>
