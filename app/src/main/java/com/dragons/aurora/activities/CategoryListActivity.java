@@ -21,7 +21,6 @@ public class CategoryListActivity extends AuroraActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new CategoryListFragment())
-                .addToBackStack(null)
                 .commit();
     }
 

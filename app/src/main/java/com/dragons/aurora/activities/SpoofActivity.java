@@ -19,7 +19,6 @@ public class SpoofActivity extends AuroraActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new SpoofFragment())
-                .addToBackStack(null)
                 .commit();
     }
 

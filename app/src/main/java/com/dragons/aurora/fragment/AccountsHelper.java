@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
@@ -135,8 +136,7 @@ public abstract class AccountsHelper extends Fragment {
 
         @Override
         protected void onPostExecute(Void result) {
-            InstalledAppsFragment.newInstance();
-            UpdatableAppsFragment.newInstance();
+            Log.i(getClass().getSimpleName(), "Token Stale : Retrying after Refresh");
         }
     }
 
@@ -238,7 +238,8 @@ public abstract class AccountsHelper extends Fragment {
             PreferenceManager.getDefaultSharedPreferences(context).edit().putString("GOOGLE_URL", Url).apply();
 
             AccountsActivity accountsActivity = (AccountsActivity) getActivity();
-            accountsActivity.userChanged();
+            if (accountsActivity != null)
+                accountsActivity.userChanged();
         }
     }
 }

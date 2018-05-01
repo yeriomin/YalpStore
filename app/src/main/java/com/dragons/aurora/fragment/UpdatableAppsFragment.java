@@ -18,7 +18,6 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.UpdateAllReceiver;
 import com.dragons.aurora.UpdateChecker;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.ForegroundUpdatableAppsTaskHelper;
 import com.dragons.aurora.view.ListItem;
@@ -26,7 +25,9 @@ import com.dragons.aurora.view.UpdatableAppBadge;
 import com.percolate.caffeine.ToastUtils;
 import com.percolate.caffeine.ViewUtils;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -70,10 +71,9 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
 
         swipeRefreshLayout = ViewUtils.findViewById(v, R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            if (isLoggedIn()) {
-                clearApps();
+            if (isLoggedIn())
                 loadUpdatableApps();
-            } else
+            else
                 swipeRefreshLayout.setRefreshing(false);
         });
 
@@ -88,7 +88,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     @Override
     public void onResume() {
         super.onResume();
-        updateAllReceiver = new UpdateAllReceiver((AuroraActivity) getActivity());
+        updateAllReceiver = new UpdateAllReceiver(this);
         if (isLoggedIn() && updatableApps.isEmpty())
             loadUpdatableApps();
         else if (!updatableApps.isEmpty())
@@ -96,7 +96,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         else if (!isLoggedIn())
             ToastUtils.quickToast(getActivity(), "You need to Login First", true);
         else {
-            new UpdateAllReceiver((AuroraActivity) getActivity());
+            new UpdateAllReceiver(this);
             checkAppListValidity();
         }
         updateInteger();
@@ -181,6 +181,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
                 .subscribe((appList) -> {
                     if (v != null) {
                         clearApps();
+                        appList = new ArrayList<>(new HashSet<>(appList));
                         Collections.sort(appList);
                         addApps(appList);
 

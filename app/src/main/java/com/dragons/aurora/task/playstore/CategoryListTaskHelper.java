@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CategoryListTaskHelper extends ForegroundUpdatableAppsTaskHelper {
+public class CategoryListTaskHelper extends ExceptionTaskHelper {
 
 
     protected boolean getResult(GooglePlayAPI api, CategoryManager manager) throws IOException {

@@ -7,13 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.percolate.caffeine.ViewUtils;
-
-import java.util.Collections;
-
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.task.playstore.ForegroundUpdatableAppsTaskHelper;
+import com.percolate.caffeine.ViewUtils;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -24,6 +26,10 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     private View v;
     private Disposable loadApps;
     private SwipeRefreshLayout swipeRefreshLayout;
+
+    public static InstalledAppsFragment newInstance() {
+        return new InstalledAppsFragment();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,10 +56,8 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (isLoggedIn())
                 loadMarketApps();
-            else {
-                LoginFirst();
+            else
                 swipeRefreshLayout.setRefreshing(false);
-            }
         });
 
         getListView().setOnItemClickListener((parent, view, position, id) -> {
@@ -70,8 +74,6 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         super.onResume();
         if (isLoggedIn() && allMarketApps.isEmpty())
             loadMarketApps();
-        else if (!isLoggedIn())
-            LoginFirst();
         else {
             checkAppListValidity();
         }
@@ -87,6 +89,7 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
                 .subscribe((appList) -> {
                     if (v != null) {
                         clearApps();
+                        appList = new ArrayList<>(new HashSet<>(appList));
                         Collections.sort(appList);
                         addApps(appList);
                         swipeRefreshLayout.setRefreshing(false);
@@ -98,9 +101,5 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     public void onStop() {
         super.onStop();
         swipeRefreshLayout.setRefreshing(false);
-    }
-
-    public static InstalledAppsFragment newInstance() {
-        return new InstalledAppsFragment();
     }
 }

@@ -20,8 +20,6 @@ import com.dragons.aurora.builders.AccountTypeDialogBuilder;
 import com.dragons.aurora.fragment.PreferenceFragment;
 
 public class DeviceActivity extends AuroraActivity {
-
-    AccountTypeDialogBuilder accountTypeDialogBuilder = new AccountTypeDialogBuilder(this);
     String deviceName;
     ImageView spoofed;
     Display mDisplay;

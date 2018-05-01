@@ -20,7 +20,6 @@ public class UpdatableAppsActivity extends AuroraActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new UpdatableAppsFragment())
-                .addToBackStack(null)
                 .commit();
     }
 

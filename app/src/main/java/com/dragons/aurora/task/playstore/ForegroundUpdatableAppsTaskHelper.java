@@ -2,32 +2,19 @@ package com.dragons.aurora.task.playstore;
 
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
 import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.BuildConfig;
-import com.dragons.aurora.ContextUtil;
-import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
-import com.dragons.aurora.R;
-import com.dragons.aurora.activities.AuroraActivity;
-import com.dragons.aurora.fragment.AppListFragment;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.AppBuilder;
-import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.BulkDetailsEntry;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.dragons.aurora.task.AppListValidityCheckTask;
 import com.dragons.aurora.task.InstalledAppsTask;
-import com.percolate.caffeine.ToastUtils;
 
 import java.io.IOException;
-import java.net.ConnectException;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -37,25 +24,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.net.ssl.SSLHandshakeException;
-
-public abstract class ForegroundUpdatableAppsTaskHelper extends AppListFragment {
+public abstract class ForegroundUpdatableAppsTaskHelper extends ExceptionTaskHelper {
 
     protected View view;
-    protected Throwable exception;
 
     protected List<App> updatableApps = new ArrayList<>();
     protected List<App> allMarketApps = new ArrayList<>();
-
-    protected static boolean noNetwork(Throwable e) {
-        return e instanceof UnknownHostException
-                || e instanceof SSLHandshakeException
-                || e instanceof ConnectException
-                || e instanceof SocketException
-                || e instanceof SocketTimeoutException
-                || (null != e && null != e.getCause() && noNetwork(e.getCause()))
-                ;
-    }
 
     protected List<App> getInstalledApps(GooglePlayAPI api) throws IOException {
         api.toc();
@@ -71,7 +45,6 @@ public abstract class ForegroundUpdatableAppsTaskHelper extends AppListFragment 
 
             allMarketApps.add(appFromMarket);
         }
-
         return allMarketApps;
     }
 
@@ -151,48 +124,5 @@ public abstract class ForegroundUpdatableAppsTaskHelper extends AppListFragment 
             }
         }
         return result;
-    }
-
-    //Exception Handling
-    protected boolean success() {
-        return null == exception;
-    }
-
-    protected void processException(Throwable e) {
-        Log.d(getClass().getSimpleName(), e.getClass().getName() + " caught during a google api request: " + e.getMessage());
-        if (e instanceof AuthException) {
-            processAuthException((AuthException) e);
-        } else if (e instanceof IOException) {
-            processIOException((IOException) e);
-        } else {
-            Log.e(getClass().getSimpleName(), "Unknown exception " + e.getClass().getName() + " " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    protected void processIOException(IOException e) {
-        String message;
-        if (noNetwork(e) && this.getActivity() != null) {
-            message = this.getActivity().getString(R.string.error_no_network);
-        } else {
-            message = TextUtils.isEmpty(e.getMessage())
-                    ? this.getActivity().getString(R.string.error_network_other, e.getClass().getName())
-                    : e.getMessage()
-            ;
-        }
-        ContextUtil.toastLong(this.getActivity(), message);
-    }
-
-    protected void processAuthException(AuthException e) {
-        if (e instanceof CredentialsEmptyException) {
-            Log.i(getClass().getSimpleName(), "Credentials empty");
-        } else if (e.getCode() == 401 && PreferenceFragment.getBoolean(this.getActivity(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
-            Log.i(getClass().getSimpleName(), "Token is stale");
-            refreshMyToken();
-        } else {
-            ToastUtils.quickToast(getActivity(), e.getMessage());
-            //ContextUtil.toast(this.getActivity(), R.string.error_incorrect_password);
-            //new PlayStoreApiAuthenticator(this.getActivity()).logout();
-        }
     }
 }

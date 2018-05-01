@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.dragons.aurora.activities.AuroraActivity;
+import com.dragons.aurora.fragment.UpdatableAppsFragment;
 
 public class UpdateAllReceiver extends BroadcastReceiver {
 
@@ -18,27 +18,27 @@ public class UpdateAllReceiver extends BroadcastReceiver {
     static public final String EXTRA_PACKAGE_NAME = "EXTRA_PACKAGE_NAME";
     static public final String EXTRA_UPDATE_ACTUALLY_INSTALLED = "EXTRA_UPDATE_ACTUALLY_INSTALLED";
 
-    private AuroraActivity activity;
+    private UpdatableAppsFragment fragment;
 
-    public UpdateAllReceiver(AuroraActivity activity) {
-        this.activity = activity;
+    public UpdateAllReceiver(UpdatableAppsFragment fragment) {
+        this.fragment = fragment;
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_ALL_UPDATES_COMPLETE);
         filter.addAction(ACTION_APP_UPDATE_COMPLETE);
-        activity.registerReceiver(this, filter);
-        if (!((AuroraApplication) activity.getApplication()).isBackgroundUpdating()) {
+        fragment.getActivity().registerReceiver(this, filter);
+        if (!((AuroraApplication) fragment.getActivity().getApplication()).isBackgroundUpdating()) {
             enableButton();
         }
-        activity.unregisterReceiver(this);
+        fragment.getActivity().unregisterReceiver(this);
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (!ContextUtil.isAlive(activity) || TextUtils.isEmpty(intent.getAction())) {
+        if (!ContextUtil.isAlive(fragment.getActivity()) || TextUtils.isEmpty(intent.getAction())) {
             return;
         }
         if (intent.getAction().equals(ACTION_ALL_UPDATES_COMPLETE)) {
-            ((AuroraApplication) activity.getApplication()).setBackgroundUpdating(false);
+            ((AuroraApplication) fragment.getActivity().getApplication()).setBackgroundUpdating(false);
             enableButton();
         } else if (intent.getAction().equals(ACTION_APP_UPDATE_COMPLETE)) {
             processAppUpdate(
@@ -49,8 +49,8 @@ public class UpdateAllReceiver extends BroadcastReceiver {
     }
 
     private void enableButton() {
-        Button button = (Button) activity.findViewById(R.id.update_all);
-        TextView textView = (TextView) activity.findViewById(R.id.updates_txt);
+        Button button = (Button) fragment.getActivity().findViewById(R.id.update_all);
+        TextView textView = (TextView) fragment.getActivity().findViewById(R.id.updates_txt);
         if (null != button) {
             button.setEnabled(true);
             textView.setEnabled(true);
@@ -61,7 +61,7 @@ public class UpdateAllReceiver extends BroadcastReceiver {
 
     private void processAppUpdate(String packageName, boolean installedUpdate) {
         if (installedUpdate) {
-            //activity.removeApp(packageName);
+            fragment.removeApp(packageName);
         }
     }
 }

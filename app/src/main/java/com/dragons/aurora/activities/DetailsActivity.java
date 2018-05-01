@@ -70,6 +70,6 @@ public class DetailsActivity extends AuroraActivity {
         Bundle arguments = new Bundle();
         arguments.putString("PackageName", packageName);
         detailsFragment.setArguments(arguments);
-        getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_frame, detailsFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, detailsFragment).commit();
     }
 }

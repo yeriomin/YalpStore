@@ -21,7 +21,6 @@ public class AboutActivity extends AuroraActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new AboutFragment())
-                .addToBackStack(null)
                 .commit();
     }
 
