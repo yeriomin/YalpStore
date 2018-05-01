@@ -1,5 +1,6 @@
 package com.dragons.aurora.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.view.Menu;
@@ -107,6 +108,13 @@ abstract public class EndlessScrollActivity extends AppListActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, AuroraActivity.class));
+        this.finish();
     }
 
     @Override

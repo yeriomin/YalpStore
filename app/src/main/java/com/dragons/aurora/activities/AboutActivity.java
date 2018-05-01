@@ -1,5 +1,6 @@
 package com.dragons.aurora.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.dragons.aurora.R;
@@ -27,7 +28,8 @@ public class AboutActivity extends AuroraActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish();
+        startActivity(new Intent(this, AuroraActivity.class));
+        this.finish();
     }
 
     @Override
