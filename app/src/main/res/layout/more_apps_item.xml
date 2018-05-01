@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:layout_alignParentTop="true"
+        android:background="?android:selectableItemBackgroundBorderless"
         android:padding="15dp"
         app:srcCompat="@drawable/ic_placeholder" />
 

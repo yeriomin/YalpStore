@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/appbar_icon_height"
         android:layout_gravity="center_horizontal"
-        android:background="?android:attr/selectableItemBackground"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
         android:padding="@dimen/appbar_icon_padding"
         android:tint="?android:attr/colorForeground" />
 

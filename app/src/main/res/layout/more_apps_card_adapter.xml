@@ -6,14 +6,15 @@
     <Button
         android:id="@+id/m_apps_more"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="72dp"
+        android:layout_width="48dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:textAllCaps="false"
+        android:background="?android:selectableItemBackgroundBorderless"
         android:fontFamily="@font/google_sans_bold"
         android:singleLine="true"
         android:text="@string/details_more"
+        android:textAllCaps="false"
         android:textColor="?android:attr/textColorSecondary" />
 
     <android.support.v7.widget.RecyclerView

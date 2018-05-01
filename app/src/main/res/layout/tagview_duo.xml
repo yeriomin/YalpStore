@@ -11,10 +11,8 @@
         android:id="@+id/tag_dual_txt0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="2dp"
         android:fontFamily="@font/google_sans"
+        android:gravity="center"
         android:textColor="?android:attr/textColorPrimary" />
 
     <ImageView
@@ -30,10 +28,9 @@
         android:id="@+id/tag_dual_txt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginTop="2dp"
+        android:background="?android:selectableItemBackgroundBorderless"
         android:fontFamily="@font/google_sans"
+        android:gravity="center"
         android:textColor="?android:attr/textColorPrimary" />
 
 </LinearLayout>

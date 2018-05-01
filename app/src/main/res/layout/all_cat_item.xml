@@ -2,6 +2,7 @@
     android:id="@+id/all_cat_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?android:selectableItemBackground"
     android:layout_margin="5dp"
     android:orientation="horizontal">
 
