@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.fragment.details.DownloadOrInstall;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.PurchaseCheckTask;
@@ -33,19 +34,19 @@ public class ManualDownloadActivity extends DetailsActivity {
 
     @Override
     protected void onNewIntent(Intent intent) {
-        if (null == DetailsActivity.app) {
+        if (null == DetailsFragment.app) {
             Log.e(getClass().getSimpleName(), "No app stored");
             finish();
             return;
         }
-        latestVersionCode = DetailsActivity.app.getVersionCode();
-        draw(DetailsActivity.app);
+        latestVersionCode = DetailsFragment.app.getVersionCode();
+        draw(DetailsFragment.app);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        DetailsActivity.app.setVersionCode(latestVersionCode);
+        DetailsFragment.app.setVersionCode(latestVersionCode);
     }
 
     private void draw(App app) {

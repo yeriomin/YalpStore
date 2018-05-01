@@ -100,13 +100,14 @@
                 android:theme="@style/RatingBar" />
 
             <ImageView
-                android:id="@+id/menu_3dot"
+                android:id="@+id/download_app"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="end"
-                android:src="@drawable/ic_3dots"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_download_alt"
                 android:tint="@color/white" />
         </RelativeLayout>
     </LinearLayout>
