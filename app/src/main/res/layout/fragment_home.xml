@@ -117,6 +117,7 @@
                 android:nestedScrollingEnabled="false" />
 
             <com.dragons.aurora.view.MoreAppsCard
+                android:id="@+id/fdroid"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="2dp"

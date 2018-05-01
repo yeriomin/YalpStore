@@ -1,19 +1,25 @@
 package com.dragons.aurora.fragment;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AccountsActivity;
 import com.dragons.aurora.activities.CategoryAppsActivity;
+import com.dragons.aurora.activities.SearchActivity;
 import com.dragons.aurora.view.AdaptiveToolbar;
+import com.dragons.aurora.view.MoreAppsCard;
 import com.dragons.aurora.view.TagView;
 import com.squareup.picasso.Picasso;
+
+import static com.dragons.aurora.fragment.DetailsFragment.app;
 
 public class HomeFragment extends UtilFragment {
 
@@ -38,6 +44,16 @@ public class HomeFragment extends UtilFragment {
         });
 
         initTags();
+
+        MoreAppsCard fdroidApps = view.findViewById(R.id.fdroid);
+        Button moreApps = fdroidApps.findViewById(R.id.m_apps_more);
+        moreApps.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), SearchActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setAction(Intent.ACTION_SEARCH);
+            intent.putExtra(SearchManager.QUERY, "FDROID");
+            getActivity().startActivity(intent);
+        });
 
         return view;
     }
@@ -71,13 +87,12 @@ public class HomeFragment extends UtilFragment {
                 .getDrawable(R.drawable.ic_user_placeholder));
     }
 
-    protected void initTags()
-    {
-        setupTag(view,R.id.tag_gamesAction,"GAME_ACTION");
-        setupTag(view,R.id.tag_family,"FAMILY");
-        setupTag(view,R.id.tag_gamesRacing,"GAME_RACING");
-        setupTag(view,R.id.tag_travel,"TRAVEL_AND_LOCAL");
-        setupTag(view,R.id.tag_social,"SOCIAL");
+    protected void initTags() {
+        setupTag(view, R.id.tag_gamesAction, "GAME_ACTION");
+        setupTag(view, R.id.tag_family, "FAMILY");
+        setupTag(view, R.id.tag_gamesRacing, "GAME_RACING");
+        setupTag(view, R.id.tag_travel, "TRAVEL_AND_LOCAL");
+        setupTag(view, R.id.tag_social, "SOCIAL");
     }
 
     protected void setupTag(View v, int viewID, String Category) {
