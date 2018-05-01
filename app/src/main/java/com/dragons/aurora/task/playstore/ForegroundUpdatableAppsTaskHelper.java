@@ -4,11 +4,23 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
+import com.dragons.aurora.BlackWhiteListManager;
+import com.dragons.aurora.BuildConfig;
+import com.dragons.aurora.ContextUtil;
+import com.dragons.aurora.CredentialsEmptyException;
+import com.dragons.aurora.PlayStoreApiAuthenticator;
+import com.dragons.aurora.R;
+import com.dragons.aurora.activities.AuroraActivity;
+import com.dragons.aurora.fragment.AppListFragment;
+import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.model.App;
+import com.dragons.aurora.model.AppBuilder;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.BulkDetailsEntry;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.task.AppListValidityCheckTask;
+import com.dragons.aurora.task.InstalledAppsTask;
 import com.percolate.caffeine.ToastUtils;
 
 import java.io.IOException;
@@ -27,29 +39,23 @@ import java.util.Set;
 
 import javax.net.ssl.SSLHandshakeException;
 
-import com.dragons.aurora.BlackWhiteListManager;
-import com.dragons.aurora.BuildConfig;
-import com.dragons.aurora.ContextUtil;
-import com.dragons.aurora.CredentialsEmptyException;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
-import com.dragons.aurora.R;
-import com.dragons.aurora.activities.AuroraActivity;
-import com.dragons.aurora.fragment.AppListFragment;
-import com.dragons.aurora.fragment.PreferenceFragment;
-import com.dragons.aurora.model.App;
-import com.dragons.aurora.model.AppBuilder;
-import com.dragons.aurora.task.AppListValidityCheckTask;
-import com.dragons.aurora.task.InstalledAppsTask;
-
 public abstract class ForegroundUpdatableAppsTaskHelper extends AppListFragment {
 
     protected View view;
-    protected TextView errorView;
-    protected View progressIndicator;
     protected Throwable exception;
 
     protected List<App> updatableApps = new ArrayList<>();
     protected List<App> allMarketApps = new ArrayList<>();
+
+    protected static boolean noNetwork(Throwable e) {
+        return e instanceof UnknownHostException
+                || e instanceof SSLHandshakeException
+                || e instanceof ConnectException
+                || e instanceof SocketException
+                || e instanceof SocketTimeoutException
+                || (null != e && null != e.getCause() && noNetwork(e.getCause()))
+                ;
+    }
 
     protected List<App> getInstalledApps(GooglePlayAPI api) throws IOException {
         api.toc();
@@ -83,7 +89,6 @@ public abstract class ForegroundUpdatableAppsTaskHelper extends AppListFragment 
             if (installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
                 updatableApps.add(appFromMarket);
             }
-            allMarketApps.add(appFromMarket);
         }
         if (!new BlackWhiteListManager(this.getActivity()).isUpdatable(BuildConfig.APPLICATION_ID)) {
             return updatableApps;
@@ -185,27 +190,9 @@ public abstract class ForegroundUpdatableAppsTaskHelper extends AppListFragment 
             Log.i(getClass().getSimpleName(), "Token is stale");
             refreshMyToken();
         } else {
-            ToastUtils.quickToast(getActivity(),e.getMessage());
+            ToastUtils.quickToast(getActivity(), e.getMessage());
             //ContextUtil.toast(this.getActivity(), R.string.error_incorrect_password);
             //new PlayStoreApiAuthenticator(this.getActivity()).logout();
         }
     }
-
-    protected static boolean noNetwork(Throwable e) {
-        return e instanceof UnknownHostException
-                || e instanceof SSLHandshakeException
-                || e instanceof ConnectException
-                || e instanceof SocketException
-                || e instanceof SocketTimeoutException
-                || (null != e && null != e.getCause() && noNetwork(e.getCause()))
-                ;
-    }
-
-    protected void checkAppListValidity() {
-        AppListValidityCheckTask task = new AppListValidityCheckTask((AuroraActivity) this.getActivity());
-        task.setRespectUpdateBlacklist(true);
-        task.setIncludeSystemApps(true);
-        task.execute();
-    }
-
 }

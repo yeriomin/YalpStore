@@ -1,9 +1,6 @@
 package com.dragons.aurora.activities;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-
-import com.percolate.caffeine.ViewUtils;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.AboutFragment;

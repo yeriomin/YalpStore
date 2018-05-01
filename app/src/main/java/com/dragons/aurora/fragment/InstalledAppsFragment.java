@@ -44,7 +44,7 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
 
         v = inflater.inflate(R.layout.app_installed_inc, container, false);
 
-        setupListView(v, R.layout.two_line_list_item_with_icon);
+        setupListView(v, R.layout.installed_list_item);
 
         swipeRefreshLayout = ViewUtils.findViewById(v, R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(() -> {

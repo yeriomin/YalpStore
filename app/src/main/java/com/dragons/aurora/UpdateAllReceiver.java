@@ -61,7 +61,7 @@ public class UpdateAllReceiver extends BroadcastReceiver {
 
     private void processAppUpdate(String packageName, boolean installedUpdate) {
         if (installedUpdate) {
-            activity.removeApp(packageName);
+            //activity.removeApp(packageName);
         }
     }
 }

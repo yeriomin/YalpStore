@@ -7,35 +7,35 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.ListView;
+
+import com.dragons.aurora.AppListIterator;
+import com.dragons.aurora.R;
+import com.dragons.aurora.adapters.ViewPagerAdapter;
+import com.dragons.aurora.model.App;
+import com.dragons.aurora.view.ListItem;
+import com.dragons.custom.CustomAppBar;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.dragons.custom.CustomAppBar;
-import com.dragons.aurora.AppListIterator;
-import com.dragons.aurora.R;
-import com.dragons.aurora.adapters.AppListAdapter;
-import com.dragons.aurora.adapters.ViewPagerAdapter;
-import com.dragons.aurora.model.App;
-import com.dragons.aurora.view.ListItem;
-import com.dragons.aurora.view.ProgressIndicator;
-import com.dragons.aurora.view.SearchResultAppBadge;
 
 public class AuroraActivity extends BaseActivity implements View.OnClickListener {
 
     static public App app;
+    static int static_pos = -9;
     protected Map<String, ListItem> listItems = new HashMap<>();
     protected AppListIterator iterator;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
     @BindView(R.id.bottom_bar)
     CustomAppBar bottm_bar;
-    static int static_pos = -9;
+
+    public static void setPosition(int item) {
+        static_pos = item;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +52,6 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
 
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-    }
-
-    public static void setPosition(int item) {
-        static_pos = item;
     }
 
     @Override
@@ -94,53 +90,8 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
-    @Override
     public Set<String> getListedPackageNames() {
         return listItems.keySet();
-    }
-
-    @Override
-    public void redrawDetails(App app) {
-    }
-
-    @Override
-    public ListView getListView() {
-        return (ListView) this.getSupportFragmentManager()
-                .findFragmentById(R.id.content_frame)
-                .getView()
-                .findViewById(android.R.id.list);
-    }
-
-    @Override
-    protected ListItem getListItem(App app) {
-        SearchResultAppBadge appBadge = new SearchResultAppBadge();
-        appBadge.setApp(app);
-        return appBadge;
-    }
-
-    @Override
-    public void addApps(List<App> appsToAdd) {
-        AppListAdapter adapter = (AppListAdapter) getListView().getAdapter();
-        if (!adapter.isEmpty()) {
-            ListItem last = adapter.getItem(adapter.getCount() - 1);
-            if (last instanceof ProgressIndicator) {
-                adapter.remove(last);
-            }
-        }
-        super.addApps(appsToAdd, false);
-        if (!appsToAdd.isEmpty()) {
-            adapter.add(new ProgressIndicator());
-        }
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void clearApps() {
-        super.clearApps();
-        iterator = null;
-    }
-
-    public void loadInstalledApps() {
     }
 
     @Override

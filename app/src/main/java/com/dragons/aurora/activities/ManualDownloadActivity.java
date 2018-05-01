@@ -11,20 +11,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.details.DownloadOrInstall;
+import com.dragons.aurora.model.App;
+import com.dragons.aurora.task.playstore.PurchaseCheckTask;
 import com.percolate.caffeine.ViewUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.dragons.aurora.R;
-import com.dragons.aurora.fragment.details.DownloadOrInstall;
-import com.dragons.aurora.model.App;
-import com.dragons.aurora.task.playstore.PurchaseCheckTask;
-
 public class ManualDownloadActivity extends DetailsActivity {
 
     private int latestVersionCode;
-    private DownloadOrInstall downloadOrInstallFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,25 +65,16 @@ public class ManualDownloadActivity extends DetailsActivity {
         if (app.getVersionCode() > 0) {
             ((EditText) findViewById(R.id.version_code)).setHint(String.valueOf(latestVersionCode));
         }
-        downloadOrInstallFragment = new DownloadOrInstall(this, app);
-        ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(
-                app,
-                (Button) findViewById(R.id.download),
-                (Button) findViewById(R.id.install),
+        DownloadOrInstall downloadOrInstallFragment = new DownloadOrInstall(this, app);
+        ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(app,
+                findViewById(R.id.download),
+                findViewById(R.id.install),
                 downloadOrInstallFragment
         );
         String versionCode = Integer.toString(app.getVersionCode());
         textWatcher.onTextChanged(versionCode, 0, 0, versionCode.length());
         ((EditText) findViewById(R.id.version_code)).addTextChangedListener(textWatcher);
         downloadOrInstallFragment.registerReceivers();
-        downloadOrInstallFragment.draw();
-    }
-
-    @Override
-    public void redrawDetails(App app) {
-        if (null == downloadOrInstallFragment) {
-            return;
-        }
         downloadOrInstallFragment.draw();
     }
 

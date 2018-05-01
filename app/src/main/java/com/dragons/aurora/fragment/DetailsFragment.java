@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
+import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.fragment.details.AppLists;
 import com.dragons.aurora.fragment.details.BackToPlayStore;
 import com.dragons.aurora.fragment.details.Beta;
@@ -93,7 +94,7 @@ public class DetailsFragment extends ForegroundDetailsAppsTaskHelper {
         return new DownloadOptions((AuroraActivity) this.getActivity(), app).onContextItemSelected(item);
     }
 
-    private void redrawDetails(App app) {
+    public void redrawDetails(App app) {
         new GeneralDetails(this, app).draw();
         new ExodusPrivacy(this, app).draw();
         new Permissions(this, app).draw();
@@ -110,7 +111,7 @@ public class DetailsFragment extends ForegroundDetailsAppsTaskHelper {
             downloadOrInstallFragment.unregisterReceivers();
         }
 
-        downloadOrInstallFragment = new DownloadOrInstall((AuroraActivity) this.getActivity(), app);
+        downloadOrInstallFragment = new DownloadOrInstall((DetailsActivity) this.getActivity(), app);
         redrawButtons();
         new DownloadOptions((AuroraActivity) this.getActivity(), app).draw();
     }

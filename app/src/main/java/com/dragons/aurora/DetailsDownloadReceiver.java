@@ -5,24 +5,23 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
-import java.lang.ref.WeakReference;
-
-import com.dragons.aurora.activities.AuroraActivity;
+import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.downloader.DownloadManagerFactory;
 import com.dragons.aurora.downloader.DownloadManagerInterface;
 import com.dragons.aurora.downloader.DownloadReceiver;
 import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.fragment.PreferenceFragment;
 
+import java.lang.ref.WeakReference;
+
 public class DetailsDownloadReceiver extends DownloadReceiver {
 
-    private WeakReference<AuroraActivity> activityRef = new WeakReference<>(null);
+    private WeakReference<DetailsActivity> activityRef = new WeakReference<>(null);
     private String packageName;
 
-    public DetailsDownloadReceiver(AuroraActivity activity, String packageName) {
+    public DetailsDownloadReceiver(DetailsActivity activity, String packageName) {
         activityRef = new WeakReference<>(activity);
         this.packageName = packageName;
         IntentFilter filter = new IntentFilter();
@@ -35,7 +34,7 @@ public class DetailsDownloadReceiver extends DownloadReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-        AuroraActivity activity = activityRef.get();
+        DetailsActivity activity = activityRef.get();
         if (null == activity || !ContextUtil.isAlive(activity)) {
             return;
         }

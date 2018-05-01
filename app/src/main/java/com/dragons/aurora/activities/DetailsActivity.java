@@ -49,11 +49,6 @@ public class DetailsActivity extends AuroraActivity {
             return;
         }
         Log.i(getClass().getSimpleName(), "Getting info about " + packageName);
-
-        if (null != DetailsActivity.app) {
-            redrawDetails(DetailsActivity.app);
-        }
-
         grabDetails(packageName);
     }
 
@@ -70,7 +65,7 @@ public class DetailsActivity extends AuroraActivity {
         return null;
     }
 
-    protected void grabDetails(String packageName) {
+    public void grabDetails(String packageName) {
         DetailsFragment detailsFragment = new DetailsFragment();
         Bundle arguments = new Bundle();
         arguments.putString("PackageName", packageName);

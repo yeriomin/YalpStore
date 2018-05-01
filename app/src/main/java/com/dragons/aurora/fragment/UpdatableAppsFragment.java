@@ -8,15 +8,12 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.dragons.aurora.AuroraApplication;
-import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.UpdateAllReceiver;
@@ -80,11 +77,10 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
                 swipeRefreshLayout.setRefreshing(false);
         });
 
-        setupListView(v, R.layout.two_line_list_item_with_icon);
+        setupListView(v, R.layout.updatable_list_item);
         setupDelta();
 
         getListView().setOnItemClickListener((parent, view, position, id) -> grabDetails(position));
-        registerForContextMenu(getListView());
         updateInteger();
         return v;
     }
@@ -117,7 +113,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     @Override
     public void onStop() {
         super.onStop();
-        ((AuroraActivity) getActivity()).unregisterReceiver(updateAllReceiver);
+        (getActivity()).unregisterReceiver(updateAllReceiver);
         swipeRefreshLayout.setRefreshing(false);
     }
 
@@ -126,23 +122,6 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         UpdatableAppBadge appBadge = new UpdatableAppBadge();
         appBadge.setApp(app);
         return appBadge;
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        if (item.getItemId() == R.id.action_ignore || item.getItemId() == R.id.action_unwhitelist) {
-            String packageName = getAppByListPosition(info.position).getPackageName();
-            BlackWhiteListManager manager = new BlackWhiteListManager(this.getActivity());
-            if (item.getItemId() == R.id.action_ignore) {
-                manager.add(packageName);
-            } else {
-                manager.remove(packageName);
-            }
-            removeApp(packageName);
-            return true;
-        }
-        return super.onContextItemSelected(item);
     }
 
     public void launchUpdateAll() {

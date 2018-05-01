@@ -14,6 +14,7 @@ import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.fragment.details.ButtonUninstall;
 import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.task.AppListValidityCheckTask;
 import com.dragons.aurora.view.AppBadge;
 import com.dragons.aurora.view.InstalledAppBadge;
 import com.dragons.aurora.view.ListItem;
@@ -22,6 +23,7 @@ import com.percolate.caffeine.ViewUtils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 abstract public class AppListFragment extends UtilFragment {
 
@@ -110,7 +112,7 @@ abstract public class AppListFragment extends UtilFragment {
         }
     }
 
-    protected void removeApp(String packageName) {
+    public void removeApp(String packageName) {
         ((AppListAdapter) getListView().getAdapter()).remove(listItems.get(packageName));
         listItems.remove(packageName);
     }
@@ -122,5 +124,16 @@ abstract public class AppListFragment extends UtilFragment {
 
     protected ListView getListView() {
         return listView;
+    }
+
+    public Set<String> getListedPackageNames() {
+        return listItems.keySet();
+    }
+
+    protected void checkAppListValidity() {
+        AppListValidityCheckTask task = new AppListValidityCheckTask(this);
+        task.setRespectUpdateBlacklist(true);
+        task.setIncludeSystemApps(true);
+        task.execute();
     }
 }

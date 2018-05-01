@@ -8,20 +8,21 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.text.TextUtils;
 
-import java.lang.ref.WeakReference;
+import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.fragment.DetailsFragment;
 
-import com.dragons.aurora.activities.AuroraActivity;
+import java.lang.ref.WeakReference;
 
 public class DetailsInstallReceiver extends BroadcastReceiver {
 
     static public final String ACTION_PACKAGE_REPLACED_NON_SYSTEM = "ACTION_PACKAGE_REPLACED_NON_SYSTEM";
     static public final String ACTION_PACKAGE_INSTALLATION_FAILED = "ACTION_PACKAGE_INSTALLATION_FAILED";
 
-    private WeakReference<AuroraActivity> activityRef = new WeakReference<>(null);
+    private WeakReference<DetailsActivity> activityRef = new WeakReference<>(null);
     private String packageName;
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    public DetailsInstallReceiver(AuroraActivity activity, String packageName) {
+    public DetailsInstallReceiver(DetailsActivity activity, String packageName) {
         activityRef = new WeakReference<>(activity);
         this.packageName = packageName;
         IntentFilter filter = new IntentFilter();
@@ -42,10 +43,10 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
             return;
         }
         GlobalInstallReceiver.updateDetails(GlobalInstallReceiver.actionIsInstall(intent));
-        AuroraActivity activity = activityRef.get();
+        DetailsActivity activity = activityRef.get();
         if (null == activity || !ContextUtil.isAlive(activity)) {
             return;
         }
-        activity.redrawDetails(AuroraActivity.app);
+        activity.grabDetails(DetailsFragment.app.getPackageName());
     }
 }

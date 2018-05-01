@@ -10,14 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.percolate.caffeine.ViewUtils;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.AppListAdapter;
@@ -28,6 +20,12 @@ import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.view.AppBadge;
 import com.dragons.aurora.view.ListItem;
+import com.percolate.caffeine.ViewUtils;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 abstract public class AppListActivity extends AuroraActivity {
 
@@ -113,7 +111,7 @@ abstract public class AppListActivity extends AuroraActivity {
             listView.setEmptyView(emptyView);
         }
         if (null == listView.getAdapter()) {
-            listView.setAdapter(new AppListAdapter(this, R.layout.two_line_list_item_with_icon));
+            listView.setAdapter(new AppListAdapter(this, R.layout.installed_list_item));
         }
     }
 

@@ -3,6 +3,7 @@ package com.dragons.aurora.fragment.details;
 import com.dragons.aurora.DetailsDownloadReceiver;
 import com.dragons.aurora.DetailsInstallReceiver;
 import com.dragons.aurora.activities.AuroraActivity;
+import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.model.App;
 
 public class DownloadOrInstall extends Abstract {
@@ -10,7 +11,7 @@ public class DownloadOrInstall extends Abstract {
     private DetailsDownloadReceiver downloadReceiver;
     private DetailsInstallReceiver installReceiver;
 
-    public DownloadOrInstall(AuroraActivity activity, App app) {
+    public DownloadOrInstall(DetailsActivity activity, App app) {
         super(activity, app);
     }
 
@@ -36,10 +37,10 @@ public class DownloadOrInstall extends Abstract {
 
     public void registerReceivers() {
         if (null == downloadReceiver) {
-            downloadReceiver = new DetailsDownloadReceiver(activity, app.getPackageName());
+            downloadReceiver = new DetailsDownloadReceiver((DetailsActivity) activity, app.getPackageName());
         }
         if (null == installReceiver) {
-            installReceiver = new DetailsInstallReceiver(activity, app.getPackageName());
+            installReceiver = new DetailsInstallReceiver((DetailsActivity) activity, app.getPackageName());
         }
     }
 }
