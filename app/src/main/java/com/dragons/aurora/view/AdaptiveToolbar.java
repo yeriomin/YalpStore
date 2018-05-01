@@ -94,7 +94,7 @@ public class AdaptiveToolbar extends AppBarLayout {
         download_container.setVisibility(VISIBLE);
         download_section.setOnClickListener((v -> {
             context.startActivity(new Intent(context, AuroraActivity.class));
-            AuroraActivity.setPosition(1);
+            AuroraActivity.setPosition(2);
         }));
         if (UpdatableAppsFragment.updates > 0) {
             bubble_layout.setVisibility(VISIBLE);
