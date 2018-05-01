@@ -302,7 +302,6 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void textViewHopper(TextView A, TextView B, TextView C) {
-        A.setTextColor(Color.BLACK);
         A.setAlpha(1.0f);
         B.setAlpha(0.5f);
         C.setAlpha(0.5f);

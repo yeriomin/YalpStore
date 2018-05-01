@@ -11,7 +11,8 @@
         android:layout_height="@dimen/appbar_icon_height"
         android:layout_gravity="center_horizontal"
         android:background="?android:attr/selectableItemBackground"
-        android:padding="@dimen/appbar_icon_padding" />
+        android:padding="@dimen/appbar_icon_padding"
+        android:tint="?android:attr/colorForeground" />
 
     <com.dragons.custom.AppBarTextView
         android:id="@+id/nav_item_label"

@@ -12,7 +12,7 @@
         android:layout_marginTop="32dp"
         android:clickable="true"
         android:focusable="true"
-        app:backgroundTint="@color/white"
+        app:backgroundTint="?android:attr/colorBackground"
         app:fabSize="mini"
         app:srcCompat="@drawable/ic_chevron_left" />
 
@@ -134,10 +134,12 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginEnd="8dp"
                                         android:layout_weight="1"
+                                        android:alpha=".5"
                                         android:clickable="true"
                                         android:focusable="true"
                                         android:fontFamily="@font/google_sans_bold"
                                         android:text="@string/details_appReview"
+                                        android:textColor="?android:attr/textColorPrimary"
                                         android:textSize="14sp" />
 
                                     <TextView
@@ -145,10 +147,12 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
+                                        android:alpha=".5"
                                         android:clickable="true"
                                         android:focusable="true"
                                         android:fontFamily="@font/google_sans_bold"
                                         android:text="@string/details_appExtras"
+                                        android:textColor="?android:attr/textColorPrimary"
                                         android:textSize="14sp" />
                                 </LinearLayout>
 
@@ -161,8 +165,8 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
                                 android:layout_gravity="center"
-                                android:alpha="0.7"
                                 android:layout_marginEnd="5dp"
+                                android:alpha="0.7"
                                 android:padding="2dp"
                                 android:src="@drawable/ic_audience" />
                         </RelativeLayout>
