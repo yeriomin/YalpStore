@@ -14,15 +14,6 @@
     <color name="darkGray">#616161</color>
     <color name="lightGray">#EEEEEE</color>
 
-    <!--Buttons-->
-
-    <!--Misc-->
-
-    <!--Text-->
-
-    <!--Background-->
-    <color name="colorBackgroundCard">#FFFFFF</color>
-
     <!--Shades-->
     <color name="colorShade01">@color/colorRed</color>
     <color name="colorShade02">@color/colorGreen</color>

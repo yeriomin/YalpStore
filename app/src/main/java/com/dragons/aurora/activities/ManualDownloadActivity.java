@@ -2,7 +2,6 @@ package com.dragons.aurora.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -15,7 +14,7 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.details.DownloadOrInstall;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.PurchaseCheckTask;
-import com.percolate.caffeine.ViewUtils;
+import com.dragons.aurora.view.AdaptiveToolbar;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,10 +27,8 @@ public class ManualDownloadActivity extends DetailsActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Toolbar toolbar = ViewUtils.findViewById(this, R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        AdaptiveToolbar dadtb = findViewById(R.id.d_adtb);
+        dadtb.getAction_icon().setOnClickListener((v -> this.onBackPressed()));
     }
 
     @Override
@@ -88,7 +85,10 @@ public class ManualDownloadActivity extends DetailsActivity {
         private DownloadOrInstall downloadOrInstallFragment;
         private Timer timer;
 
-        ManualDownloadTextWatcher(App app, Button downloadButton, Button installButton, DownloadOrInstall downloadOrInstallFragment) {
+        ManualDownloadTextWatcher(App app,
+                                  Button downloadButton,
+                                  Button installButton,
+                                  DownloadOrInstall downloadOrInstallFragment) {
             this.app = app;
             this.downloadButton = downloadButton;
             this.installButton = installButton;
@@ -97,7 +97,6 @@ public class ManualDownloadActivity extends DetailsActivity {
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
         }
 
         @Override
