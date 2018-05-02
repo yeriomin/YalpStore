@@ -19,6 +19,9 @@
 
 package com.github.yeriomin.util;
 
+import android.annotation.TargetApi;
+import android.os.Build;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -43,6 +46,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+@TargetApi(Build.VERSION_CODES.FROYO)
 public class StringExtractor {
 
     final static private String VALUES_DIR_PREFIX = "values-";
