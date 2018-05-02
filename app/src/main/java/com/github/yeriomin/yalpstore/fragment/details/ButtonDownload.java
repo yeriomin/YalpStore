@@ -36,6 +36,7 @@ import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.YalpStorePermissionManager;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.selfupdate.UpdaterFactory;
+import com.github.yeriomin.yalpstore.task.playstore.DownloadLinkTask;
 import com.github.yeriomin.yalpstore.task.playstore.PurchaseTask;
 
 import java.io.File;
@@ -95,6 +96,18 @@ public class ButtonDownload extends Button {
             && !state.isEverythingSuccessful()
         ) {
             disable(R.string.details_downloading);
+        }
+        if (null != button) {
+            button.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    DownloadLinkTask task = new DownloadLinkTask();
+                    task.setApp(app);
+                    task.setContext(activity);
+                    task.execute();
+                    return true;
+                }
+            });
         }
     }
 
