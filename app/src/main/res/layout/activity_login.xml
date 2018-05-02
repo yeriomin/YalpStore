@@ -94,18 +94,18 @@
             <android.support.v7.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/emailg"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:layout_below="@+id/imageView4"
                 android:layout_marginEnd="24dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
                 android:autofillHints="emailAddress"
-                android:background="@drawable/edit_text_login"
+                android:background="@drawable/outline_bg"
                 android:completionThreshold="1"
                 android:hint="@string/credentials_hint_email"
                 android:inputType="textEmailAddress"
-                android:textColor="?android:attr/textColorPrimaryInverse"
-                android:textColorHint="?android:attr/textColorPrimaryInverse" />
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp" />
 
             <RelativeLayout
                 android:id="@+id/password_layoutg"
@@ -117,16 +117,16 @@
                 <EditText
                     android:id="@+id/passwordg"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="36dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginStart="24dp"
                     android:autofillHints="password"
-                    android:background="@drawable/edit_text_login"
+                    android:background="@drawable/outline_bg"
                     android:fontFamily="normal"
                     android:hint="@string/credentials_hint_password"
                     android:inputType="textPassword"
-                    android:textColor="?android:attr/textColorPrimaryInverse"
-                    android:textColorHint="?android:attr/textColorPrimaryInverse" />
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp" />
 
                 <ImageView
                     android:id="@+id/toggle_password_visibility"
@@ -157,9 +157,9 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="10dp"
                     android:button="@null"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-                    android:drawableTint="@color/colorAccent"
-                    android:text="Save Account" />
+                    android:text="@string/acc_save" />
 
                 <Button
                     android:id="@+id/button_okg"

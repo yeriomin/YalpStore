@@ -10,6 +10,7 @@
     <string name="acc_dummy">Login as Anonymous</string>
     <string name="acc_dummy_name">Anonymous</string>
     <string name="acc_google">Login with Google</string>
+    <string name="acc_save">Save Account</string>
     <string name="action_about">About</string>
     <string name="action_accounts">Accounts</string>
     <string name="action_acc_add">Add Google Account</string>
