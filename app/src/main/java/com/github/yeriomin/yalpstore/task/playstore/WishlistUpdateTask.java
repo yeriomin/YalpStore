@@ -19,8 +19,6 @@
 
 package com.github.yeriomin.yalpstore.task.playstore;
 
-import android.util.Log;
-
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.LocalWishlist;
