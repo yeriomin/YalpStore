@@ -30,7 +30,7 @@ public class DownloadState {
 
     private App app;
     private TriggeredBy triggeredBy = TriggeredBy.DOWNLOAD_BUTTON;
-    private Map<Long, Pair<Integer, Integer>> progress = new HashMap<>();
+    private Map<Long, Pair<Float, Float>> progress = new HashMap<>();
     private Map<Long, Status> status = new HashMap<>();
 
     static public DownloadState get(String packageName) {
@@ -117,11 +117,11 @@ public class DownloadState {
         this.triggeredBy = triggeredBy;
     }
 
-    public Pair<Integer, Integer> getProgress() {
-        int complete = 0;
-        int total = 0;
+    public Pair<Float, Float> getProgress() {
+        float complete = 0;
+        float total = 0;
         for (long downloadId : status.keySet()) {
-            Pair<Integer, Integer> current = progress.get(downloadId);
+            Pair<Float, Float> current = progress.get(downloadId);
             if (null == current) {
                 continue;
             }
@@ -131,7 +131,7 @@ public class DownloadState {
         return new Pair<>(complete, total);
     }
 
-    public void setProgress(long downloadId, int complete, int total) {
+    public void setProgress(long downloadId, float complete, float total) {
         progress.put(downloadId, new Pair<>(complete, total));
     }
 }

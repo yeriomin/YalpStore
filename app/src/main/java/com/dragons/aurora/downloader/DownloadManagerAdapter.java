@@ -89,15 +89,15 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
         dm.remove(downloadId);
     }
 
-    public Pair<Integer, Integer> getProgress(long downloadId) {
+    public Pair<Float, Float> getProgress(long downloadId) {
         Cursor cursor = getCursor(downloadId);
         if (null == cursor) {
             return null;
         }
         int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
         int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
-        int total = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
-        int complete = status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS
+        float total = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
+        float complete = status == DownloadManager.STATUS_SUCCESSFUL || reason == DownloadManager.ERROR_FILE_ALREADY_EXISTS
                 ? total
                 : cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
         cursor.close();

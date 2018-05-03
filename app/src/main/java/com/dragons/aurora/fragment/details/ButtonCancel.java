@@ -3,14 +3,14 @@ package com.dragons.aurora.fragment.details;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ProgressBar;
-
-import com.percolate.caffeine.ViewUtils;
+import android.widget.TextView;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.CancelDownloadService;
+import com.percolate.caffeine.ViewUtils;
 
 public class ButtonCancel extends Button {
 
@@ -37,10 +37,12 @@ public class ButtonCancel extends Button {
 
         android.widget.Button buttonDownload = ViewUtils.findViewById(activity, R.id.download);
         ProgressBar progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
+        TextView progressCents = ViewUtils.findViewById(activity, R.id.progressCents);
 
         buttonDownload.setVisibility(View.VISIBLE);
         buttonDownload.setEnabled(true);
         progressBar.setProgress(0);
         progressBar.setVisibility(View.GONE);
+        progressCents.setVisibility(View.GONE);
     }
 }

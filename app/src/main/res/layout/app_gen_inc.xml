@@ -64,8 +64,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="gone"
-            android:fontFamily="@font/google_sans_bold" />
+            android:fontFamily="@font/google_sans_bold"
+            android:visibility="gone" />
 
         <ImageView
             android:layout_width="18dp"
@@ -75,6 +75,26 @@
 
         <TextView
             android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/google_sans_bold" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:alpha="0.7"
+            android:src="@drawable/ic_alert" />
+
+        <TextView
+            android:id="@+id/contains_ads"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

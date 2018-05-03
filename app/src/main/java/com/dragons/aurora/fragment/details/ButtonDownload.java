@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dragons.aurora.AuroraPermissionManager;
@@ -30,6 +31,7 @@ import static com.dragons.aurora.downloader.DownloadState.TriggeredBy.MANUAL_DOW
 public class ButtonDownload extends Button {
 
     private ProgressBar progressBar;
+    private TextView progressCents;
 
     public ButtonDownload(AuroraActivity activity, App app) {
         super(activity, app);
@@ -73,9 +75,12 @@ public class ButtonDownload extends Button {
 
     public void checkAndDownload() {
         View buttonDownload = activity.findViewById(R.id.download);
-        if (null != buttonDownload) buttonDownload.setVisibility(View.GONE);
         View buttonCancel = activity.findViewById(R.id.cancel);
+
+        if (null != buttonDownload) buttonDownload.setVisibility(View.GONE);
+
         AuroraPermissionManager permissionManager = new AuroraPermissionManager(activity);
+
         if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
             activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
         } else if (permissionManager.checkPermission()) {
@@ -87,6 +92,7 @@ public class ButtonDownload extends Button {
         } else {
             permissionManager.requestPermission();
             button.setVisibility(View.GONE);
+            button.setEnabled(false);
             buttonCancel.setVisibility(View.VISIBLE);
         }
     }
@@ -97,13 +103,14 @@ public class ButtonDownload extends Button {
         DownloadState state = DownloadState.get(app.getPackageName());
         if (Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
                 && !state.isEverythingSuccessful()
-                    ){
+                ) {
             progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
-                if (null != progressBar) {
-                    new DownloadProgressBarUpdater(app.getPackageName(), progressBar).execute(PurchaseTask.UPDATE_INTERVAL);
-                }
+            progressCents = ViewUtils.findViewById(activity, R.id.progressCents);
+            if (null != progressBar && null != progressCents) {
+                new DownloadProgressBarUpdater(app.getPackageName(), progressBar, progressCents).execute(PurchaseTask.UPDATE_INTERVAL);
             }
         }
+    }
 
     public void download() {
         boolean writePermission = new AuroraPermissionManager(activity).checkPermission();
@@ -129,8 +136,9 @@ public class ButtonDownload extends Button {
         LocalPurchaseTask purchaseTask = new LocalPurchaseTask();
         purchaseTask.setFragment(this);
         progressBar = ViewUtils.findViewById(activity, R.id.download_progress);
-        if (null != progressBar) {
-            purchaseTask.setDownloadProgressBarUpdater(new DownloadProgressBarUpdater(app.getPackageName(), progressBar));
+        progressCents = ViewUtils.findViewById(activity, R.id.progressCents);
+        if (null != progressBar && null != progressCents) {
+            purchaseTask.setDownloadProgressBarUpdater(new DownloadProgressBarUpdater(app.getPackageName(), progressBar, progressCents));
         }
         purchaseTask.setApp(app);
         purchaseTask.setContext(activity);

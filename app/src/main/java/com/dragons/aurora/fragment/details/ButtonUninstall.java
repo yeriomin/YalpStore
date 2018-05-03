@@ -37,6 +37,9 @@ public class ButtonUninstall extends Button {
         } else {
             activity.startActivity(new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + app.getPackageName())));
         }
+        View buttonRun = activity.findViewById(R.id.run);
+        if (buttonRun != null)
+            buttonRun.setVisibility(View.GONE);
     }
 
     private boolean isSystemAndReadyForPermanentUninstall() {

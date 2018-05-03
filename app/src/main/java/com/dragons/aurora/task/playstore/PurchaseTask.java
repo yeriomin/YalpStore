@@ -129,23 +129,15 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
                 .setMessage(R.string.error_not_purchased)
                 .setPositiveButton(
                         android.R.string.ok,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                Intent i = new Intent(Intent.ACTION_VIEW);
-                                i.setData(Uri.parse(URL_PURCHASE + app.getPackageName()));
-                                context.startActivity(i);
-                            }
+                        (dialog, id) -> {
+                            Intent i = new Intent(Intent.ACTION_VIEW);
+                            i.setData(Uri.parse(URL_PURCHASE + app.getPackageName()));
+                            context.startActivity(i);
                         }
                 )
                 .setNegativeButton(
                         android.R.string.cancel,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        }
+                        (dialog, id) -> dialog.cancel()
                 )
         ;
         return builder.create();

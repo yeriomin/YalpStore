@@ -3,19 +3,22 @@ package com.dragons.aurora.downloader;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ProgressBar;
-
-import java.lang.ref.WeakReference;
+import android.widget.TextView;
 
 import com.dragons.aurora.task.RepeatingTask;
+
+import java.lang.ref.WeakReference;
 
 public class DownloadProgressBarUpdater extends RepeatingTask {
 
     private String packageName;
-    private WeakReference<ProgressBar> progressBarRef = new WeakReference<>(null);
+    private WeakReference<ProgressBar> progressBar = new WeakReference<>(null);
+    private WeakReference<TextView> progressCents = new WeakReference<>(null);
 
-    public DownloadProgressBarUpdater(String packageName, ProgressBar progressBar) {
+    public DownloadProgressBarUpdater(String packageName, ProgressBar progressBar, TextView progressCents) {
         this.packageName = packageName;
-        progressBarRef = new WeakReference<>(progressBar);
+        this.progressBar = new WeakReference<>(progressBar);
+        this.progressCents = new WeakReference<>(progressCents);
     }
 
     @Override
@@ -26,20 +29,34 @@ public class DownloadProgressBarUpdater extends RepeatingTask {
 
     @Override
     protected void payload() {
-        ProgressBar progressBar = progressBarRef.get();
+        ProgressBar progressBar = this.progressBar.get();
+        TextView progressCents = this.progressCents.get();
         if (null == progressBar) {
             return;
         }
         DownloadState state = DownloadState.get(packageName);
         if (null == state || state.isEverythingFinished()) {
             progressBar.setVisibility(View.GONE);
+            progressCents.setVisibility(View.GONE);
             progressBar.setIndeterminate(true);
             return;
         }
-        Pair<Integer, Integer> progress = state.getProgress();
-        progressBar.setIndeterminate(false);
+        Pair<Float, Float> progress = state.getProgress();
+
         progressBar.setVisibility(View.VISIBLE);
-        progressBar.setProgress(progress.first);
-        progressBar.setMax(progress.second);
+        progressCents.setVisibility(View.VISIBLE);
+
+        progressBar.setIndeterminate(false);
+        progressBar.setMax(100);
+
+        progressBar.setProgress(getPercentage(progress.first, progress.second));
+        progressCents.setText(String.valueOf(progressBar.getProgress()) + "%");
+    }
+
+    private int getPercentage(float cur, float total) {
+        if (total != 0)
+            return (int) ((cur * 100) / total);
+        else
+            return 0;
     }
 }

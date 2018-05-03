@@ -16,7 +16,7 @@ public class DownloadManagerProgressUpdater extends RepeatingTask {
 
     @Override
     protected void payload() {
-        final Pair<Integer, Integer> progress = dm.getProgress(downloadId);
+        final Pair<Float, Float> progress = dm.getProgress(downloadId);
         if (null == progress) {
             return;
         }

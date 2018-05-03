@@ -71,7 +71,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:animateLayoutChanges="true"
-                            android:gravity="end"
+                            android:gravity="center"
                             android:orientation="horizontal"
                             android:weightSum="6">
 
@@ -80,38 +80,40 @@
                                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                                 android:layout_width="0dp"
                                 android:layout_height="2dp"
-                                android:layout_gravity="center"
-                                android:layout_marginEnd="5dp"
-                                android:layout_marginStart="5dp"
-                                android:layout_weight="5.5"
+                                android:layout_weight="5.3"
                                 android:indeterminate="false"
                                 android:progressBackgroundTint="@color/gray"
                                 android:visibility="gone" />
 
                             <TextView
-                                android:id="@+id/contains_ads"
+                                android:id="@+id/progressCents"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1.5"
+                                android:layout_weight=".7"
                                 android:fontFamily="@font/google_sans"
                                 android:gravity="end"
-                                android:textSize="12sp" />
+                                android:paddingEnd="3dp"
+                                android:paddingStart="3dp"
+                                android:textSize="12sp"
+                                android:visibility="gone" />
                         </LinearLayout>
 
                         <!-- Tabs & App Rating -->
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_margin="5dp"
+                            android:weightSum="10">
 
                             <HorizontalScrollView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="9.5">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_margin="6dp"
                                     android:alpha=".8"
                                     android:orientation="horizontal">
 
@@ -160,16 +162,15 @@
 
                             <ImageView
                                 android:id="@+id/ratingLabelImg"
-                                android:layout_width="18dp"
+                                android:layout_width="0dp"
                                 android:layout_height="18dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:layout_gravity="center"
-                                android:layout_marginEnd="5dp"
+                                android:layout_gravity="end|center"
+                                android:layout_weight=".5"
                                 android:alpha="0.7"
                                 android:padding="2dp"
                                 android:src="@drawable/ic_audience" />
-                        </RelativeLayout>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
