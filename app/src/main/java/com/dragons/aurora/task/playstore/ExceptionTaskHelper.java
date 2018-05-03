@@ -66,6 +66,8 @@ public abstract class ExceptionTaskHelper extends AppListFragment {
     protected void processAuthException(AuthException e) {
         if (e instanceof CredentialsEmptyException) {
             Log.i(getClass().getSimpleName(), "Credentials empty");
+            //TODO:Let user decide between dummy or google account
+            switchDummy();
         } else if (e.getCode() == 401 && PreferenceFragment.getBoolean(this.getActivity(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
             Log.i(getClass().getSimpleName(), "Token is stale");
             refreshMyToken();
