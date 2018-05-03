@@ -22,6 +22,7 @@
             android:layout_marginBottom="12dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
+            android:textAlignment="viewStart"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/google_sans_bold"
             android:text="@string/action_search_title"
@@ -63,6 +64,7 @@
                 android:layout_weight="8"
                 android:fontFamily="@font/google_sans_bold"
                 android:text="@string/action_search_history"
+                android:textAlignment="viewStart"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp" />
 
