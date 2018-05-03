@@ -12,8 +12,8 @@
     <ImageView
         android:id="@+id/scrn_itm_s"
         android:layout_width="wrap_content"
-        android:layout_height="225dp"
+        android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        android:scaleType="fitXY" />
+        android:scaleType="centerCrop" />
 </com.github.florent37.shapeofview.shapes.RoundRectView>
