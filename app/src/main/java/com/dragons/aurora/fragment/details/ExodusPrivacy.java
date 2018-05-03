@@ -59,9 +59,9 @@ public class ExodusPrivacy extends AbstractHelper {
         if (fragment.getActivity() != null) {
             ViewUtils.findViewById(fragment.getActivity(), R.id.exodus_card).setVisibility(View.VISIBLE);
             if (appTrackers.length() > 0) {
-                setText(R.id.exodus_description, R.string.exodus_hasTracker, appTrackers.length());
+                setText(fragment.getView(), R.id.exodus_description, R.string.exodus_hasTracker, appTrackers.length());
             } else {
-                setText(R.id.exodus_description, R.string.exodus_noTracker);
+                setText(fragment.getView(), R.id.exodus_description, R.string.exodus_noTracker);
             }
 
             TextView viewMore = fragment.getActivity().findViewById(R.id.viewMore);

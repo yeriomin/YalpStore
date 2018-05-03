@@ -1,9 +1,17 @@
 package com.dragons.aurora.fragment.details;
 
 import android.content.Context;
-import android.preference.PreferenceManager;
+import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.v4.view.ViewCompat;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
@@ -25,14 +33,14 @@ public abstract class AbstractHelper {
 
     abstract public void draw();
 
-    protected void setText(int viewId, String text) {
-        TextView textView = (TextView) fragment.getActivity().findViewById(viewId);
+    protected void setText(View v, int viewId, String text) {
+        TextView textView = ViewUtils.findViewById(v, viewId);
         if (null != textView)
             textView.setText(text);
     }
 
-    protected void setText(int viewId, int stringId, Object... text) {
-        setText(viewId, fragment.getString(stringId, text));
+    protected void setText(View v, int viewId, int stringId, Object... text) {
+        setText(v, viewId, v.getResources().getString(stringId, text));
     }
 
     protected void initExpandableGroup(int viewIdHeader, int viewIdContainer, final View.OnClickListener l) {
@@ -70,12 +78,6 @@ public abstract class AbstractHelper {
         return PhoneUtils.isNetworkAvailable(c);
     }
 
-    protected void checkOut() {
-        PreferenceManager.getDefaultSharedPreferences(fragment.getActivity()).edit().putBoolean("LOGGED_IN", false).apply();
-        PreferenceManager.getDefaultSharedPreferences(fragment.getActivity()).edit().putString("GOOGLE_NAME", "").apply();
-        PreferenceManager.getDefaultSharedPreferences(fragment.getActivity()).edit().putString("GOOGLE_URL", "").apply();
-    }
-
     protected void hide(View v, int viewID) {
         ViewUtils.findViewById(v, viewID).setVisibility(View.GONE);
     }
@@ -84,13 +86,45 @@ public abstract class AbstractHelper {
         ViewUtils.findViewById(v, viewID).setVisibility(View.VISIBLE);
     }
 
-    protected void setText(View v, int viewId, String text) {
-        TextView textView = ViewUtils.findViewById(v, viewId);
-        if (null != textView)
-            textView.setText(text);
+    protected void paintButton(int color, int buttonId) {
+        android.widget.Button button = fragment.getActivity().findViewById(buttonId);
+        if (button != null)
+            ViewCompat.setBackgroundTintList(button, ColorStateList.valueOf(color));
     }
 
-    protected void setText(View v, int viewId, int stringId, Object... text) {
-        setText(v, viewId, v.getResources().getString(stringId, text));
+    protected void paintRLayout(int color, int layoutId) {
+        RelativeLayout relativeLayout = fragment.getActivity().findViewById(layoutId);
+        if (relativeLayout != null)
+            relativeLayout.setBackgroundColor(color);
+    }
+
+    protected void paintTextView(int color, int textViewId) {
+        TextView textView = fragment.getActivity().findViewById(textViewId);
+        if (textView != null)
+            textView.setTextColor(color);
+    }
+
+    protected void paintImageView(int color, int imageViewId) {
+        ImageView imageView = fragment.getActivity().findViewById(imageViewId);
+        if (imageView != null)
+            imageView.setColorFilter(color);
+    }
+
+    protected void paintImageViewBg(int color, int imageViewId) {
+        ImageView imageView = fragment.getActivity().findViewById(imageViewId);
+        if (imageView != null)
+            imageView.setBackgroundColor(color);
+    }
+
+    @NonNull
+    protected Bitmap getBitmapFromDrawable(@NonNull Drawable drawable) {
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        }
+        final Bitmap bmp = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        final Canvas canvas = new Canvas(bmp);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+        return bmp;
     }
 }

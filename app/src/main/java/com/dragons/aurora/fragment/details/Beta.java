@@ -33,19 +33,19 @@ public class Beta extends AbstractHelper {
             return;
         }
 
-        setText(R.id.beta_header, app.isTestingProgramOptedIn()
+        setText(fragment.getView(), R.id.beta_header, app.isTestingProgramOptedIn()
                 ? R.string.testing_program_section_opted_in_title
                 : R.string.testing_program_section_opted_out_title);
 
-        setText(R.id.beta_message, app.isTestingProgramOptedIn()
+        setText(fragment.getView(), R.id.beta_message, app.isTestingProgramOptedIn()
                 ? R.string.testing_program_section_opted_in_message
                 : R.string.testing_program_section_opted_out_message);
 
-        setText(R.id.beta_subscribe_button, app.isTestingProgramOptedIn()
+        setText(fragment.getView(), R.id.beta_subscribe_button, app.isTestingProgramOptedIn()
                 ? R.string.testing_program_opt_out
                 : R.string.testing_program_opt_in);
 
-        setText(R.id.beta_email, app.getTestingProgramEmail());
+        setText(fragment.getView(), R.id.beta_email, app.getTestingProgramEmail());
 
         editText = fragment.getActivity().findViewById(R.id.beta_comment);
 

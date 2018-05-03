@@ -1,7 +1,6 @@
 package com.dragons.aurora.fragment.details;
 
 import android.preference.PreferenceManager;
-import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,20 +9,18 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.dragons.aurora.fragment.DetailsFragment;
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
-
 import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.ReviewStorageIterator;
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.builders.UserReviewDialogBuilder;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.ReviewDeleteTask;
 import com.dragons.aurora.task.playstore.ReviewLoadTask;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 public class Review extends AbstractHelper {
 
@@ -47,9 +44,9 @@ public class Review extends AbstractHelper {
 
         initReviewListControls();
 
-        setText(R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
+        setText(fragment.getView(), R.id.average_rating, R.string.details_rating, app.getRating().getAverage());
         for (int starNum = 1; starNum <= 5; starNum++) {
-            setText(averageStarIds[starNum - 1], R.string.details_rating_specific, starNum, app.getRating().getStars(starNum));
+            setText(fragment.getView(), averageStarIds[starNum - 1], R.string.details_rating_specific, starNum, app.getRating().getStars(starNum));
         }
 
         fragment.getActivity().findViewById(R.id.user_review_container).setVisibility(isReviewable(app) ? View.VISIBLE : View.GONE);
@@ -73,16 +70,16 @@ public class Review extends AbstractHelper {
         ((RatingBar) fragment.getActivity().findViewById(R.id.user_stars)).setRating(review.getRating());
         setTextOrHide(R.id.user_comment, review.getComment());
         setTextOrHide(R.id.user_title, review.getTitle());
-        setText(R.id.rate, R.string.details_you_rated_this_app);
+        setText(fragment.getView(), R.id.rate, R.string.details_you_rated_this_app);
         fragment.getActivity().findViewById(R.id.user_review_edit_delete).setVisibility(View.VISIBLE);
         fragment.getActivity().findViewById(R.id.user_review).setVisibility(View.VISIBLE);
     }
 
     public void clearUserReview() {
         ((RatingBar) fragment.getActivity().findViewById(R.id.user_stars)).setRating(0);
-        setText(R.id.user_title, "");
-        setText(R.id.user_comment, "");
-        setText(R.id.rate, R.string.details_rate_this_app);
+        setText(fragment.getView(), R.id.user_title, "");
+        setText(fragment.getView(), R.id.user_comment, "");
+        setText(fragment.getView(), R.id.rate, R.string.details_rate_this_app);
         fragment.getActivity().findViewById(R.id.user_review_edit_delete).setVisibility(View.GONE);
         fragment.getActivity().findViewById(R.id.user_review).setVisibility(View.GONE);
     }

@@ -2,14 +2,12 @@ package com.dragons.aurora.fragment.details;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.graphics.Palette;
 import android.text.Html;
 import android.text.TextUtils;
@@ -81,21 +79,9 @@ public class GeneralDetails extends AbstractHelper {
                     });
         }
 
-        setText(R.id.displayName, app.getDisplayName());
-        setText(R.id.packageName, R.string.details_developer, app.getDeveloperName());
+        setText(fragment.getView(), R.id.displayName, app.getDisplayName());
+        setText(fragment.getView(), R.id.packageName, R.string.details_developer, app.getDeveloperName());
         drawVersion(fragment.getActivity().findViewById(R.id.versionString), app);
-    }
-
-    @NonNull
-    private Bitmap getBitmapFromDrawable(@NonNull Drawable drawable) {
-        if (drawable instanceof BitmapDrawable) {
-            return ((BitmapDrawable) drawable).getBitmap();
-        }
-        final Bitmap bmp = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-        final Canvas canvas = new Canvas(bmp);
-        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-        drawable.draw(canvas);
-        return bmp;
     }
 
     private void getPalette(Bitmap bitmap) {
@@ -125,56 +111,26 @@ public class GeneralDetails extends AbstractHelper {
         paintImageViewBg(color, R.id.system_app_info);
     }
 
-    private void paintButton(int color, int buttonId) {
-        android.widget.Button button = fragment.getActivity().findViewById(buttonId);
-        if (button != null)
-            ViewCompat.setBackgroundTintList(button, ColorStateList.valueOf(color));
-    }
-
-    private void paintRLayout(int color, int layoutId) {
-        RelativeLayout relativeLayout = fragment.getActivity().findViewById(layoutId);
-        if (relativeLayout != null)
-            relativeLayout.setBackgroundColor(color);
-    }
-
-    private void paintTextView(int color, int textViewId) {
-        TextView textView = fragment.getActivity().findViewById(textViewId);
-        if (textView != null)
-            textView.setTextColor(color);
-    }
-
-    private void paintImageView(int color, int imageViewId) {
-        ImageView imageView = fragment.getActivity().findViewById(imageViewId);
-        if (imageView != null)
-            imageView.setColorFilter(color);
-    }
-
-    private void paintImageViewBg(int color, int imageViewId) {
-        ImageView imageView = fragment.getActivity().findViewById(imageViewId);
-        if (imageView != null)
-            imageView.setBackgroundColor(color);
-    }
-
     private void drawGeneralDetails(App app) {
         if (app.isEarlyAccess()) {
-            setText(R.id.rating, R.string.early_access);
+            setText(fragment.getView(), R.id.rating, R.string.early_access);
         } else {
-            setText(R.id.rating, R.string.details_rating, app.getRating().getAverage());
+            setText(fragment.getView(), R.id.rating, R.string.details_rating, app.getRating().getAverage());
         }
 
-        setText(R.id.installs, R.string.details_installs, Util.addDiPrefix(app.getInstalls()));
-        setText(R.id.updated, R.string.details_updated, app.getUpdated());
-        setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(fragment.getActivity(), app.getSize()));
-        setText(R.id.category, R.string.details_category, new CategoryManager(fragment.getActivity()).getCategoryName(app.getCategoryId()));
+        setText(fragment.getView(), R.id.installs, R.string.details_installs, Util.addDiPrefix(app.getInstalls()));
+        setText(fragment.getView(), R.id.updated, R.string.details_updated, app.getUpdated());
+        setText(fragment.getView(), R.id.size, R.string.details_size, Formatter.formatShortFileSize(fragment.getActivity(), app.getSize()));
+        setText(fragment.getView(), R.id.category, R.string.details_category, new CategoryManager(fragment.getActivity()).getCategoryName(app.getCategoryId()));
 
-        setText(R.id.google_dependencies, app.getDependencies().isEmpty()
+        setText(fragment.getView(), R.id.google_dependencies, app.getDependencies().isEmpty()
                 ? R.string.list_app_independent_from_gsf
                 : R.string.list_app_depends_on_gsf);
         if (app.getPrice().isEmpty())
-            setText(R.id.price, R.string.category_appFree);
+            setText(fragment.getView(), R.id.price, R.string.category_appFree);
         else
-            setText(R.id.price, app.getPrice());
-        setText(R.id.contains_ads, app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
+            setText(fragment.getView(), R.id.price, app.getPrice());
+        setText(fragment.getView(), R.id.contains_ads, app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads);
 
         ImageView ratingImg = fragment.getView().findViewById(R.id.ratingLabelImg);
         Picasso
@@ -224,7 +180,7 @@ public class GeneralDetails extends AbstractHelper {
         }
         if (app.getInstalledVersionCode() == 0) {
             showLessMore.setVisibility(View.VISIBLE);
-            setText(R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
+            setText(fragment.getView(), R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
             showLessMore.setOnClickListener(v -> {
                 if (changelogLayout.getVisibility() == View.GONE) {
                     show(fragment.getView(), R.id.changelog_container);
@@ -236,7 +192,7 @@ public class GeneralDetails extends AbstractHelper {
             });
         } else {
             showLessMore.setVisibility(View.GONE);
-            setText(R.id.changes_upper, Html.fromHtml(changes).toString());
+            setText(fragment.getView(), R.id.changes_upper, Html.fromHtml(changes).toString());
             show(fragment.getView(), R.id.changes_container);
         }
     }
@@ -286,7 +242,7 @@ public class GeneralDetails extends AbstractHelper {
                 newVersion = app.getVersionCode() + ")";
             }
             textView.setText(fragment.getActivity().getString(R.string.details_versionName_updatable, currentVersion, newVersion));
-            setText(R.id.download, fragment.getActivity().getString(R.string.details_update));
+            setText(fragment.getView(), R.id.download, fragment.getActivity().getString(R.string.details_update));
         } catch (PackageManager.NameNotFoundException e) {
             // We've checked for that already
         }
@@ -297,7 +253,7 @@ public class GeneralDetails extends AbstractHelper {
             hide(fragment.getView(), R.id.more_card);
         } else {
             show(fragment.getView(), R.id.more_card);
-            setText(R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
+            setText(fragment.getView(), R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
         }
     }
 
