@@ -13,12 +13,13 @@ public class InstalledAppBadge extends AppBadge {
         line3.clear();
         Context c = view.getContext();
         BlackWhiteListManager manager = new BlackWhiteListManager(c);
-        line2.add("v"+app.getVersionName()+"."+app.getVersionCode());
-        if (manager.contains(app.getPackageName())) {
-            line2.add(c.getString(manager.isBlack() ? R.string.list_app_blacklisted : R.string.list_app_whitelisted));
-        }
-        if (app.isSystem()) {
+        line2.add("v" + app.getVersionName() + "." + app.getVersionCode());
+        if (app.isSystem())
             line3.add(c.getString(R.string.list_app_system));
+        else
+            line3.add(c.getString(R.string.list_app_user));
+        if (manager.contains(app.getPackageName())) {
+            line3.add(c.getString(manager.isBlack() ? R.string.list_app_blacklisted : R.string.list_app_whitelisted));
         }
         super.draw();
     }

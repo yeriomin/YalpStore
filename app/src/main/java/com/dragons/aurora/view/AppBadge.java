@@ -32,7 +32,7 @@ public abstract class AppBadge extends ListItem {
     @Override
     public void draw() {
         view.findViewById(R.id.progress).setVisibility(View.GONE);
-        view.findViewById(R.id.app).setVisibility(View.VISIBLE);
+        view.findViewById(R.id.list_container).setVisibility(View.VISIBLE);
 
         ((TextView) view.findViewById(R.id.text1)).setText(app.getDisplayName());
         setText(R.id.text2, TextUtils.join(" • ", line2));

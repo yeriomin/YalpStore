@@ -35,7 +35,7 @@ public abstract class ForegroundUpdatableAppsTaskHelper extends ExceptionTaskHel
         api.toc();
         allMarketApps.clear();
         Map<String, App> installedApps = getInstalledApps();
-        for (App appFromMarket : getAppsFromPlayStore(api, filterBlacklistedApps(installedApps).keySet())) {
+        for (App appFromMarket : getAppsFromPlayStore(api, installedApps.keySet())) {
             String packageName = appFromMarket.getPackageName();
             if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
                 continue;

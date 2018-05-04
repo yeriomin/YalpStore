@@ -13,11 +13,12 @@ import com.dragons.aurora.R;
 
 public class UpdatableAppBadge extends AppBadge {
 
-    private ImageView viewChanges;
+    private ImageView viewChanges, icon;
     private LinearLayout changesContainer;
 
     @Override
     public void draw() {
+        icon = view.findViewById(R.id.icon);
         line2.clear();
         line3.clear();
         Context c = view.getContext();
@@ -29,12 +30,12 @@ public class UpdatableAppBadge extends AppBadge {
         if (app.isSystem()) {
             line3.add(c.getString(R.string.list_app_system));
         }
+
         drawMore();
         super.draw();
     }
 
-
-    private void drawMore() {
+    public void drawMore() {
         viewChanges = view.findViewById(R.id.viewChanges);
         viewChanges.setOnClickListener(v -> {
             expandMore();
@@ -51,15 +52,16 @@ public class UpdatableAppBadge extends AppBadge {
         String changelog = app.getChanges();
         TextView changes = view.findViewById(R.id.changes_upper);
         if (changelog.isEmpty())
-            changes.setText("Changelog not Available");
+            changes.setText(R.string.details_changelog_empty);
         else
             changes.setText(Html.fromHtml(app.getChanges()).toString());
         changesContainer.setVisibility(View.VISIBLE);
-        viewChanges.setImageResource(R.drawable.ic_expand_less);
+        viewChanges.setImageResource(R.drawable.ic_expand_less_24);
     }
 
     private void removeChanges() {
         changesContainer.setVisibility(View.GONE);
-        viewChanges.setImageResource(R.drawable.ic_expand_more);
+        viewChanges.setImageResource(R.drawable.ic_expand_more_24);
     }
+
 }

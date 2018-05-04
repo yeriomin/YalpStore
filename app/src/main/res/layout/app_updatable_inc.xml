@@ -98,16 +98,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ListView
-                android:id="@android:id/list"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/updatable_apps_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:animationCache="true"
-                android:divider="@drawable/list_divider"
-                android:dividerHeight=".5dp"
-                android:drawingCacheQuality="auto"
-                android:nestedScrollingEnabled="false"
-                android:scrollingCache="true" />
+                android:padding="5dp"
+                android:scrollbars="vertical" />
 
             <!-- Unicorn -->
             <LinearLayout

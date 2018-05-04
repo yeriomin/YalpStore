@@ -28,7 +28,7 @@
     <string name="action_get_local_apk">Get local apk</string>
     <string name="action_home">Home</string>
     <string name="action_myApps">My Apps</string>
-    <string name="action_ignore">Add to blacklist</string>
+    <string name="action_ignore">Blacklist</string>
     <string name="action_login">Login</string>
     <string name="action_logout">Log out</string>
     <string name="action_make_normal">Convert to normal app</string>
@@ -82,6 +82,7 @@
     <string name="details_category">"%1$s"</string>
     <string name="details_contains_ads">Contains ads</string>
     <string name="details_could_not_copy_apk">Could not copy apk</string>
+    <string name="details_changelog_empty">No changelog available</string>
     <string name="details_description">Read more</string>
     <string name="details_developer">"%1$s"</string>
     <string name="details_download">Get</string>
@@ -198,6 +199,7 @@
     <string name="list_app_independent_from_gsf">GSF independent</string>
     <string name="list_app_no_ads">no ads</string>
     <string name="list_app_system">System app</string>
+    <string name="list_app_user">User app</string>
     <string name="list_app_whitelisted">Whitelisted</string>
     <string name="list_empty_query">No recent searches</string>
     <string name="list_empty_search">No apps found</string>

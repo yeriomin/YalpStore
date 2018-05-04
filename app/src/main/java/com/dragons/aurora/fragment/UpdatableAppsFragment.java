@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +21,9 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.UpdateAllReceiver;
 import com.dragons.aurora.UpdateChecker;
-import com.dragons.aurora.adapters.AppListAdapter;
-import com.dragons.aurora.adapters.UpdatableAppListAdapter;
+import com.dragons.aurora.adapters.UpdatableAppsAdapter;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.ForegroundUpdatableAppsTaskHelper;
-import com.dragons.aurora.view.ListItem;
-import com.dragons.aurora.view.UpdatableAppBadge;
 import com.percolate.caffeine.ToastUtils;
 import com.percolate.caffeine.ViewUtils;
 
@@ -80,10 +80,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
                 swipeRefreshLayout.setRefreshing(false);
         });
 
-        setupListView(v, R.layout.updatable_list_item);
         setupDelta();
-
-        getListView().setOnItemClickListener((parent, view, position, id) -> grabDetails(position));
         updateInteger();
         return v;
     }
@@ -105,43 +102,17 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         updateInteger();
     }
 
-    protected void setupListView(View v, int layoutId) {
-        View emptyView = v.findViewById(android.R.id.empty);
-        listView = ViewUtils.findViewById(v, android.R.id.list);
-        listView.setNestedScrollingEnabled(true);
-        if (emptyView != null) {
-            listView.setEmptyView(emptyView);
-        }
-        if (null == listView.getAdapter()) {
-            listView.setAdapter(new UpdatableAppListAdapter(getActivity(), layoutId));
-        }
-    }
+    protected void setupListView(List<App> appsToAdd) {
+        RecyclerView recyclerView = v.findViewById(R.id.updatable_apps_list);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
+        UpdatableAppsAdapter updatableAppsAdapter = new UpdatableAppsAdapter(appsToAdd);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
 
-    @Override
-    protected void addApps(List<App> appsToAdd, boolean update) {
-        UpdatableAppListAdapter adapter = (UpdatableAppListAdapter) getListView().getAdapter();
-        adapter.setNotifyOnChange(false);
-        for (App app : appsToAdd) {
-            ListItem listItem = getListItem(app);
-            listItems.put(app.getPackageName(), listItem);
-            adapter.add(listItem);
-        }
-        if (update) {
-            adapter.notifyDataSetChanged();
-        }
-    }
-
-    @Override
-    public void removeApp(String packageName) {
-        super.removeApp(packageName);
-        if (updatableApps.isEmpty()) {
-            show(v, R.id.unicorn);
-        }
-    }
-    @Override
-    protected void clearApps() {
-        listItems.clear();
-        ((UpdatableAppListAdapter) getListView().getAdapter()).clear();
+        recyclerView.setItemViewCacheSize(30);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setAdapter(updatableAppsAdapter);
     }
 
     @Override
@@ -149,13 +120,6 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         super.onStop();
         (getActivity()).unregisterReceiver(updateAllReceiver);
         swipeRefreshLayout.setRefreshing(false);
-    }
-
-    @Override
-    protected ListItem getListItem(App app) {
-        UpdatableAppBadge appBadge = new UpdatableAppBadge();
-        appBadge.setApp(app);
-        return appBadge;
     }
 
     public void launchUpdateAll() {
@@ -217,7 +181,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
                         clearApps();
                         appList = new ArrayList<>(new HashSet<>(appList));
                         Collections.sort(appList);
-                        addApps(appList);
+                        setupListView(appList);
 
                         swipeRefreshLayout.setRefreshing(false);
 

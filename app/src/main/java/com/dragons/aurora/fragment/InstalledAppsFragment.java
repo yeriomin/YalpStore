@@ -3,18 +3,24 @@ package com.dragons.aurora.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
+import com.dragons.aurora.adapters.InstalledAppsAdapter;
+import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.ForegroundUpdatableAppsTaskHelper;
 import com.percolate.caffeine.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -26,6 +32,7 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     private View v;
     private Disposable loadApps;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private RecyclerView recyclerView;
 
     public static InstalledAppsFragment newInstance() {
         return new InstalledAppsFragment();
@@ -50,8 +57,6 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
 
         v = inflater.inflate(R.layout.app_installed_inc, container, false);
 
-        setupListView(v, R.layout.installed_list_item);
-
         swipeRefreshLayout = ViewUtils.findViewById(v, R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (isLoggedIn())
@@ -60,11 +65,8 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
                 swipeRefreshLayout.setRefreshing(false);
         });
 
-        getListView().setOnItemClickListener((parent, view, position, id) -> {
-            grabDetails(position);
-        });
-
-        registerForContextMenu(getListView());
+        recyclerView = v.findViewById(R.id.installed_apps_list);
+        registerForContextMenu(recyclerView);
 
         return v;
     }
@@ -79,6 +81,23 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         }
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    protected void setupListView(List<App> appsToAdd) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
+        InstalledAppsAdapter installedAppsAdapter = new InstalledAppsAdapter(getActivity(), appsToAdd);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setAdapter(installedAppsAdapter);
+    }
+
     public void loadMarketApps() {
         if (isDummy())
             refreshMyToken();
@@ -91,15 +110,10 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
                         clearApps();
                         appList = new ArrayList<>(new HashSet<>(appList));
                         Collections.sort(appList);
-                        addApps(appList);
+                        setupListView(appList);
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }, this::processException);
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        swipeRefreshLayout.setRefreshing(false);
-    }
 }

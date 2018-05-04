@@ -9,19 +9,15 @@ import android.widget.ListView;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
-import com.dragons.aurora.adapters.AppListAdapter;
 import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.fragment.details.ButtonUninstall;
 import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.AppListValidityCheckTask;
 import com.dragons.aurora.view.AppBadge;
-import com.dragons.aurora.view.InstalledAppBadge;
 import com.dragons.aurora.view.ListItem;
-import com.percolate.caffeine.ViewUtils;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -64,29 +60,6 @@ abstract public class AppListFragment extends UtilFragment {
         return true;
     }
 
-    protected void setupListView(View v, int layoutId) {
-        View emptyView = v.findViewById(android.R.id.empty);
-        listView = ViewUtils.findViewById(v, android.R.id.list);
-        listView.setNestedScrollingEnabled(true);
-        if (emptyView != null) {
-            listView.setEmptyView(emptyView);
-        }
-        if (null == listView.getAdapter()) {
-            listView.setAdapter(new AppListAdapter(getActivity(), layoutId));
-        }
-    }
-
-    protected ListItem getListItem(App app) {
-        InstalledAppBadge appBadge = new InstalledAppBadge();
-        appBadge.setApp(app);
-        return appBadge;
-    }
-
-    protected void grabDetails(int position) {
-        DetailsActivity.app = getAppByListPosition(position);
-        startActivity(DetailsActivity.getDetailsIntent(this.getActivity(), DetailsActivity.app.getPackageName()));
-    }
-
     protected App getAppByListPosition(int position) {
         ListItem listItem = (ListItem) getListView().getItemAtPosition(position);
         if (null == listItem || !(listItem instanceof AppBadge)) {
@@ -95,31 +68,12 @@ abstract public class AppListFragment extends UtilFragment {
         return ((AppBadge) listItem).getApp();
     }
 
-    protected void addApps(List<App> appsToAdd) {
-        addApps(appsToAdd, true);
-    }
-
-    protected void addApps(List<App> appsToAdd, boolean update) {
-        AppListAdapter adapter = (AppListAdapter) getListView().getAdapter();
-        adapter.setNotifyOnChange(false);
-        for (App app : appsToAdd) {
-            ListItem listItem = getListItem(app);
-            listItems.put(app.getPackageName(), listItem);
-            adapter.add(listItem);
-        }
-        if (update) {
-            adapter.notifyDataSetChanged();
-        }
-    }
-
     public void removeApp(String packageName) {
-        ((AppListAdapter) getListView().getAdapter()).remove(listItems.get(packageName));
         listItems.remove(packageName);
     }
 
     protected void clearApps() {
         listItems.clear();
-        ((AppListAdapter) getListView().getAdapter()).clear();
     }
 
     protected ListView getListView() {
@@ -136,4 +90,5 @@ abstract public class AppListFragment extends UtilFragment {
         task.setIncludeSystemApps(true);
         task.execute();
     }
+
 }
