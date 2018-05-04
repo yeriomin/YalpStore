@@ -18,6 +18,8 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.UpdateAllReceiver;
 import com.dragons.aurora.UpdateChecker;
+import com.dragons.aurora.adapters.AppListAdapter;
+import com.dragons.aurora.adapters.UpdatableAppListAdapter;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.ForegroundUpdatableAppsTaskHelper;
 import com.dragons.aurora.view.ListItem;
@@ -28,6 +30,7 @@ import com.percolate.caffeine.ViewUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -102,12 +105,43 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         updateInteger();
     }
 
+    protected void setupListView(View v, int layoutId) {
+        View emptyView = v.findViewById(android.R.id.empty);
+        listView = ViewUtils.findViewById(v, android.R.id.list);
+        listView.setNestedScrollingEnabled(true);
+        if (emptyView != null) {
+            listView.setEmptyView(emptyView);
+        }
+        if (null == listView.getAdapter()) {
+            listView.setAdapter(new UpdatableAppListAdapter(getActivity(), layoutId));
+        }
+    }
+
+    @Override
+    protected void addApps(List<App> appsToAdd, boolean update) {
+        UpdatableAppListAdapter adapter = (UpdatableAppListAdapter) getListView().getAdapter();
+        adapter.setNotifyOnChange(false);
+        for (App app : appsToAdd) {
+            ListItem listItem = getListItem(app);
+            listItems.put(app.getPackageName(), listItem);
+            adapter.add(listItem);
+        }
+        if (update) {
+            adapter.notifyDataSetChanged();
+        }
+    }
+
     @Override
     public void removeApp(String packageName) {
         super.removeApp(packageName);
         if (updatableApps.isEmpty()) {
             show(v, R.id.unicorn);
         }
+    }
+    @Override
+    protected void clearApps() {
+        listItems.clear();
+        ((UpdatableAppListAdapter) getListView().getAdapter()).clear();
     }
 
     @Override
