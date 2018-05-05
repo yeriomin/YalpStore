@@ -318,4 +318,5 @@
 <string name="action_wishlist_remove">"Remover da lista de desejos"</string>
 <string name="action_wishlist_add">"Adicionar à lista de desejos"</string>
 <string name="action_wishlist">"Lista de desejos"</string>
+<string name="action_ignore_this">"Ignorar esta atualização"</string>
 </resources>
