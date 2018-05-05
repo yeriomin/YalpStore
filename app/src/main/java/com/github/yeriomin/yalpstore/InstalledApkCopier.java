@@ -34,8 +34,17 @@ import java.io.OutputStream;
 
 public class InstalledApkCopier {
 
-    static public boolean copy(Context context, App app) {
-        File destination = getDestination(context, app);
+    private File destinationDir;
+
+    public InstalledApkCopier(Context context) {
+        destinationDir = new File(
+            Paths.getStorageRoot(context),
+            PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+        );
+    }
+
+    public boolean copy(App app) {
+        File destination = getDestination(app);
         if (destination.exists()) {
             Log.i(InstalledApkCopier.class.getSimpleName(), destination.toString() + " exists");
             return true;
@@ -87,12 +96,9 @@ public class InstalledApkCopier {
         }
     }
 
-    static private File getDestination(Context context, App app) {
+    private File getDestination(App app) {
         return new File(
-            new File(
-                Paths.getStorageRoot(context),
-                PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY, "")
-            ),
+            destinationDir,
             app.getPackageName() + "." + String.valueOf(app.getInstalledVersionCode()) + ".apk"
         );
     }
