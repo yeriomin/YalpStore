@@ -21,6 +21,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -208,6 +209,9 @@ public class DetailsActivity extends YalpStoreActivity {
             super.onPostExecute(app);
             if (app != null) {
                 DetailsActivity.app = app;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                    activity.invalidateOptionsMenu();
+                }
                 activity.redrawDetails(app);
             }
         }

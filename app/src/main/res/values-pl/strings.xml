@@ -290,4 +290,5 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="action_wishlist_remove">Usuń z listy życzeń</string>
 <string name="action_wishlist_add">Dodaj do listy życzeń</string>
 <string name="action_wishlist">Lista życzeń</string>
+<string name="action_ignore_this">"Ignoruj tę aktualizację"</string>
 </resources>

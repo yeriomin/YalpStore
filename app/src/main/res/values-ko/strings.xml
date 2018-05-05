@@ -292,4 +292,5 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="action_wishlist_remove">위시리스트에서 삭제</string>
 <string name="action_wishlist_add">위시리스트에 추가</string>
 <string name="action_wishlist">위시리스트</string>
+<string name="action_ignore_this">"이 업데이트 무시"</string>
 </resources>

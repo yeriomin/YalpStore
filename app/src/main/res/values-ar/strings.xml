@@ -289,4 +289,5 @@
 <string name="action_wishlist_remove">إزالة من قائمة المفضلات</string>
 <string name="action_wishlist_add">إضافة إلى قائمة المفضلات</string>
 <string name="action_wishlist">قائمة المفضلات</string>
+<string name="action_ignore_this">"تجاهل هذا التحديث"</string>
 </resources>

@@ -295,4 +295,5 @@ Fazer?"</string>
 
 <string name="pref_ui_theme_dark">"Escuro"</string>
 <string name="pref_ui_theme_light">"Claro"</string>
+<string name="action_ignore_this">"Ignorar esta atualização"</string>
 </resources>

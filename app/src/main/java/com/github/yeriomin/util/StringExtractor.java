@@ -130,6 +130,7 @@ public class StringExtractor {
         stringNames.put("interval_1w", "pref_background_update_interval_weekly"); // Weekly
         stringNames.put("theme_light", "pref_ui_theme_light"); // Light
         stringNames.put("theme_dark", "pref_ui_theme_dark"); // Dark
+        stringNames.put("menu_ignore_this", "action_ignore_this"); // Ignore This Update
     }
 
     private Map<String, String> englishStrings = new HashMap<>();
@@ -170,6 +171,7 @@ public class StringExtractor {
         Map<String, String> wantedStrings = new HashMap<>();
         try {
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(from);
+            doc.getDocumentElement().normalize();
             NodeList nodeList = doc.getElementsByTagName("resources").item(0).getChildNodes();
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node stringNode = nodeList.item(i);
@@ -194,6 +196,7 @@ public class StringExtractor {
         File from = new File("src\\main\\res\\values\\strings.xml");
         try {
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(from);
+            doc.getDocumentElement().normalize();
             NodeList nodeList = doc.getElementsByTagName("resources").item(0).getChildNodes();
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node stringNode = nodeList.item(i);
@@ -212,6 +215,7 @@ public class StringExtractor {
         Set<String> existingStrings = new HashSet<>();
         try {
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(to);
+            doc.getDocumentElement().normalize();
             Node resources = doc.getElementsByTagName("resources").item(0);
             NodeList nodeList = resources.getChildNodes();
             for (int i = 0; i < nodeList.getLength(); i++) {

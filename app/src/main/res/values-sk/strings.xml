@@ -293,4 +293,5 @@ Vykonať?"</string>
 <string name="action_wishlist_remove">Odstrániť zo zoznamu želaní</string>
 <string name="action_wishlist_add">Pridať do zoznamu želaní</string>
 <string name="action_wishlist">Zoznam želaní</string>
+<string name="action_ignore_this">"Ignorovať aktualizáciu"</string>
 </resources>

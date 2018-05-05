@@ -292,4 +292,5 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="action_wishlist_remove">ほしいものリストから削除</string>
 <string name="action_wishlist_add">ほしいものリストに追加</string>
 <string name="action_wishlist">ほしいものリスト</string>
+<string name="action_ignore_this">"今回のアップデートを無視"</string>
 </resources>

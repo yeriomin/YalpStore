@@ -294,4 +294,5 @@ Do it?"</string>
 <string name="action_wishlist_remove">Вилучити зі списку бажань</string>
 <string name="action_wishlist_add">Додати в список бажань</string>
 <string name="action_wishlist">Список бажань</string>
+<string name="action_ignore_this">"Ігнорувати це оновлення"</string>
 </resources>

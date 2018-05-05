@@ -294,4 +294,5 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="action_wishlist_remove">Quitar de la lista de deseos</string>
 <string name="action_wishlist_add">Añadir a lista de deseos</string>
 <string name="action_wishlist">Lista de deseos</string>
+<string name="action_ignore_this">"Ignorar esta actualización"</string>
 </resources>

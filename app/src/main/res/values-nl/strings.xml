@@ -296,4 +296,5 @@ Nu doen?"</string>
 <string name="action_wishlist_add">Toevoegen aan verlanglijstje</string>
 <string name="action_wishlist">Verlanglijstje</string>
 <string name="details_download">"Downloaden"</string>
+<string name="action_ignore_this">"Negeer deze update"</string>
 </resources>

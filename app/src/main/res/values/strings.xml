@@ -33,6 +33,7 @@
     <string name="action_search">Search</string>
     <string name="action_updates">Updates</string>
     <string name="action_ignore">Ignore updates</string>
+    <string name="action_ignore_this">Ignore this update</string>
     <string name="action_whitelist">Whitelist for updates</string>
     <string name="action_categories">Categories</string>
     <string name="action_manual">Manual download</string>

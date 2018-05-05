@@ -27,6 +27,11 @@
         android:visible="false"
         android:checkable="true" />
     <item
+        android:id="@+id/action_ignore_this"
+        android:title="@string/action_ignore_this"
+        android:visible="false"
+        android:checkable="true" />
+    <item
         android:id="@+id/action_manual"
         android:title="@string/action_manual" />
     <item

@@ -268,4 +268,5 @@
 <string name="action_wishlist_remove">Удалить из списка желаний</string>
 <string name="action_wishlist_add">Добавить в список желаний</string>
 <string name="action_wishlist">Список желаний</string>
+<string name="action_ignore_this">"Игнорировать данное обновление"</string>
 </resources>

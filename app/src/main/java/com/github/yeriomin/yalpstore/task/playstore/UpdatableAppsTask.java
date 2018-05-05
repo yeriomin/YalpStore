@@ -29,6 +29,7 @@ import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.VersionIgnoreManager;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
@@ -76,6 +77,18 @@ public class UpdatableAppsTask extends RemoteAppListTask {
         if (noNetwork(e) && context instanceof Activity) {
             ContextUtil.toast(context, R.string.error_no_network);
         }
+    }
+
+    @Override
+    protected List<App> getRemoteAppList(GooglePlayAPI api, List<String> packageNames) throws IOException {
+        List<App> appList = super.getRemoteAppList(api, packageNames);
+        VersionIgnoreManager versionIgnoreManager = new VersionIgnoreManager(context);
+        for (App app: appList.toArray(new App[appList.size()])) {
+            if (!versionIgnoreManager.isUpdatable(app.getPackageName(), app.getVersionCode())) {
+                appList.remove(app);
+            }
+        }
+        return appList;
     }
 
     private App addInstalledAppInfo(App appFromMarket, App installedApp) {

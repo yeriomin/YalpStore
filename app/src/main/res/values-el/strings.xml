@@ -300,4 +300,5 @@
 <string name="action_wishlist_remove">Κατάργηση από λίστα επιθυμιών</string>
 <string name="action_wishlist_add">Προσθήκη στη λίστα επιθυμητών</string>
 <string name="action_wishlist">Λίστα επιθυμιών</string>
+<string name="action_ignore_this">"Αγνόησε αυτή την ενημέρωση"</string>
 </resources>

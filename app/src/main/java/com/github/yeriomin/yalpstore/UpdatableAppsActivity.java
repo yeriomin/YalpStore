@@ -83,10 +83,15 @@ public class UpdatableAppsActivity extends AppListActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        App app = getAppByListPosition(info.position);
         if (item.getItemId() == R.id.action_ignore) {
-            String packageName = getAppByListPosition(info.position).getPackageName();
+            String packageName = app.getPackageName();
             new BlackWhiteListManager(this).add(packageName);
             removeApp(packageName);
+            return true;
+        } else if (item.getItemId() == R.id.action_ignore_this) {
+            new VersionIgnoreManager(this).add(app.getPackageName(), app.getVersionCode());
+            removeApp(app.getPackageName());
             return true;
         }
         return super.onContextItemSelected(item);

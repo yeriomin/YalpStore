@@ -292,4 +292,5 @@ Jarraitu?"</string>
 <string name="action_wishlist_remove">Kendu nahien zerrendatik</string>
 <string name="action_wishlist_add">Gehitu nahien zerrendan</string>
 <string name="action_wishlist">Nahien zerrenda</string>
+<string name="action_ignore_this">"Ezikusi eguneraketa hau"</string>
 </resources>

@@ -293,4 +293,5 @@ Pokračovat?"</string>
 <string name="action_wishlist_remove">Odebrat ze seznamu přání</string>
 <string name="action_wishlist_add">Přidat do seznamu přání</string>
 <string name="action_wishlist">Seznam přání</string>
+<string name="action_ignore_this">"Ignorovat tuto aktualizaci"</string>
 </resources>

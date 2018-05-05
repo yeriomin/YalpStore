@@ -238,4 +238,5 @@ El procesu nun ye perfeutu y ye específicu pa cada preséu, asina que quiciabes
 <string name="pref_use_tor_summary">"Forciar el tráficu de descarga per Tor pa mayor intimidá. Rique Orbot"</string>
 <string name="pref_use_tor">"Usar Tor"</string>
 <string name="no_permissions">"Nun s\'usaron permisos."</string>
+<string name="action_ignore_this">"Inorar esti anovamientu"</string>
 </resources>

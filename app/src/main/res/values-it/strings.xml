@@ -293,4 +293,5 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="action_wishlist_remove">Rimuovi dalla lista desideri</string>
 <string name="action_wishlist_add">Aggiungi alla lista desideri</string>
 <string name="action_wishlist">Lista desideri</string>
+<string name="action_ignore_this">"Ignora questo aggiornamento"</string>
 </resources>

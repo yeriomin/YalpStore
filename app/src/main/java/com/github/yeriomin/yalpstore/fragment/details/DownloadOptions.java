@@ -36,6 +36,7 @@ import com.github.yeriomin.yalpstore.InstalledApkCopier;
 import com.github.yeriomin.yalpstore.LocalWishlist;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.VersionIgnoreManager;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.CheckShellTask;
@@ -87,6 +88,10 @@ public class DownloadOptions extends Abstract {
             }
             setChecked(menu, R.id.action_ignore, isContained);
             setChecked(menu, R.id.action_whitelist, isContained);
+            if (app.getVersionCode() > app.getInstalledVersionCode()) {
+                show(menu, R.id.action_ignore_this, true);
+                setChecked(menu, R.id.action_ignore_this, !new VersionIgnoreManager(activity).isUpdatable(app.getPackageName(), app.getVersionCode()));
+            }
             if (isConvertible(app)) {
                 show(menu, R.id.action_make_system, !app.isSystem());
                 show(menu, R.id.action_make_normal, app.isSystem());
@@ -144,6 +149,14 @@ public class DownloadOptions extends Abstract {
                 task.setContext(activity);
                 task.setPackageName(app.getPackageName());
                 task.execute();
+                return true;
+            case R.id.action_ignore_this:
+                if (item.isChecked()) {
+                    new VersionIgnoreManager(activity).remove(app.getPackageName(), app.getVersionCode());
+                } else {
+                    new VersionIgnoreManager(activity).add(app.getPackageName(), app.getVersionCode());
+                }
+                item.setChecked(!item.isChecked());
                 return true;
         }
         return false;
