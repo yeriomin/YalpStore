@@ -19,12 +19,12 @@
 
 package com.github.yeriomin.yalpstore.task.playstore;
 
-import android.content.Context;
-import android.text.ClipboardManager;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.R;
 
 public class DownloadLinkTask extends DeliveryDataTask implements CloneableTask {
@@ -38,11 +38,19 @@ public class DownloadLinkTask extends DeliveryDataTask implements CloneableTask 
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        ContextUtil.toast(context, R.string.details_downloading);
+    }
+
+    @Override
     protected void onPostExecute(AndroidAppDeliveryData result) {
         super.onPostExecute(result);
         if (null != deliveryData && !TextUtils.isEmpty(deliveryData.getDownloadUrl())) {
-            ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE)).setText(deliveryData.getDownloadUrl());
-            Toast.makeText(context.getApplicationContext(), R.string.about_copied_to_clipboard, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(deliveryData.getDownloadUrl()));
+            if (intent.resolveActivity(context.getPackageManager()) != null) {
+                context.startActivity(Intent.createChooser(intent, context.getString(R.string.details_download)));
+            }
         }
     }
 }
