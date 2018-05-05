@@ -32,9 +32,11 @@
         <item name="android:background">@android:color/black</item>
     </style>
     <style name="YalpStoreDialogStyleDark" parent="Theme.AppCompat.Dialog">
+        <item name="android:background">#303030</item>
         <item name="colorAccent">#357ec7</item>
     </style>
     <style name="YalpStoreAlertDialogStyleDark" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:background">#303030</item>
         <item name="colorAccent">#357ec7</item>
     </style>
 </resources>
