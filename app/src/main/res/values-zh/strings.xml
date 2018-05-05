@@ -306,4 +306,5 @@
 <string name="action_wishlist_remove">"从心愿单中移除"</string>
 <string name="action_wishlist_add">"添加到心愿单"</string>
 <string name="action_wishlist">"心愿单"</string>
+<string name="action_ignore_this">"忽略这个更新"</string>
 </resources>
