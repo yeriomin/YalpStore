@@ -19,27 +19,36 @@
 
 package com.github.yeriomin.yalpstore.task;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
+import com.github.yeriomin.yalpstore.InstallerAbstract;
+import com.github.yeriomin.yalpstore.InstallerFactory;
+import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
 
-public class InstallTask extends AsyncTask<String, Void, Boolean> {
+public class InstallTask extends AsyncTask<Void, Void, Void> {
+
+    private App app;
+    private InstallerAbstract installer;
+
+    public InstallTask(Context context, App app) {
+        this(InstallerFactory.get(context), app);
+    }
+
+    public InstallTask(InstallerAbstract installer, App app) {
+        this.installer = installer;
+        this.app = app;
+    }
 
     @Override
-    protected Boolean doInBackground(String... params) {
-        String file = params[0];
-        Log.i(getClass().getSimpleName(), "Installing update " + file);
-        List<String> lines = Shell.SU.run("pm install -i \"" + BuildConfig.APPLICATION_ID + "\" -r " + file);
-        if (null != lines) {
-            for (String line: lines) {
-                Log.i(getClass().getSimpleName(), line);
-            }
-        }
-        return null != lines && lines.size() == 1 && lines.get(0).equals("Success");
+    protected Void doInBackground(Void... voids) {
+        installer.verifyAndInstall(app);
+        return null;
     }
 }

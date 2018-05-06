@@ -27,6 +27,7 @@ import android.util.Log;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.InstallerDefault;
+import com.github.yeriomin.yalpstore.task.InstallTask;
 
 import java.io.File;
 
@@ -55,7 +56,7 @@ public class DownloadChecksumService extends IntentService {
         Log.i(getClass().getSimpleName(), "Launching installer for " + packageName);
         InstallerDefault installerDefault = new InstallerDefault(getApplicationContext());
         installerDefault.setBackground(false);
-        installerDefault.verifyAndInstall(downloadState.getApp());
+        new InstallTask(installerDefault, downloadState.getApp()).execute();
     }
 
     private void deleteApk(String packageName) {

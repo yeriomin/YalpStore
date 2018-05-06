@@ -20,9 +20,13 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.task.InstallTask;
+
+import java.util.List;
+
+import eu.chainfire.libsuperuser.Shell;
 
 public class InstallerRoot extends InstallerBackground {
 
@@ -33,23 +37,23 @@ public class InstallerRoot extends InstallerBackground {
     @Override
     protected void install(App app) {
         InstallationState.setInstalling(app.getPackageName());
-        getTask(app).execute(Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).toString());
+        boolean success = shellInstall(Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).toString());
+        if (success) {
+            InstallationState.setSuccess(app.getPackageName());
+        } else {
+            InstallationState.setFailure(app.getPackageName());
+        }
+        sendBroadcast(app.getPackageName(), true);
+        postInstallationResult(app, success);
     }
 
-    private InstallTask getTask(final App app) {
-        return new InstallTask() {
-
-            @Override
-            protected void onPostExecute(Boolean success) {
-                super.onPostExecute(success);
-                if (success) {
-                    InstallationState.setSuccess(app.getPackageName());
-                } else {
-                    InstallationState.setFailure(app.getPackageName());
-                }
-                sendBroadcast(app.getPackageName(), true);
-                postInstallationResult(app, success);
+    private boolean shellInstall(String file) {
+        List<String> lines = Shell.SU.run("pm install -i \"" + BuildConfig.APPLICATION_ID + "\" -r " + file);
+        if (null != lines) {
+            for (String line: lines) {
+                Log.i(getClass().getSimpleName(), line);
             }
-        };
+        }
+        return null != lines && lines.size() == 1 && lines.get(0).equals("Success");
     }
 }
