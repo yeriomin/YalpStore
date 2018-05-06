@@ -29,6 +29,7 @@
     <string name="action_home">Home</string>
     <string name="action_myApps">My Apps</string>
     <string name="action_ignore">Blacklist</string>
+    <string name="action_ignore_ext">Add to Blacklist</string>
     <string name="action_login">Login</string>
     <string name="action_logout">Log out</string>
     <string name="action_make_normal">Convert to normal app</string>

@@ -10,18 +10,17 @@ import android.widget.LinearLayout;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.DetailsActivity;
-import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.view.UpdatableAppBadge;
 
 import java.util.List;
 
 public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdapter.ViewHolder> {
-
     private List<App> appsToAdd;
-    private UpdatableAppBadge updatableAppBadge;
+    private Context context;
 
-    public UpdatableAppsAdapter(List<App> appsToAdd) {
+    public UpdatableAppsAdapter(Context context, List<App> appsToAdd) {
+        this.context = context;
         this.appsToAdd = appsToAdd;
     }
 
@@ -46,15 +45,17 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
     @Override
     public void onBindViewHolder(@NonNull UpdatableAppsAdapter.ViewHolder holder, int position) {
         final App app = appsToAdd.get(position);
-        updatableAppBadge = new UpdatableAppBadge();
+        final UpdatableAppBadge updatableAppBadge = new UpdatableAppBadge();
+
         updatableAppBadge.setApp(app);
         updatableAppBadge.setView(holder.view);
         updatableAppBadge.draw();
 
+        holder.app = app;
+
         holder.list_container.setOnClickListener(v -> {
             Context context = holder.view.getContext();
-            DetailsFragment.app = app;
-            context.startActivity(DetailsActivity.getDetailsIntent(context, DetailsFragment.app.getPackageName()));
+            context.startActivity(DetailsActivity.getDetailsIntent(context, app.getPackageName()));
         });
     }
 
@@ -65,6 +66,9 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        public LinearLayout viewForeground;
+        public App app;
+
         private View view;
         private LinearLayout list_container;
 
@@ -72,7 +76,7 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
             super(view);
             this.view = view;
             list_container = view.findViewById(R.id.list_container);
+            viewForeground = view.findViewById(R.id.view_foreground);
         }
     }
-
 }

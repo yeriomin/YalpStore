@@ -10,6 +10,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dragons.aurora.AuroraApplication;
+import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
+import com.dragons.aurora.UpdatableRecyclerItemTouchHelper;
 import com.dragons.aurora.UpdateAllReceiver;
 import com.dragons.aurora.UpdateChecker;
 import com.dragons.aurora.adapters.UpdatableAppsAdapter;
@@ -39,7 +42,7 @@ import io.reactivex.schedulers.Schedulers;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 
-public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
+public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper implements UpdatableRecyclerItemTouchHelper.UpdatableRecyclerItemTouchListener {
 
     public static int updates = 0;
     private DownloadManager.Query query;
@@ -48,6 +51,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     private Disposable loadApps;
     private SwipeRefreshLayout swipeRefreshLayout;
     private UpdateAllReceiver updateAllReceiver;
+    private UpdatableAppsAdapter updatableAppsAdapter;
 
     public static UpdatableAppsFragment newInstance() {
         return new UpdatableAppsFragment();
@@ -105,7 +109,7 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     protected void setupListView(List<App> appsToAdd) {
         RecyclerView recyclerView = v.findViewById(R.id.updatable_apps_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
-        UpdatableAppsAdapter updatableAppsAdapter = new UpdatableAppsAdapter(appsToAdd);
+        updatableAppsAdapter = new UpdatableAppsAdapter(getActivity(), appsToAdd);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
 
         recyclerView.setItemViewCacheSize(30);
@@ -113,6 +117,9 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(updatableAppsAdapter);
+        new ItemTouchHelper(
+                new UpdatableRecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this))
+                .attachToRecyclerView(recyclerView);
     }
 
     @Override
@@ -185,9 +192,10 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
 
                         swipeRefreshLayout.setRefreshing(false);
 
-                        if (success() && appList.isEmpty())
+                        if (success() && appList.isEmpty()) {
                             show(v, R.id.unicorn);
-                        else {
+                        } else {
+                            hide(v, R.id.unicorn);
                             setText(v, R.id.updates_txt, R.string.list_update_all_txt, appList.size());
                             setupButtons();
                         }
@@ -195,4 +203,18 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper {
                 }, this::processException);
     }
 
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+        if (viewHolder instanceof UpdatableAppsAdapter.ViewHolder) {
+            new BlackWhiteListManager(getActivity())
+                    .add(((UpdatableAppsAdapter.ViewHolder) viewHolder).app.getPackageName());
+
+            updatableAppsAdapter.remove(position);
+
+            if (updatableAppsAdapter.getItemCount() == 0)
+                v.findViewById(R.id.unicorn).setVisibility(View.VISIBLE);
+            else
+                v.findViewById(R.id.unicorn).setVisibility(View.GONE);
+        }
+    }
 }

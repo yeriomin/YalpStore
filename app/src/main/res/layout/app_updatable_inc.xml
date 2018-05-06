@@ -96,14 +96,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
             android:orientation="vertical">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/updatable_apps_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp"
-                android:scrollbars="vertical" />
 
             <!-- Unicorn -->
             <LinearLayout
@@ -122,6 +116,13 @@
                     android:text="@string/list_empty_updates"
                     android:textSize="18sp" />
             </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/updatable_apps_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:scrollbars="vertical" />
 
             <!--Empty TextView-->
             <TextView
