@@ -141,4 +141,12 @@
             android:summaryOn="@string/pref_no_images_summary_on"
             android:title="@string/pref_no_images" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_category_third_party">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="PREFERENCE_EXODUS"
+            android:title="@string/pref_exodus"
+            android:summaryOff="@string/pref_exodus_summary_off"
+            android:summaryOn="@string/pref_exodus_summary_on" />
+    </PreferenceCategory>
 </PreferenceScreen>

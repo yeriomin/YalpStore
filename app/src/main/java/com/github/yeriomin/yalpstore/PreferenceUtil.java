@@ -55,6 +55,7 @@ public class PreferenceUtil {
     public static final String PREFERENCE_PROXY_TYPE = "PREFERENCE_PROXY_TYPE";
     public static final String PREFERENCE_PROXY_HOST = "PREFERENCE_PROXY_HOST";
     public static final String PREFERENCE_PROXY_PORT = "PREFERENCE_PROXY_PORT";
+    public static final String PREFERENCE_EXODUS = "PREFERENCE_EXODUS";
 
     public static final String INSTALLATION_METHOD_DEFAULT = "default";
     public static final String INSTALLATION_METHOD_ROOT = "root";

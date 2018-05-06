@@ -220,6 +220,22 @@
         android:visibility="gone" />
 
     <TextView
+        android:id="@+id/exodus"
+        android:focusable="true"
+        android:drawableLeft="@drawable/ic_exodus"
+        android:drawableStart="@drawable/ic_exodus"
+        android:drawablePadding="6dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/to_play_store"
         android:focusable="true"
         android:drawableLeft="@drawable/ic_google_play"

@@ -123,6 +123,11 @@
     <string name="details_saved_in_downloads">Saved in your Downloads folder</string>
     <string name="details_could_not_copy_apk">Could not copy apk</string>
     <string name="details_system_app_info">System info</string>
+    <string name="details_exodus">"Exodus Privacy: %1$s"</string>
+    <string name="details_exodus_tap_to_check">tap to check</string>
+    <string name="details_exodus_searching">searching</string>
+    <string name="details_exodus_not_found">not found</string>
+    <string name="details_exodus_found">"%1$s trackers"</string>
     <string name="credentials_hint_email">e-mail here</string>
     <string name="credentials_hint_password">password here</string>
     <string name="credentials_title">Google account access</string>
@@ -209,6 +214,10 @@
     <string name="pref_proxy_type">Proxy type</string>
     <string name="pref_proxy_host">Proxy host</string>
     <string name="pref_proxy_port">Proxy port</string>
+    <string name="pref_category_third_party">Third party services</string>
+    <string name="pref_exodus">Exodus Privacy check</string>
+    <string name="pref_exodus_summary_on">Tracker count is displayed on details page automatically</string>
+    <string name="pref_exodus_summary_off">Exodus report link is displayed</string>
     <string name="download_manager_ERROR_UNKNOWN">Unknown error.</string>
     <string name="download_manager_ERROR_FILE_ERROR">Unknown file storage error.</string>
     <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">HTTP code was received that download manager can not handle. This is a server error.</string>
