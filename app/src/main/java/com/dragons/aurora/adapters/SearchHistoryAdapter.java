@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dragons.aurora.R;
+import com.dragons.aurora.activities.SearchActivity;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,10 +21,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import com.dragons.aurora.R;
-import com.dragons.aurora.activities.SearchActivity;
-
-public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.MyViewHolder> {
+public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.ViewHolder> {
 
     private ArrayList<String> queryHistory;
     private Context c;
@@ -33,14 +33,14 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.history_item, parent, false);
-        return new MyViewHolder(itemView);
+    public SearchHistoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.history_item, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull SearchHistoryAdapter.ViewHolder holder, final int position) {
         setQuery(holder.query, holder.time, queryHistory.get(position));
         holder.viewForeground.setOnClickListener(v -> {
             Intent i = new Intent(c.getApplicationContext(), SearchActivity.class);
@@ -82,13 +82,13 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
         return "";
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public RelativeLayout viewForeground;
         RelativeLayout viewBackground;
         TextView query;
         TextView time;
 
-        MyViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
             query = view.findViewById(R.id.query);
             time = view.findViewById(R.id.queryTime);

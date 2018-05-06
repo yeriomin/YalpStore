@@ -20,8 +20,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dragons.aurora.HistoryItemTouchHelper;
 import com.dragons.aurora.R;
-import com.dragons.aurora.RecyclerItemTouchHelper;
 import com.dragons.aurora.activities.SearchActivity;
 import com.dragons.aurora.adapters.SearchHistoryAdapter;
 
@@ -32,19 +32,18 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
-public class SearchFragment extends UtilFragment implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
+public class SearchFragment extends UtilFragment implements HistoryItemTouchHelper.RecyclerItemTouchHelperListener {
 
-    SearchView searchToolbar;
     ArrayList<String> listHistory = new ArrayList<>();
     Set<String> setHistory = new HashSet<>();
     RecyclerView recyclerView;
     TextView emptyView;
-    View view;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_search, container, false);
-        searchToolbar = view.findViewById(R.id.search_apps);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        SearchView searchToolbar = view.findViewById(R.id.search_apps);
+
         recyclerView = view.findViewById(R.id.searchHistory);
         emptyView = view.findViewById(R.id.emptyView);
 
@@ -58,6 +57,7 @@ public class SearchFragment extends UtilFragment implements RecyclerItemTouchHel
             searchToolbar.requestFocusFromTouch();
             searchToolbar.setQuery("", false);
         });
+
         addQueryTextListener(searchToolbar);
         return view;
     }
@@ -128,7 +128,7 @@ public class SearchFragment extends UtilFragment implements RecyclerItemTouchHel
             recyclerView.setNestedScrollingEnabled(false);
             recyclerView.setAdapter(new SearchHistoryAdapter(listHistory, getActivity()));
             new ItemTouchHelper(
-                    new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this))
+                    new HistoryItemTouchHelper(0, ItemTouchHelper.LEFT, this))
                     .attachToRecyclerView(recyclerView);
         }
     }
@@ -177,7 +177,8 @@ public class SearchFragment extends UtilFragment implements RecyclerItemTouchHel
     private void clearAll() {
         setHistory.clear();
         listHistory.clear();
-        recyclerView.getAdapter().notifyDataSetChanged();
+        if (recyclerView.getAdapter() != null)
+            recyclerView.getAdapter().notifyDataSetChanged();
         putSharedValue(setHistory);
         toggleEmptyRecycle(true);
     }
@@ -194,7 +195,7 @@ public class SearchFragment extends UtilFragment implements RecyclerItemTouchHel
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
-        if (viewHolder instanceof SearchHistoryAdapter.MyViewHolder) {
+        if (viewHolder instanceof SearchHistoryAdapter.ViewHolder) {
             String query = listHistory.get(viewHolder.getAdapterPosition());
             for (int j = listHistory.size() - 1; j >= 0; j--) {
                 if (listHistory.get(j).contains(query)) {
