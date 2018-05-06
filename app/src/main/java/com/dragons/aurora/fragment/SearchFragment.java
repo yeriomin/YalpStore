@@ -116,32 +116,16 @@ public class SearchFragment extends UtilFragment implements RecyclerItemTouchHel
         startActivity(i);
     }
 
-    public void addHistory(String query) {
-        String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
-        String datedQuery = query + ":" + date;
-
-        listHistory.add(datedQuery);
-
-        setHistory.clear();
-        setHistory.addAll(listHistory);
-
-        PreferenceManager.getDefaultSharedPreferences(getActivity())
-                .edit()
-                .putStringSet("SEARCH_HISTORY", setHistory)
-                .apply();
-    }
-
     private void setupSearchHistory() {
         listHistory = getSharedValue();
 
-        if (listHistory.isEmpty()) {
-            recyclerView.setVisibility(View.GONE);
-            emptyView.setVisibility(View.VISIBLE);
-        } else {
-            recyclerView.setVisibility(View.VISIBLE);
-            emptyView.setVisibility(View.GONE);
+        if (listHistory.isEmpty())
+            toggleEmptyRecycle(true);
+        else {
+            toggleEmptyRecycle(false);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setNestedScrollingEnabled(false);
             recyclerView.setAdapter(new SearchHistoryAdapter(listHistory, getActivity()));
             new ItemTouchHelper(
                     new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this))
@@ -149,16 +133,26 @@ public class SearchFragment extends UtilFragment implements RecyclerItemTouchHel
         }
     }
 
+    public void addHistory(String query) {
+        String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+        String datedQuery = query + ":" + date;
+
+        listHistory.add(datedQuery);
+        setHistory.clear();
+        setHistory.addAll(listHistory);
+        putSharedValue(setHistory);
+    }
+
     public void updateHistory() {
         setHistory.clear();
         setHistory.addAll(listHistory);
+        putSharedValue(setHistory);
 
-        PreferenceManager.getDefaultSharedPreferences(getActivity())
-                .edit()
-                .putStringSet("SEARCH_HISTORY", setHistory)
-                .apply();
-
-        setupSearchHistory();
+        recyclerView.getAdapter().notifyDataSetChanged();
+        if (recyclerView.getAdapter().getItemCount() == 0) {
+            recyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        }
     }
 
     private ArrayList<String> getSharedValue() {
@@ -173,13 +167,29 @@ public class SearchFragment extends UtilFragment implements RecyclerItemTouchHel
         return listHistory;
     }
 
-    private void clearAll() {
-        setHistory.clear();
+    private void putSharedValue(Set<String> setHistory) {
         PreferenceManager.getDefaultSharedPreferences(getActivity())
                 .edit()
                 .putStringSet("SEARCH_HISTORY", setHistory)
                 .apply();
-        setupSearchHistory();
+    }
+
+    private void clearAll() {
+        setHistory.clear();
+        listHistory.clear();
+        recyclerView.getAdapter().notifyDataSetChanged();
+        putSharedValue(setHistory);
+        toggleEmptyRecycle(true);
+    }
+
+    private void toggleEmptyRecycle(boolean toggle) {
+        if (toggle) {
+            recyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -194,4 +204,5 @@ public class SearchFragment extends UtilFragment implements RecyclerItemTouchHel
             }
         }
     }
+
 }
