@@ -1,22 +1,28 @@
 package com.dragons.aurora.view;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.NetworkState;
+import com.dragons.aurora.Paths;
 import com.dragons.aurora.R;
+import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ImageSource;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AppBadge extends ListItem {
 
+    protected Context context;
     protected App app;
     protected List<String> line2 = new ArrayList<>();
     protected List<String> line3 = new ArrayList<>();
@@ -38,8 +44,6 @@ public abstract class AppBadge extends ListItem {
         setText(R.id.text2, TextUtils.join(" • ", line2));
         setText(R.id.text3, TextUtils.join(" • ", line3));
 
-        drawIcon((ImageView) view.findViewById(R.id.icon));
-
         if (app.isTestingProgramOptedIn())
             view.findViewById(R.id.beta_user).setVisibility(View.VISIBLE);
         if (app.isTestingProgramAvailable())
@@ -48,7 +52,7 @@ public abstract class AppBadge extends ListItem {
             view.findViewById(R.id.early_access).setVisibility(View.VISIBLE);
     }
 
-    private void drawIcon(ImageView imageView) {
+    protected void drawIcon(ImageView imageView) {
         ImageSource imageSource = app.getIconInfo();
         if (null != imageSource.getApplicationInfo() && !noImages()) {
             imageView.setImageDrawable(imageView.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
@@ -73,5 +77,15 @@ public abstract class AppBadge extends ListItem {
 
     private boolean noImages() {
         return NetworkState.isMetered(view.getContext()) && PreferenceFragment.getBoolean(view.getContext(), PreferenceFragment.PREFERENCE_NO_IMAGES);
+    }
+
+    protected void hide(View view) {
+        if (view != null)
+            view.setVisibility(View.GONE);
+    }
+
+    protected void show(View view) {
+        if (view != null)
+            view.setVisibility(View.VISIBLE);
     }
 }

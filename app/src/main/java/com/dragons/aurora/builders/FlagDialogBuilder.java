@@ -53,32 +53,23 @@ public class FlagDialogBuilder {
                 .setTitle(R.string.flag_page_description)
                 .setNegativeButton(
                         android.R.string.cancel,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        }
+                        (dialog, which) -> dialog.dismiss()
                 )
-                .setAdapter(
-                        new ArrayAdapter<>(activity, android.R.layout.select_dialog_item, reasonLabels),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                FlagTask task = new FlagTask();
-                                task.setContext(activity);
-                                task.setApp(app);
-                                GooglePlayAPI.ABUSE reason = reasonIds[which];
-                                task.setReason(reason);
-                                if (reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA || reason == GooglePlayAPI.ABUSE.OTHER) {
-                                    new ExplanationDialogBuilder().setContext(activity).setTask(task).setReason(reason).build().show();
-                                } else {
-                                    task.execute();
-                                }
-                                dialog.dismiss();
+                .setAdapter(new ArrayAdapter<>(activity, android.R.layout.select_dialog_singlechoice, reasonLabels),
+                        (dialog, which) -> {
+                            FlagTask task = new FlagTask();
+                            task.setContext(activity);
+                            task.setApp(app);
+                            GooglePlayAPI.ABUSE reason = reasonIds[which];
+                            task.setReason(reason);
+                            if (reason == GooglePlayAPI.ABUSE.HARMFUL_TO_DEVICE_OR_DATA || reason == GooglePlayAPI.ABUSE.OTHER) {
+                                new ExplanationDialogBuilder().setContext(activity).setTask(task).setReason(reason).build().show();
+                            } else {
+                                task.execute();
                             }
+                            dialog.dismiss();
                         }
-                )
-                .create()
-                ;
+                ).create();
     }
 
     private static class ExplanationDialogBuilder {
@@ -112,25 +103,16 @@ public class FlagDialogBuilder {
                     .setView(editText)
                     .setNegativeButton(
                             android.R.string.cancel,
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            }
+                            (dialog, which) -> dialog.dismiss()
                     )
                     .setPositiveButton(
                             android.R.string.yes,
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    task.setExplanation(editText.getText().toString());
-                                    task.execute();
-                                    dialog.dismiss();
-                                }
+                            (dialog, which) -> {
+                                task.setExplanation(editText.getText().toString());
+                                task.execute();
+                                dialog.dismiss();
                             }
-                    )
-                    .create()
-                    ;
+                    ).create();
         }
     }
 }

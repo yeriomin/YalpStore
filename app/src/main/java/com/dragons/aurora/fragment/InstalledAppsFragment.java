@@ -29,10 +29,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
 
-    private View v;
+    private View view;
     private Disposable loadApps;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private RecyclerView recyclerView;
+    private List<App> installedApps = new ArrayList<>(new HashSet<>());
 
     public static InstalledAppsFragment newInstance() {
         return new InstalledAppsFragment();
@@ -49,15 +49,15 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (v != null) {
-            if ((ViewGroup) v.getParent() != null)
-                ((ViewGroup) v.getParent()).removeView(v);
-            return v;
+        if (view != null) {
+            if ((ViewGroup) view.getParent() != null)
+                ((ViewGroup) view.getParent()).removeView(view);
+            return view;
         }
 
-        v = inflater.inflate(R.layout.app_installed_inc, container, false);
+        view = inflater.inflate(R.layout.app_installed_inc, container, false);
 
-        swipeRefreshLayout = ViewUtils.findViewById(v, R.id.swipe_refresh_layout);
+        swipeRefreshLayout = ViewUtils.findViewById(view, R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (isLoggedIn())
                 loadMarketApps();
@@ -65,20 +65,14 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
                 swipeRefreshLayout.setRefreshing(false);
         });
 
-        recyclerView = v.findViewById(R.id.installed_apps_list);
-        registerForContextMenu(recyclerView);
-
-        return v;
+        return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (isLoggedIn() && allMarketApps.isEmpty())
+        if (isLoggedIn() && installedApps.isEmpty())
             loadMarketApps();
-        else {
-            checkAppListValidity();
-        }
     }
 
     @Override
@@ -88,10 +82,10 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     }
 
     protected void setupListView(List<App> appsToAdd) {
+        RecyclerView recyclerView = view.findViewById(R.id.installed_apps_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
         InstalledAppsAdapter installedAppsAdapter = new InstalledAppsAdapter(getActivity(), appsToAdd);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(dividerItemDecoration);
@@ -106,11 +100,10 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((appList) -> {
-                    if (v != null) {
-                        clearApps();
-                        appList = new ArrayList<>(new HashSet<>(appList));
-                        Collections.sort(appList);
-                        setupListView(appList);
+                    if (view != null) {
+                        installedApps = new ArrayList<>(new HashSet<>(appList));
+                        Collections.sort(installedApps);
+                        setupListView(installedApps);
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }, this::processException);

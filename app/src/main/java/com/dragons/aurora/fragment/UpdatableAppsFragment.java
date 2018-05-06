@@ -1,8 +1,8 @@
 package com.dragons.aurora.fragment;
 
 import android.app.DownloadManager;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -26,6 +26,7 @@ import com.dragons.aurora.UpdateAllReceiver;
 import com.dragons.aurora.UpdateChecker;
 import com.dragons.aurora.adapters.UpdatableAppsAdapter;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.notification.CancelDownloadService;
 import com.dragons.aurora.task.playstore.ForegroundUpdatableAppsTaskHelper;
 import com.percolate.caffeine.ToastUtils;
 import com.percolate.caffeine.ViewUtils;
@@ -40,18 +41,22 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-import static android.content.Context.DOWNLOAD_SERVICE;
-
 public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper implements UpdatableRecyclerItemTouchHelper.UpdatableRecyclerItemTouchListener {
 
     public static int updates = 0;
+    public static boolean recheck = false;
+    public UpdatableAppsAdapter updatableAppsAdapter;
+    Button recheck_update;
     private DownloadManager.Query query;
     private DownloadManager dm;
-    private View v;
+    private View view;
     private Disposable loadApps;
     private SwipeRefreshLayout swipeRefreshLayout;
     private UpdateAllReceiver updateAllReceiver;
-    private UpdatableAppsAdapter updatableAppsAdapter;
+    private Button update;
+    private Button cancel;
+    private TextView txt;
+    private List<App> updatableApps = new ArrayList<>(new HashSet<>());
 
     public static UpdatableAppsFragment newInstance() {
         return new UpdatableAppsFragment();
@@ -68,46 +73,68 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper imp
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (v != null) {
-            if ((ViewGroup) v.getParent() != null)
-                ((ViewGroup) v.getParent()).removeView(v);
-            return v;
+        if (view != null) {
+            if ((ViewGroup) view.getParent() != null)
+                ((ViewGroup) view.getParent()).removeView(view);
+            return view;
         }
 
-        v = inflater.inflate(R.layout.app_updatable_inc, container, false);
+        view = inflater.inflate(R.layout.app_updatable_inc, container, false);
+        initViews();
 
-        swipeRefreshLayout = ViewUtils.findViewById(v, R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            if (isLoggedIn())
+            if (isLoggedIn() && isConnected(getContext()))
                 loadUpdatableApps();
             else
                 swipeRefreshLayout.setRefreshing(false);
         });
 
+        recheck_update.setOnClickListener(click -> {
+            if (isLoggedIn() && isConnected(getContext())) {
+                hide(view, R.id.unicorn);
+                swipeRefreshLayout.setRefreshing(true);
+                loadUpdatableApps();
+            }
+        });
+
         setupDelta();
-        updateInteger();
-        return v;
+        return view;
+    }
+
+    private void initViews() {
+        recheck_update = ViewUtils.findViewById(view, R.id.recheck_updates);
+        update = ViewUtils.findViewById(view, R.id.update_all);
+        cancel = ViewUtils.findViewById(view, R.id.update_cancel);
+        txt = ViewUtils.findViewById(view, R.id.updates_txt);
+        swipeRefreshLayout = ViewUtils.findViewById(view, R.id.swipe_refresh_layout);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        updateAllReceiver = new UpdateAllReceiver(this);
-        if (isLoggedIn() && updatableApps.isEmpty())
+
+        if (isLoggedIn() && updatableApps.isEmpty() || recheck) {
+            recheck = false;
             loadUpdatableApps();
-        else if (!updatableApps.isEmpty())
-            setText(v, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
+        } else if (updatableApps.size() > 0)
+            setText(view, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
         else if (!isLoggedIn())
             ToastUtils.quickToast(getActivity(), "You need to Login First", true);
         else {
             new UpdateAllReceiver(this);
-            checkAppListValidity();
         }
-        updateInteger();
+        updateAllReceiver = new UpdateAllReceiver(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        (getActivity()).unregisterReceiver(updateAllReceiver);
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     protected void setupListView(List<App> appsToAdd) {
-        RecyclerView recyclerView = v.findViewById(R.id.updatable_apps_list);
+        RecyclerView recyclerView = view.findViewById(R.id.updatable_apps_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
         updatableAppsAdapter = new UpdatableAppsAdapter(getActivity(), appsToAdd);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
@@ -122,27 +149,15 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper imp
                 .attachToRecyclerView(recyclerView);
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        (getActivity()).unregisterReceiver(updateAllReceiver);
-        swipeRefreshLayout.setRefreshing(false);
-    }
-
     public void launchUpdateAll() {
         ((AuroraApplication) getActivity().getApplicationContext()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(UpdatableAppsFragment.this.getActivity(), getActivity().getIntent());
-        hide(v, R.id.update_all);
-        show(v, R.id.update_cancel);
+        hide(view, R.id.update_all);
+        show(view, R.id.update_cancel);
     }
 
     public void setupButtons() {
-        Button update = ViewUtils.findViewById(v, R.id.update_all);
-        Button cancel = ViewUtils.findViewById(v, R.id.update_cancel);
-        TextView txt = ViewUtils.findViewById(v, R.id.updates_txt);
-
         update.setVisibility(View.VISIBLE);
-
         update.setOnClickListener(v -> {
             launchUpdateAll();
             update.setVisibility(View.GONE);
@@ -151,31 +166,32 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper imp
         });
 
         cancel.setOnClickListener(v -> {
-            query = new DownloadManager.Query();
-            query.setFilterByStatus(DownloadManager.STATUS_PENDING | DownloadManager.STATUS_RUNNING);
-            dm = (DownloadManager) this.getActivity().getSystemService(DOWNLOAD_SERVICE);
-            Cursor c = dm.query(query);
-            while (c.moveToNext()) {
-                dm.remove(c.getLong(c.getColumnIndex(DownloadManager.COLUMN_ID)));
+            for (App app : updatableApps) {
+                getContext().startService(new Intent(getContext().getApplicationContext(), CancelDownloadService.class)
+                        .putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName()));
             }
             update.setVisibility(View.VISIBLE);
             cancel.setVisibility(View.GONE);
-            setText(v, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
+            setText(view, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
         });
+    }
+
+    public void removeButtons() {
+        update.setVisibility(View.GONE);
+        cancel.setVisibility(View.GONE);
     }
 
     public void setupDelta() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        TextView delta = ViewUtils.findViewById(v, R.id.updates_setting);
+        TextView delta = ViewUtils.findViewById(view, R.id.updates_setting);
         delta.setText(sharedPreferences.getBoolean("PREFERENCE_DOWNLOAD_DELTAS", true) ? R.string.delta_enabled : R.string.delta_disabled);
         delta.setVisibility(View.VISIBLE);
     }
 
-    public void updateInteger() {
-        updates = updatableApps.size();
-        if (updatableApps.size() >= 99) {
+    public void updateInteger(int count) {
+        if (count >= 99) {
             updates = 99;
-        }
+        } else updates = count;
     }
 
     public void loadUpdatableApps() {
@@ -184,19 +200,20 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper imp
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((appList) -> {
-                    if (v != null) {
-                        clearApps();
-                        appList = new ArrayList<>(new HashSet<>(appList));
-                        Collections.sort(appList);
-                        setupListView(appList);
-
+                    if (view != null) {
+                        updatableApps = new ArrayList<>(new HashSet<>(appList));
+                        Collections.sort(updatableApps);
+                        setupListView(updatableApps);
+                        updateInteger(updatableApps.size());
                         swipeRefreshLayout.setRefreshing(false);
 
-                        if (success() && appList.isEmpty()) {
-                            show(v, R.id.unicorn);
+                        if (success() && updatableApps.isEmpty()) {
+                            show(view, R.id.unicorn);
+                            setText(view, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
+                            removeButtons();
                         } else {
-                            hide(v, R.id.unicorn);
-                            setText(v, R.id.updates_txt, R.string.list_update_all_txt, appList.size());
+                            hide(view, R.id.unicorn);
+                            setText(view, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
                             setupButtons();
                         }
                     }
@@ -211,10 +228,13 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper imp
 
             updatableAppsAdapter.remove(position);
 
-            if (updatableAppsAdapter.getItemCount() == 0)
-                v.findViewById(R.id.unicorn).setVisibility(View.VISIBLE);
-            else
-                v.findViewById(R.id.unicorn).setVisibility(View.GONE);
+            if (updatableAppsAdapter.getItemCount() == 0) {
+                view.findViewById(R.id.unicorn).setVisibility(View.VISIBLE);
+                setText(view, R.id.updates_txt, R.string.list_update_all_txt, 0);
+                updateInteger(0);
+                removeButtons();
+            } else
+                view.findViewById(R.id.unicorn).setVisibility(View.GONE);
         }
     }
 }

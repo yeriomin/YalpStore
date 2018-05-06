@@ -8,18 +8,15 @@ import android.os.AsyncTask;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ImageView;
-
-import com.percolate.caffeine.ViewUtils;
 
 import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.BuildConfig;
 import com.dragons.aurora.ContextUtil;
-import com.dragons.aurora.builders.FlagDialogBuilder;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.InstalledApkCopier;
-import com.dragons.aurora.activities.ManualDownloadActivity;
 import com.dragons.aurora.R;
+import com.dragons.aurora.activities.AuroraActivity;
+import com.dragons.aurora.activities.ManualDownloadActivity;
+import com.dragons.aurora.builders.FlagDialogBuilder;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.CheckShellTask;
 import com.dragons.aurora.task.ConvertToNormalTask;
@@ -34,12 +31,6 @@ public class DownloadOptions extends Abstract {
 
     @Override
     public void draw() {
-        final ImageView more = ViewUtils.findViewById(activity, R.id.icon);
-        if (null == more) {
-            return;
-        }
-        activity.registerForContextMenu(more);
-        more.setOnClickListener(v -> more.showContextMenu());
     }
 
     public void inflate(Menu menu) {
@@ -78,6 +69,7 @@ public class DownloadOptions extends Abstract {
                 draw();
                 return true;
             case R.id.action_manual:
+                ManualDownloadActivity.app = app;
                 activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
                 return true;
             case R.id.action_get_local_apk:

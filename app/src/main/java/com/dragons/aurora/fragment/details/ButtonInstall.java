@@ -14,7 +14,7 @@ import com.dragons.aurora.model.App;
 
 public class ButtonInstall extends Button {
 
-    ButtonInstall(AuroraActivity activity, App app) {
+    public ButtonInstall(AuroraActivity activity, App app) {
         super(activity, app);
     }
 

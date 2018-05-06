@@ -34,7 +34,7 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String
     protected void onPostExecute(Set<String> installedPackageNames) {
         super.onPostExecute(installedPackageNames);
         Set<String> newPackageNames = new HashSet<>(installedPackageNames);
-        newPackageNames.removeAll(fragment.getListedPackageNames());
+        /*newPackageNames.removeAll(fragment.getListedPackageNames());
         if (!respectUpdateBlacklist && newPackageNames.size() > 0) {
             //activity.loadInstalledApps();
             return;
@@ -43,7 +43,7 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Set<String
         removedPackageNames.removeAll(installedPackageNames);
         for (String packageName : removedPackageNames) {
             fragment.removeApp(packageName);
-        }
+        }*/
     }
 
     @Override

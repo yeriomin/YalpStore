@@ -66,7 +66,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="8"
+                android:layout_weight="7"
                 android:orientation="vertical">
 
                 <TextView
@@ -107,7 +107,9 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/text3">
+                    android:layout_below="@id/text3"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp">
 
                     <ImageView
                         android:id="@+id/beta_user"
@@ -137,31 +139,146 @@
                         android:src="@drawable/ic_dot"
                         android:tint="@color/colorRed"
                         android:visibility="gone" />
-
-                    <ImageView
-                        android:id="@+id/viewChanges"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_expand_more_24" />
-
                 </RelativeLayout>
 
             </RelativeLayout>
 
+            <ImageView
+                android:id="@+id/viewChanges"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_expand_more_24" />
+
         </LinearLayout>
 
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:id="@+id/single_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:gravity="end"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/single_manual"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:background="@drawable/button_positive"
+                android:fontFamily="@font/google_sans"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="@string/details_manual"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/single_uninstall"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:background="@drawable/button_negative"
+                android:fontFamily="@font/google_sans"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="@string/details_uninstall"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/single_cancel"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:background="@drawable/button_negative"
+                android:fontFamily="@font/google_sans"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="@string/details_cancel"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/single_update"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:background="@drawable/button_positive"
+                android:fontFamily="@font/google_sans"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="@string/details_update"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/single_install"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:background="@drawable/button_positive"
+                android:fontFamily="@font/google_sans"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="@string/details_install"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Progressbar -->
+        <LinearLayout
+            android:id="@+id/progress_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:animateLayoutChanges="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <ProgressBar
+                android:id="@+id/progress_bar_list"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="5.3"
+                android:indeterminate="false"
+                android:progressBackgroundTint="@color/gray"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/progress_txt_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:fontFamily="@font/google_sans"
+                android:gravity="end"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Changelog -->
         <LinearLayout
             android:id="@+id/changes_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_margin="10dp"
             android:background="@drawable/outline_bg"
             android:orientation="vertical"
             android:visibility="gone">
@@ -170,9 +287,9 @@
                 android:id="@+id/changes_upper"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
                 android:autoLink="web|email"
                 android:fontFamily="@font/google_sans"
+                android:padding="10dp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textIsSelectable="true"
                 android:visibility="visible" />

@@ -7,8 +7,8 @@ import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.CredentialsEmptyException;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
-import com.dragons.aurora.fragment.AppListFragment;
 import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.fragment.UtilFragment;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.percolate.caffeine.ToastUtils;
 
@@ -20,7 +20,7 @@ import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLHandshakeException;
 
-public abstract class ExceptionTaskHelper extends AppListFragment {
+public abstract class ExceptionTaskHelper extends UtilFragment {
 
     protected Throwable exception;
 

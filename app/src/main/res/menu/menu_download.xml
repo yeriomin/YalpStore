@@ -26,7 +26,8 @@
         android:visible="false" />
     <item
         android:id="@+id/action_manual"
-        android:title="@string/action_manual" />
+        android:title="@string/action_manual"
+        android:visible="false" />
     <item
         android:id="@+id/action_get_local_apk"
         android:title="@string/action_get_local_apk"

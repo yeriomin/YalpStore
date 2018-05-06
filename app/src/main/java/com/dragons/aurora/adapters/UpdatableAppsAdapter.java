@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.view.UpdatableAppBadge;
 
@@ -34,6 +33,17 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
         notifyItemRemoved(position);
     }
 
+    public void remove(String packageName) {
+        int i = 0;
+        for (App app : appsToAdd) {
+            if (app.getPackageName().equals(packageName)) {
+                remove(i);
+                break;
+            }
+            i++;
+        }
+    }
+
     @NonNull
     @Override
     public UpdatableAppsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -50,13 +60,9 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
         updatableAppBadge.setApp(app);
         updatableAppBadge.setView(holder.view);
         updatableAppBadge.draw();
+        updatableAppBadge.drawButtons();
 
         holder.app = app;
-
-        holder.list_container.setOnClickListener(v -> {
-            Context context = holder.view.getContext();
-            context.startActivity(DetailsActivity.getDetailsIntent(context, app.getPackageName()));
-        });
     }
 
     @Override
@@ -68,14 +74,11 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
 
         public LinearLayout viewForeground;
         public App app;
-
         private View view;
-        private LinearLayout list_container;
 
         public ViewHolder(View view) {
             super(view);
             this.view = view;
-            list_container = view.findViewById(R.id.list_container);
             viewForeground = view.findViewById(R.id.view_foreground);
         }
     }

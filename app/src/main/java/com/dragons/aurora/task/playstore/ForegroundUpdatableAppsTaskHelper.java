@@ -2,7 +2,6 @@ package com.dragons.aurora.task.playstore;
 
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.view.View;
 
 import com.dragons.aurora.BlackWhiteListManager;
 import com.dragons.aurora.BuildConfig;
@@ -26,13 +25,9 @@ import java.util.Set;
 
 public abstract class ForegroundUpdatableAppsTaskHelper extends ExceptionTaskHelper {
 
-    protected View view;
-
-    protected List<App> updatableApps = new ArrayList<>();
-    protected List<App> allMarketApps = new ArrayList<>();
-
     protected List<App> getInstalledApps(GooglePlayAPI api) throws IOException {
         api.toc();
+        List<App> allMarketApps = new ArrayList<>();
         allMarketApps.clear();
         Map<String, App> installedApps = getInstalledApps();
         for (App appFromMarket : getAppsFromPlayStore(api, installedApps.keySet())) {
@@ -50,6 +45,7 @@ public abstract class ForegroundUpdatableAppsTaskHelper extends ExceptionTaskHel
 
     protected List<App> getUpdatableApps(GooglePlayAPI api) throws IOException {
         api.toc();
+        List<App> updatableApps = new ArrayList<>();
         updatableApps.clear();
         Map<String, App> installedApps = getInstalledApps();
         for (App appFromMarket : getAppsFromPlayStore(api, filterBlacklistedApps(installedApps).keySet())) {

@@ -53,6 +53,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     public void onBindViewHolder(@NonNull InstalledAppsAdapter.ViewHolder holder, int position) {
         final App app = appsToAdd.get(position);
         final InstalledAppBadge installedAppBadge = new InstalledAppBadge();
+
         installedAppBadge.setApp(app);
         installedAppBadge.setView(holder.view);
         installedAppBadge.draw();
@@ -68,6 +69,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
             new DownloadOptions((AuroraActivity) context, app).inflate(popup.getMenu());
             popup.getMenu().findItem(R.id.action_download).setVisible(new ButtonDownload((AuroraActivity) context, app).shouldBeVisible());
             popup.getMenu().findItem(R.id.action_uninstall).setVisible(app.isInstalled());
+            popup.getMenu().findItem(R.id.action_manual).setVisible(app.isInstalled());
             popup.setOnMenuItemClickListener(item -> {
                 switch (item.getItemId()) {
                     case R.id.action_ignore:
@@ -85,6 +87,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
                         new ButtonUninstall((AuroraActivity) context, app).uninstall();
                         remove(position);
                         break;
+                    case R.id.action_manual:
                     default:
                         return new DownloadOptions((AuroraActivity) context, app).onContextItemSelected(item);
                 }

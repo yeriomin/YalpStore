@@ -4,7 +4,11 @@ import android.content.Context;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import com.dragons.aurora.downloader.DownloadState;
+import com.dragons.aurora.model.App;
+
 import java.io.Closeable;
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -119,4 +123,24 @@ public class Util {
         }
         return tempValue + diPrefixes.get(order);
     }
+
+    public static boolean isAlreadyDownloaded(Context context, App app) {
+        return Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).exists()
+                && DownloadState.get(app.getPackageName()).isEverythingSuccessful();
+    }
+
+    public static boolean shouldDownload(Context context, App app) {
+        File apk = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
+        return (!apk.exists() || apk.length() != app.getSize() || !DownloadState.get(app.getPackageName()).isEverythingSuccessful())
+                && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID));
+    }
+
+    public static boolean isAlreadyQueued(App app) {
+        DownloadState state = DownloadState.get(app.getPackageName());
+        if (state != null && !state.isEverythingFinished())
+            return true;
+        else
+            return false;
+    }
+
 }

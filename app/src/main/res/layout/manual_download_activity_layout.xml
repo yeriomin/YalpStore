@@ -14,14 +14,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@drawable/outline_bg"
         android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dip">
 
@@ -56,18 +56,6 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/manual_download_hint_version_code"
                 android:inputType="number" />
-
-            <ProgressBar
-                android:id="@+id/download_progress"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:indeterminate="false"
-                android:paddingEnd="4dp"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:paddingStart="4dp"
-                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -113,6 +101,38 @@
                     android:text="@string/details_install"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:animateLayoutChanges="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="6">
+
+                <ProgressBar
+                    android:id="@+id/download_progress"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="5.3"
+                    android:indeterminate="false"
+                    android:progressBackgroundTint="@color/gray"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/progressCents"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".7"
+                    android:fontFamily="@font/google_sans"
+                    android:gravity="end"
+                    android:paddingEnd="3dp"
+                    android:paddingStart="3dp"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
             </LinearLayout>
 
         </LinearLayout>
