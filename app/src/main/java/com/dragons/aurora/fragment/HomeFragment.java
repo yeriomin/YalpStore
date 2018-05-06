@@ -19,8 +19,6 @@ import com.dragons.aurora.view.MoreAppsCard;
 import com.dragons.aurora.view.TagView;
 import com.squareup.picasso.Picasso;
 
-import static com.dragons.aurora.fragment.DetailsFragment.app;
-
 public class HomeFragment extends UtilFragment {
 
     AdaptiveToolbar adtb;
@@ -54,6 +52,11 @@ public class HomeFragment extends UtilFragment {
             intent.putExtra(SearchManager.QUERY, "FDROID");
             getActivity().startActivity(intent);
         });
+
+        MoreAppsCard community = view.findViewById(R.id.community_apps);
+        Button moreApps1 =community.findViewById(R.id.m_apps_more);
+        moreApps1.setText("");
+        moreApps1.setEnabled(false);
 
         return view;
     }

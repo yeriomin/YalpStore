@@ -96,7 +96,6 @@
 
             </HorizontalScrollView>
 
-
             <com.dragons.aurora.view.MoreAppsCard
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -131,24 +130,15 @@
                 app:CardTitle="@string/category_fdroidApps"
                 app:JsonName="fdroid_apps" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:fontFamily="@font/google_sans_bold"
-                android:text="@string/category_communityApps"
-                android:textAlignment="viewStart"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="16sp" />
-
-            <com.dragons.aurora.view.CommunityBasedApps
+            <com.dragons.aurora.view.MoreAppsCard
+                android:id="@+id/community_apps"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="4dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="6dp"
-                android:nestedScrollingEnabled="false" />
+                android:layout_marginTop="2dp"
+                android:nestedScrollingEnabled="false"
+                app:AppsCategory=""
+                app:CardTitle="@string/category_communityApps"
+                app:JsonName="community_apps" />
 
         </LinearLayout>
 
