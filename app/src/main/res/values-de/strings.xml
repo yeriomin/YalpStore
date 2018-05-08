@@ -46,8 +46,8 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="details_rate_this_app">"Bewerte diese App:"</string>
 <string name="details_you_rated_this_app">"Du bewertetest diese App:"</string>
 <string name="details_permissions">"Berechtigungen:"</string>
-
-
+<string name="details_versionName">"Version %1$s"</string>
+<string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
 <string name="details_download">"Herunterladen"</string>
 <string name="details_install">"Installieren"</string>
 <string name="details_downloading">"Herunterladen…"</string>
@@ -136,7 +136,7 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="pref_device_to_pretend_to_be_default">"Deine tatsächlichen Gerätedaten"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Diese Änderung wird angewendet, sobald du dich neu anmeldest"</string>
 <string name="pref_category_updates">"Aktualisierungen"</string>
-
+<string name="pref_category_installation">"Installation"</string>
 <string name="pref_category_spoofing">"Verschleierung"</string>
 <string name="pref_category_ui">"Anzeige"</string>
 <string name="details_installing">"Wird installiert…"</string>
@@ -162,7 +162,7 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="list_app_system">"System App"</string>
 <string name="activity_title_updates_only">"Aktualisierungen"</string>
 <string name="activity_title_updates_and_other_apps">"Deine Apps"</string>
-
+<string name="details_system_app_info">"System info"</string>
 <string name="details_run">"Starten"</string>
 <string name="dialog_title_remounting_system">"Arbeite auf /system Partition"</string>
 <string name="dialog_message_remounting_system">"Arbeite auf /system Partition. Das könnte länger dauern"</string>
@@ -210,13 +210,13 @@ Fortfahren?"</string>
 <string name="pref_no_images_summary_on">"Bilder werden nur bei Wi-Fi heruntergeladen"</string>
 <string name="bug_report_hint_message">"Detaillierte Fehlermeldung"</string>
 <string name="bug_report_hint_identification">"Dein(e) Name/E-Mail/irgendetwas (optional)"</string>
-<string name="bug_report_explanation_content">"Infos über dein Gerät, Protokolle von Yalb Store und manche Einstellungen von Yalb Store werden automatisch an deine Nachricht angehängt. Es werden keine privaten oder sensiblen Informationen gesammelt."</string>
+<string name="bug_report_explanation_content">"Infos über dein Gerät, Protokolle von Yalp Store und manche Einstellungen von Yalp Store werden automatisch an deine Nachricht angehängt. Es werden keine privaten oder sensiblen Informationen gesammelt."</string>
 <string name="bug_report_explanation_crash">"Du kannst helfen, dies zu beheben, indem du ein Fehlerbericht an den Entwickler sendest. Bitte beschreibe, was du versucht hast zu tun, als der Fehler auftrat und drücke OK um ihn zu versenden."</string>
 <string name="bug_report_explanation_bug_report">"Bitte beschreibe das Problem. Sei so präzise wie möglich. Tritt das Problem bei einer bestimmten App auf? Passiert es immer oder nur manchmal? Wie kann es reproduziert werden?"</string>
 <string name="thank_you">"Danke!"</string>
 <string name="list_updating">"Wird aktualisiert…"</string>
 <string name="error_invalid_device_definition">"Gerätebeschreibung abgelehnt"</string>
-
+<string name="details_video">"Video"</string>
 <string name="error_could_not_download">"Konnte nicht heruntergeladen werden"</string>
 <string name="first_login_message">"Um dein eigenen Account zu verwenden, wähle Abmelden im Menü."</string>
 <string name="early_access">"Beta"</string>
@@ -257,19 +257,19 @@ Fortfahren?"</string>
 <string name="flag_page_description">"Aus welchem Grund hältst du diesen Inhalt oder diese App für unangemessen?"</string>
 <string name="flag_pharma_content">"Illegales Rezept oder sonstige Arzneimittel"</string>
 <string name="flag_sexual_content">"Sexueller Inhalt"</string>
-
+<string name="flag_impersonation_copycat">"Copycat or impersonation"</string>
 <string name="flagging_title">"Als unangemessen melden"</string>
 <string name="content_flagged">"Beanstandung wurde gesendet."</string>
 <string name="list_app_blacklisted">"Auf der Blacklist"</string>
 <string name="list_app_whitelisted">"Auf der Whitelist"</string>
-
+<string name="action_filter">"Filter"</string>
 <string name="action_filter_system_apps">"System-Apps"</string>
 <string name="action_filter_apps_with_ads">"Apps mit Werbung"</string>
 <string name="action_filter_paid_apps">"Bezahlte Apps"</string>
 <string name="action_filter_gsf_dependent_apps">"GSF-abhängige Apps"</string>
 <string name="action_filter_category">"Kategorie: %1$s"</string>
 <string name="action_filter_rating">"Bewertung: %1$s"</string>
-
+<string name="action_filter_downloads">"Downloads: %1$s"</string>
 <string name="pref_auto_whitelist">"Automatische Whitelist"</string>
 <string name="pref_auto_whitelist_summary_on">"Apps, die via Yalp Store installiert wurden, sind automatisch auf der Whitelist"</string>
 <string name="pref_auto_whitelist_summary_off">"Du musst Apps manuell auf die Whitelist setzen"</string>
@@ -277,20 +277,28 @@ Fortfahren?"</string>
 <string name="pref_message_fallback">"Versuche ein Rückfall-Verzeichnis festzulegen (%1$s)?"</string>
 <string name="no_permissions">"Es werden keine Berechtigungen verwendet."</string>
 <string name="about_librepay_label">"Spenden mit Liberapay:"</string>
-
+<string name="notification_file_verification_failed">"Die Datei scheint korrupt zu sein. Versuche es erneutes herunterzuladen."</string>
 <string name="pref_download_internal_storage">"Zum Interner Speicher herunterladen"</string>
-
-
+<string name="pref_download_internal_storage_summary_on">"Sicherer, aber der Nutzer kann nicht auf die apks zugreifen"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks werden in den unten angegebenen Pfad auf dem externen Speicher heruntergeladen"</string>
 <string name="pref_use_tor">"Tor verwenden"</string>
 <string name="pref_use_tor_summary">"Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt"</string>
 <string name="pref_category_proxy">"Vermittlungsserver"</string>
-
-
-
-
-<string name="action_wishlist_remove">Von Wunschliste entfernen</string>
-<string name="action_wishlist_add">Auf die Wunschliste</string>
-<string name="action_wishlist">Wunschliste</string>
-<string name="details_video">"Film"</string>
+<string name="pref_proxy_enable">"Proxy aktivieren"</string>
+<string name="pref_proxy_type">"Proxy-Server Typ"</string>
+<string name="pref_proxy_host">"Proxy-Server Host"</string>
+<string name="pref_proxy_port">"Proxy-Server Port"</string>
+<string name="action_wishlist_remove">"Von Wunschliste entfernen"</string>
+<string name="action_wishlist_add">"Auf die Wunschliste"</string>
+<string name="action_wishlist">"Wunschliste"</string>
 <string name="action_ignore_this">"Diese Aktua. ignorieren"</string>
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+<string name="details_exodus_tap_to_check">"tap to check"</string>
+<string name="details_exodus_searching">"searching"</string>
+<string name="details_exodus_not_found">"not found"</string>
+<string name="details_exodus_found">"%1$s trackers"</string>
+<string name="pref_category_third_party">"Third party services"</string>
+<string name="pref_exodus">"Exodus Privacy check"</string>
+<string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
+<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
 </resources>
