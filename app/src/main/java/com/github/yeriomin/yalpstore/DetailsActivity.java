@@ -19,6 +19,7 @@
 
 package com.github.yeriomin.yalpstore;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -61,6 +62,9 @@ public class DetailsActivity extends YalpStoreActivity {
     static public Intent getDetailsIntent(Context context, String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
         intent.putExtra(DetailsActivity.INTENT_PACKAGE_NAME, packageName);
+        if (!(context instanceof Activity)) {
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
         return intent;
     }
 
