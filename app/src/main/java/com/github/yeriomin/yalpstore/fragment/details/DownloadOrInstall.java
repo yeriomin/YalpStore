@@ -19,9 +19,15 @@
 
 package com.github.yeriomin.yalpstore.fragment.details;
 
+import android.widget.ProgressBar;
+
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DetailsDownloadReceiver;
 import com.github.yeriomin.yalpstore.DetailsInstallReceiver;
+import com.github.yeriomin.yalpstore.DownloadProgressBarUpdater;
+import com.github.yeriomin.yalpstore.DownloadProgressUpdater;
+import com.github.yeriomin.yalpstore.DownloadProgressUpdaterFactory;
+import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
 public class DownloadOrInstall extends Abstract {
@@ -40,6 +46,7 @@ public class DownloadOrInstall extends Abstract {
         new ButtonCancel((DetailsActivity) activity, app).draw();
         new ButtonInstall((DetailsActivity) activity, app).draw();
         new ButtonRun((DetailsActivity) activity, app).draw();
+        new DownloadProgressBarUpdater(app.getPackageName(), (ProgressBar) activity.findViewById(R.id.download_progress)).execute(UPDATE_INTERVAL);
     }
 
     public void download() {
