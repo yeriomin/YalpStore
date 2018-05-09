@@ -21,7 +21,7 @@
             <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
-                android:layout_height="512px"
+                android:layout_height="500px"
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
@@ -29,10 +29,10 @@
                 <ImageView
                     android:id="@+id/background"
                     android:layout_width="match_parent"
-                    android:layout_height="512px"
+                    android:layout_height="500px"
                     android:fitsSystemWindows="true"
                     android:visibility="gone"
-                    android:scaleType="fitXY"
+                    android:scaleType="fitCenter"
                     app:layout_collapseMode="parallax"/>
 
                 <android.support.v7.widget.Toolbar

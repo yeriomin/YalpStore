@@ -21,6 +21,7 @@ package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -33,10 +34,15 @@ import com.github.yeriomin.yalpstore.task.LoadImageTask;
 
 public class Background extends Abstract {
 
-    private static final int BACKGROUND_IMAGE_HEIGHT = 512;
+    private static final int DEFAULT_WIDTH = 512;
+    private static final int DEFAULT_HEIGHT = 250;
+
+    private int smallerDimension;
 
     public Background(DetailsActivity activity, App app) {
         super(activity, app);
+        DisplayMetrics metrics = activity.getResources().getDisplayMetrics();
+        smallerDimension = Math.min(metrics.widthPixels, metrics.heightPixels);
     }
 
     @Override
@@ -50,9 +56,10 @@ public class Background extends Abstract {
             background.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
             background.setVisibility(View.GONE);
         } else {
+            int height = DEFAULT_HEIGHT*smallerDimension/DEFAULT_WIDTH;
             collapsingToolbarLayout.setTitleEnabled(true);
-            collapsingToolbarLayout.getLayoutParams().height = BACKGROUND_IMAGE_HEIGHT;
-            background.getLayoutParams().height = BACKGROUND_IMAGE_HEIGHT;
+            collapsingToolbarLayout.getLayoutParams().height = height;
+            background.getLayoutParams().height = height;
             background.setVisibility(View.VISIBLE);
             if (null != app.getPageBackgroundImage()) {
                 new LoadImageTask((ImageView) background).setPlaceholder(false).setFadeInMillis(500).execute(app.getPageBackgroundImage());
