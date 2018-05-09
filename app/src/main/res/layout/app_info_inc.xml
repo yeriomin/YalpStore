@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/google_sans_bold"
+            android:textAlignment="viewStart"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="18sp" />
 
@@ -34,6 +35,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/google_sans"
             android:maxLines="1"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textAlignment="viewStart"
             android:textSize="12sp" />
 
         <TextView
@@ -42,6 +45,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/google_sans"
             android:maxLines="1"
+            android:textAlignment="viewStart"
             android:textSize="12sp" />
     </LinearLayout>
 </LinearLayout>

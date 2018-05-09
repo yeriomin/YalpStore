@@ -34,18 +34,21 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/google_sans_bold"
                 android:text="@string/exodus_title"
+                android:textAlignment="viewStart"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/exodus_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/exodus_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
                 android:textSize="12sp"
                 android:visibility="gone" />
 
@@ -57,6 +60,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/exodus_viewMore"
+                android:textAlignment="viewStart"
                 android:textSize="12sp" />
         </LinearLayout>
 
