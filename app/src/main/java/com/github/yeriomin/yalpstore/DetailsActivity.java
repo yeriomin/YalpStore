@@ -37,6 +37,7 @@ import com.github.yeriomin.yalpstore.fragment.details.Beta;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOptions;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 import com.github.yeriomin.yalpstore.fragment.details.Exodus;
+import com.github.yeriomin.yalpstore.fragment.details.Fdroid;
 import com.github.yeriomin.yalpstore.fragment.details.GeneralDetails;
 import com.github.yeriomin.yalpstore.fragment.details.Permissions;
 import com.github.yeriomin.yalpstore.fragment.details.Review;
@@ -180,6 +181,7 @@ public class DetailsActivity extends YalpStoreActivity {
         new Video(this, app).draw();
         new Beta(this, app).draw();
         new Exodus(this, app).draw();
+        new Fdroid(this, app).draw();
         if (null != downloadOrInstallFragment) {
             downloadOrInstallFragment.unregisterReceivers();
         }

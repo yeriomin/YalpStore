@@ -253,6 +253,23 @@
         android:visibility="gone" />
 
     <TextView
+        android:id="@+id/to_fdroid"
+        android:focusable="true"
+        android:drawableLeft="@drawable/ic_fdroid"
+        android:drawableStart="@drawable/ic_fdroid"
+        android:drawablePadding="6dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="18sp"
+        android:text="@string/details_to_fdroid"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/share"
         android:focusable="true"
         android:drawableLeft="@drawable/ic_share"

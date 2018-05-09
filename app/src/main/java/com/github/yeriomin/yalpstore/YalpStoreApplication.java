@@ -27,17 +27,22 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.http.HttpResponseCache;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.task.FdroidListTask;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.Proxy;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
@@ -45,6 +50,8 @@ import info.guardianproject.netcipher.proxy.OrbotHelper;
 import static com.github.yeriomin.yalpstore.PreferenceUtil.PREFERENCE_USE_TOR;
 
 public class YalpStoreApplication extends Application {
+
+    public static final Set<String> fdroidPackageNames = new HashSet<>();
 
     private boolean isBackgroundUpdating = false;
     private List<String> pendingUpdates = new ArrayList<>();
@@ -99,6 +106,7 @@ public class YalpStoreApplication extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
         registerDownloadReceiver();
         registerInstallReceiver();
+        new FdroidListTask(this.getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     private void registerDownloadReceiver() {
