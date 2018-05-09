@@ -3,11 +3,8 @@ package com.dragons.aurora.fragment.details;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
 import android.support.v7.graphics.Palette;
 import android.text.Html;
 import android.text.TextUtils;
@@ -102,6 +99,7 @@ public class GeneralDetails extends AbstractHelper {
         paintTextView(color, R.id.permissions_header);
         paintTextView(color, R.id.exodus_title);
         paintTextView(color, R.id.changes_upper);
+        paintTextView(color, R.id.showLessMoreTxt);
         paintImageView(color, R.id.privacy_ico);
         paintImageViewBg(color, R.id.apps_similar);
         paintImageViewBg(color, R.id.apps_recommended);
@@ -171,27 +169,9 @@ public class GeneralDetails extends AbstractHelper {
 
     private void drawChanges(App app) {
         String changes = app.getChanges();
-        LinearLayout changelogLayout = fragment.getActivity().findViewById(R.id.changelog_container);
-        ImageView showLessMore = fragment.getActivity().findViewById(R.id.showLessMore);
-
         if (TextUtils.isEmpty(changes)) {
             hide(fragment.getView(), R.id.changes_container);
-            return;
-        }
-        if (app.getInstalledVersionCode() == 0) {
-            showLessMore.setVisibility(View.VISIBLE);
-            setText(fragment.getView(), R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
-            showLessMore.setOnClickListener(v -> {
-                if (changelogLayout.getVisibility() == View.GONE) {
-                    show(fragment.getView(), R.id.changelog_container);
-                    showLessMore.setImageResource(R.drawable.ic_expand_less);
-                } else {
-                    hide(fragment.getView(), R.id.changelog_container);
-                    showLessMore.setImageResource(R.drawable.ic_expand_more);
-                }
-            });
         } else {
-            showLessMore.setVisibility(View.GONE);
             setText(fragment.getView(), R.id.changes_upper, Html.fromHtml(changes).toString());
             show(fragment.getView(), R.id.changes_container);
         }
@@ -249,12 +229,29 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void drawDescription(App app) {
+        LinearLayout changelogLayout = fragment.getActivity().findViewById(R.id.changelog_container);
+        ImageView showLessMore = fragment.getActivity().findViewById(R.id.showLessMore);
+        TextView showLessMoreTxt = fragment.getActivity().findViewById(R.id.showLessMoreTxt);
+
         if (TextUtils.isEmpty(app.getDescription())) {
             hide(fragment.getView(), R.id.more_card);
+            return;
         } else {
             show(fragment.getView(), R.id.more_card);
             setText(fragment.getView(), R.id.d_moreinf, Html.fromHtml(app.getDescription()).toString());
         }
+
+        showLessMore.setOnClickListener(v -> {
+            if (changelogLayout.getVisibility() == View.GONE) {
+                show(fragment.getView(), R.id.changelog_container);
+                showLessMoreTxt.setText(R.string.details_less);
+                showLessMore.setImageResource(R.drawable.ic_expand_less);
+            } else {
+                hide(fragment.getView(), R.id.changelog_container);
+                showLessMoreTxt.setText(R.string.details_more);
+                showLessMore.setImageResource(R.drawable.ic_expand_more);
+            }
+        });
     }
 
     private void textViewHopper(TextView A, TextView B, TextView C) {

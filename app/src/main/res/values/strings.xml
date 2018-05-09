@@ -35,6 +35,7 @@
     <string name="action_make_normal">Convert to normal app</string>
     <string name="action_make_system">Convert to system app</string>
     <string name="action_manual">Manual download</string>
+    <string name="action_more">More</string>
     <string name="action_ok">OK</string>
     <string name="action_or">OR</string>
     <string name="action_refresh">Refresh Token</string>
@@ -94,8 +95,9 @@
     <string name="details_installed">"Installed successfully"</string>
     <string name="details_installing">Installing</string>
     <string name="details_install_failure">"Could not install"</string>
+    <string name="details_less">Read Less</string>
     <string name="details_manual">Manual</string>
-    <string name="details_more">More</string>
+    <string name="details_more">Read More</string>
     <string name="details_not_available_on_play_store">Not available on Play Store</string>
     <string name="details_no_ads">No ads</string>
     <string name="details_permissions">App permissions</string>

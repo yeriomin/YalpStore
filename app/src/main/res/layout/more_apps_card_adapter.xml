@@ -13,7 +13,7 @@
         android:background="?android:selectableItemBackgroundBorderless"
         android:fontFamily="@font/google_sans_bold"
         android:singleLine="true"
-        android:text="@string/details_more"
+        android:text="@string/action_more"
         android:textAllCaps="false"
         android:textColor="?android:attr/textColorSecondary" />
 

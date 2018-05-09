@@ -8,14 +8,20 @@
     android:orientation="vertical"
     android:visibility="gone">
 
+    <TextView
+        android:id="@+id/showLessMoreTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/details_more"
+        android:textAlignment="center" />
+
     <ImageView
         android:id="@+id/showLessMore"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:src="@drawable/ic_expand_more"
-        android:visibility="gone" />
+        android:src="@drawable/ic_expand_more" />
 
     <LinearLayout
         android:id="@+id/changelog_container"
