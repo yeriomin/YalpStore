@@ -212,6 +212,9 @@
     <string name="list_installed_title">My Apps &amp; Games</string>
     <string name="list_installed_summary">All Installed and System Apps from PlayStore</string>
     <string name="list_line_2_updatable">"Updated on %1$s"</string>
+    <string name="list_update_automatic">Keep Your Apps up to date</string>
+    <string name="list_update_automatic_summ">Updates bring you the best new features. Aurora will only update apps over WiFi.\n\nTurn daily updates on ?</string>
+    <string name="list_update_automatic_switch">Turn On</string>
     <string name="list_update_all">Update All</string>
     <string name="list_update_all_txt">Update(s) available : %1$s"</string>
     <string name="list_update_chk_txt">Checking for updates..</string>
@@ -252,7 +255,7 @@
     <string name="pref_background_update_interval">Check for updates periodically</string>
     <string name="pref_background_update_interval_daily">Daily</string>
     <string name="pref_background_update_interval_hourly">Hourly</string>
-    <string name="pref_background_update_interval_manually">Only manually</string>
+    <string name="pref_background_update_interval_manually">Manual</string>
     <string name="pref_background_update_interval_never">Only on Aurora Store launch</string>
     <string name="pref_background_update_interval_weekly">Weekly</string>
     <string name="pref_background_update_wifi_only">On Wi-Fi only</string>

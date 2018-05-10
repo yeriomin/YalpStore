@@ -2,15 +2,99 @@
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="?android:attr/colorBackground"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/autoUpdatesCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/outline_bg"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/list_update_automatic"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
+                android:layout_marginTop="10dp"
+                android:text="@string/list_update_automatic_summ"
+                android:textSize="14sp" />
+
+
+            <Button
+                android:id="@+id/autoUpdatesSwitch"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_positive"
+                android:text="@string/list_update_automatic_switch"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/autoUpdatesClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleX=".7"
+                android:scaleY=".7"
+                android:src="@drawable/ic_cancel" />
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_wifi"
+                android:tint="?android:attr/colorAccent" />
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/updatable_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_below="@id/autoUpdatesCard"
+        android:layout_margin="5dp"
         android:animateLayoutChanges="true"
+        android:background="@drawable/outline_bg"
         android:baselineAligned="false"
         android:padding="5dp"
         android:weightSum="3">
@@ -25,7 +109,8 @@
                 android:id="@+id/updates_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/google_sans_bold"
                 android:text="@string/list_update_chk_txt"
@@ -36,7 +121,7 @@
                 android:id="@+id/updates_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_margin="5dp"
                 android:fontFamily="@font/google_sans"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -88,7 +173,7 @@
         android:layout_marginBottom="@dimen/appbar_bar_height_margin"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:animateLayoutChanges="true"
         android:orientation="vertical">
 

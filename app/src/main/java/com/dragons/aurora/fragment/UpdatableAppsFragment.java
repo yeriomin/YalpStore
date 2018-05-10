@@ -1,6 +1,5 @@
 package com.dragons.aurora.fragment;
 
-import android.app.DownloadManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.AuroraApplication;
@@ -46,14 +47,12 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper imp
     public static int updates = 0;
     public static boolean recheck = false;
     public UpdatableAppsAdapter updatableAppsAdapter;
-    Button recheck_update;
-    private DownloadManager.Query query;
-    private DownloadManager dm;
     private View view;
     private Disposable loadApps;
     private SwipeRefreshLayout swipeRefreshLayout;
     private UpdateAllReceiver updateAllReceiver;
     private Button update;
+    private Button recheck_update;
     private Button cancel;
     private TextView txt;
     private List<App> updatableApps = new ArrayList<>(new HashSet<>());
@@ -92,11 +91,13 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper imp
         recheck_update.setOnClickListener(click -> {
             if (isLoggedIn() && isConnected(getContext())) {
                 hide(view, R.id.unicorn);
+                txt.setText(R.string.list_update_chk_txt);
                 swipeRefreshLayout.setRefreshing(true);
                 loadUpdatableApps();
             }
         });
 
+        setupAutoUpdate();
         setupDelta();
         return view;
     }
@@ -112,7 +113,6 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper imp
     @Override
     public void onResume() {
         super.onResume();
-
         if (isLoggedIn() && updatableApps.isEmpty() || recheck) {
             recheck = false;
             loadUpdatableApps();
@@ -123,7 +123,10 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper imp
         else {
             new UpdateAllReceiver(this);
         }
+
         updateAllReceiver = new UpdateAllReceiver(this);
+        setupAutoUpdate();
+        setupDelta();
     }
 
     @Override
@@ -191,6 +194,26 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper imp
         if (count >= 99) {
             updates = 99;
         } else updates = count;
+    }
+
+    public void setupAutoUpdate() {
+        LinearLayout autoUpdatesCard = view.findViewById(R.id.autoUpdatesCard);
+        ImageView autoUpdatesClose = view.findViewById(R.id.autoUpdatesClose);
+        Button autoUpdatesSwitch = view.findViewById(R.id.autoUpdatesSwitch);
+
+        if (PreferenceFragment.getString(this.getActivity(), "PREFERENCE_BACKGROUND_UPDATE_INTERVAL").equals("-1")) {
+            autoUpdatesCard.setVisibility(View.VISIBLE);
+        }
+
+        autoUpdatesClose.setOnClickListener(click -> autoUpdatesCard.setVisibility(View.GONE));
+
+        autoUpdatesSwitch.setOnClickListener(click -> {
+            PreferenceManager.getDefaultSharedPreferences(getActivity())
+                    .edit()
+                    .putString("PREFERENCE_BACKGROUND_UPDATE_INTERVAL", "86400000")
+                    .apply();
+            autoUpdatesCard.setVisibility(View.GONE);
+        });
     }
 
     public void loadUpdatableApps() {
