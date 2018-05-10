@@ -111,7 +111,7 @@ abstract public class AppListActivity extends AuroraActivity {
             listView.setEmptyView(emptyView);
         }
         if (null == listView.getAdapter()) {
-            listView.setAdapter(new AppListAdapter(this, R.layout.installed_list_item));
+            listView.setAdapter(new AppListAdapter(this, R.layout.endless_list_item));
         }
     }
 

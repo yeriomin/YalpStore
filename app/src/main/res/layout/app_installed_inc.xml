@@ -42,9 +42,8 @@
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/outline_bg"
+        android:background="?android:attr/colorBackground"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/installed_apps_list"
@@ -59,6 +58,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

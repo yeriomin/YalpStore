@@ -7,7 +7,8 @@
         android:id="@+id/view_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/darkGray"
+        android:layout_margin="3dp"
+        android:background="@drawable/outline_bg_black"
         android:padding="5dp">
 
         <ImageView
@@ -38,7 +39,8 @@
         android:id="@+id/view_foreground"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/colorPrimary"
+        android:background="@drawable/outline_bg"
+        android:layout_margin="2dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingBottom="6dp"

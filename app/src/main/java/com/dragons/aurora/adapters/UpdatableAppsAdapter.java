@@ -15,6 +15,7 @@ import com.dragons.aurora.view.UpdatableAppBadge;
 import java.util.List;
 
 public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdapter.ViewHolder> {
+
     private List<App> appsToAdd;
     private Context context;
 

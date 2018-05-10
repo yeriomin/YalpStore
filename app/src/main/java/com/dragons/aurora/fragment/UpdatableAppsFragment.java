@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -135,15 +135,14 @@ public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper imp
 
     protected void setupListView(List<App> appsToAdd) {
         RecyclerView recyclerView = view.findViewById(R.id.updatable_apps_list);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
-        updatableAppsAdapter = new UpdatableAppsAdapter(getActivity(), appsToAdd);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
-
         recyclerView.setItemViewCacheSize(30);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+
+        updatableAppsAdapter = new UpdatableAppsAdapter(getActivity(), appsToAdd);
         recyclerView.setAdapter(updatableAppsAdapter);
+
         new ItemTouchHelper(
                 new UpdatableRecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this))
                 .attachToRecyclerView(recyclerView);

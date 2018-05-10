@@ -3,12 +3,12 @@ package com.dragons.aurora.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
@@ -83,13 +83,10 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
 
     protected void setupListView(List<App> appsToAdd) {
         RecyclerView recyclerView = view.findViewById(R.id.installed_apps_list);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
-        InstalledAppsAdapter installedAppsAdapter = new InstalledAppsAdapter(getActivity(), appsToAdd);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setAdapter(installedAppsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        recyclerView.setAdapter(new InstalledAppsAdapter(getActivity(), appsToAdd));
     }
 
     public void loadMarketApps() {
