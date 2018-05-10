@@ -1,10 +1,12 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,7 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     private Disposable loadApps;
     private SwipeRefreshLayout swipeRefreshLayout;
     private List<App> installedApps = new ArrayList<>(new HashSet<>());
+    private SwitchCompat includeSystem;
 
     public static InstalledAppsFragment newInstance() {
         return new InstalledAppsFragment();
@@ -65,6 +68,22 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
                 swipeRefreshLayout.setRefreshing(false);
         });
 
+        includeSystem = view.findViewById(R.id.includeSystem);
+        includeSystem.setChecked(PreferenceFragment.getBoolean(getContext(), "INCLUDE_SYSTEM"));
+        includeSystem.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked)
+                PreferenceManager.getDefaultSharedPreferences(getActivity())
+                        .edit()
+                        .putBoolean("INCLUDE_SYSTEM", true)
+                        .apply();
+            else
+                PreferenceManager.getDefaultSharedPreferences(getActivity())
+                        .edit()
+                        .putBoolean("INCLUDE_SYSTEM", false)
+                        .apply();
+            loadMarketApps();
+        });
+
         return view;
     }
 
@@ -93,7 +112,7 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
         if (isDummy())
             refreshMyToken();
         swipeRefreshLayout.setRefreshing(true);
-        loadApps = Observable.fromCallable(() -> getInstalledApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi()))
+        loadApps = Observable.fromCallable(() -> getInstalledApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), includeSystem.isChecked()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((appList) -> {

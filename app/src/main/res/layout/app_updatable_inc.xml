@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:animateLayoutChanges="true"
         android:background="@drawable/outline_bg"
@@ -52,6 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:layout_marginTop="10dp"
+                android:padding="5dp"
                 android:background="@drawable/button_positive"
                 android:text="@string/list_update_automatic_switch"
                 android:textColor="@color/white"
@@ -92,11 +93,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/autoUpdatesCard"
-        android:layout_margin="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"
         android:animateLayoutChanges="true"
         android:background="@drawable/outline_bg"
         android:baselineAligned="false"
-        android:padding="5dp"
+        android:padding="10dp"
         android:weightSum="3">
 
         <LinearLayout
@@ -142,7 +145,7 @@
                 android:background="@drawable/button_positive"
                 android:fontFamily="@font/google_sans"
                 android:maxLines="1"
-                android:padding="5dp"
+                android:padding="8dp"
                 android:text="@string/list_update_all"
                 android:textColor="@color/white"
                 android:textSize="12sp"
@@ -173,7 +176,6 @@
         android:layout_marginBottom="@dimen/appbar_bar_height_margin"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
         android:animateLayoutChanges="true"
         android:orientation="vertical">
 

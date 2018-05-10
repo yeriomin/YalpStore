@@ -25,11 +25,13 @@ import java.util.Set;
 
 public abstract class ForegroundUpdatableAppsTaskHelper extends ExceptionTaskHelper {
 
-    protected List<App> getInstalledApps(GooglePlayAPI api) throws IOException {
+    protected List<App> getInstalledApps(GooglePlayAPI api, boolean removeSystem) throws IOException {
         api.toc();
         List<App> allMarketApps = new ArrayList<>();
         allMarketApps.clear();
         Map<String, App> installedApps = getInstalledApps();
+        if (removeSystem)
+            installedApps = filterSystemApps(installedApps);
         for (App appFromMarket : getAppsFromPlayStore(api, installedApps.keySet())) {
             String packageName = appFromMarket.getPackageName();
             if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
@@ -37,7 +39,6 @@ public abstract class ForegroundUpdatableAppsTaskHelper extends ExceptionTaskHel
             }
             App installedApp = installedApps.get(packageName);
             appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
-
             allMarketApps.add(appFromMarket);
         }
         return allMarketApps;
@@ -120,5 +121,15 @@ public abstract class ForegroundUpdatableAppsTaskHelper extends ExceptionTaskHel
             }
         }
         return result;
+    }
+
+    protected Map<String, App> filterSystemApps(Map<String, App> apps) {
+        Map<String, App> installedApps = new HashMap<>();
+        for (App app : apps.values()) {
+            if (!app.isSystem()) {
+                installedApps.put(app.getPackageName(), app);
+            }
+        }
+        return installedApps;
     }
 }

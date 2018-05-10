@@ -211,6 +211,7 @@
     <string name="list_empty_updates">No apps need to be updated</string>
     <string name="list_installed_title">My Apps &amp; Games</string>
     <string name="list_installed_summary">All Installed and System Apps from PlayStore</string>
+    <string name="list_installed_system">Show user apps only</string>
     <string name="list_line_2_updatable">"Updated on %1$s"</string>
     <string name="list_update_automatic">Keep Your Apps up to date</string>
     <string name="list_update_automatic_summ">Updates bring you the best new features. Aurora will only update apps over WiFi.\n\nTurn daily updates on ?</string>
