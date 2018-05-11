@@ -14,45 +14,39 @@ import com.percolate.caffeine.ViewUtils;
 
 public class AppLists extends AbstractHelper {
 
-    static private final String SIMILAR_APPS_KEY = "Similar apps";
-    static private final String RECOMMENDED_APPS_KEY = "You might also";
-
     public AppLists(DetailsFragment fragment, App app) {
         super(fragment, app);
     }
 
     @Override
     public void draw() {
-        for (final String label : app.getRelatedLinks().keySet()) {
-            if (label.contains(app.getDeveloperName())) {
-                addAppsByThisDeveloper();
-            }
+        if (null == app.getRelatedLinks())
+            return;
 
-            if (label.contains(SIMILAR_APPS_KEY)) {
-                addAppsSimilar(app.getRelatedLinks().get(label), label);
-            }
-
-            if (label.contains(RECOMMENDED_APPS_KEY)) {
-                addAppsRecommended(app.getRelatedLinks().get(label), label);
-            }
+        int i = 0;
+        for (String label : app.getRelatedLinks().keySet()) {
+            if (i == 0) addAppsByThisDeveloper();
+            if (i == 1) addAppsSimilar(app.getRelatedLinks().get(label), label);
+            if (i == 2) addAppsRecommended(app.getRelatedLinks().get(label), label);
+            i++;
         }
     }
 
     private void addAppsSimilar(String URL, String Label) {
         ViewUtils.findViewById(fragment.getActivity(), R.id.apps_recommended_cnt).setVisibility(View.VISIBLE);
-        ImageView imageView = (ImageView) fragment.getActivity().findViewById(R.id.apps_similar);
+        ImageView imageView = fragment.getActivity().findViewById(R.id.apps_similar);
         imageView.setOnClickListener(v -> ClusterActivity.start(fragment.getActivity(), URL, Label));
     }
 
     private void addAppsRecommended(String URL, String Label) {
         ViewUtils.findViewById(fragment.getActivity(), R.id.apps_similar_cnt).setVisibility(View.VISIBLE);
-        ImageView imageView = (ImageView) fragment.getActivity().findViewById(R.id.apps_recommended);
+        ImageView imageView = fragment.getActivity().findViewById(R.id.apps_recommended);
         imageView.setOnClickListener(v -> ClusterActivity.start(fragment.getActivity(), URL, Label));
     }
 
     private void addAppsByThisDeveloper() {
         ViewUtils.findViewById(fragment.getActivity(), R.id.apps_by_same_developer_cnt).setVisibility(View.VISIBLE);
-        ImageView imageView = (ImageView) fragment.getActivity().findViewById(R.id.apps_by_same_developer);
+        ImageView imageView = fragment.getActivity().findViewById(R.id.apps_by_same_developer);
         imageView.setVisibility(View.VISIBLE);
         imageView.setOnClickListener(v -> {
             Intent intent = new Intent(fragment.getActivity(), SearchActivity.class);

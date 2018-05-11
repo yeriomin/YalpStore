@@ -79,6 +79,18 @@ public class GeneralDetails extends AbstractHelper {
         setText(fragment.getView(), R.id.displayName, app.getDisplayName());
         setText(fragment.getView(), R.id.packageName, R.string.details_developer, app.getDeveloperName());
         drawVersion(fragment.getActivity().findViewById(R.id.versionString), app);
+        drawBackground(fragment.getView().findViewById(R.id.app_background));
+    }
+
+    private void drawBackground(ImageView appBackground) {
+        if (null != app.getPageBackgroundImage().getUrl())
+            Picasso
+                    .with(fragment.getActivity())
+                    .load(app.getPageBackgroundImage().getUrl())
+                    .placeholder(R.color.transparent)
+                    .into(appBackground);
+        else
+            appBackground.setVisibility(View.GONE);
     }
 
     private void getPalette(Bitmap bitmap) {
@@ -135,6 +147,13 @@ public class GeneralDetails extends AbstractHelper {
                 .with(fragment.getActivity())
                 .load(app.getRatingURL())
                 .into(ratingImg);
+
+        ImageView categoryImg = fragment.getView().findViewById(R.id.categoryImage);
+        Picasso
+                .with(fragment.getActivity())
+                .load(app.getCategoryIconUrl())
+                .placeholder(R.drawable.ic_categories)
+                .into(categoryImg);
 
         drawOfferDetails(app);
         drawChanges(app);

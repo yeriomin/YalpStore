@@ -25,6 +25,8 @@ public class App implements Comparable<App> {
     private long size;
     private int installs;
     private Rating rating = new Rating();
+    private String categoryIconUrl;
+    private ImageSource pageBackgroundImage;
     private String iconUrl;
     private String videoUrl;
     private String ratingURL;
@@ -153,6 +155,22 @@ public class App implements Comparable<App> {
 
     public Rating getRating() {
         return rating;
+    }
+
+    public String getCategoryIconUrl() {
+        return categoryIconUrl;
+    }
+
+    public void setCategoryIconUrl(String categoryIconUrl) {
+        this.categoryIconUrl = categoryIconUrl;
+    }
+
+    public ImageSource getPageBackgroundImage() {
+        return pageBackgroundImage;
+    }
+
+    public void setPageBackgroundImage(ImageSource pageBackgroundImage) {
+        this.pageBackgroundImage = pageBackgroundImage;
     }
 
     public void setIconUrl(String iconUrl) {

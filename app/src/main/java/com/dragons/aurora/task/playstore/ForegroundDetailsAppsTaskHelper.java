@@ -24,7 +24,7 @@ public abstract class ForegroundDetailsAppsTaskHelper extends ExceptionTaskHelpe
 
     protected App getResult(GooglePlayAPI api, String packageName) throws IOException {
         DetailsResponse response = api.details(packageName);
-        App app = AppBuilder.build(response.getDocV2());
+        App app = AppBuilder.build(response);
         if (response.hasUserReview()) {
             app.setUserReview(ReviewBuilder.build(response.getUserReview()));
         }

@@ -81,16 +81,18 @@
             android:background="@color/gray" />
 
         <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:id="@+id/categoryImage"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:alpha="0.7"
+            android:tint="?android:attr/colorForeground"
             android:src="@drawable/ic_categories" />
 
         <TextView
             android:id="@+id/category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="6dp"
             android:fontFamily="@font/google_sans_bold"
             android:singleLine="true" />
     </LinearLayout>
