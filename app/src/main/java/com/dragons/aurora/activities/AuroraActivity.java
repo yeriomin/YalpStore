@@ -8,16 +8,10 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.ViewPagerAdapter;
 import com.dragons.aurora.model.App;
-import com.dragons.aurora.view.ListItem;
 import com.dragons.custom.CustomAppBar;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,8 +20,7 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
 
     static public App app;
     static int static_pos = -9;
-    protected Map<String, ListItem> listItems = new HashMap<>();
-    protected AppListIterator iterator;
+
     @BindView(R.id.view_pager)
     ViewPager viewPager;
     @BindView(R.id.bottom_bar)
@@ -88,10 +81,6 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
         } catch (IllegalArgumentException e) {
             // Ignoring
         }
-    }
-
-    public Set<String> getListedPackageNames() {
-        return listItems.keySet();
     }
 
     @Override

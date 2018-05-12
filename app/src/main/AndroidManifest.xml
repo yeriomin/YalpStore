@@ -80,11 +80,6 @@
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".activities.ClusterActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:launchMode="singleInstance" />
-
-        <activity
             android:name=".activities.ManualDownloadActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:label="@string/action_manual"

@@ -12,12 +12,5 @@
         <item name="android:toolbarStyle">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
     </style>
-
-    <style name="LoginTheme" parent="AppTheme">
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:statusBarColor">@color/transparent</item>
-    </style>
-    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/google_sans</item>
-    </style>
+    
 </resources>

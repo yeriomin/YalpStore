@@ -2,14 +2,20 @@ package com.dragons.aurora.fragment.details;
 
 import android.app.SearchManager;
 import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.ClusterActivity;
 import com.dragons.aurora.activities.SearchActivity;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.task.ClusterTaskHelper;
+import com.dragons.aurora.view.ClusterAppsCard;
 import com.percolate.caffeine.ViewUtils;
 
 public class AppLists extends AbstractHelper {
@@ -20,28 +26,25 @@ public class AppLists extends AbstractHelper {
 
     @Override
     public void draw() {
-        if (null == app.getRelatedLinks())
-            return;
-
-        int i = 0;
+        LinearLayout relatedLinksLayout = fragment.getActivity().findViewById(R.id.cluster_links);
         for (String label : app.getRelatedLinks().keySet()) {
-            if (i == 0) addAppsByThisDeveloper();
-            if (i == 1) addAppsSimilar(app.getRelatedLinks().get(label), label);
-            if (i == 2) addAppsRecommended(app.getRelatedLinks().get(label), label);
-            i++;
+            relatedLinksLayout.setVisibility(View.VISIBLE);
+            relatedLinksLayout.addView(buildClusterAppsCard(app.getRelatedLinks().get(label), label));
         }
+        addAppsByThisDeveloper();
     }
 
-    private void addAppsSimilar(String URL, String Label) {
-        ViewUtils.findViewById(fragment.getActivity(), R.id.apps_recommended_cnt).setVisibility(View.VISIBLE);
-        ImageView imageView = fragment.getActivity().findViewById(R.id.apps_similar);
-        imageView.setOnClickListener(v -> ClusterActivity.start(fragment.getActivity(), URL, Label));
-    }
+    private ClusterAppsCard buildClusterAppsCard(String URL, String label) {
+        ClusterAppsCard clusterAppsCard = new ClusterAppsCard(fragment.getActivity(), label);
+        RecyclerView recyclerView = clusterAppsCard.findViewById(R.id.m_apps_recycler);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        clusterAppsCard.setLayoutParams(params);
+        clusterAppsCard.setGravity(Gravity.CENTER_VERTICAL);
 
-    private void addAppsRecommended(String URL, String Label) {
-        ViewUtils.findViewById(fragment.getActivity(), R.id.apps_similar_cnt).setVisibility(View.VISIBLE);
-        ImageView imageView = fragment.getActivity().findViewById(R.id.apps_recommended);
-        imageView.setOnClickListener(v -> ClusterActivity.start(fragment.getActivity(), URL, Label));
+        new ClusterTaskHelper(fragment.getContext(), recyclerView).getClusterApps(URL);
+        return clusterAppsCard;
     }
 
     private void addAppsByThisDeveloper() {

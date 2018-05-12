@@ -31,13 +31,13 @@
                 android:id="@+id/details_header"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:background="?android:attr/colorPrimaryDark" >
+                android:background="?android:attr/colorPrimaryDark">
 
                 <ImageView
                     android:id="@+id/app_background"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop" />
             </RelativeLayout>
 
             <LinearLayout
@@ -87,7 +87,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="2dp"
                                 android:layout_weight="5.3"
-                                android:indeterminate="false"
+                                android:indeterminate="true"
                                 android:progressBackgroundTint="@color/gray"
                                 android:visibility="gone" />
 
@@ -108,8 +108,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
                             android:layout_margin="5dp"
+                            android:orientation="horizontal"
                             android:weightSum="10">
 
                             <HorizontalScrollView
@@ -269,8 +269,17 @@
                     <!-- Permissions -->
                     <include layout="@layout/app_perm_inc" />
 
+                    <LinearLayout
+                        android:id="@+id/cluster_links"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:orientation="vertical"
+                        android:visibility="gone" />
+
                     <!-- Bottom Actions -->
                     <include layout="@layout/app_bottom_actions_inc" />
+
                 </LinearLayout>
 
             </LinearLayout>

@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.RatingBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AuroraActivity;
@@ -17,16 +19,16 @@ import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.fragment.details.ButtonUninstall;
 import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
-import com.dragons.aurora.view.InstalledAppBadge;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdapter.ViewHolder> {
+public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapter.ViewHolder> {
 
     private List<App> appsToAdd;
     private Context context;
 
-    public InstalledAppsAdapter(Context context, List<App> appsToAdd) {
+    public RecyclerAppsAdapter(Context context, List<App> appsToAdd) {
         this.context = context;
         this.appsToAdd = appsToAdd;
     }
@@ -43,22 +45,27 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
 
     @NonNull
     @Override
-    public InstalledAppsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerAppsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.installed_list_item, parent, false);
+        View view = inflater.inflate(R.layout.recycler_list_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull InstalledAppsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerAppsAdapter.ViewHolder holder, int position) {
         final App app = appsToAdd.get(position);
-        final InstalledAppBadge installedAppBadge = new InstalledAppBadge();
 
-        installedAppBadge.setApp(app);
-        installedAppBadge.setView(holder.view);
-        installedAppBadge.draw();
+        holder.appName.setText(app.getDisplayName());
+        setText(holder.view, holder.appRating, R.string.details_rating, app.getRating().getAverage());
+        holder.appRatingBar.setRating(app.getRating().getStars(1));
 
-        holder.list_container.setOnClickListener(v -> {
+        Picasso
+                .with(context)
+                .load(app.getIconInfo().getUrl())
+                .placeholder(context.getResources().getDrawable(R.drawable.ic_placeholder))
+                .into(holder.appIcon);
+
+        holder.appContainer.setOnClickListener(v -> {
             Context context = holder.view.getContext();
             context.startActivity(DetailsActivity.getDetailsIntent(context, app.getPackageName()));
         });
@@ -87,6 +94,15 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
         });
     }
 
+    protected void setText(TextView textView, String text) {
+        if (null != textView)
+            textView.setText(text);
+    }
+
+    protected void setText(View v, TextView textView, int stringId, Object... text) {
+        setText(textView, v.getResources().getString(stringId, text));
+    }
+
     @Override
     public int getItemCount() {
         return appsToAdd.size();
@@ -95,13 +111,21 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private View view;
-        private LinearLayout list_container;
+        private RelativeLayout appContainer;
+        private TextView appName;
+        private TextView appRating;
+        private RatingBar appRatingBar;
+        private ImageView appIcon;
         private ImageView menu_3dot;
 
         public ViewHolder(View view) {
             super(view);
             this.view = view;
-            list_container = view.findViewById(R.id.list_container);
+            appContainer = view.findViewById(R.id.app_container);
+            appName = view.findViewById(R.id.app_name);
+            appRating = view.findViewById(R.id.app_rating);
+            appRatingBar = view.findViewById(R.id.app_ratingbar);
+            appIcon = view.findViewById(R.id.app_icon);
             menu_3dot = view.findViewById(R.id.menu_3dot);
         }
     }

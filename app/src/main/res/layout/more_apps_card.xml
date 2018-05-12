@@ -21,6 +21,7 @@
         android:id="@+id/m_apps_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"
         android:layout_below="@+id/m_apps_more"
         android:paddingBottom="6dp" />
 

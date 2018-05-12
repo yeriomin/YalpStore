@@ -2,6 +2,7 @@ package com.dragons.aurora.fragment.details;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -95,9 +96,7 @@ public class GeneralDetails extends AbstractHelper {
 
     private void getPalette(Bitmap bitmap) {
         Palette.from(bitmap)
-                .generate(palette -> {
-                    paintEmAll(palette.getVibrantColor(Color.DKGRAY));
-                });
+                .generate(palette -> paintEmAll(palette.getDarkVibrantColor(Color.DKGRAY)));
     }
 
     private void paintEmAll(int color) {
@@ -152,7 +151,7 @@ public class GeneralDetails extends AbstractHelper {
         Picasso
                 .with(fragment.getActivity())
                 .load(app.getCategoryIconUrl())
-                .placeholder(R.drawable.ic_categories)
+                .placeholder(fragment.getResources().getDrawable(R.drawable.ic_categories))
                 .into(categoryImg);
 
         drawOfferDetails(app);

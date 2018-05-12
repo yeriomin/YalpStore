@@ -26,11 +26,13 @@
             android:orientation="vertical"
             android:paddingBottom="@dimen/appbar_bar_height">
 
-            <com.dragons.aurora.view.TopFreeApps
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/top_featured_games"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:nestedScrollingEnabled="false" />
+                android:nestedScrollingEnabled="false"
+                android:padding="5dp"
+                android:scrollbars="vertical" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -96,49 +98,21 @@
 
             </HorizontalScrollView>
 
-            <com.dragons.aurora.view.MoreAppsCard
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/top_featured_apps"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
                 android:nestedScrollingEnabled="false"
-                app:AppsCategory="MUSIC_AND_AUDIO"
-                app:CardTitle="@string/category_topMusicVideo"
-                app:JsonName="top_media" />
+                android:padding="5dp"
+                android:scrollbars="vertical" />
 
-            <com.dragons.aurora.view.MoreAppsCard
+            <LinearLayout
+                android:id="@+id/top_links"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:nestedScrollingEnabled="false"
-                app:AppsCategory="TOOLS"
-                app:CardTitle="@string/category_topUtility"
-                app:JsonName="top_tools" />
-
-            <com.dragons.aurora.view.TopFreeGames
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:nestedScrollingEnabled="false" />
-
-            <com.dragons.aurora.view.MoreAppsCard
-                android:id="@+id/fdroid"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:nestedScrollingEnabled="false"
-                app:AppsCategory="TOOLS"
-                app:CardTitle="@string/category_fdroidApps"
-                app:JsonName="fdroid_apps" />
-
-            <com.dragons.aurora.view.MoreAppsCard
-                android:id="@+id/community_apps"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="2dp"
-                android:nestedScrollingEnabled="false"
-                app:AppsCategory=""
-                app:CardTitle="@string/category_communityApps"
-                app:JsonName="community_apps" />
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:visibility="gone" />
 
         </LinearLayout>
 

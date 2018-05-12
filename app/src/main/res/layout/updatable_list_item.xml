@@ -258,7 +258,7 @@
                 android:layout_width="0dp"
                 android:layout_height="2dp"
                 android:layout_weight="5.3"
-                android:indeterminate="false"
+                android:indeterminate="true"
                 android:progressBackgroundTint="@color/gray"
                 android:visibility="gone" />
 

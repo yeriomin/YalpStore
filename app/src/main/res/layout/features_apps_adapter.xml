@@ -1,114 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="225dp"
-    android:layout_height="wrap_content"
+    android:layout_width="300dp"
+    android:layout_height="150dp"
     android:elevation="2dp"
     app:cardCornerRadius="5dp"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
-        android:id="@+id/background"
+    <RelativeLayout
+        android:id="@+id/app_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/featured_games_default_gradient"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/app_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/featured_games_default_gradient" />
+
+        <RelativeLayout
+            android:id="@+id/app_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_alignParentBottom="true"
+            android:padding="4dp">
 
             <ImageView
-                android:id="@+id/featured_image"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:id="@+id/app_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
+                android:visibility="visible"
                 app:srcCompat="@drawable/ic_placeholder" />
 
             <TextView
-                android:id="@+id/featured_name"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:id="@+id/app_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_weight="1"
+                android:layout_toEndOf="@+id/app_icon"
                 android:fontFamily="@font/google_sans_bold"
                 android:gravity="center|start"
-                android:maxLines="3"
+                android:maxLines="1"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/app_by"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/google_sans"
-                android:gravity="center_vertical"
-                android:lines="1"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/app_price"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/google_sans"
-                android:gravity="end"
-                android:lines="1"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/ratingText"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/google_sans"
-                android:textColor="@color/white" />
+                android:layout_alignStart="@+id/app_name"
+                android:layout_below="@+id/app_name"
+                android:orientation="horizontal">
 
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="5dp"
-                android:layout_toEndOf="@id/ratingText"
-                android:isIndicator="true"
-                android:max="1"
-                android:numStars="1"
-                android:scaleX=".8"
-                android:scaleY=".8"
-                android:theme="@style/RatingBar" />
+                <TextView
+                    android:id="@+id/app_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/google_sans"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <RatingBar
+                    android:id="@+id/app_ratingbar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:isIndicator="true"
+                    android:max="1"
+                    android:numStars="1"
+                    android:scaleX=".5"
+                    android:scaleY=".5"
+                    android:theme="@style/RatingBar" />
+
+            </LinearLayout>
 
             <ImageView
-                android:id="@+id/download_app"
+                android:id="@+id/app_menu3dot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="end"
+                android:layout_below="@+id/app_name"
                 android:background="?android:selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_download_alt"
+                android:scaleX=".9"
+                android:scaleY=".9"
+                android:src="@drawable/ic_3dots"
                 android:tint="@color/white" />
         </RelativeLayout>
-    </LinearLayout>
+
+    </RelativeLayout>
 </android.support.v7.widget.CardView>
