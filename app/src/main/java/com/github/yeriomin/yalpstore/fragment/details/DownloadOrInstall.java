@@ -25,10 +25,10 @@ import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DetailsDownloadReceiver;
 import com.github.yeriomin.yalpstore.DetailsInstallReceiver;
 import com.github.yeriomin.yalpstore.DownloadProgressBarUpdater;
-import com.github.yeriomin.yalpstore.DownloadProgressUpdater;
-import com.github.yeriomin.yalpstore.DownloadProgressUpdaterFactory;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
+
+import static com.github.yeriomin.yalpstore.task.playstore.PurchaseTask.UPDATE_INTERVAL;
 
 public class DownloadOrInstall extends Abstract {
 

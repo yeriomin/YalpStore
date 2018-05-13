@@ -40,12 +40,12 @@ import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.view.DialogWrapper;
 import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
+import com.github.yeriomin.yalpstore.view.PurchaseDialogBuilder;
 
 import java.io.IOException;
 
 public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 
-    static public final String URL_PURCHASE = "https://play.google.com/store/apps/details?id=";
     static public final long UPDATE_INTERVAL = 300;
 
     protected DownloadState.TriggeredBy triggeredBy = DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
@@ -115,7 +115,7 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
             && triggeredBy.equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
         ) {
             try {
-                getNotPurchasedDialog((Activity) context).show();
+                new PurchaseDialogBuilder((Activity) context, app.getPackageName()).show();
             } catch (WindowManager.BadTokenException e1) {
                 Log.e(getClass().getSimpleName(), "Could not create purchase error dialog: " + e1.getMessage());
             }
@@ -140,33 +140,5 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
         } else {
             super.processAuthException(e);
         }
-    }
-
-    private DialogWrapperAbstract getNotPurchasedDialog(Activity activity) {
-        DialogWrapperAbstract builder = new DialogWrapper(activity);
-        builder
-            .setMessage(R.string.error_not_purchased)
-            .setPositiveButton(
-                android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        i.setData(Uri.parse(URL_PURCHASE + app.getPackageName()));
-                        context.startActivity(i);
-                    }
-                }
-            )
-            .setNegativeButton(
-                android.R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                }
-            )
-        ;
-        return builder.create();
     }
 }
