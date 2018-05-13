@@ -150,7 +150,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         }
         try {
             code = connection.getResponseCode();
-            Log.i(getClass().getSimpleName(), "HTTP result code " + code);
+            Log.i(getClass().getSimpleName(), "HTTP result code " + code + " Cache " + connection.getHeaderField("X-Android-Response-Source"));
             content = readFully(connection.getInputStream(), isGzip);
         } catch (IOException e) {
             content = readFully(connection.getErrorStream(), isGzip);
