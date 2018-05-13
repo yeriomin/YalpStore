@@ -20,14 +20,12 @@
 package com.github.yeriomin.yalpstore.task;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.view.UriOnClickListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -92,15 +90,7 @@ public class ExodusTask extends HttpTask {
         super.onPostExecute(s);
         if (reportId > 0) {
             setText(R.string.details_exodus_found, trackers);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(LINK_WEB_REPORT + reportId + "/"));
-                    if (intent.resolveActivity(view.getContext().getPackageManager()) != null) {
-                        view.getContext().startActivity(intent);
-                    }
-                }
-            });
+            view.setOnClickListener(new UriOnClickListener(view.getContext(), LINK_WEB_REPORT + reportId + "/"));
         } else {
             setText(R.string.details_exodus_not_found);
         }
