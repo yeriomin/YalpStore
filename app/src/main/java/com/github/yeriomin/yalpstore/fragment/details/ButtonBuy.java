@@ -20,32 +20,41 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.view.View;
-import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.view.PurchaseDialogBuilder;
 import com.github.yeriomin.yalpstore.view.UriOnClickListener;
 
-public class Fdroid extends Abstract {
+class ButtonBuy extends Button {
 
-    private static final String FDROID_LINK = "https://f-droid.org/packages/";
+    public ButtonBuy(YalpStoreActivity activity, App app) {
+        super(activity, app);
+    }
+
+    @Override
+    protected View getButton() {
+        return activity.findViewById(R.id.buy);
+    }
+
+    @Override
+    protected boolean shouldBeVisible() {
+        return !YalpStoreApplication.purchasedPackageNames.contains(app.getPackageName()) && !app.isInstalled() && !app.isFree();
+    }
 
     @Override
     public void draw() {
-        TextView view = activity.findViewById(R.id.to_fdroid);
-        if (!YalpStoreApplication.fdroidPackageNames.contains(app.getPackageName())) {
-            if (null != view) {
-                view.setVisibility(View.GONE);
-            }
-            return;
+        super.draw();
+        android.widget.Button button = (android.widget.Button) getButton();
+        if (null != button) {
+            button.setText(app.getPrice());
         }
-        view.setVisibility(View.VISIBLE);
-        view.setOnClickListener(new UriOnClickListener(activity, FDROID_LINK + app.getPackageName()));
     }
 
-    public Fdroid(YalpStoreActivity activity, App app) {
-        super(activity, app);
+    @Override
+    protected void onButtonClick(View v) {
+        new UriOnClickListener(activity, PurchaseDialogBuilder.URL_PURCHASE + app.getPackageName()).onClick(v);
     }
 }

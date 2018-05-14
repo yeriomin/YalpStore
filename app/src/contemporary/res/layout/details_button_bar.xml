@@ -50,6 +50,20 @@
             android:background="@drawable/button_border"
             android:text="@string/details_download" />
 
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/buy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:visibility="gone"
+            android:maxLines="1"
+            android:background="@drawable/button_border" />
+
         <ImageButton
             style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/cancel"

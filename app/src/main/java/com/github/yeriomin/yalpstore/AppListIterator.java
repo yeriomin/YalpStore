@@ -33,7 +33,7 @@ import java.util.List;
 
 public class AppListIterator implements Iterator {
 
-    protected Filter filter = new Filter();
+    private Filter filter;
     protected com.github.yeriomin.playstoreapi.AppListIterator iterator;
 
     public AppListIterator(com.github.yeriomin.playstoreapi.AppListIterator iterator) {
@@ -73,7 +73,7 @@ public class AppListIterator implements Iterator {
     }
 
     protected void addApp(List<App> apps, App app) {
-        if (shouldSkip(app)) {
+        if (null != filter && shouldSkip(app)) {
             Log.i(getClass().getSimpleName(), "Filtering out " + app.getPackageName());
         } else {
             apps.add(app);

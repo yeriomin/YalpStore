@@ -32,10 +32,14 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
 import com.github.yeriomin.playstoreapi.TokenDispenserException;
 import com.github.yeriomin.yalpstore.model.LoginInfo;
+import com.github.yeriomin.yalpstore.task.playstore.PlayStorePayloadTask;
 import com.github.yeriomin.yalpstore.task.playstore.PlayStoreTask;
+import com.github.yeriomin.yalpstore.task.playstore.PurchasedAppsTask;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 public class PlayStoreApiAuthenticator {
 
@@ -49,12 +53,14 @@ public class PlayStoreApiAuthenticator {
     static private final int RETRIES = 5;
 
     private Context context;
+    private Set<PlayStorePayloadTask> onLoginTasks = new HashSet<>();
 
     private static GooglePlayAPI api;
     private static TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
 
     public PlayStoreApiAuthenticator(Context context) {
         this.context = context;
+        onLoginTasks.add(new PurchasedAppsTask());
     }
 
     public GooglePlayAPI getApi() throws IOException {
@@ -128,6 +134,7 @@ public class PlayStoreApiAuthenticator {
         loginInfo.setGsfId(api.getGsfId());
         loginInfo.setToken(api.getToken());
         save(loginInfo);
+        runOnLoginTasks();
         return api;
     }
 
@@ -212,5 +219,12 @@ public class PlayStoreApiAuthenticator {
             .putString(PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
             .commit()
         ;
+    }
+
+    private void runOnLoginTasks() {
+        for (PlayStorePayloadTask task: onLoginTasks) {
+            task.setContext(context);
+            task.executeOnExecutorIfPossible();
+        }
     }
 }

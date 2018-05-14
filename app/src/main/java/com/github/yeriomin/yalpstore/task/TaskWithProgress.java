@@ -22,6 +22,7 @@ package com.github.yeriomin.yalpstore.task;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.ContextUtil;
@@ -71,6 +72,14 @@ abstract public class TaskWithProgress<T> extends AsyncTask<String, Void, T> {
         }
         if (null != progressIndicator) {
             progressIndicator.setVisibility(View.GONE);
+        }
+    }
+
+    public AsyncTask<String, Void, T> executeOnExecutorIfPossible() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+            return this.execute();
+        } else {
+            return this.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
     }
 }

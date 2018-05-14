@@ -20,9 +20,7 @@
 package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.util.Log;
 import android.view.WindowManager;
 
@@ -38,8 +36,6 @@ import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
-import com.github.yeriomin.yalpstore.view.DialogWrapper;
-import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
 import com.github.yeriomin.yalpstore.view.PurchaseDialogBuilder;
 
 import java.io.IOException;

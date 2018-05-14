@@ -68,6 +68,14 @@
             android:maxLines="1"
             android:text="@string/details_download" />
 
+        <Button
+            android:id="@+id/buy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:visibility="gone"
+            android:maxLines="1" />
+
         <ImageButton
             android:id="@+id/cancel"
             android:layout_width="48dp"

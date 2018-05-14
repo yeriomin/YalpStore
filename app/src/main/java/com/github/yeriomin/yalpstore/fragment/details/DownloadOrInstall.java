@@ -43,7 +43,8 @@ public class DownloadOrInstall extends Abstract {
     public void draw() {
         new ButtonUninstall(activity, app).draw();
         new ButtonDownload(activity, app).draw();
-        new ButtonCancel((DetailsActivity) activity, app).draw();
+        new ButtonBuy(activity, app).draw();
+        new ButtonCancel(activity, app).draw();
         new ButtonInstall((DetailsActivity) activity, app).draw();
         new ButtonRun((DetailsActivity) activity, app).draw();
         new DownloadProgressBarUpdater(app.getPackageName(), (ProgressBar) activity.findViewById(R.id.download_progress)).execute(UPDATE_INTERVAL);

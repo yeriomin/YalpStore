@@ -89,7 +89,10 @@ public class PreferenceUtil {
     }
 
     static public Set<String> getStringSet(Context context, String key) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return getStringSet(PreferenceManager.getDefaultSharedPreferences(context), key);
+    }
+
+    static public Set<String> getStringSet(SharedPreferences preferences, String key) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             try {
                 return preferences.getStringSet(key, new HashSet<String>());

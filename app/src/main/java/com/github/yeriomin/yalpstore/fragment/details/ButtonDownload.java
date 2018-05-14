@@ -33,6 +33,7 @@ import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.YalpStorePermissionManager;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.selfupdate.UpdaterFactory;
@@ -62,6 +63,7 @@ public class ButtonDownload extends Button {
                 || apk.length() != app.getSize()
                 || !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
             )
+            && (app.isFree() || YalpStoreApplication.purchasedPackageNames.contains(app.getPackageName()))
             && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID))
             && (getInstalledVersionCode() != app.getVersionCode() || activity instanceof ManualDownloadActivity)
         ;

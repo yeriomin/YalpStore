@@ -21,16 +21,10 @@ package com.github.yeriomin.yalpstore.task;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.InstallerAbstract;
 import com.github.yeriomin.yalpstore.InstallerFactory;
 import com.github.yeriomin.yalpstore.model.App;
-
-import java.util.List;
-
-import eu.chainfire.libsuperuser.Shell;
 
 public class InstallTask extends AsyncTask<Void, Void, Void> {
 

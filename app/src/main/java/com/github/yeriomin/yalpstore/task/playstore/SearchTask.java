@@ -81,11 +81,15 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
             BackgroundCategoryTask task = new BackgroundCategoryTask();
             task.setContext(context);
             task.setManager(categoryManager);
-            task.execute();
+            task.executeOnExecutorIfPossible();
 
             WishlistUpdateTask wishlistUpdateTask = new WishlistUpdateTask();
             wishlistUpdateTask.setContext(context);
-            wishlistUpdateTask.execute();
+            wishlistUpdateTask.executeOnExecutorIfPossible();
+
+            PurchasedAppsTask purchasedAppsTask = new PurchasedAppsTask();
+            purchasedAppsTask.setContext(context);
+            purchasedAppsTask.executeOnExecutorIfPossible();
         }
     }
 
