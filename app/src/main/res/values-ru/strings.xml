@@ -15,8 +15,8 @@
     <string name="list_updating">Обновляем…</string>
     <string name="list_app_has_ads">есть реклама</string>
     <string name="list_app_no_ads">нет рекламы</string>
-    <string name="list_app_depends_on_gsf">зависит от GSF</string>
-    <string name="list_app_independent_from_gsf">не зависит от GSF</string>
+    <string name="list_app_depends_on_gsf">использует GSF</string>
+    <string name="list_app_independent_from_gsf">не использует GSF</string>
     <string name="list_app_system">Системное</string>
     <string name="list_app_blacklisted">В чёрном списке</string>
     <string name="list_app_whitelisted">В белом списке</string>
@@ -57,7 +57,7 @@
     <string name="action_filter_system_apps">"Системные приложения"</string>
     <string name="action_filter_apps_with_ads">"С рекламой"</string>
     <string name="action_filter_paid_apps">"Платные"</string>
-    <string name="action_filter_gsf_dependent_apps">"Зависимые от GSF"</string>
+    <string name="action_filter_gsf_dependent_apps">"Используют GSF"</string>
     <string name="action_filter_category">"Категория: %1$s"</string>
     <string name="action_filter_rating">"Рейтинг: %1$s"</string>
     <string name="action_filter_downloads">"Загрузки: %1$s"</string>
@@ -113,8 +113,8 @@
     <string name="details_video">Видео</string>
     <string name="details_share">Поделиться</string>
     <string name="details_signature_mismatch">Новая версия подписана ключом, отличным от старого. Перед установкой новой версии необходимо удалить старую. Сделайте это и попробуйте ещё раз. (При удалении приложения все его данные будут потеряны)</string>
-    <string name="details_depends_on">"Зависит от: %1$s"</string>
-    <string name="details_no_dependencies">нет зависимостей</string>
+    <string name="details_depends_on">"Использует: %1$s"</string>
+    <string name="details_no_dependencies">ничего</string>
     <string name="details_contains_ads">Содержит рекламу</string>
     <string name="details_no_ads">Без рекламы</string>
     <string name="details_not_available_on_play_store">Этого приложения нет в Play Store</string>

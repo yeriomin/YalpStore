@@ -14,8 +14,8 @@
     <string name="list_updating">Updating…</string>
     <string name="list_app_has_ads">has ads</string>
     <string name="list_app_no_ads">no ads</string>
-    <string name="list_app_depends_on_gsf">depends on GSF</string>
-    <string name="list_app_independent_from_gsf">not GSF dependent</string>
+    <string name="list_app_depends_on_gsf">uses GSF</string>
+    <string name="list_app_independent_from_gsf">no GSF</string>
     <string name="list_app_system">System app</string>
     <string name="list_app_blacklisted">Blacklisted</string>
     <string name="list_app_whitelisted">Whitelisted</string>
@@ -25,7 +25,7 @@
     <string name="action_filter_system_apps">System apps</string>
     <string name="action_filter_apps_with_ads">Apps with ads</string>
     <string name="action_filter_paid_apps">Paid apps</string>
-    <string name="action_filter_gsf_dependent_apps">GSF dependent apps</string>
+    <string name="action_filter_gsf_dependent_apps">Apps using GSF</string>
     <string name="action_filter_category">"Category: %1$s"</string>
     <string name="action_filter_rating">"Rating: %1$s"</string>
     <string name="action_filter_downloads">"Downloads: %1$s"</string>
@@ -116,7 +116,7 @@
     <string name="details_video">Video</string>
     <string name="details_share">Share</string>
     <string name="details_signature_mismatch">The new version is signed with a different key to the old one. To install the new version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase any internal data stored by the application)</string>
-    <string name="details_depends_on">"Depends on: %1$s"</string>
+    <string name="details_depends_on">"Uses: %1$s"</string>
     <string name="details_no_dependencies">nothing</string>
     <string name="details_contains_ads">Contains ads</string>
     <string name="details_no_ads">No ads</string>
