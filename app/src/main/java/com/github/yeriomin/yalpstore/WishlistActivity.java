@@ -35,6 +35,7 @@ import com.github.yeriomin.yalpstore.view.ListItem;
 import com.github.yeriomin.yalpstore.view.SearchResultAppBadge;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -80,7 +81,7 @@ public class WishlistActivity extends AppListActivity {
         return result;
     }
 
-    private static class WishlistAppsTask extends WishlistUpdateTask {
+    private static class WishlistAppsTask extends WishlistUpdateTask implements CloneableTask {
 
         public WishlistAppsTask(WishlistActivity activity) {
             setContext(activity);
@@ -102,7 +103,7 @@ public class WishlistActivity extends AppListActivity {
                 && apps.isEmpty()
                 && PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
             ) {
-                for (BulkDetailsEntry details: api.bulkDetails(Arrays.asList(new LocalWishlist(context).get())).getEntryList()) {
+                for (BulkDetailsEntry details: api.bulkDetails(new ArrayList<>(YalpStoreApplication.wishlist)).getEntryList()) {
                     if (!details.hasDoc()) {
                         continue;
                     }

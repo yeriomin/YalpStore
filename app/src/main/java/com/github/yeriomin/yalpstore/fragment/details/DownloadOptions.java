@@ -29,11 +29,11 @@ import android.view.ViewStub;
 
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.BuildConfig;
-import com.github.yeriomin.yalpstore.LocalWishlist;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.VersionIgnoreManager;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.CheckShellTask;
 import com.github.yeriomin.yalpstore.task.ConvertToNormalTask;
@@ -72,9 +72,8 @@ public class DownloadOptions extends Abstract {
 
     public void onCreateOptionsMenu(Menu menu) {
         if (!app.isInstalled()) {
-            LocalWishlist localWishlist = new LocalWishlist(activity);
-            show(menu, R.id.action_wishlist_add, !localWishlist.contains(app.getPackageName()));
-            show(menu, R.id.action_wishlist_remove, localWishlist.contains(app.getPackageName()));
+            show(menu, R.id.action_wishlist_add, !YalpStoreApplication.wishlist.contains(app.getPackageName()));
+            show(menu, R.id.action_wishlist_remove, YalpStoreApplication.wishlist.contains(app.getPackageName()));
         } else {
             BlackWhiteListManager manager = new BlackWhiteListManager(activity);
             boolean isContained = manager.contains(app.getPackageName());

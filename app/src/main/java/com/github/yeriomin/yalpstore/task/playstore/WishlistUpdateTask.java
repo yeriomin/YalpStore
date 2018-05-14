@@ -22,31 +22,21 @@ package com.github.yeriomin.yalpstore.task.playstore;
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.ListResponse;
-import com.github.yeriomin.yalpstore.LocalWishlist;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-public class WishlistUpdateTask extends PlayStorePayloadTask<List<String>> implements CloneableTask {
+public class WishlistUpdateTask extends PlayStorePayloadTask<List<String>> {
 
     protected List<App> apps = new ArrayList<>();
-
-    @Override
-    public CloneableTask clone() {
-        WishlistUpdateTask task = new WishlistUpdateTask();
-        task.setErrorView(errorView);
-        task.setProgressIndicator(progressIndicator);
-        task.setContext(context);
-        return task;
-    }
 
     @Override
     protected List<String> getResult(GooglePlayAPI api, String... arguments) throws IOException {
@@ -56,7 +46,7 @@ public class WishlistUpdateTask extends PlayStorePayloadTask<List<String>> imple
         installedAppsTask.setIncludeSystemApps(true);
         Set<String> installedPackageNames = installedAppsTask.getInstalledApps(false).keySet();
         if (PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
-            packageNames.addAll(Arrays.asList(new LocalWishlist(context).get()));
+            packageNames.addAll(YalpStoreApplication.wishlist);
         } else {
             ListResponse list = api.getWishlistApps();
             if (list.getDocCount() == 0 || list.getDoc(0).getChildCount() == 0) {
@@ -79,7 +69,7 @@ public class WishlistUpdateTask extends PlayStorePayloadTask<List<String>> imple
     protected void onPostExecute(List<String> packageNames) {
         super.onPostExecute(packageNames);
         if (success() && !PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
-            new LocalWishlist(context).update(packageNames);
+            YalpStoreApplication.wishlist.addAll(packageNames);
         }
     }
 }

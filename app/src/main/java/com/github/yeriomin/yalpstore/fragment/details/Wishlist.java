@@ -23,10 +23,10 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.github.yeriomin.yalpstore.LocalWishlist;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.WishlistActivity;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.WishlistToggleTask;
 import com.github.yeriomin.yalpstore.task.playstore.WishlistUpdateTask;
@@ -80,7 +80,7 @@ public class Wishlist extends Abstract {
             super.onPostExecute(result);
             YalpStoreActivity activity = (YalpStoreActivity) context;
             ImageView wishlistButton = activity.findViewById(R.id.wishlist);
-            wishlistButton.setImageResource(new LocalWishlist(context).contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
+            wishlistButton.setImageResource(YalpStoreApplication.wishlist.contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
             initWishlistButton(wishlistButton, activity, packageName);
         }
     }
@@ -98,7 +98,7 @@ public class Wishlist extends Abstract {
         protected void onPostExecute(List<String> result) {
             super.onPostExecute(result);
             ((ImageView) ((YalpStoreActivity) context).findViewById(R.id.wishlist))
-                .setImageResource(new LocalWishlist(context).contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
+                .setImageResource(YalpStoreApplication.wishlist.contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
         }
     }
 }

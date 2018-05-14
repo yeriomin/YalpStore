@@ -20,9 +20,9 @@
 package com.github.yeriomin.yalpstore.task.playstore;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.yalpstore.LocalWishlist;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 
 import java.io.IOException;
 
@@ -46,19 +46,19 @@ public class WishlistToggleTask extends PlayStorePayloadTask<Boolean> implements
 
     @Override
     protected Boolean getResult(GooglePlayAPI api, String... arguments) throws IOException {
-        LocalWishlist localWishlist = new LocalWishlist(context);
         boolean builtInAccount = PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL);
-        if (localWishlist.contains(packageName)) {
+        if (YalpStoreApplication.wishlist.contains(packageName)) {
             if (!builtInAccount) {
                 api.removeWishlistApp(packageName);
             }
-            localWishlist.remove(packageName);
+            YalpStoreApplication.wishlist.remove(packageName);
         } else {
             if (!builtInAccount) {
                 api.addWishlistApp(packageName);
             }
-            localWishlist.add(packageName);
+            YalpStoreApplication.wishlist.add(packageName);
         }
+        YalpStoreApplication.wishlist.save();
         return true;
     }
 }
