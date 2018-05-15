@@ -20,6 +20,7 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 
 public class Background extends Abstract {
