@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.NetworkState;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.LoadImageTask;
 

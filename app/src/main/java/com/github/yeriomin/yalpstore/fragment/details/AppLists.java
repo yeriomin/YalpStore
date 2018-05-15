@@ -34,6 +34,7 @@ import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SearchActivity;
 import com.github.yeriomin.yalpstore.SearchActivityAbstract;
 import com.github.yeriomin.yalpstore.Util;
+import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 
 public class AppLists extends Abstract {

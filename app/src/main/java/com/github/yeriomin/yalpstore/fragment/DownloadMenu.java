@@ -17,7 +17,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore.fragment.details;
+package com.github.yeriomin.yalpstore.fragment;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -34,6 +34,7 @@ import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.VersionIgnoreManager;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
+import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.CheckShellTask;
 import com.github.yeriomin.yalpstore.task.ConvertToNormalTask;
@@ -43,9 +44,9 @@ import com.github.yeriomin.yalpstore.task.SystemRemountTask;
 import com.github.yeriomin.yalpstore.task.playstore.WishlistToggleTask;
 import com.github.yeriomin.yalpstore.view.FlagDialogBuilder;
 
-public class DownloadOptions extends Abstract {
+public class DownloadMenu extends Abstract {
 
-    public DownloadOptions(YalpStoreActivity activity, App app) {
+    public DownloadMenu(YalpStoreActivity activity, App app) {
         super(activity, app);
     }
 

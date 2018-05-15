@@ -32,6 +32,7 @@ import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.ReviewStorageIterator;
+import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.ImageSource;
 import com.github.yeriomin.yalpstore.task.LoadImageTask;

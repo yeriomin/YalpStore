@@ -28,6 +28,7 @@ import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.FullscreenImageActivity;
 import com.github.yeriomin.yalpstore.ImageAdapter;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 
 public class Screenshot extends Abstract {

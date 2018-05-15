@@ -32,27 +32,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.github.yeriomin.yalpstore.fragment.details.AppLists;
-import com.github.yeriomin.yalpstore.fragment.details.BackToPlayStore;
-import com.github.yeriomin.yalpstore.fragment.details.Background;
-import com.github.yeriomin.yalpstore.fragment.details.Beta;
-import com.github.yeriomin.yalpstore.fragment.details.ButtonBuy;
-import com.github.yeriomin.yalpstore.fragment.details.ButtonCancel;
-import com.github.yeriomin.yalpstore.fragment.details.ButtonDownload;
-import com.github.yeriomin.yalpstore.fragment.details.ButtonInstall;
-import com.github.yeriomin.yalpstore.fragment.details.ButtonRun;
-import com.github.yeriomin.yalpstore.fragment.details.ButtonUninstall;
-import com.github.yeriomin.yalpstore.fragment.details.DownloadOptions;
-import com.github.yeriomin.yalpstore.fragment.details.Exodus;
-import com.github.yeriomin.yalpstore.fragment.details.Fdroid;
-import com.github.yeriomin.yalpstore.fragment.details.GeneralDetails;
-import com.github.yeriomin.yalpstore.fragment.details.Permissions;
-import com.github.yeriomin.yalpstore.fragment.details.Review;
-import com.github.yeriomin.yalpstore.fragment.details.Screenshot;
-import com.github.yeriomin.yalpstore.fragment.details.Share;
-import com.github.yeriomin.yalpstore.fragment.details.SystemAppPage;
-import com.github.yeriomin.yalpstore.fragment.details.Video;
-import com.github.yeriomin.yalpstore.fragment.details.Wishlist;
+import com.github.yeriomin.yalpstore.fragment.ButtonBuy;
+import com.github.yeriomin.yalpstore.fragment.ButtonCancel;
+import com.github.yeriomin.yalpstore.fragment.ButtonDownload;
+import com.github.yeriomin.yalpstore.fragment.ButtonInstall;
+import com.github.yeriomin.yalpstore.fragment.ButtonRun;
+import com.github.yeriomin.yalpstore.fragment.ButtonUninstall;
+import com.github.yeriomin.yalpstore.fragment.DownloadMenu;
+import com.github.yeriomin.yalpstore.fragment.details.AllFragments;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.CloneableTask;
 import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
@@ -153,7 +140,7 @@ public class DetailsActivity extends YalpStoreActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         boolean result = super.onCreateOptionsMenu(menu);
         if (null != app) {
-            new DownloadOptions(this, app).onCreateOptionsMenu(menu);
+            new DownloadMenu(this, app).onCreateOptionsMenu(menu);
         }
         return result;
     }
@@ -161,17 +148,17 @@ public class DetailsActivity extends YalpStoreActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        new DownloadOptions(this, app).inflate(menu);
+        new DownloadMenu(this, app).inflate(menu);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        return new DownloadOptions(this, app).onContextItemSelected(item);
+        return new DownloadMenu(this, app).onContextItemSelected(item);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return new DownloadOptions(this, app).onContextItemSelected(item) || super.onOptionsItemSelected(item);
+        return new DownloadMenu(this, app).onContextItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
     private String getIntentPackageName(Intent intent) {
@@ -189,23 +176,10 @@ public class DetailsActivity extends YalpStoreActivity {
 
     public void redrawDetails(App app) {
         setTitle(app.getDisplayName());
-        new Background(this, app).draw();
-        new GeneralDetails(this, app).draw();
-        new Wishlist(this, app).draw();
-        new Permissions(this, app).draw();
-        new Screenshot(this, app).draw();
-        new Review(this, app).draw();
-        new AppLists(this, app).draw();
-        new BackToPlayStore(this, app).draw();
-        new Share(this, app).draw();
-        new SystemAppPage(this, app).draw();
-        new Video(this, app).draw();
-        new Beta(this, app).draw();
-        new Exodus(this, app).draw();
-        new Fdroid(this, app).draw();
+        new AllFragments(this, app).draw();
         unregisterReceivers();
         redrawButtons();
-        new DownloadOptions(this, app).draw();
+        new DownloadMenu(this, app).draw();
     }
 
     static class GetAndRedrawDetailsTask extends DetailsTask implements CloneableTask {

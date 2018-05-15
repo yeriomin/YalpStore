@@ -36,6 +36,7 @@ import com.github.yeriomin.yalpstore.CategoryManager;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.Util;
+import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.ImageSource;
 import com.github.yeriomin.yalpstore.task.LoadImageTask;
@@ -94,7 +95,7 @@ public class GeneralDetails extends Abstract {
         if (TextUtils.isEmpty(changes)) {
             activity.findViewById(R.id.changes_in_details).setVisibility(View.GONE);
             activity.findViewById(R.id.changes_title).setVisibility(View.GONE);
-            activity.findViewById(R.id.changes_upper).setVisibility(View.GONE);
+            activity.findViewById(R.id.changes_panel).setVisibility(View.GONE);
             return;
         }
         if (app.getInstalledVersionCode() == 0) {

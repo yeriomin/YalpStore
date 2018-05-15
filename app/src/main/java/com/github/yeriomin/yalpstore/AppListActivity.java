@@ -27,9 +27,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.fragment.details.ButtonDownload;
-import com.github.yeriomin.yalpstore.fragment.details.ButtonUninstall;
-import com.github.yeriomin.yalpstore.fragment.details.DownloadOptions;
+import com.github.yeriomin.yalpstore.fragment.ButtonDownload;
+import com.github.yeriomin.yalpstore.fragment.ButtonUninstall;
+import com.github.yeriomin.yalpstore.fragment.DownloadMenu;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.view.AppBadge;
 import com.github.yeriomin.yalpstore.view.ListItem;
@@ -78,7 +78,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
         DetailsActivity.app = getAppByListPosition(info.position);
-        new DownloadOptions(this, DetailsActivity.app).inflate(menu);
+        new DownloadMenu(this, DetailsActivity.app).inflate(menu);
         menu.findItem(R.id.action_download).setVisible(new ButtonDownload(this, DetailsActivity.app).shouldBeVisible());
         menu.findItem(R.id.action_uninstall).setVisible(DetailsActivity.app.isInstalled());
     }
@@ -90,7 +90,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
         switch (item.getItemId()) {
             case R.id.action_ignore:
             case R.id.action_whitelist:
-                new DownloadOptions(this, DetailsActivity.app).onContextItemSelected(item);
+                new DownloadMenu(this, DetailsActivity.app).onContextItemSelected(item);
                 ((ListItem) getListView().getItemAtPosition(info.position)).draw();
                 break;
             case R.id.action_download:
@@ -100,7 +100,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
                 new ButtonUninstall(this, DetailsActivity.app).uninstall();
                 break;
             default:
-                return new DownloadOptions(this, DetailsActivity.app).onContextItemSelected(item);
+                return new DownloadMenu(this, DetailsActivity.app).onContextItemSelected(item);
         }
         return true;
     }

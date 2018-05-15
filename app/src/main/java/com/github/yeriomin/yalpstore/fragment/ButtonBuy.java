@@ -17,43 +17,44 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore.fragment.details;
+package com.github.yeriomin.yalpstore.fragment;
 
-import android.content.Intent;
 import android.view.View;
 
-import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
+import com.github.yeriomin.yalpstore.view.PurchaseDialogBuilder;
+import com.github.yeriomin.yalpstore.view.UriOnClickListener;
 
-public class ButtonCancel extends Button {
+public class ButtonBuy extends Button {
 
-    public ButtonCancel(YalpStoreActivity activity, App app) {
+    public ButtonBuy(YalpStoreActivity activity, App app) {
         super(activity, app);
     }
 
     @Override
     protected View getButton() {
-        return activity.findViewById(R.id.cancel);
+        return activity.findViewById(R.id.buy);
     }
 
     @Override
-    public boolean shouldBeVisible() {
-        return !DownloadState.get(app.getPackageName()).isEverythingFinished();
+    protected boolean shouldBeVisible() {
+        return !YalpStoreApplication.purchasedPackageNames.contains(app.getPackageName()) && !app.isInstalled() && !app.isFree();
     }
 
     @Override
-    protected void onButtonClick(View button) {
-        Intent intentCancel = new Intent(activity.getApplicationContext(), CancelDownloadService.class);
-        intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
-        activity.startService(intentCancel);
-        button.setVisibility(View.GONE);
-        View buttonDownload = activity.findViewById(R.id.download);
-        if (buttonDownload instanceof android.widget.Button) {
-            ((android.widget.Button) buttonDownload).setText(R.string.details_download);
+    public void draw() {
+        super.draw();
+        android.widget.Button button = (android.widget.Button) getButton();
+        if (null != button) {
+            button.setText(app.getPrice());
         }
-        buttonDownload.setEnabled(true);
+    }
+
+    @Override
+    protected void onButtonClick(View v) {
+        new UriOnClickListener(activity, PurchaseDialogBuilder.URL_PURCHASE + app.getPackageName()).onClick(v);
     }
 }

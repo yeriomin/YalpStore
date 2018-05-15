@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SharedPreferencesTranslator;
+import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.DependencyTranslationTask;
 
