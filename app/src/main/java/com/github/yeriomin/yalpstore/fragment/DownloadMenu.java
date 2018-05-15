@@ -85,7 +85,7 @@ public class DownloadMenu extends Abstract {
             }
             setChecked(menu, R.id.action_ignore, isContained);
             setChecked(menu, R.id.action_whitelist, isContained);
-            if (app.getVersionCode() > app.getInstalledVersionCode()) {
+            if (app.getInstalledVersionCode() > 0 && app.getVersionCode() > app.getInstalledVersionCode()) {
                 show(menu, R.id.action_ignore_this, true);
                 setChecked(menu, R.id.action_ignore_this, !new VersionIgnoreManager(activity).isUpdatable(app.getPackageName(), app.getVersionCode()));
             }
