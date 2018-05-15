@@ -28,7 +28,7 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.view.PurchaseDialogBuilder;
 import com.github.yeriomin.yalpstore.view.UriOnClickListener;
 
-class ButtonBuy extends Button {
+public class ButtonBuy extends Button {
 
     public ButtonBuy(YalpStoreActivity activity, App app) {
         super(activity, app);

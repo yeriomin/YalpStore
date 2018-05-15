@@ -44,12 +44,16 @@ import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.task.playstore.UserProfileTask;
 
+import java.lang.ref.WeakReference;
+
 import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL;
 import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_EMAIL;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     private static final int WRAPPER_LAYOUT_ID = R.layout.base_activity_layout;
+
+    private static AsyncTask previousSearchSuggestTask;
 
     protected int wrapperLayoutResId = WRAPPER_LAYOUT_ID;
 
@@ -102,7 +106,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                new SearchSuggestionTask(BaseActivity.this).execute(s);
+                if (null != previousSearchSuggestTask) {
+                    previousSearchSuggestTask.cancel(true);
+                }
+                previousSearchSuggestTask = new SearchSuggestionTask(BaseActivity.this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, s);
                 return false;
             }
         });
@@ -206,20 +213,27 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     static private class SearchSuggestionTask extends AsyncTask<String, Void, Cursor> {
 
-        private BaseActivity activity;
+        private WeakReference<BaseActivity> activityRef;
 
         public SearchSuggestionTask(BaseActivity activity) {
-            this.activity = activity;
+            this.activityRef = new WeakReference<>(activity);
         }
 
         @Override
         protected Cursor doInBackground(String... strings) {
-            return activity.getContentResolver().query(new Uri.Builder().scheme("content").authority(BuildConfig.APPLICATION_ID + ".YalpStoreSuggestionProvider").appendEncodedPath(strings[0]).build(), null, null, null, null);
+            if (null == activityRef.get() || isCancelled()) {
+                return null;
+            }
+            return activityRef.get().getContentResolver().query(new Uri.Builder().scheme("content").authority(BuildConfig.APPLICATION_ID + ".YalpStoreSuggestionProvider").appendEncodedPath(strings[0]).build(), null, null, null, null);
         }
 
         @Override
         protected void onPostExecute(Cursor cursor) {
-            activity.showSuggestions(cursor);
+            if (null == activityRef.get() || isCancelled()) {
+                return;
+            }
+            activityRef.get().showSuggestions(cursor);
+            previousSearchSuggestTask = null;
         }
     }
 }

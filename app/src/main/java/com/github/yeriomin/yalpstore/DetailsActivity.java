@@ -30,13 +30,19 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.github.yeriomin.yalpstore.fragment.details.AppLists;
 import com.github.yeriomin.yalpstore.fragment.details.BackToPlayStore;
 import com.github.yeriomin.yalpstore.fragment.details.Background;
 import com.github.yeriomin.yalpstore.fragment.details.Beta;
+import com.github.yeriomin.yalpstore.fragment.details.ButtonBuy;
+import com.github.yeriomin.yalpstore.fragment.details.ButtonCancel;
+import com.github.yeriomin.yalpstore.fragment.details.ButtonDownload;
+import com.github.yeriomin.yalpstore.fragment.details.ButtonInstall;
+import com.github.yeriomin.yalpstore.fragment.details.ButtonRun;
+import com.github.yeriomin.yalpstore.fragment.details.ButtonUninstall;
 import com.github.yeriomin.yalpstore.fragment.details.DownloadOptions;
-import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 import com.github.yeriomin.yalpstore.fragment.details.Exodus;
 import com.github.yeriomin.yalpstore.fragment.details.Fdroid;
 import com.github.yeriomin.yalpstore.fragment.details.GeneralDetails;
@@ -51,13 +57,16 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.CloneableTask;
 import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
 
+import static com.github.yeriomin.yalpstore.task.playstore.PurchaseTask.UPDATE_INTERVAL;
+
 public class DetailsActivity extends YalpStoreActivity {
 
     static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
     static public App app;
 
-    protected DownloadOrInstall downloadOrInstallFragment;
+    protected DetailsDownloadReceiver downloadReceiver;
+    protected DetailsInstallReceiver installReceiver;
 
     static public Intent getDetailsIntent(Context context, String packageName) {
         Intent intent = new Intent(context, DetailsActivity.class);
@@ -92,10 +101,8 @@ public class DetailsActivity extends YalpStoreActivity {
 
     @Override
     protected void onPause() {
-        if (null != downloadOrInstallFragment) {
-            downloadOrInstallFragment.unregisterReceivers();
-        }
         super.onPause();
+        unregisterReceivers();
     }
 
     @Override
@@ -104,12 +111,27 @@ public class DetailsActivity extends YalpStoreActivity {
         super.onResume();
     }
 
-    private void redrawButtons() {
-        if (null != downloadOrInstallFragment) {
-            downloadOrInstallFragment.unregisterReceivers();
-            downloadOrInstallFragment.registerReceivers();
-            downloadOrInstallFragment.draw();
+    protected void unregisterReceivers() {
+        unregisterReceiver(downloadReceiver);
+        downloadReceiver = null;
+        unregisterReceiver(installReceiver);
+        installReceiver = null;
+    }
+
+    protected void redrawButtons() {
+        unregisterReceivers();
+        if (null == app) {
+            return;
         }
+        downloadReceiver = new DetailsDownloadReceiver(this, app.getPackageName());
+        installReceiver = new DetailsInstallReceiver(this, app.getPackageName());
+        new ButtonUninstall(this, app).draw();
+        new ButtonDownload(this, app).draw();
+        new ButtonBuy(this, app).draw();
+        new ButtonCancel(this, app).draw();
+        new ButtonInstall(this, app).draw();
+        new ButtonRun(this, app).draw();
+        new DownloadProgressBarUpdater(app.getPackageName(), (ProgressBar) findViewById(R.id.download_progress)).execute(UPDATE_INTERVAL);
     }
 
     @Override
@@ -121,14 +143,9 @@ public class DetailsActivity extends YalpStoreActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
-            if (null == downloadOrInstallFragment && null != app) {
-                downloadOrInstallFragment = new DownloadOrInstall(this, app);
-                redrawButtons();
-            }
-            if (null != downloadOrInstallFragment) {
-                downloadOrInstallFragment.download();
-            }
+        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults) && null != app) {
+            redrawButtons();
+            new ButtonDownload(this, app).download();
         }
     }
 
@@ -186,26 +203,20 @@ public class DetailsActivity extends YalpStoreActivity {
         new Beta(this, app).draw();
         new Exodus(this, app).draw();
         new Fdroid(this, app).draw();
-        if (null != downloadOrInstallFragment) {
-            downloadOrInstallFragment.unregisterReceivers();
-        }
-        downloadOrInstallFragment = new DownloadOrInstall(this, app);
+        unregisterReceivers();
         redrawButtons();
         new DownloadOptions(this, app).draw();
     }
 
     static class GetAndRedrawDetailsTask extends DetailsTask implements CloneableTask {
 
-        private DetailsActivity activity;
-
         public GetAndRedrawDetailsTask(DetailsActivity activity) {
-            this.activity = activity;
             setContext(activity);
         }
 
         @Override
         public CloneableTask clone() {
-            GetAndRedrawDetailsTask task = new GetAndRedrawDetailsTask(activity);
+            GetAndRedrawDetailsTask task = new GetAndRedrawDetailsTask((DetailsActivity) context);
             task.setErrorView(errorView);
             task.setPackageName(packageName);
             task.setProgressIndicator(progressIndicator);
@@ -218,9 +229,9 @@ public class DetailsActivity extends YalpStoreActivity {
             if (app != null) {
                 DetailsActivity.app = app;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                    activity.invalidateOptionsMenu();
+                    ((DetailsActivity) context).invalidateOptionsMenu();
                 }
-                activity.redrawDetails(app);
+                ((DetailsActivity) context).redrawDetails(app);
             }
         }
     }

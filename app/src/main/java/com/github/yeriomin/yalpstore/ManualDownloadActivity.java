@@ -28,7 +28,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.PurchaseCheckTask;
 
@@ -70,26 +69,17 @@ public class ManualDownloadActivity extends DetailsActivity {
         if (app.getVersionCode() > 0) {
             ((EditText) findViewById(R.id.version_code)).setHint(String.valueOf(latestVersionCode));
         }
-        downloadOrInstallFragment = new DownloadOrInstall(this, app);
-        ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(
-            app,
-            (Button) findViewById(R.id.download),
-            (Button) findViewById(R.id.install),
-            downloadOrInstallFragment
-        );
+        ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(app, this);
         String versionCode = Integer.toString(app.getVersionCode());
         textWatcher.onTextChanged(versionCode, 0, 0, versionCode.length());
         ((EditText) findViewById(R.id.version_code)).addTextChangedListener(textWatcher);
-        downloadOrInstallFragment.registerReceivers();
-        downloadOrInstallFragment.draw();
+        redrawButtons();
     }
 
     @Override
     public void redrawDetails(App app) {
-        if (null == downloadOrInstallFragment) {
-            return;
-        }
-        downloadOrInstallFragment.draw();
+        unregisterReceivers();
+        redrawButtons();
     }
 
     static private class ManualDownloadTextWatcher implements TextWatcher {
@@ -97,16 +87,12 @@ public class ManualDownloadActivity extends DetailsActivity {
         static private final int TIMEOUT = 1000;
 
         private final App app;
-        private final Button downloadButton;
-        private final Button installButton;
-        private DownloadOrInstall downloadOrInstallFragment;
+        private final ManualDownloadActivity activity;
         private Timer timer;
 
-        public ManualDownloadTextWatcher(App app, Button downloadButton, Button installButton, DownloadOrInstall downloadOrInstallFragment) {
+        public ManualDownloadTextWatcher(App app, ManualDownloadActivity activity) {
             this.app = app;
-            this.downloadButton = downloadButton;
-            this.installButton = installButton;
-            this.downloadOrInstallFragment = downloadOrInstallFragment;
+            this.activity = activity;
         }
 
         @Override
@@ -118,10 +104,16 @@ public class ManualDownloadActivity extends DetailsActivity {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             try {
                 app.setVersionCode(Integer.parseInt(s.toString()));
-                installButton.setVisibility(View.GONE);
-                downloadButton.setText(R.string.details_download_checking);
-                downloadButton.setEnabled(false);
-                downloadButton.setVisibility(View.VISIBLE);
+                Button installButton = activity.findViewById(R.id.install);
+                if (null != installButton) {
+                    installButton.setVisibility(View.GONE);
+                }
+                Button downloadButton = activity.findViewById(R.id.download);
+                if (null != downloadButton) {
+                    downloadButton.setText(R.string.details_download_checking);
+                    downloadButton.setEnabled(false);
+                    downloadButton.setVisibility(View.VISIBLE);
+                }
                 restartTimer();
             } catch (NumberFormatException e) {
                 Log.w(getClass().getSimpleName(), s.toString() + " is not a number");
@@ -148,11 +140,9 @@ public class ManualDownloadActivity extends DetailsActivity {
 
         private PurchaseCheckTask getTask(Timer timer) {
             PurchaseCheckTask task = new PurchaseCheckTask();
-            task.setContext(downloadButton.getContext());
+            task.setContext(activity);
             task.setTimer(timer);
             task.setApp(app);
-            task.setDownloadOrInstallFragment(downloadOrInstallFragment);
-            task.setDownloadButton(downloadButton);
             return task;
         }
     }

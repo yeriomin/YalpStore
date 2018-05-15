@@ -283,7 +283,8 @@
         android:text="@string/details_share"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="48dp" />
+        android:layout_height="48dp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/system_app_info"

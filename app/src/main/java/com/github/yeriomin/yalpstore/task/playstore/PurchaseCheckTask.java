@@ -19,37 +19,34 @@
 
 package com.github.yeriomin.yalpstore.task.playstore;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.github.yeriomin.yalpstore.ManualDownloadActivity;
 import com.github.yeriomin.yalpstore.R;
-import com.github.yeriomin.yalpstore.fragment.details.DownloadOrInstall;
 
 import java.util.Timer;
 
 public class PurchaseCheckTask extends DeliveryDataTask {
 
-    private DownloadOrInstall downloadOrInstallFragment;
-    private Button downloadButton;
     private Timer timer;
-
-    public void setDownloadOrInstallFragment(DownloadOrInstall downloadOrInstallFragment) {
-        this.downloadOrInstallFragment = downloadOrInstallFragment;
-    }
 
     public void setTimer(Timer timer) {
         this.timer = timer;
     }
 
-    public void setDownloadButton(Button downloadButton) {
-        this.downloadButton = downloadButton;
-    }
-
     @Override
     protected void onPostExecute(AndroidAppDeliveryData deliveryData) {
         boolean success = success() && null != deliveryData;
-        downloadOrInstallFragment.draw();
+        if (!(context instanceof ManualDownloadActivity)) {
+            Log.w(getClass().getSimpleName(), "ManualDownloadActivity instance expected");
+            return;
+        }
+        ManualDownloadActivity activity = (ManualDownloadActivity) context;
+        activity.redrawDetails(app);
+        Button downloadButton = activity.findViewById(R.id.download);
         if (null == downloadButton) {
             return;
         }
