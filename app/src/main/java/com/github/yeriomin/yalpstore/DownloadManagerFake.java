@@ -61,7 +61,7 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
             HttpCookie cookie = deliveryData.getDownloadAuthCookie(0);
             cookieString = cookie.getName() + "=" + cookie.getValue();
         }
-        task.execute(url, cookieString);
+        task.executeOnExecutorIfPossible(url, cookieString);
         return downloadId;
     }
 

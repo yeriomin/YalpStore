@@ -23,6 +23,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.util.Log;
@@ -236,5 +237,13 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
             }
         }
         return md.digest();
+    }
+
+    public AsyncTask<String, Long, Boolean> executeOnExecutorIfPossible(String... args) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+            return this.execute(args);
+        } else {
+            return this.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, args);
+        }
     }
 }
