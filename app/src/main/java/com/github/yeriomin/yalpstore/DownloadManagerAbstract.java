@@ -21,6 +21,8 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+
 public abstract class DownloadManagerAbstract implements DownloadManagerInterface {
 
     protected Context context;
@@ -69,6 +71,19 @@ public abstract class DownloadManagerAbstract implements DownloadManagerInterfac
         DownloadState state = DownloadState.get(downloadId);
         if (null != state) {
             state.setCancelled(downloadId);
+        }
+    }
+
+    protected GooglePlayAPI.PATCH_FORMAT getPatchFormat(int patchFormat) {
+        switch (patchFormat) {
+            case 1:
+                return GooglePlayAPI.PATCH_FORMAT.GDIFF;
+            case 2:
+                return GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF;
+            case 3:
+                return GooglePlayAPI.PATCH_FORMAT.GZIPPED_BSDIFF;
+            default:
+                throw new RuntimeException("Unsupported patch format: " + patchFormat);
         }
     }
 }

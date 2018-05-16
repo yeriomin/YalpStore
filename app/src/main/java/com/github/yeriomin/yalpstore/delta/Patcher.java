@@ -72,7 +72,10 @@ abstract public class Patcher {
         Log.i(getClass().getSimpleName(), "Patching with " + patch);
         try {
             boolean result = patchSpecific();
-            Log.i(getClass().getSimpleName(), "Patching successfully completed");
+            if (result) {
+                Log.i(getClass().getSimpleName(), "Patching successfully completed");
+                downloadState.setApkChecksum(Util.getFileChecksum(destinationApk));
+            }
             return result;
         } catch (IOException e) {
             Log.e(getClass().getSimpleName(), "Patching failed: " + e.getClass().getName() + " " + e.getMessage());

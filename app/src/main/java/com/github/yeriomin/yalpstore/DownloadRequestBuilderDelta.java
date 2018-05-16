@@ -20,10 +20,8 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.File;
@@ -36,24 +34,11 @@ public class DownloadRequestBuilderDelta extends DownloadRequestBuilderApk {
 
     @Override
     protected String getDownloadUrl() {
-        DownloadState.get(app.getPackageName()).setPatchFormat(getPatchFormat(deliveryData.getPatchData().getPatchFormat()));
         return deliveryData.getPatchData().getDownloadUrl();
     }
 
     @Override
     protected File getDestinationFile() {
         return Paths.getDeltaPath(context, app.getPackageName(), app.getVersionCode());
-    }
-
-    private GooglePlayAPI.PATCH_FORMAT getPatchFormat(int patchFromat) {
-        switch (patchFromat) {
-            case 1:
-                return GooglePlayAPI.PATCH_FORMAT.GDIFF;
-            case 2:
-                return GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF;
-            case 3:
-                return GooglePlayAPI.PATCH_FORMAT.GZIPPED_BSDIFF;
-        }
-        return null;
     }
 }

@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore.delta;
 
 import android.content.Context;
 
-import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;
@@ -34,9 +33,7 @@ public class GDiff extends Patcher {
 
     @Override
     protected boolean patchSpecific() throws IOException {
-        com.nothome.delta.GDiffPatcher patcher = new com.nothome.delta.GDiffPatcher();
-        patcher.patch(originalApk, patch, destinationApk);
-        downloadState.setApkChecksum(Util.getFileChecksum(destinationApk));
+        new com.nothome.delta.GDiffPatcher().patch(originalApk, patch, destinationApk);
         return true;
     }
 }

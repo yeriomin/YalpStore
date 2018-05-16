@@ -53,6 +53,7 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
                 break;
             case DELTA:
                 request = new DownloadRequestBuilderDelta(context, app, deliveryData).build();
+                DownloadState.get(app.getPackageName()).setPatchFormat(getPatchFormat(deliveryData.getPatchData().getPatchFormat()));
                 break;
             case OBB_MAIN:
                 request = new DownloadRequestBuilderObb(context, app, deliveryData).setMain(true).build();
