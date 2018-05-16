@@ -72,7 +72,6 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
             shouldDownloadDelta() ? app.getInstalledVersionCode() : 0,
             app.getVersionCode(),
             app.getOfferType(),
-            GooglePlayAPI.PATCH_FORMAT.GZIPPED_GDIFF,
             downloadToken
         );
         if (deliveryResponse.hasAppDeliveryData()

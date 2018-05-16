@@ -21,6 +21,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.util.Pair;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class DownloadState {
     private TriggeredBy triggeredBy = TriggeredBy.DOWNLOAD_BUTTON;
     private Map<Long, Pair<Integer, Integer>> progress = new ConcurrentHashMap<>();
     private Map<Long, Status> status = new ConcurrentHashMap<>();
+    private GooglePlayAPI.PATCH_FORMAT patchFormat;
     private byte[] apkChecksum;
 
     static public DownloadState get(String packageName) {
@@ -109,6 +111,14 @@ public class DownloadState {
 
     public void setApkChecksum(byte[] apkChecksum) {
         this.apkChecksum = apkChecksum;
+    }
+
+    public GooglePlayAPI.PATCH_FORMAT getPatchFormat() {
+        return patchFormat;
+    }
+
+    public void setPatchFormat(GooglePlayAPI.PATCH_FORMAT patchFormat) {
+        this.patchFormat = patchFormat;
     }
 
     public void setFinished(long downloadId) {

@@ -36,6 +36,7 @@ import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
 import com.github.yeriomin.yalpstore.view.PurchaseDialogBuilder;
 
 import java.io.IOException;
@@ -80,17 +81,17 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
                         }
                     }
                 } else {
-                    context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
+                    sendCancelBroadcast();
                     Log.e(getClass().getSimpleName(), app.getPackageName() + " not enough storage space");
                     throw new IOException(context.getString(R.string.download_manager_ERROR_INSUFFICIENT_SPACE));
                 }
             } catch (IllegalArgumentException | SecurityException e) {
-                context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
+                sendCancelBroadcast();
                 Log.e(getClass().getSimpleName(), app.getPackageName() + " unknown storage error: " + e.getClass().getName() + ": " + e.getMessage());
                 throw new IOException(context.getString(R.string.download_manager_ERROR_FILE_ERROR));
             }
         } else {
-            context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
+            sendCancelBroadcast();
             Log.e(getClass().getSimpleName(), app.getPackageName() + " no download link returned");
         }
         return deliveryData;
@@ -99,7 +100,14 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
     @Override
     protected void processException(Throwable e) {
         super.processException(e);
-        context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED));
+        sendCancelBroadcast();
+    }
+
+    private void sendCancelBroadcast() {
+        Intent intentCancel = new Intent(context, CancelDownloadService.class);
+        intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
+        context.startService(intentCancel);
+        context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED).putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName()));
     }
 
     @Override

@@ -17,27 +17,21 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.delta;
 
 import android.content.Context;
-import android.util.Log;
 
+import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.model.App;
 
-import java.io.File;
+public class PatcherFactory {
 
-abstract public class DeltaPatcherAbstract {
-
-    protected App app;
-    protected Context context;
-    protected File patch;
-
-    public DeltaPatcherAbstract(Context context, App app) {
-        Log.i(getClass().getSimpleName(), "Chosen delta patcher");
-        this.app = app;
-        this.context = context;
-        patch = Paths.getDeltaPath(context, app.getPackageName(), app.getVersionCode());
+    static public Patcher get(Context context, App app) {
+        switch (DownloadState.get(app.getPackageName()).getPatchFormat()) {
+            case GZIPPED_BSDIFF:
+                return new BSDiff(context, app);
+            default:
+                return new GDiff(context, app);
+        }
     }
-
-    abstract boolean patch();
 }

@@ -46,6 +46,12 @@ abstract public class DownloadReceiver extends BroadcastReceiver {
             return;
         }
         state = DownloadState.get(downloadId);
+        if (null == state) {
+            String packageName = intent.getStringExtra(Intent.EXTRA_PACKAGE_NAME);
+            if (!TextUtils.isEmpty(packageName)) {
+                state = DownloadState.get(packageName);
+            }
+        }
         if (null != state) {
             process(context, intent);
         }
