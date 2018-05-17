@@ -6,11 +6,11 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.dragons.aurora.model.App;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
-import com.dragons.aurora.model.App;
 
 public class PermissionsComparator {
 

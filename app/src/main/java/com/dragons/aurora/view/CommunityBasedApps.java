@@ -11,15 +11,14 @@ import android.widget.RelativeLayout;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.dragons.aurora.R;
+import com.dragons.aurora.adapters.CommunityBasedAppsAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.dragons.aurora.R;
-import com.dragons.aurora.adapters.CommunityBasedAppsAdapter;
 
 public class CommunityBasedApps extends RelativeLayout {
 

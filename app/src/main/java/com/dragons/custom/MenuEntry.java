@@ -2,10 +2,6 @@ package com.dragons.custom;
 
 import android.graphics.drawable.Drawable;
 
-/**
- * Created by Valentin on 12/06/2017.
- */
-
 class MenuEntry {
 
     private String title;

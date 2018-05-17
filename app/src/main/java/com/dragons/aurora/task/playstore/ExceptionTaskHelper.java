@@ -10,6 +10,7 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.fragment.UtilFragment;
 import com.dragons.aurora.playstoreapiv2.AuthException;
+import com.dragons.aurora.task.AppProvidedCredentialsTask;
 import com.percolate.caffeine.ToastUtils;
 
 import java.io.IOException;
@@ -67,10 +68,10 @@ public abstract class ExceptionTaskHelper extends UtilFragment {
         if (e instanceof CredentialsEmptyException) {
             Log.i(getClass().getSimpleName(), "Credentials empty");
             //TODO:Let user decide between dummy or google account
-            switchDummy();
+            loginWithDummy();
         } else if (e.getCode() == 401 && PreferenceFragment.getBoolean(this.getActivity(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
             Log.i(getClass().getSimpleName(), "Token is stale");
-            refreshMyToken();
+            new AppProvidedCredentialsTask(getContext()).refreshToken();
         } else {
             ToastUtils.quickToast(getActivity(), e.getMessage());
             ContextUtil.toast(this.getActivity(), R.string.error_incorrect_password);

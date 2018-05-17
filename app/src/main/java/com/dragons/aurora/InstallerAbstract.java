@@ -10,17 +10,23 @@ import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 
-import java.io.File;
-
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.IgnoreUpdatesService;
 import com.dragons.aurora.notification.NotificationBuilder;
 import com.dragons.aurora.notification.NotificationManagerWrapper;
 
+import java.io.File;
+
 public abstract class InstallerAbstract {
 
     protected Context context;
     protected boolean background;
+
+    public InstallerAbstract(Context context) {
+        Log.i(getClass().getSimpleName(), "Installer chosen");
+        this.context = context;
+        background = !(context instanceof Activity);
+    }
 
     static public Intent getOpenApkIntent(Context context, File file) {
         Intent intent;
@@ -37,12 +43,6 @@ public abstract class InstallerAbstract {
     }
 
     abstract protected void install(App app);
-
-    public InstallerAbstract(Context context) {
-        Log.i(getClass().getSimpleName(), "Installer chosen");
-        this.context = context;
-        background = !(context instanceof Activity);
-    }
 
     public void setBackground(boolean background) {
         this.background = background;

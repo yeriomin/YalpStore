@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.dragons.aurora.fragment.UpdatableAppsFragment;
 

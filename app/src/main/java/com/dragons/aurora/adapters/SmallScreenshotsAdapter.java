@@ -16,10 +16,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreenshotsAdapter.MyViewHolderInst> {
+public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreenshotsAdapter.ViewHolder> {
+
     private List<SmallScreenshotsAdapter.Holder> ssholder;
     private Context context;
-
 
     public SmallScreenshotsAdapter(List<SmallScreenshotsAdapter.Holder> FeaturedAppsH, Context context) {
         this.ssholder = FeaturedAppsH;
@@ -28,14 +28,14 @@ public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreensho
 
     @NonNull
     @Override
-    public SmallScreenshotsAdapter.MyViewHolderInst onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.screenshots_item_small, parent, false);
-        return new SmallScreenshotsAdapter.MyViewHolderInst(itemView);
+        return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final SmallScreenshotsAdapter.MyViewHolderInst holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final SmallScreenshotsAdapter.Holder ssholder = this.ssholder.get(position);
         String url = ssholder.url.get(position);
         Picasso.with(context)
@@ -62,10 +62,10 @@ public class SmallScreenshotsAdapter extends RecyclerView.Adapter<SmallScreensho
         }
     }
 
-    class MyViewHolderInst extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ss_image;
 
-        MyViewHolderInst(View view) {
+        ViewHolder(View view) {
             super(view);
             ss_image = view.findViewById(R.id.scrn_itm_s);
             ss_image.getLayoutParams().height = (Resources.getSystem().getDisplayMetrics().heightPixels) / 3;

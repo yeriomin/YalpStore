@@ -10,10 +10,6 @@ import android.renderscript.ScriptIntrinsicBlur;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 
-/**
- * Blur using RenderScript, processed on GPU.
- * Requires API 17+
- */
 public final class RenderScriptBlur implements BlurAlgorithm {
     private final RenderScript renderScript;
     private final ScriptIntrinsicBlur blurScript;

@@ -62,7 +62,7 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
         Picasso
                 .with(context)
                 .load(app.getIconInfo().getUrl())
-                .placeholder(context.getResources().getDrawable(R.drawable.ic_placeholder))
+                .placeholder(R.color.transparent)
                 .into(holder.appIcon);
 
         holder.appContainer.setOnClickListener(v -> {

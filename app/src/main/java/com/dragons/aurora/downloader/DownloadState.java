@@ -2,32 +2,17 @@ package com.dragons.aurora.downloader;
 
 import android.util.Pair;
 
+import com.dragons.aurora.model.App;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.dragons.aurora.model.App;
-
 public class DownloadState {
-
-    public enum TriggeredBy {
-        DOWNLOAD_BUTTON,
-        UPDATE_ALL_BUTTON,
-        SCHEDULED_UPDATE,
-        MANUAL_DOWNLOAD_BUTTON
-    }
-
-    enum Status {
-        STARTED,
-        FINISHED,
-        SUCCESSFUL,
-        CANCELLED,
-    }
 
     static private Map<String, DownloadState> state = new HashMap<>();
     static private Map<Long, String> downloadIds = new HashMap<>();
-
     private App app;
     private TriggeredBy triggeredBy = TriggeredBy.DOWNLOAD_BUTTON;
     private Map<Long, Pair<Float, Float>> progress = new HashMap<>();
@@ -47,12 +32,12 @@ public class DownloadState {
         return null;
     }
 
-    public void setApp(App app) {
-        this.app = app;
-    }
-
     public App getApp() {
         return app;
+    }
+
+    public void setApp(App app) {
+        this.app = app;
     }
 
     public boolean isEverythingFinished() {
@@ -133,5 +118,19 @@ public class DownloadState {
 
     public void setProgress(long downloadId, float complete, float total) {
         progress.put(downloadId, new Pair<>(complete, total));
+    }
+
+    public enum TriggeredBy {
+        DOWNLOAD_BUTTON,
+        UPDATE_ALL_BUTTON,
+        SCHEDULED_UPDATE,
+        MANUAL_DOWNLOAD_BUTTON
+    }
+
+    enum Status {
+        STARTED,
+        FINISHED,
+        SUCCESSFUL,
+        CANCELLED,
     }
 }

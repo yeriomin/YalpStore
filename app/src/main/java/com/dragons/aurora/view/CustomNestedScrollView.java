@@ -8,15 +8,11 @@ import android.view.ViewConfiguration;
 
 public class CustomNestedScrollView extends NestedScrollView {
     private int slop;
+    private float xDistance, yDistance, lastX, lastY;
 
     public CustomNestedScrollView(Context context) {
         super(context);
         init(context);
-    }
-
-    private void init(Context context) {
-        ViewConfiguration config = ViewConfiguration.get(context);
-        slop = config.getScaledEdgeSlop();
     }
 
     public CustomNestedScrollView(Context context, AttributeSet attrs) {
@@ -29,7 +25,10 @@ public class CustomNestedScrollView extends NestedScrollView {
         init(context);
     }
 
-    private float xDistance, yDistance, lastX, lastY;
+    private void init(Context context) {
+        ViewConfiguration config = ViewConfiguration.get(context);
+        slop = config.getScaledEdgeSlop();
+    }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {

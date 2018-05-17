@@ -2,13 +2,12 @@ package com.dragons.aurora.downloader;
 
 import android.content.Context;
 
-import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
-
-import java.io.File;
-
 import com.dragons.aurora.Paths;
 import com.dragons.aurora.R;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
+
+import java.io.File;
 
 public class DownloadRequestBuilderObb extends DownloadRequestBuilder {
 

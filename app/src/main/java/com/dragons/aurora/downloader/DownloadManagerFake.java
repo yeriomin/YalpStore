@@ -3,27 +3,26 @@ package com.dragons.aurora.downloader;
 import android.content.Context;
 import android.util.Log;
 
+import com.dragons.aurora.Paths;
+import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.HttpCookie;
+import com.dragons.aurora.task.HttpURLConnectionDownloadTask;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.dragons.aurora.Paths;
-import com.dragons.aurora.model.App;
-import com.dragons.aurora.task.HttpURLConnectionDownloadTask;
-
 public class DownloadManagerFake extends DownloadManagerAbstract {
 
     static private final Map<Long, Integer> statuses = new HashMap<>();
 
-    static public void putStatus(long downloadId, int status) {
-        statuses.put(downloadId, status);
-    }
-
     public DownloadManagerFake(Context context) {
         super(context);
+    }
+
+    static public void putStatus(long downloadId, int status) {
+        statuses.put(downloadId, status);
     }
 
     @Override

@@ -1,8 +1,9 @@
 package com.dragons.aurora.adapters;
 
-import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
+
+import com.dragons.aurora.Util;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -10,8 +11,6 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.Map;
-
-import com.dragons.aurora.Util;
 
 public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
 
@@ -21,28 +20,6 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
     public DebugHttpClientAdapter() {
         dumpDirectory = new File(Environment.getExternalStorageDirectory(), DEBUG_DIRECTORY);
         dumpDirectory.mkdirs();
-    }
-
-    @Override
-    protected byte[] request(HttpURLConnection connection, byte[] body, Map<String, String> headers) throws IOException {
-        String url = connection.getURL().getPath() + "." + connection.getURL().getQuery();
-        write(getFileName(url, true, true), getRequestHeaders(headers).getBytes());
-        write(getFileName(url, true, false), body);
-        byte[] responseBody;
-        IOException exception = null;
-        try {
-            responseBody = super.request(connection, body, headers);
-            write(getFileName(url, false, false), responseBody);
-        } catch (IOException e) {
-            exception = e;
-            responseBody = new byte[0];
-        } finally {
-            write(getFileName(url, false, true), getResponseHeaders(connection.getHeaderFields()).getBytes());
-            if (null != exception) {
-                throw exception;
-            }
-        }
-        return responseBody;
     }
 
     private static String getRequestHeaders(Map<String, String> headers) {
@@ -98,5 +75,27 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
                 .append(headers ? ".txt" : ".bin")
                 .toString()
                 ;
+    }
+
+    @Override
+    protected byte[] request(HttpURLConnection connection, byte[] body, Map<String, String> headers) throws IOException {
+        String url = connection.getURL().getPath() + "." + connection.getURL().getQuery();
+        write(getFileName(url, true, true), getRequestHeaders(headers).getBytes());
+        write(getFileName(url, true, false), body);
+        byte[] responseBody;
+        IOException exception = null;
+        try {
+            responseBody = super.request(connection, body, headers);
+            write(getFileName(url, false, false), responseBody);
+        } catch (IOException e) {
+            exception = e;
+            responseBody = new byte[0];
+        } finally {
+            write(getFileName(url, false, true), getResponseHeaders(connection.getHeaderFields()).getBytes());
+            if (null != exception) {
+                throw exception;
+            }
+        }
+        return responseBody;
     }
 }

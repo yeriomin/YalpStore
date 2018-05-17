@@ -8,21 +8,20 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import com.dragons.aurora.ContextUtil;
+import com.dragons.aurora.OnListPreferenceChangeListener;
+import com.dragons.aurora.PlayStoreApiAuthenticator;
+import com.dragons.aurora.R;
+import com.dragons.aurora.SpoofDeviceManager;
+import com.dragons.aurora.Util;
+import com.dragons.aurora.activities.AuroraActivity;
+import com.dragons.aurora.activities.DeviceInfoActivity;
+import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
 
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
-
-import com.dragons.aurora.ContextUtil;
-import com.dragons.aurora.activities.DeviceInfoActivity;
-import com.dragons.aurora.activities.AuroraActivity;
-import com.dragons.aurora.OnListPreferenceChangeListener;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
-import com.dragons.aurora.fragment.PreferenceFragment;
-import com.dragons.aurora.R;
-import com.dragons.aurora.SpoofDeviceManager;
-import com.dragons.aurora.Util;
 
 public class Device extends List {
 

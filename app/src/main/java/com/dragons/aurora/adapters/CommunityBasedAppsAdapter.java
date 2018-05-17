@@ -10,30 +10,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dragons.aurora.R;
+import com.dragons.aurora.activities.DetailsActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import com.dragons.aurora.R;
-import com.dragons.aurora.activities.DetailsActivity;
-
 public class CommunityBasedAppsAdapter extends RecyclerView.Adapter<CommunityBasedAppsAdapter.MyViewHolderInst> {
 
     private List<FeaturedHolder> FeaturedAppsH;
-
-    class MyViewHolderInst extends RecyclerView.ViewHolder {
-        TextView cbased_name;
-        ImageView cbased_image;
-        RelativeLayout cbased_layout;
-
-        MyViewHolderInst(View view) {
-            super(view);
-            cbased_name = view.findViewById(R.id.cbased_name);
-            cbased_image = view.findViewById(R.id.cbased_image);
-            cbased_layout = view.findViewById(R.id.cbased_layout);
-        }
-    }
-
 
     public CommunityBasedAppsAdapter(List<FeaturedHolder> FeaturedAppsH) {
         this.FeaturedAppsH = FeaturedAppsH;
@@ -84,6 +69,19 @@ public class CommunityBasedAppsAdapter extends RecyclerView.Adapter<CommunityBas
             this.price = price;
         }
 
+    }
+
+    class MyViewHolderInst extends RecyclerView.ViewHolder {
+        TextView cbased_name;
+        ImageView cbased_image;
+        RelativeLayout cbased_layout;
+
+        MyViewHolderInst(View view) {
+            super(view);
+            cbased_name = view.findViewById(R.id.cbased_name);
+            cbased_image = view.findViewById(R.id.cbased_image);
+            cbased_layout = view.findViewById(R.id.cbased_layout);
+        }
     }
 }
 

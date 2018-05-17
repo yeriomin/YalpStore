@@ -8,12 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.dragons.aurora.fragment.DetailsFragment;
-import com.squareup.picasso.Picasso;
-
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
+import com.squareup.picasso.Picasso;
 
 public class Video extends AbstractHelper {
 

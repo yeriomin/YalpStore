@@ -8,22 +8,22 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
 
-import java.util.List;
-
-import com.dragons.aurora.downloader.DownloadManagerAdapter;
-import com.dragons.aurora.downloader.DownloadManagerFactory;
-import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.AuroraApplication;
 import com.dragons.aurora.InstallerAbstract;
 import com.dragons.aurora.InstallerFactory;
 import com.dragons.aurora.NetworkState;
 import com.dragons.aurora.Paths;
-import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.UpdatableAppsActivity;
 import com.dragons.aurora.UpdateAllReceiver;
+import com.dragons.aurora.activities.UpdatableAppsActivity;
+import com.dragons.aurora.downloader.DownloadManagerAdapter;
+import com.dragons.aurora.downloader.DownloadManagerFactory;
+import com.dragons.aurora.downloader.DownloadState;
+import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.NotificationManagerWrapper;
+
+import java.util.List;
 
 public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements CloneableTask {
 

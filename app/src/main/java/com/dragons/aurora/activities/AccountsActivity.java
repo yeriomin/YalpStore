@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.AccountsFragment;
+import com.percolate.caffeine.ToastUtils;
 
 public class AccountsActivity extends AuroraActivity {
 
@@ -36,6 +37,10 @@ public class AccountsActivity extends AuroraActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    public void notifyTokenRefreshed() {
+        ToastUtils.quickToast(this, "Token Refreshed");
     }
 
     public void userChanged() {

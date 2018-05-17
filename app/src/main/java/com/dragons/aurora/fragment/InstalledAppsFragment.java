@@ -109,8 +109,6 @@ public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
     }
 
     public void loadMarketApps() {
-        if (isDummy())
-            refreshMyToken();
         swipeRefreshLayout.setRefreshing(true);
         loadApps = Observable.fromCallable(() -> getInstalledApps(new PlayStoreApiAuthenticator(this.getActivity()).getApi(), includeSystem.isChecked()))
                 .subscribeOn(Schedulers.io())

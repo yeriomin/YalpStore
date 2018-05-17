@@ -5,12 +5,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
 
+import com.dragons.aurora.R;
+import com.dragons.aurora.model.App;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
-import com.dragons.aurora.R;
-import com.dragons.aurora.model.App;
 
 public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
 
@@ -20,12 +21,12 @@ public abstract class SystemRemountTask extends TaskWithProgress<List<String>> {
     protected App app;
     protected boolean busybox;
 
-    abstract protected List<String> getCommands();
-
     public SystemRemountTask(Context context, App app) {
         this.context = context;
         this.app = app;
     }
+
+    abstract protected List<String> getCommands();
 
     public App getApp() {
         return app;

@@ -6,30 +6,29 @@ import android.content.pm.PermissionInfo;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.DetailsFragment;
+import com.dragons.aurora.fragment.widget.PermissionGroup;
+import com.dragons.aurora.model.App;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.dragons.aurora.activities.AuroraActivity;
-import com.dragons.aurora.R;
-import com.dragons.aurora.fragment.DetailsFragment;
-import com.dragons.aurora.fragment.widget.PermissionGroup;
-import com.dragons.aurora.model.App;
-
 public class Permissions extends AbstractHelper {
 
     private PackageManager pm;
 
-    @Override
-    public void draw() {
-        initExpandableGroup(R.id.permissions_header, R.id.permissions_container, v -> addPermissionWidgets());
-    }
-
     public Permissions(DetailsFragment fragment, App app) {
         super(fragment, app);
         pm = fragment.getActivity().getPackageManager();
+    }
+
+    @Override
+    public void draw() {
+        initExpandableGroup(R.id.permissions_header, R.id.permissions_container, v -> addPermissionWidgets());
     }
 
     private void addPermissionWidgets() {

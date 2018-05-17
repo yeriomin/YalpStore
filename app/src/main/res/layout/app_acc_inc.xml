@@ -154,6 +154,8 @@
                         style="@style/Widget.AppCompat.Button.Borderless.Colored"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:text="@string/action_switch_dummy"
                         android:textColor="?android:attr/colorAccent"
                         android:visibility="gone" />

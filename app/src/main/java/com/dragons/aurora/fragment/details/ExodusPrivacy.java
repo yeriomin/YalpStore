@@ -47,9 +47,9 @@ public class ExodusPrivacy extends AbstractHelper {
                 JSONArray trackers = trackersReport.getJSONArray("trackers");
                 String appId = trackersReport.getString("id");
                 drawExodus(trackers, appId);
-                Log.w("EXODUS_PRIVACY", trackers.toString());
+                Log.i("EXODUS_PRIVACY", trackers.toString());
             } catch (JSONException e) {
-                Log.w("EXODUS_PRIVACY", "Error occurred at Exodus Privacy");
+                Log.i("EXODUS_PRIVACY", "Error occurred at Exodus Privacy");
             }
         }, error -> VolleyLog.d(TAG, "Error: " + error.getMessage()));
         mRequestQueue.add(jsonObjReq);

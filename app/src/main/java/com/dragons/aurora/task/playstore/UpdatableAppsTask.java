@@ -4,8 +4,16 @@ import android.app.Activity;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import com.dragons.aurora.BlackWhiteListManager;
+import com.dragons.aurora.ContextUtil;
+import com.dragons.aurora.PlayStoreApiAuthenticator;
+import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.model.App;
+import com.dragons.aurora.model.AppBuilder;
 import com.dragons.aurora.playstoreapiv2.BulkDetailsEntry;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.task.InstalledAppsTask;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,15 +24,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import com.dragons.aurora.BlackWhiteListManager;
-import com.dragons.aurora.ContextUtil;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
-import com.dragons.aurora.fragment.PreferenceFragment;
-import com.dragons.aurora.R;
-import com.dragons.aurora.model.App;
-import com.dragons.aurora.model.AppBuilder;
-import com.dragons.aurora.task.InstalledAppsTask;
 
 public class UpdatableAppsTask extends PlayStorePayloadTask<List<App>> {
 

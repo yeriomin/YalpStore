@@ -5,9 +5,9 @@ import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 
-import java.io.File;
-
 import com.dragons.aurora.fragment.PreferenceFragment;
+
+import java.io.File;
 
 public class Paths {
 

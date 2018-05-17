@@ -11,14 +11,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.dragons.aurora.R;
+import com.dragons.aurora.SharedPreferencesTranslator;
+import com.dragons.aurora.activities.CategoryAppsActivity;
 import com.percolate.caffeine.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.Map;
-
-import com.dragons.aurora.R;
-import com.dragons.aurora.SharedPreferencesTranslator;
-import com.dragons.aurora.activities.CategoryAppsActivity;
 
 public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdapter.ViewHolder> {
 
@@ -71,19 +70,6 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
         translator = new SharedPreferencesTranslator(PreferenceManager.getDefaultSharedPreferences(context));
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView topLabel;
-        ImageView topImage;
-        LinearLayout topContainer;
-
-        ViewHolder(View v) {
-            super(v);
-            topLabel = ViewUtils.findViewById(v, R.id.top_cat_name);
-            topImage = ViewUtils.findViewById(v, R.id.top_cat_img);
-            topContainer = ViewUtils.findViewById(v, R.id.all_cat_container);
-        }
-    }
-
     @NonNull
     @Override
     public AllCategoriesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -102,5 +88,18 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
     @Override
     public int getItemCount() {
         return categories.size();
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView topLabel;
+        ImageView topImage;
+        LinearLayout topContainer;
+
+        ViewHolder(View v) {
+            super(v);
+            topLabel = ViewUtils.findViewById(v, R.id.top_cat_name);
+            topImage = ViewUtils.findViewById(v, R.id.top_cat_img);
+            topContainer = ViewUtils.findViewById(v, R.id.all_cat_container);
+        }
     }
 }

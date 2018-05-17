@@ -2,7 +2,6 @@ package com.dragons.aurora.fragment.details;
 
 import com.dragons.aurora.DetailsDownloadReceiver;
 import com.dragons.aurora.DetailsInstallReceiver;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.model.App;
 

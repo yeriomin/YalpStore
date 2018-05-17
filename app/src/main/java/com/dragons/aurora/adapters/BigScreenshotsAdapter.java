@@ -1,8 +1,6 @@
 package com.dragons.aurora.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,27 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.dragons.aurora.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import com.dragons.aurora.R;
-import com.dragons.aurora.activities.FullscreenImageActivity;
+public class BigScreenshotsAdapter extends RecyclerView.Adapter<BigScreenshotsAdapter.ViewHolder> {
 
-public class BigScreenshotsAdapter extends RecyclerView.Adapter<BigScreenshotsAdapter.MyViewHolderInst> {
+    private BigScreenshotsAdapter.Holder bsholder;
     private List<BigScreenshotsAdapter.Holder> ssholder;
     private Context context;
-    BigScreenshotsAdapter.Holder bsholder;
-
-
-    class MyViewHolderInst extends RecyclerView.ViewHolder {
-        ImageView ss_image;
-
-        MyViewHolderInst(View view) {
-            super(view);
-            ss_image = view.findViewById(R.id.scrn_itm_b);
-        }
-    }
 
     public BigScreenshotsAdapter(List<BigScreenshotsAdapter.Holder> FeaturedAppsH, Context context) {
         this.ssholder = FeaturedAppsH;
@@ -39,14 +26,14 @@ public class BigScreenshotsAdapter extends RecyclerView.Adapter<BigScreenshotsAd
 
     @NonNull
     @Override
-    public BigScreenshotsAdapter.MyViewHolderInst onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.screenshots_item_big, parent, false);
-        return new BigScreenshotsAdapter.MyViewHolderInst(itemView);
+        return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final BigScreenshotsAdapter.MyViewHolderInst holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         bsholder = this.ssholder.get(position);
         String url = bsholder.url.get(position);
         Picasso.with(context)
@@ -65,6 +52,15 @@ public class BigScreenshotsAdapter extends RecyclerView.Adapter<BigScreenshotsAd
 
         public Holder(List<String> url) {
             this.url = url;
+        }
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView ss_image;
+
+        ViewHolder(View view) {
+            super(view);
+            ss_image = view.findViewById(R.id.scrn_itm_b);
         }
     }
 }

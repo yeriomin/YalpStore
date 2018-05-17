@@ -12,11 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Properties;
-import java.util.TimeZone;
-
 import com.dragons.aurora.R;
 import com.dragons.aurora.SpoofDeviceManager;
+
+import java.util.Properties;
+import java.util.TimeZone;
 
 public class SpoofFragment extends UtilFragment {
 

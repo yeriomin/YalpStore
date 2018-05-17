@@ -5,12 +5,6 @@ import java.util.Map;
 
 public class InstallationState {
 
-    enum STATUS {
-        PROCESSING,
-        SUCCESS,
-        FAILURE
-    }
-
     static private final Map<String, STATUS> apps = new HashMap<>();
 
     static public boolean isInstalling(String packageName) {
@@ -31,5 +25,11 @@ public class InstallationState {
 
     static public void setFailure(String packageName) {
         apps.put(packageName, STATUS.FAILURE);
+    }
+
+    enum STATUS {
+        PROCESSING,
+        SUCCESS,
+        FAILURE
     }
 }

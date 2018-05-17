@@ -316,6 +316,146 @@ public class FileProvider extends ContentProvider {
     private PathStrategy mStrategy;
 
     /**
+     * Return a content URI for a given {@link File}. Specific temporary
+     * permissions for the content URI can be set with
+     * {@link Context#grantUriPermission(String, Uri, int)}, or added
+     * to an {@link Intent} by calling {@link Intent#setData(Uri) setData()} and then
+     * {@link Intent#setFlags(int) setFlags()}; in both cases, the applicable flags are
+     * {@link Intent#FLAG_GRANT_READ_URI_PERMISSION} and
+     * {@link Intent#FLAG_GRANT_WRITE_URI_PERMISSION}. A FileProvider can only return a
+     * <code>content</code> {@link Uri} for file paths defined in their <code>&lt;paths&gt;</code>
+     * meta-data element. See the Class Overview for more information.
+     *
+     * @param context   A {@link Context} for the current component.
+     * @param authority The authority of a {@link FileProvider} defined in a
+     *                  {@code &lt;provider&gt;} element in your app's manifest.
+     * @param file      A {@link File} pointing to the filename for which you want a
+     *                  <code>content</code> {@link Uri}.
+     * @return A content URI for the file.
+     * @throws IllegalArgumentException When the given {@link File} is outside
+     *                                  the paths supported by the provider.
+     */
+    public static Uri getUriForFile(Context context, String authority, File file) {
+        final PathStrategy strategy = getPathStrategy(context, authority);
+        return strategy.getUriForFile(file);
+    }
+
+    /**
+     * Return {@link PathStrategy} for given authority, either by parsing or
+     * returning from cache.
+     */
+    private static PathStrategy getPathStrategy(Context context, String authority) {
+        PathStrategy strat;
+        synchronized (sCache) {
+            strat = sCache.get(authority);
+            if (strat == null) {
+                try {
+                    strat = parsePathStrategy(context, authority);
+                } catch (IOException e) {
+                    throw new IllegalArgumentException(
+                            "Failed to parse " + META_DATA_FILE_PROVIDER_PATHS + " meta-data", e);
+                } catch (XmlPullParserException e) {
+                    throw new IllegalArgumentException(
+                            "Failed to parse " + META_DATA_FILE_PROVIDER_PATHS + " meta-data", e);
+                }
+                sCache.put(authority, strat);
+            }
+        }
+        return strat;
+    }
+
+    /**
+     * Parse and return {@link PathStrategy} for given authority as defined in
+     * {@link #META_DATA_FILE_PROVIDER_PATHS} {@code &lt;meta-data>}.
+     *
+     * @see #getPathStrategy(Context, String)
+     */
+    private static PathStrategy parsePathStrategy(Context context, String authority)
+            throws IOException, XmlPullParserException {
+        final SimplePathStrategy strat = new SimplePathStrategy(authority);
+        final ProviderInfo info = context.getPackageManager()
+                .resolveContentProvider(authority, PackageManager.GET_META_DATA);
+        final XmlResourceParser in = info.loadXmlMetaData(
+                context.getPackageManager(), META_DATA_FILE_PROVIDER_PATHS);
+        if (in == null) {
+            throw new IllegalArgumentException(
+                    "Missing " + META_DATA_FILE_PROVIDER_PATHS + " meta-data");
+        }
+        int type;
+        while ((type = in.next()) != END_DOCUMENT) {
+            if (type == START_TAG) {
+                final String tag = in.getName();
+                final String name = in.getAttributeValue(null, ATTR_NAME);
+                String path = in.getAttributeValue(null, ATTR_PATH);
+                File target = null;
+                if (TAG_ROOT_PATH.equals(tag)) {
+                    target = buildPath(DEVICE_ROOT, path);
+                } else if (TAG_FILES_PATH.equals(tag)) {
+                    target = buildPath(context.getFilesDir(), path);
+                } else if (TAG_CACHE_PATH.equals(tag)) {
+                    target = buildPath(context.getCacheDir(), path);
+                } else if (TAG_EXTERNAL.equals(tag)) {
+                    target = buildPath(Environment.getExternalStorageDirectory(), path);
+                }
+                if (target != null) {
+                    strat.addRoot(name, target);
+                }
+            }
+        }
+        return strat;
+    }
+
+    /**
+     * Copied from ContentResolver.java
+     */
+    private static int modeToMode(String mode) {
+        int modeBits;
+        if ("r".equals(mode)) {
+            modeBits = ParcelFileDescriptor.MODE_READ_ONLY;
+        } else if ("w".equals(mode) || "wt".equals(mode)) {
+            modeBits = ParcelFileDescriptor.MODE_WRITE_ONLY
+                    | ParcelFileDescriptor.MODE_CREATE
+                    | ParcelFileDescriptor.MODE_TRUNCATE;
+        } else if ("wa".equals(mode)) {
+            modeBits = ParcelFileDescriptor.MODE_WRITE_ONLY
+                    | ParcelFileDescriptor.MODE_CREATE
+                    | ParcelFileDescriptor.MODE_APPEND;
+        } else if ("rw".equals(mode)) {
+            modeBits = ParcelFileDescriptor.MODE_READ_WRITE
+                    | ParcelFileDescriptor.MODE_CREATE;
+        } else if ("rwt".equals(mode)) {
+            modeBits = ParcelFileDescriptor.MODE_READ_WRITE
+                    | ParcelFileDescriptor.MODE_CREATE
+                    | ParcelFileDescriptor.MODE_TRUNCATE;
+        } else {
+            throw new IllegalArgumentException("Invalid mode: " + mode);
+        }
+        return modeBits;
+    }
+
+    private static File buildPath(File base, String... segments) {
+        File cur = base;
+        for (String segment : segments) {
+            if (segment != null) {
+                cur = new File(cur, segment);
+            }
+        }
+        return cur;
+    }
+
+    private static String[] copyOf(String[] original, int newLength) {
+        final String[] result = new String[newLength];
+        System.arraycopy(original, 0, result, 0, newLength);
+        return result;
+    }
+
+    private static Object[] copyOf(Object[] original, int newLength) {
+        final Object[] result = new Object[newLength];
+        System.arraycopy(original, 0, result, 0, newLength);
+        return result;
+    }
+
+    /**
      * The default FileProvider implementation does not need to be initialized. If you want to
      * override this method, you must provide your own subclass of FileProvider.
      */
@@ -339,31 +479,6 @@ public class FileProvider extends ContentProvider {
             throw new SecurityException("Provider must grant uri permissions");
         }
         mStrategy = getPathStrategy(context, info.authority);
-    }
-
-    /**
-     * Return a content URI for a given {@link File}. Specific temporary
-     * permissions for the content URI can be set with
-     * {@link Context#grantUriPermission(String, Uri, int)}, or added
-     * to an {@link Intent} by calling {@link Intent#setData(Uri) setData()} and then
-     * {@link Intent#setFlags(int) setFlags()}; in both cases, the applicable flags are
-     * {@link Intent#FLAG_GRANT_READ_URI_PERMISSION} and
-     * {@link Intent#FLAG_GRANT_WRITE_URI_PERMISSION}. A FileProvider can only return a
-     * <code>content</code> {@link Uri} for file paths defined in their <code>&lt;paths&gt;</code>
-     * meta-data element. See the Class Overview for more information.
-     *
-     * @param context   A {@link Context} for the current component.
-     * @param authority The authority of a {@link FileProvider} defined in a
-     *                  {@code &lt;provider&gt;} element in your app's manifest.
-     * @param file      A {@link File} pointing to the filename for which you want a
-     *                  <code>content</code> {@link Uri}.
-     * @return A content URI for the file.
-     * @throws IllegalArgumentException When the given {@link File} is outside
-     *                                  the paths supported by the provider.
-     */
-    public static Uri getUriForFile(Context context, String authority, File file) {
-        final PathStrategy strategy = getPathStrategy(context, authority);
-        return strategy.getUriForFile(file);
     }
 
     /**
@@ -504,71 +619,6 @@ public class FileProvider extends ContentProvider {
     }
 
     /**
-     * Return {@link PathStrategy} for given authority, either by parsing or
-     * returning from cache.
-     */
-    private static PathStrategy getPathStrategy(Context context, String authority) {
-        PathStrategy strat;
-        synchronized (sCache) {
-            strat = sCache.get(authority);
-            if (strat == null) {
-                try {
-                    strat = parsePathStrategy(context, authority);
-                } catch (IOException e) {
-                    throw new IllegalArgumentException(
-                            "Failed to parse " + META_DATA_FILE_PROVIDER_PATHS + " meta-data", e);
-                } catch (XmlPullParserException e) {
-                    throw new IllegalArgumentException(
-                            "Failed to parse " + META_DATA_FILE_PROVIDER_PATHS + " meta-data", e);
-                }
-                sCache.put(authority, strat);
-            }
-        }
-        return strat;
-    }
-
-    /**
-     * Parse and return {@link PathStrategy} for given authority as defined in
-     * {@link #META_DATA_FILE_PROVIDER_PATHS} {@code &lt;meta-data>}.
-     *
-     * @see #getPathStrategy(Context, String)
-     */
-    private static PathStrategy parsePathStrategy(Context context, String authority)
-            throws IOException, XmlPullParserException {
-        final SimplePathStrategy strat = new SimplePathStrategy(authority);
-        final ProviderInfo info = context.getPackageManager()
-                .resolveContentProvider(authority, PackageManager.GET_META_DATA);
-        final XmlResourceParser in = info.loadXmlMetaData(
-                context.getPackageManager(), META_DATA_FILE_PROVIDER_PATHS);
-        if (in == null) {
-            throw new IllegalArgumentException(
-                    "Missing " + META_DATA_FILE_PROVIDER_PATHS + " meta-data");
-        }
-        int type;
-        while ((type = in.next()) != END_DOCUMENT) {
-            if (type == START_TAG) {
-                final String tag = in.getName();
-                final String name = in.getAttributeValue(null, ATTR_NAME);
-                String path = in.getAttributeValue(null, ATTR_PATH);
-                File target = null;
-                if (TAG_ROOT_PATH.equals(tag)) {
-                    target = buildPath(DEVICE_ROOT, path);
-                } else if (TAG_FILES_PATH.equals(tag)) {
-                    target = buildPath(context.getFilesDir(), path);
-                } else if (TAG_CACHE_PATH.equals(tag)) {
-                    target = buildPath(context.getCacheDir(), path);
-                } else if (TAG_EXTERNAL.equals(tag)) {
-                    target = buildPath(Environment.getExternalStorageDirectory(), path);
-                }
-                if (target != null) {
-                    strat.addRoot(name, target);
-                }
-            }
-        }
-        return strat;
-    }
-
-    /**
      * Strategy for mapping between {@link File} and {@link Uri}.
      * <p>
      * Strategies must be symmetric so that mapping a {@link File} to a
@@ -684,55 +734,5 @@ public class FileProvider extends ContentProvider {
             }
             return file;
         }
-    }
-
-    /**
-     * Copied from ContentResolver.java
-     */
-    private static int modeToMode(String mode) {
-        int modeBits;
-        if ("r".equals(mode)) {
-            modeBits = ParcelFileDescriptor.MODE_READ_ONLY;
-        } else if ("w".equals(mode) || "wt".equals(mode)) {
-            modeBits = ParcelFileDescriptor.MODE_WRITE_ONLY
-                    | ParcelFileDescriptor.MODE_CREATE
-                    | ParcelFileDescriptor.MODE_TRUNCATE;
-        } else if ("wa".equals(mode)) {
-            modeBits = ParcelFileDescriptor.MODE_WRITE_ONLY
-                    | ParcelFileDescriptor.MODE_CREATE
-                    | ParcelFileDescriptor.MODE_APPEND;
-        } else if ("rw".equals(mode)) {
-            modeBits = ParcelFileDescriptor.MODE_READ_WRITE
-                    | ParcelFileDescriptor.MODE_CREATE;
-        } else if ("rwt".equals(mode)) {
-            modeBits = ParcelFileDescriptor.MODE_READ_WRITE
-                    | ParcelFileDescriptor.MODE_CREATE
-                    | ParcelFileDescriptor.MODE_TRUNCATE;
-        } else {
-            throw new IllegalArgumentException("Invalid mode: " + mode);
-        }
-        return modeBits;
-    }
-
-    private static File buildPath(File base, String... segments) {
-        File cur = base;
-        for (String segment : segments) {
-            if (segment != null) {
-                cur = new File(cur, segment);
-            }
-        }
-        return cur;
-    }
-
-    private static String[] copyOf(String[] original, int newLength) {
-        final String[] result = new String[newLength];
-        System.arraycopy(original, 0, result, 0, newLength);
-        return result;
-    }
-
-    private static Object[] copyOf(Object[] original, int newLength) {
-        final Object[] result = new Object[newLength];
-        System.arraycopy(original, 0, result, 0, newLength);
-        return result;
     }
 }

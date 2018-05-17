@@ -8,8 +8,8 @@ import android.preference.Preference;
 import android.widget.Toast;
 
 import com.dragons.aurora.BuildConfig;
-import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.CheckShellTask;
 import com.dragons.aurora.task.CheckSuTask;

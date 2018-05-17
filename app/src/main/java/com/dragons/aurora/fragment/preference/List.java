@@ -3,23 +3,23 @@ package com.dragons.aurora.fragment.preference;
 import android.os.AsyncTask;
 import android.preference.ListPreference;
 
-import java.util.Map;
-
 import com.dragons.aurora.OnListPreferenceChangeListener;
 import com.dragons.aurora.fragment.PreferenceFragment;
+
+import java.util.Map;
 
 public abstract class List extends Abstract {
 
     protected ListPreference listPreference;
     protected Map<String, String> keyValueMap;
 
-    abstract protected Map<String, String> getKeyValueMap();
-
-    abstract protected OnListPreferenceChangeListener getOnListPreferenceChangeListener();
-
     public List(PreferenceFragment activity) {
         super(activity);
     }
+
+    abstract protected Map<String, String> getKeyValueMap();
+
+    abstract protected OnListPreferenceChangeListener getOnListPreferenceChangeListener();
 
     public void setListPreference(ListPreference listPreference) {
         this.listPreference = listPreference;

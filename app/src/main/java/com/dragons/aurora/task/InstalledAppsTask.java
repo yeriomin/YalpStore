@@ -3,18 +3,14 @@ package com.dragons.aurora.task;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.dragons.aurora.model.App;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import com.dragons.aurora.model.App;
 
 public class InstalledAppsTask extends TaskWithProgress<Map<String, App>> {
 
     protected boolean includeSystemApps = false;
-
-    public void setIncludeSystemApps(boolean includeSystemApps) {
-        this.includeSystemApps = includeSystemApps;
-    }
 
     static public App getInstalledApp(PackageManager pm, String packageName) {
         try {
@@ -34,6 +30,10 @@ public class InstalledAppsTask extends TaskWithProgress<Map<String, App>> {
             }
         }
         return result;
+    }
+
+    public void setIncludeSystemApps(boolean includeSystemApps) {
+        this.includeSystemApps = includeSystemApps;
     }
 
     public Map<String, App> getInstalledApps(boolean includeDisabled) {

@@ -27,6 +27,7 @@ import com.dragons.aurora.fragment.details.SystemAppPage;
 import com.dragons.aurora.fragment.details.Video;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.ForegroundDetailsAppsTaskHelper;
+import com.percolate.caffeine.ToastUtils;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -36,15 +37,19 @@ public class DetailsFragment extends ForegroundDetailsAppsTaskHelper {
 
     public static App app;
 
-    protected View v;
+    protected View view;
     protected DownloadOrInstall downloadOrInstallFragment;
     protected String packageName;
 
+    public static UpdatableAppsFragment newInstance() {
+        return new UpdatableAppsFragment();
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.details_activity_layout, container, false);
-        v.findViewById(R.id.fab_finish).setOnClickListener(v -> getActivity().finish());
-        return v;
+        view = inflater.inflate(R.layout.details_activity_layout, container, false);
+        view.findViewById(R.id.fab_finish).setOnClickListener(v -> getActivity().finish());
+        return view;
     }
 
     @Override
@@ -54,8 +59,23 @@ public class DetailsFragment extends ForegroundDetailsAppsTaskHelper {
         Bundle arguments = getArguments();
         if (arguments != null) {
             packageName = arguments.getString("PackageName");
-            fetchDetails();
+
+            if (isConnected(getContext()) && isLoggedIn())
+                fetchDetails();
+            else
+                ToastUtils.quickToast(getContext(), "Make sure you are Connected & Logged in");
         }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        new DownloadOptions((AuroraActivity) this.getActivity(), app).inflate(menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        return new DownloadOptions((AuroraActivity) this.getActivity(), app).onContextItemSelected(item);
     }
 
     @Override
@@ -79,19 +99,7 @@ public class DetailsFragment extends ForegroundDetailsAppsTaskHelper {
                 .subscribe(app -> {
                     DetailsFragment.app = app;
                     this.redrawDetails(app);
-
                 }, this::processException);
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        new DownloadOptions((AuroraActivity) this.getActivity(), app).inflate(menu);
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        return new DownloadOptions((AuroraActivity) this.getActivity(), app).onContextItemSelected(item);
     }
 
     public void redrawDetails(App app) {

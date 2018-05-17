@@ -3,9 +3,9 @@ package com.dragons.aurora;
 import android.content.Context;
 import android.util.Log;
 
-import java.io.File;
-
 import com.dragons.aurora.model.App;
+
+import java.io.File;
 
 abstract public class DeltaPatcherAbstract {
 

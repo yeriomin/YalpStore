@@ -9,6 +9,10 @@ abstract public class NotificationBuilder {
 
     protected Context context;
 
+    public NotificationBuilder(Context context) {
+        this.context = context.getApplicationContext();
+    }
+
     abstract public NotificationBuilder setTitle(String title);
 
     abstract public NotificationBuilder setMessage(String message);
@@ -23,10 +27,6 @@ abstract public class NotificationBuilder {
 
     public NotificationBuilder setProgress(int max, int progress) {
         return this;
-    }
-
-    public NotificationBuilder(Context context) {
-        this.context = context.getApplicationContext();
     }
 
     protected PendingIntent getPendingIntent(Intent intent) {

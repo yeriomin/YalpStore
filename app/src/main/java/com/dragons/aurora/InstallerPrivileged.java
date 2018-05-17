@@ -9,16 +9,14 @@ import android.os.Looper;
 import android.os.RemoteException;
 import android.util.Log;
 
+import com.dragons.aurora.model.App;
+
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.dragons.aurora.model.App;
-
 public class InstallerPrivileged extends InstallerBackground {
-
-    public final int INSTALL_REPLACE_EXISTING = 2;
 
     static private final Map<Integer, String> errors = new HashMap<>();
 
@@ -63,6 +61,8 @@ public class InstallerPrivileged extends InstallerBackground {
         errors.put(-112, "The system failed to install the package because it is attempting to define a permission that is already defined by some existing package.");
         errors.put(-113, "The system failed to install the package because its packaged native code did not match any of the ABIs supported by the system.");
     }
+
+    public final int INSTALL_REPLACE_EXISTING = 2;
 
     public InstallerPrivileged(Context context) {
         super(context);

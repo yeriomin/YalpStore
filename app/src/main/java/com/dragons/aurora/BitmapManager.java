@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import com.dragons.aurora.fragment.PreferenceFragment;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -22,15 +24,10 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
-import com.dragons.aurora.fragment.PreferenceFragment;
-
 public class BitmapManager {
 
     static private final long VALID_MILLIS = 1000 * 60 * 60 * 24 * 7;
     static private LruCache<String, Bitmap> memoryCache;
-
-    private File baseDir;
-    private boolean noImages;
 
     static {
         HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
@@ -58,48 +55,12 @@ public class BitmapManager {
         };
     }
 
+    private File baseDir;
+    private boolean noImages;
+
     public BitmapManager(Context context) {
         baseDir = context.getCacheDir();
         noImages = PreferenceFragment.getBoolean(context, PreferenceFragment.PREFERENCE_NO_IMAGES) && NetworkState.isMetered(context);
-    }
-
-    public Bitmap getBitmap(String url, boolean fullSize) {
-        Bitmap bitmap = memoryCache.get(url);
-        if (null != bitmap) {
-            return bitmap;
-        }
-        File onDisk = getFile(url);
-        if (isStoredAndValid(onDisk)) {
-            bitmap = getCachedBitmapFromDisk(onDisk);
-            cacheBitmapInMemory(url, bitmap);
-            return bitmap;
-        }
-        if (noImages) {
-            return null;
-        }
-        bitmap = downloadBitmap(url, fullSize);
-        if (null != bitmap) {
-            cacheBitmapOnDisk(bitmap, onDisk);
-            cacheBitmapInMemory(url, bitmap);
-        }
-        return bitmap;
-    }
-
-    public File downloadAndGetFile(String url) {
-        File onDisk = getFile(url);
-        if (isStoredAndValid(onDisk)) {
-            return onDisk;
-        }
-        Bitmap bitmap = downloadBitmap(url, true);
-        if (null != bitmap) {
-            cacheBitmapOnDisk(bitmap, onDisk);
-            return onDisk;
-        }
-        return null;
-    }
-
-    private File getFile(String urlString) {
-        return new File(baseDir, String.valueOf(urlString.hashCode()) + ".png");
     }
 
     static private boolean isStoredAndValid(File cached) {
@@ -158,5 +119,44 @@ public class BitmapManager {
             Log.e(BitmapManager.class.getSimpleName(), "Could not get icon from " + url + " " + e.getMessage());
         }
         return null;
+    }
+
+    public Bitmap getBitmap(String url, boolean fullSize) {
+        Bitmap bitmap = memoryCache.get(url);
+        if (null != bitmap) {
+            return bitmap;
+        }
+        File onDisk = getFile(url);
+        if (isStoredAndValid(onDisk)) {
+            bitmap = getCachedBitmapFromDisk(onDisk);
+            cacheBitmapInMemory(url, bitmap);
+            return bitmap;
+        }
+        if (noImages) {
+            return null;
+        }
+        bitmap = downloadBitmap(url, fullSize);
+        if (null != bitmap) {
+            cacheBitmapOnDisk(bitmap, onDisk);
+            cacheBitmapInMemory(url, bitmap);
+        }
+        return bitmap;
+    }
+
+    public File downloadAndGetFile(String url) {
+        File onDisk = getFile(url);
+        if (isStoredAndValid(onDisk)) {
+            return onDisk;
+        }
+        Bitmap bitmap = downloadBitmap(url, true);
+        if (null != bitmap) {
+            cacheBitmapOnDisk(bitmap, onDisk);
+            return onDisk;
+        }
+        return null;
+    }
+
+    private File getFile(String urlString) {
+        return new File(baseDir, String.valueOf(urlString.hashCode()) + ".png");
     }
 }

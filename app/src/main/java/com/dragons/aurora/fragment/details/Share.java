@@ -1,10 +1,8 @@
 package com.dragons.aurora.fragment.details;
 
 import android.content.Intent;
-import android.view.View;
 import android.widget.ImageView;
 
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;

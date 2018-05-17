@@ -30,6 +30,59 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     private String simOperator = "";
     private NativeGsfVersionProvider gsfVersionProvider;
 
+    static public List<String> getPlatforms() {
+        List<String> platforms = new ArrayList<>();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            platforms = Arrays.asList(Build.SUPPORTED_ABIS);
+        } else {
+            if (!TextUtils.isEmpty(Build.CPU_ABI)) {
+                platforms.add(Build.CPU_ABI);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO && !TextUtils.isEmpty(Build.CPU_ABI2)) {
+                platforms.add(Build.CPU_ABI2);
+            }
+        }
+        return platforms;
+    }
+
+    static public List<String> getFeatures(Context context) {
+        List<String> featureStringList = new ArrayList<>();
+        for (FeatureInfo feature : context.getPackageManager().getSystemAvailableFeatures()) {
+            if (!TextUtils.isEmpty(feature.name)) {
+                featureStringList.add(feature.name);
+            }
+        }
+        Collections.sort(featureStringList);
+        return featureStringList;
+    }
+
+    static public List<String> getLocales(Context context) {
+        List<String> rawLocales = new ArrayList<>();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            rawLocales.addAll(Arrays.asList(context.getAssets().getLocales()));
+        } else {
+            for (Locale locale : Locale.getAvailableLocales()) {
+                rawLocales.add(locale.toString());
+            }
+        }
+        List<String> locales = new ArrayList<>();
+        for (String locale : rawLocales) {
+            if (TextUtils.isEmpty(locale)) {
+                continue;
+            }
+            locales.add(locale.replace("-", "_"));
+        }
+        Collections.sort(locales);
+        return locales;
+    }
+
+    static public List<String> getSharedLibraries(Context context) {
+        List<String> libraries = new ArrayList<>();
+        libraries.addAll(Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames()));
+        Collections.sort(libraries);
+        return libraries;
+    }
+
     public void setContext(Context context) {
         this.context = context;
         gsfVersionProvider = new NativeGsfVersionProvider(context);
@@ -159,58 +212,5 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
                 .setHasFiveWayNavigation(config.navigation == Configuration.NAVIGATIONHIDDEN_YES)
         ;
         return builder;
-    }
-
-    static public List<String> getPlatforms() {
-        List<String> platforms = new ArrayList<>();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            platforms = Arrays.asList(Build.SUPPORTED_ABIS);
-        } else {
-            if (!TextUtils.isEmpty(Build.CPU_ABI)) {
-                platforms.add(Build.CPU_ABI);
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO && !TextUtils.isEmpty(Build.CPU_ABI2)) {
-                platforms.add(Build.CPU_ABI2);
-            }
-        }
-        return platforms;
-    }
-
-    static public List<String> getFeatures(Context context) {
-        List<String> featureStringList = new ArrayList<>();
-        for (FeatureInfo feature : context.getPackageManager().getSystemAvailableFeatures()) {
-            if (!TextUtils.isEmpty(feature.name)) {
-                featureStringList.add(feature.name);
-            }
-        }
-        Collections.sort(featureStringList);
-        return featureStringList;
-    }
-
-    static public List<String> getLocales(Context context) {
-        List<String> rawLocales = new ArrayList<>();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            rawLocales.addAll(Arrays.asList(context.getAssets().getLocales()));
-        } else {
-            for (Locale locale : Locale.getAvailableLocales()) {
-                rawLocales.add(locale.toString());
-            }
-        }
-        List<String> locales = new ArrayList<>();
-        for (String locale : rawLocales) {
-            if (TextUtils.isEmpty(locale)) {
-                continue;
-            }
-            locales.add(locale.replace("-", "_"));
-        }
-        Collections.sort(locales);
-        return locales;
-    }
-
-    static public List<String> getSharedLibraries(Context context) {
-        List<String> libraries = new ArrayList<>();
-        libraries.addAll(Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames()));
-        Collections.sort(libraries);
-        return libraries;
     }
 }

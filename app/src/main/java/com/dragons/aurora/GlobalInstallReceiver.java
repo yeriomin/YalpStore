@@ -9,43 +9,14 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
-import java.io.File;
-
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 
-public class GlobalInstallReceiver extends BroadcastReceiver {
+import java.io.File;
 
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        String action = intent.getAction();
-        if (!expectedAction(action) || null == intent.getData()) {
-            return;
-        }
-        String packageName = intent.getData().getSchemeSpecificPart();
-        Log.i(getClass().getSimpleName(), "Finished installation of " + packageName);
-        if (TextUtils.isEmpty(packageName)) {
-            return;
-        }
-        BlackWhiteListManager manager = new BlackWhiteListManager(context);
-        if (actionIsInstall(intent) && wasInstalled(context, packageName) && needToAutoWhitelist(context) && !manager.isBlack()) {
-            Log.i(getClass().getSimpleName(), "Whitelisting " + packageName);
-            manager.add(packageName);
-        }
-        if (null != DetailsFragment.app && packageName.equals(DetailsFragment.app.getPackageName())) {
-            updateDetails(actionIsInstall(intent));
-        }
-        ((AuroraApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall(intent));
-        if (needToRemoveApk(context) && actionIsInstall(intent)) {
-            App app = getApp(context, packageName);
-            File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
-            boolean deleted = apkPath.delete();
-            Log.i(getClass().getSimpleName(), "Removed " + apkPath + " successfully: " + deleted);
-        }
-    }
+public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static public void updateDetails(boolean installed) {
         if (installed) {
@@ -103,5 +74,33 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
                 && DownloadState.get(packageName).isEverythingFinished()
         )
                 ;
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction();
+        if (!expectedAction(action) || null == intent.getData()) {
+            return;
+        }
+        String packageName = intent.getData().getSchemeSpecificPart();
+        Log.i(getClass().getSimpleName(), "Finished installation of " + packageName);
+        if (TextUtils.isEmpty(packageName)) {
+            return;
+        }
+        BlackWhiteListManager manager = new BlackWhiteListManager(context);
+        if (actionIsInstall(intent) && wasInstalled(context, packageName) && needToAutoWhitelist(context) && !manager.isBlack()) {
+            Log.i(getClass().getSimpleName(), "Whitelisting " + packageName);
+            manager.add(packageName);
+        }
+        if (null != DetailsFragment.app && packageName.equals(DetailsFragment.app.getPackageName())) {
+            updateDetails(actionIsInstall(intent));
+        }
+        ((AuroraApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall(intent));
+        if (needToRemoveApk(context) && actionIsInstall(intent)) {
+            App app = getApp(context, packageName);
+            File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
+            boolean deleted = apkPath.delete();
+            Log.i(getClass().getSimpleName(), "Removed " + apkPath + " successfully: " + deleted);
+        }
     }
 }

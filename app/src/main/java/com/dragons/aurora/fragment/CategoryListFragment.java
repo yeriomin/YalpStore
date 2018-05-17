@@ -9,14 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.percolate.caffeine.ViewUtils;
-
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.AllCategoriesAdapter;
 import com.dragons.aurora.adapters.TopCategoriesAdapter;
 import com.dragons.aurora.task.playstore.CategoryListTaskHelper;
+import com.percolate.caffeine.ViewUtils;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;

@@ -1,10 +1,9 @@
 package com.dragons.aurora.task.playstore;
 
+import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
-
-import com.dragons.aurora.model.App;
 
 public class BetaToggleTask extends PlayStorePayloadTask<Void> {
 

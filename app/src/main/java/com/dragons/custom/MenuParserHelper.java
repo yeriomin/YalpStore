@@ -8,13 +8,9 @@ import android.view.MenuInflater;
 
 import java.util.List;
 
-/**
- * Created by Valentin on 14/06/2017.
- */
-
 public class MenuParserHelper {
 
-    public static void parseMenu(Context context, @MenuRes int menuRes, List<MenuEntry> menuEntryList){
+    public static void parseMenu(Context context, @MenuRes int menuRes, List<MenuEntry> menuEntryList) {
         PopupMenu p = new PopupMenu(context, null);
         Menu menu = p.getMenu();
         new MenuInflater(context).inflate(menuRes, menu);

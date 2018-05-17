@@ -2,12 +2,11 @@ package com.dragons.aurora.task.playstore;
 
 import android.util.Log;
 
+import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.fragment.details.Review;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
-
-import com.dragons.aurora.activities.DetailsActivity;
-import com.dragons.aurora.fragment.details.Review;
 
 public class ReviewDeleteTask extends PlayStorePayloadTask<Void> {
 

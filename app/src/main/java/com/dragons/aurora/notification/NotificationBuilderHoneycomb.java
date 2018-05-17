@@ -13,6 +13,14 @@ class NotificationBuilderHoneycomb extends NotificationBuilder {
 
     protected Notification.Builder builder;
 
+    public NotificationBuilderHoneycomb(Context context) {
+        super(context);
+        builder = new Notification.Builder(context)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setAutoCancel(true)
+        ;
+    }
+
     @Override
     public NotificationBuilder setTitle(String title) {
         builder.setContentTitle(title);
@@ -34,13 +42,5 @@ class NotificationBuilderHoneycomb extends NotificationBuilder {
     @Override
     public Notification build() {
         return builder.getNotification();
-    }
-
-    public NotificationBuilderHoneycomb(Context context) {
-        super(context);
-        builder = new Notification.Builder(context)
-                .setSmallIcon(R.drawable.ic_notification)
-                .setAutoCancel(true)
-        ;
     }
 }

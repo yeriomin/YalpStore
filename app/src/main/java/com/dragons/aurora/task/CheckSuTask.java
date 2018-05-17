@@ -4,10 +4,11 @@ import android.os.AsyncTask;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 
-import eu.chainfire.libsuperuser.Shell;
 import com.dragons.aurora.ContextUtil;
-import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.PreferenceFragment;
+
+import eu.chainfire.libsuperuser.Shell;
 
 public class CheckSuTask extends AsyncTask<Void, Void, Void> {
 
@@ -23,7 +24,7 @@ public class CheckSuTask extends AsyncTask<Void, Void, Void> {
         if (!available) {
             ((CheckBoxPreference) activity.findPreference(PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_INSTALL)).setChecked(false);
             ((ListPreference) activity.findPreference(PreferenceFragment.PREFERENCE_INSTALLATION_METHOD)).setValueIndex(0);
-            ContextUtil.toast(activity. getActivity().getApplicationContext(), R.string.pref_no_root);
+            ContextUtil.toast(activity.getActivity().getApplicationContext(), R.string.pref_no_root);
         }
     }
 

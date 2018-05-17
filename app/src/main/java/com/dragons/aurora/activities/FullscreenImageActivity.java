@@ -53,7 +53,7 @@ public class FullscreenImageActivity extends AppCompatActivity {
         snapHelper.attachToRecyclerView(gallery);
         BigScreenshotsAdapter adapter = new BigScreenshotsAdapter(BSAdapter, this);
         for (int i = 0; i < app.getScreenshotUrls().size(); i++)
-        BSAdapter.add(new BigScreenshotsAdapter.Holder(app.getScreenshotUrls()));
+            BSAdapter.add(new BigScreenshotsAdapter.Holder(app.getScreenshotUrls()));
         gallery.setAdapter(adapter);
         gallery.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         gallery.scrollToPosition(intent.getIntExtra(INTENT_SCREENSHOT_NUMBER, 0));

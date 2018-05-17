@@ -9,15 +9,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import com.dragons.aurora.activities.AppListActivity;
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
+import com.dragons.aurora.activities.AppListActivity;
 import com.dragons.aurora.model.Filter;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class FilterMenu {
 

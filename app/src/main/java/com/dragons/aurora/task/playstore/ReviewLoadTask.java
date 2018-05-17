@@ -2,14 +2,13 @@ package com.dragons.aurora.task.playstore;
 
 import android.util.Log;
 
+import com.dragons.aurora.ReviewStorageIterator;
+import com.dragons.aurora.activities.DetailsActivity;
+import com.dragons.aurora.model.Review;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 import java.util.List;
-
-import com.dragons.aurora.activities.DetailsActivity;
-import com.dragons.aurora.ReviewStorageIterator;
-import com.dragons.aurora.model.Review;
 
 public class ReviewLoadTask extends PlayStorePayloadTask<List<Review>> {
 

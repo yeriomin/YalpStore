@@ -2,25 +2,23 @@ package com.dragons.aurora.task.playstore;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.WindowManager;
 
+import com.dragons.aurora.ContextUtil;
+import com.dragons.aurora.NotPurchasedException;
+import com.dragons.aurora.R;
+import com.dragons.aurora.downloader.DownloadManagerInterface;
+import com.dragons.aurora.downloader.DownloadProgressBarUpdater;
+import com.dragons.aurora.downloader.DownloadState;
+import com.dragons.aurora.downloader.Downloader;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
-
-import com.dragons.aurora.ContextUtil;
-import com.dragons.aurora.downloader.DownloadManagerInterface;
-import com.dragons.aurora.downloader.DownloadProgressBarUpdater;
-import com.dragons.aurora.downloader.DownloadState;
-import com.dragons.aurora.downloader.Downloader;
-import com.dragons.aurora.NotPurchasedException;
-import com.dragons.aurora.R;
 
 public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 

@@ -17,6 +17,10 @@ abstract public class DownloadReceiver extends BroadcastReceiver {
     protected long downloadId;
     protected DownloadState state;
 
+    static protected boolean actionIs(Intent intent, String action) {
+        return !TextUtils.isEmpty(intent.getAction()) && intent.getAction().equals(action);
+    }
+
     abstract protected void process(Context context, Intent intent);
 
     @Override
@@ -38,9 +42,5 @@ abstract public class DownloadReceiver extends BroadcastReceiver {
                 && !Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()).exists()
                 && Paths.getDeltaPath(context, app.getPackageName(), app.getVersionCode()).exists()
                 ;
-    }
-
-    static protected boolean actionIs(Intent intent, String action) {
-        return !TextUtils.isEmpty(intent.getAction()) && intent.getAction().equals(action);
     }
 }

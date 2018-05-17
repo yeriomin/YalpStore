@@ -8,6 +8,14 @@ import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.util.Log;
 
+import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
+import com.dragons.aurora.downloader.DownloadManagerFake;
+import com.dragons.aurora.downloader.DownloadManagerInterface;
+import com.dragons.aurora.downloader.DownloadState;
+import com.dragons.aurora.notification.CancelDownloadService;
+import com.dragons.aurora.notification.NotificationManagerWrapper;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -16,14 +24,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import com.dragons.aurora.downloader.DownloadManagerFake;
-import com.dragons.aurora.downloader.DownloadManagerInterface;
-import com.dragons.aurora.downloader.DownloadState;
-import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
-import com.dragons.aurora.notification.CancelDownloadService;
-import com.dragons.aurora.notification.NotificationManagerWrapper;
 
 public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boolean> {
 

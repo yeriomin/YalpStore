@@ -7,16 +7,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 
+import com.dragons.aurora.ContextUtil;
+import com.dragons.aurora.R;
+import com.dragons.aurora.activities.SearchActivity;
+import com.dragons.aurora.builders.SystemRemountDialogBuilder;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import eu.chainfire.libsuperuser.Shell;
-import com.dragons.aurora.ContextUtil;
-import com.dragons.aurora.R;
-import com.dragons.aurora.activities.SearchActivity;
-import com.dragons.aurora.builders.SystemRemountDialogBuilder;
 
 public class CheckShellTask extends TaskWithProgress<Boolean> {
 

@@ -27,12 +27,12 @@ public class SpoofDeviceManager {
 
     private Context context;
 
-    static private boolean filenameValid(String filename) {
-        return filename.startsWith(SPOOF_FILE_PREFIX) && filename.endsWith(SPOOF_FILE_SUFFIX);
-    }
-
     public SpoofDeviceManager(Context context) {
         this.context = context;
+    }
+
+    static private boolean filenameValid(String filename) {
+        return filename.startsWith(SPOOF_FILE_PREFIX) && filename.endsWith(SPOOF_FILE_SUFFIX);
     }
 
     public Map<String, String> getDevices() {

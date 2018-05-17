@@ -6,13 +6,11 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.dragons.aurora.fragment.DetailsFragment;
-import com.percolate.caffeine.ViewUtils;
-
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.PurchaseTask;
+import com.percolate.caffeine.ViewUtils;
 
 public class BackToPlayStore extends AbstractHelper {
 
@@ -27,7 +25,7 @@ public class BackToPlayStore extends AbstractHelper {
         if (!isPlayStoreInstalled() || !app.isInPlayStore()) {
             return;
         }
-        ViewUtils.findViewById(fragment.getActivity(),R.id.to_play_store_cnt).setVisibility(View.VISIBLE);
+        ViewUtils.findViewById(fragment.getActivity(), R.id.to_play_store_cnt).setVisibility(View.VISIBLE);
         ImageView toPlayStore = (ImageView) fragment.getActivity().findViewById(R.id.to_play_store);
         toPlayStore.setVisibility(View.VISIBLE);
         toPlayStore.setOnClickListener(v -> {

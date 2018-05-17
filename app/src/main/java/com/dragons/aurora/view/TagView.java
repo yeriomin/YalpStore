@@ -4,13 +4,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
 
-public class TagView extends RelativeLayout{
+public class TagView extends RelativeLayout {
 
     static int style;
     static String mono_title, dual_title0, dual_title1;
@@ -51,7 +50,7 @@ public class TagView extends RelativeLayout{
         View root = inflate(context, R.layout.tagview_mono, this);
         mono = root.findViewById(R.id.tag_mono_txt);
         if (mono_title != null)
-        mono.setText(mono_title);
+            mono.setText(mono_title);
     }
 
     private void DualTagView(Context context) {
@@ -90,11 +89,11 @@ public class TagView extends RelativeLayout{
         dual1.setOnClickListener(onClickListener);
     }
 
-    public void setStyle(int style) {
-        TagView.style = style;
-    }
-
     public int getStyle() {
         return style;
+    }
+
+    public void setStyle(int style) {
+        TagView.style = style;
     }
 }

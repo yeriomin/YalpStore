@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.dragons.aurora.Util;
 import com.dragons.aurora.playstoreapiv2.AuthException;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
@@ -24,11 +25,76 @@ import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
-import com.dragons.aurora.Util;
-
 public class NativeHttpClientAdapter extends HttpClientAdapter {
 
     static private final int TIMEOUT = 15000;
+
+    static private String urlEncode(String input) {
+        try {
+            return URLEncoder.encode(input, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            // Unlikely
+        }
+        return null;
+    }
+
+    static private void addBody(HttpURLConnection connection, byte[] body) throws IOException {
+        if (null == body) {
+            body = new byte[0];
+        }
+        connection.addRequestProperty("Content-Length", Integer.toString(body.length));
+        if (body.length > 0) {
+            connection.setDoOutput(true);
+            OutputStream outputStream = connection.getOutputStream();
+            outputStream.write(body);
+            outputStream.close();
+        } else {
+            connection.setDoOutput(false);
+        }
+    }
+
+    static private void processHttpErrorCode(int code, byte[] content) throws GooglePlayException {
+        if (code == 401 || code == 403) {
+            AuthException e = new AuthException("Auth error", code);
+            Map<String, String> authResponse = GooglePlayAPI.parseResponse(new String(content));
+            if (authResponse.containsKey("Error") && authResponse.get("Error").equals("NeedsBrowser")) {
+                e.setTwoFactorUrl(authResponse.get("Url"));
+            }
+            throw e;
+        } else if (code >= 500) {
+            throw new GooglePlayException("Server error", code);
+        } else if (code >= 400) {
+            throw new GooglePlayException("Malformed request", code);
+        }
+    }
+
+    static private byte[] readFully(InputStream inputStream, boolean gzipped) throws IOException {
+        if (null == inputStream) {
+            return new byte[0];
+        }
+        if (gzipped) {
+            inputStream = new GZIPInputStream(inputStream);
+        }
+        InputStream bufferedInputStream = new BufferedInputStream(inputStream);
+        byte[] buffer = new byte[8192];
+        int bytesRead;
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        while ((bytesRead = bufferedInputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+        byte[] result = outputStream.toByteArray();
+        Util.closeSilently(bufferedInputStream);
+        Util.closeSilently(outputStream);
+        return result;
+    }
+
+    static private String buildFormBody(Map<String, String> params) {
+        List<String> keyValuePairs = new ArrayList<>();
+        for (String key : params.keySet()) {
+            keyValuePairs.add(urlEncode(key) + "=" + urlEncode(params.get(key)));
+        }
+        return TextUtils.join("&", keyValuePairs);
+    }
 
     @Override
     public byte[] get(String url, Map<String, String> params, Map<String, String> headers) throws IOException {
@@ -126,72 +192,5 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
         }
         processHttpErrorCode(code, content);
         return content;
-    }
-
-    static private String urlEncode(String input) {
-        try {
-            return URLEncoder.encode(input, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            // Unlikely
-        }
-        return null;
-    }
-
-    static private void addBody(HttpURLConnection connection, byte[] body) throws IOException {
-        if (null == body) {
-            body = new byte[0];
-        }
-        connection.addRequestProperty("Content-Length", Integer.toString(body.length));
-        if (body.length > 0) {
-            connection.setDoOutput(true);
-            OutputStream outputStream = connection.getOutputStream();
-            outputStream.write(body);
-            outputStream.close();
-        } else {
-            connection.setDoOutput(false);
-        }
-    }
-
-    static private void processHttpErrorCode(int code, byte[] content) throws GooglePlayException {
-        if (code == 401 || code == 403) {
-            AuthException e = new AuthException("Auth error", code);
-            Map<String, String> authResponse = GooglePlayAPI.parseResponse(new String(content));
-            if (authResponse.containsKey("Error") && authResponse.get("Error").equals("NeedsBrowser")) {
-                e.setTwoFactorUrl(authResponse.get("Url"));
-            }
-            throw e;
-        } else if (code >= 500) {
-            throw new GooglePlayException("Server error", code);
-        } else if (code >= 400) {
-            throw new GooglePlayException("Malformed request", code);
-        }
-    }
-
-    static private byte[] readFully(InputStream inputStream, boolean gzipped) throws IOException {
-        if (null == inputStream) {
-            return new byte[0];
-        }
-        if (gzipped) {
-            inputStream = new GZIPInputStream(inputStream);
-        }
-        InputStream bufferedInputStream = new BufferedInputStream(inputStream);
-        byte[] buffer = new byte[8192];
-        int bytesRead;
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        while ((bytesRead = bufferedInputStream.read(buffer)) != -1) {
-            outputStream.write(buffer, 0, bytesRead);
-        }
-        byte[] result = outputStream.toByteArray();
-        Util.closeSilently(bufferedInputStream);
-        Util.closeSilently(outputStream);
-        return result;
-    }
-
-    static private String buildFormBody(Map<String, String> params) {
-        List<String> keyValuePairs = new ArrayList<>();
-        for (String key : params.keySet()) {
-            keyValuePairs.add(urlEncode(key) + "=" + urlEncode(params.get(key)));
-        }
-        return TextUtils.join("&", keyValuePairs);
     }
 }

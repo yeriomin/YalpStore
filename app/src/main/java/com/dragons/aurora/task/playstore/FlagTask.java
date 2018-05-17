@@ -1,12 +1,11 @@
 package com.dragons.aurora.task.playstore;
 
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-
-import java.io.IOException;
-
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+
+import java.io.IOException;
 
 public class FlagTask extends PlayStorePayloadTask<Boolean> implements CloneableTask {
 

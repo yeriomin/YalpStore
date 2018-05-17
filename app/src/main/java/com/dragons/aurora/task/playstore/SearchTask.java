@@ -3,6 +3,10 @@ package com.dragons.aurora.task.playstore;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 
+import com.dragons.aurora.AppListIterator;
+import com.dragons.aurora.CategoryManager;
+import com.dragons.aurora.PlayStoreApiAuthenticator;
+import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.SearchIterator;
 
@@ -11,11 +15,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import com.dragons.aurora.AppListIterator;
-import com.dragons.aurora.CategoryManager;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
-import com.dragons.aurora.model.App;
 
 public class SearchTask extends EndlessScrollTask implements CloneableTask {
 
@@ -26,6 +25,19 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
 
     public SearchTask(AppListIterator iterator) {
         super(iterator);
+    }
+
+    static private Set<String> getInstalledPackageNames(Context context) {
+        Set<String> newList = new HashSet<>();
+        try {
+            for (PackageInfo reducedPackageInfo : context.getPackageManager().getInstalledPackages(0)) {
+                newList.add(reducedPackageInfo.packageName);
+            }
+        } catch (RuntimeException e) {
+            // TransactionTooLargeException might happen if the user has too many apps
+            // Marking apps as installed in search is not very important, so lets ignore this
+        }
+        return newList;
     }
 
     public void setQuery(String query) {
@@ -83,18 +95,5 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
             }
         }
         return apps;
-    }
-
-    static private Set<String> getInstalledPackageNames(Context context) {
-        Set<String> newList = new HashSet<>();
-        try {
-            for (PackageInfo reducedPackageInfo : context.getPackageManager().getInstalledPackages(0)) {
-                newList.add(reducedPackageInfo.packageName);
-            }
-        } catch (RuntimeException e) {
-            // TransactionTooLargeException might happen if the user has too many apps
-            // Marking apps as installed in search is not very important, so lets ignore this
-        }
-        return newList;
     }
 }

@@ -26,27 +26,13 @@ class BlockingBlurController implements BlurController {
     private static final String TAG = BlockingBlurController.class.getSimpleName();
     //Bitmap size should be divisible by 16 to meet stride requirement
     private static final int ROUNDING_VALUE = 16;
-
-    private final float scaleFactor = DEFAULT_SCALE_FACTOR;
-    private float blurRadius = DEFAULT_BLUR_RADIUS;
-    private float roundingWidthScaleFactor = 1f;
-    private float roundingHeightScaleFactor = 1f;
-
-    private BlurAlgorithm blurAlgorithm;
-    private Canvas internalCanvas;
-
-    /**
-     * Draw view hierarchy here.
-     * Blur it.
-     * Draw it on BlurView's canvas.
-     */
-    private Bitmap internalBitmap;
-
     final View blurView;
+    private final float scaleFactor = DEFAULT_SCALE_FACTOR;
     private final ViewGroup rootView;
     private final Rect relativeViewBounds = new Rect();
     private final int[] locationInWindow = new int[2];
-
+    //Used to distinct parent draw() calls from Controller's draw() calls
+    boolean isMeDrawingNow;
     private final ViewTreeObserver.OnPreDrawListener drawListener = new ViewTreeObserver.OnPreDrawListener() {
         @Override
         public boolean onPreDraw() {
@@ -56,11 +42,6 @@ class BlockingBlurController implements BlurController {
             return true;
         }
     };
-
-    //Used to distinct parent draw() calls from Controller's draw() calls
-    boolean isMeDrawingNow;
-    private boolean isBlurEnabled = true;
-
     //must be set from message queue
     private final Runnable onDrawEndTask = new Runnable() {
         @Override
@@ -68,7 +49,18 @@ class BlockingBlurController implements BlurController {
             isMeDrawingNow = false;
         }
     };
-
+    private float blurRadius = DEFAULT_BLUR_RADIUS;
+    private float roundingWidthScaleFactor = 1f;
+    private float roundingHeightScaleFactor = 1f;
+    private BlurAlgorithm blurAlgorithm;
+    private Canvas internalCanvas;
+    /**
+     * Draw view hierarchy here.
+     * Blur it.
+     * Draw it on BlurView's canvas.
+     */
+    private Bitmap internalBitmap;
+    private boolean isBlurEnabled = true;
     //By default, window's background is not drawn on canvas. We need to draw it manually
     @Nullable
     private Drawable windowBackground;

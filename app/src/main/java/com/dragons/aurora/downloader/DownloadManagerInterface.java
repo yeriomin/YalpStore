@@ -1,8 +1,7 @@
 package com.dragons.aurora.downloader;
 
-import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
-
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 
 public interface DownloadManagerInterface {
 
@@ -23,10 +22,6 @@ public interface DownloadManagerInterface {
     int ERROR_FILE_ALREADY_EXISTS = 1009;
     int ERROR_BLOCKED = 1010;
 
-    enum Type {
-        APK, DELTA, OBB_MAIN, OBB_PATCH
-    }
-
     long enqueue(App app, AndroidAppDeliveryData deliveryData, Type type);
 
     boolean finished(long downloadId);
@@ -36,4 +31,8 @@ public interface DownloadManagerInterface {
     String getError(long downloadId);
 
     void cancel(long downloadId);
+
+    enum Type {
+        APK, DELTA, OBB_MAIN, OBB_PATCH
+    }
 }

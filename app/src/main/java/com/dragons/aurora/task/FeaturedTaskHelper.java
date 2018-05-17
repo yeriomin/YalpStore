@@ -7,7 +7,6 @@ import android.view.animation.AnimationUtils;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.FeaturedAppsAdapter;
-import com.dragons.aurora.adapters.RecyclerAppsAdapter;
 import com.dragons.aurora.model.App;
 
 import java.util.List;

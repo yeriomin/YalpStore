@@ -2,10 +2,10 @@ package com.dragons.aurora;
 
 import android.content.Context;
 
+import com.dragons.aurora.model.Review;
+
 import java.util.Iterator;
 import java.util.List;
-
-import com.dragons.aurora.model.Review;
 
 abstract public class ReviewIterator implements Iterator<List<Review>> {
 

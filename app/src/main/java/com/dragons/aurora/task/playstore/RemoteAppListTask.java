@@ -1,5 +1,7 @@
 package com.dragons.aurora.task.playstore;
 
+import com.dragons.aurora.model.App;
+import com.dragons.aurora.model.AppBuilder;
 import com.dragons.aurora.playstoreapiv2.BulkDetailsEntry;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
@@ -8,9 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import com.dragons.aurora.model.App;
-import com.dragons.aurora.model.AppBuilder;
 
 public class RemoteAppListTask extends PlayStorePayloadTask<List<App>> {
 

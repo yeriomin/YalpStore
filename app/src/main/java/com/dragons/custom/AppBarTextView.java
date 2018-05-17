@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 
 
-
 public class AppBarTextView extends AppCompatTextView {
 
     public AppBarTextView(Context context) {
@@ -25,7 +24,7 @@ public class AppBarTextView extends AppCompatTextView {
         init();
     }
 
-    private void init(){
+    private void init() {
         setLines(1);
         setGravity(Gravity.CENTER);
     }

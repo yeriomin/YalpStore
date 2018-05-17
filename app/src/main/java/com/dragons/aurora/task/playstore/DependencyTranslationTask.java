@@ -1,13 +1,12 @@
 package com.dragons.aurora.task.playstore;
 
+import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.dragons.aurora.model.App;
 
 public class DependencyTranslationTask extends RemoteAppListTask {
 

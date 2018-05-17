@@ -12,10 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.R;
+import com.squareup.picasso.Picasso;
 
 public class AboutFragment extends UtilFragment {
 

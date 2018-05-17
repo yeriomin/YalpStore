@@ -1,7 +1,6 @@
 package com.dragons.aurora.task.playstore;
 
 import android.text.TextUtils;
-import android.widget.ArrayAdapter;
 
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.playstoreapiv2.DocV2;
@@ -9,7 +8,6 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.ListResponse;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,14 +45,6 @@ abstract public class CategoryTask extends PlayStorePayloadTask<Void> {
             manager.save(categoryId, buildCategoryMap(api.categoriesList(categoryId)));
         }
         return null;
-    }
-
-    protected ArrayAdapter getAdapter(Map<String, String> categories, int itemLayoutId) {
-        return new ArrayAdapter<>(
-                context,
-                itemLayoutId,
-                new ArrayList<>(categories.values())
-        );
     }
 
     private Map<String, String> buildCategoryMap(ListResponse response) {

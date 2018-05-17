@@ -5,30 +5,27 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.view.Menu;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.percolate.caffeine.ViewUtils;
-
-import java.util.List;
 
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.ScrollEdgeListener;
 import com.dragons.aurora.adapters.AppListAdapter;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.task.playstore.EndlessScrollTask;
 import com.dragons.aurora.view.AdaptiveToolbar;
 import com.dragons.aurora.view.ListItem;
 import com.dragons.aurora.view.ProgressIndicator;
 import com.dragons.aurora.view.SearchResultAppBadge;
+import com.percolate.caffeine.ViewUtils;
+
+import java.util.List;
 
 abstract public class EndlessScrollActivity extends AppListActivity {
 
-    protected AppListIterator iterator;
     public GooglePlayAPI.SUBCATEGORY subCategory;
+    protected AppListIterator iterator;
 
     abstract protected EndlessScrollTask getTask();
 

@@ -2,7 +2,6 @@ package com.dragons.aurora.fragment.details;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,15 +14,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
+import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ImageSource;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -50,29 +52,29 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void drawAppBadge(App app) {
-        ImageView imageView = fragment.getActivity().findViewById(R.id.icon);
+        ImageView appIcon = fragment.getActivity().findViewById(R.id.icon);
         RelativeLayout relativeLayout = fragment.getActivity().findViewById(R.id.details_header);
         ImageSource imageSource = app.getIconInfo();
         if (null != imageSource.getApplicationInfo()) {
-            imageView.setImageDrawable(imageView.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
-            Bitmap bitmap = getBitmapFromDrawable(imageView.getDrawable());
+            appIcon.setImageDrawable(fragment.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
+            Bitmap bitmap = getBitmapFromDrawable(appIcon.getDrawable());
             getPalette(bitmap);
         } else {
             Picasso
                     .with(fragment.getActivity())
                     .load(imageSource.getUrl())
                     .placeholder(R.color.transparent)
-                    .into(imageView, new com.squareup.picasso.Callback() {
+                    .into(appIcon, new Callback() {
                         @Override
                         public void onSuccess() {
-                            Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                            Bitmap bitmap = ((BitmapDrawable) appIcon.getDrawable()).getBitmap();
                             if (bitmap != null)
                                 getPalette(bitmap);
                         }
 
                         @Override
                         public void onError() {
-                            relativeLayout.setBackgroundColor(Color.GRAY);
+                            relativeLayout.setBackgroundColor(Color.DKGRAY);
                         }
                     });
         }
@@ -81,6 +83,25 @@ public class GeneralDetails extends AbstractHelper {
         setText(fragment.getView(), R.id.packageName, R.string.details_developer, app.getDeveloperName());
         drawVersion(fragment.getActivity().findViewById(R.id.versionString), app);
         drawBackground(fragment.getView().findViewById(R.id.app_background));
+
+
+        appIcon.setOnClickListener(v -> {
+            AuroraActivity activity = (AuroraActivity) fragment.getActivity();
+            PopupMenu popup = new PopupMenu(v.getContext(), v);
+            popup.inflate(R.menu.menu_download);
+            new DownloadOptions(activity, app).inflate(popup.getMenu());
+            popup.getMenu().findItem(R.id.action_download).setVisible(false);
+            popup.getMenu().findItem(R.id.action_uninstall).setVisible(false);
+            popup.getMenu().findItem(R.id.action_manual).setVisible(true);
+            popup.setOnMenuItemClickListener(item -> {
+                switch (item.getItemId()) {
+                    default:
+                        return new DownloadOptions(activity, app).onContextItemSelected(item);
+                }
+            });
+            popup.show();
+        });
+
     }
 
     private void drawBackground(ImageView appBackground) {
@@ -135,7 +156,7 @@ public class GeneralDetails extends AbstractHelper {
         setText(fragment.getView(), R.id.google_dependencies, app.getDependencies().isEmpty()
                 ? R.string.list_app_independent_from_gsf
                 : R.string.list_app_depends_on_gsf);
-        if (app.getPrice().isEmpty())
+        if (app.getPrice() != null && app.getPrice().isEmpty())
             setText(fragment.getView(), R.id.price, R.string.category_appFree);
         else
             setText(fragment.getView(), R.id.price, app.getPrice());
@@ -151,7 +172,7 @@ public class GeneralDetails extends AbstractHelper {
         Picasso
                 .with(fragment.getActivity())
                 .load(app.getCategoryIconUrl())
-                .placeholder(fragment.getResources().getDrawable(R.drawable.ic_categories))
+                .placeholder(fragment.getContext().getDrawable(R.drawable.ic_categories))
                 .into(categoryImg);
 
         drawOfferDetails(app);

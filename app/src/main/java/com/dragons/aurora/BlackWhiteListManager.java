@@ -5,11 +5,11 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import com.dragons.aurora.fragment.PreferenceFragment;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
-import com.dragons.aurora.fragment.PreferenceFragment;
 
 public class BlackWhiteListManager {
 

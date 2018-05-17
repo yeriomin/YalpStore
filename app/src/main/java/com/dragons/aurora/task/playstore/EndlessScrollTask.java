@@ -2,6 +2,13 @@ package com.dragons.aurora.task.playstore;
 
 import android.util.Log;
 
+import com.dragons.aurora.AppListIterator;
+import com.dragons.aurora.PlayStoreApiAuthenticator;
+import com.dragons.aurora.R;
+import com.dragons.aurora.activities.EndlessScrollActivity;
+import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.model.App;
+import com.dragons.aurora.model.Filter;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
@@ -10,18 +17,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dragons.aurora.AppListIterator;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
-import com.dragons.aurora.R;
-import com.dragons.aurora.activities.EndlessScrollActivity;
-import com.dragons.aurora.fragment.PreferenceFragment;
-import com.dragons.aurora.model.App;
-import com.dragons.aurora.model.Filter;
-
 abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> {
 
     protected Filter filter;
     protected AppListIterator iterator;
+
+    EndlessScrollTask(AppListIterator iterator) {
+        this.iterator = iterator;
+    }
 
     abstract protected AppListIterator initIterator() throws IOException;
 
@@ -29,10 +32,6 @@ abstract public class EndlessScrollTask extends PlayStorePayloadTask<List<App>> 
 
     public void setFilter(Filter filter) {
         this.filter = filter;
-    }
-
-    EndlessScrollTask(AppListIterator iterator) {
-        this.iterator = iterator;
     }
 
     @Override

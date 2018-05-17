@@ -8,18 +8,22 @@ import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.util.Log;
 
+import com.dragons.aurora.AuroraPermissionManager;
+import com.dragons.aurora.ContextUtil;
+import com.dragons.aurora.Paths;
+import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.PreferenceFragment;
+
 import java.io.File;
 import java.io.IOException;
-
-import com.dragons.aurora.ContextUtil;
-import com.dragons.aurora.AuroraPermissionManager;
-import com.dragons.aurora.Paths;
-import com.dragons.aurora.fragment.PreferenceFragment;
-import com.dragons.aurora.R;
 
 public class DownloadDirectory extends Abstract {
 
     private EditTextPreference preference;
+
+    public DownloadDirectory(PreferenceFragment activity) {
+        super(activity);
+    }
 
     public DownloadDirectory setPreference(EditTextPreference preference) {
         this.preference = preference;
@@ -105,9 +109,5 @@ public class DownloadDirectory extends Abstract {
                         ;
             }
         });
-    }
-
-    public DownloadDirectory(PreferenceFragment activity) {
-        super(activity);
     }
 }

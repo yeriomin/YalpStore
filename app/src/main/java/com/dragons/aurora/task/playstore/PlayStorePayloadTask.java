@@ -1,11 +1,10 @@
 package com.dragons.aurora.task.playstore;
 
+import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
 
 import java.io.IOException;
-
-import com.dragons.aurora.PlayStoreApiAuthenticator;
 
 abstract public class PlayStorePayloadTask<T> extends PlayStoreTask<T> {
 

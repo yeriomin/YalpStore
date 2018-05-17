@@ -12,8 +12,6 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.dragons.aurora.R;
-
 public abstract class ListItem {
 
     protected View view;

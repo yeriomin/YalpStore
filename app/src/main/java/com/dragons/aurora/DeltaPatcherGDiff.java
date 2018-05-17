@@ -3,10 +3,10 @@ package com.dragons.aurora;
 import android.content.Context;
 import android.util.Log;
 
+import com.dragons.aurora.model.App;
+
 import java.io.File;
 import java.io.IOException;
-
-import com.dragons.aurora.model.App;
 
 public class DeltaPatcherGDiff extends DeltaPatcherAbstract {
 

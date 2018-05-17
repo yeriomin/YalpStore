@@ -4,23 +4,21 @@ import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.percolate.caffeine.ViewUtils;
-
-import java.util.regex.Pattern;
-
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.FilterMenu;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.task.playstore.DetailsTask;
 import com.dragons.aurora.task.playstore.SearchTask;
+import com.percolate.caffeine.ViewUtils;
+
+import java.util.regex.Pattern;
 
 public class SearchActivity extends EndlessScrollActivity {
 

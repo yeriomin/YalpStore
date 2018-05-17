@@ -8,10 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
-import com.percolate.caffeine.ViewUtils;
-
 import com.dragons.aurora.R;
 import com.dragons.aurora.view.ListItem;
+import com.percolate.caffeine.ViewUtils;
 
 
 public class AppListAdapter extends ArrayAdapter<ListItem> {

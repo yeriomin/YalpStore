@@ -2,17 +2,16 @@ package com.dragons.aurora.task.playstore;
 
 import android.content.pm.PackageManager;
 
-import com.dragons.aurora.playstoreapiv2.DetailsResponse;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.dragons.aurora.playstoreapiv2.GooglePlayException;
-
-import java.io.IOException;
-
 import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.AppBuilder;
 import com.dragons.aurora.model.ReviewBuilder;
+import com.dragons.aurora.playstoreapiv2.DetailsResponse;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayException;
+
+import java.io.IOException;
 
 public class DetailsTask extends PlayStorePayloadTask<App> {
 

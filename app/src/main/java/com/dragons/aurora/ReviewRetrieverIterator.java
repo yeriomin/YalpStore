@@ -2,14 +2,13 @@ package com.dragons.aurora;
 
 import android.util.Log;
 
+import com.dragons.aurora.model.Review;
+import com.dragons.aurora.model.ReviewBuilder;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.dragons.aurora.model.Review;
-import com.dragons.aurora.model.ReviewBuilder;
 
 public class ReviewRetrieverIterator extends ReviewIterator {
 

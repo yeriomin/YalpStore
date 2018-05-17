@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import java.io.File;
-
 import com.dragons.aurora.downloader.DownloadManagerFactory;
 import com.dragons.aurora.downloader.DownloadManagerInterface;
 import com.dragons.aurora.downloader.DownloadReceiver;
@@ -13,6 +11,8 @@ import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.NotificationManagerWrapper;
+
+import java.io.File;
 
 public class GlobalDownloadReceiver extends DownloadReceiver {
 

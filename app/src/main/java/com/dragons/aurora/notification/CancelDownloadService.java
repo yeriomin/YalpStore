@@ -5,13 +5,13 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.dragons.aurora.AuroraApplication;
 import com.dragons.aurora.downloader.DownloadManagerFactory;
 import com.dragons.aurora.downloader.DownloadManagerInterface;
 import com.dragons.aurora.downloader.DownloadState;
-import com.dragons.aurora.AuroraApplication;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CancelDownloadService extends IntentService {
 

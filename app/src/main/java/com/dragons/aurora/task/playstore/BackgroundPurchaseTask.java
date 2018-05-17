@@ -1,10 +1,9 @@
 package com.dragons.aurora.task.playstore;
 
-import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
-
-import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.R;
+import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.notification.NotificationManagerWrapper;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 
 class BackgroundPurchaseTask extends PurchaseTask {
 

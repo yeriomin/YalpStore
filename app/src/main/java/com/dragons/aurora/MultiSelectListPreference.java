@@ -197,7 +197,28 @@ public class MultiSelectListPreference extends DialogPreference {
         }
     }
 
+    protected boolean persistStringSetCompat(Set<String> values) {
+        BlackWhiteListManager manager = new BlackWhiteListManager(this.getContext());
+        return manager.set(values);
+    }
+
+    protected Set<String> getPersistedStringSetCompat(Set<String> defaultReturnValue) {
+        BlackWhiteListManager manager = new BlackWhiteListManager(this.getContext());
+        Set<String> result = manager.get();
+        return null == result ? defaultReturnValue : result;
+    }
+
     private static class SavedState extends BaseSavedState {
+        @SuppressWarnings("unused")
+        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
         public Set<String> values;
         public Set<String> newValues;
         public boolean preferenceChanged;
@@ -212,26 +233,6 @@ public class MultiSelectListPreference extends DialogPreference {
         public SavedState(Parcelable superState) {
             super(superState);
         }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            super.writeToParcel(dest, flags);
-
-            writeStringSet(dest, values);
-            writeStringSet(dest, newValues);
-            writeBoolean(dest, preferenceChanged);
-        }
-
-        @SuppressWarnings("unused")
-        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
-            public SavedState createFromParcel(Parcel in) {
-                return new SavedState(in);
-            }
-
-            public SavedState[] newArray(int size) {
-                return new SavedState[size];
-            }
-        };
 
         private static Set<String> readStringSet(Parcel source) {
             final int n = source.readInt();
@@ -264,16 +265,14 @@ public class MultiSelectListPreference extends DialogPreference {
         private static void writeBoolean(Parcel dest, boolean value) {
             dest.writeInt((value) ? 1 : 0);
         }
-    }
 
-    protected boolean persistStringSetCompat(Set<String> values) {
-        BlackWhiteListManager manager = new BlackWhiteListManager(this.getContext());
-        return manager.set(values);
-    }
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
 
-    protected Set<String> getPersistedStringSetCompat(Set<String> defaultReturnValue) {
-        BlackWhiteListManager manager = new BlackWhiteListManager(this.getContext());
-        Set<String> result = manager.get();
-        return null == result ? defaultReturnValue : result;
+            writeStringSet(dest, values);
+            writeStringSet(dest, newValues);
+            writeBoolean(dest, preferenceChanged);
+        }
     }
 }

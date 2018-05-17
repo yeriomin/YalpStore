@@ -2,6 +2,10 @@ package com.dragons.aurora.task.playstore;
 
 import android.util.Log;
 
+import com.dragons.aurora.NotPurchasedException;
+import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.PreferenceFragment;
+import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.BuyResponse;
 import com.dragons.aurora.playstoreapiv2.DeliveryResponse;
@@ -9,16 +13,11 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 import java.io.IOException;
 
-import com.dragons.aurora.NotPurchasedException;
-import com.dragons.aurora.fragment.PreferenceFragment;
-import com.dragons.aurora.R;
-import com.dragons.aurora.model.App;
-
 public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryData> {
 
     protected App app;
-    protected String downloadToken;
     protected AndroidAppDeliveryData deliveryData;
+    private String downloadToken;
 
     public void setApp(App app) {
         this.app = app;
@@ -31,7 +30,7 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
         return deliveryData;
     }
 
-    protected void purchase(GooglePlayAPI api) {
+    private void purchase(GooglePlayAPI api) {
         try {
             BuyResponse buyResponse = api.purchase(app.getPackageName(), app.getVersionCode(), app.getOfferType());
             if (buyResponse.hasPurchaseStatusResponse()
@@ -48,7 +47,7 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
         }
     }
 
-    protected void delivery(GooglePlayAPI api) throws IOException {
+    private void delivery(GooglePlayAPI api) throws IOException {
         DeliveryResponse deliveryResponse = api.delivery(
                 app.getPackageName(),
                 shouldDownloadDelta() ? app.getInstalledVersionCode() : 0,

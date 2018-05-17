@@ -6,9 +6,9 @@ public abstract class Abstract {
 
     protected PreferenceFragment activity;
 
-    abstract public void draw();
-
     public Abstract(PreferenceFragment activity) {
         this.activity = activity;
     }
+
+    abstract public void draw();
 }

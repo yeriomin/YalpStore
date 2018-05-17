@@ -8,10 +8,9 @@ import android.os.Build;
 import android.util.Log;
 import android.util.Pair;
 
-import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
-
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public class DownloadManagerAdapter extends DownloadManagerAbstract {

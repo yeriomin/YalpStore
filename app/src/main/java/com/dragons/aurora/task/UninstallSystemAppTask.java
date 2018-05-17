@@ -2,10 +2,10 @@ package com.dragons.aurora.task;
 
 import android.content.Context;
 
+import com.dragons.aurora.model.App;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.dragons.aurora.model.App;
 
 public class UninstallSystemAppTask extends SystemRemountTask {
 

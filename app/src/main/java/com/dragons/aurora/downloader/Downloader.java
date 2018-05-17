@@ -4,14 +4,13 @@ import android.content.Context;
 import android.os.StatFs;
 import android.util.Log;
 
+import com.dragons.aurora.InstalledApkCopier;
+import com.dragons.aurora.Paths;
+import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.AppFileMetadata;
 
 import java.io.File;
-
-import com.dragons.aurora.InstalledApkCopier;
-import com.dragons.aurora.Paths;
-import com.dragons.aurora.model.App;
 
 public class Downloader {
 
@@ -21,6 +20,23 @@ public class Downloader {
     public Downloader(Context context) {
         this.context = context;
         this.dm = DownloadManagerFactory.get(context);
+    }
+
+    static private void prepare(File file, long expectedSize) {
+        Log.i(Downloader.class.getSimpleName(), "file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + expectedSize);
+        if (file.exists() && file.length() != expectedSize) {
+            Log.i(Downloader.class.getSimpleName(), "Deleted old file: " + file.delete());
+        }
+        file.getParentFile().mkdirs();
+    }
+
+    static private boolean shouldDownloadDelta(App app, AndroidAppDeliveryData deliveryData) {
+        File currentApk = InstalledApkCopier.getCurrentApk(app);
+        return app.getVersionCode() > app.getInstalledVersionCode()
+                && deliveryData.hasPatchData()
+                && null != currentApk
+                && currentApk.exists()
+                ;
     }
 
     public void download(App app, AndroidAppDeliveryData deliveryData) {
@@ -63,22 +79,5 @@ public class Downloader {
                     main ? DownloadManagerInterface.Type.OBB_MAIN : DownloadManagerInterface.Type.OBB_PATCH
             ));
         }
-    }
-
-    static private void prepare(File file, long expectedSize) {
-        Log.i(Downloader.class.getSimpleName(), "file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + expectedSize);
-        if (file.exists() && file.length() != expectedSize) {
-            Log.i(Downloader.class.getSimpleName(), "Deleted old file: " + file.delete());
-        }
-        file.getParentFile().mkdirs();
-    }
-
-    static private boolean shouldDownloadDelta(App app, AndroidAppDeliveryData deliveryData) {
-        File currentApk = InstalledApkCopier.getCurrentApk(app);
-        return app.getVersionCode() > app.getInstalledVersionCode()
-                && deliveryData.hasPatchData()
-                && null != currentApk
-                && currentApk.exists()
-                ;
     }
 }

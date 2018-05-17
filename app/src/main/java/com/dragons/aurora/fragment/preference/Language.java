@@ -2,17 +2,17 @@ package com.dragons.aurora.fragment.preference;
 
 import android.preference.Preference;
 
+import com.dragons.aurora.OnListPreferenceChangeListener;
+import com.dragons.aurora.PlayStoreApiAuthenticator;
+import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
+import com.dragons.aurora.fragment.PreferenceFragment;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
-
-import com.dragons.aurora.OnListPreferenceChangeListener;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
-import com.dragons.aurora.fragment.PreferenceFragment;
-import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
 
 public class Language extends List {
 

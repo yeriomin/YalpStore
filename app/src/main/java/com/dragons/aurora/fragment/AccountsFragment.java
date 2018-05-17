@@ -12,13 +12,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.percolate.caffeine.ViewUtils;
-import com.squareup.picasso.Picasso;
-
 import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.LoginActivity;
+import com.dragons.aurora.task.UserProvidedCredentialsTask;
+import com.percolate.caffeine.ViewUtils;
+import com.squareup.picasso.Picasso;
 
 public class AccountsFragment extends UtilFragment {
 
@@ -97,7 +97,7 @@ public class AccountsFragment extends UtilFragment {
         setText(v, R.id.account_name, R.string.acc_dummy_name);
         setText(v, R.id.account_email, R.string.account_dummy_email);
         LinearLayout dummyCard = ViewUtils.findViewById(v, R.id.dummyLayout);
-        dummyCard.setOnClickListener(v -> switchDummy());
+        dummyCard.setOnClickListener(v -> loginWithDummy());
     }
 
     private void drawEmptyGoogle() {
@@ -108,9 +108,9 @@ public class AccountsFragment extends UtilFragment {
         show(v, R.id.google_tapToSwitch);
         setText(v, R.id.account_nameG, PreferenceFragment.getString(getActivity(), "GOOGLE_NAME"));
         setText(v, R.id.account_emailG, PreferenceFragment.getString(getActivity(), "GOOGLE_EMAIL"));
-        googleCard.setOnClickListener(click -> withSavedGoogle());
+        googleCard.setOnClickListener(click -> new UserProvidedCredentialsTask(getContext()).withSavedGoogle());
         removeAccount.setOnClickListener(click -> {
-            removeGooglePrefs();
+            new UserProvidedCredentialsTask(getContext()).removeGooglePrefs();
             hide(v, R.id.googleCard);
             show(v, R.id.emptyCard);
         });

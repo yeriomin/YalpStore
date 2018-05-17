@@ -1,10 +1,10 @@
 package com.dragons.aurora;
 
 
+import com.dragons.aurora.model.Review;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.dragons.aurora.model.Review;
 
 public class ReviewStorageIterator extends ReviewIterator {
 

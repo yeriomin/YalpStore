@@ -3,12 +3,12 @@ package com.dragons.aurora;
 import android.content.Context;
 import android.util.Log;
 
+import com.dragons.aurora.model.App;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.zip.GZIPInputStream;
-
-import com.dragons.aurora.model.App;
 
 public class DeltaPatcherFactory {
 

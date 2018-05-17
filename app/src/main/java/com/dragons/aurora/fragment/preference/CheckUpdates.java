@@ -7,10 +7,10 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 
 import com.dragons.aurora.BuildConfig;
-import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.R;
 import com.dragons.aurora.UpdateChecker;
 import com.dragons.aurora.Util;
+import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.task.CheckSuTask;
 
 public class CheckUpdates extends Abstract {

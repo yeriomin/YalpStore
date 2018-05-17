@@ -89,12 +89,12 @@ public class App implements Comparable<App> {
         return packageInfo;
     }
 
-    public String getPackageName() {
-        return packageInfo.packageName;
-    }
-
     public void setPackageInfo(PackageInfo packageInfo) {
         this.packageInfo = packageInfo;
+    }
+
+    public String getPackageName() {
+        return packageInfo.packageName;
     }
 
     public String getDisplayName() {

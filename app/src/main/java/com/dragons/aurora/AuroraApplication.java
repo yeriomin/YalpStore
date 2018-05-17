@@ -11,12 +11,12 @@ import android.os.HandlerThread;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.dragons.aurora.downloader.DownloadManagerInterface;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.dragons.aurora.downloader.DownloadManagerInterface;
 
 public class AuroraApplication extends Application {
 

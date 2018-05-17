@@ -19,20 +19,20 @@ public class ImageSource {
         setApplicationInfo(applicationInfo);
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public void setApplicationInfo(ApplicationInfo applicationInfo) {
-        this.applicationInfo = applicationInfo;
-    }
-
     public String getUrl() {
         return url;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public ApplicationInfo getApplicationInfo() {
         return applicationInfo;
+    }
+
+    public void setApplicationInfo(ApplicationInfo applicationInfo) {
+        this.applicationInfo = applicationInfo;
     }
 
     public boolean isFullSize() {

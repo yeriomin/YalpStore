@@ -11,14 +11,13 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 import com.dragons.aurora.playstoreapiv2.SearchSuggestEntry;
 
 import java.io.File;
 import java.io.IOException;
-
-import com.dragons.aurora.fragment.PreferenceFragment;
 
 public class AuroraSuggestionProvider extends ContentProvider {
 

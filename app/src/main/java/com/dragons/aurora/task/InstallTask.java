@@ -3,10 +3,11 @@ package com.dragons.aurora.task;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.dragons.aurora.BuildConfig;
+
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
-import com.dragons.aurora.BuildConfig;
 
 public class InstallTask extends AsyncTask<String, Void, Boolean> {
 

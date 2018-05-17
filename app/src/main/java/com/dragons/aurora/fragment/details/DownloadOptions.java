@@ -40,6 +40,7 @@ public class DownloadOptions extends Abstract {
             return;
         }
         menu.findItem(R.id.action_get_local_apk).setVisible(true);
+        menu.findItem(R.id.action_manual).setVisible(true);
         BlackWhiteListManager manager = new BlackWhiteListManager(activity);
         boolean isContained = manager.contains(app.getPackageName());
         if (manager.isBlack()) {

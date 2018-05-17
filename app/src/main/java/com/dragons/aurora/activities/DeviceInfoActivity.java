@@ -8,13 +8,13 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.dragons.aurora.R;
+import com.dragons.aurora.SpoofDeviceManager;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
-
-import com.dragons.aurora.R;
-import com.dragons.aurora.SpoofDeviceManager;
 
 public class DeviceInfoActivity extends AuroraActivity {
 

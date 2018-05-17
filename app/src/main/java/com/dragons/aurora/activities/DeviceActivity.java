@@ -3,21 +3,18 @@ package com.dragons.aurora.activities;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.ImageViewCompat;
 import android.view.Display;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Properties;
-import java.util.TimeZone;
-
 import com.dragons.aurora.R;
 import com.dragons.aurora.SpoofDeviceManager;
-import com.dragons.aurora.builders.AccountTypeDialogBuilder;
 import com.dragons.aurora.fragment.PreferenceFragment;
+
+import java.util.Properties;
+import java.util.TimeZone;
 
 public class DeviceActivity extends AuroraActivity {
     String deviceName;

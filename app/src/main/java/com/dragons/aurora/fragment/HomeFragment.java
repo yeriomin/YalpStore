@@ -55,11 +55,13 @@ public class HomeFragment extends UtilFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (isLoggedIn() && isConnected(getContext())) {
-            setUser();
-            if (topLinks.getVisibility() == View.GONE) {
-                setupTopFeatured();
-                drawCategories();
+        if (isLoggedIn()) {
+            if (isConnected(getContext())) {
+                setUser();
+                if (topLinks.getVisibility() == View.GONE) {
+                    setupTopFeatured();
+                    drawCategories();
+                }
             }
         } else {
             resetUser();

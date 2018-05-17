@@ -2,15 +2,13 @@ package com.dragons.aurora.builders;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.R;
+import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.dragons.aurora.task.playstore.FlagTask;
 
 public class FlagDialogBuilder {

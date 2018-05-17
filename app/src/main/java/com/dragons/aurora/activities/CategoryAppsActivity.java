@@ -3,13 +3,9 @@ package com.dragons.aurora.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.percolate.caffeine.ViewUtils;
-
 import com.dragons.aurora.CategoryManager;
-import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.FilterMenu;
 import com.dragons.aurora.task.playstore.CategoryAppsTask;
 import com.dragons.aurora.task.playstore.EndlessScrollTask;
@@ -17,6 +13,7 @@ import com.dragons.aurora.task.playstore.EndlessScrollTask;
 public class CategoryAppsActivity extends EndlessScrollActivity {
 
     static private final String INTENT_CATEGORY_ID = "INTENT_CATEGORY_ID";
+    private String categoryId;
 
     static public void start(Context context, String categoryId) {
         Intent intent = new Intent(context, CategoryAppsActivity.class);
@@ -24,8 +21,6 @@ public class CategoryAppsActivity extends EndlessScrollActivity {
         intent.putExtra(INTENT_CATEGORY_ID, categoryId);
         context.startActivity(intent);
     }
-
-    private String categoryId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

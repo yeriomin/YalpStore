@@ -6,12 +6,11 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 
+import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.dragons.aurora.playstoreapiv2.HttpCookie;
 
 import java.io.File;
-
-import com.dragons.aurora.model.App;
 
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public abstract class DownloadRequestBuilder {
