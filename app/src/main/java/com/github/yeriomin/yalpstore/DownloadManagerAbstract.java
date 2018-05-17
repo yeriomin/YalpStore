@@ -66,6 +66,19 @@ public abstract class DownloadManagerAbstract implements DownloadManagerInterfac
         return context.getString(stringId);
     }
 
+    static public String getRestrictionString(Context context, int restriction) {
+        switch (restriction) {
+            case GooglePlayAPI.AVAILABILITY_NOT_RESTRICTED:
+                return null;
+            case GooglePlayAPI.AVAILABILITY_RESTRICTED_GEO:
+                return context.getString(R.string.availability_restriction_country);
+            case GooglePlayAPI.AVAILABILITY_INCOMPATIBLE_DEVICE_APP:
+                return context.getString(R.string.availability_restriction_hardware_app);
+            default:
+                return context.getString(R.string.availability_restriction_generic);
+        }
+    }
+
     @Override
     public void cancel(long downloadId) {
         DownloadState state = DownloadState.get(downloadId);

@@ -31,9 +31,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.CategoryAppsActivity;
 import com.github.yeriomin.yalpstore.CategoryManager;
 import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.DownloadManagerAbstract;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.fragment.Abstract;
@@ -58,10 +60,17 @@ public class GeneralDetails extends Abstract {
     @Override
     public void draw() {
         drawAppBadge(app);
+        activity.findViewById(R.id.availability).setVisibility(View.GONE);
         if (app.isInPlayStore()) {
             if (!TextUtils.isEmpty(app.getShortDescription())) {
                 activity.findViewById(R.id.short_description).setVisibility(View.VISIBLE);
                 setText(R.id.short_description, app.getShortDescription());
+            } else {
+                activity.findViewById(R.id.short_description).setVisibility(View.GONE);
+            }
+            if (app.getRestriction() > 1) {
+                activity.findViewById(R.id.availability).setVisibility(View.VISIBLE);
+                setText(R.id.availability, DownloadManagerAbstract.getRestrictionString(activity, app.getRestriction()));
             }
             drawGeneralDetails(app);
             drawDescription(app);

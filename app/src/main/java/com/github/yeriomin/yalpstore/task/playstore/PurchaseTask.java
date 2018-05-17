@@ -104,6 +104,7 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
     }
 
     private void sendCancelBroadcast() {
+        DownloadState.get(app.getPackageName()).setApp(app);
         Intent intentCancel = new Intent(context, CancelDownloadService.class);
         intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
         context.startService(intentCancel);

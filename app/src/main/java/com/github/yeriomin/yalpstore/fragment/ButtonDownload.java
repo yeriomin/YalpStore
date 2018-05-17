@@ -21,12 +21,15 @@ package com.github.yeriomin.yalpstore.fragment;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
 import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.ContextUtil;
+import com.github.yeriomin.yalpstore.DownloadManagerAbstract;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
@@ -64,6 +67,7 @@ public class ButtonDownload extends Button {
                 || !DownloadState.get(app.getPackageName()).isEverythingSuccessful()
             )
             && (app.isFree() || YalpStoreApplication.purchasedPackageNames.contains(app.getPackageName()))
+            && (app.getRestriction() == GooglePlayAPI.AVAILABILITY_NOT_RESTRICTED || YalpStoreApplication.purchasedPackageNames.contains(app.getPackageName()))
             && (app.isInPlayStore() || app.getPackageName().equals(BuildConfig.APPLICATION_ID))
             && (getInstalledVersionCode() != app.getVersionCode() || activity instanceof ManualDownloadActivity)
         ;
@@ -187,8 +191,9 @@ public class ButtonDownload extends Button {
             super.onPostExecute(deliveryData);
             if (!success()) {
                 fragment.draw();
-                if (null != getRestrictionString()) {
-                    ContextUtil.toastLong(context, getRestrictionString());
+                String restriction = DownloadManagerAbstract.getRestrictionString(context, app.getRestriction());
+                if (!TextUtils.isEmpty(restriction)) {
+                    ContextUtil.toastLong(context, restriction);
                     Log.i(getClass().getSimpleName(), "No download link returned, app restriction is " + app.getRestriction());
                 }
             }

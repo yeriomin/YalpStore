@@ -31,7 +31,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.github.yeriomin.playstoreapi.GooglePlayException;
 import com.github.yeriomin.yalpstore.fragment.ButtonBuy;
 import com.github.yeriomin.yalpstore.fragment.ButtonCancel;
 import com.github.yeriomin.yalpstore.fragment.ButtonDownload;
@@ -43,6 +45,8 @@ import com.github.yeriomin.yalpstore.fragment.details.AllFragments;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.CloneableTask;
 import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
+
+import java.io.IOException;
 
 import static com.github.yeriomin.yalpstore.task.playstore.PurchaseTask.UPDATE_INTERVAL;
 
@@ -198,6 +202,10 @@ public class DetailsActivity extends YalpStoreActivity {
         }
 
         @Override
+        protected void processIOException(IOException e) {
+        }
+
+        @Override
         protected void onPostExecute(App app) {
             super.onPostExecute(app);
             if (app != null) {
@@ -206,6 +214,12 @@ public class DetailsActivity extends YalpStoreActivity {
                     ((DetailsActivity) context).invalidateOptionsMenu();
                 }
                 ((DetailsActivity) context).redrawDetails(app);
+            }
+            Throwable e = getException();
+            if (null != e && e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 404) {
+                TextView availability = ((DetailsActivity) context).findViewById(R.id.availability);
+                availability.setVisibility(View.VISIBLE);
+                availability.setText(R.string.details_not_available_on_play_store);
             }
         }
     }
