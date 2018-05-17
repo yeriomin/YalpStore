@@ -88,7 +88,7 @@ abstract public class Updater {
             if (null == url) {
                 return false;
             }
-            HttpURLConnection connection = NetCipher.getHttpURLConnection(url);
+            HttpURLConnection connection = NetCipher.getHttpURLConnection(url, true);
             connection.setInstanceFollowRedirects(false);
             connection.setRequestMethod("HEAD");
             return connection.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST;

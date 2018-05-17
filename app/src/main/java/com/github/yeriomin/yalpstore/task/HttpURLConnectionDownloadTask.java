@@ -44,6 +44,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -113,7 +114,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         InputStream in;
         long fileSize;
         try {
-            connection = NetCipher.getHttpURLConnection(params[0]);
+            connection = NetCipher.getHttpURLConnection(new URL(params[0]), true);
             if (params.length == 2 && !TextUtils.isEmpty(params[1])) {
                 connection.addRequestProperty("Cookie", params[1]);
             }

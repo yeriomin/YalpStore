@@ -23,6 +23,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.IOException;
+import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -42,7 +43,7 @@ abstract public class HttpTask extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... voids) {
         try {
-            HttpsURLConnection connection = NetCipher.getHttpsURLConnection(url);
+            HttpsURLConnection connection = NetCipher.getHttpsURLConnection(new URL(url), true);
             connection.setRequestMethod("GET");
             returnCode = connection.getResponseCode();
             response = StrongConnectionBuilder.slurp(connection.getInputStream());

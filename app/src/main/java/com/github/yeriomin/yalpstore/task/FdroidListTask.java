@@ -75,7 +75,7 @@ public class FdroidListTask extends AsyncTask<Void, Void, Void> {
     private void downloadXml() {
         try {
             URL url = new URL(FDROID_REPO_URL);
-            NetCipher.getHttpsURLConnection(url).connect();
+            NetCipher.getHttpsURLConnection(url, true).connect();
             InputStream input = new BufferedInputStream(url.openStream(), 8192);
             OutputStream output = new FileOutputStream(localXmlFile);
             byte data[] = new byte[1024];
