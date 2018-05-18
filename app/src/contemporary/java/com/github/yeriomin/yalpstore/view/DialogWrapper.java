@@ -26,6 +26,8 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ListAdapter;
 
+import com.github.yeriomin.yalpstore.ContextUtil;
+
 public class DialogWrapper extends DialogWrapperAbstract {
 
     protected AlertDialog.Builder builder;
@@ -120,7 +122,12 @@ public class DialogWrapper extends DialogWrapperAbstract {
 
     @Override
     public DialogWrapperAbstract create() {
-        dialog = builder.create();
+        ContextUtil.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                dialog = builder.create();
+            }
+        });
         return this;
     }
 
@@ -129,21 +136,36 @@ public class DialogWrapper extends DialogWrapperAbstract {
         if (null == dialog) {
             create();
         }
-        dialog.show();
+        ContextUtil.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                dialog.show();
+            }
+        });
         return this;
     }
 
     @Override
     public void cancel() {
         if (null != dialog) {
-            dialog.cancel();
+            ContextUtil.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    dialog.cancel();
+                }
+            });
         }
     }
 
     @Override
     public void dismiss() {
         if (null != dialog) {
-            dialog.dismiss();
+            ContextUtil.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    dialog.dismiss();
+                }
+            });
         }
     }
 }
