@@ -16,7 +16,7 @@ android {
         applicationId "com.github.yeriomin.yalpstore"
         minSdkVersion 5
         targetSdkVersion 27
-        versionCode 40
+        versionCode 41
         versionName getVersionName()
         vectorDrawables.useSupportLibrary = true
         resConfigs "ar", "ast", "cs", "de", "el", "en", "es", "eu", "fr", "fr-rBE", "it", "ja", "kk", "ko", "nl", "pl", "pt", "pt-rBR", "ru", "sk", "uk", "zh"
@@ -52,6 +52,6 @@ dependencies {
     implementation 'commons-net:commons-net:3.5'
     implementation 'com.nothome:javaxdelta:2.0.1'
     debugImplementation 'com.github.yeriomin:play-store-api:master-SNAPSHOT'
-    releaseImplementation 'com.github.yeriomin:play-store-api:0.40'
+    releaseImplementation 'com.github.yeriomin:play-store-api:0.41'
     implementation 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }
