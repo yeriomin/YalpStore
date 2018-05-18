@@ -24,7 +24,7 @@
     <string name="dev_country3">Bacau, Romania</string>
     <string name="dev1_imgURL">"https://avatars2.githubusercontent.com/u/21051221"</string>
     <string name="dev2_imgURL">"https://avatars0.githubusercontent.com/u/554737"</string>
-    <string name="linkGit">"https://github.com/whyorean/Aurora"</string>
+    <string name="linkGit">"https://github.com/TheAurora/Aurora-Store"</string>
     <string name="linkXDA">"https://forum.xda-developers.com/android/apps-games/galaxy-playstore-alternative-t3739733"</string>
     <string name="linkTelegram">"https://t.me/AuroraOfficial"</string>
 </resources>
