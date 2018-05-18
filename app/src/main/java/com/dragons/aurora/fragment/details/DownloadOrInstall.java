@@ -21,6 +21,7 @@ public class DownloadOrInstall extends Abstract {
         new ButtonCancel(activity, app).draw();
         new ButtonInstall(activity, app).draw();
         new ButtonRun(activity, app).draw();
+        new ButtonRedirect(activity, app).draw();
     }
 
     public void download() {

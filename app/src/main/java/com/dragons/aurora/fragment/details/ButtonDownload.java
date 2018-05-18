@@ -2,12 +2,10 @@ package com.dragons.aurora.fragment.details;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.BuildConfig;
@@ -41,19 +39,9 @@ public class ButtonDownload extends Button {
     protected android.widget.Button getButton() {
         if (app.getPrice() != null && !app.isFree()) {
             setText(R.id.download, R.string.details_purchase);
-            setToPlayStore();
             return (android.widget.Button) activity.findViewById(R.id.download);
         } else
             return (android.widget.Button) activity.findViewById(R.id.download);
-    }
-
-    private void setToPlayStore() {
-        android.widget.Button toPlayStore = activity.findViewById(R.id.showInPlayStore);
-        toPlayStore.setVisibility(View.VISIBLE);
-        toPlayStore.setOnClickListener(v -> {
-            Toast.makeText(activity, R.string.warn_app_purchase, Toast.LENGTH_SHORT).show();
-            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + app.getPackageName())));
-        });
     }
 
     @Override
