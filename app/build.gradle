@@ -1,15 +1,25 @@
 apply plugin: 'com.android.application'
 
+ext.minimumSdkVersion = 21
+ext.versionMajor = 2
+ext.versionMinor = 0
+ext.versionPatch = 1
+ext.versionClassifier = null
+ext.isSnapshot = false
+ext.isBeta = true
+
 android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.dragons.aurora"
-        minSdkVersion 21
+        minSdkVersion project.ext.minimumSdkVersion
         targetSdkVersion 27
-        versionCode 4
-        versionName '1.0'
+
+        versionCode generateVersionCode()
+        versionName generateVersionName()
+
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
     }
@@ -35,7 +45,7 @@ dependencies {
     implementation 'commons-net:commons-net:3.6'
     implementation 'com.nothome:javaxdelta:2.0.1'
     implementation 'com.github.whyorean:playstore-api-v2:2.0'
-    implementation 'eu.chainfire:libsuperuser:1.0.0.+'
+    implementation 'com.github.Chainfire:libsuperuser:-SNAPSHOT'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
@@ -48,7 +58,27 @@ dependencies {
     implementation 'com.github.percolate:caffeine:0.4.7'
     implementation 'com.github.florent37:shapeofview:1.0.6'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'it.sephiroth.android.library.horizontallistview:hlistview:1.2.2'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+}
+
+private Integer generateVersionCode() {
+    return ext.minimumSdkVersion * 10000000 + ext.versionMajor * 10000 + ext.versionMinor * 100 + ext.versionPatch
+}
+
+private String generateVersionName() {
+    String versionName = "${ext.versionMajor}.${ext.versionMinor}.${ext.versionPatch}"
+    if (ext.versionClassifier == null) {
+        if (ext.isSnapshot)
+            ext.versionClassifier = "SNAPSHOT"
+        else if(ext.isBeta)
+            ext.versionClassifier = "β"
+        else
+            ext.versionClassifier = "α"
+    }
+
+    if (ext.versionClassifier != null) {
+        versionName += "-" + ext.versionClassifier
+    }
+    return versionName;
 }
