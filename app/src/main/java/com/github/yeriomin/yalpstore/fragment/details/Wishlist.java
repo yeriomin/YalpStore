@@ -42,11 +42,12 @@ public class Wishlist extends Abstract {
 
     @Override
     public void draw() {
+        ImageView wishlistButton = activity.findViewById(R.id.wishlist);
         if (app.isInstalled()) {
+            wishlistButton.setVisibility(View.GONE);
             return;
         }
         new DetailsWishlistUpdateTask(activity, app.getPackageName()).execute();
-        ImageView wishlistButton = activity.findViewById(R.id.wishlist);
         initWishlistButton(wishlistButton, activity, app.getPackageName());
         wishlistButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
