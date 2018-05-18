@@ -26,14 +26,14 @@ import com.dragons.aurora.fragment.details.Share;
 import com.dragons.aurora.fragment.details.SystemAppPage;
 import com.dragons.aurora.fragment.details.Video;
 import com.dragons.aurora.model.App;
-import com.dragons.aurora.task.playstore.ForegroundDetailsAppsTaskHelper;
+import com.dragons.aurora.task.playstore.DetailsAppTaskHelper;
 import com.percolate.caffeine.ToastUtils;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class DetailsFragment extends ForegroundDetailsAppsTaskHelper {
+public class DetailsFragment extends DetailsAppTaskHelper {
 
     public static App app;
 

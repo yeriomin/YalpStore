@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
-import com.dragons.aurora.activities.AppListActivity;
+import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.model.Filter;
 
 import java.util.HashMap;
@@ -32,9 +32,9 @@ public class FilterMenu {
     static private final Map<Float, String> ratingLabels = new HashMap<>();
     static private final Map<Integer, String> downloadsLabels = new HashMap<>();
 
-    private AppListActivity activity;
+    private AuroraActivity activity;
 
-    public FilterMenu(AppListActivity activity) {
+    public FilterMenu(AuroraActivity activity) {
         this.activity = activity;
         String[] ratingValues = activity.getResources().getStringArray(R.array.filterRatingValues);
         for (int i = 0; i < ratingValues.length; i++) {

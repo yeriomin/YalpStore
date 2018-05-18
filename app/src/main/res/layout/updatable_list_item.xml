@@ -30,28 +30,26 @@
             android:layout_marginEnd="10dp"
             android:layout_toStartOf="@id/delete_icon"
             android:text="@string/action_ignore_ext"
-            android:textColor="#fff"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/view_foreground"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/outline_bg"
-        android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:gravity="center_vertical"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/outline_bg"
         android:orientation="vertical"
-        android:paddingBottom="6dp"
         android:paddingTop="6dp">
 
         <LinearLayout
             android:id="@+id/list_container"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
+            android:background="?android:selectableItemBackgroundBorderless"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -157,14 +155,74 @@
 
         </LinearLayout>
 
+        <!-- Progressbar -->
+        <LinearLayout
+            android:id="@+id/progress_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:animateLayoutChanges="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="6">
+
+            <ProgressBar
+                android:id="@+id/progress_bar_list"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="5.3"
+                android:indeterminate="true"
+                android:progressBackgroundTint="@color/gray"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/progress_txt_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:fontFamily="@font/google_sans"
+                android:gravity="end"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Changelog -->
+        <LinearLayout
+            android:id="@+id/changes_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/outline_bg"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/changes_upper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web|email"
+                android:fontFamily="@font/google_sans"
+                android:padding="10dp"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textIsSelectable="true"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
         <!-- Action Buttons -->
         <LinearLayout
             android:id="@+id/single_buttons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_margin="10dp"
             android:background="?android:selectableItemBackgroundBorderless"
             android:gravity="end"
             android:visibility="gone">
@@ -238,74 +296,6 @@
                 android:visibility="gone" />
 
         </LinearLayout>
-
-        <!-- Progressbar -->
-        <LinearLayout
-            android:id="@+id/progress_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="10dp"
-            android:animateLayoutChanges="true"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="6">
-
-            <ProgressBar
-                android:id="@+id/progress_bar_list"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_weight="5.3"
-                android:indeterminate="true"
-                android:progressBackgroundTint="@color/gray"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/progress_txt_list"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".7"
-                android:fontFamily="@font/google_sans"
-                android:gravity="end"
-                android:paddingEnd="3dp"
-                android:paddingStart="3dp"
-                android:textSize="12sp"
-                android:visibility="gone" />
-
-        </LinearLayout>
-
-        <!-- Changelog -->
-        <LinearLayout
-            android:id="@+id/changes_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/outline_bg"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/changes_upper"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:autoLink="web|email"
-                android:fontFamily="@font/google_sans"
-                android:padding="10dp"
-                android:textColor="?android:attr/textColorSecondary"
-                android:textIsSelectable="true"
-                android:visibility="visible" />
-
-        </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:scaleX=".5"
-            android:scaleY=".5" />
 
     </LinearLayout>
 

@@ -9,8 +9,8 @@
         android:id="@+id/installed_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/outline_bg"
         android:orientation="vertical"
@@ -49,8 +49,8 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:text="@string/list_installed_system"
-            android:textColor="?android:attr/textColorSecondary"
-            android:textAlignment="viewStart" />
+            android:textAlignment="viewStart"
+            android:textColor="?android:attr/textColorSecondary" />
     </LinearLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout

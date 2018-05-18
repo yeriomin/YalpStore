@@ -14,7 +14,7 @@ import com.dragons.aurora.playstoreapiv2.GooglePlayException;
 
 import java.io.IOException;
 
-public abstract class ForegroundDetailsAppsTaskHelper extends ExceptionTaskHelper {
+public abstract class DetailsAppTaskHelper extends ExceptionTask {
 
     protected Context context;
 

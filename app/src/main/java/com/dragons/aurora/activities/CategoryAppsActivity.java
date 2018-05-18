@@ -6,25 +6,28 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.dragons.aurora.CategoryManager;
-import com.dragons.aurora.fragment.FilterMenu;
-import com.dragons.aurora.task.playstore.CategoryAppsTask;
-import com.dragons.aurora.task.playstore.EndlessScrollTask;
+import com.dragons.aurora.R;
+import com.dragons.aurora.fragment.CategoryAppsFragment;
+import com.dragons.aurora.view.AdaptiveToolbar;
 
-public class CategoryAppsActivity extends EndlessScrollActivity {
+public class CategoryAppsActivity extends AuroraActivity {
 
     static private final String INTENT_CATEGORY_ID = "INTENT_CATEGORY_ID";
     private String categoryId;
 
-    static public void start(Context context, String categoryId) {
+    static public Intent start(Context context, String categoryId) {
         Intent intent = new Intent(context, CategoryAppsActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra(INTENT_CATEGORY_ID, categoryId);
-        context.startActivity(intent);
+        return intent;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.helper_activity_alt);
+        onNewIntent(getIntent());
     }
 
     @Override
@@ -42,7 +45,6 @@ public class CategoryAppsActivity extends EndlessScrollActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-
         String newCategoryId = intent.getStringExtra(INTENT_CATEGORY_ID);
         if (null == newCategoryId) {
             Log.w(getClass().getSimpleName(), "No category id");
@@ -51,16 +53,16 @@ public class CategoryAppsActivity extends EndlessScrollActivity {
         if (null == categoryId || !newCategoryId.equals(categoryId)) {
             categoryId = newCategoryId;
             setTitle(new CategoryManager(this).getCategoryName(categoryId));
-            clearApps();
-            loadApps(subCategory);
+            getCategoryApps(categoryId);
         }
+        getCategoryApps(categoryId);
     }
 
-    @Override
-    protected EndlessScrollTask getTask() {
-        CategoryAppsTask task = new CategoryAppsTask(iterator);
-        task.setCategoryId(categoryId);
-        task.setFilter(new FilterMenu(this).getFilterPreferences());
-        return task;
+    public void getCategoryApps(String categoryId) {
+        CategoryAppsFragment categoryAppsFragment = new CategoryAppsFragment();
+        Bundle arguments = new Bundle();
+        arguments.putString("CategoryId", categoryId);
+        categoryAppsFragment.setArguments(arguments);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, categoryAppsFragment).commit();
     }
 }

@@ -33,28 +33,46 @@ import com.dragons.aurora.task.playstore.PurchaseTask;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.dragons.aurora.Util.isAlreadyQueued;
 
 public class UpdatableAppBadge extends AppBadge {
 
-    public boolean isDownloading = false;
+
+    @BindView(R.id.single_cancel)
     public Button cancel;
+    @BindView(R.id.single_install)
     public Button install;
+    @BindView(R.id.single_update)
     public Button update;
+    @BindView(R.id.progress_bar_list)
     public ProgressBar progressBar;
+    @BindView(R.id.progress_txt_list)
     public TextView progressCents;
-    private TextView changes;
-    private ImageView viewChanges;
-    private Button uninstall;
-    private Button manual;
-    private LinearLayout listContainer;
-    private LinearLayout changesContainer;
-    private LinearLayout progressContainer;
-    private LinearLayout singleButtons;
+    public boolean isDownloading = false;
+
+    @BindView(R.id.single_uninstall)
+    Button uninstall;
+    @BindView(R.id.single_manual)
+    Button manual;
+    @BindView(R.id.viewChanges)
+    ImageView viewChanges;
+    @BindView(R.id.changes_upper)
+    TextView changes;
+    @BindView(R.id.list_container)
+    LinearLayout listContainer;
+    @BindView(R.id.changes_container)
+    LinearLayout changesContainer;
+    @BindView(R.id.progress_container)
+    LinearLayout progressContainer;
+    @BindView(R.id.single_buttons)
+    LinearLayout singleButtons;
 
     @Override
     public void draw() {
-        initViews();
+        ButterKnife.bind(this, view);
         super.context = view.getContext();
         line2.clear();
         line3.clear();
@@ -75,22 +93,6 @@ public class UpdatableAppBadge extends AppBadge {
         super.drawIcon(icon);
         Bitmap bitmap = getBitmapFromDrawable(icon.getDrawable());
         getPalette(bitmap);
-    }
-
-    private void initViews() {
-        listContainer = view.findViewById(R.id.list_container);
-        changesContainer = view.findViewById(R.id.changes_container);
-        progressContainer = view.findViewById(R.id.progress_container);
-        singleButtons = view.findViewById(R.id.single_buttons);
-        viewChanges = view.findViewById(R.id.viewChanges);
-        manual = view.findViewById(R.id.single_manual);
-        uninstall = view.findViewById(R.id.single_uninstall);
-        cancel = view.findViewById(R.id.single_cancel);
-        update = view.findViewById(R.id.single_update);
-        install = view.findViewById(R.id.single_install);
-        progressBar = view.findViewById(R.id.progress_bar_list);
-        progressCents = view.findViewById(R.id.progress_txt_list);
-        changes = view.findViewById(R.id.changes_upper);
     }
 
     private void drawMore() {
@@ -198,6 +200,7 @@ public class UpdatableAppBadge extends AppBadge {
                     paintButton(palette.getDarkVibrantColor(Color.DKGRAY), update);
                     paintButton(palette.getDarkVibrantColor(Color.DKGRAY), install);
                     paintLayout(palette.getDarkVibrantColor(Color.DKGRAY), R.id.view_background);
+                    paintLLayout(palette.getDarkVibrantColor(Color.DKGRAY), R.id.changes_container);
                 });
     }
 

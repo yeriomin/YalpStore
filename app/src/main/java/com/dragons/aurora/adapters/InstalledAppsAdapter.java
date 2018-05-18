@@ -25,15 +25,24 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
 
     private List<App> appsToAdd;
     private Context context;
+    private ViewHolder viewHolder;
 
     public InstalledAppsAdapter(Context context, List<App> appsToAdd) {
         this.context = context;
         this.appsToAdd = appsToAdd;
     }
 
+    public void setViewHolder(ViewHolder viewHolder) {
+        this.viewHolder = viewHolder;
+    }
+
     public void add(int position, App app) {
         appsToAdd.add(position, app);
         notifyItemInserted(position);
+    }
+
+    public void add(App app) {
+        appsToAdd.add(app);
     }
 
     public void remove(int position) {
@@ -51,19 +60,24 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
 
     @Override
     public void onBindViewHolder(@NonNull InstalledAppsAdapter.ViewHolder holder, int position) {
+        setViewHolder(holder);
         final App app = appsToAdd.get(position);
         final InstalledAppBadge installedAppBadge = new InstalledAppBadge();
 
         installedAppBadge.setApp(app);
-        installedAppBadge.setView(holder.view);
+        installedAppBadge.setView(viewHolder.view);
         installedAppBadge.draw();
 
-        holder.list_container.setOnClickListener(v -> {
-            Context context = holder.view.getContext();
+        viewHolder.list_container.setOnClickListener(v -> {
+            Context context = viewHolder.view.getContext();
             context.startActivity(DetailsActivity.getDetailsIntent(context, app.getPackageName()));
         });
 
-        holder.menu_3dot.setOnClickListener(v -> {
+        setup3dotMenu(viewHolder, app, position);
+    }
+
+    public void setup3dotMenu(ViewHolder viewHolder, App app, int position) {
+        viewHolder.menu_3dot.setOnClickListener(v -> {
             PopupMenu popup = new PopupMenu(v.getContext(), v);
             popup.inflate(R.menu.menu_download);
             new DownloadOptions((AuroraActivity) context, app).inflate(popup.getMenu());
@@ -94,9 +108,9 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private View view;
-        private LinearLayout list_container;
-        private ImageView menu_3dot;
+        public View view;
+        public LinearLayout list_container;
+        public ImageView menu_3dot;
 
         public ViewHolder(View view) {
             super(view);

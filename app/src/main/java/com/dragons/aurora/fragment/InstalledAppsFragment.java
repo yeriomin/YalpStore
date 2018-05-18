@@ -16,7 +16,7 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.InstalledAppsAdapter;
 import com.dragons.aurora.model.App;
-import com.dragons.aurora.task.playstore.ForegroundUpdatableAppsTaskHelper;
+import com.dragons.aurora.task.playstore.InstalledAppsTaskHelper;
 import com.percolate.caffeine.ViewUtils;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class InstalledAppsFragment extends ForegroundUpdatableAppsTaskHelper {
+public class InstalledAppsFragment extends InstalledAppsTaskHelper {
 
     private View view;
     private Disposable loadApps;

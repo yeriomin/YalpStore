@@ -19,5 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="10dp"
+        android:textSize="16sp"
         android:fontFamily="@font/google_sans" />
 </LinearLayout>

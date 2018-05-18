@@ -81,8 +81,8 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.topLabel.setText(translator.getString(new ArrayList<>(categories.keySet()).get(holder.getAdapterPosition())));
         holder.topImage.setImageDrawable(context.getResources().getDrawable(categoriesImg[holder.getAdapterPosition()]));
-        holder.topContainer.setOnClickListener(v -> CategoryAppsActivity
-                .start(context, new ArrayList<>(categories.keySet()).get(position)));
+        holder.topContainer.setOnClickListener(v ->
+                context.startActivity(CategoryAppsActivity.start(context, new ArrayList<>(categories.keySet()).get(position))));
     }
 
     @Override

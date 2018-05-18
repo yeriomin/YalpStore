@@ -131,6 +131,7 @@ public class GeneralDetails extends AbstractHelper {
         paintTextView(color, R.id.permissions_header);
         paintTextView(color, R.id.exodus_title);
         paintTextView(color, R.id.changes_upper);
+        paintLLayout(color, R.id.changes_container);
         paintTextView(color, R.id.showLessMoreTxt);
         paintImageView(color, R.id.privacy_ico);
         paintImageViewBg(color, R.id.apps_similar);

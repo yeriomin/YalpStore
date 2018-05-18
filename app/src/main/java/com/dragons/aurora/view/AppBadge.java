@@ -33,7 +33,6 @@ public abstract class AppBadge extends ListItem {
 
     @Override
     public void draw() {
-        view.findViewById(R.id.progress).setVisibility(View.GONE);
         view.findViewById(R.id.list_container).setVisibility(View.VISIBLE);
 
         ((TextView) view.findViewById(R.id.text1)).setText(app.getDisplayName());
@@ -73,15 +72,5 @@ public abstract class AppBadge extends ListItem {
 
     private boolean noImages() {
         return NetworkState.isMetered(view.getContext()) && PreferenceFragment.getBoolean(view.getContext(), PreferenceFragment.PREFERENCE_NO_IMAGES);
-    }
-
-    protected void hide(View view) {
-        if (view != null)
-            view.setVisibility(View.GONE);
-    }
-
-    protected void show(View view) {
-        if (view != null)
-            view.setVisibility(View.VISIBLE);
     }
 }

@@ -34,6 +34,6 @@ public class MoreAppsCard extends RelativeLayout {
         card_title = view.findViewById(R.id.m_apps_title);
         more_apps = view.findViewById(R.id.m_apps_more);
         card_title.setText(label);
-        more_apps.setOnClickListener(v -> CategoryAppsActivity.start(context, category));
+        more_apps.setOnClickListener(v -> context.startActivity(CategoryAppsActivity.start(context, category)));
     }
 }

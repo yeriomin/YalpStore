@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.AccountsActivity;
@@ -97,25 +98,34 @@ public class HomeFragment extends UtilFragment {
 
     protected void setupTag(View v, int viewID, String Category) {
         TagView tagView = v.findViewById(viewID);
-        tagView.setOnClickListener(click -> CategoryAppsActivity.start(v.getContext(), Category));
+        if (tagView.getStyle() == 0)
+            tagView.setMono_title(new CategoryManager(getContext()).getCategoryName(Category));
+        tagView.setOnClickListener(click -> getActivity().startActivity(CategoryAppsActivity.start(v.getContext(), Category)));
+
     }
 
     protected void setupTopFeatured() {
         RecyclerView topGrossingGames = view.findViewById(R.id.top_featured_games);
         RecyclerView topGrossingApps = view.findViewById(R.id.top_featured_apps);
 
-        new FeaturedTaskHelper(getContext(), topGrossingGames).getCategoryApps("GAME", GooglePlayAPI.SUBCATEGORY.TOP_GROSSING);
-        new FeaturedTaskHelper(getContext(), topGrossingApps).getCategoryApps("", GooglePlayAPI.SUBCATEGORY.TOP_FREE);
+        new FeaturedTaskHelper(getContext(), topGrossingGames).getCategoryApps("GAME",
+                GooglePlayAPI.SUBCATEGORY.TOP_GROSSING);
+        new FeaturedTaskHelper(getContext(), topGrossingApps).getCategoryApps("",
+                GooglePlayAPI.SUBCATEGORY.TOP_FREE);
     }
 
     protected void drawCategories() {
         GooglePlayAPI.SUBCATEGORY subcategory = GooglePlayAPI.SUBCATEGORY.TOP_GROSSING;
         LinearLayout topLinksLayout = view.findViewById(R.id.top_links);
         topLinksLayout.setVisibility(View.VISIBLE);
-        topLinksLayout.addView(buildAppsCard("TOOLS", subcategory, "Tools & Utilities"));
-        topLinksLayout.addView(buildAppsCard("COMMUNICATION", subcategory, "Communication"));
-        topLinksLayout.addView(buildAppsCard("MUSIC_AND_AUDIO", subcategory, "Music & Audio"));
-        topLinksLayout.addView(buildAppsCard("PERSONALIZATION", subcategory, "Personalization"));
+        topLinksLayout.addView(buildAppsCard("TOOLS", subcategory,
+                new CategoryManager(getContext()).getCategoryName("TOOLS")));
+        topLinksLayout.addView(buildAppsCard("COMMUNICATION", subcategory,
+                new CategoryManager(getContext()).getCategoryName("COMMUNICATION")));
+        topLinksLayout.addView(buildAppsCard("MUSIC_AND_AUDIO", subcategory,
+                new CategoryManager(getContext()).getCategoryName("MUSIC_AND_AUDIO")));
+        topLinksLayout.addView(buildAppsCard("PERSONALIZATION", subcategory,
+                new CategoryManager(getContext()).getCategoryName("PERSONALIZATION")));
     }
 
     private MoreAppsCard buildAppsCard(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory, String label) {

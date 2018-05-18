@@ -23,26 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class ForegroundUpdatableAppsTaskHelper extends ExceptionTaskHelper {
-
-    protected List<App> getInstalledApps(GooglePlayAPI api, boolean removeSystem) throws IOException {
-        api.toc();
-        List<App> allMarketApps = new ArrayList<>();
-        allMarketApps.clear();
-        Map<String, App> installedApps = getInstalledApps();
-        if (removeSystem)
-            installedApps = filterSystemApps(installedApps);
-        for (App appFromMarket : getAppsFromPlayStore(api, installedApps.keySet())) {
-            String packageName = appFromMarket.getPackageName();
-            if (TextUtils.isEmpty(packageName) || !installedApps.containsKey(packageName)) {
-                continue;
-            }
-            App installedApp = installedApps.get(packageName);
-            appFromMarket = addInstalledAppInfo(appFromMarket, installedApp);
-            allMarketApps.add(appFromMarket);
-        }
-        return allMarketApps;
-    }
+public abstract class UpdatableAppsTaskHelper extends ExceptionTask {
 
     protected List<App> getUpdatableApps(GooglePlayAPI api) throws IOException {
         api.toc();
@@ -109,7 +90,9 @@ public abstract class ForegroundUpdatableAppsTaskHelper extends ExceptionTaskHel
 
     protected Map<String, App> filterBlacklistedApps(Map<String, App> apps) {
         Set<String> packageNames = new HashSet<>(apps.keySet());
-        if (PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString(PreferenceFragment.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceFragment.LIST_BLACK).equals(PreferenceFragment.LIST_BLACK)) {
+        if (PreferenceManager.getDefaultSharedPreferences(this.getActivity()).getString(
+                PreferenceFragment.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
+                PreferenceFragment.LIST_BLACK).equals(PreferenceFragment.LIST_BLACK)) {
             packageNames.removeAll(new BlackWhiteListManager(this.getActivity()).get());
         } else {
             packageNames.retainAll(new BlackWhiteListManager(this.getActivity()).get());

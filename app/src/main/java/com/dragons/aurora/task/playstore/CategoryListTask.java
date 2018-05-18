@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CategoryListTaskHelper extends ExceptionTaskHelper {
+public class CategoryListTask extends ExceptionTask {
 
 
     protected boolean getResult(GooglePlayAPI api, CategoryManager manager) throws IOException {

@@ -1,45 +1,70 @@
 package com.dragons.aurora.task.playstore;
 
+import android.util.Log;
+
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
-import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.model.App;
+import com.dragons.aurora.model.Filter;
+import com.dragons.aurora.playstoreapiv2.GooglePlayException;
+import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
+import com.dragons.aurora.task.AppProvidedCredentialsTask;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class CategoryAppsTask extends EndlessScrollTask implements CloneableTask {
+abstract public class CategoryAppsTask extends ExceptionTask {
 
-    private String categoryId;
-    private GooglePlayAPI.SUBCATEGORY subCategory;
+    protected Filter filter;
+    protected AppListIterator iterator;
 
-    public CategoryAppsTask(AppListIterator iterator) {
-        super(iterator);
+    public AppListIterator getIterator() {
+        return iterator;
     }
 
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+    public void setIterator(AppListIterator iterator) {
+        try {
+            iterator.setGooglePlayApi(new PlayStoreApiAuthenticator(getContext()).getApi());
+        } catch (IOException e) {
+            Log.e(getClass().getSimpleName(), "Building an api object from preferences failed");
+        }
     }
 
-    public void setSubCategory(GooglePlayAPI.SUBCATEGORY subCategory) {
-        this.subCategory = subCategory;
+    public void setFilter(Filter filter) {
+        this.filter = filter;
     }
 
-    @Override
-    public CloneableTask clone() {
-        CategoryAppsTask task = new CategoryAppsTask(iterator);
-        task.setFilter(filter);
-        task.setCategoryId(categoryId);
-        task.setErrorView(errorView);
-        task.setContext(context);
-        task.setProgressIndicator(progressIndicator);
-        return task;
+    protected List<App> getResult(AppListIterator iterator) throws IOException {
+
+        setIterator(iterator);
+
+        if (!iterator.hasNext()) {
+            return new ArrayList<>();
+        }
+
+        List<App> apps = new ArrayList<>();
+        while (iterator.hasNext() && apps.isEmpty()) {
+            try {
+                apps.addAll(getNextBatch(iterator));
+            } catch (IteratorGooglePlayException e) {
+                if (null == e.getCause()) {
+                    continue;
+                }
+                if (noNetwork(e.getCause())) {
+                    throw (IOException) e.getCause();
+                } else if (e.getCause() instanceof GooglePlayException
+                        && ((GooglePlayException) e.getCause()).getCode() == 401 && isDummy()) {
+                    new AppProvidedCredentialsTask(getContext()).refreshToken();
+                    iterator.setGooglePlayApi(new PlayStoreApiAuthenticator(getContext()).getApi());
+                    apps.addAll(getNextBatch(iterator));
+                }
+            }
+        }
+        return apps;
     }
 
-    @Override
-    protected AppListIterator initIterator() throws IOException {
-        return new AppListIterator(new CategoryAppsIterator(
-                new PlayStoreApiAuthenticator(context).getApi(),
-                categoryId,
-                subCategory));
+    protected List<App> getNextBatch(AppListIterator iterator) {
+        return iterator.next();
     }
 }

@@ -28,7 +28,7 @@ import com.dragons.aurora.UpdateChecker;
 import com.dragons.aurora.adapters.UpdatableAppsAdapter;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.CancelDownloadService;
-import com.dragons.aurora.task.playstore.ForegroundUpdatableAppsTaskHelper;
+import com.dragons.aurora.task.playstore.UpdatableAppsTaskHelper;
 import com.percolate.caffeine.ToastUtils;
 import com.percolate.caffeine.ViewUtils;
 
@@ -42,7 +42,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class UpdatableAppsFragment extends ForegroundUpdatableAppsTaskHelper implements UpdatableRecyclerItemTouchHelper.UpdatableRecyclerItemTouchListener {
+public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements UpdatableRecyclerItemTouchHelper.UpdatableRecyclerItemTouchListener {
 
     public static int updates = 0;
     public static boolean recheck = false;

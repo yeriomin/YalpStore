@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.v4.graphics.ColorUtils;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.widget.ImageView;
@@ -96,6 +97,12 @@ public abstract class AbstractHelper {
         RelativeLayout relativeLayout = fragment.getActivity().findViewById(layoutId);
         if (relativeLayout != null)
             relativeLayout.setBackgroundColor(color);
+    }
+
+    void paintLLayout(int color, int viewID) {
+        LinearLayout layout = fragment.getActivity().findViewById(viewID);
+        if (layout != null)
+            ViewCompat.setBackgroundTintList(layout, ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 50)));
     }
 
     protected void paintTextView(int color, int textViewId) {

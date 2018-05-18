@@ -21,7 +21,7 @@ import java.net.UnknownHostException;
 
 import javax.net.ssl.SSLHandshakeException;
 
-public abstract class ExceptionTaskHelper extends UtilFragment {
+public abstract class ExceptionTask extends UtilFragment {
 
     protected Throwable exception;
 

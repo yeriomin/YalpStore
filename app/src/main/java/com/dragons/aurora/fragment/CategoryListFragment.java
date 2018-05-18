@@ -14,7 +14,7 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.adapters.AllCategoriesAdapter;
 import com.dragons.aurora.adapters.TopCategoriesAdapter;
-import com.dragons.aurora.task.playstore.CategoryListTaskHelper;
+import com.dragons.aurora.task.playstore.CategoryListTask;
 import com.percolate.caffeine.ViewUtils;
 
 import io.reactivex.Observable;
@@ -23,7 +23,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class CategoryListFragment extends CategoryListTaskHelper {
+public class CategoryListFragment extends CategoryListTask {
 
     private View v;
     private CategoryManager manager;

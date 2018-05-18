@@ -1,26 +1,18 @@
 package com.dragons.aurora.activities;
 
-import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
 
-import com.dragons.aurora.ContextUtil;
 import com.dragons.aurora.R;
-import com.dragons.aurora.fragment.FilterMenu;
-import com.dragons.aurora.model.App;
-import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
-import com.dragons.aurora.task.playstore.DetailsTask;
-import com.dragons.aurora.task.playstore.SearchTask;
-import com.percolate.caffeine.ViewUtils;
+import com.dragons.aurora.fragment.SearchAppsFragment;
 
 import java.util.regex.Pattern;
 
-public class SearchActivity extends EndlessScrollActivity {
+public class SearchActivity extends AuroraActivity {
 
     public static final String PUB_PREFIX = "pub:";
 
@@ -33,8 +25,8 @@ public class SearchActivity extends EndlessScrollActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ViewUtils.findViewById(this, R.id.category_tabs).setVisibility(View.GONE);
+        setContentView(R.layout.helper_activity_alt);
+        onNewIntent(getIntent());
     }
 
     @Override
@@ -48,17 +40,12 @@ public class SearchActivity extends EndlessScrollActivity {
             finish();
             return;
         }
+
         Log.i(getClass().getSimpleName(), "Searching: " + newQuery);
         if (null != newQuery && !newQuery.equals(this.query)) {
-            clearApps();
             this.query = newQuery;
             setTitle(getTitleString());
-            if (looksLikeAPackageId(query)) {
-                Log.i(getClass().getSimpleName(), query + " looks like a package id");
-                checkPackageId(query);
-            } else {
-                loadApps(subCategory);
-            }
+            getCategoryApps(query, getTitleString());
         }
     }
 
@@ -67,14 +54,6 @@ public class SearchActivity extends EndlessScrollActivity {
         boolean result = super.onCreateOptionsMenu(menu);
         menu.findItem(R.id.filter_category).setVisible(true);
         return result;
-    }
-
-    @Override
-    protected SearchTask getTask() {
-        SearchTask task = new SearchTask(iterator);
-        task.setQuery(query);
-        task.setFilter(new FilterMenu(this).getFilterPreferences());
-        return task;
     }
 
     private String getTitleString() {
@@ -110,44 +89,13 @@ public class SearchActivity extends EndlessScrollActivity {
         return r.matcher(query).matches();
     }
 
-    private void checkPackageId(String packageId) {
-        DetailsTask task = new CheckPackageIdTask(this);
-        task.setContext(this);
-        task.setPackageName(packageId);
-        task.execute();
+    public void getCategoryApps(String query, String title) {
+        SearchAppsFragment searchAppsFragment = new SearchAppsFragment();
+        Bundle arguments = new Bundle();
+        arguments.putString("SearchQuery", query);
+        arguments.putString("SearchTitle", title);
+        searchAppsFragment.setArguments(arguments);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, searchAppsFragment).commit();
     }
 
-    static private class CheckPackageIdTask extends DetailsTask {
-
-        private SearchActivity activity;
-
-        CheckPackageIdTask(SearchActivity activity) {
-            this.activity = activity;
-        }
-
-        @Override
-        protected void onPostExecute(App app) {
-            super.onPostExecute(app);
-            if (null != app && ContextUtil.isAlive(activity)) {
-                DetailsActivity.app = app;
-                showPackageIdDialog(app.getPackageName());
-            } else {
-                activity.finish();
-            }
-        }
-
-        private AlertDialog showPackageIdDialog(final String packageId) {
-            return new AlertDialog.Builder(activity)
-                    .setMessage(R.string.dialog_message_package_id)
-                    .setTitle(R.string.dialog_title_package_id)
-                    .setPositiveButton(android.R.string.yes, (dialogInterface, i) -> {
-                        activity.startActivity(DetailsActivity.getDetailsIntent(activity, packageId));
-                        dialogInterface.dismiss();
-                        activity.finish();
-                    })
-                    .setNegativeButton(android.R.string.no, (dialog, which) -> activity.loadApps(GooglePlayAPI.SUBCATEGORY.TOP_FREE))
-                    .show()
-                    ;
-        }
-    }
 }
