@@ -23,12 +23,27 @@ import java.util.concurrent.TimeUnit;
 
 public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.ViewHolder> {
 
-    private ArrayList<String> queryHistory;
+    public ArrayList<String> queryHistory;
     private Context c;
 
     public SearchHistoryAdapter(ArrayList<String> queryHistory, Context c) {
         this.queryHistory = queryHistory;
         this.c = c;
+    }
+
+    public void add(int position, String query) {
+        queryHistory.add(position, query);
+        notifyItemInserted(position);
+    }
+
+    public void remove(int position) {
+        queryHistory.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void remove(String query) {
+        queryHistory.remove(query);
+        notifyDataSetChanged();
     }
 
     @NonNull

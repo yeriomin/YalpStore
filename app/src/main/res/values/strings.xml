@@ -41,6 +41,7 @@
     <string name="action_refresh">Refresh Token</string>
     <string name="action_remove">Remove</string>
     <string name="action_search_history">Your Search History</string>
+    <string name="action_search_history_apps">Your Recent Apps</string>
     <string name="action_search_clearHistory">Clear all</string>
     <string name="action_search_title">Search Apps &amp; Games</string>
     <string name="action_select">Select an account to login</string>

@@ -81,7 +81,6 @@
         android:id="@+id/searchcard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/appbar_bar_height_margin"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
@@ -107,4 +106,21 @@
             android:textSize="18sp" />
     </RelativeLayout>
 
+    <com.dragons.aurora.view.ClusterAppsCard
+        android:id="@+id/searchClusterApp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/appbar_bar_height_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/m_apps_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:nestedScrollingEnabled="false"
+        android:paddingBottom="6dp" />
 </LinearLayout>
