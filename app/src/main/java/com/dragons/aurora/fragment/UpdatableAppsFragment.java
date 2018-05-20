@@ -125,7 +125,6 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
         }
 
         updateAllReceiver = new UpdateAllReceiver(this);
-        setupAutoUpdate();
         setupDelta();
     }
 
@@ -200,12 +199,18 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
         LinearLayout autoUpdatesCard = view.findViewById(R.id.autoUpdatesCard);
         ImageView autoUpdatesClose = view.findViewById(R.id.autoUpdatesClose);
         Button autoUpdatesSwitch = view.findViewById(R.id.autoUpdatesSwitch);
-
-        if (PreferenceFragment.getString(this.getActivity(), "PREFERENCE_BACKGROUND_UPDATE_INTERVAL").equals("-1")) {
+        boolean shouldAsk = PreferenceFragment.getBoolean(getContext(), "PROMPT_UPDATE_INTERVAL");
+        if (PreferenceFragment.getString(getContext(), "PREFERENCE_BACKGROUND_UPDATE_INTERVAL").equals("-1") && !shouldAsk) {
             autoUpdatesCard.setVisibility(View.VISIBLE);
         }
 
-        autoUpdatesClose.setOnClickListener(click -> autoUpdatesCard.setVisibility(View.GONE));
+        autoUpdatesClose.setOnClickListener(click -> {
+            autoUpdatesCard.setVisibility(View.GONE);
+            PreferenceManager.getDefaultSharedPreferences(getActivity())
+                    .edit()
+                    .putBoolean("PROMPT_UPDATE_INTERVAL", true)
+                    .apply();
+        });
 
         autoUpdatesSwitch.setOnClickListener(click -> {
             PreferenceManager.getDefaultSharedPreferences(getActivity())
