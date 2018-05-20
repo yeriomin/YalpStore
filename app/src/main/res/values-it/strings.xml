@@ -118,7 +118,7 @@ Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più s
 <string name="details_depends_on">"Dipende da: %1$s"</string>
 <string name="details_no_dependencies">"nessuna"</string>
 <string name="details_contains_ads">"Contiene ads"</string>
-
+<string name="details_no_ads">"No ads"</string>
 <string name="dialog_title_package_id">"Pacchetto con nome corrispondente"</string>
 <string name="dialog_message_package_id">"Esiste un pacchetto con il nome esatto. Vuoi andare direttamente ai dettagli dell'app?"</string>
 <string name="details_download_checking">"Controllo…"</string>
@@ -218,7 +218,7 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="thank_you">"Grazie"</string>
 <string name="list_updating">"Aggiornamento…"</string>
 <string name="error_invalid_device_definition">"Info del dispositivo rifiutate"</string>
-
+<string name="details_video">"Video"</string>
 <string name="error_could_not_download">"Impossibile scaricare"</string>
 <string name="first_login_message">"To use your own account choose Log out in the menu"</string>
 <string name="early_access">"In anteprima"</string>
@@ -230,7 +230,7 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="testing_program_section_opted_out_message">"Prova le nuove funzioni prima che vengano rese pubbliche. Dai i tuoi feedback direttamente allo sviluppatore."</string>
 <string name="testing_program_section_opted_out_propagating_message">"Sono necessari alcuni minuti per rimuoverti dal Programma Beta."</string>
 <string name="testing_program_section_opted_out_title">"Diventa un beta tester"</string>
-
+<string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="pref_download_directory">"Cartella del downlad"</string>
 <string name="pref_download_deltas">"Aggiornamenti differenziali"</string>
 <string name="pref_download_deltas_summary_off">"Scarica ogni volta  l'intero apk"</string>
@@ -278,20 +278,30 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="apps_by">"Applicazioni di %1$s"</string>
 <string name="pref_message_fallback">"Tento d'impostare una cartella di fallback (%1$s)?"</string>
 <string name="no_permissions">"Nessuna autorizzazione viene usata."</string>
-
-
-
-
-
+<string name="about_librepay_label">"Dona con Liberapay:"</string>
+<string name="notification_file_verification_failed">"File corrotto. Tento un nuovo download."</string>
+<string name="pref_download_internal_storage">"Scarica nella memoria interna"</string>
+<string name="pref_download_internal_storage_summary_on">"Più sicuro, ma l'utente non può accedere agli apk"</string>
+<string name="pref_download_internal_storage_summary_off">"Gli apk vengono salvati nella memoria esterna, al percorso sotto"</string>
 <string name="pref_use_tor">"Usa Tor"</string>
 <string name="pref_use_tor_summary">"Forza lo scaricamento attraverso Tor per aumentare la privacy. Richiede Orbot"</string>
-
-
-
-
-
-<string name="action_wishlist_remove">Rimuovi dalla lista desideri</string>
-<string name="action_wishlist_add">Aggiungi alla lista desideri</string>
-<string name="action_wishlist">Lista desideri</string>
+<string name="pref_category_proxy">"Proxy"</string>
+<string name="pref_proxy_enable">"Abilita proxy"</string>
+<string name="pref_proxy_type">"Tipo del proxy"</string>
+<string name="pref_proxy_host">"Host del proxy"</string>
+<string name="pref_proxy_port">"Porta del proxy"</string>
+<string name="action_wishlist_remove">"Rimuovi dalla lista desideri"</string>
+<string name="action_wishlist_add">"Aggiungi alla lista desideri"</string>
+<string name="action_wishlist">"Lista desideri"</string>
 <string name="action_ignore_this">"Ignora questo aggiornamento"</string>
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+<string name="details_exodus_tap_to_check">"Fai tap per controllare"</string>
+<string name="details_exodus_searching">"ricerca..."</string>
+<string name="details_exodus_not_found">"non trovato"</string>
+<string name="details_exodus_found">"%1$s tracker"</string>
+<string name="pref_category_third_party">"Servizi di terze parti"</string>
+<string name="pref_exodus">"Controllo Exodus Privacy"</string>
+<string name="pref_exodus_summary_on">"Il conteggio tracker è mostrato nella pagina dei dettagli"</string>
+<string name="pref_exodus_summary_off">"Viene mostrato il link report di Exodus"</string>
+<string name="details_to_fdroid">"Vedi in F-Droid"</string>
 </resources>
