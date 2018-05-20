@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="about_developer_email_label">"開發人員的Email:"</string>
+<string name="about_logged_in">"你目前登錄為:"</string>
+<string name="about_copied_to_clipboard">"已複製到剪貼簿"</string>
+<string name="list_line_2_updatable">"於 %1$s 更新"</string>
+<string name="list_empty_updates">"沒有程式需要更新"</string>
+<string name="list_empty_search">"找不到程式"</string>
+<string name="list_incompatible">"不相容"</string>
+<string name="action_about">"關於"</string>
+<string name="action_settings">"設定"</string>
+<string name="action_logout">"登出"</string>
+<string name="action_search">"搜尋"</string>
+<string name="action_updates">"更新"</string>
+<string name="action_ignore">"忽略更新"</string>
+<string name="action_whitelist">"更新白名單"</string>
+<string name="search_title">"搜尋程式"</string>
+<string name="dialog_two_factor_cancel">"現在不要"</string>
+<string name="dialog_two_factor_create_password">"建立密碼"</string>
+<string name="dialog_title_two_factor">"二步驟驗證"</string>
+<string name="dialog_message_two_factor">"您似乎已為自己的帳戶啟用了二步驟驗證。
+
+請為Yalp建立一個應用程式密碼，用以登入Yalp。
+
+點擊“建立密碼”以重定向到密碼建立頁面。"</string>
+<string name="dialog_title_logout">"要登出?"</string>
+<string name="dialog_message_logout">"您真的要登出嗎?"</string>
+<string name="dialog_account_type_provided_by_user">"用我自己的Google帳戶"</string>
+<string name="dialog_account_type_predefined">"用Yalp的假帳戶"</string>
+<string name="dialog_account_type_title">"您想如何登錄Google Play商店？"</string>
+<string name="dialog_title_logging_in">"已登錄"</string>
+<string name="dialog_message_logging_in_provided_by_user">"正在嘗試登陸您所提供的憑證。"</string>
+<string name="dialog_message_logging_in_predefined">"正在嘗試登陸YALP所提供的憑證。"</string>
+<string name="error_incorrect_password">"錯誤的電子郵件或密碼"</string>
+<string name="error_credentials_empty">"請提供您的Google帳號"</string>
+<string name="error_no_network">"現在沒有網路:("</string>
+<string name="error_network_other">"網路錯誤：%1$s "</string>
+<string name="error_not_purchased">"您似乎並未購買這個應用程式。是否重定向到其 Play Store 網頁?"</string>
+<string name="error_downloads_directory_not_writable">"無法創建下載目錄或其屬性為唯讀。"</string>
+<string name="error_token_dispenser_problem">"無法登錄不存在的帳戶，嘗試使用YALP帳戶。"</string>
+<string name="details_updated">"更新 %1$s "</string>
+<string name="details_description">"描述"</string>
+<string name="details_changelog">"新功能"</string>
+<string name="details_screenshots">"截圖"</string>
+<string name="details_reviews">"評論"</string>
+<string name="details_rate_this_app">"為這個應用軟件評分："</string>
+<string name="details_you_rated_this_app">"你已經評價這個應用囉："</string>
+<string name="details_permissions">"權限"</string>
+<string name="details_versionName">"版本 %1$s "</string>
+<string name="details_versionName_updatable">"版本 %1$s → %2$s"</string>
+<string name="details_download">"下載"</string>
+<string name="details_install">"安裝"</string>
+<string name="details_downloading">"下載中"</string>
+<string name="details_review_dialog_title">"還有什麼需要補充的嗎?"</string>
+<string name="details_review_dialog_review_title_hint">"標題在這裡喔"</string>
+<string name="details_review_dialog_review_comment_hint">"在這裡評論"</string>
+<string name="details_review_dialog_fields_optional">"你可以留下任何"</string>
+<string name="details_signature_mismatch">"此應用程式的新版本使用了與舊版不同的簽署金鑰。若要安裝新版本，您必須將舊版應用程式先解除安裝。請於完成該操作後再嘗試一次。（注意，解除安裝時會清除任何由該應用程式儲存於系統中的所有資料）"</string>
+<string name="credentials_hint_email">"電子郵件"</string>
+<string name="credentials_hint_password">"密碼"</string>
+<string name="credentials_title">"Google帳戶訪問權限"</string>
+<string name="credentials_message">"本應用程式需要 Google 帳戶的電郵地址及密碼才可運作。
+
+請注意，本應用程式違反 Play Store 的服務條款。使用曾經登入過 Play Store 至少一次且已接受 Play Store 服務條款的臨時 Google 帳戶可能會更安全。"</string>
+<string name="activity_title_search">"搜尋：“%1$s”"</string>
+<string name="notification_download_complete">"下載完成。點擊安裝。"</string>
+<string name="notification_download_complete_toast">"已下載 “%1$s” 。點擊安裝按鈕或通知安裝。"</string>
+<string name="notification_download_complete_signature_mismatch">"下載完成，惟 apk 簽名不相符。"</string>
+<string name="notification_download_complete_signature_mismatch_toast">"已下載 “%1$s” ，惟 apk 簽名與已安裝的應用程式不相符。你可能需要先解除安裝該應用程式。"</string>
+<string name="notification_updates_available_title">"有可用的應用程式更新。"</string>
+<string name="notification_updates_available_message">"你有 %1$d 個應用程式可以更新。"</string>
+<string name="pref_auto_install_summary_off">"點擊完成通知時安裝應用程式"</string>
+<string name="pref_auto_install_summary_on">"下載完成後立即安裝"</string>
+<string name="pref_auto_install">"立即安裝應用程式"</string>
+<string name="pref_update_list_white_or_black_black">"檢查更新時忽略選中的應用程式"</string>
+<string name="pref_update_list_white_or_black_white">"只為選中的應用程式檢查更新"</string>
+<string name="pref_update_list_white_or_black">"應用程式更新黑／白名單"</string>
+<string name="pref_update_list_black">"修改應用程式黑名單"</string>
+<string name="pref_update_list_white">"修改應用程式白名單"</string>
+<string name="pref_ui_theme">"主題"</string>
+<string name="pref_ui_theme_none">"預設"</string>
+<string name="pref_ui_theme_light">"亮"</string>
+<string name="pref_ui_theme_dark">"暗"</string>
+<string name="pref_ui_theme_black">"漆黑"</string>
+<string name="pref_background_update_interval_never">"僅在啟動 Yalp Store 時"</string>
+<string name="pref_background_update_interval_hourly">"每小時"</string>
+<string name="pref_background_update_interval_daily">"每天"</string>
+<string name="pref_background_update_interval_weekly">"每星期"</string>
+<string name="pref_background_update_interval">"定期檢查更新"</string>
+<string name="download_manager_ERROR_UNKNOWN">"未知錯誤。"</string>
+<string name="download_manager_ERROR_FILE_ERROR">"未知的檔案儲存錯誤。"</string>
+<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"接收到下載管理器無法處理的 HTTP 代碼。服務器出錯。"</string>
+<string name="download_manager_ERROR_HTTP_DATA_ERROR">"在 HTTP 協議層接收或處理數據時出錯。"</string>
+<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"重定向過多。"</string>
+<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"儲存空間不足。"</string>
+<string name="download_manager_ERROR_DEVICE_NOT_FOUND">"找不到外部儲存設備。或許沒有掛載 SD 卡。"</string>
+<string name="download_manager_ERROR_CANNOT_RESUME">"發生了可能屬暫時性的錯誤，但無法恢復下載。請稍候再試。"</string>
+
+<!-- Fuzzy -->
+<string name="download_manager_ERROR_BLOCKED">"由於無法請求應用程式上的 NetworkPolicyManager 控件，下載失敗。檢查你的設定。"</string>
+<string name="search_filter">"所有應用程式"</string>
+<string name="pref_delete_apk_after_install_summary_off">"現時 .apk 檔案不會在安裝後刪除"</string>
+<string name="pref_delete_apk_after_install_summary_on">"現時 .apk 檔案會在安裝後刪除"</string>
+<string name="pref_delete_apk_after_install">"安裝後刪除 .apk 檔案"</string>
+<string name="dialog_title_application_crashed">"抱歉，Yalp Store 崩潰了"</string>
+<string name="details_to_play_store">"在 Play Store 查看"</string>
+<string name="action_categories">"分類"</string>
+<string name="list_update_all">"全部更新"</string>
+<string name="notification_installation_complete">"已安裝更新。"</string>
+<string name="notification_installation_failed">"安裝更新失敗。"</string>
+<string name="pref_background_update_install_summary_off">"你只會收到通知"</string>
+<string name="pref_background_update_install_summary_on">"如果有更新便安裝 (root)"</string>
+<string name="pref_background_update_install">"也安裝更新 (root)"</string>
+<string name="pref_no_root">"此選項僅在已獲取 root 權限的裝置上可用"</string>
+<string name="list_app_has_ads">"有廣告"</string>
+<string name="list_app_no_ads">"無廣告"</string>
+<string name="list_app_depends_on_gsf">"依賴 Google Play 服務"</string>
+<string name="list_app_independent_from_gsf">"不依賴 Google Play 服務"</string>
+<string name="details_depends_on">"依賴：%1$s"</string>
+<string name="details_no_dependencies">"無"</string>
+<string name="details_contains_ads">"含廣告"</string>
+<string name="details_no_ads">"無廣告"</string>
+<string name="dialog_title_package_id">"有此名稱的應用程式包"</string>
+<string name="dialog_message_package_id">"有一個名稱相符的應用程式包。你是否要查看其詳細資訊頁面？"</string>
+<string name="details_download_checking">"檢查中……"</string>
+<string name="details_download_not_available">"不可用"</string>
+<string name="manual_download_incompatible">"Google Play Store 認為此應用程式與你的裝置不相容。這表示 Google Play Store 伺服器沒有傳回版本號。"</string>
+<string name="manual_download_compatible">"版本代碼欄已自動填上此應用程式的最新相容版本號。如果你想要以前的版本，只需輸入一個小於當前值的數字。如果開發者尚未刪除 Play Store 上的過往版本，你或許能開始下載。"</string>
+<string name="manual_download_warning">"此頁面可讓你自行選擇要下載的應用程式版本。版本號是標識應用程式版本的數字。它從 1 開始，每當有新版本便會由開發者增加。Play Store 一般只會讓你下載與你的裝置相容的最新 apk。藉手動提供此號碼，你或許可以取得其他版本。
+
+請注意，Google Play Store 不支援下載任意版本的應用程式。是否成功需取決於版本號的幸運猜測。即使你才對了並開始下載，你可能會取得不相容的 apk。大多數情況下，你會浪費時間！"</string>
+<string name="manual_download_hint_version_code">"在此輸入版本號"</string>
+<string name="details_uninstall">"解除安裝"</string>
+<string name="notification_download_starting">"開始下載"</string>
+<string name="notification_download_progress">"%2$s 已下載 %1$s"</string>
+<string name="pref_requested_language">"向 Play Store 請求的語言"</string>
+<string name="pref_requested_language_default">"你的預設語言"</string>
+<string name="pref_device_to_pretend_to_be">"偽裝成另一裝置"</string>
+<string name="pref_device_to_pretend_to_be_default">"原有裝置資訊"</string>
+<string name="pref_device_to_pretend_to_be_toast">"此修改將於重新登入後應用"</string>
+<string name="pref_category_updates">"更新"</string>
+<string name="pref_category_installation">"安裝"</string>
+<string name="pref_category_spoofing">"偽裝"</string>
+<string name="pref_category_ui">"使用者介面"</string>
+<string name="details_installing">"正在安裝…"</string>
+<string name="details_installed">"成功安裝"</string>
+<string name="details_install_failure">"無法安裝"</string>
+<string name="notification_download_complete_new_permissions">"下載完成。請求新的權限。"</string>
+<string name="notification_download_complete_new_permissions_toast">"已下載 %1$s 。新版本的應用程式請求更多權限。查看新權限列表。"</string>
+<string name="pref_not_privileged">"當 Yalp Store 為系統應用程式時才可用"</string>
+<string name="pref_installation_method">"安裝方法"</string>
+<string name="pref_installation_method_default">"使用預設安裝對話框，不在背景安裝"</string>
+<string name="pref_installation_method_root">"使用 root"</string>
+<string name="pref_installation_method_privileged">"使用系統應用程式權限"</string>
+<string name="pref_background_update_download_summary_off">"你將只會收到一個通知"</string>
+<string name="pref_background_update_download_summary_on">"一旦有更新就下載"</string>
+<string name="pref_background_update_download">"也下載更新"</string>
+<string name="details_not_available_on_play_store">"在 Play Store 上不可用"</string>
+<string name="action_manual">"手動下載"</string>
+<string name="action_get_local_apk">"取得本地 apk"</string>
+<string name="details_saved_in_downloads">"保存在你的下載資料夾中"</string>
+<string name="details_could_not_copy_apk">"無法複製 apk"</string>
+<string name="action_make_system">"轉換為系統應用程式"</string>
+<string name="action_make_normal">"轉換為用戶應用程式"</string>
+<string name="list_app_system">"系統應用程式"</string>
+<string name="activity_title_updates_only">"可更新"</string>
+<string name="activity_title_updates_and_other_apps">"你的應用程式"</string>
+<string name="details_system_app_info">"系統資訊"</string>
+<string name="details_run">"執行"</string>
+<string name="dialog_title_remounting_system">"正在處理 /system 分割區"</string>
+<string name="dialog_message_remounting_system">"正在處理 /system 分割區。這可能需要一些時間。"</string>
+<string name="dialog_title_checking_busybox">"正檢查 busybox 是否可用"</string>
+<string name="dialog_message_checking_busybox">"需要某些系統工具以調整系統應用程式相關設定。正檢查是否可用。"</string>
+<string name="dialog_title_busybox_not_available">"Busybox 不可用"</string>
+<string name="dialog_message_busybox_not_available">"要調整系統應用程式相關設定，需要已安裝 busybox 並獲 root 權限的設備。是否要搜尋 busybox 安裝器？"</string>
+<string name="dialog_title_reboot_required">"需要重啟"</string>
+<string name="dialog_message_reboot_required">"更改會於重新啟動後應用。馬上重啟？"</string>
+<string name="dialog_title_system_app_warning">"警告！"</string>
+<string name="dialog_message_system_app_warning_to_system">"你已經選擇將該應用程式轉換為系統應用程式。大多數應用程式不需為系統應用程式亦能運作。
+
+請注意，Android 系統不支援此轉換過程，因此並不安全，亦不保證能正常運作。
+
+不要因為好奇而執行此操作。它可能會弄壞你的裝置。嘗試前請先為裝置備份。"</string>
+<string name="dialog_message_system_app_warning_to_normal">"你已經選擇將該系統應用程式轉換為普通應用程式。大多數系統應用程式需為系統應用程式才能運作。
+
+請注意，Android 系統不支援此轉換過程，因此並不安全，亦不保證能正常運作。
+
+不要因為好奇而執行此操作。它可能會弄壞你的裝置。嘗試前請先為裝置備份。"</string>
+<string name="list_check_updates">"檢查更新"</string>
+<string name="pref_background_update_interval_manually">"僅手動"</string>
+<string name="dialog_message_system_app_warning_uninstall">"你是否確定要刪除該系統應用程式？系統應用程式由裝置供應商置入，裝置一般需要它才能按預期的方式運作。
+
+請注意，Android 系統不支援刪除系統應用程式，因此並不安全，亦不保證能正常運作。
+
+不要因為好奇而執行此操作。它可能會弄壞你的裝置。嘗試前請先為裝置備份。"</string>
+<string name="dialog_title_system_app_self">"使 Yalp 變成系統應用程式"</string>
+<string name="dialog_message_system_app_self">"要使用特權來允許應用程式在背景安裝，需要把 Yalp Store 變成系統應用程式。
+
+此過程因廠商而異，並不完美，可能不起作用。
+
+要繼續嗎？"</string>
+<string name="about_website_label">"網站："</string>
+<string name="details_share">"分享"</string>
+<string name="details_developer">"開發者：%1$s"</string>
+<string name="pref_background_update_wifi_only">"僅透過 Wi-Fi"</string>
+<string name="about_bitcoin_label">"Bitcion 捐款："</string>
+<string name="action_bug_report">"錯誤回報"</string>
+<string name="dialog_title_spoof_request">"請求"</string>
+<string name="dialog_message_spoof_request">"有賴像你一樣的用戶提交錯誤報告，才能實現設備偽裝。如你希望定義檔案能準確、最新，請點擊 OK ，你的裝置資訊會被傳送至 Yalp Store 開發者。"</string>
+<string name="pref_device_to_pretend_to_be_notice">"如果你把設備定義檔案放進 %1$s ，它們會在此列表出現。"</string>
+<string name="pref_no_images">"僅以 Wi-Fi 下載圖片"</string>
+<string name="pref_no_images_summary_off">"總是下載圖片"</string>
+<string name="pref_no_images_summary_on">"圖片只會在有 Wi-Fi 時下載"</string>
+<string name="bug_report_hint_message">"問題詳細描述"</string>
+<string name="bug_report_hint_identification">"你的電郵地址／姓名／任何東西（可選）"</string>
+<string name="bug_report_explanation_content">"你的裝置資訊、Yalp Store 記錄及 Yalp Store 的部分設定會被自動加入到訊息中。此過程不會收集個人或敏感資訊。"</string>
+<string name="bug_report_explanation_crash">"你可以向開發者發送錯誤報告以協助修復此問題。請描述錯誤發生時的操作並點擊 OK 發送。"</string>
+
+<!-- Fuzzy -->
+<string name="bug_report_explanation_bug_report">"請描述問題，並盡量具體一點。這個問題是在有特定應用程式的情況下發生嗎？是一直還是偶爾發生？如何重現此問題？"</string>
+<string name="thank_you">"謝謝"</string>
+<string name="list_updating">"更新中…"</string>
+<string name="error_invalid_device_definition">"裝置定義被拒絕。"</string>
+<string name="details_video">"視頻"</string>
+<string name="error_could_not_download">"無法下載。"</string>
+<string name="first_login_message">"要使用自己的帳號，請到選單選擇登出"</string>
+<string name="early_access">"搶先體驗"</string>
+<string name="testing_program_opt_in">"加入"</string>
+<string name="testing_program_opt_out">"退出"</string>
+<string name="testing_program_section_opted_in_message">"應用程式更新將包含測試版。如果現在退出這個應用程式的測試版計劃，您將無法取得測試版更新內容。"</string>
+<string name="testing_program_section_opted_in_propagating_message">"您將於幾分鐘後加入測試版計劃。屆時，您就可以視需要更新這個應用程式的測試版本。"</string>
+<string name="testing_program_section_opted_in_title">"您是 Beta 版測試人員"</string>
+<string name="testing_program_section_opted_out_message">"搶先試用尚未公開的新功能，直接向開發人員提出意見。"</string>
+<string name="testing_program_section_opted_out_propagating_message">"系統需要幾分鐘的時間才能將您從測試版計劃中移除。"</string>
+<string name="testing_program_section_opted_out_title">"成為 Beta 版測試人員"</string>
+<string name="notification_not_privileged">"沒有授予安裝權限"</string>
+<string name="pref_download_directory">"下載目錄"</string>
+<string name="pref_download_deltas">"增量更新"</string>
+<string name="pref_download_deltas_summary_off">"更新時下載完整 apk"</string>
+<string name="pref_download_deltas_summary_on">"更新時僅下載出現改動的部分"</string>
+<string name="testing_program_review_dialog_content_hint">"輸入對於這個應用程式的意見"</string>
+<string name="delete">"刪除"</string>
+<string name="submit">"提交"</string>
+<string name="done">"完成"</string>
+<string name="availability_restriction_carrier">"您的電信業者不支援這個項目。"</string>
+<string name="availability_restriction_country">"您的國家/地區不支援這個項目。"</string>
+<string name="availability_restriction_country_or_carrier">"您的國家/地區或電信業者不支援這個項目。"</string>
+<string name="availability_restriction_for_managed_account">"您的管理員尚未授權您存取這個項目。"</string>
+<string name="availability_restriction_generic">"無法提供這個項目。"</string>
+<string name="availability_restriction_hardware">"您的裝置與這個項目不相容。"</string>
+<string name="availability_restriction_hardware_app">"您的裝置與這個版本不相容。"</string>
+<string name="availability_restriction_hardware_app_ram_generic">"這個應用程式所需的 RAM 超過你裝置的可用 RAM。"</string>
+<string name="availability_restriction_missing_permission">"您的管理員尚未接受這個項目的權限。"</string>
+<string name="availability_restriction_not_in_group">"您並非這個項目的目標族群。"</string>
+<string name="flag_graphic_violence">"暴力圖片"</string>
+<string name="flag_harmful_prompt">"請敘述這個應用程式對您的裝置或資料造成的損害："</string>
+<string name="flag_harmful_to_device">"對裝置或資料造成損害"</string>
+<string name="flag_hateful_content">"仇恨或辱罵的內容"</string>
+<string name="flag_improper_content_rating">"不當的內容分級"</string>
+<string name="flag_other_concern_prompt">"描述缺點"</string>
+<string name="flag_other_objection">"其他缺點"</string>
+<string name="flag_page_description">"您認為這項內容或應用程式令人反感的原因："</string>
+<string name="flag_pharma_content">"非法處方或其他藥物"</string>
+<string name="flag_sexual_content">"含性暗示的內容"</string>
+<string name="flag_impersonation_copycat">"仿冒／冒充"</string>
+<string name="flagging_title">"檢舉不當內容"</string>
+<string name="content_flagged">"缺點建議已傳送"</string>
+<string name="list_app_blacklisted">"已列入黑名單"</string>
+<string name="list_app_whitelisted">"已列入白名單"</string>
+<string name="action_filter">"篩選"</string>
+<string name="action_filter_system_apps">"系統應用程式"</string>
+<string name="action_filter_apps_with_ads">"含廣告的應用程式"</string>
+<string name="action_filter_paid_apps">"付費軟件"</string>
+<string name="action_filter_gsf_dependent_apps">"依賴 Google Play 服務的應用程式"</string>
+<string name="action_filter_category">"類別：%1$s"</string>
+<string name="action_filter_rating">"評分：%1$s"</string>
+<string name="action_filter_downloads">"下載次數：%1$s"</string>
+<string name="pref_auto_whitelist">"自動白名單"</string>
+<string name="pref_auto_whitelist_summary_on">"由 Yalp Store 安裝的應用程式會自動列入白名單"</string>
+<string name="pref_auto_whitelist_summary_off">"你需要手動將應用程式加入白名單"</string>
+<string name="apps_by">"應用程式發佈商：%1$s"</string>
+<string name="pref_message_fallback">"嘗試設定一個備用目錄 (%1$s) ？"</string>
+<string name="no_permissions">"不需要任何權限。"</string>
+<string name="about_librepay_label">"Liberapay 捐款："</string>
+<string name="notification_file_verification_failed">"檔案似乎損毀。請嘗試重新下載。"</string>
+<string name="pref_download_internal_storage">"下載到內部儲存"</string>
+<string name="pref_download_internal_storage_summary_on">"更加安全，但用戶無法存取 apk"</string>
+<string name="pref_download_internal_storage_summary_off">"apk 將下載到下方的外部儲存目錄"</string>
+<string name="pref_use_tor">"使用 Tor"</string>
+<string name="pref_use_tor_summary">"強制下載流量通過 Tor 以增強隱私保護。需要Orbot"</string>
+<string name="pref_category_proxy">"代理伺服器"</string>
+<string name="pref_proxy_enable">"啟用代理伺服器"</string>
+<string name="pref_proxy_type">"代理協定"</string>
+<string name="pref_proxy_host">"代理伺服器主機"</string>
+<string name="pref_proxy_port">"代理伺服器埠"</string>
+<string name="action_wishlist_remove">"從願望清單中移除"</string>
+<string name="action_wishlist_add">"加入願望清單"</string>
+<string name="action_wishlist">"願望清單"</string>
+<string name="action_ignore_this">"忽略此更新"</string>
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+<string name="details_exodus_tap_to_check">"點擊查看"</string>
+<string name="details_exodus_searching">"搜尋中"</string>
+<string name="details_exodus_not_found">"找不到結果"</string>
+<string name="details_exodus_found">"%1$s 追蹤器"</string>
+<string name="pref_category_third_party">"第三方服務"</string>
+<string name="pref_exodus">"Exodus Privacy 檢查"</string>
+<string name="pref_exodus_summary_on">"追蹤器數量會在詳情頁自動顯示"</string>
+<string name="pref_exodus_summary_off">"顯示 Exodus 報告連結"</string>
+<string name="details_to_fdroid">"在 F-Droid 查看"</string>
+</resources>
