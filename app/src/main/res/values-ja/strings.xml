@@ -285,12 +285,22 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="pref_use_tor">"Torを使用する"</string>
 <string name="pref_use_tor_summary">"強制的にTorを経由した通信でダウンロードして、プライバシーを高めます。Orbotが必要です"</string>
 <string name="pref_category_proxy">"プロキシ"</string>
-
-
-
-
-<string name="action_wishlist_remove">ほしいものリストから削除</string>
-<string name="action_wishlist_add">ほしいものリストに追加</string>
-<string name="action_wishlist">ほしいものリスト</string>
+<string name="pref_proxy_enable">"プロキシサーバーを使用する"</string>
+<string name="pref_proxy_type">"プロキシプロトコル"</string>
+<string name="pref_proxy_host">"プロキシホスト名"</string>
+<string name="pref_proxy_port">"プロキシポート"</string>
+<string name="action_wishlist_remove">"ほしいものリストから削除"</string>
+<string name="action_wishlist_add">"ほしいものリストに追加"</string>
+<string name="action_wishlist">"ほしいものリスト"</string>
 <string name="action_ignore_this">"今回のアップデートを無視"</string>
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+<string name="details_exodus_tap_to_check">"tap to check"</string>
+<string name="details_exodus_searching">"searching"</string>
+<string name="details_exodus_not_found">"見つかりませんでした"</string>
+<string name="details_exodus_found">"%1$s trackers"</string>
+<string name="pref_category_third_party">"サードパーティー・サービス"</string>
+<string name="pref_exodus">"Exodus Privacy check"</string>
+<string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
+<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
+<string name="details_to_fdroid">"F-Droid で表示"</string>
 </resources>
