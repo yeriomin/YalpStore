@@ -45,7 +45,10 @@ public class YalpStorePermissionManager {
     }
 
     public boolean checkPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && null != activityRef.get()) {
+        if (null != activityRef.get()
+            && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+            && !PreferenceUtil.getBoolean(activityRef.get(), PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+        ) {
             return activityRef.get().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
         }
         return true;
