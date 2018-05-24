@@ -7,10 +7,10 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.dragons.aurora.CircleTransform;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
@@ -83,7 +83,7 @@ public class AccountsFragment extends UtilFragment {
         setText(v, R.id.account_gsf, R.string.device_gsfID, PreferenceFragment.getString(getActivity(),
                 PlayStoreApiAuthenticator.PREFERENCE_GSF_ID));
 
-        Button switchGoogle = ViewUtils.findViewById(v, R.id.btn_switchG);
+        TextView switchGoogle = ViewUtils.findViewById(v, R.id.btn_switchG);
         switchGoogle.setOnClickListener(view -> switchGoogle());
 
         if (isConnected(getActivity()))
@@ -102,7 +102,7 @@ public class AccountsFragment extends UtilFragment {
 
     private void drawEmptyGoogle() {
         LinearLayout googleCard = ViewUtils.findViewById(v, R.id.googleLayout);
-        Button removeAccount = ViewUtils.findViewById(v, R.id.btn_remove);
+        TextView removeAccount = ViewUtils.findViewById(v, R.id.btn_remove);
         show(v, R.id.googleCard);
         show(v, R.id.btn_remove);
         show(v, R.id.google_tapToSwitch);
@@ -123,9 +123,9 @@ public class AccountsFragment extends UtilFragment {
     }
 
     private void drawDummyButtons() {
-        Button logout = ViewUtils.findViewById(v, R.id.btn_logout);
-        Button switchDummy = ViewUtils.findViewById(v, R.id.btn_switch);
-        Button refreshToken = ViewUtils.findViewById(v, R.id.btn_refresh);
+        TextView logout = ViewUtils.findViewById(v, R.id.btn_logout);
+        TextView switchDummy = ViewUtils.findViewById(v, R.id.btn_switch);
+        TextView refreshToken = ViewUtils.findViewById(v, R.id.btn_refresh);
 
         if (isDummy()) {
             show(v, R.id.btn_logout);
@@ -139,8 +139,8 @@ public class AccountsFragment extends UtilFragment {
     }
 
     private void drawGoogleButtons() {
-        Button logout = ViewUtils.findViewById(v, R.id.btn_logoutG);
-        Button switchDummy = ViewUtils.findViewById(v, R.id.btn_switchG);
+        TextView logout = ViewUtils.findViewById(v, R.id.btn_logoutG);
+        TextView switchDummy = ViewUtils.findViewById(v, R.id.btn_switchG);
 
         if (isGoogle()) {
             show(v, R.id.btn_logoutG);

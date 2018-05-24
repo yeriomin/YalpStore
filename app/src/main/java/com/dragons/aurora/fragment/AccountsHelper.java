@@ -51,7 +51,6 @@ public abstract class AccountsHelper extends Fragment {
     }
 
     public void switchGoogle() {
-        new PlayStoreApiAuthenticator(getContext()).logout();
         new UserProvidedCredentialsTask(getContext()).logInWithGoogleAccount();
     }
 

@@ -85,11 +85,13 @@
                 android:layout_alignTop="@+id/imageView4"
                 android:layout_marginStart="12dp"
                 android:layout_toEndOf="@+id/imageView4"
+                android:ellipsize="end"
                 android:fontFamily="@font/google_sans_bold"
                 android:gravity="center"
+                android:singleLine="true"
                 android:text="@string/acc_google"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <android.support.v7.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/emailg"
@@ -157,9 +159,9 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="10dp"
                     android:button="@null"
-                    android:textColor="?android:attr/textColorSecondary"
                     android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-                    android:text="@string/acc_save" />
+                    android:text="@string/acc_save"
+                    android:textColor="?android:attr/textColorSecondary" />
 
                 <Button
                     android:id="@+id/button_okg"
@@ -201,11 +203,13 @@
                 android:layout_alignTop="@+id/anonymous_holder"
                 android:layout_marginStart="12dp"
                 android:layout_toEndOf="@+id/anonymous_holder"
+                android:ellipsize="end"
                 android:fontFamily="@font/google_sans_bold"
                 android:gravity="center"
+                android:singleLine="true"
                 android:text="@string/acc_dummy"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_ok_anm"

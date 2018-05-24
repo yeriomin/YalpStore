@@ -102,6 +102,7 @@ public class UserProvidedCredentialsTask extends CheckCredentialsTask {
             if (checkBox.isChecked()) {
                 setGooglePrefs(email, password);
             }
+            new PlayStoreApiAuthenticator(context).logout();
             getUserCredentialsTask().execute(email, password);
         });
 
