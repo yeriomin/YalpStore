@@ -12,6 +12,7 @@
         android:id="@+id/adtb_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/colorBackground"
         android:paddingBottom="12dp">
 
         <ImageView

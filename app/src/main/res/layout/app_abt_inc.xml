@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:layout_marginEnd="2dp"
         android:layout_marginStart="2dp"
+        android:background="?android:attr/colorBackground"
         android:orientation="vertical">
 
         <LinearLayout
@@ -22,6 +23,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="?android:attr/colorBackground"
                 app:cardCornerRadius="5dp"
                 app:cardUseCompatPadding="true">
 
@@ -81,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                app:cardBackgroundColor="?android:attr/colorBackground"
                 app:cardCornerRadius="5dp"
                 app:cardUseCompatPadding="true">
 
@@ -149,6 +152,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/card_height_small"
+                app:cardBackgroundColor="?android:attr/colorBackground"
                 app:cardUseCompatPadding="true"
                 app:contentPadding="10dp">
 
@@ -195,6 +199,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:cardBackgroundColor="?android:attr/colorBackground"
                 app:cardUseCompatPadding="true"
                 app:contentPadding="10dp">
 
@@ -240,6 +245,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/card_height_small"
+                app:cardBackgroundColor="?android:attr/colorBackground"
                 app:cardUseCompatPadding="true"
                 app:contentPadding="10dp">
 
@@ -301,6 +307,7 @@
                 android:layout_height="0dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
+                app:cardBackgroundColor="?android:attr/colorBackground"
                 app:cardUseCompatPadding="true"
                 app:contentPadding="5dp">
 
@@ -332,6 +339,7 @@
                 android:layout_height="0dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
+                app:cardBackgroundColor="?android:attr/colorBackground"
                 app:cardUseCompatPadding="true"
                 app:contentPadding="5dp">
 

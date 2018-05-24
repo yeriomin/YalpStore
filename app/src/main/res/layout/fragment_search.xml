@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
+    android:background="?android:attr/colorBackground"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".fragment.SearchFragment">
@@ -108,13 +109,13 @@
 
     <com.dragons.aurora.view.ClusterAppsCard
         android:id="@+id/searchClusterApp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginBottom="@dimen/appbar_bar_height_margin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/m_apps_recycler"

@@ -14,6 +14,11 @@
     <color name="darkGray">#616161</color>
     <color name="lightGray">#EEEEEE</color>
 
+    <!--Stroke-->
+    <color name="strokeLight">#33545454</color>
+    <color name="strokeDark">#11F5F5F5</color>
+    <color name="strokeBlack">#22F5F5F5</color>
+
     <!--Shades-->
     <color name="colorShade01">@color/colorRed</color>
     <color name="colorShade02">@color/colorGreen</color>

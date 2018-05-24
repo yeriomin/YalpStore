@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dragons.aurora.Util;
+
 public abstract class ListItem {
 
     protected View view;
@@ -64,7 +66,7 @@ public abstract class ListItem {
 
     void paintLLayout(int color, int viewID) {
         LinearLayout layout = view.findViewById(viewID);
-        if (layout != null)
+        if (layout != null && !Util.isDark(view.getContext()))
             ViewCompat.setBackgroundTintList(layout, ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 50)));
     }
 }

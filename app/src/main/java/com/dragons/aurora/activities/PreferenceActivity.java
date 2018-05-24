@@ -13,7 +13,6 @@ public class PreferenceActivity extends AuroraActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.helper_activity);
 
         AdaptiveToolbar dadtb = findViewById(R.id.d_adtb);

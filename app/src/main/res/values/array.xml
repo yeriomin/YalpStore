@@ -124,4 +124,14 @@
         <item>TR</item>
         <item>UK</item>
     </string-array>
+    <string-array name="THEMES_LABELS">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Black</item>
+    </string-array>
+    <string-array name="THEMES_VALUES">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Black</item>
+    </string-array>
 </resources>

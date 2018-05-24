@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
+import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.LocaleManager;
 import com.dragons.aurora.MultiSelectListPreference;
+import com.dragons.aurora.OnListPreferenceChangeListener;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
@@ -88,6 +90,7 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
         setupLanguage(getActivity());
+        setupThemes(getActivity());
         drawBlackList();
         drawLanguages();
         drawUpdatesCheck();
@@ -150,6 +153,18 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
             } catch (IOException e) {
                 Log.e(this.getClass().getSimpleName(), e.getMessage());
             }
+            restartHome();
+            getActivity().finishAndRemoveTask();
+            return false;
+        });
+    }
+
+    private void setupThemes(Context c) {
+        ListPreference preference_theme = (ListPreference) this.findPreference("PREFERENCE_THEME");
+        preference_theme.setSummary(preference_theme.getEntry());
+
+        preference_theme.setOnPreferenceChangeListener((preference, newTheme) -> {
+            getPreferenceManager().getSharedPreferences().edit().putString("PREFERENCE_THEME", (String) newTheme).apply();
             restartHome();
             getActivity().finishAndRemoveTask();
             return false;

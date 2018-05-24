@@ -288,6 +288,8 @@
     <string name="pref_no_root">This option is only available on rooted devices</string>
     <string name="pref_requested_language">Play Store requests language</string>
     <string name="pref_requested_language_default">Your default language</string>
+    <string name="pref_theme_title">Select Theme</string>
+    <string name="pref_theme_title_summary">Switch between Light/Dark/AMOLED</string>
     <string name="pref_update_list_black">Change apps black list</string>
     <string name="pref_update_list_white">Change apps white list</string>
     <string name="pref_update_list_white_or_black">Black or white list of apps for update</string>

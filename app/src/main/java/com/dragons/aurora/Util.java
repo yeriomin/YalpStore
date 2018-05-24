@@ -5,6 +5,7 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.dragons.aurora.downloader.DownloadState;
+import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
 
 import java.io.Closeable;
@@ -141,6 +142,20 @@ public class Util {
             return true;
         else
             return false;
+    }
+
+    public static boolean isDark(Context context) {
+        String Theme = PreferenceFragment.getString(context, "PREFERENCE_THEME");
+        switch (Theme) {
+            case "Light":
+                return false;
+            case "Dark":
+                return true;
+            case "Black":
+                return true;
+            default:
+                return false;
+        }
     }
 
 }

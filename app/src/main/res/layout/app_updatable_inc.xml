@@ -59,7 +59,6 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -86,6 +85,7 @@
                 android:src="@drawable/ic_wifi"
                 android:tint="?android:attr/colorAccent" />
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout

@@ -119,8 +119,7 @@
 
         <activity
             android:name=".activities.DetailsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:theme="@style/LoginTheme">
+            android:configChanges="keyboardHidden|orientation|screenSize|locale">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -150,8 +149,7 @@
 
         <activity
             android:name=".activities.AccountsActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:theme="@style/LoginTheme" />
+            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
 
         <activity
             android:name=".activities.PreferenceActivity"
@@ -167,8 +165,7 @@
 
         <activity
             android:name=".activities.LoginActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:theme="@style/LoginTheme" />
+            android:configChanges="keyboardHidden|orientation|screenSize|locale" />
 
         <provider
             android:name="com.dragons.aurora.FileProvider"

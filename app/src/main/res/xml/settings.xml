@@ -7,13 +7,28 @@
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:title="@string/pref_download_directory" />
+    <PreferenceCategory android:title="@string/pref_category_ui">
+        <ListPreference
+            android:defaultValue="none"
+            android:entries="@array/THEMES_LABELS"
+            android:entryValues="@array/THEMES_VALUES"
+            android:key="PREFERENCE_THEME"
+            android:summary="@string/pref_theme_title_summary"
+            android:title="@string/pref_theme_title" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="PREFERENCE_NO_IMAGES"
+            android:summaryOff="@string/pref_no_images_summary_off"
+            android:summaryOn="@string/pref_no_images_summary_on"
+            android:title="@string/pref_no_images" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_app_language_cat">
         <ListPreference
             android:defaultValue="Default"
-            android:key="language_preference"
-            android:title="@string/pref_app_language"
             android:entries="@array/language"
-            android:entryValues="@array/languageAlias"/>
+            android:entryValues="@array/languageAlias"
+            android:key="language_preference"
+            android:title="@string/pref_app_language" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_updates">
         <CheckBoxPreference
@@ -94,15 +109,7 @@
             android:key="PREFERENCE_DEVICE_TO_PRETEND_TO_BE"
             android:title="@string/pref_device_to_pretend_to_be" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_category_ui">
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="PREFERENCE_NO_IMAGES"
-            android:summaryOff="@string/pref_no_images_summary_off"
-            android:summaryOn="@string/pref_no_images_summary_on"
-            android:title="@string/pref_no_images" />
-    </PreferenceCategory>
-    <PreferenceCategory >
-        <ListPreference/>
+    <PreferenceCategory>
+        <ListPreference />
     </PreferenceCategory>
 </PreferenceScreen>

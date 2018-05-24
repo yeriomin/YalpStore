@@ -1,7 +1,6 @@
 package com.dragons.custom;
 
 import android.content.Context;
-import android.support.annotation.ColorInt;
 import android.support.annotation.MenuRes;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
@@ -19,16 +18,13 @@ class MenuSecondaryItemsAdapter extends RecyclerView.Adapter<MenuSecondaryItemsA
 
     private Context context;
     private View.OnClickListener onClickListener;
-    private int foregroundColour;
     private boolean keepRipple = true;
 
     private ArrayList<MenuEntry> itemss;
 
-    MenuSecondaryItemsAdapter(Context context, @MenuRes int secondaryMenuId, View.OnClickListener onClickListener,
-                              @ColorInt int foregroundColour) {
+    MenuSecondaryItemsAdapter(Context context, @MenuRes int secondaryMenuId, View.OnClickListener onClickListener) {
         this.context = context;
         this.onClickListener = onClickListener;
-        this.foregroundColour = foregroundColour;
         this.itemss = new ArrayList<>();
 
         MenuParserHelper.parseMenu(context, secondaryMenuId, itemss);
@@ -44,9 +40,7 @@ class MenuSecondaryItemsAdapter extends RecyclerView.Adapter<MenuSecondaryItemsA
     @Override
     public void onBindViewHolder(MenuItem holder, int position) {
         holder.label.setText(itemss.get(position).getTitle());
-        holder.label.setTextColor(foregroundColour);
         holder.icon.setImageDrawable(itemss.get(position).getIcon());
-        holder.icon.setColorFilter(foregroundColour);
         holder.itemView.setTag(itemss.get(position).getResId());
 
         handleRipple(holder);
@@ -57,11 +51,6 @@ class MenuSecondaryItemsAdapter extends RecyclerView.Adapter<MenuSecondaryItemsA
     @Override
     public int getItemCount() {
         return itemss.size();
-    }
-
-
-    public void setForegroundColour(@ColorInt int foregroundColour) {
-        this.foregroundColour = foregroundColour;
     }
 
     public void setKeepRipple(boolean keepRipple) {

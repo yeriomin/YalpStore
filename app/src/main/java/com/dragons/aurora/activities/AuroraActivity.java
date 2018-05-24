@@ -3,6 +3,7 @@ package com.dragons.aurora.activities;
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
@@ -32,8 +33,9 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(getThemeFromPref());
         super.onCreate(savedInstanceState);
-
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 

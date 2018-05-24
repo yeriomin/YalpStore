@@ -74,7 +74,10 @@ public class GeneralDetails extends AbstractHelper {
 
                         @Override
                         public void onError() {
-                            relativeLayout.setBackgroundColor(Color.DKGRAY);
+                            if (Util.isDark(fragment.getContext()))
+                                relativeLayout.setBackgroundColor(Color.LTGRAY);
+                            else
+                                relativeLayout.setBackgroundColor(Color.DKGRAY);
                         }
                     });
         }
@@ -116,8 +119,11 @@ public class GeneralDetails extends AbstractHelper {
     }
 
     private void getPalette(Bitmap bitmap) {
-        Palette.from(bitmap)
-                .generate(palette -> paintEmAll(palette.getDarkVibrantColor(Color.DKGRAY)));
+        Palette.from(bitmap).generate(palette ->
+                paintEmAll(palette.getDarkVibrantColor(Util.isDark(fragment.getContext())
+                        ? Color.LTGRAY
+                        : Color.DKGRAY)
+                ));
     }
 
     private void paintEmAll(int color) {

@@ -51,7 +51,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:background="@color/white"
         android:paddingBottom="10dp">
 
         <LinearLayout
@@ -105,7 +104,6 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/google_sans_bold"
                         android:gravity="center"
-                        android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -124,7 +122,6 @@
                         android:fontFamily="@font/google_sans"
                         android:gravity="center"
                         android:text="@string/action_acc_switch"
-                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:visibility="gone" />
 
@@ -223,7 +220,6 @@
                     android:fontFamily="@font/google_sans"
                     android:gravity="center"
                     android:text="@string/action_acc_add"
-                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -275,7 +271,6 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/google_sans_bold"
                         android:gravity="center"
-                        android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -294,7 +289,6 @@
                         android:fontFamily="@font/google_sans"
                         android:gravity="center"
                         android:text="@string/action_acc_switch"
-                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:visibility="gone" />
 
@@ -357,4 +351,5 @@
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

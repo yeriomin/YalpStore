@@ -23,16 +23,13 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
 
     private Context context;
     private View.OnClickListener onClickListener;
-    private int foregroundColour;
     private boolean keepRipple = true;
 
     private List<MenuEntry> navItems;
 
-    MenuNavigationItemsAdapter(Context context, @MenuRes int menuRes, View.OnClickListener onClickListener,
-                               @ColorInt int foregroundColour) {
+    MenuNavigationItemsAdapter(Context context, @MenuRes int menuRes, View.OnClickListener onClickListener) {
         this.context = context;
         this.onClickListener = onClickListener;
-        this.foregroundColour = foregroundColour;
         this.navItems = new ArrayList<>();
 
         populateNavigationItems(menuRes);
@@ -50,9 +47,7 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
     public void onBindViewHolder(@NonNull MenuNavItem holder, int position) {
         MenuEntry item = navItems.get(position);
         holder.label.setText(item.getTitle());
-        holder.label.setTextColor(foregroundColour);
         holder.icon.setImageDrawable(item.getIcon());
-        holder.icon.setColorFilter(foregroundColour);
         holder.itemView.setTag(item.getResId());
 
         if (item.getTitle().isEmpty()) setupMoreIcon(holder);
@@ -65,10 +60,6 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
     @Override
     public int getItemCount() {
         return navItems.size();
-    }
-
-    public void setForegroundColour(@ColorInt int foregroundColour) {
-        this.foregroundColour = foregroundColour;
     }
 
     public void setKeepRipple(boolean keepRipple) {
@@ -94,8 +85,6 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
         menuNavItem.itemView.setFocusable(false);
         menuNavItem.itemView.setFocusableInTouchMode(false);
         menuNavItem.itemView.setBackground(null);
-        menuNavItem.icon.setColorFilter(foregroundColour);
-
         menuNavItem.itemView.setTag(MORE_ICON_TAG);
     }
 

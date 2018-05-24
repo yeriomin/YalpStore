@@ -3,5 +3,5 @@
     android:shape="rectangle">
     <corners android:radius="10dp" />
     <size android:width="100dp" />
-    <solid android:color="@color/lightGray" />
+    <solid android:color="?android:attr/panelBackground" />
 </shape>

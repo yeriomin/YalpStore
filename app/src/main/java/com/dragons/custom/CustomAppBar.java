@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
 import android.support.annotation.MenuRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
@@ -33,7 +32,6 @@ public class CustomAppBar extends NestedScrollView {
     private BottomSheetBehavior bottomSheetBehavior;
 
     private int backgroundColour;
-    private int foregroundColour;
     private int customAppBarType;
     private boolean keepRipple;
 
@@ -80,7 +78,6 @@ public class CustomAppBar extends NestedScrollView {
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.CustomAppBar, 0, 0);
         try {
             backgroundColour = a.getColor(R.styleable.CustomAppBar_background_colour, Color.WHITE);
-            foregroundColour = a.getColor(R.styleable.CustomAppBar_foreground_colour, Color.DKGRAY);
             customAppBarType = a.getInt(R.styleable.CustomAppBar_app_bar_type, FULL_BLUR);
         } finally {
             a.recycle();
@@ -126,8 +123,7 @@ public class CustomAppBar extends NestedScrollView {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.nav_items_recycler);
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        menuNavigationItemsAdapter = new MenuNavigationItemsAdapter(getContext(), menuRes, onClickListener,
-                foregroundColour);
+        menuNavigationItemsAdapter = new MenuNavigationItemsAdapter(getContext(), menuRes, onClickListener);
         recyclerView.setAdapter(menuNavigationItemsAdapter);
     }
 
@@ -135,45 +131,8 @@ public class CustomAppBar extends NestedScrollView {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.secondary_menu_items_recyler);
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        menuSecondaryItemsAdapter = new MenuSecondaryItemsAdapter(getContext(), menuRes, onClickListener,
-                foregroundColour);
+        menuSecondaryItemsAdapter = new MenuSecondaryItemsAdapter(getContext(), menuRes, onClickListener);
         recyclerView.setAdapter(menuSecondaryItemsAdapter);
-    }
-
-    public int getBackgroundColour() {
-        return backgroundColour;
-    }
-
-    public void setBackgroundColour(@ColorInt int backgroundColour) {
-        this.backgroundColour = backgroundColour;
-        this.setBackgroundColor(backgroundColour);
-    }
-
-    public int getForegroundColour() {
-        return foregroundColour;
-    }
-
-    public void setForegroundColour(@ColorInt int foregroundColour) {
-        this.foregroundColour = foregroundColour;
-
-        menuNavigationItemsAdapter.setForegroundColour(foregroundColour);
-        menuNavigationItemsAdapter.notifyDataSetChanged();
-
-        menuSecondaryItemsAdapter.setForegroundColour(foregroundColour);
-        menuSecondaryItemsAdapter.notifyDataSetChanged();
-    }
-
-    public int getcustomAppBarType() {
-        return customAppBarType;
-    }
-
-    public void setcustomAppBarType(int customAppBarType) {
-        this.customAppBarType = customAppBarType;
-        menuNavigationItemsAdapter.setForegroundColour(foregroundColour);
-        menuNavigationItemsAdapter.notifyDataSetChanged();
-
-        menuSecondaryItemsAdapter.setForegroundColour(foregroundColour);
-        menuSecondaryItemsAdapter.notifyDataSetChanged();
     }
 
     public boolean isRipple() {
@@ -220,7 +179,7 @@ public class CustomAppBar extends NestedScrollView {
     }
 
     public void expand() {
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        bottomSheetBehavior.setState(BottomSheetBehavior.PEEK_HEIGHT_AUTO);
     }
 
     private void handleShowBlur() {

@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.dragons.aurora.model.App;
@@ -101,7 +102,7 @@ public abstract class AbstractHelper {
 
     void paintLLayout(int color, int viewID) {
         LinearLayout layout = fragment.getActivity().findViewById(viewID);
-        if (layout != null)
+        if (layout != null && !Util.isDark(fragment.getContext()))
             ViewCompat.setBackgroundTintList(layout, ColorStateList.valueOf(ColorUtils.setAlphaComponent(color, 50)));
     }
 

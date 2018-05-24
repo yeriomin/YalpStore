@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     tools:context=".fragment.HomeFragment">
 
     <com.dragons.aurora.view.AdaptiveToolbar
@@ -23,6 +24,7 @@
             android:id="@+id/top_sections"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="?android:attr/colorBackground"
             android:orientation="vertical"
             android:paddingBottom="@dimen/appbar_bar_height">
 
