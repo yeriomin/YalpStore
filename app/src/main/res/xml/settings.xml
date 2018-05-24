@@ -9,6 +9,7 @@
         android:title="@string/pref_download_directory" />
     <PreferenceCategory android:title="@string/pref_app_language_cat">
         <ListPreference
+            android:defaultValue="Default"
             android:key="language_preference"
             android:title="@string/pref_app_language"
             android:entries="@array/language"

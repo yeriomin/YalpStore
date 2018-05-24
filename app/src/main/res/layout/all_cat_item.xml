@@ -2,23 +2,33 @@
     android:id="@+id/all_cat_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:selectableItemBackground"
+    android:background="@drawable/outline_bg"
     android:layout_margin="5dp"
     android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/top_cat_img"
-        android:layout_width="@dimen/icon_size_cat"
-        android:layout_height="@dimen/icon_size_cat"
-        android:padding="2dp"
-        android:src="@android:color/transparent" />
-
-    <TextView
-        android:id="@+id/top_cat_name"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="?android:selectableItemBackgroundBorderless"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="10dp"
-        android:textSize="16sp"
-        android:fontFamily="@font/google_sans" />
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/all_cat_img"
+            android:layout_width="@dimen/icon_size_cat"
+            android:layout_height="@dimen/icon_size_cat"
+            android:padding="2dp"
+            android:src="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/all_cat_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/all_cat_img"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/google_sans"
+            android:textAlignment="viewStart"
+            android:textSize="16sp" />
+    </RelativeLayout>
 </LinearLayout>

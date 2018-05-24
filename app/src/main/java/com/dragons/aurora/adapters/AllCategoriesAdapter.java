@@ -25,6 +25,7 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
     private Map<String, String> categories;
 
     private Integer[] categoriesImg = {
+            R.drawable.ic_android_wear,
             R.drawable.ic_art_design,
             R.drawable.ic_auto_vehicles,
             R.drawable.ic_beauty,
@@ -58,7 +59,6 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
             R.drawable.ic_tools,
             R.drawable.ic_travel_local,
             R.drawable.ic_video_editors,
-            R.drawable.ic_android_wear,
             R.drawable.ic_weather,
     };
 
@@ -97,8 +97,8 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
 
         ViewHolder(View v) {
             super(v);
-            topLabel = ViewUtils.findViewById(v, R.id.top_cat_name);
-            topImage = ViewUtils.findViewById(v, R.id.top_cat_img);
+            topLabel = ViewUtils.findViewById(v, R.id.all_cat_name);
+            topImage = ViewUtils.findViewById(v, R.id.all_cat_img);
             topContainer = ViewUtils.findViewById(v, R.id.all_cat_container);
         }
     }

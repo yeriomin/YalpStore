@@ -60,6 +60,7 @@ public class CategoryManager {
         for (String topCategoryId : topSet) {
             categories.put(topCategoryId, translator.getString(topCategoryId));
         }
-        return Util.sort(categories);
+        //return Util.sort(categories);
+        return categories;
     }
 }

@@ -10,8 +10,6 @@ import android.preference.PreferenceManager;
 import java.util.Locale;
 
 public class LocaleManager {
-
-    private static final String LANGUAGE_DEFAULT = "en";
     private static final String LANGUAGE_KEY = "language_key";
 
     public static Context setLocale(Context c) {
@@ -23,9 +21,9 @@ public class LocaleManager {
         return updateResources(c, language);
     }
 
-    private static String getLanguage(Context c) {
+    public static String getLanguage(Context c) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(c);
-        return prefs.getString(LANGUAGE_KEY, LANGUAGE_DEFAULT);
+        return prefs.getString(LANGUAGE_KEY, Resources.getSystem().getConfiguration().locale.getCountry());
     }
 
     @SuppressLint("ApplySharedPref")
@@ -34,10 +32,9 @@ public class LocaleManager {
         prefs.edit().putString(LANGUAGE_KEY, language).commit();
     }
 
-    public static Context updateResources(Context context, String language) {
+    private static Context updateResources(Context context, String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
-
         Resources res = context.getResources();
         Configuration config = new Configuration(res.getConfiguration());
         config.setLocale(locale);

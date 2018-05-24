@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.LocaleManager;
 import com.dragons.aurora.MultiSelectListPreference;
+import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
@@ -26,6 +27,9 @@ import com.dragons.aurora.fragment.preference.Device;
 import com.dragons.aurora.fragment.preference.DownloadDirectory;
 import com.dragons.aurora.fragment.preference.InstallationMethod;
 import com.dragons.aurora.fragment.preference.Language;
+
+import java.io.IOException;
+import java.util.Locale;
 
 public class PreferenceFragment extends android.preference.PreferenceFragment {
 
@@ -62,9 +66,7 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
     static public int getUpdateInterval(Context context) {
         return Util.parseInt(
                 PreferenceManager.getDefaultSharedPreferences(context).getString(
-                        PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_INTERVAL,
-                        "-1"
-                ),
+                        PreferenceFragment.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1"),
                 -1
         );
     }
@@ -84,7 +86,6 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
         addPreferencesFromResource(R.xml.settings);
         setupLanguage(getActivity());
         drawBlackList();
@@ -141,11 +142,16 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         ListPreference language_preference = (ListPreference) this.findPreference("language_preference");
         language_preference.setSummary(language_preference.getEntry());
 
-        language_preference.setOnPreferenceChangeListener((preference, newValue) -> {
-            LocaleManager.setNewLocale(c, (String) newValue);
-            getPreferenceManager().getSharedPreferences().edit().putString("language_preference", (String) newValue).apply();
+        language_preference.setOnPreferenceChangeListener((preference, newLang) -> {
+            LocaleManager.setNewLocale(c, (String) newLang);
+            getPreferenceManager().getSharedPreferences().edit().putString("language_preference", (String) newLang).apply();
+            try {
+                new PlayStoreApiAuthenticator(c).getApi().setLocale(new Locale(LocaleManager.getLanguage(c)));
+            } catch (IOException e) {
+                Log.e(this.getClass().getSimpleName(), e.getMessage());
+            }
             restartHome();
-            this.getActivity().finish();
+            getActivity().finishAndRemoveTask();
             return false;
         });
     }

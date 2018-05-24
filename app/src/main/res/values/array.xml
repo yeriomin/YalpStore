@@ -101,15 +101,27 @@
         <item>COMMUNICATION</item>
     </string-array>
     <string-array name="language">
+        <item>Default</item>
         <item>العربية</item>
         <item>English</item>
+        <item>Español</item>
+        <item>Français</item>
+        <item>Italiano</item>
+        <item>Polskie</item>
         <item>Русский</item>
+        <item>Türk</item>
         <item>Українська</item>
     </string-array>
     <string-array name="languageAlias">
-        <item>"ar"</item>
-        <item>"en"</item>
-        <item>"ru"</item>
-        <item>"uk"</item>
+        <item>""</item>
+        <item>AR</item>
+        <item>EN</item>
+        <item>ES</item>
+        <item>FR</item>
+        <item>IT</item>
+        <item>PL</item>
+        <item>RU</item>
+        <item>TR</item>
+        <item>UK</item>
     </string-array>
 </resources>

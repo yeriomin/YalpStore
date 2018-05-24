@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/top_cat_name"
+        android:id="@+id/all_cat_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/top_category_bg"

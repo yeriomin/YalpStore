@@ -51,7 +51,7 @@ public class TopCategoriesAdapter extends RecyclerView.Adapter<TopCategoriesAdap
 
         ViewHolder(View v) {
             super(v);
-            topLabel = ViewUtils.findViewById(v, R.id.top_cat_name);
+            topLabel = ViewUtils.findViewById(v, R.id.all_cat_name);
         }
     }
 }
