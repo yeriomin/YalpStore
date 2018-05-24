@@ -110,8 +110,8 @@ public class HomeFragment extends UtilFragment {
 
         new FeaturedTaskHelper(getContext(), topGrossingGames).getCategoryApps("GAME",
                 GooglePlayAPI.SUBCATEGORY.TOP_GROSSING);
-        new FeaturedTaskHelper(getContext(), topGrossingApps).getCategoryApps("",
-                GooglePlayAPI.SUBCATEGORY.TOP_FREE);
+        new FeaturedTaskHelper(getContext(), topGrossingApps).getCategoryApps("APPLICATION",
+                GooglePlayAPI.SUBCATEGORY.TOP_GROSSING);
     }
 
     protected void drawCategories() {
