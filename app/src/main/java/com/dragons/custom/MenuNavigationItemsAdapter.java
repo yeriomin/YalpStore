@@ -1,11 +1,9 @@
 package com.dragons.custom;
 
 import android.content.Context;
-import android.support.annotation.ColorInt;
 import android.support.annotation.MenuRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +21,6 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
 
     private Context context;
     private View.OnClickListener onClickListener;
-    private boolean keepRipple = true;
 
     private List<MenuEntry> navItems;
 
@@ -52,27 +49,12 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
 
         if (item.getTitle().isEmpty()) setupMoreIcon(holder);
 
-        handleRipple(holder);
-
         holder.itemView.setOnClickListener(onClickListener);
     }
 
     @Override
     public int getItemCount() {
         return navItems.size();
-    }
-
-    public void setKeepRipple(boolean keepRipple) {
-        this.keepRipple = keepRipple;
-        notifyDataSetChanged();
-    }
-
-    private void handleRipple(MenuNavigationItemsAdapter.MenuNavItem holder) {
-        if (!keepRipple) {
-            TypedValue outValue = new TypedValue();
-            context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
-            holder.itemView.setBackgroundResource(outValue.resourceId);
-        }
     }
 
     private void populateNavigationItems(int menuRes) {

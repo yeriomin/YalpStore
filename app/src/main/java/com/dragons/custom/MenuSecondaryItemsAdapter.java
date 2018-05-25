@@ -2,8 +2,8 @@ package com.dragons.custom;
 
 import android.content.Context;
 import android.support.annotation.MenuRes;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
+import com.github.florent37.shapeofview.shapes.CircleView;
 
 import java.util.ArrayList;
 
@@ -18,62 +19,57 @@ class MenuSecondaryItemsAdapter extends RecyclerView.Adapter<MenuSecondaryItemsA
 
     private Context context;
     private View.OnClickListener onClickListener;
-    private boolean keepRipple = true;
 
-    private ArrayList<MenuEntry> itemss;
+    private ArrayList<MenuEntry> items;
+
+    private Integer[] colors = {
+            R.color.colorOrange,
+            R.color.colorBlue,
+            R.color.colorGreen,
+            R.color.colorGold,
+            R.color.colorRed,
+            R.color.colorCyan
+    };
 
     MenuSecondaryItemsAdapter(Context context, @MenuRes int secondaryMenuId, View.OnClickListener onClickListener) {
         this.context = context;
         this.onClickListener = onClickListener;
-        this.itemss = new ArrayList<>();
-
-        MenuParserHelper.parseMenu(context, secondaryMenuId, itemss);
+        this.items = new ArrayList<>();
+        MenuParserHelper.parseMenu(context, secondaryMenuId, items);
     }
 
+    @NonNull
     @Override
-    public MenuItem onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MenuItem onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_item, parent, false);
         return new MenuItem(v);
 
     }
 
     @Override
-    public void onBindViewHolder(MenuItem holder, int position) {
-        holder.label.setText(itemss.get(position).getTitle());
-        holder.icon.setImageDrawable(itemss.get(position).getIcon());
-        holder.itemView.setTag(itemss.get(position).getResId());
-
-        handleRipple(holder);
-
+    public void onBindViewHolder(@NonNull MenuItem holder, int position) {
+        holder.label.setText(items.get(position).getTitle());
+        holder.icon.setImageDrawable(items.get(position).getIcon());
+        holder.circleView.setBackgroundColor(context.getResources().getColor(colors[position % colors.length]));
+        holder.itemView.setTag(items.get(position).getResId());
         holder.itemView.setOnClickListener(onClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return itemss.size();
-    }
-
-    public void setKeepRipple(boolean keepRipple) {
-        this.keepRipple = keepRipple;
-        notifyDataSetChanged();
-    }
-
-    private void handleRipple(MenuItem holder) {
-        if (!keepRipple) {
-            TypedValue outValue = new TypedValue();
-            context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
-            holder.itemView.setBackgroundResource(outValue.resourceId);
-        }
+        return items.size();
     }
 
     class MenuItem extends RecyclerView.ViewHolder {
         ImageView icon;
         TextView label;
+        CircleView circleView;
 
         MenuItem(View itemView) {
             super(itemView);
             icon = (ImageView) itemView.findViewById(R.id.menu_item_icon);
             label = (TextView) itemView.findViewById(R.id.menu_item_label);
+            circleView = itemView.findViewById(R.id.menu_item_bg);
         }
     }
 }

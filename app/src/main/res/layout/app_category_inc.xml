@@ -3,10 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground"
-    android:fadeScrollbars="true"
-    android:fillViewport="true"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/appbar_bar_height"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <TextView
@@ -51,7 +47,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/all_cat"
-        android:layout_margin="10dp">
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/all_cat_view"

@@ -1,5 +1,5 @@
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_home"
         android:icon="@drawable/ic_home"
@@ -12,14 +12,14 @@
         app:showAsAction="ifRoom|always" />
     <item
         android:id="@+id/action_updates"
-        android:icon="@drawable/app_downloads"
+        android:icon="@drawable/ic_update"
         android:title="@string/action_updates"
         app:showAsAction="ifRoom|always" />
     <item
         android:id="@+id/action_categories"
         android:icon="@drawable/ic_categories"
         android:title="@string/action_categories"
-        app:showAsAction="ifRoom|always"/>
+        app:showAsAction="ifRoom|always" />
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search"

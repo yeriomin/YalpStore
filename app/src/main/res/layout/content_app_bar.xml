@@ -1,30 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.dragons.custom.BlurView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/blurview"
-    android:background="?android:attr/colorBackground"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/show_LessMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_expand_less_24" />
+
+    <com.github.florent37.shapeofview.shapes.RoundRectView
+        android:id="@+id/add_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_below="@+id/show_LessMore"
+        android:layout_marginTop="5dp"
+        android:background="?android:attr/panelBackground"
+        android:elevation="@dimen/appbar_bar_elevation"
+        app:roundRect_topLeftRadius="20dp"
+        app:roundRect_topRightRadius="20dp">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/nav_items_recycler"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:gravity="center"
-            android:orientation="horizontal" />
+            android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/secondary_menu_items_recyler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/outline_bg"
-            android:paddingEnd="8dp"
-            android:paddingStart="8dp" />
-    </LinearLayout>
-</com.dragons.custom.BlurView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/nav_items_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"
+                android:gravity="fill_horizontal"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".8dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/list_divider" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/secondary_menu_items_recyler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+        </LinearLayout>
+    </com.github.florent37.shapeofview.shapes.RoundRectView>
+</RelativeLayout>

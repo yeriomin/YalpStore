@@ -59,7 +59,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/installed_header"
-        android:layout_marginBottom="@dimen/appbar_bar_height_margin"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
         android:background="?android:attr/colorBackground"
@@ -69,7 +68,9 @@
             android:id="@+id/installed_apps_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="5dp"
             android:scrollbars="vertical" />
 
         <TextView

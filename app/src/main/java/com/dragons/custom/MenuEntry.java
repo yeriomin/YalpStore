@@ -8,7 +8,7 @@ class MenuEntry {
     private Drawable icon;
     private int resId;
 
-    public MenuEntry(String title, Drawable icon, int resId) {
+    MenuEntry(String title, Drawable icon, int resId) {
         this.title = title;
         this.icon = icon;
         this.resId = resId;

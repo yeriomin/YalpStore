@@ -41,7 +41,6 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
 
         bottm_bar.setNavigationMenu(R.menu.main_menu, this);
         bottm_bar.setSecondaryMenu(R.menu.nav_menu, this);
-        bottm_bar.setBlurRadius(10);
         viewPager.setAdapter(new ViewPagerAdapter(this, getSupportFragmentManager()));
         viewPager.setOffscreenPageLimit(3);
 
