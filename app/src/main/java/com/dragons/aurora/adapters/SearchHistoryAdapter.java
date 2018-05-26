@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.SearchActivity;
+import com.github.florent37.shapeofview.shapes.RoundRectView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -98,8 +99,8 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public RelativeLayout viewForeground;
-        RelativeLayout viewBackground;
+        public RoundRectView viewForeground;
+       RelativeLayout viewBackground;
         TextView query;
         TextView time;
 

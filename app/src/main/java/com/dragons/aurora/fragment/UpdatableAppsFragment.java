@@ -29,6 +29,7 @@ import com.dragons.aurora.adapters.UpdatableAppsAdapter;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.CancelDownloadService;
 import com.dragons.aurora.task.playstore.UpdatableAppsTaskHelper;
+import com.github.florent37.shapeofview.shapes.RoundRectView;
 import com.percolate.caffeine.ToastUtils;
 import com.percolate.caffeine.ViewUtils;
 
@@ -196,7 +197,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
     }
 
     public void setupAutoUpdate() {
-        LinearLayout autoUpdatesCard = view.findViewById(R.id.autoUpdatesCard);
+        RoundRectView autoUpdatesCard = view.findViewById(R.id.autoUpdatesCard);
         ImageView autoUpdatesClose = view.findViewById(R.id.autoUpdatesClose);
         Button autoUpdatesSwitch = view.findViewById(R.id.autoUpdatesSwitch);
         boolean shouldAsk = PreferenceFragment.getBoolean(getContext(), "PROMPT_UPDATE_INTERVAL");

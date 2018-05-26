@@ -6,61 +6,71 @@
     android:background="?android:attr/colorBackground"
     android:orientation="vertical">
 
-    <LinearLayout
+    <com.github.florent37.shapeofview.shapes.RoundRectView
         android:id="@+id/installed_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/outline_bg"
-        android:orientation="vertical"
-        android:padding="5dp"
-        app:layout_scrollFlags="scroll|enterAlways|snap">
+        android:background="?android:attr/panelBackground"
+        android:elevation="2dp"
+        app:roundRect_bottomLeftRadius="10dp"
+        app:roundRect_bottomRightRadius="10dp"
+        app:roundRect_topLeftRadius="10dp"
+        app:roundRect_topRightRadius="10dp">
 
-        <TextView
-            android:id="@+id/myApps_title"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/google_sans_bold"
-            android:text="@string/list_installed_title"
-            android:textAlignment="viewStart"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="18sp" />
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:orientation="vertical"
+            android:padding="5dp"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:fontFamily="@font/google_sans"
-            android:text="@string/list_installed_summary"
-            android:textAlignment="viewStart"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/myApps_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/list_installed_title"
+                android:textAlignment="viewStart"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp" />
 
-        <android.support.v7.widget.SwitchCompat
-            android:id="@+id/includeSystem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/list_installed_system"
-            android:textAlignment="viewStart"
-            android:textColor="?android:attr/textColorSecondary" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/google_sans"
+                android:text="@string/list_installed_summary"
+                android:textAlignment="viewStart"
+                android:textSize="14sp" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/includeSystem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/list_installed_system"
+                android:textAlignment="viewStart"
+                android:textColor="?android:attr/textColorSecondary" />
+        </LinearLayout>
+    </com.github.florent37.shapeofview.shapes.RoundRectView>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/installed_header"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginBottom="8dp"
         android:background="?android:attr/colorBackground"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -68,9 +78,9 @@
             android:id="@+id/installed_apps_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:paddingTop="5dp"
+            android:paddingEnd="6dp"
+            android:paddingStart="6dp"
+            android:paddingTop="6dp"
             android:scrollbars="vertical" />
 
         <TextView

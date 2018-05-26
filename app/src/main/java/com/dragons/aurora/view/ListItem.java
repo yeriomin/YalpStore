@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.Util;
+import com.github.florent37.shapeofview.shapes.RoundRectView;
 
 public abstract class ListItem {
 

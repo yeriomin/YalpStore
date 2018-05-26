@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackgroundBorderless"
+    android:layout_height="30dp"
+    android:layout_margin="4dp"
+    android:background="@drawable/button_bg"
+    android:clipToPadding="true"
+    android:elevation="2dp"
     android:gravity="center"
-    android:paddingEnd="5dp"
-    android:layout_marginStart="10dp"
-    android:paddingStart="5dp"
-    android:paddingTop="5dp">
+    android:paddingEnd="4dp"
+    android:paddingStart="4dp">
 
     <com.github.florent37.shapeofview.shapes.CircleView
-        android:id="@+id/menu_item_bg"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_centerHorizontal="true"
-        android:background="@color/colorAccent"
-        android:elevation="0dp">
+        android:id="@+id/menu_item_icon_c"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginBottom="2.5dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2.5dp"
+        android:background="#55000000">
 
         <ImageView
             android:id="@+id/menu_item_icon"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/appbar_icon_height_secondary"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:padding="8dp"
-            android:tint="?android:attr/colorForegroundInverse" />
+            android:scaleX=".6"
+            android:scaleY=".6"
+            android:tint="#FFF" />
     </com.github.florent37.shapeofview.shapes.CircleView>
 
     <TextView
         android:id="@+id/menu_item_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/menu_item_bg"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="2dp"
+        android:layout_toEndOf="@+id/menu_item_icon_c"
+        android:fontFamily="@font/google_sans_bold"
+        android:textAlignment="viewStart"
         android:textSize="@dimen/appbar_secondary_menu_text_size" />
 
 </RelativeLayout>

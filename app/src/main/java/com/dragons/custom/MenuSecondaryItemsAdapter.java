@@ -50,7 +50,6 @@ class MenuSecondaryItemsAdapter extends RecyclerView.Adapter<MenuSecondaryItemsA
     public void onBindViewHolder(@NonNull MenuItem holder, int position) {
         holder.label.setText(items.get(position).getTitle());
         holder.icon.setImageDrawable(items.get(position).getIcon());
-        holder.circleView.setBackgroundColor(context.getResources().getColor(colors[position % colors.length]));
         holder.itemView.setTag(items.get(position).getResId());
         holder.itemView.setOnClickListener(onClickListener);
     }
@@ -63,13 +62,11 @@ class MenuSecondaryItemsAdapter extends RecyclerView.Adapter<MenuSecondaryItemsA
     class MenuItem extends RecyclerView.ViewHolder {
         ImageView icon;
         TextView label;
-        CircleView circleView;
 
         MenuItem(View itemView) {
             super(itemView);
             icon = (ImageView) itemView.findViewById(R.id.menu_item_icon);
             label = (TextView) itemView.findViewById(R.id.menu_item_label);
-            circleView = itemView.findViewById(R.id.menu_item_bg);
         }
     }
 }

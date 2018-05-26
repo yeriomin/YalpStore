@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.dragons.aurora.R;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.view.UpdatableAppBadge;
+import com.github.florent37.shapeofview.shapes.RoundRectView;
 
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public LinearLayout viewForeground;
+        public RoundRectView viewForeground;
         public App app;
         private View view;
 

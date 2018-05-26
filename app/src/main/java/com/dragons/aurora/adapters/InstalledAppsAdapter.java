@@ -18,6 +18,7 @@ import com.dragons.aurora.fragment.details.ButtonUninstall;
 import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.view.InstalledAppBadge;
+import com.github.florent37.shapeofview.shapes.RoundRectView;
 
 import java.util.List;
 
@@ -109,7 +110,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public View view;
-        public LinearLayout list_container;
+        public RoundRectView list_container;
         public ImageView menu_3dot;
 
         public ViewHolder(View view) {

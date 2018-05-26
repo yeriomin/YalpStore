@@ -24,6 +24,7 @@ import com.dragons.aurora.activities.SearchActivity;
 import com.dragons.aurora.adapters.SearchHistoryAdapter;
 import com.dragons.aurora.task.playstore.SearchHistoryTask;
 import com.dragons.aurora.view.ClusterAppsCard;
+import com.github.florent37.shapeofview.shapes.RoundRectView;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -43,7 +44,7 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
     @BindView(R.id.searchHistory)
     RecyclerView recyclerView;
     @BindView(R.id.search_layout)
-    RelativeLayout search_layout;
+    RoundRectView search_layout;
     @BindView(R.id.emptyView)
     TextView emptyView;
     @BindView(R.id.clearAll)

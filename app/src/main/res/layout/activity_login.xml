@@ -1,229 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground"
-    android:orientation="vertical"
-    android:weightSum="3">
+    android:background="?android:attr/colorBackground">
 
-    <RelativeLayout
-        android:id="@+id/topView"
+    <FrameLayout
+        android:id="@+id/top_artwork"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="?android:attr/colorAccent">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/welcome"
+        <com.github.florent37.shapeofview.shapes.DiagonalView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/header_grad2"
+            app:diagonal_angle="5"
+            app:diagonal_direction="left"
+            app:diagonal_position="bottom" />
+
+        <com.github.florent37.shapeofview.shapes.DiagonalView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:alpha=".8"
+            android:background="@drawable/header_grad1"
+            app:diagonal_angle="10"
+            app:diagonal_direction="right"
+            app:diagonal_position="bottom" />
+
+        <RelativeLayout
+            android:id="@+id/topView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:fontFamily="@font/google_sans_bold"
-            android:padding="10dp"
-            android:text="@string/action_welcome_msg"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/selectAccount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/welcome"
-            android:fontFamily="@font/google_sans"
-            android:text="@string/action_select"
-            android:textAlignment="center"
-            android:textColor="@color/lightGray"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/welcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/google_sans_bold"
+                android:padding="10dp"
+                android:text="@string/action_welcome_msg"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/selectAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/welcome"
+                android:fontFamily="@font/google_sans"
+                android:text="@string/action_select"
+                android:textAlignment="center"
+                android:textColor="@color/lightGray"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+    </FrameLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_artwork"
         android:fillViewport="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:paddingBottom="10dp">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/warn_card"
+            <com.github.florent37.shapeofview.shapes.RoundRectView
+                android:id="@+id/google_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
-                android:visibility="gone"
-                app:cardUseCompatPadding="true">
+                android:layout_margin="10dp"
+                android:background="?android:attr/panelBackground"
+                android:elevation="5dp"
+                app:roundRect_bottomLeftRadius="10dp"
+                app:roundRect_bottomRightRadius="10dp"
+                app:roundRect_topLeftRadius="10dp"
+                app:roundRect_topRightRadius="10dp">
 
-                <TextView
-                    android:id="@+id/textView5"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="12dp"
-                    android:fontFamily="@font/google_sans"
-                    android:text="@string/credentials_message"
-                    android:textColor="?android:attr/colorAccent" />
-            </android.support.v7.widget.CardView>
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                app:srcCompat="@drawable/ic_google" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imageView4"
-                android:layout_alignTop="@+id/imageView4"
-                android:layout_marginStart="12dp"
-                android:layout_toEndOf="@+id/imageView4"
-                android:ellipsize="end"
-                android:fontFamily="@font/google_sans_bold"
-                android:singleLine="true"
-                android:text="@string/acc_google"
-                android:textAlignment="viewStart"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp" />
-
-            <android.support.v7.widget.AppCompatAutoCompleteTextView
-                android:id="@+id/emailg"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_below="@+id/imageView4"
-                android:layout_marginEnd="24dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
-                android:autofillHints="emailAddress"
-                android:background="@drawable/outline_bg"
-                android:completionThreshold="1"
-                android:hint="@string/credentials_hint_email"
-                android:inputType="textEmailAddress"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp" />
-
-            <RelativeLayout
-                android:id="@+id/password_layoutg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/emailg"
-                android:layout_marginTop="10dp">
-
-                <EditText
-                    android:id="@+id/passwordg"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:autofillHints="password"
-                    android:background="@drawable/outline_bg"
-                    android:fontFamily="normal"
-                    android:hint="@string/credentials_hint_password"
-                    android:inputType="textPassword"
-                    android:paddingEnd="10dp"
-                    android:paddingStart="10dp" />
-
-                <ImageView
-                    android:id="@+id/toggle_password_visibility"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/passwordg"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="12dp"
-                    android:src="@drawable/ic_visibility_on"
-                    android:tint="?android:attr/textColorPrimaryInverse" />
-            </RelativeLayout>
+                    android:padding="5dp">
 
-            <LinearLayout
-                android:id="@+id/password_layout_extg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/password_layoutg"
-                android:layout_marginTop="10dp"
-                android:gravity="end"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/ic_google" />
 
-                <CheckBox
-                    android:id="@+id/checkboxSave"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="10dp"
-                    android:button="@null"
-                    android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-                    android:text="@string/acc_save"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/imageView4"
+                        android:layout_alignTop="@+id/imageView4"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@+id/imageView4"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/google_sans_bold"
+                        android:singleLine="true"
+                        android:text="@string/acc_google"
+                        android:textAlignment="viewStart"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:textSize="18sp" />
 
-                <Button
-                    android:id="@+id/button_okg"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="24dp"
-                    android:background="@drawable/button_positive"
-                    android:text="@string/action_login"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-            </LinearLayout>
+                    <android.support.v7.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/emailg"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:layout_below="@+id/imageView4"
+                        android:layout_margin="10dp"
+                        android:layout_marginTop="32dp"
+                        android:autofillHints="emailAddress"
+                        android:background="@drawable/outline_bg"
+                        android:completionThreshold="1"
+                        android:hint="@string/credentials_hint_email"
+                        android:inputType="textEmailAddress"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp" />
+
+                    <RelativeLayout
+                        android:id="@+id/password_layoutg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/emailg">
+
+                        <EditText
+                            android:id="@+id/passwordg"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:layout_margin="10dp"
+                            android:autofillHints="password"
+                            android:background="@drawable/outline_bg"
+                            android:fontFamily="normal"
+                            android:hint="@string/credentials_hint_password"
+                            android:inputType="textPassword"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+
+                        <ImageView
+                            android:id="@+id/toggle_password_visibility"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/passwordg"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="12dp"
+                            android:alpha=".6"
+                            android:src="@drawable/ic_visibility_on"
+                            android:tint="?android:attr/colorForeground" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/password_layout_extg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/password_layoutg"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="end"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <CheckBox
+                            android:id="@+id/checkboxSave"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:button="@null"
+                            android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+                            android:text="@string/acc_save"
+                            android:textColor="?android:attr/textColorSecondary" />
+
+                        <Button
+                            android:id="@+id/button_okg"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/button_positive"
+                            android:text="@string/action_login"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.github.florent37.shapeofview.shapes.RoundRectView>
 
             <TextView
                 android:id="@+id/or_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/password_layout_extg"
+                android:layout_below="@+id/google_card"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
                 android:fontFamily="@font/google_sans_bold"
                 android:text="@string/action_or"
                 android:textSize="16sp" />
 
-            <ImageView
-                android:id="@+id/anonymous_holder"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_below="@+id/or_txt"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="25dp"
-                app:srcCompat="@drawable/ic_dummy_avatar" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+            <com.github.florent37.shapeofview.shapes.RoundRectView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/anonymous_holder"
-                android:layout_alignTop="@+id/anonymous_holder"
-                android:layout_marginStart="12dp"
-                android:layout_toEndOf="@+id/anonymous_holder"
-                android:ellipsize="end"
-                android:fontFamily="@font/google_sans_bold"
-                android:singleLine="true"
-                android:text="@string/acc_dummy"
-                android:textAlignment="viewStart"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp" />
+                android:layout_below="@+id/or_txt"
+                android:layout_margin="10dp"
+                android:background="?android:attr/panelBackground"
+                android:elevation="5dp"
+                app:roundRect_bottomLeftRadius="10dp"
+                app:roundRect_bottomRightRadius="10dp"
+                app:roundRect_topLeftRadius="10dp"
+                app:roundRect_topRightRadius="10dp">
 
-            <Button
-                android:id="@+id/btn_ok_anm"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@+id/textView4"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/button_negative"
-                android:text="@string/action_ok"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/anonymous_holder"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/ic_dummy_avatar" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/anonymous_holder"
+                        android:layout_alignTop="@+id/anonymous_holder"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@+id/anonymous_holder"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/google_sans_bold"
+                        android:singleLine="true"
+                        android:text="@string/acc_dummy"
+                        android:textAlignment="viewStart"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/anonymous_holder"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
+                        android:ellipsize="none"
+                        android:padding="5dp"
+                        android:text="@string/acc_dummy_summary"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/btn_ok_anm"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_below="@+id/textView5"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_positive"
+                        android:text="@string/action_ok"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+            </com.github.florent37.shapeofview.shapes.RoundRectView>
         </RelativeLayout>
+
     </android.support.v4.widget.NestedScrollView>
 
-</LinearLayout>
+</RelativeLayout>

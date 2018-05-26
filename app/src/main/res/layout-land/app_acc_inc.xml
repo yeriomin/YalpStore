@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground"
-    android:orientation="vertical"
-    android:weightSum="3">
+    android:orientation="horizontal"
+    android:weightSum="2">
 
     <FrameLayout
         android:id="@+id/top_artwork"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1">
 
         <com.github.florent37.shapeofview.shapes.DiagonalView
@@ -19,7 +19,7 @@
             android:background="@drawable/header_grad2"
             app:diagonal_angle="5"
             app:diagonal_direction="left"
-            app:diagonal_position="bottom" />
+            app:diagonal_position="right" />
 
         <com.github.florent37.shapeofview.shapes.DiagonalView
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             android:background="@drawable/header_grad1"
             app:diagonal_angle="10"
             app:diagonal_direction="right"
-            app:diagonal_position="bottom" />
+            app:diagonal_position="right" />
 
         <RelativeLayout
             android:id="@+id/topView"
@@ -71,10 +71,10 @@
     </FrameLayout>
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:paddingTop="10dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingTop="28dp"
         android:paddingBottom="10dp">
 
         <LinearLayout

@@ -17,7 +17,7 @@ public class AccountsActivity extends AuroraActivity {
         setContentView(R.layout.helper_activity_alt);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new AccountsFragment())

@@ -27,7 +27,7 @@ public class ManualDownloadActivity extends DetailsActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
         AdaptiveToolbar dadtb = findViewById(R.id.d_adtb);
         dadtb.getAction_icon().setOnClickListener((v -> this.onBackPressed()));
     }

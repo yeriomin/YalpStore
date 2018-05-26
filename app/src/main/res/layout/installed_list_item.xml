@@ -1,11 +1,15 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.github.florent37.shapeofview.shapes.RoundRectView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/list_container"
     android:layout_width="match_parent"
-    android:background="@drawable/outline_bg"
-    android:layout_marginBottom="2dp"
-    android:layout_marginTop="2dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_margin="4dp"
+    android:background="?android:attr/panelBackground"
+    android:elevation="1.5dp"
+    app:roundRect_bottomLeftRadius="10dp"
+    app:roundRect_bottomRightRadius="10dp"
+    app:roundRect_topLeftRadius="10dp"
+    app:roundRect_topRightRadius="10dp">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -117,4 +121,4 @@
             android:src="@drawable/ic_3dots" />
 
     </LinearLayout>
-</LinearLayout>
+</com.github.florent37.shapeofview.shapes.RoundRectView>

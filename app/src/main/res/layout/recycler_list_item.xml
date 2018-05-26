@@ -1,81 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.github.florent37.shapeofview.shapes.RoundRectView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/app_container"
     android:layout_width="115dp"
     android:layout_height="135dp"
-    android:layout_marginStart="5dp"
-    android:background="@drawable/outline_bg">
-
-    <ImageView
-        android:id="@+id/app_icon"
-        android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:layout_alignParentTop="true"
-        android:background="?android:selectableItemBackgroundBorderless"
-        android:padding="15dp"
-        app:srcCompat="@drawable/ic_placeholder" />
+    android:layout_margin="4dp"
+    android:background="?android:attr/panelBackground"
+    android:elevation="2dp"
+    app:roundRect_bottomLeftRadius="10dp"
+    app:roundRect_bottomRightRadius="10dp"
+    app:roundRect_topLeftRadius="10dp"
+    app:roundRect_topRightRadius="10dp">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/app_icon"
-        android:orientation="horizontal"
-        android:paddingEnd="8dp"
-        android:paddingStart="8dp">
+        android:id="@+id/app_container"
+        android:layout_width="115dp"
+        android:layout_height="135dp">
 
-        <TextView
-            android:id="@+id/app_name"
+        <ImageView
+            android:id="@+id/app_icon"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="marquee"
-            android:fontFamily="@font/google_sans_bold"
-            android:scrollHorizontally="true"
-            android:singleLine="true"
-            android:textAlignment="textStart"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="12sp" />
+            android:layout_height="96dp"
+            android:layout_alignParentTop="true"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:padding="15dp"
+            app:srcCompat="@drawable/ic_placeholder" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/app_name"
-            android:layout_marginBottom="4dp"
-            android:orientation="horizontal">
+            android:layout_below="@+id/app_icon"
+            android:orientation="horizontal"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp">
 
             <TextView
-                android:id="@+id/app_rating"
-                android:layout_width="wrap_content"
+                android:id="@+id/app_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/google_sans"
+                android:ellipsize="marquee"
+                android:fontFamily="@font/google_sans_bold"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textAlignment="textStart"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="12sp" />
 
-            <RatingBar
-                android:id="@+id/app_ratingbar"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/app_rating"
-                android:isIndicator="true"
-                android:max="1"
-                android:numStars="1"
-                android:scaleX=".5"
-                android:scaleY=".5"
-                android:theme="@style/RatingBar2" />
+                android:layout_below="@id/app_name"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/menu_3dot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:background="?android:selectableItemBackgroundBorderless"
-                android:scaleX=".8"
-                android:scaleY=".8"
-                android:src="@drawable/ic_3dots" />
+                <TextView
+                    android:id="@+id/app_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/google_sans"
+                    android:textSize="12sp" />
+
+                <RatingBar
+                    android:id="@+id/app_ratingbar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/app_rating"
+                    android:isIndicator="true"
+                    android:max="1"
+                    android:numStars="1"
+                    android:scaleX=".5"
+                    android:scaleY=".5"
+                    android:theme="@style/RatingBar2" />
+
+                <ImageView
+                    android:id="@+id/menu_3dot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:scaleX=".8"
+                    android:scaleY=".8"
+                    android:src="@drawable/ic_3dots" />
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
     </RelativeLayout>
-</RelativeLayout>
+
+</com.github.florent37.shapeofview.shapes.RoundRectView>

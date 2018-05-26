@@ -101,6 +101,20 @@
                     android:text="@string/details_install"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/showInPlayStore"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:background="@drawable/button_positive"
+                    android:fontFamily="@font/google_sans"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="@string/details_install"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout

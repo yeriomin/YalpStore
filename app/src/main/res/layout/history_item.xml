@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -7,9 +8,11 @@
     <RelativeLayout
         android:id="@+id/view_background"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorRed"
-        android:padding="5dp">
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@drawable/outline_bg"
+        android:backgroundTint="@color/colorRed"
+        android:padding="2dp">
 
         <ImageView
             android:id="@+id/delete_icon"
@@ -33,50 +36,60 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <com.github.florent37.shapeofview.shapes.RoundRectView
         android:id="@+id/view_foreground"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="?android:attr/colorPrimary"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp"
-        android:paddingTop="5dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="?android:attr/panelBackground"
+        android:elevation="1.5dp"
+        app:roundRect_bottomLeftRadius="10dp"
+        app:roundRect_bottomRightRadius="10dp"
+        app:roundRect_topLeftRadius="10dp"
+        app:roundRect_topRightRadius="10dp">
 
-        <ImageView
-            android:id="@+id/searchIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="2dp"
-            android:src="@drawable/ic_search" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/query"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/searchIcon"
-            android:ellipsize="end"
-            android:fontFamily="@font/google_sans"
-            android:maxLines="1"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="14sp" />
+            <ImageView
+                android:id="@+id/searchIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_search" />
 
-        <TextView
-            android:id="@+id/queryTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/query"
-            android:layout_marginTop="2dp"
-            android:layout_toEndOf="@id/searchIcon"
-            android:ellipsize="end"
-            android:fontFamily="@font/google_sans"
-            android:maxLines="1"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            android:textColor="?android:attr/textColorSecondary"
-            android:textSize="12sp" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/query"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/searchIcon"
+                android:ellipsize="end"
+                android:fontFamily="@font/google_sans"
+                android:maxLines="1"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/queryTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/query"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@id/searchIcon"
+                android:ellipsize="end"
+                android:fontFamily="@font/google_sans"
+                android:maxLines="1"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </com.github.florent37.shapeofview.shapes.RoundRectView>
+
 </FrameLayout>
