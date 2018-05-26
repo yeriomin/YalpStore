@@ -20,7 +20,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.preference.PreferenceManager;
 
 import java.util.Map;
 import java.util.Set;
@@ -35,7 +34,7 @@ public class CategoryManager {
 
     public CategoryManager(Context context) {
         this.context = context;
-        translator = new SharedPreferencesTranslator(PreferenceManager.getDefaultSharedPreferences(context));
+        translator = new SharedPreferencesTranslator(PreferenceUtil.getDefaultSharedPreferences(context));
     }
 
     public String getCategoryName(String categoryId) {

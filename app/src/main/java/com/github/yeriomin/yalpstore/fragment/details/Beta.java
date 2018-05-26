@@ -19,7 +19,6 @@
 
 package com.github.yeriomin.yalpstore.fragment.details;
 
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -29,6 +28,7 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
@@ -46,7 +46,7 @@ public class Beta extends Abstract {
 
     @Override
     public void draw() {
-        if (PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
+        if (PreferenceUtil.getBoolean(activity, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
             && app.isTestingProgramAvailable()
             && app.isTestingProgramOptedIn()
         ) {
@@ -57,7 +57,7 @@ public class Beta extends Abstract {
         }
         if (!app.isInstalled()
             || !app.isTestingProgramAvailable()
-            || PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
+            || PreferenceUtil.getBoolean(activity, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
         ) {
             return;
         }

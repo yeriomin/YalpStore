@@ -22,7 +22,6 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -104,7 +103,7 @@ public class SpoofDeviceManager {
     private Map<String, String> getDevicesFromSharedPreferences() {
         Set<String> deviceNames = PreferenceUtil.getStringSet(context, DEVICES_LIST_KEY);
         Map<String, String> devices = new HashMap<>();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
         for (String name: deviceNames) {
             devices.put(name, prefs.getString(name, ""));
         }
@@ -113,7 +112,7 @@ public class SpoofDeviceManager {
 
     private void putDevicesToSharedPreferences(Map<String, String> devices) {
         PreferenceUtil.putStringSet(context, DEVICES_LIST_KEY, devices.keySet());
-        SharedPreferences.Editor prefs = PreferenceManager.getDefaultSharedPreferences(context).edit();
+        SharedPreferences.Editor prefs = PreferenceUtil.getDefaultSharedPreferences(context).edit();
         for (String name: devices.keySet()) {
             prefs.putString(name, devices.get(name));
         }

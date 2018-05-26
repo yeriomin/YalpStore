@@ -19,7 +19,6 @@
 
 package com.github.yeriomin.yalpstore.fragment.details;
 
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +29,7 @@ import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.ReviewStorageIterator;
 import com.github.yeriomin.yalpstore.fragment.Abstract;
@@ -87,7 +87,7 @@ public class Review extends Abstract {
     private boolean isReviewable(App app) {
         return app.isInstalled()
             && !app.isTestingProgramOptedIn()
-            && !PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, false)
+            && !PreferenceUtil.getBoolean(activity, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
         ;
     }
 
@@ -152,7 +152,7 @@ public class Review extends Abstract {
         ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
         reviewLayout.setOnClickListener(new UriOnClickListener(activity, review.getGooglePlusUrl()));
         parent.addView(reviewLayout);
-        new LoadImageTask((ImageView) reviewLayout.findViewById(R.id.avatar)).execute(new ImageSource(review.getUserPhotoUrl()));
+        new LoadImageTask((ImageView) reviewLayout.findViewById(R.id.avatar)).executeOnExecutorIfPossible(new ImageSource(review.getUserPhotoUrl()));
     }
 
     private void initReviewListControls() {

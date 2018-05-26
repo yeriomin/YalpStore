@@ -83,7 +83,7 @@ public abstract class AppBadge extends ListItem {
             previousTask.cancel(true);
         }
         tasks.put(imageView.hashCode(), task);
-        task.execute(app.getIconInfo());
+        task.executeOnExecutorIfPossible(app.getIconInfo());
     }
 
     protected void setText(int viewId, String text) {

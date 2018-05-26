@@ -23,12 +23,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
 import com.github.yeriomin.yalpstore.CategoryManager;
+import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
@@ -69,7 +69,7 @@ public class FilterMenu {
 
     public Filter getFilterPreferences() {
         Filter filter = new Filter();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(activity);
         filter.setSystemApps(prefs.getBoolean(FILTER_SYSTEM_APPS, false));
         filter.setAppsWithAds(prefs.getBoolean(FILTER_APPS_WITH_ADS, true));
         filter.setPaidApps(prefs.getBoolean(FILTER_PAID_APPS, true));
@@ -128,7 +128,7 @@ public class FilterMenu {
     }
 
     private void putBoolean(String key, boolean value) {
-        PreferenceManager.getDefaultSharedPreferences(activity).edit().putBoolean(key, value).commit();
+        PreferenceUtil.getDefaultSharedPreferences(activity).edit().putBoolean(key, value).commit();
         restartActivity();
     }
 
@@ -150,7 +150,7 @@ public class FilterMenu {
             new ConfirmOnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    PreferenceManager.getDefaultSharedPreferences(activity).edit().putString(
+                    PreferenceUtil.getDefaultSharedPreferences(activity).edit().putString(
                         FILTER_CATEGORY,
                         categories.keySet().toArray(new String[categories.size()])[which]
                     ).commit();
@@ -166,7 +166,7 @@ public class FilterMenu {
             new ConfirmOnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    PreferenceManager.getDefaultSharedPreferences(activity).edit().putFloat(
+                    PreferenceUtil.getDefaultSharedPreferences(activity).edit().putFloat(
                         FILTER_RATING,
                         Float.parseFloat(activity.getResources().getStringArray(R.array.filterRatingValues)[which])
                     ).commit();
@@ -182,7 +182,7 @@ public class FilterMenu {
             new ConfirmOnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    PreferenceManager.getDefaultSharedPreferences(activity).edit().putInt(
+                    PreferenceUtil.getDefaultSharedPreferences(activity).edit().putInt(
                         FILTER_DOWNLOADS,
                         Integer.parseInt(activity.getResources().getStringArray(R.array.filterDownloadsValues)[which])
                     ).commit();

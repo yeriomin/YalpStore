@@ -20,6 +20,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.net.TrafficStats;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
@@ -120,6 +121,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     }
 
     protected HttpURLConnection getHttpURLConnection(String url) throws IOException {
+        TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
         return NetCipher.getHttpURLConnection(new URL(url), true);
     }
 

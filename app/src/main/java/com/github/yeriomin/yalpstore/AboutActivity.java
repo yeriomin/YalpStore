@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.ClipboardManager;
 import android.view.View;
 import android.widget.TextView;
@@ -39,7 +38,7 @@ public class AboutActivity extends YalpStoreActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_activity_layout);
         ((TextView) findViewById(R.id.version)).setText(BuildConfig.VERSION_NAME);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sharedPreferences = PreferenceUtil.getDefaultSharedPreferences(this);
         ((TextView) findViewById(R.id.user_email)).setText(sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, ""));
         TextView gsfIdView = (TextView) findViewById(R.id.gsf_id);
         gsfIdView.setText(sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));

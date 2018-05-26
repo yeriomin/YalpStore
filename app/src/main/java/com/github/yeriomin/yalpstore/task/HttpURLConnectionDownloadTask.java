@@ -22,6 +22,7 @@ package com.github.yeriomin.yalpstore.task;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.TrafficStats;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.text.TextUtils;
@@ -114,6 +115,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         InputStream in;
         long fileSize;
         try {
+            TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
             connection = NetCipher.getHttpURLConnection(new URL(params[0]), true);
             if (params.length == 2 && !TextUtils.isEmpty(params[1])) {
                 connection.addRequestProperty("Cookie", params[1]);

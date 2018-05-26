@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -73,7 +72,7 @@ public class PlayStoreApiAuthenticator {
     public void login() throws IOException {
         LoginInfo loginInfo = new LoginInfo();
         api = build(loginInfo);
-        PreferenceManager.getDefaultSharedPreferences(context).edit()
+        PreferenceUtil.getDefaultSharedPreferences(context).edit()
             .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
             .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
             .commit()
@@ -85,11 +84,11 @@ public class PlayStoreApiAuthenticator {
         loginInfo.setEmail(email);
         loginInfo.setPassword(password);
         api = build(loginInfo);
-        PreferenceManager.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_APP_PROVIDED_EMAIL).commit();
+        PreferenceUtil.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_APP_PROVIDED_EMAIL).commit();
     }
 
     public void refreshToken() throws IOException {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
         prefs.edit().remove(PREFERENCE_AUTH_TOKEN).commit();
         String email = prefs.getString(PREFERENCE_EMAIL, "");
         if (TextUtils.isEmpty(email)) {
@@ -99,7 +98,7 @@ public class PlayStoreApiAuthenticator {
         loginInfo.setEmail(email);
         loginInfo.setTokenDispenserUrl(prefs.getString(PREFERENCE_LAST_USED_TOKEN_DISPENSER,""));
         api = build(loginInfo);
-        PreferenceManager.getDefaultSharedPreferences(context).edit()
+        PreferenceUtil.getDefaultSharedPreferences(context).edit()
             .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
             .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
             .commit()
@@ -107,7 +106,7 @@ public class PlayStoreApiAuthenticator {
     }
 
     public void logout() {
-        PreferenceManager.getDefaultSharedPreferences(context).edit()
+        PreferenceUtil.getDefaultSharedPreferences(context).edit()
             .remove(PREFERENCE_EMAIL)
             .remove(PREFERENCE_GSF_ID)
             .remove(PREFERENCE_AUTH_TOKEN)
@@ -119,7 +118,7 @@ public class PlayStoreApiAuthenticator {
     }
 
     private GooglePlayAPI buildFromPreferences() throws IOException {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
         String email = prefs.getString(PREFERENCE_EMAIL, "");
         if (TextUtils.isEmpty(email)) {
             throw new CredentialsEmptyException();
@@ -151,11 +150,11 @@ public class PlayStoreApiAuthenticator {
                 // Impossible, unless there are mistakes, so no need to make it a declared exception
                 throw new RuntimeException(e);
             } catch (AuthException | TokenDispenserException e) {
-                if (PlayStoreTask.noNetwork(e.getCause())) {
+                if (PlayStoreTask.noNetwork(e.getCause()) && !NetworkState.isNetworkAvailable(context)) {
                     throw (IOException) e.getCause();
                 }
                 loginInfo.setTokenDispenserUrl(null);
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
                 if (prefs.getBoolean(PREFERENCE_APP_PROVIDED_EMAIL, false)) {
                     loginInfo.setEmail(null);
                     prefs.edit().remove(PREFERENCE_GSF_ID).commit();
@@ -186,7 +185,7 @@ public class PlayStoreApiAuthenticator {
 
     private DeviceInfoProvider getDeviceInfoProvider() {
         DeviceInfoProvider deviceInfoProvider;
-        String spoofDevice = PreferenceManager.getDefaultSharedPreferences(context)
+        String spoofDevice = PreferenceUtil.getDefaultSharedPreferences(context)
             .getString(PreferenceUtil.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "")
         ;
         if (TextUtils.isEmpty(spoofDevice)) {
@@ -202,7 +201,7 @@ public class PlayStoreApiAuthenticator {
     }
 
     private void fill(LoginInfo loginInfo) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
         String locale = prefs.getString(PreferenceUtil.PREFERENCE_REQUESTED_LANGUAGE, "");
         loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale));
         loginInfo.setGsfId(prefs.getString(PREFERENCE_GSF_ID, ""));
@@ -213,7 +212,7 @@ public class PlayStoreApiAuthenticator {
     }
 
     private void save(LoginInfo loginInfo) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit()
+        PreferenceUtil.getDefaultSharedPreferences(context).edit()
             .putString(PREFERENCE_EMAIL, loginInfo.getEmail())
             .putString(PREFERENCE_GSF_ID, loginInfo.getGsfId())
             .putString(PREFERENCE_AUTH_TOKEN, loginInfo.getToken())

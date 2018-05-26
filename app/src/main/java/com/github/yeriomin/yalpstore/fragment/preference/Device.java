@@ -24,7 +24,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
@@ -65,7 +64,7 @@ public class Device extends List {
                 ContextUtil.toast(
                     activity.getApplicationContext(),
                     R.string.pref_device_to_pretend_to_be_notice,
-                    PreferenceManager.getDefaultSharedPreferences(activity).getString(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+                    PreferenceUtil.getDefaultSharedPreferences(activity).getString(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY, "")
                 );
                 ((AlertDialog) listPreference.getDialog()).getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
@@ -120,7 +119,7 @@ public class Device extends List {
     }
 
     private DialogWrapperAbstract showRequestDialog(boolean logOut) {
-        PreferenceManager.getDefaultSharedPreferences(activity)
+        PreferenceUtil.getDefaultSharedPreferences(activity)
             .edit()
             .putBoolean(PREFERENCE_DEVICE_DEFINITION_REQUESTED, true)
             .commit()

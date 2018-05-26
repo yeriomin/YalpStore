@@ -20,7 +20,6 @@
 package com.github.yeriomin.yalpstore.bugreport;
 
 import android.content.Context;
-import android.preference.PreferenceManager;
 
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
@@ -57,7 +56,7 @@ class BugReportPreferencesBuilder extends BugReportPropertiesBuilder {
 
     @Override
     public BugReportBuilder build() {
-        Map<String, ?> prefs = PreferenceManager.getDefaultSharedPreferences(context).getAll();
+        Map<String, ?> prefs = PreferenceUtil.getDefaultSharedPreferences(context).getAll();
         Set<String> whitelist = new HashSet<>(Arrays.asList(PREFERENCES));
         Map<String, String> filtered = new HashMap<>();
         for (String key: prefs.keySet()) {

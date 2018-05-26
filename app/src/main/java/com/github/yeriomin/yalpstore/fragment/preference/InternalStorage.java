@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore.fragment.preference;
 
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
 
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
@@ -51,7 +50,7 @@ public class InternalStorage extends Abstract {
                 } else {
                     activity.findPreference(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY).setSummary(new File(
                         Paths.getStorageRoot(activity),
-                        PreferenceManager.getDefaultSharedPreferences(activity).getString(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+                        PreferenceUtil.getString(activity, PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY)
                     ).getAbsolutePath());
                 }
                 return true;

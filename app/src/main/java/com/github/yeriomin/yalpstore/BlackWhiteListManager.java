@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import java.util.Set;
 
@@ -31,7 +30,7 @@ public class BlackWhiteListManager {
     private Set<String> blackWhiteSet;
 
     public BlackWhiteListManager(Context context) {
-        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        preferences = PreferenceUtil.getDefaultSharedPreferences(context);
         blackWhiteSet = PreferenceUtil.getStringSet(context, PreferenceUtil.PREFERENCE_UPDATE_LIST);
         if (blackWhiteSet.size() == 1 && blackWhiteSet.contains("")) {
             blackWhiteSet.clear();

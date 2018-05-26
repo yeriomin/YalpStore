@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.util.TypedValue;
 
 abstract public class ThemeManagerAbstract {
@@ -36,7 +35,7 @@ abstract public class ThemeManagerAbstract {
     abstract protected int getDialogThemeDark();
 
     public void setTheme(Activity activity) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(activity);
         String theme = prefs.getString(PreferenceUtil.PREFERENCE_UI_THEME, PreferenceUtil.THEME_NONE);
         int themeId = getThemeId(theme, activity);
         if (themeId != 0) {
@@ -48,7 +47,7 @@ abstract public class ThemeManagerAbstract {
     }
 
     public int getDialogThemeId(Context context) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
         String theme = prefs.getString(PreferenceUtil.PREFERENCE_UI_THEME, PreferenceUtil.THEME_NONE);
         switch (theme) {
             default:

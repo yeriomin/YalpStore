@@ -19,7 +19,6 @@
 
 package com.github.yeriomin.yalpstore.task.playstore;
 
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
@@ -62,7 +61,7 @@ public class UserProfileTask extends PlayStorePayloadTask<String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         if (success()) {
-            PreferenceManager.getDefaultSharedPreferences(imageView.getContext()).edit().putString(PREFERENCE_AVATAR_URL, result).apply();
+            PreferenceUtil.getDefaultSharedPreferences(imageView.getContext()).edit().putString(PREFERENCE_AVATAR_URL, result).apply();
         }
         new LoadImageTask(imageView).setFadeInMillis(200).execute(new ImageSource(result));
     }

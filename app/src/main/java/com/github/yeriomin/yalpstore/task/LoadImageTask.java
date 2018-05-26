@@ -108,6 +108,14 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
         return null;
     }
 
+    public AsyncTask<ImageSource, Void, Void> executeOnExecutorIfPossible(ImageSource... args) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+            return this.execute(args);
+        } else {
+            return this.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, args);
+        }
+    }
+
     private void fadeIn() {
         imageView.setVisibility(View.VISIBLE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {

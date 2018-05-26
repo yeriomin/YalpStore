@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import java.util.Set;
 
@@ -33,7 +32,7 @@ public class VersionIgnoreManager {
     private Set<String> ignoredVersions;
 
     public VersionIgnoreManager(Context context) {
-        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        preferences = PreferenceUtil.getDefaultSharedPreferences(context);
         ignoredVersions = PreferenceUtil.getStringSet(context, PREFERENCE_VERSION_BLACK_LIST);
     }
 

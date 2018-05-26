@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore.view;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
@@ -112,7 +111,7 @@ public class UserProvidedAccountDialogBuilder extends CredentialsDialogBuilder {
     private AutoCompleteTextView getEmailInput(DialogWrapperAbstract ad) {
         AutoCompleteTextView editEmail = (AutoCompleteTextView) ad.findViewById(R.id.email);
         editEmail.setAdapter(new ArrayAdapter<>(activity, android.R.layout.simple_dropdown_item_1line, getUsedEmails()));
-        editEmail.setText(PreferenceManager.getDefaultSharedPreferences(activity).getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, this.previousEmail));
+        editEmail.setText(PreferenceUtil.getDefaultSharedPreferences(activity).getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, this.previousEmail));
         return editEmail;
     }
 

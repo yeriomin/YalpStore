@@ -27,7 +27,6 @@ import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
-import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.IOException;

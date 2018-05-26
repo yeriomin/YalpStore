@@ -22,7 +22,6 @@ package com.github.yeriomin.yalpstore;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.preference.PreferenceManager;
 
 public class BootReceiver extends BroadcastReceiver {
 
@@ -36,7 +35,7 @@ public class BootReceiver extends BroadcastReceiver {
 
     static private int getUpdateInterval(Context context) {
         return Util.parseInt(
-            PreferenceManager.getDefaultSharedPreferences(context).getString(
+            PreferenceUtil.getDefaultSharedPreferences(context).getString(
                 PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_INTERVAL,
                 "-1"
             ),

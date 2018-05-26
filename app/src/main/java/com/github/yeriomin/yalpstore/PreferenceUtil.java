@@ -74,12 +74,21 @@ public class PreferenceUtil {
 
     private static final String DELIMITER = ",";
 
+    public static SharedPreferences sharedPreferences;
+
+    static public SharedPreferences getDefaultSharedPreferences(Context context) {
+        if (null == sharedPreferences) {
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        }
+        return sharedPreferences;
+    }
+
     static public boolean getBoolean(Context context, String key) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, false);
+        return getDefaultSharedPreferences(context).getBoolean(key, false);
     }
 
     static public String getString(Context context, String key) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getString(key, "");
+        return getDefaultSharedPreferences(context).getString(key, "");
     }
 
     static public boolean canInstallInBackground(Context context) {
@@ -89,7 +98,7 @@ public class PreferenceUtil {
     }
 
     static public Set<String> getStringSet(Context context, String key) {
-        return getStringSet(PreferenceManager.getDefaultSharedPreferences(context), key);
+        return getStringSet(getDefaultSharedPreferences(context), key);
     }
 
     static public Set<String> getStringSet(SharedPreferences preferences, String key) {
@@ -112,7 +121,7 @@ public class PreferenceUtil {
     }
 
     static public void putStringSet(Context context, String key, Set<String> set) {
-        putStringSet(PreferenceManager.getDefaultSharedPreferences(context), key, set);
+        putStringSet(getDefaultSharedPreferences(context), key, set);
     }
 
     static public void putStringSet(SharedPreferences preferences, String key, Set<String> set) {
@@ -125,7 +134,7 @@ public class PreferenceUtil {
     }
 
     static public void prefillInstallationMethod(Context context) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences preferences = getDefaultSharedPreferences(context);
         if (TextUtils.isEmpty(preferences.getString(PreferenceUtil.PREFERENCE_INSTALLATION_METHOD, ""))
             && YalpStorePermissionManager.hasInstallPermission(context)
         ) {
@@ -134,7 +143,7 @@ public class PreferenceUtil {
     }
 
     static public Proxy getProxy(Context context) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences prefs = getDefaultSharedPreferences(context);
         if (!prefs.getBoolean(PREFERENCE_ENABLE_PROXY, false)) {
             return null;
         }

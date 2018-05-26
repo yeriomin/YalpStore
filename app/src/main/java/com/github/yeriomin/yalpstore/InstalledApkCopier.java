@@ -20,7 +20,6 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
@@ -39,7 +38,7 @@ public class InstalledApkCopier {
     public InstalledApkCopier(Context context) {
         destinationDir = new File(
             Paths.getStorageRoot(context),
-            PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+            PreferenceUtil.getString(context, PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY)
         );
     }
 

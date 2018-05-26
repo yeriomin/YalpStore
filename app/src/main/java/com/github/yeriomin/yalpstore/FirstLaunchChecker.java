@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 public class FirstLaunchChecker {
 
@@ -30,7 +29,7 @@ public class FirstLaunchChecker {
     private SharedPreferences prefs;
 
     public FirstLaunchChecker(Context context) {
-        prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs = PreferenceUtil.getDefaultSharedPreferences(context);
     }
 
     public boolean isFirstLogin() {

@@ -23,6 +23,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.TrafficStats;
 import android.os.Build;
 import android.util.Log;
 import android.util.LruCache;
@@ -108,14 +109,18 @@ public class BitmapManager {
     }
 
     static private Bitmap getCachedBitmapFromDisk(File cached) {
+        FileInputStream inputStream = null;
         try {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inJustDecodeBounds = false;
             options.inDither = false;
-            return BitmapFactory.decodeStream(new FileInputStream(cached), null, options);
+            inputStream = new FileInputStream(cached);
+            return BitmapFactory.decodeStream(inputStream, null, options);
         } catch (IOException e) {
             Log.e(BitmapManager.class.getSimpleName(), "Could not get cached bitmap: " + e.getClass().getName() + " " + e.getMessage());
             return null;
+        } finally {
+            Util.closeSilently(inputStream);
         }
     }
 
@@ -141,6 +146,7 @@ public class BitmapManager {
     static private Bitmap downloadBitmap(String url, boolean fullSize) {
         InputStream input = null;
         try {
+            TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
             HttpURLConnection connection = NetCipher.getHttpURLConnection(new URL(url), true);
             connection.connect();
             connection.setConnectTimeout(3000);

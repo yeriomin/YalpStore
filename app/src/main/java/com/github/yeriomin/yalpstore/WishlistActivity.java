@@ -36,7 +36,6 @@ import com.github.yeriomin.yalpstore.view.SearchResultAppBadge;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class WishlistActivity extends AppListActivity {

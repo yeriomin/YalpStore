@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -38,7 +37,7 @@ public class SharedPreferencesCachedSet extends HashSet<String> {
     private SharedPreferences preferences;
 
     public SharedPreferencesCachedSet(String name, Context context) {
-        this(name, PreferenceManager.getDefaultSharedPreferences(context));
+        this(name, PreferenceUtil.getDefaultSharedPreferences(context));
     }
 
     public SharedPreferencesCachedSet(String name, SharedPreferences preferences) {

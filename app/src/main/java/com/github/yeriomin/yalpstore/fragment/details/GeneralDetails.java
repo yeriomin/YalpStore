@@ -31,7 +31,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.CategoryAppsActivity;
 import com.github.yeriomin.yalpstore.CategoryManager;
 import com.github.yeriomin.yalpstore.DetailsActivity;
@@ -79,7 +78,7 @@ public class GeneralDetails extends Abstract {
     }
 
     private void drawAppBadge(App app) {
-        new LoadImageTask((ImageView) activity.findViewById(R.id.icon)).setPlaceholder(false).execute(app.getIconInfo());
+        new LoadImageTask((ImageView) activity.findViewById(R.id.icon)).setPlaceholder(false).executeOnExecutorIfPossible(app.getIconInfo());
 
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, app.getPackageName());
@@ -195,7 +194,7 @@ public class GeneralDetails extends Abstract {
 
     private void drawCategoryBadge() {
         Badge categoryBadge = activity.findViewById(R.id.category_badge);
-        new LoadImageTask(categoryBadge.getIconView()).setPlaceholder(false).execute(new ImageSource(app.getCategoryIconUrl()));
+        new LoadImageTask(categoryBadge.getIconView()).setPlaceholder(false).executeOnExecutorIfPossible(new ImageSource(app.getCategoryIconUrl()));
         CategoryManager manager = new CategoryManager(activity);
         String categoryId = app.getCategoryId();
         String categoryLabel = manager.getCategoryName(categoryId);

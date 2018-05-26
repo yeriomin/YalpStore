@@ -20,7 +20,6 @@
 package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.app.Activity;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
@@ -122,7 +121,7 @@ public class UpdatableAppsTask extends RemoteAppListTask {
 
     private Map<String, App> filterBlacklistedApps(Map<String, App> apps) {
         Set<String> packageNames = new HashSet<>(apps.keySet());
-        if (PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceUtil.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceUtil.LIST_BLACK).equals(PreferenceUtil.LIST_BLACK)) {
+        if (PreferenceUtil.getDefaultSharedPreferences(context).getString(PreferenceUtil.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK, PreferenceUtil.LIST_BLACK).equals(PreferenceUtil.LIST_BLACK)) {
             packageNames.removeAll(new BlackWhiteListManager(context).get());
         } else {
             packageNames.retainAll(new BlackWhiteListManager(context).get());

@@ -22,13 +22,14 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 
 import java.io.File;
 
 public class Paths {
 
     static public final String FALLBACK_DIRECTORY = "Android/data/" + BuildConfig.APPLICATION_ID + "/files";
+
+    static public File filesDir;
 
     static public File getStorageRoot(Context context) {
         File storageRoot = Environment.getExternalStorageDirectory();
@@ -54,10 +55,10 @@ public class Paths {
 
     static public File getYalpPath(Context context) {
         return PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
-            ? context.getFilesDir()
+            ? getFilesDir(context)
             : new File(
                 getStorageRoot(context),
-                PreferenceManager.getDefaultSharedPreferences(context).getString(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY, "")
+                PreferenceUtil.getString(context, PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY)
             )
         ;
     }
@@ -82,5 +83,12 @@ public class Paths {
             ? context.getExternalFilesDirs(null)
             : new File[] {new File(Environment.getExternalStorageDirectory(), FALLBACK_DIRECTORY)}
         ;
+    }
+
+    static public File getFilesDir(Context context) {
+        if (null == filesDir) {
+            filesDir = context.getFilesDir();
+        }
+        return filesDir;
     }
 }
