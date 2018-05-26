@@ -8,7 +8,6 @@ import android.util.Log;
 import com.dragons.aurora.CategoryManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.CategoryAppsFragment;
-import com.dragons.aurora.view.AdaptiveToolbar;
 
 public class CategoryAppsActivity extends AuroraActivity {
 

@@ -12,7 +12,7 @@
     </declare-styleable>
 
     <declare-styleable name="TagView">
-        <attr name="TagStyle" format="enum" >
+        <attr name="TagStyle" format="enum">
             <enum name="Mono" value="0" />
             <enum name="Duo" value="1" />
         </attr>
@@ -22,9 +22,15 @@
     </declare-styleable>
 
     <declare-styleable name="AdaptiveToolbar">
-        <attr name="ToolbarStyle" format="enum" >
+        <attr name="ToolbarStyle" format="enum">
             <enum name="Home" value="0" />
             <enum name="Details" value="1" />
         </attr>
+    </declare-styleable>
+
+    <declare-styleable name="FilterBadge">
+        <attr name="badge_title" format="string" />
+        <attr name="badge_dotColor" format="integer" />
+        <attr name="badge_filter_key" format="string" />
     </declare-styleable>
 </resources>

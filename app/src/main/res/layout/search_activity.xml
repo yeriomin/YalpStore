@@ -11,4 +11,17 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <include layout="@layout/filter_sheet" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/filter_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="15dp"
+        android:src="@drawable/ic_filter"
+        android:tint="@color/white"
+        app:fabSize="normal"
+        app:layout_anchorGravity="top|end" />
+
 </android.support.design.widget.CoordinatorLayout>

@@ -1,23 +1,11 @@
 package com.dragons.aurora.fragment;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 
 import com.dragons.aurora.CategoryManager;
-import com.dragons.aurora.R;
-import com.dragons.aurora.Util;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.model.Filter;
-
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class FilterMenu {
 
@@ -29,26 +17,15 @@ public class FilterMenu {
     static private final String FILTER_RATING = "FILTER_RATING";
     static private final String FILTER_DOWNLOADS = "FILTER_DOWNLOADS";
 
-    static private final Map<Float, String> ratingLabels = new HashMap<>();
-    static private final Map<Integer, String> downloadsLabels = new HashMap<>();
+    private Context context;
 
-    private AuroraActivity activity;
-
-    public FilterMenu(AuroraActivity activity) {
-        this.activity = activity;
-        String[] ratingValues = activity.getResources().getStringArray(R.array.filterRatingValues);
-        for (int i = 0; i < ratingValues.length; i++) {
-            ratingLabels.put(Float.parseFloat(ratingValues[i]), activity.getResources().getStringArray(R.array.filterRatingLabels)[i]);
-        }
-        String[] downloadsValues = activity.getResources().getStringArray(R.array.filterDownloadsValues);
-        for (int i = 0; i < downloadsValues.length; i++) {
-            downloadsLabels.put(Integer.parseInt(downloadsValues[i]), activity.getResources().getStringArray(R.array.filterDownloadsLabels)[i]);
-        }
+    public FilterMenu(Context context) {
+        this.context = context;
     }
 
     public Filter getFilterPreferences() {
         Filter filter = new Filter();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         filter.setSystemApps(prefs.getBoolean(FILTER_SYSTEM_APPS, false));
         filter.setAppsWithAds(prefs.getBoolean(FILTER_APPS_WITH_ADS, true));
         filter.setPaidApps(prefs.getBoolean(FILTER_PAID_APPS, true));
@@ -59,123 +36,13 @@ public class FilterMenu {
         return filter;
     }
 
-    public void onCreateOptionsMenu(Menu menu) {
-        Filter filter = getFilterPreferences();
-        menu.findItem(R.id.filter_system_apps).setChecked(filter.isSystemApps());
-        menu.findItem(R.id.filter_apps_with_ads).setChecked(filter.isAppsWithAds());
-        menu.findItem(R.id.filter_paid_apps).setChecked(filter.isPaidApps());
-        menu.findItem(R.id.filter_gsf_dependent_apps).setChecked(filter.isGsfDependentApps());
-        menu.findItem(R.id.filter_category).setTitle(activity.getString(
-                R.string.action_filter_category,
-                new CategoryManager(activity).getCategoryName(filter.getCategory())
-        ));
-        menu.findItem(R.id.filter_rating).setTitle(activity.getString(
-                R.string.action_filter_rating,
-                ratingLabels.get(filter.getRating())
-        ));
-        menu.findItem(R.id.filter_downloads).setTitle(activity.getString(
-                R.string.action_filter_downloads,
-                downloadsLabels.get(filter.getDownloads())
-        ));
+    public void resetFilterPreferences() {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(FILTER_SYSTEM_APPS, false).apply();
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(FILTER_APPS_WITH_ADS, true).apply();
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(FILTER_PAID_APPS, true).apply();
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(FILTER_GSF_DEPENDENT_APPS, true).apply();
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putString(FILTER_CATEGORY, CategoryManager.TOP).apply();
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putFloat(FILTER_RATING, 0.0f).apply();
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(FILTER_DOWNLOADS, 0).apply();
     }
-
-    public void onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.filter_system_apps:
-                putBoolean(FILTER_SYSTEM_APPS, !item.isChecked());
-                break;
-            case R.id.filter_apps_with_ads:
-                putBoolean(FILTER_APPS_WITH_ADS, !item.isChecked());
-                break;
-            case R.id.filter_paid_apps:
-                putBoolean(FILTER_PAID_APPS, !item.isChecked());
-                break;
-            case R.id.filter_gsf_dependent_apps:
-                putBoolean(FILTER_GSF_DEPENDENT_APPS, !item.isChecked());
-                break;
-            case R.id.filter_category:
-                getCategoryDialog().show();
-                break;
-            case R.id.filter_rating:
-                getRatingDialog().show();
-                break;
-            case R.id.filter_downloads:
-                getDownloadsDialog().show();
-                break;
-        }
-    }
-
-    private void putBoolean(String key, boolean value) {
-        PreferenceManager.getDefaultSharedPreferences(activity).edit().putBoolean(key, value).apply();
-        restartActivity();
-    }
-
-    private void restartActivity() {
-        Intent intent = activity.getIntent();
-        activity.finish();
-        activity.startActivity(intent);
-    }
-
-    private AlertDialog getCategoryDialog() {
-        final Map<String, String> categories = new CategoryManager(activity).getCategoriesFromSharedPreferences();
-        Util.addToStart((LinkedHashMap<String, String>) categories, CategoryManager.TOP, activity.getString(R.string.search_filter));
-        return getDialog(
-                categories.values().toArray(new String[categories.size()]),
-                new ConfirmOnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        PreferenceManager.getDefaultSharedPreferences(activity).edit().putString(
-                                FILTER_CATEGORY,
-                                categories.keySet().toArray(new String[categories.size()])[which]
-                        ).apply();
-                        super.onClick(dialog, which);
-                    }
-                }
-        );
-    }
-
-    private AlertDialog getRatingDialog() {
-        return getDialog(
-                activity.getResources().getStringArray(R.array.filterRatingLabels),
-                new ConfirmOnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        PreferenceManager.getDefaultSharedPreferences(activity).edit().putFloat(
-                                FILTER_RATING,
-                                Float.parseFloat(activity.getResources().getStringArray(R.array.filterRatingValues)[which])
-                        ).apply();
-                        super.onClick(dialog, which);
-                    }
-                }
-        );
-    }
-
-    private AlertDialog getDownloadsDialog() {
-        return getDialog(
-                activity.getResources().getStringArray(R.array.filterDownloadsLabels),
-                new ConfirmOnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        PreferenceManager.getDefaultSharedPreferences(activity).edit().putInt(
-                                FILTER_DOWNLOADS,
-                                Integer.parseInt(activity.getResources().getStringArray(R.array.filterDownloadsValues)[which])
-                        ).apply();
-                        super.onClick(dialog, which);
-                    }
-                }
-        );
-    }
-
-    private AlertDialog getDialog(String[] labels, ConfirmOnClickListener listener) {
-        return new AlertDialog.Builder(activity)
-                .setAdapter(new ArrayAdapter<>(activity, android.R.layout.select_dialog_item, labels), listener).create();
-    }
-
-    private class ConfirmOnClickListener implements DialogInterface.OnClickListener {
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-            restartActivity();
-        }
-    }
-
 }
