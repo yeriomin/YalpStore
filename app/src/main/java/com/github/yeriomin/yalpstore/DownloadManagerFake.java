@@ -80,7 +80,7 @@ public class DownloadManagerFake extends DownloadManagerAbstract {
 
     @Override
     public String getError(long downloadId) {
-        return getErrorString(context, statuses.get(downloadId));
+        return getErrorString(context, statuses.containsKey(downloadId) ? statuses.get(downloadId) : DownloadManagerInterface.ERROR_UNKNOWN);
     }
 
     private String getUrl(AndroidAppDeliveryData deliveryData, Type type) {
