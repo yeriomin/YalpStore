@@ -26,6 +26,7 @@ import com.github.yeriomin.playstoreapi.BuyResponse;
 import com.github.yeriomin.playstoreapi.DeliveryResponse;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
+import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -77,7 +78,7 @@ public class DeliveryDataTask extends PlayStorePayloadTask<AndroidAppDeliveryDat
             && deliveryResponse.getAppDeliveryData().hasDownloadUrl()
         ) {
             deliveryData = deliveryResponse.getAppDeliveryData();
-        } else {
+        } else if (!app.isFree() && !PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
             throw new NotPurchasedException();
         }
     }

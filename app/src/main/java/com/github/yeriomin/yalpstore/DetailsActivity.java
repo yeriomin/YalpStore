@@ -34,7 +34,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.github.yeriomin.playstoreapi.GooglePlayException;
-import com.github.yeriomin.yalpstore.fragment.ButtonBuy;
 import com.github.yeriomin.yalpstore.fragment.ButtonCancel;
 import com.github.yeriomin.yalpstore.fragment.ButtonDownload;
 import com.github.yeriomin.yalpstore.fragment.ButtonInstall;
@@ -118,7 +117,6 @@ public class DetailsActivity extends YalpStoreActivity {
         installReceiver = new DetailsInstallReceiver(this, app.getPackageName());
         new ButtonUninstall(this, app).draw();
         new ButtonDownload(this, app).draw();
-        new ButtonBuy(this, app).draw();
         new ButtonCancel(this, app).draw();
         new ButtonInstall(this, app).draw();
         new ButtonRun(this, app).draw();

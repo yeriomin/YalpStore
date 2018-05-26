@@ -75,25 +75,6 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
     }
 
     @Override
-    protected void onPostExecute(List<App> apps) {
-        super.onPostExecute(apps);
-        if (success()) {
-            BackgroundCategoryTask task = new BackgroundCategoryTask();
-            task.setContext(context);
-            task.setManager(categoryManager);
-            task.executeOnExecutorIfPossible();
-
-            WishlistUpdateTask wishlistUpdateTask = new WishlistUpdateTask();
-            wishlistUpdateTask.setContext(context);
-            wishlistUpdateTask.executeOnExecutorIfPossible();
-
-            PurchasedAppsTask purchasedAppsTask = new PurchasedAppsTask();
-            purchasedAppsTask.setContext(context);
-            purchasedAppsTask.executeOnExecutorIfPossible();
-        }
-    }
-
-    @Override
     protected List<App> getNextBatch(AppListIterator iterator) {
         List<App> apps = new ArrayList<>();
         for (App app: iterator.next()) {

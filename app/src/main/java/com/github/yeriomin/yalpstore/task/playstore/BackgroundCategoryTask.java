@@ -23,7 +23,7 @@ import android.os.Build;
 
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 
-class BackgroundCategoryTask extends CategoryTask {
+public class BackgroundCategoryTask extends CategoryTask {
 
     @Override
     protected void fill() {

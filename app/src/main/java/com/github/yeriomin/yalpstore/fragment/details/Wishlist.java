@@ -30,9 +30,6 @@ import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.WishlistToggleTask;
-import com.github.yeriomin.yalpstore.task.playstore.WishlistUpdateTask;
-
-import java.util.List;
 
 public class Wishlist extends Abstract {
 
@@ -47,8 +44,7 @@ public class Wishlist extends Abstract {
             wishlistButton.setVisibility(View.GONE);
             return;
         }
-        new DetailsWishlistUpdateTask(activity, app.getPackageName()).execute();
-        initWishlistButton(wishlistButton, activity, app.getPackageName());
+        initWishlistButton(activity, app.getPackageName());
         wishlistButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -58,8 +54,10 @@ public class Wishlist extends Abstract {
         });
     }
 
-    static private void initWishlistButton(ImageView wishlistButton, final YalpStoreActivity activity, final String packageName) {
+    static private void initWishlistButton(final YalpStoreActivity activity, final String packageName) {
+        ImageView wishlistButton = activity.findViewById(R.id.wishlist);
         wishlistButton.setVisibility(View.VISIBLE);
+        wishlistButton.setImageResource(YalpStoreApplication.wishlist.contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
         wishlistButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,27 +78,7 @@ public class Wishlist extends Abstract {
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
-            YalpStoreActivity activity = (YalpStoreActivity) context;
-            ImageView wishlistButton = activity.findViewById(R.id.wishlist);
-            wishlistButton.setImageResource(YalpStoreApplication.wishlist.contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
-            initWishlistButton(wishlistButton, activity, packageName);
-        }
-    }
-
-    static private class DetailsWishlistUpdateTask extends WishlistUpdateTask {
-
-        private String packageName;
-
-        public DetailsWishlistUpdateTask(YalpStoreActivity activity, String packageName) {
-            this.packageName = packageName;
-            setContext(activity);
-        }
-
-        @Override
-        protected void onPostExecute(List<String> result) {
-            super.onPostExecute(result);
-            ((ImageView) ((YalpStoreActivity) context).findViewById(R.id.wishlist))
-                .setImageResource(YalpStoreApplication.wishlist.contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
+            initWishlistButton((YalpStoreActivity) context, packageName);
         }
     }
 }

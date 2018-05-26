@@ -116,8 +116,9 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
         super.onPostExecute(deliveryData);
         if (getException() instanceof NotPurchasedException
             && ContextUtil.isAlive(context)
-            && triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
-            && triggeredBy.equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
+            && (triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
+                || triggeredBy.equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
+            )
         ) {
             try {
                 new PurchaseDialogBuilder((Activity) context, app.getPackageName()).show();

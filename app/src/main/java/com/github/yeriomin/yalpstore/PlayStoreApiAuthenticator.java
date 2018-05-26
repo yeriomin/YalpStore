@@ -31,9 +31,10 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
 import com.github.yeriomin.playstoreapi.TokenDispenserException;
 import com.github.yeriomin.yalpstore.model.LoginInfo;
+import com.github.yeriomin.yalpstore.task.playstore.BackgroundCategoryTask;
 import com.github.yeriomin.yalpstore.task.playstore.PlayStorePayloadTask;
 import com.github.yeriomin.yalpstore.task.playstore.PlayStoreTask;
-import com.github.yeriomin.yalpstore.task.playstore.PurchasedAppsTask;
+import com.github.yeriomin.yalpstore.task.playstore.WishlistUpdateTask;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -59,7 +60,10 @@ public class PlayStoreApiAuthenticator {
 
     public PlayStoreApiAuthenticator(Context context) {
         this.context = context;
-        onLoginTasks.add(new PurchasedAppsTask());
+        BackgroundCategoryTask categoryTask = new BackgroundCategoryTask();
+        categoryTask.setManager(new CategoryManager(context));
+        onLoginTasks.add(categoryTask);
+        onLoginTasks.add(new WishlistUpdateTask());
     }
 
     public GooglePlayAPI getApi() throws IOException {
