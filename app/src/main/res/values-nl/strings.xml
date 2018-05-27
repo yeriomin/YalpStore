@@ -306,4 +306,5 @@ Nu doen?"</string>
 <string name="pref_exodus_summary_on">"Aantal trackers wordt automatisch op de detailpagina weergegeven"</string>
 <string name="pref_exodus_summary_off">"Exodus rapportagelink is weergegeven"</string>
 <string name="details_to_fdroid">"Bekijk in F-Droid"</string>
+<string name="details_instant_app">"Instant-app"</string>
 </resources>
