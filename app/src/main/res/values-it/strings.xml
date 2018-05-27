@@ -304,4 +304,5 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="pref_exodus_summary_on">"Il conteggio tracker è mostrato nella pagina dei dettagli"</string>
 <string name="pref_exodus_summary_off">"Viene mostrato il link report di Exodus"</string>
 <string name="details_to_fdroid">"Vedi in F-Droid"</string>
+<string name="details_instant_app">"App istantanea"</string>
 </resources>
