@@ -35,12 +35,17 @@ import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE
 public abstract class BaseActivity extends Activity {
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (!TextUtils.isEmpty(PreferenceUtil.getString(this, PREFERENCE_EMAIL))) {
+            menu.findItem(R.id.action_logout).setVisible(true);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             addQueryTextListener(menu.findItem(R.id.action_search));
-        }
-        if (!TextUtils.isEmpty(PreferenceUtil.getString(this, PREFERENCE_EMAIL))) {
-            menu.findItem(R.id.action_logout).setVisible(true);
         }
         return super.onCreateOptionsMenu(menu);
     }
@@ -73,5 +78,11 @@ public abstract class BaseActivity extends Activity {
 
     public void setContentViewNoWrapper(int layoutResID) {
         super.setContentView(layoutResID);
+    }
+
+    public void redrawLogoutItem() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            invalidateOptionsMenu();
+        }
     }
 }

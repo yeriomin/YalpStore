@@ -176,7 +176,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void initToolbar() {
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
 
             public void onDrawerClosed(View view) {
@@ -201,17 +201,21 @@ public abstract class BaseActivity extends AppCompatActivity {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
 
-        final NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(
+        ((NavigationView) findViewById(R.id.nav_view)).setNavigationItemSelectedListener(
             new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(MenuItem menuItem) {
                     onOptionsItemSelected(menuItem);
-                    ((DrawerLayout) navigationView.getParent()).closeDrawers();
+                    drawerLayout.closeDrawers();
                     return true;
                 }
             }
         );
+        redrawLogoutItem();
+    }
+
+    public void redrawLogoutItem(){
+        NavigationView navigationView = findViewById(R.id.nav_view);
         String email = PreferenceUtil.getString(this, PREFERENCE_EMAIL);
         ((TextView) navigationView.getHeaderView(0).findViewById(R.id.username)).setText(email.split("@")[0]);
         if (!TextUtils.isEmpty(email)) {
