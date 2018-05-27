@@ -137,7 +137,14 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
 
         byte[] content = new byte[0];
         Log.i(getClass().getSimpleName(), "Requesting " + connection.getURL().toString());
-        connection.connect();
+        try {
+            connection.connect();
+        } catch (NullPointerException e) {
+            // This is a known bug in Android 7.0; it was fixed by this change which went into Android 7.1:
+            // https://android-review.googlesource.com/#/c/271775/
+            // https://github.com/square/okhttp/issues/3245
+            throw new IOException(e);
+        }
 
         int code = 0;
         boolean isGzip;
