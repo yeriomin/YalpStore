@@ -17,6 +17,7 @@
 
     <LinearLayout
         android:id="@+id/container"
+        android:transitionGroup="true"
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:orientation="vertical"
