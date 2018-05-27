@@ -297,4 +297,14 @@ Fazer?"</string>
 <string name="action_wishlist_add">"Add to wishlist"</string>
 <string name="action_wishlist">"Wishlist"</string>
 <string name="action_ignore_this">"Ignorar esta atualização"</string>
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+<string name="details_exodus_tap_to_check">"tap to check"</string>
+<string name="details_exodus_searching">"searching"</string>
+<string name="details_exodus_not_found">"not found"</string>
+<string name="details_exodus_found">"%1$s trackers"</string>
+<string name="pref_category_third_party">"Third party services"</string>
+<string name="pref_exodus">"Exodus Privacy check"</string>
+<string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
+<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
+<string name="details_to_fdroid">"View in F-Droid"</string>
 </resources>
