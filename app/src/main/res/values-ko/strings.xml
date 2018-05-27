@@ -303,4 +303,5 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
 <string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
 <string name="details_to_fdroid">"View in F-Droid"</string>
+<string name="details_instant_app">"빠른 실행 앱"</string>
 </resources>
