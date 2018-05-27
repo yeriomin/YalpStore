@@ -139,7 +139,7 @@ Mějte na paměti, že stahování starších verzí aplikací není podporován
 <string name="pref_device_to_pretend_to_be_toast">"Tato změna bude aplikována až po odhlášení"</string>
 <string name="pref_category_updates">"Aktualizace"</string>
 <string name="pref_category_installation">"Instalace"</string>
-
+<string name="pref_category_spoofing">"Spoofing"</string>
 <string name="pref_category_ui">"Uživatelské rozhraní"</string>
 <string name="details_installing">"Instaluji…"</string>
 <string name="details_installed">"Úspěšně nainstalováno"</string>
@@ -218,7 +218,7 @@ Pokračovat?"</string>
 <string name="thank_you">"Děkuji"</string>
 <string name="list_updating">"Aktualizuji…"</string>
 <string name="error_invalid_device_definition">"Definice zařízení odmítnuta."</string>
-
+<string name="details_video">"Video"</string>
 <string name="error_could_not_download">"Nelze stáhnout."</string>
 <string name="first_login_message">"Pro použití svého účtu zvolte z menu Odhlásit"</string>
 <string name="early_access">"Předběžný přístup"</string>
@@ -259,11 +259,11 @@ Pokračovat?"</string>
 <string name="flag_page_description">"Důvod, proč považujete tento obsah nebo tuto aplikaci za nevhodné:"</string>
 <string name="flag_pharma_content">"Nelegální lék nebo jiná droga"</string>
 <string name="flag_sexual_content">"Erotický obsah"</string>
-
+<string name="flag_impersonation_copycat">"Copycat or impersonation"</string>
 <string name="flagging_title">"Nahlásit jako nevhodné"</string>
 <string name="content_flagged">"Námitka byla odeslána."</string>
-
-
+<string name="list_app_blacklisted">"Blacklisted"</string>
+<string name="list_app_whitelisted">"Whitelisted"</string>
 <string name="action_filter">"Filtr"</string>
 <string name="action_filter_system_apps">"Systémové aplikace"</string>
 <string name="action_filter_apps_with_ads">"Aplikace s reklamami"</string>
@@ -285,13 +285,23 @@ Pokračovat?"</string>
 <string name="pref_download_internal_storage_summary_off">"Apk soubory jsou stahovány do uvedeného adresáře na externí úložiště"</string>
 <string name="pref_use_tor">"Použít Tor"</string>
 <string name="pref_use_tor_summary">"Vynutit stahování přes Tor pro zlepšení ochrany soukromí. Vyžaduje aplikaci Orbot"</string>
-
-
-
-
-
-<string name="action_wishlist_remove">Odebrat ze seznamu přání</string>
-<string name="action_wishlist_add">Přidat do seznamu přání</string>
-<string name="action_wishlist">Seznam přání</string>
+<string name="pref_category_proxy">"Proxy"</string>
+<string name="pref_proxy_enable">"Povolit proxy"</string>
+<string name="pref_proxy_type">"Typ proxy"</string>
+<string name="pref_proxy_host">"Adresa proxy"</string>
+<string name="pref_proxy_port">"Port proxy"</string>
+<string name="action_wishlist_remove">"Odebrat ze seznamu přání"</string>
+<string name="action_wishlist_add">"Přidat do seznamu přání"</string>
+<string name="action_wishlist">"Seznam přání"</string>
 <string name="action_ignore_this">"Ignorovat tuto aktualizaci"</string>
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+<string name="details_exodus_tap_to_check">"tap to check"</string>
+<string name="details_exodus_searching">"searching"</string>
+<string name="details_exodus_not_found">"not found"</string>
+<string name="details_exodus_found">"%1$s trackers"</string>
+<string name="pref_category_third_party">"Third party services"</string>
+<string name="pref_exodus">"Exodus Privacy check"</string>
+<string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
+<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
+<string name="details_to_fdroid">"View in F-Droid"</string>
 </resources>
