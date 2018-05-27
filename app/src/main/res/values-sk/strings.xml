@@ -304,4 +304,5 @@ Vykonať?"</string>
 <string name="pref_exodus_summary_on">"Automaticky sa zobrazuje počet trackerov na stránke detailu"</string>
 <string name="pref_exodus_summary_off">"Zobrazuje sa odkaz na Exodus report"</string>
 <string name="details_to_fdroid">"Zobraziť v F-Droide"</string>
+<string name="details_instant_app">"Okamžitá aplikácia"</string>
 </resources>
