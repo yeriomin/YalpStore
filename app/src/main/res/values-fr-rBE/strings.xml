@@ -267,7 +267,7 @@ Poursuivre ?"</string>
 <string name="action_filter_system_apps">"System apps"</string>
 <string name="action_filter_apps_with_ads">"Apps with ads"</string>
 <string name="action_filter_paid_apps">"Paid apps"</string>
-<string name="action_filter_gsf_dependent_apps">"GSF dependent apps"</string>
+<string name="action_filter_gsf_dependent_apps">"Apps using GSF"</string>
 <string name="action_filter_category">"Category: %1$s"</string>
 <string name="action_filter_rating">"Rating: %1$s"</string>
 <string name="action_filter_downloads">"Downloads: %1$s"</string>
@@ -277,7 +277,7 @@ Poursuivre ?"</string>
 <string name="apps_by">"Apps by %1$s"</string>
 <string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
 <string name="no_permissions">"No permissions are used."</string>
-<string name="about_librepay_label">"Donate Librepay:"</string>
+<string name="about_librepay_label">"Donate Liberapay:"</string>
 <string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
 <string name="pref_download_internal_storage">"Download to internal storage"</string>
 <string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
@@ -289,4 +289,18 @@ Poursuivre ?"</string>
 <string name="pref_proxy_type">"Proxy type"</string>
 <string name="pref_proxy_host">"Proxy host"</string>
 <string name="pref_proxy_port">"Proxy port"</string>
+<string name="action_wishlist_remove">"Remove from wishlist"</string>
+<string name="action_wishlist_add">"Add to wishlist"</string>
+<string name="action_wishlist">"Wishlist"</string>
+<string name="action_ignore_this">"Ignore this update"</string>
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+<string name="details_exodus_tap_to_check">"tap to check"</string>
+<string name="details_exodus_searching">"searching"</string>
+<string name="details_exodus_not_found">"not found"</string>
+<string name="details_exodus_found">"%1$s trackers"</string>
+<string name="pref_category_third_party">"Third party services"</string>
+<string name="pref_exodus">"Exodus Privacy check"</string>
+<string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
+<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
+<string name="details_to_fdroid">"View in F-Droid"</string>
 </resources>
