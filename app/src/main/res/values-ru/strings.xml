@@ -279,4 +279,5 @@
     <string name="pref_exodus">Проверка Exodus Privacy</string>
     <string name="pref_exodus_summary_on">На странице приложения отображается число трекеров</string>
     <string name="pref_exodus_summary_off">Проверка происходит по нажатию на ссылку</string>
+    <string name="details_instant_app">"Приложение с мгновенным запуском"</string>
 </resources>

@@ -80,6 +80,9 @@ public class AppBuilder {
         app.setEarlyAccess(appDetails.hasEarlyAccessInfo());
         app.setTestingProgramAvailable(appDetails.hasTestingProgramInfo());
         app.setAd(details.getDetailsUrl().contains("nocache_isad=1"));
+        if (appDetails.getHasInstantLink() && !TextUtils.isEmpty(appDetails.getInstantLink())) {
+            app.setInstantAppLink(appDetails.getInstantLink());
+        }
         if (app.isTestingProgramAvailable()) {
             app.setTestingProgramOptedIn(appDetails.getTestingProgramInfo().hasSubscribed() && appDetails.getTestingProgramInfo().getSubscribed());
             app.setTestingProgramEmail(appDetails.getTestingProgramInfo().getTestingProgramEmail());

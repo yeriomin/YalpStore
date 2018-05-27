@@ -41,6 +41,7 @@ public class AllFragments extends Abstract {
         new Beta((DetailsActivity) activity, app).draw();
         new Exodus(activity, app).draw();
         new Fdroid(activity, app).draw();
+        new InstantAppLink(activity, app).draw();
     }
 
     public AllFragments(DetailsActivity activity, App app) {

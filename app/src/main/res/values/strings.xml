@@ -278,4 +278,5 @@
     <string name="apps_by">Apps by %1$s</string>
     <string name="pref_message_fallback">Attempt to set a fallback directory (%1$s)?</string>
     <string name="no_permissions">No permissions are used.</string>
+    <string name="details_instant_app">Instant app</string>
 </resources>
