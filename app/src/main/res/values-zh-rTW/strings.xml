@@ -307,4 +307,5 @@
 <string name="pref_exodus_summary_on">"追蹤器數量會在詳情頁自動顯示"</string>
 <string name="pref_exodus_summary_off">"顯示 Exodus 報告連結"</string>
 <string name="details_to_fdroid">"在 F-Droid 查看"</string>
+<string name="details_instant_app">"免安裝應用程式"</string>
 </resources>
