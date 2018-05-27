@@ -300,4 +300,5 @@
 <string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
 <string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
 <string name="details_to_fdroid">"View in F-Droid"</string>
+<string name="details_instant_app">"تطبيق فوري"</string>
 </resources>
