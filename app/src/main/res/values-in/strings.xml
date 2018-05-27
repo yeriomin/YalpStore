@@ -303,4 +303,5 @@ Lakukan?"</string>
 <string name="pref_exodus_summary_on">"Menampilkan jumlah pelacak di laman rincian scr otomatis"</string>
 <string name="pref_exodus_summary_off">"Tautan laporan Exodus tertampil"</string>
 <string name="details_to_fdroid">"Lihat di F-Droid"</string>
+<string name="details_instant_app">"Aplikasi instan"</string>
 </resources>
