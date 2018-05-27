@@ -91,7 +91,7 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play-Store-Nutzungsbedin
 <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Es wurde ein HTTP-Code empfangen, den die Download-Verwaltung nicht verarbeiten kann. Dies ist ein Serverfehler."</string>
 <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Fehler beim Empfangen oder Verarbeiten von Daten auf HTTP-Ebene."</string>
 <string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Zu viele Umleitungen."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Ungenügend freier Speicher."</string>
+<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Nicht genügend freier Speicher."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Es wurde kein externer Speicher gefunden. Möglicherweise ist die SD-Karte nicht eingebunden."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Es trat ein möglicherweise vorübergehender Fehler auf, der Download kann nicht fortgesetzt werden. Versuche es später noch einmal!"</string>
 <string name="download_manager_ERROR_BLOCKED">"Das Herunterladen ist fehlgeschlagen weil der Netzwerk-Richtlinien-Manager die Kontrolle über die anfordernde App hat. Überprüfe deine Einstellungen."</string>
@@ -103,7 +103,7 @@ Vergiss nicht, dass die Verwendung dieser App gegen die Play-Store-Nutzungsbedin
 <string name="details_to_play_store">"Im Play Store ansehen"</string>
 <string name="action_categories">"Kategorien"</string>
 <string name="list_update_all">"Alle aktualisieren"</string>
-<string name="notification_installation_complete">"Aktualisierung installiert"</string>
+<string name="notification_installation_complete">"Aktualisierung abgeschlossen"</string>
 <string name="notification_installation_failed">"Aktualisierung fehlgeschlagen."</string>
 <string name="pref_background_update_install_summary_off">"Du erhältst nur eine Benachrichtigung"</string>
 <string name="pref_background_update_install_summary_on">"Verfügbare Aktualisierungen werden automatisch installiert (root)"</string>
@@ -257,7 +257,7 @@ Fortfahren?"</string>
 <string name="flag_page_description">"Aus welchem Grund hältst du diesen Inhalt oder diese App für unangemessen?"</string>
 <string name="flag_pharma_content">"Illegales Rezept oder sonstige Arzneimittel"</string>
 <string name="flag_sexual_content">"Sexueller Inhalt"</string>
-<string name="flag_impersonation_copycat">"Copycat or impersonation"</string>
+<string name="flag_impersonation_copycat">"Piraterie oder nachgeahmt"</string>
 <string name="flagging_title">"Als unangemessen melden"</string>
 <string name="content_flagged">"Beanstandung wurde gesendet."</string>
 <string name="list_app_blacklisted">"Auf der Blacklist"</string>
@@ -271,7 +271,7 @@ Fortfahren?"</string>
 <string name="action_filter_rating">"Bewertung: %1$s"</string>
 <string name="action_filter_downloads">"Downloads: %1$s"</string>
 <string name="pref_auto_whitelist">"Automatische Whitelist"</string>
-<string name="pref_auto_whitelist_summary_on">"Apps, die via Yalp Store installiert wurden, sind automatisch auf der Whitelist"</string>
+<string name="pref_auto_whitelist_summary_on">"Apps, die via Yalp Store installiert wurden, werden automatisch auf die Whitelist gesetzt"</string>
 <string name="pref_auto_whitelist_summary_off">"Du musst Apps manuell auf die Whitelist setzen"</string>
 <string name="apps_by">"Apps von %1$s"</string>
 <string name="pref_message_fallback">"Versuche ein Rückfall-Verzeichnis festzulegen (%1$s)?"</string>
@@ -282,7 +282,7 @@ Fortfahren?"</string>
 <string name="pref_download_internal_storage_summary_on">"Sicherer, aber der Nutzer kann nicht auf die apks zugreifen"</string>
 <string name="pref_download_internal_storage_summary_off">"Apks werden in den unten angegebenen Pfad auf dem externen Speicher heruntergeladen"</string>
 <string name="pref_use_tor">"Tor verwenden"</string>
-<string name="pref_use_tor_summary">"Herunterladen über Tor erzwingen, zum besseren Schutz der Privatsphäre. Orbot wird benötigt"</string>
+<string name="pref_use_tor_summary">"Zum besseren Schutz der Privatsphäre herunterladen über Tor erzwingen. Orbot wird dafür benötigt."</string>
 <string name="pref_category_proxy">"Vermittlungsserver"</string>
 <string name="pref_proxy_enable">"Proxy aktivieren"</string>
 <string name="pref_proxy_type">"Proxy-Server Typ"</string>
@@ -293,12 +293,13 @@ Fortfahren?"</string>
 <string name="action_wishlist">"Wunschliste"</string>
 <string name="action_ignore_this">"Diese Aktua. ignorieren"</string>
 <string name="details_exodus">"Exodus Privacy: %1$s"</string>
-<string name="details_exodus_tap_to_check">"tap to check"</string>
-<string name="details_exodus_searching">"searching"</string>
-<string name="details_exodus_not_found">"not found"</string>
-<string name="details_exodus_found">"%1$s trackers"</string>
-<string name="pref_category_third_party">"Third party services"</string>
+<string name="details_exodus_tap_to_check">"Zum prüfen tippen"</string>
+<string name="details_exodus_searching">"Suchen..."</string>
+<string name="details_exodus_not_found">"Es wurde nichts gefunden"</string>
+<string name="details_exodus_found">"%1$s Tracker"</string>
+<string name="pref_category_third_party">"Drittanbieterservice"</string>
 <string name="pref_exodus">"Exodus Privacy check"</string>
 <string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
 <string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
+<string name="details_to_fdroid">"In F-Droid anzeigen"</string>
 </resources>

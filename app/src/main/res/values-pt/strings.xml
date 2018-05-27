@@ -165,7 +165,7 @@
 <string name="pref_background_update_download">"Descarregar também as atualizações"</string>
 <string name="details_not_available_on_play_store">"Indisponível na Play Store"</string>
 <string name="action_manual">"Descarga manual"</string>
-<string name="action_get_local_apk">"Obter apk local"</string>
+<string name="action_get_local_apk">"Guardar apk localmente"</string>
 <string name="details_saved_in_downloads">"Guardada na pasta Downloads"</string>
 <string name="details_could_not_copy_apk">"Não foi possível copiar o apk"</string>
 <string name="action_make_system">"Converter para aplicação do sistema"</string>

@@ -49,7 +49,7 @@ Ketuk \"Buat kata sandi\" untuk dialihkan ke laman pembuatan kata sandi."</strin
 <string name="details_versionName">"Versi %1$s"</string>
 <string name="details_versionName_updatable">"Versi %1$s→%2$s"</string>
 <string name="details_download">"Unduh"</string>
-<string name="details_install">"Instal"</string>
+<string name="details_install">"Pasang"</string>
 <string name="details_downloading">"Mendownload…"</string>
 <string name="details_review_dialog_title">"Ada yang ingin ditambahkan?"</string>
 <string name="details_review_dialog_review_title_hint">"Judul di sini"</string>
@@ -69,7 +69,7 @@ Ingat, menggunakan aplikasi ini melanggar S&amp;K Play Store. Akan lebih aman ji
 <string name="notification_download_complete_signature_mismatch_toast">"%1$s terunduh. Tanda tangan apk tidak sesuai dengan yang terpasang. Anda mungkin harus melepasnya dulu"</string>
 <string name="notification_updates_available_title">"Ada pembaruan aplikasi."</string>
 <string name="notification_updates_available_message">"Pembaruan tersedia untuk %1d aplikasi."</string>
-<string name="pref_auto_install_summary_off">"Aplikasi terpasang ketika pemakai menyentuh notifikasi penyelesaian."</string>
+<string name="pref_auto_install_summary_off">"Aplikasi terpasang ketika pengguna menyentuh notifikasi pemfinalan."</string>
 <string name="pref_auto_install_summary_on">"Aplikasi terpasang segera setelah unduhan selesai"</string>
 <string name="pref_auto_install">"Segera pasang aplikasi"</string>
 <string name="pref_update_list_white_or_black_black">"Aplikasi terpilih akan diabaikan ketika memeriksa pembaruan"</string>
@@ -83,9 +83,9 @@ Ingat, menggunakan aplikasi ini melanggar S&amp;K Play Store. Akan lebih aman ji
 <string name="pref_ui_theme_dark">"Gelap"</string>
 <string name="pref_ui_theme_black">"Hitam"</string>
 <string name="pref_background_update_interval_never">"Hanya ketika Yalp Store diluncurkan"</string>
-<string name="pref_background_update_interval_hourly">"Perjam"</string>
-<string name="pref_background_update_interval_daily">"Perhari"</string>
-<string name="pref_background_update_interval_weekly">"Perpekan"</string>
+<string name="pref_background_update_interval_hourly">"Tiap jam"</string>
+<string name="pref_background_update_interval_daily">"Tiap hari"</string>
+<string name="pref_background_update_interval_weekly">"Tiap pekan"</string>
 <string name="pref_background_update_interval">"Periksa pembaruan berkala"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Galat tidak diketahui"</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Galat penyimpanan tidak diketahui"</string>
@@ -128,7 +128,7 @@ Ingat, menggunakan aplikasi ini melanggar S&amp;K Play Store. Akan lebih aman ji
 
 Mengingat pengunduhan apl versi bebas tidak didukung Google Play Store, kesuksesan Anda tergantung tebakan kode versi. Bahkan jika tebakan benar dan unduhan dimulai, Anda mungkin mendapatkan apk yang tidak sesuai. Kemungkinan, Anda hanya membuang-buang waktu!"</string>
 <string name="manual_download_hint_version_code">"Kode versi disini"</string>
-<string name="details_uninstall">"Uninstal"</string>
+<string name="details_uninstall">"Copot"</string>
 <string name="notification_download_starting">"Memulai unduhan"</string>
 <string name="notification_download_progress">"%1$s dari %2$s terunduh"</string>
 <string name="pref_requested_language">"Permintaan bahasa Play Store"</string>
@@ -147,7 +147,7 @@ Mengingat pengunduhan apl versi bebas tidak didukung Google Play Store, kesukses
 <string name="notification_download_complete_new_permissions_toast">"%1$s terunduh. Versi baru dari apl meminta perizinan lebih. Cek daftar perizinan baru."</string>
 <string name="pref_not_privileged">"Tersedia ketika Yalp adalah apl sistem"</string>
 <string name="pref_installation_method">"Tata pemasangan"</string>
-<string name="pref_installation_method_default">"Pemasangan bawaan, tiada pemasangan latar belakang"</string>
+<string name="pref_installation_method_default">"Pemasangan bawaan, tanpa pemasangan latar belakang"</string>
 <string name="pref_installation_method_root">"Dengan root"</string>
 <string name="pref_installation_method_privileged">"Dengan izin sistem"</string>
 <string name="pref_background_update_download_summary_off">"Anda hanya dapat notifikasi"</string>
@@ -158,8 +158,8 @@ Mengingat pengunduhan apl versi bebas tidak didukung Google Play Store, kesukses
 <string name="action_get_local_apk">"Dapatkan apk lokal"</string>
 <string name="details_saved_in_downloads">"Tersimpan di folder Downloads-mu"</string>
 <string name="details_could_not_copy_apk">"Gagal menyalin apk"</string>
-<string name="action_make_system">"Ubah ke apl sistem"</string>
-<string name="action_make_normal">"Ubah ke apl normal"</string>
+<string name="action_make_system">"Jadikan apl sistem"</string>
+<string name="action_make_normal">"Jadikan apl biasa"</string>
 <string name="list_app_system">"Apl sistem"</string>
 <string name="activity_title_updates_only">"Pembaruan"</string>
 <string name="activity_title_updates_and_other_apps">"Apl Anda"</string>
@@ -184,7 +184,7 @@ Jangan dilakukan karena penasaran. Dapat menghancurkan perangkat. Cadangkan pera
 Mengingat pengubahan ini TIDAK didukung oleh Android OS, maka dari itu TIDAKLAH aman dan TIDAK dijamin bekerja.
 
 Jangan dilakukan karena penasaran. Dapat menghancurkan perangkat. Cadangkan perangkat sebelum mencoba."</string>
-<string name="list_check_updates">"Periksa update"</string>
+<string name="list_check_updates">"Periksa pembaruan"</string>
 <string name="pref_background_update_interval_manually">"Secara manual"</string>
 <string name="dialog_message_system_app_warning_uninstall">"Yakin untuk menghapus apl sistem ini? Apl sistem dipasang pada perangkat oleh vendor dan biasanya diperlukan agar berfungsi sebagaimana mestinya.
 
