@@ -20,10 +20,13 @@
 package com.github.yeriomin.yalpstore.notification;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.content.Intent;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.DownloadManagerFactory;
 import com.github.yeriomin.yalpstore.DownloadManagerInterface;
 import com.github.yeriomin.yalpstore.DownloadState;
@@ -42,6 +45,14 @@ public class CancelDownloadService extends IntentService {
 
     public CancelDownloadService() {
         super("CancelDownloadService");
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForeground((int) (System.currentTimeMillis() % 10000), new Notification.Builder(this, BuildConfig.APPLICATION_ID).build());
+        }
     }
 
     @Override
