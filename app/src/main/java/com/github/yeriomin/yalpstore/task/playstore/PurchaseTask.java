@@ -21,6 +21,7 @@ package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
 import android.view.WindowManager;
 
@@ -107,7 +108,11 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
         DownloadState.get(app.getPackageName()).setApp(app);
         Intent intentCancel = new Intent(context, CancelDownloadService.class);
         intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
-        context.startService(intentCancel);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(intentCancel);
+        } else {
+            context.startService(intentCancel);
+        }
         context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED).putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName()));
     }
 
