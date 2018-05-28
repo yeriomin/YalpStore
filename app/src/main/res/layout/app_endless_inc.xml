@@ -7,9 +7,14 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/endless_apps_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
         android:nestedScrollingEnabled="false"
-        android:padding="5dp"
+        android:paddingBottom="76dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp"
+        android:scrollbarStyle="outsideOverlay"
         android:scrollbars="vertical" />
 
 </LinearLayout>

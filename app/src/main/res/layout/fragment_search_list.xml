@@ -16,20 +16,19 @@
         android:background="?android:attr/colorBackground"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <LinearLayout
+        
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/search_apps_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/search_apps_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:nestedScrollingEnabled="false"
-                android:padding="5dp"
-                android:scrollbars="vertical" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            android:paddingBottom="76dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:paddingTop="5dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical" />
 
         <ProgressBar
             android:id="@+id/progress"

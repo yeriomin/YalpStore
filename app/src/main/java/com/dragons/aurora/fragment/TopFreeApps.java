@@ -12,7 +12,6 @@ import android.view.animation.AnimationUtils;
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
-import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.adapters.EndlessAppsAdapter;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
@@ -24,15 +23,19 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class TopFreeApps extends CategoryAppsTask {
 
+    private boolean setLooper = true;
     private boolean loading = true;
     private int oldItems, visibleItems, totalItems;
-
+    private View view;
     private AppListIterator iterator;
     private RecyclerView recyclerView;
+    private EndlessAppsAdapter endlessAppsAdapter;
+    private Disposable disposable;
 
     public AppListIterator getIterator() {
         return iterator;
@@ -52,7 +55,7 @@ public class TopFreeApps extends CategoryAppsTask {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.app_endless_inc, container, false);
+        view = inflater.inflate(R.layout.app_endless_inc, container, false);
         setRecyclerView(view.findViewById(R.id.endless_apps_list));
         setIterator(setupIterator(CategoryAppsFragment.categoryId, GooglePlayAPI.SUBCATEGORY.TOP_FREE));
         fetchCategoryApps(false);
@@ -62,10 +65,11 @@ public class TopFreeApps extends CategoryAppsTask {
     protected AppListIterator setupIterator(String categoryId, GooglePlayAPI.SUBCATEGORY subcategory) {
         AppListIterator iterator;
         try {
-            iterator = new AppListIterator(new CategoryAppsIterator(new PlayStoreApiAuthenticator(getContext()).getApi(),
+            iterator = new AppListIterator(new CategoryAppsIterator(
+                    new PlayStoreApiAuthenticator(getContext()).getApi(),
                     categoryId,
                     subcategory));
-            iterator.setFilter(new FilterMenu((AuroraActivity) getContext()).getFilterPreferences());
+            iterator.setFilter(new FilterMenu(getContext()).getFilterPreferences());
             return iterator;
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,18 +79,21 @@ public class TopFreeApps extends CategoryAppsTask {
 
     protected void setupListView(List<App> appsToAdd) {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity());
+        endlessAppsAdapter = new EndlessAppsAdapter(getActivity(), appsToAdd);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.layout_anim));
-        recyclerView.setAdapter(new EndlessAppsAdapter(getActivity(), appsToAdd));
+        recyclerView.setAdapter(endlessAppsAdapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if ((visibleItems + oldItems) >= totalItems + 2)
+                    setLooper = false;
                 if (dy > 0) {
                     visibleItems = mLayoutManager.getChildCount();
                     totalItems = mLayoutManager.getItemCount();
                     oldItems = mLayoutManager.findFirstVisibleItemPosition();
 
-                    if (loading) {
+                    if (loading && !setLooper) {
                         if ((visibleItems + oldItems) >= totalItems - 2) {
                             loading = false;
                             fetchCategoryApps(true);
@@ -95,14 +102,15 @@ public class TopFreeApps extends CategoryAppsTask {
                 }
             }
         });
+        getLooper();
     }
 
-    public void fetchCategoryApps(boolean loadMore) {
-        Observable.fromCallable(() -> getResult(iterator))
+    public void fetchCategoryApps(boolean shouldIterate) {
+        disposable = Observable.fromCallable(() -> getResult(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appList -> {
-                    if (loadMore) {
+                    if (shouldIterate) {
                         loading = true;
                         addApps(appList);
                     } else
@@ -111,11 +119,16 @@ public class TopFreeApps extends CategoryAppsTask {
     }
 
     public void addApps(List<App> appsToAdd) {
-        EndlessAppsAdapter adapter = (EndlessAppsAdapter) recyclerView.getAdapter();
-        for (App app : appsToAdd) {
-            adapter.add(app);
+        if (!appsToAdd.isEmpty()) {
+            for (App app : appsToAdd)
+                endlessAppsAdapter.add(app);
+            endlessAppsAdapter.notifyItemInserted(endlessAppsAdapter.getItemCount() - 1);
         }
-        adapter.notifyItemInserted(appsToAdd.size());
+        getLooper();
     }
 
+    public void getLooper() {
+        if (iterator.hasNext() && setLooper)
+            fetchCategoryApps(true);
+    }
 }

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.ProgressBar;
 
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
@@ -27,6 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class SearchAppsFragment extends SearchTask {
@@ -35,24 +37,25 @@ public class SearchAppsFragment extends SearchTask {
     RecyclerView recyclerView;
     @BindView(R.id.adaptive_toolbar)
     AdaptiveToolbar adaptiveToolbar;
+    @BindView(R.id.progress)
+    ProgressBar progressBar;
 
     private String title;
-
+    private boolean setLooper = true;
     private boolean loading = true;
     private int oldItems, visibleItems, totalItems;
-
+    private View view;
     private AppListIterator iterator;
+    private EndlessAppsAdapter endlessAppsAdapter;
+    private Disposable disposable;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search_list, container, false);
-
+        view = inflater.inflate(R.layout.fragment_search_list, container, false);
         ButterKnife.bind(this, view);
-
         adaptiveToolbar.getAction_icon().setOnClickListener((v -> this.getActivity().onBackPressed()));
         adaptiveToolbar.getTitle0().setText(title);
         adaptiveToolbar.getTitle1().setVisibility(View.GONE);
-
         return view;
     }
 
@@ -83,18 +86,21 @@ public class SearchAppsFragment extends SearchTask {
 
     protected void setupListView(List<App> appsToAdd) {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity());
+        endlessAppsAdapter = new EndlessAppsAdapter(getActivity(), appsToAdd);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(this.getActivity(), R.anim.layout_anim));
-        recyclerView.setAdapter(new EndlessAppsAdapter(getActivity(), appsToAdd));
+        recyclerView.setAdapter(endlessAppsAdapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if ((visibleItems + oldItems) >= totalItems + 2)
+                    setLooper = false;
                 if (dy > 0) {
                     visibleItems = mLayoutManager.getChildCount();
                     totalItems = mLayoutManager.getItemCount();
                     oldItems = mLayoutManager.findFirstVisibleItemPosition();
 
-                    if (loading) {
+                    if (loading && !setLooper) {
                         if ((visibleItems + oldItems) >= totalItems - 2) {
                             loading = false;
                             fetchSearchAppsList(true);
@@ -103,26 +109,35 @@ public class SearchAppsFragment extends SearchTask {
                 }
             }
         });
+        getLooper();
     }
 
     public void fetchSearchAppsList(boolean loadMore) {
-        Observable.fromCallable(() -> getResult(iterator))
+        disposable = Observable.fromCallable(() -> getResult(iterator))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(appList -> {
-                    if (loadMore) {
-                        loading = true;
-                        addApps(appList);
-                    } else
-                        setupListView(appList);
+                    if (view != null) {
+                        if (loadMore) {
+                            loading = true;
+                            addApps(appList);
+                        } else
+                            setupListView(appList);
+                    }
                 }, this::processException);
     }
 
     public void addApps(List<App> appsToAdd) {
-        EndlessAppsAdapter adapter = (EndlessAppsAdapter) recyclerView.getAdapter();
-        for (App app : appsToAdd) {
-            adapter.add(app);
+        if (!appsToAdd.isEmpty()) {
+            for (App app : appsToAdd)
+                endlessAppsAdapter.add(app);
+            endlessAppsAdapter.notifyItemInserted(endlessAppsAdapter.getItemCount() - 1);
         }
-        adapter.notifyItemInserted(appsToAdd.size());
+        getLooper();
+    }
+
+    public void getLooper() {
+        if (iterator.hasNext() && setLooper)
+            fetchSearchAppsList(true);
     }
 }
