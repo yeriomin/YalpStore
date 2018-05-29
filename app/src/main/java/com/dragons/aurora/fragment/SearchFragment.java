@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,7 +45,7 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
     @BindView(R.id.searchHistory)
     RecyclerView recyclerView;
     @BindView(R.id.search_layout)
-    RoundRectView search_layout;
+    CardView search_layout;
     @BindView(R.id.emptyView)
     TextView emptyView;
     @BindView(R.id.clearAll)

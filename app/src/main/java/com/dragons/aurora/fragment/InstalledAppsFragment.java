@@ -1,7 +1,6 @@
 package com.dragons.aurora.fragment;
 
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,19 +10,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.adapters.InstalledAppsAdapter;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.InstalledAppsTaskHelper;
-import com.percolate.caffeine.ViewUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -31,11 +32,19 @@ import io.reactivex.schedulers.Schedulers;
 
 public class InstalledAppsFragment extends InstalledAppsTaskHelper {
 
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.installed_apps_list)
+    RecyclerView recyclerView;
+    @BindView(R.id.ohhSnap_retry)
+    Button retry_update;
+    @BindView(R.id.includeSystem)
+    SwitchCompat includeSystem;
+
     private View view;
     private Disposable loadApps;
-    private SwipeRefreshLayout swipeRefreshLayout;
     private List<App> installedApps = new ArrayList<>(new HashSet<>());
-    private SwitchCompat includeSystem;
+    private InstalledAppsAdapter installedAppsAdapter;
 
     public static InstalledAppsFragment newInstance() {
         return new InstalledAppsFragment();
@@ -59,28 +68,29 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
         }
 
         view = inflater.inflate(R.layout.app_installed_inc, container, false);
+        ButterKnife.bind(this, view);
 
-        swipeRefreshLayout = ViewUtils.findViewById(view, R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            if (isLoggedIn())
+            if (isLoggedIn() && isConnected(getContext()))
                 loadMarketApps();
             else
                 swipeRefreshLayout.setRefreshing(false);
         });
 
-        includeSystem = view.findViewById(R.id.includeSystem);
+        retry_update.setOnClickListener(click -> {
+            if (isLoggedIn() && isConnected(getContext())) {
+                hide(view, R.id.ohhSnap);
+                if (installedAppsAdapter == null || installedAppsAdapter.getItemCount() <= 0)
+                    loadMarketApps();
+            }
+        });
+
         includeSystem.setChecked(PreferenceFragment.getBoolean(getContext(), "INCLUDE_SYSTEM"));
         includeSystem.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked)
-                PreferenceManager.getDefaultSharedPreferences(getActivity())
-                        .edit()
-                        .putBoolean("INCLUDE_SYSTEM", true)
-                        .apply();
+                Util.putBoolean(getContext(), "INCLUDE_SYSTEM", true);
             else
-                PreferenceManager.getDefaultSharedPreferences(getActivity())
-                        .edit()
-                        .putBoolean("INCLUDE_SYSTEM", false)
-                        .apply();
+                Util.putBoolean(getContext(), "INCLUDE_SYSTEM", false);
             loadMarketApps();
         });
 
@@ -100,12 +110,11 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
         swipeRefreshLayout.setRefreshing(false);
     }
 
-    protected void setupListView(List<App> appsToAdd) {
-        RecyclerView recyclerView = view.findViewById(R.id.installed_apps_list);
-        recyclerView.setHasFixedSize(true);
+    protected void setupRecycler(List<App> appsToAdd) {
+        installedAppsAdapter = new InstalledAppsAdapter(getActivity(), appsToAdd);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
-        recyclerView.setAdapter(new InstalledAppsAdapter(getActivity(), appsToAdd));
+        recyclerView.setAdapter(installedAppsAdapter);
     }
 
     public void loadMarketApps() {
@@ -115,12 +124,24 @@ public class InstalledAppsFragment extends InstalledAppsTaskHelper {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((appList) -> {
                     if (view != null) {
-                        installedApps = new ArrayList<>(new HashSet<>(appList));
-                        Collections.sort(installedApps);
-                        setupListView(installedApps);
+                        installedApps.clear();
+                        installedApps.addAll(appList);
+                        setupList(installedApps);
                         swipeRefreshLayout.setRefreshing(false);
                     }
-                }, this::processException);
+                }, err -> {
+                    swipeRefreshLayout.setRefreshing(false);
+                    processException(err);
+                    show(view, R.id.ohhSnap);
+                });
     }
 
+    private void setupList(List<App> installedApps) {
+        if (recyclerView.getAdapter() == null)
+            setupRecycler(installedApps);
+        else {
+            installedAppsAdapter.appsToAdd = installedApps;
+            Util.reloadRecycler(recyclerView);
+        }
+    }
 }

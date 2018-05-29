@@ -1,15 +1,16 @@
-<com.github.florent37.shapeofview.shapes.RoundRectView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/list_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    android:background="?android:attr/panelBackground"
-    android:elevation="1.5dp"
-    app:roundRect_bottomLeftRadius="10dp"
-    app:roundRect_bottomRightRadius="10dp"
-    app:roundRect_topLeftRadius="10dp"
-    app:roundRect_topRightRadius="10dp">
+    android:layout_marginEnd="6dp"
+    android:layout_marginStart="6dp"
+    android:layout_marginTop="2dp"
+    app:cardBackgroundColor="?android:attr/panelBackground"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="1dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -121,4 +122,5 @@
             android:src="@drawable/ic_3dots" />
 
     </LinearLayout>
-</com.github.florent37.shapeofview.shapes.RoundRectView>
+
+</android.support.v7.widget.CardView>

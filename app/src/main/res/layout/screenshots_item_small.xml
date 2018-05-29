@@ -4,10 +4,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
-    app:roundRect_bottomLeftRadius="8dp"
-    app:roundRect_bottomRightRadius="8dp"
-    app:roundRect_topLeftRadius="8dp"
-    app:roundRect_topRightRadius="8dp">
+    app:shape_roundRect_bottomLeftRadius="8dp"
+    app:shape_roundRect_bottomRightRadius="8dp"
+    app:shape_roundRect_topLeftRadius="8dp"
+    app:shape_roundRect_topRightRadius="8dp">
 
     <ImageView
         android:id="@+id/scrn_itm_s"

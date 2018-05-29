@@ -9,47 +9,122 @@
         android:layout_height="wrap_content"
         app:ToolbarStyle="Details" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="10dp"
-        android:background="?android:attr/colorBackground"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/search_apps_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:nestedScrollingEnabled="false"
-            android:paddingBottom="76dp"
-            android:paddingEnd="5dp"
-            android:paddingStart="5dp"
-            android:paddingTop="5dp"
-            android:scrollbarStyle="outsideOverlay"
-            android:scrollbars="vertical" />
 
-        <ProgressBar
+        <RelativeLayout
+            android:id="@+id/ohhSnap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_above="@+id/ohhSnap_txt"
+                android:layout_centerHorizontal="true"
+                android:alpha=".75"
+                android:src="@drawable/ic_err" />
+
+            <TextView
+                android:id="@+id/ohhSnap_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/google_sans"
+                android:text="@string/ohh_snap_text"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/ohhSnap_retry"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_below="@+id/ohhSnap_txt"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_positive"
+                android:fontFamily="@font/google_sans"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="@string/ohh_snap_retry"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/unicorn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/no_app_available"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/google_sans_bold"
+                android:text="@string/list_empty_search"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/recheck_query"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_below="@+id/no_app_available"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_positive"
+                android:fontFamily="@font/google_sans"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="@string/list_update_recheck"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:indeterminate="true"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@android:id/empty"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/progress"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="25dp"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_height="match_parent">
 
-    </RelativeLayout>
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:scaleX=".8"
+                android:scaleY=".8" />
+        </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="?android:attr/colorBackground"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/search_apps_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="76dp"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical" />
+        </RelativeLayout>
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
@@ -35,7 +36,10 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(getThemeFromPref());
         super.onCreate(savedInstanceState);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        else
+            getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
@@ -43,7 +47,6 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
         bottm_bar.setSecondaryMenu(R.menu.nav_menu, this);
         viewPager.setAdapter(new ViewPagerAdapter(this, getSupportFragmentManager()));
         viewPager.setOffscreenPageLimit(3);
-
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
     }

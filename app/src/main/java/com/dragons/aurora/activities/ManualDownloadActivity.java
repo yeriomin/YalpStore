@@ -1,20 +1,28 @@
 package com.dragons.aurora.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.v7.graphics.Palette;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.fragment.details.DownloadOrInstall;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.task.playstore.PurchaseCheckTask;
-import com.dragons.aurora.view.AdaptiveToolbar;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -27,9 +35,9 @@ public class ManualDownloadActivity extends DetailsActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(getResources().getColor(R.color.semi_transparent));
-        AdaptiveToolbar dadtb = findViewById(R.id.d_adtb);
-        dadtb.getAction_icon().setOnClickListener((v -> this.onBackPressed()));
     }
 
     @Override
@@ -52,17 +60,20 @@ public class ManualDownloadActivity extends DetailsActivity {
     private void draw(App app) {
         setTitle(app.getDisplayName());
         setContentView(R.layout.manual_download_activity_layout);
+        drawDetails();
+
         if (app.getOfferType() == 0) {
             app.setOfferType(1);
         }
-        ((TextView) findViewById(R.id.compatibility)).setText(
-                app.getVersionCode() > 0
-                        ? R.string.manual_download_compatible
-                        : R.string.manual_download_incompatible
-        );
+
+        ((TextView) findViewById(R.id.compatibility)).setText(app.getVersionCode() > 0
+                ? R.string.manual_download_compatible
+                : R.string.manual_download_incompatible);
+
         if (app.getVersionCode() > 0) {
             ((EditText) findViewById(R.id.version_code)).setHint(String.valueOf(latestVersionCode));
         }
+
         DownloadOrInstall downloadOrInstallFragment = new DownloadOrInstall(this, app);
         ManualDownloadTextWatcher textWatcher = new ManualDownloadTextWatcher(app,
                 findViewById(R.id.download),
@@ -74,6 +85,56 @@ public class ManualDownloadActivity extends DetailsActivity {
         ((EditText) findViewById(R.id.version_code)).addTextChangedListener(textWatcher);
         downloadOrInstallFragment.registerReceivers();
         downloadOrInstallFragment.draw();
+    }
+
+    private void drawDetails() {
+        ((TextView) findViewById(R.id.displayName)).setText(app.getDisplayName());
+        ((TextView) findViewById(R.id.packageName)).setText(app.getPackageName());
+        ((TextView) findViewById(R.id.versionString)).setText(String.valueOf(app.getVersionCode()));
+
+        ScrollView disclaimer = findViewById(R.id.disclaimer);
+        ImageView showLessMore = findViewById(R.id.show_LessMore);
+        showLessMore.setOnClickListener(v -> {
+            if (disclaimer.getVisibility() == View.GONE) {
+                disclaimer.setVisibility(View.VISIBLE);
+                showLessMore.animate().rotation(180).start();
+            } else {
+                disclaimer.setVisibility(View.GONE);
+                showLessMore.animate().rotation(0).start();
+            }
+        });
+
+        ImageView appIcon = findViewById(R.id.icon);
+        Picasso
+                .with(this)
+                .load(app.getIconInfo().getUrl())
+                .placeholder(R.color.transparent)
+                .into((ImageView) findViewById(R.id.icon), new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        Bitmap bitmap = ((BitmapDrawable) appIcon.getDrawable()).getBitmap();
+                        if (bitmap != null)
+                            getPalette(bitmap);
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                });
+    }
+
+    private void getPalette(Bitmap bitmap) {
+        Palette.from(bitmap).generate(this::drawGradients);
+    }
+
+    private void drawGradients(Palette myPalette) {
+        (findViewById(R.id.diagonalView1))
+                .setBackground(Util.getGradient(myPalette.getLightVibrantColor(Color.LTGRAY),
+                        myPalette.getDominantColor(Color.GRAY)));
+        (findViewById(R.id.diagonalView2))
+                .setBackground(Util.getGradient(myPalette.getLightVibrantColor(Color.GRAY),
+                        myPalette.getVibrantColor(Color.DKGRAY)));
     }
 
     static private class ManualDownloadTextWatcher implements TextWatcher {

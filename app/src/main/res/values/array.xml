@@ -44,7 +44,7 @@
         <item>4.7</item>
     </string-array>
     <string-array name="filterRatingLabels" translatable="false">
-        <item> All </item>
+        <item>@string/action_filter_all</item>
         <item> 1 + </item>
         <item> 2 + </item>
         <item> 3 + </item>
@@ -65,7 +65,7 @@
         <item>100000000</item>
     </string-array>
     <string-array name="filterDownloadsLabels" translatable="false">
-        <item> All </item>
+        <item>@string/action_filter_all</item>
         <item> > 100 </item>
         <item> > 1 K </item>
         <item> > 10 K </item>

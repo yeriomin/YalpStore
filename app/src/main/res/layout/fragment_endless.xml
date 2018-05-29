@@ -17,49 +17,36 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/category_tabs_cnt"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="2dp"
+            app:cardBackgroundColor="?android:attr/panelBackground"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="1dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/category_tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/outline_bg"
-                app:tabIndicatorHeight="0dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                app:tabIndicatorHeight="4dp"
                 app:tabMode="scrollable"
                 app:tabSelectedTextColor="@color/colorAccent" />
+        </android.support.v7.widget.CardView>
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/view_pager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-        </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:indeterminate="true"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@android:id/empty"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/progress"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="25dp"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
+            android:layout_height="match_parent"
+            android:layout_below="@id/category_tabs_cnt" />
     </RelativeLayout>
 
     <include layout="@layout/filter_sheet" />

@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,6 @@ import android.widget.TextView;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.SearchActivity;
-import com.github.florent37.shapeofview.shapes.RoundRectView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -99,8 +99,8 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public RoundRectView viewForeground;
-       RelativeLayout viewBackground;
+        public CardView viewForeground;
+        RelativeLayout viewBackground;
         TextView query;
         TextView time;
 

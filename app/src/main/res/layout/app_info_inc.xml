@@ -8,8 +8,8 @@
         android:id="@+id/icon"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
-        android:layout_marginEnd="6dp"
         android:layout_marginStart="12dp"
+        android:layout_marginEnd="6dp"
         android:contentDescription="@string/content_description_app_icon"
         android:src="@android:color/transparent" />
 
@@ -35,8 +35,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/google_sans"
             android:maxLines="1"
-            android:textColor="?android:attr/textColorSecondary"
             android:textAlignment="viewStart"
+            android:textColor="?android:attr/textColorSecondary"
             android:textSize="12sp" />
 
         <TextView

@@ -6,24 +6,23 @@
     android:background="?android:attr/colorBackground"
     android:orientation="vertical">
 
-    <com.github.florent37.shapeofview.shapes.RoundRectView
+    <android.support.v7.widget.CardView
         android:id="@+id/installed_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="5dp"
-        android:background="?android:attr/panelBackground"
-        android:elevation="2dp"
-        app:roundRect_bottomLeftRadius="10dp"
-        app:roundRect_bottomRightRadius="10dp"
-        app:roundRect_topLeftRadius="10dp"
-        app:roundRect_topRightRadius="10dp">
+        app:cardBackgroundColor="?android:attr/panelBackground"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackgroundBorderless"
+            android:background="?android:attr/panelBackground"
             android:orientation="vertical"
             android:padding="5dp"
             app:layout_scrollFlags="scroll|enterAlways|snap">
@@ -63,33 +62,84 @@
                 android:textAlignment="viewStart"
                 android:textColor="?android:attr/textColorSecondary" />
         </LinearLayout>
-    </com.github.florent37.shapeofview.shapes.RoundRectView>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+    </android.support.v7.widget.CardView>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/installed_header"
         android:layout_marginBottom="8dp"
-        android:background="?android:attr/colorBackground"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/installed_apps_list"
+        <RelativeLayout
+            android:id="@+id/ohhSnap"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingEnd="6dp"
-            android:paddingStart="6dp"
-            android:paddingTop="6dp"
-            android:scrollbars="vertical" />
+            android:visibility="gone">
 
-        <TextView
-            android:id="@android:id/empty"
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_above="@+id/ohhSnap_txt"
+                android:layout_centerHorizontal="true"
+                android:alpha=".75"
+                android:src="@drawable/ic_err" />
+
+            <TextView
+                android:id="@+id/ohhSnap_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/google_sans"
+                android:text="@string/ohh_snap_text"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/ohhSnap_retry"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_below="@+id/ohhSnap_txt"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_positive"
+                android:fontFamily="@font/google_sans"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="@string/ohh_snap_retry"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_height="match_parent"
+            android:layout_below="@id/ohhSnap"
+            android:background="?android:attr/colorBackground"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/installed_apps_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
+
+            <TextView
+                android:id="@android:id/empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

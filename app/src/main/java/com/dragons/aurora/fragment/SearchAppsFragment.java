@@ -9,7 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.ProgressBar;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.dragons.aurora.AppListIterator;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
@@ -37,8 +38,12 @@ public class SearchAppsFragment extends SearchTask {
     RecyclerView recyclerView;
     @BindView(R.id.adaptive_toolbar)
     AdaptiveToolbar adaptiveToolbar;
+    @BindView(R.id.unicorn)
+    RelativeLayout unicorn;
+    @BindView(R.id.ohhSnap)
+    RelativeLayout ohhSnap;
     @BindView(R.id.progress)
-    ProgressBar progressBar;
+    RelativeLayout progress;
 
     private String title;
     private boolean setLooper = true;
@@ -56,6 +61,20 @@ public class SearchAppsFragment extends SearchTask {
         adaptiveToolbar.getAction_icon().setOnClickListener((v -> this.getActivity().onBackPressed()));
         adaptiveToolbar.getTitle0().setText(title);
         adaptiveToolbar.getTitle1().setVisibility(View.GONE);
+        Button ohhSnap_retry = view.findViewById(R.id.ohhSnap_retry);
+        ohhSnap_retry.setOnClickListener(click -> {
+            if (isLoggedIn() && isConnected(getContext())) {
+                hide(view, R.id.ohhSnap);
+                fetchSearchAppsList(false);
+            }
+        });
+        Button retry_querry = view.findViewById(R.id.recheck_query);
+        retry_querry.setOnClickListener(click -> {
+            if (isLoggedIn() && isConnected(getContext())) {
+                hide(view, R.id.unicorn);
+                fetchSearchAppsList(false);
+            }
+        });
         return view;
     }
 
@@ -85,6 +104,7 @@ public class SearchAppsFragment extends SearchTask {
     }
 
     protected void setupListView(List<App> appsToAdd) {
+        progress.setVisibility(View.GONE);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getActivity());
         endlessAppsAdapter = new EndlessAppsAdapter(getActivity(), appsToAdd);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -93,7 +113,7 @@ public class SearchAppsFragment extends SearchTask {
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if ((visibleItems + oldItems) >= totalItems + 2)
+                if ((visibleItems + oldItems) >= totalItems + 2 || endlessAppsAdapter.getItemCount() > 20)
                     setLooper = false;
                 if (dy > 0) {
                     visibleItems = mLayoutManager.getChildCount();
@@ -124,7 +144,10 @@ public class SearchAppsFragment extends SearchTask {
                         } else
                             setupListView(appList);
                     }
-                }, this::processException);
+                }, err -> {
+                    processException(err);
+                    ohhSnap.setVisibility(View.VISIBLE);
+                });
     }
 
     public void addApps(List<App> appsToAdd) {
@@ -139,5 +162,7 @@ public class SearchAppsFragment extends SearchTask {
     public void getLooper() {
         if (iterator.hasNext() && setLooper)
             fetchSearchAppsList(true);
+        else if (!iterator.hasNext() && endlessAppsAdapter.getItemCount() <= 0)
+            unicorn.setVisibility(View.VISIBLE);
     }
 }

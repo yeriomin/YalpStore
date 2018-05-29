@@ -11,7 +11,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -53,9 +52,9 @@ public class SearchActivity extends AuroraActivity implements SingleDownloadsAda
                 switch (newState) {
                     case BottomSheetBehavior.STATE_HIDDEN:
                         break;
-                    //case BottomSheetBehavior.STATE_EXPANDED:
-                    //    filter_fab.hide();
-                    //    break;
+                    case BottomSheetBehavior.STATE_EXPANDED:
+                        filter_fab.hide();
+                        break;
                     case BottomSheetBehavior.STATE_COLLAPSED:
                         filter_fab.show();
                         break;
@@ -83,7 +82,7 @@ public class SearchActivity extends AuroraActivity implements SingleDownloadsAda
         filter_apply.setOnClickListener(click -> {
             toggleBottomSheet();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                getCategoryApps(query,getTitleString());
+                getCategoryApps(query, getTitleString());
             }, 500);
         });
 
@@ -112,7 +111,7 @@ public class SearchActivity extends AuroraActivity implements SingleDownloadsAda
             getCategoryApps(query, getTitleString());
         }
     }
-    
+
     @Override
     public void onDownloadBadgeClickListener() {
         singleDownloadAdapter.notifyDataSetChanged();
@@ -130,6 +129,7 @@ public class SearchActivity extends AuroraActivity implements SingleDownloadsAda
                 getResources().getStringArray(R.array.filterDownloadsLabels),
                 getResources().getStringArray(R.array.filterDownloadsValues));
         singleDownloadAdapter.setOnDownloadBadgeClickListener(this);
+        filter_downloads.setItemViewCacheSize(10);
         filter_downloads.setAdapter(singleDownloadAdapter);
     }
 
@@ -139,6 +139,7 @@ public class SearchActivity extends AuroraActivity implements SingleDownloadsAda
                 getResources().getStringArray(R.array.filterRatingLabels),
                 getResources().getStringArray(R.array.filterRatingValues));
         singleRatingAdapter.setOnRatingBadgeClickListener(this);
+        filter_ratings.setItemViewCacheSize(10);
         filter_ratings.setAdapter(singleRatingAdapter);
     }
 

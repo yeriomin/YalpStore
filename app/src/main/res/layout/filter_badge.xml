@@ -5,16 +5,24 @@
     android:layout_height="38dp"
     android:layout_margin="5dp"
     android:background="@drawable/badge_bg"
+    android:clipToPadding="true"
     android:elevation="1dp"
     android:padding="8dp">
 
     <com.github.florent37.shapeofview.shapes.CircleView
-        android:id="@+id/badge_dot"
+        android:id="@+id/badge_dot_c"
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:layout_centerVertical="true"
-        android:layout_marginStart="5dp"
-        android:background="@color/colorGold" />
+        android:layout_marginStart="5dp">
+
+        <View
+            android:id="@+id/badge_dot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorGold" />
+
+    </com.github.florent37.shapeofview.shapes.CircleView>
 
     <TextView
         android:id="@+id/badge_text"
@@ -23,11 +31,11 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/badge_dot"
+        android:layout_toEndOf="@+id/badge_dot_c"
         android:ellipsize="end"
         android:gravity="center"
         android:singleLine="true"
-        android:textColor="?android:attr/colorForeground" />
+        android:textColor="?android:attr/textColorPrimary" />
 
     <com.github.florent37.shapeofview.shapes.CircleView
         android:id="@+id/badge_cancel"
@@ -36,17 +44,15 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="5dp"
         android:layout_toEndOf="@+id/badge_text"
-        android:background="@color/lightGray"
         android:visibility="gone">
 
         <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:scaleX=".8"
-            android:scaleY=".8"
+            android:background="@color/lightGray"
             android:src="@drawable/ic_cancel"
-            android:tint="?android:attr/colorForeground" />
+            android:tint="@color/darkGray" />
 
     </com.github.florent37.shapeofview.shapes.CircleView>
 

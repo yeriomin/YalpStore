@@ -25,6 +25,7 @@ import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ImageSource;
+import com.github.florent37.shapeofview.shapes.RoundRectView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -133,12 +134,14 @@ public class GeneralDetails extends AbstractHelper {
         paintButton(color, R.id.run);
         paintButton(color, R.id.beta_subscribe_button);
         paintButton(color, R.id.beta_submit_button);
-        paintTextView(color, R.id.beta_header);
-        paintTextView(color, R.id.permissions_header);
-        paintTextView(color, R.id.exodus_title);
-        paintTextView(color, R.id.changes_upper);
+        if (!Util.isDark(fragment.getContext())) {
+            paintTextView(color, R.id.beta_header);
+            paintTextView(color, R.id.permissions_header);
+            paintTextView(color, R.id.exodus_title);
+            paintTextView(color, R.id.changes_upper);
+            paintTextView(color, R.id.showLessMoreTxt);
+        }
         paintLLayout(color, R.id.changes_container);
-        paintTextView(color, R.id.showLessMoreTxt);
         paintImageView(color, R.id.privacy_ico);
         paintImageViewBg(color, R.id.apps_similar);
         paintImageViewBg(color, R.id.apps_recommended);
@@ -291,11 +294,11 @@ public class GeneralDetails extends AbstractHelper {
             if (changelogLayout.getVisibility() == View.GONE) {
                 show(fragment.getView(), R.id.changelog_container);
                 showLessMoreTxt.setText(R.string.details_less);
-                showLessMore.setImageResource(R.drawable.ic_expand_less);
+                showLessMore.animate().rotation(180).start();
             } else {
                 hide(fragment.getView(), R.id.changelog_container);
                 showLessMoreTxt.setText(R.string.details_more);
-                showLessMore.setImageResource(R.drawable.ic_expand_more);
+                showLessMore.animate().rotation(0).start();
             }
         });
     }

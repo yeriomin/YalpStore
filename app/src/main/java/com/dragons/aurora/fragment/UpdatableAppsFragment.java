@@ -1,11 +1,11 @@
 package com.dragons.aurora.fragment;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.AuroraApplication;
@@ -25,19 +24,20 @@ import com.dragons.aurora.R;
 import com.dragons.aurora.UpdatableRecyclerItemTouchHelper;
 import com.dragons.aurora.UpdateAllReceiver;
 import com.dragons.aurora.UpdateChecker;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.adapters.UpdatableAppsAdapter;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.notification.CancelDownloadService;
 import com.dragons.aurora.task.playstore.UpdatableAppsTaskHelper;
 import com.github.florent37.shapeofview.shapes.RoundRectView;
 import com.percolate.caffeine.ToastUtils;
-import com.percolate.caffeine.ViewUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -48,18 +48,33 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
     public static int updates = 0;
     public static boolean recheck = false;
     public UpdatableAppsAdapter updatableAppsAdapter;
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.updatable_apps_list)
+    RecyclerView recyclerView;
+    @BindView(R.id.update_all)
+    Button update;
+    @BindView(R.id.update_cancel)
+    Button cancel;
+    @BindView(R.id.recheck_updates)
+    Button recheck_update;
+    @BindView(R.id.ohhSnap_retry)
+    Button retry_update;
+    @BindView(R.id.updates_txt)
+    TextView updates_txt;
+    @BindView(R.id.updates_setting)
+    TextView deltaTextView;
+    private List<App> updatableApps = new ArrayList<>(new HashSet<>());
+    private UpdateAllReceiver updateAllReceiver;
     private View view;
     private Disposable loadApps;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private UpdateAllReceiver updateAllReceiver;
-    private Button update;
-    private Button recheck_update;
-    private Button cancel;
-    private TextView txt;
-    private List<App> updatableApps = new ArrayList<>(new HashSet<>());
 
     public static UpdatableAppsFragment newInstance() {
         return new UpdatableAppsFragment();
+    }
+
+    public Boolean isAlreadyUpdating() {
+        return ((AuroraApplication) getActivity().getApplication()).isBackgroundUpdating();
     }
 
     @Override
@@ -80,10 +95,10 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
         }
 
         view = inflater.inflate(R.layout.app_updatable_inc, container, false);
-        initViews();
+        ButterKnife.bind(this, view);
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            if (isLoggedIn() && isConnected(getContext()))
+            if (isLoggedIn() && isConnected(getContext()) && !isAlreadyUpdating())
                 loadUpdatableApps();
             else
                 swipeRefreshLayout.setRefreshing(false);
@@ -92,23 +107,24 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
         recheck_update.setOnClickListener(click -> {
             if (isLoggedIn() && isConnected(getContext())) {
                 hide(view, R.id.unicorn);
-                txt.setText(R.string.list_update_chk_txt);
-                swipeRefreshLayout.setRefreshing(true);
+                updates_txt.setText(R.string.list_update_chk_txt);
                 loadUpdatableApps();
+            }
+        });
+
+        retry_update.setOnClickListener(click -> {
+            if (isLoggedIn() && isConnected(getContext())) {
+                hide(view, R.id.ohhSnap);
+                if (updatableAppsAdapter == null || updatableAppsAdapter.getItemCount() <= 0) {
+                    updates_txt.setText(R.string.list_update_chk_txt);
+                    loadUpdatableApps();
+                }
             }
         });
 
         setupAutoUpdate();
         setupDelta();
         return view;
-    }
-
-    private void initViews() {
-        recheck_update = ViewUtils.findViewById(view, R.id.recheck_updates);
-        update = ViewUtils.findViewById(view, R.id.update_all);
-        cancel = ViewUtils.findViewById(view, R.id.update_cancel);
-        txt = ViewUtils.findViewById(view, R.id.updates_txt);
-        swipeRefreshLayout = ViewUtils.findViewById(view, R.id.swipe_refresh_layout);
     }
 
     @Override
@@ -136,21 +152,6 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
         swipeRefreshLayout.setRefreshing(false);
     }
 
-    protected void setupListView(List<App> appsToAdd) {
-        RecyclerView recyclerView = view.findViewById(R.id.updatable_apps_list);
-        recyclerView.setItemViewCacheSize(30);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
-
-        updatableAppsAdapter = new UpdatableAppsAdapter(getActivity(), appsToAdd);
-        recyclerView.setAdapter(updatableAppsAdapter);
-
-        new ItemTouchHelper(
-                new UpdatableRecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this))
-                .attachToRecyclerView(recyclerView);
-    }
-
     public void launchUpdateAll() {
         ((AuroraApplication) getActivity().getApplicationContext()).setBackgroundUpdating(true);
         new UpdateChecker().onReceive(UpdatableAppsFragment.this.getActivity(), getActivity().getIntent());
@@ -158,13 +159,16 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
         show(view, R.id.update_cancel);
     }
 
-    public void setupButtons() {
+    public void addButtons() {
+        if (update.getVisibility() == View.VISIBLE)
+            return;
+        hide(view, R.id.unicorn);
         update.setVisibility(View.VISIBLE);
         update.setOnClickListener(v -> {
             launchUpdateAll();
             update.setVisibility(View.GONE);
             cancel.setVisibility(View.VISIBLE);
-            txt.setText(R.string.list_updating);
+            updates_txt.setText(R.string.list_updating);
         });
 
         cancel.setOnClickListener(v -> {
@@ -172,22 +176,23 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
                 getContext().startService(new Intent(getContext().getApplicationContext(), CancelDownloadService.class)
                         .putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName()));
             }
+            ((AuroraApplication) getActivity().getApplicationContext()).setBackgroundUpdating(false);
             update.setVisibility(View.VISIBLE);
             cancel.setVisibility(View.GONE);
-            setText(view, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
+            setUpdates(updatableApps.size());
         });
     }
 
     public void removeButtons() {
+        show(view, R.id.unicorn);
         update.setVisibility(View.GONE);
         cancel.setVisibility(View.GONE);
     }
 
     public void setupDelta() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        TextView delta = ViewUtils.findViewById(view, R.id.updates_setting);
-        delta.setText(sharedPreferences.getBoolean("PREFERENCE_DOWNLOAD_DELTAS", true) ? R.string.delta_enabled : R.string.delta_disabled);
-        delta.setVisibility(View.VISIBLE);
+        deltaTextView.setText(PreferenceFragment.getBoolean(getContext(), "PREFERENCE_DOWNLOAD_DELTAS")
+                ? R.string.delta_enabled
+                : R.string.delta_disabled);
     }
 
     public void updateInteger(int count) {
@@ -197,7 +202,7 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
     }
 
     public void setupAutoUpdate() {
-        RoundRectView autoUpdatesCard = view.findViewById(R.id.autoUpdatesCard);
+        CardView autoUpdatesCard = view.findViewById(R.id.autoUpdatesCard);
         ImageView autoUpdatesClose = view.findViewById(R.id.autoUpdatesClose);
         Button autoUpdatesSwitch = view.findViewById(R.id.autoUpdatesSwitch);
         boolean shouldAsk = PreferenceFragment.getBoolean(getContext(), "PROMPT_UPDATE_INTERVAL");
@@ -229,23 +234,48 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((appList) -> {
                     if (view != null) {
-                        updatableApps = new ArrayList<>(new HashSet<>(appList));
-                        Collections.sort(updatableApps);
-                        setupListView(updatableApps);
-                        updateInteger(updatableApps.size());
+                        updatableApps.clear();
+                        updatableApps.addAll(appList);
+                        setupList(updatableApps);
                         swipeRefreshLayout.setRefreshing(false);
-
-                        if (success() && updatableApps.isEmpty()) {
-                            show(view, R.id.unicorn);
-                            setText(view, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
-                            removeButtons();
-                        } else {
-                            hide(view, R.id.unicorn);
-                            setText(view, R.id.updates_txt, R.string.list_update_all_txt, updatableApps.size());
-                            setupButtons();
-                        }
                     }
-                }, this::processException);
+                }, err -> {
+                    swipeRefreshLayout.setRefreshing(false);
+                    processException(err);
+                    show(view, R.id.ohhSnap);
+                });
+    }
+
+    private void setupList(List<App> updatableApps) {
+        setUpdates(updatableApps.size());
+        updateInteger(updatableApps.size());
+
+        if (updatableApps.isEmpty())
+            removeButtons();
+        else
+            addButtons();
+
+        if (recyclerView.getAdapter() == null)
+            setupRecycler(updatableApps);
+        else {
+            updatableAppsAdapter.appsToAdd = updatableApps;
+            Util.reloadRecycler(recyclerView);
+        }
+    }
+
+    protected void setupRecycler(List<App> appsToAdd) {
+        updatableAppsAdapter = new UpdatableAppsAdapter(getActivity(), appsToAdd);
+        recyclerView.setItemViewCacheSize(20);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_anim));
+        recyclerView.setAdapter(updatableAppsAdapter);
+        new ItemTouchHelper(
+                new UpdatableRecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this))
+                .attachToRecyclerView(recyclerView);
+    }
+
+    private void setUpdates(int count) {
+        setText(view, R.id.updates_txt, R.string.list_update_all_txt, count);
     }
 
     @Override
@@ -255,14 +285,11 @@ public class UpdatableAppsFragment extends UpdatableAppsTaskHelper implements Up
                     .add(((UpdatableAppsAdapter.ViewHolder) viewHolder).app.getPackageName());
 
             updatableAppsAdapter.remove(position);
+            setUpdates(updatableAppsAdapter.getItemCount());
+            updateInteger(updatableAppsAdapter.getItemCount());
 
-            if (updatableAppsAdapter.getItemCount() == 0) {
-                view.findViewById(R.id.unicorn).setVisibility(View.VISIBLE);
-                setText(view, R.id.updates_txt, R.string.list_update_all_txt, 0);
-                updateInteger(0);
+            if (updatableAppsAdapter.getItemCount() == 0)
                 removeButtons();
-            } else
-                view.findViewById(R.id.unicorn).setVisibility(View.GONE);
         }
     }
 }

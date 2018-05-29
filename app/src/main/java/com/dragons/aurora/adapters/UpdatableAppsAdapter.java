@@ -2,22 +2,21 @@ package com.dragons.aurora.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.view.UpdatableAppBadge;
-import com.github.florent37.shapeofview.shapes.RoundRectView;
 
 import java.util.List;
 
 public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdapter.ViewHolder> {
 
-    private List<App> appsToAdd;
+    public List<App> appsToAdd;
     private Context context;
 
     public UpdatableAppsAdapter(Context context, List<App> appsToAdd) {
@@ -58,13 +57,10 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
     public void onBindViewHolder(@NonNull UpdatableAppsAdapter.ViewHolder holder, int position) {
         final App app = appsToAdd.get(position);
         final UpdatableAppBadge updatableAppBadge = new UpdatableAppBadge();
-
+        holder.app = app;
         updatableAppBadge.setApp(app);
         updatableAppBadge.setView(holder.view);
         updatableAppBadge.draw();
-        updatableAppBadge.drawButtons();
-
-        holder.app = app;
     }
 
     @Override
@@ -74,7 +70,7 @@ public class UpdatableAppsAdapter extends RecyclerView.Adapter<UpdatableAppsAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public RoundRectView viewForeground;
+        public CardView viewForeground;
         public App app;
         private View view;
 

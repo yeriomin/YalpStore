@@ -16,13 +16,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.github.florent37.shapeofview.shapes.CircleView;
 
 public class FilterBadge extends RelativeLayout {
     private Context context;
     private boolean badgeChecked;
     private RelativeLayout badgeContainer;
-    private CircleView badgeDot;
+    private View badgeDot;
     private CircleView badgeCancel;
     private TextView badgeText;
     private String title;
@@ -102,7 +103,7 @@ public class FilterBadge extends RelativeLayout {
     private void setupBadge() {
         if (!isBadgeChecked()) {
             badgeDot.setVisibility(VISIBLE);
-            badgeText.setTextColor(Color.BLACK);
+            badgeText.setTextColor(Util.getStyledAttribute(context, android.R.attr.textColorPrimary));
             badgeContainer.setBackgroundTintList(null);
             badgeCancel.setVisibility(GONE);
             badgeChecked = false;

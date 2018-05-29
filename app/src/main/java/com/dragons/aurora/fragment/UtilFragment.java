@@ -30,5 +30,4 @@ public abstract class UtilFragment extends AccountsHelper {
     protected void setText(View v, int viewId, int stringId, Object... text) {
         setText(v, viewId, v.getResources().getString(stringId, text));
     }
-
 }

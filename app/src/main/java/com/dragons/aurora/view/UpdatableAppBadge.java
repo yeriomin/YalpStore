@@ -107,11 +107,11 @@ public class UpdatableAppBadge extends AppBadge {
                 }
             } else removeChanges();
         });
+        drawButtons();
     }
 
-    public void drawButtons() {
+    private void drawButtons() {
         init();
-
         listContainer.setOnClickListener(click ->
                 context.startActivity(DetailsActivity.getDetailsIntent(context, app.getPackageName())));
 
@@ -174,13 +174,11 @@ public class UpdatableAppBadge extends AppBadge {
     }
 
     private void drawChanges() {
-        viewChanges.setImageResource(R.drawable.ic_expand_less_24);
-
+        viewChanges.animate().rotation(180).start();
         if (app.getChanges().isEmpty())
             changes.setText(R.string.details_changelog_empty);
         else
             changes.setText(Html.fromHtml(app.getChanges()).toString());
-
         show(changesContainer);
         show(singleButtons);
         show(progressContainer);
@@ -190,17 +188,19 @@ public class UpdatableAppBadge extends AppBadge {
         hide(changesContainer);
         hide(singleButtons);
         hide(progressContainer);
-        viewChanges.setImageResource(R.drawable.ic_expand_more_24);
+        viewChanges.animate().rotation(0).start();
     }
 
     private void getPalette(Bitmap bitmap) {
         Palette.from(bitmap)
                 .generate(palette -> {
-                    paintTextView(palette.getDarkVibrantColor(Color.DKGRAY), changes);
                     paintButton(palette.getDarkVibrantColor(Color.DKGRAY), update);
                     paintButton(palette.getDarkVibrantColor(Color.DKGRAY), install);
-                    paintLayout(palette.getDarkVibrantColor(Color.DKGRAY), R.id.view_background);
-                    paintLLayout(palette.getDarkVibrantColor(Color.DKGRAY), R.id.changes_container);
+                    if (!Util.isDark(context)) {
+                        paintTextView(palette.getDarkVibrantColor(Color.DKGRAY), changes);
+                        paintLayout(palette.getDarkVibrantColor(Color.DKGRAY), R.id.view_background);
+                        paintLLayout(palette.getDarkVibrantColor(Color.DKGRAY), R.id.changes_container);
+                    }
                 });
     }
 

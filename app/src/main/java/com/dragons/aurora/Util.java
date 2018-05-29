@@ -1,8 +1,14 @@
 package com.dragons.aurora;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.GradientDrawable;
 import android.preference.PreferenceManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.TypedValue;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
 import com.dragons.aurora.downloader.DownloadState;
 import com.dragons.aurora.fragment.PreferenceFragment;
@@ -86,6 +92,10 @@ public class Util {
         PreferenceManager.getDefaultSharedPreferences(context).edit().putString(key, TextUtils.join(DELIMITER, set)).apply();
     }
 
+    static public void putBoolean(Context context, String key, boolean value) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(key, value).apply();
+    }
+
     static public int parseInt(String intAsString, int defaultValue) {
         try {
             return Integer.parseInt(intAsString);
@@ -158,4 +168,29 @@ public class Util {
         }
     }
 
+    public static int getStyledAttribute(Context context, int styleID) {
+        TypedArray arr = context.obtainStyledAttributes(new TypedValue().data, new int[]{styleID});
+        int styledColor = arr.getColor(0, -1);
+        arr.recycle();
+        return styledColor;
+    }
+
+    public static GradientDrawable getGradient(int startColor, int endColor) {
+        GradientDrawable gd = new GradientDrawable();
+        gd.setOrientation(GradientDrawable.Orientation.TOP_BOTTOM);
+        gd.setColors(new int[]{startColor, endColor});
+        gd.setShape(GradientDrawable.RECTANGLE);
+        gd.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gd.setDither(true);
+        gd.setSize(200, 200);
+        return gd;
+    }
+
+    public static void reloadRecycler(final RecyclerView recyclerView) {
+        final Context context = recyclerView.getContext();
+        final LayoutAnimationController controller = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim);
+        recyclerView.setLayoutAnimation(controller);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scheduleLayoutAnimation();
+    }
 }

@@ -6,11 +6,8 @@
         <item>
             <shape xmlns:android="http://schemas.android.com/apk/res/android"
                 android:shape="rectangle">
-                <corners android:radius="8dp" />
+                <corners android:radius="250dp" />
                 <solid android:color="#FF5252" />
-                <stroke
-                    android:width="1dip"
-                    android:color="#FF5252" />
             </shape>
         </item>
     </ripple>

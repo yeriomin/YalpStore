@@ -43,8 +43,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginStart="6dp"
                 android:layout_marginTop="-40dp"
                 android:animateLayoutChanges="true"
                 android:orientation="vertical">
@@ -53,12 +53,16 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/mainCard"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:elevation="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
                     android:visibility="gone"
-                    app:cardBackgroundColor="?android:attr/colorBackground"
-                    app:cardCornerRadius="8dp">
+                    app:cardBackgroundColor="?android:attr/panelBackground"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -241,11 +245,15 @@
                         android:id="@+id/app_video"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:elevation="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
                         android:visibility="gone"
-                        app:cardCornerRadius="8dp"
-                        app:cardPreventCornerOverlap="false">
+                        app:cardBackgroundColor="?android:attr/panelBackground"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="1dp"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardUseCompatPadding="true">
 
                         <ImageView
                             android:id="@+id/thumbnail"

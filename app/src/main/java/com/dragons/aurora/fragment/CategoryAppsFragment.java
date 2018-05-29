@@ -71,9 +71,9 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
                 switch (newState) {
                     case BottomSheetBehavior.STATE_HIDDEN:
                         break;
-                    //case BottomSheetBehavior.STATE_EXPANDED:
-                    //    filter_fab.hide();
-                    //    break;
+                    case BottomSheetBehavior.STATE_EXPANDED:
+                        filter_fab.hide();
+                        break;
                     case BottomSheetBehavior.STATE_COLLAPSED:
                         filter_fab.show();
                         break;
@@ -135,6 +135,7 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
                 getResources().getStringArray(R.array.filterDownloadsLabels),
                 getResources().getStringArray(R.array.filterDownloadsValues));
         singleDownloadAdapter.setOnDownloadBadgeClickListener(this);
+        filter_downloads.setItemViewCacheSize(10);
         filter_downloads.setAdapter(singleDownloadAdapter);
     }
 
@@ -144,6 +145,7 @@ public class CategoryAppsFragment extends CategoryAppsTask implements SingleDown
                 getResources().getStringArray(R.array.filterRatingLabels),
                 getResources().getStringArray(R.array.filterRatingValues));
         singleRatingAdapter.setOnRatingBadgeClickListener(this);
+        filter_ratings.setItemViewCacheSize(10);
         filter_ratings.setAdapter(singleRatingAdapter);
     }
 

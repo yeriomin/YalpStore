@@ -17,22 +17,22 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/show_LessMore"
         android:layout_marginTop="5dp"
-        android:background="?android:attr/panelBackground"
         android:elevation="@dimen/appbar_bar_elevation"
-        app:roundRect_topLeftRadius="20dp"
-        app:roundRect_topRightRadius="20dp">
+        app:shape_roundRect_topLeftRadius="20dp"
+        app:shape_roundRect_topRightRadius="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/panelBackground"
             android:orientation="vertical">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/nav_items_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:gravity="fill_horizontal"
                 android:orientation="horizontal"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
@@ -40,9 +40,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height=".8dp"
-                android:layout_marginEnd="25dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="25dp"
                 android:background="@drawable/list_divider" />
 
             <android.support.v7.widget.RecyclerView
@@ -50,11 +50,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
-                android:paddingEnd="8dp"
                 android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
         </LinearLayout>
     </com.github.florent37.shapeofview.shapes.RoundRectView>

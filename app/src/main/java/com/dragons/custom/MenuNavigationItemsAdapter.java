@@ -15,8 +15,6 @@ import com.dragons.aurora.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.dragons.custom.CustomAppBar.MORE_ICON_TAG;
-
 class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItemsAdapter.MenuNavItem> {
 
     private Context context;
@@ -28,7 +26,6 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
         this.context = context;
         this.onClickListener = onClickListener;
         this.navItems = new ArrayList<>();
-
         populateNavigationItems(menuRes);
     }
 
@@ -46,9 +43,6 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
         holder.label.setText(item.getTitle());
         holder.icon.setImageDrawable(item.getIcon());
         holder.itemView.setTag(item.getResId());
-
-        if (item.getTitle().isEmpty()) setupMoreIcon(holder);
-
         holder.itemView.setOnClickListener(onClickListener);
     }
 
@@ -59,15 +53,6 @@ class MenuNavigationItemsAdapter extends RecyclerView.Adapter<MenuNavigationItem
 
     private void populateNavigationItems(int menuRes) {
         MenuParserHelper.parseMenu(context, menuRes, navItems);
-        //Drawable moreIcon = context.getResources().getDrawable(R.drawable.more);
-        //navItems.add(new MenuEntry("", moreIcon, 0));
-    }
-
-    private void setupMoreIcon(MenuNavItem menuNavItem) {
-        menuNavItem.itemView.setFocusable(false);
-        menuNavItem.itemView.setFocusableInTouchMode(false);
-        menuNavItem.itemView.setBackground(null);
-        menuNavItem.itemView.setTag(MORE_ICON_TAG);
     }
 
     class MenuNavItem extends RecyclerView.ViewHolder {

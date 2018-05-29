@@ -2,12 +2,12 @@ package com.dragons.aurora.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 
 import com.dragons.aurora.R;
@@ -18,13 +18,12 @@ import com.dragons.aurora.fragment.details.ButtonUninstall;
 import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.view.InstalledAppBadge;
-import com.github.florent37.shapeofview.shapes.RoundRectView;
 
 import java.util.List;
 
 public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdapter.ViewHolder> {
 
-    private List<App> appsToAdd;
+    public List<App> appsToAdd;
     private Context context;
     private ViewHolder viewHolder;
 
@@ -110,7 +109,7 @@ public class InstalledAppsAdapter extends RecyclerView.Adapter<InstalledAppsAdap
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public View view;
-        public RoundRectView list_container;
+        public CardView list_container;
         public ImageView menu_3dot;
 
         public ViewHolder(View view) {

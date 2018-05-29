@@ -16,19 +16,30 @@
         <com.github.florent37.shapeofview.shapes.DiagonalView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/header_grad2"
-            app:diagonal_angle="5"
-            app:diagonal_direction="left"
-            app:diagonal_position="right" />
+            app:shape_diagonal_angle="5"
+            app:shape_diagonal_direction="left"
+            app:shape_diagonal_position="right">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/header_grad2" />
+        </com.github.florent37.shapeofview.shapes.DiagonalView>
+
 
         <com.github.florent37.shapeofview.shapes.DiagonalView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha=".8"
-            android:background="@drawable/header_grad1"
-            app:diagonal_angle="10"
-            app:diagonal_direction="right"
-            app:diagonal_position="right" />
+            app:shape_diagonal_angle="10"
+            app:shape_diagonal_direction="right"
+            app:shape_diagonal_position="right">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/header_grad1" />
+        </com.github.florent37.shapeofview.shapes.DiagonalView>
 
         <RelativeLayout
             android:id="@+id/topView"
@@ -75,17 +86,16 @@
             android:layout_marginTop="10dp"
             android:paddingBottom="10dp">
 
-            <com.github.florent37.shapeofview.shapes.RoundRectView
+            <android.support.v7.widget.CardView
                 android:id="@+id/google_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="?android:attr/panelBackground"
-                android:elevation="5dp"
-                app:roundRect_bottomLeftRadius="10dp"
-                app:roundRect_bottomRightRadius="10dp"
-                app:roundRect_topLeftRadius="10dp"
-                app:roundRect_topRightRadius="10dp">
+                app:cardBackgroundColor="?android:attr/panelBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -197,7 +207,7 @@
 
                 </RelativeLayout>
 
-            </com.github.florent37.shapeofview.shapes.RoundRectView>
+            </android.support.v7.widget.CardView>
 
             <TextView
                 android:id="@+id/or_txt"
@@ -209,17 +219,16 @@
                 android:text="@string/action_or"
                 android:textSize="16sp" />
 
-            <com.github.florent37.shapeofview.shapes.RoundRectView
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/or_txt"
                 android:layout_margin="10dp"
-                android:background="?android:attr/panelBackground"
-                android:elevation="5dp"
-                app:roundRect_bottomLeftRadius="10dp"
-                app:roundRect_bottomRightRadius="10dp"
-                app:roundRect_topLeftRadius="10dp"
-                app:roundRect_topRightRadius="10dp">
+                app:cardBackgroundColor="?android:attr/panelBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -278,7 +287,7 @@
                         android:textSize="12sp" />
                 </RelativeLayout>
 
-            </com.github.florent37.shapeofview.shapes.RoundRectView>
+            </android.support.v7.widget.CardView>
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>

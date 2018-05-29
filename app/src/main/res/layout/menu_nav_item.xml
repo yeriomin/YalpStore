@@ -10,7 +10,7 @@
         android:layout_height="@dimen/appbar_icon_height"
         android:layout_gravity="center_horizontal"
         android:alpha=".75"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:background="?android:selectableItemBackgroundBorderless"
         android:cropToPadding="true"
         android:padding="@dimen/appbar_icon_padding"
         android:tint="?android:attr/colorForeground" />

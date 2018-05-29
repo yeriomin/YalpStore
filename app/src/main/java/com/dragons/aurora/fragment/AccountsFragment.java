@@ -17,6 +17,7 @@ import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.activities.LoginActivity;
 import com.dragons.aurora.task.UserProvidedCredentialsTask;
+import com.github.florent37.shapeofview.shapes.CircleView;
 import com.percolate.caffeine.ViewUtils;
 import com.squareup.picasso.Picasso;
 
@@ -41,7 +42,6 @@ public class AccountsFragment extends UtilFragment {
         }
 
         v = inflater.inflate(R.layout.app_acc_inc, container, false);
-        getActivity().setTitle(R.string.action_accounts);
 
         ImageView toolbar_back = v.findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
@@ -118,8 +118,8 @@ public class AccountsFragment extends UtilFragment {
 
     private void drawEmpty() {
         show(v, R.id.emptyCard);
-        ImageButton addSecondary = v.findViewById(R.id.add_secondary);
-        addSecondary.setOnClickListener(v -> switchGoogle());
+        CircleView add_account = v.findViewById(R.id.add_account);
+        add_account.setOnClickListener(v -> switchGoogle());
     }
 
     private void drawDummyButtons() {

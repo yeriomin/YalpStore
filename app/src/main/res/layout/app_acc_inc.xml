@@ -16,19 +16,30 @@
         <com.github.florent37.shapeofview.shapes.DiagonalView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/header_grad2"
-            app:diagonal_angle="5"
-            app:diagonal_direction="left"
-            app:diagonal_position="bottom" />
+            app:shape_diagonal_angle="5"
+            app:shape_diagonal_direction="left"
+            app:shape_diagonal_position="bottom">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/header_grad2" />
+        </com.github.florent37.shapeofview.shapes.DiagonalView>
+
 
         <com.github.florent37.shapeofview.shapes.DiagonalView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha=".8"
-            android:background="@drawable/header_grad1"
-            app:diagonal_angle="10"
-            app:diagonal_direction="right"
-            app:diagonal_position="bottom" />
+            app:shape_diagonal_angle="10"
+            app:shape_diagonal_direction="right"
+            app:shape_diagonal_position="bottom">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/header_grad1" />
+        </com.github.florent37.shapeofview.shapes.DiagonalView>
 
         <RelativeLayout
             android:id="@+id/topView"
@@ -74,25 +85,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.github.florent37.shapeofview.shapes.RoundRectView
+            <android.support.v7.widget.CardView
                 android:id="@+id/dummyCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="?android:attr/panelBackground"
                 android:elevation="5dp"
-                app:roundRect_bottomLeftRadius="10dp"
-                app:roundRect_bottomRightRadius="10dp"
-                app:roundRect_topLeftRadius="10dp"
-                app:roundRect_topRightRadius="10dp">
+                app:cardBackgroundColor="?android:attr/panelBackground"
+                app:cardCornerRadius="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -216,20 +224,17 @@
 
                 </RelativeLayout>
 
-            </com.github.florent37.shapeofview.shapes.RoundRectView>
+            </android.support.v7.widget.CardView>
 
-            <com.github.florent37.shapeofview.shapes.RoundRectView
+            <android.support.v7.widget.CardView
                 android:id="@+id/emptyCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="?android:attr/panelBackground"
                 android:elevation="5dp"
                 android:visibility="gone"
-                app:roundRect_bottomLeftRadius="10dp"
-                app:roundRect_bottomRightRadius="10dp"
-                app:roundRect_topLeftRadius="10dp"
-                app:roundRect_topRightRadius="10dp">
+                app:cardBackgroundColor="?android:attr/panelBackground"
+                app:cardCornerRadius="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -243,8 +248,8 @@
                         android:layout_height="64dp"
                         android:layout_centerInParent="true"
                         android:background="?android:selectableItemBackgroundBorderless"
-                        app:circle_borderColor="@color/colorRed"
-                        app:circle_borderWidth="1dp">
+                        app:shape_circle_borderColor="@color/colorRed"
+                        app:shape_circle_borderWidth="1dp">
 
                         <ImageButton
                             android:id="@+id/add_secondary"
@@ -252,8 +257,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:background="@android:color/transparent"
-                            android:clickable="true"
-                            android:focusable="true"
+                            android:clickable="false"
+                            android:focusable="false"
                             app:srcCompat="@drawable/ic_add" />
                     </com.github.florent37.shapeofview.shapes.CircleView>
 
@@ -268,21 +273,17 @@
                         android:textSize="16sp" />
 
                 </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
-            </com.github.florent37.shapeofview.shapes.RoundRectView>
-
-            <com.github.florent37.shapeofview.shapes.RoundRectView
+            <android.support.v7.widget.CardView
                 android:id="@+id/googleCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="?android:attr/panelBackground"
                 android:elevation="5dp"
                 android:visibility="gone"
-                app:roundRect_bottomLeftRadius="10dp"
-                app:roundRect_bottomRightRadius="10dp"
-                app:roundRect_topLeftRadius="10dp"
-                app:roundRect_topRightRadius="10dp">
+                app:cardBackgroundColor="?android:attr/panelBackground"
+                app:cardCornerRadius="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -404,8 +405,7 @@
                     </RelativeLayout>
 
                 </RelativeLayout>
-
-            </com.github.florent37.shapeofview.shapes.RoundRectView>
+            </android.support.v7.widget.CardView>
 
         </LinearLayout>
 

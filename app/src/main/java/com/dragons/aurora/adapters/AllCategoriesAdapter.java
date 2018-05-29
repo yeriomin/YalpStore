@@ -3,19 +3,17 @@ package com.dragons.aurora.adapters;
 import android.content.Context;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
 import com.dragons.aurora.SharedPreferencesTranslator;
 import com.dragons.aurora.activities.CategoryAppsActivity;
-import com.github.florent37.shapeofview.shapes.CircleView;
-import com.github.florent37.shapeofview.shapes.RoundRectView;
 import com.percolate.caffeine.ViewUtils;
 
 import java.util.ArrayList;
@@ -95,7 +93,7 @@ public class AllCategoriesAdapter extends RecyclerView.Adapter<AllCategoriesAdap
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView topLabel;
         ImageView topImage;
-        RoundRectView topContainer;
+        CardView topContainer;
 
         ViewHolder(View v) {
             super(v);

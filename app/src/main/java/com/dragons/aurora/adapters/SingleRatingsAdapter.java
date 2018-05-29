@@ -18,10 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
-import com.github.florent37.shapeofview.shapes.CircleView;
-
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
+import com.dragons.aurora.Util;
 
 public class SingleRatingsAdapter extends RecyclerView.Adapter<SingleRatingsAdapter.ViewHolder> {
 
@@ -100,7 +97,7 @@ public class SingleRatingsAdapter extends RecyclerView.Adapter<SingleRatingsAdap
             viewHolder.badgeText.setTextColor(Color.WHITE);
             paintBadge(viewHolder);
         } else {
-            viewHolder.badgeText.setTextColor(Color.BLACK);
+            viewHolder.badgeText.setTextColor(Util.getStyledAttribute(context, android.R.attr.textColorPrimary));
             viewHolder.badgeContainer.setBackgroundTintList(null);
         }
     }
@@ -131,8 +128,7 @@ public class SingleRatingsAdapter extends RecyclerView.Adapter<SingleRatingsAdap
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private RelativeLayout badgeContainer;
-        private CircleView badgeDot;
-        private CircleView badgeCancel;
+        private View badgeDot;
         private TextView badgeText;
 
         public ViewHolder(View view) {
@@ -140,7 +136,6 @@ public class SingleRatingsAdapter extends RecyclerView.Adapter<SingleRatingsAdap
             badgeContainer = view.findViewById(R.id.badge_container);
             badgeDot = view.findViewById(R.id.badge_dot);
             badgeText = view.findViewById(R.id.badge_text);
-            badgeCancel = view.findViewById(R.id.badge_cancel);
             itemView.setOnClickListener(this);
         }
 

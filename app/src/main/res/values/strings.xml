@@ -19,6 +19,7 @@
     <string name="action_acc_txt">Aurora Accounts</string>
     <string name="action_categories">Categories</string>
     <string name="action_filter">Filters</string>
+    <string name="action_filter_all">All</string>
     <string name="action_filter_apps_with_ads">Apps with ads</string>
     <string name="action_filter_category">Category</string>
     <string name="action_filter_downloads">Downloads</string>
@@ -227,9 +228,10 @@
     <string name="list_update_recheck">Recheck</string>
     <string name="list_updating">Updating…</string>
     <string name="manual_download_compatible">Version code field has been pre-filled with this app\'s latest compatible version code. If you want the previous version, simply input a number smaller than the current. If the developer has not deleted the apk of the previous version from Play Store, you might be able to start the download.</string>
+    <string name="manual_download_disclaimer">Disclaimer</string>
     <string name="manual_download_hint_version_code">version code here</string>
     <string name="manual_download_incompatible">Google Play Store considers this app incompatible with your device. This means version code has not been returned by the Google Play Store server.</string>
-    <string name="manual_download_warning">This page lets you manually choose the version of the app to download. Version code is a number identifying the version of an app. It starts from 1 and is incremented by the app developer every time there is a new version. Normally Play Store lets you download only the latest apk compatible with your device. By manually supplying this number you might be able to get other versions as well.\n\nKeep in mind that downloading arbitrary versions of apps is not supported by Google Play Store. Your success depends on a lucky guess of the version code. Even if you guess right and you get the download to start, you might get an incompatible apk. Most likely, you are wasting your time!</string>
+    <string name="manual_download_warning">This page lets you manually choose the version of the app to download.\n\nKeep in mind that downloading arbitrary versions of apps is not supported by Google Play Store. Your success depends on a lucky guess of the version code. Even if you guess right and you get the download to start, you might get an incompatible apk.</string>
     <string name="notification_download_complete">Download complete. Touch to install.</string>
     <string name="notification_download_complete_new_permissions">Download complete. New permissions requested.</string>
     <string name="notification_download_complete_new_permissions_toast">"%1$s downloaded. New version of the app requests more permissions. Check the new permissions list."</string>
@@ -244,6 +246,8 @@
     <string name="notification_updates_available_message">"Updates are available for %1$d of your apps."</string>
     <string name="notification_updates_available_title">App updates available.</string>
     <string name="no_permissions">No permissions are used.</string>
+    <string name="ohh_snap_text">Something went wrong</string>
+    <string name="ohh_snap_retry">Retry</string>
     <string name="pref_app_language">Select Language</string>
     <string name="pref_app_language_cat">Aurora Language</string>
     <string name="pref_auto_install">Install apps immediately</string>
