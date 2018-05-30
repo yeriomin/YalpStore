@@ -30,6 +30,7 @@
             android:scaleType="centerCrop"
             android:visibility="gone"
             android:padding="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
             android:background="@drawable/button_border"
             android:tint="?attr/colorAccent"
             android:elevation="2dp"
@@ -47,6 +48,7 @@
             android:layout_marginStart="5dp"
             android:visibility="gone"
             android:maxLines="1"
+            android:foreground="?android:attr/selectableItemBackground"
             android:background="@drawable/button_border"
             android:text="@string/details_download" />
 
@@ -63,6 +65,7 @@
             android:scaleType="centerCrop"
             android:visibility="gone"
             android:padding="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
             android:background="@drawable/button_border"
             android:tint="?attr/colorAccent"
             android:elevation="2dp"
@@ -80,6 +83,7 @@
             android:layout_marginStart="5dp"
             android:visibility="gone"
             android:maxLines="1"
+            android:foreground="?android:attr/selectableItemBackground"
             android:background="@drawable/button_border"
             android:text="@string/details_install" />
 
@@ -93,6 +97,7 @@
             android:layout_marginStart="5dp"
             android:visibility="gone"
             android:maxLines="1"
+            android:foreground="?android:attr/selectableItemBackground"
             android:background="@drawable/button_border"
             android:text="@string/details_run" />
 

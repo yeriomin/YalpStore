@@ -72,6 +72,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="end"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:tint="?android:textColorSecondary" />
 
         <TextView
