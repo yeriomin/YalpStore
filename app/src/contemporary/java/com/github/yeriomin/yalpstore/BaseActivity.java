@@ -122,7 +122,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (null != suggestionsAdapter.getCursor()) {
+        if (null != suggestionsAdapter && null != suggestionsAdapter.getCursor()) {
             suggestionsAdapter.getCursor().close();
         }
     }
