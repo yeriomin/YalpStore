@@ -19,8 +19,10 @@
 
 package com.github.yeriomin.yalpstore.task.playstore;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
 import android.view.WindowManager;
@@ -37,6 +39,7 @@ import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import com.github.yeriomin.yalpstore.YalpStorePermissionManager;
 import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
 import com.github.yeriomin.yalpstore.view.PurchaseDialogBuilder;
 
@@ -70,30 +73,39 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
             state.setTriggeredBy(triggeredBy);
         }
         super.getResult(api, arguments);
-        if (null != deliveryData) {
-            Downloader downloader = new Downloader(context);
-            try {
-                if (downloader.enoughSpace(deliveryData)) {
-                    downloader.download(app, deliveryData);
-                    if (context instanceof YalpStoreActivity) {
-                        DownloadProgressUpdater progressUpdater = DownloadProgressUpdaterFactory.get((YalpStoreActivity) context, app.getPackageName());
-                        if (null != progressUpdater) {
-                            progressUpdater.execute(UPDATE_INTERVAL);
-                        }
-                    }
-                } else {
-                    sendCancelBroadcast();
-                    Log.e(getClass().getSimpleName(), app.getPackageName() + " not enough storage space");
-                    throw new IOException(context.getString(R.string.download_manager_ERROR_INSUFFICIENT_SPACE));
-                }
-            } catch (IllegalArgumentException | SecurityException e) {
-                sendCancelBroadcast();
-                Log.e(getClass().getSimpleName(), app.getPackageName() + " unknown storage error: " + e.getClass().getName() + ": " + e.getMessage());
-                throw new IOException(context.getString(R.string.download_manager_ERROR_FILE_ERROR));
-            }
-        } else {
+        if (null == deliveryData) {
             sendCancelBroadcast();
             Log.e(getClass().getSimpleName(), app.getPackageName() + " no download link returned");
+            return deliveryData;
+        }
+        if (context instanceof Activity
+            && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+            && deliveryData.getAdditionalFileCount() > 0
+            && context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+        ) {
+            Log.e(getClass().getSimpleName(), app.getPackageName() + " needs obb files, so we need WRITE_EXTERNAL_STORAGE permission even if internal storage is used for apks");
+            new YalpStorePermissionManager((Activity) context).requestPermission();
+            return deliveryData;
+        }
+        Downloader downloader = new Downloader(context);
+        try {
+            if (downloader.enoughSpace(deliveryData)) {
+                downloader.download(app, deliveryData);
+                if (context instanceof YalpStoreActivity) {
+                    DownloadProgressUpdater progressUpdater = DownloadProgressUpdaterFactory.get((YalpStoreActivity) context, app.getPackageName());
+                    if (null != progressUpdater) {
+                        progressUpdater.execute(UPDATE_INTERVAL);
+                    }
+                }
+            } else {
+                sendCancelBroadcast();
+                Log.e(getClass().getSimpleName(), app.getPackageName() + " not enough storage space");
+                throw new IOException(context.getString(R.string.download_manager_ERROR_INSUFFICIENT_SPACE));
+            }
+        } catch (IllegalArgumentException | SecurityException e) {
+            sendCancelBroadcast();
+            Log.e(getClass().getSimpleName(), app.getPackageName() + " unknown storage error: " + e.getClass().getName() + ": " + e.getMessage());
+            throw new IOException(context.getString(R.string.download_manager_ERROR_FILE_ERROR));
         }
         return deliveryData;
     }
