@@ -146,7 +146,9 @@ public class BitmapManager {
     static private Bitmap downloadBitmap(String url, boolean fullSize) {
         InputStream input = null;
         try {
-            TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
+            }
             HttpURLConnection connection = NetCipher.getHttpURLConnection(new URL(url), true);
             connection.connect();
             connection.setConnectTimeout(3000);

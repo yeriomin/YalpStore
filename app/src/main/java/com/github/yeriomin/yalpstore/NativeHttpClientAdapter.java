@@ -121,7 +121,9 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     }
 
     protected HttpURLConnection getHttpURLConnection(String url) throws IOException {
-        TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
+        }
         return NetCipher.getHttpURLConnection(new URL(url), true);
     }
 

@@ -22,6 +22,7 @@ package com.github.yeriomin.yalpstore.selfupdate;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.TrafficStats;
+import android.os.Build;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
@@ -89,7 +90,9 @@ abstract public class Updater {
             if (null == url) {
                 return false;
             }
-            TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
+            }
             HttpURLConnection connection = NetCipher.getHttpURLConnection(url, true);
             connection.setInstanceFollowRedirects(false);
             connection.setRequestMethod("HEAD");
