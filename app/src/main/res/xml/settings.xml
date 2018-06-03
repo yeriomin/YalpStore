@@ -15,6 +15,21 @@
             android:key="PREFERENCE_THEME"
             android:summary="@string/pref_theme_title_summary"
             android:title="@string/pref_theme_title" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="COLOR_UI"
+            android:summary="@string/pref_app_ui_summary"
+            android:title="@string/pref_app_ui" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="SWIPE_PAGES"
+            android:summary="@string/pref_app_swipe_summary"
+            android:title="@string/pref_app_swipe" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="SHOW_IME"
+            android:summary="@string/pref_app_ime_summary"
+            android:title="@string/pref_app_ime" />
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="PREFERENCE_NO_IMAGES"
@@ -108,8 +123,5 @@
             android:defaultValue=""
             android:key="PREFERENCE_DEVICE_TO_PRETEND_TO_BE"
             android:title="@string/pref_device_to_pretend_to_be" />
-    </PreferenceCategory>
-    <PreferenceCategory>
-        <ListPreference />
     </PreferenceCategory>
 </PreferenceScreen>

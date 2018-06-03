@@ -7,12 +7,13 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.adapters.ViewPagerAdapter;
 import com.dragons.aurora.model.App;
+import com.dragons.aurora.view.CustomViewPager;
 import com.dragons.custom.CustomAppBar;
 
 import butterknife.BindView;
@@ -24,7 +25,7 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
     static int static_pos = -9;
 
     @BindView(R.id.view_pager)
-    ViewPager viewPager;
+    CustomViewPager viewPager;
     @BindView(R.id.bottom_bar)
     CustomAppBar bottm_bar;
 
@@ -47,6 +48,8 @@ public class AuroraActivity extends BaseActivity implements View.OnClickListener
         bottm_bar.setSecondaryMenu(R.menu.nav_menu, this);
         viewPager.setAdapter(new ViewPagerAdapter(this, getSupportFragmentManager()));
         viewPager.setOffscreenPageLimit(3);
+        if (Util.getBoolean(this, "SWIPE_PAGES"))
+            viewPager.setScroll(true);
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
     }

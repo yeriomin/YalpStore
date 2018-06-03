@@ -250,6 +250,12 @@
     <string name="ohh_snap_retry">Retry</string>
     <string name="pref_app_language">Select Language</string>
     <string name="pref_app_language_cat">Aurora Language</string>
+    <string name="pref_app_ui">Color UI</string>
+    <string name="pref_app_ui_summary">Make UI colorful by drawing colors from app icons.</string>
+    <string name="pref_app_swipe">Swipe pages</string>
+    <string name="pref_app_swipe_summary">Swipe on pages to switch between them.</string>
+    <string name="pref_app_ime">Search IME</string>
+    <string name="pref_app_ime_summary">Show keyboard on Search by default.</string>
     <string name="pref_auto_install">Install apps immediately</string>
     <string name="pref_auto_install_summary_off">Apps are installed when the user touches the completion notification</string>
     <string name="pref_auto_install_summary_on">Apps are installed as soon as the download completes</string>

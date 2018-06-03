@@ -11,6 +11,8 @@ import java.lang.reflect.Field;
 
 public class CustomViewPager extends ViewPager {
 
+    private boolean viewScroll = false;
+
     public CustomViewPager(Context context) {
         super(context);
         setMyScroller();
@@ -21,14 +23,22 @@ public class CustomViewPager extends ViewPager {
         setMyScroller();
     }
 
+    public boolean isScroll() {
+        return viewScroll;
+    }
+
+    public void setScroll(boolean viewScroll) {
+        this.viewScroll = viewScroll;
+    }
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        return false;
+        return viewScroll && super.onInterceptTouchEvent(event);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return false;
+        return viewScroll && super.onTouchEvent(event);
     }
 
     private void setMyScroller() {

@@ -113,7 +113,7 @@ public class ManualDownloadActivity extends DetailsActivity {
                     @Override
                     public void onSuccess() {
                         Bitmap bitmap = ((BitmapDrawable) appIcon.getDrawable()).getBitmap();
-                        if (bitmap != null)
+                        if (bitmap != null && Util.getBoolean(appIcon.getContext(), "COLOR_UI"))
                             getPalette(bitmap);
                     }
 

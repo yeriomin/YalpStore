@@ -8,12 +8,14 @@ import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
+import android.preference.SwitchPreference;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.dragons.aurora.AuroraPermissionManager;
 import com.dragons.aurora.LocaleManager;
@@ -88,9 +90,12 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ImageView toolbar_back = this.getActivity().findViewById(R.id.toolbar_back);
+        toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
         addPreferencesFromResource(R.xml.settings);
         setupLanguage(getActivity());
         setupThemes(getActivity());
+        setupSwitches(getActivity());
         drawBlackList();
         drawLanguages();
         drawUpdatesCheck();
@@ -156,6 +161,38 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
             restartHome();
             getActivity().finishAndRemoveTask();
             return false;
+        });
+    }
+
+    private void setupSwitches(Context context) {
+        SwitchPreference colors = (SwitchPreference) this.findPreference("COLOR_UI");
+        colors.setChecked(Util.getBoolean(context, "COLOR_UI"));
+        colors.setOnPreferenceChangeListener(new OnListPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                Util.putBoolean(context, "COLOR_UI", (boolean) newValue);
+                return true;
+            }
+        });
+
+        SwitchPreference ime = (SwitchPreference) this.findPreference("SHOW_IME");
+        ime.setChecked(Util.getBoolean(context, "SHOW_IME"));
+        ime.setOnPreferenceChangeListener(new OnListPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                Util.putBoolean(context, "SHOW_IME", (boolean) newValue);
+                return true;
+            }
+        });
+
+        SwitchPreference swipe_pages = (SwitchPreference) this.findPreference("SWIPE_PAGES");
+        swipe_pages.setChecked(Util.getBoolean(context, "SWIPE_PAGES"));
+        swipe_pages.setOnPreferenceChangeListener(new OnListPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                Util.putBoolean(context, "SWIPE_PAGES", (boolean) newValue);
+                return true;
+            }
         });
     }
 

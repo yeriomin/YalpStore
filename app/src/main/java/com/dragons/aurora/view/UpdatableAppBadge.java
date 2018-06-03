@@ -91,8 +91,10 @@ public class UpdatableAppBadge extends AppBadge {
     @Override
     protected void drawIcon(ImageView icon) {
         super.drawIcon(icon);
-        Bitmap bitmap = getBitmapFromDrawable(icon.getDrawable());
-        getPalette(bitmap);
+        if (Util.getBoolean(context, "COLOR_UI")) {
+            Bitmap bitmap = getBitmapFromDrawable(icon.getDrawable());
+            getPalette(bitmap);
+        }
     }
 
     private void drawMore() {

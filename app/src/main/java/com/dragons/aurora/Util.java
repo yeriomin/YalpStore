@@ -96,6 +96,11 @@ public class Util {
         PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(key, value).apply();
     }
 
+
+    public static Boolean getBoolean(Context context, String key) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(key, false);
+    }
+
     static public int parseInt(String intAsString, int defaultValue) {
         try {
             return Integer.parseInt(intAsString);

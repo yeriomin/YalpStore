@@ -25,7 +25,6 @@ import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.fragment.DetailsFragment;
 import com.dragons.aurora.model.App;
 import com.dragons.aurora.model.ImageSource;
-import com.github.florent37.shapeofview.shapes.RoundRectView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -58,8 +57,10 @@ public class GeneralDetails extends AbstractHelper {
         ImageSource imageSource = app.getIconInfo();
         if (null != imageSource.getApplicationInfo()) {
             appIcon.setImageDrawable(fragment.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo()));
-            Bitmap bitmap = getBitmapFromDrawable(appIcon.getDrawable());
-            getPalette(bitmap);
+            if (Util.getBoolean(fragment.getContext(), "COLOR_UI")) {
+                Bitmap bitmap = getBitmapFromDrawable(appIcon.getDrawable());
+                getPalette(bitmap);
+            }
         } else {
             Picasso
                     .with(fragment.getActivity())
@@ -69,7 +70,7 @@ public class GeneralDetails extends AbstractHelper {
                         @Override
                         public void onSuccess() {
                             Bitmap bitmap = ((BitmapDrawable) appIcon.getDrawable()).getBitmap();
-                            if (bitmap != null)
+                            if (bitmap != null && Util.getBoolean(fragment.getContext(), "COLOR_UI"))
                                 getPalette(bitmap);
                         }
 

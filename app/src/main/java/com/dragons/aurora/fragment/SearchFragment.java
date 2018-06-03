@@ -15,17 +15,16 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.HistoryItemTouchHelper;
 import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.SearchActivity;
 import com.dragons.aurora.adapters.SearchHistoryAdapter;
 import com.dragons.aurora.task.playstore.SearchHistoryTask;
 import com.dragons.aurora.view.ClusterAppsCard;
-import com.github.florent37.shapeofview.shapes.RoundRectView;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -85,6 +84,15 @@ public class SearchFragment extends SearchHistoryTask implements HistoryItemTouc
     public void onResume() {
         super.onResume();
         updateSearchHistory();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            if (search_layout != null && Util.getBoolean(view.getContext(), "SHOW_IME"))
+                search_layout.performClick();
+        }
     }
 
     protected void addQueryTextListener(SearchView searchView) {
