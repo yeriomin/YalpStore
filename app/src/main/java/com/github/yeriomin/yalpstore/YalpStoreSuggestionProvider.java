@@ -35,8 +35,11 @@ import com.github.yeriomin.playstoreapi.SearchSuggestEntry;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class YalpStoreSuggestionProvider extends ContentProvider {
+
+    private static AtomicBoolean isRefreshingToken = new AtomicBoolean(false);
 
     @Override
     public boolean onCreate() {
@@ -61,8 +64,10 @@ public class YalpStoreSuggestionProvider extends ContentProvider {
         } catch (GooglePlayException e) {
             if (e.getCode() == 401
                 && PreferenceUtil.getBoolean(getContext(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+                && !isRefreshingToken.getAndSet(true)
             ) {
                 refreshAndRetry(cursor, uri);
+                isRefreshingToken.set(false);
             } else {
                 Log.e(getClass().getSimpleName(), e.getClass().getName() + ": " + e.getMessage());
             }

@@ -106,7 +106,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                if (TextUtils.isEmpty(s) || (null != previousSearchSuggestTask && previousSearchSuggestTask.getRequestString().equals(s))) {
+                if (TextUtils.isEmpty(s)
+                    || (null != previousSearchSuggestTask
+                        && !TextUtils.isEmpty(previousSearchSuggestTask.getRequestString())
+                        && previousSearchSuggestTask.getRequestString().equals(s)
+                    )
+                ) {
                     return false;
                 }
                 if (null != previousSearchSuggestTask) {
