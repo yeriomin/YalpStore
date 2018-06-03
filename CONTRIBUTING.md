@@ -6,9 +6,9 @@ If you have a question or want to discuss something which is not a bug or a feat
 
 ### Bugs and feature requests
 
-Please, [search the closed issues](https://github.com/yeriomin/YalpStore/issues?q=is%3Aissue+is%3Aclosed) before creating a bug or a feature request.
+Please, [search the closed issues](https://github.com/yeriomin/YalpStore/issues?q=is%3Aissue) before creating a bug or a feature request.
 
-Also, please make sure you are using the latest version available through [F-droid](https://f-droid.org/repository/browse/?fdid=com.github.yeriomin.yalpstore).
+Also, please make sure you are using the [latest version available](https://github.com/yeriomin/YalpStore/releases/latest).
 
 Keep in mind that naming an issue is important for future searches. Naming it "Bug" or "A request" is unhelpful.
 
