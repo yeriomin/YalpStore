@@ -106,7 +106,7 @@ public class BugReportDeviceInfoBuilder extends BugReportPropertiesBuilder {
     private Map<String, String> getDisplayMetricsValues() {
         Map<String, String> values = new LinkedHashMap<>();
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        values.put("Screen.Density", Integer.toString((int) (metrics.density * 160f)));
+        values.put("Screen.Density", Integer.toString(metrics.densityDpi));
         values.put("Screen.Width", Integer.toString(metrics.widthPixels));
         values.put("Screen.Height", Integer.toString(metrics.heightPixels));
         return values;

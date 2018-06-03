@@ -160,7 +160,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     private DeviceConfigurationProto.Builder addDisplayMetrics(DeviceConfigurationProto.Builder builder) {
         DisplayMetrics metrics = this.context.getResources().getDisplayMetrics();
         builder
-            .setScreenDensity((int) (metrics.density * 160f))
+            .setScreenDensity(metrics.densityDpi)
             .setScreenWidth(metrics.widthPixels)
             .setScreenHeight(metrics.heightPixels)
         ;

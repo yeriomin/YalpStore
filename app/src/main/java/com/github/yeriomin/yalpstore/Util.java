@@ -43,6 +43,7 @@ public class Util {
         siPrefixes.put(3, "K");
         siPrefixes.put(6, "M");
         siPrefixes.put(9, "G");
+        siPrefixes.put(12, "T");
     }
 
     static public Map<String, String> sort(Map<String, String> unsorted) {
@@ -110,10 +111,11 @@ public class Util {
     }
 
     static public String readableFileSize(long size) {
-        if(size <= 0) return "0";
-        final String[] units = new String[] { "B", "kB", "MB", "GB", "TB" };
-        int digitGroups = (int) (Math.log10(size)/Math.log10(1024));
-        return new DecimalFormat("#,##0.#").format(size/Math.pow(1024, digitGroups)) + " " + units[digitGroups];
+        if (size <= 0) {
+            return "0 B";
+        }
+        int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
+        return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + siPrefixes.get(3 * digitGroups) + "B";
     }
 
     static public int getPx(Context context, int dp) {
