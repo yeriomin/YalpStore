@@ -91,5 +91,6 @@ public class ClusterTaskHelper {
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(context, R.anim.layout_anim));
         recyclerView.setAdapter(new RecyclerAppsAdapter(context, appsToAdd));
+        recyclerView.setItemViewCacheSize(20);
     }
 }

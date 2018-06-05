@@ -1,7 +1,11 @@
 package com.dragons.aurora.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,16 +13,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.RatingBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dragons.aurora.R;
+import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
 import com.dragons.aurora.activities.DetailsActivity;
 import com.dragons.aurora.fragment.details.ButtonDownload;
 import com.dragons.aurora.fragment.details.ButtonUninstall;
 import com.dragons.aurora.fragment.details.DownloadOptions;
 import com.dragons.aurora.model.App;
+import com.dragons.custom.RoundedRelativeLayout;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -59,11 +65,29 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
         setText(holder.view, holder.appRating, R.string.details_rating, app.getRating().getAverage());
         holder.appRatingBar.setRating(app.getRating().getStars(1));
 
+        /*Picasso
+                .with(context)
+                .load(app.getIconInfo().getUrl())
+                .placeholder(R.color.transparent)
+                .into(holder.appIcon);*/
+
         Picasso
                 .with(context)
                 .load(app.getIconInfo().getUrl())
                 .placeholder(R.color.transparent)
-                .into(holder.appIcon);
+                .into(holder.appIcon, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        Bitmap bitmap = ((BitmapDrawable) holder.appIcon.getDrawable()).getBitmap();
+                        if (bitmap != null && Util.getBoolean(context, "COLOR_UI"))
+                            getPalette(holder, bitmap);
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                });
 
         holder.appContainer.setOnClickListener(v -> {
             Context context = holder.view.getContext();
@@ -94,6 +118,17 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
         });
     }
 
+    private void getPalette(ViewHolder holder, Bitmap bitmap) {
+        Palette.from(bitmap).generate(palette ->
+                drawShadow(holder, palette.getVibrantColor(Color.GRAY)
+                ));
+    }
+
+    private void drawShadow(ViewHolder holder, int color) {
+        holder.appContainer.setCustomShadowColor(color);
+        holder.appContainer.apply();
+    }
+
     protected void setText(TextView textView, String text) {
         if (null != textView)
             textView.setText(text);
@@ -111,7 +146,7 @@ public class RecyclerAppsAdapter extends RecyclerView.Adapter<RecyclerAppsAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private View view;
-        private RelativeLayout appContainer;
+        private RoundedRelativeLayout appContainer;
         private TextView appName;
         private TextView appRating;
         private RatingBar appRatingBar;

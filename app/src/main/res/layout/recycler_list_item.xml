@@ -1,92 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.dragons.custom.RoundedRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="115dp"
-    android:layout_height="135dp"
-    android:layout_margin="2dp"
-    app:cardBackgroundColor="?android:attr/panelBackground"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="1dp"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="true">
+    android:id="@+id/app_container"
+    android:layout_width="125dp"
+    android:layout_height="145dp"
+    android:layout_margin="5dp"
+    app:customRBackgroundColor="?android:attr/panelBackground"
+    app:customRRadius="15dp"
+    app:customRShadow="5dp"
+    app:customRShadowColor="@color/gray">
+
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_alignParentTop="true"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:padding="15dp"
+        app:srcCompat="@drawable/ic_placeholder" />
 
     <RelativeLayout
-        android:id="@+id/app_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_icon"
+        android:orientation="horizontal"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp">
 
-        <ImageView
-            android:id="@+id/app_icon"
+        <TextView
+            android:id="@+id/app_name"
             android:layout_width="match_parent"
-            android:layout_height="96dp"
-            android:layout_alignParentTop="true"
-            android:background="?android:selectableItemBackgroundBorderless"
-            android:padding="15dp"
-            app:srcCompat="@drawable/ic_placeholder" />
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/google_sans_bold"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textAlignment="textStart"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="12sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/app_icon"
-            android:orientation="horizontal"
-            android:paddingEnd="8dp"
-            android:paddingStart="8dp">
+            android:layout_below="@id/app_name"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/app_name"
-                android:layout_width="match_parent"
+                android:id="@+id/app_rating"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="marquee"
-                android:fontFamily="@font/google_sans_bold"
-                android:scrollHorizontally="true"
-                android:singleLine="true"
-                android:textAlignment="textStart"
-                android:textColor="?android:attr/textColorPrimary"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/google_sans"
                 android:textSize="12sp" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <RatingBar
+                android:id="@+id/app_ratingbar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/app_name"
-                android:layout_marginBottom="4dp"
-                android:orientation="horizontal">
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/app_rating"
+                android:isIndicator="true"
+                android:max="1"
+                android:numStars="1"
+                android:scaleX=".5"
+                android:scaleY=".5"
+                android:theme="@style/RatingBar2" />
 
-                <TextView
-                    android:id="@+id/app_rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/google_sans"
-                    android:textSize="12sp" />
-
-                <RatingBar
-                    android:id="@+id/app_ratingbar"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/app_rating"
-                    android:isIndicator="true"
-                    android:max="1"
-                    android:numStars="1"
-                    android:scaleX=".5"
-                    android:scaleY=".5"
-                    android:theme="@style/RatingBar2" />
-
-                <ImageView
-                    android:id="@+id/menu_3dot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:background="?android:selectableItemBackgroundBorderless"
-                    android:scaleX=".8"
-                    android:scaleY=".8"
-                    android:src="@drawable/ic_3dots" />
-
-            </RelativeLayout>
+            <ImageView
+                android:id="@+id/menu_3dot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:scaleX=".8"
+                android:scaleY=".8"
+                android:src="@drawable/ic_3dots" />
 
         </RelativeLayout>
 
     </RelativeLayout>
 
-</android.support.v7.widget.CardView>
+</com.dragons.custom.RoundedRelativeLayout>
