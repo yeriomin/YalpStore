@@ -33,4 +33,18 @@
         <attr name="badge_dotColor" format="integer" />
         <attr name="badge_filter_key" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="RoundedLinearLayout">
+        <attr name="customLRadius" format="dimension" />
+        <attr name="customLShadow" format="dimension" />
+        <attr name="customLBackgroundColor" format="color" />
+        <attr name="customLShadowColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedRelativeLayout">
+        <attr name="customRRadius" format="dimension" />
+        <attr name="customRShadow" format="dimension" />
+        <attr name="customRBackgroundColor" format="color" />
+        <attr name="customRShadowColor" format="color" />
+    </declare-styleable>
 </resources>
