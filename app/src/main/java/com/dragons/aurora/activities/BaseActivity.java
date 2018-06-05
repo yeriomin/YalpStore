@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.dragons.aurora.LocaleManager;
 import com.dragons.aurora.R;
 import com.dragons.aurora.fragment.PreferenceFragment;
 import com.percolate.caffeine.PhoneUtils;
@@ -16,11 +15,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public static void cascadeFinish() {
         BaseActivity.logout = true;
-    }
-
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(LocaleManager.setLocale(base));
     }
 
     @Override

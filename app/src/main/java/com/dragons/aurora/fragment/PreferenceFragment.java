@@ -18,10 +18,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.dragons.aurora.AuroraPermissionManager;
-import com.dragons.aurora.LocaleManager;
 import com.dragons.aurora.MultiSelectListPreference;
 import com.dragons.aurora.OnListPreferenceChangeListener;
-import com.dragons.aurora.PlayStoreApiAuthenticator;
 import com.dragons.aurora.R;
 import com.dragons.aurora.Util;
 import com.dragons.aurora.activities.AuroraActivity;
@@ -31,9 +29,6 @@ import com.dragons.aurora.fragment.preference.Device;
 import com.dragons.aurora.fragment.preference.DownloadDirectory;
 import com.dragons.aurora.fragment.preference.InstallationMethod;
 import com.dragons.aurora.fragment.preference.Language;
-
-import java.io.IOException;
-import java.util.Locale;
 
 public class PreferenceFragment extends android.preference.PreferenceFragment {
 
@@ -93,7 +88,6 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         ImageView toolbar_back = this.getActivity().findViewById(R.id.toolbar_back);
         toolbar_back.setOnClickListener(click -> getActivity().onBackPressed());
         addPreferencesFromResource(R.xml.settings);
-        setupLanguage(getActivity());
         setupThemes(getActivity());
         setupSwitches(getActivity());
         drawBlackList();
@@ -144,24 +138,6 @@ public class PreferenceFragment extends android.preference.PreferenceFragment {
         InstallationMethod installationMethodFragment = new InstallationMethod(this);
         installationMethodFragment.setInstallationMethodPreference((ListPreference) findPreference(PREFERENCE_INSTALLATION_METHOD));
         installationMethodFragment.draw();
-    }
-
-    private void setupLanguage(Context c) {
-        ListPreference language_preference = (ListPreference) this.findPreference("language_preference");
-        language_preference.setSummary(language_preference.getEntry());
-
-        language_preference.setOnPreferenceChangeListener((preference, newLang) -> {
-            LocaleManager.setNewLocale(c, (String) newLang);
-            getPreferenceManager().getSharedPreferences().edit().putString("language_preference", (String) newLang).apply();
-            try {
-                new PlayStoreApiAuthenticator(c).getApi().setLocale(new Locale(LocaleManager.getLanguage(c)));
-            } catch (IOException e) {
-                Log.e(this.getClass().getSimpleName(), e.getMessage());
-            }
-            restartHome();
-            getActivity().finishAndRemoveTask();
-            return false;
-        });
     }
 
     private void setupSwitches(Context context) {

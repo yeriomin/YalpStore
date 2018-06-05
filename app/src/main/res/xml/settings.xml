@@ -37,14 +37,6 @@
             android:summaryOn="@string/pref_no_images_summary_on"
             android:title="@string/pref_no_images" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_app_language_cat">
-        <ListPreference
-            android:defaultValue="Default"
-            android:entries="@array/language"
-            android:entryValues="@array/languageAlias"
-            android:key="language_preference"
-            android:title="@string/pref_app_language" />
-    </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_updates">
         <CheckBoxPreference
             android:defaultValue="false"
