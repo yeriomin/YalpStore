@@ -8,6 +8,7 @@ list_files() {
 cat <<EOF
 app/${PACKAGE_NAME}.apk
 app/${PACKAGE_NAME}/${PACKAGE_NAME}.apk
+etc/permissions/privapp-permissions-${PACKAGE_NAME}.xml
 priv-app/${PACKAGE_NAME}.apk
 priv-app/${PACKAGE_NAME}/${PACKAGE_NAME}.apk
 EOF

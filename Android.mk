@@ -1,4 +1,13 @@
 LOCAL_PATH:= $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := privapp-permissions-YalpStore.xml
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/permissions
+LOCAL_SRC_FILES := $(LOCAL_PATH)/yalp-store-ota-zip/$(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
+
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := YalpStore
@@ -17,7 +26,7 @@ $(yalpstore_root)/$(yalpstore_dir)/$(yalpstore_apk):
 	ln -s $(yalpstore_out) $(yalpstore_build)
 	echo "sdk.dir=$(ANDROID_HOME)" > $(yalpstore_root)/local.properties
 	cd $(yalpstore_root) && git submodule update --recursive --init
-	cd $(yalpstore_root)/$(yalpstore_dir) && JAVA_TOOL_OPTIONS="$(JAVA_TOOL_OPTIONS) -Dfile.encoding=UTF8" ../gradlew assembleRelease
+	cd $(yalpstore_root)/$(yalpstore_dir) && JAVA_TOOL_OPTIONS="$(JAVA_TOOL_OPTIONS) -Dfile.encoding=UTF8" ../gradlew assembleLegacyRelease
 
 LOCAL_CERTIFICATE := platform
 LOCAL_SRC_FILES := $(yalpstore_dir)/$(yalpstore_apk)
