@@ -145,7 +145,7 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
             // This is a known bug in Android 7.0; it was fixed by this change which went into Android 7.1:
             // https://android-review.googlesource.com/#/c/271775/
             // https://github.com/square/okhttp/issues/3245
-            throw new IOException(e);
+            throw new IOException("This is a known bug in Android 7.0; it was fixed by this change which went into Android 7.1: " + e.getMessage());
         }
 
         int code = 0;
