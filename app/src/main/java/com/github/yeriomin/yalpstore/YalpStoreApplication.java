@@ -204,6 +204,7 @@ public class YalpStoreApplication extends Application {
         @Override
         protected void onPostExecute(Map<String, App> apps) {
             super.onPostExecute(apps);
+            apps.get(BuildConfig.APPLICATION_ID).setFree(true);
             YalpStoreApplication.installedPackages.clear();
             YalpStoreApplication.installedPackages.putAll(apps);
         }

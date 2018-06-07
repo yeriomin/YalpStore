@@ -30,6 +30,7 @@ import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
+import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
 import java.io.File;
 
@@ -81,14 +82,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static private void updateInstalledAppsList(Context context, String packageName, boolean installed) {
         if (installed) {
-            PackageManager pm = context.getPackageManager();
-            try {
-                App app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
-                app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
-                YalpStoreApplication.installedPackages.put(packageName, app);
-            } catch (PackageManager.NameNotFoundException e) {
-                // App is not installed
-            }
+            YalpStoreApplication.installedPackages.put(packageName, InstalledAppsTask.getInstalledApp(context.getPackageManager(), packageName));
         } else {
             YalpStoreApplication.installedPackages.remove(DetailsActivity.app.getPackageName());
         }

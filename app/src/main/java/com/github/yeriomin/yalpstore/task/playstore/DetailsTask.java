@@ -72,14 +72,7 @@ public class DetailsTask extends PlayStorePayloadTask<App> {
     }
 
     private App getSelf() {
-        App app = new App();
-        PackageManager pm = context.getPackageManager();
-        try {
-            app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
-            app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
-        } catch (PackageManager.NameNotFoundException e) {
-            // App is not installed
-        }
+        App app = YalpStoreApplication.installedPackages.get(BuildConfig.APPLICATION_ID);
         int latestVersionCode = UpdaterFactory.get(context).getLatestVersionCode();
         app.setVersionCode(latestVersionCode);
         app.setVersionName("0." + latestVersionCode);
