@@ -20,7 +20,6 @@
 package com.github.yeriomin.yalpstore.fragment;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -165,20 +164,11 @@ public class DownloadMenu extends Abstract {
     }
 
     private boolean isConvertible(App app) {
-        return isInstalled(app)
+        return app.isInstalled()
             && !app.getPackageName().equals(BuildConfig.APPLICATION_ID)
             && null != app.getPackageInfo().applicationInfo
             && null != app.getPackageInfo().applicationInfo.sourceDir
             && !app.getPackageInfo().applicationInfo.sourceDir.endsWith("pkg.apk")
         ;
-    }
-
-    private boolean isInstalled(App app) {
-        try {
-            activity.getPackageManager().getPackageInfo(app.getPackageName(), 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
     }
 }

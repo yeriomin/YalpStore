@@ -20,7 +20,6 @@
 package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.text.TextUtils;
-import android.widget.ArrayAdapter;
 
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
@@ -28,7 +27,6 @@ import com.github.yeriomin.playstoreapi.ListResponse;
 import com.github.yeriomin.yalpstore.CategoryManager;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,14 +64,6 @@ abstract public class CategoryTask extends PlayStorePayloadTask<Void> {
             manager.save(categoryId, buildCategoryMap(api.categoriesList(categoryId)));
         }
         return null;
-    }
-
-    protected ArrayAdapter getAdapter(Map<String, String> categories, int itemLayoutId) {
-        return new ArrayAdapter<>(
-            context,
-            itemLayoutId,
-            new ArrayList<>(categories.values())
-        );
     }
 
     private Map<String, String> buildCategoryMap(ListResponse response) {

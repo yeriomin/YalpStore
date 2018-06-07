@@ -47,6 +47,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             return;
         }
         boolean actionIsInstall = actionIsInstall(intent);
+        updateInstalledAppsList(context, packageName, actionIsInstall);
         if (null != DetailsActivity.app && packageName.equals(DetailsActivity.app.getPackageName())) {
             updateDetails(actionIsInstall);
         }
@@ -76,6 +77,22 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             DetailsActivity.app.getPackageInfo().versionCode = 0;
             DetailsActivity.app.setInstalled(false);
         }
+    }
+
+    static private void updateInstalledAppsList(Context context, String packageName, boolean installed) {
+        if (installed) {
+            PackageManager pm = context.getPackageManager();
+            try {
+                App app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
+                app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
+                YalpStoreApplication.installedPackages.put(packageName, app);
+            } catch (PackageManager.NameNotFoundException e) {
+                // App is not installed
+            }
+        } else {
+            YalpStoreApplication.installedPackages.remove(DetailsActivity.app.getPackageName());
+        }
+        context.sendBroadcast(new Intent(AppListInstallReceiver.ACTION_INSTALL_UI_UPDATE));
     }
 
     static public boolean actionIsInstall(Intent intent) {

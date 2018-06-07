@@ -62,7 +62,7 @@ public class InstalledAppsActivity extends AppListActivity {
 
     @Override
     public void loadApps() {
-        new ForegroundInstalledAppsTask(this).execute();
+        new ForegroundInstalledAppsTask(this).executeOnExecutorIfPossible();
     }
 
     @Override

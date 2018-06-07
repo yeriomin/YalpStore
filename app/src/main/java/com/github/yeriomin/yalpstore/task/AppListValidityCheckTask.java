@@ -19,19 +19,16 @@
 
 package com.github.yeriomin.yalpstore.task;
 
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.os.AsyncTask;
 
 import com.github.yeriomin.yalpstore.AppListActivity;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.view.AppBadge;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -56,6 +53,10 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Map<String
     @Override
     protected void onPostExecute(Map<String, Integer> installedPackageNames) {
         super.onPostExecute(installedPackageNames);
+        if (YalpStoreApplication.installedPackages.isEmpty()) {
+            activity.loadApps();
+            return;
+        }
         Set<String> newPackageNames = new HashSet<>(installedPackageNames.keySet());
         newPackageNames.removeAll(activity.getListedPackageNames());
         if (!respectUpdateBlacklist && newPackageNames.size() > 0) {
@@ -94,26 +95,15 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Map<String
     @Override
     protected Map<String, Integer> doInBackground(String... strings) {
         Map<String, Integer> installedApps = new HashMap<>();
-        List<PackageInfo> installedPackages = new ArrayList<>();
-        try {
-            installedPackages.addAll(activity.getPackageManager().getInstalledPackages(0));
-        } catch (RuntimeException e) {
-            // Sometimes TransactionTooLargeException is thrown even though getInstalledPackages is
-            // called with 0 flags. App list validity check is not essential, so this can be ignored
-            // TODO: There might be a way to avoid this exception, although I doubt it
-        }
         BlackWhiteListManager manager = new BlackWhiteListManager(activity);
-        for (PackageInfo reducedPackageInfo: installedPackages) {
-            if (!includeSystemApps
-                && null != reducedPackageInfo.applicationInfo
-                && (reducedPackageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
-            ) {
+        for (App app: YalpStoreApplication.installedPackages.values()) {
+            if (!includeSystemApps && app.isSystem()) {
                 continue;
             }
-            if (respectUpdateBlacklist && !manager.isUpdatable(reducedPackageInfo.packageName)) {
+            if (respectUpdateBlacklist && !manager.isUpdatable(app.getPackageName())) {
                 continue;
             }
-            installedApps.put(reducedPackageInfo.packageName, reducedPackageInfo.versionCode);
+            installedApps.put(app.getPackageName(), app.getVersionCode());
         }
         return installedApps;
     }

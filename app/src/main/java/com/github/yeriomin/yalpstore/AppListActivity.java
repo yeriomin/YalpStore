@@ -24,7 +24,6 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.fragment.ButtonDownload;
@@ -39,11 +38,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-abstract public class AppListActivity extends YalpStoreActivity {
+abstract public class AppListActivity extends ListActivity {
 
-    protected ListView listView;
     protected Map<String, ListItem> listItems = new HashMap<>();
     protected AppListDownloadReceiver appListDownloadReceiver;
+    protected AppListInstallReceiver appListInstallReceiver;
 
     abstract public void loadApps();
     abstract protected ListItem buildListItem(App app);
@@ -65,12 +64,16 @@ abstract public class AppListActivity extends YalpStoreActivity {
     @Override
     protected void onPause() {
         unregisterReceiver(appListDownloadReceiver);
+        unregisterReceiver(appListInstallReceiver);
         super.onPause();
     }
 
     @Override
     protected void onResume() {
+        unregisterReceiver(appListDownloadReceiver);
+        unregisterReceiver(appListInstallReceiver);
         appListDownloadReceiver = new AppListDownloadReceiver(this);
+        appListInstallReceiver = new AppListInstallReceiver(this);
         super.onResume();
     }
 
@@ -113,19 +116,8 @@ abstract public class AppListActivity extends YalpStoreActivity {
     }
 
     @Override
-    public void onContentChanged() {
-        super.onContentChanged();
-        View emptyView = findViewById(android.R.id.empty);
-        listView = findViewById(android.R.id.list);
-        if (null == listView) {
-            return;
-        }
-        if (emptyView != null) {
-            listView.setEmptyView(emptyView);
-        }
-        if (null == listView.getAdapter()) {
-            listView.setAdapter(new AppListAdapter(this, R.layout.two_line_list_item_with_icon));
-        }
+    protected int getLayoutId() {
+        return R.layout.two_line_list_item_with_icon;
     }
 
     public App getAppByListPosition(int position) {
@@ -141,7 +133,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
     }
 
     public void addApps(List<App> appsToAdd, boolean update) {
-        AppListAdapter adapter = (AppListAdapter) getListView().getAdapter();
+        ListAdapter adapter = (ListAdapter) getListView().getAdapter();
         adapter.setNotifyOnChange(false);
         for (App app: appsToAdd) {
             ListItem listItem = buildListItem(app);
@@ -154,7 +146,7 @@ abstract public class AppListActivity extends YalpStoreActivity {
     }
 
     public void removeApp(String packageName) {
-        ((AppListAdapter) getListView().getAdapter()).remove(listItems.get(packageName));
+        ((ListAdapter) getListView().getAdapter()).remove(listItems.get(packageName));
         listItems.remove(packageName);
         if (listItems.isEmpty()) {
             ((TextView) getListView().getEmptyView()).setText(R.string.list_empty_search);
@@ -167,10 +159,6 @@ abstract public class AppListActivity extends YalpStoreActivity {
 
     public void clearApps() {
         listItems.clear();
-        ((AppListAdapter) getListView().getAdapter()).clear();
-    }
-
-    public ListView getListView() {
-        return listView;
+        ((ListAdapter) getListView().getAdapter()).clear();
     }
 }

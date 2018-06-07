@@ -26,7 +26,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
-import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBar;
@@ -44,7 +43,6 @@ import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.task.playstore.UserProfileTask;
 
-import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL;

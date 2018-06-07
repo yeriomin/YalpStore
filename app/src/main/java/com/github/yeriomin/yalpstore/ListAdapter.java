@@ -20,6 +20,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,13 +28,14 @@ import android.widget.ArrayAdapter;
 
 import com.github.yeriomin.yalpstore.view.ListItem;
 
+import java.util.Collection;
 
-public class AppListAdapter extends ArrayAdapter<ListItem> {
+public class ListAdapter extends ArrayAdapter<ListItem> {
 
     private int resourceId;
     private LayoutInflater inflater;
 
-    public AppListAdapter(Context context, int resourceId) {
+    public ListAdapter(Context context, int resourceId) {
         super(context, resourceId);
         this.resourceId = resourceId;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -48,5 +50,19 @@ public class AppListAdapter extends ArrayAdapter<ListItem> {
             listItem.draw();
         }
         return view;
+    }
+
+    @Override
+    public void addAll(Collection<? extends ListItem> collection) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            addAll(collection);
+        } else {
+            setNotifyOnChange(false);
+            for (ListItem item: collection) {
+                add(item);
+            }
+            setNotifyOnChange(true);
+            notifyDataSetChanged();
+        }
     }
 }

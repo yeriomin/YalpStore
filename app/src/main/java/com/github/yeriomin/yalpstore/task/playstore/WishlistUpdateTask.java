@@ -32,7 +32,6 @@ import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class WishlistUpdateTask extends PlayStorePayloadTask<List<String>> {
 
@@ -44,7 +43,6 @@ public class WishlistUpdateTask extends PlayStorePayloadTask<List<String>> {
         InstalledAppsTask installedAppsTask = new InstalledAppsTask();
         installedAppsTask.setContext(context);
         installedAppsTask.setIncludeSystemApps(true);
-        Set<String> installedPackageNames = installedAppsTask.getInstalledApps(false).keySet();
         if (PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
             packageNames.addAll(YalpStoreApplication.wishlist);
         } else {
@@ -54,14 +52,14 @@ public class WishlistUpdateTask extends PlayStorePayloadTask<List<String>> {
             }
             for (DocV2 doc: list.getDoc(0).getChild(0).getChildList()) {
                 App app = AppBuilder.build(doc);
-                if (installedPackageNames.contains(app.getPackageName())) {
+                if (YalpStoreApplication.installedPackages.containsKey(app.getPackageName())) {
                     continue;
                 }
                 apps.add(app);
                 packageNames.add(app.getPackageName());
             }
         }
-        packageNames.removeAll(installedPackageNames);
+        packageNames.removeAll(YalpStoreApplication.installedPackages.keySet());
         return packageNames;
     }
 

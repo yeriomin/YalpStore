@@ -25,13 +25,12 @@ import android.widget.TextView;
 import com.github.yeriomin.yalpstore.task.playstore.CategoryListTask;
 import com.github.yeriomin.yalpstore.task.playstore.CategoryTask;
 
-
 public class CategoryListActivity extends YalpStoreActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.categories_activity_layout);
+        setContentView(R.layout.list_activity_layout);
         setTitle(getString(R.string.action_categories));
         CategoryManager manager = new CategoryManager(this);
         getTask(manager).execute();

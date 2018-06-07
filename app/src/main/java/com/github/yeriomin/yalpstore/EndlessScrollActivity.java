@@ -64,7 +64,7 @@ abstract public class EndlessScrollActivity extends AppListActivity {
 
     @Override
     public void addApps(List<App> appsToAdd) {
-        AppListAdapter adapter = (AppListAdapter) getListView().getAdapter();
+        ListAdapter adapter = (ListAdapter) getListView().getAdapter();
         if (!adapter.isEmpty()) {
             ListItem last = adapter.getItem(adapter.getCount() - 1);
             if (last instanceof ProgressIndicator) {

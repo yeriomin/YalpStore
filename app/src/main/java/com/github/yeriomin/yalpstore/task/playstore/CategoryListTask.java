@@ -21,6 +21,7 @@ package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.github.yeriomin.yalpstore.CategoryAppsActivity;
@@ -53,5 +54,13 @@ public class CategoryListTask extends CategoryTask implements CloneableTask {
                 CategoryAppsActivity.start(activity, new ArrayList<>(categories.keySet()).get(position));
             }
         });
+    }
+
+    private ArrayAdapter getAdapter(Map<String, String> categories, int itemLayoutId) {
+        return new ArrayAdapter<>(
+            context,
+            itemLayoutId,
+            new ArrayList<>(categories.values())
+        );
     }
 }

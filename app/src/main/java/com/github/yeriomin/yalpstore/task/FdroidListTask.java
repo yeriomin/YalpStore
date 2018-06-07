@@ -20,7 +20,6 @@
 package com.github.yeriomin.yalpstore.task;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
@@ -46,7 +45,7 @@ import javax.xml.parsers.SAXParserFactory;
 
 import info.guardianproject.netcipher.NetCipher;
 
-public class FdroidListTask extends AsyncTask<Void, Void, Void> {
+public class FdroidListTask extends TaskWithProgress<Void> {
 
     static private final String FDROID_REPO_URL = "https://f-droid.org/repo/index.xml";
     static private final String FDROID_REPO_LOCAL_XML = "fdroid.xml";
@@ -58,7 +57,7 @@ public class FdroidListTask extends AsyncTask<Void, Void, Void> {
     }
 
     @Override
-    protected Void doInBackground(Void... voids) {
+    protected Void doInBackground(String... strings) {
         if (!localXmlFile.exists()) {
             downloadXml();
         }

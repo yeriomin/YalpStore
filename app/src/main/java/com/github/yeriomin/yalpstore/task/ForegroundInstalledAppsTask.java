@@ -19,33 +19,63 @@
 
 package com.github.yeriomin.yalpstore.task;
 
+import android.os.SystemClock;
+
+import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.InstalledAppsActivity;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
-public class ForegroundInstalledAppsTask extends InstalledAppsTask {
+public class ForegroundInstalledAppsTask extends TaskWithProgress<Map<String, App>> {
 
-    private InstalledAppsActivity activity;
+    private WeakReference<InstalledAppsActivity> activityRef;
 
     public ForegroundInstalledAppsTask(InstalledAppsActivity activity) {
-        this.activity = activity;
+        activityRef = new WeakReference<>(activity);
         setContext(activity.getApplicationContext());
         setProgressIndicator(activity.findViewById(R.id.progress));
-        setIncludeSystemApps(new FilterMenu(activity).getFilterPreferences().isSystemApps());
     }
 
     @Override
-    protected void onPostExecute(Map<String, App> result) {
-        super.onPostExecute(result);
-        activity.clearApps();
-        List<App> installedApps = new ArrayList<>(result.values());
+    protected Map<String, App> doInBackground(String... strings) {
+        // Installed app list is put into YalpStoreApplication.installedPackages in
+        // YalpStoreApplication.onCreate(), so lets just wait for it to finish.
+        // The wait happens on app launch only.
+        int waitStep = 100;
+        int waitLimit = 10000;
+        int waited = 0;
+        while (YalpStoreApplication.installedPackages.isEmpty() && waited <= waitLimit) {
+            SystemClock.sleep(waitStep);
+            waited += waitStep;
+        }
+        return YalpStoreApplication.installedPackages;
+    }
+
+    @Override
+    protected void onPostExecute(Map<String, App> appMap) {
+        super.onPostExecute(appMap);
+        if (null == activityRef.get() || !ContextUtil.isAlive(activityRef.get())) {
+            return;
+        }
+        boolean includeSystemApps = new FilterMenu(activityRef.get()).getFilterPreferences().isSystemApps();
+        List<App> installedApps = new ArrayList<>(appMap.values());
+        ListIterator<App> iterator = installedApps.listIterator();
+        while (iterator.hasNext()){
+            if (!includeSystemApps && iterator.next().isSystem()){
+                iterator.remove();
+            }
+        }
         Collections.sort(installedApps);
-        activity.addApps(installedApps);
+        activityRef.get().clearApps();
+        activityRef.get().addApps(installedApps);
     }
 }

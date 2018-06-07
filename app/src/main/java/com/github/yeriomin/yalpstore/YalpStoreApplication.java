@@ -27,7 +27,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.http.HttpResponseCache;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -35,7 +34,9 @@ import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.FdroidListTask;
+import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,7 +44,9 @@ import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
@@ -52,6 +55,7 @@ import static com.github.yeriomin.yalpstore.PreferenceUtil.PREFERENCE_USE_TOR;
 
 public class YalpStoreApplication extends Application {
 
+    public static final Map<String, App> installedPackages = new ConcurrentHashMap<>();
     public static final Set<String> fdroidPackageNames = new HashSet<>();
     public static final SharedPreferencesCachedSet wishlist = new SharedPreferencesCachedSet("wishlist");
 
@@ -112,11 +116,10 @@ public class YalpStoreApplication extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
         registerDownloadReceiver();
         registerInstallReceiver();
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-            new FdroidListTask(this.getApplicationContext()).execute();
-        } else {
-            new FdroidListTask(this.getApplicationContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-        }
+        new FdroidListTask(this.getApplicationContext()).executeOnExecutorIfPossible();
+        InitializingInstalledAppsTask installedAppsTask = new InitializingInstalledAppsTask();
+        installedAppsTask.setContext(this.getApplicationContext());
+        installedAppsTask.executeOnExecutorIfPossible();
         wishlist.setPreferences(PreferenceUtil.getDefaultSharedPreferences(this));
     }
 
@@ -189,6 +192,20 @@ public class YalpStoreApplication extends Application {
                     ContextUtil.toastLong(application, e.getMessage());
                 }
             }
+        }
+    }
+
+    private static class InitializingInstalledAppsTask extends InstalledAppsTask {
+
+        public InitializingInstalledAppsTask() {
+            setIncludeSystemApps(true);
+        }
+
+        @Override
+        protected void onPostExecute(Map<String, App> apps) {
+            super.onPostExecute(apps);
+            YalpStoreApplication.installedPackages.clear();
+            YalpStoreApplication.installedPackages.putAll(apps);
         }
     }
 }
