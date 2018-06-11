@@ -35,6 +35,8 @@ import com.github.yeriomin.yalpstore.view.UpdatableAppsButtonAdapter;
 
 public class UpdatableAppsActivity extends AppListActivity {
 
+    public static final int REQUEST_CODE_UPDATE_ALL = 106;
+
     private UpdateAllReceiver updateAllReceiver;
 
     @Override
@@ -75,8 +77,12 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
-            launchUpdateAll();
+        if (requestCode == REQUEST_CODE_UPDATE_ALL) {
+            if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
+                launchUpdateAll();
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 

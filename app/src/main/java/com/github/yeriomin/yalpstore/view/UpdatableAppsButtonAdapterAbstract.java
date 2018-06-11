@@ -39,7 +39,7 @@ public class UpdatableAppsButtonAdapterAbstract extends ButtonAdapter {
                 if (permissionManager.checkPermission()) {
                     activity.launchUpdateAll();
                 } else {
-                    permissionManager.requestPermission();
+                    permissionManager.requestPermission(UpdatableAppsActivity.REQUEST_CODE_UPDATE_ALL);
                 }
             }
         });

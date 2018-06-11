@@ -55,10 +55,14 @@ public class YalpStorePermissionManager {
     }
 
     public void requestPermission() {
+        requestPermission(PERMISSIONS_REQUEST_CODE);
+    }
+
+    public void requestPermission(int requestCode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && null != activityRef.get()) {
             activityRef.get().requestPermissions(
                 new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
-                PERMISSIONS_REQUEST_CODE
+                requestCode
             );
         }
     }
