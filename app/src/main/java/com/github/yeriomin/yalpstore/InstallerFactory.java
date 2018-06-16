@@ -20,23 +20,30 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.os.Build;
 
 public class InstallerFactory {
 
     static public InstallerAbstract get(Context context) {
-        String userChoice = PreferenceUtil.getString(context, PreferenceUtil.PREFERENCE_INSTALLATION_METHOD);
-        switch (userChoice) {
+        switch (PreferenceUtil.getString(context, PreferenceUtil.PREFERENCE_INSTALLATION_METHOD)) {
             case PreferenceUtil.INSTALLATION_METHOD_PRIVILEGED:
-                return new InstallerPrivileged(context);
+                return getPrivilegedInstaller(context);
             case PreferenceUtil.INSTALLATION_METHOD_ROOT:
                 return new InstallerRoot(context);
             case PreferenceUtil.INSTALLATION_METHOD_DEFAULT:
                 return new InstallerDefault(context);
             default:
                 return YalpStorePermissionManager.hasInstallPermission(context)
-                    ? new InstallerPrivileged(context)
+                    ? getPrivilegedInstaller(context)
                     : new InstallerDefault(context)
                 ;
         }
+    }
+
+    static private InstallerPrivileged getPrivilegedInstaller(Context context) {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
+            ? new InstallerPrivilegedSession(context)
+            : new InstallerPrivilegedReflection(context)
+        ;
     }
 }

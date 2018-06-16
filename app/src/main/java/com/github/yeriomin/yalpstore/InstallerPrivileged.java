@@ -21,25 +21,20 @@ package com.github.yeriomin.yalpstore;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.pm.IPackageInstallObserver;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Looper;
-import android.os.RemoteException;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InstallerPrivileged extends InstallerBackground {
+abstract public class InstallerPrivileged extends InstallerBackground {
 
     public final int INSTALL_REPLACE_EXISTING = 2;
 
-    static private final Map<Integer, String> errors = new HashMap<>();
+    static protected final Map<Integer, String> errors = new HashMap<>();
 
     static {
         errors.put(-1, "Already installed");
@@ -67,6 +62,8 @@ public class InstallerPrivileged extends InstallerBackground {
         errors.put(-23, "The package changed from what the calling program expected");
         errors.put(-24, "The new package is assigned a different UID than it previously held");
         errors.put(-25, "The new package has an older version code than the currently installed package");
+        errors.put(-26, "The old package has target SDK high enough to support runtime permission and the new package has target SDK low enough to not support runtime permissions.");
+        errors.put(-27, "The new package attempts to downgrade the target sandbox version of the app");
         errors.put(-100, "The parser was given a path that is not a file, or does not end with .apk");
         errors.put(-101, "The parser was unable to retrieve the AndroidManifest.xml");
         errors.put(-102, "The parser encountered an unexpected exception");
@@ -81,6 +78,10 @@ public class InstallerPrivileged extends InstallerBackground {
         errors.put(-111, "The system failed to install the package because the user is restricted from installing apps.");
         errors.put(-112, "The system failed to install the package because it is attempting to define a permission that is already defined by some existing package.");
         errors.put(-113, "The system failed to install the package because its packaged native code did not match any of the ABIs supported by the system.");
+        errors.put(-114, "The package being processed did not contain any native code");
+        errors.put(-115, "INSTALL_FAILED_ABORTED");
+        errors.put(-116, "Instant app installs are incompatible with some other installation flags supplied for the operation; or other circumstances such as trying to upgrade a system app via an instant app install");
+        errors.put(-117, "Dex metadata file is invalid or there was no matching apk file for a dex metadata file");
     }
 
     public InstallerPrivileged(Context context) {
@@ -104,48 +105,36 @@ public class InstallerPrivileged extends InstallerBackground {
     @Override
     protected void install(App app) {
         InstallationState.setInstalling(app.getPackageName());
-        File apkFile = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
-        if (!apkFile.exists()) {
-            Log.e(getClass().getSimpleName(), "Installation requested for apk " + apkFile.getAbsolutePath() + " which does not exist");
-            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
-            sendBroadcast(app.getPackageName(), false);
-            return;
+    }
+
+    protected void processResult(App app, int returnCode) {
+        String packageName = app.getPackageName();
+        Log.i(getClass().getSimpleName(), "Installation of " + packageName + " complete with code " + returnCode);
+        boolean success = returnCode > 0;
+        if (success) {
+            InstallationState.setSuccess(packageName);
+        } else {
+            InstallationState.setFailure(packageName);
         }
-        PackageManager pm = context.getPackageManager();
-        Class<?>[] types = new Class[] {Uri.class, IPackageInstallObserver.class, int.class, String.class};
-        try {
-            pm.getClass().getMethod("installPackage", types).invoke(pm, Uri.fromFile(apkFile), new InstallObserver(app), INSTALL_REPLACE_EXISTING, BuildConfig.APPLICATION_ID);
-        } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
-            Log.e(getClass().getSimpleName(), "Could not start privileged installation: " + e.getClass().getName() + " " + e.getMessage());
-            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
-            sendBroadcast(app.getPackageName(), false);
+        sendBroadcast(packageName, success);
+        boolean needToLoop = false;
+        if (null == Looper.myLooper()) {
+            Looper.prepare();
+            needToLoop = true;
+        }
+        postInstallationResult(app, success);
+        if (errors.containsKey(returnCode)) {
+            Log.e(getClass().getSimpleName(), errors.get(returnCode));
+        }
+        if (needToLoop) {
+            Looper.loop();
         }
     }
 
-    class InstallObserver extends IPackageInstallObserver.Stub {
-
-        private App app;
-
-        public InstallObserver(App app) {
-            this.app = app;
-        }
-
-        @Override
-        public void packageInstalled(String packageName, int returnCode) throws RemoteException {
-            Log.i(getClass().getSimpleName(), "Installation of " + packageName + " complete with code " + returnCode);
-            boolean success = returnCode > 0;
-            if (success) {
-                InstallationState.setSuccess(packageName);
-            } else {
-                InstallationState.setFailure(packageName);
-            }
-            sendBroadcast(packageName, success);
-            Looper.prepare();
-            postInstallationResult(app, success);
-            if (errors.containsKey(returnCode)) {
-                Log.e(getClass().getSimpleName(), errors.get(returnCode));
-            }
-            Looper.loop();
-        }
+    protected void fail(Exception e, String packageName) {
+        Log.e(getClass().getSimpleName(), "Could not start privileged installation: " + e.getClass().getName() + " " + e.getMessage());
+        ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName);
+        InstallationState.setFailure(packageName);
+        sendBroadcast(packageName, false);
     }
 }
