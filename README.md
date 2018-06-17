@@ -9,6 +9,7 @@
 </a>
 
 ## What does it do?
+
 Yalp Store lets you download apps from Google Play Store **as apk files**. It can search for **updates** of installed apps and lets you **search** for other apps. Yalp saves downloaded apks to your default download folder. Other features include browsing categories, viewing and leaving reviews, black/whitelisting apps for updates, filtering apps by being free/paid and containing/not containing ads.
 
 To supplement the features related to Google Play, Yalp Store has ordinary package manager features: listing, running, installing and uninstalling local apps.
@@ -18,11 +19,13 @@ If root is available, Yalp Store can update your apps in background, install and
 Yalp Store can be installed as a system app to gain background package installation permission. In ths case "Unknown sources" setting can be left off. You can let Yalp Store self-install as a system app, or get the OTA zip from the [releases page](https://github.com/yeriomin/YalpStore/releases).
 
 ## Why would I use it?
+
 If you are content with Google Play Store app, you will not need this app.
 
 The point of Yalp Store is to be small and independent from Google Services Framework. As time passed, Google Services Framework and Google Play Store apps grew in size, which made them almost too big for old phones (Nexus One has 150Mb memory available for apps, half of it would be taken by Google apps). Another reason to use Yalp Store is if you frequently flash experimental ROMs. This often breaks gapps and even prevents their reinstallation. In this situation Yalp will still work.
 
 ## How does it work?
+
 Yalp Store uses the same (protobuf) API the android Play Store app uses. It downloads apks **directly** from Google servers.
 
 By default Yalp Store connects to Google services using a built-in account, so **you do not have to own a Google account to use it**. The only reason to use a live Google account is to access the paid apps you own.
@@ -36,6 +39,7 @@ When the GSF id is ready, your email and password (if you provided them) are use
 <img alt="Updates page" src="fastlane/metadata/android/en-US/phoneScreenshots/updates.png" width="30%" hspace="5" /><img alt="Details page" src="fastlane/metadata/android/en-US/phoneScreenshots/details.png" width="30%" hspace="5" /><img alt="Search page" src="fastlane/metadata/android/en-US/phoneScreenshots/search.png" width="30%" hspace="5" />
 
 ## FAQ
+
 >Q: What about buying apps, books, music, movies? Is it going to be implemented at some point?
 >
 >A: No. Only free apps and apps you have purchased are going to be accessible through Yalp Store. Google Play API is not open and is not documented, so Yalp Store is developed through reverse-engineering. To implement features related to anything that requires payment I would have to (very) frequently buy stuff from Google Play Store. 
@@ -72,6 +76,9 @@ When the GSF id is ready, your email and password (if you provided them) are use
 >
 >A: Yes. Software like Yalp Store, Google Play Crawler and Raccoon has been used for years and it seems to be safe. Never heard of any real cases of accounts being disabled.
 
+>Q: My download is initialized but stuck at 0%. I have Blokada installed. What's the problem?
+>
+>A: Blokada seems to block the download of your update. Try whitelist the app "YalpStore" in Blokada.
 ## License
 
 Yalp Store is Free Software: You can use, study share and improve it at your will. Specifically you can redistribute and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.
