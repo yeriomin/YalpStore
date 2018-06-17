@@ -22,10 +22,13 @@ package com.github.yeriomin.yalpstore;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.Event;
+import com.github.yeriomin.yalpstore.model.EventDao;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
@@ -36,6 +39,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
     static public final String ACTION_INSTALL_UI_UPDATE = "ACTION_INSTALL_UI_UPDATE";
     static public final String ACTION_PACKAGE_REPLACED_NON_SYSTEM = "ACTION_PACKAGE_REPLACED_NON_SYSTEM";
     static public final String ACTION_PACKAGE_INSTALLATION_FAILED = "ACTION_PACKAGE_INSTALLATION_FAILED";
+
     @Override
     public void onReceive(Context context, Intent intent) {
         if (TextUtils.isEmpty(intent.getAction()) || null == intent.getData() || TextUtils.isEmpty(intent.getData().getSchemeSpecificPart())) {
@@ -45,6 +49,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         String packageName = intent.getData().getSchemeSpecificPart();
         Log.i(getClass().getSimpleName(), "Finished installation (" + action + ") of " + packageName);
         boolean actionIsInstall = actionIsInstall(action);
+        insertEvent(context, prepareEvent(context, packageName, action));
         updateInstalledAppsList(context, packageName, actionIsInstall);
         context.sendBroadcast(new Intent(ACTION_INSTALL_UI_UPDATE).putExtra(Intent.EXTRA_PACKAGE_NAME, packageName));
         ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall);
@@ -65,7 +70,38 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         }
     }
 
+    static private Event prepareEvent(Context context, String packageName, String action) {
+        Event event = new Event();
+        event.setPackageName(packageName);
+        switch (action) {
+            case ACTION_PACKAGE_INSTALLATION_FAILED:
+                event.setType(Event.TYPE.INSTALLATION);
+                event.setMessage(context.getString(R.string.details_install_failure));
+                break;
+            case Intent.ACTION_PACKAGE_REMOVED:
+            case Intent.ACTION_PACKAGE_FULLY_REMOVED:
+                event.setType(Event.TYPE.REMOVAL);
+                event.setMessage(context.getString(R.string.uninstalled));
+                break;
+            case Intent.ACTION_PACKAGE_INSTALL:
+            case Intent.ACTION_PACKAGE_ADDED:
+            case Intent.ACTION_PACKAGE_REPLACED:
+            case ACTION_PACKAGE_REPLACED_NON_SYSTEM:
+                Event pendingEvent = getPendingEvent(context, packageName);
+                if (null == pendingEvent || null == pendingEvent.getType()) {
+                    fillIncompleteEvent(context, action, event);
+                } else if ((!pendingEvent.getType().equals(Event.TYPE.UPDATE) && action.equals(Intent.ACTION_PACKAGE_REPLACED))
+                    || (!pendingEvent.getType().equals(Event.TYPE.INSTALLATION) && (action.equals(Intent.ACTION_PACKAGE_ADDED) || action.equals(Intent.ACTION_PACKAGE_INSTALL)))
+                ) {
+                    // During update three broadcasts are sent in sequence: remove, install, update
+                    // If the action does not match pending event type, we do nothing
+                    return null;
+                } else {
+                    event = pendingEvent;
+                }
+                break;
         }
+        return event;
     }
 
     static private void updateInstalledAppsList(Context context, String packageName, boolean installed) {
@@ -74,9 +110,51 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         } else {
             YalpStoreApplication.installedPackages.remove(packageName);
         }
-        context.sendBroadcast(new Intent(AppListInstallReceiver.ACTION_INSTALL_UI_UPDATE));
     }
 
+    static private Event getPendingEvent(Context context, String packageName) {
+        SQLiteDatabase db = new SqliteHelper(context).getReadableDatabase();
+        EventDao dao = new EventDao(db);
+        Event event = dao.getPendingEvent(packageName);
+        db.close();
+        return event;
+    }
+
+    static private void fillIncompleteEvent(Context context, String action, Event event) {
+        boolean installation = action.equals(Intent.ACTION_PACKAGE_ADDED) || action.equals(Intent.ACTION_PACKAGE_INSTALL);
+        event.setType(installation ? Event.TYPE.INSTALLATION : Event.TYPE.UPDATE);
+        App oldApp = YalpStoreApplication.installedPackages.get(event.getPackageName());
+        App newApp = InstalledAppsTask.getInstalledApp(context.getPackageManager(), event.getPackageName());
+        event.setMessage(
+            installation
+                ? context.getString(R.string.details_installed)
+                : context.getString(
+                    R.string.updated_from_to,
+                    null == oldApp ? "?" : oldApp.getVersionName(),
+                    null == oldApp ? 0 : oldApp.getVersionCode(),
+                    newApp.getVersionName(),
+                    newApp.getVersionCode()
+                )
+        );
+    }
+
+    static private void insertEvent(Context context, Event event) {
+        if (null == event) {
+            return;
+        }
+        SQLiteDatabase db = new SqliteHelper(context).getWritableDatabase();
+        EventDao dao = new EventDao(db);
+        if (event.isPending()) {
+            dao.confirmPendingEvent(event);
+        } else {
+            dao.insert(event);
+        }
+        if (event.getType().equals(Event.TYPE.UPDATE)) {
+            // During update three broadcasts are sent in sequence: remove, install, update
+            // This removes intermediate remove and install
+            dao.cleanupUpdates(event.getPackageName());
+        }
+        db.close();
     }
 
     static public boolean actionIsInstall(String action) {

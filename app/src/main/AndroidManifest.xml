@@ -111,6 +111,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".WishlistActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_wishlist" />
+        <activity android:name=".EventsActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_events" />
 
         <service android:enabled="true" android:name=".notification.CancelDownloadService" />
         <service android:enabled="true" android:name=".notification.IgnoreUpdatesService" />

@@ -44,6 +44,7 @@
     <string name="action_wishlist">Wishlist</string>
     <string name="action_wishlist_add">Add to wishlist</string>
     <string name="action_wishlist_remove">Remove from wishlist</string>
+    <string name="action_events">Event History</string>
     <string name="search_filter">All apps</string>
     <string name="search_title">Search applications</string>
     <string name="dialog_title_package_id">Package with this name exists</string>
@@ -195,6 +196,7 @@
     <string name="pref_installation_method_default">Default installation dialog, no background installs</string>
     <string name="pref_installation_method_root">Using root</string>
     <string name="pref_installation_method_privileged">Using system permissions</string>
+    <string name="pref_installation_method_privileged_m">Using PackageInstaller</string>
     <string name="pref_no_images">Download images on Wi-Fi only</string>
     <string name="pref_no_images_summary_off">Images are always downloaded now</string>
     <string name="pref_no_images_summary_on">Images are downloaded on Wi-Fi only</string>
@@ -279,4 +281,7 @@
     <string name="pref_message_fallback">Attempt to set a fallback directory (%1$s)?</string>
     <string name="no_permissions">No permissions are used.</string>
     <string name="details_instant_app">Instant app</string>
+    <string name="events_no_changes">No changes mentioned by app developer</string>
+    <string name="uninstalled">Uninstalled</string>
+    <string name="updated_from_to">"Updated: %1$s (%2$d) → %3$s (%4$d)"</string>
 </resources>

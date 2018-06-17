@@ -24,12 +24,15 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.Event;
+import com.github.yeriomin.yalpstore.model.EventDao;
 import com.github.yeriomin.yalpstore.notification.DownloadChecksumService;
 import com.github.yeriomin.yalpstore.notification.IgnoreUpdatesService;
 import com.github.yeriomin.yalpstore.notification.NotificationBuilder;
@@ -90,6 +93,7 @@ public abstract class InstallerAbstract {
     public void verifyAndInstall(App app) {
         if (verify(app)) {
             Log.i(getClass().getSimpleName(), "Installing " + app.getPackageName());
+            insertPendingEvent(buildEvent(app));
             install(app);
         } else {
             sendBroadcast(app.getPackageName(), false);
@@ -208,5 +212,28 @@ public abstract class InstallerAbstract {
         intentIgnore.putExtra(IgnoreUpdatesService.PACKAGE_NAME, app.getPackageName());
         intentIgnore.putExtra(IgnoreUpdatesService.VERSION_CODE, app.getVersionCode());
         return intentIgnore;
+    }
+
+    private void insertPendingEvent(Event event) {
+        SQLiteDatabase db = new SqliteHelper(context).getWritableDatabase();
+        EventDao dao = new EventDao(db);
+        dao.insert(event);
+        db.close();
+    }
+
+    private Event buildEvent(App newApp) {
+        App oldApp = YalpStoreApplication.installedPackages.get(newApp.getPackageName());
+        boolean update = null != oldApp;
+        Event event = new Event();
+        event.setPending(true);
+        event.setPackageName(newApp.getPackageName());
+        event.setType(update ? Event.TYPE.UPDATE : Event.TYPE.INSTALLATION);
+        event.setMessage(
+            update
+            ? context.getString(R.string.updated_from_to, oldApp.getVersionName(), oldApp.getVersionCode(), newApp.getVersionName(), newApp.getVersionCode())
+            : context.getString(R.string.details_installed)
+        );
+        event.setChanges(newApp.getChanges());
+        return event;
     }
 }
