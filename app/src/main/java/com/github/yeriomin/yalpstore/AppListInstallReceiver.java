@@ -28,15 +28,13 @@ import java.lang.ref.WeakReference;
 
 public class AppListInstallReceiver extends BroadcastReceiver {
 
-    static public final String ACTION_INSTALL_UI_UPDATE = "ACTION_INSTALL_UI_UPDATE";
-
     private WeakReference<AppListActivity> activityRef;
 
     public AppListInstallReceiver(AppListActivity activity) {
         super();
         activityRef = new WeakReference<>(activity);
         IntentFilter filter = new IntentFilter();
-        filter.addAction(ACTION_INSTALL_UI_UPDATE);
+        filter.addAction(GlobalInstallReceiver.ACTION_INSTALL_UI_UPDATE);
         activity.registerReceiver(this, filter);
     }
 

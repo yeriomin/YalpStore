@@ -19,12 +19,9 @@
 
 package com.github.yeriomin.yalpstore;
 
-import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -36,22 +33,20 @@ import java.io.File;
 
 public class GlobalInstallReceiver extends BroadcastReceiver {
 
+    static public final String ACTION_INSTALL_UI_UPDATE = "ACTION_INSTALL_UI_UPDATE";
+    static public final String ACTION_PACKAGE_REPLACED_NON_SYSTEM = "ACTION_PACKAGE_REPLACED_NON_SYSTEM";
+    static public final String ACTION_PACKAGE_INSTALLATION_FAILED = "ACTION_PACKAGE_INSTALLATION_FAILED";
     @Override
     public void onReceive(Context context, Intent intent) {
+        if (TextUtils.isEmpty(intent.getAction()) || null == intent.getData() || TextUtils.isEmpty(intent.getData().getSchemeSpecificPart())) {
+            return;
+        }
         String action = intent.getAction();
-        if (!expectedAction(action) || null == intent.getData()) {
-            return;
-        }
         String packageName = intent.getData().getSchemeSpecificPart();
-        Log.i(getClass().getSimpleName(), "Finished installation of " + packageName);
-        if (TextUtils.isEmpty(packageName)) {
-            return;
-        }
-        boolean actionIsInstall = actionIsInstall(intent);
+        Log.i(getClass().getSimpleName(), "Finished installation (" + action + ") of " + packageName);
+        boolean actionIsInstall = actionIsInstall(action);
         updateInstalledAppsList(context, packageName, actionIsInstall);
-        if (null != DetailsActivity.app && packageName.equals(DetailsActivity.app.getPackageName())) {
-            updateDetails(actionIsInstall);
-        }
+        context.sendBroadcast(new Intent(ACTION_INSTALL_UI_UPDATE).putExtra(Intent.EXTRA_PACKAGE_NAME, packageName));
         ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall);
         if (!actionIsInstall) {
             return;
@@ -61,7 +56,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             Log.i(getClass().getSimpleName(), "Whitelisting " + packageName);
             manager.add(packageName);
         }
-        App app = getApp(context, packageName);
+        App app = YalpStoreApplication.installedPackages.get(packageName);
         if (needToRemoveApk(context)) {
             removeApk(context, app);
         }
@@ -70,13 +65,6 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         }
     }
 
-    static public void updateDetails(boolean installed) {
-        if (installed) {
-            DetailsActivity.app.getPackageInfo().versionCode = DetailsActivity.app.getVersionCode();
-            DetailsActivity.app.setInstalled(true);
-        } else {
-            DetailsActivity.app.getPackageInfo().versionCode = 0;
-            DetailsActivity.app.setInstalled(false);
         }
     }
 
@@ -84,29 +72,18 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         if (installed) {
             YalpStoreApplication.installedPackages.put(packageName, InstalledAppsTask.getInstalledApp(context.getPackageManager(), packageName));
         } else {
-            YalpStoreApplication.installedPackages.remove(DetailsActivity.app.getPackageName());
+            YalpStoreApplication.installedPackages.remove(packageName);
         }
         context.sendBroadcast(new Intent(AppListInstallReceiver.ACTION_INSTALL_UI_UPDATE));
     }
 
-    static public boolean actionIsInstall(Intent intent) {
-        return !TextUtils.isEmpty(intent.getAction())
-            && (intent.getAction().equals(Intent.ACTION_PACKAGE_INSTALL)
-                || intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)
-                || intent.getAction().equals(Intent.ACTION_PACKAGE_REPLACED)
-                || intent.getAction().equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
-            )
-        ;
     }
 
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    static private boolean expectedAction(String action) {
+    static public boolean actionIsInstall(String action) {
         return action.equals(Intent.ACTION_PACKAGE_INSTALL)
             || action.equals(Intent.ACTION_PACKAGE_ADDED)
             || action.equals(Intent.ACTION_PACKAGE_REPLACED)
-            || action.equals(Intent.ACTION_PACKAGE_REMOVED)
-            || action.equals(Intent.ACTION_PACKAGE_FULLY_REMOVED)
-            || action.equals(DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM)
+            || action.equals(ACTION_PACKAGE_REPLACED_NON_SYSTEM)
         ;
     }
 
@@ -118,18 +95,6 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static private boolean needToAutoWhitelist(Context context) {
         return PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_AUTO_WHITELIST);
-    }
-
-    static private App getApp(Context context, String packageName) {
-        App app = new App();
-        PackageManager pm = context.getPackageManager();
-        try {
-            app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA));
-            app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(GlobalInstallReceiver.class.getSimpleName(), "Install broadcast received, but package " + packageName + " not found");
-        }
-        return app;
     }
 
     static private boolean wasInstalled(Context context, String packageName) {
@@ -146,7 +111,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         Log.i(GlobalInstallReceiver.class.getSimpleName(), "Removed " + apkPath + " successfully: " + deleted);
     }
 
-    static boolean installationMethodIsDefault(Context context) {
+    static private boolean installationMethodIsDefault(Context context) {
         return PreferenceUtil.getString(context, PreferenceUtil.INSTALLATION_METHOD_DEFAULT).equals(PreferenceUtil.INSTALLATION_METHOD_DEFAULT);
     }
 }

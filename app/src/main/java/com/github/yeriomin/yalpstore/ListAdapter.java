@@ -55,7 +55,7 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
     @Override
     public void addAll(Collection<? extends ListItem> collection) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            addAll(collection);
+            super.addAll(collection);
         } else {
             setNotifyOnChange(false);
             for (ListItem item: collection) {

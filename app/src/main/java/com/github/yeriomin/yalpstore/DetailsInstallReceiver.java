@@ -29,12 +29,11 @@ import android.text.TextUtils;
 
 import java.lang.ref.WeakReference;
 
+import static com.github.yeriomin.yalpstore.GlobalInstallReceiver.ACTION_INSTALL_UI_UPDATE;
+
 public class DetailsInstallReceiver extends BroadcastReceiver {
 
-    static public final String ACTION_PACKAGE_REPLACED_NON_SYSTEM = "ACTION_PACKAGE_REPLACED_NON_SYSTEM";
-    static public final String ACTION_PACKAGE_INSTALLATION_FAILED = "ACTION_PACKAGE_INSTALLATION_FAILED";
-
-    private WeakReference<DetailsActivity> activityRef = new WeakReference<>(null);
+    private WeakReference<DetailsActivity> activityRef;
     private String packageName;
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -42,23 +41,25 @@ public class DetailsInstallReceiver extends BroadcastReceiver {
         activityRef = new WeakReference<>(activity);
         this.packageName = packageName;
         IntentFilter filter = new IntentFilter();
-        filter.addDataScheme("package");
-        filter.addAction(Intent.ACTION_PACKAGE_REMOVED);
-        filter.addAction(Intent.ACTION_PACKAGE_FULLY_REMOVED);
-        filter.addAction(Intent.ACTION_PACKAGE_INSTALL);
-        filter.addAction(Intent.ACTION_PACKAGE_ADDED);
-        filter.addAction(Intent.ACTION_PACKAGE_REPLACED);
-        filter.addAction(ACTION_PACKAGE_REPLACED_NON_SYSTEM);
-        filter.addAction(ACTION_PACKAGE_INSTALLATION_FAILED);
+        filter.addAction(ACTION_INSTALL_UI_UPDATE);
         activity.registerReceiver(this, filter);
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (null == intent.getData() || !TextUtils.equals(packageName, intent.getData().getSchemeSpecificPart())) {
+        if (TextUtils.isEmpty(intent.getStringExtra(Intent.EXTRA_PACKAGE_NAME))
+            || !packageName.equals(intent.getStringExtra(Intent.EXTRA_PACKAGE_NAME))
+            || null == DetailsActivity.app
+        ) {
             return;
         }
-        GlobalInstallReceiver.updateDetails(GlobalInstallReceiver.actionIsInstall(intent));
+        if (YalpStoreApplication.installedPackages.containsKey(packageName)) {
+            DetailsActivity.app.getPackageInfo().versionCode = YalpStoreApplication.installedPackages.get(packageName).getVersionCode();
+            DetailsActivity.app.setInstalled(true);
+        } else {
+            DetailsActivity.app.getPackageInfo().versionCode = 0;
+            DetailsActivity.app.setInstalled(false);
+        }
         DetailsActivity activity = activityRef.get();
         if (null == activity || !ContextUtil.isAlive(activity)) {
             return;

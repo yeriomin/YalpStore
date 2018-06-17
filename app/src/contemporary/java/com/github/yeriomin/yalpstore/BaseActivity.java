@@ -170,6 +170,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         View specificLayout = getLayoutInflater().inflate(layoutResID, container, false);
         container.addView(specificLayout);
         initToolbar();
+        onContentChanged();
     }
 
     @Override

@@ -34,24 +34,15 @@ import com.github.yeriomin.yalpstore.fragment.ButtonCancel;
 import com.github.yeriomin.yalpstore.fragment.ButtonDownload;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
-import com.github.yeriomin.yalpstore.task.LoadImageTask;
 import com.github.yeriomin.yalpstore.task.playstore.PurchaseTask;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.WeakHashMap;
 
 public abstract class AppBadge extends ListItem {
 
-    static private WeakHashMap<Integer, LoadImageTask> tasks = new WeakHashMap<>();
-
-    protected App app;
     protected List<String> line2 = new ArrayList<>();
     protected List<String> line3 = new ArrayList<>();
-
-    public void setApp(App app) {
-        this.app = app;
-    }
 
     public App getApp() {
         return app;
@@ -67,23 +58,8 @@ public abstract class AppBadge extends ListItem {
         setText(R.id.text2, TextUtils.join(", ", line2));
         setText(R.id.text3, TextUtils.join(", ", line3));
 
-        drawIcon((ImageView) view.findViewById(R.id.icon));
+        drawIcon((ImageView) view.findViewById(R.id.icon), app.getPackageName(), app.getIconInfo());
         redrawMoreButton();
-    }
-
-    private void drawIcon(ImageView imageView) {
-        String tag = (String) imageView.getTag();
-        if (!TextUtils.isEmpty(tag) && tag.equals(app.getPackageName())) {
-            return;
-        }
-        imageView.setTag(app.getPackageName());
-        LoadImageTask task = new LoadImageTask(imageView);
-        LoadImageTask previousTask = tasks.get(imageView.hashCode());
-        if (null != previousTask) {
-            previousTask.cancel(true);
-        }
-        tasks.put(imageView.hashCode(), task);
-        task.executeOnExecutorIfPossible(app.getIconInfo());
     }
 
     protected void setText(int viewId, String text) {

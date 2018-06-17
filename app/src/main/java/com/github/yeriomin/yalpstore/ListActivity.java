@@ -56,7 +56,6 @@ public abstract class ListActivity extends YalpStoreActivity {
         if (null == listView || null == listView.getAdapter()) {
             return;
         }
-        ListAdapter adapter = (ListAdapter) listView.getAdapter();
-        adapter.addAll(items);
+        ((ListAdapter) listView.getAdapter()).addAll(items);
     }
 }

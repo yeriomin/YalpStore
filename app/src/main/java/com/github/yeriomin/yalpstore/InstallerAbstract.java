@@ -143,8 +143,8 @@ public abstract class InstallerAbstract {
     protected void sendBroadcast(String packageName, boolean success) {
         Intent intent = new Intent(
             success
-            ? DetailsInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM
-            : DetailsInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED
+            ? GlobalInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM
+            : GlobalInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED
         );
         intent.setData(new Uri.Builder().scheme("package").opaquePart(packageName).build());
         context.sendBroadcast(intent);

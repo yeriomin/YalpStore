@@ -19,15 +19,45 @@
 
 package com.github.yeriomin.yalpstore.view;
 
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
+
+import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.ImageSource;
+import com.github.yeriomin.yalpstore.task.LoadImageTask;
+
+import java.util.WeakHashMap;
 
 public abstract class ListItem {
 
+    static private WeakHashMap<Integer, LoadImageTask> tasks = new WeakHashMap<>();
+
+    protected App app;
     protected View view;
+
+    public void setApp(App app) {
+        this.app = app;
+    }
 
     public void setView(View view) {
         this.view = view;
     }
 
     abstract public void draw();
+
+    protected void drawIcon(ImageView imageView, String packageName, ImageSource imageSource) {
+        String tag = (String) imageView.getTag();
+        if (!TextUtils.isEmpty(tag) && tag.equals(packageName)) {
+            return;
+        }
+        imageView.setTag(packageName);
+        LoadImageTask task = new LoadImageTask(imageView);
+        LoadImageTask previousTask = tasks.get(imageView.hashCode());
+        if (null != previousTask) {
+            previousTask.cancel(true);
+        }
+        tasks.put(imageView.hashCode(), task);
+        task.executeOnExecutorIfPossible(imageSource);
+    }
 }

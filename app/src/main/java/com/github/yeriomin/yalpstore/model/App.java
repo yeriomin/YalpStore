@@ -81,8 +81,6 @@ public class App implements Comparable<App> {
         this.setPackageInfo(packageInfo);
         this.setVersionName(packageInfo.versionName);
         this.setVersionCode(packageInfo.versionCode);
-        this.setInstalled(true);
-        this.setSystem(null != packageInfo.applicationInfo && (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
         if (null != packageInfo.requestedPermissions) {
             this.setPermissions(Arrays.asList(packageInfo.requestedPermissions));
         }
@@ -98,6 +96,8 @@ public class App implements Comparable<App> {
 
     public void setPackageInfo(PackageInfo packageInfo) {
         this.packageInfo = packageInfo;
+        this.setInstalled(true);
+        this.setSystem(null != packageInfo.applicationInfo && (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
     }
 
     public String getDisplayName() {
