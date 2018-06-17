@@ -36,6 +36,7 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
     static public final String ACTION_INSTALL_UI_UPDATE = "ACTION_INSTALL_UI_UPDATE";
     static public final String ACTION_PACKAGE_REPLACED_NON_SYSTEM = "ACTION_PACKAGE_REPLACED_NON_SYSTEM";
     static public final String ACTION_PACKAGE_INSTALLATION_FAILED = "ACTION_PACKAGE_INSTALLATION_FAILED";
+
     @Override
     public void onReceive(Context context, Intent intent) {
         if (TextUtils.isEmpty(intent.getAction()) || null == intent.getData() || TextUtils.isEmpty(intent.getData().getSchemeSpecificPart())) {
@@ -65,18 +66,13 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         }
     }
 
-        }
-    }
-
     static private void updateInstalledAppsList(Context context, String packageName, boolean installed) {
         if (installed) {
             YalpStoreApplication.installedPackages.put(packageName, InstalledAppsTask.getInstalledApp(context.getPackageManager(), packageName));
         } else {
             YalpStoreApplication.installedPackages.remove(packageName);
         }
-        context.sendBroadcast(new Intent(AppListInstallReceiver.ACTION_INSTALL_UI_UPDATE));
-    }
-
+        context.sendBroadcast(new Intent(ACTION_INSTALL_UI_UPDATE));
     }
 
     static public boolean actionIsInstall(String action) {
