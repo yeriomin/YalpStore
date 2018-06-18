@@ -111,7 +111,12 @@ public class YalpStoreApplication extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
         registerDownloadReceiver();
         registerInstallReceiver();
-        new FdroidListTask(this.getApplicationContext()).executeOnExecutorIfPossible();
+        try {
+            new FdroidListTask(this.getApplicationContext()).executeOnExecutorIfPossible();
+        } catch (Throwable e) {
+            // It does not matter if this fails, f-droid links are convenient but not essential
+            Log.e(getClass().getSimpleName(), "Could not get F-Droid app list: " + e.getClass().getName() + " " + e.getMessage());
+        }
         InitializingInstalledAppsTask installedAppsTask = new InitializingInstalledAppsTask();
         installedAppsTask.setContext(this.getApplicationContext());
         installedAppsTask.executeOnExecutorIfPossible();
