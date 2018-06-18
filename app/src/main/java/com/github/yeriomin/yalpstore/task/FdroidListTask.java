@@ -22,6 +22,7 @@ package com.github.yeriomin.yalpstore.task;
 import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.Util;
@@ -58,6 +59,9 @@ public class FdroidListTask extends TaskWithProgress<Void> {
 
     @Override
     protected Void doInBackground(String... strings) {
+        if (localXmlFile.exists() && localXmlFile.lastModified() + DateUtils.WEEK_IN_MILLIS < System.currentTimeMillis()) {
+            localXmlFile.delete();
+        }
         if (!localXmlFile.exists()) {
             downloadXml();
         }
