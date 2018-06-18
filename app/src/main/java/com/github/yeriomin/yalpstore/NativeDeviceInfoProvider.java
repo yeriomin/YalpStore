@@ -34,6 +34,7 @@ import com.github.yeriomin.playstoreapi.AndroidCheckinRequest;
 import com.github.yeriomin.playstoreapi.DeviceConfigurationProto;
 import com.github.yeriomin.playstoreapi.DeviceInfoProvider;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -80,7 +81,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     public String getUserAgentString() {
-        return "Android-Finsky/" + gsfVersionProvider.getVendingVersionString(true) + " ("
+        return "Android-Finsky/" + URLEncoder.encode(gsfVersionProvider.getVendingVersionString(true)) + " ("
             + "api=3"
             + ",versionCode=" + gsfVersionProvider.getVendingVersionCode(true)
             + ",sdk=" + Build.VERSION.SDK_INT
@@ -88,7 +89,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
             + ",hardware=" + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO ? Build.HARDWARE : Build.PRODUCT)
             + ",product=" + Build.PRODUCT
             + ",platformVersionRelease=" + Build.VERSION.RELEASE
-            + ",model=" + Build.MODEL
+            + ",model=" + URLEncoder.encode(Build.MODEL)
             + ",buildId=" + Build.ID
             + ",isWideScreen=" + (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? "1" : "0")
             + ",supportedAbis=" + TextUtils.join(";", getPlatforms())

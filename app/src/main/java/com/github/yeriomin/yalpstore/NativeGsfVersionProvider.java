@@ -28,9 +28,9 @@ public class NativeGsfVersionProvider {
     static private final String GOOGLE_SERVICES_PACKAGE_ID = "com.google.android.gms";
     static private final String GOOGLE_VENDING_PACKAGE_ID = "com.android.vending";
 
-    static private final int GOOGLE_SERVICES_VERSION_CODE = 10548448;
-    static private final int GOOGLE_VENDING_VERSION_CODE = 80798000;
-    static private final String GOOGLE_VENDING_VERSION_STRING = "7.9.80";
+    static private final int GOOGLE_SERVICES_VERSION_CODE = 12685025;
+    static private final int GOOGLE_VENDING_VERSION_CODE = 81041300;
+    static private final String GOOGLE_VENDING_VERSION_STRING = "10.4.13-all [0] [PR] 198917767";
 
     private int gsfVersionCode = 0;
     private int vendingVersionCode = 0;
