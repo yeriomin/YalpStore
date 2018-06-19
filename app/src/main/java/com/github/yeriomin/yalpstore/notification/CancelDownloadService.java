@@ -51,6 +51,7 @@ public class CancelDownloadService extends IntentService {
     public void onCreate() {
         super.onCreate();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            new NotificationBuilderO(getApplicationContext()).initChannel();
             startForeground((int) (System.currentTimeMillis() % 10000), new Notification.Builder(this, BuildConfig.APPLICATION_ID).build());
         }
     }

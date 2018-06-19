@@ -123,8 +123,7 @@ public class ButtonDownload extends Button {
                 AndroidAppDeliveryData.newBuilder().setDownloadUrl(UpdaterFactory.get(activity).getUrlString(app.getVersionCode())).build()
             );
         } else {
-            boolean writePermission = new YalpStorePermissionManager(activity).checkPermission();
-            if (writePermission && prepareDownloadsDir()) {
+            if (new YalpStorePermissionManager(activity).checkPermission() && prepareDownloadsDir()) {
                 getPurchaseTask().execute();
             } else {
                 ContextUtil.toast(this.activity.getApplicationContext(), R.string.error_downloads_directory_not_writable);

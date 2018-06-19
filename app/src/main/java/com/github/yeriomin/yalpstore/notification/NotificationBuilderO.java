@@ -33,15 +33,19 @@ class NotificationBuilderO extends NotificationBuilderJellybean {
     
     public NotificationBuilderO(Context context) {
         super(context);
+        initChannel();
+        builder.setChannelId(BuildConfig.APPLICATION_ID);
+    }
+
+    public void initChannel() {
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationChannel channel = manager.getNotificationChannel(BuildConfig.APPLICATION_ID);
         if (null == channel) {
             manager.createNotificationChannel(new NotificationChannel(
-                    BuildConfig.APPLICATION_ID,
-                    context.getString(R.string.app_name),
-                    NotificationManager.IMPORTANCE_DEFAULT
+                BuildConfig.APPLICATION_ID,
+                context.getString(R.string.app_name),
+                NotificationManager.IMPORTANCE_DEFAULT
             ));
         }
-        builder.setChannelId(BuildConfig.APPLICATION_ID);
     }
 }

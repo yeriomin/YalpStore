@@ -110,7 +110,7 @@ abstract public class AppListActivity extends ListActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
+        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults) && null != DetailsActivity.app) {
             new ButtonDownload(this, DetailsActivity.app).download();
         }
     }
