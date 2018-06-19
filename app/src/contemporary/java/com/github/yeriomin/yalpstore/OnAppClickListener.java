@@ -25,6 +25,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 
+import com.github.yeriomin.yalpstore.model.App;
+
 class OnAppClickListener implements AdapterView.OnItemClickListener {
 
     private AppListActivity activity;
@@ -35,7 +37,11 @@ class OnAppClickListener implements AdapterView.OnItemClickListener {
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        DetailsActivity.app = activity.getAppByListPosition(position);
+        App app = activity.getAppByListPosition(position);
+        if (null == app) {
+            return;
+        }
+        DetailsActivity.app = app;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ImageView iconView = view.findViewById(R.id.icon);
             String transitionName = activity.getString(R.string.details_transition_view_name);

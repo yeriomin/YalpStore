@@ -80,7 +80,11 @@ abstract public class AppListActivity extends ListActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        DetailsActivity.app = getAppByListPosition(info.position);
+        App app = getAppByListPosition(info.position);
+        if (null == app) {
+            return;
+        }
+        DetailsActivity.app = app;
         new DownloadMenu(this, DetailsActivity.app).inflate(menu);
         menu.findItem(R.id.action_download).setVisible(new ButtonDownload(this, DetailsActivity.app).shouldBeVisible());
         menu.findItem(R.id.action_uninstall).setVisible(DetailsActivity.app.isInstalled());
@@ -89,7 +93,11 @@ abstract public class AppListActivity extends ListActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        DetailsActivity.app = getAppByListPosition(info.position);
+        App app = getAppByListPosition(info.position);
+        if (null == app) {
+            return true;
+        }
+        DetailsActivity.app = app;
         switch (item.getItemId()) {
             case R.id.action_ignore:
             case R.id.action_whitelist:
