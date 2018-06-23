@@ -19,7 +19,7 @@ android {
         versionCode 42
         versionName getVersionName()
         vectorDrawables.useSupportLibrary = true
-        resConfigs "ar", "ast", "cs", "de", "el", "en", "es", "eu", "fr", "fr-rBE", "in", "it", "ja", "kk", "ko", "nl", "pl", "pt", "pt-rBR", "ru", "sk", "uk", "zh", "zh-rTW"
+        resConfigs "ar", "ast", "bg", "cs", "de", "el", "en", "es", "eu", "fr", "fr-rBE", "in", "it", "ja", "kk", "ko", "nl", "pl", "pt", "pt-rBR", "ru", "sk", "uk", "zh", "zh-rTW"
     }
     buildTypes {
         release {
