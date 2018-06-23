@@ -23,6 +23,7 @@ import android.os.AsyncTask;
 
 import com.github.yeriomin.yalpstore.AppListActivity;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
+import com.github.yeriomin.yalpstore.ListAdapter;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.view.AppBadge;
@@ -71,6 +72,7 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Map<String
         for (String packageName: packagesToRemove) {
             activity.removeApp(packageName);
         }
+        ((ListAdapter) activity.getListView().getAdapter()).notifyDataSetChanged();
     }
 
     private Set<String> getRemovedPackageNames(Set<String> installedPackageNames) {
