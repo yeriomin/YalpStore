@@ -70,7 +70,7 @@ public class ForegroundInstalledAppsTask extends TaskWithProgress<Map<String, Ap
         List<App> installedApps = new ArrayList<>(appMap.values());
         ListIterator<App> iterator = installedApps.listIterator();
         while (iterator.hasNext()){
-            if (!includeSystemApps && iterator.next().isSystem()){
+            if (iterator.next().isSystem() && !includeSystemApps){
                 iterator.remove();
             }
         }
