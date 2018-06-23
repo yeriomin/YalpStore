@@ -58,7 +58,7 @@ When the GSF id is ready, your email and password (if you provided them) are use
 
 >Q: I would like to spoof device X. Can you add its definition to Yalp Store?
 >
->A: There is an extended library of devices [here](https://github.com/yeriomin/play-store-api/find/alldevices). If you found your device, put it into your downloads directory and it will appear in Yalp Store spoof device list. Note that the files are named by device codenames which might not be the same as the names with which the devices are sold, for example codename of Nexus 5X is bullhead. Also, the device definitions are simple text files, so if you know *exactly* what you need to spoof, you can just edit them by hand.
+>A: There is an extended library of devices [here](https://github.com/yeriomin/play-store-api/find/alldevices). If you found your device, put it into your downloads directory and it will appear in Yalp Store spoof device list. Note that the files are named by device codenames which might not be the same as the names with which the devices are sold, for example codename of Nexus 5X is bullhead. Also, the device definitions are simple text files, so if you know *exactly* what you need to spoof, you can just edit them by hand. Note that all the devices in the above mentioned list were submitted by users, so if you haven't found the device you wanted, you are out of luck. I cannot create a device definition on demand.
 
 >Q: Can Yalp Store download region-locked apps?
 >
