@@ -27,7 +27,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.NetworkState;
+import com.github.yeriomin.yalpstore.NetworkUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
@@ -51,7 +51,7 @@ public class Background extends Abstract {
         View background = activity.findViewById(R.id.background);
         CollapsingToolbarLayout collapsingToolbarLayout = activity.findViewById(R.id.collapsing_toolbar_layout);
         collapsingToolbarLayout.setExpandedTitleColor(activity.getResources().getColor(android.R.color.transparent));
-        if (!NetworkState.isNetworkAvailable(activity) || (!app.isInPlayStore() && !TextUtils.isEmpty(app.getDeveloperName()) && null == app.getPageBackgroundImage())) {
+        if (!NetworkUtil.isNetworkAvailable(activity) || (!app.isInPlayStore() && !TextUtils.isEmpty(app.getDeveloperName()) && null == app.getPageBackgroundImage())) {
             collapsingToolbarLayout.setTitleEnabled(false);
             collapsingToolbarLayout.getLayoutParams().height = CollapsingToolbarLayout.LayoutParams.MATCH_PARENT;
             background.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;

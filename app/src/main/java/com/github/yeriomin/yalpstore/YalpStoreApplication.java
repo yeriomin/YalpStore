@@ -98,7 +98,7 @@ public class YalpStoreApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+        if (!BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             try {
                 HttpResponseCache.install(new File(getCacheDir(), "http"), 5 * 1024 * 1024);
             } catch (IOException e) {
@@ -147,6 +147,9 @@ public class YalpStoreApplication extends Application {
     }
 
     public void initNetcipher() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            return;
+        }
         listener = new ProxyOnChangeListener(this);
         PreferenceUtil.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(listener);
         Proxy proxy = PreferenceUtil.getProxy(this);

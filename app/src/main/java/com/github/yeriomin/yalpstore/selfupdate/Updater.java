@@ -25,14 +25,13 @@ import android.net.TrafficStats;
 import android.os.Build;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
+import com.github.yeriomin.yalpstore.NetworkUtil;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import info.guardianproject.netcipher.NetCipher;
 
 abstract public class Updater {
 
@@ -90,10 +89,7 @@ abstract public class Updater {
             if (null == url) {
                 return false;
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
-            }
-            HttpURLConnection connection = NetCipher.getHttpURLConnection(url, true);
+            HttpURLConnection connection = NetworkUtil.getHttpURLConnection(url);
             connection.setInstanceFollowRedirects(false);
             connection.setRequestMethod("HEAD");
             return connection.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST;

@@ -34,9 +34,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
-
-import info.guardianproject.netcipher.NetCipher;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
 public class BitmapManager {
@@ -59,7 +56,7 @@ public class BitmapManager {
 
     public BitmapManager(Context context) {
         baseDir = context.getCacheDir();
-        noImages = PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_NO_IMAGES) && NetworkState.isMetered(context);
+        noImages = PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_NO_IMAGES) && NetworkUtil.isMetered(context);
     }
 
     public Bitmap getBitmap(String url, boolean fullSize) {
@@ -146,10 +143,7 @@ public class BitmapManager {
     static private Bitmap downloadBitmap(String url, boolean fullSize) {
         InputStream input = null;
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
-            }
-            HttpURLConnection connection = NetCipher.getHttpURLConnection(new URL(url), true);
+            HttpURLConnection connection = NetworkUtil.getHttpURLConnection(url);
             connection.connect();
             connection.setConnectTimeout(3000);
             input = connection.getInputStream();

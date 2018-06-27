@@ -31,7 +31,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 
 import com.github.yeriomin.yalpstore.BitmapManager;
-import com.github.yeriomin.yalpstore.NetworkState;
+import com.github.yeriomin.yalpstore.NetworkUtil;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.ImageSource;
@@ -141,7 +141,7 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
     }
 
     private boolean noImages() {
-        return NetworkState.isMetered(imageView.getContext()) && PreferenceUtil.getBoolean(imageView.getContext(), PreferenceUtil.PREFERENCE_NO_IMAGES);
+        return NetworkUtil.isMetered(imageView.getContext()) && PreferenceUtil.getBoolean(imageView.getContext(), PreferenceUtil.PREFERENCE_NO_IMAGES);
     }
 
     private boolean sameAsLoaded() {

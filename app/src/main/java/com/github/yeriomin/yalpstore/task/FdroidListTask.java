@@ -25,6 +25,7 @@ import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.NetworkUtil;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 
@@ -44,7 +45,6 @@ import java.net.URL;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 
-import info.guardianproject.netcipher.NetCipher;
 
 public class FdroidListTask extends TaskWithProgress<Void> {
 
@@ -76,7 +76,7 @@ public class FdroidListTask extends TaskWithProgress<Void> {
     private void downloadXml() {
         try {
             URL url = new URL(FDROID_REPO_URL);
-            NetCipher.getHttpsURLConnection(url, true).connect();
+            NetworkUtil.getHttpURLConnection(url).connect();
             InputStream input = new BufferedInputStream(url.openStream(), 8192);
             OutputStream output = new FileOutputStream(localXmlFile);
             byte data[] = new byte[1024];

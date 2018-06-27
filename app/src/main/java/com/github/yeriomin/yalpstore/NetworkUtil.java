@@ -23,12 +23,18 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.TrafficStats;
 import android.os.Build;
 import android.util.Log;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.net.URL;
 import java.util.Collections;
+
+import info.guardianproject.netcipher.NetCipher;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 import static android.net.ConnectivityManager.TYPE_MOBILE;
@@ -39,7 +45,21 @@ import static android.net.ConnectivityManager.TYPE_MOBILE_SUPL;
 import static android.net.ConnectivityManager.TYPE_WIFI;
 import static android.net.ConnectivityManager.TYPE_WIMAX;
 
-public class NetworkState {
+public class NetworkUtil {
+
+    static public HttpURLConnection getHttpURLConnection(String url) throws IOException {
+        return getHttpURLConnection(new URL(url));
+    }
+
+    static public HttpURLConnection getHttpURLConnection(URL url) throws IOException {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
+        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+            return (HttpURLConnection) url.openConnection();
+        }
+        return NetCipher.getHttpURLConnection(url, true);
+    }
 
     static public boolean isNetworkAvailable(Context context) {
         NetworkInfo activeNetworkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
@@ -75,7 +95,7 @@ public class NetworkState {
         try {
             for (NetworkInterface ni: Collections.list(NetworkInterface.getNetworkInterfaces())) {
                 if (ni.isUp() && (ni.getName().startsWith("tun") || ni.getName().startsWith("ppp")))  {
-                    Log.i(NetworkState.class.getSimpleName(), "VPN seems to be on: " + ni.getName());
+                    Log.i(NetworkUtil.class.getSimpleName(), "VPN seems to be on: " + ni.getName());
                     return true;
                 }
             }

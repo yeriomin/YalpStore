@@ -19,7 +19,6 @@
 
 package com.github.yeriomin.yalpstore;
 
-import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -36,8 +35,7 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
     static private final String DEBUG_DIRECTORY = "yalp-store-debug";
     static private File dumpDirectory;
 
-    public DebugHttpClientAdapter(Context context) {
-        super(context);
+    public DebugHttpClientAdapter() {
         dumpDirectory = new File(Environment.getExternalStorageDirectory(), DEBUG_DIRECTORY);
         dumpDirectory.mkdirs();
     }

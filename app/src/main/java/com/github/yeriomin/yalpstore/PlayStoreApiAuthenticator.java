@@ -154,7 +154,7 @@ public class PlayStoreApiAuthenticator {
                 // Impossible, unless there are mistakes, so no need to make it a declared exception
                 throw new RuntimeException(e);
             } catch (AuthException | TokenDispenserException e) {
-                if (PlayStoreTask.noNetwork(e.getCause()) && !NetworkState.isNetworkAvailable(context)) {
+                if (PlayStoreTask.noNetwork(e.getCause()) && !NetworkUtil.isNetworkAvailable(context)) {
                     throw (IOException) e.getCause();
                 }
                 loginInfo.setTokenDispenserUrl(null);
@@ -176,7 +176,7 @@ public class PlayStoreApiAuthenticator {
     private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
         fill(loginInfo);
         return new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
-            .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter(context) : new NativeHttpClientAdapter(context))
+            .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
             .setDeviceInfoProvider(getDeviceInfoProvider())
             .setLocale(loginInfo.getLocale())
             .setEmail(loginInfo.getEmail())

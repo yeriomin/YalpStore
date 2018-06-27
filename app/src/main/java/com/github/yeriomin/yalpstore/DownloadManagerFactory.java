@@ -59,6 +59,6 @@ public class DownloadManagerFactory {
         if (Build.VERSION.SDK_INT != Build.VERSION_CODES.N && Build.VERSION.SDK_INT != Build.VERSION_CODES.N_MR1) {
             return false;
         }
-        return NetworkState.isVpn(context);
+        return NetworkUtil.isVpn(context);
     }
 }

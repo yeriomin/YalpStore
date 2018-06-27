@@ -93,7 +93,7 @@ public class SpoofDeviceManager {
     private Properties getProperties(File file) {
         Properties properties = new Properties();
         try {
-            properties.load(new BufferedInputStream(new FileInputStream(file)));
+            properties.load(new BufferedInputStream(new FileInputStream(file), 8192));
         } catch (IOException e) {
             Log.e(getClass().getSimpleName(), "Could not read " + file.getName());
         }

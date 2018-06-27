@@ -32,7 +32,7 @@ import com.github.yeriomin.yalpstore.DownloadManagerFactory;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.InstallerAbstract;
 import com.github.yeriomin.yalpstore.InstallerFactory;
-import com.github.yeriomin.yalpstore.NetworkState;
+import com.github.yeriomin.yalpstore.NetworkUtil;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
@@ -93,7 +93,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
             (PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
                 && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
                     || !PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
-                    || !NetworkState.isMetered(context)
+                    || !NetworkUtil.isMetered(context)
                 )
             )
         ;

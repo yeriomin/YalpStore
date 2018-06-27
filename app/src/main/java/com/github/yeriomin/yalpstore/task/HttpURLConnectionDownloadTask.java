@@ -22,7 +22,6 @@ package com.github.yeriomin.yalpstore.task;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.net.TrafficStats;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.text.TextUtils;
@@ -32,6 +31,7 @@ import android.util.Log;
 import com.github.yeriomin.yalpstore.DownloadManagerFake;
 import com.github.yeriomin.yalpstore.DownloadManagerInterface;
 import com.github.yeriomin.yalpstore.DownloadState;
+import com.github.yeriomin.yalpstore.NetworkUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
@@ -45,11 +45,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import info.guardianproject.netcipher.NetCipher;
 
 public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boolean> {
 
@@ -115,10 +112,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         InputStream in;
         long fileSize;
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                TrafficStats.setThreadStatsTag(Thread.currentThread().hashCode());
-            }
-            connection = NetCipher.getHttpURLConnection(new URL(params[0]), true);
+            connection = NetworkUtil.getHttpURLConnection(params[0]);
             if (params.length == 2 && !TextUtils.isEmpty(params[1])) {
                 connection.addRequestProperty("Cookie", params[1]);
             }
