@@ -50,6 +50,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 
+import static com.github.yeriomin.yalpstore.InstalledAppsActivity.INSTALLED_APPS_LOADED_ACTION;
 import static com.github.yeriomin.yalpstore.PreferenceUtil.PREFERENCE_USE_TOR;
 
 public class YalpStoreApplication extends Application {
@@ -211,6 +212,7 @@ public class YalpStoreApplication extends Application {
             apps.get(BuildConfig.APPLICATION_ID).setFree(true);
             YalpStoreApplication.installedPackages.clear();
             YalpStoreApplication.installedPackages.putAll(apps);
+            context.sendBroadcast(new Intent(INSTALLED_APPS_LOADED_ACTION));
         }
     }
 }

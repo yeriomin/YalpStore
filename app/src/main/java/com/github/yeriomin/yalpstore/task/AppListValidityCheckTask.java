@@ -55,6 +55,9 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Map<String
     protected void onPostExecute(Map<String, Integer> installedPackageNames) {
         super.onPostExecute(installedPackageNames);
         if (YalpStoreApplication.installedPackages.isEmpty()) {
+            return;
+        }
+        if (!installedPackageNames.isEmpty() && activity.getListedPackageNames().isEmpty()) {
             activity.loadApps();
             return;
         }

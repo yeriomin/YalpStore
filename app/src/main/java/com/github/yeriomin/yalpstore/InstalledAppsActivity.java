@@ -19,6 +19,10 @@
 
 package com.github.yeriomin.yalpstore;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,13 +34,21 @@ import com.github.yeriomin.yalpstore.fragment.FilterMenu;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.AppListValidityCheckTask;
 import com.github.yeriomin.yalpstore.task.BitmapCacheCleanupTask;
-import com.github.yeriomin.yalpstore.task.ForegroundInstalledAppsTask;
 import com.github.yeriomin.yalpstore.task.OldApkCleanupTask;
 import com.github.yeriomin.yalpstore.view.InstalledAppBadge;
 import com.github.yeriomin.yalpstore.view.InstalledAppsMainButtonAdapter;
 import com.github.yeriomin.yalpstore.view.ListItem;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.ListIterator;
+
 public class InstalledAppsActivity extends AppListActivity {
+
+    static public final String INSTALLED_APPS_LOADED_ACTION = "INSTALLED_APPS_LOADED_ACTION";
+
+    private InstalledAppsBroadcastReceiver receiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +67,37 @@ public class InstalledAppsActivity extends AppListActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        AppListValidityCheckTask task = new AppListValidityCheckTask(this);
-        task.setIncludeSystemApps(new FilterMenu(this).getFilterPreferences().isSystemApps());
-        task.execute();
+        if (YalpStoreApplication.installedPackages.isEmpty()) {
+            receiver = new InstalledAppsBroadcastReceiver(this);
+            findViewById(R.id.progress).setVisibility(View.VISIBLE);
+        } else {
+            AppListValidityCheckTask task = new AppListValidityCheckTask(this);
+            task.setIncludeSystemApps(new FilterMenu(this).getFilterPreferences().isSystemApps());
+            task.execute();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(receiver);
+        receiver = null;
     }
 
     @Override
     public void loadApps() {
-        new ForegroundInstalledAppsTask(this).executeOnExecutorIfPossible();
+        boolean includeSystemApps = new FilterMenu(this).getFilterPreferences().isSystemApps();
+        List<App> installedApps = new ArrayList<>(YalpStoreApplication.installedPackages.values());
+        ListIterator<App> iterator = installedApps.listIterator();
+        while (iterator.hasNext()){
+            if (iterator.next().isSystem() && !includeSystemApps){
+                iterator.remove();
+            }
+        }
+        Collections.sort(installedApps);
+        clearApps();
+        addApps(installedApps);
+        findViewById(R.id.progress).setVisibility(View.GONE);
     }
 
     @Override
@@ -84,5 +119,21 @@ public class InstalledAppsActivity extends AppListActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         menu.findItem(R.id.action_flag).setVisible(false);
+    }
+
+    private static class InstalledAppsBroadcastReceiver extends BroadcastReceiver {
+
+        private InstalledAppsActivity activity;
+
+        public InstalledAppsBroadcastReceiver(InstalledAppsActivity activity) {
+            super();
+            this.activity = activity;
+            activity.registerReceiver(this, new IntentFilter(INSTALLED_APPS_LOADED_ACTION));
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            activity.loadApps();
+        }
     }
 }
