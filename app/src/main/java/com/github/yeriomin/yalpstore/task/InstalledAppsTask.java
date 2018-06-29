@@ -21,6 +21,8 @@ package com.github.yeriomin.yalpstore.task;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -38,7 +40,11 @@ public class InstalledAppsTask extends TaskWithProgress<Map<String, App>> {
     static public App getInstalledApp(PackageManager pm, String packageName) {
         try {
             App app = new App(pm.getPackageInfo(packageName, PackageManager.GET_META_DATA | PackageManager.GET_PERMISSIONS));
-            app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
+            try {
+                app.setDisplayName(pm.getApplicationLabel(app.getPackageInfo().applicationInfo).toString());
+            } catch (Resources.NotFoundException e1) {
+                Log.e(InstalledAppsTask.class.getSimpleName(), app.getPackageName() + " apparently has no display name");
+            }
             return app;
         } catch (PackageManager.NameNotFoundException e) {
             return null;
