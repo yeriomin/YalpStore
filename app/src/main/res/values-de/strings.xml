@@ -294,7 +294,7 @@ Fortfahren?"</string>
 <string name="action_ignore_this">"Diese Aktua. ignorieren"</string>
 <string name="details_exodus">"Exodus Privacy: %1$s"</string>
 <string name="details_exodus_tap_to_check">"Zum prüfen tippen"</string>
-<string name="details_exodus_searching">"Suchen..."</string>
+<string name="details_exodus_searching">"Suchen…"</string>
 <string name="details_exodus_not_found">"Es wurde nichts gefunden"</string>
 <string name="details_exodus_found">"%1$s Tracker"</string>
 <string name="pref_category_third_party">"Drittanbieterservice"</string>
@@ -303,4 +303,6 @@ Fortfahren?"</string>
 <string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
 <string name="details_to_fdroid">"In F-Droid anzeigen"</string>
 <string name="details_instant_app">"Instant-App"</string>
+<string name="details_exodus_submitting">"submitting"</string>
+<string name="details_exodus_view">"view report"</string>
 </resources>
