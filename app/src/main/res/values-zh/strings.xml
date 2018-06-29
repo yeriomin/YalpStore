@@ -27,8 +27,8 @@
 点击“创建密码”将被重定向到密码创建页面。"</string>
 <string name="dialog_title_logout">"注销？"</string>
 <string name="dialog_message_logout">"确定要注销吗？"</string>
-<string name="dialog_account_type_provided_by_user">"登陆我自己的谷歌账号"</string>
-<string name="dialog_account_type_predefined">"登陆YALP谷歌账号。"</string>
+<string name="dialog_account_type_provided_by_user">"使用我自己的谷歌账号登陆"</string>
+<string name="dialog_account_type_predefined">"使用YALP提供的谷歌账号登陆"</string>
 <string name="dialog_account_type_title">"您想登录 Google Play 商店吗？"</string>
 <string name="dialog_title_logging_in">"登陆"</string>
 <string name="dialog_message_logging_in_provided_by_user">"正在尝试登陆您所提供的凭证…"</string>
@@ -126,13 +126,13 @@
 <string name="details_download_not_available">"不可用"</string>
 
 <!-- Fuzzy -->
-<string name="manual_download_incompatible">"Google Play 商店认为此应用与您的设备不兼容。这意味着 Google Play 商店服务器尚未退回版本代码。"</string>
+<string name="manual_download_incompatible">"Google Play 商店认为此应用与您的设备不兼容，这意味着 Google Play 商店服务器没有返回版本代码。"</string>
 
 <!-- Fuzzy -->
 <string name="manual_download_compatible">"版本代码字段已预先填写此应用程序的最新兼容版本代码。如果您想要以前的版本，只需输入一个小于当前值的数字即可。如果开发人员尚未从Play Store中删除之前版本的apk，您可能可以开始下载。"</string>
-<string name="manual_download_warning">"此页面允许您手动选择要下载的应用程序的版本。版本代码是标识应用版本的数字。它从1开始，每当有新版本由应用程序开发人员增加。通常的Play商店让您只下载与您的设备兼容的最新的apk。通过手动提供此号码，您也可以获得其他版本。
+<string name="manual_download_warning">"此页面允许您手动选择要下载的应用程序的版本。版本代码是标识应用版本的数字。它从 1 开始，每当有新版本由应用程序开发人员增加。通常，Play 商店只让您下载与您的设备兼容的最新的 apk。通过手动提供此号码，您也可以获得其他版本。
 
-请注意，Google Play商店不支持下载任意版本的应用程式。您的成功取决于版本代码的幸运猜测。即使你猜对了，你得到下载开始，你可能会得到一个不兼容的apk。大多数情况下，你会浪费你的时间！"</string>
+请注意，Google Play 商店不支持下载任意版本的应用程序。您的成功取决于版本代码的幸运猜测。即使您猜对了且可以开始下载，您也可能会得到一个不兼容的 apk。大多数情况下，您这样做会浪费时间！"</string>
 <string name="manual_download_hint_version_code">"在此输入版本号"</string>
 <string name="details_uninstall">"卸载"</string>
 <string name="notification_download_starting">"开始下载"</string>
@@ -171,8 +171,8 @@
 <string name="activity_title_updates_and_other_apps">"你的应用"</string>
 <string name="details_system_app_info">"系统信息"</string>
 <string name="details_run">"运行"</string>
-<string name="dialog_title_remounting_system">"使用/系统分区"</string>
-<string name="dialog_message_remounting_system">"使用/系统分区。这可能需要一些时间。"</string>
+<string name="dialog_title_remounting_system">"正在操作 /system 分区"</string>
+<string name="dialog_message_remounting_system">"正在操作 /system 分区，这可能需要一些时间。"</string>
 <string name="dialog_title_checking_busybox">"检查 busybox 是否可用"</string>
 <string name="dialog_message_checking_busybox">"某些系统工具需要与系统应用程序配合使用。检查是否可用"</string>
 <string name="dialog_title_busybox_not_available">"Busybox 不可用"</string>
@@ -182,29 +182,29 @@
 <string name="dialog_title_reboot_required">"需要重启"</string>
 <string name="dialog_message_reboot_required">"更改将在重新启动后应用。马上重启？"</string>
 <string name="dialog_title_system_app_warning">"警告"</string>
-<string name="dialog_message_system_app_warning_to_system">"您已经选择将该应用程序转换为系统应用程序。大多数应用程序不需要系统应用程序工作。
+<string name="dialog_message_system_app_warning_to_system">"您已经选择将该应用程序转换为系统应用程序。大多数应用程序不需要成为系统应用程序即可正常工作。
 
-请记住，Android 系统不支持此转换过程，因此这并不安全，也不能保证能正常运作。
+请记住，Android 系统不支持此转换过程，因此这并不安全，也不能保证其正常运作。
 
-不要因为好奇而执行此操作。它可能会弄坏您的设备。在你尝试前请备份您的系统。"</string>
-<string name="dialog_message_system_app_warning_to_normal">"您已经选择将系统应用程序转换为普通应用程序。大多数系统应用程序需要系统应用程序才能正常工作。
+不要因为好奇而执行此操作。它可能会弄坏您的设备。在您尝试前请备份您的系统。"</string>
+<string name="dialog_message_system_app_warning_to_normal">"您已经选择将系统应用程序转换为普通应用程序。大多数系统应用程序需要是系统应用程序才能正常工作。
 
-请记住，Android 系统不支持此转换过程，因此这并不安全，也不能保证能正常运作。
+请记住，Android 系统不支持此转换过程，因此这并不安全，也不能保证其正常运作。
 
-不要因为好奇而执行此操作。它可能会弄坏您的设备。在你尝试前请备份您的系统。"</string>
+不要因为好奇而执行此操作。它可能会弄坏您的设备。在您尝试前请备份您的系统。"</string>
 <string name="list_check_updates">"检查更新"</string>
-<string name="pref_background_update_interval_manually">"只能手动"</string>
+<string name="pref_background_update_interval_manually">"仅手动"</string>
 <string name="dialog_message_system_app_warning_uninstall">"您确定要删除此系统应用程序吗？系统应用程序由设备供应商放入您的设备，并且最有可能需要它按预期的方式运行。
 
-请记住，删除系统应用程序不受Android操作系统的支持，因此不安全，不能保证工作。
+请记住，删除系统应用程序不受Android操作系统的支持，因此这并不安全，也不能保证其正常工作。
 
-不要因为好奇而做。它可能会破坏您的设备。尝试前备份您的设备。"</string>
+不要因为好奇而执行此操作。它可能会破坏您的设备。尝试前备份您的设备。"</string>
 <string name="dialog_title_system_app_self">"使 Yalp Store 变成系统应用"</string>
 <string name="dialog_message_system_app_self">"使用特权来允许后台安装应用程序需要使Yalp Store系统应用程序。
 
 这个过程是不完善的和供应商特定的，所以它可能不起作用。
 
-做吗"</string>
+确定要这么做吗？"</string>
 <string name="about_website_label">"网站："</string>
 <string name="details_share">"分享"</string>
 <string name="details_developer">"开发者：%1$s"</string>
@@ -307,15 +307,17 @@
 <string name="action_wishlist_add">"添加到心愿单"</string>
 <string name="action_wishlist">"心愿单"</string>
 <string name="action_ignore_this">"忽略这个更新"</string>
-<string name="details_exodus">"Exodus Privacy: %1$s"</string>
-<string name="details_exodus_tap_to_check">"tap to check"</string>
-<string name="details_exodus_searching">"searching"</string>
-<string name="details_exodus_not_found">"not found"</string>
-<string name="details_exodus_found">"%1$s trackers"</string>
-<string name="pref_category_third_party">"Third party services"</string>
-<string name="pref_exodus">"Exodus Privacy check"</string>
-<string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
-<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
-<string name="details_to_fdroid">"View in F-Droid"</string>
-<string name="details_instant_app">"Instant app"</string>
+<string name="details_exodus">"Exodus 隐私：%1$s 个"</string>
+<string name="details_exodus_tap_to_check">"点击以检查"</string>
+<string name="details_exodus_searching">"正在搜索"</string>
+<string name="details_exodus_not_found">"未找到"</string>
+<string name="details_exodus_found">"%1$s 个跟踪器"</string>
+<string name="pref_category_third_party">"第三方服务"</string>
+<string name="pref_exodus">"Exodus 隐私检查"</string>
+<string name="pref_exodus_summary_on">"跟踪器的数目将自动显示在详情页上"</string>
+<string name="pref_exodus_summary_off">"Exodus 报告链接已列出"</string>
+<string name="details_to_fdroid">"在 F-Droid 中查看"</string>
+<string name="details_instant_app">"即时应用"</string>
+<string name="details_exodus_submitting">"submitting"</string>
+<string name="details_exodus_view">"view report"</string>
 </resources>
