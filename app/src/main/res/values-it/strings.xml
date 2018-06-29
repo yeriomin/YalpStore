@@ -296,7 +296,7 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="action_ignore_this">"Ignora questo aggiornamento"</string>
 <string name="details_exodus">"Exodus Privacy: %1$s"</string>
 <string name="details_exodus_tap_to_check">"Fai tap per controllare"</string>
-<string name="details_exodus_searching">"ricerca..."</string>
+<string name="details_exodus_searching">"ricerca…"</string>
 <string name="details_exodus_not_found">"non trovato"</string>
 <string name="details_exodus_found">"%1$s tracker"</string>
 <string name="pref_category_third_party">"Servizi di terze parti"</string>
@@ -305,4 +305,6 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="pref_exodus_summary_off">"Viene mostrato il link report di Exodus"</string>
 <string name="details_to_fdroid">"Vedi in F-Droid"</string>
 <string name="details_instant_app">"App istantanea"</string>
+<string name="details_exodus_submitting">"submitting"</string>
+<string name="details_exodus_view">"view report"</string>
 </resources>
