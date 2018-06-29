@@ -23,4 +23,5 @@
     <string name="details_rating" translatable="false">"%1$.1f★"</string>
     <string name="details_rating_specific" translatable="false">"%1$d★ %2$d"</string>
     <string name="details_transition_view_name" translatable="false">"appicon"</string>
+    <string name="exodus_api_key" translatable="false">"bf1108aec9c28c5c286c63e89230a71f77b35a5d"</string>
 </resources>

@@ -19,37 +19,92 @@
 
 package com.github.yeriomin.yalpstore.task;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.NetworkUtil;
+
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.client.StrongConnectionBuilder;
 
-abstract public class HttpTask extends AsyncTask<Void, Void, String> {
+abstract public class HttpTask extends TaskWithProgress<String> {
 
-    private String url;
+    protected HttpsURLConnection connection;
+    private final Map<String, String> headers = new HashMap<>();
+    private final Map<String, String> formFields = new HashMap<>();
     protected int returnCode;
     protected String response;
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @Override
-    protected String doInBackground(Void... voids) {
+    public HttpTask(String url, String method) {
         try {
-            HttpsURLConnection connection = NetCipher.getHttpsURLConnection(new URL(url), true);
-            connection.setRequestMethod("GET");
-            returnCode = connection.getResponseCode();
-            response = StrongConnectionBuilder.slurp(connection.getInputStream());
+            connection = (HttpsURLConnection) NetworkUtil.getHttpURLConnection(url);
+            connection.setRequestMethod(method);
         } catch (IOException e) {
             Log.e(getClass().getSimpleName(), "Could not get content from " + url + " : " + e.getMessage());
         }
+    }
+
+    public void addHeader(String name, String value) {
+        headers.put(name, value);
+    }
+
+    public void addFormField(String name, String value) {
+        formFields.put(name, value);
+    }
+
+    @Override
+    protected String doInBackground(String... strings) {
+        try {
+            for (String name: headers.keySet()) {
+                connection.addRequestProperty(name, headers.get(name));
+            }
+            if (!formFields.isEmpty()) {
+                addFromData();
+            }
+            returnCode = connection.getResponseCode();
+            processResponseBody(connection.getInputStream());
+        } catch (IOException e) {
+            try {
+                response = StrongConnectionBuilder.slurp(connection.getErrorStream());
+            } catch (IOException e1) {
+                // If reading the error message fails, there is nothing else to do
+            }
+            Log.e(getClass().getSimpleName(), "Could not get content from " + connection.getURL() + " : " + e.getClass().getCanonicalName());
+        }
         return response;
+    }
+
+    protected void processResponseBody(InputStream is) throws IOException {
+        response = StrongConnectionBuilder.slurp(is);
+    }
+
+    private void addFromData() throws IOException {
+        String boundary = "----FormBoundary" + Long.toString(System.currentTimeMillis()) + "----";
+        connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+        connection.setDoOutput(true);
+        DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
+        outputStream.writeBytes(getBodyString(boundary));
+        outputStream.flush();
+        outputStream.close();
+    }
+
+    private String getBodyString(String boundary) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String lineEnd = "\r\n";
+        for (String key: formFields.keySet()) {
+            stringBuilder.append("--").append(boundary).append(lineEnd);
+            stringBuilder.append("Content-Disposition: form-data; name=\"").append(key).append("\"").append(lineEnd);
+            stringBuilder.append(lineEnd);
+            stringBuilder.append(formFields.get(key));
+            stringBuilder.append(lineEnd);
+        }
+        stringBuilder.append("--").append(boundary).append("--").append(lineEnd).append(lineEnd);
+        return stringBuilder.toString();
     }
 }

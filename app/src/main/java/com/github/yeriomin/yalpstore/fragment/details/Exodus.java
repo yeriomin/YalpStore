@@ -28,7 +28,7 @@ import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.task.ExodusTask;
+import com.github.yeriomin.yalpstore.task.ExodusSearchTask;
 
 public class Exodus extends Abstract {
 
@@ -58,7 +58,7 @@ public class Exodus extends Abstract {
     }
 
     private void runTask() {
-        new ExodusTask((TextView) activity.findViewById(R.id.exodus), app.getPackageName()).execute();
+        new ExodusSearchTask((TextView) activity.findViewById(R.id.exodus), app.getPackageName()).execute();
     }
 
     public Exodus(YalpStoreActivity activity, App app) {

@@ -23,7 +23,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.TrafficStats;
 import android.os.Build;
 import android.util.Log;
 import android.util.LruCache;

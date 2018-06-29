@@ -21,8 +21,6 @@ package com.github.yeriomin.yalpstore.selfupdate;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.TrafficStats;
-import android.os.Build;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.NetworkUtil;

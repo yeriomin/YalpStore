@@ -275,6 +275,8 @@
     <string name="details_exodus_searching">поиск</string>
     <string name="details_exodus_not_found">не найдено</string>
     <string name="details_exodus_found">"%1$s трекеров"</string>
+    <string name="details_exodus_submitting">заказываем отчёт</string>
+    <string name="details_exodus_view">прочесть отчёт</string>
     <string name="pref_category_third_party">Сторонние сервисы</string>
     <string name="pref_exodus">Проверка Exodus Privacy</string>
     <string name="pref_exodus_summary_on">На странице приложения отображается число трекеров</string>
