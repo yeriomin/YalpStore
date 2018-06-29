@@ -37,7 +37,6 @@ android {
             dimension "minApi"
             minSdkVersion 14
             versionCode (1000 + android.defaultConfig.versionCode)
-            applicationIdSuffix "plus"
         }
     }
     lintOptions {
