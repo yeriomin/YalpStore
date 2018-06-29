@@ -33,6 +33,17 @@ before_deploy:
   - cd $TRAVIS_BUILD_DIR/yalp-store-ota-zip
   - zip -r $TRAVIS_BUILD_DIR/$OTA_NAME *
   - cd $TRAVIS_BUILD_DIR
+  - export CONTEMPORARY_APK_NAME=com.github.yeriomin.yalpstore.contemporary_$VERSION_CODE.apk
+  - export CONTEMPORARY_OTA_NAME=yalp-store-ota-contemporary-$VERSION_CODE.zip
+  - cd app/build/outputs/apk/contemporary/release/
+  - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $TRAVIS_BUILD_DIR/yeriomin-keystore.jks -storepass $storepass -keypass $keypass app-contemporary-release-unsigned.apk AndroidKey
+  - jarsigner -verify app-contemporary-release-unsigned.apk
+  - $ANDROID_HOME/build-tools/27.0.3/zipalign -v 4 app-contemporary-release-unsigned.apk $CONTEMPORARY_APK_NAME
+  - cp $CONTEMPORARY_APK_NAME $TRAVIS_BUILD_DIR/yalp-store-ota-zip/YalpStore.apk
+  - cp $CONTEMPORARY_APK_NAME $TRAVIS_BUILD_DIR
+  - cd $TRAVIS_BUILD_DIR/yalp-store-ota-zip
+  - zip -r $TRAVIS_BUILD_DIR/$CONTEMPORARY_OTA_NAME *
+  - cd $TRAVIS_BUILD_DIR
 deploy:
   provider: releases
   api_key:
@@ -40,6 +51,8 @@ deploy:
   file:
     - $OTA_NAME
     - $APK_NAME
+    - $CONTEMPORARY_OTA_NAME
+    - $CONTEMPORARY_APK_NAME
   skip_cleanup: true
   on:
     all_branches: true
