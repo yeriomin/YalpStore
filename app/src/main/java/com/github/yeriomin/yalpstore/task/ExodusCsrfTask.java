@@ -25,7 +25,6 @@ import android.widget.TextView;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.view.UriOnClickListener;
 
-import java.net.HttpCookie;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -50,11 +49,7 @@ class ExodusCsrfTask extends ExodusTask {
     @Override
     protected String doInBackground(String... strings) {
         String result = super.doInBackground(strings);
-        for (HttpCookie cookie : HttpCookie.parse(connection.getHeaderField("Set-Cookie"))) {
-            if (cookie.getName().equalsIgnoreCase(COOKIE_NAME)) {
-                this.cookie = cookie.getValue();
-            }
-        }
+        cookie = getCookieValue(connection.getHeaderField("Set-Cookie"));
         middlewareToken = getMiddlewareToken(result);
         return result;
     }
@@ -78,5 +73,20 @@ class ExodusCsrfTask extends ExodusTask {
             return matcher.group(1);
         }
         return "";
+    }
+
+    private String getCookieValue(String rawCookie) {
+        if (TextUtils.isEmpty(rawCookie)) {
+            return "";
+        }
+        String[] parts = TextUtils.split(rawCookie, ";");
+        if (parts.length == 0 || !parts[0].startsWith(COOKIE_NAME)) {
+            return "";
+        }
+        parts = TextUtils.split(parts[0], "=");
+        if (parts.length < 2) {
+            return "";
+        }
+        return parts[1];
     }
 }
