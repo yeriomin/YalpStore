@@ -305,4 +305,6 @@
 <string name="pref_exodus_summary_off">"Предоставян е линк с отчет от Exodus"</string>
 <string name="details_to_fdroid">"Прегледай във F-Droid"</string>
 <string name="details_instant_app">"Мигновено приложение"</string>
+<string name="details_exodus_submitting">"предаване"</string>
+<string name="details_exodus_view">"прегледай отчета"</string>
 </resources>
