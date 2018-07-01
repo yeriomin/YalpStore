@@ -41,7 +41,11 @@ abstract public class CleanupTask extends AsyncTask<Void, Void, Void> {
         if (null == contextRef.get()) {
             return null;
         }
-        for (File file: getFiles()) {
+        File[] files = getFiles();
+        if (null == files) {
+            return null;
+        }
+        for (File file: files) {
             if (shouldDelete(file)) {
                 file.delete();
             }
