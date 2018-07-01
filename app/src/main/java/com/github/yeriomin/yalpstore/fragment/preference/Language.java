@@ -45,10 +45,13 @@ public class Language extends List {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 boolean result = super.onPreferenceChange(preference, newValue);
-                try {
-                    new PlayStoreApiAuthenticator(activity).getApi().setLocale(new Locale((String) newValue));
-                } catch (IOException e) {
-                    // Should be impossible to get to preferences with incorrect credentials
+                PlayStoreApiAuthenticator apiAuthenticator = new PlayStoreApiAuthenticator(activity);
+                if (apiAuthenticator.isLoggedIn()) {
+                    try {
+                        apiAuthenticator.getApi().setLocale(new Locale((String) newValue));
+                    } catch (IOException e) {
+                        // Irrelevant here
+                    }
                 }
                 return result;
             }

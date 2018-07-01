@@ -66,6 +66,13 @@ public class PlayStoreApiAuthenticator {
         onLoginTasks.add(new WishlistUpdateTask());
     }
 
+    public boolean isLoggedIn() {
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setEmail(PreferenceUtil.getDefaultSharedPreferences(context).getString(PREFERENCE_EMAIL, ""));
+        fill(loginInfo);
+        return !TextUtils.isEmpty(loginInfo.getEmail()) && !TextUtils.isEmpty(loginInfo.getGsfId());
+    }
+
     public GooglePlayAPI getApi() throws IOException {
         if (api == null) {
             api = buildFromPreferences();

@@ -91,7 +91,9 @@ public class Device extends List {
                     ContextUtil.toast(activity.getApplicationContext(), R.string.error_invalid_device_definition);
                     return false;
                 }
-                showLogOutDialog();
+                if (new PlayStoreApiAuthenticator(activity).isLoggedIn()) {
+                    showLogOutDialog();
+                }
                 return super.onPreferenceChange(preference, newValue);
             }
         };
