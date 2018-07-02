@@ -106,7 +106,11 @@ public class DownloadManagerAdapter extends DownloadManagerAbstract {
     @Override
     public void cancel(long downloadId) {
         super.cancel(downloadId);
-        dm.remove(downloadId);
+        try {
+            dm.remove(downloadId);
+        } catch (UnsupportedOperationException e) {
+            // Irrelevant
+        }
     }
 
     public Pair<Integer, Integer> getProgress(long downloadId) {
