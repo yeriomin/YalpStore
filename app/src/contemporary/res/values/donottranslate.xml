@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Yalp Store +</string>
     <string name="drawer_open" translatable="false">Open drawer</string>
     <string name="drawer_close" translatable="false">Close drawer</string>
 </resources>
