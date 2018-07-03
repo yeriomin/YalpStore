@@ -29,6 +29,7 @@ import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.ExodusSearchTask;
+import com.github.yeriomin.yalpstore.view.HttpTaskOnClickListener;
 
 public class Exodus extends Abstract {
 
@@ -44,21 +45,13 @@ public class Exodus extends Abstract {
             return;
         }
         view.setVisibility(View.VISIBLE);
+        HttpTaskOnClickListener listener = new HttpTaskOnClickListener(new ExodusSearchTask(view, app.getPackageName()));
         if (PreferenceUtil.getBoolean(activity, PreferenceUtil.PREFERENCE_EXODUS)) {
-            runTask();
+            listener.onClick(view);
         } else {
             view.setText(activity.getString(R.string.details_exodus, activity.getString(R.string.details_exodus_tap_to_check)));
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    runTask();
-                }
-            });
+            view.setOnClickListener(listener);
         }
-    }
-
-    private void runTask() {
-        new ExodusSearchTask((TextView) activity.findViewById(R.id.exodus), app.getPackageName()).execute();
     }
 
     public Exodus(YalpStoreActivity activity, App app) {
