@@ -16,7 +16,7 @@ android {
         applicationId "com.github.yeriomin.yalpstore"
         minSdkVersion 5
         targetSdkVersion 27
-        versionCode 42
+        versionCode 43
         versionName getVersionName()
         vectorDrawables.useSupportLibrary = true
         resConfigs "ar", "ast", "bg", "cs", "de", "el", "en", "es", "eu", "fr", "fr-rBE", "in", "it", "ja", "kk", "ko", "nl", "pl", "pt", "pt-rBR", "ru", "sk", "uk", "zh", "zh-rTW"
