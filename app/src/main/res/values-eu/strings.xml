@@ -304,4 +304,6 @@ Jarraitu?"</string>
 <string name="pref_exodus_summary_off">"Exodus txostenaren esteka bistaratzen da"</string>
 <string name="details_to_fdroid">"Ikusi F-Droid-en"</string>
 <string name="details_instant_app">"Zuzeneko aplikazioa"</string>
+<string name="details_exodus_submitting">"bidaltzen"</string>
+<string name="details_exodus_view">"ikusi txostena"</string>
 </resources>
