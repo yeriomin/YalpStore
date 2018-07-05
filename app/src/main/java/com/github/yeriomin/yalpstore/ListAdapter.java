@@ -24,6 +24,8 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 
 import com.github.yeriomin.yalpstore.view.ListItem;
@@ -34,11 +36,13 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
 
     private int resourceId;
     private LayoutInflater inflater;
+    private Animation removeAnimation;
 
     public ListAdapter(Context context, int resourceId) {
         super(context, resourceId);
         this.resourceId = resourceId;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        removeAnimation = AnimationUtils.loadAnimation(context, android.R.anim.slide_out_right);
     }
 
     @Override
@@ -64,5 +68,24 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
             setNotifyOnChange(true);
             notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void remove(final ListItem listItem) {
+        removeAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                ListAdapter.super.remove(listItem);
+            }
+        });
+        listItem.getView().startAnimation(removeAnimation);
     }
 }

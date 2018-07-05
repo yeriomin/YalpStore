@@ -36,6 +36,10 @@ public abstract class ListItem {
     protected App app;
     protected View view;
 
+    public View getView() {
+        return view;
+    }
+
     public void setApp(App app) {
         this.app = app;
     }
