@@ -50,6 +50,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 
+import static android.net.ConnectivityManager.CONNECTIVITY_ACTION;
 import static com.github.yeriomin.yalpstore.InstalledAppsActivity.INSTALLED_APPS_LOADED_ACTION;
 import static com.github.yeriomin.yalpstore.PreferenceUtil.PREFERENCE_USE_TOR;
 
@@ -112,6 +113,7 @@ public class YalpStoreApplication extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
         registerDownloadReceiver();
         registerInstallReceiver();
+        registerConnectivityReceiver();
         try {
             new FdroidListTask(this.getApplicationContext()).executeOnExecutorIfPossible();
         } catch (Throwable e) {
@@ -145,6 +147,12 @@ public class YalpStoreApplication extends Application {
         filter.addAction(GlobalInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM);
         filter.addAction(GlobalInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED);
         registerReceiver(new GlobalInstallReceiver(), filter);
+    }
+
+    private void registerConnectivityReceiver() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(CONNECTIVITY_ACTION);
+        registerReceiver(new ConnectivityChangeReceiver(), filter);
     }
 
     public void initNetcipher() {

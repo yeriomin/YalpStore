@@ -39,6 +39,7 @@ import com.github.yeriomin.yalpstore.notification.NotificationBuilder;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -53,9 +54,13 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     static private final String EXTENSION_OBB = ".obb";
     static private final int PROGRESS_INTERVAL = 300;
 
+    private String url;
+    private String cookieHeader;
     private Context context;
     private File targetFile;
     private long downloadId;
+
+    private long fileSize;
     private NotificationBuilder notificationBuilder;
 
     public void setContext(Context context) {
@@ -108,24 +113,60 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
 
     @Override
     protected Boolean doInBackground(String... params) {
+        url = params[0];
+        if (params.length > 1) {
+            cookieHeader = params[1];
+        }
+        while (true) {
+            try {
+                return start();
+            } catch (NoNetworkException e) {
+                Log.w(getClass().getSimpleName(), "Network connectivity lost, pausing");
+                pause();
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Task for download id " + downloadId + ", " + targetFile.getAbsolutePath();
+    }
+
+    public void resume() {
+        DownloadState.pausedTasks.remove(this);
+    }
+
+    private void pause() {
+        DownloadState.pausedTasks.add(this);
+        while (DownloadState.pausedTasks.contains(this)) {
+            sleep();
+        }
+    }
+
+    private boolean start() throws NoNetworkException {
         HttpURLConnection connection;
         InputStream in;
-        long fileSize;
         try {
-            connection = NetworkUtil.getHttpURLConnection(params[0]);
-            if (params.length == 2 && !TextUtils.isEmpty(params[1])) {
-                connection.addRequestProperty("Cookie", params[1]);
+            connection = NetworkUtil.getHttpURLConnection(url);
+            if (!TextUtils.isEmpty(cookieHeader)) {
+                connection.addRequestProperty("Cookie", cookieHeader);
+            }
+            if (targetFile.exists()) {
+                connection.setRequestProperty("Range", "Bytes=" + targetFile.length() + "-");
+            }
+            if (fileSize == 0) {
+                fileSize = connection.getContentLength();
             }
             in = connection.getInputStream();
-            fileSize = connection.getContentLength();
         } catch (IOException e) {
             DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_HTTP_DATA_ERROR);
             return false;
         }
 
-        byte[] checksum = writeToFile(in, fileSize);
+        byte[] checksum = writeToFile(in);
         if (null == checksum) {
             DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_FILE_ERROR);
+            targetFile.delete();
             return false;
         }
         if (targetFile.getAbsolutePath().endsWith(".apk")) {
@@ -178,22 +219,27 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         return displayName;
     }
 
-    private byte[] writeToFile(InputStream in, long fileSize) {
+    private byte[] writeToFile(InputStream in) throws NoNetworkException {
         OutputStream out;
         try {
-            out = new FileOutputStream(targetFile);
+            out = new FileOutputStream(targetFile, targetFile.exists());
         } catch (FileNotFoundException e) {
             //  Should be checked before launching this task
             return null;
         }
 
         try {
-            return copyStream(in, out, fileSize);
+            return copyStream(in, out, targetFile.exists() ? targetFile.length() : 0);
         } catch (IOException | IllegalStateException e) {
-            Log.e(getClass().getSimpleName(), "Could not read: " + e.getMessage());
-            DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_HTTP_DATA_ERROR);
+            Log.e(getClass().getSimpleName(), "Could not read: " + e.getClass().getName() + " " + e.getMessage());
+            sleep(PROGRESS_INTERVAL*3);
             Util.closeSilently(out);
-            targetFile.delete();
+            if (NetworkUtil.isNetworkAvailable(context)) {
+                Log.e(getClass().getSimpleName(), "isNetworkAvailable");
+                DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_HTTP_DATA_ERROR);
+            } else {
+                throw new NoNetworkException();
+            }
             return null;
         } finally {
             Util.closeSilently(in);
@@ -201,16 +247,13 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         }
     }
 
-    private byte[] copyStream(InputStream in, OutputStream out, long fileSize) throws IOException {
+    private byte[] copyStream(InputStream in, OutputStream out, long totalBytesRead) throws IOException {
         byte[] buffer = new byte[2048];
         int bytesRead;
-        long totalBytesRead = 0;
         long lastProgressUpdate = 0;
-
-        MessageDigest md;
-        try {
-            md = MessageDigest.getInstance("SHA-256");
-        } catch (NoSuchAlgorithmException e) {
+        MessageDigest md = getMessageDigestProvider();
+        if (null == md) {
+            Log.e(getClass().getSimpleName(), "Could not initialize digest provider");
             return null;
         }
         while ((bytesRead = in.read(buffer)) != -1) {
@@ -229,9 +272,7 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
                 out.write(buffer, 0, bytesRead);
             } catch (IOException e) {
                 Log.e(getClass().getSimpleName(), "Could not write file: " + e.getMessage());
-                DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_FILE_ERROR);
                 Util.closeSilently(out);
-                targetFile.delete();
                 return null;
             }
         }
@@ -244,5 +285,47 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         } else {
             return this.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, args);
         }
+    }
+
+    private MessageDigest getMessageDigestProvider() {
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            return null;
+        }
+        if (!targetFile.exists()) {
+            return md;
+        }
+        FileInputStream inputStream = null;
+        try {
+            byte[] buffer = new byte[2048];
+            int bytesRead;
+            inputStream = new FileInputStream(targetFile);
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                md.update(buffer, 0, bytesRead);
+            }
+        } catch (IOException e) {
+            return null;
+        } finally {
+            Util.closeSilently(inputStream);
+        }
+        return md;
+    }
+
+    static private void sleep(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            // Nothing to do
+        }
+    }
+
+    static private void sleep() {
+        sleep(PROGRESS_INTERVAL);
+    }
+
+    static private class NoNetworkException extends IOException {
+
     }
 }

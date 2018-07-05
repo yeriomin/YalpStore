@@ -19,15 +19,19 @@
 
 package com.github.yeriomin.yalpstore;
 
+import android.util.Log;
 import android.util.Pair;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.HttpURLConnectionDownloadTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DownloadState {
@@ -45,6 +49,8 @@ public class DownloadState {
         SUCCESSFUL,
         CANCELLED,
     }
+
+    static public final Set<HttpURLConnectionDownloadTask> pausedTasks = new HashSet<>();
 
     static private Map<String, DownloadState> state = new ConcurrentHashMap<>();
     static private Map<Long, String> downloadIds = new ConcurrentHashMap<>();
@@ -180,5 +186,12 @@ public class DownloadState {
             setCancelled(downloadId);
         }
         apkChecksum = null;
+    }
+
+    static public void resumeAll() {
+        for (HttpURLConnectionDownloadTask task: pausedTasks) {
+            Log.i(HttpURLConnectionDownloadTask.class.getSimpleName(), "Resuming: " + task);
+            task.resume();
+        }
     }
 }
