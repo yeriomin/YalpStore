@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore.task;
 
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.R;

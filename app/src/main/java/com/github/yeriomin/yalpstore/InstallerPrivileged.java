@@ -95,7 +95,6 @@ abstract public class InstallerPrivileged extends InstallerBackground {
         }
         if (context.getPackageManager().checkPermission(Manifest.permission.INSTALL_PACKAGES, BuildConfig.APPLICATION_ID) != PackageManager.PERMISSION_GRANTED) {
             Log.i(getClass().getSimpleName(), Manifest.permission.INSTALL_PACKAGES + " not granted");
-            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             notifyAndToast(R.string.notification_not_privileged, R.string.pref_not_privileged, app);
             return false;
         }

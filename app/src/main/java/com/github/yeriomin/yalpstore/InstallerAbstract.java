@@ -92,6 +92,7 @@ public abstract class InstallerAbstract {
             Log.i(getClass().getSimpleName(), "Installing " + app.getPackageName());
             install(app);
         } else {
+            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
             sendBroadcast(app.getPackageName(), false);
         }
     }
@@ -104,12 +105,7 @@ public abstract class InstallerAbstract {
         }
         if (!new ApkSignatureVerifier(context).match(app.getPackageName(), apkPath)) {
             Log.w(getClass().getSimpleName(), "Signature mismatch for " + app.getPackageName());
-            ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
-            if (ContextUtil.isAlive(context)) {
-                getSignatureMismatchDialog(app).show();
-            } else {
-                notifySignatureMismatch(app);
-            }
+            notifySignatureMismatch(app);
             return false;
         }
         if (PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)) {
@@ -120,7 +116,6 @@ public abstract class InstallerAbstract {
                 || !MessageDigest.isEqual(downloadedFileChecksum, existingFileChecksum)
             ) {
                 Log.e(getClass().getSimpleName(), "Checksums of the existing file and the originally downloaded file are not the same for " + app.getPackageName());
-                ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
                 notifyAndToast(
                     R.string.notification_file_verification_failed,
                     R.string.notification_file_verification_failed,
@@ -180,11 +175,15 @@ public abstract class InstallerAbstract {
     }
 
     private void notifySignatureMismatch(App app) {
-        notifyAndToast(
-            R.string.notification_download_complete_signature_mismatch,
-            R.string.notification_download_complete_signature_mismatch_toast,
-            app
-        );
+        if (ContextUtil.isAlive(context)) {
+            getSignatureMismatchDialog(app).show();
+        } else {
+            notifyAndToast(
+                R.string.notification_download_complete_signature_mismatch,
+                R.string.notification_download_complete_signature_mismatch_toast,
+                app
+            );
+        }
     }
 
     private void showNotification(int notificationStringId, App app) {
