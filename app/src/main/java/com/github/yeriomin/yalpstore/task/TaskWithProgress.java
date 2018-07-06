@@ -47,9 +47,13 @@ abstract public class TaskWithProgress<T> extends AsyncTask<String, Void, T> {
     }
 
     public void prepareDialog(int messageId, int titleId) {
+        prepareDialog(context.getString(messageId), context.getString(titleId));
+    }
+
+    public void prepareDialog(String message, String title) {
         ProgressDialog dialog = new ProgressDialog(context, new ThemeManager().getDialogThemeId(context));
-        dialog.setTitle(context.getString(titleId));
-        dialog.setMessage(context.getString(messageId));
+        dialog.setTitle(title);
+        dialog.setMessage(message);
         dialog.setIndeterminate(true);
         dialog.setCancelable(false);
         this.progressDialog = dialog;

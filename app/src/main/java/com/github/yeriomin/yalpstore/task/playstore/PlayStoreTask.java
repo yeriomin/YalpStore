@@ -102,7 +102,6 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
             if (new FirstLaunchChecker(context).isFirstLogin() && ContextUtil.isAlive(context)) {
                 Log.i(getClass().getSimpleName(), "First launch, so using built-in account");
                 logInWithPredefinedAccount();
-                ContextUtil.toast(context, R.string.first_login_message);
                 return;
             }
         } else if (e.getCode() == 401 && PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
@@ -134,7 +133,10 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
         LoginTask task = new LoginTask();
         task.setCaller(this);
         task.setContext(context);
-        task.prepareDialog(R.string.dialog_message_logging_in_predefined, R.string.dialog_title_logging_in);
+        task.prepareDialog(
+            context.getString(R.string.dialog_message_logging_in_predefined) + "\n" + context.getString(R.string.first_login_message),
+            context.getString(R.string.dialog_title_logging_in)
+        );
         task.execute();
     }
 
