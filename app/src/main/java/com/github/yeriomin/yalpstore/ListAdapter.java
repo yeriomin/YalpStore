@@ -72,6 +72,9 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
 
     @Override
     public void remove(final ListItem listItem) {
+        if (null == listItem || null == listItem.getView()) {
+            return;
+        }
         removeAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {

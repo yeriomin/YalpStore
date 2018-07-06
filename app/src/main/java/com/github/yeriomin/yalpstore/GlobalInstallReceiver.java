@@ -39,14 +39,14 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (TextUtils.isEmpty(intent.getAction()) || null == intent.getData() || TextUtils.isEmpty(intent.getData().getSchemeSpecificPart())) {
+        if (!isProperIntent(intent)) {
             return;
         }
         String action = intent.getAction();
         String packageName = intent.getData().getSchemeSpecificPart();
         Log.i(getClass().getSimpleName(), "Finished installation (" + action + ") of " + packageName);
         boolean actionIsInstall = actionIsInstall(action);
-        updateInstalledAppsList(context, packageName, actionIsInstall);
+        updateInstalledAppsList(context, packageName);
         context.sendBroadcast(new Intent(ACTION_INSTALL_UI_UPDATE).putExtra(Intent.EXTRA_PACKAGE_NAME, packageName));
         ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall);
         if (!actionIsInstall) {
@@ -66,9 +66,18 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         }
     }
 
-    static private void updateInstalledAppsList(Context context, String packageName, boolean installed) {
-        if (installed) {
-            YalpStoreApplication.installedPackages.put(packageName, InstalledAppsTask.getInstalledApp(context.getPackageManager(), packageName));
+    static private boolean isProperIntent(Intent intent) {
+        return !(TextUtils.isEmpty(intent.getAction())
+            || null == intent.getData()
+            || TextUtils.isEmpty(intent.getData().getSchemeSpecificPart())
+            || intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)
+        );
+    }
+
+    static private void updateInstalledAppsList(Context context, String packageName) {
+        App app = InstalledAppsTask.getInstalledApp(context.getPackageManager(), packageName);
+        if (null != app) {
+            YalpStoreApplication.installedPackages.put(packageName, app);
         } else {
             YalpStoreApplication.installedPackages.remove(packageName);
         }
