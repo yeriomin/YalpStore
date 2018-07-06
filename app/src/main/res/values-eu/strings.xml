@@ -293,7 +293,7 @@ Jarraitu?"</string>
 <string name="action_wishlist_add">"Gehitu nahien zerrendan"</string>
 <string name="action_wishlist">"Nahien zerrenda"</string>
 <string name="action_ignore_this">"Ezikusi eguneraketa hau"</string>
-<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+
 <string name="details_exodus_tap_to_check">"sakatu egiaztatzeko"</string>
 <string name="details_exodus_searching">"bilatzen"</string>
 <string name="details_exodus_not_found">"ez da aurkitu"</string>
@@ -306,4 +306,5 @@ Jarraitu?"</string>
 <string name="details_instant_app">"Zuzeneko aplikazioa"</string>
 <string name="details_exodus_submitting">"bidaltzen"</string>
 <string name="details_exodus_view">"ikusi txostena"</string>
+<string name="details_new_permission">"Berria:"</string>
 </resources>

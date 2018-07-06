@@ -26,6 +26,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextUtils;
@@ -42,8 +43,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class PermissionGroup extends LinearLayout {
 
@@ -52,8 +55,11 @@ public class PermissionGroup extends LinearLayout {
     };
     static private final String permissionSuffix = ".permission.";
 
+    static private String newPermissionPerfix;
+
     private PermissionGroupInfo permissionGroupInfo;
-    private Map<String, String> permissionMap = new HashMap<>();
+    private Set<PermissionInfo> permissions = new HashSet<>();
+    private Set<String> newPermissions = new HashSet<>();
     private PackageManager pm;
 
     public PermissionGroup(Context context) {
@@ -83,27 +89,46 @@ public class PermissionGroup extends LinearLayout {
         ((ImageView) findViewById(R.id.permission_group_icon)).setImageDrawable(getPermissionGroupIcon(permissionGroupInfo));
     }
 
-    public void addPermission(PermissionInfo permissionInfo) {
-        CharSequence label = permissionInfo.loadLabel(pm);
-        CharSequence description = permissionInfo.loadDescription(pm);
-        permissionMap.put(getReadableLabel(label.toString(), permissionInfo.packageName), TextUtils.isEmpty(description) ? "" : description.toString());
-        List<String> permissionLabels = new ArrayList<>(permissionMap.keySet());
+    public void setPermissions(Set<PermissionInfo> permissions) {
+        this.permissions = permissions;
+        Map<String, PermissionInfo> permissionsByLabel = new HashMap<>();
+        for (PermissionInfo info: permissions) {
+            permissionsByLabel.put(getReadableLabel(info.loadLabel(pm).toString(), info.packageName), info);
+        }
+        List<String> permissionLabels = new ArrayList<>(permissionsByLabel.keySet());
         Collections.sort(permissionLabels);
         LinearLayout permissionLabelsView = findViewById(R.id.permission_labels);
         permissionLabelsView.removeAllViews();
         for (String permissionLabel: permissionLabels) {
-            addPermissionLabel(permissionLabelsView, permissionLabel, permissionMap.get(permissionLabel));
+            PermissionInfo info = permissionsByLabel.get(permissionLabel);
+            CharSequence description = info.loadDescription(pm);
+            addPermissionLabel(
+                permissionLabelsView,
+                permissionLabel,
+                TextUtils.isEmpty(description) ? "" : description.toString(),
+                newPermissions.contains(info.name)
+            );
         }
+    }
+
+    public void setNewPermissions(Set<String> newPermissions) {
+        this.newPermissions = newPermissions;
     }
 
     private void init() {
         inflate(getContext(), R.layout.permission_group_widget_layout, this);
         pm = getContext().getPackageManager();
+        if (TextUtils.isEmpty(newPermissionPerfix)) {
+            newPermissionPerfix = getContext().getString(R.string.details_new_permission);
+        }
     }
 
-    private void addPermissionLabel(LinearLayout permissionLabelsView, String label, String description) {
+    private void addPermissionLabel(LinearLayout permissionLabelsView, String label, String description, boolean isNew) {
         TextView newView = new TextView(getContext());
-        newView.setText(label);
+        newView.setText((isNew ? newPermissionPerfix : "") + label);
+        if (isNew) {
+            newView.setTypeface(null, Typeface.BOLD);
+        }
         newView.setOnClickListener(getOnClickListener(description));
         permissionLabelsView.addView(newView);
     }

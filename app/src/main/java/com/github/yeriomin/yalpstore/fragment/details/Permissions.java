@@ -25,6 +25,7 @@ import android.content.pm.PermissionInfo;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.github.yeriomin.yalpstore.PermissionsComparator;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.fragment.Abstract;
@@ -35,8 +36,10 @@ import com.github.yeriomin.yalpstore.widget.PermissionGroup;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Permissions extends Abstract {
 
@@ -62,32 +65,39 @@ public class Permissions extends Abstract {
     }
 
     private void addPermissionWidgets() {
-        Map<String, PermissionGroup> permissionGroupWidgets = new HashMap<>();
+        PermissionsComparator comparator = new PermissionsComparator(activity);
+        Set<String> newPermissions = new HashSet<>();
+        if (!comparator.isSame(app)) {
+            newPermissions.addAll(comparator.getNewPermissions());
+        }
+        Map<String, PermissionGroupInfo> groups = new HashMap<>();
+        Map<String, Set<PermissionInfo>> permissions = new HashMap<>();
         for (String permissionName: app.getPermissions()) {
             PermissionInfo permissionInfo = getPermissionInfo(permissionName);
             if (null == permissionInfo) {
                 continue;
             }
-            PermissionGroup widget;
             PermissionGroupInfo permissionGroupInfo = getPermissionGroupInfo(permissionInfo);
-            if (!permissionGroupWidgets.containsKey(permissionGroupInfo.name)) {
-                widget = new PermissionGroup(activity);
-                widget.setPermissionGroupInfo(permissionGroupInfo);
-                widget.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                permissionGroupWidgets.put(permissionGroupInfo.name, widget);
-            } else {
-                widget = permissionGroupWidgets.get(permissionGroupInfo.name);
+            groups.put(permissionGroupInfo.name, permissionGroupInfo);
+            if (!permissions.containsKey(permissionGroupInfo.name)) {
+                permissions.put(permissionGroupInfo.name, new HashSet<PermissionInfo>());
             }
-            widget.addPermission(permissionInfo);
+            permissions.get(permissionGroupInfo.name).add(permissionInfo);
         }
         LinearLayout container = activity.findViewById(R.id.permissions_container_widgets);
         container.removeAllViews();
-        List<String> permissionGroupLabels = new ArrayList<>(permissionGroupWidgets.keySet());
+        List<String> permissionGroupLabels = new ArrayList<>(groups.keySet());
         Collections.sort(permissionGroupLabels);
         for (String permissionGroupLabel: permissionGroupLabels) {
-            container.addView(permissionGroupWidgets.get(permissionGroupLabel));
+            PermissionGroupInfo groupInfo = groups.get(permissionGroupLabel);
+            PermissionGroup widget = new PermissionGroup(activity);
+            widget.setPermissionGroupInfo(groupInfo);
+            widget.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            widget.setNewPermissions(newPermissions);
+            widget.setPermissions(permissions.get(groupInfo.name));
+            container.addView(widget);
         }
-        activity.findViewById(R.id.permissions_none).setVisibility(permissionGroupWidgets.isEmpty() ? View.VISIBLE : View.GONE);
+        activity.findViewById(R.id.permissions_none).setVisibility(permissionGroupLabels.isEmpty() ? View.VISIBLE : View.GONE);
     }
 
     private PermissionInfo getPermissionInfo(String permissionName) {

@@ -46,8 +46,8 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="details_rate_this_app">"Bewerte diese App:"</string>
 <string name="details_you_rated_this_app">"Du bewertetest diese App:"</string>
 <string name="details_permissions">"Berechtigungen:"</string>
-<string name="details_versionName">"Version %1$s"</string>
-<string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
+
+
 <string name="details_download">"Herunterladen"</string>
 <string name="details_install">"Installieren"</string>
 <string name="details_downloading">"Herunterladen…"</string>
@@ -136,7 +136,7 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="pref_device_to_pretend_to_be_default">"Deine tatsächlichen Gerätedaten"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Diese Änderung wird angewendet, sobald du dich neu anmeldest"</string>
 <string name="pref_category_updates">"Aktualisierungen"</string>
-<string name="pref_category_installation">"Installation"</string>
+
 <string name="pref_category_spoofing">"Verschleierung"</string>
 <string name="pref_category_ui">"Anzeige"</string>
 <string name="details_installing">"Wird installiert…"</string>
@@ -162,7 +162,7 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="list_app_system">"System App"</string>
 <string name="activity_title_updates_only">"Aktualisierungen"</string>
 <string name="activity_title_updates_and_other_apps">"Deine Apps"</string>
-<string name="details_system_app_info">"System info"</string>
+
 <string name="details_run">"Starten"</string>
 <string name="dialog_title_remounting_system">"Arbeite auf /system Partition"</string>
 <string name="dialog_message_remounting_system">"Arbeite auf /system Partition. Das könnte länger dauern"</string>
@@ -216,7 +216,7 @@ Fortfahren?"</string>
 <string name="thank_you">"Danke!"</string>
 <string name="list_updating">"Wird aktualisiert…"</string>
 <string name="error_invalid_device_definition">"Gerätebeschreibung abgelehnt"</string>
-<string name="details_video">"Video"</string>
+
 <string name="error_could_not_download">"Konnte nicht heruntergeladen werden"</string>
 <string name="first_login_message">"Um dein eigenen Account zu verwenden, wähle Abmelden im Menü."</string>
 <string name="early_access">"Beta"</string>
@@ -262,14 +262,14 @@ Fortfahren?"</string>
 <string name="content_flagged">"Beanstandung wurde gesendet."</string>
 <string name="list_app_blacklisted">"Auf der Blacklist"</string>
 <string name="list_app_whitelisted">"Auf der Whitelist"</string>
-<string name="action_filter">"Filter"</string>
+
 <string name="action_filter_system_apps">"System-Apps"</string>
 <string name="action_filter_apps_with_ads">"Apps mit Werbung"</string>
 <string name="action_filter_paid_apps">"Bezahlte Apps"</string>
 <string name="action_filter_gsf_dependent_apps">"GSF-abhängige Apps"</string>
 <string name="action_filter_category">"Kategorie: %1$s"</string>
 <string name="action_filter_rating">"Bewertung: %1$s"</string>
-<string name="action_filter_downloads">"Downloads: %1$s"</string>
+
 <string name="pref_auto_whitelist">"Automatische Whitelist"</string>
 <string name="pref_auto_whitelist_summary_on">"Apps, die via Yalp Store installiert wurden, werden automatisch auf die Whitelist gesetzt"</string>
 <string name="pref_auto_whitelist_summary_off">"Du musst Apps manuell auf die Whitelist setzen"</string>
@@ -292,17 +292,18 @@ Fortfahren?"</string>
 <string name="action_wishlist_add">"Auf die Wunschliste"</string>
 <string name="action_wishlist">"Wunschliste"</string>
 <string name="action_ignore_this">"Diese Aktua. ignorieren"</string>
-<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+
 <string name="details_exodus_tap_to_check">"Zum prüfen tippen"</string>
 <string name="details_exodus_searching">"Suchen…"</string>
 <string name="details_exodus_not_found">"Es wurde nichts gefunden"</string>
 <string name="details_exodus_found">"%1$s Tracker"</string>
 <string name="pref_category_third_party">"Drittanbieterservice"</string>
-<string name="pref_exodus">"Exodus Privacy check"</string>
-<string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
-<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
+
+
+
 <string name="details_to_fdroid">"In F-Droid anzeigen"</string>
 <string name="details_instant_app">"Instant-App"</string>
-<string name="details_exodus_submitting">"submitting"</string>
-<string name="details_exodus_view">"view report"</string>
+
+
+<string name="details_new_permission">"Neu:"</string>
 </resources>

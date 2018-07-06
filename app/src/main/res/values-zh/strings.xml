@@ -320,4 +320,5 @@
 <string name="details_instant_app">"即时应用"</string>
 <string name="details_exodus_submitting">"submitting"</string>
 <string name="details_exodus_view">"view report"</string>
+<string name="details_new_permission">"新的："</string>
 </resources>

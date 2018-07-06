@@ -307,4 +307,5 @@
 <string name="details_instant_app">"Мигновено приложение"</string>
 <string name="details_exodus_submitting">"предаване"</string>
 <string name="details_exodus_view">"прегледай отчета"</string>
+<string name="details_new_permission">"Ново:"</string>
 </resources>

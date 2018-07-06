@@ -270,7 +270,7 @@
     <string name="action_wishlist_add">Добавить в список желаний</string>
     <string name="action_wishlist">Список желаний</string>
     <string name="action_ignore_this">"Игнорировать данное обновление"</string>
-    <string name="details_exodus">"Exodus Privacy: %1$s"</string>
+
     <string name="details_exodus_tap_to_check">проверить</string>
     <string name="details_exodus_searching">поиск</string>
     <string name="details_exodus_not_found">не найдено</string>
@@ -282,4 +282,5 @@
     <string name="pref_exodus_summary_on">На странице приложения отображается число трекеров</string>
     <string name="pref_exodus_summary_off">Проверка происходит по нажатию на ссылку</string>
     <string name="details_instant_app">"Приложение с мгновенным запуском"</string>
+    <string name="details_new_permission">"Новое:"</string>
 </resources>

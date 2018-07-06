@@ -132,6 +132,7 @@ public class StringExtractor {
         stringNames.put("theme_light", "pref_ui_theme_light"); // Light
         stringNames.put("theme_dark", "pref_ui_theme_dark"); // Dark
         stringNames.put("menu_ignore_this", "action_ignore_this"); // Ignore This Update
+        stringNames.put("perms_new_perm_prefix", "details_new_permission"); // New:
     }
 
     private Map<String, String> englishStrings = new HashMap<>();

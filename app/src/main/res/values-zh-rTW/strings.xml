@@ -297,7 +297,7 @@
 <string name="action_wishlist_add">"加入願望清單"</string>
 <string name="action_wishlist">"願望清單"</string>
 <string name="action_ignore_this">"忽略此更新"</string>
-<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+
 <string name="details_exodus_tap_to_check">"點擊查看"</string>
 <string name="details_exodus_searching">"搜尋中"</string>
 <string name="details_exodus_not_found">"找不到結果"</string>
@@ -308,4 +308,5 @@
 <string name="pref_exodus_summary_off">"顯示 Exodus 報告連結"</string>
 <string name="details_to_fdroid">"在 F-Droid 查看"</string>
 <string name="details_instant_app">"免安裝應用程式"</string>
+<string name="details_new_permission">"新的："</string>
 </resources>

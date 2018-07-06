@@ -34,6 +34,11 @@ import java.util.Set;
 public class PermissionsComparator {
 
     private Context context;
+    private final Set<String> newPermissions = new HashSet<>();
+
+    public Set<String> getNewPermissions() {
+        return newPermissions;
+    }
 
     public PermissionsComparator(Context context) {
         this.context = context;
@@ -45,7 +50,8 @@ public class PermissionsComparator {
         if (null == oldPermissions) {
             return true;
         }
-        Set<String> newPermissions = new HashSet<>(app.getPermissions());
+        newPermissions.clear();
+        newPermissions.addAll(app.getPermissions());
         newPermissions.removeAll(oldPermissions);
         Log.i(
             getClass().getSimpleName(),
