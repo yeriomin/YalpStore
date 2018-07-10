@@ -53,6 +53,10 @@ public class BitmapManager {
         };
     }
 
+    public void setNoImages(boolean noImages) {
+        this.noImages = noImages;
+    }
+
     public BitmapManager(Context context) {
         baseDir = context.getCacheDir();
         noImages = PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_NO_IMAGES) && NetworkUtil.isMetered(context);

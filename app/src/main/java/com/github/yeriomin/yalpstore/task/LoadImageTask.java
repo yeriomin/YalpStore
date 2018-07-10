@@ -39,9 +39,11 @@ import com.github.yeriomin.yalpstore.model.ImageSource;
 public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
 
     protected ImageView imageView;
+    private ImageSource imageSource;
     private Drawable drawable;
     private String tag;
     private boolean placeholder = true;
+    private boolean forceLoadImage = false;
     private int fadeInMillis = 0;
 
     public LoadImageTask() {
@@ -61,6 +63,10 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
     public LoadImageTask setPlaceholder(boolean placeholder) {
         this.placeholder = placeholder;
         return this;
+    }
+
+    public void setForceLoadImage(boolean forceLoadImage) {
+        this.forceLoadImage = forceLoadImage;
     }
 
     public LoadImageTask setFadeInMillis(int fadeInMillis) {
@@ -88,19 +94,34 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
                 fadeOut();
             }
             imageView.setImageDrawable(drawable);
+            imageView.setClickable(false);
             if (fadeInMillis > 0) {
                 fadeIn();
             }
+        } else if (noImages()) {
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LoadImageTask task = new LoadImageTask();
+                    task.setImageView(imageView);
+                    task.setFadeInMillis(fadeInMillis);
+                    task.setPlaceholder(placeholder);
+                    task.setForceLoadImage(true);
+                    task.executeOnExecutorIfPossible(imageSource);
+                }
+            });
         }
     }
 
     @Override
     protected Void doInBackground(ImageSource... params) {
-        ImageSource imageSource = params[0];
+        imageSource = params[0];
         if (null != imageSource.getApplicationInfo()) {
             drawable = imageView.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo());
         } else if (!TextUtils.isEmpty(imageSource.getUrl())) {
-            Bitmap bitmap = new BitmapManager(imageView.getContext()).getBitmap(imageSource.getUrl(), imageSource.isFullSize());
+            BitmapManager bitmapManager = new BitmapManager(imageView.getContext());
+            bitmapManager.setNoImages(noImages());
+            Bitmap bitmap = bitmapManager.getBitmap(imageSource.getUrl(), imageSource.isFullSize());
             if (null != bitmap || !noImages()) {
                 drawable = new BitmapDrawable(bitmap);
             }
@@ -141,7 +162,7 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
     }
 
     private boolean noImages() {
-        return NetworkUtil.isMetered(imageView.getContext()) && PreferenceUtil.getBoolean(imageView.getContext(), PreferenceUtil.PREFERENCE_NO_IMAGES);
+        return !forceLoadImage && NetworkUtil.isMetered(imageView.getContext()) && PreferenceUtil.getBoolean(imageView.getContext(), PreferenceUtil.PREFERENCE_NO_IMAGES);
     }
 
     private boolean sameAsLoaded() {
