@@ -8,6 +8,7 @@
 
     <declare-styleable name="ExpansionPanel">
         <attr name="headerText" format="string" />
+        <attr name="colorDetailsItemBackground" format="color" />
     </declare-styleable>
 
     <declare-styleable name="Badge">

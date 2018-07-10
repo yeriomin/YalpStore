@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     android:elevation="2dp"
-    android:background="?android:colorBackground">
+    android:background="?attr/colorDetailsItemBackground">
 
     <TextView
         android:id="@+id/beta_message"
