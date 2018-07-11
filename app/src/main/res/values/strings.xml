@@ -77,8 +77,6 @@
     <string name="dialog_message_system_app_self">Using privileged permissions to allow background installation of apps requires making Yalp Store a system app.\n\nThe process is imperfect and vendor-specific, so it might not work.\n\nDo it?</string>
     <string name="dialog_title_spoof_request">Request</string>
     <string name="dialog_message_spoof_request">Device spoofing is possible because users such as you submit bug reports with device information. If you want the definitions to be precise and up-to-date, please tap OK and your device information will be sent to the Yalp Store developer.</string>
-    <string name="dialog_message_virustotal_warning">"%1$d out of %2$d VirusTotal engines consider this apk suspicious"</string>
-    <string name="dialog_button_virustotal_view_report">View report</string>
     <string name="error_incorrect_password">Incorrect email or password.</string>
     <string name="error_credentials_empty">Provide google account credentials, please.</string>
     <string name="error_no_network">No network connection.</string>
