@@ -67,7 +67,8 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
     }
 
     static private boolean isProperIntent(Intent intent) {
-        return !(TextUtils.isEmpty(intent.getAction())
+        return !(null == intent
+            || TextUtils.isEmpty(intent.getAction())
             || null == intent.getData()
             || TextUtils.isEmpty(intent.getData().getSchemeSpecificPart())
             || intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)
