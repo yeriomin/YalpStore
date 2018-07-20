@@ -9,6 +9,7 @@
     <string name="list_line_2_updatable">"Обновлено %1$s"</string>
     <string name="list_empty_updates">Обновлений нет</string>
     <string name="list_empty_search">Ничего не найдено</string>
+    <string name="list_empty_history">Список событий пуст</string>
     <string name="list_incompatible">несовместимо</string>
     <string name="list_check_updates">Проверить обновления</string>
     <string name="list_update_all">Обновить всё</string>
@@ -72,6 +73,7 @@
     <string name="action_make_system">Сделать системным</string>
     <string name="action_make_normal">Сделать обычным</string>
     <string name="action_bug_report">Сообщить о проблеме</string>
+    <string name="action_history">История</string>
     <string name="search_filter">Все приложения</string>
     <string name="search_title">Поиск приложений</string>
     <string name="error_incorrect_password">Неверный email или пароль.</string>
@@ -283,4 +285,7 @@
     <string name="pref_exodus_summary_off">Проверка происходит по нажатию на ссылку</string>
     <string name="details_instant_app">"Приложение с мгновенным запуском"</string>
     <string name="details_new_permission">"Новое:"</string>
+    <string name="events_no_changes">Разработчик не указал что изменилось</string>
+    <string name="uninstalled">Удалено</string>
+    <string name="updated_from_to">"Обновлено: %1$s (%2$d) → %3$s (%4$d)"</string>
 </resources>

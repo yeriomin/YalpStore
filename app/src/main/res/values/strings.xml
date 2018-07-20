@@ -8,6 +8,7 @@
     <string name="list_line_2_updatable">"Updated on %1$s"</string>
     <string name="list_empty_updates">No apps need to be updated</string>
     <string name="list_empty_search">No apps found</string>
+    <string name="list_empty_history">No history yet</string>
     <string name="list_incompatible">incompatible</string>
     <string name="list_check_updates">Check for updates</string>
     <string name="list_update_all">Update all</string>
@@ -44,6 +45,7 @@
     <string name="action_wishlist">Wishlist</string>
     <string name="action_wishlist_add">Add to wishlist</string>
     <string name="action_wishlist_remove">Remove from wishlist</string>
+    <string name="action_history">History</string>
     <string name="search_filter">All apps</string>
     <string name="search_title">Search applications</string>
     <string name="dialog_title_package_id">Package with this name exists</string>
@@ -282,4 +284,7 @@
     <string name="pref_message_fallback">Attempt to set a fallback directory (%1$s)?</string>
     <string name="no_permissions">No permissions are used.</string>
     <string name="details_instant_app">Instant app</string>
+    <string name="events_no_changes">No changes mentioned by app developer</string>
+    <string name="uninstalled">Uninstalled</string>
+    <string name="updated_from_to">"Updated: %1$s (%2$d) → %3$s (%4$d)"</string>
 </resources>

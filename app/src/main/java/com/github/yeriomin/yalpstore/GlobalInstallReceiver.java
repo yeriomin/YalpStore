@@ -22,12 +22,17 @@ package com.github.yeriomin.yalpstore;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.Event;
+import com.github.yeriomin.yalpstore.model.EventDao;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
+import com.github.yeriomin.yalpstore.task.playstore.ChangelogTask;
 
 import java.io.File;
 
@@ -45,9 +50,15 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         String action = intent.getAction();
         String packageName = intent.getData().getSchemeSpecificPart();
         Log.i(getClass().getSimpleName(), "Finished installation (" + action + ") of " + packageName);
-        boolean actionIsInstall = actionIsInstall(action);
+        try {
+            getEventTask(context, packageName, action).executeOnExecutorIfPossible();
+        } catch (Throwable e) {
+            // No failure to log an event is important enough to let the app crash
+            Log.e(getClass().getSimpleName(), "Could not log event: " + e.getClass().getName() + " " + e.getMessage());
+        }
         updateInstalledAppsList(context, packageName);
         context.sendBroadcast(new Intent(ACTION_INSTALL_UI_UPDATE).putExtra(Intent.EXTRA_PACKAGE_NAME, packageName));
+        boolean actionIsInstall = actionIsInstall(action);
         ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall);
         if (!actionIsInstall) {
             return;
@@ -71,18 +82,54 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             || TextUtils.isEmpty(intent.getAction())
             || null == intent.getData()
             || TextUtils.isEmpty(intent.getData().getSchemeSpecificPart())
-            || intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)
+            || ((intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED) || intent.getAction().equals(Intent.ACTION_PACKAGE_REMOVED))
+                && intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)
+            )
         );
+    }
+
+    static private ChangelogTask getEventTask(Context context, String packageName, String action) {
+        App app = YalpStoreApplication.installedPackages.get(packageName);
+        if (null == app) {
+            app = new App();
+            app.setPackageInfo(new PackageInfo());
+            app.getPackageInfo().packageName = packageName;
+        }
+        ChangelogTask task = new ChangelogTask();
+        task.setContext(context);
+        task.setApp(app);
+        switch (action) {
+            case ACTION_PACKAGE_INSTALLATION_FAILED:
+                task.setEventType(Event.TYPE.INSTALLATION, false);
+                break;
+            case Intent.ACTION_PACKAGE_REMOVED:
+            case Intent.ACTION_PACKAGE_FULLY_REMOVED:
+                task.setEventType(Event.TYPE.REMOVAL, true);
+                break;
+            case Intent.ACTION_PACKAGE_INSTALL:
+            case Intent.ACTION_PACKAGE_ADDED:
+            case Intent.ACTION_PACKAGE_REPLACED:
+            case ACTION_PACKAGE_REPLACED_NON_SYSTEM:
+                task.setEventType(app.getInstalledVersionCode() > 0 ? Event.TYPE.UPDATE : Event.TYPE.INSTALLATION, true);
+                break;
+        }
+        return task;
     }
 
     static private void updateInstalledAppsList(Context context, String packageName) {
         App app = InstalledAppsTask.getInstalledApp(context.getPackageManager(), packageName);
         if (null != app) {
-            YalpStoreApplication.installedPackages.put(packageName, app);
+            if (YalpStoreApplication.installedPackages.containsKey(packageName)) {
+                App existingAppRecord = YalpStoreApplication.installedPackages.get(packageName);
+                existingAppRecord.setPackageInfo(app.getPackageInfo());
+                existingAppRecord.setVersionName(app.getPackageInfo().versionName);
+                existingAppRecord.setVersionCode(app.getPackageInfo().versionCode);
+            } else {
+                YalpStoreApplication.installedPackages.put(packageName, app);
+            }
         } else {
             YalpStoreApplication.installedPackages.remove(packageName);
         }
-        context.sendBroadcast(new Intent(ACTION_INSTALL_UI_UPDATE));
     }
 
     static public boolean actionIsInstall(String action) {
@@ -113,8 +160,9 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static private void removeApk(Context context, App app) {
         File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
-        boolean deleted = apkPath.delete();
-        Log.i(GlobalInstallReceiver.class.getSimpleName(), "Removed " + apkPath + " successfully: " + deleted);
+        if (apkPath.exists()) {
+            Log.i(GlobalInstallReceiver.class.getSimpleName(), "Removed " + apkPath + " " + (apkPath.delete() ? "" : "UN") + "successfully");
+        }
     }
 
     static private boolean installationMethodIsDefault(Context context) {

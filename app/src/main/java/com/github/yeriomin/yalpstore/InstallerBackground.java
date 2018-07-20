@@ -54,7 +54,13 @@ abstract public class InstallerBackground extends InstallerAbstract {
             : (wasInstalled ? R.string.notification_installation_failed : R.string.details_install_failure)
         );
         if (background) {
-            new NotificationManagerWrapper(context).show(DetailsActivity.getDetailsIntent(context, app.getPackageName()), app.getDisplayName(), resultString);
+            new NotificationManagerWrapper(context).show(
+                wasInstalled
+                    ? HistoryActivity.getHistoryIntent(context, app.getPackageName())
+                    : DetailsActivity.getDetailsIntent(context, app.getPackageName()),
+                app.getDisplayName(),
+                resultString
+            );
         } else {
             ContextUtil.toastLong(context, resultString);
         }

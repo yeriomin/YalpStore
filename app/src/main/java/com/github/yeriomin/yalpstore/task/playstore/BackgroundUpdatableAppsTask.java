@@ -24,6 +24,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.util.Log;
 
@@ -36,10 +37,13 @@ import com.github.yeriomin.yalpstore.NetworkUtil;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.SqliteHelper;
 import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
 import com.github.yeriomin.yalpstore.UpdateAllReceiver;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.Event;
+import com.github.yeriomin.yalpstore.model.EventDao;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.io.File;
@@ -69,6 +73,12 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         }
         int updatesCount = this.updatableApps.size();
         Log.i(this.getClass().getName(), "Found updates for " + updatesCount + " apps");
+        try {
+            insertEvent(updatesCount);
+        } catch (Throwable e) {
+            // No failure to log an event is important enough to let the app crash
+            Log.e(getClass().getSimpleName(), "Could not log event: " + e.getClass().getName() + " " + e.getMessage());
+        }
         if (updatesCount == 0) {
             context.sendBroadcast(new Intent(UpdateAllReceiver.ACTION_ALL_UPDATES_COMPLETE), null);
             return;
@@ -78,6 +88,15 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         } else {
             notifyUpdatesFound(context, updatesCount);
         }
+    }
+
+    private void insertEvent(int updatesCount) {
+        Event event = new Event();
+        event.setType(Event.TYPE.BACKGROUND_UPDATE_CHECK);
+        event.setMessage(context.getString(R.string.notification_updates_available_message, updatesCount));
+        SQLiteDatabase db = new SqliteHelper(context).getWritableDatabase();
+        new EventDao(db).insert(event);
+        db.close();
     }
 
     private boolean canUpdate() {

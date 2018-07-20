@@ -254,6 +254,13 @@ public class App implements Comparable<App> {
         return 0;
     }
 
+    public String getInstalledVersionName() {
+        if (null != packageInfo) {
+            return packageInfo.versionName;
+        }
+        return null;
+    }
+
     public boolean isFree() {
         return isFree;
     }

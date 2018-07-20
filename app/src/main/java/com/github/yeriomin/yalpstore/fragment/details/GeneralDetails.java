@@ -19,8 +19,10 @@
 
 package com.github.yeriomin.yalpstore.fragment.details;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.util.Linkify;
@@ -35,13 +37,17 @@ import com.github.yeriomin.yalpstore.CategoryAppsActivity;
 import com.github.yeriomin.yalpstore.CategoryManager;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DownloadManagerAbstract;
+import com.github.yeriomin.yalpstore.HistoryActivity;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.SqliteHelper;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.EventDao;
 import com.github.yeriomin.yalpstore.model.ImageSource;
 import com.github.yeriomin.yalpstore.task.LoadImageTask;
 import com.github.yeriomin.yalpstore.task.playstore.DetailsCategoryTask;
+import com.github.yeriomin.yalpstore.view.IntentOnClickListener;
 import com.github.yeriomin.yalpstore.widget.Badge;
 import com.github.yeriomin.yalpstore.widget.ExpansionPanel;
 
@@ -92,6 +98,7 @@ public class GeneralDetails extends Abstract {
         setText(R.id.price_and_ads, (TextUtils.isEmpty(app.getPrice()) ? "" : (app.getPrice() + ", ")) + activity.getString(app.containsAds() ? R.string.details_contains_ads : R.string.details_no_ads));
         drawOfferDetails(app);
         drawChanges(app);
+        drawHistoryButton(app);
         if (app.getVersionCode() == 0) {
             activity.findViewById(R.id.updated).setVisibility(View.GONE);
         }
@@ -115,6 +122,29 @@ public class GeneralDetails extends Abstract {
             ExpansionPanel changesPanel = activity.findViewById(R.id.changes_panel);
             changesPanel.setVisibility(View.VISIBLE);
             changesPanel.toggle();
+        }
+    }
+
+    private void drawHistoryButton(final App app) {
+        boolean show = app.getInstalledVersionCode() > 0;
+        SQLiteDatabase db = new SqliteHelper(activity).getReadableDatabase();
+        try {
+            show = show && !new EventDao(db).getByPackageName(app.getPackageName()).isEmpty();
+        } catch (Throwable e) {
+            Log.w(getClass().getSimpleName(), "Could not check if the history is empty: " + e.getMessage());
+        } finally {
+            db.close();
+        }
+        if (show) {
+            activity.findViewById(R.id.history).setVisibility(View.VISIBLE);
+            activity.findViewById(R.id.history).setOnClickListener(new IntentOnClickListener(activity) {
+                @Override
+                protected Intent buildIntent() {
+                    return HistoryActivity.getHistoryIntent(activity, app.getPackageName());
+                }
+            });
+        } else {
+            activity.findViewById(R.id.history).setVisibility(View.GONE);
         }
     }
 

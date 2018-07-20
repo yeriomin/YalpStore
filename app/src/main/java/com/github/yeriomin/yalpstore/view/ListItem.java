@@ -36,6 +36,10 @@ public abstract class ListItem {
     protected App app;
     protected View view;
 
+    public App getApp() {
+        return app;
+    }
+
     public View getView() {
         return view;
     }

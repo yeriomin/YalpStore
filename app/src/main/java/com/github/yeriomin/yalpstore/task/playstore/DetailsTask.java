@@ -60,8 +60,7 @@ public class DetailsTask extends PlayStorePayloadTask<App> {
             // App is not installed
         }
         if (YalpStoreApplication.installedPackages.containsKey(packageName)) {
-            app.getPackageInfo().versionCode = YalpStoreApplication.installedPackages.get(packageName).getVersionCode();
-            app.setInstalled(true);
+            app.setPackageInfo(YalpStoreApplication.installedPackages.get(packageName).getPackageInfo());
         }
         return app;
     }

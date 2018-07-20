@@ -114,6 +114,7 @@ public class StringExtractor {
         stringNames.put("update_all", "list_update_all"); // Update all
         stringNames.put("updating", "list_updating"); // Updating…
         stringNames.put("ephemeral_installer_title", "details_instant_app"); // Instant app
+        stringNames.put("remote_escalation_history_tab", "action_history"); // history
 
         // F-Droid
         stringNames.put("app_version_x_installed", "details_versionName"); // Version %1$s
