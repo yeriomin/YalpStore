@@ -115,7 +115,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 if (null != previousSearchSuggestTask) {
                     previousSearchSuggestTask.cancel(true);
                 }
-                previousSearchSuggestTask = (SearchSuggestionTask) new SearchSuggestionTask(BaseActivity.this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, s);
+                previousSearchSuggestTask = (SearchSuggestionTask) new SearchSuggestionTask(BaseActivity.this).execute(s);
                 return false;
             }
         });
