@@ -147,6 +147,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <Button
+            android:id="@+id/history"
+            android:visibility="gone"
+            android:text="@string/action_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?android:textColorSecondary"
+            style="?android:attr/borderlessButtonStyle" />
+
     </com.github.yeriomin.yalpstore.widget.ExpansionPanel>
 
     <com.github.yeriomin.yalpstore.widget.ExpansionPanel
