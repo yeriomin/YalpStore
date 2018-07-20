@@ -83,7 +83,7 @@ public class Downloader {
     }
 
     static private void prepare(File file, long expectedSize) {
-        Log.i(Downloader.class.getSimpleName(), "file.exists()=" + file.exists() + " file.length()=" + file.length() + " metadata.getSize()=" + expectedSize);
+        Log.i(Downloader.class.getSimpleName(), file.getAbsolutePath() + (file.exists() ? (" exists, current size " + file.length() + " bytes, expected size " + expectedSize + " bytes") : "does not exist"));
         if (file.exists() && file.length() != expectedSize) {
             Log.i(Downloader.class.getSimpleName(), "Deleted old file: " + file.delete());
         }
