@@ -40,10 +40,6 @@ When the GSF id is ready, your email and password (if you provided them) are use
 >
 >A: No. Only free apps and apps you have purchased are going to be accessible through Yalp Store. Google Play API is not open and is not documented, so Yalp Store is developed through reverse-engineering. To implement features related to anything that requires payment I would have to (very) frequently buy stuff from Google Play Store. 
 
->Q: Why isn't Yalp Store using Material Design? Is it going to?
->
->A: No. The priority for Yalp Store is backwards compatibility and size. It works on every android since Android 2.0 Eclair. Implementing Material Design would require adding a heavy dependency and a lot of purely-UI code.
-
 >Q: Even though I granted the write permission to Yalp Store, it still says "Downloads directory could not be created or is not writable." How do I download anything?
 >
 >A: Try force-closing Yalp Store and launching it again. If it doesn't help, read [this discussion](https://github.com/yeriomin/YalpStore/issues/308).
