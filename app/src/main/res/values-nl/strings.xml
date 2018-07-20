@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="about_developer_email_label">"E-mail van ontwikkelaar:"</string>
+<string name="about_logged_in">"U bent ingelogd als:"</string>
+<string name="about_copied_to_clipboard">"Gekopieerd naar het klembord"</string>
+<string name="list_line_2_updatable">"Geüpdatet op %1$s"</string>
+<string name="list_empty_updates">"Alle apps zijn up to date"</string>
+<string name="list_empty_search">"Geen apps gevonden"</string>
+<string name="list_incompatible">"Incompatibel"</string>
+<string name="action_about">"Over"</string>
+<string name="action_settings">"Instellingen"</string>
+<string name="action_logout">"Uitloggen"</string>
+<string name="action_search">"Zoek"</string>
+
+<string name="action_ignore">"Negeer updates"</string>
+<string name="action_whitelist">"Whitelist voor updates"</string>
+<string name="search_title">"Zoek applicaties"</string>
+<string name="dialog_two_factor_cancel">"Niet nu"</string>
+<string name="dialog_two_factor_create_password">"Maak wachtwoord"</string>
+<string name="dialog_title_two_factor">"2-stap verificatie"</string>
+<string name="dialog_message_two_factor">"Het lijkt er op dat u 2-staps-verificatie heeft ingeschakeld voor uw account.
+
+Creëer alstublieft een wachtwoord voor Yalp Store en gebruik deze om in te loggen op Yalp Store.
+
+Tik op 'wachtwoord maken' om te worden doorgestuurd naar de pagina voor het maken van wachtwoorden."</string>
+<string name="dialog_title_logout">"Uitloggen?"</string>
+<string name="dialog_message_logout">"Weet je zeker dat je wilt uitloggen?"</string>
+<string name="dialog_account_type_provided_by_user">"Met mijn eigen Google account"</string>
+<string name="dialog_account_type_predefined">"Met een neppe Yalp Store account"</string>
+<string name="dialog_account_type_title">"Hoe wil je inloggen op de Google Play Store?"</string>
+<string name="dialog_title_logging_in">"Inloggen"</string>
+<string name="dialog_message_logging_in_provided_by_user">"Proberen in te loggen met de ingevoerde gegevens"</string>
+<string name="dialog_message_logging_in_predefined">"Er wordt geprobeerd in te loggen met gegevens van Yalp Store"</string>
+<string name="error_incorrect_password">"Onjuiste email of wachtwoord."</string>
+<string name="error_credentials_empty">"Vul uw google account gegevens in alstublieft."</string>
+<string name="error_no_network">"Geen netwerk verbinding."</string>
+<string name="error_network_other">"Netwerk fout: %1$s"</string>
+<string name="error_not_purchased">"Deze app schijnt niet gekocht te zijn. Wilt u worden doorverwezen naar de Play Store pagina?"</string>
+<string name="error_downloads_directory_not_writable">"De downloads map kon niet worden gecreëerd of is niet toegestaan."</string>
+<string name="error_token_dispenser_problem">"Kon niet inloggen zonder account. Probeer uw eigen account."</string>
+<string name="details_updated">"Geüpdatet %1$s"</string>
+<string name="details_description">"Beschrijving:"</string>
+<string name="details_changelog">"Wat is er nieuw:"</string>
+<string name="details_screenshots">"Schermafbeelding:"</string>
+
+<string name="details_rate_this_app">"Beoordeel deze app:"</string>
+<string name="details_you_rated_this_app">"Jij beoordeelde deze app:"</string>
+<string name="details_permissions">"Permissies:"</string>
+<string name="details_versionName">"Versie %1$s"</string>
+<string name="details_versionName_updatable">"Versie %1$s → %2$s"</string>
+
+<string name="details_install">"Installeren"</string>
+<string name="details_downloading">"Aan het downloaden…"</string>
+<string name="details_review_dialog_title">"Nog iets toe te voegen?"</string>
+<string name="details_review_dialog_review_title_hint">"Titel hier"</string>
+<string name="details_review_dialog_review_comment_hint">"Maak een reactie hier"</string>
+<string name="details_review_dialog_fields_optional">"Je kunt alles leeg laten."</string>
+<string name="details_signature_mismatch">"De nieuwe versie heeft een andere handtekening dan de oude. Om de nieuwe versie te installeren moet u de oude deïnstalleren. Probeer vervolgens opnieuw. (Door het deïnstalleren van de oude versie verliest u alle gegevens van deze applicatie)"</string>
+<string name="credentials_hint_email">"E-mail hier"</string>
+<string name="credentials_hint_password">"Wachtwoord hier"</string>
+<string name="credentials_title">"Google account toegang"</string>
+<string name="credentials_message">"Google account email en wachtwoord zijn nodig voor deze app om te functioneren.
+
+Wees alert dat het gebruik van deze app in gaat tegen het ToS van de Play Store. Het is waarschijnlijk veiliger om een wegwerp Google account te gebruiken die tenminste één keer is ingelogd op de Play Store en akkoord is gegaan met de ToS."</string>
+<string name="activity_title_search">"Zoeken: \"%1$s\""</string>
+<string name="notification_download_complete">"Download voltooid. Tik hier om te installeren."</string>
+<string name="notification_download_complete_toast">"%1$s gedownload. Tik de installatie knop of de notificatie om te installeren."</string>
+<string name="notification_download_complete_signature_mismatch">"Download voltooid. De handtekening van de apk komt niet overeen."</string>
+<string name="notification_download_complete_signature_mismatch_toast">"%1$s gedownload. Apk handtekening matcht niet met die van de geïnstalleerde versie. Waarschijnlijk moet u eerst de oude versie deïnstalleren."</string>
+<string name="notification_updates_available_title">"App updates beschikbaar."</string>
+<string name="notification_updates_available_message">"Er zijn updates voor %1$d van je apps."</string>
+<string name="pref_auto_install_summary_off">"Apps worden geïnstalleerd wanneer de gebruiker de notificatie aantikt"</string>
+<string name="pref_auto_install_summary_on">"Apps worden geïnstalleerd zodra de download voltooid is"</string>
+<string name="pref_auto_install">"Installeerde apps direct"</string>
+<string name="pref_update_list_white_or_black_black">"Gekozen apps worden genegeerd wanneer er op updates wordt gecontroleerd"</string>
+<string name="pref_update_list_white_or_black_white">"Alleen de gekozen apps worden op updates gecontroleerd"</string>
+<string name="pref_update_list_white_or_black">"Black of white list van apps voor updates."</string>
+<string name="pref_update_list_black">"Wijzig apps black list"</string>
+<string name="pref_update_list_white">"Wijzig apps white list"</string>
+<string name="pref_ui_theme">"Thema"</string>
+<string name="pref_ui_theme_none">"Standaard"</string>
+<string name="pref_ui_theme_light">"Licht"</string>
+<string name="pref_ui_theme_dark">"Donker"</string>
+<string name="pref_ui_theme_black">"Zwart"</string>
+<string name="pref_background_update_interval_never">"Alleen bij het opstarten van Yalp Store"</string>
+<string name="pref_background_update_interval_hourly">"Elk uur"</string>
+<string name="pref_background_update_interval_daily">"Dagelijks"</string>
+<string name="pref_background_update_interval_weekly">"Wekelijks"</string>
+<string name="pref_background_update_interval">"Controleer periodiek voor updates"</string>
+<string name="download_manager_ERROR_UNKNOWN">"Onbekende fout."</string>
+<string name="download_manager_ERROR_FILE_ERROR">"Onbekende bestand opslag fout."</string>
+<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Er is HTTP code ontvangen die de download manager niet kan gebruiken. Dit is een server error."</string>
+<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Er is een error opgetreden tijdens het ontvangen of verwerken van data op HTTP niveau."</string>
+<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Te veel omleidingen."</string>
+<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Onvoldoende opslagruimte."</string>
+<string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Er is geen extern geheugen gevonden. Misschien is de SD kaart niet gekoppeld."</string>
+<string name="download_manager_ERROR_CANNOT_RESUME">"Er is mogelijk een overlopende fout opgetreden, maar we kunnen de download niet hervatten. Probeer het later opnieuw."</string>
+<string name="download_manager_ERROR_BLOCKED">"De download is mislukt door restricites van NetworkPolicyManager. Check uw instellingen."</string>
+<string name="search_filter">"Alle apps"</string>
+<string name="pref_delete_apk_after_install_summary_off">".apks blijven bewaard na de installatie"</string>
+<string name="pref_delete_apk_after_install_summary_on">".apks worden verwijdert na de installatie"</string>
+<string name="pref_delete_apk_after_install">"Verwijder .apk bestand na installatie"</string>
+<string name="dialog_title_application_crashed">"Excuses, Yalp Store is gecrashed"</string>
+<string name="details_to_play_store">"Toon in Play Store"</string>
+<string name="action_categories">"Categorieën"</string>
+<string name="list_update_all">"Update alles"</string>
+<string name="notification_installation_complete">"Update geïnstalleerd."</string>
+<string name="notification_installation_failed">"Update installatie mislukt."</string>
+<string name="pref_background_update_install_summary_off">"Je krijgt alleen een notificatie"</string>
+<string name="pref_background_update_install_summary_on">"Updates worden geïnstalleerd wanneer deze worden gevonden (root)"</string>
+<string name="pref_background_update_install">"Installeer ook de updates (root)"</string>
+<string name="pref_no_root">"Deze optie is alleen beschikbaar op geroote apparaten"</string>
+<string name="list_app_has_ads">"Heeft reclames"</string>
+<string name="list_app_no_ads">"Geen reclames"</string>
+<string name="list_app_depends_on_gsf">"Heeft GSF nodig"</string>
+<string name="list_app_independent_from_gsf">"Heeft geen GSF nodig"</string>
+<string name="details_depends_on">"Hangt af van: %1$s"</string>
+<string name="details_no_dependencies">"Niks"</string>
+<string name="details_contains_ads">"Bevat reclames"</string>
+<string name="details_no_ads">"Geen reclames"</string>
+<string name="dialog_title_package_id">"Package met deze naam bestaat"</string>
+<string name="dialog_message_package_id">"Er is een package met dezelfde naam. Wilt u naar de details pagina?"</string>
+<string name="details_download_checking">"Controleren…"</string>
+<string name="details_download_not_available">"Niet beschikbaar"</string>
+<string name="manual_download_incompatible">"Google Play Store beschouwd deze app als incompatibel met jouw toestel. Dit betekend dat de versie code nog niet is opgegeven door de Google Play Store server."</string>
+<string name="manual_download_compatible">"Versiecode veld is voorgevuld met de nieuwste compatibele versiecode van deze app. Als u de vorige versie wilt, voert u gewoon een nummer in die kleiner is dan de huidige. Als de ontwikkelaar de apk van de vorige versie van Play Store niet heeft verwijderd, kunt u de download starten."</string>
+<string name="manual_download_warning">"Op deze pagina kunt u de versie van de app die u wilt downloaden handmatig kiezen. Versiecode is een nummer dat de versie van een app identificeert. Het begint vanaf 1 en wordt verhoogd door de appontwikkelaar telkens als er een nieuwe versie is. Normaal in de Play Store kunt u alleen de meest recente apk downloaden die compatibel is met uw apparaat. Door dit nummer handmatig in te voeren, kunt u ook andere versies krijgen. 
+
+Houd er rekening mee dat het downloaden van willekeurige versies van apps niet ondersteund wordt door Google Play Store. Uw succes hangt af van een gelukkige gok van de versiecode. Zelfs als je het goed raad en je krijgt de download dan krijg je misschien een incompatibele apk. Hoogstwaarschijnlijk verspil je je tijd!"</string>
+<string name="manual_download_hint_version_code">"Versie code hier"</string>
+<string name="details_uninstall">"deïnstalleer"</string>
+<string name="notification_download_starting">"Download wordt gestart"</string>
+<string name="notification_download_progress">"%1$s van de %2$s gedownload"</string>
+<string name="pref_requested_language">"Play Store tonen in:"</string>
+<string name="pref_requested_language_default">"Je standaard taal"</string>
+
+<!-- Originele engelse tekst is slecht te vertalen, eerdere vertaling "Doe alsof dit een ander toestel is" is een vage vertaling. -->
+<!-- Fuzzy -->
+<string name="pref_device_to_pretend_to_be">"Gebruik apparaat info van"</string>
+<string name="pref_device_to_pretend_to_be_default">"Uw eigen apparaat"</string>
+<string name="pref_device_to_pretend_to_be_toast">"Deze wijziging wordt toegepast wanneer u opnieuw inlogt"</string>
+
+<string name="pref_category_installation">"Installatie"</string>
+<string name="pref_category_spoofing">"Spoofen"</string>
+<string name="pref_category_ui">"Gebruikersinterface"</string>
+<string name="details_installing">"Wordt geïnstalleerd…"</string>
+<string name="details_installed">"Installatie succesvol"</string>
+<string name="details_install_failure">"Kon niet worden geïnstalleerd"</string>
+<string name="notification_download_complete_new_permissions">"Download voltooid. Nieuwe permissies gevraagd."</string>
+<string name="notification_download_complete_new_permissions_toast">"%1$s gedownload. De nieuwe versie van de app vraagt om meer rechten. Controleer de nieuwe rechten lijst."</string>
+<string name="pref_not_privileged">"Alleen als Yalp als systeem app beschikbaar is"</string>
+<string name="pref_installation_method">"Installatie methode"</string>
+<string name="pref_installation_method_default">"Standaard installatie prompt, geen achtergrond installaties"</string>
+<string name="pref_installation_method_root">"Met root"</string>
+<string name="pref_installation_method_privileged">"Door middel van systeem permissies"</string>
+<string name="pref_background_update_download_summary_off">"Je krijgt alleen een notificatie"</string>
+<string name="pref_background_update_download_summary_on">"Updates worden gedownload als deze worden gevonden"</string>
+<string name="pref_background_update_download">"Download ook de updates"</string>
+<string name="details_not_available_on_play_store">"Niet beschikbaar op de Play Store"</string>
+<string name="action_manual">"Handmatige download"</string>
+<string name="action_get_local_apk">"Verkrijg lokale apk"</string>
+<string name="details_saved_in_downloads">"Opgeslagen in de map Downloads"</string>
+<string name="details_could_not_copy_apk">"Apk kon niet worden gekopieerd"</string>
+<string name="action_make_system">"Converteer naar systeem app"</string>
+<string name="action_make_normal">"Concerteer naar normale app"</string>
+<string name="list_app_system">"Systeem app"</string>
+
+<string name="activity_title_updates_and_other_apps">"Uw apps"</string>
+<string name="details_system_app_info">"Systeem info"</string>
+<string name="details_run">"Start"</string>
+<string name="dialog_title_remounting_system">"Werkt met /system partitie"</string>
+<string name="dialog_message_remounting_system">"Werkt met /system partitie. Dit kan even duren."</string>
+<string name="dialog_title_checking_busybox">"Controleren of busybox aanwezig is"</string>
+<string name="dialog_message_checking_busybox">"Sommige systeem tools zijn benodigd om te werken met systeem apps. Controleren of deze aanwezig zijn."</string>
+<string name="dialog_title_busybox_not_available">"Busybox niet beschikbaar"</string>
+<string name="dialog_message_busybox_not_available">"Een geroot apparaat met busybox is nodig om te werken met system apps. Nu zoeken voor een busybox installer?"</string>
+<string name="dialog_title_reboot_required">"Herstart benodigd"</string>
+<string name="dialog_message_reboot_required">"Wijzigingen worden toegepast bij een herstart. Nu herstarten?"</string>
+<string name="dialog_title_system_app_warning">"Waarschuwing!"</string>
+<string name="dialog_message_system_app_warning_to_system">"U heeft ervoor gekozen om de app om te zetten in systeem app. De meeste apps hoeven geen systeemapplicaties te zijn om te werken. 
+
+Houd er rekening mee dat het conversieproces NIET ondersteund wordt door het Android-besturingssysteem en daarom niet veilig is en niet gegarandeerd is om te werken. 
+
+Doe het niet uit nieuwsgierigheid. Het kan uw apparaat breken. Maak een back-up van uw apparaat voordat u probeert."</string>
+<string name="dialog_message_system_app_warning_to_normal">"U heeft gekozen voor het converteren van een systeem app naar een gebruikers app. De meeste systeem apps moeten als systeem app werken.
+
+Houdt in gedachten dat het converteren van apps niet wordt ondersteund door het Android OS, daardoor kunnen er fouten optreden en is het niet gegarandeerd dat het werkt.
+
+Doe dit niet uit nieuwsgierigheid. Het kan uw telefoon bricken. Backup uw telefoon voordat u dit probeert."</string>
+<string name="list_check_updates">"Controleer op updates"</string>
+<string name="pref_background_update_interval_manually">"Alleen handmatig"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Weet u zeker dat u deze systeemapp wilt verwijderen? Systeemapplicaties worden door de toestelverkoper in uw toestel geplaatst en zijn waarschijnlijk vereist om te kunnen functioneren zoals bedoeld. 
+
+Houd er rekening mee dat het verwijderen van systeemapplicaties NIET ondersteund wordt door het Android-besturingssysteem en daarom niet veilig is en niet gegarandeerd is om te werken. 
+
+Doe het niet uit nieuwsgierigheid. Het kan uw apparaat breken. Maak een back-up van uw apparaat voordat u probeert."</string>
+<string name="dialog_title_system_app_self">"Yalp wordt een system app gemaakt"</string>
+<string name="dialog_message_system_app_self">"Om op de achtergrond apps te installeren via systeem rechten, vereist dat Yalp Store een systeem app moet zijn.
+
+Het proces om dit te doen is niet perfect en is leverancier-specifiek, het werkt niet altijd.
+
+Nu doen?"</string>
+
+<string name="details_share">"Deel"</string>
+<string name="details_developer">"Ontwikkelaar: %1$s"</string>
+<string name="pref_background_update_wifi_only">"Alleen op Wi-Fi"</string>
+<string name="about_bitcoin_label">"Bitcoin:"</string>
+<string name="action_bug_report">"Meld een fout"</string>
+<string name="dialog_title_spoof_request">"Verzoek"</string>
+<string name="dialog_message_spoof_request">"Apparaat spoofen is mogelijk doordat gebruikers zoals u foutrapportages opsturen met apparaat informatie. Als u de definities precies en up-to-date wilt, druk alstublieft op OK. Uw apparaat informatie wordt vervolgens naar de Yalp Store ontwikkelaar gestuurd."</string>
+<string name="pref_device_to_pretend_to_be_notice">"Als u apparaat definities invult in %1$s zullen ze in de lijst verschijnen"</string>
+<string name="pref_no_images">"Download afbeeldingen alleen over Wi-Fi"</string>
+<string name="pref_no_images_summary_off">"Afbeeldingen worden nu altijd gedownload"</string>
+<string name="pref_no_images_summary_on">"Afbeeldingen worden alleen over Wi-Fi gedownload"</string>
+<string name="bug_report_hint_message">"Gedetailleerde probleemsomschrijving"</string>
+<string name="bug_report_hint_identification">"Uw email/naam/iets (optioneel)"</string>
+<string name="bug_report_explanation_content">"Info over uw apparaat, Yalp Store logs en sommigen Yalp Store instellingen worden automatisch toegevoegd aan uw bericht. Geen privé of gevoelige informatie wordt verzameld."</string>
+<string name="bug_report_explanation_crash">"U kunt helpen om dit probleem te verhelpen door een foutrapport op te sturen naar de ontwikkelaar. Beschrijf wat u wilde doen en wanneer de fout optrad en druk op OK om het te verzenden."</string>
+<string name="bug_report_explanation_bug_report">"Beschrijf het probleem alstublieft. Wees specifiek als mogelijk. Treedt het probleem op bij een specifieke app? Gebeurt het altijd of soms? Hoe kan het gereproduceerd worden?"</string>
+<string name="thank_you">"Bedankt"</string>
+<string name="list_updating">"Wordt geüpdatet…"</string>
+<string name="error_invalid_device_definition">"Apparaat definitie afgewezen."</string>
+
+<string name="error_could_not_download">"Kon niet downloaden."</string>
+<string name="first_login_message">"Om uw eigen account te gebruiken kiest u uitloggen in het menu"</string>
+<string name="early_access">"Vroegtijdige toegang"</string>
+<string name="testing_program_opt_in">"lid worden"</string>
+<string name="testing_program_opt_out">"verlaten"</string>
+<string name="testing_program_section_opted_in_message">"App-updates omvatten bètaversies. Als je het bètaprogramma van deze app verlaat, ontvang je geen bèta-updates meer."</string>
+<string name="testing_program_section_opted_in_propagating_message">"Over enkele minuten word je toegevoegd aan het bètaprogramma. Je kunt vervolgens updaten naar de bètaversie van deze app, indien beschikbaar."</string>
+<string name="testing_program_section_opted_in_title">"Je bent een bètatester"</string>
+<string name="testing_program_section_opted_out_message">"Probeer nieuwe functies voordat ze openbaar worden gemaakt. Geef je feedback rechtstreeks aan de ontwikkelaar."</string>
+<string name="testing_program_section_opted_out_propagating_message">"Het kan enkele minuten duren voordat je bent verwijderd uit het bètaprogramma."</string>
+<string name="testing_program_section_opted_out_title">"Bètatester worden"</string>
+<string name="notification_not_privileged">"Installatie permissie niet toegezegd"</string>
+<string name="pref_download_directory">"Download locatie"</string>
+
+<string name="pref_download_deltas_summary_off">"De volledige apk wordt bij iedere update gedownload"</string>
+<string name="pref_download_deltas_summary_on">"Alleen de veranderingen aan de app worden gedownload"</string>
+<string name="testing_program_review_dialog_content_hint">"Geef feedback over de app"</string>
+<string name="delete">"Verwijderen"</string>
+<string name="submit">"Indienen"</string>
+<string name="done">"Gereed"</string>
+<string name="availability_restriction_carrier">"Dit item is niet beschikbaar bij jouw provider."</string>
+<string name="availability_restriction_country">"Dit item is niet beschikbaar in je land."</string>
+<string name="availability_restriction_country_or_carrier">"Dit item is niet beschikbaar in jouw land of bij jouw provider."</string>
+<string name="availability_restriction_for_managed_account">"Je beheerder heeft je geen toegang gegeven tot dit item."</string>
+<string name="availability_restriction_generic">"Dit item is niet beschikbaar."</string>
+<string name="availability_restriction_hardware">"Je apparaat is niet compatibel met dit item."</string>
+<string name="availability_restriction_hardware_app">"Je apparaat is niet compatibel met deze versie."</string>
+<string name="availability_restriction_hardware_app_ram_generic">"Voor deze app is meer RAM vereist dan beschikbaar is op je apparaat."</string>
+<string name="availability_restriction_missing_permission">"Je beheerder heeft geen rechten geaccepteerd voor dit item."</string>
+<string name="availability_restriction_not_in_group">"Je behoort niet tot de doelgroep voor dit item."</string>
+<string name="flag_graphic_violence">"Expliciet geweld"</string>
+<string name="flag_harmful_prompt">"Beschrijf de schade aan je apparaat of gegevens:"</string>
+<string name="flag_harmful_to_device">"Schadelijk voor apparaat/data"</string>
+<string name="flag_hateful_content">"Haatdragende of beledigende content"</string>
+<string name="flag_improper_content_rating">"Onjuiste inhoudscategorie"</string>
+<string name="flag_other_concern_prompt">"Beschrijving van bezwaar"</string>
+<string name="flag_other_objection">"Ander bezwaar"</string>
+<string name="flag_page_description">"De reden waarom je deze content of app aanstootgevend vindt:"</string>
+<string name="flag_pharma_content">"Illegaal geneesmiddel op recept of andere drugs"</string>
+<string name="flag_sexual_content">"Pornografische content"</string>
+<string name="flag_impersonation_copycat">"Copycat of verpersoonlijking"</string>
+<string name="flagging_title">"Markeren als ongepast"</string>
+<string name="content_flagged">"Bezwaar is verzonden."</string>
+<string name="list_app_blacklisted">"Op de zwarte lijst"</string>
+<string name="list_app_whitelisted">"Op de witte lijst"</string>
+<string name="action_filter">"Filteren"</string>
+<string name="action_filter_system_apps">"Systeem apps"</string>
+<string name="action_filter_apps_with_ads">"Apps met advertenties"</string>
+<string name="action_filter_paid_apps">"Betaalde apps"</string>
+<string name="action_filter_gsf_dependent_apps">"Apps die GSF gebruiken"</string>
+<string name="action_filter_category">"Categorie: %1$s"</string>
+<string name="action_filter_rating">"Waardering: %1$s"</string>
+
+<string name="pref_auto_whitelist">"Automatisch op witte lijst"</string>
+<string name="pref_auto_whitelist_summary_on">"Apps geïnstalleerd door Yalp Store worden automatisch op de witte lijst gezet"</string>
+<string name="pref_auto_whitelist_summary_off">"Apps moeten handmatig op de witte lijst gezet worden"</string>
+<string name="apps_by">"Apps van %1$s"</string>
+<string name="pref_message_fallback">"Proberen om een fallback-map (%1$s) in te stellen?"</string>
+<string name="no_permissions">"Geen machtigingen in gebruik."</string>
+<string name="about_librepay_label">"Doneer Liberapay"</string>
+<string name="notification_file_verification_failed">"Bestaand lijkt corrupt. Probeer opnieuw te downloaden."</string>
+<string name="pref_download_internal_storage">"Downloaden naar interne opslag"</string>
+<string name="pref_download_internal_storage_summary_on">"Veiliger, maar de apks zijn niet toegankelijk voor de gebruiker"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks worden gedownload naar het externe opslagpad hieronder opgegeven"</string>
+<string name="pref_use_tor">"Tor gebruiken"</string>
+<string name="pref_use_tor_summary">"Dwing downloadverkeer door Tor heen voor betere privacy. Vereist Orbot"</string>
+
+<string name="pref_proxy_enable">"Proxy aanzetten"</string>
+<string name="pref_proxy_type">"Proxytype"</string>
+<string name="pref_proxy_host">"Proxyhost"</string>
+<string name="pref_proxy_port">"Proxypoort"</string>
+<string name="action_wishlist_remove">"Verwijderen uit verlanglijstje"</string>
+<string name="action_wishlist_add">"Toevoegen aan verlanglijstje"</string>
+<string name="action_wishlist">"Verlanglijstje"</string>
+<string name="action_ignore_this">"Negeer deze update"</string>
+
+<string name="details_exodus_tap_to_check">"Tik om te controleren"</string>
+<string name="details_exodus_searching">"zoeken"</string>
+<string name="details_exodus_not_found">"niet gevonden"</string>
+
+<string name="pref_category_third_party">"Diensten van derden"</string>
+<string name="pref_exodus">"Exodus Privacy Check"</string>
+<string name="pref_exodus_summary_on">"Aantal trackers wordt automatisch op de detailpagina weergegeven"</string>
+<string name="pref_exodus_summary_off">"Exodus rapportagelink is weergegeven"</string>
+<string name="details_to_fdroid">"Bekijk in F-Droid"</string>
+<string name="details_instant_app">"Instant-app"</string>
+<string name="details_new_permission">"Nieuw:"</string>
+</resources>

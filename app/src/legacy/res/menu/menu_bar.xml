@@ -1,0 +1,86 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_search"
+        android:title="@string/action_search"
+        android:actionViewClass="android.widget.SearchView"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_search" />
+    <item
+        android:id="@+id/action_filter"
+        android:title="@string/action_filter"
+        android:showAsAction="ifRoom"
+        android:visible="false"
+        android:icon="@drawable/ic_filter">
+        <menu>
+            <item
+                android:id="@+id/filter_system_apps"
+                android:title="@string/action_filter_system_apps"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_apps_with_ads"
+                android:title="@string/action_filter_apps_with_ads"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_paid_apps"
+                android:title="@string/action_filter_paid_apps"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_gsf_dependent_apps"
+                android:title="@string/action_filter_gsf_dependent_apps"
+                android:visible="false"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/filter_category"
+                android:visible="false"
+                android:title="@string/action_filter_category"/>
+            <item
+                android:id="@+id/filter_rating"
+                android:visible="false"
+                android:title="@string/action_filter_rating"/>
+            <item
+                android:id="@+id/filter_downloads"
+                android:visible="false"
+                android:title="@string/action_filter_downloads"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/action_installed_apps"
+        android:title="@string/activity_title_updates_and_other_apps"
+        android:icon="@drawable/ic_apps" />
+    <item
+        android:id="@+id/action_updates"
+        android:title="@string/action_updates"
+        android:icon="@drawable/ic_refresh" />
+    <item
+        android:id="@+id/action_categories"
+        android:title="@string/action_categories"
+        android:icon="@drawable/ic_categories" />
+    <item
+        android:id="@+id/action_wishlist"
+        android:title="@string/action_wishlist"
+        android:icon="@drawable/ic_wishlist_tick" />
+    <item
+        android:id="@+id/action_history"
+        android:title="@string/action_history"
+        android:icon="@drawable/ic_events" />
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_settings" />
+    <item
+        android:id="@+id/action_logout"
+        android:title="@string/action_logout"
+        android:icon="@drawable/ic_logout"
+        android:visible="false" />
+    <item
+        android:id="@+id/action_bug_report"
+        android:title="@string/action_bug_report"
+        android:icon="@drawable/ic_bug_report" />
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/action_about"
+        android:icon="@drawable/ic_about" />
+</menu>

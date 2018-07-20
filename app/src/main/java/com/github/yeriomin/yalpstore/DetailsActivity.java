@@ -1,247 +1,224 @@
+/*
+ * Yalp Store
+ * Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
 package com.github.yeriomin.yalpstore;
 
-import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.TextUtils;
-import android.text.format.Formatter;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.github.yeriomin.playstoreapi.GooglePlayException;
+import com.github.yeriomin.yalpstore.fragment.ButtonCancel;
+import com.github.yeriomin.yalpstore.fragment.ButtonDownload;
+import com.github.yeriomin.yalpstore.fragment.ButtonInstall;
+import com.github.yeriomin.yalpstore.fragment.ButtonRun;
+import com.github.yeriomin.yalpstore.fragment.ButtonUninstall;
+import com.github.yeriomin.yalpstore.fragment.DownloadMenu;
+import com.github.yeriomin.yalpstore.fragment.details.AllFragments;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.task.playstore.CloneableTask;
+import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
-public class DetailsActivity extends Activity {
+import static com.github.yeriomin.yalpstore.task.playstore.PurchaseTask.UPDATE_INTERVAL;
 
-    private static final int PERMISSIONS_REQUEST_CODE = 828;
+public class DetailsActivity extends YalpStoreActivity {
 
-    static final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
+    static private final String INTENT_PACKAGE_NAME = "INTENT_PACKAGE_NAME";
 
-    private GoogleApiAsyncTask task;
+    static public App app;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
+    protected DetailsDownloadReceiver downloadReceiver;
+    protected DetailsInstallReceiver installReceiver;
+
+    static public Intent getDetailsIntent(Context context, String packageName) {
+        Intent intent = new Intent(context, DetailsActivity.class);
+        intent.putExtra(DetailsActivity.INTENT_PACKAGE_NAME, packageName);
+        if (!(context instanceof Activity)) {
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+        return intent;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_logout:
-                new AlertDialog.Builder(this)
-                    .setMessage(R.string.dialog_message_logout)
-                    .setTitle(R.string.dialog_title_logout)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            new PlayStoreApiWrapper(getApplicationContext()).logout();
-                            dialogInterface.dismiss();
-                            finish();
-                        }
-                    })
-                    .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
 
-                        }
-                    })
-                    .show();
-                break;
-            case R.id.action_search:
-                onSearchRequested();
-                break;
-            case R.id.action_updates:
-                startActivity(new Intent(this, UpdatableAppsActivity.class));
-                break;
+        final String packageName = getIntentPackageName(intent);
+        if (TextUtils.isEmpty(packageName)) {
+            Log.e(this.getClass().getName(), "No package name provided");
+            finish();
+            return;
         }
-        return super.onOptionsItemSelected(item);
+        Log.i(getClass().getSimpleName(), "Getting info about " + packageName);
+
+        if (null != DetailsActivity.app) {
+            redrawDetails(DetailsActivity.app);
+        }
+
+        GetAndRedrawDetailsTask task = new GetAndRedrawDetailsTask(this);
+        task.setPackageName(packageName);
+        task.setProgressIndicator(findViewById(R.id.progress));
+        task.execute();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceivers();
+    }
+
+    @Override
+    protected void onResume() {
+        redrawButtons();
+        super.onResume();
+    }
+
+    protected void unregisterReceivers() {
+        unregisterReceiver(downloadReceiver);
+        downloadReceiver = null;
+        unregisterReceiver(installReceiver);
+        installReceiver = null;
+    }
+
+    protected void redrawButtons() {
+        unregisterReceivers();
+        if (null == app) {
+            return;
+        }
+        downloadReceiver = new DetailsDownloadReceiver(this, app.getPackageName());
+        installReceiver = new DetailsInstallReceiver(this, app.getPackageName());
+        new ButtonUninstall(this, app).draw();
+        new ButtonDownload(this, app).draw();
+        new ButtonCancel(this, app).draw();
+        new ButtonInstall(this, app).draw();
+        new ButtonRun(this, app).draw();
+        new DownloadProgressBarUpdater(app.getPackageName(), (ProgressBar) findViewById(R.id.download_progress)).execute(UPDATE_INTERVAL);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        final String packageName = getIntent().getStringExtra(INTENT_PACKAGE_NAME);
-        if (packageName == null || packageName.isEmpty()) {
-            Toast.makeText(this, "No package name provided", Toast.LENGTH_LONG).show();
-            finishActivity(0);
-            return;
-        }
-
-        GoogleApiAsyncTask task = new GoogleApiAsyncTask() {
-
-            private App app;
-
-            @Override
-            protected Throwable doInBackground(Void... params) {
-                PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(getApplicationContext());
-                try {
-                    this.app = wrapper.getDetails(packageName);
-                } catch (Throwable e) {
-                    return e;
-                }
-                Drawable icon;
-                try {
-                    ApplicationInfo installedApp = getPackageManager().getApplicationInfo(packageName, 0);
-                    icon = getPackageManager().getApplicationIcon(installedApp);
-                    this.app.setInstalled(true);
-                } catch (PackageManager.NameNotFoundException e) {
-                    BitmapManager manager = new BitmapManager(getApplicationContext());
-                    icon = new BitmapDrawable(manager.getBitmap(app.getIconUrl()));
-                }
-                this.app.setIcon(icon);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Throwable e) {
-                super.onPostExecute(e);
-                if (this.app != null) {
-                    drawDetails(this.app);
-                } else {
-                    System.out.println("App not retrieved");
-                    finishActivity(0);
-                }
-            }
-        };
-        task.setContext(this);
-        task.prepareDialog(
-            getString(R.string.dialog_message_loading_app_details),
-            getString(R.string.dialog_title_loading_app_details)
-        );
-        task.execute();
-    }
-
-    private void drawDetails(final App app) {
-        setTitle(app.getDisplayName());
-        setContentView(R.layout.details_activity_layout);
-
-        ((ImageView) findViewById(R.id.icon)).setImageDrawable(app.getIcon());
-
-        setText(R.id.displayName, app.getDisplayName());
-        setText(R.id.packageName, app.getPackageName());
-        setText(R.id.installs, R.string.details_installs, app.getInstalls());
-        setText(R.id.rating, R.string.details_rating, app.getRating());
-        setText(R.id.updated, R.string.details_updated, app.getUpdated());
-        setText(R.id.size, R.string.details_size, Formatter.formatShortFileSize(this, app.getSize()));
-        setText(R.id.description, Html.fromHtml(app.getDescription()).toString());
-        setText(R.id.developerName, R.string.details_developer, app.getDeveloper().getName());
-        setText(R.id.developerEmail, app.getDeveloper().getEmail());
-        setText(R.id.developerWebsite, app.getDeveloper().getWebsite());
-        String changes = app.getChanges();
-        if (null != changes && !changes.isEmpty()) {
-            setText(R.id.changes, Html.fromHtml(changes).toString());
-            findViewById(R.id.changes).setVisibility(View.VISIBLE);
-            findViewById(R.id.changes_title).setVisibility(View.VISIBLE);
-        }
-        String versionName = app.getVersionName();
-        if (null != versionName && !versionName.isEmpty()) {
-            setText(R.id.versionString, R.string.details_versionName, versionName);
-            findViewById(R.id.versionString).setVisibility(View.VISIBLE);
-            if (app.isInstalled()) {
-                try {
-                    PackageInfo info = getPackageManager().getPackageInfo(app.getPackageName(), 0);
-                    if (info.versionCode != app.getVersionCode()) {
-                        setText(R.id.versionString, R.string.details_versionName_updatable, info.versionName, versionName);
-                    }
-                } catch (PackageManager.NameNotFoundException e) {
-                    // We've checked for that already
-                }
-            }
-        }
-
-        PackageManager pm = getPackageManager();
-        List<String> localizedPermissions = new ArrayList<>();
-        for (String permissionName: app.getPermissions()) {
-            try {
-                localizedPermissions.add(pm.getPermissionInfo(permissionName, 0).loadLabel(pm).toString());
-            } catch (PackageManager.NameNotFoundException e) {
-                System.out.println("NameNotFoundException " + permissionName);
-            }
-        }
-        setText(R.id.permissions, TextUtils.join("\n", localizedPermissions));
-
-        Button downloadButton = (Button) findViewById(R.id.download);
-        if (app.isFree()) {
-            downloadButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    task = new GoogleApiAsyncTask() {
-                        @Override
-                        protected Throwable doInBackground(Void... params) {
-                            PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(DetailsActivity.this);
-                            try {
-                                wrapper.download(app);
-                            } catch (Throwable e) {
-                                return e;
-                            }
-                            return null;
-                        }
-                    };
-                    task.setContext(v.getContext());
-                    task.prepareDialog(
-                        getString(R.string.dialog_message_purchasing_app),
-                        getString(R.string.dialog_title_purchasing_app)
-                    );
-                    if (checkPermission()) {
-                        task.execute();
-                    } else {
-                        requestPermission();
-                    }
-                }
-            });
-        } else {
-            downloadButton.setText(getString(R.string.details_download_nonfree));
-            downloadButton.setEnabled(false);
-        }
-    }
-
-    private void setText(int viewId, String text) {
-        ((TextView) findViewById(viewId)).setText(text);
-    }
-
-    private void setText(int viewId, int stringId, Object... text) {
-        setText(viewId, getString(stringId, text));
-    }
-
-    private boolean checkPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-             return this.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                 == PackageManager.PERMISSION_GRANTED;
-        }
-        return true;
-    }
-
-    private void requestPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSIONS_REQUEST_CODE);
-        }
+        setContentViewNoWrapper(R.layout.details_activity_layout);
+        onNewIntent(getIntent());
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (requestCode == PERMISSIONS_REQUEST_CODE
-            && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            task.execute();
+        if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults) && null != app) {
+            redrawButtons();
+            new ButtonDownload(this, app).download();
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean result = super.onCreateOptionsMenu(menu);
+        if (null != app) {
+            new DownloadMenu(this, app).onCreateOptionsMenu(menu);
+        }
+        return result;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        new DownloadMenu(this, app).inflate(menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        return new DownloadMenu(this, app).onContextItemSelected(item);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return new DownloadMenu(this, app).onContextItemSelected(item) || super.onOptionsItemSelected(item);
+    }
+
+    private String getIntentPackageName(Intent intent) {
+        if (intent.hasExtra(INTENT_PACKAGE_NAME)) {
+            return intent.getStringExtra(INTENT_PACKAGE_NAME);
+        } else if (intent.getScheme() != null
+            && (intent.getScheme().equals("market")
+            || intent.getScheme().equals("http")
+            || intent.getScheme().equals("https")
+        )) {
+            return intent.getData().getQueryParameter("id");
+        }
+        return null;
+    }
+
+    public void redrawDetails(App app) {
+        setTitle(app.getDisplayName());
+        new AllFragments(this, app).draw();
+        unregisterReceivers();
+        redrawButtons();
+        new DownloadMenu(this, app).draw();
+    }
+
+    static class GetAndRedrawDetailsTask extends DetailsTask implements CloneableTask {
+
+        public GetAndRedrawDetailsTask(DetailsActivity activity) {
+            setContext(activity);
+        }
+
+        @Override
+        public CloneableTask clone() {
+            GetAndRedrawDetailsTask task = new GetAndRedrawDetailsTask((DetailsActivity) context);
+            task.setErrorView(errorView);
+            task.setPackageName(packageName);
+            task.setProgressIndicator(progressIndicator);
+            return task;
+        }
+
+        @Override
+        protected void processIOException(IOException e) {
+        }
+
+        @Override
+        protected void onPostExecute(App app) {
+            super.onPostExecute(app);
+            if (app != null) {
+                DetailsActivity.app = app;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                    ((DetailsActivity) context).invalidateOptionsMenu();
+                }
+                ((DetailsActivity) context).redrawDetails(app);
+            }
+            Throwable e = getException();
+            if (null != e && e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 404) {
+                TextView availability = ((DetailsActivity) context).findViewById(R.id.availability);
+                availability.setVisibility(View.VISIBLE);
+                availability.setText(R.string.details_not_available_on_play_store);
+            }
+        }
+    }
 }

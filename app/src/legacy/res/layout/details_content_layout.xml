@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:contentDescription="@string/content_description_app_icon"
+                android:transitionName="@string/details_transition_view_name"
+                android:layout_width="64dip"
+                android:layout_height="64dip"
+                android:layout_marginRight="6dip"
+                android:layout_marginEnd="6dip"
+                android:layout_gravity="top" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/displayName"
+                    android:textSize="18sp"
+                    android:textIsSelectable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/packageName"
+                    android:textSize="14sp"
+                    android:textIsSelectable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/versionString"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/wishlist"
+            android:visibility="gone"
+            android:layout_width="24dip"
+            android:layout_height="24dip"
+            android:layout_margin="6dip"
+            android:layout_gravity="top|right|end" />
+
+    </FrameLayout>
+
+    <include layout="@layout/details_button_bar"/>
+
+    <TextView
+        android:id="@+id/availability"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/details_not_available_on_play_store"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/short_description"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:textIsSelectable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <ViewStub
+        android:id="@+id/general_details"
+        android:inflatedId="@+id/general_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout="@layout/details_general" />
+
+    <TextView
+        android:id="@+id/instant_app"
+        android:focusable="true"
+        android:drawableLeft="@drawable/ic_instant_app"
+        android:drawableStart="@drawable/ic_instant_app"
+        android:drawablePadding="6dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="18sp"
+        android:text="@string/details_instant_app"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/video"
+        android:focusable="true"
+        android:drawableLeft="@drawable/ic_video"
+        android:drawableStart="@drawable/ic_video"
+        android:drawablePadding="6dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="18sp"
+        android:text="@string/details_video"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:visibility="gone" />
+
+    <com.github.yeriomin.yalpstore.widget.ExpansionPanel
+        app:headerText="@string/details_changelog"
+        android:id="@+id/changes_panel"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:elevation="2dp"
+        android:background="?android:colorBackground">
+
+        <TextView
+            android:id="@+id/changes_upper"
+            android:textIsSelectable="true"
+            android:autoLink="web|email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/history"
+            android:visibility="gone"
+            android:text="@string/action_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.github.yeriomin.yalpstore.widget.ExpansionPanel>
+
+    <com.github.yeriomin.yalpstore.widget.ExpansionPanel
+        app:headerText="@string/details_description"
+        android:id="@+id/description_panel"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:elevation="2dp"
+        android:background="?android:colorBackground">
+
+        <TextView
+            android:id="@+id/description"
+            android:textIsSelectable="true"
+            android:autoLink="web|email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="6dip" />
+
+        <TextView
+            android:id="@+id/changes_title"
+            android:text="@string/details_changelog"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dip"  />
+
+        <TextView
+            android:id="@+id/changes_in_details"
+            android:textIsSelectable="true"
+            android:autoLink="web|email"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/offer_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dip" />
+
+    </com.github.yeriomin.yalpstore.widget.ExpansionPanel>
+
+    <ViewStub
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:id="@+id/reviews_panel"
+        android:inflatedId="@+id/reviews_panel"
+        android:layout="@layout/details_reviews"/>
+
+    <ViewStub
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:id="@+id/screenshots_panel"
+        android:inflatedId="@+id/screenshots_panel"
+        android:layout="@layout/details_screenshots"/>
+
+    <ViewStub
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:id="@+id/permissions_panel"
+        android:inflatedId="@+id/permissions_panel"
+        android:layout="@layout/details_permissions"/>
+
+    <ViewStub
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:id="@+id/beta_panel"
+        android:inflatedId="@+id/beta_panel"
+        android:layout="@layout/details_beta"/>
+
+    <LinearLayout
+        android:id="@+id/related_links"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/apps_by_same_developer"
+        android:focusable="true"
+        android:drawableLeft="@drawable/ic_link"
+        android:drawableStart="@drawable/ic_link"
+        android:drawablePadding="6dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/exodus"
+        android:focusable="true"
+        android:drawableLeft="@drawable/ic_exodus"
+        android:drawableStart="@drawable/ic_exodus"
+        android:drawablePadding="6dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/to_play_store"
+        android:focusable="true"
+        android:drawableLeft="@drawable/ic_google_play"
+        android:drawableStart="@drawable/ic_google_play"
+        android:drawablePadding="6dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="18sp"
+        android:text="@string/details_to_play_store"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/to_fdroid"
+        android:focusable="true"
+        android:drawableLeft="@drawable/ic_fdroid"
+        android:drawableStart="@drawable/ic_fdroid"
+        android:drawablePadding="6dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="18sp"
+        android:text="@string/details_to_fdroid"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/share"
+        android:focusable="true"
+        android:drawableLeft="@drawable/ic_share"
+        android:drawableStart="@drawable/ic_share"
+        android:drawablePadding="6dp"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="18sp"
+        android:text="@string/details_share"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/system_app_info"
+        android:focusable="true"
+        android:drawableLeft="@drawable/ic_settings"
+        android:drawableStart="@drawable/ic_settings"
+        android:drawablePadding="6dp"
+        android:drawableTint="?android:textColorSecondary"
+        android:paddingLeft="16dp"
+        android:paddingStart="16dp"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="18sp"
+        android:text="@string/details_system_app_info"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:visibility="gone" />
+
+</LinearLayout>

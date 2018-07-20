@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.yeriomin.yalpstore.widget.ExpansionPanel
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/beta_panel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:elevation="2dp"
+    android:background="?attr/colorDetailsItemBackground">
+
+    <TextView
+        android:id="@+id/beta_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/beta_subscribe_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/beta_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="email"
+            android:layout_gravity="center_vertical|end"
+            android:gravity="center_vertical|end"
+            android:textAlignment="textEnd"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/beta_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/beta_comment"
+            android:hint="@string/testing_program_review_dialog_content_hint"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/beta_submit_button"
+                android:text="@string/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/beta_delete_button"
+                android:visibility="gone"
+                android:text="@string/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.github.yeriomin.yalpstore.widget.ExpansionPanel>

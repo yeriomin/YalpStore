@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.yeriomin.yalpstore.widget.ExpansionPanel
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:headerText="@string/details_screenshots"
+    android:id="@+id/screenshots_panel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:elevation="2dp"
+    android:background="?attr/colorDetailsItemBackground">
+
+    <Gallery
+        android:id="@+id/screenshots_gallery"
+        android:spacing="10dp"
+        android:animationDuration="100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</com.github.yeriomin.yalpstore.widget.ExpansionPanel>

@@ -1,111 +1,135 @@
+/*
+ * Yalp Store
+ * Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
 package com.github.yeriomin.yalpstore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.github.yeriomin.yalpstore.task.AppListValidityCheckTask;
+import com.github.yeriomin.yalpstore.task.playstore.ForegroundUpdatableAppsTask;
+import com.github.yeriomin.yalpstore.view.ListItem;
+import com.github.yeriomin.yalpstore.view.UpdatableAppBadge;
+import com.github.yeriomin.yalpstore.view.UpdatableAppsButtonAdapter;
 
 public class UpdatableAppsActivity extends AppListActivity {
+
+    public static final int REQUEST_CODE_UPDATE_ALL = 106;
+
+    private UpdateAllReceiver updateAllReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(getString(R.string.activity_title_updates_only));
+        onNewIntent(getIntent());
+    }
 
-        setTitle(getString(R.string.activity_title_updates));
-        ((TextView) getListView().getEmptyView()).setText(getString(R.string.list_empty_updates));
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateAllReceiver = new UpdateAllReceiver(this);
+        AppListValidityCheckTask task = new AppListValidityCheckTask(this);
+        task.setRespectUpdateBlacklist(true);
+        task.setIncludeSystemApps(true);
+        task.execute();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(updateAllReceiver);
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
-        if (this.data.isEmpty()) {
-            loadApps();
+        setIntent(intent);
+        loadApps();
+    }
+
+    @Override
+    public void loadApps() {
+        getTask().execute();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (requestCode == REQUEST_CODE_UPDATE_ALL) {
+            if (YalpStorePermissionManager.isGranted(requestCode, permissions, grantResults)) {
+                launchUpdateAll();
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
     @Override
-    protected Map<String, Object> formatApp(App app) {
-        Map<String, Object> map = super.formatApp(app);
-        map.put(LINE2, getString(R.string.list_line_2_updatable, app.getUpdated()));
-        map.put(ICON, app.getIcon());
-        return map;
-    }
-
-    protected void loadApps() {
-        class UpdatableAppsTask extends GoogleApiAsyncTask {
-
-            private List<App> apps = new ArrayList<>();
-
-            @Override
-            protected Throwable doInBackground(Void... params) {
-                // Building local apps list
-                List<String> installedAppIds = new ArrayList<>();
-                List<App> installedApps = getInstalledApps();
-                Map<String, App> appMap = new HashMap<>();
-                for (App installedApp: installedApps) {
-                    String packageName = installedApp.getPackageInfo().packageName;
-                    installedAppIds.add(packageName);
-                    appMap.put(packageName, installedApp);
-                }
-                // Requesting info from Google Play Market for installed apps
-                PlayStoreApiWrapper wrapper = new PlayStoreApiWrapper(this.context);
-                List<App> appsFromPlayMarket = new ArrayList<>();
-                try {
-                    appsFromPlayMarket.addAll(wrapper.getDetails(installedAppIds));
-                } catch (Throwable e) {
-                    return e;
-                }
-                // Comparing versions and building updatable apps list
-                for (App appFromMarket: appsFromPlayMarket) {
-                    String packageName = appFromMarket.getPackageName();
-                    if (null == packageName || packageName.isEmpty()) {
-                        continue;
-                    }
-                    App installedApp = appMap.get(packageName);
-                    if (installedApp.getVersionCode() < appFromMarket.getVersionCode()) {
-                        installedApp.setUpdated(appFromMarket.getUpdated());
-                        installedApp.setVersionCode(appFromMarket.getVersionCode());
-                        installedApp.setOfferType(appFromMarket.getOfferType());
-                        apps.add(installedApp);
-                    }
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Throwable e) {
-                super.onPostExecute(e);
-                if (null != this.apps) {
-                    addApps(apps);
-                }
-            }
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        App app = getAppByListPosition(info.position);
+        if (item.getItemId() == R.id.action_ignore) {
+            String packageName = app.getPackageName();
+            new BlackWhiteListManager(this).add(packageName);
+            removeApp(packageName);
+            return true;
+        } else if (item.getItemId() == R.id.action_ignore_this) {
+            new VersionIgnoreManager(this).add(app.getPackageName(), app.getVersionCode());
+            removeApp(app.getPackageName());
+            return true;
         }
-
-        UpdatableAppsTask taskClone = new UpdatableAppsTask();
-        taskClone.setErrorView((TextView) getListView().getEmptyView());
-        taskClone.setContext(this);
-        taskClone.prepareDialog(
-            getString(R.string.dialog_message_loading_app_list_update),
-            getString(R.string.dialog_title_loading_app_list_update)
-        );
-
-        UpdatableAppsTask task = new UpdatableAppsTask();
-        task.setTaskClone(taskClone);
-        task.setErrorView((TextView) getListView().getEmptyView());
-        task.setContext(this);
-        task.prepareDialog(
-            getString(R.string.dialog_message_loading_app_list_update),
-            getString(R.string.dialog_title_loading_app_list_update)
-        );
-        task.execute();
+        return super.onContextItemSelected(item);
     }
 
+    @Override
+    protected ListItem buildListItem(App app) {
+        UpdatableAppBadge appBadge = new UpdatableAppBadge();
+        appBadge.setApp(app);
+        return appBadge;
+    }
+
+    @Override
+    public void removeApp(String packageName) {
+        super.removeApp(packageName);
+        if (listItems.isEmpty()) {
+            ((TextView) getListView().getEmptyView()).setText(R.string.list_empty_updates);
+            findViewById(R.id.main_button).setVisibility(View.GONE);
+        }
+    }
+
+    private ForegroundUpdatableAppsTask getTask() {
+        ForegroundUpdatableAppsTask task = new ForegroundUpdatableAppsTask(this);
+        task.setErrorView((TextView) getListView().getEmptyView());
+        task.setProgressIndicator(findViewById(R.id.progress));
+        return task;
+    }
+
+    public void launchUpdateAll() {
+        ((YalpStoreApplication) getApplicationContext()).setBackgroundUpdating(true);
+        new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
+        new UpdatableAppsButtonAdapter(findViewById(R.id.main_button)).setUpdating();
+    }
 }
 

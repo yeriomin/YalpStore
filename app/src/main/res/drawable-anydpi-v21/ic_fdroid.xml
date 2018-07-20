@@ -1,0 +1,32 @@
+<!--
+  ~ Yalp Store
+  ~ Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation; either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License along
+  ~ with this program; if not, write to the Free Software Foundation, Inc.,
+  ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <path
+      android:pathData="M3.5571,1.8891C3.3404,1.8616 3.1305,1.931 2.9426,2.0735 2.5668,2.3577 2.4939,2.8883 2.7823,3.2587L3.6907,4.4176C3.545,4.6659 3.4502,4.9518 3.4502,5.2604v2.5285c0,0.9338 0.7626,1.6856 1.71,1.6856L18.8398,9.4745c0.9473,0 1.71,-0.7518 1.71,-1.6856L20.5498,5.2604c0,-0.3086 -0.0948,-0.5945 -0.2405,-0.8428L21.2177,3.2587C21.5061,2.8883 21.4332,2.3577 21.0574,2.0735 20.6816,1.7892 20.1702,1.861 19.8818,2.2315l-1.042,1.3432L5.1602,3.5748L4.1182,2.2315C3.974,2.0462 3.7738,1.9172 3.5571,1.8891ZM7.8587,4.8389C8.652,4.8946 9.3005,5.5064 9.4083,6.3139 9.5316,7.2368 8.8751,8.0624 7.9389,8.1839 7.0027,8.3054 6.1651,7.6582 6.0419,6.7353 5.9186,5.8124 6.5752,4.9868 7.5114,4.8653 7.6284,4.8501 7.7454,4.8306 7.8587,4.8393ZM16.2749,4.8389c0.2221,0 0.4232,0.0426 0.6412,0.1317 0.8723,0.3561 1.2964,1.3262 0.9351,2.186C17.4899,8.0166 16.5059,8.4347 15.6337,8.0786 14.7614,7.7225 14.3372,6.7523 14.6985,5.8925 14.9695,5.2476 15.6087,4.8438 16.2749,4.8389ZM5.1602,10.3173c-0.9473,0 -1.71,0.7518 -1.71,1.6857v8.4282c0,0.9338 0.7626,1.6856 1.71,1.6856L18.8398,22.1168c0.9473,0 1.71,-0.7518 1.71,-1.6856v-8.4282c0,-0.9339 -0.7626,-1.6857 -1.71,-1.6857z"
+      android:strokeWidth="0.27263269"
+      android:fillColor="?android:textColorSecondary"
+      android:strokeColor="#00000000"
+      android:fillType="nonZero"
+      android:fillAlpha="1"/>
+</vector>

@@ -31,5 +31,9 @@ proguard/
 .DS_Store
 /captures
 /.idea
-/gradle*
 /.gradle*
+gradle-app.setting
+*.zip
+
+*.jar
+*.json

@@ -1,35 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.github.yeriomin.yalpstore">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.github.yeriomin.yalpstore"
+          android:installLocation="internalOnly" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" tools:ignore="ProtectedPermissions" />
+
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
     <application
         android:allowBackup="false"
+        android:name=".YalpStoreApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:banner="@mipmap/ic_launcher"
         android:supportsRtl="true">
         <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
             android:exported="false"
-            android:name=".YalpSuggestionProvider"
-            android:authorities="com.github.yeriomin.yalpstore.YalpSuggestionProvider"
-            android:enabled="true" />
-        <activity android:name=".DetailsActivity" android:screenOrientation="portrait" >
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
-        </activity>
-        <activity android:name=".UpdatableAppsActivity" android:launchMode="singleInstance" android:screenOrientation="portrait">
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths" />
+        </provider>
+        <receiver android:name="com.github.yeriomin.yalpstore.UpdateChecker" />
+        <receiver
+            android:name="com.github.yeriomin.yalpstore.BootReceiver"
+            android:enabled="true"
+            android:exported="true" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
-            <meta-data android:name="android.app.default_searchable" android:value=".SearchResultActivity" />
+        </receiver>
+        <provider
+            android:exported="false"
+            android:name=".YalpStoreSuggestionProvider"
+            android:authorities="${applicationId}.YalpStoreSuggestionProvider"
+            android:enabled="true" />
+        <activity android:name=".DetailsActivity" android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="market" android:host="details" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="play.google.com" />
+                <data android:path="/store/apps/details" />
+            </intent-filter>
         </activity>
-        <activity android:name=".SearchResultActivity" android:launchMode="singleInstance" android:screenOrientation="portrait" >
+        <activity android:name=".DirectDownloadActivity" android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter >
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DeveloperActivity" android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="play.google.com" />
+                <data android:path="/store/apps/dev" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".UpdatableAppsActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/activity_title_updates_only" />
+        <activity android:name=".SearchActivity" android:configChanges="keyboardHidden|orientation|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="market" android:host="search" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="play.google.com" />
+                <data android:path="/store/search" />
+            </intent-filter>
         </activity>
+        <activity android:name=".PreferenceActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_settings" >
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CategoryListActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".CategoryAppsActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".FullscreenImageActivity" />
+        <activity android:name=".ClusterActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ManualDownloadActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_manual" />
+        <activity android:name=".AboutActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_about" />
+        <activity android:name=".BugReportActivity" android:launchMode="singleInstance" android:noHistory="true" android:process=":report_process" />
+        <activity android:name=".DeviceInfoActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".InstalledAppsActivity" android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".WishlistActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_wishlist" />
+        <activity android:name=".HistoryActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/action_history" />
+
+        <service android:enabled="true" android:name=".notification.CancelDownloadService" />
+        <service android:enabled="true" android:name=".notification.IgnoreUpdatesService" />
+        <service android:enabled="true" android:name=".notification.DownloadChecksumService"/>
+        <service android:enabled="true" android:name=".bugreport.BugReportService" />
     </application>
 
 </manifest>

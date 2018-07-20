@@ -1,31 +1,77 @@
+/*
+ * Yalp Store
+ * Copyright (C) 2018 Sergey Yeriomin <yeriomin@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
 package com.github.yeriomin.yalpstore.model;
 
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
-import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class App {
+public class App implements Comparable<App> {
 
     private PackageInfo packageInfo;
 
     private String displayName;
     private String versionName;
     private int versionCode;
-    private Version version;
     private int offerType;
     private String updated;
     private long size;
-    private String installs;
-    private double rating;
-    private Drawable icon;
+    private int installs;
+    private Rating rating = new Rating();
+    private String categoryIconUrl;
+    private ImageSource pageBackgroundImage;
     private String iconUrl;
+    private String videoUrl;
     private String changes;
-    private Developer developer;
+    private String developerName;
     private String description;
-    private List<String> permissions;
+    private String shortDescription;
+    private Set<String> permissions = new HashSet<>();
     private boolean isInstalled;
     private boolean isFree;
+    private boolean isAd;
+    private List<String> screenshotUrls = new ArrayList<>();
+    private Review userReview;
+    private String categoryId;
+    private String price;
+    private boolean containsAds;
+    private Set<String> dependencies = new HashSet<>();
+    private Map<String, String> offerDetails = new HashMap<>();
+    private boolean system;
+    private boolean inPlayStore;
+    private Map<String, String> relatedLinks = new HashMap<>();
+    private boolean earlyAccess;
+    private boolean testingProgramAvailable;
+    private boolean testingProgramOptedIn;
+    private String testingProgramEmail;
+    private int restriction;
+    private String instantAppLink;
 
     public App() {
         this.packageInfo = new PackageInfo();
@@ -33,6 +79,11 @@ public class App {
 
     public App(PackageInfo packageInfo) {
         this.setPackageInfo(packageInfo);
+        this.setVersionName(packageInfo.versionName);
+        this.setVersionCode(packageInfo.versionCode);
+        if (null != packageInfo.requestedPermissions) {
+            this.setPermissions(Arrays.asList(packageInfo.requestedPermissions));
+        }
     }
 
     public PackageInfo getPackageInfo() {
@@ -45,8 +96,8 @@ public class App {
 
     public void setPackageInfo(PackageInfo packageInfo) {
         this.packageInfo = packageInfo;
-        this.setVersionName(packageInfo.versionName);
-        this.setVersionCode(packageInfo.versionCode);
+        this.setInstalled(true);
+        this.setSystem(null != packageInfo.applicationInfo && (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0);
     }
 
     public String getDisplayName() {
@@ -63,7 +114,6 @@ public class App {
 
     public void setVersionName(String versionName) {
         this.versionName = versionName;
-        this.version = new Version(versionName);
     }
 
     public int getVersionCode() {
@@ -72,10 +122,6 @@ public class App {
 
     public void setVersionCode(int versionCode) {
         this.versionCode = versionCode;
-    }
-
-    public Version getVersion() {
-        return version;
     }
 
     public int getOfferType() {
@@ -102,36 +148,55 @@ public class App {
         this.size = size;
     }
 
-    public String getInstalls() {
+    public int getInstalls() {
         return installs;
     }
 
-    public void setInstalls(String installs) {
+    public void setInstalls(int installs) {
         this.installs = installs;
     }
 
-    public double getRating() {
+    public Rating getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
+    public String getCategoryIconUrl() {
+        return categoryIconUrl;
     }
 
-    public Drawable getIcon() {
-        return this.icon;
+    public void setCategoryIconUrl(String categoryIconUrl) {
+        this.categoryIconUrl = categoryIconUrl;
     }
 
-    public void setIcon(Drawable icon) {
-        this.icon = icon;
+    public ImageSource getPageBackgroundImage() {
+        return pageBackgroundImage;
+    }
+
+    public void setPageBackgroundImage(ImageSource pageBackgroundImage) {
+        this.pageBackgroundImage = pageBackgroundImage;
     }
 
     public void setIconUrl(String iconUrl) {
         this.iconUrl = iconUrl;
     }
 
-    public String getIconUrl() {
-        return this.iconUrl;
+    public ImageSource getIconInfo() {
+        ImageSource imageSource = new ImageSource();
+        if (null != packageInfo && null != packageInfo.applicationInfo) {
+            imageSource.setApplicationInfo(packageInfo.applicationInfo);
+        }
+        if (!TextUtils.isEmpty(iconUrl)) {
+            imageSource.setUrl(iconUrl);
+        }
+        return imageSource;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 
     public String getChanges() {
@@ -142,15 +207,12 @@ public class App {
         this.changes = changes;
     }
 
-    public Developer getDeveloper() {
-        if (null == developer) {
-            developer = new Developer();
-        }
-        return developer;
+    public String getDeveloperName() {
+        return developerName;
     }
 
-    public void setDeveloper(Developer developer) {
-        this.developer = developer;
+    public void setDeveloperName(String developerName) {
+        this.developerName = developerName;
     }
 
     public String getDescription() {
@@ -161,12 +223,20 @@ public class App {
         this.description = description;
     }
 
-    public List<String> getPermissions() {
+    public Set<String> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(List<String> permissions) {
-        this.permissions = permissions;
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public void setPermissions(Collection<String> permissions) {
+        this.permissions = new HashSet<>(permissions);
     }
 
     public boolean isInstalled() {
@@ -177,11 +247,150 @@ public class App {
         isInstalled = installed;
     }
 
+    public int getInstalledVersionCode() {
+        if (null != packageInfo) {
+            return packageInfo.versionCode;
+        }
+        return 0;
+    }
+
+    public String getInstalledVersionName() {
+        if (null != packageInfo) {
+            return packageInfo.versionName;
+        }
+        return null;
+    }
+
     public boolean isFree() {
         return isFree;
     }
 
     public void setFree(boolean free) {
         isFree = free;
+    }
+
+    public boolean isAd() {
+        return isAd;
+    }
+
+    public void setAd(boolean ad) {
+        isAd = ad;
+    }
+
+    public List<String> getScreenshotUrls() {
+        return screenshotUrls;
+    }
+
+    public Review getUserReview() {
+        return userReview;
+    }
+
+    public void setUserReview(Review userReview) {
+        this.userReview = userReview;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public boolean containsAds() {
+        return containsAds;
+    }
+
+    public void setContainsAds(boolean containsAds) {
+        this.containsAds = containsAds;
+    }
+
+    public Set<String> getDependencies() {
+        return dependencies;
+    }
+
+    public Map<String, String> getOfferDetails() {
+        return offerDetails;
+    }
+
+    public boolean isSystem() {
+        return system;
+    }
+
+    public void setSystem(boolean system) {
+        this.system = system;
+    }
+
+    public boolean isInPlayStore() {
+        return inPlayStore;
+    }
+
+    public void setInPlayStore(boolean inPlayStore) {
+        this.inPlayStore = inPlayStore;
+    }
+
+    public Map<String, String> getRelatedLinks() {
+        return relatedLinks;
+    }
+
+    public boolean isEarlyAccess() {
+        return earlyAccess;
+    }
+
+    public void setEarlyAccess(boolean earlyAccess) {
+        this.earlyAccess = earlyAccess;
+    }
+
+    public boolean isTestingProgramAvailable() {
+        return testingProgramAvailable;
+    }
+
+    public void setTestingProgramAvailable(boolean testingProgramAvailable) {
+        this.testingProgramAvailable = testingProgramAvailable;
+    }
+
+    public boolean isTestingProgramOptedIn() {
+        return testingProgramOptedIn;
+    }
+
+    public void setTestingProgramOptedIn(boolean testingProgramOptedIn) {
+        this.testingProgramOptedIn = testingProgramOptedIn;
+    }
+
+    public String getTestingProgramEmail() {
+        return testingProgramEmail;
+    }
+
+    public void setTestingProgramEmail(String testingProgramEmail) {
+        this.testingProgramEmail = testingProgramEmail;
+    }
+
+    public int getRestriction() {
+        return restriction;
+    }
+
+    public void setRestriction(int restriction) {
+        this.restriction = restriction;
+    }
+
+    public String getInstantAppLink() {
+        return instantAppLink;
+    }
+
+    public void setInstantAppLink(String instantAppLink) {
+        this.instantAppLink = instantAppLink;
+    }
+
+    @Override
+    public int compareTo(App o) {
+        return getDisplayName().compareToIgnoreCase(o.getDisplayName());
     }
 }

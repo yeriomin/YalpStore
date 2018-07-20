@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="about_developer_email_label">"Η διεύθυνση ηλεκτρονικού ταχυδρομείου του προγραμματιστή:"</string>
+<string name="about_logged_in">"Έχεις συνδεθεί ως:"</string>
+<string name="about_copied_to_clipboard">"Αντιγράφτηκε στο πρόχειρο"</string>
+<string name="list_line_2_updatable">"Ενημερώθηκε στις %1$s"</string>
+<string name="list_empty_updates">"Καμία εφαρμογή δεν χρειάζεται ενημέρωση"</string>
+<string name="list_empty_search">"Δεν βρέθηκαν εφαρμογές"</string>
+<string name="list_incompatible">"ασυμβίβαστο"</string>
+<string name="action_about">"Σχετικά με"</string>
+<string name="action_settings">"Ρυθμίσεις"</string>
+<string name="action_logout">"Αποσύνδεση"</string>
+<string name="action_search">"Αναζήτηση"</string>
+<string name="action_updates">"Ενημερώσεις"</string>
+<string name="action_ignore">"Αγνόηση των ενημερώσεων"</string>
+<string name="action_whitelist">"Λευκό κατάστιχο για τις ενημερώσεις"</string>
+<string name="search_title">"Αναζήτηση για εφαρμογές"</string>
+<string name="dialog_two_factor_cancel">"Όχι τώρα"</string>
+<string name="dialog_two_factor_create_password">"Δημιουργία συνθηματικού"</string>
+<string name="dialog_title_two_factor">"Πιστοποίηση 2-Βημάτων"</string>
+<string name="dialog_message_two_factor">"Φαίνεται πώς έχεις ενεργοποιήσει την Πιστοποίηση 2-Βημάτων, για τον λογαριασμό σου.
+
+Παρακαλώ, δημιούργησε ένα αποκλειστικό συνθηματικό για την εφαρμογή, για το Yalp Store, και χρησιμοποίησέ το για να συνδεθείς στο Yalp Store.
+
+Άγγιξε το «Δημιουργία Συνθηματικού» για να μεταφερθείς στην σελίδα δημιουργίας του συνθηματικού."</string>
+<string name="dialog_title_logout">"Να γίνει αποσύνδεση;"</string>
+<string name="dialog_message_logout">"Σίγουρα θες να αποσυνδεθείς;"</string>
+<string name="dialog_account_type_provided_by_user">"Με τον δικό μου λογαριασμό της Google"</string>
+<string name="dialog_account_type_predefined">"Με ένα εικονικό λογαριασμό του Yalp Store "</string>
+<string name="dialog_account_type_title">"Πώς θα ήθελες να συνδεθείς στο Google Play Store;"</string>
+<string name="dialog_title_logging_in">"Συνδέεται"</string>
+<string name="dialog_message_logging_in_provided_by_user">"Προσπάθεια σύνδεσης με τα διαπιστευτήρια που εσύ έδωσες"</string>
+<string name="dialog_message_logging_in_predefined">"Προσπάθεια σύνδεσης με διαπιστευτήρια του Yalp Store"</string>
+<string name="error_incorrect_password">"Λανθασμένη διεύθυνση ηλεκτρονικού ταχυδρομείου ή συνθηματικό."</string>
+<string name="error_credentials_empty">"Παρακαλώ, δώσε τα διαπιστευτήρια του λογαριασμού της Google."</string>
+<string name="error_no_network">"Καμία σύνδεση στο δίκτυο."</string>
+<string name="error_network_other">"Σφάλμα δικτύου: %1$s"</string>
+<string name="error_not_purchased">"Δεν φαίνεται να είναι αγορασμένη η εφαρμογή.
+Να γίνει ανακατεύθυνση στη σελίδα της, στο Play Store της Google;"</string>
+<string name="error_downloads_directory_not_writable">"Αδυναμία δημιουργίας του κατάλογου λήψεων, ή αυτός δεν είναι εγγράψιμος."</string>
+<string name="error_token_dispenser_problem">"Αδυναμία σύνδεσης χωρίς λογαριασμό. Ξαναπροσπάθησε, χρησιμοποιώντας τον δικό σου λογαριασμό."</string>
+<string name="details_updated">"Ενημερώθηκε %1$s"</string>
+<string name="details_description">"Περιγραφή:"</string>
+<string name="details_changelog">"Τι νέα:"</string>
+<string name="details_screenshots">"Στιγμιότυπα:"</string>
+<string name="details_reviews">"Αξιολογήσεις:"</string>
+<string name="details_rate_this_app">"Βαθμολόγησε αυτή την εφαρμογή:"</string>
+<string name="details_you_rated_this_app">"Βαθμολόγησες αυτή την εφαρμογή:"</string>
+<string name="details_permissions">"Δικαιώματα:"</string>
+<string name="details_versionName">"Έκδοση %1$s"</string>
+<string name="details_versionName_updatable">"Έκδοση %1$s → %2$s"</string>
+<string name="details_download">"Λήψη"</string>
+<string name="details_install">"Εγκατάσταση"</string>
+<string name="details_downloading">"Γίνεται λήψη…"</string>
+<string name="details_review_dialog_title">"Κάτι άλλο να προσθέσεις;"</string>
+<string name="details_review_dialog_review_title_hint">"εδώ ο τίτλος"</string>
+<string name="details_review_dialog_review_comment_hint">"εδώ το σχόλιο"</string>
+<string name="details_review_dialog_fields_optional">"Μπορείς να τα αφήσεις όλα κενά."</string>
+<string name="details_signature_mismatch">"Η νέα έκδοση είναι υπογεγραμμένη με διαφορετικό κλειδί, από ότι η παλιότερη. Για να εγκαταστήσεις τη νέα έκδοση, θα πρέπει, πρώτα, να απεγκατασταθεί η παλιά. Παρακαλώ, κάνε αυτό, και μετά ξαναδοκίμασε.
+(Σημείωση: η απεγκατάσταση θα σβήσει όλα τα εσωτερικά δεδομένα, που είχαν αποθηκευθεί από την εφαρμογή)"</string>
+<string name="credentials_hint_email">"εδώ η διεύθ. ηλ. ταχυδρομείου"</string>
+<string name="credentials_hint_password">"εδώ το συνθηματικό"</string>
+<string name="credentials_title">"Πρόσβαση στο λογαριασμό Google"</string>
+<string name="credentials_message">"Απαιτούνται η διεύθ. ηλεκ. ταχυδρομείου του λογαριασμού της Γκουγκλ καί το συνθηματικό, ώστε να λειτουργήσει αυτή η εφαρμογή.
+
+Έχε υπόψη σου, πώς η χρήση της παρούσας εφαρμογής παραβιάζει την ToS του Play Store. Πιθανόν, να ήταν καλύτερο να χρησιμοποιήσεις ένα λογαριασμό της Γκουγκλ, «μίας χρήσης», με τον οποίο θα είχες συνδεθεί στο Πλέυ Στορ της Γκουγκλ, τουλάχιστον μία φορά, και με τον οποίο θα είχε γίνει αποδοχή της ToS του Πλέυ Στορ."</string>
+<string name="activity_title_search">"Γίνεται αναζήτηση: \"%1$s\""</string>
+<string name="notification_download_complete">"Η λήψη ολοκληρώθηκε. Άγγιξε για να γίνει εγκατάσταση."</string>
+<string name="notification_download_complete_toast">"Λήφθηκε το %1$s . Άγγιξε το κουμπί εγκατάστασης ή την ειδοποίηση για να γίνει η εγκατάσταση."</string>
+<string name="notification_download_complete_signature_mismatch">"Ολοκληρώθηκε η εγκατάσταση. Όμως, υπάρχει ασυμφωνία των υπογραφών του apk."</string>
+<string name="notification_download_complete_signature_mismatch_toast">"Λήφθηκε το %1$s . Όμως, η υπογραφή του apk δεν ταιριάζει με αυτή της εγκαταστημένης εφαρμογής. Ίσως, θα πρέπει, πρώτα, να την απεγκαταστήσεις."</string>
+<string name="notification_updates_available_title">"Διαθέσιμες ενημερώσεις εφαρμογών."</string>
+<string name="notification_updates_available_message">"Υπάρχουν διαθέσιμες ενημερώσεις για %1$d από τις εφαρμογές σου."</string>
+<string name="pref_auto_install_summary_off">"Οι εφαρμογές εγκαθίστανται, όταν ο χρήστης αγγίζει το μήνυμα της ολοκλήρωσης"</string>
+<string name="pref_auto_install_summary_on">"Οι εφαρμογές εγκαθίστανται μόλις ολοκληρωθεί η λήψη"</string>
+<string name="pref_auto_install">"Άμεση εγκατάσταση των εφαρμογών"</string>
+<string name="pref_update_list_white_or_black_black">"Οι επιλεγμένες εφαρμογές θα αγνοούνται, όταν γίνεται έλεγχος για ενημερώσεις"</string>
+<string name="pref_update_list_white_or_black_white">"Μόνο για τις επιλεγμένες εφαρμογές θα γίνεται έλεγχος για ενημερώσεις"</string>
+<string name="pref_update_list_white_or_black">"Μαύρη ή λευκή λίστα των εφαρμογών προς ενημέρωση"</string>
+<string name="pref_update_list_black">"Αλλαγή της μαύρης λίστας των εφαρμογών"</string>
+<string name="pref_update_list_white">"Αλλαγή της λευκής λίστας των εφαρμογών"</string>
+<string name="pref_ui_theme">"Θέμα"</string>
+<string name="pref_ui_theme_none">"Προεπιλογή"</string>
+<string name="pref_ui_theme_light">"Φωτεινό"</string>
+<string name="pref_ui_theme_dark">"Σκοτεινό"</string>
+<string name="pref_ui_theme_black">"Μαύρο"</string>
+<string name="pref_background_update_interval_never">"Μόνο κατά την εκκίνηση του Yalp Store"</string>
+<string name="pref_background_update_interval_hourly">"Ωριαία"</string>
+<string name="pref_background_update_interval_daily">"Ημερησίως"</string>
+<string name="pref_background_update_interval_weekly">"Εβδομαδιαία"</string>
+<string name="pref_background_update_interval">"Περιοδικός έλεγχος των ενημερώσεων"</string>
+<string name="download_manager_ERROR_UNKNOWN">"Άγνωστο σφάλμα."</string>
+<string name="download_manager_ERROR_FILE_ERROR">"Άγνωστο σφάλμα αποθήκευσης αρχείων."</string>
+<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Λήφθηκε HTTP κώδικας, το οποίο δεν μπορεί να χειριστεί ο διαχειριστής λήψεων. Αυτό είναι ένα πρόβλημα του εξυπηρετητή."</string>
+<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Παρουσιάστηκε σφάλμα στη λήψη ή στην επεξεργασία δεδομένων στο επίπεδο HTTP."</string>
+<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Υπερβολικά πολλές ανακατευθύνσεις"</string>
+<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Ανεπαρκής αποθηκευτικός χώρος."</string>
+<string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Δεν βρέθηκε κάποια εξωτερική συσκευή αποθήκευσης. Ίσως να μην είναι προσαρτημένη η κάρτα SD."</string>
+<string name="download_manager_ERROR_CANNOT_RESUME">"Κάποιο, πιθανά παροδικό, σφάλμα παρουσιάστηκε, και δεν μπορεί να συνεχιστεί η λήψη. Ξαναπροσπάθησε αργότερα."</string>
+<string name="download_manager_ERROR_BLOCKED">"Αποτυχία της λήψης, λόγω ελέγχων του NetworkPolicyManager, πάνω στην ζητούμενη εφαρμογή. Έλεγξε τις ρυθμίσεις σου."</string>
+<string name="search_filter">"Όλες οι εφαρμογές"</string>
+<string name="pref_delete_apk_after_install_summary_off">"Τώρα, τα .apk δεν θα διαγράφονται, μετά από την ολοκλήρωση της εγκατάστασης"</string>
+<string name="pref_delete_apk_after_install_summary_on">"Τώρα, τα .apk θα διαγράφονται, μετά από την ολοκλήρωση της εγκατάστασης"</string>
+<string name="pref_delete_apk_after_install">"Διαγραφή των .apk, μετά από την εγκατάσταση"</string>
+<string name="dialog_title_application_crashed">"Δυστυχώς το Yalp Store κατέρρευσε"</string>
+<string name="details_to_play_store">"Προβολή στο Play Store"</string>
+<string name="action_categories">"Κατηγορίες"</string>
+<string name="list_update_all">"Ενημέρωση όλων"</string>
+<string name="notification_installation_complete">"Η ενημέρωση εγκαταστάθηκε."</string>
+<string name="notification_installation_failed">"Η εγκατάσταση της ενημέρωσης απέτυχε."</string>
+<string name="pref_background_update_install_summary_off">"Λαμβάνεις μόνο μία ειδοποίηση"</string>
+<string name="pref_background_update_install_summary_on">"Οι ενημερώσεις εγκαθίστανται, αν βρεθούν (υπερχρήστης)"</string>
+<string name="pref_background_update_install">"Επίσης, εγκατάσταση των ενημερώσεων (υπερχρήστης)"</string>
+<string name="pref_no_root">"Αυτή η επιλογή είναι διαθέσιμη μόνο σε συσκευές με πρόσβαση υπερχρήστη"</string>
+<string name="list_app_has_ads">"έχει διαφ/εις"</string>
+
+<!-- Try to make it short. -->
+<string name="list_app_no_ads">"χωρίς διαφ/εις"</string>
+<string name="list_app_depends_on_gsf">"GSF εξαρτ/ο"</string>
+<string name="list_app_independent_from_gsf">"GSF ανεξ/ο"</string>
+<string name="details_depends_on">"Εξαρτάται από: %1$s"</string>
+<string name="details_no_dependencies">"τίποτα"</string>
+<string name="details_contains_ads">"Με διαφ/σεις"</string>
+<string name="details_no_ads">"Χωρίς διαφ/σεις"</string>
+<string name="dialog_title_package_id">"Υπάρχει πακέτο με αυτό το όνομα"</string>
+<string name="dialog_message_package_id">"Υπάρχει ένα πακέτο με αυτό, ακριβώς, το όνομα. Θα ήθελες να πας, κατευθείαν, στη σελίδα με τις λεπτομέρειές του;"</string>
+<string name="details_download_checking">"Γίνεται έλεγχος…"</string>
+<string name="details_download_not_available">"Μη διαθέσιμο"</string>
+<string name="manual_download_incompatible">"Το Google Play Store θεωρεί αυτή την εφαρμογή ασυμβίβαστη με τη συσκευή σου. Αυτό σημαίνει πώς δεν επιστράφηκε ο έλεγχος έκδοσης από τον εξυπηρετητή του Google Play Store."</string>
+<string name="manual_download_compatible">"Το πεδίο με τον κωδικό της έκδοσης έχει προ-συμπληρωθεί με την τελευταία συμβατή έκδοση αυτής της εφαρμογής. Αν θέλεις την προγενέστερη έκδοση, απλά εισήγαγε έναν αριθμό μικρότερο από τον τωρινό. Αν ο δημιουργός δεν έχει διαγράψει το πακέτο apk, με την προηγούμενη έκδοση, από το Πλέυ Στορ, ίσως να μπορέσεις να ξεκινήσεις την λήψη."</string>
+<string name="manual_download_warning">"Αυτή η σελίδα σου επιτρέπει να επιλέξεις, χειροκίνητα, την έκδοση της εφαρμογής προς λήψη. Ο κωδικός της έκδοσης είναι ένας αριθμός, που προσδιορίζει την έκδοση μιας εφαρμογής. Ξεκινά με το 1, και αυξάνεται, από τον εκδότη της εφαρμογής, με κάθε νέα έκδοση. Κανονικά, το Πλέυ Στορ σε αφήνει να κατεβάσεις μόνο το τελευταίο apk, το οποίο είναι συμβατό με τη συσκευή σου. Παρέχοντας, χειροκίνητα, αυτό τον αριθμό, ίσως να μπορέσει να λάβεις και άλλες εκδόσεις.
+
+Έχε υπόψη σου, πως η αυθαίρετη λήψη εκδόσεων των εφαρμογών δεν υποστηρίζεται από το Πλέυ Στορ της Γκουγκλ. Η επιτυχία μιας τέτοιας προσπάθειας εξαρτάται από την τυχερή μαντεψιά του κωδικού της έκδοσης. Ακόμη, όμως, και αν μαντέψεις σωστά, και καταφέρεις να ξεκινήσει η λήψη, ίσως να λάβεις ένα μη συμβατό apk.
+
+Κατά πάσα πιθανότητα, απλά ξοδεύεις το χρόνο σου."</string>
+<string name="manual_download_hint_version_code">"εδώ ο κωδικός έκδοση"</string>
+<string name="details_uninstall">"Απεγκατάσταση"</string>
+<string name="notification_download_starting">"Αρχίζει η λήψη"</string>
+<string name="notification_download_progress">"%1$s/%2$s έχουν ληφθεί"</string>
+<string name="pref_requested_language">"Το Play Store ζητά γλώσσα"</string>
+<string name="pref_requested_language_default">"Η προεπιλεγμένη γλώσσα σου"</string>
+<string name="pref_device_to_pretend_to_be">"Προσποίηση διαφορετικής συσκευής"</string>
+<string name="pref_device_to_pretend_to_be_default">"Οι γνήσιες πληροφορίες της συσκευής σου"</string>
+<string name="pref_device_to_pretend_to_be_toast">"Αυτή η αλλαγή θα εφαρμοστεί αφού επανασυνδεθείς"</string>
+<string name="pref_category_updates">"Ενημερώσεις"</string>
+<string name="pref_category_installation">"Εγκατάσταση"</string>
+<string name="pref_category_spoofing">"Πλαστογράφηση"</string>
+<string name="pref_category_ui">"Διεπαφή του χρήστη"</string>
+<string name="details_installing">"Γίνεται εγκατάσταση…"</string>
+<string name="details_installed">"Εγκαταστάθηκε επιτυχώς"</string>
+<string name="details_install_failure">"Δεν μπόρεσε να γίνει εγκατάσταση"</string>
+<string name="notification_download_complete_new_permissions">"Ολοκληρώθηκε η λήψη. Αίτηση νέων δικαιωμάτων."</string>
+<string name="notification_download_complete_new_permissions_toast">"Λήφθηκε το %1$s . Η νέα έκδοση της εφαρμογής ζητά περισσότερα δικαιώματα. Έλεγξε το κατάστιχο με τα νέα δικαιώματα."</string>
+<string name="pref_not_privileged">"Διαθέσιμο, μόνο αν το Γιαλπ είναι εφαρμογή του συστήματος"</string>
+<string name="pref_installation_method">"Μέθοδος εγκατάστασης"</string>
+<string name="pref_installation_method_default">"Προεπιλεγμένος διάλογος εγκατάστασης· χωρίς εγκαταστάσεις στο παρασκήνιο"</string>
+<string name="pref_installation_method_root">"Γίνεται χρήση δικαιωμάτων υπερχρήστη"</string>
+<string name="pref_installation_method_privileged">"Χρησιμοποιούνται διακαιώματα του συστήματος"</string>
+<string name="pref_background_update_download_summary_off">"Λαμβάνεις μόνο μία ειδοποίηση"</string>
+<string name="pref_background_update_download_summary_on">"Οι ενημερώσεις λαμβάνονται, αν υπάρχουν"</string>
+<string name="pref_background_update_download">"Επίσης, να λαμβάνονται και οι ενημερώσεις"</string>
+<string name="details_not_available_on_play_store">"Μη διαθέσιμο στο Play Store"</string>
+<string name="action_manual">"Χειροκίνητη λήψη"</string>
+<string name="action_get_local_apk">"Πάρε το τοπικό apk"</string>
+<string name="details_saved_in_downloads">"Αποθηκεύτηκε στο φάκελο των Downloads"</string>
+<string name="details_could_not_copy_apk">"Αδυναμία αντιγραφής του apk"</string>
+<string name="action_make_system">"Μετατροπή σε εφαρμογή συστήματος"</string>
+<string name="action_make_normal">"Μετατροπή σε κανονική εφαρμογή"</string>
+<string name="list_app_system">"Εφαρμογή του συστήματος"</string>
+<string name="activity_title_updates_only">"Ενημερώσεις"</string>
+<string name="activity_title_updates_and_other_apps">"Οι εφαρμογές σου"</string>
+<string name="details_system_app_info">"Πληροφορίες συστήματος"</string>
+<string name="details_run">"Τρέξιμο"</string>
+<string name="dialog_title_remounting_system">"Εργασία με την κατάτμηση /system"</string>
+<string name="dialog_message_remounting_system">"Γίνεται εργασία με την κατάτμηση /system. Αυτό, ίσως, πάρει λίγο χρόνο."</string>
+<string name="dialog_title_checking_busybox">"Γίνεται έλεγχος για το αν είναι διαθέσιμο το busybox"</string>
+<string name="dialog_message_checking_busybox">"Απαιτούνται ορισμένα εργαλεία του συστήματος, για να γίνει εργασία με τις εφαρμογές του συστήματος. Ελέγχεται το αν είναι διαθέσιμα."</string>
+<string name="dialog_title_busybox_not_available">"Το busybox δεν είναι διαθέσιμο"</string>
+<string name="dialog_message_busybox_not_available">"Μία συσκευή με πρόσβαση υπερχρήστη, και εγκατεστημένο το busybox, είναι απαραίτητη για εργασία με τις εφαρμογές του συστήματος.
+
+Να γίνει, τώρα, αναζήτηση για έναν εγκαταστάτη του busybox;"</string>
+<string name="dialog_title_reboot_required">"Απαιτείται επανεκκίνηση"</string>
+<string name="dialog_message_reboot_required">"Οι αλλαγές θα εφαρμοστούν μετά από επανεκκίνηση. Να γίνει επανεκκίνηση, τώρα;"</string>
+<string name="dialog_title_system_app_warning">"Προειδοποίηση."</string>
+<string name="dialog_message_system_app_warning_to_system">"Έχεις επιλέξει να μετατρέψεις την εφαρμογή σε εφαρμογή του συστήματος. Οι περισσότερες εφαρμογές δεν το χρειάζονται αυτό για να λειτουργήσουν.
+
+Έχε υπόψη σου πως η διαδικασία μετατροπής ΔΕΝ υποστηρίζεται από το Λειτουργικό Σύστημα του Ανντρόιντ, και, κατά συνέπεια, ΔΕΝ είναι ασφαλής, και ΔΕΝ υπάρχει εγγύηση επιτυχίας.
+
+Μην το κάνεις από περιέργεια. Ίσως να διαλύσει την συσκευή σου. Πάρε αντίγραφο ασφαλείας της συσκευής σου, πριν το επιχειρήσεις."</string>
+<string name="dialog_message_system_app_warning_to_normal">"Έχεις επιλέξει να μετατρέψεις την μία εφαρμογή του συστήματος σε κανονική εφαρμογή. Οι περισσότερες εφαρμογές του συστήματος απαιτείται να είναι εφαρμογές του συστήματος, για να μπορούν να λειτουργήσουν.
+
+Έχε υπόψη σου πως η διαδικασία μετατροπής ΔΕΝ υποστηρίζεται από το Λειτουργικό Σύστημα του Ανντρόιντ, και, κατά συνέπεια, ΔΕΝ είναι ασφαλής, και ΔΕΝ υπάρχει εγγύηση επιτυχίας.
+
+Μην το κάνεις από περιέργεια. Ίσως να διαλύσει την συσκευή σου. Πάρε αντίγραφο ασφαλείας της συσκευής σου, πριν το επιχειρήσεις."</string>
+<string name="list_check_updates">"Έλεγχος  για ενημερώσεις"</string>
+<string name="pref_background_update_interval_manually">"Μόνο χειροκίνητα"</string>
+<string name="dialog_message_system_app_warning_uninstall">"Είσαι σίγουρος, πως θες να απομακρύνεις αυτή την εφαρμογή του συστήματος; Οι εφαρμογές του συστήματος εγκαθίστανται στη συσκευή σου από τον προμηθευτή της συσκευής. Κατά πάσα πιθανότητα, απαιτούνται, ώστε η συσκευή σου να λειτουργεί, κατά το πώς είναι σχεδιασμένη.
+
+Έχε υπόψη σου πως η διαδικασία μετατροπής ΔΕΝ υποστηρίζεται από το Λειτουργικό Σύστημα του Ανντρόιντ, και, κατά συνέπεια, ΔΕΝ είναι ασφαλής, και ΔΕΝ υπάρχει εγγύηση επιτυχίας. 
+
+Μην το κάνεις από περιέργεια. Ίσως να διαλύσει την συσκευή σου. Πάρε αντίγραφο ασφαλείας της συσκευής σου, πριν το επιχειρήσεις. "</string>
+<string name="dialog_title_system_app_self">"Μετατρέπεται το Γιαλπ σε εφαρμογή του συστήματος"</string>
+<string name="dialog_message_system_app_self">"Η χρήση προνομιακών δικαιωμάτων που επιτρέπουν την εγκατάσταση, στο παρασκήνιο, εφαρμογών, απαιτεί να μετατραπεί το Γιαλπ Στορ σε εφαρμογή του συστήματος.
+
+Η διαδικασία δεν είναι τέλεια, και εξαρτάται από το που έχει γίνει η προμήθεια της όποιας συσκευής. Μπορεί να μην δουλέψει.
+
+Να το κάνουμε;"</string>
+<string name="about_website_label">"Ιστότοπος:"</string>
+<string name="details_share">"Να γυρίζει"</string>
+<string name="details_developer">"Δημιουργός: %1$s"</string>
+<string name="pref_background_update_wifi_only">"Μόνο με Γουάι-Φάι"</string>
+<string name="about_bitcoin_label">"Δωρεά με Μπίτκόιν:"</string>
+<string name="action_bug_report">"Αναφορά προβλήματος"</string>
+<string name="dialog_title_spoof_request">"Αίτημα"</string>
+<string name="dialog_message_spoof_request">"Η πλαστογράφηση των συσκευών είναι δυνατή, επειδή χρήστες, όπως εσύ, υποβάλουν αναφορές σφαλμάτων που περιέχουν πληροφορίες της συσκευής. Αν θες οι προσδιορισμοί να είναι ακριβείς και ενημερωμένοι, παρακαλώ, άγγιξε το Εντάξει, και οι πληροφορίες της συσκευής σου θα σταλούν στον προγραμματιστή του Γιαλπ Στορ."</string>
+<string name="pref_device_to_pretend_to_be_notice">"Αν βάλεις τα στοιχεία προσδιορισμού της συσκευής στο %1$s , αυτά θα εμφανίζονται σε αυτό το κατάστιχο"</string>
+<string name="pref_no_images">"Λήψη των εικόνων μόνο με το Γουάι-Φάι"</string>
+<string name="pref_no_images_summary_off">"Οι εικόνες λαμβάνονται πάντα, τώρα"</string>
+<string name="pref_no_images_summary_on">"Οι εικόνες λαμβάνονται μόνο με το Γουάι-Φάι"</string>
+<string name="bug_report_hint_message">"Λεπτομερής περιγραφή του προβλήματος"</string>
+<string name="bug_report_hint_identification">"Η διεύθυνση του ηλεκτρονικού ταχυδρομείου σου, ή το όνομα, ή οτιδήποτε (προαιρετικό)"</string>
+<string name="bug_report_explanation_content">"Πληροφορίες για τη συσκευή σου, καταγραφές και κάποιες προτιμήσεις του Γιαλπ Στορ, θα προστεθούν αυτόματα στο μήνυμά σου. Δεν συλλέγονται προσωπικές και ευαίσθητες πληροφορίες."</string>
+<string name="bug_report_explanation_crash">"Μπορείς να βοηθήσεις στο να το διορθώσουμε αυτό, στέλνοντας μία αναφορά δυσλειτουργίας στον προγραμματιστή. Παρακαλώ, περιέγραψε αυτό που προσπαθούσες να κάνεις, όταν συνέβη το σφάλμα, και άγγιξε στο Εντάξει, για να το στείλεις."</string>
+<string name="bug_report_explanation_bug_report">"Παρακαλώ περιέγραψε το πρόβλημα. Δώσε όσο γίνεται περισσότερες λεπτομέρειες. Μήπως το πρόβλημα συμβαίνει με κάποια συγκεκριμένη εφαρμογή; Μήπως συμβαίνει πάντοτε, ή μήπως μόνο μερικές φορές; Πώς μπορεί να αναπαραχθεί;"</string>
+<string name="thank_you">"Σε ευχαριστούμε"</string>
+<string name="list_updating">"Γίνεται ενημέρωση…"</string>
+<string name="error_invalid_device_definition">"Ο προσδιορισμός της συσκευής απορρίφθηκε."</string>
+<string name="details_video">"Βίντεο"</string>
+<string name="error_could_not_download">"Δεν μπόρεσε να γίνει η λήψη."</string>
+<string name="first_login_message">"Για να χρησιμοποιήσεις τον δικό σου λογαριασμό, επέλεξε την Αποσύνδεση, στο μενού"</string>
+<string name="early_access">"Πρώιμη πρόσβαση"</string>
+<string name="testing_program_opt_in">"συμμετοχή"</string>
+<string name="testing_program_opt_out">"αποχώρηση"</string>
+<string name="testing_program_section_opted_in_message">"Οι ενημερώσεις της εφαρμογής θα περιλαμβάνουν εκδόσεις beta. Εάν εγκαταλείψεις το πρόγραμμα beta, αυτής της εφαρμογής, δεν θα λαμβάνεις, πλέον, ενημερώσεις beta."</string>
+<string name="testing_program_section_opted_in_propagating_message">"Σε λίγα λεπτά, θα προστεθείς στο πρόγραμμα beta. Μετά, θα μπορείς να ενημερώσεις αυτή την εφαρμογή στην beta έκδοσή της, εάν είναι διαθέσιμη."</string>
+<string name="testing_program_section_opted_in_title">"Είσαι δοκιμαστής της beta"</string>
+<string name="testing_program_section_opted_out_message">"Δοκίμασε νέες λειτουργίες προτού γίνουν δημόσια διαθέσιμες. Στείλε τα σχόλιά σου απευθείας στον προγραμματιστή."</string>
+<string name="testing_program_section_opted_out_propagating_message">"Μπορεί να χρειαστούν μερικά λεπτά για την απομάκρυνσή σου από το πρόγραμμα beta."</string>
+<string name="testing_program_section_opted_out_title">"Γίνε δοκιμαστής της beta"</string>
+<string name="notification_not_privileged">"Δεν έχουν παραχωρηθεί δικαιώματα εγκατάστασης"</string>
+<string name="pref_download_directory">"Κατάλογος λήψεων"</string>
+<string name="pref_download_deltas">"Ενημερώσεις Δέλτα"</string>
+<string name="pref_download_deltas_summary_off">"Το πλήρες apk λαμβάνεται την κάθε φορά"</string>
+<string name="pref_download_deltas_summary_on">"Μόνο οι αλλαγές λαμβάνονται κατά τις ενημερώσεις"</string>
+<string name="testing_program_review_dialog_content_hint">"Εισάγετε σχόλια σχετικά με την εφαρμογή"</string>
+<string name="delete">"Διαγραφή"</string>
+<string name="submit">"Υποβολή"</string>
+<string name="done">"Τέλος"</string>
+<string name="availability_restriction_carrier">"Αυτό το αντικείμενο δεν είναι διαθέσιμο στην εταιρεία κινητής τηλεφωνίας σας."</string>
+<string name="availability_restriction_country">"Αυτό το στοιχείο δεν είναι διαθέσιμο στη χώρα σας."</string>
+<string name="availability_restriction_country_or_carrier">"Αυτό το αντικείμενο δεν είναι διαθέσιμο στη χώρα σας ή στην εταιρεία κινητής τηλεφωνίας σας."</string>
+<string name="availability_restriction_for_managed_account">"Ο διαχειριστής σας δεν σας έχει παραχωρήσει πρόσβαση σε αυτό το στοιχείο."</string>
+<string name="availability_restriction_generic">"Δεν είναι διαθέσιμο."</string>
+<string name="availability_restriction_hardware">"Η συσκευή σας δεν είναι συμβατή με αυτό το στοιχείο."</string>
+<string name="availability_restriction_hardware_app">"Η συσκευή σας δεν είναι συμβατή με αυτήν την έκδοση."</string>
+<string name="availability_restriction_hardware_app_ram_generic">"Αυτή η εφαρμογή απαιτεί περισσότερη μνήμη RAM από ό,τι είναι διαθέσιμη στη συσκευή σας."</string>
+<string name="availability_restriction_missing_permission">"Ο διαχειριστής σας δεν έχει αποδεχτεί τα δικαιώματα γι' αυτό το στοιχείο."</string>
+<string name="availability_restriction_not_in_group">"Δεν ανήκετε στη στοχευμένη ομάδα αυτού του στοιχείου."</string>
+<string name="flag_graphic_violence">"Σκληρή βία"</string>
+<string name="flag_harmful_prompt">"Περιγράψτε τη ζημιά που προκλήθηκε στη συσκευή ή τα δεδομένα σας:"</string>
+<string name="flag_harmful_to_device">"Επιβλ.για τη συσκ. ή τα δεδομ."</string>
+<string name="flag_hateful_content">"Περιεχόμενο μίσους ή βίας"</string>
+<string name="flag_improper_content_rating">"Αξιολόγ. ακατάλληλου περιεχομ."</string>
+<string name="flag_other_concern_prompt">"Περιγράψτε την ένσταση"</string>
+<string name="flag_other_objection">"Άλλη ένσταση"</string>
+<string name="flag_page_description">"Ο λόγος για τον οποίο θεωρείτε αυτό το περιεχόμενο ή την εφαρμογή μη αποδεκτά:"</string>
+<string name="flag_pharma_content">"Παράνομη συνταγή/άλλο φάρμακο"</string>
+<string name="flag_sexual_content">"Σεξουαλικό περιεχόμενο"</string>
+<string name="flag_impersonation_copycat">"Απομίμηση ή προσποίηση"</string>
+<string name="flagging_title">"Επισήμανση ως ακατάλληλου"</string>
+<string name="content_flagged">"Η ένσταση υποβλήθηκε."</string>
+<string name="list_app_blacklisted">"Στο μαύρο κατάστιχο"</string>
+<string name="list_app_whitelisted">"Στο λευκό κατάστιχο"</string>
+<string name="action_filter">"Φίλτρο"</string>
+<string name="action_filter_system_apps">"Συστημικές εφαρμογές"</string>
+<string name="action_filter_apps_with_ads">"Εφαρμογές με διαφημίσεις"</string>
+<string name="action_filter_paid_apps">"Εφαρμογές επί πληρωμή"</string>
+<string name="action_filter_gsf_dependent_apps">"GSF εξαρτώμενες εφαρμογές"</string>
+<string name="action_filter_category">"Κατηγορία: %1$s"</string>
+<string name="action_filter_rating">"Αξιολόγηση: %1$s"</string>
+<string name="action_filter_downloads">"Λήψεις: %1$s"</string>
+<string name="pref_auto_whitelist">"Αυτόματη τοποθέτηση στο λευκό κατάστιχο"</string>
+<string name="pref_auto_whitelist_summary_on">"Οι εφαρμογές, που εγκαθίστανται από το Γιαλπ Στορ, τοποθετούνται στο λευκό κατάστιχο, αυτομάτως"</string>
+<string name="pref_auto_whitelist_summary_off">"Θα πρέπει να τοποθετείς τις εφαρμογές στο λευκό κατάστιχο χειροκίνητα"</string>
+<string name="apps_by">"Εφαρμογές από %1$s"</string>
+<string name="pref_message_fallback">"Να επιχειρηθεί ο ορισμός ενός εφεδρικού κατάλογου (%1$s) ;"</string>
+<string name="no_permissions">"Δεν χρησιμοποιείται καμία άδεια."</string>
+<string name="about_librepay_label">"Δωρεά μέσω Librepay:"</string>
+<string name="notification_file_verification_failed">"Φαίνεται τα αρχείο να είναι φθαρμένο. Δοκίμασε να το κατεβάσεις, ξανά."</string>
+<string name="pref_download_internal_storage">"Λήψη στην εσωτερική αποθήκη"</string>
+<string name="pref_download_internal_storage_summary_on">"Πιο ασφαλές, αλλά τα αρχεία .apk των εφαρμογών δεν είναι προσβάσιμα από το χρήστη"</string>
+<string name="pref_download_internal_storage_summary_off">"Τα αρχεία .apk των εφαρμογών κατεβαίνουν στη διαδρομή της εξωτερικής αποθήκης, η οποία παρέχεται παρακάτω"</string>
+<string name="pref_use_tor">"Χρήση Tor"</string>
+<string name="pref_use_tor_summary">"Αναγκαστική λήψη μέσω του δικτύου Tor για αυξημένη ιδιωτικότητα. Απαιτείται εγκατάσταση του Orbot"</string>
+<string name="pref_category_proxy">"Διακομιστής μεσολάβησης (Proxy)"</string>
+<string name="pref_proxy_enable">"Ενεργοποίηση μεσολαβητή (proxy)"</string>
+<string name="pref_proxy_type">"Μορφή μεσολαβητή"</string>
+<string name="pref_proxy_host">"Οικοδεσπότης μεσολαβητή"</string>
+<string name="pref_proxy_port">"Θύρα μεσολαβητή"</string>
+<string name="action_wishlist_remove">"Κατάργηση από λίστα επιθυμιών"</string>
+<string name="action_wishlist_add">"Προσθήκη στη λίστα επιθυμητών"</string>
+<string name="action_wishlist">"Λίστα επιθυμιών"</string>
+<string name="action_ignore_this">"Αγνόησε αυτή την ενημέρωση"</string>
+
+
+
+
+
+
+
+
+
+
+<string name="details_instant_app">"Instant Εφαρμογή"</string>
+<string name="details_new_permission">"Νέα:"</string>
+</resources>

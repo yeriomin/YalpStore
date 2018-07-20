@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array translatable="false" name="blackOrWhiteValues">
+        <item>black</item>
+        <item>white</item>
+    </string-array>
+    <string-array name="blackOrWhiteLabels">
+        <item>@string/pref_update_list_white_or_black_black</item>
+        <item>@string/pref_update_list_white_or_black_white</item>
+    </string-array>
+    <string-array translatable="false" name="uiThemeValues">
+        <item>none</item>
+        <item>light</item>
+        <item>dark</item>
+        <item>black</item>
+    </string-array>
+    <string-array name="uiThemeLabels">
+        <item>@string/pref_ui_theme_none</item>
+        <item>@string/pref_ui_theme_light</item>
+        <item>@string/pref_ui_theme_dark</item>
+        <item>@string/pref_ui_theme_black</item>
+    </string-array>
+    <string-array translatable="false" name="updateIntervalValues">
+        <item>-1</item>
+        <item>3600000</item>
+        <item>86400000</item>
+        <item>604800000</item>
+    </string-array>
+    <string-array name="updateIntervalLabels">
+        <item>@string/pref_background_update_interval_manually</item>
+        <item>@string/pref_background_update_interval_hourly</item>
+        <item>@string/pref_background_update_interval_daily</item>
+        <item>@string/pref_background_update_interval_weekly</item>
+    </string-array>
+    <string-array name="accountType">
+        <item>@string/dialog_account_type_provided_by_user</item>
+        <item>@string/dialog_account_type_predefined</item>
+    </string-array>
+    <string-array translatable="false" name="installationMethodValues">
+        <item>default</item>
+        <item>root</item>
+        <item>privileged</item>
+    </string-array>
+    <string-array name="installationMethodLabels">
+        <item>@string/pref_installation_method_default</item>
+        <item>@string/pref_installation_method_root</item>
+        <item>@string/pref_installation_method_privileged</item>
+    </string-array>
+    <string-array translatable="false" name="filterRatingValues">
+        <item>0</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4.5</item>
+    </string-array>
+    <string-array translatable="false" name="filterRatingLabels">
+        <item>@string/search_filter</item>
+        <item>>3★</item>
+        <item>>4★</item>
+        <item>>4.5★</item>
+    </string-array>
+    <string-array translatable="false" name="filterDownloadsValues">
+        <item>0</item>
+        <item>100</item>
+        <item>1000</item>
+        <item>10000</item>
+        <item>100000</item>
+        <item>1000000</item>
+        <item>10000000</item>
+        <item>100000000</item>
+    </string-array>
+    <string-array translatable="false" name="filterDownloadsLabels">
+        <item>@string/search_filter</item>
+        <item>>100↓</item>
+        <item>>1K↓</item>
+        <item>>10K↓</item>
+        <item>>100K↓</item>
+        <item>>1M↓</item>
+        <item>>10M↓</item>
+        <item>>100M↓</item>
+    </string-array>
+    <string-array translatable="false" name="proxyTypeValues">
+        <item>HTTP</item>
+        <item>SOCKS</item>
+    </string-array>
+</resources>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.yeriomin.yalpstore.widget.ExpansionPanel
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:headerText="@string/details_reviews"
+    android:id="@+id/reviews_panel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:elevation="2dp"
+    android:background="?attr/colorDetailsItemBackground">
+
+    <FrameLayout
+        android:id="@+id/user_review_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="6dip" >
+
+        <LinearLayout
+            android:id="@+id/user_review_edit_delete"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/user_review_edit"
+                android:contentDescription="@string/content_description_review_edit"
+                android:src="@drawable/ic_edit"
+                android:layout_width="32dip"
+                android:layout_height="32dip" />
+
+            <ImageView
+                android:id="@+id/user_review_delete"
+                android:contentDescription="@string/content_description_review_delete"
+                android:src="@drawable/ic_delete"
+                android:layout_width="32dip"
+                android:layout_height="32dip" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/rate"
+                    android:text="@string/details_rate_this_app"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RatingBar
+                    android:id="@+id/user_stars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stepSize="1"
+                    android:numStars="5" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/user_review"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/user_title"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/user_comment"
+                    android:textSize="12sp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/average_rating"
+            android:textSize="40sp"
+            android:paddingStart="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingEnd="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/average_stars5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/average_stars4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/average_stars3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/average_stars2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/average_stars1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/reviews_previous"
+            android:contentDescription="@string/content_description_review_previous_page"
+            android:src="@drawable/ic_chevron_left"
+            android:visibility="invisible"
+            android:background="#0000"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/reviews_list"
+            android:layout_weight="1"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <ImageButton
+            android:id="@+id/reviews_next"
+            android:contentDescription="@string/content_description_review_next_page"
+            android:src="@drawable/ic_chevron_right"
+            android:background="#0000"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</com.github.yeriomin.yalpstore.widget.ExpansionPanel>
