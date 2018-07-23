@@ -60,6 +60,7 @@ public class ReviewAddTask extends PlayStorePayloadTask<Review> {
 
     @Override
     protected void onPostExecute(Review review) {
+        super.onPostExecute(review);
         if (success()) {
             fragment.fillUserReview(review);
         } else {
