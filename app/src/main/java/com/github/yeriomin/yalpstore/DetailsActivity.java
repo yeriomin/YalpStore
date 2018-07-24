@@ -33,7 +33,9 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.GooglePlayException;
+import com.github.yeriomin.playstoreapi.ReviewResponse;
 import com.github.yeriomin.yalpstore.fragment.ButtonCancel;
 import com.github.yeriomin.yalpstore.fragment.ButtonDownload;
 import com.github.yeriomin.yalpstore.fragment.ButtonInstall;
@@ -42,11 +44,13 @@ import com.github.yeriomin.yalpstore.fragment.ButtonUninstall;
 import com.github.yeriomin.yalpstore.fragment.DownloadMenu;
 import com.github.yeriomin.yalpstore.fragment.details.AllFragments;
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.ReviewBuilder;
 import com.github.yeriomin.yalpstore.task.playstore.CloneableTask;
 import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
 
 import java.io.IOException;
 
+import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL;
 import static com.github.yeriomin.yalpstore.task.playstore.PurchaseTask.UPDATE_INTERVAL;
 
 public class DetailsActivity extends YalpStoreActivity {
@@ -197,6 +201,18 @@ public class DetailsActivity extends YalpStoreActivity {
             task.setPackageName(packageName);
             task.setProgressIndicator(progressIndicator);
             return task;
+        }
+
+        @Override
+        protected App getResult(GooglePlayAPI api, String... arguments) throws IOException {
+            App app = super.getResult(api, arguments);
+            if (null == app.getUserReview() && !PreferenceUtil.getBoolean(context, PREFERENCE_APP_PROVIDED_EMAIL)) {
+                ReviewResponse reviewResponse = api.getReview(app.getPackageName());
+                if (reviewResponse.hasGetResponse() && reviewResponse.getGetResponse().getReviewCount() == 1) {
+                    app.setUserReview(ReviewBuilder.build(reviewResponse.getGetResponse().getReview(0)));
+                }
+            }
+            return app;
         }
 
         @Override

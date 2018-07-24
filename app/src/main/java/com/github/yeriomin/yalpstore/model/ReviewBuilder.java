@@ -27,7 +27,7 @@ public class ReviewBuilder {
         review.setTitle(reviewProto.getTitle());
         review.setRating(reviewProto.getStarRating());
         review.setUserName(reviewProto.getAuthor2().getName());
-        review.setUserPhotoUrl(reviewProto.getAuthor2().getUrls().getUrl());
+        review.setUserPhotoUrl(reviewProto.getAuthor2().getAvatar().getImageUrl());
         review.setGooglePlusUrl(reviewProto.getAuthor2().getGooglePlusUrl());
         return review;
     }
