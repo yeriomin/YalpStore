@@ -20,10 +20,14 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.WishlistActivity;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
@@ -58,6 +62,7 @@ public class Wishlist extends Abstract {
         ImageView wishlistButton = activity.findViewById(R.id.wishlist);
         wishlistButton.setVisibility(View.VISIBLE);
         wishlistButton.setImageResource(YalpStoreApplication.wishlist.contains(packageName) ? R.drawable.ic_wishlist_tick : R.drawable.ic_wishlist_plus);
+        wishlistButton.setColorFilter(Util.getColor(activity, android.R.attr.textColorSecondary), PorterDuff.Mode.SRC_IN);
         wishlistButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

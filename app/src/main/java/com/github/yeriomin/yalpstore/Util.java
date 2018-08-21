@@ -20,6 +20,10 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
 
 import java.io.Closeable;
 import java.io.File;
@@ -44,6 +48,17 @@ public class Util {
         siPrefixes.put(6, "M");
         siPrefixes.put(9, "G");
         siPrefixes.put(12, "T");
+    }
+
+    static public int getColor(Context context, int attrId) {
+        TypedValue outValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        boolean wasResolved = theme.resolveAttribute(attrId, outValue, true);
+        if (wasResolved) {
+            return outValue.resourceId == 0 ? outValue.data : ContextCompat.getColor(context, outValue.resourceId);
+        } else {
+            return Color.BLACK;
+        }
     }
 
     static public Map<String, String> sort(Map<String, String> unsorted) {
