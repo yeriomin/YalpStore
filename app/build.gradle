@@ -6,9 +6,14 @@ android {
 
     def getVersionName = { ->
         def stdout = new ByteArrayOutputStream()
-        exec {
-            commandLine 'git', 'describe', '--tags'
-            standardOutput = stdout
+        try {
+            exec {
+                commandLine 'git', 'describe', '--tags'
+                standardOutput = stdout
+            }
+        } catch (Throwable e) {
+            println "Could not get git commit info for the version name: " + e.message
+            return "0." + (android.defaultConfig.versionCode > 1000 ? (android.defaultConfig.versionCode - 1000) : android.defaultConfig.versionCode) + "-nogit"
         }
         return stdout.toString().trim()
     }
@@ -32,9 +37,11 @@ android {
     productFlavors {
         legacy {
             dimension "minApi"
+            versionName getVersionName() + "-legacy"
         }
         contemporary {
             dimension "minApi"
+            versionName getVersionName() + "-contemporary"
             minSdkVersion 14
             versionCode (1000 + android.defaultConfig.versionCode)
         }
