@@ -22,7 +22,7 @@ package com.github.yeriomin.yalpstore;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
+import android.os.Build;
 import android.util.TypedValue;
 
 import java.io.Closeable;
@@ -55,7 +55,13 @@ public class Util {
         Resources.Theme theme = context.getTheme();
         boolean wasResolved = theme.resolveAttribute(attrId, outValue, true);
         if (wasResolved) {
-            return outValue.resourceId == 0 ? outValue.data : ContextCompat.getColor(context, outValue.resourceId);
+            return outValue.resourceId == 0
+                ? outValue.data
+                : (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                    ? context.getColor(outValue.resourceId)
+                    : context.getResources().getColor(outValue.resourceId)
+                )
+            ;
         } else {
             return Color.BLACK;
         }
