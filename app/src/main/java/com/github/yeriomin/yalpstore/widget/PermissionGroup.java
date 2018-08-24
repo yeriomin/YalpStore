@@ -26,6 +26,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
 import android.content.res.Resources;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -37,6 +38,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.view.DialogWrapper;
 
 import java.util.ArrayList;
@@ -86,7 +88,9 @@ public class PermissionGroup extends LinearLayout {
 
     public void setPermissionGroupInfo(final PermissionGroupInfo permissionGroupInfo) {
         this.permissionGroupInfo = permissionGroupInfo;
-        ((ImageView) findViewById(R.id.permission_group_icon)).setImageDrawable(getPermissionGroupIcon(permissionGroupInfo));
+        ImageView permissionGroupIcon = findViewById(R.id.permission_group_icon);
+        permissionGroupIcon.setImageDrawable(getPermissionGroupIcon(permissionGroupInfo));
+        permissionGroupIcon.setColorFilter(Util.getColor(getContext(), android.R.attr.textColorSecondary), PorterDuff.Mode.SRC_IN);
     }
 
     public void setPermissions(Set<PermissionInfo> permissions) {
