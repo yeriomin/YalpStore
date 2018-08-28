@@ -37,6 +37,7 @@
                 <TextView
                     android:id="@+id/displayName"
                     android:textSize="18sp"
+                    android:transitionName="@string/details_transition_view_name_text"
                     android:textIsSelectable="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

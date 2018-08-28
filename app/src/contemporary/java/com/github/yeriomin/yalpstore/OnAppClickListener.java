@@ -21,9 +21,11 @@ package com.github.yeriomin.yalpstore;
 
 import android.os.Build;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.model.App;
 
@@ -44,11 +46,18 @@ class OnAppClickListener implements AdapterView.OnItemClickListener {
         DetailsActivity.app = app;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ImageView iconView = view.findViewById(R.id.icon);
-            String transitionName = activity.getString(R.string.details_transition_view_name);
-            iconView.setTransitionName(transitionName);
+            String transitionNameIcon = activity.getString(R.string.details_transition_view_name);
+            iconView.setTransitionName(transitionNameIcon);
+            TextView textView = view.findViewById(R.id.text1);
+            String transitionNameText = activity.getString(R.string.details_transition_view_name_text);
+            textView.setTransitionName(transitionNameText);
             activity.startActivity(
                 DetailsActivity.getDetailsIntent(activity, DetailsActivity.app.getPackageName()),
-                ActivityOptionsCompat.makeSceneTransitionAnimation(activity, iconView, transitionName).toBundle()
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    activity,
+                    new Pair<View, String>(iconView, transitionNameIcon),
+                    new Pair<View, String>(textView, transitionNameText)
+                ).toBundle()
             );
         } else {
             activity.startActivity(DetailsActivity.getDetailsIntent(activity, DetailsActivity.app.getPackageName()));
