@@ -58,7 +58,10 @@ public class NetworkUtil {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
             return (HttpURLConnection) url.openConnection();
         }
-        return NetCipher.getHttpURLConnection(url, true);
+        // Depending on android version, turning compatibility mode off causes connection failures.
+        // Since google servers are well maintained and don't have weak ciphers on,
+        // turning compatibility on for google servers only should not be a problem.
+        return NetCipher.getHttpURLConnection(url, url.getHost().endsWith("google.com"));
     }
 
     static public boolean isNetworkAvailable(Context context) {
