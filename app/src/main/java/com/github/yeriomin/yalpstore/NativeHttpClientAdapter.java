@@ -38,7 +38,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
@@ -187,18 +186,23 @@ public class NativeHttpClientAdapter extends HttpClientAdapter {
     }
 
     static private void processHttpErrorCode(int code, byte[] content) throws GooglePlayException {
+        if (code < 400) {
+            return;
+        }
+        GooglePlayException e = new GooglePlayException("Client error " + code, code);
         if (code == 401 || code == 403) {
-            AuthException e = new AuthException("Auth error", code);
+            e = new AuthException("Auth error", code);
             Map<String, String> authResponse = GooglePlayAPI.parseResponse(new String(content));
             if (authResponse.containsKey("Error") && authResponse.get("Error").equals("NeedsBrowser")) {
-                e.setTwoFactorUrl(authResponse.get("Url"));
+                ((AuthException) e).setTwoFactorUrl(authResponse.get("Url"));
             }
-            throw e;
+        } else if (code == 429) {
+            e = new GooglePlayException("You are making too many requests, try again later", code);
         } else if (code >= 500) {
-            throw new GooglePlayException("Server error", code);
-        } else if (code >= 400) {
-            throw new GooglePlayException("Malformed request", code);
+            e = new GooglePlayException("Server error " + code, code);
         }
+        e.setRawResponse(content);
+        throw e;
     }
 
     static private byte[] readFully(InputStream inputStream, boolean gzipped) throws IOException {
