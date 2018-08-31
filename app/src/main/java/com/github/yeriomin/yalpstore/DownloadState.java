@@ -27,7 +27,6 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.HttpURLConnectionDownloadTask;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -85,25 +84,21 @@ public class DownloadState {
     }
 
     public boolean isEverythingFinished() {
-        boolean isEverythingFinished = true;
         for (Long downloadId: status.keySet()) {
             if (status.get(downloadId).equals(Status.STARTED)) {
-                isEverythingFinished = false;
-                break;
+                return false;
             }
         }
-        return isEverythingFinished;
+        return true;
     }
 
     public boolean isEverythingSuccessful() {
-        boolean isEverythingSuccessful = true;
         for (Long downloadId: status.keySet()) {
             if (!status.get(downloadId).equals(Status.SUCCESSFUL)) {
-                isEverythingSuccessful = false;
-                break;
+                return false;
             }
         }
-        return isEverythingSuccessful;
+        return true;
     }
 
     public void setStarted(long downloadId) {
@@ -181,10 +176,8 @@ public class DownloadState {
     }
 
     public void reset() {
-        progress = new HashMap<>();
-        for (Long downloadId: status.keySet()) {
-            setCancelled(downloadId);
-        }
+        progress.clear();
+        status.clear();
         apkChecksum = null;
     }
 

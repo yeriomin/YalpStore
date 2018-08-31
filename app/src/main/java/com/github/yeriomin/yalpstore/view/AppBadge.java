@@ -20,6 +20,7 @@
 package com.github.yeriomin.yalpstore.view;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,6 +30,7 @@ import android.widget.TextView;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.ListItemDownloadProgressUpdater;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.fragment.ButtonCancel;
 import com.github.yeriomin.yalpstore.fragment.ButtonDownload;
@@ -103,6 +105,10 @@ public abstract class AppBadge extends ListItem {
         }
         view.findViewById(R.id.more).setVisibility(View.GONE);
         ((TextView) view.findViewById(R.id.more_progress)).setText("");
+        LinearLayout backgroundDownloadProgress = view.findViewById(R.id.download_progress_container);
+        if (null != backgroundDownloadProgress) {
+            backgroundDownloadProgress.setVisibility(View.GONE);
+        }
     }
 
     public void setProgress(int progress, int max) {
@@ -111,6 +117,11 @@ public abstract class AppBadge extends ListItem {
         }
         view.findViewById(R.id.more).setVisibility(View.VISIBLE);
         enableCancelButton();
+        LinearLayout backgroundDownloadProgress = view.findViewById(R.id.download_progress_container);
+        if (null != backgroundDownloadProgress) {
+            backgroundDownloadProgress.setVisibility(View.VISIBLE);
+            ((LinearLayout.LayoutParams) view.findViewById(R.id.download_progress).getLayoutParams()).weight = (int) (((float) progress/max)*100);
+        }
         ((TextView) view.findViewById(R.id.more_progress)).setText(((int) (((float) progress/max)*100)) + "%");
     }
 
@@ -121,7 +132,9 @@ public abstract class AppBadge extends ListItem {
         LinearLayout more = view.findViewById(R.id.more);
         more.setVisibility(View.VISIBLE);
         more.setOnClickListener(listener);
-        ((ImageView) more.findViewById(R.id.more_image)).setImageResource(drawableResId);
+        ImageView moreImage = more.findViewById(R.id.more_image);
+        moreImage.setImageResource(drawableResId);
+        moreImage.setColorFilter(Util.getColor(more.getContext(), android.R.attr.textColorSecondary), PorterDuff.Mode.SRC_IN);
     }
 
     protected void enableCancelButton() {

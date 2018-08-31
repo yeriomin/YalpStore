@@ -1,7 +1,29 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal" >
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/download_progress_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="100"
+        android:alpha="0.2" >
+
+        <View
+            android:id="@+id/download_progress"
+            android:layout_weight="0"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:background="?android:colorAccent" />
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="0px"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/app"
