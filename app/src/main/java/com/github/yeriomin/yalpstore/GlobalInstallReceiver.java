@@ -102,7 +102,6 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
             case ACTION_PACKAGE_INSTALLATION_FAILED:
                 task.setEventType(Event.TYPE.INSTALLATION, false);
                 break;
-            case Intent.ACTION_PACKAGE_REMOVED:
             case Intent.ACTION_PACKAGE_FULLY_REMOVED:
                 task.setEventType(Event.TYPE.REMOVAL, true);
                 break;
