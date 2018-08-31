@@ -60,7 +60,6 @@ public class PermissionGroup extends LinearLayout {
     static private String newPermissionPerfix;
 
     private PermissionGroupInfo permissionGroupInfo;
-    private Set<PermissionInfo> permissions = new HashSet<>();
     private Set<String> newPermissions = new HashSet<>();
     private PackageManager pm;
 
@@ -94,7 +93,6 @@ public class PermissionGroup extends LinearLayout {
     }
 
     public void setPermissions(Set<PermissionInfo> permissions) {
-        this.permissions = permissions;
         Map<String, PermissionInfo> permissionsByLabel = new HashMap<>();
         for (PermissionInfo info: permissions) {
             permissionsByLabel.put(getReadableLabel(info.loadLabel(pm).toString(), info.packageName), info);

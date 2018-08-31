@@ -20,9 +20,7 @@
 package com.github.yeriomin.yalpstore.fragment.details;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 

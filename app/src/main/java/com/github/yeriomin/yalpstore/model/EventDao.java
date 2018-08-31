@@ -29,8 +29,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static android.text.format.DateUtils.DAY_IN_MILLIS;
-
 public class EventDao extends Dao {
 
     private static final String TABLE = "events";
@@ -59,10 +57,6 @@ public class EventDao extends Dao {
 
     public EventDao(SQLiteDatabase db) {
         super(db);
-    }
-
-    public List<Event> getAll() {
-        return getByPackageName(null);
     }
 
     public List<Event> getByPackageName(String packageName) {
