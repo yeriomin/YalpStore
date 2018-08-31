@@ -38,7 +38,7 @@ public class UpdatableAppsButtonAdapter extends UpdatableAppsButtonAdapterAbstra
 
     @Override
     public UpdatableAppsButtonAdapterAbstract setUpdating() {
-        ((Button) button).setText(R.string.list_updating);
+        ((Button) button).setText(android.R.string.cancel);
         return super.setUpdating();
     }
 }

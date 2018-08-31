@@ -23,7 +23,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.R;
-import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
 
 public class UpdatableAppsButtonAdapter extends UpdatableAppsButtonAdapterAbstract {
 
@@ -32,8 +31,14 @@ public class UpdatableAppsButtonAdapter extends UpdatableAppsButtonAdapterAbstra
     }
 
     @Override
-    public UpdatableAppsButtonAdapterAbstract init(UpdatableAppsActivity activity) {
+    public UpdatableAppsButtonAdapterAbstract setReady() {
         ((FloatingActionButton) button).setImageResource(R.drawable.ic_download);
-        return super.init(activity);
+        return super.setReady();
+    }
+
+    @Override
+    public UpdatableAppsButtonAdapterAbstract setUpdating() {
+        ((FloatingActionButton) button).setImageResource(R.drawable.ic_cancel);
+        return super.setUpdating();
     }
 }
