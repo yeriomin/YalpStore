@@ -19,6 +19,9 @@
 
 package com.github.yeriomin.yalpstore.model;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.github.yeriomin.playstoreapi.Image;
+
 public class ReviewBuilder {
 
     public static Review build(com.github.yeriomin.playstoreapi.Review reviewProto) {
@@ -26,9 +29,13 @@ public class ReviewBuilder {
         review.setComment(reviewProto.getComment());
         review.setTitle(reviewProto.getTitle());
         review.setRating(reviewProto.getStarRating());
-        review.setUserName(reviewProto.getAuthor2().getName());
-        review.setUserPhotoUrl(reviewProto.getAuthor2().getAvatar().getImageUrl());
-        review.setGooglePlusUrl(reviewProto.getAuthor2().getGooglePlusUrl());
+        review.setUserName(reviewProto.getUserProfile().getName());
+        for (Image image: reviewProto.getUserProfile().getImageList()) {
+            if (image.getImageType() == GooglePlayAPI.IMAGE_TYPE_APP_ICON) {
+                review.setUserPhotoUrl(image.getImageUrl());
+            }
+        }
+        review.setGooglePlusUrl(reviewProto.getUserProfile().getGooglePlusUrl());
         return review;
     }
 }
