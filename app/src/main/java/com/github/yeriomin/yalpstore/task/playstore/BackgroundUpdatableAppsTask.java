@@ -101,7 +101,9 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
 
     private boolean canUpdate() {
         boolean writePermission = true;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+            && !PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+        ) {
             writePermission = context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
         }
         if (!writePermission) {
