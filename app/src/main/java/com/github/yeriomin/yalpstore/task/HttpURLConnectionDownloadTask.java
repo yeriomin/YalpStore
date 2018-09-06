@@ -190,8 +190,8 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         notificationBuilder
             .setMessage(context.getString(
                 R.string.notification_download_progress,
-                Formatter.formatFileSize(context, progress),
-                Formatter.formatFileSize(context, max)
+                Formatter.formatShortFileSize(context, progress),
+                Formatter.formatShortFileSize(context, max)
             ))
             .setProgress((int) max, (int) progress)
         ;
