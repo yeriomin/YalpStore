@@ -22,51 +22,65 @@ package com.github.yeriomin.yalpstore.task.playstore;
 import android.app.Activity;
 import android.text.TextUtils;
 
-import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.yalpstore.CredentialsEmptyException;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
+import com.github.yeriomin.yalpstore.model.LoginInfo;
 import com.github.yeriomin.yalpstore.view.CredentialsDialogBuilder;
-import com.github.yeriomin.yalpstore.view.UserProvidedAccountDialogBuilder;
+import com.github.yeriomin.yalpstore.view.LoginDialogBuilder;
 
 import java.util.Set;
 
-public class UserProvidedCredentialsTask extends CheckCredentialsTask {
+public class CheckLoginTask extends CheckCredentialsTask {
 
     private String previousEmail;
+    private LoginInfo loginInfo;
 
-    @Override
-    protected CredentialsDialogBuilder getDialogBuilder() {
-        return new UserProvidedAccountDialogBuilder((Activity) context).setPreviousEmail(previousEmail);
+    public void setPreviousEmail(String previousEmail) {
+        this.previousEmail = previousEmail;
+    }
+
+    public void setLoginInfo(LoginInfo loginInfo) {
+        this.loginInfo = loginInfo;
     }
 
     @Override
-    protected Void doInBackground(String[] params) {
-        if (params.length < 2
-            || params[0] == null
-            || params[1] == null
-            || TextUtils.isEmpty(params[0])
-            || TextUtils.isEmpty(params[1])
-        ) {
+    protected CredentialsDialogBuilder getDialogBuilder() {
+        LoginDialogBuilder dialogBuilder = new LoginDialogBuilder((Activity) context);
+        dialogBuilder.setPreviousEmail(previousEmail);
+        return dialogBuilder;
+    }
+
+    @Override
+    protected Void doInBackground(String... strings) {
+        if (!loginInfo.appProvidedEmail() && (TextUtils.isEmpty(loginInfo.getEmail()) || TextUtils.isEmpty(loginInfo.getPassword()))) {
             exception = new CredentialsEmptyException();
             return null;
         }
-        previousEmail = params[0];
         try {
-            new PlayStoreApiAuthenticator(context).login(params[0], params[1]);
-            addUsedEmail(params[0]);
-        } catch (Throwable e) {
-            if (e instanceof AuthException && null != ((AuthException) e).getTwoFactorUrl()) {
-                addUsedEmail(params[0]);
+            if (!loginInfo.appProvidedEmail()) {
+                previousEmail = loginInfo.getEmail();
+                addUsedEmail(loginInfo.getEmail());
             }
+            new PlayStoreApiAuthenticator(context).login(loginInfo);
+        } catch (Throwable e) {
             exception = e;
         }
         return null;
     }
 
+    @Override
+    protected void onPostExecute(Void result) {
+        if (success()) {
+            YalpStoreApplication.user = loginInfo;
+        }
+        super.onPostExecute(result);
+    }
+
     private void addUsedEmail(String email) {
-        Set<String> emailsSet = PreferenceUtil.getStringSet(context, UserProvidedAccountDialogBuilder.USED_EMAILS_SET);
+        Set<String> emailsSet = PreferenceUtil.getStringSet(context, LoginDialogBuilder.USED_EMAILS_SET);
         emailsSet.add(email);
-        PreferenceUtil.putStringSet(context, UserProvidedAccountDialogBuilder.USED_EMAILS_SET, emailsSet);
+        PreferenceUtil.putStringSet(context, LoginDialogBuilder.USED_EMAILS_SET, emailsSet);
     }
 }

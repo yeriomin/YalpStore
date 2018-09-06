@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.ClipboardManager;
@@ -38,10 +37,9 @@ public class AboutActivity extends YalpStoreActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_activity_layout);
         ((TextView) findViewById(R.id.version)).setText(BuildConfig.VERSION_NAME);
-        SharedPreferences sharedPreferences = PreferenceUtil.getDefaultSharedPreferences(this);
-        ((TextView) findViewById(R.id.user_email)).setText(sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, ""));
+        ((TextView) findViewById(R.id.user_email)).setText(YalpStoreApplication.user.getEmail());
         TextView gsfIdView = (TextView) findViewById(R.id.gsf_id);
-        gsfIdView.setText(sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
+        gsfIdView.setText(YalpStoreApplication.user.getGsfId());
         gsfIdView.setOnClickListener(new CopyToClipboardListener());
         findViewById(R.id.developer_email).setOnClickListener(new CopyToClipboardListener() {
             @Override

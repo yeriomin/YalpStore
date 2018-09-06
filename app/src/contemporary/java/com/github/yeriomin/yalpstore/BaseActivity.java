@@ -21,15 +21,12 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.SearchManager;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -39,14 +36,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.github.yeriomin.yalpstore.task.playstore.UserProfileTask;
+import com.github.yeriomin.yalpstore.model.LoginInfo;
+import com.github.yeriomin.yalpstore.task.playstore.NavHeaderUpdateTask;
+import com.github.yeriomin.yalpstore.task.playstore.SearchSuggestionTask;
+import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
 
-import java.lang.ref.WeakReference;
-
-import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL;
-import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_EMAIL;
+import java.lang.reflect.Field;
+import java.util.List;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -57,7 +56,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected int wrapperLayoutResId = WRAPPER_LAYOUT_ID;
 
     private SimpleCursorAdapter suggestionsAdapter;
-    private ActionBarDrawerToggle drawerToggle;
+
+    abstract protected DialogWrapperAbstract showLogOutDialog();
+    abstract protected void fillAccountList(Menu menu, List<LoginInfo> users);
+    abstract protected List<LoginInfo> getUsers();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -133,6 +135,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void showSuggestions(Cursor cursor) {
         suggestionsAdapter.changeCursor(cursor);
         suggestionsAdapter.notifyDataSetChanged();
+        BaseActivity.previousSearchSuggestTask = null;
     }
 
     protected void search(String query, boolean isPackageName) {
@@ -144,17 +147,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         intent.setAction(Intent.ACTION_SEARCH);
         intent.putExtra(SearchManager.QUERY, query);
         return intent;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return drawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig);
     }
 
     public void setContentViewNoWrapper(int layoutResID) {
@@ -179,24 +171,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         ((Toolbar) findViewById(R.id.toolbar)).setTitle(title);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            ((DrawerLayout) findViewById(R.id.drawer_layout)).openDrawer(GravityCompat.START);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initToolbar() {
-        final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
-
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                invalidateOptionsMenu();
-            }
-
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                invalidateOptionsMenu();
-            }
-        };
-        drawerToggle.syncState();
-        drawerLayout.addDrawerListener(drawerToggle);
-
-
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         ActionBar actionBar = getSupportActionBar();
         if (null != actionBar) {
@@ -210,56 +194,69 @@ public abstract class BaseActivity extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(MenuItem menuItem) {
                     onOptionsItemSelected(menuItem);
-                    drawerLayout.closeDrawers();
+                    ((DrawerLayout) findViewById(R.id.drawer_layout)).closeDrawers();
                     return true;
                 }
             }
         );
-        redrawLogoutItem();
+        redrawAccounts();
     }
 
-    public void redrawLogoutItem(){
+    public void redrawAccounts(){
         NavigationView navigationView = findViewById(R.id.nav_view);
-        String email = PreferenceUtil.getString(this, PREFERENCE_EMAIL);
-        ((TextView) navigationView.getHeaderView(0).findViewById(R.id.username)).setText(email.split("@")[0]);
-        if (!TextUtils.isEmpty(email)) {
-            navigationView.getMenu().findItem(R.id.action_logout).setVisible(true);
-            if (!PreferenceUtil.getBoolean(this, PREFERENCE_APP_PROVIDED_EMAIL)) {
-                new UserProfileTask((ImageView) navigationView.getHeaderView(0).findViewById(R.id.avatar)).execute();
-            }
+        ImageView accountsView = navigationView.getHeaderView(0).findViewById(R.id.accounts);
+        final List<LoginInfo> users = getUsers();
+        if (YalpStoreApplication.user.isLoggedIn() || !users.isEmpty()) {
+            NavHeaderUpdateTask task = new NavHeaderUpdateTask();
+            task.setAvatarView((ImageView) navigationView.getHeaderView(0).findViewById(R.id.avatar));
+            task.setUserNameView((TextView) navigationView.getHeaderView(0).findViewById(R.id.username));
+            task.setDeviceView((TextView) navigationView.getHeaderView(0).findViewById(R.id.device));
+            task.setContext(getApplicationContext());
+            task.execute();
+            accountsView.setVisibility(View.VISIBLE);
+            accountsView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showAccountsMenu(v, users);
+                }
+            });
+        } else {
+            accountsView.setVisibility(View.GONE);
         }
     }
 
-    static private class SearchSuggestionTask extends AsyncTask<String, Void, Cursor> {
+    public void showAccountsMenu(View v, List<LoginInfo> users) {
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
-        private String requestString;
-        private WeakReference<BaseActivity> activityRef;
-
-        public SearchSuggestionTask(BaseActivity activity) {
-            this.activityRef = new WeakReference<>(activity);
-        }
-
-        public String getRequestString() {
-            return requestString;
-        }
-
-        @Override
-        protected Cursor doInBackground(String... strings) {
-            if (null == activityRef.get() || isCancelled()) {
-                return null;
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return BaseActivity.this.onOptionsItemSelected(item);
             }
-            requestString = strings[0];
-            return activityRef.get().getContentResolver().query(new Uri.Builder().scheme("content").authority(BuildConfig.APPLICATION_ID + ".YalpStoreSuggestionProvider").appendEncodedPath(requestString).build(), null, null, null, null);
-        }
+        });
+        popup.inflate(R.menu.menu_accounts);
+        setForceShowIcon(popup);
+        fillAccountList(popup.getMenu(), users);
+        popup.show();
+    }
 
-        @Override
-        protected void onPostExecute(Cursor cursor) {
-            if (null == activityRef.get() || isCancelled()) {
-                cursor.close();
-                return;
+    protected void markCurrentAccount(MenuItem item) {
+        item.setIcon(R.drawable.ic_check);
+    }
+
+    public static void setForceShowIcon(PopupMenu popupMenu) {
+        try {
+            for (Field field: popupMenu.getClass().getDeclaredFields()) {
+                if ("mPopup".equals(field.getName())) {
+                    field.setAccessible(true);
+                    Object menuPopupHelper = field.get(popupMenu);
+                    Class.forName(menuPopupHelper.getClass().getName()).getMethod("setForceShowIcon", boolean.class).invoke(menuPopupHelper, true);
+                    break;
+                }
             }
-            activityRef.get().showSuggestions(cursor);
-            previousSearchSuggestTask = null;
+        } catch (Exception e) {
+            // ReflectiveOperationException is not available on older androids, so catching Exception
+            e.printStackTrace();
         }
     }
 }

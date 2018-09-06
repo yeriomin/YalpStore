@@ -25,10 +25,10 @@ import android.text.TextUtils;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.ContextUtil;
-import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.VersionIgnoreManager;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
@@ -110,9 +110,8 @@ public class UpdatableAppsTask extends RemoteAppListTask {
 
     protected List<App> getAppsFromPlayStore(GooglePlayAPI api, Collection<String> packageNames) throws IOException {
         List<App> appsFromPlayStore = new ArrayList<>();
-        boolean builtInAccount = PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL);
         for (App app: getRemoteAppList(api, new ArrayList<>(packageNames))) {
-            if (!builtInAccount || app.isFree()) {
+            if (!YalpStoreApplication.user.appProvidedEmail() || app.isFree()) {
                 appsFromPlayStore.add(app);
             }
         }

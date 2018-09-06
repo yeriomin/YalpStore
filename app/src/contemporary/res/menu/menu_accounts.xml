@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_accounts"
+        android:visible="false"
+        android:title="@string/action_accounts" />
+    <item
+        android:id="@+id/action_new_account"
+        android:icon="@drawable/ic_add"
+        android:title="@string/action_new_account" />
+    <group
+        android:id="@+id/group_accounts" />
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/ic_logout"
+        android:orderInCategory="100"
+        android:title="@string/action_logout" />
+</menu>

@@ -100,7 +100,7 @@ public class WishlistActivity extends AppListActivity {
             List<String> result = super.getResult(api, arguments);
             if (!result.isEmpty()
                 && apps.isEmpty()
-                && PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+                && YalpStoreApplication.user.appProvidedEmail()
             ) {
                 for (BulkDetailsEntry details: api.bulkDetails(new ArrayList<>(YalpStoreApplication.wishlist)).getEntryList()) {
                     if (!details.hasDoc()) {

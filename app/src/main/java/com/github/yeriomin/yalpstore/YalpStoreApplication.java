@@ -26,6 +26,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.http.HttpResponseCache;
 import android.os.Build;
 import android.os.Handler;
@@ -34,6 +35,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.model.LoginInfo;
+import com.github.yeriomin.yalpstore.model.LoginInfoDao;
 import com.github.yeriomin.yalpstore.notification.CancelDownloadReceiver;
 import com.github.yeriomin.yalpstore.notification.DownloadChecksumReceiver;
 import com.github.yeriomin.yalpstore.notification.IgnoreUpdatesReceiver;
@@ -62,6 +65,8 @@ public class YalpStoreApplication extends Application {
     public static final Map<String, App> installedPackages = new ConcurrentHashMap<>();
     public static final Set<String> fdroidPackageNames = new HashSet<>();
     public static final SharedPreferencesCachedSet wishlist = new SharedPreferencesCachedSet("wishlist");
+
+    public static LoginInfo user = new LoginInfo();
 
     private boolean isBackgroundUpdating = false;
     private List<String> pendingUpdates = new ArrayList<>();
@@ -113,6 +118,7 @@ public class YalpStoreApplication extends Application {
         PreferenceUtil.prefillInstallationMethod(this);
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         initNetcipher();
+        initUser();
         Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
         registerDownloadReceiver();
         registerInstallReceiver();
@@ -162,6 +168,19 @@ public class YalpStoreApplication extends Application {
         registerReceiver(new CancelDownloadReceiver(), new IntentFilter(CancelDownloadReceiver.ACTION_CANCEL_DOWNLOAD));
         registerReceiver(new DownloadChecksumReceiver(), new IntentFilter(DownloadChecksumReceiver.ACTION_CHECK_APK));
         registerReceiver(new IgnoreUpdatesReceiver(), new IntentFilter(IgnoreUpdatesReceiver.ACTION_IGNORE_UPDATES));
+    }
+
+    private void initUser() {
+        int id = PreferenceUtil.getDefaultSharedPreferences(this).getInt(PlayStoreApiAuthenticator.PREFERENCE_USER_ID, 0);
+        Log.i(getClass().getSimpleName(), "Current user id is " + id);
+        if (id != 0) {
+            SQLiteDatabase db = new SqliteHelper(this).getReadableDatabase();
+            LoginInfo loginInfo = new LoginInfoDao(db).get(id);
+            db.close();
+            if (null != loginInfo) {
+                user = loginInfo;
+            }
+        }
     }
 
     public void initNetcipher() {

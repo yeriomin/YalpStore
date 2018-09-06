@@ -27,9 +27,8 @@ import android.widget.TextView;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
-import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.playstore.BetaToggleTask;
@@ -46,7 +45,7 @@ public class Beta extends Abstract {
 
     @Override
     public void draw() {
-        if (PreferenceUtil.getBoolean(activity, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+        if (YalpStoreApplication.user.appProvidedEmail()
             && app.isTestingProgramAvailable()
             && app.isTestingProgramOptedIn()
         ) {
@@ -57,7 +56,7 @@ public class Beta extends Abstract {
         }
         if (!app.isInstalled()
             || !app.isTestingProgramAvailable()
-            || PreferenceUtil.getBoolean(activity, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+            || YalpStoreApplication.user.appProvidedEmail()
         ) {
             return;
         }

@@ -23,6 +23,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.preference.Preference;
 import android.text.TextUtils;
 import android.view.View;
@@ -37,15 +38,19 @@ import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SpoofDeviceManager;
+import com.github.yeriomin.yalpstore.SqliteHelper;
 import com.github.yeriomin.yalpstore.Util;
-import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.bugreport.BugReportService;
+import com.github.yeriomin.yalpstore.model.LoginInfoDao;
 import com.github.yeriomin.yalpstore.view.DialogWrapper;
 import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
 
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_USER_ID;
 
 public class Device extends List {
 
@@ -91,7 +96,12 @@ public class Device extends List {
                     ContextUtil.toast(activity.getApplicationContext(), R.string.error_invalid_device_definition);
                     return false;
                 }
-                if (new PlayStoreApiAuthenticator(activity).isLoggedIn()) {
+                if (YalpStoreApplication.user.isLoggedIn()) {
+                    YalpStoreApplication.user.setDeviceDefinitionName((String) newValue);
+                    SQLiteDatabase db = new SqliteHelper(activity).getWritableDatabase();
+                    new LoginInfoDao(db).insert(YalpStoreApplication.user);
+                    db.close();
+                    PreferenceUtil.getDefaultSharedPreferences(activity).edit().putInt(PREFERENCE_USER_ID, YalpStoreApplication.user.hashCode()).commit();
                     showLogOutDialog();
                 }
                 return super.onPreferenceChange(preference, newValue);
@@ -159,12 +169,6 @@ public class Device extends List {
         ;
     }
 
-    private void finishAll() {
-        new PlayStoreApiAuthenticator(activity.getApplicationContext()).logout();
-        YalpStoreActivity.cascadeFinish();
-        activity.finish();
-    }
-
     class RequestOnClickListener implements DialogInterface.OnClickListener {
 
         private boolean logOut;
@@ -180,7 +184,7 @@ public class Device extends List {
             dialogInterface.dismiss();
             if (askedAlready) {
                 if (logOut) {
-                    finishAll();
+                    PlayStoreApiAuthenticator.forceRelogin();
                 }
             } else {
                 showRequestDialog(logOut);
@@ -200,7 +204,7 @@ public class Device extends List {
         public void onClick(DialogInterface dialogInterface, int i) {
             dialogInterface.dismiss();
             if (logOut) {
-                finishAll();
+                PlayStoreApiAuthenticator.forceRelogin();
             }
         }
     }

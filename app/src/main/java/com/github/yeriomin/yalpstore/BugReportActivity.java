@@ -50,8 +50,8 @@ public class BugReportActivity extends Activity {
         triggeredByCrash = !TextUtils.isEmpty(stackTrace);
         setTitle(triggeredByCrash ? R.string.dialog_title_application_crashed : R.string.action_bug_report);
         ((TextView) findViewById(R.id.explanation)).setText(triggeredByCrash ? R.string.bug_report_explanation_crash : R.string.bug_report_explanation_bug_report);
-        if (!PreferenceUtil.getBoolean(this, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
-            ((EditText) findViewById(R.id.identification)).setText(PreferenceUtil.getString(this, PlayStoreApiAuthenticator.PREFERENCE_EMAIL));
+        if (!YalpStoreApplication.user.appProvidedEmail()) {
+            ((EditText) findViewById(R.id.identification)).setText(YalpStoreApplication.user.getEmail());
         }
     }
 

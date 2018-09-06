@@ -40,10 +40,13 @@ public abstract class DialogWrapperAbstract implements DialogInterface {
     abstract public DialogWrapperAbstract setIcon(Drawable icon);
     abstract public DialogWrapperAbstract setPositiveButton(int stringResId, DialogInterface.OnClickListener listener);
     abstract public DialogWrapperAbstract setNegativeButton(int stringResId, DialogInterface.OnClickListener listener);
+    abstract public DialogWrapperAbstract setNeutralButton(int stringResId, DialogInterface.OnClickListener listener);
+    abstract public DialogWrapperAbstract setOnDismissListener(OnDismissListener listener);
     abstract public DialogWrapperAbstract setView(View view);
     abstract public DialogWrapperAbstract setLayout(int layoutResId);
     abstract public View findViewById(int viewId);
     abstract public DialogWrapperAbstract setItems(int arrayResId, DialogInterface.OnClickListener listener);
+    abstract public DialogWrapperAbstract setItems(CharSequence[] items, DialogInterface.OnClickListener listener);
     abstract public DialogWrapperAbstract setAdapter(ListAdapter listAdapter, DialogInterface.OnClickListener listener);
     abstract public DialogWrapperAbstract setCancelable(boolean cancelable);
     abstract public DialogWrapperAbstract create();

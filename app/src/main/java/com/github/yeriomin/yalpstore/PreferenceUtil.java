@@ -25,6 +25,8 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import com.github.yeriomin.yalpstore.model.LoginInfo;
+
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.util.Arrays;
@@ -57,6 +59,12 @@ public class PreferenceUtil {
     public static final String PREFERENCE_PROXY_PORT = "PREFERENCE_PROXY_PORT";
     public static final String PREFERENCE_EXODUS = "PREFERENCE_EXODUS";
 
+    private static final String PREFERENCE_EMAIL = "PREFERENCE_EMAIL";
+    private static final String PREFERENCE_AVATAR_URL = "PREFERENCE_AVATAR_URL";
+    private static final String PREFERENCE_GSF_ID = "PREFERENCE_GSF_ID";
+    private static final String PREFERENCE_AUTH_TOKEN = "PREFERENCE_AUTH_TOKEN";
+    private static final String PREFERENCE_LAST_USED_TOKEN_DISPENSER = "PREFERENCE_LAST_USED_TOKEN_DISPENSER";
+
     public static final String INSTALLATION_METHOD_DEFAULT = "default";
     public static final String INSTALLATION_METHOD_ROOT = "root";
     public static final String INSTALLATION_METHOD_PRIVILEGED = "privileged";
@@ -78,7 +86,7 @@ public class PreferenceUtil {
 
     static public SharedPreferences getDefaultSharedPreferences(Context context) {
         if (null == sharedPreferences) {
-            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         }
         return sharedPreferences;
     }
@@ -154,5 +162,18 @@ public class PreferenceUtil {
                 Util.parseInt(prefs.getString(PREFERENCE_PROXY_PORT, "8118"), 8118)
             )
         );
+    }
+
+    static public LoginInfo getLegacyLoginInfo(Context context) {
+        SharedPreferences preferences = getDefaultSharedPreferences(context);
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setEmail(preferences.getString(PREFERENCE_EMAIL, ""));
+        loginInfo.setUserPicUrl(preferences.getString(PREFERENCE_AVATAR_URL, ""));
+        loginInfo.setGsfId(preferences.getString(PREFERENCE_GSF_ID, ""));
+        loginInfo.setToken(preferences.getString(PREFERENCE_AUTH_TOKEN, ""));
+        loginInfo.setTokenDispenserUrl(preferences.getString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, ""));
+        loginInfo.setLocale(preferences.getString(PreferenceUtil.PREFERENCE_REQUESTED_LANGUAGE, ""));
+        loginInfo.setDeviceDefinitionName(preferences.getString(PreferenceUtil.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, ""));
+        return loginInfo;
     }
 }

@@ -34,6 +34,8 @@ public class DialogWrapper extends DialogWrapperAbstract {
     protected AlertDialog dialog;
     protected View view;
 
+    private OnDismissListener onDismissListener;
+
     public DialogWrapper(Activity activity) {
         super(activity);
         builder = new AlertDialog.Builder(activity);
@@ -82,6 +84,18 @@ public class DialogWrapper extends DialogWrapperAbstract {
     }
 
     @Override
+    public DialogWrapperAbstract setNeutralButton(int stringResId, OnClickListener listener) {
+        builder.setNeutralButton(stringResId, listener);
+        return this;
+    }
+
+    @Override
+    public DialogWrapperAbstract setOnDismissListener(OnDismissListener listener) {
+        onDismissListener = listener;
+        return this;
+    }
+
+    @Override
     public DialogWrapperAbstract setView(View view) {
         this.view = view;
         builder.setView(view);
@@ -109,6 +123,12 @@ public class DialogWrapper extends DialogWrapperAbstract {
     }
 
     @Override
+    public DialogWrapperAbstract setItems(CharSequence[] items, DialogInterface.OnClickListener listener) {
+        builder.setItems(items, listener);
+        return this;
+    }
+
+    @Override
     public DialogWrapperAbstract setAdapter(ListAdapter listAdapter, OnClickListener listener) {
         builder.setAdapter(listAdapter, listener);
         return this;
@@ -126,6 +146,9 @@ public class DialogWrapper extends DialogWrapperAbstract {
             @Override
             public void run() {
                 dialog = builder.create();
+                if (null != onDismissListener) {
+                    dialog.setOnDismissListener(onDismissListener);
+                }
             }
         });
         return this;

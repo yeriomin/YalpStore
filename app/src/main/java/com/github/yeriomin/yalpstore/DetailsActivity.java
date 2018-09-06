@@ -50,7 +50,6 @@ import com.github.yeriomin.yalpstore.task.playstore.DetailsTask;
 
 import java.io.IOException;
 
-import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL;
 import static com.github.yeriomin.yalpstore.task.playstore.PurchaseTask.UPDATE_INTERVAL;
 
 public class DetailsActivity extends YalpStoreActivity {
@@ -206,7 +205,7 @@ public class DetailsActivity extends YalpStoreActivity {
         @Override
         protected App getResult(GooglePlayAPI api, String... arguments) throws IOException {
             App app = super.getResult(api, arguments);
-            if (null == app.getUserReview() && !PreferenceUtil.getBoolean(context, PREFERENCE_APP_PROVIDED_EMAIL)) {
+            if (null == app.getUserReview() && !YalpStoreApplication.user.appProvidedEmail()) {
                 ReviewResponse reviewResponse = api.getReview(app.getPackageName());
                 if (reviewResponse.hasGetResponse() && reviewResponse.getGetResponse().getReviewCount() == 1) {
                     app.setUserReview(ReviewBuilder.build(reviewResponse.getGetResponse().getReview(0)));

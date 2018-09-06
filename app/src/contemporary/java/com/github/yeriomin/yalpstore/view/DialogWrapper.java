@@ -82,6 +82,18 @@ public class DialogWrapper extends DialogWrapperAbstract {
     }
 
     @Override
+    public DialogWrapperAbstract setNeutralButton(int stringResId, OnClickListener listener) {
+        builder.setNeutralButton(stringResId, listener);
+        return this;
+    }
+
+    @Override
+    public DialogWrapperAbstract setOnDismissListener(OnDismissListener listener) {
+        builder.setOnDismissListener(listener);
+        return this;
+    }
+
+    @Override
     public DialogWrapperAbstract setView(View view) {
         this.view = view;
         builder.setView(view);
@@ -105,6 +117,12 @@ public class DialogWrapper extends DialogWrapperAbstract {
     @Override
     public DialogWrapperAbstract setItems(int arrayResId, DialogInterface.OnClickListener listener) {
         builder.setItems(arrayResId, listener);
+        return this;
+    }
+
+    @Override
+    public DialogWrapperAbstract setItems(CharSequence[] items, DialogInterface.OnClickListener listener) {
+        builder.setItems(items, listener);
         return this;
     }
 

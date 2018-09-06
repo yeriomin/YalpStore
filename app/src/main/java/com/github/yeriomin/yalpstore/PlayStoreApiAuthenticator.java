@@ -20,7 +20,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -31,9 +31,11 @@ import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
 import com.github.yeriomin.playstoreapi.TokenDispenserException;
 import com.github.yeriomin.yalpstore.model.LoginInfo;
+import com.github.yeriomin.yalpstore.model.LoginInfoDao;
 import com.github.yeriomin.yalpstore.task.playstore.BackgroundCategoryTask;
 import com.github.yeriomin.yalpstore.task.playstore.PlayStorePayloadTask;
 import com.github.yeriomin.yalpstore.task.playstore.PlayStoreTask;
+import com.github.yeriomin.yalpstore.task.playstore.UserProfileTask;
 import com.github.yeriomin.yalpstore.task.playstore.WishlistUpdateTask;
 
 import java.io.IOException;
@@ -43,12 +45,7 @@ import java.util.Set;
 
 public class PlayStoreApiAuthenticator {
 
-    public static final String PREFERENCE_EMAIL = "PREFERENCE_EMAIL";
-    public static final String PREFERENCE_APP_PROVIDED_EMAIL = "PREFERENCE_APP_PROVIDED_EMAIL";
-    public static final String PREFERENCE_GSF_ID = "PREFERENCE_GSF_ID";
-
-    private static final String PREFERENCE_AUTH_TOKEN = "PREFERENCE_AUTH_TOKEN";
-    private static final String PREFERENCE_LAST_USED_TOKEN_DISPENSER = "PREFERENCE_LAST_USED_TOKEN_DISPENSER";
+    public static final String PREFERENCE_USER_ID = "PREFERENCE_USER_ID";
 
     static private final int RETRIES = 5;
 
@@ -58,91 +55,68 @@ public class PlayStoreApiAuthenticator {
     private static GooglePlayAPI api;
     private static TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
 
+    public static void forceRelogin() {
+        api = null;
+    }
+
     public PlayStoreApiAuthenticator(Context context) {
         this.context = context;
         BackgroundCategoryTask categoryTask = new BackgroundCategoryTask();
         categoryTask.setManager(new CategoryManager(context));
         onLoginTasks.add(categoryTask);
         onLoginTasks.add(new WishlistUpdateTask());
-    }
-
-    public boolean isLoggedIn() {
-        LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setEmail(PreferenceUtil.getDefaultSharedPreferences(context).getString(PREFERENCE_EMAIL, ""));
-        fill(loginInfo);
-        return !TextUtils.isEmpty(loginInfo.getEmail()) && !TextUtils.isEmpty(loginInfo.getGsfId());
+        onLoginTasks.add(new UserProfileTask());
     }
 
     public GooglePlayAPI getApi() throws IOException {
         if (api == null) {
-            api = buildFromPreferences();
+            if (!YalpStoreApplication.user.isLoggedIn()) {
+                throw new CredentialsEmptyException();
+            }
+            api = build(YalpStoreApplication.user);
         }
         return api;
     }
 
-    public void login() throws IOException {
-        LoginInfo loginInfo = new LoginInfo();
+    public void login(LoginInfo loginInfo) throws IOException {
         api = build(loginInfo);
-        PreferenceUtil.getDefaultSharedPreferences(context).edit()
-            .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
-            .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
-            .commit()
-        ;
     }
 
-    public void login(String email, String password) throws IOException {
-        LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setEmail(email);
-        loginInfo.setPassword(password);
-        api = build(loginInfo);
-        PreferenceUtil.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_APP_PROVIDED_EMAIL).commit();
+    public void login() throws IOException {
+        YalpStoreApplication.user.setTokenDispenserUrl(tokenDispenserMirrors.get());
+        login(YalpStoreApplication.user);
     }
 
     public void refreshToken() throws IOException {
-        SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
-        prefs.edit().remove(PREFERENCE_AUTH_TOKEN).commit();
-        String email = prefs.getString(PREFERENCE_EMAIL, "");
-        if (TextUtils.isEmpty(email)) {
+        if (!YalpStoreApplication.user.isLoggedIn()) {
             throw new CredentialsEmptyException();
         }
-        LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setEmail(email);
-        loginInfo.setTokenDispenserUrl(prefs.getString(PREFERENCE_LAST_USED_TOKEN_DISPENSER,""));
-        api = build(loginInfo);
-        PreferenceUtil.getDefaultSharedPreferences(context).edit()
-            .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
-            .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
-            .commit()
-        ;
+        YalpStoreApplication.user.setToken(null);
+        login(YalpStoreApplication.user);
     }
 
     public void logout() {
-        PreferenceUtil.getDefaultSharedPreferences(context).edit()
-            .remove(PREFERENCE_EMAIL)
-            .remove(PREFERENCE_GSF_ID)
-            .remove(PREFERENCE_AUTH_TOKEN)
-            .remove(PREFERENCE_LAST_USED_TOKEN_DISPENSER)
-            .remove(PREFERENCE_APP_PROVIDED_EMAIL)
-            .commit()
-        ;
-        api = null;
+        logout(false);
     }
 
-    private GooglePlayAPI buildFromPreferences() throws IOException {
-        SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
-        String email = prefs.getString(PREFERENCE_EMAIL, "");
-        if (TextUtils.isEmpty(email)) {
-            throw new CredentialsEmptyException();
+    public void logout(boolean andDelete) {
+        if (andDelete) {
+            SQLiteDatabase db = new SqliteHelper(context).getWritableDatabase();
+            new LoginInfoDao(db).delete(YalpStoreApplication.user);
+            db.close();
         }
-        LoginInfo loginInfo = new LoginInfo();
-        loginInfo.setEmail(email);
-        return build(loginInfo);
+        YalpStoreApplication.user.clear();
+        PreferenceUtil.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_USER_ID).commit();
+        forceRelogin();
     }
 
     private GooglePlayAPI build(LoginInfo loginInfo) throws IOException {
         api = build(loginInfo, RETRIES);
         loginInfo.setGsfId(api.getGsfId());
         loginInfo.setToken(api.getToken());
+        loginInfo.setDfeCookie(api.getDfeCookie());
+        loginInfo.setDeviceConfigToken(api.getDeviceConfigToken());
+        loginInfo.setDeviceCheckinConsistencyToken(api.getDeviceCheckinConsistencyToken());
         save(loginInfo);
         runOnLoginTasks();
         return api;
@@ -164,11 +138,10 @@ public class PlayStoreApiAuthenticator {
                 if (PlayStoreTask.noNetwork(e.getCause()) && !NetworkUtil.isNetworkAvailable(context)) {
                     throw (IOException) e.getCause();
                 }
-                loginInfo.setTokenDispenserUrl(null);
-                SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
-                if (prefs.getBoolean(PREFERENCE_APP_PROVIDED_EMAIL, false)) {
+                if (loginInfo.appProvidedEmail()) {
+                    loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get());
                     loginInfo.setEmail(null);
-                    prefs.edit().remove(PREFERENCE_GSF_ID).commit();
+                    loginInfo.setGsfId(null);
                 }
                 tried++;
                 if (tried >= retries) {
@@ -177,28 +150,30 @@ public class PlayStoreApiAuthenticator {
                 Log.i(getClass().getSimpleName(), "Login retry #" + tried);
             }
         }
-        return null;
+        throw loginInfo.appProvidedEmail()
+            ? new TokenDispenserException("Try again later")
+            : new IOException("Unknown error happened during login")
+        ;
     }
 
     private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
-        fill(loginInfo);
         return new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
             .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
-            .setDeviceInfoProvider(getDeviceInfoProvider())
+            .setDeviceInfoProvider(getDeviceInfoProvider(loginInfo.getDeviceDefinitionName()))
             .setLocale(loginInfo.getLocale())
             .setEmail(loginInfo.getEmail())
             .setPassword(loginInfo.getPassword())
             .setGsfId(loginInfo.getGsfId())
             .setToken(loginInfo.getToken())
             .setTokenDispenserUrl(loginInfo.getTokenDispenserUrl())
+            .setDeviceCheckinConsistencyToken(loginInfo.getDeviceCheckinConsistencyToken())
+            .setDeviceConfigToken(loginInfo.getDeviceConfigToken())
+            .setDfeCookie(loginInfo.getDfeCookie())
         ;
     }
 
-    private DeviceInfoProvider getDeviceInfoProvider() {
+    private DeviceInfoProvider getDeviceInfoProvider(String spoofDevice) {
         DeviceInfoProvider deviceInfoProvider;
-        String spoofDevice = PreferenceUtil.getDefaultSharedPreferences(context)
-            .getString(PreferenceUtil.PREFERENCE_DEVICE_TO_PRETEND_TO_BE, "")
-        ;
         if (TextUtils.isEmpty(spoofDevice)) {
             deviceInfoProvider = new NativeDeviceInfoProvider();
             ((NativeDeviceInfoProvider) deviceInfoProvider).setContext(context);
@@ -211,24 +186,14 @@ public class PlayStoreApiAuthenticator {
         return deviceInfoProvider;
     }
 
-    private void fill(LoginInfo loginInfo) {
-        SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
-        String locale = prefs.getString(PreferenceUtil.PREFERENCE_REQUESTED_LANGUAGE, "");
-        loginInfo.setLocale(TextUtils.isEmpty(locale) ? Locale.getDefault() : new Locale(locale));
-        loginInfo.setGsfId(prefs.getString(PREFERENCE_GSF_ID, ""));
-        loginInfo.setToken(prefs.getString(PREFERENCE_AUTH_TOKEN, ""));
-        if (TextUtils.isEmpty(loginInfo.getTokenDispenserUrl())) {
-            loginInfo.setTokenDispenserUrl(tokenDispenserMirrors.get());
-        }
-    }
-
     private void save(LoginInfo loginInfo) {
-        PreferenceUtil.getDefaultSharedPreferences(context).edit()
-            .putString(PREFERENCE_EMAIL, loginInfo.getEmail())
-            .putString(PREFERENCE_GSF_ID, loginInfo.getGsfId())
-            .putString(PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
-            .commit()
-        ;
+        if (loginInfo.appProvidedEmail()) {
+            loginInfo.setUserName(context.getString(R.string.auth_built_in));
+        }
+        SQLiteDatabase db = new SqliteHelper(context).getWritableDatabase();
+        new LoginInfoDao(db).insert(loginInfo);
+        db.close();
+        PreferenceUtil.getDefaultSharedPreferences(context).edit().putInt(PREFERENCE_USER_ID, loginInfo.hashCode()).commit();
     }
 
     private void runOnLoginTasks() {

@@ -79,7 +79,7 @@ public class SharedPreferencesCachedSet extends HashSet<String> {
     }
 
     protected String getStorageKey() {
-        return PREFERENCE_PREFIX + name + (preferences.getBoolean(PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL, true) ? _NOT_LOGGED_IN : preferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, ""));
+        return PREFERENCE_PREFIX + name + (YalpStoreApplication.user.appProvidedEmail() ? _NOT_LOGGED_IN : YalpStoreApplication.user.getEmail());
     }
 
     protected String getLastUpdateTimeKey() {

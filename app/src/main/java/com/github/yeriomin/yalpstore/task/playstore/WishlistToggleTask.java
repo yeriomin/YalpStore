@@ -20,8 +20,6 @@
 package com.github.yeriomin.yalpstore.task.playstore;
 
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
-import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 
 import java.io.IOException;
@@ -46,7 +44,7 @@ public class WishlistToggleTask extends PlayStorePayloadTask<Boolean> implements
 
     @Override
     protected Boolean getResult(GooglePlayAPI api, String... arguments) throws IOException {
-        boolean builtInAccount = PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL);
+        boolean builtInAccount = YalpStoreApplication.user.appProvidedEmail();
         if (YalpStoreApplication.wishlist.contains(packageName)) {
             if (!builtInAccount) {
                 api.removeWishlistApp(packageName);

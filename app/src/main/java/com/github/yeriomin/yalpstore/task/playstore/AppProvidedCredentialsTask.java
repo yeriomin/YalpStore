@@ -21,8 +21,8 @@ package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.app.Activity;
 
-import com.github.yeriomin.yalpstore.view.AccountTypeDialogBuilder;
 import com.github.yeriomin.yalpstore.view.CredentialsDialogBuilder;
+import com.github.yeriomin.yalpstore.view.LoginDialogBuilder;
 
 import java.io.IOException;
 
@@ -32,7 +32,7 @@ public abstract class AppProvidedCredentialsTask extends CheckCredentialsTask {
 
     @Override
     protected CredentialsDialogBuilder getDialogBuilder() {
-        return new AccountTypeDialogBuilder((Activity) context);
+        return new LoginDialogBuilder((Activity) context);
     }
 
     @Override

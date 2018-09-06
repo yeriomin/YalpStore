@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="6dp" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_account_type_title"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <CheckBox
+        android:id="@+id/account_toggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/dialog_account_type_predefined"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/account_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:visibility="gone">
+
+        <AutoCompleteTextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="emailAddress"
+            android:completionThreshold="1"
+            android:hint="@string/credentials_hint_email"
+            android:inputType="textEmailAddress" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:hint="@string/credentials_hint_password"
+                android:inputType="textPassword" />
+
+            <ImageView
+                android:id="@+id/toggle_password_visibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/password"
+                android:layout_alignRight="@+id/password"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:src="@drawable/ic_visibility_on" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/device_toggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/pref_device_to_pretend_to_be_default"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/device_list"
+            android:layout_weight="1"
+            android:layout_width="0px"
+            android:layout_height="48dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/device_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="5dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_permission_unknown" />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/language_toggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:duplicateParentState="false"
+        android:text="@string/pref_requested_language_default"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/language_list"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:visibility="gone" />
+
+</LinearLayout>

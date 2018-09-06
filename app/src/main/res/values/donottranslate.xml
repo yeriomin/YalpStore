@@ -25,4 +25,5 @@
     <string name="details_transition_view_name" translatable="false">"appicon"</string>
     <string name="details_transition_view_name_text" translatable="false">"appname"</string>
     <string name="exodus_api_key" translatable="false">"bf1108aec9c28c5c286c63e89230a71f77b35a5d"</string>
+    <string name="bullet_divider" translatable="false">" • "</string>
 </resources>

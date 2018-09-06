@@ -26,11 +26,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.EventDao;
+import com.github.yeriomin.yalpstore.model.LoginInfo;
+import com.github.yeriomin.yalpstore.model.LoginInfoDao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_USER_ID;
 
 public class SqliteHelper extends SQLiteOpenHelper {
 
@@ -39,16 +43,26 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
     static {
         onCreateQueries.addAll(EventDao.onCreateQueries);
+        onCreateQueries.addAll(LoginInfoDao.onCreateQueries);
     }
+
+    private Context context;
 
     public SqliteHelper(Context context) {
         super(context, BuildConfig.APPLICATION_ID, null, BuildConfig.VERSION_CODE);
+        this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
             execSQL(db, onCreateQueries);
+            LoginInfo loginInfo = PreferenceUtil.getLegacyLoginInfo(context);
+            if (loginInfo.isLoggedIn()) {
+                new LoginInfoDao(db).insert(loginInfo);
+                YalpStoreApplication.user = loginInfo;
+                PreferenceUtil.getDefaultSharedPreferences(context).edit().putInt(PREFERENCE_USER_ID, YalpStoreApplication.user.hashCode()).commit();
+            }
         } catch (SQLException e) {
             Log.e(getClass().getSimpleName(), "Could not create db: " + e.getMessage());
             throw e;

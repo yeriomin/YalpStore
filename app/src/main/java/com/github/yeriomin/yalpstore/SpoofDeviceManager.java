@@ -63,6 +63,23 @@ public class SpoofDeviceManager {
         return devices;
     }
 
+    public Map<String, String> getDevicesShort() {
+        Map<String, String> devices = getDevices();
+        Map<String, String> devicesShort = new HashMap<>();
+        for (String key: devices.keySet()) {
+            devicesShort.put(
+                key,
+                devices.get(key)
+                    .replace("hwkb", "")
+                    .replace("x86_64", "")
+                    .replace("x86", "")
+                    .replaceAll("\\(api\\d+\\)", "")
+                    .trim()
+            );
+        }
+        return devicesShort;
+    }
+
     public Properties getProperties(String entryName) {
         File defaultDirectoryFile = new File(Paths.getYalpPath(context), entryName);
         if (defaultDirectoryFile.exists()) {

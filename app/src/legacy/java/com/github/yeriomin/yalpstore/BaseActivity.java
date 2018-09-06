@@ -25,18 +25,25 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
 
-import static com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator.PREFERENCE_EMAIL;
+import com.github.yeriomin.yalpstore.model.LoginInfo;
+import com.github.yeriomin.yalpstore.view.DialogWrapperAbstract;
+
+import java.util.List;
+
 
 public abstract class BaseActivity extends Activity {
 
+    abstract protected DialogWrapperAbstract showLogOutDialog();
+    abstract protected void fillAccountList(Menu menu, List<LoginInfo> users);
+    abstract protected List<LoginInfo> getUsers();
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if (!TextUtils.isEmpty(PreferenceUtil.getString(this, PREFERENCE_EMAIL))) {
+        if (!YalpStoreApplication.user.isLoggedIn()) {
             menu.findItem(R.id.action_logout).setVisible(true);
         }
         return super.onPrepareOptionsMenu(menu);
@@ -47,7 +54,15 @@ public abstract class BaseActivity extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             addQueryTextListener(menu.findItem(R.id.action_search));
         }
+        fillAccountList(menu, getUsers());
         return super.onCreateOptionsMenu(menu);
+    }
+
+    protected void markCurrentAccount(MenuItem item) {
+        item
+            .setCheckable(true)
+            .setChecked(true)
+        ;
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -80,7 +95,7 @@ public abstract class BaseActivity extends Activity {
         super.setContentView(layoutResID);
     }
 
-    public void redrawLogoutItem() {
+    public void redrawAccounts() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             invalidateOptionsMenu();
         }

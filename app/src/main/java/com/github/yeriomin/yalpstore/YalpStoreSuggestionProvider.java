@@ -63,7 +63,7 @@ public class YalpStoreSuggestionProvider extends ContentProvider {
             fill(cursor, uri);
         } catch (GooglePlayException e) {
             if (e.getCode() == 401
-                && PreferenceUtil.getBoolean(getContext(), PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+                && YalpStoreApplication.user.appProvidedEmail()
                 && !isRefreshingToken.getAndSet(true)
             ) {
                 refreshAndRetry(cursor, uri);

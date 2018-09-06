@@ -33,9 +33,4 @@
         android:id="@+id/action_about"
         android:title="@string/action_about"
         android:icon="@drawable/ic_about" />
-    <item
-        android:id="@+id/action_logout"
-        android:title="@string/action_logout"
-        android:visible="false"
-        android:icon="@drawable/ic_logout" />
 </menu>

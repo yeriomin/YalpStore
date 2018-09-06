@@ -22,8 +22,6 @@ package com.github.yeriomin.yalpstore.task.playstore;
 import com.github.yeriomin.playstoreapi.DocV2;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.playstoreapi.ListResponse;
-import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
-import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
@@ -43,7 +41,7 @@ public class WishlistUpdateTask extends PlayStorePayloadTask<List<String>> {
         InstalledAppsTask installedAppsTask = new InstalledAppsTask();
         installedAppsTask.setContext(context);
         installedAppsTask.setIncludeSystemApps(true);
-        if (PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
+        if (YalpStoreApplication.user.appProvidedEmail()) {
             packageNames.addAll(YalpStoreApplication.wishlist);
         } else {
             ListResponse list = api.getWishlistApps();
@@ -66,7 +64,7 @@ public class WishlistUpdateTask extends PlayStorePayloadTask<List<String>> {
     @Override
     protected void onPostExecute(List<String> packageNames) {
         super.onPostExecute(packageNames);
-        if (success() && !PreferenceUtil.getBoolean(context, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)) {
+        if (success() && !YalpStoreApplication.user.appProvidedEmail()) {
             YalpStoreApplication.wishlist.addAll(packageNames);
         }
     }

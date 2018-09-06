@@ -55,6 +55,25 @@
         android:title="@string/action_updates"
         android:icon="@drawable/ic_refresh" />
     <item
+        android:id="@+id/action_accounts"
+        android:title="@string/action_accounts"
+        android:icon="@drawable/ic_accounts">
+        <menu>
+            <item
+                android:id="@+id/action_new_account"
+                android:icon="@drawable/ic_add"
+                android:title="@string/action_new_account" />
+            <group
+                android:id="@+id/group_accounts"
+                android:checkableBehavior="single"/>
+            <item
+                android:id="@+id/action_logout"
+                android:icon="@drawable/ic_logout"
+                android:orderInCategory="100"
+                android:title="@string/action_logout" />
+        </menu>
+    </item>
+    <item
         android:id="@+id/action_categories"
         android:title="@string/action_categories"
         android:icon="@drawable/ic_categories" />
@@ -70,11 +89,6 @@
         android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:icon="@drawable/ic_settings" />
-    <item
-        android:id="@+id/action_logout"
-        android:title="@string/action_logout"
-        android:icon="@drawable/ic_logout"
-        android:visible="false" />
     <item
         android:id="@+id/action_bug_report"
         android:title="@string/action_bug_report"

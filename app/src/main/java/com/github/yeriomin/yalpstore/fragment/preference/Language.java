@@ -19,15 +19,19 @@
 
 package com.github.yeriomin.yalpstore.fragment.preference;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.preference.Preference;
+import android.util.Log;
 
 import com.github.yeriomin.yalpstore.OnListPreferenceChangeListener;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceActivity;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.SqliteHelper;
 import com.github.yeriomin.yalpstore.Util;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
+import com.github.yeriomin.yalpstore.model.LoginInfoDao;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Locale;
@@ -45,12 +49,15 @@ public class Language extends List {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 boolean result = super.onPreferenceChange(preference, newValue);
-                PlayStoreApiAuthenticator apiAuthenticator = new PlayStoreApiAuthenticator(activity);
-                if (apiAuthenticator.isLoggedIn()) {
+                if (YalpStoreApplication.user.isLoggedIn()) {
                     try {
-                        apiAuthenticator.getApi().setLocale(new Locale((String) newValue));
-                    } catch (IOException e) {
-                        // Irrelevant here
+                        new PlayStoreApiAuthenticator(activity).getApi().setLocale(new Locale((String) newValue));
+                        YalpStoreApplication.user.setLocale((String) newValue);
+                        SQLiteDatabase db = new SqliteHelper(activity).getWritableDatabase();
+                        new LoginInfoDao(db).insert(YalpStoreApplication.user);
+                        db.close();
+                    } catch (Throwable e) {
+                        Log.w(getClass().getSimpleName(), "Could not save locale: " + e.getMessage());
                     }
                 }
                 return result;

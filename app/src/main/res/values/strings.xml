@@ -46,6 +46,8 @@
     <string name="action_wishlist_add">Add to wishlist</string>
     <string name="action_wishlist_remove">Remove from wishlist</string>
     <string name="action_history">History</string>
+    <string name="action_new_account">New account</string>
+    <string name="action_accounts">Accounts</string>
     <string name="search_filter">All apps</string>
     <string name="search_title">Search applications</string>
     <string name="dialog_title_package_id">Package with this name exists</string>
@@ -87,7 +89,7 @@
     <string name="error_network_other">"Network error: %1$s"</string>
     <string name="error_not_purchased">The app does not seem to be purchased.\nRedirect to its Play Store web page?</string>
     <string name="error_downloads_directory_not_writable">Downloads directory could not be created or is not writable.</string>
-    <string name="error_token_dispenser_problem">Could not log in without an account. Try using your own account.</string>
+    <string name="error_token_dispenser_problem">Could not log in with the built-in account. Try using your own account.</string>
     <string name="error_invalid_device_definition">Device definition rejected.</string>
     <string name="error_could_not_download">Could not download.</string>
     <string name="details_developer">"Developer: %1$s"</string>
@@ -289,4 +291,6 @@
     <string name="events_no_changes">No changes mentioned by app developer</string>
     <string name="uninstalled">Uninstalled</string>
     <string name="updated_from_to">"Updated: %1$s (%2$d) → %3$s (%4$d)"</string>
+    <string name="auth_empty">Not logged in</string>
+    <string name="auth_built_in">Built-in account</string>
 </resources>
