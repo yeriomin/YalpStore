@@ -30,8 +30,8 @@ import android.support.v4.content.FileProvider;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.notification.DownloadChecksumService;
-import com.github.yeriomin.yalpstore.notification.IgnoreUpdatesService;
+import com.github.yeriomin.yalpstore.notification.DownloadChecksumReceiver;
+import com.github.yeriomin.yalpstore.notification.IgnoreUpdatesReceiver;
 import com.github.yeriomin.yalpstore.notification.NotificationBuilder;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 import com.github.yeriomin.yalpstore.view.DialogWrapper;

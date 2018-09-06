@@ -28,10 +28,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
-import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.ReviewStorageIterator;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.fragment.Abstract;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.ImageSource;
@@ -87,7 +86,7 @@ public class Review extends Abstract {
     private boolean isReviewable(App app) {
         return app.isInstalled()
             && !app.isTestingProgramOptedIn()
-            && !PreferenceUtil.getBoolean(activity, PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL)
+            && !YalpStoreApplication.user.appProvidedEmail()
         ;
     }
 
