@@ -113,9 +113,9 @@ abstract public class InstallerPrivileged extends InstallerBackground {
         if (success) {
             InstallationState.setSuccess(packageName);
         } else {
+            sendFailureBroadcast(packageName);
             InstallationState.setFailure(packageName);
         }
-        sendBroadcast(packageName, success);
         boolean needToLoop = false;
         if (null == Looper.myLooper()) {
             Looper.prepare();
@@ -134,6 +134,6 @@ abstract public class InstallerPrivileged extends InstallerBackground {
         Log.e(getClass().getSimpleName(), "Could not start privileged installation: " + e.getClass().getName() + " " + e.getMessage());
         ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName);
         InstallationState.setFailure(packageName);
-        sendBroadcast(packageName, false);
+        sendFailureBroadcast(packageName);
     }
 }

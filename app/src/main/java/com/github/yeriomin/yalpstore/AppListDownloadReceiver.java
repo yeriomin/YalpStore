@@ -46,16 +46,16 @@ public class AppListDownloadReceiver extends ForegroundDownloadReceiver {
     @Override
     protected void process(Context context, Intent intent) {
         AppListActivity activity = (AppListActivity) activityRef.get();
-        if (!activity.getListedPackageNames().contains(state.getApp().getPackageName())) {
+        if (!activity.getListedPackageNames().contains(packageName)) {
             return;
         }
         super.process(context, intent);
     }
 
     private AppBadge getAppBadge() {
-        if (null == activityRef.get() || null == state || null == state.getApp()) {
+        if (null == activityRef.get()) {
             return null;
         }
-        return (AppBadge) ((AppListActivity) activityRef.get()).getListItem(state.getApp().getPackageName());
+        return (AppBadge) ((AppListActivity) activityRef.get()).getListItem(packageName);
     }
 }

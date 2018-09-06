@@ -34,6 +34,9 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.notification.CancelDownloadReceiver;
+import com.github.yeriomin.yalpstore.notification.DownloadChecksumReceiver;
+import com.github.yeriomin.yalpstore.notification.IgnoreUpdatesReceiver;
 import com.github.yeriomin.yalpstore.task.FdroidListTask;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
@@ -114,6 +117,7 @@ public class YalpStoreApplication extends Application {
         registerDownloadReceiver();
         registerInstallReceiver();
         registerConnectivityReceiver();
+        registerSecondaryDownloadReceivers();
         try {
             new FdroidListTask(this.getApplicationContext()).executeOnExecutorIfPossible();
         } catch (Throwable e) {
@@ -142,7 +146,6 @@ public class YalpStoreApplication extends Application {
         filter.addAction(Intent.ACTION_INSTALL_PACKAGE);
         filter.addAction(Intent.ACTION_PACKAGE_ADDED);
         filter.addAction(Intent.ACTION_PACKAGE_REPLACED);
-        filter.addAction(Intent.ACTION_PACKAGE_REMOVED);
         filter.addAction(Intent.ACTION_PACKAGE_FULLY_REMOVED);
         filter.addAction(GlobalInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM);
         filter.addAction(GlobalInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED);
@@ -153,6 +156,12 @@ public class YalpStoreApplication extends Application {
         IntentFilter filter = new IntentFilter();
         filter.addAction(CONNECTIVITY_ACTION);
         registerReceiver(new ConnectivityChangeReceiver(), filter);
+    }
+
+    private void registerSecondaryDownloadReceivers() {
+        registerReceiver(new CancelDownloadReceiver(), new IntentFilter(CancelDownloadReceiver.ACTION_CANCEL_DOWNLOAD));
+        registerReceiver(new DownloadChecksumReceiver(), new IntentFilter(DownloadChecksumReceiver.ACTION_CHECK_APK));
+        registerReceiver(new IgnoreUpdatesReceiver(), new IntentFilter(IgnoreUpdatesReceiver.ACTION_IGNORE_UPDATES));
     }
 
     public void initNetcipher() {

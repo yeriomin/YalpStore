@@ -41,7 +41,6 @@ public class Downloader {
 
     public void download(App app, AndroidAppDeliveryData deliveryData) {
         DownloadState state = DownloadState.get(app.getPackageName());
-        state.reset();
         state.setApp(app);
         DownloadManagerInterface.Type type = shouldDownloadDelta(app, deliveryData)
             ? DownloadManagerInterface.Type.DELTA

@@ -34,7 +34,7 @@ import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.NetworkUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.Util;
-import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
+import com.github.yeriomin.yalpstore.notification.CancelDownloadReceiver;
 import com.github.yeriomin.yalpstore.notification.NotificationBuilder;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
@@ -202,9 +202,10 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
     }
 
     private PendingIntent getCancelIntent() {
-        Intent intentCancel = new Intent(context, CancelDownloadService.class);
-        intentCancel.putExtra(CancelDownloadService.DOWNLOAD_ID, downloadId);
-        return PendingIntent.getService(context, 0, intentCancel, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent intentCancel = new Intent();
+        intentCancel.setAction(CancelDownloadReceiver.ACTION_CANCEL_DOWNLOAD);
+        intentCancel.putExtra(CancelDownloadReceiver.DOWNLOAD_ID, downloadId);
+        return PendingIntent.getBroadcast(context, 0, intentCancel, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     private String getNotificationTitle() {

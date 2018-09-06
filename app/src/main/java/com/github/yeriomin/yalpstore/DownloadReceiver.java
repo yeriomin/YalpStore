@@ -33,6 +33,7 @@ abstract public class DownloadReceiver extends BroadcastReceiver {
 
     protected Context context;
     protected long downloadId;
+    protected String packageName;
     protected DownloadState state;
 
     abstract protected void process(Context context, Intent intent);
@@ -41,10 +42,10 @@ abstract public class DownloadReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         this.context = context;
         downloadId = intent.getLongExtra(DownloadManagerInterface.EXTRA_DOWNLOAD_ID, 0L);
-        Log.i(getClass().getSimpleName(), intent.getAction() + " (" + downloadId + ") received");
+        packageName = intent.getStringExtra(Intent.EXTRA_PACKAGE_NAME);
+        Log.i(getClass().getSimpleName(), intent.getAction() + " (" + downloadId + ") received for package " + packageName);
         if (downloadId == 0) {
             if (null == state) {
-                String packageName = intent.getStringExtra(Intent.EXTRA_PACKAGE_NAME);
                 if (!TextUtils.isEmpty(packageName)) {
                     state = DownloadState.get(packageName);
                 }
@@ -54,6 +55,9 @@ abstract public class DownloadReceiver extends BroadcastReceiver {
             state = DownloadState.get(downloadId);
         }
         if (null != state) {
+            if (TextUtils.isEmpty(packageName) && null != state.getApp()) {
+                packageName = state.getApp().getPackageName();
+            }
             process(context, intent);
         }
     }

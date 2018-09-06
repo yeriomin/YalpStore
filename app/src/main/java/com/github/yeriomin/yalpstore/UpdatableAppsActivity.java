@@ -128,6 +128,9 @@ public class UpdatableAppsActivity extends AppListActivity {
 
     public void launchUpdateAll() {
         ((YalpStoreApplication) getApplicationContext()).setBackgroundUpdating(true);
+        for (String packageName: getListedPackageNames()) {
+            DownloadState.get(packageName).reset();
+        }
         new UpdateChecker().onReceive(UpdatableAppsActivity.this, getIntent());
         new UpdatableAppsButtonAdapter(findViewById(R.id.main_button)).setUpdating();
     }

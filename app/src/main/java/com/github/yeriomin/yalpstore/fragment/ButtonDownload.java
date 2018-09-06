@@ -29,6 +29,7 @@ import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.DownloadManagerAbstract;
+import com.github.yeriomin.yalpstore.DownloadManagerInterface;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.ManualDownloadActivity;
@@ -124,9 +125,11 @@ public class ButtonDownload extends Button {
             );
         } else {
             if (new YalpStorePermissionManager(activity).checkPermission() && prepareDownloadsDir()) {
+                DownloadState.get(app.getPackageName()).reset();
                 getPurchaseTask().execute();
             } else {
                 ContextUtil.toast(this.activity.getApplicationContext(), R.string.error_downloads_directory_not_writable);
+                activity.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED).putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName()));
             }
         }
     }

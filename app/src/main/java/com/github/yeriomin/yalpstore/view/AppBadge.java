@@ -28,6 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.ListItemDownloadProgressUpdater;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.Util;
@@ -35,7 +36,7 @@ import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.fragment.ButtonCancel;
 import com.github.yeriomin.yalpstore.fragment.ButtonDownload;
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
+import com.github.yeriomin.yalpstore.notification.CancelDownloadReceiver;
 import com.github.yeriomin.yalpstore.task.playstore.PurchaseTask;
 
 import java.util.ArrayList;
@@ -146,10 +147,12 @@ public abstract class AppBadge extends ListItem {
             new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    view.getContext().startService(
-                        new Intent(view.getContext().getApplicationContext(), CancelDownloadService.class)
-                            .putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName())
+                    view.getContext().sendBroadcast(
+                        new Intent()
+                            .setAction(CancelDownloadReceiver.ACTION_CANCEL_DOWNLOAD)
+                            .putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName())
                     );
+                    DownloadState.get(app.getPackageName()).setCancelled();
                     redrawMoreButton();
                 }
             }

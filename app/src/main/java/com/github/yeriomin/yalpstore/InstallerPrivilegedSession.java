@@ -107,7 +107,11 @@ public class InstallerPrivilegedSession extends InstallerPrivileged {
 
     @Override
     protected void finalize() throws Throwable {
-        context.unregisterReceiver(broadcastReceiver);
+        try {
+            context.unregisterReceiver(broadcastReceiver);
+        } catch (Exception e) {
+            // Not registered, apparently
+        }
         super.finalize();
     }
 

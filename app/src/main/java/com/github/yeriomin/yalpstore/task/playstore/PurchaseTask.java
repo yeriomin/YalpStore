@@ -40,7 +40,7 @@ import com.github.yeriomin.yalpstore.NotPurchasedException;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.YalpStorePermissionManager;
-import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
+import com.github.yeriomin.yalpstore.notification.CancelDownloadReceiver;
 import com.github.yeriomin.yalpstore.view.PurchaseDialogBuilder;
 
 import java.io.IOException;
@@ -89,7 +89,10 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
         }
         Downloader downloader = new Downloader(context);
         try {
-            if (downloader.enoughSpace(deliveryData)) {
+            if (state.isCancelled()) {
+                sendCancelBroadcast();
+                Log.e(getClass().getSimpleName(), app.getPackageName() + " is cancelled before it even started");
+            } else if (downloader.enoughSpace(deliveryData)) {
                 downloader.download(app, deliveryData);
                 if (context instanceof YalpStoreActivity) {
                     DownloadProgressUpdater progressUpdater = DownloadProgressUpdaterFactory.get((YalpStoreActivity) context, app.getPackageName());
@@ -118,13 +121,7 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 
     private void sendCancelBroadcast() {
         DownloadState.get(app.getPackageName()).setApp(app);
-        Intent intentCancel = new Intent(context, CancelDownloadService.class);
-        intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(intentCancel);
-        } else {
-            context.startService(intentCancel);
-        }
+        context.sendBroadcast(new Intent(CancelDownloadReceiver.ACTION_CANCEL_DOWNLOAD).putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName()));
         context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED).putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName()));
     }
 

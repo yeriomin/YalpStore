@@ -43,7 +43,6 @@ public class InstallerRoot extends InstallerBackground {
         } else {
             InstallationState.setFailure(app.getPackageName());
         }
-        sendBroadcast(app.getPackageName(), true);
         postInstallationResult(app, success);
     }
 

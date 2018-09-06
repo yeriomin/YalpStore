@@ -19,7 +19,7 @@
 
 package com.github.yeriomin.yalpstore.notification;
 
-import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,21 +27,18 @@ import android.util.Log;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.InstallerDefault;
+import com.github.yeriomin.yalpstore.PackageSpecificReceiver;
 import com.github.yeriomin.yalpstore.task.InstallTask;
 
 import java.io.File;
 
-public class DownloadChecksumService extends IntentService {
+public class DownloadChecksumReceiver extends PackageSpecificReceiver {
 
-    static public final String PACKAGE_NAME = "PACKAGE_NAME";
-
-    public DownloadChecksumService() {
-        super("DownloadChecksumService");
-    }
+    static public final String ACTION_CHECK_APK = "ACTION_CHECK_APK";
 
     @Override
-    protected void onHandleIntent(Intent intent) {
-        String packageName = intent.getStringExtra(PACKAGE_NAME);
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
         if (TextUtils.isEmpty(packageName)) {
             Log.w(getClass().getSimpleName(), "No package name provided in the intent");
             return;
@@ -49,18 +46,18 @@ public class DownloadChecksumService extends IntentService {
         DownloadState downloadState = DownloadState.get(packageName);
         if (null == downloadState || null == downloadState.getApkChecksum()) {
             Log.w(getClass().getSimpleName(), "No download checksum found for " + packageName);
-            deleteApk(packageName);
-            getApplicationContext().startActivity(DetailsActivity.getDetailsIntent(getApplicationContext(), packageName));
+            deleteApk(context, packageName);
+            context.startActivity(DetailsActivity.getDetailsIntent(context, packageName));
             return;
         }
         Log.i(getClass().getSimpleName(), "Launching installer for " + packageName);
-        InstallerDefault installerDefault = new InstallerDefault(getApplicationContext());
+        InstallerDefault installerDefault = new InstallerDefault(context);
         installerDefault.setBackground(false);
         new InstallTask(installerDefault, downloadState.getApp()).execute();
     }
 
-    private void deleteApk(String packageName) {
-        for (File file: getFilesDir().listFiles()) {
+    private void deleteApk(Context context, String packageName) {
+        for (File file: context.getFilesDir().listFiles()) {
             if (file.getAbsolutePath().contains(packageName) && file.getAbsolutePath().endsWith(".apk")) {
                 file.delete();
                 return;

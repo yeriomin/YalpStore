@@ -55,6 +55,7 @@ public class DownloadState {
     static private Map<Long, String> downloadIds = new ConcurrentHashMap<>();
 
     private App app;
+    private boolean cancelled;
     private TriggeredBy triggeredBy = TriggeredBy.DOWNLOAD_BUTTON;
     private Map<Long, Pair<Integer, Integer>> progress = new ConcurrentHashMap<>();
     private Map<Long, Status> status = new ConcurrentHashMap<>();
@@ -134,9 +135,20 @@ public class DownloadState {
         status.put(downloadId, Status.CANCELLED);
     }
 
+    public void setCancelled() {
+        cancelled = true;
+        for (Long downloadId: status.keySet()) {
+            setCancelled(downloadId);
+        }
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
     public boolean isCancelled(long downloadId) {
         Status status = this.status.get(downloadId);
-        return null != status && status.equals(Status.CANCELLED);
+        return isCancelled() || (null != status && status.equals(Status.CANCELLED));
     }
 
     public List<Long> getDownloadIds() {
@@ -178,6 +190,7 @@ public class DownloadState {
     public void reset() {
         progress.clear();
         status.clear();
+        cancelled = false;
         apkChecksum = null;
     }
 

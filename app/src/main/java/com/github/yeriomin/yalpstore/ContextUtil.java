@@ -21,6 +21,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -80,5 +81,18 @@ public class ContextUtil {
         } else {
             return !activity.isFinishing();
         }
+    }
+
+    static public Activity getActivity(Context context) {
+        if (context instanceof Activity) {
+            return (Activity) context;
+        }
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (Activity) context;
+            }
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+        return null;
     }
 }

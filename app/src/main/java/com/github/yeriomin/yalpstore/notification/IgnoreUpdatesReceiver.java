@@ -19,46 +19,44 @@
 
 package com.github.yeriomin.yalpstore.notification;
 
-import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
+import com.github.yeriomin.yalpstore.PackageSpecificReceiver;
 import com.github.yeriomin.yalpstore.Paths;
 
-public class IgnoreUpdatesService extends IntentService {
+public class IgnoreUpdatesReceiver extends PackageSpecificReceiver {
 
-    static public final String PACKAGE_NAME = "PACKAGE_NAME";
+    static public final String ACTION_IGNORE_UPDATES = "ACTION_IGNORE_UPDATES";
+
     static public final String VERSION_CODE = "VERSION_CODE";
 
-    public IgnoreUpdatesService() {
-        super("IgnoreUpdatesService");
-    }
-
     @Override
-    protected void onHandleIntent(Intent intent) {
-        String packageName = intent.getStringExtra(PACKAGE_NAME);
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
         if (TextUtils.isEmpty(packageName)) {
             Log.w(getClass().getSimpleName(), "No package name provided in the intent");
             return;
         }
         Log.i(getClass().getSimpleName(), "Adding " + packageName + " to ignore list");
-        BlackWhiteListManager manager = new BlackWhiteListManager(getApplicationContext());
+        BlackWhiteListManager manager = new BlackWhiteListManager(context);
         if (manager.isBlack()) {
             manager.add(packageName);
         } else {
             manager.remove(packageName);
         }
-        cancelNotification(packageName);
-        Paths.getApkPath(getApplicationContext(), packageName, intent.getIntExtra(VERSION_CODE, 0)).delete();
+        cancelNotification(context, packageName);
+        Paths.getApkPath(context, packageName, intent.getIntExtra(VERSION_CODE, 0)).delete();
     }
 
-    private void cancelNotification(String packageName) {
-        PackageManager pm = getApplicationContext().getPackageManager();
+    private void cancelNotification(Context context, String packageName) {
+        PackageManager pm = context.getPackageManager();
         try {
-            new NotificationManagerWrapper(getApplicationContext()).cancel(
+            new NotificationManagerWrapper(context).cancel(
                 pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0)).toString()
             );
         } catch (PackageManager.NameNotFoundException e) {

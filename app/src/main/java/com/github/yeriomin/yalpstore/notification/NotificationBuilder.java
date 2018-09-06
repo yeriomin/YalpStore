@@ -24,6 +24,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
+import java.util.Random;
+
 abstract public class NotificationBuilder {
 
     protected Context context;
@@ -46,10 +48,10 @@ abstract public class NotificationBuilder {
     }
 
     protected PendingIntent getPendingIntent(Intent intent) {
-        return isServiceIntent(intent) ? PendingIntent.getService(context, 1, intent, 0) : PendingIntent.getActivity(context, 1, intent, 0);
+        return isActivityIntent(intent) ? PendingIntent.getActivity(context, new Random().nextInt(), intent, 0) : PendingIntent.getBroadcast(context, new Random().nextInt(), intent, 0);
     }
 
-    private boolean isServiceIntent(Intent intent) {
-        return null != intent.getComponent() && intent.getComponent().getClassName().contains("Service");
+    private boolean isActivityIntent(Intent intent) {
+        return null != intent.getComponent() && intent.getComponent().getClassName().contains("Activity");
     }
 }

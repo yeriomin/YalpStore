@@ -52,11 +52,11 @@ public abstract class InstallerAbstract {
         ;
     }
 
-    static private Intent getDownloadChecksumServiceIntent(Context context, App app) {
-        return new Intent(context, DownloadChecksumService.class)
+    static private Intent getDownloadChecksumServiceIntent(App app) {
+        return new Intent()
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            .setAction(Intent.ACTION_INSTALL_PACKAGE + System.currentTimeMillis())
-            .putExtra(DownloadChecksumService.PACKAGE_NAME, app.getPackageName())
+            .setAction(DownloadChecksumReceiver.ACTION_CHECK_APK)
+            .putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName())
         ;
     }
 
@@ -93,7 +93,7 @@ public abstract class InstallerAbstract {
             install(app);
         } else {
             ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(app.getPackageName());
-            sendBroadcast(app.getPackageName(), false);
+            sendFailureBroadcast(app.getPackageName());
         }
     }
 
@@ -135,12 +135,8 @@ public abstract class InstallerAbstract {
         }
     }
 
-    protected void sendBroadcast(String packageName, boolean success) {
-        Intent intent = new Intent(
-            success
-            ? GlobalInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM
-            : GlobalInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED
-        );
+    protected void sendFailureBroadcast(String packageName) {
+        Intent intent = new Intent(GlobalInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED);
         intent.setData(new Uri.Builder().scheme("package").opaquePart(packageName).build());
         context.sendBroadcast(intent);
     }
@@ -165,7 +161,7 @@ public abstract class InstallerAbstract {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        context.startService(getIgnoreIntent(app));
+                        context.sendBroadcast(getIgnoreIntent(app));
                         dialog.cancel();
                     }
                 }
@@ -203,9 +199,10 @@ public abstract class InstallerAbstract {
     }
 
     private Intent getIgnoreIntent(App app) {
-        Intent intentIgnore = new Intent(context, IgnoreUpdatesService.class);
-        intentIgnore.putExtra(IgnoreUpdatesService.PACKAGE_NAME, app.getPackageName());
-        intentIgnore.putExtra(IgnoreUpdatesService.VERSION_CODE, app.getVersionCode());
+        Intent intentIgnore = new Intent();
+        intentIgnore.setAction(IgnoreUpdatesReceiver.ACTION_IGNORE_UPDATES);
+        intentIgnore.putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName());
+        intentIgnore.putExtra(IgnoreUpdatesReceiver.VERSION_CODE, app.getVersionCode());
         return intentIgnore;
     }
 }

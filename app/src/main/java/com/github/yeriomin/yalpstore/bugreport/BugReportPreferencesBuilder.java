@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore.bugreport;
 
 import android.content.Context;
 
-import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
 
 import java.util.Arrays;
@@ -33,7 +32,7 @@ import java.util.Set;
 class BugReportPreferencesBuilder extends BugReportPropertiesBuilder {
 
     static private final String[] PREFERENCES = {
-        PlayStoreApiAuthenticator.PREFERENCE_APP_PROVIDED_EMAIL,
+        PreferenceUtil.PREFERENCE_DOWNLOAD_DELTAS,
         PreferenceUtil.PREFERENCE_AUTO_INSTALL,
         PreferenceUtil.PREFERENCE_UPDATE_LIST_WHITE_OR_BLACK,
         PreferenceUtil.PREFERENCE_UI_THEME,
@@ -42,8 +41,6 @@ class BugReportPreferencesBuilder extends BugReportPropertiesBuilder {
         PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD,
         PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY,
         PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_INSTALL,
-        PreferenceUtil.PREFERENCE_REQUESTED_LANGUAGE,
-        PreferenceUtil.PREFERENCE_DEVICE_TO_PRETEND_TO_BE,
         PreferenceUtil.PREFERENCE_INSTALLATION_METHOD,
         PreferenceUtil.PREFERENCE_NO_IMAGES,
         PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE,

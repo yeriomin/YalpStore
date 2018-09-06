@@ -26,7 +26,7 @@ import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.notification.CancelDownloadService;
+import com.github.yeriomin.yalpstore.notification.CancelDownloadReceiver;
 
 public class ButtonCancel extends Button {
 
@@ -46,9 +46,10 @@ public class ButtonCancel extends Button {
 
     @Override
     protected void onButtonClick(View button) {
-        Intent intentCancel = new Intent(activity.getApplicationContext(), CancelDownloadService.class);
-        intentCancel.putExtra(CancelDownloadService.PACKAGE_NAME, app.getPackageName());
-        activity.startService(intentCancel);
+        Intent intentCancel = new Intent();
+        intentCancel.setAction(CancelDownloadReceiver.ACTION_CANCEL_DOWNLOAD);
+        intentCancel.putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName());
+        activity.sendBroadcast(intentCancel);
         button.setVisibility(View.GONE);
         View buttonDownload = activity.findViewById(R.id.download);
         if (buttonDownload instanceof android.widget.Button) {

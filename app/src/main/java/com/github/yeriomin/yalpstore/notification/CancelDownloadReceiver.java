@@ -19,68 +19,60 @@
 
 package com.github.yeriomin.yalpstore.notification;
 
-import android.app.IntentService;
-import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.DownloadManagerFactory;
 import com.github.yeriomin.yalpstore.DownloadManagerInterface;
 import com.github.yeriomin.yalpstore.DownloadState;
+import com.github.yeriomin.yalpstore.PackageSpecificReceiver;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CancelDownloadService extends IntentService {
+public class CancelDownloadReceiver extends PackageSpecificReceiver {
+
+    static public final String ACTION_CANCEL_DOWNLOAD = "ACTION_CANCEL_DOWNLOAD";
 
     static public final String DOWNLOAD_ID = "DOWNLOAD_ID";
-    static public final String PACKAGE_NAME = "PACKAGE_NAME";
 
     private DownloadManagerInterface dm;
 
-    public CancelDownloadService() {
-        super("CancelDownloadService");
-    }
-
     @Override
-    public void onCreate() {
-        super.onCreate();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            new NotificationBuilderO(getApplicationContext()).initChannel();
-            startForeground((int) (System.currentTimeMillis() % 10000), new Notification.Builder(this, BuildConfig.APPLICATION_ID).build());
-        }
-    }
-
-    @Override
-    protected void onHandleIntent(Intent intent) {
-        dm = DownloadManagerFactory.get(getApplicationContext());
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+        dm = DownloadManagerFactory.get(context);
         long downloadId = intent.getLongExtra(DOWNLOAD_ID, 0L);
-        String packageName = intent.getStringExtra(PACKAGE_NAME);
         if (downloadId == 0 && TextUtils.isEmpty(packageName)) {
             Log.w(getClass().getSimpleName(), "No download id or package name provided in the intent");
         }
         List<Long> downloadIds = new ArrayList<>();
         if (downloadId != 0) {
             downloadIds.add(downloadId);
+            if (TextUtils.isEmpty(packageName)) {
+                DownloadState state = DownloadState.get(downloadId);
+                if (null != state && null != state.getApp()) {
+                    packageName = state.getApp().getPackageName();
+                }
+            }
         }
         if (TextUtils.isEmpty(packageName)) {
             return;
         }
-        ((YalpStoreApplication) getApplicationContext()).removePendingUpdate(packageName);
+        ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName);
         DownloadState state = DownloadState.get(packageName);
+        state.setCancelled();
         downloadIds.addAll(state.getDownloadIds());
         for (long id: downloadIds) {
             cancel(id);
         }
         if (null != state.getApp()) {
-            Paths.getApkPath(getApplicationContext(), packageName, state.getApp().getVersionCode()).delete();
+            Paths.getApkPath(context, packageName, state.getApp().getVersionCode()).delete();
         }
-        state.reset();
     }
 
     private void cancel(long downloadId) {

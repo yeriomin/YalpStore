@@ -123,6 +123,10 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         YalpStoreApplication application = (YalpStoreApplication) context.getApplicationContext();
         application.clearPendingUpdates();
         for (App app: apps) {
+            if (DownloadState.get(app.getPackageName()).isCancelled()) {
+                Log.i(getClass().getSimpleName(), app.getPackageName() + " cancelled before starting");
+                continue;
+            }
             application.addPendingUpdate(app.getPackageName());
             File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
             if (!apkPath.exists()
