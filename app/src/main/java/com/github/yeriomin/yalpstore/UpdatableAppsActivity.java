@@ -67,7 +67,6 @@ public class UpdatableAppsActivity extends AppListActivity {
         super.onNewIntent(intent);
 
         setIntent(intent);
-        loadApps();
     }
 
     @Override
