@@ -82,7 +82,6 @@ public class ButtonDownload extends Button {
         if (app.getVersionCode() == 0 && !(activity instanceof ManualDownloadActivity)) {
             activity.startActivity(new Intent(activity, ManualDownloadActivity.class));
         } else if (permissionManager.checkPermission()) {
-            Log.i(getClass().getSimpleName(), "Write permission granted");
             download();
             View buttonCancel = activity.findViewById(R.id.cancel);
             if (null != buttonCancel) {
