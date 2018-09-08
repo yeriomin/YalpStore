@@ -39,15 +39,12 @@ import com.github.yeriomin.yalpstore.notification.NotificationBuilder;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boolean> {
 
@@ -163,14 +160,10 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
             return false;
         }
 
-        byte[] checksum = writeToFile(in);
-        if (null == checksum) {
+        if (!writeToFile(in)) {
             DownloadManagerFake.putStatus(downloadId, DownloadManagerInterface.ERROR_FILE_ERROR);
             targetFile.delete();
             return false;
-        }
-        if (targetFile.getAbsolutePath().endsWith(".apk")) {
-            DownloadState.get(downloadId).setApkChecksum(checksum);
         }
         connection.disconnect();
 
@@ -220,15 +213,14 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         return displayName;
     }
 
-    private byte[] writeToFile(InputStream in) throws NoNetworkException {
+    private boolean writeToFile(InputStream in) throws NoNetworkException {
         OutputStream out;
         try {
             out = new FileOutputStream(targetFile, targetFile.exists());
         } catch (FileNotFoundException e) {
             //  Should be checked before launching this task
-            return null;
+            return false;
         }
-
         try {
             return copyStream(in, out, targetFile.exists() ? targetFile.length() : 0);
         } catch (IOException | IllegalStateException e) {
@@ -241,30 +233,24 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
             } else {
                 throw new NoNetworkException();
             }
-            return null;
+            return false;
         } finally {
             Util.closeSilently(in);
             Util.closeSilently(out);
         }
     }
 
-    private byte[] copyStream(InputStream in, OutputStream out, long totalBytesRead) throws IOException {
+    private boolean copyStream(InputStream in, OutputStream out, long totalBytesRead) throws IOException {
         byte[] buffer = new byte[2048];
         int bytesRead;
         long lastProgressUpdate = 0;
-        MessageDigest md = getMessageDigestProvider();
-        if (null == md) {
-            Log.e(getClass().getSimpleName(), "Could not initialize digest provider");
-            return null;
-        }
         while ((bytesRead = in.read(buffer)) != -1) {
-            md.update(buffer, 0, bytesRead);
             totalBytesRead += bytesRead;
             if (lastProgressUpdate + PROGRESS_INTERVAL < System.currentTimeMillis()) {
                 lastProgressUpdate = System.currentTimeMillis();
                 if (DownloadState.get(downloadId).isCancelled(downloadId)) {
                     cancel(true);
-                    return null;
+                    return false;
                 } else {
                     publishProgress(totalBytesRead, fileSize);
                 }
@@ -274,10 +260,10 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
             } catch (IOException e) {
                 Log.e(getClass().getSimpleName(), "Could not write file: " + e.getMessage());
                 Util.closeSilently(out);
-                return null;
+                return false;
             }
         }
-        return md.digest();
+        return true;
     }
 
     public AsyncTask<String, Long, Boolean> executeOnExecutorIfPossible(String... args) {
@@ -286,32 +272,6 @@ public class HttpURLConnectionDownloadTask extends AsyncTask<String, Long, Boole
         } else {
             return this.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, args);
         }
-    }
-
-    private MessageDigest getMessageDigestProvider() {
-        MessageDigest md;
-        try {
-            md = MessageDigest.getInstance("SHA-256");
-        } catch (NoSuchAlgorithmException e) {
-            return null;
-        }
-        if (!targetFile.exists()) {
-            return md;
-        }
-        FileInputStream inputStream = null;
-        try {
-            byte[] buffer = new byte[2048];
-            int bytesRead;
-            inputStream = new FileInputStream(targetFile);
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                md.update(buffer, 0, bytesRead);
-            }
-        } catch (IOException e) {
-            return null;
-        } finally {
-            Util.closeSilently(inputStream);
-        }
-        return md;
     }
 
     static private void sleep(int millis) {

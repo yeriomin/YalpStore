@@ -47,15 +47,14 @@ public abstract class InstallerAbstract {
 
     static public Intent getCheckAndOpenApkIntent(Context context, App app) {
         return PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
-            ? getDownloadChecksumServiceIntent(context, app)
+            ? getDownloadChecksumServiceIntent(app)
             : getOpenApkIntent(context, app)
         ;
     }
 
     static private Intent getDownloadChecksumServiceIntent(App app) {
-        return new Intent()
+        return new Intent(DownloadChecksumReceiver.ACTION_CHECK_APK)
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            .setAction(DownloadChecksumReceiver.ACTION_CHECK_APK)
             .putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName())
         ;
     }

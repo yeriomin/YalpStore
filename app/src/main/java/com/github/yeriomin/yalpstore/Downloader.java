@@ -28,6 +28,8 @@ import com.github.yeriomin.playstoreapi.AppFileMetadata;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Base64;
 
 public class Downloader {
 
@@ -48,6 +50,7 @@ public class Downloader {
         ;
         prepare(Paths.getApkPath(context, app.getPackageName(), app.getVersionCode()), deliveryData.getDownloadSize());
         state.setStarted(dm.enqueue(app, deliveryData, type));
+        state.setApkChecksum(base64StringToByteArray(deliveryData.getSha1()));
         if (deliveryData.getAdditionalFileCount() > 0) {
             checkAndStartObbDownload(state, deliveryData, true);
         }
@@ -83,7 +86,7 @@ public class Downloader {
     }
 
     static private void prepare(File file, long expectedSize) {
-        Log.i(Downloader.class.getSimpleName(), file.getAbsolutePath() + (file.exists() ? (" exists, current size " + file.length() + " bytes, expected size " + expectedSize + " bytes") : "does not exist"));
+        Log.i(Downloader.class.getSimpleName(), file.getAbsolutePath() + (file.exists() ? (" exists, current size " + file.length() + " bytes, expected size " + expectedSize + " bytes") : " does not exist"));
         if (file.exists() && file.length() != expectedSize) {
             Log.i(Downloader.class.getSimpleName(), "Deleted old file: " + file.delete());
         }
@@ -96,6 +99,23 @@ public class Downloader {
             && deliveryData.hasPatchData()
             && null != currentApk
             && currentApk.exists()
+            && hasExpectedChecksum(currentApk, base64StringToByteArray(deliveryData.getPatchData().getBaseSha1()))
         ;
+    }
+
+    static private byte[] base64StringToByteArray(String string) {
+        return com.github.yeriomin.playstoreapi.Base64.decode(
+            string,
+            com.github.yeriomin.playstoreapi.Base64.URL_SAFE | com.github.yeriomin.playstoreapi.Base64.NO_PADDING
+        );
+    }
+
+    static private boolean hasExpectedChecksum(File file, byte[] expectedChecksum) {
+        byte[] existingChecksum = Util.getFileChecksum(file);
+        boolean match = Arrays.equals(existingChecksum, expectedChecksum);
+        if (!match) {
+            Log.w(Downloader.class.getSimpleName(), "Full update will be downloaded. " + file + " does not match expected sha1 hash");
+        }
+        return match;
     }
 }

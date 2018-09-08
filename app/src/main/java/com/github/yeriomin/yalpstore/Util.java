@@ -149,7 +149,7 @@ public class Util {
     static public byte[] getFileChecksum(File file) {
         MessageDigest md;
         try {
-            md = MessageDigest.getInstance("SHA-256");
+            md = MessageDigest.getInstance("SHA-1");
         } catch (NoSuchAlgorithmException e) {
             return null;
         }
