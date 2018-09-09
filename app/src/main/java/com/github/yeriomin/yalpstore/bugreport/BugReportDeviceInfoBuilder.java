@@ -61,7 +61,7 @@ public class BugReportDeviceInfoBuilder extends BugReportPropertiesBuilder {
 
     private Map<String, String> getDeviceInfo() {
         Map<String, String> values = new LinkedHashMap<>();
-        values.put("UserReadableName", Build.MANUFACTURER + " " + Build.PRODUCT + " (api" + Integer.toString(Build.VERSION.SDK_INT) + ")");
+        values.put("UserReadableName", getUserReadableName());
         values.putAll(getBuildValues());
         values.putAll(getConfigurationValues());
         values.putAll(getDisplayMetricsValues());
@@ -69,6 +69,27 @@ public class BugReportDeviceInfoBuilder extends BugReportPropertiesBuilder {
         values.putAll(getOperatorValues());
         values.putAll(staticProperties);
         return values;
+    }
+
+    private String getUserReadableName() {
+        String fingerprint = TextUtils.isEmpty(Build.FINGERPRINT) ? "" : Build.FINGERPRINT;
+        String manufacturer = TextUtils.isEmpty(Build.MANUFACTURER) ? "" : Build.MANUFACTURER;
+        String product = TextUtils.isEmpty(Build.PRODUCT) ? "" : Build.PRODUCT.replace("aokp_", "").replace("aosp_", "").replace("cm_", "").replace("lineage_", "");
+        String model = TextUtils.isEmpty(Build.MODEL) ? "" : Build.MODEL;
+        String device = TextUtils.isEmpty(Build.DEVICE) ? "" : Build.DEVICE;
+        String result = (fingerprint.toLowerCase().contains(product.toLowerCase()) || product.toLowerCase().contains(device.toLowerCase()) || device.toLowerCase().contains(product.toLowerCase())) ? model : product;
+        if (!result.toLowerCase().contains(manufacturer.toLowerCase())) {
+            result = manufacturer + " " + result;
+        }
+        if (TextUtils.isEmpty(result)) {
+            return "";
+        }
+        return (result.substring(0, 1).toUpperCase() + result.substring(1))
+            .replace("\n", " ")
+            .replace("\r", " ")
+            .replace(",", " ")
+            .trim()
+        ;
     }
 
     private Map<String, String> getBuildValues() {
