@@ -156,22 +156,18 @@ public abstract class YalpStoreActivity extends BaseActivity {
         }
         Menu accountsMenu = null == menu.findItem(R.id.action_accounts).getSubMenu() ? menu : menu.findItem(R.id.action_accounts).getSubMenu();
         for (LoginInfo info: users) {
-            String deviceDefinitionDisplayName =
-                TextUtils.isEmpty(info.getDeviceDefinitionName())
-                    ? ""
-                    : (getString(R.string.bullet_divider) + (
-                        TextUtils.isEmpty(info.getDeviceDefinitionDisplayName())
-                            ? info.getDeviceDefinitionName().replace("device-", "").replace(".preoperties", "").trim()
-                            : info.getDeviceDefinitionDisplayName()
-                    ))
-            ;
+            String userName = info.getUserName();
+            String deviceDefinitionDisplayName = "";
+            if (!TextUtils.isEmpty(info.getDeviceDefinitionName())) {
+                deviceDefinitionDisplayName = getString(R.string.bullet_divider) + info.getDeviceDefinitionDisplayName();
+                userName = userName.split(" ")[0];
+            }
             MenuItem item = accountsMenu.add(
                 R.id.group_accounts,
                 info.hashCode(),
                 1,
-                info.getUserName() + deviceDefinitionDisplayName
+                userName + deviceDefinitionDisplayName
             );
-            item.setTitleCondensed(info.getUserName().split(" ")[0] + deviceDefinitionDisplayName);
             if (info.hashCode() == YalpStoreApplication.user.hashCode()) {
                 markCurrentAccount(item);
             }
