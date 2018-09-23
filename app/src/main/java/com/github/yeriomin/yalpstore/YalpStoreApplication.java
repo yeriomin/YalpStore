@@ -52,6 +52,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import info.guardianproject.netcipher.NetCipher;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
@@ -68,9 +69,23 @@ public class YalpStoreApplication extends Application {
 
     public static LoginInfo user = new LoginInfo();
 
+    private static final AtomicInteger runningActivities = new AtomicInteger(0);
+
     private boolean isBackgroundUpdating = false;
     private List<String> pendingUpdates = new ArrayList<>();
     private ProxyOnChangeListener listener;
+
+    public static boolean isForeground() {
+        return runningActivities.get() > 0;
+    }
+
+    public static void incrementActivityCount() {
+        runningActivities.incrementAndGet();
+    }
+
+    public static void decrementActivityCount() {
+        runningActivities.decrementAndGet();
+    }
 
     public boolean isBackgroundUpdating() {
         return isBackgroundUpdating;

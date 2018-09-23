@@ -53,15 +53,14 @@ abstract public class InstallerBackground extends InstallerAbstract {
             ? (wasInstalled ? R.string.notification_installation_complete : R.string.details_installed)
             : (wasInstalled ? R.string.notification_installation_failed : R.string.details_install_failure)
         );
-        if (background) {
-            new NotificationManagerWrapper(context).show(
-                wasInstalled
-                    ? HistoryActivity.getHistoryIntent(context, app.getPackageName())
-                    : DetailsActivity.getDetailsIntent(context, app.getPackageName()),
-                app.getDisplayName(),
-                resultString
-            );
-        } else {
+        new NotificationManagerWrapper(context).show(
+            wasInstalled
+                ? HistoryActivity.getHistoryIntent(context, app.getPackageName())
+                : DetailsActivity.getDetailsIntent(context, app.getPackageName()),
+            app.getDisplayName(),
+            resultString
+        );
+        if (!background && YalpStoreApplication.isForeground()) {
             ContextUtil.toastLong(context, resultString);
         }
         app.setInstalled(true);

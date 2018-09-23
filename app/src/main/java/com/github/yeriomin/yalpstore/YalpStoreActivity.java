@@ -63,6 +63,7 @@ public abstract class YalpStoreActivity extends BaseActivity {
     @Override
     protected void onResume() {
         Log.v(getClass().getSimpleName(), "Resuming activity");
+        YalpStoreApplication.incrementActivityCount();
         super.onResume();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             invalidateOptionsMenu();
@@ -75,6 +76,7 @@ public abstract class YalpStoreActivity extends BaseActivity {
     @Override
     protected void onPause() {
         Log.v(getClass().getSimpleName(), "Pausing activity");
+        YalpStoreApplication.decrementActivityCount();
         super.onPause();
     }
 
