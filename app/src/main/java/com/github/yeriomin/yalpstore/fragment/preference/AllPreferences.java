@@ -34,10 +34,8 @@ public class AllPreferences extends Abstract {
     @Override
     public void draw() {
         drawBlackList();
-        drawLanguages();
         drawTheme();
         drawUpdatesCheck();
-        drawDevices();
         drawInstallationMethod();
         new DownloadDirectory(activity).setPreference((EditTextPreference) activity.findPreference(PreferenceUtil.PREFERENCE_DOWNLOAD_DIRECTORY)).draw();
         new InternalStorage(activity).setPreference((CheckBoxPreference) activity.findPreference(PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)).draw();
@@ -69,18 +67,6 @@ public class AllPreferences extends Abstract {
         checkUpdatesFragment.setAlsoInstall((CheckBoxPreference) activity.findPreference(PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_INSTALL));
         checkUpdatesFragment.setAlsoDownload((CheckBoxPreference) activity.findPreference(PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD));
         checkUpdatesFragment.draw();
-    }
-
-    private void drawLanguages() {
-        Language languageFragment = new Language(activity);
-        languageFragment.setListPreference((ListPreference) activity.findPreference(PreferenceUtil.PREFERENCE_REQUESTED_LANGUAGE));
-        languageFragment.draw();
-    }
-
-    private void drawDevices() {
-        Device languageFragment = new Device(activity);
-        languageFragment.setListPreference((ListPreference) activity.findPreference(PreferenceUtil.PREFERENCE_DEVICE_TO_PRETEND_TO_BE));
-        languageFragment.draw();
     }
 
     private void drawInstallationMethod() {

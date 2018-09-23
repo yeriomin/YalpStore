@@ -86,16 +86,6 @@
             android:entries="@array/installationMethodLabels"
             android:entryValues="@array/installationMethodValues"/>
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_category_spoofing">
-        <ListPreference
-            android:defaultValue=""
-            android:key="PREFERENCE_REQUESTED_LANGUAGE"
-            android:title="@string/pref_requested_language"/>
-        <ListPreference
-            android:defaultValue=""
-            android:key="PREFERENCE_DEVICE_TO_PRETEND_TO_BE"
-            android:title="@string/pref_device_to_pretend_to_be"/>
-    </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_proxy" >
         <CheckBoxPreference
             android:defaultValue="false"
