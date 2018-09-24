@@ -55,9 +55,9 @@ class NotificationBuilderLegacy extends NotificationBuilder {
 
     @Override
     public Notification build() {
-        Notification notification = new Notification(R.drawable.ic_notification, "", System.currentTimeMillis());
+        Notification notification = new Notification();
+        notification.icon = ongoing ? R.drawable.ic_download_animation : R.drawable.ic_notification;
         try {
-            // try to call "setLatestEventInfo" if available
             Method m = notification.getClass().getMethod("setLatestEventInfo", Context.class, CharSequence.class, CharSequence.class, PendingIntent.class);
             m.invoke(notification, context, title, message, getPendingIntent(intent));
             notification.flags |= Notification.FLAG_AUTO_CANCEL;

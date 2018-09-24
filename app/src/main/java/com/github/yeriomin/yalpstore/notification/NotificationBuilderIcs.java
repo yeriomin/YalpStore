@@ -28,11 +28,8 @@ class NotificationBuilderIcs extends NotificationBuilderHoneycomb {
 
     @Override
     public NotificationBuilder setProgress(int max, int progress) {
-        builder
-            .setOngoing(true)
-            .setOnlyAlertOnce(true)
-            .setProgress(max, progress, false)
-        ;
+        super.setProgress(max, progress);
+        builder.setProgress(max, progress, false);
         return this;
     }
 

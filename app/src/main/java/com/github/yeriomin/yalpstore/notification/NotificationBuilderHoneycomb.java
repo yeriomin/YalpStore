@@ -68,6 +68,7 @@ class NotificationBuilderHoneycomb extends NotificationBuilder {
         builder
             .setOngoing(true)
             .setOnlyAlertOnce(true)
+            .setSmallIcon(R.drawable.ic_download_animation)
         ;
         return super.setProgress(max, progress);
     }
