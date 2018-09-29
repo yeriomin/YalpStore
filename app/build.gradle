@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
 
     def getVersionName = { ->
         def stdout = new ByteArrayOutputStream()
@@ -20,7 +20,7 @@ android {
     defaultConfig {
         applicationId "com.github.yeriomin.yalpstore"
         minSdkVersion 5
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 43
         versionName getVersionName()
         vectorDrawables.useSupportLibrary = true
@@ -52,8 +52,8 @@ android {
 }
 
 dependencies {
-    contemporaryImplementation 'com.android.support:design:27.1.1'
-    contemporaryImplementation 'com.android.support:appcompat-v7:27.1.1'
+    contemporaryImplementation 'com.android.support:design:28.0.0'
+    contemporaryImplementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'info.guardianproject.netcipher:netcipher:2.0.0-beta1'
     implementation 'commons-net:commons-net:3.5'
     implementation 'com.nothome:javaxdelta:2.0.1'
