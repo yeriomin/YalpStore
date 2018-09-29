@@ -125,6 +125,33 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        if (null == navigationView) {
+            return;
+        }
+        TextView userNameView = navigationView.getHeaderView(0).findViewById(R.id.username);
+        TextView deviceView = navigationView.getHeaderView(0).findViewById(R.id.device);
+        if (null == userNameView || null == deviceView) {
+            return;
+        }
+        String currentUserName = null == YalpStoreApplication.user.getUserName()
+            ? ""
+            : YalpStoreApplication.user.getUserName()
+        ;
+        String currentDeviceName = null == YalpStoreApplication.user.getDeviceDefinitionDisplayName()
+            ? ""
+            : YalpStoreApplication.user.getDeviceDefinitionDisplayName()
+        ;
+        if (!currentUserName.equals(userNameView.getText().toString())
+            || !currentDeviceName.equals(deviceView.getText().toString())
+        ) {
+            redrawAccounts();
+        }
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         if (null != suggestionsAdapter && null != suggestionsAdapter.getCursor()) {
