@@ -151,7 +151,7 @@ public class Review extends Abstract {
         ((TextView) reviewLayout.findViewById(R.id.comment)).setText(review.getComment());
         reviewLayout.setOnClickListener(new UriOnClickListener(activity, review.getGooglePlusUrl()));
         parent.addView(reviewLayout);
-        new LoadImageTask((ImageView) reviewLayout.findViewById(R.id.avatar)).executeOnExecutorIfPossible(new ImageSource(review.getUserPhotoUrl()));
+        new LoadImageTask((ImageView) reviewLayout.findViewById(R.id.avatar)).setImageSource(new ImageSource(review.getUserPhotoUrl())).executeOnExecutorIfPossible();
     }
 
     private void initReviewListControls() {

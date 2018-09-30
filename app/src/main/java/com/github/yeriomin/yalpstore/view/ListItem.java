@@ -61,11 +61,12 @@ public abstract class ListItem {
         }
         imageView.setTag(packageName);
         LoadImageTask task = new LoadImageTask(imageView);
+        task.setImageSource(imageSource);
         LoadImageTask previousTask = tasks.get(imageView.hashCode());
         if (null != previousTask) {
             previousTask.cancel(true);
         }
         tasks.put(imageView.hashCode(), task);
-        task.executeOnExecutorIfPossible(imageSource);
+        task.executeOnExecutorIfPossible();
     }
 }

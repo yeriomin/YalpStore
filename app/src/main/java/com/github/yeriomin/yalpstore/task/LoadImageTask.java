@@ -60,6 +60,11 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
         return this;
     }
 
+    public LoadImageTask setImageSource(ImageSource imageSource) {
+        this.imageSource = imageSource;
+        return this;
+    }
+
     public LoadImageTask setPlaceholder(boolean placeholder) {
         this.placeholder = placeholder;
         return this;
@@ -107,15 +112,15 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
                     task.setFadeInMillis(fadeInMillis);
                     task.setPlaceholder(placeholder);
                     task.setForceLoadImage(true);
-                    task.executeOnExecutorIfPossible(imageSource);
+                    task.setImageSource(imageSource);
+                    task.executeOnExecutorIfPossible();
                 }
             });
         }
     }
 
     @Override
-    protected Void doInBackground(ImageSource... params) {
-        imageSource = params[0];
+    protected Void doInBackground(Void... params) {
         if (null != imageSource.getApplicationInfo()) {
             drawable = imageView.getContext().getPackageManager().getApplicationIcon(imageSource.getApplicationInfo());
         } else if (!TextUtils.isEmpty(imageSource.getUrl())) {
@@ -123,18 +128,14 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
             bitmapManager.setNoImages(noImages());
             Bitmap bitmap = bitmapManager.getBitmap(imageSource.getUrl(), imageSource.isFullSize());
             if (null != bitmap || !noImages()) {
-                drawable = new BitmapDrawable(bitmap);
+                drawable = getDrawable(bitmap);
             }
         }
         return null;
     }
 
-    public AsyncTask<ImageSource, Void, Void> executeOnExecutorIfPossible(ImageSource... args) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-            return this.execute(args);
-        } else {
-            return this.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, args);
-        }
+    protected Drawable getDrawable(Bitmap bitmap) {
+        return new BitmapDrawable(bitmap);
     }
 
     private void fadeIn() {
@@ -162,7 +163,10 @@ public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
     }
 
     private boolean noImages() {
-        return !forceLoadImage && NetworkUtil.isMetered(imageView.getContext()) && PreferenceUtil.getBoolean(imageView.getContext(), PreferenceUtil.PREFERENCE_NO_IMAGES);
+        return !forceLoadImage
+            && NetworkUtil.isMetered(imageView.getContext())
+            && PreferenceUtil.getBoolean(imageView.getContext(), PreferenceUtil.PREFERENCE_NO_IMAGES)
+        ;
     }
 
     private boolean sameAsLoaded() {

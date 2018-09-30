@@ -28,6 +28,7 @@ import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SpoofDeviceManager;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.ImageSource;
+import com.github.yeriomin.yalpstore.task.LoadCircularImageTask;
 import com.github.yeriomin.yalpstore.task.LoadImageTask;
 
 import java.lang.ref.WeakReference;
@@ -68,7 +69,12 @@ public class NavHeaderUpdateTask extends UserProfileTask {
                 deviceViewRef.get().setVisibility(View.INVISIBLE);
             }
             userNameViewRef.get().setText(YalpStoreApplication.user.getUserName());
-            new LoadImageTask(avatarViewRef.get()).setFadeInMillis(200).execute(new ImageSource(YalpStoreApplication.user.getUserPicUrl()));
+            new LoadCircularImageTask(avatarViewRef.get())
+                .setCropCircle(true)
+                .setFadeInMillis(200)
+                .setImageSource(new ImageSource(YalpStoreApplication.user.getUserPicUrl()))
+                .executeOnExecutorIfPossible()
+            ;
         } else {
             avatarViewRef.get().setImageResource(R.drawable.ic_placeholder);
             userNameViewRef.get().setText(R.string.auth_empty);

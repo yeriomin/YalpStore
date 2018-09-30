@@ -84,8 +84,11 @@ public class GeneralDetails extends Abstract {
     }
 
     private void drawAppBadge(App app) {
-        new LoadImageTask((ImageView) activity.findViewById(R.id.icon)).setPlaceholder(false).executeOnExecutorIfPossible(app.getIconInfo());
-
+            new LoadImageTask((ImageView) activity.findViewById(R.id.icon))
+                .setPlaceholder(false)
+                .setImageSource(app.getIconInfo())
+                .executeOnExecutorIfPossible()
+            ;
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, app.getPackageName());
         drawVersion((TextView) activity.findViewById(R.id.versionString), app);
@@ -224,7 +227,7 @@ public class GeneralDetails extends Abstract {
 
     private void drawCategoryBadge() {
         Badge categoryBadge = activity.findViewById(R.id.category_badge);
-        new LoadImageTask(categoryBadge.getIconView()).setPlaceholder(false).executeOnExecutorIfPossible(new ImageSource(app.getCategoryIconUrl()));
+        new LoadImageTask(categoryBadge.getIconView()).setPlaceholder(false).setImageSource(new ImageSource(app.getCategoryIconUrl())).executeOnExecutorIfPossible();
         CategoryManager manager = new CategoryManager(activity);
         String categoryId = app.getCategoryId();
         String categoryLabel = manager.getCategoryName(categoryId);

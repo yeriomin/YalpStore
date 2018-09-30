@@ -63,7 +63,12 @@ public class Background extends Abstract {
             background.getLayoutParams().height = height;
             background.setVisibility(View.VISIBLE);
             if (null != app.getPageBackgroundImage()) {
-                new LoadImageTask((ImageView) background).setPlaceholder(false).setFadeInMillis(500).execute(app.getPageBackgroundImage());
+                new LoadImageTask((ImageView) background)
+                    .setPlaceholder(false)
+                    .setFadeInMillis(500)
+                    .setImageSource(app.getPageBackgroundImage())
+                    .executeOnExecutorIfPossible()
+                ;
             }
         }
     }

@@ -62,12 +62,12 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        LoadImageTask task = getTask();
         ImageView imageView = new ImageView(context);
-        task.setImageView(imageView);
-        ImageSource source = new ImageSource((String) getItem(position));
-        source.setFullSize(true);
-        task.execute(source);
+        getTask()
+            .setImageView(imageView)
+            .setImageSource(new ImageSource(getItem(position)).setFullSize(true))
+            .executeOnExecutorIfPossible()
+        ;
         return imageView;
     }
 
