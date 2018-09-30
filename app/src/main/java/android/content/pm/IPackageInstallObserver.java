@@ -20,7 +20,6 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
-import android.os.RemoteException;
 
 /**
  * Just a non-working implementation of this Stub to satisfy compiler!
@@ -41,11 +40,10 @@ public interface IPackageInstallObserver extends IInterface {
             throw new RuntimeException("Stub!");
         }
 
-        public boolean onTransact(int code, Parcel data, Parcel reply, int flags)
-                throws RemoteException {
+        public boolean onTransact(int code, Parcel data, Parcel reply, int flags) {
             throw new RuntimeException("Stub!");
         }
     }
 
-    void packageInstalled(String packageName, int returnCode) throws RemoteException;
+    void packageInstalled(String packageName, int returnCode);
 }

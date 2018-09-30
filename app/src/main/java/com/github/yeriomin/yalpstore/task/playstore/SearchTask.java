@@ -45,6 +45,7 @@ public class SearchTask extends EndlessScrollTask implements CloneableTask {
 
     @Override
     public CloneableTask clone() {
+        CloneableTask cloneableTask = (CloneableTask) super.clone();
         SearchTask task = new SearchTask(iterator);
         task.setFilter(filter);
         task.setQuery(query);

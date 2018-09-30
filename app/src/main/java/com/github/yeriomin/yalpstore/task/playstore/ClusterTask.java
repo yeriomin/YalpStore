@@ -39,6 +39,7 @@ public class ClusterTask extends EndlessScrollTask implements CloneableTask {
 
     @Override
     public CloneableTask clone() {
+        CloneableTask cloneableTask = (CloneableTask) super.clone();
         ClusterTask task = new ClusterTask(iterator);
         task.setClusterUrl(clusterUrl);
         task.setFilter(filter);

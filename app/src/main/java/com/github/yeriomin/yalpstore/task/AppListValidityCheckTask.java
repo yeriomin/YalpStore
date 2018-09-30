@@ -25,7 +25,6 @@ import com.github.yeriomin.yalpstore.AppListActivity;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.view.AppBadge;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -66,8 +65,7 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Map<String
             activity.loadApps();
             return;
         }
-        Set<String> packagesToRemove = new HashSet<>();
-        packagesToRemove.addAll(getRemovedPackageNames(installedPackageNames.keySet()));
+        Set<String> packagesToRemove = new HashSet<>(getRemovedPackageNames(installedPackageNames.keySet()));
         if (respectUpdateBlacklist) {
             packagesToRemove.addAll(getUpdatedPackageNames(installedPackageNames));
         }
@@ -86,7 +84,7 @@ public class AppListValidityCheckTask extends AsyncTask<String, Void, Map<String
         Set<String> updatedPackageNames = new HashSet<>();
         for (String packageName: installedPackages.keySet()) {
             if (null != activity.getListItem(packageName)) {
-                App app = ((AppBadge) activity.getListItem(packageName)).getApp();
+                App app = activity.getListItem(packageName).getApp();
                 if (app.getVersionCode() == installedPackages.get(packageName)) {
                     updatedPackageNames.add(packageName);
                 }

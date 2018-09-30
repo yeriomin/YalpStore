@@ -31,6 +31,7 @@ public class DownloadLinkTask extends DeliveryDataTask implements CloneableTask 
 
     @Override
     public CloneableTask clone() {
+        CloneableTask cloneableTask = (CloneableTask) super.clone();
         DownloadLinkTask task = new DownloadLinkTask();
         task.setApp(app);
         task.setContext(context);

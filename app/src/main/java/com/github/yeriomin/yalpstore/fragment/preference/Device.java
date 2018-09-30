@@ -124,7 +124,7 @@ public class Device extends List {
         PreferenceUtil.getDefaultSharedPreferences(activity)
             .edit()
             .putBoolean(PREFERENCE_DEVICE_DEFINITION_REQUESTED, true)
-            .commit()
+            .apply()
         ;
         return new DialogWrapper(activity)
             .setMessage(R.string.dialog_message_spoof_request)

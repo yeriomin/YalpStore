@@ -56,9 +56,6 @@ public class DownloadManagerFactory {
     }
 
     static private boolean nougatVpn(Context context) {
-        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.N && Build.VERSION.SDK_INT != Build.VERSION_CODES.N_MR1) {
-            return false;
-        }
-        return NetworkUtil.isVpn(context);
+        return (Build.VERSION.SDK_INT == Build.VERSION_CODES.N || Build.VERSION.SDK_INT == Build.VERSION_CODES.N_MR1) && NetworkUtil.isVpn(context);
     }
 }

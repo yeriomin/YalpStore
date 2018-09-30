@@ -26,7 +26,6 @@ import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.ReviewStorageIterator;
 import com.github.yeriomin.yalpstore.model.Review;
 
-import java.io.IOException;
 import java.util.List;
 
 public class ReviewLoadTask extends PlayStorePayloadTask<List<Review>> {
@@ -48,7 +47,7 @@ public class ReviewLoadTask extends PlayStorePayloadTask<List<Review>> {
     }
 
     @Override
-    protected List<Review> getResult(GooglePlayAPI api, String... arguments) throws IOException {
+    protected List<Review> getResult(GooglePlayAPI api, String... arguments) {
         return next ? iterator.next() : iterator.previous();
     }
 

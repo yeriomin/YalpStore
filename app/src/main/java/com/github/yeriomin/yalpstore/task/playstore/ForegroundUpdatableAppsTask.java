@@ -43,6 +43,7 @@ public class ForegroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
 
     @Override
     public CloneableTask clone() {
+        CloneableTask cloneableTask = (CloneableTask) super.clone();
         ForegroundUpdatableAppsTask task = new ForegroundUpdatableAppsTask(this.activity);
         task.setErrorView(errorView);
         task.setProgressIndicator(progressIndicator);

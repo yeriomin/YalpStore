@@ -53,6 +53,7 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 
     @Override
     public CloneableTask clone() {
+        CloneableTask cloneableTask = (CloneableTask) super.clone();
         PurchaseTask task = new PurchaseTask();
         task.setTriggeredBy(triggeredBy);
         task.setApp(app);

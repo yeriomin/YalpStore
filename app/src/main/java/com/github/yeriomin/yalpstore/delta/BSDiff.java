@@ -78,7 +78,7 @@ public class BSDiff extends Patcher {
      */
     public static void applyPatch(
         RandomAccessFile oldData, OutputStream newData, InputStream patchData)
-        throws PatchFormatException, IOException {
+        throws IOException {
         patchData = new BufferedInputStream(patchData, PATCH_STREAM_BUFFER_SIZE);
         newData = new BufferedOutputStream(newData, OUTPUT_STREAM_BUFFER_SIZE);
         try {
@@ -95,7 +95,7 @@ public class BSDiff extends Patcher {
         final RandomAccessFile oldData,
         final OutputStream newData,
         final InputStream patchData)
-        throws PatchFormatException, IOException {
+        throws IOException {
         final byte[] signatureBuffer = new byte[SIGNATURE.length()];
         try {
             readFully(patchData, signatureBuffer, 0, signatureBuffer.length);
@@ -235,7 +235,7 @@ public class BSDiff extends Patcher {
      * @throws IOException          if unable to read all 8 bytes from the stream
      */
     // Visible for testing only
-    static final long readBsdiffLong(InputStream in) throws PatchFormatException, IOException {
+    static final long readBsdiffLong(InputStream in) throws IOException {
         long result = 0;
         for (int bitshift = 0; bitshift < 64; bitshift += 8) {
             result |= ((long) in.read()) << bitshift;

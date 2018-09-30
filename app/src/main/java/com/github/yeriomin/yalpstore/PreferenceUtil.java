@@ -127,7 +127,7 @@ public class PreferenceUtil {
     static public void putStringSet(SharedPreferences preferences, String key, Set<String> set) {
         SharedPreferences.Editor editor = preferences.edit();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            editor.putStringSet(key, set).commit();
+            editor.putStringSet(key, set).apply();
         } else {
             editor.putString(key, TextUtils.join(DELIMITER, set)).commit();
         }
@@ -138,7 +138,7 @@ public class PreferenceUtil {
         if (TextUtils.isEmpty(preferences.getString(PreferenceUtil.PREFERENCE_INSTALLATION_METHOD, ""))
             && YalpStorePermissionManager.hasInstallPermission(context)
         ) {
-            preferences.edit().putString(PreferenceUtil.PREFERENCE_INSTALLATION_METHOD, PreferenceUtil.INSTALLATION_METHOD_PRIVILEGED).commit();
+            preferences.edit().putString(PreferenceUtil.PREFERENCE_INSTALLATION_METHOD, PreferenceUtil.INSTALLATION_METHOD_PRIVILEGED).apply();
         }
     }
 

@@ -196,6 +196,7 @@ public class DetailsActivity extends YalpStoreActivity {
 
         @Override
         public CloneableTask clone() {
+            CloneableTask cloneableTask = (CloneableTask) super.clone();
             GetAndRedrawDetailsTask task = new GetAndRedrawDetailsTask((DetailsActivity) context);
             task.setErrorView(errorView);
             task.setPackageName(packageName);

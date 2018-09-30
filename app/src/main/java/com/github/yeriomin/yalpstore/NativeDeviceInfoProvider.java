@@ -228,8 +228,7 @@ public class NativeDeviceInfoProvider implements DeviceInfoProvider {
     }
 
     static public List<String> getSharedLibraries(Context context) {
-        List<String> libraries = new ArrayList<>();
-        libraries.addAll(Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames()));
+        List<String> libraries = new ArrayList<>(Arrays.asList(context.getPackageManager().getSystemSharedLibraryNames()));
         Collections.sort(libraries);
         return libraries;
     }

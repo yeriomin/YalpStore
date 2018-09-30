@@ -56,7 +56,7 @@ public class FullscreenImageActivity extends Activity {
             return;
         }
 
-        Gallery gallery = ((Gallery) findViewById(R.id.gallery));
+        Gallery gallery = findViewById(R.id.gallery);
         gallery.setAdapter(new FullscreenImageAdapter(
             this,
             DetailsActivity.app.getScreenshotUrls(),

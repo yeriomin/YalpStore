@@ -69,11 +69,8 @@ public class NetworkUtil {
     static public boolean isVpn(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return isVpnLollipop(context);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            return isVpnHoneycomb();
-        } else {
-            return false;
-        }
+        } else
+            return Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB && isVpnHoneycomb();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)

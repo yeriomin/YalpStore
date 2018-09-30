@@ -127,13 +127,10 @@ public class GeneralDetails extends Abstract {
 
     private void drawHistoryButton(final App app) {
         boolean show = app.getInstalledVersionCode() > 0;
-        SQLiteDatabase db = new SqliteHelper(activity).getReadableDatabase();
-        try {
+        try (SQLiteDatabase db = new SqliteHelper(activity).getReadableDatabase()) {
             show = show && !new EventDao(db).getByPackageName(app.getPackageName()).isEmpty();
         } catch (Throwable e) {
             Log.w(getClass().getSimpleName(), "Could not check if the history is empty: " + e.getMessage());
-        } finally {
-            db.close();
         }
         if (show) {
             activity.findViewById(R.id.history).setVisibility(View.VISIBLE);

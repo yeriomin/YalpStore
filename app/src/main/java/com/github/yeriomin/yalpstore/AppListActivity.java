@@ -133,7 +133,7 @@ abstract public class AppListActivity extends ListActivity {
         if (null == listItem || !(listItem instanceof AppBadge)) {
             return null;
         }
-        return ((AppBadge) listItem).getApp();
+        return listItem.getApp();
     }
 
     public void addApps(List<App> appsToAdd) {

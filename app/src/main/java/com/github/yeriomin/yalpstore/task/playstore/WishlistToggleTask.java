@@ -36,6 +36,7 @@ public class WishlistToggleTask extends PlayStorePayloadTask<Boolean> implements
 
     @Override
     public CloneableTask clone() {
+        CloneableTask cloneableTask = (CloneableTask) super.clone();
         WishlistToggleTask task = new WishlistToggleTask();
         task.setPackageName(packageName);
         task.setErrorView(errorView);

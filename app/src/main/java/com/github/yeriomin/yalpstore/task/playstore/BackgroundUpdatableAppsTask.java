@@ -59,6 +59,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
 
     @Override
     public CloneableTask clone() {
+        CloneableTask cloneableTask = (CloneableTask) super.clone();
         BackgroundUpdatableAppsTask task = new BackgroundUpdatableAppsTask();
         task.setForceUpdate(forceUpdate);
         task.setContext(context);

@@ -86,7 +86,7 @@ public class PlayStoreApiAuthenticator {
         PreferenceUtil.getDefaultSharedPreferences(context).edit()
             .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
             .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
-            .commit()
+            .apply()
         ;
     }
 
@@ -95,12 +95,12 @@ public class PlayStoreApiAuthenticator {
         loginInfo.setEmail(email);
         loginInfo.setPassword(password);
         api = build(loginInfo);
-        PreferenceUtil.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_APP_PROVIDED_EMAIL).commit();
+        PreferenceUtil.getDefaultSharedPreferences(context).edit().remove(PREFERENCE_APP_PROVIDED_EMAIL).apply();
     }
 
     public void refreshToken() throws IOException {
         SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
-        prefs.edit().remove(PREFERENCE_AUTH_TOKEN).commit();
+        prefs.edit().remove(PREFERENCE_AUTH_TOKEN).apply();
         String email = prefs.getString(PREFERENCE_EMAIL, "");
         if (TextUtils.isEmpty(email)) {
             throw new CredentialsEmptyException();
@@ -112,7 +112,7 @@ public class PlayStoreApiAuthenticator {
         PreferenceUtil.getDefaultSharedPreferences(context).edit()
             .putBoolean(PREFERENCE_APP_PROVIDED_EMAIL, true)
             .putString(PREFERENCE_LAST_USED_TOKEN_DISPENSER, loginInfo.getTokenDispenserUrl())
-            .commit()
+            .apply()
         ;
     }
 
@@ -123,7 +123,7 @@ public class PlayStoreApiAuthenticator {
             .remove(PREFERENCE_AUTH_TOKEN)
             .remove(PREFERENCE_LAST_USED_TOKEN_DISPENSER)
             .remove(PREFERENCE_APP_PROVIDED_EMAIL)
-            .commit()
+            .apply()
         ;
         api = null;
     }
@@ -168,7 +168,7 @@ public class PlayStoreApiAuthenticator {
                 SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
                 if (prefs.getBoolean(PREFERENCE_APP_PROVIDED_EMAIL, false)) {
                     loginInfo.setEmail(null);
-                    prefs.edit().remove(PREFERENCE_GSF_ID).commit();
+                    prefs.edit().remove(PREFERENCE_GSF_ID).apply();
                 }
                 tried++;
                 if (tried >= retries) {
@@ -227,7 +227,7 @@ public class PlayStoreApiAuthenticator {
             .putString(PREFERENCE_EMAIL, loginInfo.getEmail())
             .putString(PREFERENCE_GSF_ID, loginInfo.getGsfId())
             .putString(PREFERENCE_AUTH_TOKEN, loginInfo.getToken())
-            .commit()
+            .apply()
         ;
     }
 

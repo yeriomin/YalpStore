@@ -34,6 +34,7 @@ public class CategoryListTask extends CategoryTask implements CloneableTask {
 
     @Override
     public CloneableTask clone() {
+        CloneableTask cloneableTask = (CloneableTask) super.clone();
         CategoryListTask task = new CategoryListTask();
         task.setManager(manager);
         task.setErrorView(errorView);
