@@ -75,7 +75,7 @@ public class SharedPreferencesCachedSet extends HashSet<String> {
 
     public void save() {
         PreferenceUtil.putStringSet(preferences, getStorageKey(), this);
-        preferences.edit().putLong(getLastUpdateTimeKey(), System.currentTimeMillis()).commit();
+        preferences.edit().putLong(getLastUpdateTimeKey(), System.currentTimeMillis()).apply();
     }
 
     protected String getStorageKey() {

@@ -168,6 +168,7 @@ public class ButtonDownload extends Button {
 
         @Override
         public LocalPurchaseTask clone() {
+            LocalPurchaseTask localPurchaseTask = (LocalPurchaseTask) super.clone();
             LocalPurchaseTask task = new LocalPurchaseTask();
             task.setTriggeredBy(triggeredBy);
             task.setApp(app);

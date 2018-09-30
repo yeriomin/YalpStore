@@ -23,7 +23,6 @@ import android.content.Context;
 import android.content.pm.IPackageInstallObserver;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.RemoteException;
 
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
@@ -57,7 +56,7 @@ class InstallerPrivilegedReflection extends InstallerPrivileged {
     class InstallObserver extends IPackageInstallObserver.Stub {
 
         @Override
-        public void packageInstalled(String packageName, int returnCode) throws RemoteException {
+        public void packageInstalled(String packageName, int returnCode) {
             processResult(InstalledAppsTask.getInstalledApp(context.getPackageManager(), packageName), returnCode);
         }
     }

@@ -124,7 +124,7 @@ public class Review extends Abstract {
     public void showReviews(List<com.github.yeriomin.yalpstore.model.Review> reviews) {
         activity.findViewById(R.id.reviews_previous).setVisibility(iterator.hasPrevious() ? View.VISIBLE : View.INVISIBLE);
         activity.findViewById(R.id.reviews_next).setVisibility(iterator.hasNext() ? View.VISIBLE : View.INVISIBLE);
-        LinearLayout listView = (LinearLayout) activity.findViewById(R.id.reviews_list);
+        LinearLayout listView = activity.findViewById(R.id.reviews_list);
         listView.removeAllViews();
         for (com.github.yeriomin.yalpstore.model.Review review: reviews) {
             addReviewToList(review, listView);
@@ -196,7 +196,7 @@ public class Review extends Abstract {
     }
 
     private void setTextOrHide(int viewId, String text) {
-        TextView textView = (TextView) activity.findViewById(viewId);
+        TextView textView = activity.findViewById(viewId);
         if (!TextUtils.isEmpty(text)) {
             textView.setText(text);
             textView.setVisibility(View.VISIBLE);

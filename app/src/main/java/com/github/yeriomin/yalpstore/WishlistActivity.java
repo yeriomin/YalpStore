@@ -88,6 +88,7 @@ public class WishlistActivity extends AppListActivity {
 
         @Override
         public CloneableTask clone() {
+            CloneableTask cloneableTask = (CloneableTask) super.clone();
             WishlistAppsTask task = new WishlistAppsTask((WishlistActivity) context);
             task.setErrorView(errorView);
             task.setProgressIndicator(progressIndicator);

@@ -40,7 +40,7 @@ public class AboutActivity extends YalpStoreActivity {
         ((TextView) findViewById(R.id.version)).setText(BuildConfig.VERSION_NAME);
         SharedPreferences sharedPreferences = PreferenceUtil.getDefaultSharedPreferences(this);
         ((TextView) findViewById(R.id.user_email)).setText(sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_EMAIL, ""));
-        TextView gsfIdView = (TextView) findViewById(R.id.gsf_id);
+        TextView gsfIdView = findViewById(R.id.gsf_id);
         gsfIdView.setText(sharedPreferences.getString(PlayStoreApiAuthenticator.PREFERENCE_GSF_ID, ""));
         gsfIdView.setOnClickListener(new CopyToClipboardListener());
         findViewById(R.id.developer_email).setOnClickListener(new CopyToClipboardListener() {

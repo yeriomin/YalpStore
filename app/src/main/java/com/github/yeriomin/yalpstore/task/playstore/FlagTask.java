@@ -49,6 +49,7 @@ public class FlagTask extends PlayStorePayloadTask<Boolean> implements Cloneable
 
     @Override
     public FlagTask clone() {
+        FlagTask flagTask = (FlagTask) super.clone();
         FlagTask task = new FlagTask();
         task.setContext(context);
         task.setApp(app);

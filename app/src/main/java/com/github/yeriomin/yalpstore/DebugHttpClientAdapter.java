@@ -109,13 +109,11 @@ public class DebugHttpClientAdapter extends NativeHttpClientAdapter {
     }
 
     private static String getFileName(String url, boolean request, boolean headers) {
-        return new StringBuilder()
-            .append(System.currentTimeMillis())
-            .append(".")
-            .append(request ? "request" : "response")
-            .append(url.replace("&", ".").replace("=", ".").replace("/", ".").replace(":", "."))
-            .append(headers ? ".txt" : ".bin")
-            .toString()
+        return String.valueOf(System.currentTimeMillis()) +
+                "." +
+                (request ? "request" : "response") +
+                url.replace("&", ".").replace("=", ".").replace("/", ".").replace(":", ".") +
+                (headers ? ".txt" : ".bin")
         ;
     }
 }

@@ -65,7 +65,7 @@ public class ImageAdapter extends BaseAdapter {
         LoadImageTask task = getTask();
         ImageView imageView = new ImageView(context);
         task.setImageView(imageView);
-        ImageSource source = new ImageSource((String) getItem(position));
+        ImageSource source = new ImageSource(getItem(position));
         source.setFullSize(true);
         task.execute(source);
         return imageView;

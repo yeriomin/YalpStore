@@ -53,9 +53,6 @@ public class CopyApkTask extends AsyncTask<App, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(App... apps) {
-        if (null == contextRef.get()) {
-            return false;
-        }
-        return new InstalledApkCopier(contextRef.get()).copy(apps[0]);
+        return null != contextRef.get() && new InstalledApkCopier(contextRef.get()).copy(apps[0]);
     }
 }

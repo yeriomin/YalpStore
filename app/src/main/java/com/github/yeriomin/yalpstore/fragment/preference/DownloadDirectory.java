@@ -91,10 +91,7 @@ public class DownloadDirectory extends Abstract {
                     if (newDir.exists()) {
                         return newDir.canWrite();
                     }
-                    if (activity.checkCallingOrSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                        return newDir.mkdirs();
-                    }
-                    return true;
+                    return activity.checkCallingOrSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || newDir.mkdirs();
                 } catch (IOException e) {
                     return false;
                 }

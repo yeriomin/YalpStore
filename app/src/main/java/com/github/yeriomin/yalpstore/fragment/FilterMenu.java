@@ -128,7 +128,7 @@ public class FilterMenu {
     }
 
     private void putBoolean(String key, boolean value) {
-        PreferenceUtil.getDefaultSharedPreferences(activity).edit().putBoolean(key, value).commit();
+        PreferenceUtil.getDefaultSharedPreferences(activity).edit().putBoolean(key, value).apply();
         restartActivity();
     }
 
@@ -153,7 +153,7 @@ public class FilterMenu {
                     PreferenceUtil.getDefaultSharedPreferences(activity).edit().putString(
                         FILTER_CATEGORY,
                         categories.keySet().toArray(new String[categories.size()])[which]
-                    ).commit();
+                    ).apply();
                     super.onClick(dialog, which);
                 }
             }
@@ -169,7 +169,7 @@ public class FilterMenu {
                     PreferenceUtil.getDefaultSharedPreferences(activity).edit().putFloat(
                         FILTER_RATING,
                         Float.parseFloat(activity.getResources().getStringArray(R.array.filterRatingValues)[which])
-                    ).commit();
+                    ).apply();
                     super.onClick(dialog, which);
                 }
             }
@@ -185,7 +185,7 @@ public class FilterMenu {
                     PreferenceUtil.getDefaultSharedPreferences(activity).edit().putInt(
                         FILTER_DOWNLOADS,
                         Integer.parseInt(activity.getResources().getStringArray(R.array.filterDownloadsValues)[which])
-                    ).commit();
+                    ).apply();
                     super.onClick(dialog, which);
                 }
             }

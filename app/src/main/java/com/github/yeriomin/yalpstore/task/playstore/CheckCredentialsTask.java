@@ -93,7 +93,7 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
         if (e instanceof TokenDispenserException) {
             ContextUtil.toast(context, R.string.error_token_dispenser_problem);
         } else if (e instanceof GooglePlayException && ((GooglePlayException) e).getCode() == 500) {
-            PreferenceUtil.getDefaultSharedPreferences(context).edit().putString(PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1").commit();
+            PreferenceUtil.getDefaultSharedPreferences(context).edit().putString(PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_INTERVAL, "-1").apply();
             ContextUtil.toast(context, R.string.error_invalid_device_definition);
             context.startActivity(new Intent(context, PreferenceActivity.class));
         }

@@ -116,7 +116,7 @@ public class SpoofDeviceManager {
         for (String name: devices.keySet()) {
             prefs.putString(name, devices.get(name));
         }
-        prefs.commit();
+        prefs.apply();
     }
 
     private Map<String, String> getDevicesFromApk() {

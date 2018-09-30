@@ -46,11 +46,8 @@ public class HistoryTask extends TaskWithProgress<List<Event>> {
 
     @Override
     protected List<Event> doInBackground(String... strings) {
-        SQLiteDatabase db = new SqliteHelper(context).getReadableDatabase();
-        try {
+        try (SQLiteDatabase db = new SqliteHelper(context).getReadableDatabase()) {
             return new EventDao(db).getByPackageName(packageName);
-        } finally {
-            db.close();
         }
     }
 

@@ -69,7 +69,7 @@ abstract public class Updater {
         SharedPreferences.Editor preferences = PreferenceUtil.getDefaultSharedPreferences(context).edit();
         preferences.putInt(CACHED_VERSION_CODE, versionCode);
         preferences.putLong(CACHED_VERSION_CODE_CHECKED_AT, System.currentTimeMillis());
-        preferences.commit();
+        preferences.apply();
     }
 
     private URL getUrl(int versionCode) {

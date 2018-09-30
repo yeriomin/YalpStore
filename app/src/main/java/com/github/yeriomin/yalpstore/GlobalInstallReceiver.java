@@ -23,13 +23,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.Event;
-import com.github.yeriomin.yalpstore.model.EventDao;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 import com.github.yeriomin.yalpstore.task.playstore.ChangelogTask;
