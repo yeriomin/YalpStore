@@ -56,7 +56,7 @@ public class AppBuilder {
         app.setDescription(details.getDescriptionHtml());
         app.setShortDescription(details.getDescriptionShort());
         app.setCategoryId(details.getRelatedLinks().getCategoryInfo().getAppCategory());
-        app.setRestriction(details.getAvailability().getRestriction());
+        app.setRestriction(App.Restriction.forInt(details.getAvailability().getRestriction()));
         if (details.getOfferCount() > 0) {
             app.setOfferType(details.getOffer(0).getOfferType());
             app.setFree(details.getOffer(0).getMicros() == 0);

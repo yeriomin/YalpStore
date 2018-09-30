@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
@@ -31,25 +30,19 @@ import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
 import com.github.yeriomin.playstoreapi.AuthException;
 import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.ContextUtil;
-import com.github.yeriomin.yalpstore.DownloadManagerInterface;
-import com.github.yeriomin.yalpstore.DownloadProgressUpdater;
-import com.github.yeriomin.yalpstore.DownloadProgressUpdaterFactory;
-import com.github.yeriomin.yalpstore.DownloadState;
-import com.github.yeriomin.yalpstore.Downloader;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
 import com.github.yeriomin.yalpstore.R;
-import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.YalpStorePermissionManager;
-import com.github.yeriomin.yalpstore.notification.CancelDownloadReceiver;
+import com.github.yeriomin.yalpstore.download.DownloadManager;
+import com.github.yeriomin.yalpstore.download.State;
+import com.github.yeriomin.yalpstore.task.DownloadTask;
 import com.github.yeriomin.yalpstore.view.PurchaseDialogBuilder;
 
 import java.io.IOException;
 
 public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
 
-    static public final long UPDATE_INTERVAL = 300;
-
-    protected DownloadState.TriggeredBy triggeredBy = DownloadState.TriggeredBy.DOWNLOAD_BUTTON;
+    protected State.TriggeredBy triggeredBy = State.TriggeredBy.DOWNLOAD_BUTTON;
 
     @Override
     public CloneableTask clone() {
@@ -62,20 +55,21 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
         return task;
     }
 
-    public void setTriggeredBy(DownloadState.TriggeredBy triggeredBy) {
+    public void setTriggeredBy(State.TriggeredBy triggeredBy) {
         this.triggeredBy = triggeredBy;
     }
 
     @Override
     protected AndroidAppDeliveryData getResult(GooglePlayAPI api, String... arguments) throws IOException {
-        DownloadState state = DownloadState.get(app.getPackageName());
-        if (null != state) {
-            state.setTriggeredBy(triggeredBy);
+        if (DownloadManager.isCancelled(app.getPackageName())) {
+            Log.e(getClass().getSimpleName(), app.getPackageName() + " is cancelled before it even started");
+            return deliveryData;
         }
         super.getResult(api, arguments);
+        DownloadManager dm = new DownloadManager(context);
         if (null == deliveryData) {
-            sendCancelBroadcast();
             Log.e(getClass().getSimpleName(), app.getPackageName() + " no download link returned");
+            dm.error(app.getPackageName(), DownloadManager.Error.CANNOT_RESUME);
             return deliveryData;
         }
         if (context instanceof Activity
@@ -87,28 +81,16 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
             new YalpStorePermissionManager((Activity) context).requestPermission();
             return deliveryData;
         }
-        Downloader downloader = new Downloader(context);
+        if (DownloadManager.isCancelled(app.getPackageName())) {
+            Log.e(getClass().getSimpleName(), app.getPackageName() + " is cancelled before it even started");
+            return deliveryData;
+        }
         try {
-            if (state.isCancelled()) {
-                sendCancelBroadcast();
-                Log.e(getClass().getSimpleName(), app.getPackageName() + " is cancelled before it even started");
-            } else if (downloader.enoughSpace(deliveryData)) {
-                downloader.download(app, deliveryData);
-                if (context instanceof YalpStoreActivity) {
-                    DownloadProgressUpdater progressUpdater = DownloadProgressUpdaterFactory.get((YalpStoreActivity) context, app.getPackageName());
-                    if (null != progressUpdater) {
-                        progressUpdater.execute(UPDATE_INTERVAL);
-                    }
-                }
-            } else {
-                sendCancelBroadcast();
-                Log.e(getClass().getSimpleName(), app.getPackageName() + " not enough storage space");
-                throw new IOException(context.getString(R.string.download_manager_ERROR_INSUFFICIENT_SPACE));
-            }
+            dm.start(app, deliveryData, triggeredBy);
         } catch (IllegalArgumentException | SecurityException e) {
-            sendCancelBroadcast();
             Log.e(getClass().getSimpleName(), app.getPackageName() + " unknown storage error: " + e.getClass().getName() + ": " + e.getMessage());
-            throw new IOException(context.getString(R.string.download_manager_ERROR_FILE_ERROR));
+            e.printStackTrace();
+            throw new DownloadTask.DownloadException(context.getString(R.string.download_manager_ERROR_FILE_ERROR), DownloadManager.Error.FILE_ERROR);
         }
         return deliveryData;
     }
@@ -116,13 +98,12 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
     @Override
     protected void processException(Throwable e) {
         super.processException(e);
-        sendCancelBroadcast();
-    }
-
-    private void sendCancelBroadcast() {
-        DownloadState.get(app.getPackageName()).setApp(app);
-        context.sendBroadcast(new Intent(CancelDownloadReceiver.ACTION_CANCEL_DOWNLOAD).putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName()));
-        context.sendBroadcast(new Intent(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED).putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName()));
+        new DownloadManager(context).error(
+            app.getPackageName(),
+            e instanceof DownloadTask.DownloadException
+                ? ((DownloadTask.DownloadException) e).getError()
+                : DownloadManager.Error.UNKNOWN
+        );
     }
 
     @Override
@@ -130,8 +111,8 @@ public class PurchaseTask extends DeliveryDataTask implements CloneableTask {
         super.onPostExecute(deliveryData);
         if (getException() instanceof NotPurchasedException
             && ContextUtil.isAlive(context)
-            && (triggeredBy.equals(DownloadState.TriggeredBy.DOWNLOAD_BUTTON)
-                || triggeredBy.equals(DownloadState.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
+            && (triggeredBy.equals(State.TriggeredBy.DOWNLOAD_BUTTON)
+                || triggeredBy.equals(State.TriggeredBy.MANUAL_DOWNLOAD_BUTTON)
             )
         ) {
             try {

@@ -20,9 +20,16 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.model.App;
+import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
+
+import java.io.File;
 
 public class InstallerDefault extends InstallerAbstract {
 
@@ -32,8 +39,13 @@ public class InstallerDefault extends InstallerAbstract {
 
     @Override
     public boolean verify(App app) {
+        if (Paths.getApkAndSplits(context, app.getPackageName(), app.getVersionCode()).size() > 1) {
+            Log.e(getClass().getSimpleName(), "Split apks are not supported by default installer");
+            notifyAndToast(R.string.download_manager_SPLITS_NOT_SUPPORTED, R.string.download_manager_SPLITS_NOT_SUPPORTED, app, true);
+            return false;
+        }
         if (background) {
-            Log.i(getClass().getSimpleName(), "Background installation is not supported by default installer");
+            Log.e(getClass().getSimpleName(), "Background installation is not supported by default installer");
             return false;
         }
         return super.verify(app);
@@ -41,7 +53,23 @@ public class InstallerDefault extends InstallerAbstract {
 
     @Override
     protected void install(App app) {
+        new NotificationManagerWrapper(context).cancel(app.getPackageName());
         InstallationState.setSuccess(app.getPackageName());
-        context.startActivity(InstallerAbstract.getOpenApkIntent(context, app));
+        context.startActivity(getOpenApkIntent(app));
+    }
+
+    private Intent getOpenApkIntent(App app) {
+        Intent intent;
+        File file = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+            intent.setData(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file));
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        } else {
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+        }
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
     }
 }

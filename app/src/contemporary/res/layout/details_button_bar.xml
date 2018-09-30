@@ -1,114 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="4dp"
-    android:orientation="vertical">
+    android:gravity="end"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    style="?android:attr/buttonBarStyle">
+
+    <ViewStub
+        android:id="@+id/more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageButton
+        style="?android:attr/buttonBarButtonStyle"
+        android:id="@+id/uninstall"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:contentDescription="@string/details_uninstall"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:padding="8dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/button_border"
+        android:tint="?attr/colorAccent"
+        android:elevation="2dp"
+        android:src="@drawable/ic_delete"/>
+
+    <Button
+        style="?android:attr/buttonBarButtonStyle"
+        android:id="@+id/download"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:visibility="gone"
+        android:maxLines="1"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/button_border"
+        android:text="@string/details_download" />
 
     <LinearLayout
+        android:id="@+id/download_progress_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        style="?android:attr/buttonBarStyle">
+        android:layout_height="match_parent"
+        android:padding="6dp"
+        android:visibility="gone"
+        android:orientation="vertical">
 
-        <ViewStub
-            android:id="@+id/more"
+        <TextView
+            android:id="@+id/download_progress_size"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical|end"/>
 
-        <ImageButton
-            style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/uninstall"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginEnd="5dp"
-            android:contentDescription="@string/details_uninstall"
-            android:scaleType="centerCrop"
-            android:visibility="gone"
-            android:padding="8dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:background="@drawable/button_border"
-            android:tint="?attr/colorAccent"
-            android:elevation="2dp"
-            android:src="@drawable/ic_delete"/>
-
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/download"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:layout_marginRight="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:visibility="gone"
-            android:maxLines="1"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:background="@drawable/button_border"
-            android:text="@string/details_download" />
-
-        <ImageButton
-            style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/cancel"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:contentDescription="@string/content_description_cancel_download"
-            android:scaleType="centerCrop"
-            android:visibility="gone"
-            android:padding="8dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:background="@drawable/button_border"
-            android:tint="?attr/colorAccent"
-            android:elevation="2dp"
-            android:src="@drawable/ic_cancel" />
-
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/install"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:layout_marginRight="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:visibility="gone"
-            android:maxLines="1"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:background="@drawable/button_border"
-            android:text="@string/details_install" />
-
-        <Button
-            style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/run"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:visibility="gone"
-            android:maxLines="1"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:background="@drawable/button_border"
-            android:text="@string/details_run" />
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_weight="1"
+            android:id="@+id/download_progress"
+            android:indeterminate="false"
+            style="?android:attr/progressBarStyleHorizontal" />
 
     </LinearLayout>
 
-    <ProgressBar
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:id="@+id/download_progress"
-        android:indeterminate="false"
-        android:visibility="invisible"
-        style="?android:attr/progressBarStyleHorizontal" />
+    <ImageButton
+        style="?android:attr/buttonBarButtonStyle"
+        android:id="@+id/cancel"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:contentDescription="@string/content_description_cancel_download"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:padding="8dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/button_border"
+        android:tint="?attr/colorAccent"
+        android:elevation="2dp"
+        android:src="@drawable/ic_cancel" />
 
-</merge>
+    <Button
+        style="?android:attr/buttonBarButtonStyle"
+        android:id="@+id/install"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:visibility="gone"
+        android:maxLines="1"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/button_border"
+        android:text="@string/details_install" />
+
+    <Button
+        style="?android:attr/buttonBarButtonStyle"
+        android:id="@+id/run"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:visibility="gone"
+        android:maxLines="1"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@drawable/button_border"
+        android:text="@string/details_run" />
+
+</LinearLayout>

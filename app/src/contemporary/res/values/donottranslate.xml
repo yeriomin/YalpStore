@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="drawer_open" translatable="false">Open drawer</string>
-    <string name="drawer_close" translatable="false">Close drawer</string>
-</resources>

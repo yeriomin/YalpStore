@@ -17,33 +17,31 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.download;
 
-import android.content.Context;
+public class RequestObb extends Request {
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
-import com.github.yeriomin.yalpstore.model.App;
+    private boolean main;
+    private int versionCode;
 
-import java.io.File;
+    public boolean isMain() {
+        return main;
+    }
 
-public class DownloadRequestBuilderApk extends DownloadRequestBuilder {
+    public void setMain(boolean main) {
+        this.main = main;
+    }
 
-    public DownloadRequestBuilderApk(Context context, App app, AndroidAppDeliveryData deliveryData) {
-        super(context, app, deliveryData);
+    public int getVersionCode() {
+        return versionCode;
+    }
+
+    public void setVersionCode(int versionCode) {
+        this.versionCode = versionCode;
     }
 
     @Override
-    protected String getDownloadUrl() {
-        return deliveryData.getDownloadUrl();
-    }
-
-    @Override
-    protected File getDestinationFile() {
-        return Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
-    }
-
-    @Override
-    protected String getNotificationTitle() {
-        return app.getDisplayName();
+    public Type getType() {
+        return main ? Type.OBB_MAIN : Type.OBB_PATCH;
     }
 }

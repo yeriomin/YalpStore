@@ -17,28 +17,11 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.download;
 
-import android.os.Handler;
-import android.os.Looper;
+class RequestApk extends Request {
 
-abstract public class RepeatingTask {
-
-    abstract protected boolean shouldRunAgain();
-    abstract protected void payload();
-
-    public void execute(final long interval) {
-        new Handler(Looper.getMainLooper()).postDelayed(
-            new Runnable() {
-                @Override
-                public void run() {
-                    payload();
-                    if (shouldRunAgain()) {
-                        execute(interval);
-                    }
-                }
-            },
-            interval
-        );
+    public Type getType() {
+        return Type.APK;
     }
 }

@@ -19,13 +19,13 @@
 
 package com.github.yeriomin.yalpstore;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.download.DownloadManager;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.Event;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;
@@ -33,20 +33,31 @@ import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 import com.github.yeriomin.yalpstore.task.playstore.ChangelogTask;
 
 import java.io.File;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.zip.CRC32;
+import java.util.zip.Checksum;
 
-public class GlobalInstallReceiver extends BroadcastReceiver {
+public class GlobalInstallReceiver extends PackageSpecificReceiver {
 
     static public final String ACTION_INSTALL_UI_UPDATE = "ACTION_INSTALL_UI_UPDATE";
-    static public final String ACTION_PACKAGE_REPLACED_NON_SYSTEM = "ACTION_PACKAGE_REPLACED_NON_SYSTEM";
     static public final String ACTION_PACKAGE_INSTALLATION_FAILED = "ACTION_PACKAGE_INSTALLATION_FAILED";
+
+    static private final long INTENT_HASH_TTL = 5000;
+    static private final Map<Long, Long> intentHashes = new ConcurrentHashMap<>();
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (!isProperIntent(intent)) {
+        super.onReceive(context, intent);
+        long intentHash = getIntentHash(intent);
+        if (!isProperIntent(intent) || intentHashes.keySet().contains(intentHash)) {
+            cleanupIntentHashes();
             return;
         }
+        intentHashes.put(intentHash, System.currentTimeMillis());
         String action = intent.getAction();
-        String packageName = intent.getData().getSchemeSpecificPart();
+        packageName = intent.getData().getSchemeSpecificPart();
         Log.i(getClass().getSimpleName(), "Finished installation (" + action + ") of " + packageName);
         try {
             getEventTask(context, packageName, action).executeOnExecutorIfPossible();
@@ -59,6 +70,9 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         boolean actionIsInstall = actionIsInstall(action);
         ((YalpStoreApplication) context.getApplicationContext()).removePendingUpdate(packageName, actionIsInstall);
         if (!actionIsInstall) {
+            if (!ACTION_PACKAGE_INSTALLATION_FAILED.equals(action)) {
+                new NotificationManagerWrapper(context).cancel(packageName);
+            }
             return;
         }
         BlackWhiteListManager manager = new BlackWhiteListManager(context);
@@ -68,10 +82,10 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         }
         App app = YalpStoreApplication.installedPackages.get(packageName);
         if (needToRemoveApk(context)) {
-            removeApk(context, app);
+            removeApks(context, app);
         }
         if (installationMethodIsDefault(context)) {
-            new NotificationManagerWrapper(context).cancel(app.getDisplayName());
+            new NotificationManagerWrapper(context).cancel(packageName);
         }
     }
 
@@ -84,6 +98,35 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
                 && intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)
             )
         );
+    }
+
+    /**
+     * Root and privileged methods create two identical intents upon installation on some devices
+     * So to prevent double work on them and double event records, we need to filter them
+     *
+     */
+    static private long getIntentHash(Intent i) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(i.getAction()).append("|").append(i.getDataString()).append("|");
+        if (null != i.getExtras() && !i.getExtras().isEmpty()) {
+            for (String key: i.getExtras().keySet()) {
+                sb.append(key).append("=").append(i.getExtras().get(key)).append(";");
+            }
+        }
+        byte[] bytes = sb.toString().getBytes();
+        Checksum checksum = new CRC32();
+        checksum.update(bytes, 0, bytes.length);
+        return checksum.getValue();
+    }
+
+    static private void cleanupIntentHashes() {
+        Iterator<Long> iterator = intentHashes.keySet().iterator();
+        while (iterator.hasNext()) {
+            Long currentIntentHash = iterator.next();
+            if (intentHashes.get(currentIntentHash) + INTENT_HASH_TTL < System.currentTimeMillis()) {
+                intentHashes.remove(currentIntentHash);
+            }
+        }
     }
 
     static private ChangelogTask getEventTask(Context context, String packageName, String action) {
@@ -101,12 +144,12 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
                 task.setEventType(Event.TYPE.INSTALLATION, false);
                 break;
             case Intent.ACTION_PACKAGE_FULLY_REMOVED:
+            case Intent.ACTION_PACKAGE_REMOVED:
                 task.setEventType(Event.TYPE.REMOVAL, true);
                 break;
             case Intent.ACTION_PACKAGE_INSTALL:
             case Intent.ACTION_PACKAGE_ADDED:
             case Intent.ACTION_PACKAGE_REPLACED:
-            case ACTION_PACKAGE_REPLACED_NON_SYSTEM:
                 task.setEventType(app.getInstalledVersionCode() > 0 ? Event.TYPE.UPDATE : Event.TYPE.INSTALLATION, true);
                 break;
         }
@@ -133,7 +176,6 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
         return action.equals(Intent.ACTION_PACKAGE_INSTALL)
             || action.equals(Intent.ACTION_PACKAGE_ADDED)
             || action.equals(Intent.ACTION_PACKAGE_REPLACED)
-            || action.equals(ACTION_PACKAGE_REPLACED_NON_SYSTEM)
         ;
     }
 
@@ -149,16 +191,15 @@ public class GlobalInstallReceiver extends BroadcastReceiver {
 
     static private boolean wasInstalled(Context context, String packageName) {
         return InstallationState.isInstalled(packageName)
-            || (installationMethodIsDefault(context)
-                && DownloadState.get(packageName).isEverythingFinished()
-            )
+            || (installationMethodIsDefault(context) && DownloadManager.isSuccessful(packageName))
         ;
     }
 
-    static private void removeApk(Context context, App app) {
-        File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
-        if (apkPath.exists()) {
-            Log.i(GlobalInstallReceiver.class.getSimpleName(), "Removed " + apkPath + " " + (apkPath.delete() ? "" : "UN") + "successfully");
+    static private void removeApks(Context context, App app) {
+        for (File apk: Paths.getApkAndSplits(context, app.getPackageName(), app.getVersionCode())) {
+            if (apk.exists()) {
+                Log.i(GlobalInstallReceiver.class.getSimpleName(), apk + " " + (apk.delete() ? "" : "FAILED to be ") + "deleted");
+            }
         }
     }
 

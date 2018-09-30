@@ -46,7 +46,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 
 
-public class FdroidListTask extends TaskWithProgress<Void> {
+public class FdroidListTask extends LowCpuIntensityTask<Void, Void, Void> {
 
     static private final String FDROID_REPO_URL = "https://f-droid.org/repo/index.xml";
     static private final String FDROID_REPO_LOCAL_XML = "fdroid.xml";
@@ -58,7 +58,7 @@ public class FdroidListTask extends TaskWithProgress<Void> {
     }
 
     @Override
-    protected Void doInBackground(String... strings) {
+    protected Void doInBackground(Void... voids) {
         if (localXmlFile.exists() && localXmlFile.lastModified() + DateUtils.WEEK_IN_MILLIS < System.currentTimeMillis()) {
             localXmlFile.delete();
         }

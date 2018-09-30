@@ -33,6 +33,8 @@ public class NotificationManagerWrapper {
     static public NotificationBuilder getBuilder(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return new NotificationBuilderO(context);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
+            return new NotificationBuilderKitkatWatch(context);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             return new NotificationBuilderJellybean(context);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
@@ -49,15 +51,15 @@ public class NotificationManagerWrapper {
         manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
     }
 
-    public void show(Intent intent, String title, String message) {
-        show(title, getBuilder(context).setIntent(intent).setTitle(title).setMessage(message).build());
+    public void show(String packageName, Intent intent, String title, String message) {
+        show(packageName, getBuilder(context).setIntent(intent).setTitle(title).setMessage(message).build());
     }
 
-    public void show(String title, Notification notification) {
-        manager.notify(title.hashCode(), notification);
+    public void show(String packageName, Notification notification) {
+        manager.notify(packageName.hashCode(), notification);
     }
 
-    public void cancel(String title) {
-        manager.cancel(title.hashCode());
+    public void cancel(String packageName) {
+        manager.cancel(packageName.hashCode());
     }
 }

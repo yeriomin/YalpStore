@@ -19,7 +19,6 @@
 
 package com.github.yeriomin.yalpstore;
 
-import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -38,12 +37,14 @@ import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.LoginInfo;
 import com.github.yeriomin.yalpstore.model.LoginInfoDao;
 import com.github.yeriomin.yalpstore.notification.CancelDownloadReceiver;
-import com.github.yeriomin.yalpstore.notification.DownloadChecksumReceiver;
 import com.github.yeriomin.yalpstore.notification.IgnoreUpdatesReceiver;
+import com.github.yeriomin.yalpstore.notification.SignatureCheckReceiver;
 import com.github.yeriomin.yalpstore.task.FdroidListTask;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
+import com.github.yeriomin.yalpstore.task.OldApkCleanupTask;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.Proxy;
 import java.util.ArrayList;
@@ -59,6 +60,7 @@ import info.guardianproject.netcipher.proxy.OrbotHelper;
 
 import static android.net.ConnectivityManager.CONNECTIVITY_ACTION;
 import static com.github.yeriomin.yalpstore.InstalledAppsActivity.INSTALLED_APPS_LOADED_ACTION;
+import static com.github.yeriomin.yalpstore.PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE;
 import static com.github.yeriomin.yalpstore.PreferenceUtil.PREFERENCE_USE_TOR;
 
 public class YalpStoreApplication extends Application {
@@ -135,7 +137,6 @@ public class YalpStoreApplication extends Application {
         initNetcipher();
         initUser();
         Thread.setDefaultUncaughtExceptionHandler(new YalpStoreUncaughtExceptionHandler(getApplicationContext()));
-        registerDownloadReceiver();
         registerInstallReceiver();
         registerConnectivityReceiver();
         registerSecondaryDownloadReceivers();
@@ -149,26 +150,24 @@ public class YalpStoreApplication extends Application {
         installedAppsTask.setContext(this.getApplicationContext());
         installedAppsTask.executeOnExecutorIfPossible();
         wishlist.setPreferences(PreferenceUtil.getDefaultSharedPreferences(this));
+        if (PreferenceUtil.getBoolean(this, PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)) {
+            OldApkCleanupTask task = new OldApkCleanupTask(this);
+            task.setDeleteAll(true);
+            task.executeOnExecutorIfPossible();
+        }
     }
 
-    private void registerDownloadReceiver() {
-        HandlerThread handlerThread = new HandlerThread("handlerThread");
-        handlerThread.start();
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_CANCELLED);
-        filter.addAction(DownloadManagerInterface.ACTION_DOWNLOAD_COMPLETE);
-        registerReceiver(new GlobalDownloadReceiver(), filter, null, new Handler(handlerThread.getLooper()));
-    }
-
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void registerInstallReceiver() {
         IntentFilter filter = new IntentFilter();
         filter.addDataScheme("package");
         filter.addAction(Intent.ACTION_INSTALL_PACKAGE);
         filter.addAction(Intent.ACTION_PACKAGE_ADDED);
         filter.addAction(Intent.ACTION_PACKAGE_REPLACED);
-        filter.addAction(Intent.ACTION_PACKAGE_FULLY_REMOVED);
-        filter.addAction(GlobalInstallReceiver.ACTION_PACKAGE_REPLACED_NON_SYSTEM);
+        filter.addAction(
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH
+                ? Intent.ACTION_PACKAGE_FULLY_REMOVED
+                : Intent.ACTION_PACKAGE_REMOVED
+        );
         filter.addAction(GlobalInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED);
         registerReceiver(new GlobalInstallReceiver(), filter);
     }
@@ -181,7 +180,7 @@ public class YalpStoreApplication extends Application {
 
     private void registerSecondaryDownloadReceivers() {
         registerReceiver(new CancelDownloadReceiver(), new IntentFilter(CancelDownloadReceiver.ACTION_CANCEL_DOWNLOAD));
-        registerReceiver(new DownloadChecksumReceiver(), new IntentFilter(DownloadChecksumReceiver.ACTION_CHECK_APK));
+        registerReceiver(new SignatureCheckReceiver(), new IntentFilter(SignatureCheckReceiver.ACTION_CHECK_APK));
         registerReceiver(new IgnoreUpdatesReceiver(), new IntentFilter(IgnoreUpdatesReceiver.ACTION_IGNORE_UPDATES));
     }
 

@@ -33,7 +33,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import info.guardianproject.netcipher.client.StrongConnectionBuilder;
 
-abstract public class HttpTask extends TaskWithProgress<String> {
+abstract public class HttpTask extends LowCpuIntensityTask<String, Void, String> {
 
     protected HttpsURLConnection connection;
     private final Map<String, String> headers = new HashMap<>();

@@ -17,38 +17,33 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore.task;
+package com.github.yeriomin.yalpstore.download;
 
-import android.content.Context;
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 
-import java.io.File;
-import java.lang.ref.WeakReference;
+public class RequestDelta extends Request {
 
-abstract public class CleanupTask extends LowCpuIntensityTask<Void, Void, Void> {
+    private byte[] baseHash;
+    private GooglePlayAPI.PATCH_FORMAT patchFormat;
 
-    protected WeakReference<Context> contextRef;
-
-    public CleanupTask(Context context) {
-        this.contextRef = new WeakReference<>(context);
+    public byte[] getBaseHash() {
+        return baseHash;
     }
 
-    abstract protected boolean shouldDelete(File file);
-    abstract protected File[] getFiles();
+    public void setBaseHash(byte[] baseHash) {
+        this.baseHash = baseHash;
+    }
+
+    public GooglePlayAPI.PATCH_FORMAT getPatchFormat() {
+        return patchFormat;
+    }
+
+    public void setPatchFormat(GooglePlayAPI.PATCH_FORMAT patchFormat) {
+        this.patchFormat = patchFormat;
+    }
 
     @Override
-    protected Void doInBackground(Void... voids) {
-        if (null == contextRef.get()) {
-            return null;
-        }
-        File[] files = getFiles();
-        if (null == files) {
-            return null;
-        }
-        for (File file: files) {
-            if (shouldDelete(file)) {
-                file.delete();
-            }
-        }
-        return null;
+    public Type getType() {
+        return Type.DELTA;
     }
 }

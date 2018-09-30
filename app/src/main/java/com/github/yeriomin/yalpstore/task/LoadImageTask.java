@@ -22,7 +22,6 @@ package com.github.yeriomin.yalpstore.task;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.text.TextUtils;
 import android.view.View;
@@ -36,7 +35,7 @@ import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.model.ImageSource;
 
-public class LoadImageTask extends AsyncTask<ImageSource, Void, Void> {
+public class LoadImageTask extends LowCpuIntensityTask<Void, Void, Void> {
 
     protected ImageView imageView;
     private ImageSource imageSource;

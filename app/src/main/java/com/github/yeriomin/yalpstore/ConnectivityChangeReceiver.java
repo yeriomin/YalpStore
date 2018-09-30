@@ -24,6 +24,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.download.DownloadManager;
+
 import static android.net.ConnectivityManager.EXTRA_NO_CONNECTIVITY;
 
 public class ConnectivityChangeReceiver extends BroadcastReceiver {
@@ -32,7 +34,7 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (!intent.getBooleanExtra(EXTRA_NO_CONNECTIVITY, false)) {
             Log.i(getClass().getSimpleName(), "Resuming downloads");
-            DownloadState.resumeAll();
+            DownloadManager.resumeAll();
         }
     }
 }

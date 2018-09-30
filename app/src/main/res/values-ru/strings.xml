@@ -134,7 +134,7 @@
     <string name="notification_installation_failed">Не удалось установить обновление.</string>
     <string name="notification_not_privileged">Нет разрешения на установку</string>
     <string name="notification_download_starting">Скачивание начинается</string>
-    <string name="notification_download_progress">"%1$s из %2$s скачано"</string>
+    <string name="notification_download_progress">"%1$s из %2$s"</string>
     <string name="notification_download_complete">Готово. Коснитесь чтобы установить.</string>
     <string name="notification_download_complete_toast">"Загрузка %1$s завершена. Нажмите на кнопку \"Установить\" или на уведомление чтобы установить."</string>
     <string name="notification_download_complete_signature_mismatch">Загрузка завершена. Подпись apk не совпадает с подписью установленного приложения.</string>
@@ -218,6 +218,8 @@
     <string name="download_manager_ERROR_DEVICE_NOT_FOUND">Устройство хранения недоступно. Вынули SD карту?</string>
     <string name="download_manager_ERROR_CANNOT_RESUME">Сетевая ошибка. Попробуйте позднее.</string>
     <string name="download_manager_ERROR_BLOCKED">Загрузка прервана из-за настроек безопасности NetworkPolicyManager.</string>
+    <string name="download_manager_ERROR_DELTA_FAILED">Не удалось применить дельту. Отключите дельта обновления.</string>
+    <string name="download_manager_SPLITS_NOT_SUPPORTED">Apk не монолитный (split). Выберите root или установку с системными правами.</string>
     <string name="manual_download_incompatible">Google Play Store считает, что это приложение несовместимо с вашим устройством. Поэтому Google Play Store не показывает никакго номера версии.</string>
     <string name="manual_download_compatible">В поле номер версии (version code) сейчас самый новый номер. Если вы хотите предыдущую версию, попробуйте уменьшить номер на еденицу. Если разработчик ещё не удалил старую версию из Play Store, начнётся скачивание.</string>
     <string name="manual_download_warning">Здесь вы можете вручную выбрать версию приложения которое вы хотите скачать. Номер версии (version code) это число, уникально идентифицирующее версию приложения. Оно больше еденицы и увеличивается разработчиком каждый раз, когда он выпускает новую версию. Обычно Play Store позволяет скачать только самый новый совместимый с вашим устройством apk. Выбирая вручную номер версии, вы можете получить доступ к другим версиям приложения.\n\nИмейте в виду, что Google Play Store не поддерживает скачивание любых версий кроме последней совместимой. Вы угадываете номер версии. Даже если скачивание запустится, вы можете получить несовместимый apk. Так что скорее всего, вы зря тратите время!</string>

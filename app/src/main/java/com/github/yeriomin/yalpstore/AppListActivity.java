@@ -41,7 +41,6 @@ import java.util.Set;
 abstract public class AppListActivity extends ListActivity {
 
     protected Map<String, ListItem> listItems = new HashMap<>();
-    protected AppListDownloadReceiver appListDownloadReceiver;
     protected AppListInstallReceiver appListInstallReceiver;
 
     abstract public void loadApps();
@@ -63,16 +62,13 @@ abstract public class AppListActivity extends ListActivity {
 
     @Override
     protected void onPause() {
-        unregisterReceiver(appListDownloadReceiver);
         unregisterReceiver(appListInstallReceiver);
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        unregisterReceiver(appListDownloadReceiver);
         unregisterReceiver(appListInstallReceiver);
-        appListDownloadReceiver = new AppListDownloadReceiver(this);
         appListInstallReceiver = new AppListInstallReceiver(this);
         super.onResume();
     }

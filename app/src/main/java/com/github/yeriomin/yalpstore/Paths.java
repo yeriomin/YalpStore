@@ -24,6 +24,10 @@ import android.os.Build;
 import android.os.Environment;
 
 import java.io.File;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Paths {
 
@@ -66,6 +70,25 @@ public class Paths {
     static public File getApkPath(Context context, String packageName, int version) {
         String filename = packageName + "." + String.valueOf(version) + ".apk";
         return new File(getYalpPath(context), filename);
+    }
+
+    static public File getSplitPath(Context context, String packageName, int version, String splitName) {
+        return new File(
+            getYalpPath(context),
+            packageName + "." + String.valueOf(version) + ".split." + splitName + ".apk"
+        );
+    }
+
+    static public List<File> getApkAndSplits(Context context, final String packageName, final int version) {
+        List<File> files = new ArrayList<>();
+        files.add(getApkPath(context, packageName, version));
+        files.addAll(Arrays.asList(getYalpPath(context).listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.startsWith(packageName + "." + String.valueOf(version) + ".split.") && name.endsWith(".apk");
+            }
+        })));
+        return files;
     }
 
     static public File getDeltaPath(Context context, String packageName, int version) {

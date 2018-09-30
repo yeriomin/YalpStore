@@ -168,4 +168,11 @@ public class Util {
         }
         return md.digest();
     }
+
+    public static byte[] base64StringToByteArray(String string) {
+        return com.github.yeriomin.playstoreapi.Base64.decode(
+            string,
+            com.github.yeriomin.playstoreapi.Base64.URL_SAFE | com.github.yeriomin.playstoreapi.Base64.NO_PADDING
+        );
+    }
 }

@@ -19,15 +19,13 @@
 
 package com.github.yeriomin.yalpstore.view;
 
-import android.content.Intent;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.ContextUtil;
-import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.YalpStorePermissionManager;
-import com.github.yeriomin.yalpstore.notification.CancelDownloadReceiver;
+import com.github.yeriomin.yalpstore.download.DownloadManager;
 
 public class UpdatableAppsButtonAdapterAbstract extends ButtonAdapter {
 
@@ -69,13 +67,10 @@ public class UpdatableAppsButtonAdapterAbstract extends ButtonAdapter {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (String packageName: ((UpdatableAppsActivity) ContextUtil.getActivity(v.getContext())).getListedPackageNames()) {
-                    DownloadState.get(packageName).setCancelled();
-                    v.getContext().sendBroadcast(
-                        new Intent()
-                            .setAction(CancelDownloadReceiver.ACTION_CANCEL_DOWNLOAD)
-                            .putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
-                    );
+                UpdatableAppsActivity activity = (UpdatableAppsActivity) ContextUtil.getActivity(v.getContext());
+                for (String packageName: activity.getListedPackageNames()) {
+                    new DownloadManager(activity).cancel(packageName);
+                    activity.getListItem(packageName).draw();
                 }
             }
         });

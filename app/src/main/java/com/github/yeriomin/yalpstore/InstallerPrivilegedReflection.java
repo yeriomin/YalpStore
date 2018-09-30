@@ -34,7 +34,6 @@ class InstallerPrivilegedReflection extends InstallerPrivileged {
 
     @Override
     protected void install(App app) {
-        super.install(app);
         PackageManager pm = context.getPackageManager();
         Class<?>[] types = new Class[] {Uri.class, IPackageInstallObserver.class, int.class, String.class};
         try {

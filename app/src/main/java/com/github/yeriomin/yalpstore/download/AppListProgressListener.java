@@ -17,26 +17,39 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.download;
 
+import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.view.AppBadge;
 
-public class ListItemDownloadProgressUpdater extends DownloadProgressUpdater {
+import java.lang.ref.WeakReference;
 
-    private AppBadge appBadge;
+public class AppListProgressListener implements DownloadManager.ProgressListener {
 
-    public ListItemDownloadProgressUpdater(String packageName, AppBadge appBadge) {
-        super(packageName);
-        this.appBadge = appBadge;
+    private WeakReference<AppBadge> appBadgeRef;
+
+    public AppListProgressListener(AppBadge appBadge) {
+        this.appBadgeRef = new WeakReference<>(appBadge);
     }
 
     @Override
-    protected void setProgress(int progress, int max) {
-        appBadge.setProgress(progress, max);
+    public void onProgress(long bytesDownloaded, long bytesTotal) {
+        if (null == appBadgeRef.get()) {
+            return;
+        }
+        appBadgeRef.get().setProgress((int) bytesDownloaded, (int) bytesTotal);
     }
 
     @Override
-    protected void finish() {
-        appBadge.hideMoreButton();
+    public void onCompletion() {
+        if (null == appBadgeRef.get()) {
+            return;
+        }
+        ContextUtil.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                appBadgeRef.get().redrawMoreButton();
+            }
+        });
     }
 }

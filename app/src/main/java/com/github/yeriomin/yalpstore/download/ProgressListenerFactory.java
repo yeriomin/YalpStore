@@ -17,32 +17,33 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.download;
 
-import android.widget.ProgressBar;
-
+import com.github.yeriomin.yalpstore.AppListActivity;
+import com.github.yeriomin.yalpstore.DetailsActivity;
+import com.github.yeriomin.yalpstore.YalpStoreActivity;
 import com.github.yeriomin.yalpstore.view.AppBadge;
 
-public class DownloadProgressUpdaterFactory {
+public class ProgressListenerFactory {
 
-    static public DownloadProgressUpdater get(YalpStoreActivity activity, String packageName) {
+    static public DownloadManager.ProgressListener get(YalpStoreActivity activity, String packageName) {
         if (activity instanceof DetailsActivity) {
-            return get((DetailsActivity) activity, packageName);
+            return get((DetailsActivity) activity);
         } else if (activity instanceof AppListActivity) {
             return get((AppListActivity) activity, packageName);
         }
         return null;
     }
 
-    static private DownloadProgressUpdater get(DetailsActivity activity, String packageName) {
-        return new DownloadProgressBarUpdater(packageName, (ProgressBar) activity.findViewById(R.id.download_progress));
+    static private DownloadManager.ProgressListener get(DetailsActivity activity) {
+        return new DetailsProgressListener(activity);
     }
 
-    static private DownloadProgressUpdater get(AppListActivity activity, String packageName) {
+    static private DownloadManager.ProgressListener get(AppListActivity activity, String packageName) {
         AppBadge appBadge = (AppBadge) activity.getListItem(packageName);
         if (null == appBadge) {
             return null;
         }
-        return new ListItemDownloadProgressUpdater(packageName, appBadge);
+        return new AppListProgressListener(appBadge);
     }
 }

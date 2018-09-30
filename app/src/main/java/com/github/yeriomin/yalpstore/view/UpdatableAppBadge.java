@@ -28,6 +28,9 @@ public class UpdatableAppBadge extends AppBadge {
 
     @Override
     public void draw() {
+        if (null == view) {
+            return;
+        }
         line2.clear();
         line3.clear();
         Context c = view.getContext();

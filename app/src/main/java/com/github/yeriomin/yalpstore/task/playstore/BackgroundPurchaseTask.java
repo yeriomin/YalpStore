@@ -31,6 +31,7 @@ class BackgroundPurchaseTask extends PurchaseTask {
         super.onPostExecute(deliveryData);
         if (!success()) {
             new NotificationManagerWrapper(context).show(
+                app.getPackageName(),
                 DetailsActivity.getDetailsIntent(context, app.getPackageName()),
                 app.getDisplayName(),
                 context.getString(R.string.error_could_not_download)

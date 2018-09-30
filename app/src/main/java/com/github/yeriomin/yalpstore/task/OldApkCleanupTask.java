@@ -27,6 +27,12 @@ public class OldApkCleanupTask extends CleanupTask {
 
     static public final long VALID_MILLIS = 1000*60*60*24;
 
+    private boolean deleteAll;
+
+    public void setDeleteAll(boolean deleteAll) {
+        this.deleteAll = deleteAll;
+    }
+
     public OldApkCleanupTask(Context context) {
         super(context);
     }
@@ -34,7 +40,7 @@ public class OldApkCleanupTask extends CleanupTask {
     @Override
     protected boolean shouldDelete(File file) {
         return file.getName().endsWith(".apk")
-            && file.lastModified() + VALID_MILLIS < System.currentTimeMillis()
+            && (deleteAll || file.lastModified() + VALID_MILLIS < System.currentTimeMillis())
         ;
     }
 

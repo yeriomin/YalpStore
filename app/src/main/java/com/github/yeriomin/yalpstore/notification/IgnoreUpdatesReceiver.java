@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore.notification;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -49,18 +48,7 @@ public class IgnoreUpdatesReceiver extends PackageSpecificReceiver {
         } else {
             manager.remove(packageName);
         }
-        cancelNotification(context, packageName);
+        new NotificationManagerWrapper(context).cancel(packageName);
         Paths.getApkPath(context, packageName, intent.getIntExtra(VERSION_CODE, 0)).delete();
-    }
-
-    private void cancelNotification(Context context, String packageName) {
-        PackageManager pm = context.getPackageManager();
-        try {
-            new NotificationManagerWrapper(context).cancel(
-                pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0)).toString()
-            );
-        } catch (PackageManager.NameNotFoundException e) {
-            // App is not installed
-        }
     }
 }

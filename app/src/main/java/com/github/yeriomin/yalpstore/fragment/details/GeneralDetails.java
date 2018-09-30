@@ -36,7 +36,6 @@ import android.widget.TextView;
 import com.github.yeriomin.yalpstore.CategoryAppsActivity;
 import com.github.yeriomin.yalpstore.CategoryManager;
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.DownloadManagerAbstract;
 import com.github.yeriomin.yalpstore.HistoryActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SqliteHelper;
@@ -73,9 +72,9 @@ public class GeneralDetails extends Abstract {
             } else {
                 activity.findViewById(R.id.short_description).setVisibility(View.GONE);
             }
-            if (app.getRestriction() > 1) {
+            if (!App.Restriction.NOT_RESTRICTED.equals(app.getRestriction())) {
                 activity.findViewById(R.id.availability).setVisibility(View.VISIBLE);
-                setText(R.id.availability, DownloadManagerAbstract.getRestrictionString(activity, app.getRestriction()));
+                setText(R.id.availability, activity.getString(app.getRestriction().getStringResId()));
             }
             drawGeneralDetails(app);
             drawDescription(app);
@@ -84,11 +83,15 @@ public class GeneralDetails extends Abstract {
     }
 
     private void drawAppBadge(App app) {
+        TextView packageNameView = activity.findViewById(R.id.packageName);
+        String oldPackageName = (null == packageNameView || TextUtils.isEmpty(packageNameView.getText())) ? "" : packageNameView.getText().toString();
+        if (!oldPackageName.equals(app.getPackageName())) {
             new LoadImageTask((ImageView) activity.findViewById(R.id.icon))
                 .setPlaceholder(false)
                 .setImageSource(app.getIconInfo())
                 .executeOnExecutorIfPossible()
             ;
+        }
         setText(R.id.displayName, app.getDisplayName());
         setText(R.id.packageName, app.getPackageName());
         drawVersion((TextView) activity.findViewById(R.id.versionString), app);

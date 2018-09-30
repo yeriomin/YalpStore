@@ -19,20 +19,15 @@
 
 package com.github.yeriomin.yalpstore;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.TrafficStats;
 import android.os.Build;
-import android.util.Log;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.NetworkInterface;
-import java.net.SocketException;
 import java.net.URL;
-import java.util.Collections;
 
 import info.guardianproject.netcipher.NetCipher;
 
@@ -46,6 +41,9 @@ import static android.net.ConnectivityManager.TYPE_WIFI;
 import static android.net.ConnectivityManager.TYPE_WIMAX;
 
 public class NetworkUtil {
+
+    private static final String CONNECTIVITY_CHECK_URL = "http://connectivitycheck.gstatic.com/generate_204";
+    private static final int EXPECTED_HTTP_RESPONSE_CODE = 204;
 
     static public HttpURLConnection getHttpURLConnection(String url) throws IOException {
         return getHttpURLConnection(new URL(url));
@@ -69,45 +67,6 @@ public class NetworkUtil {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    static public boolean isVpn(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return isVpnLollipop(context);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            return isVpnHoneycomb();
-        } else {
-            return false;
-        }
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    static private boolean isVpnLollipop(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (cm == null) {
-            return false;
-        }
-        for (NetworkInfo networkInfo: cm.getAllNetworkInfo()) {
-            if (networkInfo.isConnectedOrConnecting() && networkInfo.getType() == ConnectivityManager.TYPE_VPN) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    static private boolean isVpnHoneycomb() {
-        try {
-            for (NetworkInterface ni: Collections.list(NetworkInterface.getNetworkInterfaces())) {
-                if (ni.isUp() && (ni.getName().startsWith("tun") || ni.getName().startsWith("ppp")))  {
-                    Log.i(NetworkUtil.class.getSimpleName(), "VPN seems to be on: " + ni.getName());
-                    return true;
-                }
-            }
-        } catch (SocketException e) {
-            // Could not get network interfaces
-        }
-        return false;
-    }
-
     static public boolean isMetered(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
         if (null == connectivityManager) {
@@ -117,6 +76,16 @@ public class NetworkUtil {
             return isActiveNetworkMetered(connectivityManager);
         } else {
             return connectivityManager.isActiveNetworkMetered();
+        }
+    }
+
+    static public boolean internetAccessPresent() {
+        try {
+            HttpURLConnection connection = (HttpURLConnection) new URL(CONNECTIVITY_CHECK_URL).openConnection();
+            connection.setInstanceFollowRedirects(false);
+            return connection.getResponseCode() == EXPECTED_HTTP_RESPONSE_CODE;
+        } catch (IOException e) {
+            return false;
         }
     }
 

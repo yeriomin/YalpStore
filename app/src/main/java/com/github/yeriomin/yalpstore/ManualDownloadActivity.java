@@ -78,7 +78,7 @@ public class ManualDownloadActivity extends DetailsActivity {
 
     @Override
     public void redrawDetails(App app) {
-        unregisterReceivers();
+        unregisterInstallReceiver();
         redrawButtons();
     }
 

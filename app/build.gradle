@@ -58,6 +58,6 @@ dependencies {
     implementation 'commons-net:commons-net:3.5'
     implementation 'com.nothome:javaxdelta:2.0.1'
     debugImplementation ('com.github.yeriomin:play-store-api:master-SNAPSHOT') { changing = true }
-    releaseImplementation 'com.github.yeriomin:play-store-api:0.44.1'
+    releaseImplementation 'com.github.yeriomin:play-store-api:0.44.2'
     implementation 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }

@@ -19,15 +19,13 @@
 
 package com.github.yeriomin.yalpstore.fragment;
 
-import android.app.NotificationManager;
-import android.content.Context;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.InstallationState;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.download.DownloadManager;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.InstallTask;
 
@@ -55,15 +53,14 @@ public class ButtonInstall extends Button {
 
     @Override
     protected boolean shouldBeVisible() {
-        return Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
-            && DownloadState.get(app.getPackageName()).isEverythingSuccessful()
+        return DownloadManager.isSuccessful(app.getPackageName())
+            && Paths.getApkPath(activity, app.getPackageName(), app.getVersionCode()).exists()
         ;
     }
 
     @Override
     protected void onButtonClick(View v) {
         disable(R.string.details_installing);
-        ((NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE)).cancel(app.getDisplayName().hashCode());
         new InstallTask(activity, app).execute();
     }
 }

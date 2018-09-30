@@ -25,6 +25,9 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PackageSpecificReceiver extends BroadcastReceiver {
 
     protected String packageName;
@@ -32,6 +35,12 @@ public class PackageSpecificReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         packageName = intent.getStringExtra(Intent.EXTRA_PACKAGE_NAME);
-        Log.i(getClass().getSimpleName(), "Caught " + intent.getAction() + " intent for package " + packageName);
+        List<String> extras = new ArrayList<>();
+        if (null != intent.getExtras() && !intent.getExtras().isEmpty()) {
+            for (String key: intent.getExtras().keySet()) {
+                extras.add(key + "=" + intent.getExtras().get(key));
+            }
+        }
+        Log.i(getClass().getSimpleName(), "Caught " + intent.getAction() + " intent: data " + intent.getData() + " extras {" + TextUtils.join(", ", extras) + "}");
     }
 }

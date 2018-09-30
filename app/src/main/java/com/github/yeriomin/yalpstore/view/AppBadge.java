@@ -19,7 +19,6 @@
 
 package com.github.yeriomin.yalpstore.view;
 
-import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.text.TextUtils;
 import android.view.View;
@@ -28,16 +27,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.DownloadState;
-import com.github.yeriomin.yalpstore.ListItemDownloadProgressUpdater;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import com.github.yeriomin.yalpstore.download.AppListProgressListener;
+import com.github.yeriomin.yalpstore.download.DownloadManager;
 import com.github.yeriomin.yalpstore.fragment.ButtonCancel;
 import com.github.yeriomin.yalpstore.fragment.ButtonDownload;
 import com.github.yeriomin.yalpstore.model.App;
-import com.github.yeriomin.yalpstore.notification.CancelDownloadReceiver;
-import com.github.yeriomin.yalpstore.task.playstore.PurchaseTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +53,10 @@ public abstract class AppBadge extends ListItem {
         view.findViewById(R.id.more).setVisibility(View.GONE);
         view.findViewById(R.id.progress).setVisibility(View.GONE);
         view.findViewById(R.id.app).setVisibility(View.VISIBLE);
+        LinearLayout backgroundDownloadProgress = view.findViewById(R.id.download_progress_container);
+        if (null != backgroundDownloadProgress) {
+            backgroundDownloadProgress.setVisibility(View.GONE);
+        }
 
         ((TextView) view.findViewById(R.id.text1)).setText(app.getDisplayName());
         setText(R.id.text2, TextUtils.join(", ", line2));
@@ -80,9 +81,10 @@ public abstract class AppBadge extends ListItem {
             return;
         }
         final ButtonDownload buttonDownload = new ButtonDownload((YalpStoreActivity) view.getContext(), app);
+        hideMoreButton();
         if (new ButtonCancel((YalpStoreActivity) view.getContext(), app).shouldBeVisible()) {
             enableCancelButton();
-            new ListItemDownloadProgressUpdater(app.getPackageName(), AppBadge.this).execute(PurchaseTask.UPDATE_INTERVAL);
+            DownloadManager.addProgressListener(app.getPackageName(), new AppListProgressListener(this));
         } else if (buttonDownload.shouldBeVisible()) {
             enableMoreButton(
                 R.drawable.ic_download,
@@ -95,8 +97,6 @@ public abstract class AppBadge extends ListItem {
                     }
                 }
             );
-        } else {
-            hideMoreButton();
         }
     }
 
@@ -147,12 +147,7 @@ public abstract class AppBadge extends ListItem {
             new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    view.getContext().sendBroadcast(
-                        new Intent()
-                            .setAction(CancelDownloadReceiver.ACTION_CANCEL_DOWNLOAD)
-                            .putExtra(Intent.EXTRA_PACKAGE_NAME, app.getPackageName())
-                    );
-                    DownloadState.get(app.getPackageName()).setCancelled();
+                    new DownloadManager(v.getContext()).cancel(app.getPackageName());
                     redrawMoreButton();
                 }
             }

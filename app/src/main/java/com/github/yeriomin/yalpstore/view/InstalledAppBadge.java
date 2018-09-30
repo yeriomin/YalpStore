@@ -23,8 +23,8 @@ import android.content.Context;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
-import com.github.yeriomin.yalpstore.DownloadState;
 import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.download.DownloadManager;
 
 public class InstalledAppBadge extends AppBadge {
 
@@ -45,11 +45,10 @@ public class InstalledAppBadge extends AppBadge {
 
     @Override
     public void redrawMoreButton() {
-        DownloadState state = DownloadState.get(app.getPackageName());
-        if (null == state || state.isEverythingFinished()) {
-            enableMoreButton();
-        } else if (!state.isEverythingFinished()) {
+        if (DownloadManager.isRunning(app.getPackageName())) {
             enableCancelButton();
+        } else {
+            enableMoreButton();
         }
     }
 

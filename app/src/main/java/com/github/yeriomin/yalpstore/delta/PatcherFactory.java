@@ -21,13 +21,13 @@ package com.github.yeriomin.yalpstore.delta;
 
 import android.content.Context;
 
-import com.github.yeriomin.yalpstore.DownloadState;
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.model.App;
 
 public class PatcherFactory {
 
-    static public Patcher get(Context context, App app) {
-        switch (DownloadState.get(app.getPackageName()).getPatchFormat()) {
+    static public Patcher get(Context context, App app, GooglePlayAPI.PATCH_FORMAT patchFormat) {
+        switch (patchFormat) {
             case GZIPPED_BSDIFF:
                 return new BSDiff(context, app);
             default:

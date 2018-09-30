@@ -43,9 +43,4 @@ public abstract class ButtonAdapter {
         button.setEnabled(true);
         return this;
     }
-
-    public ButtonAdapter disable() {
-        button.setEnabled(false);
-        return this;
-    }
 }

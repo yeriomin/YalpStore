@@ -23,6 +23,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.text.TextUtils;
 
+import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.github.yeriomin.yalpstore.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -70,7 +73,7 @@ public class App implements Comparable<App> {
     private boolean testingProgramAvailable;
     private boolean testingProgramOptedIn;
     private String testingProgramEmail;
-    private int restriction;
+    private Restriction restriction;
     private String instantAppLink;
 
     public App() {
@@ -373,11 +376,11 @@ public class App implements Comparable<App> {
         this.testingProgramEmail = testingProgramEmail;
     }
 
-    public int getRestriction() {
+    public Restriction getRestriction() {
         return restriction;
     }
 
-    public void setRestriction(int restriction) {
+    public void setRestriction(Restriction restriction) {
         this.restriction = restriction;
     }
 
@@ -392,5 +395,45 @@ public class App implements Comparable<App> {
     @Override
     public int compareTo(App o) {
         return getDisplayName().compareToIgnoreCase(o.getDisplayName());
+    }
+
+    public enum Restriction {
+
+        GENERIC(-1),
+        NOT_RESTRICTED(GooglePlayAPI.AVAILABILITY_NOT_RESTRICTED),
+        RESTRICTED_GEO(GooglePlayAPI.AVAILABILITY_RESTRICTED_GEO),
+        INCOMPATIBLE_DEVICE(GooglePlayAPI.AVAILABILITY_INCOMPATIBLE_DEVICE_APP);
+
+        public final int restriction;
+
+        Restriction(int restriction) {
+            this.restriction = restriction;
+        }
+
+        public int getStringResId() {
+            switch (restriction) {
+                case GooglePlayAPI.AVAILABILITY_NOT_RESTRICTED:
+                    return 0;
+                case GooglePlayAPI.AVAILABILITY_RESTRICTED_GEO:
+                    return R.string.availability_restriction_country;
+                case GooglePlayAPI.AVAILABILITY_INCOMPATIBLE_DEVICE_APP:
+                    return R.string.availability_restriction_hardware_app;
+                default:
+                    return R.string.availability_restriction_generic;
+            }
+        }
+
+        public static Restriction forInt(int restriction) {
+            switch (restriction) {
+                case GooglePlayAPI.AVAILABILITY_NOT_RESTRICTED:
+                    return NOT_RESTRICTED;
+                case GooglePlayAPI.AVAILABILITY_RESTRICTED_GEO:
+                    return RESTRICTED_GEO;
+                case GooglePlayAPI.AVAILABILITY_INCOMPATIBLE_DEVICE_APP:
+                    return INCOMPATIBLE_DEVICE;
+                default:
+                    return GENERIC;
+            }
+        }
     }
 }

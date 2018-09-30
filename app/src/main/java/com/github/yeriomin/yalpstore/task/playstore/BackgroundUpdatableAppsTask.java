@@ -28,9 +28,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.util.Log;
 
-import com.github.yeriomin.yalpstore.DownloadManagerAdapter;
-import com.github.yeriomin.yalpstore.DownloadManagerFactory;
-import com.github.yeriomin.yalpstore.DownloadState;
+import com.github.yeriomin.yalpstore.BuildConfig;
 import com.github.yeriomin.yalpstore.InstallerAbstract;
 import com.github.yeriomin.yalpstore.InstallerFactory;
 import com.github.yeriomin.yalpstore.NetworkUtil;
@@ -41,6 +39,8 @@ import com.github.yeriomin.yalpstore.SqliteHelper;
 import com.github.yeriomin.yalpstore.UpdatableAppsActivity;
 import com.github.yeriomin.yalpstore.UpdateAllReceiver;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
+import com.github.yeriomin.yalpstore.download.DownloadManager;
+import com.github.yeriomin.yalpstore.download.State;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.Event;
 import com.github.yeriomin.yalpstore.model.EventDao;
@@ -100,20 +100,15 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
     }
 
     private boolean canUpdate() {
-        boolean writePermission = true;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
             && !PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
+            && context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
         ) {
-            writePermission = context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-        }
-        if (!writePermission) {
-            Log.i(getClass().getSimpleName(), "Write permission not granted");
             return false;
         }
         return forceUpdate ||
             (PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_DOWNLOAD)
-                && (DownloadManagerFactory.get(context) instanceof DownloadManagerAdapter
-                    || !PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
+                && (!PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_BACKGROUND_UPDATE_WIFI_ONLY)
                     || !NetworkUtil.isMetered(context)
                 )
             )
@@ -125,7 +120,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         YalpStoreApplication application = (YalpStoreApplication) context.getApplicationContext();
         application.clearPendingUpdates();
         for (App app: apps) {
-            if (DownloadState.get(app.getPackageName()).isCancelled()) {
+            if (DownloadManager.isCancelled(app.getPackageName())) {
                 Log.i(getClass().getSimpleName(), app.getPackageName() + " cancelled before starting");
                 continue;
             }
@@ -133,7 +128,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
             File apkPath = Paths.getApkPath(context, app.getPackageName(), app.getVersionCode());
             if (!apkPath.exists()
                 || (PreferenceUtil.getBoolean(context, PreferenceUtil.PREFERENCE_DOWNLOAD_INTERNAL_STORAGE)
-                    && (null == DownloadState.get(app.getPackageName()) || null == DownloadState.get(app.getPackageName()).getApkChecksum())
+                    && null == DownloadManager.getApkExpectedHash(app.getPackageName())
                 )
             ) {
                 apkPath.delete();
@@ -151,8 +146,6 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
 
     private void download(Context context, App app) {
         Log.i(getClass().getSimpleName(), "Starting download of update for " + app.getPackageName());
-        DownloadState state = DownloadState.get(app.getPackageName());
-        state.setApp(app);
         getPurchaseTask(context, app).execute();
     }
 
@@ -161,8 +154,8 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         task.setApp(app);
         task.setContext(context);
         task.setTriggeredBy(context instanceof Activity
-            ? DownloadState.TriggeredBy.UPDATE_ALL_BUTTON
-            : DownloadState.TriggeredBy.SCHEDULED_UPDATE
+            ? State.TriggeredBy.UPDATE_ALL_BUTTON
+            : State.TriggeredBy.SCHEDULED_UPDATE
         );
         return task;
     }
@@ -171,6 +164,7 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
         Intent i = new Intent(context, UpdatableAppsActivity.class);
         i.setAction(Intent.ACTION_VIEW);
         new NotificationManagerWrapper(context).show(
+            BuildConfig.APPLICATION_ID,
             i,
             context.getString(R.string.notification_updates_available_title),
             context.getString(R.string.notification_updates_available_message, updatesCount)
@@ -179,7 +173,8 @@ public class BackgroundUpdatableAppsTask extends UpdatableAppsTask implements Cl
 
     private void notifyDownloadedAlready(App app) {
         new NotificationManagerWrapper(context).show(
-            InstallerAbstract.getCheckAndOpenApkIntent(context, app),
+            app.getPackageName(),
+            InstallerAbstract.getDownloadChecksumServiceIntent(app.getPackageName()),
             app.getDisplayName(),
             context.getString(R.string.notification_download_complete)
         );

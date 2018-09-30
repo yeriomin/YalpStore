@@ -19,9 +19,9 @@
 
 package com.github.yeriomin.yalpstore;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -33,6 +33,7 @@ import android.support.v4.content.FileProvider;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -41,7 +42,6 @@ import java.io.OutputStream;
 public class InstallerPrivilegedSession extends InstallerPrivileged {
 
     private static final String BROADCAST_ACTION_INSTALL = BuildConfig.APPLICATION_ID + ".ACTION_INSTALL_COMMIT";
-    private static final String BROADCAST_SENDER_PERMISSION = "android.permission.INSTALL_PACKAGES";
     private static final String EXTRA_LEGACY_STATUS = "android.content.pm.extra.LEGACY_STATUS";
 
     private final InstallationResultReceiver broadcastReceiver = new InstallationResultReceiver();
@@ -52,29 +52,17 @@ public class InstallerPrivilegedSession extends InstallerPrivileged {
 
     @Override
     protected void install(App app) {
-        super.install(app);
         registerReceiver();
         PackageInstaller packageInstaller = context.getPackageManager().getPackageInstaller();
+        PackageInstaller.SessionParams sessionParams = new PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL);
+        sessionParams.setAppPackageName(app.getPackageName());
+        sessionParams.setAppLabel(app.getDisplayName());
         PackageInstaller.Session session = null;
         try {
-            int sessionId = packageInstaller.createSession(new PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL));
-            byte[] buffer = new byte[65536];
+            int sessionId = packageInstaller.createSession(sessionParams);
             session = packageInstaller.openSession(sessionId);
-            InputStream in = context.getContentResolver().openInputStream(FileProvider.getUriForFile(
-                context,
-                BuildConfig.APPLICATION_ID + ".fileprovider",
-                Paths.getApkPath(context, app.getPackageName(), app.getVersionCode())
-            ));
-            OutputStream out = session.openWrite(app.getPackageName(), 0, -1);
-            try {
-                int c;
-                while ((c = in.read(buffer)) != -1) {
-                    out.write(buffer, 0, c);
-                }
-                session.fsync(out);
-            } finally {
-                com.github.yeriomin.yalpstore.Util.closeSilently(in);
-                com.github.yeriomin.yalpstore.Util.closeSilently(out);
+            for (File file: Paths.getApkAndSplits(context, app.getPackageName(), app.getVersionCode())) {
+                writeFileToSession(file, session);
             }
             session.commit(getIntentSender(sessionId));
         } catch (IOException e) {
@@ -88,12 +76,15 @@ public class InstallerPrivilegedSession extends InstallerPrivileged {
     protected void processResult(App app, int returnCode) {
         super.processResult(app, returnCode);
         context.unregisterReceiver(broadcastReceiver);
+        if (returnCode == 0) {
+            context.getPackageManager().setInstallerPackageName(app.getPackageName(), BuildConfig.APPLICATION_ID);
+        }
     }
 
     private void registerReceiver() {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(BROADCAST_ACTION_INSTALL);
-        context.registerReceiver(broadcastReceiver, intentFilter, BROADCAST_SENDER_PERMISSION, null);
+        context.registerReceiver(broadcastReceiver, intentFilter, Manifest.permission.INSTALL_PACKAGES, null);
     }
 
     private IntentSender getIntentSender(int sessionId) {
@@ -115,10 +106,31 @@ public class InstallerPrivilegedSession extends InstallerPrivileged {
         super.finalize();
     }
 
-    private class InstallationResultReceiver extends BroadcastReceiver {
+    private void writeFileToSession(File file, PackageInstaller.Session session) throws IOException {
+        InputStream in = context.getContentResolver().openInputStream(FileProvider.getUriForFile(
+            context,
+            BuildConfig.APPLICATION_ID + ".fileprovider",
+            file
+        ));
+        OutputStream out = session.openWrite(file.getName(), 0, file.length());
+        try {
+            int c;
+            byte[] buffer = new byte[65536];
+            while ((c = in.read(buffer)) != -1) {
+                out.write(buffer, 0, c);
+            }
+            session.fsync(out);
+        } finally {
+            com.github.yeriomin.yalpstore.Util.closeSilently(in);
+            com.github.yeriomin.yalpstore.Util.closeSilently(out);
+        }
+    }
+
+    private class InstallationResultReceiver extends PackageSpecificReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
+            super.onReceive(context, intent);
             processResult(
                 InstalledAppsTask.getInstalledApp(context.getPackageManager(), intent.getStringExtra(PackageInstaller.EXTRA_PACKAGE_NAME)),
                 intent.getIntExtra(EXTRA_LEGACY_STATUS, PackageInstaller.STATUS_FAILURE)
