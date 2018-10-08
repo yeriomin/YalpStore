@@ -22,7 +22,6 @@ package com.github.yeriomin.yalpstore;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.support.annotation.Nullable;
 
 import com.github.yeriomin.yalpstore.fragment.preference.PreferenceFragment;
 
@@ -31,7 +30,7 @@ public class PreferenceActivity extends YalpStoreActivity {
     private PreferenceFragment fragment;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferences_layout);
     }
