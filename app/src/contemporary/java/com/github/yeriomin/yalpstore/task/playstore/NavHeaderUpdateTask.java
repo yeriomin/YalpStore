@@ -66,7 +66,10 @@ public class NavHeaderUpdateTask extends UserProfileTask {
                 deviceViewRef.get().setVisibility(View.INVISIBLE);
             }
             userNameViewRef.get().setText(TextUtils.isEmpty(YalpStoreApplication.user.getUserName())
-                ? YalpStoreApplication.user.getEmail()
+                ? (YalpStoreApplication.user.appProvidedEmail()
+                    ? userNameViewRef.get().getContext().getString(R.string.auth_built_in)
+                    : YalpStoreApplication.user.getEmail()
+                )
                 : YalpStoreApplication.user.getUserName()
             );
             new LoadCircularImageTask(avatarViewRef.get())

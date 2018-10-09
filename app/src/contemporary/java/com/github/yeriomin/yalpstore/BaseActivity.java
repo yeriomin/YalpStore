@@ -231,24 +231,19 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void redrawAccounts(){
         NavigationView navigationView = findViewById(R.id.nav_view);
-        ImageView accountsView = navigationView.getHeaderView(0).findViewById(R.id.accounts);
-        final List<LoginInfo> users = getUsers();
-        if (YalpStoreApplication.user.isLoggedIn() || !users.isEmpty()) {
+        navigationView.getHeaderView(0).findViewById(R.id.accounts).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAccountsMenu(v, getUsers());
+            }
+        });
+        if (YalpStoreApplication.user.isLoggedIn()) {
             NavHeaderUpdateTask task = new NavHeaderUpdateTask();
             task.setAvatarView((ImageView) navigationView.getHeaderView(0).findViewById(R.id.avatar));
             task.setUserNameView((TextView) navigationView.getHeaderView(0).findViewById(R.id.username));
             task.setDeviceView((TextView) navigationView.getHeaderView(0).findViewById(R.id.device));
             task.setContext(getApplicationContext());
             task.execute();
-            accountsView.setVisibility(View.VISIBLE);
-            accountsView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showAccountsMenu(v, users);
-                }
-            });
-        } else {
-            accountsView.setVisibility(View.GONE);
         }
     }
 
