@@ -158,7 +158,7 @@ public abstract class YalpStoreActivity extends BaseActivity {
         }
         Menu accountsMenu = null == menu.findItem(R.id.action_accounts).getSubMenu() ? menu : menu.findItem(R.id.action_accounts).getSubMenu();
         for (LoginInfo info: users) {
-            String userName = info.getUserName();
+            String userName = TextUtils.isEmpty(info.getUserName()) ? info.getEmail() : info.getUserName();
             String deviceDefinitionDisplayName = "";
             if (!TextUtils.isEmpty(info.getDeviceDefinitionName())) {
                 deviceDefinitionDisplayName = getString(R.string.bullet_divider) + info.getDeviceDefinitionDisplayName();

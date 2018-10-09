@@ -55,9 +55,6 @@ public class NavHeaderUpdateTask extends UserProfileTask {
     @Override
     protected void onPostExecute(Void result) {
         super.onPostExecute(result);
-        if (null == avatarViewRef.get() || null == userNameViewRef.get() || null == deviceViewRef.get()) {
-            return;
-        }
         if (YalpStoreApplication.user.isLoggedIn()) {
             Map<String, String> devices = new SpoofDeviceManager(context).getDevices();
             if (!TextUtils.isEmpty(YalpStoreApplication.user.getDeviceDefinitionName())
@@ -68,7 +65,10 @@ public class NavHeaderUpdateTask extends UserProfileTask {
             } else {
                 deviceViewRef.get().setVisibility(View.INVISIBLE);
             }
-            userNameViewRef.get().setText(YalpStoreApplication.user.getUserName());
+            userNameViewRef.get().setText(TextUtils.isEmpty(YalpStoreApplication.user.getUserName())
+                ? YalpStoreApplication.user.getEmail()
+                : YalpStoreApplication.user.getUserName()
+            );
             new LoadCircularImageTask(avatarViewRef.get())
                 .setCropCircle(true)
                 .setFadeInMillis(200)
