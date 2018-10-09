@@ -32,6 +32,7 @@ public abstract class BugReportSender {
     protected String stackTrace;
     protected String userMessage;
     protected String userIdentification;
+    protected boolean fromDeviceDefinitionRequest;
     protected Context context;
     protected List<File> files = new ArrayList<>();
 
@@ -49,6 +50,11 @@ public abstract class BugReportSender {
 
     public BugReportSender setUserIdentification(String userIdentification) {
         this.userIdentification = userIdentification;
+        return this;
+    }
+
+    public BugReportSender setFromDeviceDefinitionRequest(boolean fromDeviceDefinitionRequest) {
+        this.fromDeviceDefinitionRequest = fromDeviceDefinitionRequest;
         return this;
     }
 

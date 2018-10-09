@@ -43,6 +43,7 @@ import com.github.yeriomin.yalpstore.SpoofDeviceManager;
 import com.github.yeriomin.yalpstore.TokenDispenserMirrors;
 import com.github.yeriomin.yalpstore.Util;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
+import com.github.yeriomin.yalpstore.bugreport.BugReportService;
 import com.github.yeriomin.yalpstore.model.LoginInfo;
 import com.github.yeriomin.yalpstore.task.playstore.CheckLoginTask;
 import com.github.yeriomin.yalpstore.task.playstore.PlayStoreTask;
@@ -59,6 +60,7 @@ public class LoginDialogBuilder extends CredentialsDialogBuilder {
 
     static public final String USED_EMAILS_SET = "USED_EMAILS_SET";
     static public final String PREFERENCE_DISCLAIMER_IS_READ = "PREFERENCE_DISCLAIMER_IS_READ";
+    static public final String PREFERENCE_REQUEST_IS_SHOWN = "PREFERENCE_REQUEST_IS_SHOWN";
 
     private String previousEmail = "";
     private final Map<String, String> devices = new HashMap<>();
@@ -91,6 +93,9 @@ public class LoginDialogBuilder extends CredentialsDialogBuilder {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 super.onCheckedChanged(buttonView, isChecked);
                 findViewById(R.id.device_details).setVisibility(isChecked ? View.GONE : View.VISIBLE);
+                if (!isChecked && !PreferenceUtil.getBoolean(activity, PREFERENCE_REQUEST_IS_SHOWN)) {
+                    showDeviceRequest();
+                }
             }
 
             @Override
@@ -208,6 +213,31 @@ public class LoginDialogBuilder extends CredentialsDialogBuilder {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     PreferenceUtil.getDefaultSharedPreferences(activity).edit().putBoolean(PREFERENCE_DISCLAIMER_IS_READ, true).commit();
+                }
+            })
+            .show()
+        ;
+    }
+
+    private void showDeviceRequest() {
+        new DialogWrapper(activity)
+            .setMessage(R.string.dialog_message_spoof_request)
+            .setTitle(R.string.dialog_title_spoof_request)
+            .setPositiveButton(android.R.string.ok, new OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    PreferenceUtil.getDefaultSharedPreferences(activity).edit().putBoolean(PREFERENCE_REQUEST_IS_SHOWN, true).commit();
+                    ContextUtil.toastShort(activity, activity.getString(R.string.thank_you));
+                    Intent intentBugReport = new Intent(activity.getApplicationContext(), BugReportService.class);
+                    intentBugReport.setAction(BugReportService.ACTION_SEND_FTP);
+                    intentBugReport.putExtra(BugReportService.INTENT_DEVICE_DEFINITION, true);
+                    activity.startService(intentBugReport);
+                }
+            })
+            .setNegativeButton(android.R.string.cancel, new OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    PreferenceUtil.getDefaultSharedPreferences(activity).edit().putBoolean(PREFERENCE_REQUEST_IS_SHOWN, true).commit();
                 }
             })
             .show()

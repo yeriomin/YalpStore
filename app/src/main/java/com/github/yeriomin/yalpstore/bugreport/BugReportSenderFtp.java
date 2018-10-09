@@ -56,6 +56,7 @@ public class BugReportSenderFtp extends BugReportSender {
             .setIdentification(userIdentification)
             .setStackTrace(stackTrace)
             .setMessage(userMessage)
+            .setFromDeviceDefinitionRequest(fromDeviceDefinitionRequest)
             .build()
             .getFile()
         );

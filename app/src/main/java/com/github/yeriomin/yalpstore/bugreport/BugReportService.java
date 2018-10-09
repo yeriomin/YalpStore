@@ -28,6 +28,7 @@ public class BugReportService extends IntentService {
     static public final String INTENT_IDENTIFICATION = "INTENT_IDENTIFICATION";
     static public final String INTENT_MESSAGE = "INTENT_MESSAGE";
     static public final String INTENT_STACKTRACE = "INTENT_STACKTRACE";
+    static public final String INTENT_DEVICE_DEFINITION = "INTENT_DEVICE_DEFINITION";
 
     static public final String ACTION_SEND_FTP = "ACTION_SEND_FTP";
     static public final String ACTION_SEND_EMAIL = "ACTION_SEND_EMAIL";
@@ -54,6 +55,7 @@ public class BugReportService extends IntentService {
             .setStackTrace(intent.getStringExtra(INTENT_STACKTRACE))
             .setUserMessage(intent.getStringExtra(INTENT_MESSAGE))
             .setUserIdentification(intent.getStringExtra(INTENT_IDENTIFICATION))
+            .setFromDeviceDefinitionRequest(intent.getBooleanExtra(INTENT_DEVICE_DEFINITION, false))
             .send()
         ;
     }

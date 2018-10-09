@@ -35,6 +35,7 @@ public class BugReportMessageBuilder extends BugReportPropertiesBuilder {
     private String identification;
     private String message;
     private String stackTrace;
+    private boolean fromDeviceDefinitionRequest;
 
     public BugReportMessageBuilder setIdentification(String identification) {
         this.identification = identification;
@@ -51,6 +52,11 @@ public class BugReportMessageBuilder extends BugReportPropertiesBuilder {
         return this;
     }
 
+    public BugReportMessageBuilder setFromDeviceDefinitionRequest(boolean fromDeviceDefinitionRequest) {
+        this.fromDeviceDefinitionRequest = fromDeviceDefinitionRequest;
+        return this;
+    }
+
     public BugReportMessageBuilder(Context context) {
         super(context);
         setFileName("message.txt");
@@ -60,7 +66,7 @@ public class BugReportMessageBuilder extends BugReportPropertiesBuilder {
     public BugReportBuilder build() {
         Map<String, String> properties = new HashMap<>();
         properties.put("userId", TextUtils.isEmpty(identification) ? "" : identification);
-        properties.put("message", message);
+        properties.put("message", TextUtils.isEmpty(message) ? "" : message);
         properties.put("versionCode", Integer.toString(BuildConfig.VERSION_CODE));
         properties.put("versionName", BuildConfig.VERSION_NAME);
         properties.put("deviceName", Build.DEVICE);
@@ -83,7 +89,7 @@ public class BugReportMessageBuilder extends BugReportPropertiesBuilder {
     private String getTopic() {
         if (!TextUtils.isEmpty(stackTrace)) {
             return "crash";
-        } else if (!TextUtils.isEmpty(message) && message.contains(context.getString(R.string.sent_from_device_definition_dialog))) {
+        } else if (fromDeviceDefinitionRequest) {
             return "device";
         } else {
             return "feedback";
