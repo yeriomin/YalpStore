@@ -212,7 +212,7 @@ public class LoginInfo implements Comparable<LoginInfo> {
     @Override
     public String toString() {
         List<String> fieldStrings = new ArrayList<>();
-        for (Field field: getClass().getFields()) {
+        for (Field field: getClass().getDeclaredFields()) {
             try {
                 fieldStrings.add(field.getName() + "=" + field.get(this));
             } catch (IllegalAccessException e) {
