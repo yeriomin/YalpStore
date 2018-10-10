@@ -169,7 +169,9 @@ public class YalpStoreApplication extends Application {
                 : Intent.ACTION_PACKAGE_REMOVED
         );
         filter.addAction(GlobalInstallReceiver.ACTION_PACKAGE_INSTALLATION_FAILED);
-        registerReceiver(new GlobalInstallReceiver(), filter);
+        HandlerThread handlerThread = new HandlerThread("InstallReceiverThread");
+        handlerThread.start();
+        registerReceiver(new GlobalInstallReceiver(), filter, null, new Handler(handlerThread.getLooper()));
     }
 
     private void registerConnectivityReceiver() {
