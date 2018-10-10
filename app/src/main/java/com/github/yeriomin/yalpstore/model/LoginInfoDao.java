@@ -98,7 +98,7 @@ public class LoginInfoDao extends Dao {
 
     public void insert(LoginInfo loginInfo) {
         ContentValues contentValues = new ContentValues();
-        Log.e(getClass().getSimpleName(), "Saving " + loginInfo);
+        Log.i(getClass().getSimpleName(), "Saving " + loginInfo);
         contentValues.put(KEY_ID, loginInfo.hashCode());
         contentValues.put(KEY_EMAIL, loginInfo.getEmail());
         contentValues.put(KEY_USER_NAME, loginInfo.getUserName());

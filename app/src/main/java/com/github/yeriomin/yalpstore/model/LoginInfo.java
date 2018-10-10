@@ -21,6 +21,9 @@ package com.github.yeriomin.yalpstore.model;
 
 import android.text.TextUtils;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class LoginInfo implements Comparable<LoginInfo> {
@@ -208,6 +211,14 @@ public class LoginInfo implements Comparable<LoginInfo> {
 
     @Override
     public String toString() {
-        return "LoginInfo hashCode=" + hashCode() + " email=" + email + " userName=" + userName + " password=" + password + " gsfId=" + gsfId + " token=" + token + " tokenDispenserUrl=" + tokenDispenserUrl + " deviceDefinitionName=" + deviceDefinitionName + " deviceDefinitionDisplayName=" + deviceDefinitionDisplayName + " locale=" + locale;
+        List<String> fieldStrings = new ArrayList<>();
+        for (Field field: getClass().getFields()) {
+            try {
+                fieldStrings.add(field.getName() + "=" + field.get(this));
+            } catch (IllegalAccessException e) {
+                fieldStrings.add(field.getName() + "=[inaccessible]");
+            }
+        }
+        return getClass().getSimpleName() + " hashCode=" + hashCode() + ", " + TextUtils.join(", ", fieldStrings);
     }
 }
