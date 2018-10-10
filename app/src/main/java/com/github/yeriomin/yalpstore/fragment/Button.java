@@ -23,6 +23,7 @@ import android.content.pm.PackageManager;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.YalpStoreActivity;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 
 public abstract class Button extends Abstract {
@@ -66,11 +67,6 @@ public abstract class Button extends Abstract {
     }
 
     protected boolean isInstalled() {
-        try {
-            activity.getPackageManager().getPackageInfo(app.getPackageName(), 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
+        return YalpStoreApplication.installedPackages.containsKey(app.getPackageName());
     }
 }

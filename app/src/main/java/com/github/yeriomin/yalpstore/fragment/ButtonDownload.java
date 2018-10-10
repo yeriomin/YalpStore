@@ -131,11 +131,10 @@ public class ButtonDownload extends Button {
     }
 
     private int getInstalledVersionCode() {
-        try {
-            return activity.getPackageManager().getPackageInfo(app.getPackageName(), 0).versionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-            return 0;
-        }
+        return YalpStoreApplication.installedPackages.containsKey(app.getPackageName())
+            ? YalpStoreApplication.installedPackages.get(app.getPackageName()).getInstalledVersionCode()
+            : 0
+        ;
     }
 
     static class LocalPurchaseTask extends PurchaseTask {
