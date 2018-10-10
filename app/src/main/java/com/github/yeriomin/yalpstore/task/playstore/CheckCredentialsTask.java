@@ -64,8 +64,9 @@ public abstract class CheckCredentialsTask extends PlayStoreTask<Void> {
                 Log.i(getClass().getSimpleName(), caller.getClass().getSimpleName() + " is cloneable. Retrying.");
                 ((PlayStoreTask) ((CloneableTask) caller).clone()).execute((Object[]) new String[] {});
             }
-            if (context instanceof BaseActivity) {
-                ((BaseActivity) context).redrawAccounts();
+            Activity activity = ContextUtil.getActivity(context);
+            if (activity instanceof BaseActivity) {
+                ((BaseActivity) activity).redrawAccounts();
             }
         }
     }

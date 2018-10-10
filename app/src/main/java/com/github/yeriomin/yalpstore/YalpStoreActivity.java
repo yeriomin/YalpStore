@@ -219,7 +219,7 @@ public abstract class YalpStoreActivity extends BaseActivity {
     }
 
     protected DialogWrapperAbstract showLogOutDialog() {
-        return new DialogWrapper(this)
+        DialogWrapperAbstract dialogWrapper = new DialogWrapper(this)
             .setMessage(R.string.dialog_message_logout)
             .setTitle(R.string.dialog_title_logout)
             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -230,17 +230,19 @@ public abstract class YalpStoreActivity extends BaseActivity {
                     dialogInterface.dismiss();
                 }
             })
-            .setNeutralButton(R.string.delete, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int which) {
+            .setNegativeButton(android.R.string.cancel, null)
+        ;
+        if (!YalpStoreApplication.user.appProvidedEmail() || !TextUtils.isEmpty(YalpStoreApplication.user.getDeviceDefinitionName())) {
+            dialogWrapper.setNeutralButton(R.string.delete, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
                     new PlayStoreApiAuthenticator(getApplicationContext()).logout(true);
                     redrawAccounts();
                     dialogInterface.dismiss();
                 }
-            })
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
-        ;
+            });
+        }
+        return dialogWrapper.show();
     }
 
     private DialogWrapperAbstract showFallbackSearchDialog() {
