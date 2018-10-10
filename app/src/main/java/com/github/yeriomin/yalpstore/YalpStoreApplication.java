@@ -33,7 +33,6 @@ import android.os.HandlerThread;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.facebook.stetho.Stetho;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.LoginInfo;
 import com.github.yeriomin.yalpstore.model.LoginInfoDao;
@@ -126,9 +125,6 @@ public class YalpStoreApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (BuildConfig.DEBUG) {
-            Stetho.initializeWithDefaults(this);
-        }
         if (!BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             try {
                 HttpResponseCache.install(new File(getCacheDir(), "http"), 5 * 1024 * 1024);
