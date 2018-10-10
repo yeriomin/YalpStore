@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.github.yeriomin.yalpstore.InstallerDefault;
+import com.github.yeriomin.yalpstore.install.InstallerDefault;
 import com.github.yeriomin.yalpstore.PackageSpecificReceiver;
 import com.github.yeriomin.yalpstore.download.DownloadManager;
 import com.github.yeriomin.yalpstore.task.InstallTask;

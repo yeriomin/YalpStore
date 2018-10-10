@@ -22,7 +22,7 @@ package com.github.yeriomin.yalpstore.fragment;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.DetailsActivity;
-import com.github.yeriomin.yalpstore.InstallationState;
+import com.github.yeriomin.yalpstore.install.InstallationState;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.download.DownloadManager;

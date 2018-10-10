@@ -17,7 +17,7 @@
  * MA 02110-1301, USA.
  */
 
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.install;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -88,5 +88,4 @@ class ApkSignatureVerifier {
 
         return outputStream.toByteArray();
     }
-
 }

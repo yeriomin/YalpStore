@@ -17,7 +17,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.github.yeriomin.yalpstore;
+package com.github.yeriomin.yalpstore.install;
 
 import android.Manifest;
 import android.content.Context;
@@ -25,6 +25,9 @@ import android.content.pm.PackageManager;
 import android.os.Looper;
 import android.util.Log;
 
+import com.github.yeriomin.yalpstore.BuildConfig;
+import com.github.yeriomin.yalpstore.R;
+import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.App;
 
 import java.util.HashMap;

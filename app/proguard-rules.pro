@@ -24,7 +24,7 @@
 -keep final class com.google.protobuf.ExtensionRegistryFactory { *; }
 -keep public class android.support.v4.content.FileProvider { *; }
 -keep public class android.util.LruCache { *; }
--keep public class com.github.yeriomin.yalpstore.InstallerPrivileged$* { *; }
+-keep public class com.github.yeriomin.yalpstore.install.InstallerPrivilegedReflection$* { *; }
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
 -dontwarn sun.misc.Unsafe
 -optimizationpasses 5

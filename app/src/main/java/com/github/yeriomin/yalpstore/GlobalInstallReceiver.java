@@ -26,6 +26,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.download.DownloadManager;
+import com.github.yeriomin.yalpstore.install.InstallationState;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.Event;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;

@@ -29,8 +29,8 @@ import android.os.Build;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
-import com.github.yeriomin.yalpstore.InstallerAbstract;
-import com.github.yeriomin.yalpstore.InstallerFactory;
+import com.github.yeriomin.yalpstore.install.InstallerAbstract;
+import com.github.yeriomin.yalpstore.install.InstallerFactory;
 import com.github.yeriomin.yalpstore.NetworkUtil;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
