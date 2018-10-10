@@ -53,7 +53,7 @@ public class SpoofDeviceManager {
         this.context = context;
     }
 
-    public Map<String, String> getDevices() {
+    private Map<String, String> getDevices() {
         Map<String, String> devices = getDevicesFromSharedPreferences();
         if (devices.isEmpty()) {
             devices = getDevicesFromApk();
@@ -117,10 +117,14 @@ public class SpoofDeviceManager {
         return properties;
     }
 
+    private SharedPreferences getSharedPreferences(Context context) {
+        return context.getSharedPreferences(getClass().getName(), Context.MODE_PRIVATE);
+    }
+
     private Map<String, String> getDevicesFromSharedPreferences() {
-        Set<String> deviceNames = PreferenceUtil.getStringSet(context, DEVICES_LIST_KEY);
+        SharedPreferences prefs = getSharedPreferences(context);
+        Set<String> deviceNames = PreferenceUtil.getStringSet(prefs, DEVICES_LIST_KEY);
         Map<String, String> devices = new HashMap<>();
-        SharedPreferences prefs = PreferenceUtil.getDefaultSharedPreferences(context);
         for (String name: deviceNames) {
             devices.put(name, prefs.getString(name, ""));
         }
@@ -128,12 +132,13 @@ public class SpoofDeviceManager {
     }
 
     private void putDevicesToSharedPreferences(Map<String, String> devices) {
-        PreferenceUtil.putStringSet(context, DEVICES_LIST_KEY, devices.keySet());
-        SharedPreferences.Editor prefs = PreferenceUtil.getDefaultSharedPreferences(context).edit();
+        SharedPreferences prefs = getSharedPreferences(context);
+        PreferenceUtil.putStringSet(prefs, DEVICES_LIST_KEY, devices.keySet());
+        SharedPreferences.Editor editor = prefs.edit();
         for (String name: devices.keySet()) {
-            prefs.putString(name, devices.get(name));
+            editor.putString(name, devices.get(name));
         }
-        prefs.commit();
+        editor.commit();
     }
 
     private Map<String, String> getDevicesFromApk() {

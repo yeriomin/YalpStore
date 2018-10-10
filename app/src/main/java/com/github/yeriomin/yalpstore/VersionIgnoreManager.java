@@ -42,7 +42,7 @@ public class VersionIgnoreManager {
     }
 
     public void remove(String packageName, int versionCode) {
-        ignoredVersions.add(getKey(packageName, versionCode));
+        ignoredVersions.remove(getKey(packageName, versionCode));
         save();
     }
 

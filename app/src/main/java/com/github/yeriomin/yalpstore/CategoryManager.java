@@ -20,6 +20,7 @@
 package com.github.yeriomin.yalpstore;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import java.util.Map;
 import java.util.Set;
@@ -29,12 +30,14 @@ public class CategoryManager {
 
     public static final String TOP = "0_CATEGORY_TOP";
 
-    private Context context;
+    private String allAppsLabel;
     private SharedPreferencesTranslator translator;
+    private SharedPreferences prefs;
 
     public CategoryManager(Context context) {
-        this.context = context;
-        translator = new SharedPreferencesTranslator(PreferenceUtil.getDefaultSharedPreferences(context));
+        allAppsLabel = context.getString(R.string.search_filter);
+        translator = new SharedPreferencesTranslator(context);
+        this.prefs = context.getSharedPreferences(getClass().getName(), Context.MODE_PRIVATE);
     }
 
     public String getCategoryName(String categoryId) {
@@ -42,13 +45,13 @@ public class CategoryManager {
             return "";
         }
         if (categoryId.equals(TOP)) {
-            return context.getString(R.string.search_filter);
+            return allAppsLabel;
         }
         return translator.getString(categoryId);
     }
 
     public void save(String parent, Map<String, String> categories) {
-        PreferenceUtil.putStringSet(context, parent, categories.keySet());
+        PreferenceUtil.putStringSet(prefs, parent, categories.keySet());
         for (String categoryId: categories.keySet()) {
             translator.putString(categoryId, categories.get(categoryId));
         }
@@ -58,12 +61,12 @@ public class CategoryManager {
         return null == chosenCategoryId
             || chosenCategoryId.equals(TOP)
             || appCategoryId.equals(chosenCategoryId)
-            || PreferenceUtil.getStringSet(context, chosenCategoryId).contains(appCategoryId)
+            || PreferenceUtil.getStringSet(prefs, chosenCategoryId).contains(appCategoryId)
         ;
     }
 
     public boolean categoryListEmpty() {
-        Set<String> topSet = PreferenceUtil.getStringSet(context, TOP);
+        Set<String> topSet = PreferenceUtil.getStringSet(prefs, TOP);
         if (topSet.isEmpty()) {
             return true;
         }
@@ -74,10 +77,10 @@ public class CategoryManager {
 
     public Map<String, String> getCategoriesFromSharedPreferences() {
         Map<String, String> categories = new TreeMap<>();
-        Set<String> topSet = PreferenceUtil.getStringSet(context, TOP);
+        Set<String> topSet = PreferenceUtil.getStringSet(prefs, TOP);
         for (String topCategoryId: topSet) {
             categories.put(topCategoryId, translator.getString(topCategoryId));
-            Set<String> subSet = PreferenceUtil.getStringSet(context, topCategoryId);
+            Set<String> subSet = PreferenceUtil.getStringSet(prefs, topCategoryId);
             for (String subCategoryId: subSet) {
                 categories.put(subCategoryId, categories.get(topCategoryId) + " - " + translator.getString(subCategoryId));
             }

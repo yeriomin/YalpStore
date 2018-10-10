@@ -40,7 +40,7 @@ public class GoogleDependency extends Abstract {
 
     public GoogleDependency(DetailsActivity activity, App app) {
         super(activity, app);
-        translator = new SharedPreferencesTranslator(PreferenceUtil.getDefaultSharedPreferences(activity));
+        translator = new SharedPreferencesTranslator(activity);
     }
 
     @Override

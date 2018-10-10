@@ -56,7 +56,7 @@ public class NavHeaderUpdateTask extends UserProfileTask {
     protected void onPostExecute(Void result) {
         super.onPostExecute(result);
         if (YalpStoreApplication.user.isLoggedIn()) {
-            Map<String, String> devices = new SpoofDeviceManager(context).getDevices();
+            Map<String, String> devices = new SpoofDeviceManager(context).getDevicesShort();
             if (!TextUtils.isEmpty(YalpStoreApplication.user.getDeviceDefinitionName())
                 && devices.containsKey(YalpStoreApplication.user.getDeviceDefinitionName())
                 ) {
