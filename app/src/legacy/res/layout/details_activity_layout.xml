@@ -31,18 +31,6 @@
 
     </RelativeLayout>
 
-    <ProgressBar
-        android:id="@+id/download_progress"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:indeterminate="false"
-        android:visibility="invisible"
-        style="@android:style/Widget.ProgressBar.Horizontal" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,6 +55,32 @@
             android:visibility="gone"
             android:maxLines="1"
             android:text="@string/details_download" />
+
+        <LinearLayout
+            android:id="@+id/download_progress_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:padding="6dp"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/download_progress_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical|end"/>
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_weight="1"
+                android:id="@+id/download_progress"
+                android:indeterminate="false"
+                style="@android:style/Widget.ProgressBar.Horizontal"  />
+
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/cancel"

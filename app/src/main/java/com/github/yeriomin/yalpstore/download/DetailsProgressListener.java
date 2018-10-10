@@ -21,7 +21,6 @@ package com.github.yeriomin.yalpstore.download;
 
 import android.text.format.Formatter;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -45,20 +44,15 @@ public class DetailsProgressListener implements ProgressListener {
         if (null == activityRef.get()) {
             return;
         }
-        LinearLayout progressContainer = activityRef.get().findViewById(R.id.download_progress_container);
-        if (null != progressContainer) {
-            progressContainer.setVisibility(View.VISIBLE);
-            TextView progressTextView = activityRef.get().findViewById(R.id.download_progress_size);
-            progressTextView.setText(activityRef.get().getString(
-                R.string.notification_download_progress,
-                Formatter.formatShortFileSize(activityRef.get(), bytesDownloaded),
-                Formatter.formatShortFileSize(activityRef.get(), bytesTotal)
-            ));
-            activityRef.get().findViewById(R.id.download).setVisibility(View.GONE);
-        }
+        activityRef.get().findViewById(R.id.download_progress_container).setVisibility(View.VISIBLE);
+        ((TextView) activityRef.get().findViewById(R.id.download_progress_size)).setText(activityRef.get().getString(
+            R.string.notification_download_progress,
+            Formatter.formatShortFileSize(activityRef.get(), bytesDownloaded),
+            Formatter.formatShortFileSize(activityRef.get(), bytesTotal)
+        ));
+        activityRef.get().findViewById(R.id.download).setVisibility(View.GONE);
         ProgressBar progressBar = activityRef.get().findViewById(R.id.download_progress);
         progressBar.setIndeterminate(false);
-        progressBar.setVisibility(View.VISIBLE);
         progressBar.setProgress((int) bytesDownloaded);
         progressBar.setMax((int) bytesTotal);
     }
@@ -71,12 +65,8 @@ public class DetailsProgressListener implements ProgressListener {
         ContextUtil.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                LinearLayout progressContainer = activityRef.get().findViewById(R.id.download_progress_container);
-                if (null != progressContainer) {
-                    progressContainer.setVisibility(View.GONE);
-                }
+                activityRef.get().findViewById(R.id.download_progress_container).setVisibility(View.GONE);
                 ProgressBar progressBar = activityRef.get().findViewById(R.id.download_progress);
-                progressBar.setVisibility(View.INVISIBLE);
                 progressBar.setIndeterminate(true);
                 progressBar.setProgress(0);
                 activityRef.get().redrawButtons();

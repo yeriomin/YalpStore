@@ -87,9 +87,12 @@ public class ButtonDownload extends Button {
         super.draw();
         if (DownloadManager.isRunning(app.getPackageName())) {
             disable(R.string.details_downloading);
-        } else if (button instanceof android.widget.Button) {
-            button.setEnabled(true);
-            ((android.widget.Button) button).setText(R.string.details_download);
+        } else {
+            activity.findViewById(R.id.download_progress_container).setVisibility(View.GONE);
+            if (button instanceof android.widget.Button) {
+                button.setEnabled(true);
+                ((android.widget.Button) button).setText(R.string.details_download);
+            }
         }
         if (null != button) {
             button.setOnLongClickListener(new View.OnLongClickListener() {
