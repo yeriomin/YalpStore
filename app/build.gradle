@@ -27,6 +27,9 @@ android {
         resConfigs "ar", "ast", "bg", "cs", "de", "el", "en", "es", "eu", "fr", "fr-rBE", "in", "it", "ja", "kk", "ko", "nl", "pl", "pt", "pt-rBR", "ru", "sk", "uk", "zh", "zh-rTW"
     }
     buildTypes {
+        debug {
+            multiDexEnabled true
+        }
         release {
             shrinkResources true
             minifyEnabled true
@@ -57,6 +60,7 @@ dependencies {
     implementation 'info.guardianproject.netcipher:netcipher:2.0.0-beta1'
     implementation 'commons-net:commons-net:3.5'
     implementation 'com.nothome:javaxdelta:2.0.1'
+    debugImplementation 'com.facebook.stetho:stetho:1.5.0'
     debugImplementation ('com.github.yeriomin:play-store-api:master-SNAPSHOT') { changing = true }
     releaseImplementation 'com.github.yeriomin:play-store-api:0.44.2'
     implementation 'eu.chainfire:libsuperuser:1.0.0.201608240809'
