@@ -137,7 +137,7 @@ abstract public class PlayStoreTask<T> extends TaskWithProgress<T> {
         task.setCaller(this);
         task.setContext(context);
         task.prepareDialog(
-            context.getString(R.string.dialog_message_logging_in_predefined) + "\n" + context.getString(R.string.first_login_message),
+            context.getString(R.string.dialog_message_logging_in_predefined) + "\n\n" + context.getString(R.string.first_login_message),
             context.getString(R.string.dialog_title_logging_in)
         );
         task.execute();

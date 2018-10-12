@@ -59,10 +59,14 @@ public abstract class BaseActivity extends Activity {
     }
 
     protected void markCurrentAccount(MenuItem item) {
-        item
-            .setCheckable(true)
-            .setChecked(true)
-        ;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            item.setIcon(R.drawable.ic_check);
+        } else {
+            item
+                .setCheckable(true)
+                .setChecked(true)
+            ;
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)

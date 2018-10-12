@@ -249,7 +249,7 @@
     <string name="bug_report_explanation_crash">You can help fix this by sending a bug report to the developer. Please describe what you were trying to do when the error occurred and tap OK to send it.</string>
     <string name="bug_report_explanation_bug_report">Please describe the issue. Be specific if possible. Does the problem occur with a specific app? Does it happen all the time or only sometimes? How can it be reproduced?</string>
     <string name="thank_you">Thank you</string>
-    <string name="first_login_message">To use your own account choose "Log out" in the menu</string>
+    <string name="first_login_message">To use your own account choose "Accounts" in the menu</string>
     <string name="early_access">Early access</string>
     <string name="testing_program_opt_in">join</string>
     <string name="testing_program_opt_out">leave</string>

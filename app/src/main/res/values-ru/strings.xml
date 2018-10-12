@@ -230,7 +230,7 @@
     <string name="bug_report_explanation_crash">Вы можете помочь разработчику исправить эту неприятность, послав ему отчёт об ошибке. Пожалуйста, опишите что вы пытались сделать когда произошла ошибка и нажмите ОК.</string>
     <string name="bug_report_explanation_bug_report">Пожалуйста, подробно опишите проблему. Может быть проблема происходит с конкретными приложениями? Всегда или иногда? Как разработчик может повторить проблему?</string>
     <string name="thank_you">Спасибо</string>
-    <string name="first_login_message">Чтобы использовать свой аккаунт выберите "Разлогиниться" в меню</string>
+    <string name="first_login_message">Чтобы использовать свой аккаунт выберите "Аккаунты" в меню</string>
     <string name="early_access">Бета-версия</string>
     <string name="testing_program_opt_in">Присоединиться</string>
     <string name="testing_program_opt_out">Выйти</string>

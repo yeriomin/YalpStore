@@ -19,6 +19,7 @@
 
 package com.github.yeriomin.yalpstore;
 
+import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -126,11 +127,7 @@ public class YalpStoreApplication extends Application {
     public void onCreate() {
         super.onCreate();
         if (!BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            try {
-                HttpResponseCache.install(new File(getCacheDir(), "http"), 5 * 1024 * 1024);
-            } catch (IOException e) {
-                Log.e(getClass().getSimpleName(), "Could not register cache " + e.getMessage());
-            }
+            initHttpCache();
         }
         PreferenceUtil.prefillInstallationMethod(this);
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
@@ -154,6 +151,18 @@ public class YalpStoreApplication extends Application {
             OldApkCleanupTask task = new OldApkCleanupTask(this);
             task.setDeleteAll(true);
             task.executeOnExecutorIfPossible();
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+    public void initHttpCache() {
+        try {
+            if (null != HttpResponseCache.getInstalled()) {
+                HttpResponseCache.getInstalled().delete();
+            }
+            HttpResponseCache.install(new File(getCacheDir(), "http"), 5 * 1024 * 1024);
+        } catch (IOException e) {
+            Log.e(getClass().getSimpleName(), "Could not register cache " + e.getMessage());
         }
     }
 
