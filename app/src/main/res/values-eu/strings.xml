@@ -293,7 +293,7 @@ Jarraitu?"</string>
 <string name="action_wishlist_add">"Gehitu nahien zerrendan"</string>
 <string name="action_wishlist">"Nahien zerrenda"</string>
 <string name="action_ignore_this">"Ezikusi eguneraketa hau"</string>
-
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
 <string name="details_exodus_tap_to_check">"sakatu egiaztatzeko"</string>
 <string name="details_exodus_searching">"bilatzen"</string>
 <string name="details_exodus_not_found">"ez da aurkitu"</string>
@@ -307,4 +307,17 @@ Jarraitu?"</string>
 <string name="details_exodus_submitting">"bidaltzen"</string>
 <string name="details_exodus_view">"ikusi txostena"</string>
 <string name="details_new_permission">"Berria:"</string>
+<string name="list_empty_history">"Historialik ez oraindik"</string>
+<string name="action_history">"Historiala"</string>
+<string name="dialog_message_virustotal_warning">"%2$dtik %1$d VirusTotal motorrek apk hau susmagarritzat dute"</string>
+<string name="dialog_button_virustotal_view_report">"Ikusi txostena"</string>
+<string name="events_no_changes">"Garatzaileak ez du aldaketarik aipatu "</string>
+<string name="uninstalled">"Desinstalatuta"</string>
+<string name="updated_from_to">"Eguneratuta:  %1$s (%2$d) → %3$s (%4$d)"</string>
+<string name="action_new_account">"Kontu berria"</string>
+<string name="action_accounts">"Kontuak"</string>
+<string name="download_manager_ERROR_DELTA_FAILED">"Delta partxeak huts egin du. Saiatu delta eguneraketak desgaituz."</string>
+<string name="download_manager_SPLITS_NOT_SUPPORTED">"apk fitxategia zatikatuta dago. Hautatu root baimendun instalazioa."</string>
+<string name="auth_empty">"Saioa hasi gabe"</string>
+<string name="auth_built_in">"Barne-kontua"</string>
 </resources>
