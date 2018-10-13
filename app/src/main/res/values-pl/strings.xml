@@ -14,7 +14,7 @@
 <string name="action_updates">"Aktualizacje"</string>
 <string name="action_ignore">"Ignoruj aktualizacje"</string>
 <string name="action_whitelist">"Biała lista aktualizacji"</string>
-<string name="search_title">"Szukaj aktualizacji"</string>
+<string name="search_title">"Szukaj aplikacji"</string>
 <string name="dialog_two_factor_cancel">"Nie teraz"</string>
 <string name="dialog_two_factor_create_password">"Utwórz hasło"</string>
 <string name="dialog_title_two_factor">"Weryfikacja dwuetapowa"</string>
@@ -165,7 +165,10 @@ Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji apli
 <string name="list_app_system">"Aplikacja systemowa"</string>
 <string name="activity_title_updates_only">"Aktualizacje"</string>
 <string name="activity_title_updates_and_other_apps">"Twoje aplikacje"</string>
-<string name="details_system_app_info">"Informacja o systemie"</string>
+
+<!-- "informacja o systemie" = "information about the system"
+"informacje systemowe" = "information from the system" -->
+<string name="details_system_app_info">"Informacje systemowe"</string>
 <string name="details_run">"Uruchom"</string>
 <string name="dialog_title_remounting_system">"Praca z partycją /system"</string>
 <string name="dialog_message_remounting_system">"Pracja z partycją /system. Może to zająć trochę czasu."</string>
@@ -273,16 +276,16 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="pref_auto_whitelist_summary_on">"Aplikacje instalowane przez Yalp Store automatycznie pojawiają się na białej liście"</string>
 <string name="pref_auto_whitelist_summary_off">"Musisz dodawać aplikacje na białą listę ręcznie"</string>
 <string name="apps_by">"Aplikacje od %1$s"</string>
-
+<string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
 <string name="no_permissions">"Brak wymaganych uprawnień."</string>
-
+<string name="about_librepay_label">"Donate Liberapay:"</string>
 <string name="notification_file_verification_failed">"Plik wygląda na uszkodzony. Spróbuj pobrać ponownie."</string>
 <string name="pref_download_internal_storage">"Pobierz do pamięci wewnętrznej"</string>
 <string name="pref_download_internal_storage_summary_on">"Bezpieczniejsze, ale pliki apk są niedostępne dla użytkownika."</string>
 <string name="pref_download_internal_storage_summary_off">"Pliki apk są pobierane do podanej poniżej ścieżki pamięci zewnętrznej"</string>
 <string name="pref_use_tor">"Użyj Tora"</string>
 <string name="pref_use_tor_summary">"Wymuś pobieranie przez Tora aby zwiększyć prywatność, wymagany Orbot"</string>
-
+<string name="pref_category_proxy">"Proxy"</string>
 <string name="pref_proxy_enable">"Włącz proxy"</string>
 <string name="pref_proxy_type">"Rodzaj proxy"</string>
 <string name="pref_proxy_host">"Host proxy"</string>
@@ -291,16 +294,31 @@ Nie rób tego z ciekawości. Może to zepsuć urządzenie. Zrób kopię zapasow�
 <string name="action_wishlist_add">"Dodaj do listy życzeń"</string>
 <string name="action_wishlist">"Lista życzeń"</string>
 <string name="action_ignore_this">"Ignoruj tę aktualizację"</string>
-
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
 <string name="details_exodus_tap_to_check">"dotknij aby sprawdzić"</string>
 <string name="details_exodus_searching">"wyszukiwanie"</string>
 <string name="details_exodus_not_found">"nie znaleziono"</string>
 <string name="details_exodus_found">"%1$s śledzących"</string>
-
-
+<string name="pref_category_third_party">"Third party services"</string>
+<string name="pref_exodus">"Exodus Privacy check"</string>
 <string name="pref_exodus_summary_on">"Liczba odnośników śledzących jest automatycznie wyświetlana na stronie ze szczegółami"</string>
-
+<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
 <string name="details_to_fdroid">"Zobacz w F-Droid"</string>
 <string name="details_instant_app">"Aplikacja błyskawiczna"</string>
+<string name="details_exodus_submitting">"submitting"</string>
+<string name="details_exodus_view">"view report"</string>
 <string name="details_new_permission">"Nowe:"</string>
+<string name="list_empty_history">"No history yet"</string>
+<string name="action_history">"History"</string>
+<string name="dialog_message_virustotal_warning">"%1$d out of %2$d VirusTotal engines consider this apk suspicious"</string>
+<string name="dialog_button_virustotal_view_report">"View report"</string>
+<string name="events_no_changes">"No changes mentioned by app developer"</string>
+<string name="uninstalled">"Uninstalled"</string>
+<string name="updated_from_to">"Updated: %1$s (%2$d) → %3$s (%4$d)"</string>
+<string name="action_new_account">"New account"</string>
+<string name="action_accounts">"Accounts"</string>
+<string name="download_manager_ERROR_DELTA_FAILED">"Delta patching failed. Try turning delta updates off."</string>
+<string name="download_manager_SPLITS_NOT_SUPPORTED">"The apk is split. Choose root or privileged installation method."</string>
+<string name="auth_empty">"Not logged in"</string>
+<string name="auth_built_in">"Built-in account"</string>
 </resources>
