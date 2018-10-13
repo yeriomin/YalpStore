@@ -22,8 +22,11 @@
 <string name="dialog_title_two_factor">"Verificação 2 passos"</string>
 <string name="dialog_message_two_factor">"Parece que ativou a verificação em 2 passos para a sua conta. 
 
-Crie uma palavra-passe específica para a Yalp Store e utilize-a para iniciar a sessão.
+       
 
+Crie uma palavra-passe específica para a Yalp Store e utilize-a para iniciar a sessão. 
+
+       
 Toque em \"Criar palavra-passe\" para ser redirecionado para o diálogo de criação."</string>
 <string name="dialog_title_logout">"Fechar sessão?"</string>
 <string name="dialog_message_logout">"Tens a certeza de que deseja fechar a sessão?"</string>
@@ -62,6 +65,8 @@ Toque em \"Criar palavra-passe\" para ser redirecionado para o diálogo de cria�
 <string name="credentials_hint_password">"palavra-passe"</string>
 <string name="credentials_title">"Acesso à conta Google"</string>
 <string name="credentials_message">"Necessita de uma conta Google para utilizar esta aplicação. 
+
+        
 
 A utilização desta aplicação viola os termos do serviço da Google Play Store.  Deve ser mais seguro utilizar uma conta Google que já tenha acedido e aceitado os termos do serviço da loja."</string>
 <string name="activity_title_search">"Procurar: \"%1$s\""</string>
@@ -125,15 +130,17 @@ A utilização desta aplicação viola os termos do serviço da Google Play Stor
 <string name="details_download_checking">"A verificar…"</string>
 <string name="details_download_not_available">"Indisponível"</string>
 <string name="manual_download_incompatible">"A Google Play acha que esta aplicação não é compatível com o seu dispositivo. Isto significa que o código da versão não foi devolvido pelo servidor da Google Play Store."</string>
-<string name="manual_download_compatible">"\"O campo do código da versão foi pré-preenchido com o correspondente ao da última versão compatível. Se quiser a versão anterior, introduza um número menor do que o atual. Se o programador da aplicação ainda não tiver removido a aplicação anterior da Play Store, poderá ainda efetuar a descarga."</string>
+<string name="manual_download_compatible">"O campo do código da versão foi pré-preenchido com o correspondente ao da última versão compatível. Se quiser a versão anterior, introduza um número menor do que o atual. Se o programador da aplicação ainda não tiver removido a aplicação anterior da Play Store, poderá ainda efetuar a descarga."</string>
 <string name="manual_download_warning">"Esta página deixa-lhe escolher a versão da aplicação que será descarregada. O código da versão é um número que identifica a versão da aplicação. Começa por 1 e é incrementado sempre que é disponibilizada uma nova versão. Por norma, a Play Store só lhe permite instalar a versão mais recente que seja compatível com o seu dispositivo. Ao escolher o número da versão, poderá ser possível descarregar outras versões. 
 
-Tenha em atenção de que a descarga de versões arbitrárias não é suportada pela Play Store. O sucesso desta ação depende de um palpite sobre o código da versão. E, mesmo que o seu palpite esteja correto e seja possível descarregar o ficheiro apk, existe uma grande probabilidade de a aplicação não ser compatível com o seu dispositivo. É bastante provável que esteja a desperdiçar o seu tempo. Boa sorte."</string>
+ 
+
+ Tenha em atenção de que a descarga de versões arbitrárias não é suportada pela Play Store. O sucesso desta ação depende de um palpite sobre o código da versão. E, mesmo que o seu palpite esteja correto e seja possível descarregar o ficheiro apk, existe uma grande probabilidade de a aplicação não ser compatível com o seu dispositivo. É bastante provável que esteja a desperdiçar o seu tempo. Boa sorte."</string>
 <string name="manual_download_hint_version_code">"código da versão"</string>
 <string name="details_uninstall">"Desinstalar"</string>
 <string name="notification_download_starting">"A iniciar descarga"</string>
 <string name="notification_download_progress">"Descarregada(s) \"%1$s de %2$s"</string>
-<string name="pref_requested_language">"Idioma dos pedidos �� Play Store"</string>
+<string name="pref_requested_language">"Idioma dos pedidos na Play Store"</string>
 <string name="pref_requested_language_default">"Idioma padrão"</string>
 <string name="pref_device_to_pretend_to_be">"Simular ser um dispositivo diferente"</string>
 <string name="pref_device_to_pretend_to_be_default">"Informação original do dispositivo"</string>
@@ -178,26 +185,40 @@ Tenha em atenção de que a descarga de versões arbitrárias não é suportada 
 <string name="dialog_title_system_app_warning">"Atenção!"</string>
 <string name="dialog_message_system_app_warning_to_system">"Optou por converter uma aplicação normal em aplicação de sistema. A maioria das aplicações funciona corretamente mesmo sem ser uma aplicação de sistema.
 
+  
+
 Tenha em atenção de que a conversão  de aplicações não é suportada pelos sistemas Android e é possível que esta operação não funcione.
+
+  
 
 Não o deve fazer por curiosidade e esta ação pode danificar o seu dispositivo. Crie um backup antes de experimentar."</string>
 <string name="dialog_message_system_app_warning_to_normal">"Optou por converter uma aplicação de sistema em aplicação normal. Algumas aplicações necessitam de ser aplicações de sistema para funcionar corretamente.
 
-Tenha em atenção de que a conversão  de aplicações não é suportada pelos sistemas Android e é possível que esta operação não funcione.
+   
 
-Não o deve fazer por curiosidade e esta ação pode danificar o seu dispositivo. Crie um backup antes de experimentar."</string>
+   Tenha em atenção de que a conversão  de aplicações não é suportada pelos sistemas Android e é possível que esta operação não funcione.
+
+   
+
+   Não o deve fazer por curiosidade e esta ação pode danificar o seu dispositivo. Crie um backup antes de experimentar."</string>
 <string name="list_check_updates">"Procurar atualizações"</string>
 <string name="pref_background_update_interval_manually">"Manualmente"</string>
 <string name="dialog_message_system_app_warning_uninstall">"Tem a certeza de que deseja remover esta aplicação de sistema? Este tipo de aplicações é normalmente disponibilizada pelo fornecedor do equipamento e, muito provavelmente, são necessárias para o correto funcionamento do sistema. 
 
+   
+
 Tenha em atenção de que a remoção de aplicações de sistema não é suportada pelos sistemas Android e é possível que esta operação não funcione.
 
+   
 Não o deve fazer por curiosidade e esta ação pode danificar o seu dispositivo. Crie um backup antes de experimentar."</string>
 <string name="dialog_title_system_app_self">"Tornar Yalp Store uma aplicação de sistema"</string>
 <string name="dialog_message_system_app_self">"Tem que tornar a Yalp Store em aplicação do sistema para poder atualizar as aplicações em segundo plano.
 
-O processo não é infalível e depende do seu dispositivo.
+     
 
+O processo não é infalível e depende do seu dispositivo. 
+
+     
 Deseja experimentar?"</string>
 <string name="about_website_label">"Site:"</string>
 <string name="details_share">"Partilhar"</string>
@@ -226,7 +247,7 @@ Deseja experimentar?"</string>
 <string name="testing_program_opt_in">"entrar"</string>
 <string name="testing_program_opt_out">"sair"</string>
 <string name="testing_program_section_opted_in_message">"As atualizações irão incluir versões beta. Se sair do programa beta, apenas receberá atualizações estáveis. "</string>
-<string name="testing_program_section_opted_in_propagating_message">"Dentro de alguns minutos entrará no programa beta. Depois,  já poderá instalar a versão beta disponível."</string>
+<string name="testing_program_section_opted_in_propagating_message">"Dentro de alguns minutos entrará no programa beta. Depois, já poderá instalar a versão beta disponível."</string>
 <string name="testing_program_section_opted_in_title">"Você é um testador Beta"</string>
 <string name="testing_program_section_opted_out_message">"Teste os novos recursos antes que se tornem públicos. Envie os seus comentários diretamente para o programador."</string>
 <string name="testing_program_section_opted_out_propagating_message">"Pode levar alguns minutos para sair do programa Beta."</string>
@@ -295,7 +316,7 @@ Deseja experimentar?"</string>
 <string name="action_wishlist_add">"Adicionar à lista de desejos"</string>
 <string name="action_wishlist">"Lista de desejos"</string>
 <string name="action_ignore_this">"Ignorar esta atualização"</string>
-<string name="details_exodus">"Privacidade de Exodus: %1$s"</string>
+<string name="details_exodus">"Privacidade Exodus: %1$s"</string>
 <string name="details_exodus_tap_to_check">"toque para verificar"</string>
 <string name="details_exodus_searching">"a procurar"</string>
 <string name="details_exodus_not_found">"não encontrada"</string>
@@ -305,8 +326,21 @@ Deseja experimentar?"</string>
 <string name="pref_exodus_summary_on">"O número de 'trackers' é mostrado na página de detalhes"</string>
 <string name="pref_exodus_summary_off">"A ligação do relatório Exodus é mostrada"</string>
 <string name="details_to_fdroid">"Ver em F-Droid"</string>
-<string name="details_instant_app">"App instantâneo"</string>
-<string name="details_exodus_submitting">"submitting"</string>
-<string name="details_exodus_view">"view report"</string>
+<string name="details_instant_app">"Aplicação instantânea"</string>
+<string name="details_exodus_submitting">"a submeter"</string>
+<string name="details_exodus_view">"ver relatório"</string>
 <string name="details_new_permission">"Novas:"</string>
+<string name="list_empty_history">"No history yet"</string>
+<string name="action_history">"History"</string>
+<string name="dialog_message_virustotal_warning">"%1$d out of %2$d VirusTotal engines consider this apk suspicious"</string>
+<string name="dialog_button_virustotal_view_report">"View report"</string>
+<string name="events_no_changes">"No changes mentioned by app developer"</string>
+<string name="uninstalled">"Uninstalled"</string>
+<string name="updated_from_to">"Updated: %1$s (%2$d) → %3$s (%4$d)"</string>
+<string name="action_new_account">"New account"</string>
+<string name="action_accounts">"Accounts"</string>
+<string name="download_manager_ERROR_DELTA_FAILED">"Delta patching failed. Try turning delta updates off."</string>
+<string name="download_manager_SPLITS_NOT_SUPPORTED">"The apk is split. Choose root or privileged installation method."</string>
+<string name="auth_empty">"Not logged in"</string>
+<string name="auth_built_in">"Built-in account"</string>
 </resources>
