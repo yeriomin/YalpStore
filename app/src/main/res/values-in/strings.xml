@@ -304,4 +304,20 @@ Lakukan?"</string>
 <string name="pref_exodus_summary_off">"Tautan laporan Exodus tertampil"</string>
 <string name="details_to_fdroid">"Lihat di F-Droid"</string>
 <string name="details_instant_app">"Aplikasi instan"</string>
+<string name="details_exodus_submitting">"mengumpulkan"</string>
+<string name="details_exodus_view">"lihat laporan"</string>
+<string name="details_new_permission">"Baru:"</string>
+<string name="list_empty_history">"Belum ada riwayat"</string>
+<string name="action_history">"Riwayat"</string>
+<string name="dialog_message_virustotal_warning">"%1$d dari %2$d peranti VirusTotal menimbang bahwa aplikasi ini mencurigakan"</string>
+<string name="dialog_button_virustotal_view_report">"Lihat laporan"</string>
+<string name="events_no_changes">"Tiada perubahan yang disebutkan oleh pengembang"</string>
+<string name="uninstalled">"Terlepas"</string>
+<string name="updated_from_to">"Memperbarui %1$s (%2$d) → %3$s (%4$d)"</string>
+<string name="action_new_account">"New account"</string>
+<string name="action_accounts">"Accounts"</string>
+<string name="download_manager_ERROR_DELTA_FAILED">"Delta patching failed. Try turning delta updates off."</string>
+<string name="download_manager_SPLITS_NOT_SUPPORTED">"The apk is split. Choose root or privileged installation method."</string>
+<string name="auth_empty">"Not logged in"</string>
+<string name="auth_built_in">"Built-in account"</string>
 </resources>
