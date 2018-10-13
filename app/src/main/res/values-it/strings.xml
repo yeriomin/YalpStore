@@ -9,7 +9,7 @@
 <string name="list_incompatible">"incompatibile"</string>
 <string name="action_about">"Info"</string>
 <string name="action_settings">"Impostazioni"</string>
-<string name="action_logout">"Log Out"</string>
+<string name="action_logout">"Esci"</string>
 <string name="action_search">"Cerca"</string>
 <string name="action_updates">"Aggiorna"</string>
 <string name="action_ignore">"Ignora aggiornamenti"</string>
@@ -23,58 +23,58 @@
 Per favore, crea una password dedicata per Yalp Store e usala per accedere da Yalp Store.
 
 Tocca \"Crea password\" per esser reindirizzato alla creazione della password."</string>
-<string name="dialog_title_logout">"Scollego?"</string>
-<string name="dialog_message_logout">"Sei sicuro di voler disconnetterti?"</string>
-<string name="dialog_account_type_provided_by_user">"Con il mio account Google"</string>
-<string name="dialog_account_type_predefined">"Senza un account (sperimentale)"</string>
-<string name="dialog_account_type_title">"Come vuoi accedere al Google Play Store?"</string>
+<string name="dialog_title_logout">"Uscire?"</string>
+<string name="dialog_message_logout">"Uscire davvero?"</string>
+<string name="dialog_account_type_provided_by_user">"Con il proprio account Google"</string>
+<string name="dialog_account_type_predefined">"Con un account predefinito di YalpStore"</string>
+<string name="dialog_account_type_title">"Come si vuole accedere al Google Play Store?"</string>
 <string name="dialog_title_logging_in">"Accesso"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Tentativo di accesso con le credenziali fornite"</string>
 <string name="dialog_message_logging_in_predefined">"Tentativo di accesso con le credenziali di Yalp Store"</string>
 <string name="error_incorrect_password">"Email o password errate."</string>
-<string name="error_credentials_empty">"Inserisci le credenziali dell'account Google."</string>
+<string name="error_credentials_empty">"Inserire le credenziali dell'account Google."</string>
 <string name="error_no_network">"Non connesso alla rete."</string>
 <string name="error_network_other">"Errore di rete: %1$s"</string>
 <string name="error_not_purchased">"La app non risulta acquistata.
-Vado alla relativa pagina sul Play Store?"</string>
-<string name="error_downloads_directory_not_writable">"La cartella di download non può esser creata o scritta."</string>
-<string name="error_token_dispenser_problem">"Impossibile accedere. Prova ad usare il tuo account."</string>
+Reindirizzare alla relativa pagina sul Play Store?"</string>
+<string name="error_downloads_directory_not_writable">"La cartella dei download non può esser creata o scritta."</string>
+<string name="error_token_dispenser_problem">"Impossibile accedere. Provare ad usare il proprio account."</string>
 <string name="details_updated">"Aggiornata %1$s"</string>
-<string name="details_description">"Descrizione"</string>
+<string name="details_description">"Descrizione:"</string>
 <string name="details_changelog">"Novità:"</string>
-<string name="details_screenshots">"Schermate"</string>
-<string name="details_reviews">"Recensioni"</string>
+<string name="details_screenshots">"Schermate:"</string>
+<string name="details_reviews">"Recensioni:"</string>
 <string name="details_rate_this_app">"Vota la app:"</string>
-<string name="details_you_rated_this_app">"Hai votato la app:"</string>
+<string name="details_you_rated_this_app">"App votata:"</string>
 <string name="details_permissions">"Autorizzazioni"</string>
 <string name="details_versionName">"Versione %1$s"</string>
 <string name="details_versionName_updatable">"Versione %1$s → %2$s"</string>
 <string name="details_download">"Scarica"</string>
 <string name="details_install">"Installa"</string>
-<string name="details_downloading">"Scaricamento…"</string>
+<string name="details_downloading">"Scaricamento in corso…"</string>
 <string name="details_review_dialog_title">"Qualcos'altro da aggiungere?"</string>
 <string name="details_review_dialog_review_title_hint">"Titolo"</string>
 <string name="details_review_dialog_review_comment_hint">"Commento"</string>
-<string name="details_review_dialog_fields_optional">"Puoi lasciare tutto vuoto."</string>
-<string name="details_signature_mismatch">"La nuova versione è firmata con una chiave diversa. Per installare la nuova versione è necessario rimuovere la precedente. Per favore, rimuovila e riprova (Nota che rimuovere la app cancellerà tutti i dati in essa contenuti)."</string>
+<string name="details_review_dialog_fields_optional">"Si può lasciare tutto vuoto."</string>
+<string name="details_signature_mismatch">"La nuova versione è firmata con una chiave diversa. Per installare la nuova versione è necessario rimuovere la precedente. Per favore, ruoverla e riprovare (notare che rimuovere la app cancellerà tutti i dati in essa contenuti)."</string>
 <string name="credentials_hint_email">"email"</string>
 <string name="credentials_hint_password">"password"</string>
 <string name="credentials_title">"Accesso all'account Google"</string>
 <string name="credentials_message">"Email e password dell'account Google sono richiesti per permettere all'app di funzionare.
 
-Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più sicuro usare un account usa e getta che abbia avuto accesso al Play Store e accettato i termini d'utilizzo."</string>
+Si ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più sicuro usare un account usa e getta che abbia avuto accesso al Play Store e accettato i termini d'utilizzo."</string>
 <string name="activity_title_search">"Ricerca: %1$s"</string>
-<string name="notification_download_complete">"Download completo. Tocca per installare."</string>
-<string name="notification_download_complete_toast">"%1$s scaricata. Tocca il relativo tasto o la notifica per installarla."</string>
-<string name="notification_download_complete_signature_mismatch">"Download completato con firma non corrispondente."</string>
-<string name="notification_download_complete_signature_mismatch_toast">"%1$s scaricata. La firma dell\'apk non corrisponde a quella dell\'app installata. E\' stata originariamente scaricata dal Play Store? E\' necessario rimuoverla."</string>
+<string name="notification_download_complete">"Download completato. Toccare per installare."</string>
+<string name="notification_download_complete_toast">"%1$s scaricata. Toccare il relativo tasto o la notifica per installarla."</string>
+<string name="notification_download_complete_signature_mismatch">"Download completato, però la firma dell'apk non corrisponde."</string>
+<string name="notification_download_complete_signature_mismatch_toast">"%1$s scaricata, ma la firma di tale apk non corrisponde con quella installata. Si dovrebbe disinstallarla e riprovare."</string>
 <string name="notification_updates_available_title">"Aggiornamenti disponibili."</string>
-<string name="notification_updates_available_message">"Aggiornamenti disponibili per %1$d delle tue app."</string>
-<string name="pref_auto_install_summary_off">"Le app vengono installate quando l'utente tocca la notifica di completamento."</string>
+<string name="notification_updates_available_message">"Aggiornamenti disponibili per %1$d delle proprie app."</string>
+<string name="pref_auto_install_summary_off">"Le app vengono installate quando l'utente tocca la notifica di completamento"</string>
 <string name="pref_auto_install_summary_on">"Le app vengono installate appena finisce il download"</string>
 <string name="pref_auto_install">"Installa app immediatamente"</string>
-<string name="pref_update_list_white_or_black_black">"Il controllo aggiornamenti ignora le app selezionate"</string>
-<string name="pref_update_list_white_or_black_white">"Controllo aggiornamenti solo per le app selezionate"</string>
+<string name="pref_update_list_white_or_black_black">"Scegliere quali app verranno ignorate durante il controllo degli aggiornamenti"</string>
+<string name="pref_update_list_white_or_black_white">"Solamente le app scelte verranno controllate per gli aggiornamenti"</string>
 <string name="pref_update_list_white_or_black">"Lista nera o lista bianca delle app"</string>
 <string name="pref_update_list_black">"Modifica lista nera"</string>
 <string name="pref_update_list_white">"Modifica lista bianca"</string>
@@ -87,79 +87,79 @@ Ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe più s
 <string name="pref_background_update_interval_hourly">"Ogni ora"</string>
 <string name="pref_background_update_interval_daily">"Ogni giorno"</string>
 <string name="pref_background_update_interval_weekly">"Ogni settimana"</string>
-<string name="pref_background_update_interval">"Controllo aggiornamenti periodico"</string>
+<string name="pref_background_update_interval">"Controllo degli aggiornamenti periodico"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Errore sconosciuto."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Errore di memorizzazione sconosciuto."</string>
 <string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Codice HTTP ricevuto non gestibile. Errore del server."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Errore di ricezione o elaborazione dati a livello HTTP"</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Troppi redirect"</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Spazio insufficiente"</string>
+<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Errore di ricezione o elaborazione dati a livello HTTP."</string>
+<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Troppi reindirizzamenti."</string>
+<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Spazio insufficiente."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Nessuna memoria esterna rilevata. Forse la scheda SD non è montata."</string>
-<string name="download_manager_ERROR_CANNOT_RESUME">"Impossibile riprendere il download a causa di un errore temporaneo. Prova più tardi."</string>
-<string name="download_manager_ERROR_BLOCKED">"Download fallito perché NetworkPolicyManager controlla le richieste delle applicazioni. Verifica le impostazioni"</string>
+<string name="download_manager_ERROR_CANNOT_RESUME">"Impossibile riprendere il download a causa di un errore temporaneo. Provare più tardi."</string>
+<string name="download_manager_ERROR_BLOCKED">"Download fallito perché NetworkPolicyManager controlla le richieste delle applicazioni. Verificare le impostazioni."</string>
 <string name="search_filter">"Tutte le app"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Gli apk non vengono eliminati dopo l'installazione"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Gli apk vengono eliminati dopo l'installazione"</string>
 <string name="pref_delete_apk_after_install">"Elimina .apk dopo l'installazione"</string>
-<string name="dialog_title_application_crashed">"Yalp Store è stato chiuso"</string>
+<string name="dialog_title_application_crashed">"Yalp Store si è bloccato"</string>
 <string name="details_to_play_store">"Vedi nel Play Store"</string>
 <string name="action_categories">"Categorie"</string>
 <string name="list_update_all">"Aggiorna tutto"</string>
-<string name="notification_installation_complete">"Aggiornamento installato"</string>
-<string name="notification_installation_failed">"Installazione aggiornamento fallita."</string>
-<string name="pref_background_update_install_summary_off">"Riceverai solo una notifica"</string>
+<string name="notification_installation_complete">"Aggiornamento installato."</string>
+<string name="notification_installation_failed">"Impossibile installare l'aggiornamento."</string>
+<string name="pref_background_update_install_summary_off">"Si riceverà solo una notifica"</string>
 <string name="pref_background_update_install_summary_on">"Installa aggiornamenti quando disponibili (root)"</string>
 <string name="pref_background_update_install">"Installa gli aggiornamenti (root)"</string>
 <string name="pref_no_root">"Opzione disponibile solo su dispositivi con root"</string>
-<string name="list_app_has_ads">"Con ads"</string>
-<string name="list_app_no_ads">"Senza ads"</string>
+<string name="list_app_has_ads">"Con pubblicità"</string>
+<string name="list_app_no_ads">"Senza pubblicità"</string>
 <string name="list_app_depends_on_gsf">"Dipende da GSF"</string>
-<string name="list_app_independent_from_gsf">"Indipendente da GSF"</string>
+<string name="list_app_independent_from_gsf">"Non dipende da GSF"</string>
 <string name="details_depends_on">"Dipende da: %1$s"</string>
 <string name="details_no_dependencies">"nessuna"</string>
-<string name="details_contains_ads">"Contiene ads"</string>
-
-<string name="dialog_title_package_id">"Pacchetto con nome corrispondente"</string>
-<string name="dialog_message_package_id">"Esiste un pacchetto con il nome esatto. Vuoi andare direttamente ai dettagli dell'app?"</string>
-<string name="details_download_checking">"Controllo…"</string>
+<string name="details_contains_ads">"Contiene pubblicità"</string>
+<string name="details_no_ads">"Senza pubblicità"</string>
+<string name="dialog_title_package_id">"Esiste già un pacchetto con questo nome"</string>
+<string name="dialog_message_package_id">"Esiste un pacchetto con lo stesso nome. Andare direttamente ai dettagli dell'app in questione?"</string>
+<string name="details_download_checking">"Controllo in corso…"</string>
 <string name="details_download_not_available">"Non disponibile"</string>
-<string name="manual_download_incompatible">"Google Play Store ritiene l'app incompatibile con il tuo dispositivo. Ciò significa che il numero di versione non è stato riconosciuto dal server."</string>
+<string name="manual_download_incompatible">"Google Play Store ritiene l'app incompatibile con il proprio dispositivo. Ciò significa che il numero di versione non è stato riconosciuto dal server."</string>
 <string name="manual_download_compatible">"Il numero di versione è stato compilato con l'ultimo compatibile. Se vuoi una versione precedente, inserisci un numero inferiore all'attuale. Se lo sviluppatore non ha eliminato il vecchio apk, il download dovrebbe avviarsi."</string>
 <string name="manual_download_warning">"Questa pagina permette di scegliere manualmente la versione da scaricare. Il numero di versione, che identifica la versione di una app, parte da 1 e viene incrementato dallo sviluppatore ogni volta che c'è una nuova versione. Il Play Store, di solito, permette solo il download dell'ultima versione compatibile con il dispositivo, ma modificando questo valore è possibile scaricare anche altre versioni.
 
-Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store e il successo dipende dalla fortuna nell'indovinare il numero di versione. Tuttavia, anche indovinando, l'apk potrebbe comunque non essere compatibile. È probabile che tu stia sprecando tempo!"</string>
-<string name="manual_download_hint_version_code">"Numero di versione"</string>
+Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store e il successo dipende dalla fortuna nell'indovinare il numero di versione. Tuttavia, anche indovinando, l'apk potrebbe comunque non essere compatibile. È probabile che si stia sprecando tempo!"</string>
+<string name="manual_download_hint_version_code">"Numero di versione qui"</string>
 <string name="details_uninstall">"Disinstalla"</string>
 <string name="notification_download_starting">"Avvio del download"</string>
 <string name="notification_download_progress">"%1$s di %2$s scaricati"</string>
 <string name="pref_requested_language">"Lingua richiesta al Play Store"</string>
 <string name="pref_requested_language_default">"Lingua predefinita"</string>
-<string name="pref_device_to_pretend_to_be">"Simula dispositivo differente"</string>
+<string name="pref_device_to_pretend_to_be">"Simula un dispositivo differente"</string>
 <string name="pref_device_to_pretend_to_be_default">"Info reali del dispositivo"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Eseguire di nuovo l'accesso per applicare le modifiche"</string>
 <string name="pref_category_updates">"Aggiornamenti"</string>
 <string name="pref_category_installation">"Installazione"</string>
 <string name="pref_category_spoofing">"Mascheramento"</string>
-<string name="pref_category_ui">"Mostra"</string>
-<string name="details_installing">"Installazione…"</string>
+<string name="pref_category_ui">"Interfaccia utente"</string>
+<string name="details_installing">"Installazione in corso…"</string>
 <string name="details_installed">"Installato con successo"</string>
 <string name="details_install_failure">"Impossibile installare"</string>
-<string name="notification_download_complete_new_permissions">"Download completo. Richieste nuove autorizzazioni."</string>
-<string name="notification_download_complete_new_permissions_toast">"%1$s scaricati. La nuova versione richiede più autorizzazioni. Controlla la lista dei permessi."</string>
+<string name="notification_download_complete_new_permissions">"Download completato. Sono richieste nuove autorizzazioni."</string>
+<string name="notification_download_complete_new_permissions_toast">"%1$s scaricati. La nuova versione richiede più autorizzazioni. Controllare la lista dei permessi."</string>
 <string name="pref_not_privileged">"Disponibile solo se Yalp è una app di sistema"</string>
 <string name="pref_installation_method">"Metodo d'installazione"</string>
-<string name="pref_installation_method_default">"Schermata standard, nessun aggiornamento in background"</string>
-<string name="pref_installation_method_root">"Utilizzo root"</string>
-<string name="pref_installation_method_privileged">"Utilizzo permessi di sistema"</string>
-<string name="pref_background_update_download_summary_off">"Riceverai solo una notifica"</string>
-<string name="pref_background_update_download_summary_on">"Scarica aggiornamenti quando rilevati"</string>
+<string name="pref_installation_method_default">"Finestra standard, nessun aggiornamento in background"</string>
+<string name="pref_installation_method_root">"Utilizzando il root"</string>
+<string name="pref_installation_method_privileged">"Utilizzando i permessi di sistema"</string>
+<string name="pref_background_update_download_summary_off">"Si riceverà solamente una notifica"</string>
+<string name="pref_background_update_download_summary_on">"Gli aggiornamenti saranno scaricati se trovati"</string>
 <string name="pref_background_update_download">"Scarica aggiornamenti"</string>
-<string name="details_not_available_on_play_store">"Non disponibile su Play Store"</string>
+<string name="details_not_available_on_play_store">"Non disponibile sul Play Store"</string>
 <string name="action_manual">"Download manuale"</string>
 
 <!-- Can you explain where this string is used? Thanks -->
 <string name="action_get_local_apk">"Salva apk in locale"</string>
-<string name="details_saved_in_downloads">"Salvato nella cartella Download"</string>
+<string name="details_saved_in_downloads">"Salvato nella propria cartella Download"</string>
 <string name="details_could_not_copy_apk">"Impossibile copiare apk"</string>
 <string name="action_make_system">"Rendi app di sistema"</string>
 <string name="action_make_normal">"Rendi app normale"</string>
@@ -171,33 +171,35 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="dialog_title_remounting_system">"Esecuzione su partizione /system"</string>
 <string name="dialog_message_remounting_system">"Esecuzione su partizione /system. Può volerci del tempo."</string>
 <string name="dialog_title_checking_busybox">"Verifica disponibilità di busybox"</string>
-<string name="dialog_message_checking_busybox">"Alcuni strumenti sono richiesti per operare sulle app di sistema. Verifico se sono disponibili."</string>
+<string name="dialog_message_checking_busybox">"Alcuni strumenti sono richiesti per operare sulle app di sistema. Verifica della disponibilità in corso."</string>
 <string name="dialog_title_busybox_not_available">"Busybox non disponibile"</string>
-<string name="dialog_message_busybox_not_available">"Un dispositivo con root e busybox installato è necessario per operare sulle app di sistema. Cerco un installer busybox?"</string>
+<string name="dialog_message_busybox_not_available">"Un dispositivo con root e BusyBox installato è necessario per operare sulle app di sistema. Cercare un installatore BusyBox?"</string>
 <string name="dialog_title_reboot_required">"Riavvio richiesto"</string>
-<string name="dialog_message_reboot_required">"Le modifiche saranno applicate dopo il riavvio. Riavvio ora?"</string>
+<string name="dialog_message_reboot_required">"Le modifiche saranno applicate dopo il riavvio. Ravviare ora?"</string>
 <string name="dialog_title_system_app_warning">"Attenzione!"</string>
-<string name="dialog_message_system_app_warning_to_system">"Hai scelto di convertire una app in app di sistema. Quasi tutte le app non ne hanno bisogno per funzionare.
+<string name="dialog_message_system_app_warning_to_system">"Si è scelto di convertire una app in app di sistema. Quasi tutte le app non ne hanno bisogno per funzionare.
 
-Ricorda che il processo di conversione NON è supportato da Android, NON è sicuro e NON ne viene garantito il funzionamento.
+Si ricorda che il processo di conversione NON è supportato da Android, NON è sicuro e NON ne viene garantito il funzionamento.
 
-Non farlo per curiosità, potrebbe danneggiare il dispositivo. Fai un backup prima di provare."</string>
-<string name="dialog_message_system_app_warning_to_normal">"Hai scelto di convertire una app di sistema in una app normale. Molte applicazioni di sistema necessitano di questa condizione per funzionare.
+Tale azione potrebbe danneggiare il dispositivo, si sconsiglia di farlo per curiosità. Fare un backup prima di provare."</string>
+<string name="dialog_message_system_app_warning_to_normal">"Si è scelto di convertire una app di sistema in una app normale. Molte applicazioni di sistema necessitano di questa condizione per funzionare.
 
-Ricorda che il processo di conversione NON è supportato da Android, NON è sicuro e NON ne viene garantito il funzionamento.
+Si ricorda che il processo di conversione NON è supportato da Android, NON è sicuro e NON ne viene garantito il funzionamento.
 
-Non farlo per curiosità, potrebbe danneggiare il dispositivo. Fai un backup prima di provare."</string>
+Potrebbe danneggiare il dispositivo, si sconsiglia di farlo per curiosità. Fare un backup prima di provare."</string>
 <string name="list_check_updates">"Verifica aggiornamenti"</string>
 <string name="pref_background_update_interval_manually">"Solo manualmente"</string>
-<string name="dialog_message_system_app_warning_uninstall">"Sicuro di voler rimuovere questa app di sistema? Le app di sistema vengono inserite dal produttore del dispositivo e sono necessarie perché funzioni come previsto.
+<string name="dialog_message_system_app_warning_uninstall">"Rimuovere davvero questa app di sistema? Le app di sistema vengono inserite dal produttore del dispositivo e sono necessarie perché funzioni come previsto.
 
-Ricorda che rimuovere app di ssitema NON è supportato da Android, NON è sicuro e NON ne viene garantito il funzionamento.
+Si ricorda che rimuovere app di sistema NON è supportato da Android, NON è sicuro e NON ne viene garantito il funzionamento.
 
-Non farlo per curiosità, potrebbe danneggiare il dispositivo. Fai un backup prima di provare."</string>
-<string name="dialog_title_system_app_self">"Rendo Yalp app di sistema"</string>
+Potrebbe danneggiare il dispositivo, si sconsiglia di farlo per curiosità. Fare un backup prima di provare."</string>
+<string name="dialog_title_system_app_self">"Rendendo Yalp come app di sistema"</string>
 <string name="dialog_message_system_app_self">"L'uso di permessi privilegiati per installare le app in background richiede che Yalp Store sia una app di sistema.
 
-Il processo non è perfetto o specifico per produttore: potrebbe non funzionare. Lo faccio?"</string>
+Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
+
+Procedere?"</string>
 <string name="about_website_label">"Sito web:"</string>
 <string name="details_share">"Condividi"</string>
 <string name="details_developer">"Sviluppatore: %1$s"</string>
@@ -205,107 +207,120 @@ Il processo non è perfetto o specifico per produttore: potrebbe non funzionare.
 <string name="about_bitcoin_label">"Bitcoin:"</string>
 <string name="action_bug_report">"Segnala un problema"</string>
 <string name="dialog_title_spoof_request">"Richieste"</string>
-<string name="dialog_message_spoof_request">"La mascheratura del device è possibile perché le persone hanno inserito bug report con le info del dispositivo. Se desideri che le definizioni siano aggiornate e precise, premi OK e le info del dispositivo saranno inviate allo sviluppatore,"</string>
-<string name="pref_device_to_pretend_to_be_notice">"Se inserisci le info del dispositivo in %1$s, appariranno nella lista"</string>
+<string name="dialog_message_spoof_request">"La mascheratura del device è possibile perché le persone hanno inviato dei rapporti con le info del dispositivo. Se si desidera che le definizioni siano aggiornate e precise, premere OK e le info del dispositivo saranno inviate allo sviluppatore."</string>
+<string name="pref_device_to_pretend_to_be_notice">"Se si inserisce le info del dispositivo in %1$s, appariranno nella lista"</string>
 <string name="pref_no_images">"Scarica immagini solo in Wi-Fi"</string>
 <string name="pref_no_images_summary_off">"Le immagini vengono sempre scaricate"</string>
 <string name="pref_no_images_summary_on">"Le immagini vengono scaricate solo in Wi-Fi"</string>
 <string name="bug_report_hint_message">"Descrizione dettagliata del problema"</string>
-<string name="bug_report_hint_identification">"Tua email/nome/altro (facoltativo)"</string>
-<string name="bug_report_explanation_content">"Info sul dispositivo. I registri di Yalp Store e alcune preferenze verranno inserire automaticamente nel messaggio. Non saranno raccolte informazioni private o sensibili."</string>
-<string name="bug_report_explanation_crash">"Puoi aiutare a risolverlo inviando una segnalazione allo sviluppatore. Descrivi cosa volevi fare quando l'errore si è presentato e premi OK per inviare"</string>
-<string name="bug_report_explanation_bug_report">"Descrivi il problema precisamente. Si verifica con una certa app? Succede sempre o occasionalmente? Come si può riprodurre?"</string>
+<string name="bug_report_hint_identification">"Propria email/nome/altro (facoltativo)"</string>
+<string name="bug_report_explanation_content">"Info sul dispositivo. I registri di Yalp Store e alcune preferenze verranno inseriti automaticamente nel messaggio. Non saranno raccolte informazioni private o sensibili."</string>
+<string name="bug_report_explanation_crash">"Si può aiutare a risolverlo inviando una segnalazione allo sviluppatore. Descrivere cosa si voleva fare quando l'errore si è presentato e premere OK per inviare."</string>
+<string name="bug_report_explanation_bug_report">"Descrivere il problema precisamente. Si verifica con una certa app? Succede sempre o occasionalmente? Come si può riprodurre?"</string>
 <string name="thank_you">"Grazie"</string>
-<string name="list_updating">"Aggiornamento…"</string>
-<string name="error_invalid_device_definition">"Info del dispositivo rifiutate"</string>
-
-<string name="error_could_not_download">"Impossibile scaricare"</string>
-<string name="first_login_message">"To use your own account choose Log out in the menu"</string>
+<string name="list_updating">"Aggiornamento in corso…"</string>
+<string name="error_invalid_device_definition">"Info del dispositivo rifiutate."</string>
+<string name="details_video">"Video"</string>
+<string name="error_could_not_download">"Impossibile scaricare."</string>
+<string name="first_login_message">"Per usare il proprio account scegliere \"Esci\" nel menu"</string>
 <string name="early_access">"In anteprima"</string>
 <string name="testing_program_opt_in">"partecipa"</string>
 <string name="testing_program_opt_out">"abbandona"</string>
-<string name="testing_program_section_opted_in_message">"Gli aggiornamenti delle app includeranno le versioni Beta. Se esci dal Programma Beta dell'app, non riceverai più gli aggiornamenti della versione Beta."</string>
-<string name="testing_program_section_opted_in_propagating_message">"Fra qualche minuto verrai aggiunto al Programma Beta. Dopodiché potrai eseguire l'aggiornamento alla versione Beta dell'app, se disponibile."</string>
+<string name="testing_program_section_opted_in_message">"Gli aggiornamenti delle app includeranno le versioni beta. Se si esce dal èrogramma beta dell'app, non riceverai più gli aggiornamenti della versione beta."</string>
+<string name="testing_program_section_opted_in_propagating_message">"Fra qualche minuto si verrà aggiunti al programma beta. Dopodiché si potrà eseguire l'aggiornamento a tale versione dell'app, se disponibile."</string>
 <string name="testing_program_section_opted_in_title">"Sei un beta tester"</string>
-<string name="testing_program_section_opted_out_message">"Prova le nuove funzioni prima che vengano rese pubbliche. Dai i tuoi feedback direttamente allo sviluppatore."</string>
-<string name="testing_program_section_opted_out_propagating_message">"Sono necessari alcuni minuti per rimuoverti dal Programma Beta."</string>
+<string name="testing_program_section_opted_out_message">"Si possono provare le nuove funzioni prima che vengano rese pubbliche. Dare i propri feedback direttamente allo sviluppatore."</string>
+<string name="testing_program_section_opted_out_propagating_message">"Sono necessari alcuni minuti per rimuoversi dal programma beta."</string>
 <string name="testing_program_section_opted_out_title">"Diventa un beta tester"</string>
-
+<string name="notification_not_privileged">"Permessi di installazione non concessi"</string>
 <string name="pref_download_directory">"Cartella del downlad"</string>
-<string name="pref_download_deltas">"Aggiornamenti differenziali"</string>
-<string name="pref_download_deltas_summary_off">"Scarica ogni volta  l'intero apk"</string>
-<string name="pref_download_deltas_summary_on">"Scarica solamente le modifiche"</string>
-<string name="testing_program_review_dialog_content_hint">"Inserisci il feedback sull'app"</string>
+<string name="pref_download_deltas">"Aggiornamenti delta"</string>
+<string name="pref_download_deltas_summary_off">"Ogni volta l'intero apk viene scaricato"</string>
+<string name="pref_download_deltas_summary_on">"Solo le modifiche vengono scaricare durante gli aggiornamenti"</string>
+<string name="testing_program_review_dialog_content_hint">"Inserire il parere sull'app"</string>
 <string name="delete">"Elimina"</string>
 <string name="submit">"Invia"</string>
 <string name="done">"Fine"</string>
-<string name="availability_restriction_carrier">"Questo articolo non è disponibile per il tuo operatore."</string>
-<string name="availability_restriction_country">"Questo prodotto non è disponibile nel tuo Paese."</string>
-<string name="availability_restriction_country_or_carrier">"Questo articolo non è disponibile nel tuo Paese o per il tuo operatore."</string>
-<string name="availability_restriction_for_managed_account">"L'amministratore non ti ha autorizzato ad accedere a questo articolo."</string>
-<string name="availability_restriction_generic">"Questo articolo non è disponibile."</string>
-<string name="availability_restriction_hardware">"Il tuo dispositivo non è compatibile con questo articolo."</string>
-<string name="availability_restriction_hardware_app">"Il tuo dispositivo non è compatibile con questa versione."</string>
+<string name="availability_restriction_carrier">"Questo elemento non è disponibile per il proprio operatore."</string>
+<string name="availability_restriction_country">"Questo elemento non è disponibile nel proprio paese."</string>
+<string name="availability_restriction_country_or_carrier">"Questo elemento non è disponibile nel proprio paese o per il proprio operatore."</string>
+<string name="availability_restriction_for_managed_account">"L'amministratore non ha autorizzato ad accedere a questo elemento."</string>
+<string name="availability_restriction_generic">"Questo elemento non è disponibile."</string>
+<string name="availability_restriction_hardware">"Il proprio dispositivo non è compatibile con questo articolo."</string>
+<string name="availability_restriction_hardware_app">"Il proprio dispositivo non è compatibile con questa versione."</string>
 <string name="availability_restriction_hardware_app_ram_generic">"L'app richiede più RAM di quanta è disponibile sul dispositivo."</string>
-<string name="availability_restriction_missing_permission">"L'amministratore non ha accettato le autorizzazioni per questo articolo."</string>
-<string name="availability_restriction_not_in_group">"Non sei nel gruppo target di questo articolo."</string>
+<string name="availability_restriction_missing_permission">"L'amministratore non ha accettato le autorizzazioni per questo elemento."</string>
+<string name="availability_restriction_not_in_group">"Non si è nel gruppo di destinatari di questo elemento."</string>
 <string name="flag_graphic_violence">"Violenza esplicita"</string>
-<string name="flag_harmful_prompt">"Descrivi il danno causato al dispositivo o ai dati:"</string>
+<string name="flag_harmful_prompt">"Descrivere il danno causato al dispositivo o ai dati:"</string>
 <string name="flag_harmful_to_device">"Dannoso per dispositivo o dati"</string>
 <string name="flag_hateful_content">"Contenuti offensivi o irrispettosi"</string>
 <string name="flag_improper_content_rating">"Classificazione inappropriata"</string>
-<string name="flag_other_concern_prompt">"Descrivi obiezione"</string>
+<string name="flag_other_concern_prompt">"Descrivere obiezione"</string>
 <string name="flag_other_objection">"Altro motivo"</string>
-<string name="flag_page_description">"Motivo per cui ritieni che l'applicazione o i contenuti siano offensivi:"</string>
+<string name="flag_page_description">"Motivo per cui si ritiene che l'applicazione od i contenuti siano offensivi:"</string>
 <string name="flag_pharma_content">"Sostanze illegali o altre droghe"</string>
 <string name="flag_sexual_content">"Contenuti di natura sessuale"</string>
-<string name="flag_impersonation_copycat">"imitazione o impersonazione"</string>
+<string name="flag_impersonation_copycat">"Imitazione o impersonazione"</string>
 <string name="flagging_title">"Segnala come inappropriato"</string>
 <string name="content_flagged">"Obiezione inviata."</string>
 <string name="list_app_blacklisted">"Lista nera"</string>
 <string name="list_app_whitelisted">"Lista bianca"</string>
 <string name="action_filter">"Filtra"</string>
 <string name="action_filter_system_apps">"App di sistema"</string>
-<string name="action_filter_apps_with_ads">"App con ads"</string>
+<string name="action_filter_apps_with_ads">"App con pubblicità"</string>
 <string name="action_filter_paid_apps">"App a pagamento"</string>
 <string name="action_filter_gsf_dependent_apps">"App dipendenti da GSF"</string>
 <string name="action_filter_category">"Categoria: %1$s"</string>
 <string name="action_filter_rating">"Voto: %1$s"</string>
 <string name="action_filter_downloads">"Download: %1$s"</string>
 <string name="pref_auto_whitelist">"Lista bianca automatica"</string>
-<string name="pref_auto_whitelist_summary_on">"Le app installate da Yalp Store vanno nella lista bianca"</string>
-<string name="pref_auto_whitelist_summary_off">"Devi inserirle nella lista bianca manualmente"</string>
+<string name="pref_auto_whitelist_summary_on">"Le app installate da Yalp Store andranno automaticamente nella lista bianca."</string>
+<string name="pref_auto_whitelist_summary_off">"La llista bianca deve essere gestita manualmente"</string>
 <string name="apps_by">"Applicazioni di %1$s"</string>
-<string name="pref_message_fallback">"Tento d'impostare una cartella di fallback (%1$s)?"</string>
-<string name="no_permissions">"Nessuna autorizzazione viene usata."</string>
+<string name="pref_message_fallback">"Tentare d'impostare una cartella di ripiego (%1$s)?"</string>
+<string name="no_permissions">"Non viene utilizzata nessun autorizzazione."</string>
 <string name="about_librepay_label">"Dona con Liberapay:"</string>
-<string name="notification_file_verification_failed">"File corrotto. Tento un nuovo download."</string>
+<string name="notification_file_verification_failed">"Il file sembra corrotto. Tentare un nuovo download."</string>
 <string name="pref_download_internal_storage">"Scarica nella memoria interna"</string>
 <string name="pref_download_internal_storage_summary_on">"Più sicuro, ma l'utente non può accedere agli apk"</string>
-<string name="pref_download_internal_storage_summary_off">"Gli apk vengono salvati nella memoria esterna, al percorso sotto"</string>
+<string name="pref_download_internal_storage_summary_off">"Gli apk vengono salvati nella memoria esterna, al percorso fornito sotto"</string>
 <string name="pref_use_tor">"Usa Tor"</string>
 <string name="pref_use_tor_summary">"Forza lo scaricamento attraverso Tor per aumentare la privacy. Richiede Orbot"</string>
-
+<string name="pref_category_proxy">"Proxy"</string>
 <string name="pref_proxy_enable">"Abilita proxy"</string>
 <string name="pref_proxy_type">"Tipo del proxy"</string>
 <string name="pref_proxy_host">"Host del proxy"</string>
 <string name="pref_proxy_port">"Porta del proxy"</string>
-<string name="action_wishlist_remove">"Rimuovi dalla lista desideri"</string>
-<string name="action_wishlist_add">"Aggiungi alla lista desideri"</string>
-<string name="action_wishlist">"Lista desideri"</string>
+<string name="action_wishlist_remove">"Rimuovi dalla lista dei desideri"</string>
+<string name="action_wishlist_add">"Aggiungi alla lista dei desideri"</string>
+<string name="action_wishlist">"Lista dei desideri"</string>
 <string name="action_ignore_this">"Ignora questo aggiornamento"</string>
-
-<string name="details_exodus_tap_to_check">"Fai tap per controllare"</string>
-<string name="details_exodus_searching">"ricerca…"</string>
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+<string name="details_exodus_tap_to_check">"Toccare per controllare"</string>
+<string name="details_exodus_searching">"ricerca in corso"</string>
 <string name="details_exodus_not_found">"non trovato"</string>
 <string name="details_exodus_found">"%1$s tracker"</string>
 <string name="pref_category_third_party">"Servizi di terze parti"</string>
 <string name="pref_exodus">"Controllo Exodus Privacy"</string>
-<string name="pref_exodus_summary_on">"Il conteggio tracker è mostrato nella pagina dei dettagli"</string>
-<string name="pref_exodus_summary_off">"Viene mostrato il link report di Exodus"</string>
+<string name="pref_exodus_summary_on">"Il conteggio tracker è mostrato automaticamente nella pagina dei dettagli"</string>
+<string name="pref_exodus_summary_off">"Viene mostrato il collegamento del resoconto di Exodus"</string>
 <string name="details_to_fdroid">"Vedi in F-Droid"</string>
 <string name="details_instant_app">"App istantanea"</string>
-
-
+<string name="details_exodus_submitting">"invio"</string>
+<string name="details_exodus_view">"visualizza resoconto"</string>
 <string name="details_new_permission">"Nuovo:"</string>
+<string name="list_empty_history">"Cronologia vuota"</string>
+<string name="action_history">"Cronologia"</string>
+<string name="dialog_message_virustotal_warning">"VirusTotal considera $1%d apk su %2%s come sospetti"</string>
+<string name="dialog_button_virustotal_view_report">"Visualizza resoconto"</string>
+<string name="events_no_changes">"Nessun cambiamento menzionato dallo sviluppatore dell'app"</string>
+<string name="uninstalled">"Disinstallato"</string>
+<string name="updated_from_to">"Aggiornata: %1$s (%2$d) → %3$s (%4$d)"</string>
+<string name="action_new_account">"Nuovo account"</string>
+<string name="action_accounts">"Account"</string>
+<string name="download_manager_ERROR_DELTA_FAILED">"Impossibile applicare la patch delta. Provare a disabilitare gli aggiornamenti delta."</string>
+<string name="download_manager_SPLITS_NOT_SUPPORTED">"L'apk è diviso. Scegliere la modalità di installazione."</string>
+<string name="auth_empty">"Non acceduto"</string>
+<string name="auth_built_in">"Account incorporato"</string>
 </resources>
