@@ -39,7 +39,7 @@ Yalp Store 専用のアプリパスワードを作成して、Yalp Store のロ�
 Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="error_downloads_directory_not_writable">"ダウンロードディレクトリーを作成できなかったか、書き込み可能ではありません。"</string>
 <string name="error_token_dispenser_problem">"アカウントなしでログインできませんでした。 自分のアカウントを使ってみてください。"</string>
-<string name="details_updated">"更新しました %1$s"</string>
+<string name="details_updated">"更新日 %1$s"</string>
 <string name="details_description">"説明:"</string>
 <string name="details_changelog">"新着情報:"</string>
 <string name="details_screenshots">"スクリーンショット:"</string>
@@ -293,15 +293,31 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="action_wishlist_add">"ほしいものリストに追加"</string>
 <string name="action_wishlist">"ほしいものリスト"</string>
 <string name="action_ignore_this">"今回のアップデートを無視"</string>
-<string name="details_exodus">"Exodus Privacy: %1$s"</string>
-<string name="details_exodus_tap_to_check">"tap to check"</string>
-<string name="details_exodus_searching">"searching"</string>
+<string name="details_exodus">"Exodus プライバシー: %1$s"</string>
+<string name="details_exodus_tap_to_check">"タップして確認"</string>
+<string name="details_exodus_searching">"検索しています"</string>
 <string name="details_exodus_not_found">"見つかりませんでした"</string>
-<string name="details_exodus_found">"%1$s trackers"</string>
+<string name="details_exodus_found">"%1$s トラッカー"</string>
 <string name="pref_category_third_party">"サードパーティー・サービス"</string>
-<string name="pref_exodus">"Exodus Privacy check"</string>
-<string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
-<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
+<string name="pref_exodus">"Exodus プライバシーチェック"</string>
+<string name="pref_exodus_summary_on">"詳細ページにトラッカー数が自動的に表示されます"</string>
+<string name="pref_exodus_summary_off">"Exodus レポートリンクが表示されます"</string>
 <string name="details_to_fdroid">"F-Droid で表示"</string>
 <string name="details_instant_app">"Instant App"</string>
+<string name="details_exodus_submitting">"送信しています"</string>
+<string name="details_exodus_view">"レポートを表示"</string>
+<string name="details_new_permission">"新規:"</string>
+<string name="list_empty_history">"まだ履歴はありません"</string>
+<string name="action_history">"履歴"</string>
+<string name="dialog_message_virustotal_warning">"%1$d / %2$d のウイルスエンジンがこの apk が疑わしいとみなしています"</string>
+<string name="dialog_button_virustotal_view_report">"レポートを表示"</string>
+<string name="events_no_changes">"アプリ開発者によって変更の言及はありません"</string>
+<string name="uninstalled">"アンインストールしました"</string>
+<string name="updated_from_to">"更新: %1$s (%2$d) → %3$s (%4$d)"</string>
+<string name="action_new_account">"新しいアカウント"</string>
+<string name="action_accounts">"アカウント"</string>
+<string name="download_manager_ERROR_DELTA_FAILED">"デルタパッチが失敗しました。 デルタ更新をオフにしてみてください。"</string>
+<string name="download_manager_SPLITS_NOT_SUPPORTED">"apk は分割されます。 root または特権のインストール方法を選択してください。"</string>
+<string name="auth_empty">"ログインしていません"</string>
+<string name="auth_built_in">"ビルトインアカウント"</string>
 </resources>
