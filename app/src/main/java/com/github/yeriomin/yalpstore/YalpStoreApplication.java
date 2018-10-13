@@ -45,7 +45,6 @@ import com.github.yeriomin.yalpstore.task.InstalledAppsTask;
 import com.github.yeriomin.yalpstore.task.OldApkCleanupTask;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.Proxy;
 import java.util.ArrayList;

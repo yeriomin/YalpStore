@@ -29,8 +29,6 @@ import android.os.Build;
 import android.util.Log;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
-import com.github.yeriomin.yalpstore.install.InstallerAbstract;
-import com.github.yeriomin.yalpstore.install.InstallerFactory;
 import com.github.yeriomin.yalpstore.NetworkUtil;
 import com.github.yeriomin.yalpstore.Paths;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
@@ -41,6 +39,8 @@ import com.github.yeriomin.yalpstore.UpdateAllReceiver;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.download.DownloadManager;
 import com.github.yeriomin.yalpstore.download.State;
+import com.github.yeriomin.yalpstore.install.InstallerAbstract;
+import com.github.yeriomin.yalpstore.install.InstallerFactory;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.Event;
 import com.github.yeriomin.yalpstore.model.EventDao;

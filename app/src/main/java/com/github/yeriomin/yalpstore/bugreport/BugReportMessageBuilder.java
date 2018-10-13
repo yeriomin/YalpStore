@@ -24,7 +24,6 @@ import android.os.Build;
 import android.text.TextUtils;
 
 import com.github.yeriomin.yalpstore.BuildConfig;
-import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.selfupdate.Signature;
 
 import java.util.HashMap;

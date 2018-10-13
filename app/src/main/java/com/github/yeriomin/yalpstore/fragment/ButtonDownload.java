@@ -20,7 +20,6 @@
 package com.github.yeriomin.yalpstore.fragment;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.util.Log;
 import android.view.View;
 

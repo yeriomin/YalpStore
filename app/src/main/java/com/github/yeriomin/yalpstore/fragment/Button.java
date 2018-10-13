@@ -19,7 +19,6 @@
 
 package com.github.yeriomin.yalpstore.fragment;
 
-import android.content.pm.PackageManager;
 import android.view.View;
 
 import com.github.yeriomin.yalpstore.YalpStoreActivity;

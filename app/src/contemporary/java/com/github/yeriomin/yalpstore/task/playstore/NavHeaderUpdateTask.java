@@ -29,7 +29,6 @@ import com.github.yeriomin.yalpstore.SpoofDeviceManager;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.ImageSource;
 import com.github.yeriomin.yalpstore.task.LoadCircularImageTask;
-import com.github.yeriomin.yalpstore.task.LoadImageTask;
 
 import java.lang.ref.WeakReference;
 import java.util.Map;
