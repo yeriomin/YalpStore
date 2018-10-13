@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="about_developer_email_label">"بريد المطور:"</string>
+
+<!-- English -->
+<!-- Fuzzy -->
 <string name="about_logged_in">"أنت الآن مسجل دخول ك:"</string>
 <string name="about_copied_to_clipboard">"تم النسخ للحافظة"</string>
 <string name="list_line_2_updatable">"تم التحديث في %1$s"</string>
@@ -8,9 +11,16 @@
 <string name="list_empty_search">"لا توجد تطبيقات"</string>
 <string name="list_incompatible">"غير متوافق"</string>
 <string name="action_about">"حول"</string>
+
+<!-- English -->
+<!-- Fuzzy -->
 <string name="action_settings">"الإعدادات"</string>
 <string name="action_logout">"تسجيل الخروج"</string>
+
+<!-- English -->
 <string name="action_search">"بحث"</string>
+
+<!-- Fuzzy -->
 <string name="action_updates">"تحديثات"</string>
 <string name="action_ignore">"تجاهل التحديثات"</string>
 <string name="action_whitelist">"القائمة البيضاء للتحديثات"</string>
@@ -226,7 +236,7 @@
 <string name="testing_program_section_opted_out_message">"يمكنك تجربة الميزات الجديدة قبل إتاحتها للجمهور. وبذلك يمكنك تقديم تعليقاتك إلى مطوِّر البرنامج مباشرة."</string>
 <string name="testing_program_section_opted_out_propagating_message">"قد تستغرق إزالتك من البرنامج التجريبي بضع دقائق."</string>
 <string name="testing_program_section_opted_out_title">"الانضمام إلى مختبِري الإصدار التجريبي"</string>
-
+<string name="notification_not_privileged">"Install permission not granted"</string>
 <string name="pref_download_directory">"مجلد التنزيل"</string>
 <string name="pref_download_deltas">"تحذيث جزئي"</string>
 <string name="pref_download_deltas_summary_off">"تحميل ملف apk  كامل في كل مرة"</string>
@@ -255,7 +265,7 @@
 <string name="flag_page_description">"سبب اعتقادك أن هذا المحتوى أو التطبيق محل اعتراض:"</string>
 <string name="flag_pharma_content">"وصفة طبية غير قانونية أو عقار مخدر آخر"</string>
 <string name="flag_sexual_content">"محتوى جنسي"</string>
-
+<string name="flag_impersonation_copycat">"Copycat or impersonation"</string>
 <string name="flagging_title">"الإبلاغ عنه كغير لائق"</string>
 <string name="content_flagged">"تم إرسال الاعتراض."</string>
 <string name="list_app_blacklisted">"قائمة الحظر"</string>
@@ -265,41 +275,56 @@
 <string name="action_filter_apps_with_ads">"تطبيق يحتوي علي اعلانات"</string>
 <string name="action_filter_paid_apps">"تطبيقات مدفوعه"</string>
 <string name="action_filter_gsf_dependent_apps">"يعتمد علي مكتبات جوجل"</string>
-
-
-
-
-
-
+<string name="action_filter_category">"Category: %1$s"</string>
+<string name="action_filter_rating">"Rating: %1$s"</string>
+<string name="action_filter_downloads">"Downloads: %1$s"</string>
+<string name="pref_auto_whitelist">"Auto whitelist"</string>
+<string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
+<string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
 <string name="apps_by">"تطبيقات بواسطة %1$s"</string>
-
+<string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
 <string name="no_permissions">"لا يوجد تصريحات مستخدمة."</string>
-
-
-
-
-
+<string name="about_librepay_label">"Donate Liberapay:"</string>
+<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+<string name="pref_download_internal_storage">"Download to internal storage"</string>
+<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
+<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
 <string name="pref_use_tor">"إستخدم شبكة تور (Tor)"</string>
 <string name="pref_use_tor_summary">"إجبار حركة التحميل من خلال تور لزيادة الخصوصية. تطبيق أوربوت مطلوب"</string>
 <string name="pref_category_proxy">"خدمة الوكيل (البروكسي)"</string>
-
-
-
-
+<string name="pref_proxy_enable">"Enable proxy"</string>
+<string name="pref_proxy_type">"Proxy type"</string>
+<string name="pref_proxy_host">"Proxy host"</string>
+<string name="pref_proxy_port">"Proxy port"</string>
 <string name="action_wishlist_remove">"إزالة من قائمة المفضلات"</string>
 <string name="action_wishlist_add">"إضافة إلى قائمة المفضلات"</string>
 <string name="action_wishlist">"قائمة المفضلات"</string>
 <string name="action_ignore_this">"تجاهل هذا التحديث"</string>
-
-
-
-
-
-
-
-
-
-
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+<string name="details_exodus_tap_to_check">"tap to check"</string>
+<string name="details_exodus_searching">"searching"</string>
+<string name="details_exodus_not_found">"not found"</string>
+<string name="details_exodus_found">"%1$s trackers"</string>
+<string name="pref_category_third_party">"Third party services"</string>
+<string name="pref_exodus">"Exodus Privacy check"</string>
+<string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
+<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
+<string name="details_to_fdroid">"View in F-Droid"</string>
 <string name="details_instant_app">"تطبيق فوري"</string>
+<string name="details_exodus_submitting">"submitting"</string>
+<string name="details_exodus_view">"view report"</string>
 <string name="details_new_permission">"جديد :"</string>
+<string name="list_empty_history">"No history yet"</string>
+<string name="action_history">"History"</string>
+<string name="dialog_message_virustotal_warning">"%1$d out of %2$d VirusTotal engines consider this apk suspicious"</string>
+<string name="dialog_button_virustotal_view_report">"View report"</string>
+<string name="events_no_changes">"No changes mentioned by app developer"</string>
+<string name="uninstalled">"Uninstalled"</string>
+<string name="updated_from_to">"Updated: %1$s (%2$d) → %3$s (%4$d)"</string>
+<string name="action_new_account">"New account"</string>
+<string name="action_accounts">"Accounts"</string>
+<string name="download_manager_ERROR_DELTA_FAILED">"Delta patching failed. Try turning delta updates off."</string>
+<string name="download_manager_SPLITS_NOT_SUPPORTED">"The apk is split. Choose root or privileged installation method."</string>
+<string name="auth_empty">"Not logged in"</string>
+<string name="auth_built_in">"Built-in account"</string>
 </resources>
