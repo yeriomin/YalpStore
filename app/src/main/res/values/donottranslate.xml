@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Yalp Store</string>
     <string name="about_website" translatable="false">https://github.com/yeriomin/YalpStore</string>
     <string name="about_librepay" translatable="false">https://liberapay.com/yeriomin/donate</string>
     <string name="about_bitcoin" translatable="false">14HvYHKe6joHbQjVdAPd1Ha1yXaGS2pVTW</string>
