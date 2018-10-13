@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="about_developer_email_label">"Имейл на разработчика"</string>
+<string name="about_developer_email_label">"Имейл на разработчика:"</string>
 <string name="about_logged_in">"Вие сте влезли като:"</string>
 <string name="about_copied_to_clipboard">"Копирано"</string>
-<string name="list_line_2_updatable">"Актуализирано до %1$s"</string>
-<string name="list_empty_updates">"Приложенията не се нуждаят от актуализации"</string>
+<string name="list_line_2_updatable">"Актуализирано на %1$s"</string>
+<string name="list_empty_updates">"Не са налични актуализации за вашите приложения"</string>
 <string name="list_empty_search">"Не са намерени приложения"</string>
 <string name="list_incompatible">"несъвместимо"</string>
 <string name="action_about">"Относно"</string>
@@ -12,7 +12,7 @@
 <string name="action_logout">"Изход от профила"</string>
 <string name="action_search">"Търсене"</string>
 <string name="action_updates">"Актуализации"</string>
-<string name="action_ignore">"Игнорирайте актуализациите"</string>
+<string name="action_ignore">"Игнорирай актуализациите"</string>
 <string name="action_whitelist">"Списък с разрешени актуализации"</string>
 <string name="search_title">"Търси приложения"</string>
 <string name="dialog_two_factor_cancel">"Не сега"</string>
@@ -23,7 +23,7 @@
 Моля, създайте отделна парола за приложението Yalp Store, която да бъде използвана само за него.
 
 Докоснете „Създаване на парола“, за да бъдете пренасочени към страницата за създаване на пароли."</string>
-<string name="dialog_title_logout">"Излез от профила?"</string>
+<string name="dialog_title_logout">"Изход от профила?"</string>
 <string name="dialog_message_logout">"Наистина ли желаете да излезете от профила си?"</string>
 <string name="dialog_account_type_provided_by_user">"С мой собствен профил в Google"</string>
 <string name="dialog_account_type_predefined">"С акаунт на Yalp Store"</string>
@@ -32,14 +32,14 @@
 <string name="dialog_message_logging_in_provided_by_user">"Опит за влизане с вашия акаунт"</string>
 <string name="dialog_message_logging_in_predefined">"Опит за влизане с Yalp Store акаунт"</string>
 <string name="error_incorrect_password">"Неправилен имейл или парола."</string>
-<string name="error_credentials_empty">"Моля, предоставете данните за вашия Гугъл акаунт"</string>
+<string name="error_credentials_empty">"Моля, предоставете данните за вашия Гугъл акаунт."</string>
 <string name="error_no_network">"Няма връзка с интернет."</string>
 <string name="error_network_other">"Грешка в мрежата: %1$s"</string>
 <string name="error_not_purchased">"Не изглежда, че приложението е закупено.
-Пренасочване към неговата страница в Google Play Магазин?"</string>
+Пренасочване към неговата страница в Плей магазина?"</string>
 <string name="error_downloads_directory_not_writable">"Папката за изтегляне не може да бъде създадена или липсва достъп за запис към нея."</string>
-<string name="error_token_dispenser_problem">"Неуспешен опит за влизане без акаунт. Опитайте да използвате ваш собствен акаунт."</string>
-<string name="details_updated">"Актуализирано %1$s"</string>
+<string name="error_token_dispenser_problem">"Неуспешен опит за влизане без акаунт. Опитайте, използвайки ваш собствен акаунт."</string>
+<string name="details_updated">"Актуализирано на %1$s"</string>
 <string name="details_description">"Описание:"</string>
 <string name="details_changelog">"Какво ново:"</string>
 <string name="details_screenshots">"Снимки:"</string>
@@ -63,7 +63,7 @@
 <string name="credentials_message">"За да функционира това приложение правилно са нужни имейл и парола на Гугъл акаунт.
 
 Имайте предвид, че използването на това приложение нарушава Общите условия на Плей магазина. Би било желателно да използвате ненужен акаунт, използван поне веднъж в Плей магазина, при което сте приели условията за ползване."</string>
-<string name="activity_title_search">"Търсене: \"%1$s\""</string>
+<string name="activity_title_search">"Търсене: „%1$s“"</string>
 <string name="notification_download_complete">"Изтеглянето приключи. Докоснете за инсталиране."</string>
 <string name="notification_download_complete_toast">"%1$s се изтегли. За инсталиране, докоснете бутона инсталирай или нотификацията."</string>
 <string name="notification_download_complete_signature_mismatch">"Изтеглянето приключи, но ключът на apk файла не съвпада."</string>
@@ -83,14 +83,14 @@
 <string name="pref_ui_theme_light">"Светла"</string>
 <string name="pref_ui_theme_dark">"Тъмна"</string>
 <string name="pref_ui_theme_black">"Черна"</string>
-<string name="pref_background_update_interval_never">"Само при отваряне на Yalp Store"</string>
+<string name="pref_background_update_interval_never">"Само при стартиране на Yalp Store"</string>
 <string name="pref_background_update_interval_hourly">"Всеки час"</string>
 <string name="pref_background_update_interval_daily">"Всеки ден"</string>
 <string name="pref_background_update_interval_weekly">"Всяка седмица"</string>
 <string name="pref_background_update_interval">"Проверявай за обновления периодично"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Неизвестна грешка."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Неизвестна грешка при паметта за съхранение."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Полученият HTTP код не можа да бъде обработен. Това е сървърна грешка"</string>
+<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Полученият HTTP код не можа да бъде обработен. Това е сървърна грешка."</string>
 <string name="download_manager_ERROR_HTTP_DATA_ERROR">"На HTTP ниво се появи грешка при получаване или обработване на данни."</string>
 <string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Твърде много препращания."</string>
 <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Недостатъчно памет за съхранение."</string>
@@ -106,7 +106,7 @@
 <string name="action_categories">"Категории"</string>
 <string name="list_update_all">"Актуализация на всички"</string>
 <string name="notification_installation_complete">"Обновлението е инсталирано."</string>
-<string name="notification_installation_failed">"Актуализирането на инсталацията е неуспешно."</string>
+<string name="notification_installation_failed">"Инсталирането на обновлението бе неуспешно."</string>
 <string name="pref_background_update_install_summary_off">"Получавате само известие."</string>
 <string name="pref_background_update_install_summary_on">"Обновленията се инсталират, ако са налични (root)"</string>
 <string name="pref_background_update_install">"Също така обновленията да бъдат инсталирани (root)"</string>
@@ -119,7 +119,7 @@
 <string name="details_no_dependencies">"нищо"</string>
 <string name="details_contains_ads">"Съдържа реклами"</string>
 <string name="details_no_ads">"Без реклами"</string>
-<string name="dialog_title_package_id">"Пакет с това име съществува."</string>
+<string name="dialog_title_package_id">"Пакет с това име съществува"</string>
 <string name="dialog_message_package_id">"Съществува пакет със същото име. Желаете ли да посетите страницатата с детайлите към него?"</string>
 <string name="details_download_checking">"Проверяване…"</string>
 <string name="details_download_not_available">"Не е налично"</string>
@@ -136,7 +136,7 @@
 <string name="pref_requested_language_default">"Вашият език (по подразбиране)"</string>
 <string name="pref_device_to_pretend_to_be">"Представи за някое друго устройство"</string>
 <string name="pref_device_to_pretend_to_be_default">"Оригиналната информация за вашето устройство"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Тази промяна ще бъде приложена след като се логнете отново."</string>
+<string name="pref_device_to_pretend_to_be_toast">"Тази промяна ще бъде приложена след като влезете отново"</string>
 <string name="pref_category_updates">"Обновления"</string>
 <string name="pref_category_installation">"Инсталиране"</string>
 <string name="pref_category_spoofing">"Имитиране на друго местоположение"</string>
@@ -201,7 +201,7 @@
 <string name="about_website_label">"Уебсайт:"</string>
 <string name="details_share">"Споделяне"</string>
 <string name="details_developer">"Разработчик: %1$s"</string>
-<string name="pref_background_update_wifi_only">"Само през Wi-Fi"</string>
+<string name="pref_background_update_wifi_only">"Само чрез Wi-Fi"</string>
 <string name="about_bitcoin_label">"Дари Биткойн:"</string>
 <string name="action_bug_report">"Съобщи за грешка"</string>
 <string name="dialog_title_spoof_request">"Молба"</string>
@@ -211,10 +211,11 @@
 <string name="pref_no_images_summary_off">"Сега изображения се изтеглят винаги"</string>
 <string name="pref_no_images_summary_on">"Изображения се изтеглят само при връзка с Wi-Fi"</string>
 <string name="bug_report_hint_message">"Описание на проблема в детайли"</string>
-<string name="bug_report_hint_identification">"Ваши имейл/име/друго (незадължително)"</string>
+<string name="bug_report_hint_identification">"Ваш имейл/име/друго (незадължително)"</string>
 <string name="bug_report_explanation_content">"Информация за устройството, отчети на Yalp Store и някои настройки на приложението ще бъдат автоматично добавени към съобщението. Лична или чувствителна информация няма да бъде събирана."</string>
 <string name="bug_report_explanation_crash">"Можете да помогнете за поправянето на това, изпращайки информация за грешката до разработчика. Моля опишете какво се опитахте да направите, когато възникна грешката и докоснете ОК, за да го изпратите."</string>
-<string name="bug_report_explanation_bug_report">"Моля, опишете проблема. Бъдете специфични, ако е възможно. Проблемът при дадено приложение ли възниква? Винаги ли се получава или само понякога? Как може да бъде пресъздаден?"</string>
+<string name="bug_report_explanation_bug_report">"Моля, опишете проблема. Бъдете специфични, ако е възможно. 
+Проблемът при дадено приложение ли възниква? Винаги ли се получава или само понякога? Как може да бъде пресъздаден?"</string>
 <string name="thank_you">"Благодарим Ви"</string>
 <string name="list_updating">"Актуализира се…"</string>
 <string name="error_invalid_device_definition">"Характеристиката за устройството е отказана."</string>
@@ -301,11 +302,24 @@
 <string name="details_exodus_found">"%1$s тракера"</string>
 <string name="pref_category_third_party">"Услуги от трети страни"</string>
 <string name="pref_exodus">"Проверка на сигурността от Exodus"</string>
-<string name="pref_exodus_summary_on">"Броят на тракерите е показван автоматично при детайлите Tracker count is displayed on details page automatically"</string>
+<string name="pref_exodus_summary_on">"Броят на тракерите е показван автоматично при детайлите"</string>
 <string name="pref_exodus_summary_off">"Предоставян е линк с отчет от Exodus"</string>
 <string name="details_to_fdroid">"Прегледай във F-Droid"</string>
 <string name="details_instant_app">"Мигновено приложение"</string>
 <string name="details_exodus_submitting">"предаване"</string>
 <string name="details_exodus_view">"прегледай отчета"</string>
 <string name="details_new_permission">"Ново:"</string>
+<string name="list_empty_history">"Все още няма история"</string>
+<string name="action_history">"История"</string>
+<string name="dialog_message_virustotal_warning">"%1$d от %2$d проверки на VirusTotal показват, че това приложение е съмнително"</string>
+<string name="dialog_button_virustotal_view_report">"Виж отчета"</string>
+<string name="events_no_changes">"Не са описани промени от разработчика"</string>
+<string name="uninstalled">"Деинсталирано"</string>
+<string name="updated_from_to">"Обновено: %1$s (%2$d) → %3$s (%4$d)"</string>
+<string name="action_new_account">"New account"</string>
+<string name="action_accounts">"Accounts"</string>
+<string name="download_manager_ERROR_DELTA_FAILED">"Delta patching failed. Try turning delta updates off."</string>
+<string name="download_manager_SPLITS_NOT_SUPPORTED">"The apk is split. Choose root or privileged installation method."</string>
+<string name="auth_empty">"Not logged in"</string>
+<string name="auth_built_in">"Built-in account"</string>
 </resources>
