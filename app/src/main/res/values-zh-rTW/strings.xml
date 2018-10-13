@@ -38,7 +38,7 @@
 <string name="error_not_purchased">"您似乎並未購買這個應用程式。是否重定向到其 Play Store 網頁?"</string>
 <string name="error_downloads_directory_not_writable">"無法創建下載目錄或其屬性為唯讀。"</string>
 <string name="error_token_dispenser_problem">"無法登錄不存在的帳戶，嘗試使用YALP帳戶。"</string>
-<string name="details_updated">"更新 %1$s "</string>
+<string name="details_updated">"更新日期 %1$s"</string>
 <string name="details_description">"描述"</string>
 <string name="details_changelog">"新功能"</string>
 <string name="details_screenshots">"截圖"</string>
@@ -54,7 +54,7 @@
 <string name="details_review_dialog_title">"還有什麼需要補充的嗎?"</string>
 <string name="details_review_dialog_review_title_hint">"標題在這裡喔"</string>
 <string name="details_review_dialog_review_comment_hint">"在這裡評論"</string>
-<string name="details_review_dialog_fields_optional">"你可以留下任何"</string>
+<string name="details_review_dialog_fields_optional">"你可留空所有欄位。"</string>
 <string name="details_signature_mismatch">"此應用程式的新版本使用了與舊版不同的簽署金鑰。若要安裝新版本，您必須將舊版應用程式先解除安裝。請於完成該操作後再嘗試一次。（注意，解除安裝時會清除任何由該應用程式儲存於系統中的所有資料）"</string>
 <string name="credentials_hint_email">"電子郵件"</string>
 <string name="credentials_hint_password">"密碼"</string>
@@ -297,7 +297,7 @@
 <string name="action_wishlist_add">"加入願望清單"</string>
 <string name="action_wishlist">"願望清單"</string>
 <string name="action_ignore_this">"忽略此更新"</string>
-
+<string name="details_exodus">"Exodus Privacy: %1$s"</string>
 <string name="details_exodus_tap_to_check">"點擊查看"</string>
 <string name="details_exodus_searching">"搜尋中"</string>
 <string name="details_exodus_not_found">"找不到結果"</string>
@@ -308,5 +308,24 @@
 <string name="pref_exodus_summary_off">"顯示 Exodus 報告連結"</string>
 <string name="details_to_fdroid">"在 F-Droid 查看"</string>
 <string name="details_instant_app">"免安裝應用程式"</string>
+<string name="details_exodus_submitting">"提交中"</string>
+<string name="details_exodus_view">"檢視報告"</string>
 <string name="details_new_permission">"新的："</string>
+<string name="list_empty_history">"尚無歷史記錄"</string>
+<string name="action_history">"歷史記錄"</string>
+<string name="dialog_message_virustotal_warning">"%2$d 個 VirusTotal 引擎中，%1$d 個認為這個 apk 可疑"</string>
+<string name="dialog_button_virustotal_view_report">"查看報告"</string>
+
+<!-- Fuzzy -->
+<string name="events_no_changes">"開發者沒有說明異動"</string>
+<string name="uninstalled">"已解除安裝"</string>
+
+<!-- Fuzzy -->
+<string name="updated_from_to">"更新：%1$s (%2$d) → %3$s (%4$d)"</string>
+<string name="action_new_account">"New account"</string>
+<string name="action_accounts">"Accounts"</string>
+<string name="download_manager_ERROR_DELTA_FAILED">"Delta patching failed. Try turning delta updates off."</string>
+<string name="download_manager_SPLITS_NOT_SUPPORTED">"The apk is split. Choose root or privileged installation method."</string>
+<string name="auth_empty">"Not logged in"</string>
+<string name="auth_built_in">"Built-in account"</string>
 </resources>
