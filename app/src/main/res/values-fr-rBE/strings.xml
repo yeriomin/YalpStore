@@ -25,8 +25,7 @@ Veuillez créer un mot de passe dédié à Yalp Store et utilisez-le pour vous c
 Choisissez  « créer un mot de passe » pour être redirigé vers la page de création de mot de passe."</string>
 <string name="dialog_title_logout">"Se déconnecter ?"</string>
 <string name="dialog_message_logout">"Confirmer la déconnexion ?"</string>
-<string name="dialog_account_type_provided_by_user">"Avec mon compte Google"</string>
-<string name="dialog_account_type_predefined">"avec un faux compte Yalp Store"</string>
+    <string name="dialog_account_type_predefined">"avec un faux compte Yalp Store"</string>
 <string name="dialog_account_type_title">"Comment souhaitez-vous vous connecter au Google Play Store ?"</string>
 <string name="dialog_title_logging_in">"Connexion"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Tentative de connexion avec les identifiants fournis"</string>
@@ -89,14 +88,11 @@ Utiliser Yalp Store se fait en violation des conditions d'utilisation du Play St
 <string name="pref_background_update_interval">"Intervalle de vérification"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Erreur inconnue"</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Erreur de stockage inconnue"</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Code HTTP non pris en charge. Erreur du serveur"</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Erreur d'obtention des données au niveau HTTP"</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Trop de redirections"</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Espace de sotckage insuffisant"</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Erreur d'obtention des données au niveau HTTP"</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Espace de sotckage insuffisant"</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Aucun stockage externe trouvé. La carte SD est-elle montée ? "</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Aucun espace de stockage externe trouvé. La carte SD est-elle montée ? "</string>
-<string name="download_manager_ERROR_BLOCKED">"Téléchargement impossible. Veuillez vérifier les autorisations réseau de NetworkPolicyManager."</string>
-<string name="search_filter">"Toutes les apps"</string>
+    <string name="search_filter">"Toutes les apps"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Les .apk ne sont à présent pas supprimés après installation"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Les .apk sont à présent supprimés après installation"</string>
 <string name="pref_delete_apk_after_install">"Supprimer les .apk après installation"</string>
@@ -133,13 +129,10 @@ Cette fonctionnalité n'est normalement pas proposée par le Google Play Store, 
 <string name="notification_download_progress">"Téléchargement : %1$s sur %2$s"</string>
 <string name="pref_requested_language">"Langue du Play Store"</string>
 <string name="pref_requested_language_default">"Langue par défaut"</string>
-<string name="pref_device_to_pretend_to_be">"Se faire passer pour un autre appareil"</string>
-<string name="pref_device_to_pretend_to_be_default">"Informations sur l'appareil "</string>
-<string name="pref_device_to_pretend_to_be_toast">"Changement appliqué après reconnexion"</string>
-<string name="pref_category_updates">"Mises à jour"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Informations sur l'appareil "</string>
+    <string name="pref_category_updates">"Mises à jour"</string>
 <string name="pref_category_installation">"Installation"</string>
-<string name="pref_category_spoofing">"Usurpation (spoofing)"</string>
-<string name="pref_category_ui">"Interface utilisateur"</string>
+    <string name="pref_category_ui">"Interface utilisateur"</string>
 <string name="details_installing">"Installation en cours"</string>
 <string name="details_installed">"Installé avec succès"</string>
 <string name="details_install_failure">"L'installation a échoué"</string>

@@ -25,8 +25,7 @@
 Άγγιξε το «Δημιουργία Συνθηματικού» για να μεταφερθείς στην σελίδα δημιουργίας του συνθηματικού."</string>
 <string name="dialog_title_logout">"Να γίνει αποσύνδεση;"</string>
 <string name="dialog_message_logout">"Σίγουρα θες να αποσυνδεθείς;"</string>
-<string name="dialog_account_type_provided_by_user">"Με τον δικό μου λογαριασμό της Google"</string>
-<string name="dialog_account_type_predefined">"Με ένα εικονικό λογαριασμό του Yalp Store "</string>
+    <string name="dialog_account_type_predefined">"Με ένα εικονικό λογαριασμό του Yalp Store "</string>
 <string name="dialog_account_type_title">"Πώς θα ήθελες να συνδεθείς στο Google Play Store;"</string>
 <string name="dialog_title_logging_in">"Συνδέεται"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Προσπάθεια σύνδεσης με τα διαπιστευτήρια που εσύ έδωσες"</string>
@@ -91,14 +90,11 @@
 <string name="pref_background_update_interval">"Περιοδικός έλεγχος των ενημερώσεων"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Άγνωστο σφάλμα."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Άγνωστο σφάλμα αποθήκευσης αρχείων."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Λήφθηκε HTTP κώδικας, το οποίο δεν μπορεί να χειριστεί ο διαχειριστής λήψεων. Αυτό είναι ένα πρόβλημα του εξυπηρετητή."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Παρουσιάστηκε σφάλμα στη λήψη ή στην επεξεργασία δεδομένων στο επίπεδο HTTP."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Υπερβολικά πολλές ανακατευθύνσεις"</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Ανεπαρκής αποθηκευτικός χώρος."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Παρουσιάστηκε σφάλμα στη λήψη ή στην επεξεργασία δεδομένων στο επίπεδο HTTP."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Ανεπαρκής αποθηκευτικός χώρος."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Δεν βρέθηκε κάποια εξωτερική συσκευή αποθήκευσης. Ίσως να μην είναι προσαρτημένη η κάρτα SD."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Κάποιο, πιθανά παροδικό, σφάλμα παρουσιάστηκε, και δεν μπορεί να συνεχιστεί η λήψη. Ξαναπροσπάθησε αργότερα."</string>
-<string name="download_manager_ERROR_BLOCKED">"Αποτυχία της λήψης, λόγω ελέγχων του NetworkPolicyManager, πάνω στην ζητούμενη εφαρμογή. Έλεγξε τις ρυθμίσεις σου."</string>
-<string name="search_filter">"Όλες οι εφαρμογές"</string>
+    <string name="search_filter">"Όλες οι εφαρμογές"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Τώρα, τα .apk δεν θα διαγράφονται, μετά από την ολοκλήρωση της εγκατάστασης"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Τώρα, τα .apk θα διαγράφονται, μετά από την ολοκλήρωση της εγκατάστασης"</string>
 <string name="pref_delete_apk_after_install">"Διαγραφή των .apk, μετά από την εγκατάσταση"</string>
@@ -139,13 +135,10 @@
 <string name="notification_download_progress">"%1$s/%2$s έχουν ληφθεί"</string>
 <string name="pref_requested_language">"Το Play Store ζητά γλώσσα"</string>
 <string name="pref_requested_language_default">"Η προεπιλεγμένη γλώσσα σου"</string>
-<string name="pref_device_to_pretend_to_be">"Προσποίηση διαφορετικής συσκευής"</string>
-<string name="pref_device_to_pretend_to_be_default">"Οι γνήσιες πληροφορίες της συσκευής σου"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Αυτή η αλλαγή θα εφαρμοστεί αφού επανασυνδεθείς"</string>
-<string name="pref_category_updates">"Ενημερώσεις"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Οι γνήσιες πληροφορίες της συσκευής σου"</string>
+    <string name="pref_category_updates">"Ενημερώσεις"</string>
 <string name="pref_category_installation">"Εγκατάσταση"</string>
-<string name="pref_category_spoofing">"Πλαστογράφηση"</string>
-<string name="pref_category_ui">"Διεπαφή του χρήστη"</string>
+    <string name="pref_category_ui">"Διεπαφή του χρήστη"</string>
 <string name="details_installing">"Γίνεται εγκατάσταση…"</string>
 <string name="details_installed">"Εγκαταστάθηκε επιτυχώς"</string>
 <string name="details_install_failure">"Δεν μπόρεσε να γίνει εγκατάσταση"</string>

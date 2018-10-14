@@ -25,8 +25,7 @@ Por favor, crea una contraseña de aplicación para Yalp Store y úsala para ini
 Toca \"Crear contraseña\" para ser redirigido"</string>
 <string name="dialog_title_logout">"¿Cerrar sesión?"</string>
 <string name="dialog_message_logout">"¿De verdad quieres cerrar la sesión?"</string>
-<string name="dialog_account_type_provided_by_user">"Con mi cuenta de Google"</string>
-<string name="dialog_account_type_predefined">"Con una cuenta falsa de Yalp Store"</string>
+    <string name="dialog_account_type_predefined">"Con una cuenta falsa de Yalp Store"</string>
 <string name="dialog_account_type_title">"¿Cómo te gustaría iniciar sesión en Google Play Store?"</string>
 <string name="dialog_title_logging_in">"Iniciando sesión"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Intentando iniciar sesión con los credenciales introducidos"</string>
@@ -91,14 +90,11 @@ Ten en cuenta que Yalp viola los términos de servicio del Play Store. Es probab
 <string name="pref_background_update_interval">"Comprobar actualizaciones periódicamente"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Error desconocido"</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Error desconocido de almacenamiento de archivos"</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Se recibió un código HTTP que no puede manejar el gestor de descargas. Este es un error del servidor."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Error recibiendo o procesando datos a nivel HTTP."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Demasiadas redirecciones."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Espacio de almacenamiento insuficiente."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Error recibiendo o procesando datos a nivel HTTP."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Espacio de almacenamiento insuficiente."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"No se encontró almacenamiento externo. Quizá la tarjeta SD no esté montada."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Un error temporal ocurrió durante la descarga, pero no podemos reanudarla. Inténtalo de nuevo más tarde."</string>
-<string name="download_manager_ERROR_BLOCKED">"La desacarga falló debido a interferencia por parte de NetworkPolicyManager. Comprueba los ajustes."</string>
-<string name="search_filter">"Todas las apps"</string>
+    <string name="search_filter">"Todas las apps"</string>
 <string name="pref_delete_apk_after_install_summary_off">"No se borrarán los archivos APK después de la instalación"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Se borrarán los archivos APK después de la instalación"</string>
 <string name="pref_delete_apk_after_install">"Borrar APK después de la instalación"</string>
@@ -135,13 +131,10 @@ Ten en cuenta que Play Store no está a favor de descargar versiones arbitrarias
 <string name="notification_download_progress">"%1$s de %2$s descargado"</string>
 <string name="pref_requested_language">"Lenguaje que comunicar a Play Store"</string>
 <string name="pref_requested_language_default">"Tu lenguaje por defecto"</string>
-<string name="pref_device_to_pretend_to_be">"Simular un dispositivo distinto"</string>
-<string name="pref_device_to_pretend_to_be_default">"Información original de tu dispositivo"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Este cambio tendrá efecto después de iniciar sesión de nuevo"</string>
-<string name="pref_category_updates">"Actualizaciones"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Información original de tu dispositivo"</string>
+    <string name="pref_category_updates">"Actualizaciones"</string>
 <string name="pref_category_installation">"Instalación"</string>
-<string name="pref_category_spoofing">"Simulación"</string>
-<string name="pref_category_ui">"Mostrar"</string>
+    <string name="pref_category_ui">"Mostrar"</string>
 <string name="details_installing">"Instalando…"</string>
 <string name="details_installed">"Instalación con éxito"</string>
 <string name="details_install_failure">"No se pudo instalar"</string>

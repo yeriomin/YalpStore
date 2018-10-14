@@ -25,8 +25,7 @@ Sortu Yalp Store aplikazioarentzako pasahitz bat eta erabili Yalp Storen saioa h
 Sakatu \"Sortu pasahitza\" pasahitza saortzeko orrira joateko."</string>
 <string name="dialog_title_logout">"Amaitu saioa?"</string>
 <string name="dialog_message_logout">"Ziur saioa amaitu nahi duzula?"</string>
-<string name="dialog_account_type_provided_by_user">"Nire Google kontuarekin"</string>
-<string name="dialog_account_type_predefined">"Yalp Storek hornitutako kontu faltsu batekin"</string>
+    <string name="dialog_account_type_predefined">"Yalp Storek hornitutako kontu faltsu batekin"</string>
 <string name="dialog_account_type_title">"Nola hasi nahi duzu saioa Google Play Storen?"</string>
 <string name="dialog_title_logging_in">"Saioa hasten"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Zuk emandako datuekin saioa hastea saiatzen"</string>
@@ -89,14 +88,11 @@ Kontuan izan aplikazio hau erabiltzea Google Play Storeren erabilera baldintzak 
 <string name="pref_background_update_interval">"Egiaztatu eguneraketak aldiro"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Errore ezezaguna"</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Fitxategiaren biltegiratze errore ezezaguna."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Deskarga kudeatzaileak erantzun ezin dezakeen HTTP kodea jaso da. Hau zerbitzariaren errore bat da."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Errorea datuak jaso edo prozesatzean HTTP mailan."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Berbideratze gehiegi."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Ez dago biltegiratze leku nahikorik."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Errorea datuak jaso edo prozesatzean HTTP mailan."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Ez dago biltegiratze leku nahikorik."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Ez da kanpo biltegiratze gailurik aurkitu. Agian SD txartela muntatu gabe dago."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Errore bat gertatu da, litekeena behin behinekoa, baina ezin dugu deskarga berrabiatu. Saiatu geroago."</string>
-<string name="download_manager_ERROR_BLOCKED">"Deskargak huts egin du eskaera egin duen aplikazioaren NetworkPolicyManager kontrolak direla eta. Egiaztatu zure ezarpenak."</string>
-<string name="search_filter">"Aplikazio guztiak"</string>
+    <string name="search_filter">"Aplikazio guztiak"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Oraik .apk fitxategiak ez dira ezabatuko instalatu eta gero"</string>
 <string name="pref_delete_apk_after_install_summary_on">".apk fitxategiak instalazioa eta gero ezabatuko dira"</string>
 <string name="pref_delete_apk_after_install">"Ezabatu .apk instalazioa eta gero"</string>
@@ -133,13 +129,10 @@ Play Storek ez du bestelako bertsioak deskargatzeko euskarririk. Emaitza bertsio
 <string name="notification_download_progress">"%1$s / %2$s deskargatuta"</string>
 <string name="pref_requested_language">"Play Storek hizkuntza galdetzen du"</string>
 <string name="pref_requested_language_default">"Zure lehenetsitako hizkuntza"</string>
-<string name="pref_device_to_pretend_to_be">"Beste gailu baten itxura egin"</string>
-<string name="pref_device_to_pretend_to_be_default">"Zure gailuaren jatorrizko informazioa"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Aldaketa hau saioa berriro hastean aplikatuko da"</string>
-<string name="pref_category_updates">"Eguneraketak"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Zure gailuaren jatorrizko informazioa"</string>
+    <string name="pref_category_updates">"Eguneraketak"</string>
 <string name="pref_category_installation">"Instalazioa"</string>
-<string name="pref_category_spoofing">"Itxura egitea"</string>
-<string name="pref_category_ui">"Erabiltzailearen interfazea"</string>
+    <string name="pref_category_ui">"Erabiltzailearen interfazea"</string>
 <string name="details_installing">"Instalatzen…"</string>
 <string name="details_installed">"Ongi instalatu da"</string>
 <string name="details_install_failure">"Ezin izan da instalatu"</string>

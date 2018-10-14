@@ -25,8 +25,7 @@
 Натисніть \"Створити пароль\" для переходу до сторінки створення паролів додатку."</string>
 <string name="dialog_title_logout">"Вийти?"</string>
 <string name="dialog_message_logout">"Ви дійсно бажаєте вийти?"</string>
-<string name="dialog_account_type_provided_by_user">"З власним обліковим записом Google"</string>
-<string name="dialog_account_type_predefined">"Без облікового запису (експериментально)"</string>
+    <string name="dialog_account_type_predefined">"Без облікового запису (експериментально)"</string>
 <string name="dialog_account_type_title">"Як увійти до Google Play Store?"</string>
 <string name="dialog_title_logging_in">"Вхід до"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Спроба підключитися через ваш обліковий запис"</string>
@@ -91,14 +90,11 @@
 <string name="pref_background_update_interval">"Періодично перевіряти оновлення"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Невідома помилка."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Невідома помилка файлового сховища."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Не отримано HTTP код від менеджеру завантаження. Це серверна помилка."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Помилка під час отримання та обробки даних на рівні HTTP."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Забагато перенаправлень."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Недостатньо місця в сховищі."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Помилка під час отримання та обробки даних на рівні HTTP."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Недостатньо місця в сховищі."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Не знайдено зовнішнього пристрою зберігання. Можливо SD карту не змонтовано."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Виникла якась тимчасова помилка, але ми не можемо відновити завантаження. Спробуйте пізніше."</string>
-<string name="download_manager_ERROR_BLOCKED">"Помилка завантаження через роботу NetworkPolicyManager. Перевірте налаштування."</string>
-<string name="search_filter">"Всі додатки"</string>
+    <string name="search_filter">"Всі додатки"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Зараз apk не вилучатимуться після встановлення"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Зараз apk вилучатимуться після встановлення "</string>
 <string name="pref_delete_apk_after_install">"Видалити .apk після втановлення"</string>
@@ -135,13 +131,10 @@
 <string name="notification_download_progress">"%1$s з %2$s завантажено"</string>
 <string name="pref_requested_language">"Мова запиту до Play Store"</string>
 <string name="pref_requested_language_default">"Ваша мова"</string>
-<string name="pref_device_to_pretend_to_be">"Прикинутися іншим пристроєм"</string>
-<string name="pref_device_to_pretend_to_be_default">"Оригінальна інформація про пристрій"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Зміни набудуть чинності після перезавантаження"</string>
-<string name="pref_category_updates">"Оновлення"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Оригінальна інформація про пристрій"</string>
+    <string name="pref_category_updates">"Оновлення"</string>
 <string name="pref_category_installation">"Втсановлення"</string>
-<string name="pref_category_spoofing">"Взаємодія з Play Store"</string>
-<string name="pref_category_ui">"Інтерфейс"</string>
+    <string name="pref_category_ui">"Інтерфейс"</string>
 <string name="details_installing">"Встановлення…"</string>
 <string name="details_installed">"Встановлено успішно"</string>
 <string name="details_install_failure">"Не вдалося встановити"</string>

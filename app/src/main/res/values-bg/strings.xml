@@ -25,8 +25,7 @@
 Докоснете „Създаване на парола“, за да бъдете пренасочени към страницата за създаване на пароли."</string>
 <string name="dialog_title_logout">"Изход от профила?"</string>
 <string name="dialog_message_logout">"Наистина ли желаете да излезете от профила си?"</string>
-<string name="dialog_account_type_provided_by_user">"С мой собствен профил в Google"</string>
-<string name="dialog_account_type_predefined">"С акаунт на Yalp Store"</string>
+    <string name="dialog_account_type_predefined">"С акаунт на Yalp Store"</string>
 <string name="dialog_account_type_title">"Как бихте искали да влезете в Google Play Магазин?"</string>
 <string name="dialog_title_logging_in">"Вписване"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Опит за влизане с вашия акаунт"</string>
@@ -90,14 +89,11 @@
 <string name="pref_background_update_interval">"Проверявай за обновления периодично"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Неизвестна грешка."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Неизвестна грешка при паметта за съхранение."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Полученият HTTP код не можа да бъде обработен. Това е сървърна грешка."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"На HTTP ниво се появи грешка при получаване или обработване на данни."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Твърде много препращания."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Недостатъчно памет за съхранение."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"На HTTP ниво се появи грешка при получаване или обработване на данни."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Недостатъчно памет за съхранение."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Не е открито устройство за външно съхранение. Може би системата няма достъп до SD-картата."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Появиха се някои грешки, които вероятно са временни, но не можем да продължим изтеглянето. Опитайте отново по-късно."</string>
-<string name="download_manager_ERROR_BLOCKED">"Изтеглянето се провали, заради NetworkPolicyManager контролите на приложението, което изисква достъп. Проверете вашите настройки."</string>
-<string name="search_filter">"Всички приложения"</string>
+    <string name="search_filter">"Всички приложения"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Сега .apk файловете не се изтриват след инсталация"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Сега .apk файловете се изтриват след инсталация"</string>
 <string name="pref_delete_apk_after_install">"Изтривай .apk файловете след инсталация"</string>
@@ -134,13 +130,10 @@
 <string name="notification_download_progress">"%1$s от %2$s се изтеглиха"</string>
 <string name="pref_requested_language">"Плей магазинът изисква да посочите език"</string>
 <string name="pref_requested_language_default">"Вашият език (по подразбиране)"</string>
-<string name="pref_device_to_pretend_to_be">"Представи за някое друго устройство"</string>
-<string name="pref_device_to_pretend_to_be_default">"Оригиналната информация за вашето устройство"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Тази промяна ще бъде приложена след като влезете отново"</string>
-<string name="pref_category_updates">"Обновления"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Оригиналната информация за вашето устройство"</string>
+    <string name="pref_category_updates">"Обновления"</string>
 <string name="pref_category_installation">"Инсталиране"</string>
-<string name="pref_category_spoofing">"Имитиране на друго местоположение"</string>
-<string name="pref_category_ui">"Потребителски интерфейс"</string>
+    <string name="pref_category_ui">"Потребителски интерфейс"</string>
 <string name="details_installing">"Инсталиране…"</string>
 <string name="details_installed">"Инсталирано успешно"</string>
 <string name="details_install_failure">"Неуспешен опит за инсталиране"</string>

@@ -25,8 +25,7 @@ Yalp Store 専用のアプリパスワードを作成して、Yalp Store のロ�
 「パスワードを作成」をタップすると、パスワード作成ページにリダイレクトされます。"</string>
 <string name="dialog_title_logout">"ログアウトしますか?"</string>
 <string name="dialog_message_logout">"ログアウトしてもよろしいですか?"</string>
-<string name="dialog_account_type_provided_by_user">"自分の Google アカウントで"</string>
-<string name="dialog_account_type_predefined">"Yalp Store で提供されたアカウントで"</string>
+    <string name="dialog_account_type_predefined">"Yalp Store で提供されたアカウントで"</string>
 <string name="dialog_account_type_title">"Google Play ストアにどのようにログインしますか?"</string>
 <string name="dialog_title_logging_in">"ログイン中"</string>
 <string name="dialog_message_logging_in_provided_by_user">"あなたが提供した認証情報でログインしようとしています"</string>
@@ -89,14 +88,11 @@ Play ストアのウェブページにリダイレクトしますか?"</string>
 <string name="pref_background_update_interval">"定期的に更新を確認"</string>
 <string name="download_manager_ERROR_UNKNOWN">"不明なエラー。"</string>
 <string name="download_manager_ERROR_FILE_ERROR">"不明なファイルストレージエラー。"</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"ダウンロードマネージャが処理できない HTTP コードを受け取りました。 これはサーバーエラーです。"</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"HTTP レベルで、データの受信または処理中にエラーが発生しました。"</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"リダイレクトが多すぎます。"</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"ストレージ空き容量が不足しています。"</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"HTTP レベルで、データの受信または処理中にエラーが発生しました。"</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"ストレージ空き容量が不足しています。"</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"外部ストレージデバイスが見つかりませんでした。 SD カードがマウントされていない可能性があります。"</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"一時的なエラーが発生した可能性がありますが、ダウンロードを再開することはできません。 後で再試行してください。"</string>
-<string name="download_manager_ERROR_BLOCKED">"アプリケーションの要求時に NetworkPolicyManager コントロールのため、ダウンロードに失敗しました。 設定を確認してください。"</string>
-<string name="search_filter">"すべてのアプリ"</string>
+    <string name="search_filter">"すべてのアプリ"</string>
 <string name="pref_delete_apk_after_install_summary_off">"インストール後に .apks は削除されません"</string>
 <string name="pref_delete_apk_after_install_summary_on">"インストール後に .apks は削除されます"</string>
 <string name="pref_delete_apk_after_install">"インストール後に .apk を削除"</string>
@@ -133,13 +129,10 @@ Google Play ストアでは、任意のバージョンのアプリをダウン�
 <string name="notification_download_progress">"%1$s / %2$s ダウンロード済"</string>
 <string name="pref_requested_language">"Play ストアをリクエストする言語"</string>
 <string name="pref_requested_language_default">"デフォルトの言語"</string>
-<string name="pref_device_to_pretend_to_be">"別のデバイスのふりをする"</string>
-<string name="pref_device_to_pretend_to_be_default">"オリジナルのデバイス情報"</string>
-<string name="pref_device_to_pretend_to_be_toast">"この変更は、再ログイン後に適用されます"</string>
-<string name="pref_category_updates">"更新"</string>
+    <string name="pref_device_to_pretend_to_be_default">"オリジナルのデバイス情報"</string>
+    <string name="pref_category_updates">"更新"</string>
 <string name="pref_category_installation">"インストール"</string>
-<string name="pref_category_spoofing">"なりすまし"</string>
-<string name="pref_category_ui">"表示"</string>
+    <string name="pref_category_ui">"表示"</string>
 <string name="details_installing">"インストール中…"</string>
 <string name="details_installed">"正常にインストールしました"</string>
 <string name="details_install_failure">"インストールできませんでした"</string>

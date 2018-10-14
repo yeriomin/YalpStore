@@ -32,10 +32,6 @@
         <item>@string/pref_background_update_interval_daily</item>
         <item>@string/pref_background_update_interval_weekly</item>
     </string-array>
-    <string-array name="accountType">
-        <item>@string/dialog_account_type_provided_by_user</item>
-        <item>@string/dialog_account_type_predefined</item>
-    </string-array>
     <string-array translatable="false" name="installationMethodValues">
         <item>default</item>
         <item>root</item>

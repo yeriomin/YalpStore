@@ -25,8 +25,7 @@ Creëer alstublieft een wachtwoord voor Yalp Store en gebruik deze om in te logg
 Tik op 'wachtwoord maken' om te worden doorgestuurd naar de pagina voor het maken van wachtwoorden."</string>
 <string name="dialog_title_logout">"Uitloggen?"</string>
 <string name="dialog_message_logout">"Weet je zeker dat je wilt uitloggen?"</string>
-<string name="dialog_account_type_provided_by_user">"Met mijn eigen Google account"</string>
-<string name="dialog_account_type_predefined">"Met een neppe Yalp Store account"</string>
+    <string name="dialog_account_type_predefined">"Met een neppe Yalp Store account"</string>
 <string name="dialog_account_type_title">"Hoe wil je inloggen op de Google Play Store?"</string>
 <string name="dialog_title_logging_in">"Inloggen"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Proberen in te loggen met de ingevoerde gegevens"</string>
@@ -89,14 +88,11 @@ Wees alert dat het gebruik van deze app in gaat tegen het ToS van de Play Store.
 <string name="pref_background_update_interval">"Controleer periodiek voor updates"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Onbekende fout."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Onbekende bestand opslag fout."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Er is HTTP code ontvangen die de download manager niet kan gebruiken. Dit is een server error."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Er is een error opgetreden tijdens het ontvangen of verwerken van data op HTTP niveau."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Te veel omleidingen."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Onvoldoende opslagruimte."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Er is een error opgetreden tijdens het ontvangen of verwerken van data op HTTP niveau."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Onvoldoende opslagruimte."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Er is geen extern geheugen gevonden. Misschien is de SD kaart niet gekoppeld."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Er is mogelijk een overlopende fout opgetreden, maar we kunnen de download niet hervatten. Probeer het later opnieuw."</string>
-<string name="download_manager_ERROR_BLOCKED">"De download is mislukt door restricites van NetworkPolicyManager. Check uw instellingen."</string>
-<string name="search_filter">"Alle apps"</string>
+    <string name="search_filter">"Alle apps"</string>
 <string name="pref_delete_apk_after_install_summary_off">".apks blijven bewaard na de installatie"</string>
 <string name="pref_delete_apk_after_install_summary_on">".apks worden verwijdert na de installatie"</string>
 <string name="pref_delete_apk_after_install">"Verwijder .apk bestand na installatie"</string>
@@ -136,13 +132,10 @@ Houd er rekening mee dat het downloaden van willekeurige versies van apps niet o
 
 <!-- Originele engelse tekst is slecht te vertalen, eerdere vertaling "Doe alsof dit een ander toestel is" is een vage vertaling. -->
 <!-- Fuzzy -->
-<string name="pref_device_to_pretend_to_be">"Gebruik apparaat info van"</string>
-<string name="pref_device_to_pretend_to_be_default">"Uw eigen apparaat"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Deze wijziging wordt toegepast wanneer u opnieuw inlogt"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Uw eigen apparaat"</string>
 
-<string name="pref_category_installation">"Installatie"</string>
-<string name="pref_category_spoofing">"Spoofen"</string>
-<string name="pref_category_ui">"Gebruikersinterface"</string>
+    <string name="pref_category_installation">"Installatie"</string>
+    <string name="pref_category_ui">"Gebruikersinterface"</string>
 <string name="details_installing">"Wordt geïnstalleerd…"</string>
 <string name="details_installed">"Installatie succesvol"</string>
 <string name="details_install_failure">"Kon niet worden geïnstalleerd"</string>

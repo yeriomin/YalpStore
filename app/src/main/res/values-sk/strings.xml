@@ -25,8 +25,7 @@ Vytvorte si prosím špeciálne heslo pre Yalp Store a použite ho na prihlásen
 Stlačením \"Vytvoriť heslo\" budete presmerovaný na stránku vytvorenia hesla."</string>
 <string name="dialog_title_logout">"Odhlásiť?"</string>
 <string name="dialog_message_logout">"Naozaj sa chcete odhlásiť?"</string>
-<string name="dialog_account_type_provided_by_user">"Svojim Google účtom"</string>
-<string name="dialog_account_type_predefined">"\"Falošným\" Yalp Store účtom"</string>
+    <string name="dialog_account_type_predefined">"\"Falošným\" Yalp Store účtom"</string>
 <string name="dialog_account_type_title">"Ako sa chcete prihlásiť do Obchodu Google Play?"</string>
 <string name="dialog_title_logging_in">"Prihlásenie"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Prihlasovanie so zadanými prihlasovacími údajmi"</string>
@@ -90,14 +89,11 @@ Zvážte prosím, že používanie tejto aplikácie porušuje zmluvné podmienky
 <string name="pref_background_update_interval">"Kontrolovať pravidelne aktualizácie"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Neznáma chyba."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Neznáma chyba úložiska súborov."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Bol prijatý HTTP kód, ktorý správca sťahovania nevie spracovať. Je to chyba servera."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Vyskytla sa chyba prijímania alebo spracovania dát na HTTP úrovni."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Príliš veľa presmerovaní."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Nedostatok miesta v úložisku."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Vyskytla sa chyba prijímania alebo spracovania dát na HTTP úrovni."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Nedostatok miesta v úložisku."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Nenájdené žiadne externé úložisko. Možno nie je pripojená SD karta."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Vyskytla sa nejaká dočasná chyba, ale sťahovanie nemôžeme obnoviť. Opakujte neskôr."</string>
-<string name="download_manager_ERROR_BLOCKED">"Sťahovanie bolo neúspešné kvôli ovládacím prvkom NetworkPolicyManager v žiadajúcej aplikácii. Skontrolujte svoje nastavenia."</string>
-<string name="search_filter">"Všetky aplikácie"</string>
+    <string name="search_filter">"Všetky aplikácie"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Teraz sa .apk súbory nevymazávajú po inštalácii"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Teraz sa .apk súbory vymazávajú po inštalácii"</string>
 <string name="pref_delete_apk_after_install">"Vymazať .apk po inštalácii"</string>
@@ -134,13 +130,10 @@ Majte na pamäti, že Obchod Google Play nepodporuje sťahovanie ľubovoľných 
 <string name="notification_download_progress">"%1$s z %2$s stiahnuté"</string>
 <string name="pref_requested_language">"Obchod Play vyžaduje jazyk"</string>
 <string name="pref_requested_language_default">"Váš predvolený jazyk"</string>
-<string name="pref_device_to_pretend_to_be">"Predstierať ako iné zariadenie"</string>
-<string name="pref_device_to_pretend_to_be_default">"Vaše originálne informácie o zariadení"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Táto zmena sa prejaví až po opätovnom prihlásení"</string>
-<string name="pref_category_updates">"Aktualizácie"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Vaše originálne informácie o zariadení"</string>
+    <string name="pref_category_updates">"Aktualizácie"</string>
 <string name="pref_category_installation">"Inštalácia"</string>
-<string name="pref_category_spoofing">"Predstieranie"</string>
-<string name="pref_category_ui">"Užívateľské rozhranie"</string>
+    <string name="pref_category_ui">"Užívateľské rozhranie"</string>
 <string name="details_installing">"Inštalácia…"</string>
 <string name="details_installed">"Úspešne nainštalované"</string>
 <string name="details_install_failure">"Nebolo možné nainštalovať"</string>

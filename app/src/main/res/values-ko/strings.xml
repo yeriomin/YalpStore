@@ -23,8 +23,7 @@ Yalp 스토어에서만 사용할 암호를 만들어서 로그인하세요.
 암호 생성을 누르면 암호 생성 화면으로 이동합니다."</string>
 <string name="dialog_title_logout">"로그아웃할까요?"</string>
 <string name="dialog_message_logout">"정말 로그아웃 하시겠습니까?"</string>
-<string name="dialog_account_type_provided_by_user">"내 Google 계정 사용"</string>
-<string name="dialog_account_type_predefined">"임의로 생성된 Yalp 스토어 계정 사용"</string>
+    <string name="dialog_account_type_predefined">"임의로 생성된 Yalp 스토어 계정 사용"</string>
 <string name="dialog_account_type_title">"Google Play 스토어에 어떻게 로그인 하시겠습니까?"</string>
 <string name="dialog_title_logging_in">"로그인 중"</string>
 <string name="dialog_message_logging_in_provided_by_user">"사용자로부터 제공된 정보로 로그인 시도 중"</string>
@@ -89,14 +88,11 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="pref_background_update_interval">"업데이트를 주기적으로 확인"</string>
 <string name="download_manager_ERROR_UNKNOWN">"알 수 없는 오류."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"알 수 없는 파일 저장소 오류."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"다운로드 매니저가 처리할 수 없는 HTTP 코드를 받았습니다. 이것은 서버측 오류입니다."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"HTTP 단계에서 데이터를 처리하거나 받을 수 없는 오류가 발생했습니다."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"너무 많은 리디렉션이 발생했습니다."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"저장 공간이 충분하지 않습니다."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"HTTP 단계에서 데이터를 처리하거나 받을 수 없는 오류가 발생했습니다."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"저장 공간이 충분하지 않습니다."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"외부 저장소가 발견되지 않았습니다. SD카드가 인식되지 않은 것 같습니다."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"전송 오류가 발생했으나 다시 진행할 수 없습니다. 나중에 다시 시도하세요."</string>
-<string name="download_manager_ERROR_BLOCKED">"NetworkPolicyManager가 요청 중인 앱을 제어하고 있으므로 다운로드 할 수 없습니다. 설정을 확인하세요."</string>
-<string name="search_filter">"모든 앱"</string>
+    <string name="search_filter">"모든 앱"</string>
 <string name="pref_delete_apk_after_install_summary_off">"설치 후에 .apk 파일이 삭제되지 않습니다"</string>
 <string name="pref_delete_apk_after_install_summary_on">"설치 후에 .apk 파일이 삭제됩니다"</string>
 <string name="pref_delete_apk_after_install">"설치 후에 .apk 파일 삭제"</string>
@@ -133,13 +129,10 @@ Play 스토어 웹사이트로 이동할까요?"</string>
 <string name="notification_download_progress">"%1$s / %2$s 다운로드됨"</string>
 <string name="pref_requested_language">"Play 스토어에 요청할 언어"</string>
 <string name="pref_requested_language_default">"기본 언어"</string>
-<string name="pref_device_to_pretend_to_be">"다른 기기인 척 하기"</string>
-<string name="pref_device_to_pretend_to_be_default">"현재 사용중인 기기 정보"</string>
-<string name="pref_device_to_pretend_to_be_toast">"변경 사항은 다시 로그인을 해야 적용될 것입니다"</string>
-<string name="pref_category_updates">"업데이트"</string>
+    <string name="pref_device_to_pretend_to_be_default">"현재 사용중인 기기 정보"</string>
+    <string name="pref_category_updates">"업데이트"</string>
 <string name="pref_category_installation">"설치"</string>
-<string name="pref_category_spoofing">"스푸핑(Spoofing)"</string>
-<string name="pref_category_ui">"사용자 인터페이스"</string>
+    <string name="pref_category_ui">"사용자 인터페이스"</string>
 <string name="details_installing">"설치하는 중…"</string>
 <string name="details_installed">"설치 성공"</string>
 <string name="details_install_failure">"설치할 수 없음"</string>

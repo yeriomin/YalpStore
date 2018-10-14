@@ -33,8 +33,7 @@
 اضغط \"أنشيء كلمة سر\" ليتم توجيهك لصفحة إنشاء كلمة السر."</string>
 <string name="dialog_title_logout">"تسجل الخروج؟"</string>
 <string name="dialog_message_logout">"هل أنت متأكد أنك تريد تسجيل الخروج؟"</string>
-<string name="dialog_account_type_provided_by_user">"باستخدام حسابي الخاص على جوجل"</string>
-<string name="dialog_account_type_predefined">"باستعمال حساب وهمي من Yalp Store"</string>
+    <string name="dialog_account_type_predefined">"باستعمال حساب وهمي من Yalp Store"</string>
 <string name="dialog_account_type_title">"هل تود تسجيل الدخول إلى سوق بلاي Google Play Store ؟"</string>
 <string name="dialog_title_logging_in">"جاري تسجيل الدخول"</string>
 <string name="dialog_message_logging_in_provided_by_user">"جاري تسجيل الدخول ببيانات حسابك"</string>
@@ -96,14 +95,11 @@
 <string name="pref_background_update_interval">"ابحث عن التحديثات دوريا"</string>
 <string name="download_manager_ERROR_UNKNOWN">"خطأ غير معلوم."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"خطأ غير معلوم  بتخزين الملف."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"يوجد خطأ HTTP في التحميل من الخادم."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"خطأ في استلام أو معالجة البيانات على مستوى HTTP."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"إعادة توجيه أكثر من اللازم."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"مساحة تخزين غير كافية."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"خطأ في استلام أو معالجة البيانات على مستوى HTTP."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"مساحة تخزين غير كافية."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"لا يوجد وسيط تخزين خارجي. ربما لم يتم تحميل كرت الذاكرة."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"حدثت بعض الأخطاء العارضة لكن لا يمكننا استكمال التنزيل. حاول لاحقا."</string>
-<string name="download_manager_ERROR_BLOCKED">"فشل التنزيل بسبب سياسة إدارة الشبكة. تأكد من إعداداتك."</string>
-<string name="search_filter">"كل التطبيقات"</string>
+    <string name="search_filter">"كل التطبيقات"</string>
 <string name="pref_delete_apk_after_install_summary_off">"الآن لن يتم حذف ملفات .apk بعد التثبيت"</string>
 <string name="pref_delete_apk_after_install_summary_on">"الآن سيتم حذف ملفات .apk بعد التثبيت"</string>
 <string name="pref_delete_apk_after_install">"احذف ملفات .apk بعد التثبيت"</string>
@@ -140,13 +136,10 @@
 <string name="notification_download_progress">"%1$s من %2$s تم تحميله"</string>
 <string name="pref_requested_language">"لغة التعامل مع سوق بلاي"</string>
 <string name="pref_requested_language_default">"اللغة الافتراضية"</string>
-<string name="pref_device_to_pretend_to_be">"تظاهر أنك جهاز آخر"</string>
-<string name="pref_device_to_pretend_to_be_default">"معلومات جهازك الأصلية"</string>
-<string name="pref_device_to_pretend_to_be_toast">"هذا التعديل سيتطلب إعادة تسجيل الدخول"</string>
-<string name="pref_category_updates">"التحديثات"</string>
+    <string name="pref_device_to_pretend_to_be_default">"معلومات جهازك الأصلية"</string>
+    <string name="pref_category_updates">"التحديثات"</string>
 <string name="pref_category_installation">"التثبيت"</string>
-<string name="pref_category_spoofing">"الانتحال"</string>
-<string name="pref_category_ui">"واجهة المستخدم"</string>
+    <string name="pref_category_ui">"واجهة المستخدم"</string>
 <string name="details_installing">"جاري التثبيت…"</string>
 <string name="details_installed">"تم التثبيت بنجاح"</string>
 <string name="details_install_failure">"لم يمكن التثبيت"</string>

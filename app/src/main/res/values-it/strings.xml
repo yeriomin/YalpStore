@@ -25,8 +25,7 @@ Per favore, crea una password dedicata per Yalp Store e usala per accedere da Ya
 Tocca \"Crea password\" per esser reindirizzato alla creazione della password."</string>
 <string name="dialog_title_logout">"Uscire?"</string>
 <string name="dialog_message_logout">"Uscire davvero?"</string>
-<string name="dialog_account_type_provided_by_user">"Con il proprio account Google"</string>
-<string name="dialog_account_type_predefined">"Con un account predefinito di YalpStore"</string>
+    <string name="dialog_account_type_predefined">"Con un account predefinito di YalpStore"</string>
 <string name="dialog_account_type_title">"Come si vuole accedere al Google Play Store?"</string>
 <string name="dialog_title_logging_in">"Accesso"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Tentativo di accesso con le credenziali fornite"</string>
@@ -90,14 +89,11 @@ Si ricorda che usare quest'app viola i termini d'uso del Play Store. Sarebbe pi�
 <string name="pref_background_update_interval">"Controllo degli aggiornamenti periodico"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Errore sconosciuto."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Errore di memorizzazione sconosciuto."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Codice HTTP ricevuto non gestibile. Errore del server."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Errore di ricezione o elaborazione dati a livello HTTP."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Troppi reindirizzamenti."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Spazio insufficiente."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Errore di ricezione o elaborazione dati a livello HTTP."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Spazio insufficiente."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Nessuna memoria esterna rilevata. Forse la scheda SD non è montata."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Impossibile riprendere il download a causa di un errore temporaneo. Provare più tardi."</string>
-<string name="download_manager_ERROR_BLOCKED">"Download fallito perché NetworkPolicyManager controlla le richieste delle applicazioni. Verificare le impostazioni."</string>
-<string name="search_filter">"Tutte le app"</string>
+    <string name="search_filter">"Tutte le app"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Gli apk non vengono eliminati dopo l'installazione"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Gli apk vengono eliminati dopo l'installazione"</string>
 <string name="pref_delete_apk_after_install">"Elimina .apk dopo l'installazione"</string>
@@ -134,13 +130,10 @@ Ricorda che scaricare versioni arbitrarie non è previsto dal Google Play Store 
 <string name="notification_download_progress">"%1$s di %2$s scaricati"</string>
 <string name="pref_requested_language">"Lingua richiesta al Play Store"</string>
 <string name="pref_requested_language_default">"Lingua predefinita"</string>
-<string name="pref_device_to_pretend_to_be">"Simula un dispositivo differente"</string>
-<string name="pref_device_to_pretend_to_be_default">"Info reali del dispositivo"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Eseguire di nuovo l'accesso per applicare le modifiche"</string>
-<string name="pref_category_updates">"Aggiornamenti"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Info reali del dispositivo"</string>
+    <string name="pref_category_updates">"Aggiornamenti"</string>
 <string name="pref_category_installation">"Installazione"</string>
-<string name="pref_category_spoofing">"Mascheramento"</string>
-<string name="pref_category_ui">"Interfaccia utente"</string>
+    <string name="pref_category_ui">"Interfaccia utente"</string>
 <string name="details_installing">"Installazione in corso…"</string>
 <string name="details_installed">"Installato con successo"</string>
 <string name="details_install_failure">"Impossibile installare"</string>
@@ -312,7 +305,7 @@ Procedere?"</string>
 <string name="details_new_permission">"Nuovo:"</string>
 <string name="list_empty_history">"Cronologia vuota"</string>
 <string name="action_history">"Cronologia"</string>
-<string name="dialog_message_virustotal_warning">"VirusTotal considera %1$d apk su %2$s come sospetti"</string>
+<string name="dialog_message_virustotal_warning">"VirusTotal considera %1$d apk su %2$d come sospetti"</string>
 <string name="dialog_button_virustotal_view_report">"Visualizza resoconto"</string>
 <string name="events_no_changes">"Nessun cambiamento menzionato dallo sviluppatore dell'app"</string>
 <string name="uninstalled">"Disinstallato"</string>

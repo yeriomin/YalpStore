@@ -25,8 +25,7 @@ Mohon buat kata sandi khusus untuk Yalp Store dan gunakanlah untuk masuk ke Yalp
 Ketuk \"Buat kata sandi\" untuk dialihkan ke laman pembuatan kata sandi."</string>
 <string name="dialog_title_logout">"Keluar?"</string>
 <string name="dialog_message_logout">"Anda yakin ingin keluar?"</string>
-<string name="dialog_account_type_provided_by_user">"Dengan akun Google-ku sendiri"</string>
-<string name="dialog_account_type_predefined">"Dengan akun Yalp Store"</string>
+    <string name="dialog_account_type_predefined">"Dengan akun Yalp Store"</string>
 <string name="dialog_account_type_title">"Cara apa yang Anda suka untuk masuk ke Google Play Store?"</string>
 <string name="dialog_title_logging_in">"Masuk"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Mencoba masuk dengan akun Google Anda"</string>
@@ -89,14 +88,11 @@ Ingat, menggunakan aplikasi ini melanggar S&amp;K Play Store. Akan lebih aman ji
 <string name="pref_background_update_interval">"Periksa pembaruan berkala"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Galat tidak diketahui"</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Galat penyimpanan tidak diketahui"</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Kode HTTP diterima, tetapi manajer unduhan tidak dapat menangani. Galat peladen."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Galat ketika menerima atau memroses data pada tingkat HTTP"</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Terlalu banyak pengalihan"</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Penyimpanan tidak memadai"</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Galat ketika menerima atau memroses data pada tingkat HTTP"</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Penyimpanan tidak memadai"</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Penyimpanan eksternal tidak ditemukan. Mungkin kartu SD tidak terpasang."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Galat sementara mungkin terjadi. Kami tidak dapat melanjutkan unduhan. Coba lagi."</string>
-<string name="download_manager_ERROR_BLOCKED">"Unduhan gagal karena kontrol NetworkPolicyManager pada apl peminta. Periksa Setelan Anda."</string>
-<string name="search_filter">"Semua aplikasi"</string>
+    <string name="search_filter">"Semua aplikasi"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Sekarang .apk disimpan setelah pemasangan"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Sekarang .apk dihapus setelah pemasangan"</string>
 <string name="pref_delete_apk_after_install">"Hapus .apk setelah pemasangan"</string>
@@ -133,13 +129,10 @@ Mengingat pengunduhan apl versi bebas tidak didukung Google Play Store, kesukses
 <string name="notification_download_progress">"%1$s dari %2$s terunduh"</string>
 <string name="pref_requested_language">"Permintaan bahasa Play Store"</string>
 <string name="pref_requested_language_default">"Bahasa bawaan Anda"</string>
-<string name="pref_device_to_pretend_to_be">"Jadi perangkat lain"</string>
-<string name="pref_device_to_pretend_to_be_default">"Info perangkat asli Anda"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Perubahan diterapkan setelah masuk-ulang"</string>
-<string name="pref_category_updates">"Pembaruan"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Info perangkat asli Anda"</string>
+    <string name="pref_category_updates">"Pembaruan"</string>
 <string name="pref_category_installation">"Pemasangan"</string>
-<string name="pref_category_spoofing">"Pemalsuan"</string>
-<string name="pref_category_ui">"Antarmuka"</string>
+    <string name="pref_category_ui">"Antarmuka"</string>
 <string name="details_installing">"Memasang…"</string>
 <string name="details_installed">"Berhasil dipasang"</string>
 <string name="details_install_failure">"Tidak dapat memasang"</string>

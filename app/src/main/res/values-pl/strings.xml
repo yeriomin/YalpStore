@@ -27,8 +27,7 @@ Proszę o stworzenie dedykowanego hasła aplikacji dla Yalp Store i użycie go d
 Dotknij \"Utwórz hasło\" by zostać przekierowanym do strony, gdzie będziesz mógł utworzyć to hasło."</string>
 <string name="dialog_title_logout">"Wylogować?"</string>
 <string name="dialog_message_logout">"Jesteś pewien, że chcesz się wylogować?"</string>
-<string name="dialog_account_type_provided_by_user">"Z moim kontem Google"</string>
-<string name="dialog_account_type_predefined">"Z kontem Yalp (eksperymentalne)"</string>
+    <string name="dialog_account_type_predefined">"Z kontem Yalp (eksperymentalne)"</string>
 <string name="dialog_account_type_title">"W jaki sposób chciałbyś zalogować się do Google Play?"</string>
 <string name="dialog_title_logging_in">"Logowanie"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Próba logowania z wykorzystaniem wprowadzonych danych"</string>
@@ -91,14 +90,11 @@ Korzystanie z tej aplikacji wiąże się z ryzykiem i łamie zasady użytkowania
 <string name="pref_background_update_interval">"Sprawdzaj aktualizacje okresowo"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Nieznany błąd."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Nieznany błąd pamięci wewnętrznej."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Otrzymano kod HTTP, którego menedżer pobierania nie może obsłużyć. Jest to błąd serwera."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Podczas odbierania lub przetwarzania danych wystąpił błąd na poziomie HTTP."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Zbyt wiele przekierowań."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Niewystarczająca ilość pamięci."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Podczas odbierania lub przetwarzania danych wystąpił błąd na poziomie HTTP."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Niewystarczająca ilość pamięci."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Nie znaleziono zewnętrznego urządzenia magazynującego. Być może karta SD nie jest zamontowana."</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Wystąpił pewien błąd przejściowy i nie możemy wznowić pobierania. Spróbuj ponownie później."</string>
-<string name="download_manager_ERROR_BLOCKED">"Pobieranie nie powiodło się z powodu kontroli NetworkPolicyManager nad żądaniem aplikacji. Sprawdź swoje ustawienia."</string>
-<string name="search_filter">"Wszystkie aplikacje"</string>
+    <string name="search_filter">"Wszystkie aplikacje"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Pliki .apk nie będą teraz usuwane po instalacji"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Pliki .apk są teraz usuwane po instalacji"</string>
 <string name="pref_delete_apk_after_install">"Usuwaj pliki .apk po instalacji"</string>
@@ -135,13 +131,10 @@ Pamiętaj, że sklep Google Play nie obsługuje pobierania dowolnych wersji apli
 <string name="notification_download_progress">"%1$s z %2$s pobrano"</string>
 <string name="pref_requested_language">"Żądana wersja językowa Google Play"</string>
 <string name="pref_requested_language_default">"Domyślny język"</string>
-<string name="pref_device_to_pretend_to_be">"Udawanie innego urządzenia."</string>
-<string name="pref_device_to_pretend_to_be_default">"Oryginalna nazwa Twojego urządzenia"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Ta zmiana będzie zastosowana po ponownym zalogowaniu"</string>
-<string name="pref_category_updates">"Aktualizacje"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Oryginalna nazwa Twojego urządzenia"</string>
+    <string name="pref_category_updates">"Aktualizacje"</string>
 <string name="pref_category_installation">"Instalacja"</string>
-<string name="pref_category_spoofing">"Udawanie"</string>
-<string name="pref_category_ui">"Interfejs użytkownika"</string>
+    <string name="pref_category_ui">"Interfejs użytkownika"</string>
 <string name="details_installing">"Instalowanie…"</string>
 <string name="details_installed">"Zainstalowano pomyślnie"</string>
 <string name="details_install_failure">"Nie można zainstalować"</string>

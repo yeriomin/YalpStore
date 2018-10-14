@@ -25,8 +25,7 @@ Yalp Store бағдарламасына құпиясөз құрып, оны кі
 Бағдарламаның құпиясөз құру бөліміне өту үшін \"Құпиясөз құру\" батырмасын басыңыз."</string>
 <string name="dialog_title_logout">"Аккаунттан шығасыз ба?"</string>
 <string name="dialog_message_logout">"Сіз аккаунттан шығуға сенімдісіз бе?"</string>
-<string name="dialog_account_type_provided_by_user">"Менің Google аккаунтым арқылы"</string>
-<string name="dialog_account_type_predefined">"Yalp Store жалпы аккаунты арқылы"</string>
+    <string name="dialog_account_type_predefined">"Yalp Store жалпы аккаунты арқылы"</string>
 <string name="dialog_account_type_title">"Google Play Store-ге қалай кіреді?"</string>
 <string name="dialog_title_logging_in">"Кірудеміз"</string>
 <string name="dialog_message_logging_in_provided_by_user">"Сіздің аккаунтыңыз арқылы қосылудамыз"</string>
@@ -90,14 +89,11 @@ Play Store парақшасына өтесіз бе?"</string>
 <string name="pref_background_update_interval">"Жаңартуларды мезгіл сайын тексеру"</string>
 <string name="download_manager_ERROR_UNKNOWN">"Белгісіз қате."</string>
 <string name="download_manager_ERROR_FILE_ERROR">"Файл сақтауда белгісіз қате."</string>
-<string name="download_manager_ERROR_UNHANDLED_HTTP_CODE">"Желі қатесі. Кейінірек қайталап көріңіз."</string>
-<string name="download_manager_ERROR_HTTP_DATA_ERROR">"Желі қатесі. Кейінірек қайталап көріңіз."</string>
-<string name="download_manager_ERROR_TOO_MANY_REDIRECTS">"Желі қатесі. Тым көп қайта бағыттау."</string>
-<string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Құрылғыда орын жеткіліксіз."</string>
+    <string name="download_manager_ERROR_HTTP_DATA_ERROR">"Желі қатесі. Кейінірек қайталап көріңіз."</string>
+    <string name="download_manager_ERROR_INSUFFICIENT_SPACE">"Құрылғыда орын жеткіліксіз."</string>
 <string name="download_manager_ERROR_DEVICE_NOT_FOUND">"Сақтау құрылғысы қол жетімді емес. SD картаны шығардыңыз ба?"</string>
 <string name="download_manager_ERROR_CANNOT_RESUME">"Желі қатесі. Кейінірек қайталап көріңіз."</string>
-<string name="download_manager_ERROR_BLOCKED">"NetworkPolicyManager қауіпсіздік параметрлері үшін жүктеу үзілді."</string>
-<string name="search_filter">"Барлық бағдарламалар"</string>
+    <string name="search_filter">"Барлық бағдарламалар"</string>
 <string name="pref_delete_apk_after_install_summary_off">"Қазір .apk орнатудан кейін жойылмайды"</string>
 <string name="pref_delete_apk_after_install_summary_on">"Қазір .apk орнатудан кейін жойылады"</string>
 <string name="pref_delete_apk_after_install">"Орнатудан кейін .apk өшіру"</string>
@@ -134,13 +130,10 @@ Google Play Store-ден тек соңғы нұсқаны ғана жүктеу�
 <string name="notification_download_progress">"Барлығы %2$s, жүктелгені %1$s"</string>
 <string name="pref_requested_language">"Play Store-ге сұрату тілі"</string>
 <string name="pref_requested_language_default">"Əдетті"</string>
-<string name="pref_device_to_pretend_to_be">"Басқа құрылғы ретінде көрсету"</string>
-<string name="pref_device_to_pretend_to_be_default">"Сіздің құрылғыңыздан алынған ақпарат"</string>
-<string name="pref_device_to_pretend_to_be_toast">"Бұл өзгеріс тек сіз шыққаннан кейін ғана күшіне енеді"</string>
-<string name="pref_category_updates">"Жаңартулар"</string>
+    <string name="pref_device_to_pretend_to_be_default">"Сіздің құрылғыңыздан алынған ақпарат"</string>
+    <string name="pref_category_updates">"Жаңартулар"</string>
 <string name="pref_category_installation">"Бағдарламаларды орнату"</string>
-<string name="pref_category_spoofing">"Play Store дүкенімен әрекеттесу"</string>
-<string name="pref_category_ui">"Интерфейс"</string>
+    <string name="pref_category_ui">"Интерфейс"</string>
 <string name="details_installing">"Орнатылуда…"</string>
 <string name="details_installed">"Орнатылды"</string>
 <string name="details_install_failure">"Орнату мүмкін емес"</string>
