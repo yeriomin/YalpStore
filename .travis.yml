@@ -7,11 +7,11 @@ android:
   - tools
   - tools
   - platform-tools
-  - build-tools-27.0.3
-  - android-27
+  - build-tools-28.0.3
+  - android-28
 before_install:
   - openssl aes-256-cbc -K $encrypted_a12ad885c361_key -iv $encrypted_a12ad885c361_iv -in yeriomin-keystore.jks.enc -out yeriomin-keystore.jks -d
-  - yes | sdkmanager "platforms;android-27"
+  - yes | sdkmanager "platforms;android-28"
 install:
   - sudo apt-get update && sudo apt-get --assume-yes install zip
   - git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
@@ -27,7 +27,7 @@ before_deploy:
   - cd app/build/outputs/apk/legacy/release/
   - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $TRAVIS_BUILD_DIR/yeriomin-keystore.jks -storepass $storepass -keypass $keypass app-legacy-release-unsigned.apk AndroidKey
   - jarsigner -verify app-legacy-release-unsigned.apk
-  - $ANDROID_HOME/build-tools/27.0.3/zipalign -v 4 app-legacy-release-unsigned.apk $APK_NAME
+  - $ANDROID_HOME/build-tools/28.0.3/zipalign -v 4 app-legacy-release-unsigned.apk $APK_NAME
   - cp $APK_NAME $TRAVIS_BUILD_DIR/yalp-store-ota-zip/YalpStore.apk
   - cp $APK_NAME $TRAVIS_BUILD_DIR
   - cd $TRAVIS_BUILD_DIR/yalp-store-ota-zip
@@ -38,7 +38,7 @@ before_deploy:
   - cd app/build/outputs/apk/contemporary/release/
   - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $TRAVIS_BUILD_DIR/yeriomin-keystore.jks -storepass $storepass -keypass $keypass app-contemporary-release-unsigned.apk AndroidKey
   - jarsigner -verify app-contemporary-release-unsigned.apk
-  - $ANDROID_HOME/build-tools/27.0.3/zipalign -v 4 app-contemporary-release-unsigned.apk $CONTEMPORARY_APK_NAME
+  - $ANDROID_HOME/build-tools/28.0.3/zipalign -v 4 app-contemporary-release-unsigned.apk $CONTEMPORARY_APK_NAME
   - cp $CONTEMPORARY_APK_NAME $TRAVIS_BUILD_DIR/yalp-store-ota-zip/YalpStore.apk
   - cp $CONTEMPORARY_APK_NAME $TRAVIS_BUILD_DIR
   - cd $TRAVIS_BUILD_DIR/yalp-store-ota-zip
