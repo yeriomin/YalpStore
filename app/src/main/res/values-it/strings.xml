@@ -220,7 +220,7 @@ Procedere?"</string>
 <string name="thank_you">"Grazie"</string>
 <string name="list_updating">"Aggiornamento in corso…"</string>
 <string name="error_invalid_device_definition">"Info del dispositivo rifiutate."</string>
-<string name="details_video">"Video"</string>
+
 <string name="error_could_not_download">"Impossibile scaricare."</string>
 <string name="first_login_message">"Per usare il proprio account scegliere \"Esci\" nel menu"</string>
 <string name="early_access">"In anteprima"</string>
@@ -287,7 +287,7 @@ Procedere?"</string>
 <string name="pref_download_internal_storage_summary_off">"Gli apk vengono salvati nella memoria esterna, al percorso fornito sotto"</string>
 <string name="pref_use_tor">"Usa Tor"</string>
 <string name="pref_use_tor_summary">"Forza lo scaricamento attraverso Tor per aumentare la privacy. Richiede Orbot"</string>
-<string name="pref_category_proxy">"Proxy"</string>
+
 <string name="pref_proxy_enable">"Abilita proxy"</string>
 <string name="pref_proxy_type">"Tipo del proxy"</string>
 <string name="pref_proxy_host">"Host del proxy"</string>
@@ -296,7 +296,7 @@ Procedere?"</string>
 <string name="action_wishlist_add">"Aggiungi alla lista dei desideri"</string>
 <string name="action_wishlist">"Lista dei desideri"</string>
 <string name="action_ignore_this">"Ignora questo aggiornamento"</string>
-<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+
 <string name="details_exodus_tap_to_check">"Toccare per controllare"</string>
 <string name="details_exodus_searching">"ricerca in corso"</string>
 <string name="details_exodus_not_found">"non trovato"</string>
@@ -312,7 +312,7 @@ Procedere?"</string>
 <string name="details_new_permission">"Nuovo:"</string>
 <string name="list_empty_history">"Cronologia vuota"</string>
 <string name="action_history">"Cronologia"</string>
-<string name="dialog_message_virustotal_warning">"VirusTotal considera $1%d apk su %2%s come sospetti"</string>
+<string name="dialog_message_virustotal_warning">"VirusTotal considera %1$d apk su %2$s come sospetti"</string>
 <string name="dialog_button_virustotal_view_report">"Visualizza resoconto"</string>
 <string name="events_no_changes">"Nessun cambiamento menzionato dallo sviluppatore dell'app"</string>
 <string name="uninstalled">"Disinstallato"</string>

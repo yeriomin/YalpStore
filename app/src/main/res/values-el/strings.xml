@@ -312,20 +312,21 @@
 <string name="pref_exodus_summary_off">"Προβάλλεται ο δεσμός αναφοράς του Έξοντους"</string>
 <string name="details_to_fdroid">"Προβολή στο F-Droid"</string>
 <string name="details_instant_app">"Instant Εφαρμογή"</string>
-<string name="details_exodus_submitting">"submitting"</string>
-<string name="details_exodus_view">"view report"</string>
+
+
 <string name="details_new_permission">"Νέα:"</string>
-<string name="list_empty_history">"No history yet"</string>
-<string name="action_history">"History"</string>
-<string name="dialog_message_virustotal_warning">"%1$d out of %2$d VirusTotal engines consider this apk suspicious"</string>
-<string name="dialog_button_virustotal_view_report">"View report"</string>
-<string name="events_no_changes">"No changes mentioned by app developer"</string>
-<string name="uninstalled">"Uninstalled"</string>
-<string name="updated_from_to">"Updated: %1$s (%2$d) → %3$s (%4$d)"</string>
-<string name="action_new_account">"New account"</string>
-<string name="action_accounts">"Accounts"</string>
-<string name="download_manager_ERROR_DELTA_FAILED">"Delta patching failed. Try turning delta updates off."</string>
-<string name="download_manager_SPLITS_NOT_SUPPORTED">"The apk is split. Choose root or privileged installation method."</string>
-<string name="auth_empty">"Not logged in"</string>
-<string name="auth_built_in">"Built-in account"</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<string name="action_history">"ιστορικό"</string>
 </resources>

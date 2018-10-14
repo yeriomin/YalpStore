@@ -297,7 +297,7 @@
 <string name="action_wishlist_add">"加入願望清單"</string>
 <string name="action_wishlist">"願望清單"</string>
 <string name="action_ignore_this">"忽略此更新"</string>
-<string name="details_exodus">"Exodus Privacy: %1$s"</string>
+
 <string name="details_exodus_tap_to_check">"點擊查看"</string>
 <string name="details_exodus_searching">"搜尋中"</string>
 <string name="details_exodus_not_found">"找不到結果"</string>
@@ -322,10 +322,10 @@
 
 <!-- Fuzzy -->
 <string name="updated_from_to">"更新：%1$s (%2$d) → %3$s (%4$d)"</string>
-<string name="action_new_account">"New account"</string>
-<string name="action_accounts">"Accounts"</string>
-<string name="download_manager_ERROR_DELTA_FAILED">"Delta patching failed. Try turning delta updates off."</string>
-<string name="download_manager_SPLITS_NOT_SUPPORTED">"The apk is split. Choose root or privileged installation method."</string>
-<string name="auth_empty">"Not logged in"</string>
-<string name="auth_built_in">"Built-in account"</string>
+
+
+
+
+
+
 </resources>

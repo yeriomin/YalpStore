@@ -6,7 +6,7 @@
 <string name="list_line_2_updatable">"Actualizado el %1$s"</string>
 <string name="list_empty_updates">"No hay actualizaciones"</string>
 <string name="list_empty_search">"No se encontraron aplicaciones"</string>
-<string name="list_incompatible">"incompatible"</string>
+
 <string name="action_about">"Acerca de"</string>
 <string name="action_settings">"Ajustes"</string>
 <string name="action_logout">"Cerrar sesión"</string>
@@ -279,47 +279,48 @@ El proceso de conversión es imperfecto y específico para cada marca, así que 
 <string name="apps_by">"Aplicaciones de %1$s"</string>
 <string name="pref_message_fallback">"¿Intentar establecer otra carpeta (%1$s) como segunda opción?"</string>
 <string name="no_permissions">"No se usan permisos."</string>
-<string name="about_librepay_label">"Donate Liberapay:"</string>
-<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
+
+
 <string name="pref_download_internal_storage">"Descargar a almacenamiento interno"</string>
 <string name="pref_download_internal_storage_summary_on">"Más seguro, pero los apk no serán accesibles por el usuario"</string>
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+
 <string name="pref_use_tor">"Usar Tor"</string>
 <string name="pref_use_tor_summary">"Forzar el tráfico de descarga a través de Tor para mejorar la privacidad. Requiere Orbot"</string>
-<string name="pref_category_proxy">"Proxy"</string>
+
 <string name="pref_proxy_enable">"Habilitar proxy"</string>
-<string name="pref_proxy_type">"Proxy type"</string>
-<string name="pref_proxy_host">"Proxy host"</string>
-<string name="pref_proxy_port">"Proxy port"</string>
+
+
+
 <string name="action_wishlist_remove">"Quitar de la lista de deseos"</string>
 <string name="action_wishlist_add">"Añadir a lista de deseos"</string>
 <string name="action_wishlist">"Lista de deseos"</string>
 <string name="action_ignore_this">"Ignorar esta actualización"</string>
-<string name="details_exodus">"Exodus Privacy: %1$s"</string>
-<string name="details_exodus_tap_to_check">"tap to check"</string>
-<string name="details_exodus_searching">"searching"</string>
+
+
+
 <string name="details_exodus_not_found">"no encontrado"</string>
-<string name="details_exodus_found">"%1$s trackers"</string>
-<string name="pref_category_third_party">"Third party services"</string>
+
+
 <string name="pref_exodus">"Chequeo de privacidad en Exodus"</string>
-<string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
-<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
+
+
 <string name="details_to_fdroid">"Ver en F-Droid"</string>
 <string name="details_instant_app">"Aplicación instantánea"</string>
-<string name="details_exodus_submitting">"submitting"</string>
-<string name="details_exodus_view">"view report"</string>
+
+
 <string name="details_new_permission">"Nuevos:"</string>
-<string name="list_empty_history">"No history yet"</string>
-<string name="action_history">"History"</string>
-<string name="dialog_message_virustotal_warning">"%1$d out of %2$d VirusTotal engines consider this apk suspicious"</string>
-<string name="dialog_button_virustotal_view_report">"View report"</string>
-<string name="events_no_changes">"No changes mentioned by app developer"</string>
+
+
+
+
+
 <string name="uninstalled">"Desinstalado"</string>
 <string name="updated_from_to">"Actualizado: %1$s (%2$d) → %3$s (%4$d)"</string>
-<string name="action_new_account">"New account"</string>
-<string name="action_accounts">"Accounts"</string>
-<string name="download_manager_ERROR_DELTA_FAILED">"Delta patching failed. Try turning delta updates off."</string>
-<string name="download_manager_SPLITS_NOT_SUPPORTED">"The apk is split. Choose root or privileged installation method."</string>
-<string name="auth_empty">"Not logged in"</string>
-<string name="auth_built_in">"Built-in account"</string>
+
+
+
+
+
+
+<string name="action_history">"historial"</string>
 </resources>

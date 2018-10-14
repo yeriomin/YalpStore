@@ -6,7 +6,7 @@
 <string name="list_line_2_updatable">"Xubióse'l %1$s"</string>
 <string name="list_empty_updates">"Nun se precisen anovar aplicaciones"</string>
 <string name="list_empty_search">"Nun s'alcontraron aplicaciones"</string>
-<string name="list_incompatible">"incompatible"</string>
+
 <string name="action_about">"Tocante a"</string>
 <string name="action_settings">"Axustes"</string>
 <string name="action_logout">"Zarrar sesión"</string>
@@ -48,7 +48,7 @@ Calca en «Crear contraseña» pa redirixite a la páxina de creación de contra
 <string name="details_you_rated_this_app">"Valoresti esta aplicación:"</string>
 <string name="details_permissions">"Permisos:"</string>
 <string name="details_versionName">"Versión %1$s"</string>
-<string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
+
 <string name="details_download">"Baxar"</string>
 <string name="details_install">"Instalar"</string>
 <string name="details_downloading">"Baxando…"</string>
@@ -235,90 +235,90 @@ El procesu nun ye perfeutu y ye específicu pa cada preséu, asina que quiciabes
 <string name="pref_download_deltas">"Anovamientos delta"</string>
 <string name="pref_download_deltas_summary_off">"Báxase l'APK completa cada vegada"</string>
 <string name="pref_download_deltas_summary_on">"Namái se baxen los cambeos de los anovamientos"</string>
-<string name="testing_program_review_dialog_content_hint">"Enter feedback about the app"</string>
-<string name="delete">"Delete"</string>
-<string name="submit">"Submit"</string>
-<string name="done">"Done"</string>
-<string name="availability_restriction_carrier">"This item isn't available on your carrier."</string>
-<string name="availability_restriction_country">"This item isn't available in your country."</string>
-<string name="availability_restriction_country_or_carrier">"This item isn't available in your country or on your carrier."</string>
-<string name="availability_restriction_for_managed_account">"Your administrator has not given you access to this item."</string>
-<string name="availability_restriction_generic">"This item isn't available."</string>
-<string name="availability_restriction_hardware">"Your device isn't compatible with this item."</string>
-<string name="availability_restriction_hardware_app">"Your device isn't compatible with this version."</string>
-<string name="availability_restriction_hardware_app_ram_generic">"This app requires more RAM than what's available on your device."</string>
-<string name="availability_restriction_missing_permission">"Your administrator has not accepted permissions for this item."</string>
-<string name="availability_restriction_not_in_group">"You're not in the targeted group for this item."</string>
-<string name="flag_graphic_violence">"Graphic violence"</string>
-<string name="flag_harmful_prompt">"Describe the harm caused to your device or data:"</string>
-<string name="flag_harmful_to_device">"Harmful to device or data"</string>
-<string name="flag_hateful_content">"Hateful or abusive content"</string>
-<string name="flag_improper_content_rating">"Improper content rating"</string>
-<string name="flag_other_concern_prompt">"Describe objection"</string>
-<string name="flag_other_objection">"Other objection"</string>
-<string name="flag_page_description">"The reason you find this content or app objectionable:"</string>
-<string name="flag_pharma_content">"Illegal prescription or other drug"</string>
-<string name="flag_sexual_content">"Sexual content"</string>
-<string name="flag_impersonation_copycat">"Copycat or impersonation"</string>
-<string name="flagging_title">"Flag as inappropriate"</string>
-<string name="content_flagged">"Objection submitted."</string>
-<string name="list_app_blacklisted">"Blacklisted"</string>
-<string name="list_app_whitelisted">"Whitelisted"</string>
-<string name="action_filter">"Filter"</string>
-<string name="action_filter_system_apps">"System apps"</string>
-<string name="action_filter_apps_with_ads">"Apps with ads"</string>
-<string name="action_filter_paid_apps">"Paid apps"</string>
-<string name="action_filter_gsf_dependent_apps">"Apps using GSF"</string>
-<string name="action_filter_category">"Category: %1$s"</string>
-<string name="action_filter_rating">"Rating: %1$s"</string>
-<string name="action_filter_downloads">"Downloads: %1$s"</string>
-<string name="pref_auto_whitelist">"Auto whitelist"</string>
-<string name="pref_auto_whitelist_summary_on">"Apps installed by Yalp Store are automatically whitelisted"</string>
-<string name="pref_auto_whitelist_summary_off">"You need to whitelist apps manually"</string>
-<string name="apps_by">"Apps by %1$s"</string>
-<string name="pref_message_fallback">"Attempt to set a fallback directory (%1$s)?"</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <string name="no_permissions">"Nun s\'usaron permisos."</string>
-<string name="about_librepay_label">"Donate Liberapay:"</string>
-<string name="notification_file_verification_failed">"File seems corrupt. Try re-downloading."</string>
-<string name="pref_download_internal_storage">"Download to internal storage"</string>
-<string name="pref_download_internal_storage_summary_on">"More secure, but the apks are not user accessible"</string>
-<string name="pref_download_internal_storage_summary_off">"Apks are downloaded to the external storage path provided below"</string>
+
+
+
+
+
 <string name="pref_use_tor">"Usar Tor"</string>
 <string name="pref_use_tor_summary">"Forciar el tráficu de descarga per Tor pa mayor intimidá. Rique Orbot"</string>
-<string name="pref_category_proxy">"Proxy"</string>
-<string name="pref_proxy_enable">"Enable proxy"</string>
-<string name="pref_proxy_type">"Proxy type"</string>
-<string name="pref_proxy_host">"Proxy host"</string>
-<string name="pref_proxy_port">"Proxy port"</string>
-<string name="action_wishlist_remove">"Remove from wishlist"</string>
-<string name="action_wishlist_add">"Add to wishlist"</string>
-<string name="action_wishlist">"Wishlist"</string>
+
+
+
+
+
+
+
+
 <string name="action_ignore_this">"Inorar esti anovamientu"</string>
-<string name="details_exodus">"Exodus Privacy: %1$s"</string>
-<string name="details_exodus_tap_to_check">"tap to check"</string>
-<string name="details_exodus_searching">"searching"</string>
-<string name="details_exodus_not_found">"not found"</string>
-<string name="details_exodus_found">"%1$s trackers"</string>
-<string name="pref_category_third_party">"Third party services"</string>
-<string name="pref_exodus">"Exodus Privacy check"</string>
-<string name="pref_exodus_summary_on">"Tracker count is displayed on details page automatically"</string>
-<string name="pref_exodus_summary_off">"Exodus report link is displayed"</string>
-<string name="details_to_fdroid">"View in F-Droid"</string>
-<string name="details_instant_app">"Instant app"</string>
-<string name="details_exodus_submitting">"submitting"</string>
-<string name="details_exodus_view">"view report"</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <string name="details_new_permission">"Nuevo:"</string>
-<string name="list_empty_history">"No history yet"</string>
-<string name="action_history">"History"</string>
-<string name="dialog_message_virustotal_warning">"%1$d out of %2$d VirusTotal engines consider this apk suspicious"</string>
-<string name="dialog_button_virustotal_view_report">"View report"</string>
-<string name="events_no_changes">"No changes mentioned by app developer"</string>
-<string name="uninstalled">"Uninstalled"</string>
-<string name="updated_from_to">"Updated: %1$s (%2$d) → %3$s (%4$d)"</string>
-<string name="action_new_account">"New account"</string>
-<string name="action_accounts">"Accounts"</string>
-<string name="download_manager_ERROR_DELTA_FAILED">"Delta patching failed. Try turning delta updates off."</string>
-<string name="download_manager_SPLITS_NOT_SUPPORTED">"The apk is split. Choose root or privileged installation method."</string>
-<string name="auth_empty">"Not logged in"</string>
-<string name="auth_built_in">"Built-in account"</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>

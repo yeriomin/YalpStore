@@ -46,8 +46,8 @@ Tippe auf \"Passwort erstellen\", um auf die Seite zum Erstellen eines Passworte
 <string name="details_rate_this_app">"Bewerte diese App:"</string>
 <string name="details_you_rated_this_app">"Du bewertetest diese App:"</string>
 <string name="details_permissions">"Berechtigungen:"</string>
-<string name="details_versionName">"Version %1$s"</string>
-<string name="details_versionName_updatable">"Version %1$s → %2$s"</string>
+
+
 <string name="details_download">"Herunterladen"</string>
 <string name="details_install">"Installieren"</string>
 <string name="details_downloading">"Herunterladen…"</string>
@@ -136,7 +136,7 @@ Das Herunterladen von willkürlichen Versionen der App wird vom Google Play Stor
 <string name="pref_device_to_pretend_to_be_default">"Deine tatsächlichen Gerätedaten"</string>
 <string name="pref_device_to_pretend_to_be_toast">"Diese Änderung wird angewendet, sobald du dich neu anmeldest"</string>
 <string name="pref_category_updates">"Aktualisierungen"</string>
-<string name="pref_category_installation">"Installation"</string>
+
 <string name="pref_category_spoofing">"Verschleierung"</string>
 <string name="pref_category_ui">"Anzeige"</string>
 <string name="details_installing">"Wird installiert…"</string>
@@ -216,7 +216,7 @@ Fortfahren?"</string>
 <string name="thank_you">"Danke!"</string>
 <string name="list_updating">"Wird aktualisiert…"</string>
 <string name="error_invalid_device_definition">"Gerätebeschreibung abgelehnt"</string>
-<string name="details_video">"Video"</string>
+
 <string name="error_could_not_download">"Konnte nicht heruntergeladen werden"</string>
 <string name="first_login_message">"Um dein eigenen Account zu verwenden, wähle Abmelden im Menü."</string>
 <string name="early_access">"Beta"</string>
@@ -262,14 +262,14 @@ Fortfahren?"</string>
 <string name="content_flagged">"Beanstandung wurde gesendet."</string>
 <string name="list_app_blacklisted">"Auf der Blacklist"</string>
 <string name="list_app_whitelisted">"Auf der Whitelist"</string>
-<string name="action_filter">"Filter"</string>
+
 <string name="action_filter_system_apps">"System-Apps"</string>
 <string name="action_filter_apps_with_ads">"Apps mit Werbung"</string>
 <string name="action_filter_paid_apps">"Bezahlte Apps"</string>
 <string name="action_filter_gsf_dependent_apps">"GSF-abhängige Apps"</string>
 <string name="action_filter_category">"Kategorie: %1$s"</string>
 <string name="action_filter_rating">"Bewertung: %1$s"</string>
-<string name="action_filter_downloads">"Downloads: %1$s"</string>
+
 <string name="pref_auto_whitelist">"Automatische Whitelist"</string>
 <string name="pref_auto_whitelist_summary_on">"Apps, die via Yalp Store installiert wurden, werden automatisch auf die Whitelist gesetzt"</string>
 <string name="pref_auto_whitelist_summary_off">"Du musst Apps manuell auf die Whitelist setzen"</string>
@@ -316,8 +316,9 @@ Fortfahren?"</string>
 <string name="updated_from_to">"Aktualisiert: %1$s (%2$d) → %3$s (%4$d)"</string>
 <string name="action_new_account">"Neues Konto"</string>
 <string name="action_accounts">"Konten"</string>
-<string name="download_manager_ERROR_DELTA_FAILED">"Delta patching failed. Try turning delta updates off."</string>
-<string name="download_manager_SPLITS_NOT_SUPPORTED">"The apk is split. Choose root or privileged installation method."</string>
+
+
 <string name="auth_empty">"Nicht angemeldet"</string>
 <string name="auth_built_in">"Integriertes Konto"</string>
+<string name="details_video">"Film"</string>
 </resources>
