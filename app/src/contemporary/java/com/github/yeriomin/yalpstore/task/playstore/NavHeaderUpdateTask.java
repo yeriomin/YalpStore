@@ -54,6 +54,9 @@ public class NavHeaderUpdateTask extends UserProfileTask {
     @Override
     protected void onPostExecute(Void result) {
         super.onPostExecute(result);
+        if (null == avatarViewRef.get() || null == userNameViewRef.get() || null == deviceViewRef.get()) {
+            return;
+        }
         if (YalpStoreApplication.user.isLoggedIn()) {
             Map<String, String> devices = new SpoofDeviceManager(context).getDevicesShort();
             if (!TextUtils.isEmpty(YalpStoreApplication.user.getDeviceDefinitionName())
