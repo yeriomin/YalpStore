@@ -19,6 +19,12 @@
 
 package com.github.yeriomin.yalpstore;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.text.TextUtils;
+
+import java.lang.reflect.Method;
+
 public class ThemeManager extends ThemeManagerAbstract {
 
     protected int getThemeLight() {
@@ -27,6 +33,16 @@ public class ThemeManager extends ThemeManagerAbstract {
 
     protected int getThemeDark() {
         return R.style.YalpStoreThemeDark;
+    }
+
+    @Override
+    protected int getThemeDefault(Context context) {
+        int themeId = super.getThemeDefault(context);
+        if (0 == themeId && isMiui()) {
+            return getThemeDark();
+        } else {
+            return themeId;
+        }
     }
 
     @Override
@@ -42,5 +58,23 @@ public class ThemeManager extends ThemeManagerAbstract {
     @Override
     protected int getDialogThemeDark() {
         return R.style.YalpStoreDialogStyleDark;
+    }
+
+    private boolean isMiui() {
+        return !TextUtils.isEmpty(getSystemProperty("ro.miui.ui.version.code"));
+    }
+
+    /**
+     * Used for pre-lollipop devices
+     */
+    @SuppressLint("PrivateApi")
+    private String getSystemProperty(String propertyName) {
+        try {
+            Class<?> c = Class.forName("android.os.SystemProperties");
+            Method get = c.getMethod("get", String.class);
+            return (String) get.invoke(c, propertyName);
+        } catch (Throwable e) {
+            return "";
+        }
     }
 }

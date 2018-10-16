@@ -75,7 +75,7 @@ abstract public class ThemeManagerAbstract {
         }
     }
 
-    private int getThemeDefault(Context context) {
+    protected int getThemeDefault(Context context) {
         if (isAmazonTv(context)) {
             return getThemeDark();
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
