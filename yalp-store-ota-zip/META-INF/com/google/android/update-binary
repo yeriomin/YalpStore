@@ -26,46 +26,50 @@ echo -n -e 'ui_print Installing Yalp Store as a privileged app...\n' > /proc/sel
 APK_FILENAME=${PACKAGE_NAME}.apk
 ADDOND=81-${PACKAGE_NAME}.sh
 PERMISSIONS_XML=privapp-permissions-${PACKAGE_NAME}.xml
+SYSTEM="/system"
+
+mount_system() {
+  mount /system
+
+  # Modern devices use /system as root ("/")
+  system_as_root=`getprop ro.build.system_root_image`
+  if [ "$system_as_root" == "true" ]; then
+    SYSTEM="/system/system"
+  fi
+}
 
 cd /tmp
 mkdir ${PACKAGE_NAME}
 cd ${PACKAGE_NAME}
 unzip -o "$3"
-if [ "$?" -ne "0" ]
-then
-  cp /cache/${APK_FILENAME} .
-  cp /cache/${ADDOND} .
-  cp /cache/${PERMISSIONS_XML} .
-fi
 
-mount /system
-rm -f /system/app/${PACKAGE_NAME}*
-rm -f /system/app/${PACKAGE_NAME}*/*
-rm -f /system/priv-app/${PACKAGE_NAME}*
-rm -f /system/priv-app/${PACKAGE_NAME}*/*
+mount_system
 
-BUILD_VERSION_SDK="$(grep -F ro.build.version.sdk /system/build.prop)"
+rm -rf ${SYSTEM}/app/${PACKAGE_NAME}*
+rm -rf ${SYSTEM}/priv-app/${PACKAGE_NAME}*
+
+BUILD_VERSION_SDK="$(grep -F ro.build.version.sdk ${SYSTEM}/build.prop)"
 BUILD_VERSION_SDK_INT="${BUILD_VERSION_SDK#*=}"
 if [ "${BUILD_VERSION_SDK_INT}" -ge 21 ]
 then
-  PACKAGE_DIR="/system/priv-app/${PACKAGE_NAME}"
+  PACKAGE_DIR="${SYSTEM}/priv-app/${PACKAGE_NAME}"
   mkdir ${PACKAGE_DIR}
   chmod 755 ${PACKAGE_DIR}
 elif [ "${BUILD_VERSION_SDK_INT}" -ge 19 ]
 then
-  PACKAGE_DIR="/system/priv-app"
+  PACKAGE_DIR="${SYSTEM}/priv-app"
 else
-  PACKAGE_DIR="/system/app"
+  PACKAGE_DIR="${SYSTEM}/app"
 fi
 
 cp ${APK_FILENAME} ${PACKAGE_DIR}
 chmod 644 ${PACKAGE_DIR}/${APK_FILENAME}
 
-cp ${ADDOND} /system/addon.d/
+cp ${ADDOND} ${SYSTEM}/addon.d/
 
 if [ "${BUILD_VERSION_SDK_INT}" -ge 26 ]
 then
-    PERMISSIONS_DIR="/system/etc/permissions"
+    PERMISSIONS_DIR="${SYSTEM}/etc/permissions"
 	mkdir ${PERMISSIONS_DIR}
 	chmod 755 ${PERMISSIONS_DIR}
 	cp ${PERMISSIONS_XML} ${PERMISSIONS_DIR}
