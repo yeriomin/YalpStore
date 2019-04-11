@@ -5,7 +5,7 @@ LOCAL_MODULE := privapp-permissions-YalpStore.xml
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/permissions
-LOCAL_SRC_FILES := $(LOCAL_PATH)/yalp-store-ota-zip/$(LOCAL_MODULE)
+LOCAL_SRC_FILES := yalp-store-ota-zip/$(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
@@ -17,13 +17,13 @@ LOCAL_PACKAGE_NAME := YalpStore
 yalpstore_root  := $(LOCAL_PATH)
 yalpstore_dir   := app
 yalpstore_out   := $(OUT_DIR)/target/common/obj/APPS/$(LOCAL_MODULE)_intermediates
-yalpstore_build := $(yalpstore_root)/$(yalpstore)/build
-yalpstore_apk   := build/outputs/apk/release/app-release-unsigned.apk
+yalpstore_build := $(yalpstore_root)/$(yalpstore_dir)/build
+yalpstore_apk   := build/outputs/apk/legacy/release/app-legacy-release-unsigned.apk
 
 $(yalpstore_root)/$(yalpstore_dir)/$(yalpstore_apk):
 	rm -Rf $(yalpstore_build)
 	mkdir -p $(yalpstore_out)
-	ln -s $(yalpstore_out) $(yalpstore_build)
+	ln -s $$(pwd)/$(yalpstore_out) $(yalpstore_build)
 	echo "sdk.dir=$(ANDROID_HOME)" > $(yalpstore_root)/local.properties
 	cd $(yalpstore_root) && git submodule update --recursive --init
 	cd $(yalpstore_root)/$(yalpstore_dir) && JAVA_TOOL_OPTIONS="$(JAVA_TOOL_OPTIONS) -Dfile.encoding=UTF8" ../gradlew assembleLegacyRelease
