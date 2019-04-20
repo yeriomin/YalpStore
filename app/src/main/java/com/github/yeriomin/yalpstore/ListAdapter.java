@@ -28,15 +28,20 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 
+import com.github.yeriomin.yalpstore.view.AppBadge;
 import com.github.yeriomin.yalpstore.view.ListItem;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ListAdapter extends ArrayAdapter<ListItem> {
 
     private int resourceId;
     private LayoutInflater inflater;
     private Animation removeAnimation;
+
+    private Map<View, ListItem> viewToListItem = new HashMap<>();
 
     public ListAdapter(Context context, int resourceId) {
         super(context, resourceId);
@@ -50,7 +55,12 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
         View view = null == convertView ? inflater.inflate(resourceId, parent, false) : convertView;
         ListItem listItem = getItem(position);
         if (null != listItem && null != view) {
+            ListItem oldItemForThisView = viewToListItem.get(view);
+            if (oldItemForThisView != null) {
+                oldItemForThisView.setView(null);
+            }
             listItem.setView(view);
+            viewToListItem.put(view, listItem);
             listItem.draw();
         }
         return view;
@@ -75,6 +85,14 @@ public class ListAdapter extends ArrayAdapter<ListItem> {
         if (null == listItem || null == listItem.getView()) {
             return;
         }
+
+        if (listItem instanceof AppBadge) {
+            if (viewToListItem.get(listItem.getView()) != listItem) {
+                listItem.setView(null);
+                return;
+            }
+        }
+
         removeAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
