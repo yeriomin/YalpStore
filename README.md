@@ -20,7 +20,7 @@ Yalp Store can be installed as a system app to gain background package installat
 ## Why would I use it?
 If you are content with Google Play Store app, you will not need this app.
 
-The point of Yalp Store is to be small and independent from Google Services Framework. As time passed, Google Services Framework and Google Play Store apps grew in size, which made them almost too big for old phones (Nexus One has 150Mb memory available for apps, half of it would be taken by Google apps). Another reason to use Yalp Store is if you frequently flash experimental ROMs. This often breaks gapps and even prevents their reinstallation. In this situation Yalp will still work.
+The point of Yalp Store is to be small and independent from Google Services Framework. As time passed, Google Services Framework and Google Play Store apps grew in size, which made them almost too big for old phones (Nexus One has 150Mb memory available for apps, half of it would be taken by Google apps). Another reason to use Yalp Store is if you frequently flash experimental ROMs. This often breaks gapps and even prevents their reinstallation. In this situation Yalp will still work. The other reason is if you come from China, the network is not available to access foreign website, due to the [Great_Firewall](https://en.wikipedia.org/wiki/Great_Firewall).
 
 ## How does it work?
 Yalp Store uses the same (protobuf) API the android Play Store app uses. It downloads apks **directly** from Google servers.
