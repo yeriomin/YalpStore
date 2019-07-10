@@ -25,7 +25,7 @@ android {
         return stdout.toString().trim()
     }
     defaultConfig {
-        applicationId "com.github.yeriomin.yalpstore"
+        applicationId "com.github.kiliakin.yalpstore"
         minSdkVersion 5
         targetSdkVersion 28
         versionCode 45
@@ -37,7 +37,7 @@ android {
         debug {
             versionNameSuffix "-debug"
             applicationIdSuffix ".${getCurrentFlavor()}.debug"
-            resValue "string", "app_name", "Yalp ${getCurrentFlavor()} debug"
+            resValue "string", "app_name", "Yalp ${getCurrentFlavor()} debug (fork)"
         }
         release {
             shrinkResources true
@@ -70,7 +70,7 @@ dependencies {
     implementation 'info.guardianproject.netcipher:netcipher:2.0.0-beta1'
     implementation 'commons-net:commons-net:3.5'
     implementation 'com.nothome:javaxdelta:2.0.1'
-    debugImplementation ('com.github.yeriomin:play-store-api:master-SNAPSHOT') { changing = true }
-    releaseImplementation 'com.github.yeriomin:play-store-api:0.44.2'
+    debugImplementation ('com.github.kiliakin:play-store-api:master-SNAPSHOT') { changing = true }
+    releaseImplementation 'com.github.kiliakin:play-store-api:0.50'
     implementation 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }

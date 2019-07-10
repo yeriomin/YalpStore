@@ -34,6 +34,7 @@ import java.util.List;
 public class AppListIterator implements Iterator {
 
     private Filter filter;
+    private List<String> relatedTags = new ArrayList<>();
     protected com.github.yeriomin.playstoreapi.AppListIterator iterator;
 
     public AppListIterator(com.github.yeriomin.playstoreapi.AppListIterator iterator) {
@@ -52,7 +53,18 @@ public class AppListIterator implements Iterator {
     public List<App> next() {
         List<App> apps = new ArrayList<>();
         for (DocV2 details: iterator.next()) {
-            addApp(apps, AppBuilder.build(details));
+            if (details.getDocType() == 53)
+                relatedTags.add(details.getTitle());
+            else if (details.getDocType() == 1) {
+                addApp(apps, AppBuilder.build(details));
+            } else {
+                /*
+                 * This one is either a movie, music or book, will exploit it at some point of time
+                 * Movies = 6, Music = 2, Audio Books = 64
+                 */
+                continue;
+            }
+            //addApp(apps, AppBuilder.build(details));
         }
         return apps;
     }
