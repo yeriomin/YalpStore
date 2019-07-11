@@ -43,7 +43,7 @@ android {
             shrinkResources true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            resValue "string", "app_name", "Yalp Store"
+            resValue "string", "app_name", "Yalp Store (fork)"
         }
     }
     flavorDimensions "minApi"
