@@ -10,7 +10,7 @@ android:
   - build-tools-28.0.3
   - android-28
 before_install:
-  - openssl aes-256-cbc -K $encrypted_a12ad885c361_key -iv $encrypted_a12ad885c361_iv -in yeriomin-keystore.jks.enc -out yeriomin-keystore.jks -d
+  - openssl aes-256-cbc -K $encrypted_2e90f803422c_key -iv $encrypted_2e90f803422c_iv -in kiliakin-keystore.jks.enc -out kiliakin-keystore.jks -d
   - yes | sdkmanager "platforms;android-28"
 install:
   - sudo apt-get update && sudo apt-get --assume-yes install zip
@@ -18,14 +18,14 @@ install:
   - git fetch --unshallow --tags
 env:
   global:
-  - secure: FQeZo97VDMs0jneEeHJYJ5pKGr49s4O3QnCqv6D972KvuvZRXila4rIP/dodVXHlamOaQ9HJt5N/BK/Jk37Kwy795s/dNq49yetZ3Fay+YsI1Wb2WbKLMqc6iiOwwQJKcRTpBG44ycEWntLTpo8sQVoAsHvM/81D8+2MSGt6Eo4q5zVef/QQlCW1OOiUKq6gibzELqt+0NwoJmnc33snWFCr3mTVBmbq0qUx1VDVuXK4b8vaTp1XYVYH5FfZdDz2KP8eM+WhoZH8BoDvpnFFx8vzC4uDkFe1q/tAd6mO8aB6qHUbJMa3CJ8rPE0CHJczdmvFlaz+tm1Vz0KcxYk7HIcm5S4sM5iFwrRV+EE5Ztipj2n2yw9JEL3WtTe4mIuZ40Dl6iqy+MOmP/kZXOhhHbXPuhkG/sWNY3LfkyIl5cU0qet8oM48qskS8S7uWHQ/e/pgcpiPjqOL/FBLo1aHuqq7sXvO8F7yqTeE/hEwKCEADsK8R1vqoup9exCIW93Od1IyDKkIaFXXNsu1q7/WdtnA4AscfoqW+LvcpGdM/rMIy3QlfiECAO7c3Kok6GD/dctb9pmFI02vHJlJnWi9mNPJOQEWcsBIl2swmD2v8MmUL2ncdYcgB8N32pCztuKW8w04dzfdFDCWBB6oBB21WN/TJStGBA/6JpY0G8IxuiI=
-  - secure: kBDjXk/PyOpYLdngyrRuEMaGM85m41fowGgTi9LxNPxXb/mfoq42Dwyet+KRRD5/zFwJ8ZHCVpdyF/wieyS7EXk3o9KoK3M7znhB3YNQTKvUuYLxJxBiJqSxQOPIj8tMwLrY5xw2iNmJqpdKneFlJ6euyy/sSAj/EmKd3IpxQIyCfJJIlOO8CwbtAi3CBGk+RpxTckrREQWOulj5ZsLgAMJLtd3xvYAB2sp9R0jGfDPQBbKWoElKQPn04CR2s9otsmFIzChn+O86eiNepCrEl2C0kajzL8c9OWOui4xMWl3xaUucMvPCZjP2vsloVozMOj0ODWmNi3RHLp2vs8pL7YuXsaylisP/HWMEEkB7t6/0dFXvtCB42yYWex8cn9NSL9hVaZEeXSf+7b+LDzhQiSLRvLfey38Li/0eROByM4pVPFD59foJT+AqlE6jtDqBG3EvlkiW9kxbT5QkYKfiXJg2qq8zgmAXrTZT7mYhDPeMVq4W5QJofq+f+vDGr6n2aJEFz+tMgWiNPiE0Qjdzt0YAKCDSs8sMHLZ/Vay22DBXOLjdja03qCWwmzl4wDN2tL5Hj58a88lNJy94nVEkXavupZ6KVNaE0fhj8F/8z2U/tp+7/MOZ8oB7Ue+hfNrr11e5w+Ex8NsN7/Ir1S70pdp/taPwvgzVoWN+evLkip8=
+  - secure: "umP9qcqVU1f0EwWT09ZYMKaapG6D52sa6AZXs8fi9A+UPjmtgCzTEQay3h29RILpDfXSfFs74++SJcA0n9VCdL+8iVRJDYzjaV7OsOkwYVo76C0NjL4fCy/7vwVQ3ywIs0QnRzwMHAMYl2/ofAaDUFGTTlnkaIlhmpBrjMwJHbr7NxJiHCx354o06ygXEbRnI+Zb6IPxp5HY0yiCfPS29+SJpOTstc40q65D9b8upjEWX1okWIJxaflmqV6VMzhQf7ay3YA94s1vfOUu1tlqRs2hIbGt/7hTyj0LpnroV+s1o1lAuw/OltXieAHWEIHCOgd8fYH8Zv/1ZA6y2+s/SMTVd/4GfxKHSe2I1gQSdXmu8YdXg4pqFi2LMSPgVC7kF1rjiYOL/tk0NLjUeeyjxnjEMFnIqKTiVfLQ9SgRiy/J9a97ZWjPDU4PTBWw0Eqdynr2F2lbEQVvEpFkGtIBTTfAk0PhAHtW6/mA4ymDVWOimV1pWLG9oZWex2dVG1MqRbo6OoHsasFpGrYyP8Tyn/NSq6ylGP/S+73O4xgCgAbEs6ICSmmOUcKkUUjXeNnnRyNJc0ABf4db8CeRKd7XPy5Lamk3jfYTfKqCKTFxbnqBi902B8GGz56iOJIcuikDPWlW8CWOIdxZcu1FIGYrljPBaGfKVjQGC5M2UaHwaYA="
+  - secure: "k+fR2L3L4fYjhB6zW6l9glYhQQ8sBSZVslwRikFYK/QHkMSJcYTd3FSXYeqsSXM8Cc//ZQ+2mD14ixQ9kpr/rOr3XzYjcdCo4Rsx+/PmWqiUnblcrLvZxs4ddS/MNwcwCaben8coRvIUdDpvJpJ+tVkauPj+Ac7ZBFnjDeSG+42PCbol4VBbg47RQPwPCNGqcnUsn5vS1C1Rm3TjHb/v23+b5JLJ55e1kovtRCX5c57+WTTCv99kmBYWUGTv2u5AQzFTma3PhPb/lZHmjuuOJdQ1Ig3hjtikKlpqJTU4Aya2wG5i6I1lkhvVaAptsfQ4e8aY8vlqWbD6HFji6Dn3m3e7JxH22LEunEUo0xbn0Xbuas/UUuOGF8+hU+eXoyCedVyiR3FxaoX4i2nPBbtEHu7TBbVG61gfhSSoaX2n0ulpjpFWGemn8EbCsZ0tRoaoEP2FDe6S2RWMRWUjRK/GC++FXLFV4XGxxi1DDXqJZWuYYyEV1CdZofx9QScPjM73XoQY3iE4I3Ajdn9UftoXt7/qcj31d5QllCBJmih2u9bmXJ+vxznJi6M2uEdQ5Y9LfBs/Ck6qDiwZrEqo2YK6yyWBsnfZTj/wM5ozXecvj42mWbkRX2lWk24qUBhE+yAK8ro/g5IDa1EEWVMuAMGageEcw6MuE23fXDy05eu2AVs="
 before_deploy:
   - export VERSION_CODE=`echo $TRAVIS_TAG | cut -d"." -f2`
-  - export APK_NAME=com.github.yeriomin.yalpstore_$VERSION_CODE.apk
-  - export OTA_NAME=yalp-store-ota-$VERSION_CODE.zip
+  - export APK_NAME=com.github.yeriomin.yalpstore.fork_$VERSION_CODE.apk
+  - export OTA_NAME=yalp-store-fork-ota-$VERSION_CODE.zip
   - cd app/build/outputs/apk/legacy/release/
-  - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $TRAVIS_BUILD_DIR/yeriomin-keystore.jks -storepass $storepass -keypass $keypass app-legacy-release-unsigned.apk AndroidKey
+  - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $TRAVIS_BUILD_DIR/kiliakin-keystore.jks -storepass $storepass -keypass $keypass app-legacy-release-unsigned.apk AndroidKey
   - jarsigner -verify app-legacy-release-unsigned.apk
   - $ANDROID_HOME/build-tools/28.0.3/zipalign -v 4 app-legacy-release-unsigned.apk $APK_NAME
   - cp $APK_NAME $TRAVIS_BUILD_DIR/yalp-store-ota-zip/YalpStore.apk
@@ -33,10 +33,10 @@ before_deploy:
   - cd $TRAVIS_BUILD_DIR/yalp-store-ota-zip
   - zip -r $TRAVIS_BUILD_DIR/$OTA_NAME *
   - cd $TRAVIS_BUILD_DIR
-  - export CONTEMPORARY_APK_NAME=com.github.yeriomin.yalpstore.contemporary_$VERSION_CODE.apk
-  - export CONTEMPORARY_OTA_NAME=yalp-store-ota-contemporary-$VERSION_CODE.zip
+  - export CONTEMPORARY_APK_NAME=com.github.yeriomin.yalpstore.fork.contemporary_$VERSION_CODE.apk
+  - export CONTEMPORARY_OTA_NAME=yalp-store-fork-ota-contemporary-$VERSION_CODE.zip
   - cd app/build/outputs/apk/contemporary/release/
-  - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $TRAVIS_BUILD_DIR/yeriomin-keystore.jks -storepass $storepass -keypass $keypass app-contemporary-release-unsigned.apk AndroidKey
+  - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $TRAVIS_BUILD_DIR/kiliakin-keystore.jks -storepass $storepass -keypass $keypass app-contemporary-release-unsigned.apk AndroidKey
   - jarsigner -verify app-contemporary-release-unsigned.apk
   - $ANDROID_HOME/build-tools/28.0.3/zipalign -v 4 app-contemporary-release-unsigned.apk $CONTEMPORARY_APK_NAME
   - cp $CONTEMPORARY_APK_NAME $TRAVIS_BUILD_DIR/yalp-store-ota-zip/YalpStore.apk
@@ -47,7 +47,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key:
-    secure: mJRRKJLGtbEc5s6VKq4bqbDRLn6mpjJ2e+9IjtMJUT+WuxtjEx2aCvHLVSmG0gJGwvbBhyVShkqIQYSu0NNx98O7n8ePy9cxRWmsuhbwAdMNLG3MuT+HFVR2VVbRh4aZvUgFKbbob1B4P1WC2+6+C1i/m42jz0XnNCVpwCfevEhYxeGtbSOWDSguDeAs/YYb3kpVSNvUKRdTEMYY1zETuhmt5AoPSBfkraffo/m6YPy7Kt0nZkFjjqA5yObF1JDROQBdj/U9qV651X8c9hQfaH/n0yIbPrPGnkAliCW0IBw42ifVsH2pQcPMUzJ/ZPJtKcQMOR6h7lO6iYpbCZUw3tgHXBNYSGtNzVNC3oOwg0Or0rSkcMz4wdRDktietxxTsvOhObrJubglY2q58d6ejZvf37ronCsDzkaB8TNNSSLCADP7hvFhAFfHQsC1WzVQa3orJAyjc981LNX4BGdc68vXIzfkEkJpOFmTWoQiHXbrB0gtpzJGKrclc5DQ9IQHmqU1/iMZf+3vasGNwsA9Ro6k98/HrhKTC+oh9ygI5oNjMhgZ3JcJO3r9xEhmsKNuI9jkeEs4WhN4CLyp6ZgnqgLbdGF0LjbTx2z4Emi3oyAVXB+VV3JshRljXsAvMNYFV3eqLKK9ZYIHnWvxP+cgzvZnAc4vV1Hx55VjhjcqqFc=
+    secure: "hfFqYlfRwsM9a1LlZoJaHg8Gt/pCFmN226vCg35znciDi6iSXAfg4TpYXaS7Jv6WfPSZU1ZQyGXevQoKlEtJsb02fVaBCr+WuLYrbqPTJKiQCGFo9ABxzke3KzYDXj8tbUC63peU+8GQpe94QUmH19KHiSYifMTZgZP5UVAb6XAKQaARqls7ZWiL0k+8Gpb1h5d4QgiwA+QmL0D87Za2xfjkGd+D16Ux6tugeWh/VIvPhK3+6mz6WT3RIMsvK1UPo7CuyW0h5lsxIGcdgBpXvhN8HHF2jjbu6h6UDsmA4VQwptPdfmC4upgpsCvnusntaq7/ld6Uc5eC+cKPiylOnAvdPKUPD9Wp1iFTlA6KIQ2Gcua3z3EGiMStOmiyeNuQuuQtc95XKkaU24L6wKOyE+SjbDQDuJuoR1GKOlG3bhNvQ7cb7cbK7YiJn6m2YCeog9SaRW4/ZaQ56/dE7HBfsBTYRH0uqJdr/RNbkqLAm3QNSw+hx2LmZIyBKvUNBl7akDRZ6/Sa4GLTKEMBOf9//7QQlEBiKF5etvxUSpq08e43D4qsA8y/lL6+iivFpSL9Aldr8DEFA7yObmrAsLNF95e4M1MkxeeSxZH274FUdkEmBgMKAia4b0Y0+F20tPcnnQ6FBFg33f+WuoZ7jbFML5xqOCxHjVVFDhfnUE54rvg="
   file:
     - $OTA_NAME
     - $APK_NAME
@@ -57,6 +57,6 @@ deploy:
   on:
     all_branches: true
     tags: true
-    repo: yeriomin/YalpStore
+    repo: kiliakin/YalpStore
 notifications:
   email: false
