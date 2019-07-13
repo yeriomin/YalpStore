@@ -1,12 +1,5 @@
-# Yalp Store [![codebeat badge](https://codebeat.co/badges/c18f32ef-bf28-4948-8156-9a52e50e121c)](https://codebeat.co/projects/github-com-yeriomin-yalpstore) [![translation](https://img.shields.io/badge/translation-93%25-green.svg)](https://poeditor.com/join/project/LUPUijv2Cs) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/YalpStore/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+# Yalp Store [![](https://jitpack.io/v/kiliakin/YalpStore.svg)](https://jitpack.io/#kiliakin/YalpStore)
 
-<a href="https://f-droid.org/repository/browse/?fdid=com.github.yeriomin.yalpstore" target="_blank">
-  <img src="https://f-droid.org/badge/get-it-on.png" height="80"/>
-</a>
-<br/>
-<a href="https://poeditor.com/join/project/LUPUijv2Cs" target="_blank">
-  <img src="https://poeditor.com/public/images/logo_small.png" />
-</a>
 
 ## What does it do?
 Yalp Store lets you download apps from Google Play Store **as apk files**. It can search for **updates** of installed apps and lets you **search** for other apps. Yalp saves downloaded apks to your default download folder. Other features include browsing categories, viewing and leaving reviews, black/whitelisting apps for updates, filtering apps by being free/paid and containing/not containing ads.
