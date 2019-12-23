@@ -19,8 +19,8 @@
 
 package com.github.yeriomin.yalpstore.task.playstore;
 
-import com.github.yeriomin.playstoreapi.CategoryAppsIterator;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.CategoryAppsIterator;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.AppListIterator;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 

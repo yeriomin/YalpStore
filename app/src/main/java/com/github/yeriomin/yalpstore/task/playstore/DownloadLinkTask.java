@@ -23,7 +23,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.R;
 

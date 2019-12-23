@@ -34,7 +34,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
-import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
+import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.DeviceInfoActivity;
 import com.github.yeriomin.yalpstore.PreferenceUtil;

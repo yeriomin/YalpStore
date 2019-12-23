@@ -21,12 +21,12 @@ package com.github.yeriomin.yalpstore.download;
 
 import android.text.TextUtils;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
-import com.github.yeriomin.playstoreapi.AndroidAppPatchData;
-import com.github.yeriomin.playstoreapi.AppFileMetadata;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.HttpCookie;
-import com.github.yeriomin.playstoreapi.Split;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.AndroidAppPatchData;
+import com.dragons.aurora.playstoreapiv2.AppFileMetadata;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.HttpCookie;
+import com.dragons.aurora.playstoreapiv2.Split;
 import com.github.yeriomin.yalpstore.Util;
 
 import java.util.ArrayList;

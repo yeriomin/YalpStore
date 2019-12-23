@@ -21,7 +21,7 @@ package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.ReviewStorageIterator;
 import com.github.yeriomin.yalpstore.model.Review;

@@ -19,7 +19,7 @@
 
 package com.github.yeriomin.yalpstore.download;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 
 public class RequestDelta extends Request {
 

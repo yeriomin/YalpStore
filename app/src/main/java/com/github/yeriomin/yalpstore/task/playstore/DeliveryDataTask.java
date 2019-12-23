@@ -21,10 +21,10 @@ package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
-import com.github.yeriomin.playstoreapi.BuyResponse;
-import com.github.yeriomin.playstoreapi.DeliveryResponse;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.BuyResponse;
+import com.dragons.aurora.playstoreapiv2.DeliveryResponse;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.NotPurchasedException;
 import com.github.yeriomin.yalpstore.PreferenceUtil;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;

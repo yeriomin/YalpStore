@@ -25,8 +25,8 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
-import com.github.yeriomin.playstoreapi.BulkDetailsEntry;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.BulkDetailsEntry;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
 import com.github.yeriomin.yalpstore.task.playstore.CloneableTask;

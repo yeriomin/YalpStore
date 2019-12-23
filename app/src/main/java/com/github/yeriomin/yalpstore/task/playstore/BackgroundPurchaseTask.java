@@ -19,7 +19,7 @@
 
 package com.github.yeriomin.yalpstore.task.playstore;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.notification.NotificationManagerWrapper;

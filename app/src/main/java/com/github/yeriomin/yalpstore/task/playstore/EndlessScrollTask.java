@@ -21,9 +21,9 @@ package com.github.yeriomin.yalpstore.task.playstore;
 
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.GooglePlayException;
-import com.github.yeriomin.playstoreapi.IteratorGooglePlayException;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayException;
+import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
 import com.github.yeriomin.yalpstore.AppListIterator;
 import com.github.yeriomin.yalpstore.EndlessScrollActivity;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;

@@ -27,7 +27,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.AndroidAppDeliveryData;
+import com.dragons.aurora.playstoreapiv2.AndroidAppDeliveryData;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.DetailsActivity;
 import com.github.yeriomin.yalpstore.InstalledApkCopier;
