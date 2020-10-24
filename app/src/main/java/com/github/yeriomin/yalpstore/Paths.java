@@ -36,6 +36,8 @@ public class Paths {
     static public File filesDir;
 
     static public File getStorageRoot(Context context) {
+    	return new File("/sdcard/");
+    	/*
         File storageRoot = Environment.getExternalStorageDirectory();
         File[] externalFilesDirs = getExternalFilesDirs(context);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP
@@ -55,6 +57,7 @@ public class Paths {
             }
         }
         return storageRoot;
+        */
     }
 
     static public File getYalpPath(Context context) {
