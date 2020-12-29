@@ -22,7 +22,7 @@ package com.github.yeriomin.yalpstore.task.playstore;
 import android.app.Activity;
 import android.text.TextUtils;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.BlackWhiteListManager;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.R;

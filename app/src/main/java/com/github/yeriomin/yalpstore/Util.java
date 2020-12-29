@@ -170,9 +170,9 @@ public class Util {
     }
 
     public static byte[] base64StringToByteArray(String string) {
-        return com.github.yeriomin.playstoreapi.Base64.decode(
+        return com.dragons.aurora.playstoreapiv2.Base64.decode(
             string,
-            com.github.yeriomin.playstoreapi.Base64.URL_SAFE | com.github.yeriomin.playstoreapi.Base64.NO_PADDING
+            com.dragons.aurora.playstoreapiv2.Base64.URL_SAFE | com.dragons.aurora.playstoreapiv2.Base64.NO_PADDING
         );
     }
 }

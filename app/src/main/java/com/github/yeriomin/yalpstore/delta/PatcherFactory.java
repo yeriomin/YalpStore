@@ -21,7 +21,7 @@ package com.github.yeriomin.yalpstore.delta;
 
 import android.content.Context;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.model.App;
 
 public class PatcherFactory {

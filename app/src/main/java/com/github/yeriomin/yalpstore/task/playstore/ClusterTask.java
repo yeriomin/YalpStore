@@ -19,7 +19,7 @@
 
 package com.github.yeriomin.yalpstore.task.playstore;
 
-import com.github.yeriomin.playstoreapi.UrlIterator;
+import com.dragons.aurora.playstoreapiv2.UrlIterator;
 import com.github.yeriomin.yalpstore.AppListIterator;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;
 

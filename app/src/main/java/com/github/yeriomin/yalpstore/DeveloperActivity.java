@@ -24,15 +24,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.Base64;
-import com.github.yeriomin.playstoreapi.DeveloperAppsRequest;
-import com.github.yeriomin.playstoreapi.DeveloperIdContainer;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.UrlRequestWrapper;
+import com.dragons.aurora.playstoreapiv2.Base64;
+import com.dragons.aurora.playstoreapiv2.DeveloperAppsRequest;
+import com.dragons.aurora.playstoreapiv2.DeveloperIdContainer;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.UrlRequestWrapper;
 
 import java.net.URLEncoder;
 
-import static com.github.yeriomin.playstoreapi.Base64.NO_WRAP;
+import static com.dragons.aurora.playstoreapiv2.Base64.NO_WRAP;
 
 public class DeveloperActivity extends YalpStoreActivity {
 
