@@ -23,8 +23,8 @@ import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.IteratorGooglePlayException;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.IteratorGooglePlayException;
 import com.github.yeriomin.yalpstore.BaseActivity;
 import com.github.yeriomin.yalpstore.ContextUtil;
 import com.github.yeriomin.yalpstore.PlayStoreApiAuthenticator;

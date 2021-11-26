@@ -19,12 +19,12 @@
 
 package com.github.yeriomin.yalpstore.model;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.Image;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.Image;
 
 public class ReviewBuilder {
 
-    public static Review build(com.github.yeriomin.playstoreapi.Review reviewProto) {
+    public static Review build(com.dragons.aurora.playstoreapiv2.Review reviewProto) {
         Review review = new Review();
         review.setComment(reviewProto.getComment());
         review.setTitle(reviewProto.getTitle());

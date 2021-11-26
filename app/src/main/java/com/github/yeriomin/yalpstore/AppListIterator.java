@@ -21,8 +21,8 @@ package com.github.yeriomin.yalpstore;
 
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.DocV2;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.DocV2;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.model.App;
 import com.github.yeriomin.yalpstore.model.AppBuilder;
 import com.github.yeriomin.yalpstore.model.Filter;
@@ -34,9 +34,9 @@ import java.util.List;
 public class AppListIterator implements Iterator {
 
     private Filter filter;
-    protected com.github.yeriomin.playstoreapi.AppListIterator iterator;
+    protected com.dragons.aurora.playstoreapiv2.AppListIterator iterator;
 
-    public AppListIterator(com.github.yeriomin.playstoreapi.AppListIterator iterator) {
+    public AppListIterator(com.dragons.aurora.playstoreapiv2.AppListIterator iterator) {
         this.iterator = iterator;
     }
 

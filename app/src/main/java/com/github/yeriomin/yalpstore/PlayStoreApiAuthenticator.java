@@ -24,12 +24,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.ApiBuilderException;
-import com.github.yeriomin.playstoreapi.AuthException;
-import com.github.yeriomin.playstoreapi.DeviceInfoProvider;
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.PropertiesDeviceInfoProvider;
-import com.github.yeriomin.playstoreapi.TokenDispenserException;
+import com.dragons.aurora.playstoreapiv2.ApiBuilderException;
+import com.dragons.aurora.playstoreapiv2.AuthException;
+import com.dragons.aurora.playstoreapiv2.DeviceInfoProvider;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder;
+import com.dragons.aurora.playstoreapiv2.PropertiesDeviceInfoProvider;
+import com.dragons.aurora.playstoreapiv2.TokenDispenserException;
 import com.github.yeriomin.yalpstore.model.LoginInfo;
 import com.github.yeriomin.yalpstore.model.LoginInfoDao;
 import com.github.yeriomin.yalpstore.task.playstore.BackgroundCategoryTask;
@@ -48,16 +49,10 @@ public class PlayStoreApiAuthenticator {
     public static final String PREFERENCE_USER_ID = "PREFERENCE_USER_ID";
 
     static private final int RETRIES = 5;
-
-    private Context context;
-    private Set<PlayStorePayloadTask> onLoginTasks = new HashSet<>();
-
     private static GooglePlayAPI api;
     private static TokenDispenserMirrors tokenDispenserMirrors = new TokenDispenserMirrors();
-
-    public static void forceRelogin() {
-        api = null;
-    }
+    private Context context;
+    private Set<PlayStorePayloadTask> onLoginTasks = new HashSet<>();
 
     public PlayStoreApiAuthenticator(Context context) {
         this.context = context;
@@ -66,6 +61,10 @@ public class PlayStoreApiAuthenticator {
         onLoginTasks.add(categoryTask);
         onLoginTasks.add(new WishlistUpdateTask());
         onLoginTasks.add(new UserProfileTask());
+    }
+
+    public static void forceRelogin() {
+        api = null;
     }
 
     public GooglePlayAPI getApi() throws IOException {
@@ -127,7 +126,7 @@ public class PlayStoreApiAuthenticator {
         tokenDispenserMirrors.reset();
         while (tried < retries) {
             try {
-                com.github.yeriomin.playstoreapi.PlayStoreApiBuilder builder = getBuilder(loginInfo);
+                com.dragons.aurora.playstoreapiv2.PlayStoreApiBuilder builder = getBuilder(loginInfo);
                 GooglePlayAPI api = builder.build();
                 loginInfo.setEmail(builder.getEmail());
                 return api;
@@ -151,25 +150,25 @@ public class PlayStoreApiAuthenticator {
             }
         }
         throw loginInfo.appProvidedEmail()
-            ? new TokenDispenserException("Try again later")
-            : new IOException("Unknown error happened during login")
-        ;
+                ? new TokenDispenserException("Try again later")
+                : new IOException("Unknown error happened during login")
+                ;
     }
 
-    private com.github.yeriomin.playstoreapi.PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
-        return new com.github.yeriomin.playstoreapi.PlayStoreApiBuilder()
-            .setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter())
-            .setDeviceInfoProvider(getDeviceInfoProvider(loginInfo.getDeviceDefinitionName()))
-            .setLocale(loginInfo.getLocale())
-            .setEmail(loginInfo.getEmail())
-            .setPassword(loginInfo.getPassword())
-            .setGsfId(loginInfo.getGsfId())
-            .setToken(loginInfo.getToken())
-            .setTokenDispenserUrl(loginInfo.getTokenDispenserUrl())
-            .setDeviceCheckinConsistencyToken(loginInfo.getDeviceCheckinConsistencyToken())
-            .setDeviceConfigToken(loginInfo.getDeviceConfigToken())
-            .setDfeCookie(loginInfo.getDfeCookie())
-        ;
+    private PlayStoreApiBuilder getBuilder(LoginInfo loginInfo) {
+        PlayStoreApiBuilder builder = new PlayStoreApiBuilder();
+        builder.setHttpClient(BuildConfig.DEBUG ? new DebugHttpClientAdapter() : new NativeHttpClientAdapter());
+        builder.setDeviceInfoProvider(getDeviceInfoProvider(loginInfo.getDeviceDefinitionName()));
+        builder.setLocale(loginInfo.getLocale());
+        builder.setEmail(loginInfo.getEmail());
+        builder.setAasToken(loginInfo.getPassword());
+        builder.setGsfId(loginInfo.getGsfId());
+        builder.setAuthToken(loginInfo.getToken());
+        builder.setTokenDispenserUrl(loginInfo.getTokenDispenserUrl());
+        builder.setDeviceCheckinConsistencyToken(loginInfo.getDeviceCheckinConsistencyToken());
+        builder.setDeviceConfigToken(loginInfo.getDeviceConfigToken());
+        builder.setDfeCookie(loginInfo.getDfeCookie());
+        return builder;
     }
 
     private DeviceInfoProvider getDeviceInfoProvider(String spoofDevice) {
@@ -197,7 +196,7 @@ public class PlayStoreApiAuthenticator {
     }
 
     private void runOnLoginTasks() {
-        for (PlayStorePayloadTask task: onLoginTasks) {
+        for (PlayStorePayloadTask task : onLoginTasks) {
             task.setContext(context);
             task.executeOnExecutorIfPossible();
         }

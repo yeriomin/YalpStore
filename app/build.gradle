@@ -1,8 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.2'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
     def getCurrentFlavor = { ->
         if (getGradle().getStartParameter().getTaskRequests().toString().contains("legacy")) {
@@ -27,8 +32,8 @@ android {
     defaultConfig {
         applicationId "com.github.yeriomin.yalpstore"
         minSdkVersion 5
-        targetSdkVersion 28
-        versionCode 45
+        targetSdkVersion 29
+        versionCode 47
         versionName getVersionName()
         vectorDrawables.useSupportLibrary = true
         resConfigs "ar", "ast", "bg", "cs", "de", "el", "en", "es", "eu", "fr", "fr-rBE", "in", "it", "ja", "kk", "ko", "nl", "pl", "pt", "pt-rBR", "ru", "sk", "uk", "zh", "zh-rTW"
@@ -43,7 +48,7 @@ android {
             shrinkResources true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            resValue "string", "app_name", "Yalp Store"
+            resValue "string", "app_name", "Yalp Store +"
         }
     }
     flavorDimensions "minApi"
@@ -68,9 +73,8 @@ dependencies {
     contemporaryImplementation 'com.android.support:design:28.0.0'
     contemporaryImplementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'info.guardianproject.netcipher:netcipher:2.0.0-beta1'
-    implementation 'commons-net:commons-net:3.5'
+    implementation 'commons-net:commons-net:3.6'
     implementation 'com.nothome:javaxdelta:2.0.1'
-    debugImplementation ('com.github.yeriomin:play-store-api:master-SNAPSHOT') { changing = true }
-    releaseImplementation 'com.github.yeriomin:play-store-api:0.44.2'
+    implementation 'com.github.whyorean:playstore-api-v2:2.4'
     implementation 'eu.chainfire:libsuperuser:1.0.0.201608240809'
 }

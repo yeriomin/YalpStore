@@ -23,7 +23,7 @@ import android.content.pm.PackageInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.R;
 import com.github.yeriomin.yalpstore.SqliteHelper;
 import com.github.yeriomin.yalpstore.model.App;

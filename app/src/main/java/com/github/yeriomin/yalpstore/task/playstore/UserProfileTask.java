@@ -22,9 +22,9 @@ package com.github.yeriomin.yalpstore.task.playstore;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
-import com.github.yeriomin.playstoreapi.Image;
-import com.github.yeriomin.playstoreapi.UserProfile;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.Image;
+import com.dragons.aurora.playstoreapiv2.UserProfile;
 import com.github.yeriomin.yalpstore.SqliteHelper;
 import com.github.yeriomin.yalpstore.YalpStoreApplication;
 import com.github.yeriomin.yalpstore.model.LoginInfoDao;

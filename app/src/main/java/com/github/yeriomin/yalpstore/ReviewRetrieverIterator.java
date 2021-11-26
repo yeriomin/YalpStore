@@ -21,7 +21,7 @@ package com.github.yeriomin.yalpstore;
 
 import android.util.Log;
 
-import com.github.yeriomin.playstoreapi.GooglePlayAPI;
+import com.dragons.aurora.playstoreapiv2.GooglePlayAPI;
 import com.github.yeriomin.yalpstore.model.Review;
 import com.github.yeriomin.yalpstore.model.ReviewBuilder;
 
@@ -58,7 +58,7 @@ public class ReviewRetrieverIterator extends ReviewIterator {
 
     private List<Review> getReviews(String packageId, int offset, int numberOfResults) throws IOException {
         List<Review> reviews = new ArrayList<>();
-        for (com.github.yeriomin.playstoreapi.Review review: new PlayStoreApiAuthenticator(context).getApi().reviews(
+        for (com.dragons.aurora.playstoreapiv2.Review review: new PlayStoreApiAuthenticator(context).getApi().reviews(
             packageId,
             GooglePlayAPI.REVIEW_SORT.HELPFUL,
             offset,
