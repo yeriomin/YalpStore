@@ -1,4 +1,4 @@
-# Yalp Store [![codebeat badge](https://codebeat.co/badges/c18f32ef-bf28-4948-8156-9a52e50e121c)](https://codebeat.co/projects/github-com-yeriomin-yalpstore) [![translation](https://img.shields.io/badge/translation-93%25-green.svg)](https://poeditor.com/join/project/LUPUijv2Cs) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/YalpStore/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+# Yalp Store [![codebeat badge](https://codebeat.co/badges/c18f32ef-bf28-4948-8156-9a52e50e121c)](https://codebeat.co/projects/github-com-yeriomin-yalpstore) [![translation](https://img.shields.io/badge/translation-93%25-green.svg)](https://poeditor.com/join/project/LUPUijv2Cs) [![kandi X-Ray](https://kandi.openweaver.com/badges/xray.svg)](https://kandi.openweaver.com/java/yeriomin/YalpStore) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/YalpStore/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 <a href="https://f-droid.org/repository/browse/?fdid=com.github.yeriomin.yalpstore" target="_blank">
   <img src="https://f-droid.org/badge/get-it-on.png" height="80"/>
